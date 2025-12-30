@@ -176,7 +176,8 @@ export async function getWikidataEntityWithTranslation(qid: string): Promise<Wik
             description: translated.description || entity.description,
             occupation: translated.occupation,
             organization: translated.organization,
-            // 别名保留原始英文版本（便于搜索）
+            // 将原始英文名字加入别名列表，方便搜索
+            aliases: [...new Set([...entity.aliases, entity.label])],
         };
     } catch (error) {
         console.error('Translation error, using original:', error);
