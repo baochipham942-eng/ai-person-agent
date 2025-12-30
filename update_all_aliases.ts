@@ -29,6 +29,43 @@ async function updateAliases() {
             } else {
                 console.log(`  -> Aliases OK`);
             }
+
+            // Update officialLinks to ensure GitHub is included
+            // Merging new links if not present
+            const currentLinks = (person.officialLinks as any[]) || [];
+            const newLinks = entity.officialLinks || [];
+
+            // Check if we found new links (especially github)
+            let linksUpdated = false;
+            const updatedLinks = [...currentLinks];
+
+            for (const link of newLinks) {
+                const exists = currentLinks.some((l: any) => l.type === link.type && l.url === link.url);
+                if (!exists) {
+                    console.log(`  -> Adding link: ${link.type} - ${link.url}`);
+                    updatedLinks.push(link);
+                    linksUpdated = true;
+                }
+            }
+
+            // Manual fix for Sam Altman (if missing)
+            if (person.qid === 'Q7407093' && !updatedLinks.some((l: any) => l.type === 'github')) {
+                console.log(`  -> Manual add GitHub for Sam Altman`);
+                updatedLinks.push({
+                    type: 'github',
+                    url: 'https://github.com/sama',
+                    handle: 'sama'
+                });
+                linksUpdated = true;
+            }
+
+            if (linksUpdated) {
+                await prisma.people.update({
+                    where: { id: person.id },
+                    data: { officialLinks: updatedLinks }
+                });
+            }
+
         }
     }
 

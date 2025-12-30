@@ -34,10 +34,7 @@ export function SearchBox({ onPersonSelected }: SearchBoxProps) {
     const [confirmingQid, setConfirmingQid] = useState<string | null>(null);
 
     const handleSearch = useCallback(async () => {
-        if (!query.trim()) {
-            Message.warning('请输入人物姓名');
-            return;
-        }
+        const effectiveQuery = query.trim() || 'sam altman';
 
         setLoading(true);
         setSearchResponse(null);
@@ -46,7 +43,7 @@ export function SearchBox({ onPersonSelected }: SearchBoxProps) {
             const response = await fetch('/api/search', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: query.trim() }),
+                body: JSON.stringify({ name: effectiveQuery }),
             });
 
             if (!response.ok) {
