@@ -1,7 +1,7 @@
 {
   "statefulConfig": {
     "serviceName": "ai-person-agent",
-    "description": "AI Person Agent Service",
+    "description": "AI Person Agent Proxy to Vercel",
     "role": "",
     "logConfig": {
       "project": "",
@@ -13,7 +13,7 @@
     },
     "serviceId": "66346b41-39d5-4cf1-9aa1-b940f47672f5",
     "createdTime": "2025-12-30T10:21:36Z",
-    "lastModifiedTime": "2025-12-30T11:37:14Z",
+    "lastModifiedTime": "2025-12-30T11:57:02Z",
     "vpcConfig": {
       "vpcId": "",
       "vSwitchIds": [],

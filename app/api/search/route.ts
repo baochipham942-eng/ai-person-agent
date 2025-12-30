@@ -29,35 +29,38 @@ export async function POST(request: NextRequest) {
         }
 
         const searchQuery = name.trim();
+        const searchQueryLower = searchQuery.toLowerCase();
 
         const userId = session?.user?.id;
 
         // 1. 先查本地数据库（模糊匹配 name 和 aliases）
-        const localResults = await prisma.people.findMany({
-            where: {
-                OR: [
-                    { name: { contains: searchQuery, mode: 'insensitive' } },
-                    { aliases: { has: searchQuery } },
-                ],
-            },
-            select: {
-                id: true,
-                name: true,
-                qid: true,
-                description: true,
-                avatarUrl: true,
-                status: true,
-                updatedAt: true,
-            },
-            take: 10,
-        });
+        // 使用原生 SQL 支持别名的模糊搜索
+        const localResults = await prisma.$queryRaw<Array<{
+            id: string;
+            name: string;
+            qid: string;
+            description: string | null;
+            avatarUrl: string | null;
+            status: string;
+            updatedAt: Date;
+        }>>`
+            SELECT id, name, qid, description, "avatarUrl", status, "updatedAt"
+            FROM "People"
+            WHERE 
+                LOWER(name) LIKE ${'%' + searchQueryLower + '%'}
+                OR EXISTS (
+                    SELECT 1 FROM unnest(aliases) AS alias 
+                    WHERE LOWER(alias) LIKE ${'%' + searchQueryLower + '%'}
+                )
+            LIMIT 10
+        `;
 
         // 如果本地有结果，直接返回
         if (localResults.length > 0) {
             // 创建搜索会话记录
             const searchSession = await prisma.searchSession.create({
                 data: {
-                    userId: userId, // Pass undefined/null explicitly handled by Prisma
+                    userId: userId,
                     query: searchQuery,
                     localHits: localResults.map(p => p.id),
                     status: 'confirmed',
@@ -111,7 +114,7 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         console.error('Search API error:', error);
         return NextResponse.json(
-            { error: '搜索服务暂时不可用', details: error instanceof Error ? error.message : String(error) }, // Return details for debugging
+            { error: '搜索服务暂时不可用', details: error instanceof Error ? error.message : String(error) },
             { status: 500 }
         );
     }

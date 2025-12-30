@@ -1,45 +1,33 @@
 edition: 1.0.0
-name: ai-person-agent-deploy
+name: ai-person-agent-proxy
 access: default
 
 vars:
   region: ap-southeast-1
   service:
     name: ai-person-agent
-    description: AI Person Agent Service
+    description: AI Person Agent Proxy to Vercel
     internetAccess: true
 
 services:
-  website:
+  proxy:
     component: fc
-    actions:
-      pre-deploy:
-        - run: pnpm run deploy:build
-          path: ./
     props:
       region: ${vars.region}
       service: ${vars.service}
       function:
         name: people
-        description: Next.js SSR Function for AI Person Agent
+        description: Proxy to Vercel
         runtime: custom.debian10
-        codeUri: ./.next/standalone
+        codeUri: ./proxy
         handler: index.handler
-        memorySize: 1024
+        memorySize: 512
         timeout: 60
-        instanceConcurrency: 10
+        instanceConcurrency: 50
         layers:
           - acs:fc:ap-southeast-1:official:layers/Nodejs20/versions/1
         environmentVariables:
           PORT: 9000
-          HOSTNAME: "0.0.0.0"
-          DATABASE_URL: ${env(DATABASE_URL)}
-          AUTH_SECRET: ${env(AUTH_SECRET)}
-          DEEPSEEK_API_KEY: ${env(DEEPSEEK_API_KEY)}
-          DEEPSEEK_API_URL: ${env(DEEPSEEK_API_URL)}
-          EXA_API_KEY: ${env(EXA_API_KEY)}
-          GOOGLE_API_KEY: ${env(GOOGLE_API_KEY)}
-          XAI_API_KEY: ${env(XAI_API_KEY)}
 
       triggers:
         - name: httpTrigger
