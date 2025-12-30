@@ -1,0 +1,30 @@
+{
+  "domainName": "people.llmxy.xyz",
+  "accountId": "1145650533372320",
+  "protocol": "HTTP",
+  "certConfig": null,
+  "tlsConfig": null,
+  "apiVersion": "2016-08-15",
+  "routeConfig": {
+    "routes": [
+      {
+        "path": "/*",
+        "accountId": null,
+        "apiVersion": "",
+        "serviceName": "ai-person-agent",
+        "functionName": "people",
+        "qualifier": null,
+        "methods": null,
+        "rewriteConfig": null,
+        "innerRewriteConfig": null
+      }
+    ]
+  },
+  "createdTime": "2025-12-30T10:37:11Z",
+  "lastModifiedTime": "2025-12-30T11:13:43Z",
+  "keepFullPath": null,
+  "subdomainCount": null,
+  "wafConfig": {
+    "enableWAF": false
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "domainName": "people.ai-person-agent.1145650533372320.ap-southeast-1.fc.devsapp.net",
+  "accountId": "1145650533372320",
+  "protocol": "HTTP",
+  "certConfig": null,
+  "tlsConfig": null,
+  "apiVersion": "2016-08-15",
+  "routeConfig": {
+    "routes": [
+      {
+        "path": "/*",
+        "accountId": null,
+        "apiVersion": "",
+        "serviceName": "ai-person-agent",
+        "functionName": "people",
+        "qualifier": null,
+        "methods": null,
+        "rewriteConfig": null,
+        "innerRewriteConfig": null
+      }
+    ]
+  },
+  "createdTime": "2025-12-30T10:22:06Z",
+  "lastModifiedTime": "2025-12-30T10:22:06Z",
+  "keepFullPath": null,
+  "subdomainCount": null,
+  "wafConfig": {
+    "enableWAF": false
+  }
+}

@@ -1,0 +1,161 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ===== 用户模块 =====
+
+model User {
+  id              String   @id @default(cuid())
+  username        String   @unique
+  passwordHash    String
+  nickname        String?
+  createdAt       DateTime @default(now())
+  avatar          String?
+  phone           String?  @unique
+  quickLoginToken String?
+
+  // 关联
+  searchSessions SearchSession[]
+  userProfile    UserProfile?
+}
+
+model InvitationCode {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  type      String   @default("REGISTRATION")
+  maxUsages Int      @default(1)
+  usedCount Int      @default(0)
+  expiresAt DateTime
+  channel   String?
+  createdAt DateTime @default(now())
+}
+
+// ===== 人物模块 =====
+
+model People {
+  id          String   @id @default(cuid())
+  qid         String   @unique // Wikidata QID
+  name        String
+  aliases     String[] // 别名列表
+  description String?
+  avatarUrl   String?
+  occupation  String[]
+  organization String[]
+
+  // 官方链接（JSON 存储）
+  officialLinks   Json     @default("[]") // OfficialLink[]
+  sourceWhitelist String[] // 可信域名
+
+  // 状态
+  status       String @default("pending") // pending/building/ready/partial/error
+  completeness Int    @default(0)         // 0-100
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 关联
+  rawPoolItems   RawPoolItem[]
+  cards          Card[]
+  searchSessions SearchSession[]
+
+  @@index([name])
+  @@index([status])
+}
+
+// ===== 学习卡片 =====
+
+model Card {
+  id       String @id @default(cuid())
+  personId String
+  person   People @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  type       String // insight/quote/story/method/fact
+  title      String
+  content    String @db.Text
+  tags       String[]
+  sourceUrl  String?
+  importance Int    @default(5) // 1-10
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([personId])
+  @@index([type])
+}
+
+model RawPoolItem {
+  id       String @id @default(cuid())
+  personId String
+  person   People @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  sourceType  String // exa/x/openalex/youtube/wikidata
+  url         String
+  urlHash     String   @unique // 去重用
+  contentHash String   // 近似去重
+
+  title       String
+  text        String   @db.Text
+  publishedAt DateTime?
+  metadata    Json?    // 各来源特有字段
+
+  fetchStatus String   @default("success") // success/partial/error
+  errorCode   String?
+  fetchedAt   DateTime @default(now())
+
+  processed Boolean @default(false)
+
+  @@index([personId])
+  @@index([sourceType])
+}
+
+// ===== 搜索会话 =====
+
+model SearchSession {
+  id     String  @id @default(cuid())
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  query              String
+  localHits          String[] // person_ids
+  wikidataCandidates Json?    // WikidataCandidate[]
+
+  status            String  @default("pending") // pending/confirmed
+  confirmedPersonId String?
+  confirmedPerson   People? @relation(fields: [confirmedPersonId], references: [id])
+
+  createdAt  DateTime  @default(now())
+  resolvedAt DateTime?
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// ===== 用户画像（Phase 3）=====
+
+model UserProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  // 兴趣权重（JSON Map）
+  peopleInterests Json @default("{}") // person_id -> weight
+  topicInterests  Json @default("{}") // topic -> weight
+
+  // 阅读状态
+  readCards   String[] // 已读卡片 IDs
+  savedCards  String[] // 收藏卡片 IDs
+  subscribedPeople String[] // 订阅人物 IDs
+
+  // Newsletter 偏好
+  newsletterFrequency String @default("none") // daily/weekly/none
+  newsletterEmail     String?
+
+  lastActiveAt DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

@@ -1,0 +1,6 @@
+[2025-12-30T03:37:50.416Z] [OpenAlex] Searching author: https://api.openalex.org/authors?search=%E8%8B%8F%E5%A7%BF%E4%B8%B0&per_page=5&mailto=ai-person-agent%40example.com
+[2025-12-30T03:37:52.372Z] [OpenAlex] Search response status: 200
+[2025-12-30T03:37:52.373Z] [OpenAlex] Found 1 authors
+[2025-12-30T03:37:52.374Z] [OpenAlex] Fetching works: https://api.openalex.org/works?filter=author.id%3AA5000784999&sort=cited_by_count%3Adesc&per_page=20&mailto=ai-person-agent%40example.com
+[2025-12-30T03:37:52.860Z] [OpenAlex] Works response status: 200
+[2025-12-30T03:37:52.865Z] [OpenAlex] Found 1 works

@@ -1,0 +1,42 @@
+{
+  "statefulConfig": {
+    "serviceName": "ai-person-agent",
+    "description": "AI Person Agent Service",
+    "role": "",
+    "logConfig": {
+      "project": "",
+      "logstore": "",
+      "enableRequestMetrics": false,
+      "enableInstanceMetrics": false,
+      "logBeginRule": "None",
+      "enableCustomExtraLog": true
+    },
+    "serviceId": "66346b41-39d5-4cf1-9aa1-b940f47672f5",
+    "createdTime": "2025-12-30T10:21:36Z",
+    "lastModifiedTime": "2025-12-30T11:37:14Z",
+    "vpcConfig": {
+      "vpcId": "",
+      "vSwitchIds": [],
+      "securityGroupId": "",
+      "role": null,
+      "anytunnelViaENI": null
+    },
+    "internetAccess": true,
+    "nasConfig": {
+      "userId": -1,
+      "groupId": -1,
+      "mountPoints": []
+    },
+    "ossMountConfig": {
+      "mountPoints": []
+    },
+    "vendorConfig": null,
+    "tracingConfig": {
+      "type": null,
+      "params": null,
+      "jaegerConfig": null
+    },
+    "useSLRAuthentication": false,
+    "name": "ai-person-agent"
+  }
+}

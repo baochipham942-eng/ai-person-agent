@@ -1,0 +1,29 @@
+{
+  "statefulConfig": {
+    "triggerName": "httpTrigger",
+    "description": "",
+    "triggerId": "ca7be176-0bef-4c22-80d1-956a1bbd74f5",
+    "sourceArn": null,
+    "triggerType": "http",
+    "invocationRole": null,
+    "qualifier": "LATEST",
+    "urlInternet": "https://people-ai-person-agent-ollswtpcsb.ap-southeast-1.fcapp.run",
+    "urlIntranet": "https://people-ai-person-agent-ollswtpcsb.ap-southeast-1-vpc.fcapp.run",
+    "triggerConfig": {
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "HEAD"
+      ],
+      "authType": "anonymous",
+      "disableURLInternet": false
+    },
+    "createdTime": "2025-12-30T10:22:02Z",
+    "lastModifiedTime": "2025-12-30T11:37:14Z",
+    "status": null,
+    "targetArn": null,
+    "name": "httpTrigger"
+  }
+}

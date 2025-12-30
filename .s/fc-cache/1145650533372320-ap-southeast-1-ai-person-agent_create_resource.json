@@ -1,0 +1,10 @@
+{
+  "serviceName": "ai-person-agent",
+  "functionNames": [
+    "ai-person-agent/people"
+  ],
+  "domains": [
+    "people.ai-person-agent.1145650533372320.ap-southeast-1.fc.devsapp.net",
+    "people.llmxy.xyz"
+  ]
+}

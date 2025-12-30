@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'standalone', // For serverless deployment
+  transpilePackages: ['@arco-design/web-react'],
 };
 
 export default nextConfig;
+

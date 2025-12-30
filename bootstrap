@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "Bootstrap starting..."
+
+# 尝试查找并添加 node 到 PATH
+if [ -d "/opt/node/bin" ]; then
+  export PATH="/opt/node/bin:$PATH"
+elif [ -d "/opt/nodejs/bin" ]; then
+  export PATH="/opt/nodejs/bin:$PATH"
+elif [ -d "/opt/nodejs20/bin" ]; then
+    export PATH="/opt/nodejs20/bin:$PATH"
+fi
+
+echo "Current PATH: $PATH"
+echo "Locating node..."
+which node
+
+# 启动 Next.js server
+# 确保端口正确
+export PORT=9000
+exec node server.js
