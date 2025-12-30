@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
 import { searchWikidata } from '@/lib/datasources/wikidata';
 import { auth } from '@/auth';
+import { Prisma } from '@prisma/client';
 
 /**
  * POST /api/search
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
         }
 
         const searchQuery = name.trim();
-        const searchQueryLower = searchQuery.toLowerCase();
+        const searchPattern = '%' + searchQuery.toLowerCase() + '%';
 
         const userId = session?.user?.id;
 
@@ -43,17 +44,21 @@ export async function POST(request: NextRequest) {
             avatarUrl: string | null;
             status: string;
             updatedAt: Date;
-        }>>`
-            SELECT id, name, qid, description, "avatarUrl", status, "updatedAt"
-            FROM "People"
-            WHERE 
-                LOWER(name) LIKE ${'%' + searchQueryLower + '%'}
-                OR EXISTS (
-                    SELECT 1 FROM unnest(aliases) AS alias 
-                    WHERE LOWER(alias) LIKE ${'%' + searchQueryLower + '%'}
-                )
-            LIMIT 10
-        `;
+        }>>(
+            Prisma.sql`
+                SELECT id, name, qid, description, "avatarUrl", status, "updatedAt"
+                FROM "People"
+                WHERE 
+                    LOWER(name) LIKE ${searchPattern}
+                    OR EXISTS (
+                        SELECT 1 FROM unnest(aliases) AS alias 
+                        WHERE LOWER(alias) LIKE ${searchPattern}
+                    )
+                LIMIT 10
+            `
+        );
+
+        console.log(`[Search] Query: "${searchQuery}", Local results: ${localResults.length}`);
 
         // 如果本地有结果，直接返回
         if (localResults.length > 0) {
