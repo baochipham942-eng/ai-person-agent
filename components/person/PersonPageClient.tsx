@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Tag, Empty, Tooltip, Button } from '@arco-design/web-react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
@@ -175,6 +175,20 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             💡 学习卡片 ({person.cards?.length || 0})
                         </button>
 
+                        {/* Github Tab (if username exists) */}
+                        {person.officialLinks.some(l => l.type === 'github') && (
+                            <button
+                                onClick={() => setActiveTab('github')}
+                                className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'github'
+                                    ? 'border-blue-600 text-blue-600'
+                                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                                    }`}
+                            >
+                                <span>🐙</span>
+                                <span>开源项目</span>
+                            </button>
+                        )}
+
                         {Object.keys(itemsBySource)
                             .sort((a, b) => {
                                 const order = ['x', 'youtube', 'podcast', 'openalex', 'exa'];
@@ -228,6 +242,17 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             </div>
                         )}
 
+
+                        {/* GitHub Projects Tab */}
+                        {activeTab === 'github' && (() => {
+                            const githubLink = person.officialLinks.find(l => l.type === 'github');
+                            return githubLink ? (
+                                <div className="p-6">
+                                    <GithubRepoList username={githubLink.handle} />
+                                </div>
+                            ) : null;
+                        })()}
+
                         {/* 各类资料源 Tab 内容 */}
                         {Object.keys(itemsBySource).map(source => (
                             activeTab === source && (
@@ -260,10 +285,30 @@ function CardItem({ card }: { card: PersonData['cards'][0] }) {
     );
 }
 
-// 资料列表组件 - 按类型展示
+// 资料列表组件 - 按类型展示 (Infinite Scroll)
 function SourceList({ source, items }: { source: string; items: PersonData['rawPoolItems'] }) {
-    const [showAll, setShowAll] = useState(false);
-    const displayItems = showAll ? items : items.slice(0, 8);
+    const [displayCount, setDisplayCount] = useState(10);
+    const observerTarget = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setDisplayCount(prev => Math.min(prev + 10, items.length));
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (observerTarget.current) {
+            observer.observe(observerTarget.current);
+        }
+
+        return () => observer.disconnect();
+    }, [items.length]);
+
+    const displayItems = items.slice(0, displayCount);
+    const hasMore = displayCount < items.length;
 
     return (
         <div className="space-y-3">
@@ -304,11 +349,9 @@ function SourceList({ source, items }: { source: string; items: PersonData['rawP
                 </div>
             )}
 
-            {items.length > 8 && !showAll && (
-                <div className="text-center pt-2">
-                    <Button type="text" size="small" onClick={() => setShowAll(true)}>
-                        展开全部 ({items.length} 条)
-                    </Button>
+            {hasMore && (
+                <div ref={observerTarget} className="h-16 flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             )}
         </div>
@@ -513,6 +556,85 @@ function getCardTypeName(type: string): string {
         fact: '事实',
     };
     return names[type] || type;
+}
+
+// GitHub 仓库列表组件
+function GithubRepoList({ username }: { username: string }) {
+    const [repos, setRepos] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        setLoading(true);
+        fetch(`/api/github/repos?username=${username}`)
+            .then(res => {
+                if (!res.ok) throw new Error('API Error');
+                return res.json();
+            })
+            .then(data => {
+                setRepos(data.repos || []);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setError('无法加载开源项目');
+                setLoading(false);
+            });
+    }, [username]);
+
+    if (loading) {
+        return (
+            <div className="py-12 flex flex-col items-center justify-center text-gray-400">
+                <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+                <p>正在从 GitHub 获取开源项目...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return <Empty description={error} />;
+    }
+
+    if (repos.length === 0) {
+        return <Empty description="该用户暂无公开项目" />;
+    }
+
+    return (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {repos.map((repo) => (
+                <a
+                    key={repo.id}
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-4 bg-white border border-gray-200 rounded-xl hover:shadow-md hover:border-blue-300 transition-all group"
+                >
+                    <div className="flex items-start justify-between mb-2">
+                        <h4 className="font-bold text-gray-900 group-hover:text-blue-600 truncate pr-2">
+                            {repo.name}
+                        </h4>
+                        <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full border border-gray-200 whitespace-nowrap">
+                            {repo.language || 'Code'}
+                        </span>
+                    </div>
+                    <p className="text-sm text-gray-600 line-clamp-2 mb-3 h-10">
+                        {repo.description || '暂无描述'}
+                    </p>
+                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                        <span className="flex items-center gap-1">
+                            ⭐ {repo.stargazers_count > 1000 ? `${(repo.stargazers_count / 1000).toFixed(1)}k` : repo.stargazers_count}
+                        </span>
+                        <span className="flex items-center gap-1">
+                            🍴 {repo.forks_count > 1000 ? `${(repo.forks_count / 1000).toFixed(1)}k` : repo.forks_count}
+                        </span>
+                        <span>
+                            📅 {new Date(repo.updated_at).toLocaleDateString()}
+                        </span>
+                    </div>
+                </a>
+            ))}
+        </div>
+    );
 }
 
 // 播客项组件 (iTunes)
