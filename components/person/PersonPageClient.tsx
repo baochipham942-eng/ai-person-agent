@@ -254,9 +254,9 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
 
                     {/* Tab Content */}
                     <div>
-                        {/* Timeline Tab Content */}
+                        {/* Timeline Tab Content (Now Career Only) */}
                         {activeTab === 'timeline' && (
-                            <TimelineView items={person.rawPoolItems} />
+                            <TimelineView items={person.rawPoolItems.filter(i => i.sourceType === 'career')} />
                         )}
 
                         {/* 学习卡片 Tab */}
@@ -517,8 +517,11 @@ function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
                             <span className="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded">官方</span>
                         )}
                     </div>
-                    <p className="text-sm text-gray-700 mt-1 leading-relaxed">
-                        {item.text || item.title}
+                    <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">
+                        {/* Fix: Avoid displaying raw URLs as text */}
+                        {(item.text && !item.text.startsWith('http') && !item.text.startsWith('//'))
+                            ? item.text
+                            : item.title}
                     </p>
                     <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
                         <span>点击查看原帖</span>
@@ -878,9 +881,14 @@ function getLinkLabel(link: any) {
     return link.type.charAt(0).toUpperCase() + link.type.slice(1);
 }
 
-// 时光轴视图组件
+// 时光轴视图组件 (仅展示职业/教育生涯)
 function TimelineView({ items }: { items: PersonData['rawPoolItems'] }) {
-    if (!items || items.length === 0) return <Empty description="暂无时间线数据" />;
+    if (!items || items.length === 0) return (
+        <Empty
+            description="暂无生涯数据 (正在从 Wikidata 获取...)"
+            icon={<div className="text-4xl">🎓</div>}
+        />
+    );
 
     // 1. 过滤无效日期并排序 (最新的在先)
     const validItems = items.filter(i => i.publishedAt);
@@ -993,7 +1001,8 @@ function renderTimelineCard(item: any, metadata: any) {
                 {item.title}
             </h4>
 
-            {item.text && (
+            {/* Content Logic: Prioritize Text, fallback to Title. If Text looks like a URL, hide it or truncate. */}
+            {item.text && !item.text.startsWith('http') && !item.text.startsWith('//') && (
                 <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
                     {item.text}
                 </p>

@@ -7,6 +7,7 @@ import { searchOpenAlexAuthor, getAuthorWorks, getAuthorByOrcid } from '@/lib/da
 import { searchPodcasts } from '@/lib/datasources/itunes';
 import { getUserRepos } from '@/lib/datasources/github';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
+import { getPersonCareer } from '@/lib/datasources/career';
 import crypto from 'crypto';
 
 /**
@@ -30,10 +31,16 @@ export const buildPersonJob = inngest.createFunction(
         console.log(`[Job] Building person: ${personName} (Search: ${searchName})`);
 
         // 更新状态为 building
-        await step.run('update-status-building', async () => {
-            await prisma.people.update({
+        // 并获取完整的人物信息（包括 organization）来辅助搜索
+        const person = await step.run('update-status-building', async () => {
+            return await prisma.people.update({
                 where: { id: personId },
                 data: { status: 'building' },
+                select: {
+                    id: true,
+                    organization: true,
+                    occupation: true
+                }
             });
         });
 
@@ -121,7 +128,14 @@ export const buildPersonJob = inngest.createFunction(
                 if (youtubeChannelId) {
                     videos = await getChannelVideos(youtubeChannelId, 20);
                 } else {
-                    videos = await searchYouTubeVideos(searchName, 10);
+                    // 构建更精准的搜索查询
+                    // 格式: "Name" (Org1 | Org2 | AI | LLM)
+                    const orgs = person.organization || [];
+                    const contextKeywords = [...orgs, 'AI', 'Artificial Intelligence', 'Large Language Model'].map(k => `"${k}"`).join(' | ');
+                    const query = `"${searchName}" (${contextKeywords})`;
+
+                    console.log(`[Job] Searching YouTube with query: ${query}`);
+                    videos = await searchYouTubeVideos(query, 10);
                 }
                 return videos.map(v => ({
                     sourceType: 'youtube',
@@ -204,6 +218,24 @@ export const buildPersonJob = inngest.createFunction(
                         language: repo.language,
                         topics: repo.topics,
                         isOfficial: true,  // 来自官方账户
+                    },
+                }));
+            }),
+
+            // 7. Career/Bio (Wikidata) - 职业与教育经历
+            step.run('fetch-career', async () => {
+                const careerItems = await getPersonCareer(qid);
+                return careerItems.map(item => ({
+                    sourceType: 'career',
+                    url: `https://www.wikidata.org/wiki/${qid}`,
+                    title: item.title,
+                    text: item.subtitle || item.type,
+                    publishedAt: item.startDate ? new Date(item.startDate) : null,
+                    metadata: {
+                        type: item.type,
+                        subtitle: item.subtitle,
+                        endDate: item.endDate,
+                        isOfficial: true
                     },
                 }));
             }),
