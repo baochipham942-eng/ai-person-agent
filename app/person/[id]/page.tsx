@@ -45,6 +45,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
             url: item.url,
             title: item.title,
             text: item.text,
+            publishedAt: item.publishedAt?.toISOString() || undefined,
             metadata: item.metadata as Record<string, unknown> | undefined,
         })),
         cards: person.cards.map(card => ({
