@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SearchBox } from '@/components/search/SearchBox';
+import { PersonRecommendationList } from '@/components/home/PersonRecommendationList';
 
 export default function HomePage() {
   const router = useRouter();
@@ -47,8 +48,13 @@ export default function HomePage() {
         </section>
 
         {/* Search Section */}
-        <section className="mb-16">
+        <section className="mb-12">
           <SearchBox onPersonSelected={handlePersonSelected} />
+        </section>
+
+        {/* Recommendation Section */}
+        <section className="mb-16">
+          <PersonRecommendationList />
         </section>
 
         {/* Tips Section */}
