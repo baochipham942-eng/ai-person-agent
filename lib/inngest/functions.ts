@@ -225,9 +225,10 @@ export const buildPersonJob = inngest.createFunction(
             // 7. Career/Bio (Wikidata) - 职业与教育经历
             step.run('fetch-career', async () => {
                 const careerItems = await getPersonCareer(qid);
-                return careerItems.map(item => ({
+                return careerItems.map((item, index) => ({
                     sourceType: 'career',
-                    url: `https://www.wikidata.org/wiki/${qid}`,
+                    // Fix: Ensure unique URL for each item to prevent deduplication overwriting
+                    url: `https://www.wikidata.org/wiki/${qid}#${item.type}-${index}-${encodeURIComponent(item.title)}`,
                     title: item.title,
                     text: item.subtitle || item.type,
                     publishedAt: item.startDate ? new Date(item.startDate) : null,
