@@ -4,17 +4,26 @@ import { getWikidataEntityWithTranslation } from '@/lib/datasources/wikidata';
 import { inngest } from '@/lib/inngest/client';
 
 // POST /api/admin/fix-qid
-// Body: { oldQid: string, newQid: string }
+// Body: { oldQid?: string, personId?: string, newQid: string }
 export async function POST(request: NextRequest) {
     try {
-        const { oldQid, newQid } = await request.json();
+        const { oldQid, personId, newQid } = await request.json();
 
-        if (!oldQid || !newQid) {
-            return NextResponse.json({ error: 'Missing oldQid or newQid' }, { status: 400 });
+        if (!newQid) {
+            return NextResponse.json({ error: 'Missing newQid' }, { status: 400 });
         }
 
-        // 1. Find person with old QID
-        const person = await prisma.people.findUnique({ where: { qid: oldQid } });
+        if (!oldQid && !personId) {
+            return NextResponse.json({ error: 'Missing oldQid or personId' }, { status: 400 });
+        }
+
+        // 1. Find person by QID or ID
+        let person;
+        if (personId) {
+            person = await prisma.people.findUnique({ where: { id: personId } });
+        } else {
+            person = await prisma.people.findUnique({ where: { qid: oldQid } });
+        }
 
         if (!person) {
             return NextResponse.json({ error: 'Person not found' }, { status: 404 });
