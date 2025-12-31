@@ -149,7 +149,7 @@ export async function searchYouTubeVideos(
     try {
         const params = new URLSearchParams({
             part: 'snippet',
-            q: query,
+            q: `${query} (AI | "Artificial Intelligence" | LLM | "Machine Learning")`,
             type: 'video',
             maxResults: String(maxResults),
             order: 'relevance',

@@ -23,6 +23,7 @@ interface PersonData {
         url: string;
         title: string;
         text: string;
+        publishedAt?: string;
         metadata?: Record<string, unknown>;
     }[];
     cards: {
@@ -41,7 +42,7 @@ interface PersonPageClientProps {
 
 export function PersonPageClient({ person }: PersonPageClientProps) {
     const [avatarError, setAvatarError] = useState(false);
-    const [activeTab, setActiveTab] = useState('cards');
+    const [activeTab, setActiveTab] = useState('timeline');
 
     // 处理 Wikidata 图片 URL（添加代理或降级处理）
     const getAvatarUrl = () => {
@@ -134,27 +135,9 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             </div>
                         </div>
 
-                        {/* 右侧快捷链接 */}
-                        <div className="shrink-0 flex gap-2">
-                            {person.officialLinks.slice(0, 4).map((link: any, i: number) => (
-                                <Tooltip
-                                    key={i}
-                                    content={
-                                        link.type === 'website'
-                                            ? 'Blog'
-                                            : (link.handle || link.type)
-                                    }
-                                >
-                                    <a
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-10 h-10 flex items-center justify-center bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors text-lg"
-                                    >
-                                        <LinkIcon type={link.type} />
-                                    </a>
-                                </Tooltip>
-                            ))}
+                        {/* 右侧快捷链接 -> 官方认证矩阵 */}
+                        <div className="shrink-0">
+                            <VerifiedMatrix links={person.officialLinks} />
                         </div>
                     </div>
                 </div>
@@ -164,7 +147,19 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                 {/* 分类内容区 - Tabs */}
                 <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
                     {/* Custom Tabs Header */}
-                    <div className="flex border-b border-gray-100 overflow-x-auto">
+                    <div className="flex border-b border-gray-100 overflow-x-auto hide-scrollbar">
+                        {/* Timeline Tab */}
+                        <button
+                            onClick={() => setActiveTab('timeline')}
+                            className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'timeline'
+                                ? 'border-blue-600 text-blue-600'
+                                : 'border-transparent text-gray-500 hover:text-gray-700'
+                                }`}
+                        >
+                            <span>⏳</span>
+                            <span>时光轴</span>
+                        </button>
+
                         <button
                             onClick={() => setActiveTab('cards')}
                             className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'cards'
@@ -221,8 +216,8 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             </button>
                         )}
 
-                        {/* GitHub Projects Tab - Render AFTER Podcast */}
-                        {person.officialLinks.some(l => l.type === 'github') && (
+                        {/* GitHub Projects Tab */}
+                        {(itemsBySource['github']?.length > 0 || person.officialLinks.some(l => l.type === 'github')) && (
                             <button
                                 onClick={() => setActiveTab('github')}
                                 className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'github'
@@ -232,12 +227,15 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             >
                                 <GithubIcon className="w-5 h-5" />
                                 <span>开源项目</span>
+                                {itemsBySource['github']?.length > 0 && (
+                                    <span className="text-sm opacity-80">({itemsBySource['github'].length})</span>
+                                )}
                             </button>
                         )}
 
                         {/* Remaining Sources (OpenAlex, Exa, etc.) */}
                         {Object.keys(itemsBySource)
-                            .filter(s => !['x', 'youtube', 'podcast'].includes(s))
+                            .filter(s => !['x', 'youtube', 'podcast', 'github'].includes(s))
                             .map(source => (
                                 <button
                                     key={source}
@@ -256,6 +254,11 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
 
                     {/* Tab Content */}
                     <div>
+                        {/* Timeline Tab Content */}
+                        {activeTab === 'timeline' && (
+                            <TimelineView items={person.rawPoolItems} />
+                        )}
+
                         {/* 学习卡片 Tab */}
                         {activeTab === 'cards' && (
                             <div className="p-6">
@@ -286,18 +289,30 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             </div>
                         )}
 
-
                         {/* GitHub Projects Tab */}
                         {activeTab === 'github' && (() => {
+                            const githubItems = itemsBySource['github'] || [];
                             const githubLink = person.officialLinks.find(l => l.type === 'github');
+
+                            if (githubItems.length > 0) {
+                                return (
+                                    <div className="p-6">
+                                        <GithubRepoList items={githubItems} />
+                                    </div>
+                                );
+                            }
+
                             return githubLink ? (
                                 <div className="p-6">
-                                    <GithubRepoList username={githubLink.handle} />
+                                    <div className="text-center py-12 text-gray-400">
+                                        <p>正在后台同步开源项目...</p>
+                                        <p className="text-sm mt-2">请稍后刷新 (或检查后台任务)</p>
+                                    </div>
                                 </div>
                             ) : null;
                         })()}
 
-                        {/* 各类资料源 Tab 内容 */}
+                        {/* Rest Sources Content */}
                         {Object.keys(itemsBySource).map(source => (
                             activeTab === source && (
                                 <div key={source} className="p-6">
@@ -635,80 +650,64 @@ function getCardTypeName(type: string): string {
 }
 
 // GitHub 仓库列表组件
-function GithubRepoList({ username }: { username: string }) {
-    const [repos, setRepos] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        setLoading(true);
-        fetch(`/api/github/repos?username=${username}`)
-            .then(res => {
-                if (!res.ok) throw new Error('API Error');
-                return res.json();
-            })
-            .then(data => {
-                setRepos(data.repos || []);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error(err);
-                setError('无法加载开源项目');
-                setLoading(false);
-            });
-    }, [username]);
-
-    if (loading) {
-        return (
-            <div className="py-12 flex flex-col items-center justify-center text-gray-400">
-                <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
-                <p>正在从 GitHub 获取开源项目...</p>
-            </div>
-        );
+function GithubRepoList({ items }: { items: PersonData['rawPoolItems'] }) {
+    if (!items || items.length === 0) {
+        return <Empty description="暂无公开项目" />;
     }
 
-    if (error) {
-        return <Empty description={error} />;
-    }
-
-    if (repos.length === 0) {
-        return <Empty description="该用户暂无公开项目" />;
-    }
+    // Sort by stars (assuming metadata.stars is available, otherwise default sort)
+    // Adjust logic to extract stars from metadata
+    const sortedItems = [...items].sort((a, b) => {
+        const starsA = (a.metadata as any)?.stars || 0;
+        const starsB = (b.metadata as any)?.stars || 0;
+        return starsB - starsA;
+    });
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {repos.map((repo) => (
-                <a
-                    key={repo.id}
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block p-4 bg-white border border-gray-200 rounded-xl hover:shadow-md hover:border-blue-300 transition-all group"
-                >
-                    <div className="flex items-start justify-between mb-2">
-                        <h4 className="font-bold text-gray-900 group-hover:text-blue-600 truncate pr-2">
-                            {repo.name}
-                        </h4>
-                        <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full border border-gray-200 whitespace-nowrap">
-                            {repo.language || 'Code'}
-                        </span>
-                    </div>
-                    <p className="text-sm text-gray-600 line-clamp-2 mb-3 h-10">
-                        {repo.description || '暂无描述'}
-                    </p>
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
-                        <span className="flex items-center gap-1">
-                            ⭐ {repo.stargazers_count > 1000 ? `${(repo.stargazers_count / 1000).toFixed(1)}k` : repo.stargazers_count}
-                        </span>
-                        <span className="flex items-center gap-1">
-                            🍴 {repo.forks_count > 1000 ? `${(repo.forks_count / 1000).toFixed(1)}k` : repo.forks_count}
-                        </span>
-                        <span>
-                            📅 {new Date(repo.updated_at).toLocaleDateString()}
-                        </span>
-                    </div>
-                </a>
-            ))}
+            {sortedItems.map((repo) => {
+                const metadata = repo.metadata as any || {};
+                return (
+                    <a
+                        key={repo.id}
+                        href={repo.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block p-4 bg-white border border-gray-200 rounded-xl hover:shadow-md hover:border-blue-300 transition-all group"
+                    >
+                        <div className="flex items-start justify-between mb-2">
+                            <h4 className="font-bold text-gray-900 group-hover:text-blue-600 truncate pr-2 flex-1">
+                                {repo.title}
+                            </h4>
+                            {metadata.language && (
+                                <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full border border-gray-200 whitespace-nowrap ml-2">
+                                    {metadata.language}
+                                </span>
+                            )}
+                        </div>
+                        <p className="text-sm text-gray-600 line-clamp-2 mb-3 h-10">
+                            {repo.text || '暂无描述'}
+                        </p>
+                        <div className="flex items-center gap-4 text-xs text-gray-500">
+                            {metadata.stars !== undefined && (
+                                <span className="flex items-center gap-1">
+                                    ⭐ {metadata.stars > 1000 ? `${(metadata.stars / 1000).toFixed(1)}k` : metadata.stars}
+                                </span>
+                            )}
+                            {metadata.forks !== undefined && (
+                                <span className="flex items-center gap-1">
+                                    🍴 {metadata.forks > 1000 ? `${(metadata.forks / 1000).toFixed(1)}k` : metadata.forks}
+                                </span>
+                            )}
+                            {repo.publishedAt && (
+                                <span>
+                                    📅 {new Date(repo.publishedAt).toLocaleDateString()}
+                                </span>
+                            )}
+                        </div>
+                    </a>
+                );
+            })}
         </div>
     );
 }
@@ -818,4 +817,200 @@ function BookIcon({ className }: { className?: string }) {
 
 function LinkedinIcon({ className }: { className?: string }) {
     return <span className={className}>💼</span>;
+}
+
+// 官方认证矩阵组件
+function VerifiedMatrix({ links }: { links: any[] }) {
+    if (!links || links.length === 0) return null;
+
+    // 优先展示的类型和顺序
+    const priority = ['website', 'twitter', 'github', 'youtube', 'linkedin', 'scholar'];
+    const sortedLinks = [...links].sort((a, b) => {
+        const ia = priority.indexOf(a.type);
+        const ib = priority.indexOf(b.type);
+        return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+    });
+
+    return (
+        <div className="flex flex-col items-end gap-2">
+            <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">OFFICIAL CHANNELS</span>
+            <div className="flex flex-wrap justify-end gap-2 max-w-[300px]">
+                {sortedLinks.map((link, i) => (
+                    <a
+                        key={i}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`
+                            flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all
+                            ${getLinkStyle(link.type)}
+                        `}
+                    >
+                        <span className="text-lg flex items-center justify-center">
+                            <LinkIcon type={link.type} />
+                        </span>
+                        <span className="text-xs font-medium">
+                            {getLinkLabel(link)}
+                        </span>
+                        <span className="text-[#10B981] ml-0.5">✓</span>
+                    </a>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function getLinkStyle(type: string) {
+    switch (type) {
+        case 'twitter': return 'bg-slate-50 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-500';
+        case 'github': return 'bg-gray-50 border-gray-200 text-gray-800 hover:border-gray-400 hover:bg-gray-100';
+        case 'youtube': return 'bg-red-50 border-red-100 text-red-700 hover:border-red-300 hover:bg-red-100';
+        case 'website': return 'bg-blue-50 border-blue-100 text-blue-700 hover:border-blue-300 hover:bg-blue-100';
+        default: return 'bg-gray-50 border-gray-100 text-gray-600 hover:border-gray-300';
+    }
+}
+
+function getLinkLabel(link: any) {
+    if (link.type === 'website') return 'Website';
+    if (link.type === 'scholar') return 'Scholar';
+    // 截断过长的 handle
+    if (link.handle) return link.handle.length > 12 ? link.handle.slice(0, 10) + '...' : link.handle;
+    return link.type.charAt(0).toUpperCase() + link.type.slice(1);
+}
+
+// 时光轴视图组件
+function TimelineView({ items }: { items: PersonData['rawPoolItems'] }) {
+    if (!items || items.length === 0) return <Empty description="暂无时间线数据" />;
+
+    // 1. 过滤无效日期并排序 (最新的在先)
+    const validItems = items.filter(i => i.publishedAt);
+    const sortedItems = [...validItems].sort((a, b) => {
+        return new Date(b.publishedAt!).getTime() - new Date(a.publishedAt!).getTime();
+    });
+
+    // 2. 按年份分组
+    const grouped = sortedItems.reduce((acc, item) => {
+        const year = new Date(item.publishedAt!).getFullYear();
+        if (!acc[year]) acc[year] = [];
+        acc[year].push(item);
+        return acc;
+    }, {} as Record<number, typeof items>);
+
+    // 3. 排序年份 (最新的年份在先)
+    const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
+
+    return (
+        <div className="p-6">
+            <div className="space-y-10">
+                {years.map(year => (
+                    <div key={year} className="relative">
+                        {/* 年份标记 */}
+                        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm py-3 mb-4 border-b border-gray-100 flex items-center gap-2">
+                            <span className="text-2xl font-bold text-gray-900 font-mono">{year}</span>
+                            <span className="text-sm text-gray-400 font-medium px-2 py-0.5 bg-gray-50 rounded-full">
+                                {grouped[year].length} items
+                            </span>
+                        </div>
+
+                        {/* 时间轴内容 */}
+                        <div className="relative pl-8 border-l-2 border-blue-100 space-y-8 ml-3">
+                            {grouped[year].map(item => (
+                                <TimelineItem key={item.id} item={item} />
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Load More Trigger (Simplified: no infinite scroll inside timeline yet, just render all) */}
+        </div>
+    );
+}
+
+function TimelineItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
+    const date = new Date(item.publishedAt!);
+    const month = date.toLocaleString('default', { month: 'short' });
+    const day = date.getDate();
+    const metadata = item.metadata as any || {};
+
+    return (
+        <div className="relative group">
+            {/* 时间点标记 */}
+            <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-blue-200 group-hover:bg-blue-500 group-hover:scale-110 transition-all shadow-sm"></div>
+
+            <div className="flex gap-4">
+                {/* 日期 */}
+                <div className="shrink-0 w-12 text-center pt-1">
+                    <div className="text-xs font-bold text-gray-500 uppercase">{month}</div>
+                    <div className="text-lg font-bold text-gray-900 leading-none">{day}</div>
+                </div>
+
+                {/* 卡片内容 */}
+                <div className="flex-1 min-w-0">
+                    {renderTimelineCard(item, metadata)}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function renderTimelineCard(item: any, metadata: any) {
+    const sourceType = item.sourceType;
+
+    // 根据类型渲染不同样式的卡片 (精简版)
+    // 统一样式：Border-left color code
+    const colorMap: Record<string, string> = {
+        github: 'border-l-gray-800 hover:border-l-gray-600',
+        youtube: 'border-l-red-500 hover:border-l-red-400',
+        x: 'border-l-blue-400 hover:border-l-blue-300',
+        openalex: 'border-l-green-500 hover:border-l-green-400',
+        podcast: 'border-l-indigo-500 hover:border-l-indigo-400',
+        exa: 'border-l-purple-500 hover:border-l-purple-400'
+    };
+
+    const borderColor = colorMap[sourceType] || 'border-l-gray-300';
+
+    return (
+        <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all border-l-4 ${borderColor}`}
+        >
+            <div className="flex items-start justify-between gap-2 mb-1">
+                <div className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wide">
+                    {getSourceIconComponent(sourceType)}
+                    <span>{getSourceName(sourceType)}</span>
+                </div>
+                {metadata.isOfficial && (
+                    <span className="text-[10px] bg-green-50 text-green-600 px-1.5 py-0.5 rounded border border-green-100">
+                        OFFICIAL
+                    </span>
+                )}
+            </div>
+
+            <h4 className="font-bold text-gray-900 mb-1 leading-snug group-hover:text-blue-600 transition-colors">
+                {item.title}
+            </h4>
+
+            {item.text && (
+                <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                    {item.text}
+                </p>
+            )}
+
+            {/* 特定元数据展示 */}
+            <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-400">
+                {sourceType === 'github' && metadata.stars && (
+                    <span className="flex items-center gap-1">⭐ {metadata.stars}</span>
+                )}
+                {sourceType === 'openalex' && metadata.citationCount > 0 && (
+                    <span className="flex items-center gap-1">📚 被引 {metadata.citationCount}</span>
+                )}
+                {sourceType === 'youtube' && (
+                    <span className="flex items-center gap-1">📺 视频</span>
+                )}
+            </div>
+        </a>
+    );
 }

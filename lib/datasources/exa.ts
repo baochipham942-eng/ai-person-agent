@@ -138,9 +138,13 @@ export async function searchPersonContent(
         allResults.push(...officialResults);
     }
 
-    // 策略2：泛搜索
+    // 策略2：泛搜索 (严格限制 AI 相关)
     const names = [personName, ...aliases.slice(0, 2)]; // 最多用3个名字
-    const query = names.map(n => `"${n}"`).join(' OR ');
+    const nameQuery = names.map(n => `"${n}"`).join(' OR ');
+
+    // 强制包含 AI 相关词汇
+    const aiKeywords = '(AI OR "artificial intelligence" OR LLM OR "large language model" OR "machine learning" OR "deep learning" OR GPT)';
+    const query = `(${nameQuery}) AND ${aiKeywords}`;
 
     const generalResults = await searchExa({
         query,
