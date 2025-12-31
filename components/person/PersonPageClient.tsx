@@ -67,6 +67,22 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
         return acc;
     }, {} as Record<string, typeof person.rawPoolItems>) || {};
 
+    // Deduplicate cards by title or content hash
+    const uniqueCards = person.cards?.reduce((acc, card) => {
+        const key = card.title + (card.content?.slice(0, 20) || '');
+        if (!acc.some(c => (c.title + (c.content?.slice(0, 20) || '')) === key)) {
+            acc.push(card);
+        }
+        return acc;
+    }, [] as typeof person.cards) || [];
+
+    // Re-group cards by type based on uniqueCards
+    const uniqueCardsByType = uniqueCards.reduce((acc, card) => {
+        if (!acc[card.type]) acc[card.type] = [];
+        acc[card.type].push(card);
+        return acc;
+    }, {} as Record<string, typeof person.cards>) || {};
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
             {/* Header */}
@@ -160,6 +176,7 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             <span>时光轴</span>
                         </button>
 
+
                         <button
                             onClick={() => setActiveTab('cards')}
                             className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'cards'
@@ -168,7 +185,7 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                                 }`}
                         >
                             <span>💡</span>
-                            <span>学习卡片 ({person.cards?.length || 0})</span>
+                            <span>学习卡片 ({uniqueCards.length})</span>
                         </button>
 
                         {/* X/Twitter */}
@@ -262,9 +279,9 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                         {/* 学习卡片 Tab */}
                         {activeTab === 'cards' && (
                             <div className="p-6">
-                                {person.cards?.length > 0 ? (
+                                {uniqueCards.length > 0 ? (
                                     <div className="space-y-6">
-                                        {Object.entries(cardsByType).map(([type, cards]) => (
+                                        {Object.entries(uniqueCardsByType).map(([type, cards]) => (
                                             <div key={type}>
                                                 <h3 className="text-sm font-medium text-gray-500 mb-3 flex items-center gap-2">
                                                     <span>{getCardIcon(type)}</span>
@@ -322,8 +339,8 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                         ))}
                     </div>
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 }
 
@@ -923,9 +940,6 @@ function TimelineView({ items }: { items: PersonData['rawPoolItems'] }) {
                         {/* 年份标记 */}
                         <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm py-3 mb-4 border-b border-gray-100 flex items-center gap-2">
                             <span className="text-2xl font-bold text-gray-900 font-mono">{year}</span>
-                            <span className="text-sm text-gray-400 font-medium px-2 py-0.5 bg-gray-50 rounded-full">
-                                {grouped[year].length} items
-                            </span>
                         </div>
 
                         {/* 时间轴内容 */}
@@ -1009,12 +1023,18 @@ function renderTimelineCard(item: any, metadata: any) {
                 {item.title}
             </h4>
 
-            {/* Content Logic: Prioritize Text, fallback to Title. If Text looks like a URL, hide it or truncate. */}
-            {item.text && !item.text.startsWith('http') && !item.text.startsWith('//') && item.text !== 'career' && item.text !== 'education' && (
-                <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
-                    {item.text}
-                </p>
-            )}
+            {/* Content Logic: Hide generic technical words like 'career', 'education', 'career_position'. Only show if meaningful description. */}
+            {item.text &&
+                !item.text.startsWith('http') &&
+                !item.text.startsWith('//') &&
+                item.text.toLowerCase() !== 'career' &&
+                item.text.toLowerCase() !== 'education' &&
+                item.text.toLowerCase() !== 'career_position' &&
+                item.text.toLowerCase() !== 'award' && (
+                    <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                        {item.text}
+                    </p>
+                )}
 
             {/* 特定元数据展示 */}
             <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-400">

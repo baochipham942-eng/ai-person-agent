@@ -1,4 +1,5 @@
 import { getWikidataEntity } from './wikidata';
+import { translateBatch } from '@/lib/ai/translator';
 
 export interface CareerItem {
   type: 'education' | 'career' | 'award';
@@ -87,6 +88,8 @@ export async function getPersonCareer(qid: string): Promise<CareerItem[]> {
 
     const data = await response.json();
 
+    const seen = new Set<string>();
+
     for (const binding of data.results.bindings) {
       let title = binding.itemLabel.value;
       let subtitle = binding.roleLabel?.value;
@@ -103,12 +106,33 @@ export async function getPersonCareer(qid: string): Promise<CareerItem[]> {
         }
       }
 
+      // Deduplication key
+      const key = `${title}-${subtitle}-${binding.start?.value}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+
       items.push({
         type: binding.type.value,
         title: title,
         subtitle: subtitle,
         startDate: binding.start?.value,
         endDate: binding.end?.value,
+      });
+    }
+
+    // Translate items to Chinese
+    const textsToTranslate: string[] = [];
+    items.forEach(item => {
+      if (item.title) textsToTranslate.push(item.title);
+      if (item.subtitle) textsToTranslate.push(item.subtitle);
+    });
+
+    if (textsToTranslate.length > 0) {
+      const translated = await translateBatch(textsToTranslate);
+      let idx = 0;
+      items.forEach(item => {
+        if (item.title) item.title = translated[idx++] || item.title;
+        if (item.subtitle) item.subtitle = translated[idx++] || item.subtitle;
       });
     }
 
