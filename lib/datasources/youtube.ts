@@ -64,7 +64,7 @@ export async function getYouTubeChannel(channelId: string): Promise<YouTubeChann
             description: channel.snippet?.description || '',
             subscriberCount: parseInt(channel.statistics?.subscriberCount) || undefined,
             videoCount: parseInt(channel.statistics?.videoCount) || undefined,
-            thumbnailUrl: channel.snippet?.thumbnails?.default?.url,
+            thumbnailUrl: channel.snippet?.thumbnails?.high?.url || channel.snippet?.thumbnails?.medium?.url || channel.snippet?.thumbnails?.default?.url,
         };
     } catch (error) {
         console.error('YouTube getChannel error:', error);
@@ -122,7 +122,7 @@ export async function getChannelVideos(
             description: item.snippet?.description || '',
             publishedAt: item.snippet?.publishedAt || '',
             url: `https://www.youtube.com/watch?v=${item.snippet?.resourceId?.videoId}`,
-            thumbnailUrl: item.snippet?.thumbnails?.medium?.url,
+            thumbnailUrl: item.snippet?.thumbnails?.high?.url || item.snippet?.thumbnails?.medium?.url,
         }));
     } catch (error) {
         console.error('YouTube getChannelVideos error:', error);
@@ -172,7 +172,7 @@ export async function searchYouTubeVideos(
             description: item.snippet?.description || '',
             publishedAt: item.snippet?.publishedAt || '',
             url: `https://www.youtube.com/watch?v=${item.id?.videoId}`,
-            thumbnailUrl: item.snippet?.thumbnails?.medium?.url,
+            thumbnailUrl: item.snippet?.thumbnails?.high?.url || item.snippet?.thumbnails?.medium?.url,
         }));
     } catch (error) {
         console.error('YouTube search error:', error);

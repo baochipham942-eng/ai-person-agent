@@ -517,12 +517,20 @@ function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
                             <span className="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded">官方</span>
                         )}
                     </div>
-                    <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">
-                        {/* Fix: Avoid displaying raw URLs as text */}
-                        {(item.text && !item.text.startsWith('http') && !item.text.startsWith('//'))
-                            ? item.text
-                            : item.title}
-                    </p>
+                    <div className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap break-words">
+                        {(() => {
+                            // Helper to clean text
+                            const rawText = item.text || item.title || '';
+                            // Remove standalone URLs at the end or beginning
+                            const cleanText = rawText.replace(/(^|\s)(https?:\/\/\S+|\/\/\S+)/g, '').trim();
+
+                            if (!cleanText && (item.text?.startsWith('http') || item.text?.startsWith('//'))) {
+                                return <span className="italic text-gray-400">分享了一个链接 (点击下方查看)</span>;
+                            }
+
+                            return cleanText || item.title;
+                        })()}
+                    </div>
                     <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
                         <span>点击查看原帖</span>
                         <span>→</span>
@@ -1002,7 +1010,7 @@ function renderTimelineCard(item: any, metadata: any) {
             </h4>
 
             {/* Content Logic: Prioritize Text, fallback to Title. If Text looks like a URL, hide it or truncate. */}
-            {item.text && !item.text.startsWith('http') && !item.text.startsWith('//') && (
+            {item.text && !item.text.startsWith('http') && !item.text.startsWith('//') && item.text !== 'career' && item.text !== 'education' && (
                 <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
                     {item.text}
                 </p>
