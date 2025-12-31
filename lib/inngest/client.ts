@@ -20,6 +20,7 @@ export type PersonCreatedEvent = {
         personName: string;
         englishName?: string;
         qid: string;
+        orcid?: string;  // ORCID for academic verification
         officialLinks: {
             type: string;
             url: string;

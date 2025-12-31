@@ -126,6 +126,7 @@ export async function POST(request: NextRequest) {
                     personName: newPerson.name,
                     englishName: wikidataEntity.englishLabel,
                     qid: newPerson.qid,
+                    orcid: wikidataEntity.orcid,  // 用于 OpenAlex 精准匹配
                     officialLinks: wikidataEntity.officialLinks,
                     aliases: newPerson.aliases,
                 },

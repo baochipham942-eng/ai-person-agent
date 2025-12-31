@@ -3,8 +3,9 @@ import { prisma } from '@/lib/db/prisma';
 import { searchPersonContent } from '@/lib/datasources/exa';
 import { getPersonXActivity } from '@/lib/datasources/grok';
 import { getChannelVideos, searchYouTubeVideos } from '@/lib/datasources/youtube';
-import { searchOpenAlexAuthor, getAuthorWorks } from '@/lib/datasources/openalex';
+import { searchOpenAlexAuthor, getAuthorWorks, getAuthorByOrcid } from '@/lib/datasources/openalex';
 import { searchPodcasts } from '@/lib/datasources/itunes';
+import { getUserRepos } from '@/lib/datasources/github';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
 import crypto from 'crypto';
 
@@ -22,7 +23,7 @@ export const buildPersonJob = inngest.createFunction(
     },
     { event: 'person/created' },
     async ({ event, step }) => {
-        const { personId, personName, qid, officialLinks, aliases, englishName } = event.data;
+        const { personId, personName, qid, officialLinks, aliases, englishName, orcid } = event.data;
 
         // 搜索用的名称：优先使用英文名（API 检索更准确），否则使用中文名
         const searchName = englishName || personName;
@@ -38,8 +39,9 @@ export const buildPersonJob = inngest.createFunction(
 
         // 提取官方链接信息
         type OfficialLink = { type: string; url: string; handle?: string };
-        const xHandle = (officialLinks as OfficialLink[]).find(l => l.type === 'x')?.handle;
+        const xHandle = (officialLinks as OfficialLink[]).find(l => l.type === 'x')?.handle?.replace('@', '');
         const youtubeChannelId = (officialLinks as OfficialLink[]).find(l => l.type === 'youtube')?.handle;
+        const githubUsername = (officialLinks as OfficialLink[]).find(l => l.type === 'github')?.handle;
         const seedDomains = (officialLinks as OfficialLink[])
             .filter(l => l.type === 'website' || l.type === 'blog')
             .map(l => {
@@ -53,22 +55,35 @@ export const buildPersonJob = inngest.createFunction(
 
         // 并行获取各数据源
         const results = await Promise.allSettled([
-            // 1. Exa 网页搜索 (Exa 中文支持尚可，但英文更全？保留原样或用 searchName?)
-            // Exa 搜索通常混合语言较好，或者使用中文名获取中文内容给用户看
+            // 1. Exa 网页搜索
             step.run('fetch-exa', async () => {
                 const exaResults = await searchPersonContent(personName, aliases, seedDomains);
-                return exaResults.map(r => ({
-                    sourceType: 'exa',
-                    url: r.url,
-                    title: r.title,
-                    text: r.text,
-                    publishedAt: r.publishedDate ? new Date(r.publishedDate) : null,
-                    metadata: { author: r.author },
-                }));
+                return exaResults.map(r => {
+                    // 检查是否来自官方域名
+                    let isOfficial = false;
+                    try {
+                        const hostname = new URL(r.url).hostname;
+                        isOfficial = seedDomains.some(d => hostname.includes(d));
+                    } catch { }
+                    return {
+                        sourceType: 'exa',
+                        url: r.url,
+                        title: r.title,
+                        text: r.text,
+                        publishedAt: r.publishedDate ? new Date(r.publishedDate) : null,
+                        metadata: { author: r.author, isOfficial },
+                    };
+                });
             }),
 
-            // 2. X/Grok 社交内容 (使用真实搜索获取推文)
+            // 2. X/Grok 社交内容 (必须有 xHandle 才拓取，确保官方内容)
             step.run('fetch-grok', async () => {
+                // 强制官方：无 xHandle 则跳过
+                if (!xHandle) {
+                    console.log(`[Job] Skipping Grok for ${personName}: no xHandle`);
+                    return [];
+                }
+
                 const grokResult = await getPersonXActivity(searchName, xHandle);
 
                 // 如果有解析出的独立推文，返回每条推文作为单独条目
@@ -82,25 +97,27 @@ export const buildPersonJob = inngest.createFunction(
                         metadata: {
                             author: post.author,
                             postId: post.id,
+                            isOfficial: true,  // 来自官方 handle
                         },
                     }));
                 }
 
-                // 兜底：如果没有解析出独立推文，返回摘要
+                // 兆底：如果没有解析出独立推文，返回摘要
                 if (!grokResult.summary) return [];
                 return [{
                     sourceType: 'x',
-                    url: xHandle ? `https://x.com/${xHandle}` : `https://x.com/search?q=${encodeURIComponent(searchName)}`,
+                    url: `https://x.com/${xHandle}`,
                     title: `${searchName} on X`,
                     text: grokResult.summary,
                     publishedAt: new Date(),
-                    metadata: { sources: grokResult.sources },
+                    metadata: { sources: grokResult.sources, isOfficial: true },
                 }];
             }),
 
-            // 3. YouTube (使用英文名搜索视频更丰富)
+            // 3. YouTube (优先使用官方频道)
             step.run('fetch-youtube', async () => {
                 let videos;
+                const isOfficial = !!youtubeChannelId;
                 if (youtubeChannelId) {
                     videos = await getChannelVideos(youtubeChannelId, 20);
                 } else {
@@ -112,17 +129,25 @@ export const buildPersonJob = inngest.createFunction(
                     title: v.title,
                     text: v.description,
                     publishedAt: v.publishedAt ? new Date(v.publishedAt) : null,
-                    metadata: { videoId: v.id, thumbnailUrl: v.thumbnailUrl },
+                    metadata: { videoId: v.id, thumbnailUrl: v.thumbnailUrl, isOfficial },
                 }));
             }),
 
-            // 4. OpenAlex 学术论文 (必须使用英文名)
+            // 4. OpenAlex 学术论文 (必须有 ORCID 才拓取，确保精准匹配)
             step.run('fetch-openalex', async () => {
-                const authors = await searchOpenAlexAuthor(searchName);
-                if (authors.length === 0) return [];
+                // 强制官方：无 ORCID 则跳过，避免同名误匹配
+                if (!orcid) {
+                    console.log(`[Job] Skipping OpenAlex for ${personName}: no ORCID`);
+                    return [];
+                }
 
-                // 取第一个匹配的作者
-                const author = authors[0];
+                // 通过 ORCID 精准获取作者
+                const author = await getAuthorByOrcid(orcid);
+                if (!author) {
+                    console.log(`[Job] OpenAlex: ORCID ${orcid} not found`);
+                    return [];
+                }
+
                 const works = await getAuthorWorks(author.id, 20);
 
                 return works.map(w => ({
@@ -136,28 +161,54 @@ export const buildPersonJob = inngest.createFunction(
                         citationCount: w.citationCount,
                         venue: w.venue,
                         authors: w.authors,
+                        isOfficial: true,  // 通过 ORCID 验证
                     },
                 }));
             }),
 
-            // 5. Podcast (iTunes)
+            // 5. Podcast (iTunes) - 非官方内容
             step.run('fetch-podcasts', async () => {
-                // 使用中文名搜索，效果更好
                 const podcasts = await searchPodcasts(searchName, 5);
                 return podcasts.map(p => ({
                     sourceType: 'podcast',
                     url: p.url,
                     title: p.title,
-                    text: p.author, // 将作者存入 text 字段
+                    text: p.author,
                     publishedAt: p.publishedAt || null,
                     metadata: {
                         thumbnailUrl: p.thumbnailUrl,
                         feedUrl: p.feedUrl,
                         categories: p.categories,
+                        isOfficial: false,  // 播客无法验证官方性
+                    },
+                }));
+            }),
+
+            // 6. GitHub (只有有 username 才拓取，确保官方)
+            step.run('fetch-github', async () => {
+                if (!githubUsername) {
+                    console.log(`[Job] Skipping GitHub for ${personName}: no githubUsername`);
+                    return [];
+                }
+
+                const repos = await getUserRepos(githubUsername, 20);
+                return repos.map(repo => ({
+                    sourceType: 'github',
+                    url: repo.url,
+                    title: repo.name,
+                    text: repo.description || '',
+                    publishedAt: repo.updatedAt ? new Date(repo.updatedAt) : null,
+                    metadata: {
+                        stars: repo.stars,
+                        forks: repo.forks,
+                        language: repo.language,
+                        topics: repo.topics,
+                        isOfficial: true,  // 来自官方账户
                     },
                 }));
             }),
         ]);
+
 
         // 收集所有成功的结果
         const allItems: any[] = [];
@@ -226,7 +277,7 @@ export const buildPersonJob = inngest.createFunction(
 
         // 更新人物状态和完成度
         await step.run('update-status-final', async () => {
-            const completeness = Math.round((successCount / 4) * 100);
+            const completeness = Math.round((successCount / 6) * 100);  // 6 个数据源
             const status = errorCount === 0 ? 'ready' : errorCount < 4 ? 'partial' : 'error';
 
             await prisma.people.update({

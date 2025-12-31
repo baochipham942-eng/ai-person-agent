@@ -211,11 +211,11 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             <button
                                 onClick={() => setActiveTab('podcast')}
                                 className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'podcast'
-                                    ? 'border-pink-600 text-pink-600'
+                                    ? 'border-indigo-600 text-indigo-600'
                                     : 'border-transparent text-gray-500 hover:text-gray-700'
                                     }`}
                             >
-                                <PodcastIcon className="w-5 h-5" />
+                                <MicrophoneIcon className="w-5 h-5" />
                                 <span>播客</span>
                                 <span className="text-sm opacity-80">({itemsBySource['podcast'].length})</span>
                             </button>
@@ -404,16 +404,20 @@ function SourceList({ source, items }: { source: string; items: PersonData['rawP
 
 // 文章项组件 (EXA)
 function ArticleItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
+    const metadata = item.metadata as { isOfficial?: boolean } | null;
     return (
         <div className="p-4 bg-white border border-gray-100 rounded-xl hover:shadow-md transition-all">
-            <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-gray-900 hover:text-blue-600 line-clamp-2 mb-2 block"
-            >
-                {item.title}
-            </a>
+            <div className="flex items-start justify-between gap-2 mb-2">
+                <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-gray-900 hover:text-blue-600 line-clamp-2 flex-1"
+                >
+                    {item.title}
+                </a>
+                <OfficialBadge isOfficial={metadata?.isOfficial} />
+            </div>
             <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed">{item.text?.slice(0, 300)}</p>
             <div className="flex items-center gap-2 mt-3 text-xs text-gray-400">
                 <span>🔗 {new URL(item.url).hostname}</span>
@@ -424,17 +428,20 @@ function ArticleItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
 
 // 论文项组件 (OpenAlex)
 function PaperItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
-    const metadata = item.metadata as { citationCount?: number; venue?: string; authors?: string[] } | null;
+    const metadata = item.metadata as { citationCount?: number; venue?: string; authors?: string[]; isOfficial?: boolean } | null;
     return (
         <div className="p-4 bg-gradient-to-r from-green-50 to-white border border-green-100 rounded-xl">
-            <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-gray-900 hover:text-green-600 line-clamp-2 mb-2 block"
-            >
-                📄 {item.title}
-            </a>
+            <div className="flex items-start justify-between gap-2 mb-2">
+                <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-gray-900 hover:text-green-600 line-clamp-2 flex-1"
+                >
+                    📄 {item.title}
+                </a>
+                <OfficialBadge isOfficial={metadata?.isOfficial} />
+            </div>
             {item.text && (
                 <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed mb-2">{item.text}</p>
             )}
@@ -450,7 +457,7 @@ function PaperItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
 
 // 视频项组件 (YouTube)
 function VideoItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
-    const metadata = item.metadata as { thumbnailUrl?: string } | null;
+    const metadata = item.metadata as { thumbnailUrl?: string; isOfficial?: boolean } | null;
     return (
         <a
             href={item.url}
@@ -459,8 +466,11 @@ function VideoItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
             className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-all"
         >
             {metadata?.thumbnailUrl && (
-                <div className="aspect-video bg-gray-100">
+                <div className="aspect-video bg-gray-100 relative">
                     <img src={metadata.thumbnailUrl} alt={item.title} className="w-full h-full object-cover" />
+                    {metadata?.isOfficial && (
+                        <span className="absolute top-2 right-2 text-xs bg-green-500 text-white px-1.5 py-0.5 rounded shadow">官方</span>
+                    )}
                 </div>
             )}
             <div className="p-3">
@@ -472,7 +482,7 @@ function VideoItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
 
 // X 推文项组件
 function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
-    const metadata = item.metadata as { author?: string; postId?: string } | null;
+    const metadata = item.metadata as { author?: string; postId?: string; isOfficial?: boolean } | null;
 
     return (
         <a
@@ -484,9 +494,14 @@ function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
             <div className="flex items-start gap-3">
                 <span className="text-xl shrink-0">𝕏</span>
                 <div className="flex-1 min-w-0">
-                    {metadata?.author && (
-                        <span className="text-sm font-medium text-blue-600">@{metadata.author}</span>
-                    )}
+                    <div className="flex items-center gap-2">
+                        {metadata?.author && (
+                            <span className="text-sm font-medium text-blue-600">@{metadata.author}</span>
+                        )}
+                        {metadata?.isOfficial && (
+                            <span className="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded">官方</span>
+                        )}
+                    </div>
                     <p className="text-sm text-gray-700 mt-1 leading-relaxed">
                         {item.text || item.title}
                     </p>
@@ -521,6 +536,24 @@ function StatusBadge({ status, completeness }: { status: string; completeness: n
     );
 }
 
+// 官方标识组件
+function OfficialBadge({ isOfficial }: { isOfficial?: boolean }) {
+    if (isOfficial === undefined) return null;
+
+    if (isOfficial) {
+        return (
+            <span className="shrink-0 text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded flex items-center gap-1">
+                <span>✓</span> 官方
+            </span>
+        );
+    }
+    return (
+        <span className="shrink-0 text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
+            引用
+        </span>
+    );
+}
+
 function LinkIcon({ type }: { type: string }) {
     if (type === 'github') return <GithubIcon />;
     if (type === 'youtube') return <YoutubeIcon />;
@@ -537,7 +570,7 @@ function getSourceColor(sourceType: string): string {
         youtube: 'red',
         openalex: 'green',
         wikidata: 'orange',
-        podcast: 'magenta',
+        podcast: 'indigo',
     };
     return colors[sourceType] || 'gray';
 }
@@ -682,13 +715,13 @@ function GithubRepoList({ username }: { username: string }) {
 
 // 播客项组件 (iTunes)
 function PodcastItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
-    const metadata = item.metadata as { thumbnailUrl?: string; categories?: string[] } | null;
+    const metadata = item.metadata as { thumbnailUrl?: string; categories?: string[]; isOfficial?: boolean } | null;
     return (
         <a
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-4 p-4 bg-white border border-pink-100 rounded-xl hover:shadow-md transition-all group"
+            className="flex items-start gap-4 p-4 bg-white border border-indigo-100 rounded-xl hover:shadow-md transition-all group"
         >
             {metadata?.thumbnailUrl && (
                 <div className="w-16 h-16 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
@@ -696,9 +729,12 @@ function PodcastItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
                 </div>
             )}
             <div className="flex-1 min-w-0">
-                <h4 className="font-medium text-gray-900 line-clamp-2 group-hover:text-pink-600 mb-1">{item.title}</h4>
+                <div className="flex items-start justify-between gap-2 mb-1">
+                    <h4 className="font-medium text-gray-900 line-clamp-2 group-hover:text-indigo-600">{item.title}</h4>
+                    <OfficialBadge isOfficial={metadata?.isOfficial} />
+                </div>
                 <div className="text-xs text-gray-500 flex flex-wrap items-center gap-2">
-                    <span className="bg-pink-50 text-pink-600 px-2 py-0.5 rounded">Podcast</span>
+                    <span className="bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded">iTunes 播客</span>
                     <span>👤 {item.text}</span>
                 </div>
                 {metadata?.categories && metadata.categories.length > 0 && (
@@ -722,7 +758,7 @@ function getSourceIconComponent(sourceType: string) {
         youtube: <YoutubeIcon className="w-5 h-5" />,
         openalex: <BookIcon className="w-5 h-5" />,
         wikidata: <BookIcon className="w-5 h-5" />,
-        podcast: <PodcastIcon className="w-5 h-5" />,
+        podcast: <MicrophoneIcon className="w-5 h-5" />,
     };
     return icons[sourceType] || <span className="w-5 h-5 flex items-center justify-center">📄</span>;
 }
@@ -751,18 +787,15 @@ function XIcon({ className }: { className?: string }) {
     );
 }
 
-function PodcastIcon({ className }: { className?: string }) {
+function MicrophoneIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" width="1.2em" height="1.2em" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" fill="#EEEEEE" />
-            <path d="M6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12Z" fill="#DB1B60" />
-            <path d="M12 4V8M12 16V20M4 12H8M16 12H20" stroke="#DB1B60" strokeWidth="2" strokeLinecap="round" />
+        <svg viewBox="0 0 24 24" width="1.2em" height="1.2em" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" y1="19" x2="12" y2="22" />
+            <line x1="8" y1="22" x2="16" y2="22" />
         </svg>
     );
-}
-
-function XiaoyuzhouIcon({ className }: { className?: string }) {
-    return <PodcastIcon className={className} />;
 }
 
 function WebsiteIcon({ className }: { className?: string }) {

@@ -25,6 +25,7 @@ interface WikidataEntity {
     imageUrl?: string;
     occupation?: string[];
     organization?: string[];
+    orcid?: string;  // ORCID ID for academic verification
     officialLinks: {
         type: 'x' | 'youtube' | 'blog' | 'website' | 'linkedin' | 'github';
         url: string;
@@ -132,6 +133,10 @@ export async function getWikidataEntity(qid: string): Promise<WikidataEntity | n
         // 提取组织 (P108 - employer) - 使用英文
         const organization = await extractClaimLabels(entity.claims?.P108, 'en');
 
+        // 提取 ORCID (P496) - 用于学术论文精准匹配
+        const orcidValue = entity.claims?.P496?.[0]?.mainsnak?.datavalue?.value;
+        const orcid = orcidValue ? String(orcidValue) : undefined;
+
         // 提取官方链接
         const officialLinks = extractOfficialLinks(entity.claims);
 
@@ -144,8 +149,10 @@ export async function getWikidataEntity(qid: string): Promise<WikidataEntity | n
             imageUrl,
             occupation,
             organization,
+            orcid,
             officialLinks,
         };
+
     } catch (error) {
         console.error('Wikidata getEntity error:', error);
         return null;
