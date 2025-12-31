@@ -9,28 +9,35 @@ const POPULARITY: Record<string, number> = {
     'Sam Altman': 10,
     'Elon Musk': 10,
     '黄仁勋': 10,
+    '桑达尔·皮查伊': 10, // Google CEO
+    '张一鸣': 10,        // 字节跳动
 
     // Tier 9: AI 巨头领导者
     'Greg Brockman': 9,
     'Demis Hassabis': 9,
     'Dario Amodei': 9,
-    '李开复': 9,  // 国内 AI 教父
+    '李开复': 9,
+    '杰夫·迪恩': 9,      // Jeff Dean
+    '雷军': 9,           // 小米
 
     // Tier 8: 图灵奖/顶级学者
     'Geoffrey Hinton': 8,
     'Yann LeCun': 8,
     'Yoshua Bengio': 8,
     '李飞飞': 8,
-    '杨植麟': 8,  // Kimi/月之暗面
+    '杨植麟': 8,
+    '克里斯·奥拉': 8,    // Chris Olah
 
     // Tier 7: 核心研究者/创始人
     'Andrej Karpathy': 7,
     'Ilya Sutskever': 7,
     '吴恩达': 7,
     'Mustafa Suleyman': 7,
-    '季逸超': 7,  // 面壁智能
-    '姚舜禹': 7,  // 阶跃星辰
-    '唐杰': 7,    // 智谱AI
+    '季逸超': 7,
+    '姚舜禹': 7,
+    '唐杰': 7,
+    '阿希什·瓦斯瓦尼': 7, // Ashish Vaswani (Transformer)
+    '大卫·西尔弗': 7,    // David Silver (AlphaGo)
 
     // Tier 6: 知名人物
     'Aidan Gomez': 6,
@@ -41,10 +48,12 @@ const POPULARITY: Record<string, number> = {
     'Mira Murati': 6,
     'Noam Shazeer': 6,
     'John Schulman': 6,
-    '闫俊杰': 6,  // MiniMax
-    '戴文渊': 6,  // 第四范式
-    '周明': 6,    // 澜舟科技
-    '朱军': 6,    // 生数科技
+    '闫俊杰': 6,
+    '戴文渊': 6,
+    '周明': 6,
+    '朱军': 6,
+    '王兴': 6,           // 美团
+    '苏华': 6,           // 快手
 };
 
 export async function GET() {
