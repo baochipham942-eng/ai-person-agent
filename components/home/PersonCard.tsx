@@ -9,6 +9,16 @@ interface Person {
     description: string | null;
 }
 
+// 根据名字生成一致的颜色
+function getAvatarColor(name: string): string {
+    const colors = [
+        '#4F46E5', '#7C3AED', '#2563EB', '#0891B2',
+        '#059669', '#D97706', '#DC2626', '#DB2777'
+    ];
+    const charCode = name.charCodeAt(0) + (name.charCodeAt(1) || 0);
+    return colors[charCode % colors.length];
+}
+
 export function PersonCard({ person }: { person: Person }) {
     // Use first occupation or default text
     const occupation = person.occupation?.[0] || '知名人物';
@@ -31,8 +41,13 @@ export function PersonCard({ person }: { person: Person }) {
                             sizes="(max-width: 768px) 64px, 64px"
                         />
                     ) : (
-                        <div className="w-full h-full flex items-center justify-center text-2xl text-gray-300">
-                            👤
+                        <div
+                            className="w-full h-full flex items-center justify-center text-2xl font-bold text-white"
+                            style={{
+                                backgroundColor: getAvatarColor(person.name)
+                            }}
+                        >
+                            {person.name.charAt(0)}
                         </div>
                     )}
                 </div>
