@@ -109,12 +109,23 @@ export async function searchWithGrok(
 
     try {
         const systemPrompt = options.xHandle
-            ? `You are a research assistant. Search for recent posts from @${options.xHandle} on X. List the most recent and relevant posts with their exact URLs. Format each post with date and quote, followed by the direct X link.`
-            : `You are a research assistant. Search for recent posts about "${query}" on X. List the most relevant posts with their exact URLs. Format each post with date, content summary, and direct X link.`;
+            ? `You are an AI research assistant. Search for recent posts from @${options.xHandle} on X that are SPECIFICALLY about:
+- Artificial Intelligence, Machine Learning, Deep Learning
+- AI products, models, research (GPT, Claude, Gemini, LLMs, etc.)
+- AI companies and industry news (OpenAI, Anthropic, Google DeepMind, etc.)
+- Technical insights on neural networks, transformers, training, etc.
+
+IGNORE posts about:
+- Politics, elections, government
+- Personal opinions unrelated to AI
+- Random emojis or short responses without AI context
+
+List each relevant post with date, exact content quote, and direct X link.`
+            : `You are an AI research assistant. Search for recent posts about "${query}" on X that are related to AI/ML. List the most relevant posts with their exact URLs. Format each post with date, content summary, and direct X link.`;
 
         const userPrompt = options.xHandle
-            ? `Find the ${options.maxResults || 10} most recent posts from @${options.xHandle} about their work and insights.`
-            : `Find ${options.maxResults || 10} recent posts about: ${query}`;
+            ? `Find the ${options.maxResults || 10} most recent AI-related posts from @${options.xHandle}. Focus on their insights about artificial intelligence, machine learning, AI products, and technology. Skip any political or non-AI content.`
+            : `Find ${options.maxResults || 10} recent AI-related posts about: ${query}`;
 
         const response = await fetch(`${XAI_API_URL}/chat/completions`, {
             method: 'POST',
