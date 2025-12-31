@@ -82,6 +82,9 @@ export async function POST(request: NextRequest) {
         });
     } catch (error) {
         console.error('Fix QID error:', error);
-        return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+        return NextResponse.json({
+            error: 'Internal error',
+            details: error instanceof Error ? error.message : String(error)
+        }, { status: 500 });
     }
 }
