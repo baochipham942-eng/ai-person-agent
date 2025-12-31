@@ -9,8 +9,10 @@ const POPULARITY: Record<string, number> = {
     'Sam Altman': 10,
     'Elon Musk': 10,
     '黄仁勋': 10,
-    '桑达尔·皮查伊': 10, // Google CEO
-    '张一鸣': 10,        // 字节跳动
+    '桑达尔·皮查伊': 10,
+    '张一鸣': 10,
+    'Mark Zuckerberg': 10, // Meta CEO
+    '马克·扎克伯格': 10,   // 中文名兼容
 
     // Tier 9: AI 巨头领导者
     'Greg Brockman': 9,
