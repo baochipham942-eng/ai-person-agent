@@ -36,12 +36,21 @@ export async function generateCardsForPerson(
         return [];
     }
 
-    // 限制输入大小，避免 token 超限
+    // Limit input size
     const limitedItems = rawItems.slice(0, 10).map(item => ({
         title: item.title,
-        text: item.text.slice(0, 2000), // 每个 item 最多 2000 字符
+        text: item.text.slice(0, 2000), // Max 2000 chars per item
         sourceUrl: item.url,
     }));
+
+    // Fetch existing cards for deduplication context
+    const existingCards = await prisma.card.findMany({
+        where: { personId },
+        select: { title: true, content: true },
+        // 只取最近的 20 张卡片作为上下文，避免 token 爆炸
+        orderBy: { createdAt: 'desc' },
+        take: 20
+    });
 
     const messages: ChatMessage[] = [
         {
@@ -50,7 +59,7 @@ export async function generateCardsForPerson(
         },
         {
             role: 'user',
-            content: CARD_GENERATION_USER_PROMPT(personName, limitedItems),
+            content: CARD_GENERATION_USER_PROMPT(personName, limitedItems, existingCards),
         },
     ];
 
@@ -117,9 +126,24 @@ export async function saveCardsToDatabase(
 ): Promise<void> {
     if (cards.length === 0) return;
 
-    // 批量创建卡片
+    // 1. 获取该人物已有的卡片标题
+    const existingCards = await prisma.card.findMany({
+        where: { personId },
+        select: { title: true }
+    });
+    const existingTitles = new Set(existingCards.map(c => c.title));
+
+    // 2. 过滤掉标题重复的卡片
+    const uniqueCards = cards.filter(card => !existingTitles.has(card.title));
+
+    if (uniqueCards.length === 0) {
+        console.log(`[CardGeneration] All ${cards.length} cards were duplicates, skipping.`);
+        return;
+    }
+
+    // 3. 批量创建新卡片
     await prisma.card.createMany({
-        data: cards.map(card => ({
+        data: uniqueCards.map(card => ({
             personId,
             type: card.type,
             title: card.title,
@@ -128,9 +152,10 @@ export async function saveCardsToDatabase(
             sourceUrl: card.sourceUrl,
             importance: card.importance,
         })),
+        // skipDuplicates 仅在有 @@unique 约束时生效，目前 Card 表没有，所以必须手动过滤
         skipDuplicates: true,
     });
 
-    console.log(`[CardGeneration] Saved ${cards.length} cards for person ${personId}`);
+    console.log(`[CardGeneration] Saved ${uniqueCards.length} new cards for person ${personId} (filtered ${cards.length - uniqueCards.length} duplicates)`);
 }
 

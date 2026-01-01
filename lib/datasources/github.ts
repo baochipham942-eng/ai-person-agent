@@ -23,10 +23,12 @@ const GITHUB_API_URL = 'https://api.github.com';
  * 获取用户的公开仓库（按 star 排序）
  * @param username GitHub 用户名
  * @param limit 最大返回数量
+ * @param since 可选，只返回此日期之后更新的仓库（用于增量更新）
  */
 export async function getUserRepos(
     username: string,
-    limit: number = 20
+    limit: number = 20,
+    since?: Date
 ): Promise<GitHubRepo[]> {
     if (!username) {
         console.warn('[GitHub] No username provided');
@@ -44,9 +46,16 @@ export async function getUserRepos(
             headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`;
         }
 
+        // 构建查询条件
+        let query = `user:${username}`;
+        if (since) {
+            const pushedAfter = since.toISOString().split('T')[0];
+            query += ` pushed:>${pushedAfter}`;
+        }
+
         // 使用 Search API 按 star 排序
         const response = await fetch(
-            `${GITHUB_API_URL}/search/repositories?q=user:${username}&sort=stars&order=desc&per_page=${limit}`,
+            `${GITHUB_API_URL}/search/repositories?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=${limit}`,
             { headers }
         );
 
@@ -76,3 +85,4 @@ export async function getUserRepos(
         return [];
     }
 }
+

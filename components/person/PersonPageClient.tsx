@@ -263,7 +263,7 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
 
                         {/* Remaining Sources (OpenAlex, Exa, etc.) */}
                         {Object.keys(itemsBySource)
-                            .filter(s => !['x', 'youtube', 'podcast', 'github', 'career'].includes(s.toLowerCase()))
+                            .filter(s => !['x', 'youtube', 'podcast', 'github', 'career', 'biography'].includes(s.toLowerCase()))
                             .map(source => (
                                 <button
                                     key={source}
@@ -498,9 +498,29 @@ function PaperItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
     );
 }
 
-// 视频项组件 (YouTube)
+// Video Item Component (YouTube)
 function VideoItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
     const metadata = item.metadata as { thumbnailUrl?: string; isOfficial?: boolean } | null;
+
+    // Fallback logic for thumbnail
+    const getThumbnail = () => {
+        if (metadata?.thumbnailUrl) return metadata.thumbnailUrl;
+        try {
+            // Robust Regex for YouTube Video ID
+            const match = item.url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+            const videoId = match ? match[1] : null;
+
+            if (videoId) {
+                return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+            }
+        } catch (e) {
+            // ignore
+        }
+        return null;
+    };
+
+    const thumbUrl = getThumbnail();
+
     return (
         <a
             href={item.url}
@@ -508,12 +528,16 @@ function VideoItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
             rel="noopener noreferrer"
             className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-all"
         >
-            {metadata?.thumbnailUrl && (
+            {thumbUrl ? (
                 <div className="aspect-video bg-gray-100 relative">
-                    <img src={metadata.thumbnailUrl} alt={item.title} className="w-full h-full object-cover" />
+                    <img src={thumbUrl} alt={item.title} className="w-full h-full object-cover" />
                     {metadata?.isOfficial && (
                         <span className="absolute top-2 right-2 text-xs bg-green-500 text-white px-1.5 py-0.5 rounded shadow">官方</span>
                     )}
+                </div>
+            ) : (
+                <div className="aspect-video bg-gray-100 flex items-center justify-center text-gray-400">
+                    <span className="text-3xl">▶️</span>
                 </div>
             )}
             <div className="p-3">
@@ -667,6 +691,7 @@ function getSourceName(sourceType: string): string {
         x: 'X/Twitter',
         youtube: 'YouTube 视频',
         openalex: '学术论文',
+        biography: '生平经历',
         wikidata: 'Wikidata',
         podcast: '播客',
     };
@@ -944,33 +969,53 @@ function TimelineView({ personRoles, qid }: { personRoles: NonNullable<PersonDat
         />
     );
 
-    // 1. 按年份分组
-    const grouped = personRoles.reduce((acc, role) => {
-        const year = role.startDate ? new Date(role.startDate).getFullYear() : '早期经历 / 未知时间';
+    // 1. 过滤掉中学及以下学历，只展示大学及以上
+    const filteredRoles = personRoles.filter(role => {
+        const type = role.organizationType?.toLowerCase() || '';
+        // 排除中学、高中等 (Wikidata 类型映射可能需要检查，这里先根据常见关键词)
+        if (type.includes('high_school') || type.includes('secondary') || type.includes('middle_school')) {
+            return false;
+        }
+        // 也可以根据组织名简单过滤 (通常中学名字带有 High School)
+        const name = (role.organizationName || '').toLowerCase();
+        if (name.includes('high school') || name.includes('middle school')) {
+            return false;
+        }
+        return true;
+    });
+
+    if (filteredRoles.length === 0) return (
+        <Empty description="暂无高等教育与职业经历" />
+    );
+
+    // 2. 按年份分组
+    const grouped = filteredRoles.reduce((acc, role) => {
+        const year = role.startDate ? new Date(role.startDate).getFullYear() : '未知年份';
         if (!acc[year]) acc[year] = [];
         acc[year].push(role);
         return acc;
     }, {} as Record<string | number, typeof personRoles>);
 
-    // 2. 排序年份 (最新的年份在先，未知时间放最后)
+    // 3. 排序年份 (最新的年份在先，未知时间放最后)
     const years = Object.keys(grouped).sort((a, b) => {
-        if (a.includes('未知')) return 1;
-        if (b.includes('未知')) return -1;
+        if (a === '未知年份') return 1;
+        if (b === '未知年份') return -1;
         return Number(b) - Number(a);
     });
 
     return (
         <div className="p-4 md:p-6">
-            <div className="space-y-6">
+            <div className="relative border-l-2 border-slate-100 ml-3 md:ml-4 space-y-8 pb-4">
                 {years.map(year => (
                     <div key={year} className="relative">
                         {/* 年份标记 */}
-                        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm py-2 mb-2 border-b border-gray-100 flex items-center gap-2">
-                            <span className="text-xl font-bold text-gray-900 font-mono text-blue-600">{year}</span>
+                        <div className="absolute -left-[21px] top-0 flex items-center gap-4">
+                            <div className="w-3 h-3 rounded-full bg-blue-500 ring-4 ring-white"></div>
+                            <span className="text-xl font-bold font-mono text-slate-800">{year}</span>
                         </div>
 
-                        {/* 时间轴内容 */}
-                        <div className="relative pl-4 border-l-2 border-blue-100 space-y-2 ml-2">
+                        {/* 该年份下的条目 */}
+                        <div className="pt-8 space-y-4">
                             {grouped[year].map(role => (
                                 <RoleTimelineItem key={role.id} role={role} qid={qid} />
                             ))}
@@ -985,8 +1030,7 @@ function TimelineView({ personRoles, qid }: { personRoles: NonNullable<PersonDat
 function RoleTimelineItem({ role, qid }: { role: NonNullable<PersonData['personRoles']>[0]; qid: string }) {
     const hasDate = !!role.startDate;
     const date = hasDate ? new Date(role.startDate!) : null;
-    const month = date ? date.toLocaleString('zh-CN', { month: 'short' }) : '';
-    const day = date ? date.getDate() : '';
+    const month = date ? date.toLocaleString('zh-CN', { month: '2-digit' }) : '';
 
     // 显示中文（优先）或英文
     const orgDisplay = role.organizationNameZh || role.organizationName;
@@ -995,39 +1039,42 @@ function RoleTimelineItem({ role, qid }: { role: NonNullable<PersonData['personR
     // 组织类型图标
     const typeIcon = role.organizationType === 'university' ? '🎓' : '🏢';
 
-    return (
-        <div className="relative group">
-            {/* 时间点标记 */}
-            <div className={`absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white transition-all shadow-sm ${hasDate ? 'bg-blue-200 group-hover:bg-blue-500 group-hover:scale-110' : 'bg-gray-200 group-hover:bg-gray-400'}`}></div>
+    // 是否显示 Role (过滤掉无意义的默认值)
+    const shouldShowRole = roleDisplay &&
+        !['employee', '员工', 'member', '成员'].includes(roleDisplay.toLowerCase().trim());
 
-            <div className="flex gap-4">
-                {/* 日期 */}
-                <div className="shrink-0 w-12 text-center pt-0">
-                    {hasDate ? (
-                        <>
-                            <div className="text-xs font-bold text-gray-500 uppercase">{month}</div>
-                            <div className="text-base font-bold text-gray-900 leading-none">{day}</div>
-                        </>
-                    ) : (
-                        <div className="text-xl font-bold text-gray-300 leading-none mt-1">?</div>
+    return (
+        <div className="relative group ml-8 md:ml-12 hover:bg-slate-50 p-3 -mx-3 rounded-xl transition-all">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                {/* 组织与职位 */}
+                <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                        <span className="text-lg">{typeIcon}</span>
+                        <h4 className="font-bold text-gray-900 text-lg leading-tight">
+                            {orgDisplay}
+                        </h4>
+                    </div>
+
+                    {shouldShowRole && (
+                        <div className="text-slate-600 font-medium ml-7">
+                            {roleDisplay}
+                        </div>
                     )}
                 </div>
 
-                {/* 卡片内容 */}
-                <div className="flex-1 min-w-0 -ml-2 p-2 rounded transition-colors hover:bg-gray-50">
-                    <div className="flex items-start justify-between gap-2">
-                        <h4 className="font-bold text-sm text-gray-900 leading-snug">
-                            {typeIcon} {orgDisplay}
-                        </h4>
+                {/* 时间段 */}
+                <div className="shrink-0 ml-7 sm:ml-0">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-600 border border-slate-200">
+                        <span>{month}月</span>
                         {role.endDate && (
-                            <span className="shrink-0 text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
-                                → {role.endDate === 'present' ? '至今' : new Date(role.endDate).getFullYear()}
-                            </span>
+                            <>
+                                <span className="text-slate-400">→</span>
+                                <span>
+                                    {role.endDate === 'present' ? '至今' : new Date(role.endDate).getFullYear()}
+                                </span>
+                            </>
                         )}
                     </div>
-                    <p className="text-sm text-gray-600 mt-0.5">
-                        {roleDisplay}
-                    </p>
                 </div>
             </div>
         </div>

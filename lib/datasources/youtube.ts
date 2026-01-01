@@ -76,10 +76,12 @@ export async function getYouTubeChannel(channelId: string): Promise<YouTubeChann
  * 获取频道的视频列表
  * @param channelId 频道 ID
  * @param maxResults 最大返回数量
+ * @param since 可选，只返回此日期之后发布的视频（用于增量更新）
  */
 export async function getChannelVideos(
     channelId: string,
-    maxResults: number = 20
+    maxResults: number = 20,
+    since?: Date
 ): Promise<YouTubeVideo[]> {
     const apiKey = process.env.GOOGLE_API_KEY;
 
@@ -114,7 +116,15 @@ export async function getChannelVideos(
 
         const playlistResponse = await fetch(`${YOUTUBE_API_URL}/playlistItems?${playlistParams}`);
         const playlistData = await playlistResponse.json();
-        const items = playlistData.items || [];
+        let items = playlistData.items || [];
+
+        // 客户端过滤（PlaylistItems API 不支持 publishedAfter）
+        if (since) {
+            items = items.filter((item: any) => {
+                const publishedAt = item.snippet?.publishedAt;
+                return publishedAt && new Date(publishedAt) > since;
+            });
+        }
 
         return items.map((item: any) => ({
             id: item.snippet?.resourceId?.videoId || '',
@@ -135,11 +145,13 @@ export async function getChannelVideos(
  * @param query 搜索关键词
  * @param maxResults 最大返回数量
  * @param requiredKeywords 必须包含的关键词（任一），用于过滤无关内容
+ * @param since 可选，只返回此日期之后发布的视频（用于增量更新）
  */
 export async function searchYouTubeVideos(
     query: string,
     maxResults: number = 10,
-    requiredKeywords: string[] = []
+    requiredKeywords: string[] = [],
+    since?: Date
 ): Promise<YouTubeVideo[]> {
     const apiKey = process.env.GOOGLE_API_KEY;
 
@@ -157,6 +169,11 @@ export async function searchYouTubeVideos(
             order: 'relevance',
             key: apiKey,
         });
+
+        // YouTube Search API 支持 publishedAfter
+        if (since) {
+            params.set('publishedAfter', since.toISOString());
+        }
 
         const response = await fetch(`${YOUTUBE_API_URL}/search?${params}`);
 

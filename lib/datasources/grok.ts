@@ -112,19 +112,21 @@ export async function searchWithGrok(
             ? `You are an AI research assistant. Search for recent posts from @${options.xHandle} on X that are SPECIFICALLY about:
 - Artificial Intelligence, Machine Learning, Deep Learning
 - AI products, models, research (GPT, Claude, Gemini, LLMs, etc.)
-- AI companies and industry news (OpenAI, Anthropic, Google DeepMind, etc.)
-- Technical insights on neural networks, transformers, training, etc.
+- AI companies and industry news
+- Technical insights
 
-IGNORE posts about:
-- Politics, elections, government
-- Personal opinions unrelated to AI
-- Random emojis or short responses without AI context
+IGNORE posts about policies, elections, or personal opinions unrelated to tech.
 
-List each relevant post with date, exact content quote, and direct X link.`
-            : `You are an AI research assistant. Search for recent posts about "${query}" on X that are related to AI/ML. List the most relevant posts with their exact URLs. Format each post with date, content summary, and direct X link.`;
+CRITICAL: Return the result as a STRICT JSON object with a single key "posts", which is an array of objects. Each object MUST have:
+- "date": string (e.g. "2024-01-01")
+- "text": string (the exact full content of the tweet)
+- "url": string (the direct https://x.com link)
+
+Do not output any markdown formatting or explanations, just the raw JSON string.`
+            : `You are an AI research assistant. Search for recent posts about "${query}" on X related to AI/ML. Return the result as a STRICT JSON object with a "posts" array containing { "date", "text", "url" }.`;
 
         const userPrompt = options.xHandle
-            ? `Find the ${options.maxResults || 10} most recent AI-related posts from @${options.xHandle}. Focus on their insights about artificial intelligence, machine learning, AI products, and technology. Skip any political or non-AI content.`
+            ? `Find the ${options.maxResults || 10} most recent AI-related posts from @${options.xHandle}.`
             : `Find ${options.maxResults || 10} recent AI-related posts about: ${query}`;
 
         const response = await fetch(`${XAI_API_URL}/chat/completions`, {
@@ -134,7 +136,7 @@ List each relevant post with date, exact content quote, and direct X link.`
                 'Authorization': `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-                model: 'grok-3',
+                model: 'grok-2-1212', // 使用更稳定的模型版本，或者 grok-beta
                 messages: [
                     { role: 'system', content: systemPrompt },
                     { role: 'user', content: userPrompt },
@@ -146,7 +148,8 @@ List each relevant post with date, exact content quote, and direct X link.`
                     max_search_results: options.maxResults || 10,
                     sources: ['x'],
                 },
-                temperature: 0.3,
+                temperature: 0.1, // Lower temperature for more deterministic JSON
+                response_format: { type: 'json_object' } // Enforce JSON
             }),
         });
 
@@ -158,12 +161,44 @@ List each relevant post with date, exact content quote, and direct X link.`
         const data = await response.json();
         const content = data.choices?.[0]?.message?.content || '';
 
-        // 解析推文链接
-        const posts = parseXPostsFromContent(content);
-        const sources = posts.map(p => p.url);
+        // 解析 JSON
+        let posts: XPost[] = [];
+        try {
+            // Strip tool logs
+            const cleanContent = content.split('\n').filter((line: string) => !line.trim().startsWith('>')).join('\n');
+
+            // Robust JSON extraction
+            const jsonStart = cleanContent.indexOf('{');
+            const jsonEnd = cleanContent.lastIndexOf('}');
+            if (jsonStart === -1) throw new Error('No JSON start found');
+
+            const jsonStr = cleanContent.substring(jsonStart, jsonEnd + 1);
+            const parsed = JSON.parse(jsonStr);
+
+            if (parsed.posts && Array.isArray(parsed.posts)) {
+                posts = parsed.posts.map((p: any) => {
+                    // Extract ID from URL
+                    const idMatch = (p.url || '').match(/status\/(\d+)/);
+                    const authorMatch = (p.url || '').match(/x\.com\/([^/]+)/);
+                    return {
+                        id: idMatch ? idMatch[1] : crypto.randomUUID(),
+                        text: p.text || '',
+                        date: p.date || '',
+                        url: p.url || '',
+                        author: authorMatch ? authorMatch[1] : options.xHandle,
+                    };
+                });
+            }
+        } catch (e) {
+            console.error('Failed to parse Grok JSON:', e, content.slice(0, 100));
+            // Fallback: try parsing content as text if JSON failed (though response_format should prevent this)
+            // posts = parseXPostsFromContent(content); 
+        }
+
+        const sources = posts.map(p => p.url).filter(Boolean);
 
         return {
-            summary: content,
+            summary: JSON.stringify(posts.slice(0, 3)), // summary now is just debug info
             sources,
             posts,
         };

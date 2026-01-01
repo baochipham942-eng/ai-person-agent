@@ -8,21 +8,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ===== 用户模块 =====
-
 model User {
-  id              String   @id @default(cuid())
-  username        String   @unique
+  id              String          @id @default(cuid())
+  username        String          @unique
   passwordHash    String
   nickname        String?
-  createdAt       DateTime @default(now())
+  createdAt       DateTime        @default(now())
   avatar          String?
-  phone           String?  @unique
+  phone           String?         @unique
   quickLoginToken String?
-
-  // 关联
-  searchSessions SearchSession[]
-  userProfile    UserProfile?
+  searchSessions  SearchSession[]
+  userProfile     UserProfile?
 }
 
 model InvitationCode {
@@ -36,167 +32,133 @@ model InvitationCode {
   createdAt DateTime @default(now())
 }
 
-// ===== 人物模块 =====
-
 model People {
-  id          String   @id @default(cuid())
-  qid         String   @unique // Wikidata QID
-  name        String
-  aliases     String[] // 别名列表
-  description String?
-  avatarUrl   String?
-  occupation  String[]
-  organization String[]
+  id              String          @id @default(cuid())
+  qid             String          @unique
+  name            String
+  aliases         String[]
+  description     String?
+  avatarUrl       String?
+  occupation      String[]
+  organization    String[]
+  officialLinks   Json            @default("[]")
+  sourceWhitelist String[]
+  status          String          @default("pending")
+  completeness    Int             @default(0)
 
-  // 官方链接（JSON 存储）
-  officialLinks   Json     @default("[]") // OfficialLink[]
-  sourceWhitelist String[] // 可信域名
+  // 增量更新：记录每个数据源的上次获取时间
+  // { exa: "2026-01-01T00:00:00Z", grok: "2026-01-01T00:00:00Z", ... }
+  lastFetchedAt Json @default("{}")
 
-  // 状态
-  status       String @default("pending") // pending/building/ready/partial/error
-  completeness Int    @default(0)         // 0-100
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // 关联
-  rawPoolItems   RawPoolItem[]
-  cards          Card[]
-  searchSessions SearchSession[]
-  roles          PersonRole[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  cards           Card[]
+  roles           PersonRole[]
+  rawPoolItems    RawPoolItem[]
+  searchSessions  SearchSession[]
 
   @@index([name])
   @@index([status])
 }
 
-// ===== 机构实体 =====
-
 model Organization {
-  id          String  @id @default(cuid())
-  name        String  // 英文名
-  nameZh      String? // 中文名
-  type        String  // company/university/foundation/government
-  wikidataQid String? @unique
+  id          String       @id @default(cuid())
+  name        String
+  nameZh      String?
+  type        String
+  wikidataQid String?      @unique
   description String?
-
-  roles PersonRole[]
+  roles       PersonRole[]
 
   @@index([name])
   @@index([wikidataQid])
 }
 
-// ===== 人物-机构角色关系 =====
-
 model PersonRole {
   id             String       @id @default(cuid())
   personId       String
-  person         People       @relation(fields: [personId], references: [id], onDelete: Cascade)
   organizationId String
+  role           String
+  roleZh         String?
+  startDate      DateTime?
+  endDate        DateTime?
+  source         String       @default("wikidata")
+  confidence     Float        @default(1.0)
+  createdAt      DateTime     @default(now())
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-
-  role      String    // CEO, Co-founder, Professor
-  roleZh    String?   // 首席执行官, 联合创始人, 教授
-  startDate DateTime?
-  endDate   DateTime? // null = 至今
-
-  source     String @default("wikidata") // wikidata/exa/manual
-  confidence Float  @default(1.0)
-
-  createdAt DateTime @default(now())
+  person         People       @relation(fields: [personId], references: [id], onDelete: Cascade)
 
   @@unique([personId, organizationId, role, startDate])
   @@index([personId])
   @@index([organizationId])
 }
 
-// ===== 学习卡片 =====
-
 model Card {
-  id       String @id @default(cuid())
-  personId String
-  person   People @relation(fields: [personId], references: [id], onDelete: Cascade)
-
-  type       String // insight/quote/story/method/fact
+  id         String   @id @default(cuid())
+  personId   String
+  type       String
   title      String
-  content    String @db.Text
+  content    String
   tags       String[]
   sourceUrl  String?
-  importance Int    @default(5) // 1-10
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  importance Int      @default(5)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  person     People   @relation(fields: [personId], references: [id], onDelete: Cascade)
 
   @@index([personId])
   @@index([type])
 }
 
 model RawPoolItem {
-  id       String @id @default(cuid())
-  personId String
-  person   People @relation(fields: [personId], references: [id], onDelete: Cascade)
-
-  sourceType  String // exa/x/openalex/youtube/wikidata
+  id          String    @id @default(cuid())
+  personId    String
+  sourceType  String
   url         String
-  urlHash     String   @unique // 去重用
-  contentHash String   // 近似去重
-
+  urlHash     String    @unique
+  contentHash String
   title       String
-  text        String   @db.Text
+  text        String
   publishedAt DateTime?
-  metadata    Json?    // 各来源特有字段
-
-  fetchStatus String   @default("success") // success/partial/error
+  metadata    Json?
+  fetchStatus String    @default("success")
   errorCode   String?
-  fetchedAt   DateTime @default(now())
-
-  processed Boolean @default(false)
+  fetchedAt   DateTime  @default(now())
+  processed   Boolean   @default(false)
+  person      People    @relation(fields: [personId], references: [id], onDelete: Cascade)
 
   @@index([personId])
   @@index([sourceType])
 }
 
-// ===== 搜索会话 =====
-
 model SearchSession {
-  id     String  @id @default(cuid())
-  userId String?
-  user   User?   @relation(fields: [userId], references: [id])
-
+  id                 String    @id @default(cuid())
+  userId             String?
   query              String
-  localHits          String[] // person_ids
-  wikidataCandidates Json?    // WikidataCandidate[]
-
-  status            String  @default("pending") // pending/confirmed
-  confirmedPersonId String?
-  confirmedPerson   People? @relation(fields: [confirmedPersonId], references: [id])
-
-  createdAt  DateTime  @default(now())
-  resolvedAt DateTime?
+  localHits          String[]
+  wikidataCandidates Json?
+  status             String    @default("pending")
+  confirmedPersonId  String?
+  createdAt          DateTime  @default(now())
+  resolvedAt         DateTime?
+  confirmedPerson    People?   @relation(fields: [confirmedPersonId], references: [id])
+  user               User?     @relation(fields: [userId], references: [id])
 
   @@index([userId])
   @@index([createdAt])
 }
 
-// ===== 用户画像（Phase 3）=====
-
 model UserProfile {
-  id     String @id @default(cuid())
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
-
-  // 兴趣权重（JSON Map）
-  peopleInterests Json @default("{}") // person_id -> weight
-  topicInterests  Json @default("{}") // topic -> weight
-
-  // 阅读状态
-  readCards   String[] // 已读卡片 IDs
-  savedCards  String[] // 收藏卡片 IDs
-  subscribedPeople String[] // 订阅人物 IDs
-
-  // Newsletter 偏好
-  newsletterFrequency String @default("none") // daily/weekly/none
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  peopleInterests     Json     @default("{}")
+  topicInterests      Json     @default("{}")
+  readCards           String[]
+  savedCards          String[]
+  subscribedPeople    String[]
+  newsletterFrequency String   @default("none")
   newsletterEmail     String?
-
-  lastActiveAt DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  lastActiveAt        DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  user                User     @relation(fields: [userId], references: [id])
 }

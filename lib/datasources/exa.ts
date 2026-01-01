@@ -119,13 +119,16 @@ export async function searchExa(options: ExaSearchOptions): Promise<ExaSearchRes
  * @param personName 人物姓名
  * @param aliases 别名列表
  * @param seedDomains 优先搜索的域名（官方网站）
+ * @param since 可选，只返回此时间之后发布的内容（用于增量更新）
  */
 export async function searchPersonContent(
     personName: string,
     aliases: string[] = [],
-    seedDomains: string[] = []
+    seedDomains: string[] = [],
+    since?: Date
 ): Promise<ExaSearchResult[]> {
     const allResults: ExaSearchResult[] = [];
+    const startPublishedDate = since?.toISOString();
 
     // 策略1：先搜索官方域名（如果有）
     if (seedDomains.length > 0) {
@@ -134,6 +137,7 @@ export async function searchPersonContent(
             numResults: 10,
             includeDomains: seedDomains,
             type: 'keyword',
+            startPublishedDate,
         });
         allResults.push(...officialResults);
     }
@@ -151,6 +155,7 @@ export async function searchPersonContent(
         numResults: 20,
         excludeDomains: ['wikipedia.org', 'baike.baidu.com'], // 排除百科类
         type: 'auto',
+        startPublishedDate,
     });
 
     allResults.push(...generalResults);
@@ -163,3 +168,57 @@ export async function searchPersonContent(
         return true;
     });
 }
+
+/**
+ * 专门搜索传记内容，用于职业时间线补全
+ * 目标：获取完整的职业和教育经历时间线
+ * @param personName 人物姓名
+ */
+export async function searchBiographyContent(
+    personName: string
+): Promise<ExaSearchResult[]> {
+    const allResults: ExaSearchResult[] = [];
+
+    // 策略1：搜索包含"biography"或类似关键词的内容
+    const biographyQuery = `"${personName}" biography career education history`;
+    const biographyResults = await searchExa({
+        query: biographyQuery,
+        numResults: 5,
+        includeDomains: [
+            'britannica.com',   // Britannica 有详细传记
+            'crunchbase.com',   // Crunchbase 有创业经历
+            'linkedin.com',     // LinkedIn 有职业历史
+            'forbes.com',       // Forbes 有人物传记
+            'bloomberg.com',    // Bloomberg 商业传记
+        ],
+        type: 'auto',
+    });
+    allResults.push(...biographyResults);
+
+    // 策略2：搜索 Wikipedia（单独处理，有时间线信息最全）
+    const wikiQuery = `"${personName}" site:en.wikipedia.org OR site:zh.wikipedia.org`;
+    const wikiResults = await searchExa({
+        query: wikiQuery,
+        numResults: 2,
+        type: 'keyword',
+    });
+    allResults.push(...wikiResults);
+
+    // 策略3：中文百科（针对中文人名）
+    const baikeQuery = `"${personName}" 个人简介 经历`;
+    const baikeResults = await searchExa({
+        query: baikeQuery,
+        numResults: 3,
+        type: 'auto',
+    });
+    allResults.push(...baikeResults);
+
+    // 去重
+    const seen = new Set<string>();
+    return allResults.filter(r => {
+        if (seen.has(r.url)) return false;
+        seen.add(r.url);
+        return true;
+    });
+}
+

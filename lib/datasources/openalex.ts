@@ -75,17 +75,26 @@ export async function searchOpenAlexAuthor(name: string): Promise<OpenAlexAuthor
  * 获取作者的论文列表
  * @param authorId OpenAlex 作者 ID
  * @param limit 返回数量
+ * @param since 可选，只返回此日期之后发表的论文（用于增量更新）
  */
 export async function getAuthorWorks(
     authorId: string,
-    limit: number = 20
+    limit: number = 20,
+    since?: Date
 ): Promise<OpenAlexWork[]> {
     try {
         // 清理 author ID（可能包含完整 URL）
         const cleanId = authorId.replace('https://openalex.org/', '');
 
+        // 构建 filter
+        let filter = `author.id:${cleanId}`;
+        if (since) {
+            const fromDate = since.toISOString().split('T')[0];
+            filter += `,from_publication_date:${fromDate}`;
+        }
+
         const params = new URLSearchParams({
-            filter: `author.id:${cleanId}`,
+            filter,
             sort: 'cited_by_count:desc',
             per_page: String(limit),
             mailto: POLITE_EMAIL,

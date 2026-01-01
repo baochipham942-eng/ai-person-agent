@@ -29,8 +29,17 @@ export const CARD_GENERATION_SYSTEM_PROMPT = `你是一位专业的知识卡片�
 - 优先提取最有价值的信息
 - 如果信息不足，可以少生成卡片`;
 
-export const CARD_GENERATION_USER_PROMPT = (personName: string, rawItems: { title: string; text: string; sourceUrl: string }[]) => `
+export const CARD_GENERATION_USER_PROMPT = (
+  personName: string,
+  rawItems: { title: string; text: string; sourceUrl: string }[],
+  existingCards: { title: string; content: string }[] = []
+) => `
 请为人物 **${personName}** 生成学习卡片。
+
+${existingCards.length > 0 ? `
+## 已存在的卡片（请勿生成语义重复的内容，如果新内容与已有内容相似，请跳过）：
+${existingCards.map(c => `- [${c.title}]: ${c.content.slice(0, 50)}...`).join('\n')}
+` : ''}
 
 以下是收集到的原始信息：
 
