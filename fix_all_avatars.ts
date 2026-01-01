@@ -100,6 +100,10 @@ const VIP_AVATARS: Record<string, string> = {
 
     // === Wesley Proxy for Others (Baidu, Tsinghua, Academic, etc) ===
     'Zhou Bowen': 'https://images.weserv.nl/?url=img0.baidu.com/it/u=2273010777,3302097332&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
+    'Alex Graves': 'https://images.weserv.nl/?url=image.thepaper.cn/www/image/29/475/369.jpg',
+    'Jason Wei': 'https://aiconference.com/wp-content/uploads/2024/04/Jason-Wei.jpg',
+    'Yan Shuicheng': 'https://yanshuicheng.info/_next/static/media/bg-shuicheng-hr.b09f4fce.webp',
+    '颜水成': 'https://yanshuicheng.info/_next/static/media/bg-shuicheng-hr.b09f4fce.webp',
     'Zhu Jun': 'https://images.weserv.nl/?url=ml.cs.tsinghua.edu.cn/~jun/images/jun.jpg',
     '朱军': 'https://images.weserv.nl/?url=ml.cs.tsinghua.edu.cn/~jun/images/jun.jpg',
     'Liu Zhiyuan': 'https://images.weserv.nl/?url=nlp.csai.tsinghua.edu.cn/~lzy/images/lzy.jpg',

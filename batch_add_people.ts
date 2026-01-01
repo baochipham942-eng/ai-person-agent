@@ -1,35 +1,94 @@
 
+import 'dotenv/config';
 import { prisma } from './lib/db/prisma';
 import { searchWikidata, getWikidataEntityWithTranslation } from './lib/datasources/wikidata';
 import { downloadAndStoreAvatar } from './lib/storage/avatarStorage';
 import { inngest } from './lib/inngest/client';
 
-const TARGET_COUNT = 50;
+const TARGET_COUNT = 200; // Increased for expanded list
 
 // List of high-profile people in Tech, AI, Science, Business
-// Mixed English and Chinese to test search robustly, but mostly English for better Wikidata match
+// Focused on AI leaders and researchers
 const CANDIDATES = [
-    // AI
+    // ========== NEW BATCH - 2026 Update ==========
+
+    // Transformer Paper Authors (核心论文作者)
+    'Noam Shazeer',       // Character.AI 联合创始人, Transformer 共同作者
+    'Aidan Gomez',        // Cohere CEO, Transformer 共同作者
+    'Jakob Uszkoreit',    // Inceptive 创始人, Transformer 共同作者
+    'Niki Parmar',        // Essential AI 联合创始人, Transformer 共同作者
+    'Ashish Vaswani',     // Essential AI 联合创始人, Transformer 第一作者
+    'Llion Jones',        // Sakana AI 创始人, Transformer 共同作者
+
+    // Microsoft AI (微软AI核心)
+    'Kevin Scott',        // 微软 CTO
+    'Mustafa Suleyman',   // 微软 AI CEO, DeepMind 联合创始人
+    'Eric Horvitz',       // 微软首席科学官
+    'Sébastien Bubeck',   // 微软研究院, Phi模型负责人
+
+    // OpenAI Core (OpenAI 核心)
+    'Mira Murati',        // 前 OpenAI CTO
+    'John Schulman',      // PPO/RLHF 发明人, 现Anthropic
+    'Kevin Weil',         // OpenAI CPO
+    'Jan Leike',          // 前 OpenAI 对齐负责人
+    'Wojciech Zaremba',   // OpenAI 联合创始人
+
+    // AI Researchers (AI 研究者)
+    'Richard Socher',     // You.com CEO, GloVe 发明人
+    'Oriol Vinyals',      // DeepMind 研究总监, Seq2Seq 作者
+    'Christopher Manning', // 斯坦福 NLP 教授
+    'Percy Liang',        // 斯坦福 HAI, HELM 评测框架
+    'Jitendra Malik',     // 伯克利 CV 泰斗
+    'Alex Krizhevsky',    // AlexNet 作者
+
+    // AI Safety (AI 安全)
+    'Stuart Russell',     // UC Berkeley, AI安全权威
+    'Max Tegmark',        // MIT, Future of Life Institute
+    'Eliezer Yudkowsky',  // MIRI 创始人
+
+    // AI Infra & Applications
+    'Emad Mostaque',      // 前 Stability AI CEO
+    'Nat Friedman',       // AI 投资人, 前 GitHub CEO
+    'Daniel Gross',       // AI 投资人
+
+    // China AI Core (中国AI核心人物 - Expanded)
+    '张鹏',               // 智谱AI CEO (Zhang Peng)
+    '唐杰',               // 智谱AI 首席科学家 (Tang Jie)
+    '何恺明',             // ResNet 作者 (Kaiming He)
+    '颜水成',             // 昆仑万维/Skywork (Yan Shuicheng)
+    '贾佳亚',             // 思谋科技 (Jia Jiaya)
+    '周伯文',             // 衔远科技 (Zhou Bowen)
+    '李彦宏',             // 百度 (Robin Li)
+    '马化腾',             // 腾讯 (Pony Ma)
+    '张一鸣',             // 字节跳动 (Zhang Yiming)
+    '雷军',               // 小米 (Lei Jun) - 大模型投入巨大
+    '王小川',             // 百川智能 (Wang Xiaochuan)
+    '李开复',             // 零一万物 (Lee Kai-Fu)
+    '杨植麟',             // 月之暗面 (Yang Zhilin)
+    '闫俊杰',             // MiniMax 创始人
+    '沈向洋',             // 前微软全球执行副总裁, 小冰董事长
+    '周明',               // 澜舟科技创始人
+    '楼天城',             // 小马智行 CTO
+    '唐文斌',             // 旷视科技 CTO
+    '印奇',               // 旷视科技 CEO
+    '徐立',               // 商汤科技 CEO
+    '戴文渊',             // 第四范式创始人
+
+    // ========== EXISTING CANDIDATES (Filtered) ==========
+
+    // AI Legends
     'Yann LeCun', 'Yoshua Bengio', 'Demis Hassabis', 'Dario Amodei', 'Ilya Sutskever',
-    'Fei-Fei Li', 'Andrew Ng', 'Mira Murati', 'Noam Shazeer', 'Daniela Amodei',
-    'Mustafa Suleyman', 'Shane Legg',
+    'Fei-Fei Li', 'Andrew Ng', 'Daniela Amodei', 'Shane Legg', 'Geoffrey Hinton',
 
-    // Tech Leaders
-    'Bill Gates', 'Steve Jobs', 'Mark Zuckerberg', 'Jeff Bezos', 'Satya Nadella',
-    'Tim Cook', 'Larry Page', 'Sergey Brin', 'Sundar Pichai', 'Vitalik Buterin',
-    'Satoshi Nakamoto', 'Linus Torvalds', 'Guido van Rossum',
+    // Tech Leaders (AI related)
+    'Mark Zuckerberg', 'Satya Nadella', 'Larry Page', 'Sergey Brin', 'Sundar Pichai',
+    'Elon Musk', 'Sam Altman', 'Jensen Huang', 'Lisa Su',
 
-    // Science / Physics
-    'Albert Einstein', 'Richard Feynman', 'Marie Curie', 'Stephen Hawking',
-    'Nikola Tesla', 'Alan Turing', 'Robert Oppenheimer', 'Carl Sagan',
+    // Notable
+    'Vitalik Buterin', 'Linus Torvalds', 'Guido van Rossum',
 
-    // Business / Investors
-    'Warren Buffett', 'Charlie Munger', 'Masayoshi Son', 'Peter Thiel',
-    'Marc Andreessen', 'Paul Graham', 'Reid Hoffman', 'Naval Ravikant',
-
-    // China Tech
-    'Jack Ma', 'Pony Ma', 'Robin Li', 'Ren Zhengfei', 'Zhang Yiming',
-    'Lei Jun', 'Wang Xing', 'Colin Huang'
+    // Historical
+    'Alan Turing', 'John von Neumann'
 ];
 
 function extractWhitelistDomains(links: { type: string; url: string }[]): string[] {
@@ -50,20 +109,15 @@ async function main() {
     const currentCount = await prisma.people.count();
     console.log(`Current count: ${currentCount}`);
 
-    if (currentCount >= TARGET_COUNT) {
-        console.log('Target count already reached.');
-        return;
-    }
-
     let addedCount = 0;
 
     for (const name of CANDIDATES) {
-        if (currentCount + addedCount >= TARGET_COUNT) break;
+        // if (currentCount + addedCount >= TARGET_COUNT) break;
 
         console.log(`\nProcessing candidate: ${name}`);
 
         try {
-            // 1. Check if exists loosely by name (not perfect but saves API calls)
+            // 1. Check if exists loosely by name
             const existing = await prisma.people.findFirst({
                 where: { OR: [{ name: { mode: 'insensitive', contains: name } }, { aliases: { has: name } }] }
             });
@@ -100,12 +154,6 @@ async function main() {
             // 5. Download Avatar
             let localAvatarUrl: string | null = null;
             if (entity.imageUrl) {
-                // Use temporary ID (qid) for filename since we don't have DB ID yet
-                // But wait, the previous code used `qid` then updated.
-                // Actually `downloadAndStoreAvatar` uses the 2nd arg to generate hash.
-                // We can use QID for now or generated CUID. 
-                // Let's create person first then update avatar? 
-                // Or just use QID for hash is stable.
                 localAvatarUrl = await downloadAndStoreAvatar(entity.imageUrl, qid);
             }
 
@@ -129,8 +177,7 @@ async function main() {
             console.log(`+ Created: ${newPerson.name} (${newPerson.id})`);
             addedCount++;
 
-            // 7. Trigger Inngest (Optional: might want to skip to avoid rate limits or do it slowly)
-            // For now, let's trigger it but log errors if any
+            // 7. Trigger Inngest
             try {
                 await inngest.send({
                     name: 'person/created',
@@ -150,7 +197,7 @@ async function main() {
             }
 
             // Sleep to be nice to APIs
-            await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 3000));
 
         } catch (error) {
             console.error(`Error processing ${name}:`, error);
