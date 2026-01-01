@@ -9,15 +9,14 @@ interface PersonPageProps {
 export default async function PersonPage({ params }: PersonPageProps) {
     const { id } = await params;
 
+    // 只加载基本信息、卡片、职业数据
+    // rawPoolItems 由客户端按需加载（懒加载）
     const person = await prisma.people.findUnique({
         where: { id },
         include: {
-            rawPoolItems: {
-                take: 100,
-                orderBy: { fetchedAt: 'desc' },
-            },
             cards: {
                 orderBy: { importance: 'desc' },
+                take: 20, // 首屏只加载前 20 张卡片
             },
             roles: {
                 include: {
@@ -25,12 +24,30 @@ export default async function PersonPage({ params }: PersonPageProps) {
                 },
                 orderBy: { startDate: 'desc' },
             },
+            // 只获取 rawPoolItems 的统计信息，用于显示 tab 数量
+            _count: {
+                select: {
+                    rawPoolItems: true,
+                }
+            }
         },
     });
 
     if (!person) {
         notFound();
     }
+
+    // 获取各类型的数量统计（用于 tab badge）
+    const typeCounts = await prisma.rawPoolItem.groupBy({
+        by: ['sourceType'],
+        where: { personId: id },
+        _count: true
+    });
+
+    const sourceTypeCounts: Record<string, number> = {};
+    typeCounts.forEach(tc => {
+        sourceTypeCounts[tc.sourceType] = tc._count;
+    });
 
     // 序列化数据传递给客户端组件
     const personData = {
@@ -45,15 +62,9 @@ export default async function PersonPage({ params }: PersonPageProps) {
         organization: person.organization,
         aliases: person.aliases,
         officialLinks: (person.officialLinks as any[]) || [],
-        rawPoolItems: person.rawPoolItems.map(item => ({
-            id: item.id,
-            sourceType: item.sourceType,
-            url: item.url,
-            title: item.title,
-            text: item.text,
-            publishedAt: item.publishedAt?.toISOString() || undefined,
-            metadata: item.metadata as Record<string, unknown> | undefined,
-        })),
+        // 不再传递 rawPoolItems，改为客户端懒加载
+        rawPoolItems: [], // 空数组，客户端会按需加载
+        sourceTypeCounts, // 各类型数量统计
         cards: person.cards.map(card => ({
             id: card.id,
             type: card.type,
@@ -62,7 +73,6 @@ export default async function PersonPage({ params }: PersonPageProps) {
             tags: card.tags,
             importance: card.importance,
         })),
-        // 新增：结构化职业数据
         personRoles: person.roles.map(role => ({
             id: role.id,
             role: role.role,

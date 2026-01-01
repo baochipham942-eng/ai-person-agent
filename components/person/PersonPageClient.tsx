@@ -1,9 +1,19 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Tag, Empty, Tooltip, Button } from '@arco-design/web-react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
+
+interface RawPoolItem {
+    id: string;
+    sourceType: string;
+    url: string;
+    title: string;
+    text: string;
+    publishedAt?: string;
+    metadata?: Record<string, unknown>;
+}
 
 interface PersonData {
     id: string;
@@ -17,15 +27,8 @@ interface PersonData {
     organization: string[];
     aliases: string[];
     officialLinks: any[];
-    rawPoolItems: {
-        id: string;
-        sourceType: string;
-        url: string;
-        title: string;
-        text: string;
-        publishedAt?: string;
-        metadata?: Record<string, unknown>;
-    }[];
+    rawPoolItems: RawPoolItem[];
+    sourceTypeCounts?: Record<string, number>; // 各类型数量统计
     cards: {
         id: string;
         type: string;
@@ -34,7 +37,6 @@ interface PersonData {
         tags: string[];
         importance: number;
     }[];
-    // 新增：结构化职业数据
     personRoles?: {
         id: string;
         role: string;
@@ -55,6 +57,36 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
     const [avatarError, setAvatarError] = useState(false);
     const [activeTab, setActiveTab] = useState('timeline');
 
+    // 懒加载状态
+    const [loadedItems, setLoadedItems] = useState<Record<string, RawPoolItem[]>>({});
+    const [loadingTab, setLoadingTab] = useState<string | null>(null);
+
+    // 懒加载 rawPoolItems
+    const loadItemsForType = useCallback(async (type: string) => {
+        if (loadedItems[type] || loadingTab === type) return;
+
+        setLoadingTab(type);
+        try {
+            const res = await fetch(`/api/person/${person.id}/items?type=${type}&limit=50`);
+            if (res.ok) {
+                const data = await res.json();
+                setLoadedItems(prev => ({ ...prev, [type]: data.data }));
+            }
+        } catch (e) {
+            console.error('Failed to load items:', e);
+        } finally {
+            setLoadingTab(null);
+        }
+    }, [person.id, loadedItems, loadingTab]);
+
+    // 当切换到需要 rawPoolItems 的 tab 时加载数据
+    useEffect(() => {
+        const tabsNeedingItems = ['x', 'youtube', 'podcast', 'github', 'article', 'paper'];
+        if (tabsNeedingItems.includes(activeTab) && !loadedItems[activeTab]) {
+            loadItemsForType(activeTab);
+        }
+    }, [activeTab, loadedItems, loadItemsForType]);
+
     // 处理 Wikidata 图片 URL（添加代理或降级处理）
     const getAvatarUrl = () => {
         if (!person.avatarUrl || avatarError) return null;
@@ -71,12 +103,22 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
         return acc;
     }, {} as Record<string, typeof person.cards>) || {};
 
-    // 按来源分组原始内容
-    const itemsBySource = person.rawPoolItems?.reduce((acc, item) => {
+    // 按来源分组原始内容 (合并初始数据和懒加载数据)
+    const allItems = [...(person.rawPoolItems || []), ...Object.values(loadedItems).flat()];
+    const itemsBySource = allItems.reduce((acc, item) => {
         if (!acc[item.sourceType]) acc[item.sourceType] = [];
-        acc[item.sourceType].push(item);
+        // 避免重复
+        if (!acc[item.sourceType].some(i => i.id === item.id)) {
+            acc[item.sourceType].push(item);
+        }
         return acc;
-    }, {} as Record<string, typeof person.rawPoolItems>) || {};
+    }, {} as Record<string, RawPoolItem[]>);
+
+    // 使用 sourceTypeCounts 作为 tab badge（如果没有加载数据的话）
+    const getTabCount = (type: string) => {
+        if (itemsBySource[type]?.length) return itemsBySource[type].length;
+        return person.sourceTypeCounts?.[type] || 0;
+    };
 
     // Deduplicate cards by title or content hash
     const uniqueCards = person.cards?.reduce((acc, card) => {
@@ -200,7 +242,7 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                         </button>
 
                         {/* X/Twitter */}
-                        {itemsBySource['x']?.length > 0 && (
+                        {getTabCount('x') > 0 && (
                             <button
                                 onClick={() => setActiveTab('x')}
                                 className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'x'
@@ -210,12 +252,13 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             >
                                 <XIcon />
                                 <span>X/Twitter</span>
-                                <span className="text-sm opacity-80">({itemsBySource['x'].length})</span>
+                                <span className="text-sm opacity-80">({getTabCount('x')})</span>
+                                {loadingTab === 'x' && <span className="w-3 h-3 border border-current border-t-transparent rounded-full animate-spin"></span>}
                             </button>
                         )}
 
                         {/* YouTube */}
-                        {itemsBySource['youtube']?.length > 0 && (
+                        {getTabCount('youtube') > 0 && (
                             <button
                                 onClick={() => setActiveTab('youtube')}
                                 className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'youtube'
@@ -225,12 +268,13 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             >
                                 <YoutubeIcon className="w-5 h-5" />
                                 <span>YouTube 视频</span>
-                                <span className="text-sm opacity-80">({itemsBySource['youtube'].length})</span>
+                                <span className="text-sm opacity-80">({getTabCount('youtube')})</span>
+                                {loadingTab === 'youtube' && <span className="w-3 h-3 border border-current border-t-transparent rounded-full animate-spin"></span>}
                             </button>
                         )}
 
                         {/* Podcast */}
-                        {itemsBySource['podcast']?.length > 0 && (
+                        {getTabCount('podcast') > 0 && (
                             <button
                                 onClick={() => setActiveTab('podcast')}
                                 className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'podcast'
@@ -240,12 +284,13 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             >
                                 <MicrophoneIcon className="w-5 h-5" />
                                 <span>播客</span>
-                                <span className="text-sm opacity-80">({itemsBySource['podcast'].length})</span>
+                                <span className="text-sm opacity-80">({getTabCount('podcast')})</span>
+                                {loadingTab === 'podcast' && <span className="w-3 h-3 border border-current border-t-transparent rounded-full animate-spin"></span>}
                             </button>
                         )}
 
                         {/* GitHub Projects Tab */}
-                        {(itemsBySource['github']?.length > 0 || person.officialLinks.some(l => l.type === 'github')) && (
+                        {(getTabCount('github') > 0 || person.officialLinks.some(l => l.type === 'github')) && (
                             <button
                                 onClick={() => setActiveTab('github')}
                                 className={`px-6 py-4 text-base font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none flex items-center gap-2 ${activeTab === 'github'
@@ -255,9 +300,10 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             >
                                 <GithubIcon className="w-5 h-5" />
                                 <span>开源项目</span>
-                                {itemsBySource['github']?.length > 0 && (
-                                    <span className="text-sm opacity-80">({itemsBySource['github'].length})</span>
+                                {getTabCount('github') > 0 && (
+                                    <span className="text-sm opacity-80">({getTabCount('github')})</span>
                                 )}
+                                {loadingTab === 'github' && <span className="w-3 h-3 border border-current border-t-transparent rounded-full animate-spin"></span>}
                             </button>
                         )}
 
@@ -551,6 +597,12 @@ function VideoItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
 function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
     const metadata = item.metadata as { author?: string; postId?: string; isOfficial?: boolean } | null;
 
+    // Get display text - prefer text, fallback to title
+    const displayText = item.text || item.title || '';
+
+    // Check if it's a URL-only post (no actual content)
+    const isUrlOnly = displayText.trim().match(/^https?:\/\/\S+$/);
+
     return (
         <a
             href={item.url}
@@ -570,36 +622,11 @@ function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
                         )}
                     </div>
                     <div className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap break-words">
-                        {(() => {
-                            // Helper to clean text
-                            const rawText = item.text || item.title || '';
-                            // Remove standalone URLs at the end or beginning
-                            const cleanText = rawText.replace(/(^|\s)(https?:\/\/\S+|\/\/\S+)/g, '').trim();
-
-                            // 如果是纯链接分享
-                            if (!cleanText && (item.text?.startsWith('http') || item.text?.startsWith('//'))) {
-                                // 尝试提取链接信息
-                                try {
-                                    const url = new URL(item.text.startsWith('//') ? 'https:' + item.text : item.text);
-                                    const domain = url.hostname.replace('www.', '');
-                                    const path = url.pathname.replace(/^\/|\/$/g, '').split('/').pop() || '';
-
-                                    if (domain.includes('openai.com') || domain.includes('x.com')) {
-                                        return (
-                                            <span className="text-gray-500">
-                                                🔗 分享: <span className="text-blue-500">{domain}</span>
-                                                {path && <span className="text-gray-400"> /{path.slice(0, 30)}{path.length > 30 ? '...' : ''}</span>}
-                                            </span>
-                                        );
-                                    }
-                                    return <span className="text-gray-500">🔗 {domain}</span>;
-                                } catch {
-                                    return <span className="italic text-gray-400">分享了一个链接</span>;
-                                }
-                            }
-
-                            return cleanText || item.title;
-                        })()}
+                        {isUrlOnly ? (
+                            <span className="text-gray-500">🔗 分享了一个链接</span>
+                        ) : (
+                            displayText.slice(0, 500) + (displayText.length > 500 ? '...' : '')
+                        )}
                     </div>
                     <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
                         <span>点击查看原帖</span>
@@ -610,6 +637,7 @@ function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
         </a>
     );
 }
+
 
 function StatusBadge({ status, completeness }: { status: string; completeness: number }) {
     const config: Record<string, { color: string; text: string; icon: string }> = {
@@ -960,121 +988,236 @@ function getLinkLabel(link: any) {
     return link.type.charAt(0).toUpperCase() + link.type.slice(1);
 }
 
-// 时光轴视图组件 (使用新的 PersonRole 数据结构)
+// 时光轴视图组件 - LinkedIn 风格 (分区展示)
 function TimelineView({ personRoles, qid }: { personRoles: NonNullable<PersonData['personRoles']>; qid: string }) {
     if (!personRoles || personRoles.length === 0) return (
-        <Empty
-            description="暂无生涯数据 (正在从 Wikidata 获取...)"
-            icon={<div className="text-4xl">🎓</div>}
-        />
+        <Empty description="暂无生涯数据" icon={<div className="text-4xl">🎓</div>} />
     );
 
-    // 1. 过滤掉中学及以下学历，只展示大学及以上
-    const filteredRoles = personRoles.filter(role => {
-        const type = role.organizationType?.toLowerCase() || '';
-        // 排除中学、高中等 (Wikidata 类型映射可能需要检查，这里先根据常见关键词)
-        if (type.includes('high_school') || type.includes('secondary') || type.includes('middle_school')) {
-            return false;
+    // 投资类关键词
+    const investmentKeywords = ['partner', 'investor', 'venture', 'capital', 'fund', 'angel', 'board member', 'advisor'];
+    // 教育类关键词
+    const educationKeywords = ['university', 'college', 'school', 'academy', 'institute'];
+
+    // 分类逻辑
+    const categorizeRole = (role: typeof personRoles[0]) => {
+        const orgName = (role.organizationName || '').toLowerCase();
+        const orgType = (role.organizationType || '').toLowerCase();
+        const roleName = (role.role || '').toLowerCase();
+
+        // 1. 教育
+        if (educationKeywords.some(k => orgType.includes(k) || orgName.includes(k))) {
+            return 'education';
         }
-        // 也可以根据组织名简单过滤 (通常中学名字带有 High School)
-        const name = (role.organizationName || '').toLowerCase();
-        if (name.includes('high school') || name.includes('middle school')) {
-            return false;
+        // 2. 投资 (根据 role 名称或组织名称)
+        if (investmentKeywords.some(k => roleName.includes(k)) ||
+            orgName.includes('capital') || orgName.includes('ventures') || orgName.includes('fund')) {
+            return 'investment';
         }
-        return true;
+        // 3. 默认为职业/创业
+        return 'career';
+    };
+
+    const careerRoles = personRoles.filter(r => categorizeRole(r) === 'career').sort((a, b) => {
+        const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+        const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+        return dateB - dateA;
     });
 
-    if (filteredRoles.length === 0) return (
-        <Empty description="暂无高等教育与职业经历" />
-    );
+    const investmentRoles = personRoles.filter(r => categorizeRole(r) === 'investment').sort((a, b) => {
+        const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+        const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+        return dateB - dateA;
+    });
 
-    // 2. 按年份分组
-    const grouped = filteredRoles.reduce((acc, role) => {
-        const year = role.startDate ? new Date(role.startDate).getFullYear() : '未知年份';
-        if (!acc[year]) acc[year] = [];
-        acc[year].push(role);
-        return acc;
-    }, {} as Record<string | number, typeof personRoles>);
-
-    // 3. 排序年份 (最新的年份在先，未知时间放最后)
-    const years = Object.keys(grouped).sort((a, b) => {
-        if (a === '未知年份') return 1;
-        if (b === '未知年份') return -1;
-        return Number(b) - Number(a);
+    const educationRoles = personRoles.filter(r => categorizeRole(r) === 'education').sort((a, b) => {
+        const dateA = a.endDate ? (a.endDate === 'present' ? Date.now() : new Date(a.endDate).getTime()) : 0;
+        const dateB = b.endDate ? (b.endDate === 'present' ? Date.now() : new Date(b.endDate).getTime()) : 0;
+        return dateB - dateA;
     });
 
     return (
-        <div className="p-4 md:p-6">
-            <div className="relative border-l-2 border-slate-100 ml-3 md:ml-4 space-y-8 pb-4">
-                {years.map(year => (
-                    <div key={year} className="relative">
-                        {/* 年份标记 */}
-                        <div className="absolute -left-[21px] top-0 flex items-center gap-4">
-                            <div className="w-3 h-3 rounded-full bg-blue-500 ring-4 ring-white"></div>
-                            <span className="text-xl font-bold font-mono text-slate-800">{year}</span>
-                        </div>
-
-                        {/* 该年份下的条目 */}
-                        <div className="pt-8 space-y-4">
-                            {grouped[year].map(role => (
-                                <RoleTimelineItem key={role.id} role={role} qid={qid} />
-                            ))}
-                        </div>
+        <div className="p-4 md:p-6 space-y-8">
+            {/* 职业经历 Section */}
+            {careerRoles.length > 0 && (
+                <section>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <span>💼</span> 职业经历
+                    </h3>
+                    <div className="space-y-4">
+                        {careerRoles.map(role => (
+                            <LinkedInRoleItem key={role.id} role={role} type="work" />
+                        ))}
                     </div>
-                ))}
-            </div>
+                </section>
+            )}
+
+            {/* 投资经历 Section */}
+            {investmentRoles.length > 0 && (
+                <section>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <span>💰</span> 投资经历
+                    </h3>
+                    <div className="space-y-4">
+                        {investmentRoles.map(role => (
+                            <LinkedInRoleItem key={role.id} role={role} type="work" />
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            {/* 教育经历 Section */}
+            {educationRoles.length > 0 && (
+                <section>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <span>🎓</span> 教育经历
+                    </h3>
+                    <div className="space-y-4">
+                        {educationRoles.map(role => (
+                            <LinkedInRoleItem key={role.id} role={role} type="education" />
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            {careerRoles.length === 0 && investmentRoles.length === 0 && educationRoles.length === 0 && (
+                <Empty description="暂无详细经历数据" />
+            )}
         </div>
     );
 }
 
-function RoleTimelineItem({ role, qid }: { role: NonNullable<PersonData['personRoles']>[0]; qid: string }) {
-    const hasDate = !!role.startDate;
-    const date = hasDate ? new Date(role.startDate!) : null;
-    const month = date ? date.toLocaleString('zh-CN', { month: '2-digit' }) : '';
+// LinkedIn 风格单项组件
+function LinkedInRoleItem({ role, type }: { role: NonNullable<PersonData['personRoles']>[0]; type: 'work' | 'education' }) {
+    const [logoError, setLogoError] = useState(false);
 
-    // 显示中文（优先）或英文
-    const orgDisplay = role.organizationNameZh || role.organizationName;
-    const roleDisplay = role.roleZh || role.role;
+    const orgName = role.organizationNameZh || role.organizationName;
+    const roleTitle = role.roleZh || role.role;
 
-    // 组织类型图标
-    const typeIcon = role.organizationType === 'university' ? '🎓' : '🏢';
+    // Get initials for fallback (max 2 chars)
+    const getInitials = () => {
+        const name = role.organizationName || '';
+        const words = name.split(/\s+/).filter(w => w.length > 0);
+        if (words.length >= 2) {
+            return (words[0][0] + words[1][0]).toUpperCase();
+        }
+        return name.slice(0, 2).toUpperCase();
+    };
 
-    // 是否显示 Role (过滤掉无意义的默认值)
-    const shouldShowRole = roleDisplay &&
-        !['employee', '员工', 'member', '成员'].includes(roleDisplay.toLowerCase().trim());
+    // Infer domain from organization name
+    const getDomain = () => {
+        const name = (role.organizationName || '').toLowerCase().trim();
+        // Known domain mappings
+        const domainMap: Record<string, string> = {
+            // Companies
+            'openai': 'openai.com',
+            'y combinator': 'ycombinator.com',
+            'loopt': 'loopt.com',
+            'reddit': 'reddit.com',
+            'tools for humanity': 'worldcoin.org',
+            'hydrazine capital': 'hydrazinecapital.com',
+            'google': 'google.com',
+            'microsoft': 'microsoft.com',
+            'meta': 'meta.com',
+            'facebook': 'facebook.com',
+            'amazon': 'amazon.com',
+            'apple': 'apple.com',
+            'tesla': 'tesla.com',
+            'spacex': 'spacex.com',
+            'nvidia': 'nvidia.com',
+            'anthropic': 'anthropic.com',
+            'deepmind': 'deepmind.com',
+            'bytedance': 'bytedance.com',
+            'tencent': 'tencent.com',
+            'alibaba': 'alibaba.com',
+            'baidu': 'baidu.com',
+            // Universities
+            'stanford university': 'stanford.edu',
+            'stanford': 'stanford.edu',
+            'mit': 'mit.edu',
+            'massachusetts institute of technology': 'mit.edu',
+            'harvard university': 'harvard.edu',
+            'harvard': 'harvard.edu',
+            'berkeley': 'berkeley.edu',
+            'uc berkeley': 'berkeley.edu',
+            'princeton': 'princeton.edu',
+            'caltech': 'caltech.edu',
+            'carnegie mellon': 'cmu.edu',
+            'cmu': 'cmu.edu',
+            'columbia': 'columbia.edu',
+            'yale': 'yale.edu',
+            'cornell': 'cornell.edu',
+            'oxford': 'ox.ac.uk',
+            'cambridge': 'cam.ac.uk',
+            'tsinghua': 'tsinghua.edu.cn',
+            'peking university': 'pku.edu.cn',
+            'fudan': 'fudan.edu.cn',
+            'zhejiang university': 'zju.edu.cn',
+        };
+
+        for (const [key, domain] of Object.entries(domainMap)) {
+            if (name === key || name.includes(key)) {
+                return domain;
+            }
+        }
+
+        return null;
+    };
+
+    const domain = getDomain();
+    // Use Google Favicon API (no CORS issues)
+    const logoUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : null;
+
+    // Date & Duration Calculation
+    const start = role.startDate ? new Date(role.startDate) : null;
+    let end = role.endDate ? (role.endDate === 'present' ? new Date() : new Date(role.endDate)) : null;
+    if (role.endDate === 'Present') end = new Date();
+
+    const startStr = start ? start.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short' }) : '';
+    const endStr = role.endDate === 'present' || !role.endDate ? '至今' : (end ? end.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short' }) : '');
+
+    let durationStr = '';
+    if (start && end) {
+        let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+        if (months < 0) months = 0;
+
+        const years = Math.floor(months / 12);
+        const remainingMonths = months % 12;
+
+        const yStr = years > 0 ? `${years} 年` : '';
+        const mStr = remainingMonths > 0 ? `${remainingMonths} 个月` : '';
+        if (yStr || mStr) durationStr = ` · ${yStr} ${mStr}`;
+    }
 
     return (
-        <div className="relative group ml-8 md:ml-12 hover:bg-slate-50 p-3 -mx-3 rounded-xl transition-all">
-            <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
-                {/* 组织与职位 */}
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                        <span className="text-lg">{typeIcon}</span>
-                        <h4 className="font-bold text-gray-900 text-lg leading-tight">
-                            {orgDisplay}
-                        </h4>
-                    </div>
-
-                    {shouldShowRole && (
-                        <div className="text-slate-600 font-medium ml-7">
-                            {roleDisplay}
-                        </div>
+        <div className="flex gap-4 group">
+            {/* Organization Logo */}
+            <div className="shrink-0 pt-1">
+                <div className="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center border border-gray-200 overflow-hidden">
+                    {logoUrl && !logoError ? (
+                        <img
+                            src={logoUrl}
+                            alt={orgName}
+                            className="w-10 h-10 object-contain"
+                            onError={() => setLogoError(true)}
+                        />
+                    ) : (
+                        <span className="text-lg font-bold text-gray-500">{getInitials()}</span>
                     )}
                 </div>
+            </div>
 
-                {/* 时间段 */}
-                <div className="shrink-0 ml-7 sm:ml-0">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-600 border border-slate-200">
-                        <span>{month}月</span>
-                        {role.endDate && (
-                            <>
-                                <span className="text-slate-400">→</span>
-                                <span>
-                                    {role.endDate === 'present' ? '至今' : new Date(role.endDate).getFullYear()}
-                                </span>
-                            </>
-                        )}
-                    </div>
+            {/* Content */}
+            <div className="flex-1 pb-4 border-b border-gray-100 group-last:border-0">
+                <h4 className="font-bold text-gray-900 text-base leading-snug">
+                    {roleTitle}
+                </h4>
+                <div className="text-sm text-gray-700 mt-0.5">
+                    {orgName}
+                </div>
+                <div className="text-sm text-gray-500 mt-1">
+                    <span>{startStr} - {endStr}</span>
+                    <span className="text-gray-400">{durationStr}</span>
                 </div>
             </div>
         </div>

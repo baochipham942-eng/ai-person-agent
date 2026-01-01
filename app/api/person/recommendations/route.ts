@@ -46,21 +46,35 @@ const POPULARITY: Record<string, number> = {
     'Lukasz Kaiser': 7,     // Transformer
 
     // Tier 6: 科技巨头 CEO (非 AI 核心但有重大影响) & 其他创业者
-    'Elon Musk': 6,         // xAI (Influence is high but primary fame is wider)
-    'Mark Zuckerberg': 6,   // Meta (Llama is huge, but he is general tech)
+    'Elon Musk': 6,         // xAI
+    'Mark Zuckerberg': 6,   // Meta
     'Satya Nadella': 6,
     'Sundar Pichai': 6,
-    '张一鸣': 5,            // 字节 (User requested downgrade)
-    '王慧文': 4,            // 光年之外 (User requested downgrade)
-    '王兴': 4,              // 美团
-    '雷军': 4,              // 小米
-    '宿华': 4,              // 快手
-    '闫俊杰': 6,            // MiniMax
-    '戴文渊': 6,            // 第四范式
+    '张一鸣': 5,
+    '王慧文': 4,
+    '王兴': 4,
+    '雷军': 4,
+    '宿华': 4,
+    '闫俊杰': 6,
+    '戴文渊': 6,
+
+    // New Tier (Ingested 2026-01-01)
+    'Paul Graham': 8,       // YC
+    'Marc Andreessen': 8,   // a16z
+    'Scott Wu': 7,          // Devin
+    'Richard Socher': 7,    // You.com
+    'Jeremy Howard': 8,     // fast.ai
+    'Allie K. Miller': 7,
+    'Chip Huyen': 7,
 };
 
-export async function GET() {
+export async function GET(request: Request) {
     try {
+        const { searchParams } = new URL(request.url);
+        const page = parseInt(searchParams.get('page') || '1');
+        const limit = parseInt(searchParams.get('limit') || '10');
+        const start = (page - 1) * limit;
+
         const people = await prisma.people.findMany({
             where: {
                 status: {
@@ -85,7 +99,18 @@ export async function GET() {
             return a.name.localeCompare(b.name);
         });
 
-        return NextResponse.json(sorted);
+        const paginated = sorted.slice(start, start + limit);
+        const hasMore = start + limit < sorted.length;
+
+        return NextResponse.json({
+            data: paginated,
+            pagination: {
+                page,
+                limit,
+                total: people.length,
+                hasMore
+            }
+        });
     } catch (error) {
         console.error('Failed to fetch people recommendations:', error);
         return NextResponse.json(

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getBestOccupation } from '@/lib/constants/occupationMap';
 
 interface Person {
     id: string;
@@ -20,25 +21,32 @@ function getAvatarColor(name: string): string {
 }
 
 export function PersonCard({ person }: { person: Person }) {
-    // Use first occupation or default text
-    const occupation = person.occupation?.[0] || '知名人物';
-    // Truncate description if needed (handled by CSS line-clamp generally, but simple slice here is safer for server/client match)
-    const description = person.description || '暂无简介';
+    // 获取优化后的职业标签
+    const occupation = getBestOccupation(person.occupation) || '人物';
+
+    // 简介处理：截断并添加省略号
+    const description = person.description
+        ? (person.description.length > 50
+            ? person.description.slice(0, 50) + '...'
+            : person.description)
+        : '暂无简介';
 
     return (
         <Link
             href={`/person/${person.id}`}
-            className="block group h-full"
+            className="block group"
         >
-            <div className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 h-full flex flex-col items-center text-center group-hover:-translate-y-1">
-                <div className="relative w-16 h-16 mb-3 rounded-2xl overflow-hidden bg-gray-100 shadow-inner">
+            <div className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col items-center text-center group-hover:-translate-y-1 min-h-[200px]">
+                {/* Avatar - 使用 object-top 保留头部 */}
+                <div className="relative w-16 h-16 mb-3 rounded-2xl overflow-hidden bg-gray-100 shadow-inner flex-shrink-0">
                     {person.avatarUrl ? (
                         <Image
                             src={person.avatarUrl}
                             alt={person.name}
                             fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 64px, 64px"
+                            className="object-cover object-top"
+                            sizes="64px"
+                            unoptimized
                         />
                     ) : (
                         <div
@@ -52,15 +60,18 @@ export function PersonCard({ person }: { person: Person }) {
                     )}
                 </div>
 
-                <h3 className="text-base font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
+                {/* Name */}
+                <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-blue-600 transition-colors line-clamp-1">
                     {person.name}
                 </h3>
 
-                <div className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full mb-2">
+                {/* Occupation Tag */}
+                <div className="text-xs font-medium text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full mb-2">
                     {occupation}
                 </div>
 
-                <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                {/* Description */}
+                <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed flex-1">
                     {description}
                 </p>
             </div>
