@@ -23,7 +23,10 @@ async function main() {
     const gradeCounts = { A: 0, B: 0, C: 0, D: 0, F: 0 };
 
     for (const person of people) {
-        const result = calculateQualityScore(person);
+        const result = calculateQualityScore({
+            ...person,
+            officialLinks: (person.officialLinks as any[]) || []
+        });
         results.push({
             name: person.name,
             score: result.total,

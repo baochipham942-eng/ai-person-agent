@@ -73,7 +73,7 @@ const VIP_AVATARS: Record<string, string> = {
     'Christopher Manning': 'https://unavatar.io/twitter/chrmanning',
     'Percy Liang': 'https://unavatar.io/twitter/percyliang',
     'Hyung Won Chung': 'https://unavatar.io/twitter/hwchung27',
-    'Jason Wei': 'https://unavatar.io/twitter/jasonwei',
+
     'Oriol Vinyals': 'https://unavatar.io/twitter/oriolvinyalsml',
     'Ashish Vaswani': 'https://unavatar.io/twitter/ashVaswani',
     'Alec Radford': 'https://unavatar.io/twitter/AlecRad',
