@@ -56,7 +56,7 @@ const VIP_AVATARS: Record<string, string> = {
     'Ahmet Alp Balkan': 'https://unavatar.io/twitter/ahmet',
     'David Ha': 'https://unavatar.io/twitter/hardmaru',
     'James Manyika': 'https://unavatar.io/twitter/jamesmanyika',
-    'Joanne Jang': 'https://unavatar.io/twitter/jikibot',
+    'Joanne Jang': 'https://unavatar.io/twitter/joannejang',
     'Ji Yichao': 'https://unavatar.io/twitter/jiyichao',
     'Yang Zhilin': 'https://unavatar.io/twitter/YangZhilin', // Hope this works
     'Chamath Palihapitiya': 'https://unavatar.io/twitter/chamath',
