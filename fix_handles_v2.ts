@@ -10,9 +10,9 @@ const prisma = new PrismaClient();
 const HANDLE_FIXES = [
     { name: 'Joanne Jang', handle: 'joannejang' }, // Was jikibot
     { name: 'Aakash Gupta', handle: 'aakashg0' },
-    { name: 'Daniel Gross', handle: 'danielgross' },
-    { name: 'Lukasz Kaiser', handle: 'lukaszkaiser' },
-    { name: 'Wojciech Zaremba', handle: 'woj_zaremba' }
+    { name: '丹尼尔·格罗斯', handle: 'danielgross' },
+    { name: '卢卡什·凯泽', handle: 'lukaszkaiser' },
+    { name: '沃伊切赫·扎伦巴', handle: 'woj_zaremba' }
 ];
 
 async function updateHandle(name: string, handle: string) {
