@@ -552,8 +552,26 @@ function XPostItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
                             // Remove standalone URLs at the end or beginning
                             const cleanText = rawText.replace(/(^|\s)(https?:\/\/\S+|\/\/\S+)/g, '').trim();
 
+                            // 如果是纯链接分享
                             if (!cleanText && (item.text?.startsWith('http') || item.text?.startsWith('//'))) {
-                                return <span className="italic text-gray-400">分享了一个链接 (点击下方查看)</span>;
+                                // 尝试提取链接信息
+                                try {
+                                    const url = new URL(item.text.startsWith('//') ? 'https:' + item.text : item.text);
+                                    const domain = url.hostname.replace('www.', '');
+                                    const path = url.pathname.replace(/^\/|\/$/g, '').split('/').pop() || '';
+
+                                    if (domain.includes('openai.com') || domain.includes('x.com')) {
+                                        return (
+                                            <span className="text-gray-500">
+                                                🔗 分享: <span className="text-blue-500">{domain}</span>
+                                                {path && <span className="text-gray-400"> /{path.slice(0, 30)}{path.length > 30 ? '...' : ''}</span>}
+                                            </span>
+                                        );
+                                    }
+                                    return <span className="text-gray-500">🔗 {domain}</span>;
+                                } catch {
+                                    return <span className="italic text-gray-400">分享了一个链接</span>;
+                                }
                             }
 
                             return cleanText || item.title;
