@@ -64,7 +64,12 @@ export async function searchWikidata(
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-        const response = await fetch(url, { signal: controller.signal });
+        const response = await fetch(url, {
+            signal: controller.signal,
+            headers: {
+                'User-Agent': 'AI-Person-Agent/1.0 (mailto:admin@example.com)'
+            }
+        });
         clearTimeout(timeoutId);
 
         console.log('[Wikidata] Response status:', response.status);
@@ -104,7 +109,11 @@ export async function getWikidataEntity(qid: string): Promise<WikidataEntity | n
     });
 
     try {
-        const response = await fetch(`${WIKIDATA_API}?${params}`);
+        const response = await fetch(`${WIKIDATA_API}?${params}`, {
+            headers: {
+                'User-Agent': 'AI-Person-Agent/1.0 (mailto:admin@example.com)'
+            }
+        });
         const data = await response.json();
 
         const entity = data.entities?.[qid];
@@ -272,7 +281,11 @@ async function extractClaimLabels(claimList: any[], lang: 'en' | 'zh' = 'en'): P
             origin: '*',
         });
 
-        const response = await fetch(`${WIKIDATA_API}?${params}`);
+        const response = await fetch(`${WIKIDATA_API}?${params}`, {
+            headers: {
+                'User-Agent': 'AI-Person-Agent/1.0 (mailto:admin@example.com)'
+            }
+        });
         const data = await response.json();
 
         return qids.map((qid: string) => {

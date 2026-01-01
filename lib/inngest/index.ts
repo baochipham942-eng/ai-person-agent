@@ -4,3 +4,4 @@
 
 export { inngest } from './client';
 export { functions, buildPersonJob } from './functions';
+export { weeklyQualityCheck, manualQualityCheck } from './qualityJobs';
