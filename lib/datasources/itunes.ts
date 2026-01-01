@@ -20,17 +20,19 @@ const ITUNES_API_URL = 'https://itunes.apple.com/search';
  * 搜索播客
  * @param term 搜索关键词
  * @param limit 最大返回数量
+ * @param requiredKeywords 必须包含的关键词（任一），用于过滤无关内容
  */
 export async function searchPodcasts(
     term: string,
-    limit: number = 5
+    limit: number = 5,
+    requiredKeywords: string[] = []
 ): Promise<PodcastItem[]> {
     try {
         const params = new URLSearchParams({
             term: term,
             media: 'podcast',
             entity: 'podcastEpisode', // 改为搜索单集，以便找到人物作为嘉宾的节目
-            limit: String(limit),
+            limit: String(limit * 3), // Fetch more to allow filtering
             country: 'CN',
         });
 
@@ -42,9 +44,18 @@ export async function searchPodcasts(
         }
 
         const data = await response.json();
-        const results = data.results || [];
+        let results = data.results || [];
 
-        return results.map((item: any) => ({
+        // Post-filtering if keywords provided
+        if (requiredKeywords.length > 0) {
+            const lowerKeywords = requiredKeywords.map(k => k.toLowerCase());
+            results = results.filter((item: any) => {
+                const text = (item.trackName + ' ' + item.collectionName + ' ' + (item.description || '')).toLowerCase();
+                return lowerKeywords.some(k => text.includes(k));
+            });
+        }
+
+        return results.slice(0, limit).map((item: any) => ({
             id: String(item.trackId || item.collectionId),
             title: item.trackName || item.collectionName,       // 单集标题
             author: item.collectionName || item.artistName,     // 节目名称

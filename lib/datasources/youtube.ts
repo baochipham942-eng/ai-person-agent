@@ -134,10 +134,12 @@ export async function getChannelVideos(
  * 搜索 YouTube 视频
  * @param query 搜索关键词
  * @param maxResults 最大返回数量
+ * @param requiredKeywords 必须包含的关键词（任一），用于过滤无关内容
  */
 export async function searchYouTubeVideos(
     query: string,
-    maxResults: number = 10
+    maxResults: number = 10,
+    requiredKeywords: string[] = []
 ): Promise<YouTubeVideo[]> {
     const apiKey = process.env.GOOGLE_API_KEY;
 
@@ -151,7 +153,7 @@ export async function searchYouTubeVideos(
             part: 'snippet',
             q: `${query} (AI | "Artificial Intelligence" | LLM | "Machine Learning")`,
             type: 'video',
-            maxResults: String(maxResults),
+            maxResults: String(maxResults * 3), // Fetch more to allow filtering
             order: 'relevance',
             key: apiKey,
         });
@@ -164,9 +166,18 @@ export async function searchYouTubeVideos(
         }
 
         const data = await response.json();
-        const items = data.items || [];
+        let items = data.items || [];
 
-        return items.map((item: any) => ({
+        // Post-filtering if keywords provided
+        if (requiredKeywords.length > 0) {
+            const lowerKeywords = requiredKeywords.map(k => k.toLowerCase());
+            items = items.filter((item: any) => {
+                const text = (item.snippet?.title + ' ' + (item.snippet?.description || '')).toLowerCase();
+                return lowerKeywords.some(k => text.includes(k));
+            });
+        }
+
+        return items.slice(0, maxResults).map((item: any) => ({
             id: item.id?.videoId || '',
             title: item.snippet?.title || '',
             description: item.snippet?.description || '',

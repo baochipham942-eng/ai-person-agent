@@ -63,9 +63,50 @@ model People {
   rawPoolItems   RawPoolItem[]
   cards          Card[]
   searchSessions SearchSession[]
+  roles          PersonRole[]
 
   @@index([name])
   @@index([status])
+}
+
+// ===== 机构实体 =====
+
+model Organization {
+  id          String  @id @default(cuid())
+  name        String  // 英文名
+  nameZh      String? // 中文名
+  type        String  // company/university/foundation/government
+  wikidataQid String? @unique
+  description String?
+
+  roles PersonRole[]
+
+  @@index([name])
+  @@index([wikidataQid])
+}
+
+// ===== 人物-机构角色关系 =====
+
+model PersonRole {
+  id             String       @id @default(cuid())
+  personId       String
+  person         People       @relation(fields: [personId], references: [id], onDelete: Cascade)
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  role      String    // CEO, Co-founder, Professor
+  roleZh    String?   // 首席执行官, 联合创始人, 教授
+  startDate DateTime?
+  endDate   DateTime? // null = 至今
+
+  source     String @default("wikidata") // wikidata/exa/manual
+  confidence Float  @default(1.0)
+
+  createdAt DateTime @default(now())
+
+  @@unique([personId, organizationId, role, startDate])
+  @@index([personId])
+  @@index([organizationId])
 }
 
 // ===== 学习卡片 =====

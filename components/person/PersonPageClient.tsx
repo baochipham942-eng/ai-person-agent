@@ -34,6 +34,17 @@ interface PersonData {
         tags: string[];
         importance: number;
     }[];
+    // 新增：结构化职业数据
+    personRoles?: {
+        id: string;
+        role: string;
+        roleZh: string | null;
+        startDate?: string;
+        endDate?: string;
+        organizationName: string;
+        organizationNameZh: string | null;
+        organizationType: string;
+    }[];
 }
 
 interface PersonPageClientProps {
@@ -252,7 +263,7 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
 
                         {/* Remaining Sources (OpenAlex, Exa, etc.) */}
                         {Object.keys(itemsBySource)
-                            .filter(s => !['x', 'youtube', 'podcast', 'github'].includes(s))
+                            .filter(s => !['x', 'youtube', 'podcast', 'github', 'career'].includes(s.toLowerCase()))
                             .map(source => (
                                 <button
                                     key={source}
@@ -273,7 +284,7 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                     <div>
                         {/* Timeline Tab Content (Now Career Only) */}
                         {activeTab === 'timeline' && (
-                            <TimelineView items={person.rawPoolItems.filter(i => i.sourceType === 'career')} />
+                            <TimelineView personRoles={person.personRoles || []} qid={person.qid} />
                         )}
 
                         {/* 学习卡片 Tab */}
@@ -906,78 +917,99 @@ function getLinkLabel(link: any) {
     return link.type.charAt(0).toUpperCase() + link.type.slice(1);
 }
 
-// 时光轴视图组件 (仅展示职业/教育生涯)
-function TimelineView({ items }: { items: PersonData['rawPoolItems'] }) {
-    if (!items || items.length === 0) return (
+// 时光轴视图组件 (使用新的 PersonRole 数据结构)
+function TimelineView({ personRoles, qid }: { personRoles: NonNullable<PersonData['personRoles']>; qid: string }) {
+    if (!personRoles || personRoles.length === 0) return (
         <Empty
             description="暂无生涯数据 (正在从 Wikidata 获取...)"
             icon={<div className="text-4xl">🎓</div>}
         />
     );
 
-    // 1. 过滤无效日期并排序 (最新的在先)
-    const validItems = items.filter(i => i.publishedAt);
-    const sortedItems = [...validItems].sort((a, b) => {
-        return new Date(b.publishedAt!).getTime() - new Date(a.publishedAt!).getTime();
+    // 1. 按年份分组
+    const grouped = personRoles.reduce((acc, role) => {
+        const year = role.startDate ? new Date(role.startDate).getFullYear() : '早期经历 / 未知时间';
+        if (!acc[year]) acc[year] = [];
+        acc[year].push(role);
+        return acc;
+    }, {} as Record<string | number, typeof personRoles>);
+
+    // 2. 排序年份 (最新的年份在先，未知时间放最后)
+    const years = Object.keys(grouped).sort((a, b) => {
+        if (a.includes('未知')) return 1;
+        if (b.includes('未知')) return -1;
+        return Number(b) - Number(a);
     });
 
-    // 2. 按年份分组
-    const grouped = sortedItems.reduce((acc, item) => {
-        const year = new Date(item.publishedAt!).getFullYear();
-        if (!acc[year]) acc[year] = [];
-        acc[year].push(item);
-        return acc;
-    }, {} as Record<number, typeof items>);
-
-    // 3. 排序年份 (最新的年份在先)
-    const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
-
     return (
-        <div className="p-6">
-            <div className="space-y-10">
+        <div className="p-4 md:p-6">
+            <div className="space-y-6">
                 {years.map(year => (
                     <div key={year} className="relative">
                         {/* 年份标记 */}
-                        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm py-3 mb-4 border-b border-gray-100 flex items-center gap-2">
-                            <span className="text-2xl font-bold text-gray-900 font-mono">{year}</span>
+                        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm py-2 mb-2 border-b border-gray-100 flex items-center gap-2">
+                            <span className="text-xl font-bold text-gray-900 font-mono text-blue-600">{year}</span>
                         </div>
 
                         {/* 时间轴内容 */}
-                        <div className="relative pl-8 border-l-2 border-blue-100 space-y-8 ml-3">
-                            {grouped[year].map(item => (
-                                <TimelineItem key={item.id} item={item} />
+                        <div className="relative pl-4 border-l-2 border-blue-100 space-y-2 ml-2">
+                            {grouped[year].map(role => (
+                                <RoleTimelineItem key={role.id} role={role} qid={qid} />
                             ))}
                         </div>
                     </div>
                 ))}
             </div>
-
-            {/* Load More Trigger (Simplified: no infinite scroll inside timeline yet, just render all) */}
         </div>
     );
 }
 
-function TimelineItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
-    const date = new Date(item.publishedAt!);
-    const month = date.toLocaleString('default', { month: 'short' });
-    const day = date.getDate();
-    const metadata = item.metadata as any || {};
+function RoleTimelineItem({ role, qid }: { role: NonNullable<PersonData['personRoles']>[0]; qid: string }) {
+    const hasDate = !!role.startDate;
+    const date = hasDate ? new Date(role.startDate!) : null;
+    const month = date ? date.toLocaleString('zh-CN', { month: 'short' }) : '';
+    const day = date ? date.getDate() : '';
+
+    // 显示中文（优先）或英文
+    const orgDisplay = role.organizationNameZh || role.organizationName;
+    const roleDisplay = role.roleZh || role.role;
+
+    // 组织类型图标
+    const typeIcon = role.organizationType === 'university' ? '🎓' : '🏢';
 
     return (
         <div className="relative group">
             {/* 时间点标记 */}
-            <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-blue-200 group-hover:bg-blue-500 group-hover:scale-110 transition-all shadow-sm"></div>
+            <div className={`absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white transition-all shadow-sm ${hasDate ? 'bg-blue-200 group-hover:bg-blue-500 group-hover:scale-110' : 'bg-gray-200 group-hover:bg-gray-400'}`}></div>
 
             <div className="flex gap-4">
                 {/* 日期 */}
-                <div className="shrink-0 w-12 text-center pt-1">
-                    <div className="text-xs font-bold text-gray-500 uppercase">{month}</div>
-                    <div className="text-lg font-bold text-gray-900 leading-none">{day}</div>
+                <div className="shrink-0 w-12 text-center pt-0">
+                    {hasDate ? (
+                        <>
+                            <div className="text-xs font-bold text-gray-500 uppercase">{month}</div>
+                            <div className="text-base font-bold text-gray-900 leading-none">{day}</div>
+                        </>
+                    ) : (
+                        <div className="text-xl font-bold text-gray-300 leading-none mt-1">?</div>
+                    )}
                 </div>
 
                 {/* 卡片内容 */}
-                <div className="flex-1 min-w-0">
-                    {renderTimelineCard(item, metadata)}
+                <div className="flex-1 min-w-0 -ml-2 p-2 rounded transition-colors hover:bg-gray-50">
+                    <div className="flex items-start justify-between gap-2">
+                        <h4 className="font-bold text-sm text-gray-900 leading-snug">
+                            {typeIcon} {orgDisplay}
+                        </h4>
+                        {role.endDate && (
+                            <span className="shrink-0 text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
+                                → {role.endDate === 'present' ? '至今' : new Date(role.endDate).getFullYear()}
+                            </span>
+                        )}
+                    </div>
+                    <p className="text-sm text-gray-600 mt-0.5">
+                        {roleDisplay}
+                    </p>
                 </div>
             </div>
         </div>
@@ -987,43 +1019,26 @@ function TimelineItem({ item }: { item: PersonData['rawPoolItems'][0] }) {
 function renderTimelineCard(item: any, metadata: any) {
     const sourceType = item.sourceType;
 
-    // 根据类型渲染不同样式的卡片 (精简版)
-    // 统一样式：Border-left color code
-    const colorMap: Record<string, string> = {
-        github: 'border-l-gray-800 hover:border-l-gray-600',
-        youtube: 'border-l-red-500 hover:border-l-red-400',
-        x: 'border-l-blue-400 hover:border-l-blue-300',
-        openalex: 'border-l-green-500 hover:border-l-green-400',
-        podcast: 'border-l-indigo-500 hover:border-l-indigo-400',
-        exa: 'border-l-purple-500 hover:border-l-purple-400'
-    };
-
-    const borderColor = colorMap[sourceType] || 'border-l-gray-300';
-
     return (
         <a
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`block p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all border-l-4 ${borderColor}`}
+            className="block -ml-2 p-2 rounded transition-colors hover:bg-gray-50"
         >
-            <div className="flex items-start justify-between gap-2 mb-1">
-                <div className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wide">
-                    {getSourceIconComponent(sourceType)}
-                    <span>{getSourceName(sourceType)}</span>
-                </div>
+            <div className="flex items-start justify-between gap-2">
+                <h4 className="font-bold text-sm text-gray-900 leading-snug hover:text-blue-600 transition-colors">
+                    {item.title}
+                </h4>
+
                 {metadata.isOfficial && (
-                    <span className="text-[10px] bg-green-50 text-green-600 px-1.5 py-0.5 rounded border border-green-100">
+                    <span className="shrink-0 text-[10px] bg-green-50 text-green-600 px-1.5 py-0.5 rounded border border-green-100">
                         OFFICIAL
                     </span>
                 )}
             </div>
 
-            <h4 className="font-bold text-gray-900 mb-1 leading-snug group-hover:text-blue-600 transition-colors">
-                {item.title}
-            </h4>
-
-            {/* Content Logic: Hide generic technical words like 'career', 'education', 'career_position'. Only show if meaningful description. */}
+            {/* Content Logic: Hide generic technical words */}
             {item.text &&
                 !item.text.startsWith('http') &&
                 !item.text.startsWith('//') &&
@@ -1031,21 +1046,18 @@ function renderTimelineCard(item: any, metadata: any) {
                 item.text.toLowerCase() !== 'education' &&
                 item.text.toLowerCase() !== 'career_position' &&
                 item.text.toLowerCase() !== 'award' && (
-                    <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                    <p className="text-sm text-gray-600 line-clamp-1 mt-0.5">
                         {item.text}
                     </p>
                 )}
 
             {/* 特定元数据展示 */}
-            <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-400">
+            <div className="mt-1 flex flex-wrap gap-2 text-xs text-gray-400">
                 {sourceType === 'github' && metadata.stars && (
                     <span className="flex items-center gap-1">⭐ {metadata.stars}</span>
                 )}
                 {sourceType === 'openalex' && metadata.citationCount > 0 && (
-                    <span className="flex items-center gap-1">📚 被引 {metadata.citationCount}</span>
-                )}
-                {sourceType === 'youtube' && (
-                    <span className="flex items-center gap-1">📺 视频</span>
+                    <span className="flex items-center gap-1">📚 {metadata.citationCount}</span>
                 )}
             </div>
         </a>

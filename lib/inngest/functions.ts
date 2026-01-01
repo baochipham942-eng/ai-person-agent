@@ -7,7 +7,8 @@ import { searchOpenAlexAuthor, getAuthorWorks, getAuthorByOrcid } from '@/lib/da
 import { searchPodcasts } from '@/lib/datasources/itunes';
 import { getUserRepos } from '@/lib/datasources/github';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
-import { getPersonCareer } from '@/lib/datasources/career';
+import { fetchRawCareerData, savePersonRoles } from '@/lib/datasources/career';
+import { extractTimelineFromSources } from '@/lib/ai/timelineExtractor';
 import crypto from 'crypto';
 
 /**
@@ -129,15 +130,18 @@ export const buildPersonJob = inngest.createFunction(
                     videos = await getChannelVideos(youtubeChannelId, 20);
                 } else {
                     // 构建更精准的搜索查询
-                    // 格式: "Name" (Org1 | Org2 | AI | LLM)
                     const orgs = person.organization || [];
-                    const contextKeywords = [...orgs, 'AI', 'Artificial Intelligence', 'Large Language Model'].map(k => `"${k}"`).join(' | ');
-                    const query = `"${searchName}" (${contextKeywords})`;
+                    const contextKeywords = [...orgs, 'AI', 'Artificial Intelligence', 'Large Language Model'];
+                    // Required keywords for filtering: Must contain Name or Org or AI terms
+                    const requiredKeywords = [personName, searchName, ...contextKeywords].filter(Boolean);
+
+                    const queryKeywords = contextKeywords.map(k => `"${k}"`).join(' | ');
+                    const query = `"${searchName}" (${queryKeywords})`;
 
                     console.log(`[Job] Searching YouTube with query: ${query}`);
-                    videos = await searchYouTubeVideos(query, 10);
+                    videos = await searchYouTubeVideos(query, 10, requiredKeywords);
                 }
-                return videos.map(v => ({
+                return (videos || []).map(v => ({
                     sourceType: 'youtube',
                     url: v.url,
                     title: v.title,
@@ -182,8 +186,17 @@ export const buildPersonJob = inngest.createFunction(
 
             // 5. Podcast (iTunes) - 非官方内容
             step.run('fetch-podcasts', async () => {
-                const podcasts = await searchPodcasts(searchName, 5);
-                return podcasts.map(p => ({
+                const orgs = person.organization || [];
+                // Filtering for podcasts: Name AND (Org OR AI terms)
+                // Use a looser set for required keywords to avoid over-filtering, but strict enough to avoid Baek Ji Young
+                const contextKeywords = [...orgs, 'AI', 'Artificial Intelligence', 'Large Language Model', 'Tech', 'Startup'];
+                const requiredKeywords = [personName, searchName, ...contextKeywords].filter(Boolean);
+
+                // Search term enhancement
+                const term = `${searchName}`;
+
+                const podcasts = await searchPodcasts(term, 5, requiredKeywords);
+                return (podcasts || []).map(p => ({
                     sourceType: 'podcast',
                     url: p.url,
                     title: p.title,
@@ -222,21 +235,24 @@ export const buildPersonJob = inngest.createFunction(
                 }));
             }),
 
-            // 7. Career/Bio (Wikidata) - 职业与教育经历
+            // 7. Career/Bio (Wikidata) - 职业与教育经历（新模型：Organization + PersonRole）
             step.run('fetch-career', async () => {
-                const careerItems = await getPersonCareer(qid);
-                return careerItems.map((item, index) => ({
+                const rawCareerData = await fetchRawCareerData(qid);
+                // 返回简化格式用于 Exa 日期补全匹配（不再存入 RawPoolItem）
+                return rawCareerData.map((item) => ({
                     sourceType: 'career',
-                    // Fix: Ensure unique URL for each item to prevent deduplication overwriting
-                    url: `https://www.wikidata.org/wiki/${qid}#${item.type}-${index}-${encodeURIComponent(item.title)}`,
-                    title: item.title,
-                    text: item.subtitle || item.type,
+                    url: `wikidata:${qid}#${item.orgName}`,
+                    title: item.orgName,
+                    text: item.role || item.type,
                     publishedAt: item.startDate ? new Date(item.startDate) : null,
                     metadata: {
                         type: item.type,
-                        subtitle: item.subtitle,
+                        orgQid: item.orgQid,
+                        role: item.role,
                         endDate: item.endDate,
-                        isOfficial: true
+                        isOfficial: true,
+                        // 保存原始数据用于后续存储
+                        _rawData: item,
                     },
                 }));
             }),
@@ -258,9 +274,68 @@ export const buildPersonJob = inngest.createFunction(
             }
         }
 
-        // 保存到 RawPoolItem
+        // Enrich career items with AI-extracted dates from Exa content
+        await step.run('enrich-career-dates', async () => {
+            const exaItems = allItems.filter(i => i.sourceType === 'exa');
+            const careerItems = allItems.filter(i => i.sourceType === 'career');
+
+            // Only enrich if we have career items without dates AND exa content
+            const itemsNeedingDates = careerItems.filter(i => !i.publishedAt);
+            if (itemsNeedingDates.length === 0 || exaItems.length === 0) {
+                console.log(`[Job] Skipping date enrichment: ${itemsNeedingDates.length} items need dates, ${exaItems.length} Exa sources`);
+                return;
+            }
+
+            console.log(`[Job] Enriching ${itemsNeedingDates.length} career items with dates from ${exaItems.length} Exa sources`);
+
+            const sources = exaItems.map(e => ({ title: e.title, text: e.text }));
+            const extracted = await extractTimelineFromSources(searchName, sources);
+
+            console.log(`[Job] Extracted ${extracted.length} timeline events from Exa content`);
+
+            // Match extracted events to career items and update _rawData
+            for (const career of itemsNeedingDates) {
+                const match = extracted.find(e =>
+                    career.title.toLowerCase().includes(e.title.toLowerCase()) ||
+                    e.title.toLowerCase().includes(career.title.toLowerCase())
+                );
+
+                if (match && match.startDate) {
+                    career.publishedAt = new Date(match.startDate);
+                    // Update the _rawData with enriched dates
+                    if (career.metadata?._rawData) {
+                        career.metadata._rawData.startDate = match.startDate;
+                        career.metadata._rawData.endDate = match.endDate;
+                    }
+                    career.metadata = {
+                        ...career.metadata,
+                        endDate: match.endDate,
+                        dateSource: 'ai-extracted',
+                        confidence: match.confidence
+                    };
+                    console.log(`[Job] Enriched ${career.title} with date ${match.startDate}`);
+                }
+            }
+        });
+
+        // 保存职业数据到新表 Organization + PersonRole
+        await step.run('save-person-roles', async () => {
+            const careerItems = allItems.filter(i => i.sourceType === 'career');
+            const rawDataList = careerItems
+                .map(i => i.metadata?._rawData)
+                .filter(Boolean);
+
+            if (rawDataList.length > 0) {
+                await savePersonRoles(personId, rawDataList);
+                console.log(`[Job] Saved ${rawDataList.length} person roles to database`);
+            }
+        });
+
+        // 保存到 RawPoolItem（排除 career，已存入 Organization + PersonRole）
         await step.run('save-raw-items', async () => {
-            for (const item of allItems) {
+            const itemsToSave = allItems.filter(i => i.sourceType !== 'career');
+
+            for (const item of itemsToSave) {
                 const urlHash = crypto.createHash('md5').update(item.url).digest('hex');
                 const contentHash = crypto.createHash('md5').update(item.text.slice(0, 1000)).digest('hex');
 

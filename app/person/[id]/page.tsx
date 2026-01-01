@@ -19,6 +19,12 @@ export default async function PersonPage({ params }: PersonPageProps) {
             cards: {
                 orderBy: { importance: 'desc' },
             },
+            roles: {
+                include: {
+                    organization: true,
+                },
+                orderBy: { startDate: 'desc' },
+            },
         },
     });
 
@@ -56,7 +62,19 @@ export default async function PersonPage({ params }: PersonPageProps) {
             tags: card.tags,
             importance: card.importance,
         })),
+        // 新增：结构化职业数据
+        personRoles: person.roles.map(role => ({
+            id: role.id,
+            role: role.role,
+            roleZh: role.roleZh,
+            startDate: role.startDate?.toISOString() || undefined,
+            endDate: role.endDate?.toISOString() || undefined,
+            organizationName: role.organization.name,
+            organizationNameZh: role.organization.nameZh,
+            organizationType: role.organization.type,
+        })),
     };
 
     return <PersonPageClient person={personData} />;
 }
+
