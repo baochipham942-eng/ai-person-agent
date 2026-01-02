@@ -22,7 +22,7 @@ const PRIORITY_NAMES = [
     'Jakob Uszkoreit', 'Llion Jones', 'Lukasz Kaiser', 'Polosukhin'
 ];
 
-const MAX_RETRIES = 3;
+const MAX_RETRIES = 1;
 const REQUEST_DELAY = 4000; // 4秒
 const RETRY_DELAY = 5000;   // 重试前等待5秒
 

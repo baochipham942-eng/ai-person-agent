@@ -107,7 +107,8 @@ async function main() {
                 where: { personId: person.id, sourceType: 'github' }
             });
 
-            if (count === 0 || person.lastFetchedAt < new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) { // Fetch if empty or older than 7 days
+            const lastFetched = person.lastFetchedAt ? new Date(person.lastFetchedAt as any) : null;
+            if (count === 0 || !lastFetched || lastFetched < new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) { // Fetch if empty or older than 7 days
                 console.log(`fetching GitHub for ${person.name}...`);
                 const handleMatch = githubLink.handle || githubLink.url.match(/github\.com\/([^\/]+)/)?.[1];
                 if (handleMatch) {
@@ -115,7 +116,10 @@ async function main() {
                     if (repos.length > 0) {
                         console.log(`  Found ${repos.length} repos`);
                         for (const repo of repos) {
-                            await saveRawItem(person.id, 'github', repo);
+                            await saveRawItem(person.id, 'github', {
+                                ...repo,
+                                title: repo.fullName || repo.name
+                            });
                         }
                         fetchedSomething = true;
                     }
@@ -130,7 +134,8 @@ async function main() {
                 where: { personId: person.id, sourceType: 'youtube' }
             });
 
-            if (count === 0 || person.lastFetchedAt < new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) {
+            const lastFetched = person.lastFetchedAt ? new Date(person.lastFetchedAt as any) : null;
+            if (count === 0 || !lastFetched || lastFetched < new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) {
                 console.log(`fetching YouTube for ${person.name}...`);
                 const channelId = await resolveYouTubeChannelId(youtubeLink.url);
                 if (channelId) {
