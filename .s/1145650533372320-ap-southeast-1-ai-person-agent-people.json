@@ -16,7 +16,7 @@
       "PORT": "9000"
     },
     "createdTime": "2025-12-30T10:22:02Z",
-    "lastModifiedTime": "2026-01-01T15:45:53Z",
+    "lastModifiedTime": "2026-01-02T00:17:49Z",
     "instanceConcurrency": 50,
     "instanceSoftConcurrency": null,
     "customContainerConfig": null,
