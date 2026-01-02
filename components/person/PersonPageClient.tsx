@@ -390,6 +390,60 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                         {Object.keys(itemsBySource).map(source => (
                             activeTab === source && (
                                 <div key={source} className="p-6">
+                                    {/* X Profile Header - 展示用户简介 */}
+                                    {source === 'x' && (() => {
+                                        const xLink = person.officialLinks.find(l =>
+                                            l.platform === 'twitter' ||
+                                            l.type === 'twitter' ||
+                                            l.type === 'x' ||
+                                            (l.url && (l.url.includes('twitter.com') || l.url.includes('x.com')))
+                                        );
+                                        if (xLink && (xLink.bio || xLink.displayName)) {
+                                            const username = xLink.url?.match(/(?:twitter\.com|x\.com)\/([^\/\?]+)/)?.[1];
+                                            return (
+                                                <div className="mb-6 p-4 bg-gradient-to-r from-slate-900 to-blue-900 rounded-xl text-white">
+                                                    <div className="flex items-start gap-4">
+                                                        {/* X Logo */}
+                                                        <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-xl font-bold shrink-0">
+                                                            𝕏
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            {/* Display Name & Handle */}
+                                                            <div className="flex items-center gap-2 mb-1">
+                                                                <span className="font-bold text-lg truncate">
+                                                                    {xLink.displayName || person.name}
+                                                                </span>
+                                                                {username && (
+                                                                    <span className="text-blue-300 text-sm">@{username}</span>
+                                                                )}
+                                                            </div>
+                                                            {/* Bio */}
+                                                            {xLink.bio && (
+                                                                <p className="text-gray-200 text-sm leading-relaxed mb-2">
+                                                                    {xLink.bio}
+                                                                </p>
+                                                            )}
+                                                            {/* Stats & Link */}
+                                                            <div className="flex items-center gap-4 text-xs text-gray-400">
+                                                                {xLink.followers && (
+                                                                    <span>{xLink.followers.toLocaleString()} 关注者</span>
+                                                                )}
+                                                                <a
+                                                                    href={xLink.url}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-blue-300 hover:text-blue-200 hover:underline"
+                                                                >
+                                                                    查看主页 →
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        }
+                                        return null;
+                                    })()}
                                     <SourceList source={source} items={itemsBySource[source]} />
                                 </div>
                             )
@@ -933,11 +987,13 @@ function LinkedinIcon({ className }: { className?: string }) {
 function VerifiedMatrix({ links }: { links: any[] }) {
     if (!links || links.length === 0) return null;
 
-    // 优先展示的类型和顺序
+    // 优先展示的类型和顺序 - support both type and platform properties
     const priority = ['website', 'twitter', 'github', 'youtube', 'linkedin', 'scholar'];
     const sortedLinks = [...links].sort((a, b) => {
-        const ia = priority.indexOf(a.type);
-        const ib = priority.indexOf(b.type);
+        const typeA = a.type || a.platform;
+        const typeB = b.type || b.platform;
+        const ia = priority.indexOf(typeA);
+        const ib = priority.indexOf(typeB);
         return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
     });
 
@@ -953,11 +1009,11 @@ function VerifiedMatrix({ links }: { links: any[] }) {
                         rel="noopener noreferrer"
                         className={`
                             flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all
-                            ${getLinkStyle(link.type)}
+                            ${getLinkStyle(link.type || link.platform)}
                         `}
                     >
                         <span className="text-lg flex items-center justify-center">
-                            <LinkIcon type={link.type} />
+                            <LinkIcon type={link.type || link.platform} />
                         </span>
                         <span className="text-xs font-medium">
                             {getLinkLabel(link)}
@@ -970,7 +1026,8 @@ function VerifiedMatrix({ links }: { links: any[] }) {
     );
 }
 
-function getLinkStyle(type: string) {
+function getLinkStyle(typeOrPlatform: string) {
+    const type = typeOrPlatform || '';
     switch (type) {
         case 'twitter': return 'bg-slate-50 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-500';
         case 'github': return 'bg-gray-50 border-gray-200 text-gray-800 hover:border-gray-400 hover:bg-gray-100';
@@ -981,11 +1038,16 @@ function getLinkStyle(type: string) {
 }
 
 function getLinkLabel(link: any) {
-    if (link.type === 'website') return 'Website';
-    if (link.type === 'scholar') return 'Scholar';
+    // Support both 'type' and 'platform' properties (data inconsistency)
+    const linkType = link.type || link.platform;
+    if (!linkType) return link.title || 'Link';
+
+    if (linkType === 'website') return 'Website';
+    if (linkType === 'scholar') return 'Scholar';
+    if (linkType === 'twitter') return link.handle || 'Twitter';
     // 截断过长的 handle
     if (link.handle) return link.handle.length > 12 ? link.handle.slice(0, 10) + '...' : link.handle;
-    return link.type.charAt(0).toUpperCase() + link.type.slice(1);
+    return linkType.charAt(0).toUpperCase() + linkType.slice(1);
 }
 
 // 时光轴视图组件 - LinkedIn 风格 (分区展示)
