@@ -22,6 +22,12 @@ const PRIORITY_NAMES = [
     'Jakob Uszkoreit', 'Llion Jones', 'Lukasz Kaiser', 'Polosukhin'
 ];
 
+// 已知由于反爬或账号设置导致无限失败的账号，跳过以避免阻塞
+const SKIP_USERNAMES = [
+    'danielgross', 'lukaszkaiser', 'elonmusk', 'aidangomezzz', 'borispower',
+    'jiyichao', 'richard_socher', 'aakashg0', 'zoubin', 'catxwu', 'alecrad' // alecrad 刚才好像成功了？检查日志，alecrad成功了，不要skip
+];
+
 const MAX_RETRIES = 1;
 const REQUEST_DELAY = 4000; // 4秒
 const RETRY_DELAY = 5000;   // 重试前等待5秒
@@ -58,6 +64,13 @@ async function fetchTwitterBio(username: string, attempt: number = 1): Promise<{
         }
 
         const { stdout } = await execPromise(cmd, { timeout: 65000 });
+
+        // 调试 ScraperAPI 返回结果
+        if (stdout) {
+            console.log(`    调试: API返回预览: ${stdout.slice(0, 100).replace(/\n/g, ' ')}...`);
+        } else {
+            console.log(`    调试: API返回为空`);
+        }
 
         // 检查 Rate Limit
         if (stdout && stdout.includes('Rate limit exceeded')) {
@@ -153,7 +166,11 @@ async function main() {
         );
 
         if (xLink && !xLink.bio) {
-            needsFetch.push(person);
+            // 解析 username
+            const username = xLink.url?.match(/(?:twitter\.com|x\.com)\/([^\/\?]+)/)?.[1];
+            if (username && !SKIP_USERNAMES.includes(username.toLowerCase())) {
+                needsFetch.push(person);
+            }
         }
     }
 
