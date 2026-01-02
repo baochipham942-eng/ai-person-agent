@@ -35,26 +35,42 @@ async function fetchTwitterBio(username: string): Promise<TwitterUserInfo | null
         const url = `https://syndication.twitter.com/srv/timeline-profile/screen-name/${username}`;
 
         const cmd = `curl -s -L -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" "${url}"`;
-        const { stdout } = await execPromise(cmd, { timeout: 10000 });
+        const { stdout } = await execPromise(cmd, { timeout: 15000 });
 
-        if (!stdout || stdout.includes('error')) {
+        if (!stdout || stdout.length < 1000) {
             console.log(`  syndication API failed, trying alternative...`);
             return null;
         }
 
-        // 解析HTML中的用户信息
-        // Twitter会返回HTML，其中包含JSON数据
-        const dataMatch = stdout.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/s);
+        // 解析HTML中的JSON数据
+        const dataMatch = stdout.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
         if (dataMatch) {
             const jsonData = JSON.parse(dataMatch[1]);
-            const user = jsonData?.props?.pageProps?.timeline?.entries?.[0]?.content?.tweet?.user;
-            if (user) {
+            const entries = jsonData?.props?.pageProps?.timeline?.entries || [];
+
+            // 遍历所有entries找到目标用户的信息
+            for (const entry of entries) {
+                const user = entry?.content?.tweet?.user;
+                if (user && user.screen_name?.toLowerCase() === username.toLowerCase()) {
+                    return {
+                        name: user.name || '',
+                        screen_name: user.screen_name || username,
+                        description: user.description || '',
+                        followers_count: user.followers_count || 0,
+                        profile_image_url_https: user.profile_image_url_https || ''
+                    };
+                }
+            }
+
+            // 如果entries里第一条推文是该用户的，也可以用
+            const firstUser = entries[0]?.content?.tweet?.user;
+            if (firstUser && firstUser.description) {
                 return {
-                    name: user.name,
-                    screen_name: user.screen_name,
-                    description: user.description,
-                    followers_count: user.followers_count,
-                    profile_image_url_https: user.profile_image_url_https
+                    name: firstUser.name || '',
+                    screen_name: firstUser.screen_name || username,
+                    description: firstUser.description || '',
+                    followers_count: firstUser.followers_count || 0,
+                    profile_image_url_https: firstUser.profile_image_url_https || ''
                 };
             }
         }
