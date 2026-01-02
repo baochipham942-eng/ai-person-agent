@@ -987,13 +987,11 @@ function LinkedinIcon({ className }: { className?: string }) {
 function VerifiedMatrix({ links }: { links: any[] }) {
     if (!links || links.length === 0) return null;
 
-    // 优先展示的类型和顺序 - support both type and platform properties
+    // 优先展示的类型和顺序
     const priority = ['website', 'twitter', 'github', 'youtube', 'linkedin', 'scholar'];
     const sortedLinks = [...links].sort((a, b) => {
-        const typeA = a.type || a.platform;
-        const typeB = b.type || b.platform;
-        const ia = priority.indexOf(typeA);
-        const ib = priority.indexOf(typeB);
+        const ia = priority.indexOf(a.type || '');
+        const ib = priority.indexOf(b.type || '');
         return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
     });
 
@@ -1009,11 +1007,11 @@ function VerifiedMatrix({ links }: { links: any[] }) {
                         rel="noopener noreferrer"
                         className={`
                             flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all
-                            ${getLinkStyle(link.type || link.platform)}
+                            ${getLinkStyle(link.type)}
                         `}
                     >
                         <span className="text-lg flex items-center justify-center">
-                            <LinkIcon type={link.type || link.platform} />
+                            <LinkIcon type={link.type} />
                         </span>
                         <span className="text-xs font-medium">
                             {getLinkLabel(link)}
@@ -1026,9 +1024,8 @@ function VerifiedMatrix({ links }: { links: any[] }) {
     );
 }
 
-function getLinkStyle(typeOrPlatform: string) {
-    const type = typeOrPlatform || '';
-    switch (type) {
+function getLinkStyle(type: string) {
+    switch (type || '') {
         case 'twitter': return 'bg-slate-50 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-500';
         case 'github': return 'bg-gray-50 border-gray-200 text-gray-800 hover:border-gray-400 hover:bg-gray-100';
         case 'youtube': return 'bg-red-50 border-red-100 text-red-700 hover:border-red-300 hover:bg-red-100';
@@ -1038,8 +1035,7 @@ function getLinkStyle(typeOrPlatform: string) {
 }
 
 function getLinkLabel(link: any) {
-    // Support both 'type' and 'platform' properties (data inconsistency)
-    const linkType = link.type || link.platform;
+    const linkType = link.type;
     if (!linkType) return link.title || 'Link';
 
     if (linkType === 'website') return 'Website';
