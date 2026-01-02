@@ -13,7 +13,7 @@ const execPromise = util.promisify(exec);
 const prisma = new PrismaClient();
 
 const MAX_RETRIES = 3;
-const REQUEST_DELAY = 2000; // 2秒
+const REQUEST_DELAY = 4000; // 4秒
 const RETRY_DELAY = 5000;   // 重试前等待5秒
 
 interface TwitterUserInfo {
@@ -123,8 +123,8 @@ async function main() {
         }
     }
 
-    // 每次只处理前20个
-    const currentBatch = needsFetch.slice(0, 20);
+    // 每次只处理前15个
+    const currentBatch = needsFetch.slice(0, 15);
     console.log(`需要抓取简介总数: ${needsFetch.length}`);
     console.log(`本次处理数量: ${currentBatch.length}\n`);
 

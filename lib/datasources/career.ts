@@ -143,6 +143,13 @@ export async function savePersonRoles(
     }
   });
 
+  // Helper: Safe Date parsing
+  const safeDate = (dateStr?: string) => {
+    if (!dateStr) return null;
+    const d = new Date(dateStr);
+    return isNaN(d.getTime()) ? null : d;
+  };
+
   // 4. 保存到数据库
   for (const item of rawData) {
     const orgType = item.type === 'education' ? 'university' : 'company';
@@ -157,14 +164,13 @@ export async function savePersonRoles(
         wikidataQid: item.orgQid,
       },
       update: {
-        // 更新中文名（如果之前没有）
         nameZh: translateMap.get(item.orgName),
       },
     });
 
-    // Create or Update PersonRole (handle null startDate manually since compound unique can't have null)
-    const startDate = item.startDate ? new Date(item.startDate) : null;
-    const endDate = item.endDate ? new Date(item.endDate) : null;
+    // Create or Update PersonRole
+    const startDate = safeDate(item.startDate);
+    const endDate = safeDate(item.endDate);
     const role = item.role || (item.type === 'education' ? 'student' : 'employee');
     const roleZh = translateMap.get(item.role || '') || (item.type === 'education' ? '学生' : '员工');
 
