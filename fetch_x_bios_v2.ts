@@ -41,7 +41,9 @@ async function fetchTwitterBio(username: string, attempt: number = 1): Promise<T
     try {
         const url = `https://syndication.twitter.com/srv/timeline-profile/screen-name/${username}`;
 
-        const cmd = `curl -s -L --max-time 20 -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept: text/html,application/xhtml+xml" -H "Accept-Language: en-US,en;q=0.9" "${url}"`;
+        // 支持代理配置
+        const proxy = process.env.PROXY_URL ? `-x "${process.env.PROXY_URL}"` : '';
+        const cmd = `curl -s -L ${proxy} --max-time 20 -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept: text/html,application/xhtml+xml" -H "Accept-Language: en-US,en;q=0.9" "${url}"`;
 
         const { stdout } = await execPromise(cmd, { timeout: 25000 });
 
