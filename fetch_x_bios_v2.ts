@@ -12,6 +12,16 @@ import util from 'util';
 const execPromise = util.promisify(exec);
 const prisma = new PrismaClient();
 
+const PRIORITY_NAMES = [
+    'Sam Altman', 'Elon Musk', 'Demis Hassabis', 'Ilya Sutskever', 'Geoffrey Hinton',
+    'Yann LeCun', 'Yoshua Bengio', 'Fei-Fei Li', 'Andrew Ng', 'Andrej Karpathy',
+    'Greg Brockman', 'Jensen Huang', 'Mark Zuckerberg', 'Sundar Pichai', 'Satya Nadella',
+    'Vitalik Buterin', 'Bill Gates', 'Jeff Dean', 'Kai-Fu Lee', 'François Chollet',
+    'Hugging Face', 'Daniel Gross', 'Jim Keller', 'John Schulman', 'Dario Amodei',
+    'Daniela Amodei', 'Noam Shazeer', 'Aidan Gomez', 'Ashish Vaswani', 'Niki Parmar',
+    'Jakob Uszkoreit', 'Llion Jones', 'Lukasz Kaiser', 'Polosukhin'
+];
+
 const MAX_RETRIES = 3;
 const REQUEST_DELAY = 4000; // 4秒
 const RETRY_DELAY = 5000;   // 重试前等待5秒
@@ -96,14 +106,15 @@ async function fetchTwitterBio(username: string, attempt: number = 1): Promise<T
 }
 
 async function main() {
-    console.log('=== X简介抓取 v2（带重试） ===\n');
+    console.log('=== X简介抓取 v2（带优先级） ===\n');
 
     // 获取所有有X链接但还没有bio的人
     const people = await prisma.people.findMany({
         select: {
             id: true,
             name: true,
-            officialLinks: true
+            officialLinks: true,
+            completeness: true // 用于排序
         }
     });
 
@@ -122,6 +133,19 @@ async function main() {
             needsFetch.push(person);
         }
     }
+
+    // 优先级排序：VIP > Completeness
+    needsFetch.sort((a, b) => {
+        // 检查 VIP 列表（支持部分匹配）
+        const isVipA = PRIORITY_NAMES.some(vip => a.name.includes(vip) || vip.includes(a.name));
+        const isVipB = PRIORITY_NAMES.some(vip => b.name.includes(vip) || vip.includes(b.name));
+
+        if (isVipA && !isVipB) return -1;
+        if (!isVipA && isVipB) return 1;
+
+        // 如果优先级相同，按 completeness 降序
+        return (b.completeness || 0) - (a.completeness || 0);
+    });
 
     // 每次只处理前15个
     const currentBatch = needsFetch.slice(0, 15);
