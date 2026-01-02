@@ -42,13 +42,22 @@ let consecutiveRateLimitCount = 0;
 
 async function fetchTwitterBio(username: string, attempt: number = 1): Promise<{ data: TwitterUserInfo | null; errorType?: 'RATE_LIMIT' | 'OTHER' }> {
     try {
-        const url = `https://syndication.twitter.com/srv/timeline-profile/screen-name/${username}`;
+        let targetUrl = `https://syndication.twitter.com/srv/timeline-profile/screen-name/${username}`;
+        let cmd = '';
 
-        // 支持代理配置
-        const proxy = process.env.PROXY_URL ? `-x "${process.env.PROXY_URL}"` : '';
-        const cmd = `curl -s -L ${proxy} --max-time 20 -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept: text/html,application/xhtml+xml" -H "Accept-Language: en-US,en;q=0.9" "${url}"`;
+        // 优先检查 ScraperAPI 配置
+        if (process.env.SCRAPERAPI_KEY) {
+            // 使用 ScraperAPI 的 HTTP GET 模式
+            const scraperUrl = `http://api.scraperapi.com/?api_key=${process.env.SCRAPERAPI_KEY}&url=${encodeURIComponent(targetUrl)}&keep_headers=true`;
+            // 注意：这里需要传递 header，所以 keep_headers=true 很重要
+            cmd = `curl -s -L --max-time 60 "${scraperUrl}" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"`;
+        } else {
+            // 原有的 Proxy 模式
+            const proxy = process.env.PROXY_URL ? `-x "${process.env.PROXY_URL}"` : '';
+            cmd = `curl -s -L ${proxy} --max-time 20 -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept: text/html,application/xhtml+xml" -H "Accept-Language: en-US,en;q=0.9" "${targetUrl}"`;
+        }
 
-        const { stdout } = await execPromise(cmd, { timeout: 25000 });
+        const { stdout } = await execPromise(cmd, { timeout: 65000 });
 
         // 检查 Rate Limit
         if (stdout && stdout.includes('Rate limit exceeded')) {
