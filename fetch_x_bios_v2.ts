@@ -37,7 +37,10 @@ async function sleep(ms: number) {
     return new Promise(r => setTimeout(r, ms));
 }
 
-async function fetchTwitterBio(username: string, attempt: number = 1): Promise<TwitterUserInfo | null> {
+// 添加全局变量
+let consecutiveRateLimitCount = 0;
+
+async function fetchTwitterBio(username: string, attempt: number = 1): Promise<{ data: TwitterUserInfo | null; errorType?: 'RATE_LIMIT' | 'OTHER' }> {
     try {
         const url = `https://syndication.twitter.com/srv/timeline-profile/screen-name/${username}`;
 
@@ -47,13 +50,18 @@ async function fetchTwitterBio(username: string, attempt: number = 1): Promise<T
 
         const { stdout } = await execPromise(cmd, { timeout: 25000 });
 
+        // 检查 Rate Limit
+        if (stdout && stdout.includes('Rate limit exceeded')) {
+            return { data: null, errorType: 'RATE_LIMIT' };
+        }
+
         if (!stdout || stdout.length < 500) {
             if (attempt < MAX_RETRIES) {
                 console.log(`    重试 ${attempt + 1}/${MAX_RETRIES}...`);
                 await sleep(RETRY_DELAY);
                 return fetchTwitterBio(username, attempt + 1);
             }
-            return null;
+            return { data: null, errorType: 'OTHER' };
         }
 
         // 解析JSON
@@ -68,10 +76,12 @@ async function fetchTwitterBio(username: string, attempt: number = 1): Promise<T
                 if (user && user.screen_name?.toLowerCase() === username.toLowerCase()) {
                     if (user.description) {
                         return {
-                            name: user.name || '',
-                            screen_name: user.screen_name,
-                            description: user.description,
-                            followers_count: user.followers_count || 0,
+                            data: {
+                                name: user.name || '',
+                                screen_name: user.screen_name,
+                                description: user.description,
+                                followers_count: user.followers_count || 0,
+                            }
                         };
                     }
                 }
@@ -81,10 +91,12 @@ async function fetchTwitterBio(username: string, attempt: number = 1): Promise<T
             const firstUser = entries[0]?.content?.tweet?.user;
             if (firstUser?.description) {
                 return {
-                    name: firstUser.name || '',
-                    screen_name: firstUser.screen_name || username,
-                    description: firstUser.description,
-                    followers_count: firstUser.followers_count || 0,
+                    data: {
+                        name: firstUser.name || '',
+                        screen_name: firstUser.screen_name || username,
+                        description: firstUser.description,
+                        followers_count: firstUser.followers_count || 0,
+                    }
                 };
             }
         }
@@ -96,14 +108,14 @@ async function fetchTwitterBio(username: string, attempt: number = 1): Promise<T
             return fetchTwitterBio(username, attempt + 1);
         }
 
-        return null;
+        return { data: null, errorType: 'OTHER' };
     } catch (error) {
         if (attempt < MAX_RETRIES) {
             console.log(`    请求失败，重试 ${attempt + 1}/${MAX_RETRIES}...`);
             await sleep(RETRY_DELAY);
             return fetchTwitterBio(username, attempt + 1);
         }
-        return null;
+        return { data: null, errorType: 'OTHER' };
     }
 }
 
@@ -158,6 +170,12 @@ async function main() {
     let failed = 0;
 
     for (let i = 0; i < currentBatch.length; i++) {
+        // 熔断检测
+        if (consecutiveRateLimitCount >= 3) {
+            console.log(`\n❌ 连续3次触发 Rate Limit，自动停止脚本。请稍后再试或更换 IP。`);
+            break;
+        }
+
         const person = currentBatch[i];
         const links = (person.officialLinks as any[]) || [];
         const xLinkIndex = links.findIndex(l =>
@@ -174,9 +192,17 @@ async function main() {
         const username = urlMatch[1];
         console.log(`[${i + 1}/${needsFetch.length}] ${person.name} (@${username})`);
 
-        const bioInfo = await fetchTwitterBio(username);
+        const result = await fetchTwitterBio(username);
 
-        if (bioInfo && bioInfo.description) {
+        if (result.errorType === 'RATE_LIMIT') {
+            console.log(`  ❌ Rate Limit Exceeded`);
+            consecutiveRateLimitCount++;
+            failed++;
+        } else if (result.data && result.data.description) {
+            // 成功：重置计数器
+            consecutiveRateLimitCount = 0;
+
+            const bioInfo = result.data;
             links[xLinkIndex] = {
                 ...xLink,
                 platform: 'twitter',
@@ -195,6 +221,8 @@ async function main() {
             updated++;
         } else {
             console.log(`  ❌ 无法获取`);
+            // 此处不算Rate Limit，重置计数器
+            consecutiveRateLimitCount = 0;
             failed++;
         }
 
