@@ -57,14 +57,14 @@ export async function GET(request: Request) {
             pagination: {
                 page,
                 limit,
-                total: people.length,
+                total,
                 hasMore
             }
         });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Failed to fetch people recommendations:', error);
         return NextResponse.json(
-            { error: 'Failed to fetch people recommendations' },
+            { error: 'Failed to fetch people recommendations', details: error.message },
             { status: 500 }
         );
     }
