@@ -13,42 +13,25 @@ export async function GET(request: Request) {
         const limit = parseInt(searchParams.get('limit') || '10');
         const start = (page - 1) * limit;
 
-        // 按 aiContributionScore 排序 (数据库层面排序，更高效)
-        const people = await prisma.people.findMany({
-            where: {
-                status: {
-                    not: 'error',
-                },
-            },
-            orderBy: [
-                { aiContributionScore: 'desc' },
-                { name: 'asc' },
-            ],
-            select: {
-                id: true,
-                name: true,
-                avatarUrl: true,
-                occupation: true,
-                description: true,
-                whyImportant: true,
-                status: true,
-                aiContributionScore: true,
-            },
-            skip: start,
-            take: limit,
-        });
+        // 使用 raw sql 绕过 Prisma Client 的 cached plan 错误
+        const people = await prisma.$queryRaw<any[]>`
+            SELECT id, name, "avatarUrl", occupation, description, "whyImportant", status, "aiContributionScore"
+            FROM "People"
+            WHERE status != 'error'
+            ORDER BY "aiContributionScore" DESC, name ASC
+            LIMIT ${limit} OFFSET ${start}
+        `;
 
         // 移除内存排序逻辑，直接使用数据库返回的结果
         const paginated = people;
 
         // 获取总数以便分页
-        const total = await prisma.people.count({
-            where: {
-                status: {
-                    not: 'error',
-                },
-            },
-        });
+        const totalResult = await prisma.$queryRaw<any[]>`
+            SELECT COUNT(*)::int as count 
+            FROM "People" 
+            WHERE status != 'error'
+        `;
+        const total = totalResult[0]?.count || 0;
 
         const hasMore = start + limit < total;
 
@@ -64,7 +47,7 @@ export async function GET(request: Request) {
     } catch (error: any) {
         console.error('Failed to fetch people recommendations:', error);
         return NextResponse.json(
-            { error: 'Failed to fetch people recommendations', details: error.message },
+            { error: 'Failed to fetch people recommendations' },
             { status: 500 }
         );
     }
