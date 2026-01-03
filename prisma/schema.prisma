@@ -40,7 +40,7 @@ model People {
   aliases         String[]
   description     String?
   whyImportant    String?         // AI贡献总结：核心贡献 + 数据来源
-  aiContributionScore Int         @default(5) // AI 贡献度评分 (0-10)
+  aiContributionScore Float           @default(5) // AI 贡献度评分 (0-10, 支持小数)
   avatarUrl       String?
   gender          String?         // "male", "female", "other", "unknown"
   country         String?         // ISO 3166-1 alpha-2, e.g. "CN", "US"
