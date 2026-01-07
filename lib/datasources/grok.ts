@@ -146,7 +146,7 @@ Do not output any markdown formatting or explanations, just the raw JSON string.
                     mode: 'on',
                     return_citations: true,
                     max_search_results: options.maxResults || 10,
-                    sources: ['x'],
+                    sources: [{ type: 'x' }], // 正确格式：对象数组
                 },
                 temperature: 0.1, // Lower temperature for more deterministic JSON
                 response_format: { type: 'json_object' } // Enforce JSON

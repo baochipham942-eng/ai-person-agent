@@ -1,6 +1,9 @@
 import type { NextAuthConfig } from 'next-auth';
 
 export const authConfig = {
+    // Trust the x-forwarded-proto header from reverse proxy (Aliyun FC)
+    // This ensures NextAuth uses HTTPS for callbacks even behind HTTP proxy
+    trustHost: true,
     pages: {
         signIn: '/login',
     },

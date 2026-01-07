@@ -9,6 +9,7 @@ interface Person {
     avatarUrl: string | null;
     occupation: string[];
     description: string | null;
+    whyImportant: string | null;
     status: string;
 }
 

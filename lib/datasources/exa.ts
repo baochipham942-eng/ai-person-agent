@@ -4,6 +4,8 @@
  * https://exa.ai/
  */
 
+import { isChineseOrEnglish } from '../utils/language';
+
 interface ExaSearchResult {
     url: string;
     title: string;
@@ -165,7 +167,8 @@ export async function searchPersonContent(
     return allResults.filter(r => {
         if (seen.has(r.url)) return false;
         seen.add(r.url);
-        return true;
+        // 语言过滤：过滤掉日文、韩文等非中英文内容
+        return isChineseOrEnglish(r.title);
     });
 }
 

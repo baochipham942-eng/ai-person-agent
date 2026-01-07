@@ -3,6 +3,8 @@
  * 用于获取播客信息
  */
 
+import { isChineseOrEnglish } from '../utils/language';
+
 interface PodcastItem {
     id: string; // collectionId
     title: string; // collectionName
@@ -54,6 +56,9 @@ export async function searchPodcasts(
                 return lowerKeywords.some(k => text.includes(k));
             });
         }
+
+        // 语言过滤：过滤掉日文、韩文等非中英文内容
+        results = results.filter((item: any) => isChineseOrEnglish(item.trackName || ''));
 
         return results.slice(0, limit).map((item: any) => ({
             id: String(item.trackId || item.collectionId),

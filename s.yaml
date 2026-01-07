@@ -42,6 +42,8 @@ services:
               - HEAD
       customDomains:
         - domainName: people.llmxy.xyz
+          # Note: HTTPS is configured in Aliyun console, not here
+          # Use --use-remote flag when deploying to preserve cloud HTTPS settings
           protocol: HTTP
           routeConfigs:
             - path: /*

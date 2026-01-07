@@ -8,6 +8,7 @@ interface Person {
     avatarUrl: string | null;
     occupation: string[];
     description: string | null;
+    whyImportant: string | null;
 }
 
 // 根据名字生成一致的颜色
@@ -24,12 +25,20 @@ export function PersonCard({ person }: { person: Person }) {
     // 获取优化后的职业标签
     const occupation = getBestOccupation(person.occupation) || '人物';
 
-    // 简介处理：截断并添加省略号
-    const description = person.description
-        ? (person.description.length > 50
-            ? person.description.slice(0, 50) + '...'
-            : person.description)
+    // 简介处理：优先显示 whyImportant (AI贡献)，否则显示 description (通用简介)
+    // 简介处理：优先显示 whyImportant (AI贡献)，否则显示 description (通用简介)
+    const hasWhyImportant = !!person.whyImportant;
+    const sourceText = person.whyImportant || person.description;
+
+    // 截断处理
+    const truncatedText = sourceText
+        ? (sourceText.length > 60   // 增加截断长度，避免意思不完整
+            ? sourceText.slice(0, 60) + '...'
+            : sourceText)
         : '暂无简介';
+
+    // 如果是 whyImportant，添加 emoji 前缀 (不放在 tooltip，直接显式展示)
+    const displayContent = hasWhyImportant ? `💡 ${truncatedText}` : truncatedText;
 
     return (
         <Link
@@ -72,7 +81,7 @@ export function PersonCard({ person }: { person: Person }) {
 
                 {/* Description */}
                 <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed flex-1">
-                    {description}
+                    {displayContent}
                 </p>
             </div>
         </Link>

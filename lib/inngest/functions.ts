@@ -9,6 +9,7 @@ import { getUserRepos } from '@/lib/datasources/github';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
 import { fetchRawCareerData, savePersonRoles } from '@/lib/datasources/career';
 import { extractTimelineFromSources } from '@/lib/ai/timelineExtractor';
+import { isAboutPerson, PersonContext } from '@/lib/utils/identity';
 import crypto from 'crypto';
 
 /**
@@ -97,6 +98,15 @@ export const buildPersonJob = inngest.createFunction(
             })
             .filter(Boolean) as string[];
 
+        // 构建人物上下文，用于身份验证（防止抓错人）
+        const personContext: PersonContext = {
+            name: personName,
+            englishName: englishName || searchName,
+            aliases: aliases || [],
+            organizations: person.organization || [],
+            occupations: person.occupation || [],
+        };
+
         // 并行获取各数据源
         // 必须返回 source 和 fetchedAt，以便在 Promise.all 结束后汇总更新时间（因为 step 内部无法持久化修改外部变量）
         type StepResult = { source: string; items: any[]; fetchedAt?: string };
@@ -130,7 +140,14 @@ export const buildPersonJob = inngest.createFunction(
                         metadata: { author: r.author, isOfficial },
                     };
                 });
-                return { source: 'exa', items, fetchedAt };
+
+                // 身份验证：过滤掉与目标人物无关的内容
+                const validItems = items.filter(item =>
+                    item.metadata.isOfficial || isAboutPerson(item.title + ' ' + item.text, personContext)
+                );
+                console.log(`[Job] Exa: ${items.length} fetched, ${validItems.length} validated`);
+
+                return { source: 'exa', items: validItems, fetchedAt };
             }),
 
             // 2. X/Grok
@@ -175,7 +192,26 @@ export const buildPersonJob = inngest.createFunction(
                         metadata: { sources: grokResult.sources, isOfficial: true },
                     }];
                 }
-                return { source: 'grok', items, fetchedAt };
+                // 身份验证：非官方 X 帖子需要验证是否相关
+                // 如果是官方账号抓取 (xHandle 存在)，通常认为相关，但为了保险起见，
+                // 如果是自动搜索结果，必须验证。
+                // 鉴于用户反馈 Grok 有时会抓取无关内容，这里强制进行 isAboutPerson 检查
+                // 除非是极其确定的官方源 (summary case)
+                let validItems = items;
+                if (items.length > 0 && items[0].title !== `${searchName} on X`) {
+                    validItems = items.filter(item => {
+                        // 构建完整的检查文本
+                        const textToCheck = `${item.title} ${item.text}`;
+                        const isValid = isAboutPerson(textToCheck, personContext);
+                        if (!isValid) {
+                            console.log(`[Job] Filtered out irrelevant X post: ${item.url}`);
+                        }
+                        return isValid;
+                    });
+                }
+
+                console.log(`[Job] Grok: ${items.length} fetched, ${validItems.length} validated`);
+                return { source: 'grok', items: validItems, fetchedAt };
             }),
 
             // 3. YouTube
@@ -209,7 +245,16 @@ export const buildPersonJob = inngest.createFunction(
                     publishedAt: v.publishedAt ? new Date(v.publishedAt) : null,
                     metadata: { videoId: v.id, thumbnailUrl: v.thumbnailUrl, isOfficial },
                 }));
-                return { source: 'youtube', items, fetchedAt };
+
+                // 身份验证：非官方频道的视频需要验证是否与目标人物相关
+                const validItems = isOfficial
+                    ? items
+                    : items.filter(item => isAboutPerson(item.title + ' ' + item.text, personContext));
+                if (!isOfficial) {
+                    console.log(`[Job] YouTube: ${items.length} fetched, ${validItems.length} validated`);
+                }
+
+                return { source: 'youtube', items: validItems, fetchedAt };
             }),
 
             // 4. OpenAlex
@@ -271,7 +316,12 @@ export const buildPersonJob = inngest.createFunction(
                         isOfficial: false,
                     },
                 }));
-                return { source: 'podcast', items, fetchedAt };
+
+                // 身份验证：过滤掉与目标人物无关的播客
+                const validItems = items.filter(item => isAboutPerson(item.title + ' ' + item.text, personContext));
+                console.log(`[Job] Podcast: ${items.length} fetched, ${validItems.length} validated`);
+
+                return { source: 'podcast', items: validItems, fetchedAt };
             }),
 
             // 6. GitHub
@@ -488,7 +538,25 @@ export const buildPersonJob = inngest.createFunction(
             const itemsToSave = allItems.filter(i => i.sourceType !== 'career');
 
             for (const item of itemsToSave) {
-                const urlHash = crypto.createHash('md5').update(item.url).digest('hex');
+                // Normalize URL to prevent duplicates (remove query params, trailing slash)
+                let normalizedUrl = item.url;
+                try {
+                    const u = new URL(item.url);
+                    // Keep path, but remove query params for most sites to avoid duplicates ?? 
+                    // 某些站点 query param 是必须的 (如 youtube watch?v=), 大部分文章不是
+                    // 采取保守策略: 只对特定域名做去参，或者只去尾部斜杠
+                    if (u.hostname !== 'www.youtube.com' && u.hostname !== 'youtube.com' && !u.pathname.includes('watch')) {
+                        u.search = '';
+                    }
+                    // Remove trailing slash
+                    let cleanPath = u.href;
+                    if (cleanPath.endsWith('/')) cleanPath = cleanPath.slice(0, -1);
+                    normalizedUrl = cleanPath;
+                } catch (e) {
+                    // ignore invalid urls
+                }
+
+                const urlHash = crypto.createHash('md5').update(normalizedUrl).digest('hex');
                 const contentHash = crypto.createHash('md5').update(item.text.slice(0, 1000)).digest('hex');
 
                 // 使用 upsert 避免重复

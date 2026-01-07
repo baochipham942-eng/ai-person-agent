@@ -19,7 +19,10 @@ interface PersonData {
     id: string;
     name: string;
     description: string | null;
+    whyImportant: string | null;
     avatarUrl: string | null;
+    gender?: string | null;      // "male", "female", "other", "unknown"
+    country?: string | null;     // ISO 3166-1 alpha-2, e.g. "CN", "US"
     qid: string;
     status: string;
     completeness: number;
@@ -53,9 +56,57 @@ interface PersonPageClientProps {
     person: PersonData;
 }
 
+// Helper: 获取首选显示姓名 (中国人用中文，外国人用英文)
+function getDisplayName(person: PersonData): string {
+    const isChinese = person.country === 'CN' || /[\u4e00-\u9fa5]/.test(person.name);
+    const sanitize = (str: string) => {
+        const parts = str.trim().split(/\s+/);
+        if (parts.length === 2 && parts[0] === parts[1]) {
+            return parts[0];
+        }
+        return str;
+    };
+
+    if (isChinese) {
+        // 中国人物: 返回中文名 (如果 name 是英文开头，尝试从 aliases 找中文)
+        const chineseAlias = person.aliases?.find(a => /[\u4e00-\u9fa5]/.test(a));
+        return sanitize(chineseAlias || person.name);
+    } else {
+        // 外国人物: 返回英文名 (如果 name 是中文，尝试从 aliases 找英文)
+        if (/[\u4e00-\u9fa5]/.test(person.name)) {
+            const englishAlias = person.aliases?.find(a => /^[A-Za-z\s\-\.]+$/.test(a));
+            return sanitize(englishAlias || person.name);
+        }
+        return sanitize(person.name);
+    }
+}
+
+// Helper: 国家 ISO code -> 国旗 emoji
+function getCountryFlag(countryCode: string | null | undefined): string {
+    if (!countryCode) return '';
+    const code = countryCode.toUpperCase();
+    // 转换为国旗 emoji (ISO 3166-1 alpha-2 -> Regional Indicator Symbols)
+    const codePoints = [...code].map(char => 127397 + char.charCodeAt(0));
+    return String.fromCodePoint(...codePoints);
+}
+
+// Helper: 性别中文显示
+function getGenderLabel(gender: string | null | undefined): string {
+    if (!gender) return '';
+    switch (gender.toLowerCase()) {
+        case 'male': return '男';
+        case 'female': return '女';
+        case 'other': return '其他';
+        default: return '';
+    }
+}
+
 export function PersonPageClient({ person }: PersonPageClientProps) {
     const [avatarError, setAvatarError] = useState(false);
     const [activeTab, setActiveTab] = useState('timeline');
+
+    // 计算显示姓名
+    const displayName = getDisplayName(person);
 
     // 懒加载状态
     const [loadedItems, setLoadedItems] = useState<Record<string, RawPoolItem[]>>({});
@@ -172,10 +223,12 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                         <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-3 mb-2">
                                 <h1 className="text-2xl font-bold text-gray-900 truncate flex items-center gap-2">
-                                    {person.name}
-                                    {person.aliases && person.aliases.length > 0 && (
-                                        <span className="text-lg font-normal text-gray-500">
-                                            {person.aliases[0]}
+                                    {displayName}
+                                    {/* 性别和国家标签 */}
+                                    {(person.gender || person.country) && (
+                                        <span className="text-base font-normal text-gray-400 flex items-center gap-1">
+                                            {person.country && <span title={person.country}>{getCountryFlag(person.country)}</span>}
+                                            {person.gender && <span className="text-sm">{getGenderLabel(person.gender)}</span>}
                                         </span>
                                     )}
                                 </h1>
@@ -190,7 +243,14 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             </div>
 
                             {person.description && (
-                                <p className="text-gray-600 text-sm mb-3 line-clamp-2">{person.description}</p>
+                                <p className="text-gray-600 text-sm mb-2 line-clamp-2">{person.description}</p>
+                            )}
+
+                            {/* Why Important - 为什么重要 */}
+                            {person.whyImportant && (
+                                <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg px-3 py-2 mb-3">
+                                    <p className="text-sm text-amber-800"><span className="font-medium">✨ AI贡献：</span>{person.whyImportant}</p>
+                                </div>
                             )}
 
                             {/* 标签行 */}
@@ -386,68 +446,70 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
                             ) : null;
                         })()}
 
-                        {/* Rest Sources Content */}
-                        {Object.keys(itemsBySource).map(source => (
-                            activeTab === source && (
-                                <div key={source} className="p-6">
-                                    {/* X Profile Header - 展示用户简介 */}
-                                    {source === 'x' && (() => {
-                                        const xLink = person.officialLinks.find(l =>
-                                            l.platform === 'twitter' ||
-                                            l.type === 'twitter' ||
-                                            l.type === 'x' ||
-                                            (l.url && (l.url.includes('twitter.com') || l.url.includes('x.com')))
-                                        );
-                                        if (xLink && (xLink.bio || xLink.displayName)) {
-                                            const username = xLink.url?.match(/(?:twitter\.com|x\.com)\/([^\/\?]+)/)?.[1];
-                                            return (
-                                                <div className="mb-6 p-4 bg-gradient-to-r from-slate-900 to-blue-900 rounded-xl text-white">
-                                                    <div className="flex items-start gap-4">
-                                                        {/* X Logo */}
-                                                        <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-xl font-bold shrink-0">
-                                                            𝕏
-                                                        </div>
-                                                        <div className="flex-1 min-w-0">
-                                                            {/* Display Name & Handle */}
-                                                            <div className="flex items-center gap-2 mb-1">
-                                                                <span className="font-bold text-lg truncate">
-                                                                    {xLink.displayName || person.name}
-                                                                </span>
-                                                                {username && (
-                                                                    <span className="text-blue-300 text-sm">@{username}</span>
-                                                                )}
+                        {/* Rest Sources Content - Exclude github since it has dedicated GithubRepoList */}
+                        {Object.keys(itemsBySource)
+                            .filter(source => source !== 'github') // GitHub has dedicated tab, don't render again
+                            .map(source => (
+                                activeTab === source && (
+                                    <div key={source} className="p-6">
+                                        {/* X Profile Header - 展示用户简介 */}
+                                        {source === 'x' && (() => {
+                                            const xLink = person.officialLinks.find(l =>
+                                                l.platform === 'twitter' ||
+                                                l.type === 'twitter' ||
+                                                l.type === 'x' ||
+                                                (l.url && (l.url.includes('twitter.com') || l.url.includes('x.com')))
+                                            );
+                                            if (xLink && (xLink.bio || xLink.displayName)) {
+                                                const username = xLink.url?.match(/(?:twitter\.com|x\.com)\/([^\/\?]+)/)?.[1];
+                                                return (
+                                                    <div className="mb-6 p-4 bg-gradient-to-r from-slate-900 to-blue-900 rounded-xl text-white">
+                                                        <div className="flex items-start gap-4">
+                                                            {/* X Logo */}
+                                                            <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-xl font-bold shrink-0">
+                                                                𝕏
                                                             </div>
-                                                            {/* Bio */}
-                                                            {xLink.bio && (
-                                                                <p className="text-gray-200 text-sm leading-relaxed mb-2">
-                                                                    {xLink.bio}
-                                                                </p>
-                                                            )}
-                                                            {/* Stats & Link */}
-                                                            <div className="flex items-center gap-4 text-xs text-gray-400">
-                                                                {xLink.followers && (
-                                                                    <span>{xLink.followers.toLocaleString()} 关注者</span>
+                                                            <div className="flex-1 min-w-0">
+                                                                {/* Display Name & Handle */}
+                                                                <div className="flex items-center gap-2 mb-1">
+                                                                    <span className="font-bold text-lg truncate">
+                                                                        {xLink.displayName || person.name}
+                                                                    </span>
+                                                                    {username && (
+                                                                        <span className="text-blue-300 text-sm">@{username}</span>
+                                                                    )}
+                                                                </div>
+                                                                {/* Bio */}
+                                                                {xLink.bio && (
+                                                                    <p className="text-gray-200 text-sm leading-relaxed mb-2">
+                                                                        {xLink.bio}
+                                                                    </p>
                                                                 )}
-                                                                <a
-                                                                    href={xLink.url}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="text-blue-300 hover:text-blue-200 hover:underline"
-                                                                >
-                                                                    查看主页 →
-                                                                </a>
+                                                                {/* Stats & Link */}
+                                                                <div className="flex items-center gap-4 text-xs text-gray-400">
+                                                                    {xLink.followers && (
+                                                                        <span>{xLink.followers.toLocaleString()} 关注者</span>
+                                                                    )}
+                                                                    <a
+                                                                        href={xLink.url}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        className="text-blue-300 hover:text-blue-200 hover:underline"
+                                                                    >
+                                                                        查看主页 →
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            );
-                                        }
-                                        return null;
-                                    })()}
-                                    <SourceList source={source} items={itemsBySource[source]} />
-                                </div>
-                            )
-                        ))}
+                                                );
+                                            }
+                                            return null;
+                                        })()}
+                                        <SourceList source={source} items={itemsBySource[source]} />
+                                    </div>
+                                )
+                            ))}
                     </div>
                 </div>
             </main >
@@ -521,11 +583,17 @@ function SourceList({ source, items }: { source: string; items: PersonData['rawP
                     ))}
                 </div>
             ) : source === 'x' ? (
-                // X/Twitter 展示 - 每条推文独立展示
+                // X/Twitter 展示 - 过滤掉无效内容后展示
                 <div className="space-y-3">
-                    {displayItems.map((item) => (
-                        <XPostItem key={item.id} item={item} />
-                    ))}
+                    {displayItems
+                        .filter(item => {
+                            // 过滤掉文本过短的推文（可能是只有图片/视频的内容，Grok 无法获取）
+                            const text = item.text || item.title || '';
+                            return text.length >= 15 && !text.trim().match(/^https?:\/\/\S+$/);
+                        })
+                        .map((item) => (
+                            <XPostItem key={item.id} item={item} />
+                        ))}
                 </div>
             ) : (
                 // EXA 网页内容展示
@@ -983,43 +1051,75 @@ function LinkedinIcon({ className }: { className?: string }) {
     return <span className={className}>💼</span>;
 }
 
-// 官方认证矩阵组件
+// 官方认证矩阵组件 - Hover 展示模式
 function VerifiedMatrix({ links }: { links: any[] }) {
-    if (!links || links.length === 0) return null;
+    const [showAll, setShowAll] = useState(false);
+
+    // Filter out hidden types (scholar, company) as requested
+    const visibleLinks = links.filter(link =>
+        link.type !== 'scholar' && link.type !== 'company'
+    );
+
+    if (visibleLinks.length === 0) return null;
 
     // 优先展示的类型和顺序
-    const priority = ['website', 'twitter', 'github', 'youtube', 'linkedin', 'scholar'];
-    const sortedLinks = [...links].sort((a, b) => {
+    const priority = ['website', 'twitter', 'github', 'youtube', 'linkedin'];
+    const sortedLinks = [...visibleLinks].sort((a, b) => {
         const ia = priority.indexOf(a.type || '');
         const ib = priority.indexOf(b.type || '');
         return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
     });
 
+    // 默认显示 blog/website，其他 hover 展示
+    const primaryLink = sortedLinks.find(l => l.type === 'website' || l.type === 'blog');
+    const otherLinks = sortedLinks.filter(l => l.type !== 'website' && l.type !== 'blog');
+
+    const renderLinkItem = (link: any, i: number) => (
+        <a
+            key={i}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`
+                flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all
+                ${getLinkStyle(link.type)}
+            `}
+        >
+            <span className="text-lg flex items-center justify-center">
+                <LinkIcon type={link.type} />
+            </span>
+            <span className="text-xs font-medium">
+                {getLinkLabel(link)}
+            </span>
+            <span className="text-[#10B981] ml-0.5">✓</span>
+        </a>
+    );
+
     return (
-        <div className="flex flex-col items-end gap-2">
+        <div
+            className="relative flex flex-col items-end gap-2"
+            onMouseEnter={() => setShowAll(true)}
+            onMouseLeave={() => setShowAll(false)}
+        >
             <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">OFFICIAL CHANNELS</span>
             <div className="flex flex-wrap justify-end gap-2 max-w-[300px]">
-                {sortedLinks.map((link, i) => (
-                    <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`
-                            flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all
-                            ${getLinkStyle(link.type)}
-                        `}
-                    >
-                        <span className="text-lg flex items-center justify-center">
-                            <LinkIcon type={link.type} />
-                        </span>
-                        <span className="text-xs font-medium">
-                            {getLinkLabel(link)}
-                        </span>
-                        <span className="text-[#10B981] ml-0.5">✓</span>
-                    </a>
-                ))}
+                {/* 默认只显示 blog/website */}
+                {primaryLink && renderLinkItem(primaryLink, 0)}
+                {/* 没有 blog 时显示第一个链接 */}
+                {!primaryLink && sortedLinks[0] && renderLinkItem(sortedLinks[0], 0)}
+                {/* 提示还有更多 */}
+                {otherLinks.length > 0 && !showAll && (
+                    <span className="text-xs text-gray-400 px-2 py-1">+{otherLinks.length} more</span>
+                )}
             </div>
+            {/* Hover 时展示所有链接 */}
+            {showAll && otherLinks.length > 0 && (
+                <div className="absolute top-full right-0 mt-2 bg-white shadow-xl rounded-xl p-3 z-20 border border-gray-100 min-w-[200px]">
+                    <div className="flex flex-wrap gap-2">
+                        {otherLinks.map((link, i) => renderLinkItem(link, i + 1))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
@@ -1052,8 +1152,10 @@ function TimelineView({ personRoles, qid }: { personRoles: NonNullable<PersonDat
         <Empty description="暂无生涯数据" icon={<div className="text-4xl">🎓</div>} />
     );
 
-    // 投资类关键词
-    const investmentKeywords = ['partner', 'investor', 'venture', 'capital', 'fund', 'angel', 'board member', 'advisor'];
+    // 投资类关键词 (role 名称)
+    const investmentKeywords = ['partner', 'investor', 'venture', 'capital', 'fund', 'angel', 'board member', 'advisor', 'co-chair', 'chairman'];
+    // 投资机构名称 (某些人对这些机构是投资人而非工作经历，如 Elon Musk 对 OpenAI)
+    const investmentOrganizations = ['openai foundation', 'y combinator'];
     // 教育类关键词
     const educationKeywords = ['university', 'college', 'school', 'academy', 'institute'];
 
@@ -1067,9 +1169,10 @@ function TimelineView({ personRoles, qid }: { personRoles: NonNullable<PersonDat
         if (educationKeywords.some(k => orgType.includes(k) || orgName.includes(k))) {
             return 'education';
         }
-        // 2. 投资 (根据 role 名称或组织名称)
+        // 2. 投资 (根据 role 名称、组织名称、或特定投资机构)
         if (investmentKeywords.some(k => roleName.includes(k)) ||
-            orgName.includes('capital') || orgName.includes('ventures') || orgName.includes('fund')) {
+            orgName.includes('capital') || orgName.includes('ventures') || orgName.includes('fund') ||
+            investmentOrganizations.some(org => orgName.includes(org))) {
             return 'investment';
         }
         // 3. 默认为职业/创业
@@ -1274,7 +1377,9 @@ function LinkedInRoleItem({ role, type }: { role: NonNullable<PersonData['person
                     {orgName}
                 </div>
                 <div className="text-sm text-gray-500 mt-1">
-                    <span>{startStr} - {endStr}</span>
+                    <span>
+                        {startStr && endStr ? `${startStr} - ${endStr}` : (startStr || endStr)}
+                    </span>
                     <span className="text-gray-400">{durationStr}</span>
                 </div>
             </div>

@@ -3,6 +3,9 @@
  * 用于获取频道和视频信息
  */
 
+import { isChineseOrEnglish } from '../utils/language';
+import { type PersonContext, filterVerifiedItems, buildEnhancedQuery } from '../utils/identity-verifier';
+
 interface YouTubeVideo {
     id: string;
     title: string;
@@ -167,6 +170,7 @@ export async function searchYouTubeVideos(
             type: 'video',
             maxResults: String(maxResults * 3), // Fetch more to allow filtering
             order: 'relevance',
+            relevanceLanguage: 'zh', // 偏向中文结果，减少日韩等语言的误匹配
             key: apiKey,
         });
 
@@ -194,6 +198,9 @@ export async function searchYouTubeVideos(
             });
         }
 
+        // 语言过滤：过滤掉日文、韩文等非中英文内容
+        items = items.filter((item: any) => isChineseOrEnglish(item.snippet?.title || ''));
+
         return items.slice(0, maxResults).map((item: any) => ({
             id: item.id?.videoId || '',
             title: item.snippet?.title || '',
@@ -206,4 +213,37 @@ export async function searchYouTubeVideos(
         console.error('YouTube search error:', error);
         return [];
     }
+}
+
+/**
+ * 搜索 YouTube 视频（带身份验证）
+ * 使用增强的搜索查询并过滤不相关结果
+ * @param person 人物上下文
+ * @param maxResults 最大返回数量
+ * @param since 可选，只返回此日期之后发布的视频
+ */
+export async function searchYouTubeVideosForPerson(
+    person: PersonContext,
+    maxResults: number = 10,
+    since?: Date
+): Promise<YouTubeVideo[]> {
+    // 使用增强查询
+    const enhancedQuery = buildEnhancedQuery(person);
+    console.log(`[YouTube] Enhanced search query: "${enhancedQuery}"`);
+
+    // 搜索更多结果以便过滤
+    const videos = await searchYouTubeVideos(enhancedQuery, maxResults * 2, [], since);
+
+    // 将 YouTubeVideo 转换为 ContentItem 格式并过滤
+    const verifiedVideos = filterVerifiedItems(
+        person,
+        videos.map(v => ({
+            ...v,
+            title: v.title,
+            description: v.description,
+        })),
+        0.5 // 置信度阈值
+    );
+
+    return verifiedVideos.slice(0, maxResults) as YouTubeVideo[];
 }

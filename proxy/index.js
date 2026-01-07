@@ -4,7 +4,38 @@ const zlib = require('zlib');
 
 const TARGET_HOST = 'ai-person-agent.vercel.app';
 
+const fs = require('fs');
+const path = require('path');
+
 const server = http.createServer((req, res) => {
+    // Serve all avatars locally (manual + seed)
+    if (req.url.startsWith('/avatars/')) {
+        const filePath = path.join(__dirname, 'public', req.url);
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                console.error('File not found:', filePath);
+                // Fallback to proxy if local file missing? Or 404?
+                // Let's fallback to proxy just in case Vercel has it (unlikely but safe)
+                // Actually, if we claim to handle it, we should handle it.
+                res.writeHead(404);
+                res.end('Not Found');
+            } else {
+                const ext = path.extname(filePath).toLowerCase();
+                const contentType = {
+                    '.png': 'image/png',
+                    '.jpg': 'image/jpeg',
+                    '.jpeg': 'image/jpeg',
+                    '.gif': 'image/gif',
+                    '.webp': 'image/webp'
+                }[ext] || 'application/octet-stream';
+
+                res.writeHead(200, { 'Content-Type': contentType });
+                res.end(data);
+            }
+        });
+        return;
+    }
+
     const options = {
         hostname: TARGET_HOST,
         port: 443,
