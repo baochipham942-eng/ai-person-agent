@@ -9,7 +9,7 @@ interface PersonPageProps {
 export default async function PersonPage({ params }: PersonPageProps) {
     const { id } = await params;
 
-    // 只加载基本信息、卡片、职业数据
+    // 只加载基本信息、卡片、职业数据、关联人物
     // rawPoolItems 由客户端按需加载（懒加载）
     const person = await prisma.people.findUnique({
         where: { id },
@@ -23,6 +23,19 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     organization: true,
                 },
                 orderBy: { startDate: 'desc' },
+            },
+            // 关联人物关系
+            relations: {
+                include: {
+                    relatedPerson: {
+                        select: {
+                            id: true,
+                            name: true,
+                            avatarUrl: true,
+                            organization: true,
+                        }
+                    }
+                }
             },
             // 只获取 rawPoolItems 的统计信息，用于显示 tab 数量
             _count: {
@@ -49,6 +62,16 @@ export default async function PersonPage({ params }: PersonPageProps) {
         sourceTypeCounts[tc.sourceType] = tc._count;
     });
 
+    // 获取论文数据（前5篇高引用论文）
+    const papers = await prisma.rawPoolItem.findMany({
+        where: {
+            personId: id,
+            sourceType: 'openalex',
+        },
+        orderBy: { fetchedAt: 'desc' },
+        take: 10,
+    });
+
     // 序列化数据传递给客户端组件
     const personData = {
         id: person.id,
@@ -65,6 +88,23 @@ export default async function PersonPage({ params }: PersonPageProps) {
         organization: person.organization,
         aliases: person.aliases,
         officialLinks: (person.officialLinks as any[]) || [],
+        // 话题和排名
+        topics: person.topics || [],
+        topicRanks: (person.topicRanks as Record<string, number>) || null,
+        // 新增字段
+        quotes: (person.quotes as any[]) || null,
+        products: (person.products as any[]) || null,
+        education: (person.education as any[]) || null,
+        currentTitle: person.currentTitle || null,
+        // 论文数据
+        papers: papers.map(p => ({
+            id: p.id,
+            title: p.title,
+            text: p.text,
+            url: p.url,
+            publishedAt: p.publishedAt?.toISOString() || null,
+            metadata: (p.metadata as any) || {},
+        })),
         // 不再传递 rawPoolItems，改为客户端懒加载
         rawPoolItems: [], // 空数组，客户端会按需加载
         sourceTypeCounts, // 各类型数量统计
@@ -85,6 +125,18 @@ export default async function PersonPage({ params }: PersonPageProps) {
             organizationName: role.organization.name,
             organizationNameZh: role.organization.nameZh,
             organizationType: role.organization.type,
+        })),
+        // 关联人物
+        relations: person.relations.map(rel => ({
+            id: rel.id,
+            relationType: rel.relationType,
+            description: rel.description,
+            relatedPerson: {
+                id: rel.relatedPerson.id,
+                name: rel.relatedPerson.name,
+                avatarUrl: rel.relatedPerson.avatarUrl,
+                organization: rel.relatedPerson.organization,
+            }
         })),
     };
 

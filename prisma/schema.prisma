@@ -53,9 +53,16 @@ model People {
 
   // 新增：影响力评估相关字段
   topics          String[]        // AI话题标签：RAG, Agent, 推理, 多模态, 对齐, Scaling 等
+  topicRanks      Json?           // 话题排名：{ "Scaling": 1, "Agent": 3 }
   highlights      Json?           // 卡片亮点：[{icon: "📄", text: "论文标题"}, ...]
   roleCategory    String?         // 角色分类：researcher, founder, engineer, professor, evangelist
   influenceScore  Float           @default(0) // 综合影响力分数
+  quotes          Json?           // 代表语录：[{ text, source, url, year, importance }]
+
+  // 新增：人物详情页展示字段
+  currentTitle    String?         // 当前职位标题，如 "Co-founder & Chief Scientist @ SSI"
+  products        Json?           // 代表作品：[{ name, org, year, description, url, icon?, stats? }]
+  education       Json?           // 教育背景：[{ school, degree, field?, year?, advisor? }]
 
   // 学术指标 (来自 OpenAlex)
   citationCount   Int             @default(0) // 论文总引用数
@@ -80,6 +87,8 @@ model People {
   rawPoolItems    RawPoolItem[]
   searchSessions  SearchSession[]
   pageViews       PageView[]
+  relations       PersonRelation[] @relation("PersonRelations")
+  relatedTo       PersonRelation[] @relation("RelatedPersons")
 
   @@index([name])
   @@index([status])
@@ -204,4 +213,23 @@ model PageView {
   @@index([viewedAt])
   @@index([personId, viewedAt])
   @@index([personId, visitorId, viewedAt])
+}
+
+// 人物关系表 - 记录人物之间的关系（导师、学生、联创等）
+model PersonRelation {
+  id              String   @id @default(cuid())
+  personId        String
+  relatedPersonId String
+  relationType    String   // advisor, advisee, cofounder, colleague, collaborator, successor
+  description     String?
+  source          String   @default("wikidata")
+  confidence      Float    @default(1.0)
+  createdAt       DateTime @default(now())
+
+  person          People   @relation("PersonRelations", fields: [personId], references: [id], onDelete: Cascade)
+  relatedPerson   People   @relation("RelatedPersons", fields: [relatedPersonId], references: [id], onDelete: Cascade)
+
+  @@unique([personId, relatedPersonId, relationType])
+  @@index([personId])
+  @@index([relatedPersonId])
 }
