@@ -119,7 +119,10 @@ async function extractWithAI(personName: string, text: string): Promise<any[]> {
 
         const result = await generateText({
             model: deepseek('deepseek-chat'),
-            prompt: `Extract career/education for "${personName}".
+            prompt: `Extract career/education for "${personName}" who is an AI/tech professional.
+IMPORTANT: Only extract information that is clearly about this specific person in the AI/tech field.
+Do NOT include data from other people with the same name (e.g., actors, athletes, historical figures).
+
 Return JSON array: [{"title": "Company", "role": "Position", "startDate": "YYYY", "endDate": "YYYY"}]
 Text: ${text.slice(0, 6000)}`,
             temperature: 0,
@@ -131,6 +134,93 @@ Text: ${text.slice(0, 6000)}`,
     } catch (e) {
         return [];
     }
+}
+
+// ============== 数据验证函数 ==============
+
+// 需要过滤的非AI领域关键词
+const NEGATIVE_ORG_KEYWORDS = [
+    'botanical', '植物', 'agricultural', '农业', 'farming', '种植',
+    'football', 'basketball', 'soccer', 'nba', 'nfl', 'olympics', '体育',
+    'orchestra', '交响', 'theater', '剧院', 'film studio', '影视',
+    'dynasty', '王朝', 'ancient', '古代',
+];
+
+const NEGATIVE_ROLE_KEYWORDS = [
+    'actor', 'actress', '演员', 'singer', '歌手', 'musician', '音乐家',
+    'athlete', '运动员', 'coach', '教练', 'player',
+    'conductor', '指挥',
+];
+
+/**
+ * 验证单条时光轴数据是否有效
+ */
+function isValidTimelineEntry(entry: { title: string; role: string; startDate?: string; endDate?: string }): {
+    valid: boolean;
+    reason?: string;
+} {
+    const orgLower = (entry.title || '').toLowerCase();
+    const roleLower = (entry.role || '').toLowerCase();
+
+    // 检查负面关键词
+    for (const kw of NEGATIVE_ORG_KEYWORDS) {
+        if (orgLower.includes(kw)) {
+            return { valid: false, reason: `非AI领域机构: ${kw}` };
+        }
+    }
+
+    for (const kw of NEGATIVE_ROLE_KEYWORDS) {
+        if (roleLower.includes(kw)) {
+            return { valid: false, reason: `非AI领域职位: ${kw}` };
+        }
+    }
+
+    // 检查年份合理性
+    const currentYear = new Date().getFullYear();
+    if (entry.startDate) {
+        const startYear = parseInt(entry.startDate);
+        if (!isNaN(startYear)) {
+            if (startYear < 1950) {
+                return { valid: false, reason: `起始年份过早: ${startYear}` };
+            }
+            if (startYear > currentYear + 1) {
+                return { valid: false, reason: `起始年份在未来: ${startYear}` };
+            }
+        }
+    }
+
+    if (entry.endDate && entry.endDate !== 'present') {
+        const endYear = parseInt(entry.endDate);
+        const startYear = entry.startDate ? parseInt(entry.startDate) : null;
+        if (!isNaN(endYear)) {
+            if (endYear > currentYear + 1) {
+                return { valid: false, reason: `结束年份在未来: ${endYear}` };
+            }
+            if (startYear && !isNaN(startYear) && endYear < startYear) {
+                return { valid: false, reason: `时间倒序: ${startYear}-${endYear}` };
+            }
+        }
+    }
+
+    return { valid: true };
+}
+
+/**
+ * 过滤并验证时光轴数据
+ */
+function filterValidEvents(events: any[], personName: string): any[] {
+    const validEvents: any[] = [];
+
+    for (const ev of events) {
+        const validation = isValidTimelineEntry(ev);
+        if (validation.valid) {
+            validEvents.push(ev);
+        } else {
+            console.log(`    ⚠️ 过滤: ${ev.title} - ${ev.role} (${validation.reason})`);
+        }
+    }
+
+    return validEvents;
 }
 
 async function main() {
@@ -201,7 +291,12 @@ async function main() {
                 }
             }
 
-            console.log(`  Found ${events.length} events`);
+            console.log(`  Found ${events.length} raw events`);
+            if (events.length === 0) continue;
+
+            // 验证并过滤数据
+            events = filterValidEvents(events, person.name);
+            console.log(`  Valid events: ${events.length}`);
             if (events.length === 0) continue;
 
             // STEP B: Save to DB (Fresh connection) with Retry

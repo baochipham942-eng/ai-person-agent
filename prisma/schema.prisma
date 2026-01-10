@@ -193,13 +193,15 @@ model UserProfile {
 model PageView {
   id        String   @id @default(cuid())
   personId  String
+  visitorId String   // 访客指纹（IP+UA hash，用于去重）
   userId    String?  // 可选：登录用户ID
   sessionId String?  // 可选：匿名用户会话ID
   referrer  String?  // 来源页面
-  createdAt DateTime @default(now())
+  viewedAt  DateTime @default(now())
   person    People   @relation(fields: [personId], references: [id], onDelete: Cascade)
 
   @@index([personId])
-  @@index([createdAt])
-  @@index([personId, createdAt])
+  @@index([viewedAt])
+  @@index([personId, viewedAt])
+  @@index([personId, visitorId, viewedAt])
 }
