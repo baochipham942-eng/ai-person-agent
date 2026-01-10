@@ -65,30 +65,19 @@ function getTopicColor(topic: string): string {
   return TOPIC_COLORS[topic] || 'bg-gray-100 text-gray-700';
 }
 
-// 排名徽章
+// 排名徽章 - 更小巧
 function RankBadge({ rank }: { rank: number }) {
-  if (rank === 1) {
-    return (
-      <div className="absolute -top-2 -left-2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg z-10">
-        <span className="text-white text-sm font-bold">1</span>
-      </div>
-    );
-  }
-  if (rank === 2) {
-    return (
-      <div className="absolute -top-2 -left-2 w-8 h-8 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center shadow-lg z-10">
-        <span className="text-white text-sm font-bold">2</span>
-      </div>
-    );
-  }
-  if (rank === 3) {
-    return (
-      <div className="absolute -top-2 -left-2 w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-lg z-10">
-        <span className="text-white text-sm font-bold">3</span>
-      </div>
-    );
-  }
-  return null;
+  const colors: Record<number, string> = {
+    1: 'bg-yellow-500',
+    2: 'bg-gray-400',
+    3: 'bg-orange-400',
+  };
+  if (rank > 3) return null;
+  return (
+    <div className={`absolute -top-1 -left-1 w-5 h-5 ${colors[rank]} rounded-full flex items-center justify-center z-10 text-[10px] font-bold text-white shadow`}>
+      {rank}
+    </div>
+  );
 }
 
 export function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
@@ -98,33 +87,33 @@ export function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
 
   return (
     <Link href={`/person/${person.id}`} className="block group">
-      <div className="relative bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group-hover:-translate-y-1 group-hover:border-blue-200">
+      <div className="relative bg-white rounded-xl p-3.5 hover:shadow-md transition-all duration-200 border border-gray-100 group-hover:border-gray-200">
         {/* Rank Badge */}
         {rank && rank <= 3 && <RankBadge rank={rank} />}
 
         {/* Hot Badge */}
         {isHot && (
-          <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-medium px-2 py-0.5 rounded-full shadow-md z-10">
-            本周热门
+          <div className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-medium px-1.5 py-0.5 rounded z-10">
+            热门
           </div>
         )}
 
         {/* Header: Avatar + Name + Org */}
-        <div className="flex items-start gap-3 mb-3">
+        <div className="flex items-start gap-2.5 mb-2.5">
           {/* Avatar */}
-          <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 shadow-inner">
+          <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
             {person.avatarUrl ? (
               <Image
                 src={person.avatarUrl}
                 alt={person.name}
                 fill
                 className="object-cover object-top"
-                sizes="56px"
+                sizes="40px"
                 unoptimized
               />
             ) : (
               <div
-                className="w-full h-full flex items-center justify-center text-xl font-bold text-white"
+                className="w-full h-full flex items-center justify-center text-sm font-semibold text-white"
                 style={{ backgroundColor: getAvatarColor(person.name) }}
               >
                 {person.name.charAt(0)}
@@ -134,12 +123,12 @@ export function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
 
           {/* Name & Org */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-base font-bold text-gray-900 truncate group-hover:text-blue-600 transition-colors">
+            <h3 className="text-sm font-semibold text-gray-900 truncate group-hover:text-blue-600 transition-colors">
               {person.name}
             </h3>
-            <p className="text-sm text-gray-500 truncate">{primaryOrg}</p>
+            <p className="text-xs text-gray-500 truncate">{primaryOrg}</p>
             {roleLabel && (
-              <span className="inline-block mt-1 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
+              <span className="inline-block mt-0.5 text-[10px] font-medium text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
                 {roleLabel}
               </span>
             )}
@@ -148,11 +137,11 @@ export function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
 
         {/* Topics */}
         {person.topics && person.topics.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-3">
+          <div className="flex flex-wrap gap-1 mb-2">
             {person.topics.slice(0, 3).map((topic, i) => (
               <span
                 key={i}
-                className={`text-xs font-medium px-2 py-0.5 rounded-full ${getTopicColor(topic)}`}
+                className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${getTopicColor(topic)}`}
               >
                 {topic}
               </span>
@@ -160,28 +149,26 @@ export function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
           </div>
         )}
 
-        {/* Highlights */}
+        {/* Highlights - 只显示1条 */}
         {highlights.length > 0 && (
-          <div className="space-y-1.5">
-            {highlights.slice(0, 2).map((hl, i) => (
-              <div key={i} className="flex items-start gap-1.5 text-xs text-gray-600">
-                <span className="flex-shrink-0">{hl.icon}</span>
-                <span className="line-clamp-1">{hl.text}</span>
-              </div>
-            ))}
+          <div className="mb-2">
+            <div className="flex items-start gap-1 text-[11px] text-gray-600">
+              <span className="flex-shrink-0 text-[10px]">{highlights[0].icon}</span>
+              <span className="line-clamp-1">{highlights[0].text}</span>
+            </div>
           </div>
         )}
 
-        {/* Score indicator (subtle) */}
-        <div className="mt-3 pt-3 border-t border-gray-50 flex items-center justify-between">
-          <div className="flex items-center gap-1 text-xs text-gray-400">
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+        {/* Footer - 更紧凑 */}
+        <div className="flex items-center justify-between pt-2 border-t border-gray-50">
+          <div className="flex items-center gap-0.5 text-[10px] text-gray-400">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             <span>{person.influenceScore.toFixed(1)}</span>
           </div>
-          <span className="text-xs text-gray-400 group-hover:text-blue-500 transition-colors">
-            查看详情 &rarr;
+          <span className="text-[10px] text-gray-400 group-hover:text-blue-500 transition-colors">
+            详情 →
           </span>
         </div>
       </div>
