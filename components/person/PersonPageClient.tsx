@@ -108,6 +108,12 @@ export function PersonPageClient({ person }: PersonPageClientProps) {
     // 计算显示姓名
     const displayName = getDisplayName(person);
 
+    // 记录页面访问（用于"本周热门"统计）
+    useEffect(() => {
+        fetch(`/api/person/${person.id}/view`, { method: 'POST' })
+            .catch(() => {}); // 静默失败，不影响页面展示
+    }, [person.id]);
+
     // 懒加载状态
     const [loadedItems, setLoadedItems] = useState<Record<string, RawPoolItem[]>>({});
     const [loadingTab, setLoadingTab] = useState<string | null>(null);
