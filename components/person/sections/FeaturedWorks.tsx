@@ -10,7 +10,7 @@ interface Product {
   description: string;
   url?: string;
   icon?: string;
-  stats?: string;
+  stats?: string | { stars?: number; forks?: number };
   type?: 'product' | 'project' | 'opensource';  // 区分产品/项目/开源
 }
 
@@ -256,7 +256,11 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                         <p className="text-xs text-stone-500 mt-0.5">{product.org} · {product.year}</p>
                         <p className="text-xs text-stone-600 mt-1.5 line-clamp-2">{product.description}</p>
                         {product.stats && (
-                          <p className="text-xs text-orange-600 font-medium mt-1.5">{product.stats}</p>
+                          <p className="text-xs text-orange-600 font-medium mt-1.5">
+                            {typeof product.stats === 'string'
+                              ? product.stats
+                              : `⭐ ${product.stats.stars?.toLocaleString() || 0}`}
+                          </p>
                         )}
                         {product.url && (
                           <p className="text-xs text-blue-500 mt-2 flex items-center gap-1">
