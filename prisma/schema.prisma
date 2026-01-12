@@ -5,8 +5,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -54,6 +55,7 @@ model People {
   // 新增：影响力评估相关字段
   topics          String[]        // AI话题标签：RAG, Agent, 推理, 多模态, 对齐, Scaling 等
   topicRanks      Json?           // 话题排名：{ "Scaling": 1, "Agent": 3 }
+  topicDetails    Json?           // 话题详情含金句：[{ topic, rank, quote?: { text, source, url } }]
   highlights      Json?           // 卡片亮点：[{icon: "📄", text: "论文标题"}, ...]
   roleCategory    String?         // 角色分类：researcher, founder, engineer, professor, evangelist
   influenceScore  Float           @default(0) // 综合影响力分数
@@ -89,6 +91,8 @@ model People {
   pageViews       PageView[]
   relations       PersonRelation[] @relation("PersonRelations")
   relatedTo       PersonRelation[] @relation("RelatedPersons")
+  advisedRoles    PersonRole[]     @relation("RoleAdvisor") // 作为导师的履历记录
+  courses         Course[]         // 开设/主讲的课程
 
   @@index([name])
   @@index([status])
@@ -122,10 +126,14 @@ model PersonRole {
   createdAt      DateTime     @default(now())
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   person         People       @relation(fields: [personId], references: [id], onDelete: Cascade)
+  // 导师关联（用于教育经历）
+  advisorId      String?
+  advisor        People?      @relation("RoleAdvisor", fields: [advisorId], references: [id], onDelete: SetNull)
 
   @@unique([personId, organizationId, role, startDate])
   @@index([personId])
   @@index([organizationId])
+  @@index([advisorId])
 }
 
 model Card {
@@ -232,4 +240,57 @@ model PersonRelation {
   @@unique([personId, relatedPersonId, relationType])
   @@index([personId])
   @@index([relatedPersonId])
+}
+
+// 课程表 - 记录人物开设/主讲的公开课程
+model Course {
+  id            String   @id @default(cuid())
+  personId      String
+  title         String
+  titleZh       String?  // 中文标题
+  platform      String   // coursera, edx, youtube, udacity, fast.ai, stanford, mit, udemy
+  url           String
+  urlHash       String   @unique // URL 去重
+
+  // 课程分类
+  type          String   // free, paid, freemium
+  level         String?  // beginner, intermediate, advanced
+  category      String?  // ml, dl, nlp, cv, rl, llm, other
+
+  // 课程信息
+  description   String?
+  thumbnailUrl  String?
+  duration      String?  // "12 weeks", "40 hours", "25 lectures"
+  language      String?  // en, zh, etc.
+
+  // 统计数据
+  enrollments   Int?     // 学员数
+  rating        Float?   // 评分 (0-5)
+  reviewCount   Int?     // 评价数
+
+  // 学习路径
+  prerequisite  String?  // 先修条件
+  learningOrder Int?     // 推荐学习顺序 (1, 2, 3...)
+
+  // 话题标签
+  topics        String[] // AI话题：Deep Learning, NLP, Computer Vision, etc.
+
+  // 数据来源和质量
+  source        String   @default("perplexity") // perplexity, youtube, manual, wikidata
+  verified      Boolean  @default(false)        // 是否人工验证
+  confidence    Float    @default(0.8)          // 数据置信度 0-1
+
+  // 发布时间
+  publishedAt   DateTime?
+  lastUpdatedAt DateTime?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  person        People   @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([personId])
+  @@index([platform])
+  @@index([type])
+  @@index([level])
 }
