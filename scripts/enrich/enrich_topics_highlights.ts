@@ -8,8 +8,8 @@
 import { prisma } from '../../lib/db/prisma';
 import { chatStructuredCompletion, type ChatMessage } from '../../lib/ai/deepseek';
 
-// AI 话题标签预定义列表 - 扩展版
-const AI_TOPICS = [
+// AI 话题标签预定义列表 - 扩展版（导出供其他脚本使用）
+export const AI_TOPICS = [
   // 核心技术
   '大语言模型', 'Transformer', 'RAG', 'Agent', '多模态', '推理',
   // 训练与优化
@@ -224,6 +224,9 @@ async function main() {
   console.log(`  ❌ 失败: ${errorCount}`);
 }
 
-main()
-  .catch(console.error)
-  .finally(() => process.exit(0));
+// 仅在直接运行时执行，避免被 import 时触发
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('enrich_topics_highlights.ts')) {
+  main()
+    .catch(console.error)
+    .finally(() => process.exit(0));
+}

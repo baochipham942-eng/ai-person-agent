@@ -11,8 +11,8 @@
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 dotenv.config({ path: '.env' });
-import { prisma } from '../lib/db/prisma';
-import { searchPerplexity } from '../lib/datasources/perplexity';
+import { prisma } from '../../lib/db/prisma';
+import { searchPerplexity } from '../../lib/datasources/perplexity';
 
 interface DateResult {
     startYear?: number;

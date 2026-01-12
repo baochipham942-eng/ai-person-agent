@@ -8,8 +8,8 @@
  */
 
 import 'dotenv/config';
-import { prisma } from '../lib/db/prisma';
-import { fetchRawCareerData, RawCareerData } from '../lib/datasources/career';
+import { prisma } from '../../lib/db/prisma';
+import { fetchRawCareerData, RawCareerData } from '../../lib/datasources/career';
 
 /**
  * 规范化名称用于匹配
@@ -148,13 +148,25 @@ async function main() {
                             }
                         });
 
-                        // 如果 Organization 没有 QID，补上
+                        // 如果 Organization 没有 QID，尝试补上（但忽略唯一约束冲突）
                         if (match.orgQid && (!orgQid || orgQid.startsWith('no-qid-'))) {
-                            await prisma.organization.update({
-                                where: { id: role.organization.id },
-                                data: { wikidataQid: match.orgQid }
-                            });
-                            console.log(`  ✅ 更新 + 补充 QID: ${orgName} -> ${match.startDate} (QID: ${match.orgQid})`);
+                            try {
+                                // 检查是否已有其他组织使用此 QID
+                                const existingOrg = await prisma.organization.findUnique({
+                                    where: { wikidataQid: match.orgQid }
+                                });
+                                if (!existingOrg) {
+                                    await prisma.organization.update({
+                                        where: { id: role.organization.id },
+                                        data: { wikidataQid: match.orgQid }
+                                    });
+                                    console.log(`  ✅ 更新 + 补充 QID: ${orgName} -> ${match.startDate} (QID: ${match.orgQid})`);
+                                } else {
+                                    console.log(`  ✅ 更新: ${orgName} -> ${match.startDate} (QID ${match.orgQid} 已存在于 ${existingOrg.name})`);
+                                }
+                            } catch {
+                                console.log(`  ✅ 更新: ${orgName} -> ${match.startDate}`);
+                            }
                         } else {
                             console.log(`  ✅ 更新: ${orgName} -> ${match.startDate}`);
                         }
