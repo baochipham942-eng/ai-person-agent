@@ -267,11 +267,37 @@ export function PersonHeader({ person }: PersonHeaderProps) {
   };
 
   // 生成当前职位文本
-  const currentTitle = person.currentTitle || (
-    person.occupation[0] && person.organization[0]
-      ? `${person.occupation[0]} @ ${person.organization[0]}`
-      : person.occupation[0] || ''
-  );
+  // 优先使用 personRoles 中最新的在职职位（无 endDate），其次 currentTitle，最后 occupation+organization
+  const generateCurrentTitle = () => {
+    // 1. 从 personRoles 获取最新的当前职位（有 startDate 且无 endDate，排除 Student 角色）
+    const currentRoles = (person.personRoles || [])
+      .filter(role => !role.endDate && role.role !== 'Student')
+      .sort((a, b) => {
+        const aDate = a.startDate || '0000';
+        const bDate = b.startDate || '0000';
+        return bDate.localeCompare(aDate); // 按开始时间降序
+      });
+
+    if (currentRoles.length > 0) {
+      const role = currentRoles[0];
+      const orgName = role.organizationNameZh || role.organizationName;
+      return `${role.roleZh || role.role} @ ${orgName}`;
+    }
+
+    // 2. 使用 currentTitle（但排除包含 Student 的值）
+    if (person.currentTitle && !person.currentTitle.includes('Student')) {
+      return person.currentTitle;
+    }
+
+    // 3. Fallback 到 occupation + organization
+    if (person.occupation[0] && person.organization[0]) {
+      return `${person.occupation[0]} @ ${person.organization[0]}`;
+    }
+
+    return person.occupation[0] || '';
+  };
+
+  const currentTitle = generateCurrentTitle();
 
   // 履历数据（按 startDate 降序，最新的在前，取最近5条）
   const timelineRoles = (person.personRoles || [])
@@ -292,13 +318,15 @@ export function PersonHeader({ person }: PersonHeaderProps) {
         }}
       >
         <div className="flex gap-4 items-start">
-          {/* 头像 */}
+          {/* 头像 - 首屏关键图片，不使用 lazy */}
           <div className="flex-shrink-0">
             <img
               src={getAvatarUrl()}
               alt={person.name}
               className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover ring-1 ring-stone-100"
               onError={() => setAvatarError(true)}
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
 

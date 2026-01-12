@@ -36,7 +36,8 @@ export async function GET(
       where.platform = platform;
     }
 
-    const [courses, total] = await Promise.all([
+    // 合并所有查询到单个 Promise.all
+    const [courses, total, typeCounts, platformCounts] = await Promise.all([
       prisma.course.findMany({
         where,
         orderBy: [
@@ -48,22 +49,20 @@ export async function GET(
         skip: offset,
       }),
       prisma.course.count({ where }),
+      // 统计各类型数量
+      prisma.course.groupBy({
+        by: ['type'],
+        where: { personId: id },
+        _count: true,
+      }),
+      prisma.course.groupBy({
+        by: ['platform'],
+        where: { personId: id },
+        _count: true,
+      }),
     ]);
 
-    // 统计各类型数量
-    const typeCounts = await prisma.course.groupBy({
-      by: ['type'],
-      where: { personId: id },
-      _count: true,
-    });
-
-    const platformCounts = await prisma.course.groupBy({
-      by: ['platform'],
-      where: { personId: id },
-      _count: true,
-    });
-
-    return NextResponse.json({
+    const response = NextResponse.json({
       data: courses.map((course) => ({
         id: course.id,
         title: course.title,
@@ -103,6 +102,14 @@ export async function GET(
         ),
       },
     });
+
+    // HTTP 缓存：5分钟缓存，10分钟 stale-while-revalidate
+    response.headers.set(
+      'Cache-Control',
+      'public, s-maxage=300, stale-while-revalidate=600'
+    );
+
+    return response;
   } catch (error) {
     console.error('Error fetching courses:', error);
     return NextResponse.json(

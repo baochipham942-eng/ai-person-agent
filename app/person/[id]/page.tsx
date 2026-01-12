@@ -2,6 +2,21 @@ import { prisma } from '@/lib/db/prisma';
 import { notFound } from 'next/navigation';
 import { PersonPageClient } from '@/components/person/PersonPageClient';
 
+// ISR 缓存：1小时后重新验证
+export const revalidate = 3600;
+
+// 预生成热门人物页面（构建时静态生成）
+export async function generateStaticParams() {
+    // 获取访问量最高的 100 个已发布人物
+    const hotPeople = await prisma.people.findMany({
+        where: { status: 'ready' },
+        orderBy: { viewCount: 'desc' },
+        take: 100,
+        select: { id: true }
+    });
+    return hotPeople.map(p => ({ id: p.id }));
+}
+
 interface PersonPageProps {
     params: Promise<{ id: string }>;
 }
@@ -9,86 +24,88 @@ interface PersonPageProps {
 export default async function PersonPage({ params }: PersonPageProps) {
     const { id } = await params;
 
-    // 只加载基本信息、卡片、职业数据、关联人物
-    // rawPoolItems 由客户端按需加载（懒加载）
-    const person = await prisma.people.findUnique({
-        where: { id },
-        include: {
-            cards: {
-                orderBy: { importance: 'desc' },
-                take: 20, // 首屏只加载前 20 张卡片
-            },
-            roles: {
-                include: {
-                    organization: true,
-                    advisor: {
-                        select: { id: true, name: true }
+    // 合并所有查询为单个 Promise.all，减少数据库往返
+    const [person, typeCounts, courseCount, papers] = await Promise.all([
+        // 主查询：基本信息、卡片、职业数据、关联人物
+        prisma.people.findUnique({
+            where: { id },
+            include: {
+                cards: {
+                    orderBy: { importance: 'desc' },
+                    take: 10, // 首屏裁剪：从 20 减到 10
+                },
+                roles: {
+                    include: {
+                        organization: true,
+                        advisor: {
+                            select: { id: true, name: true }
+                        }
+                    },
+                    orderBy: { startDate: 'desc' },
+                },
+                // 关联人物关系（正向：当前人物作为主体）- 限制数量
+                relations: {
+                    take: 10, // 首屏裁剪：限制 10 条
+                    include: {
+                        relatedPerson: {
+                            select: {
+                                id: true,
+                                name: true,
+                                avatarUrl: true,
+                                organization: true,
+                            }
+                        }
                     }
                 },
-                orderBy: { startDate: 'desc' },
-            },
-            // 关联人物关系（正向：当前人物作为主体）
-            relations: {
-                include: {
-                    relatedPerson: {
-                        select: {
-                            id: true,
-                            name: true,
-                            avatarUrl: true,
-                            organization: true,
+                // 关联人物关系（反向：当前人物作为关联对象）- 限制数量
+                relatedTo: {
+                    take: 10, // 首屏裁剪：限制 10 条
+                    include: {
+                        person: {
+                            select: {
+                                id: true,
+                                name: true,
+                                avatarUrl: true,
+                                organization: true,
+                            }
                         }
+                    }
+                },
+                // 只获取 rawPoolItems 的统计信息，用于显示 tab 数量
+                _count: {
+                    select: {
+                        rawPoolItems: true,
+                        courses: true, // 合并 courseCount 到这里
                     }
                 }
             },
-            // 关联人物关系（反向：当前人物作为关联对象）
-            relatedTo: {
-                include: {
-                    person: {
-                        select: {
-                            id: true,
-                            name: true,
-                            avatarUrl: true,
-                            organization: true,
-                        }
-                    }
-                }
-            },
-            // 只获取 rawPoolItems 的统计信息，用于显示 tab 数量
-            _count: {
-                select: {
-                    rawPoolItems: true,
-                }
-            }
-        },
-    });
-
-    if (!person) {
-        notFound();
-    }
-
-    // 获取各类型的数量统计（用于 tab badge）
-    const [typeCounts, courseCount] = await Promise.all([
+        }),
+        // 各类型数量统计（用于 tab badge）
         prisma.rawPoolItem.groupBy({
             by: ['sourceType'],
             where: { personId: id },
             _count: true
         }),
+        // 课程数量（备用，如果 _count 不支持）
         prisma.course.count({ where: { personId: id } }),
+        // 论文数据（前10篇）
+        prisma.rawPoolItem.findMany({
+            where: {
+                personId: id,
+                sourceType: 'openalex',
+            },
+            orderBy: { fetchedAt: 'desc' },
+            take: 10,
+        }),
     ]);
+
+    if (!person) {
+        notFound();
+    }
 
     const sourceTypeCounts: Record<string, number> = {};
     typeCounts.forEach(tc => {
         sourceTypeCounts[tc.sourceType] = tc._count;
-    });
-
-    // 获取论文数据（前5篇高引用论文）
-    const papers = await prisma.rawPoolItem.findMany({
-        where: {
-            personId: id,
-            sourceType: 'openalex',
-        },
-        orderBy: { fetchedAt: 'desc' },
-        take: 10,
     });
 
     // 序列化数据传递给客户端组件

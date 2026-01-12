@@ -185,8 +185,10 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
     recordView();
   }, [person.id]);
 
-  // 获取论文数据（从 sourceTypeCounts）
+  // 获取各类内容数量（从 sourceTypeCounts）
   const videoCount = person.sourceTypeCounts?.youtube || 0;
+  const githubCount = person.sourceTypeCounts?.github || 0;
+  const blogCount = person.sourceTypeCounts?.exa || 0;
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -251,6 +253,8 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           highlightTopic={urlSection === 'topics' ? urlHighlight : undefined}
           cards={person.cards}
           podcastCount={person.sourceTypeCounts?.podcast || 0}
+          githubCount={githubCount}
+          blogCount={blogCount}
         />
 
         {/* 4. 视频内容 */}

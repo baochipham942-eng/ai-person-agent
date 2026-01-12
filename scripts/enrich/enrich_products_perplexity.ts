@@ -10,6 +10,7 @@
  */
 
 import { prisma } from '../../lib/db/prisma';
+import { Prisma } from '@prisma/client';
 import { searchPerplexity } from '../../lib/datasources/perplexity';
 
 interface Product {
@@ -142,14 +143,12 @@ async function enrichProductsPerplexity() {
   console.log('使用 Perplexity 补充产品数据...\n');
 
   // 查询需要补充产品的人物
+  // 注意：Prisma JSON 字段需要用 Prisma.JsonNull 判断
   const whereCondition = force
     ? { status: 'ready' }
     : {
         status: 'ready',
-        OR: [
-          { products: null },
-          { products: { equals: [] } },
-        ],
+        products: { equals: Prisma.JsonNull },
       };
 
   const people = await prisma.people.findMany({

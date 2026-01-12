@@ -31,7 +31,7 @@ export async function GET(
             prisma.rawPoolItem.count({ where }),
         ]);
 
-        return NextResponse.json({
+        const response = NextResponse.json({
             data: items.map(item => ({
                 id: item.id,
                 sourceType: item.sourceType,
@@ -48,6 +48,14 @@ export async function GET(
                 hasMore: offset + items.length < total,
             }
         });
+
+        // HTTP 缓存：5分钟缓存，10分钟 stale-while-revalidate
+        response.headers.set(
+            'Cache-Control',
+            'public, s-maxage=300, stale-while-revalidate=600'
+        );
+
+        return response;
     } catch (error) {
         console.error('Error fetching items:', error);
         return NextResponse.json({ error: 'Failed to fetch items' }, { status: 500 });

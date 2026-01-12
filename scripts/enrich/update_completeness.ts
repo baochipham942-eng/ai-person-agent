@@ -15,7 +15,7 @@
  */
 
 import 'dotenv/config';
-import { prisma } from './lib/db/prisma';
+import { prisma } from '../../lib/db/prisma';
 
 interface CompletenessBreakdown {
     avatar: number;        // 15

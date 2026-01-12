@@ -56,6 +56,8 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [filter, setFilter] = useState<VideoCategory>('all');
+  const [showAll, setShowAll] = useState(false);
+  const INITIAL_DISPLAY_COUNT = 6;
 
   // 加载视频数据
   const loadVideos = useCallback(async () => {
@@ -130,7 +132,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
           </div>
         ) : filteredVideos.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredVideos.slice(0, 6).map(video => {
+            {(showAll ? filteredVideos : filteredVideos.slice(0, INITIAL_DISPLAY_COUNT)).map(video => {
               const videoId = video.metadata?.videoId || extractVideoId(video.url);
               const thumbnailUrl = video.metadata?.thumbnailUrl ||
                 (videoId ? `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg` : null);
@@ -216,12 +218,19 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
           </div>
         )}
 
-        {/* 查看更多 */}
-        {filteredVideos.length > 6 && (
-          <div className="text-center mt-4">
-            <span className="text-xs text-stone-400">
-              还有 {filteredVideos.length - 6} 个视频
-            </span>
+        {/* 查看更多/收起 */}
+        {filteredVideos.length > INITIAL_DISPLAY_COUNT && (
+          <div className="text-center mt-4 pt-3 border-t border-stone-100">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="text-sm text-stone-500 hover:text-orange-600 transition-colors flex items-center justify-center gap-1 mx-auto"
+            >
+              {showAll ? (
+                <>收起 <span className="text-xs">▲</span></>
+              ) : (
+                <>查看更多 ({filteredVideos.length - INITIAL_DISPLAY_COUNT} 个视频) <span className="text-xs">▼</span></>
+              )}
+            </button>
           </div>
         )}
       </div>

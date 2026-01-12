@@ -98,6 +98,8 @@ interface FeaturedWorksProps {
   highlightTopic?: string | null;  // 需要高亮的话题
   cards?: Card[];  // 学习卡片
   podcastCount?: number;  // 播客数量
+  githubCount?: number;  // GitHub 开源项目数量
+  blogCount?: number;    // 博客文章数量
 }
 
 type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs' | 'podcast';
@@ -165,7 +167,7 @@ const CARD_TYPE_CONFIG: Record<string, { icon: string; label: string; color: str
   fact: { icon: '📊', label: '事实', color: 'border-l-cyan-400' },
 };
 
-export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount }: FeaturedWorksProps) {
+export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount, githubCount, blogCount }: FeaturedWorksProps) {
   const [showAllPapers, setShowAllPapers] = useState(false);
   const [showAllCards, setShowAllCards] = useState(false);
   const [githubRepos, setGithubRepos] = useState<GithubRepo[]>([]);
@@ -177,15 +179,22 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const sectionRef = useRef<HTMLElement>(null);
   const hasScrolled = useRef(false);
 
-  // 过滤真正的产品（排除 GitHub 仓库类型）
+  // 过滤真正的产品（排除 GitHub 仓库类型）并按年份降序排序
   const realProducts = useMemo(() => {
     if (!products || products.length === 0) return [];
-    return products.filter(p => {
-      // 排除 GitHub 类型的数据（这些应该在开源项目 Tab 显示）
-      const isGithub = (p as any).type === 'github' ||
-                       (p.url && p.url.includes('github.com'));
-      return !isGithub;
-    });
+    return products
+      .filter(p => {
+        // 排除 GitHub 类型的数据（这些应该在开源项目 Tab 显示）
+        const isGithub = (p as any).type === 'github' ||
+                         (p.url && p.url.includes('github.com'));
+        return !isGithub;
+      })
+      .sort((a, b) => {
+        // 按年份降序排序（最新的在前）
+        const yearA = typeof a.year === 'string' ? parseInt(a.year) : (a.year || 0);
+        const yearB = typeof b.year === 'string' ? parseInt(b.year) : (b.year || 0);
+        return yearB - yearA;
+      });
   }, [products]);
 
   // 检查各 tab 是否有内容 - 使用 useMemo 缓存计算结果
@@ -194,9 +203,10 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const hasTopics = topics && topics.length > 0;
   const hasCards = cards && cards.length > 0;
   // 开源项目、博客、播客通过 personId 动态加载
-  const hasOpensource = !!personId;
-  const hasBlogs = !!personId; // 博客通过 API 加载
-  const hasPodcast = (podcastCount ?? 0) > 0; // 播客
+  // 只有当确实有数据时才显示对应 Tab
+  const hasOpensource = !!personId && (githubCount ?? 0) > 0;
+  const hasBlogs = !!personId && (blogCount ?? 0) > 0;
+  const hasPodcast = (podcastCount ?? 0) > 0;
 
   // 构建可用的 tabs - 使用 useMemo 避免重复计算
   const tabs = useMemo(() => {
@@ -380,12 +390,14 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                     className="block p-4 bg-gradient-to-br from-stone-50 to-white hover:from-orange-50/50 hover:to-white rounded-xl transition-all hover:shadow-md border border-stone-100 hover:border-orange-200 group"
                   >
                     <div className="flex items-start gap-3">
-                      {/* 产品 Logo/Icon - 优先用 logo，其次 Google Favicon，最后 emoji */}
+                      {/* 产品 Logo/Icon - 优先用 logo，其次 Google Favicon，最后 emoji - 懒加载 */}
                       {logoUrl ? (
                         <img
                           src={logoUrl}
                           alt={product.name}
                           className="w-12 h-12 rounded-xl object-contain flex-shrink-0 border border-stone-100 bg-white p-1"
+                          loading="lazy"
+                          decoding="async"
                           onError={(e) => {
                             // favicon 加载失败时隐藏图片，显示 fallback
                             (e.target as HTMLImageElement).style.display = 'none';

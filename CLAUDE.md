@@ -170,7 +170,7 @@ npx tsx scripts/fix_missing_avatars.ts             # 头像
 
 | 任务类型 | MCP Tool | 回退方案 |
 |---------|----------|---------|
-| 数据库查询/统计 | `mcp__postgres__query` | Prisma 脚本 |
+| 数据库**只读**查询 | `mcp__postgres__query` | Prisma 脚本 |
 | Web 搜索 | `mcp__exa__web_search_exa` | lib/datasources/exa.ts |
 | 代码搜索 | `mcp__exa__get_code_context_exa` | Grep |
 | 网页抓取 | `mcp__firecrawl__firecrawl_scrape` | WebFetch |
@@ -184,17 +184,21 @@ npx tsx scripts/fix_missing_avatars.ts             # 头像
 ### 何时使用 MCP vs 脚本
 
 **使用 MCP**：
-- 一次性查询、快速验证
-- 交互式数据探索
-- 简单的 CRUD 操作
+- 一次性**只读**查询、快速验证
+- 交互式数据探索（SELECT 查询）
 - 查看 GitHub PR/Issue
 - 抓取网页内容
 
 **使用脚本**：
+- **任何数据库写操作**（INSERT/UPDATE/DELETE）⚠️
 - 批量数据处理（100+ 条记录）
 - 需要复杂业务逻辑
 - 需要事务或错误重试
 - 生产环境定时任务
+
+> ⚠️ **重要**: `mcp__postgres__query` 是**只读**的！
+> 执行 UPDATE/INSERT/DELETE 会报错：`cannot execute UPDATE in a read-only transaction`
+> 所有写操作必须通过 Prisma 脚本执行。
 
 ## 脚本执行最佳实践
 
