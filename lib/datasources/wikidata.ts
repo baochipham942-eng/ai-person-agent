@@ -309,3 +309,122 @@ function getWikimediaImageUrl(filename: string): string {
     const hash = crypto.createHash('md5').update(cleanName).digest('hex');
     return `https://upload.wikimedia.org/wikipedia/commons/thumb/${hash[0]}/${hash[0]}${hash[1]}/${encodeURIComponent(cleanName)}/200px-${encodeURIComponent(cleanName)}`;
 }
+
+/**
+ * 关联人物关系类型
+ */
+export interface PersonRelation {
+    qid: string;           // 关联人物的 QID
+    label: string;         // 关联人物名称
+    relationType: 'advisor' | 'advisee' | 'cofounder' | 'colleague' | 'collaborator' | 'successor';
+    description?: string;
+}
+
+/**
+ * 获取人物的关联关系（导师、学生等）
+ * @param qid 人物的 Wikidata QID
+ * @returns 关联人物列表
+ */
+export async function getWikidataRelations(qid: string): Promise<PersonRelation[]> {
+    const relations: PersonRelation[] = [];
+
+    const params = new URLSearchParams({
+        action: 'wbgetentities',
+        ids: qid,
+        languages: 'en|zh',
+        props: 'claims',
+        format: 'json',
+        origin: '*',
+    });
+
+    try {
+        const response = await fetch(`${WIKIDATA_API}?${params}`, {
+            headers: {
+                'User-Agent': 'AI-Person-Agent/1.0 (mailto:admin@example.com)'
+            }
+        });
+        const data = await response.json();
+        const entity = data.entities?.[qid];
+        if (!entity) return [];
+
+        // P185 - doctoral advisor (导师)
+        const advisors = entity.claims?.P185 || [];
+        for (const claim of advisors) {
+            const advisorQid = claim.mainsnak?.datavalue?.value?.id;
+            if (advisorQid) {
+                const label = await getEntityLabel(advisorQid);
+                relations.push({
+                    qid: advisorQid,
+                    label,
+                    relationType: 'advisor',
+                    description: '博士导师'
+                });
+            }
+        }
+
+        // P802 - doctoral student (学生)
+        const students = entity.claims?.P802 || [];
+        for (const claim of students) {
+            const studentQid = claim.mainsnak?.datavalue?.value?.id;
+            if (studentQid) {
+                const label = await getEntityLabel(studentQid);
+                relations.push({
+                    qid: studentQid,
+                    label,
+                    relationType: 'advisee',
+                    description: '博士学生'
+                });
+            }
+        }
+
+        // P1327 - partner in business or sport (合作伙伴)
+        const partners = entity.claims?.P1327 || [];
+        for (const claim of partners) {
+            const partnerQid = claim.mainsnak?.datavalue?.value?.id;
+            if (partnerQid) {
+                const label = await getEntityLabel(partnerQid);
+                relations.push({
+                    qid: partnerQid,
+                    label,
+                    relationType: 'collaborator',
+                    description: '合作伙伴'
+                });
+            }
+        }
+
+        return relations;
+    } catch (error) {
+        console.error('[Wikidata] getRelations error:', error);
+        return [];
+    }
+}
+
+/**
+ * 获取实体的标签名称
+ */
+async function getEntityLabel(qid: string): Promise<string> {
+    try {
+        const params = new URLSearchParams({
+            action: 'wbgetentities',
+            ids: qid,
+            languages: 'en|zh',
+            props: 'labels',
+            format: 'json',
+            origin: '*',
+        });
+
+        const response = await fetch(`${WIKIDATA_API}?${params}`, {
+            headers: {
+                'User-Agent': 'AI-Person-Agent/1.0 (mailto:admin@example.com)'
+            }
+        });
+        const data = await response.json();
+        const entity = data.entities?.[qid];
+
+        return entity?.labels?.en?.value
+            || entity?.labels?.zh?.value
+            || qid;
+    } catch {
+        return qid;
+    }
+}
