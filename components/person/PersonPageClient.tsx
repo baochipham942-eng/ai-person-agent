@@ -10,7 +10,6 @@ import {
   VideoSection,
   CourseSection,
   RelatedPeople,
-  ContentTabs,
 } from './sections';
 
 interface OfficialLink {
@@ -240,7 +239,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           />
         )}
 
-        {/* 3. 代表作品（代表产品/开源项目/核心论文/话题贡献/学习卡片/博客） */}
+        {/* 3. 代表作品（代表产品/开源项目/核心论文/话题贡献/学习卡片/博客/播客） */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}
@@ -251,29 +250,22 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           initialTab={urlSection === 'topics' ? 'topics' : undefined}
           highlightTopic={urlSection === 'topics' ? urlHighlight : undefined}
           cards={person.cards}
+          podcastCount={person.sourceTypeCounts?.podcast || 0}
         />
 
-        {/* 4. 播客（只保留播客，学习卡片已移动到代表作品） */}
-        <ContentTabs
-          personId={person.id}
-          cards={[]}
-          sourceTypeCounts={person.sourceTypeCounts || {}}
-          officialLinks={person.officialLinks}
-        />
-
-        {/* 5. 视频内容 */}
+        {/* 4. 视频内容 */}
         <VideoSection
           personId={person.id}
           videoCount={videoCount}
         />
 
-        {/* 6. 课程 */}
+        {/* 5. 课程 */}
         <CourseSection
           personId={person.id}
           courseCount={person.courseCount || 0}
         />
 
-        {/* 7. 关联人物 */}
+        {/* 6. 关联人物 */}
         {person.relations && person.relations.length > 0 && (
           <RelatedPeople relations={person.relations} />
         )}

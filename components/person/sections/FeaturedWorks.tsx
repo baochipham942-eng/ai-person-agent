@@ -75,6 +75,18 @@ interface BlogItem {
   };
 }
 
+interface PodcastItem {
+  id: string;
+  url: string;
+  title: string;
+  text: string;
+  publishedAt: string | null;
+  metadata?: {
+    domain?: string;
+    duration?: string;
+  };
+}
+
 interface FeaturedWorksProps {
   products?: Product[] | null;
   papers?: Paper[];
@@ -85,9 +97,10 @@ interface FeaturedWorksProps {
   initialTab?: TabKey;  // 从 URL 初始化的 tab
   highlightTopic?: string | null;  // 需要高亮的话题
   cards?: Card[];  // 学习卡片
+  podcastCount?: number;  // 播客数量
 }
 
-type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs';
+type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs' | 'podcast';
 
 // 排名徽章样式
 function getRankBadgeStyle(rank: number): string {
@@ -141,13 +154,15 @@ const CARD_TYPE_CONFIG: Record<string, { icon: string; label: string; color: str
   fact: { icon: '📊', label: '事实', color: 'border-l-cyan-400' },
 };
 
-export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards }: FeaturedWorksProps) {
+export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount }: FeaturedWorksProps) {
   const [showAllPapers, setShowAllPapers] = useState(false);
   const [showAllCards, setShowAllCards] = useState(false);
   const [githubRepos, setGithubRepos] = useState<GithubRepo[]>([]);
   const [blogItems, setBlogItems] = useState<BlogItem[]>([]);
+  const [podcastItems, setPodcastItems] = useState<PodcastItem[]>([]);
   const [loadingRepos, setLoadingRepos] = useState(false);
   const [loadingBlogs, setLoadingBlogs] = useState(false);
+  const [loadingPodcast, setLoadingPodcast] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const hasScrolled = useRef(false);
 
@@ -167,9 +182,10 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const hasPapers = papers && papers.length > 0;
   const hasTopics = topics && topics.length > 0;
   const hasCards = cards && cards.length > 0;
-  // 开源项目和博客通过 personId 动态加载
+  // 开源项目、博客、播客通过 personId 动态加载
   const hasOpensource = !!personId;
   const hasBlogs = !!personId; // 博客通过 API 加载
+  const hasPodcast = (podcastCount ?? 0) > 0; // 播客
 
   // 构建可用的 tabs - 使用 useMemo 避免重复计算
   const tabs = useMemo(() => {
@@ -184,8 +200,10 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     if (hasCards) result.push({ key: 'cards', label: '学习卡片', count: cards?.length });
     // 博客 tab
     if (hasBlogs) result.push({ key: 'blogs', label: '博客' });
+    // 播客 tab
+    if (hasPodcast) result.push({ key: 'podcast', label: '播客', count: podcastCount });
     return result;
-  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, papers?.length, topics?.length, cards?.length]);
+  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasPodcast, papers?.length, topics?.length, cards?.length, podcastCount]);
 
   // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
   const validInitialTab = useMemo(() => {
@@ -255,6 +273,30 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     }
   }, [activeTab, personId, loadBlogItems]);
 
+  // 加载播客数据
+  const loadPodcastItems = useCallback(async () => {
+    if (!personId || podcastItems.length > 0) return;
+    setLoadingPodcast(true);
+    try {
+      const response = await fetch(`/api/person/${personId}/items?type=podcast&limit=20`);
+      if (response.ok) {
+        const result = await response.json();
+        setPodcastItems(result.data || []);
+      }
+    } catch (error) {
+      console.error('Failed to load podcast items:', error);
+    } finally {
+      setLoadingPodcast(false);
+    }
+  }, [personId, podcastItems.length]);
+
+  // 当切换到播客 tab 时加载播客
+  useEffect(() => {
+    if (activeTab === 'podcast' && personId) {
+      loadPodcastItems();
+    }
+  }, [activeTab, personId, loadPodcastItems]);
+
   // 如果有 initialTab，滚动到该 section
   useEffect(() => {
     if (initialTab && sectionRef.current && !hasScrolled.current) {
@@ -267,7 +309,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   }, [initialTab]);
 
   // 如果没有任何内容，不渲染
-  if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics && !hasCards && !hasBlogs) {
+  if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics && !hasCards && !hasBlogs && !hasPodcast) {
     return null;
   }
 
@@ -724,6 +766,56 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
               <div className="text-center py-8 text-stone-400">
                 <div className="text-3xl mb-2">📝</div>
                 <div className="text-sm">暂无博客文章</div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* 播客 */}
+        {activeTab === 'podcast' && (
+          <div className="space-y-4">
+            {loadingPodcast ? (
+              <div className="flex items-center justify-center py-8">
+                <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316' }}></div>
+              </div>
+            ) : podcastItems.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {podcastItems.map(item => {
+                  const domain = item.metadata?.domain || (item.url ? new URL(item.url).hostname : '');
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-stone-50 rounded-xl p-4 hover:shadow-md transition-all hover:bg-orange-50/30 border border-transparent hover:border-orange-100"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
+                          <span className="text-lg">🎙️</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-medium text-stone-900 line-clamp-2">{item.title}</h4>
+                          <p className="text-sm text-stone-500 line-clamp-2 mt-1">{item.text}</p>
+                          <div className="flex items-center gap-3 mt-2 text-xs text-stone-400">
+                            <span>🌐 {domain}</span>
+                            {item.metadata?.duration && (
+                              <span>⏱️ {item.metadata.duration}</span>
+                            )}
+                            {item.publishedAt && (
+                              <span>{formatYear(item.publishedAt)}</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-stone-400">
+                <div className="text-3xl mb-2">🎙️</div>
+                <div className="text-sm">暂无播客内容</div>
               </div>
             )}
           </div>
