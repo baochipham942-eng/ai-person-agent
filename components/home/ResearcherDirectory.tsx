@@ -17,6 +17,7 @@ interface Person {
   name: string;
   avatarUrl: string | null;
   organization: string[];
+  currentTitle: string | null;
   topics: string[];
   highlights: Highlight[] | null;
   roleCategory: string | null;

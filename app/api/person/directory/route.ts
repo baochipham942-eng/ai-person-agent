@@ -122,6 +122,7 @@ export async function GET(request: Request) {
           name: true,
           avatarUrl: true,
           organization: true,
+          currentTitle: true,
           topics: true,
           highlights: true,
           roleCategory: true,

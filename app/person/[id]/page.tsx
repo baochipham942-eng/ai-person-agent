@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { prisma } from '@/lib/db/prisma';
 import { notFound } from 'next/navigation';
 import { PersonPageClient } from '@/components/person/PersonPageClient';
@@ -209,6 +210,10 @@ export default async function PersonPage({ params }: PersonPageProps) {
         ],
     };
 
-    return <PersonPageClient person={personData} />;
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 rounded-full animate-spin border-3 border-transparent border-t-orange-500"></div></div>}>
+            <PersonPageClient person={personData} />
+        </Suspense>
+    );
 }
 

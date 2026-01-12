@@ -15,6 +15,7 @@ interface ResearcherCardProps {
     name: string;
     avatarUrl: string | null;
     organization: string[];
+    currentTitle: string | null;
     topics: string[];
     highlights: Highlight[] | null;
     roleCategory: string | null;
@@ -92,10 +93,21 @@ export function SharedSvgDefs() {
   );
 }
 
+// 从 currentTitle 中提取机构名称，如 "CEO @ OpenAI" -> "OpenAI"
+function extractOrgFromTitle(title: string | null): string {
+  if (!title) return '';
+  const parts = title.split('@');
+  if (parts.length >= 2) {
+    return parts[parts.length - 1].trim();
+  }
+  return '';
+}
+
 // 使用 memo 包裹整个组件，避免父组件重渲染时子组件不必要的渲染
 export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
   const roleLabel = person.roleCategory ? ROLE_LABELS[person.roleCategory] : null;
-  const primaryOrg = person.organization[0] || '';
+  // 优先使用 currentTitle 中的机构，回退到 organization[0]
+  const primaryOrg = extractOrgFromTitle(person.currentTitle) || person.organization[0] || '';
   const highlights = (person.highlights as Highlight[]) || [];
 
   return (
