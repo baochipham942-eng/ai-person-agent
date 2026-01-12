@@ -138,3 +138,54 @@ officialLinks: [
 1. 通过生产环境 API 触发（如 `curl -X POST https://production.url/api/admin/refresh-person`）
 2. 或直接调用数据源函数绕过 Inngest：`await searchPersonContent(...)` + `prisma.rawPoolItem.create(...)`
 
+---
+
+### 4.5 Neon 数据库连接问题
+
+**问题**：`prisma db push` 报错 `Can't reach database server at xxx:5432`
+
+**原因**：
+1. Neon 免费版闲置后会暂停数据库，直连容易超时
+2. `prisma db push` 使用 `DIRECT_URL` 直连，不走 WebSocket
+
+**修复**：
+1. 确保 `.env` 配置了 `DIRECT_URL`（去掉 `-pooler` 后缀）
+2. 先唤醒数据库再执行 CLI：
+```bash
+# 唤醒数据库
+npx tsx -e "import {prisma} from './lib/db/prisma'; prisma.people.count().then(console.log)"
+# 再执行迁移
+npx prisma db push
+```
+3. 如持续失败，用 raw SQL 添加字段：
+```typescript
+await prisma.$executeRawUnsafe(`ALTER TABLE "People" ADD COLUMN IF NOT EXISTS "fieldName" TEXT`);
+```
+
+---
+
+### 4.6 Schema 与数据库不同步
+
+**问题**：脚本报错 `The column 'People.xxx' does not exist in the current database`
+
+**原因**：`prisma/schema.prisma` 新增了字段，但未同步到数据库。
+
+**修复**：
+1. 运行 `npx prisma db push` 同步
+2. 如连接失败，用 raw SQL：`ALTER TABLE "People" ADD COLUMN IF NOT EXISTS "xxx" TEXT`
+3. 同步后运行 `npx prisma generate` 重新生成 Prisma Client
+
+---
+
+### 4.7 新增人物无 Wikidata QID
+
+**问题**：新增人物时搜索 Wikidata 无结果，导致入库失败
+
+**原因**：技术人员（如 Jerry Tworek）可能没有 Wikidata 条目。
+
+**修复**：生成临时 QID 格式：`TEMP-{name}-{timestamp}`
+```typescript
+const finalQid = qid || `TEMP-${person.name.replace(/\s+/g, '-').toLowerCase()}-${Date.now().toString(36)}`;
+```
+注意：临时 QID 后续可通过 `recrawl_robust.ts` 更新为真实 QID。
+
