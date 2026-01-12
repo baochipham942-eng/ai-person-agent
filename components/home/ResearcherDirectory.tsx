@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { ResearcherCard } from './ResearcherCard';
+import { useEffect, useState, useRef, useCallback, memo } from 'react';
+import { useSearchParams } from 'next/navigation';
+import useSWR, { preload } from 'swr';
+import { ResearcherCard, SharedSvgDefs } from './ResearcherCard';
 
 type ViewMode = 'trending' | 'topic' | 'organization' | 'role';
 
@@ -31,6 +33,17 @@ interface Stats {
 interface PaginationInfo {
   total: number;
   hasMore: boolean;
+}
+
+interface ApiResponse {
+  data: Person[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    hasMore: boolean;
+  };
+  stats?: Stats;
 }
 
 // 预定义话题 - 扩展版，分类展示
@@ -79,84 +92,178 @@ const VIEW_MODES: { key: ViewMode; icon: string; label: string }[] = [
   { key: 'role', icon: '👤', label: '按角色' }
 ];
 
-export function ResearcherDirectory() {
-  const [viewMode, setViewMode] = useState<ViewMode>('trending');
-  const [people, setPeople] = useState<Person[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [page, setPage] = useState(1);
-  const [pagination, setPagination] = useState<PaginationInfo>({ total: 0, hasMore: true });
-  const [stats, setStats] = useState<Stats>({ totalPeople: 0, totalTopics: 0, totalPapers: 0 });
+// SWR fetcher
+const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-  // 筛选条件
-  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-  const [selectedOrg, setSelectedOrg] = useState<string | null>(null);
-  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+// 构建 API URL
+function buildApiUrl(params: {
+  page: number;
+  topic?: string | null;
+  organization?: string | null;
+  roleCategory?: string | null;
+  search?: string;
+}): string {
+  const searchParams = new URLSearchParams({
+    page: params.page.toString(),
+    limit: '12',
+    sortBy: 'influenceScore',
+  });
+
+  if (params.topic) searchParams.set('topic', params.topic);
+  if (params.organization) searchParams.set('organization', params.organization);
+  if (params.roleCategory) searchParams.set('roleCategory', params.roleCategory);
+  if (params.search) searchParams.set('search', params.search);
+
+  return `/api/person/directory?${searchParams}`;
+}
+
+// 预加载函数 - 用于 hover 时预加载数据
+function preloadData(params: Parameters<typeof buildApiUrl>[0]) {
+  const url = buildApiUrl(params);
+  preload(url, fetcher);
+}
+
+// Loading skeleton 组件
+const LoadingSkeleton = memo(function LoadingSkeleton() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-pulse">
+      {[...Array(8)].map((_, i) => (
+        <div key={i} className="card-base h-40"></div>
+      ))}
+    </div>
+  );
+});
+
+export function ResearcherDirectory() {
+  // 从 URL 参数读取初始筛选状态
+  const searchParams = useSearchParams();
+  const urlView = searchParams.get('view') as ViewMode | null;
+  const urlTopic = searchParams.get('topic');
+  const urlOrg = searchParams.get('organization');
+  const urlRole = searchParams.get('role');
+
+  // 根据 URL 参数确定初始视图模式
+  const getInitialViewMode = (): ViewMode => {
+    if (urlView && ['trending', 'topic', 'organization', 'role'].includes(urlView)) {
+      return urlView;
+    }
+    if (urlTopic) return 'topic';
+    if (urlOrg) return 'organization';
+    if (urlRole) return 'role';
+    return 'trending';
+  };
+
+  const [viewMode, setViewMode] = useState<ViewMode>(getInitialViewMode);
+  const [page, setPage] = useState(1);
+
+  // 筛选条件 - 从 URL 参数初始化
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(urlTopic);
+  const [selectedOrg, setSelectedOrg] = useState<string | null>(urlOrg);
+  const [selectedRole, setSelectedRole] = useState<string | null>(urlRole);
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  // 累积的人物列表（用于无限滚动）
+  const [allPeople, setAllPeople] = useState<Person[]>([]);
+
+  // URL 参数变化时更新状态
+  const [initialized, setInitialized] = useState(false);
+  useEffect(() => {
+    if (!initialized) {
+      setInitialized(true);
+      return;
+    }
+    // URL 参数变化时更新筛选状态
+    const newTopic = searchParams.get('topic');
+    const newOrg = searchParams.get('organization');
+    const newRole = searchParams.get('role');
+
+    if (newTopic && newTopic !== selectedTopic) {
+      setViewMode('topic');
+      setSelectedTopic(newTopic);
+      setSelectedOrg(null);
+      setSelectedRole(null);
+    } else if (newOrg && newOrg !== selectedOrg) {
+      setViewMode('organization');
+      setSelectedOrg(newOrg);
+      setSelectedTopic(null);
+      setSelectedRole(null);
+    } else if (newRole && newRole !== selectedRole) {
+      setViewMode('role');
+      setSelectedRole(newRole);
+      setSelectedTopic(null);
+      setSelectedOrg(null);
+    }
+  }, [searchParams, initialized, selectedTopic, selectedOrg, selectedRole]);
+
+  // 搜索防抖
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // 折叠展开状态
   const [expandedFilters, setExpandedFilters] = useState(false);
 
   const sentinelRef = useRef<HTMLDivElement>(null);
 
-  // 获取数据
-  const fetchPeople = useCallback(async (pageNum: number, isLoadMore = false) => {
-    if (isLoadMore) setLoadingMore(true);
-    else setLoading(true);
+  // 构建当前查询的 URL
+  const apiUrl = buildApiUrl({
+    page,
+    topic: selectedTopic,
+    organization: selectedOrg,
+    roleCategory: selectedRole,
+    search: debouncedSearch,
+  });
 
-    try {
-      const params = new URLSearchParams({
-        page: pageNum.toString(),
-        limit: '12',
-        sortBy: viewMode === 'trending' ? 'influenceScore' : 'influenceScore',
-      });
-
-      if (selectedTopic) params.set('topic', selectedTopic);
-      if (selectedOrg) params.set('organization', selectedOrg);
-      if (selectedRole) params.set('roleCategory', selectedRole);
-      if (searchQuery) params.set('search', searchQuery);
-
-      const response = await fetch(`/api/person/directory?${params}`);
-      if (!response.ok) throw new Error('Failed to fetch');
-
-      const result = await response.json();
-
-      if (isLoadMore) {
-        setPeople(prev => [...prev, ...result.data]);
-      } else {
-        setPeople(result.data);
-      }
-
-      setPagination({
-        total: result.pagination.total,
-        hasMore: result.pagination.hasMore
-      });
-
-      if (result.stats) {
-        setStats(result.stats);
-      }
-    } catch (err) {
-      console.error('Fetch error:', err);
-    } finally {
-      setLoading(false);
-      setLoadingMore(false);
+  // 使用 SWR 获取数据
+  const { data, error, isLoading, isValidating } = useSWR<ApiResponse>(
+    apiUrl,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 60000, // 60 秒内相同请求去重
+      keepPreviousData: true, // 切换时保持旧数据显示
     }
-  }, [viewMode, selectedTopic, selectedOrg, selectedRole, searchQuery]);
+  );
 
-  // 初始加载和筛选变化时重新加载
+  // 当筛选条件变化时重置页码和列表
   useEffect(() => {
     setPage(1);
-    fetchPeople(1);
-  }, [fetchPeople]);
+    setAllPeople([]);
+  }, [selectedTopic, selectedOrg, selectedRole, debouncedSearch]);
+
+  // 数据更新时累积列表
+  useEffect(() => {
+    if (data?.data) {
+      if (page === 1) {
+        setAllPeople(data.data);
+      } else {
+        setAllPeople(prev => {
+          // 避免重复添加
+          const existingIds = new Set(prev.map(p => p.id));
+          const newPeople = data.data.filter(p => !existingIds.has(p.id));
+          return [...prev, ...newPeople];
+        });
+      }
+    }
+  }, [data, page]);
+
+  const pagination: PaginationInfo = {
+    total: data?.pagination?.total || 0,
+    hasMore: data?.pagination?.hasMore || false
+  };
+
+  const stats: Stats = data?.stats || { totalPeople: pagination.total, totalTopics: TOPICS.length, totalPapers: 0 };
 
   // 加载更多
   const handleLoadMore = useCallback(() => {
-    if (!loadingMore && pagination.hasMore) {
-      const nextPage = page + 1;
-      setPage(nextPage);
-      fetchPeople(nextPage, true);
+    if (!isValidating && pagination.hasMore) {
+      setPage(prev => prev + 1);
     }
-  }, [loadingMore, pagination.hasMore, page, fetchPeople]);
+  }, [isValidating, pagination.hasMore]);
 
   // 无限滚动
   useEffect(() => {
@@ -165,7 +272,7 @@ export function ResearcherDirectory() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && pagination.hasMore && !loadingMore && !loading) {
+        if (entries[0].isIntersecting && pagination.hasMore && !isValidating && !isLoading) {
           handleLoadMore();
         }
       },
@@ -174,7 +281,7 @@ export function ResearcherDirectory() {
 
     observer.observe(sentinel);
     return () => observer.disconnect();
-  }, [handleLoadMore, pagination.hasMore, loadingMore, loading]);
+  }, [handleLoadMore, pagination.hasMore, isValidating, isLoading]);
 
   // 切换视图模式时清除筛选和重置折叠
   const handleViewModeChange = (mode: ViewMode) => {
@@ -185,38 +292,67 @@ export function ResearcherDirectory() {
     setExpandedFilters(false);
   };
 
+  // Tab hover 时预加载数据
+  const handleTabHover = (mode: ViewMode) => {
+    if (mode === viewMode) return;
+    // 预加载该 tab 的默认数据
+    preloadData({ page: 1 });
+  };
+
+  // 筛选项 hover 时预加载
+  const handleTopicHover = (topic: string) => {
+    if (topic === selectedTopic) return;
+    preloadData({ page: 1, topic });
+  };
+
+  const handleOrgHover = (org: string) => {
+    if (org === selectedOrg) return;
+    preloadData({ page: 1, organization: org });
+  };
+
+  const handleRoleHover = (role: string) => {
+    if (role === selectedRole) return;
+    preloadData({ page: 1, roleCategory: role });
+  };
+
   // 判断是否本周热门（本周访问量 > 10）
   const isHot = (person: Person) => person.weeklyViewCount > 10;
 
+  const loading = isLoading && page === 1;
+  const loadingMore = isValidating && page > 1;
+
   return (
-    <div className="min-h-screen bg-gray-50/80">
-      {/* Header - 整合标题和统计信息 */}
-      <header className="bg-white border-b border-gray-200/80 sticky top-0 z-50 shadow-sm">
+    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
+      {/* 共享 SVG 渐变定义 */}
+      <SharedSvgDefs />
+
+      {/* Header - 玻璃拟态效果 */}
+      <header className="glass-header border-b border-subtle sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-14">
             {/* Logo & Title */}
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-base">AI</span>
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-sm" style={{ background: 'var(--gradient-primary)' }}>
+                <span className="text-white text-sm font-semibold">AI</span>
               </div>
-              <h1 className="text-lg font-semibold text-gray-900">AI 人物库</h1>
+              <h1 className="text-lg font-semibold text-stone-900">AI 人物库</h1>
             </div>
 
             {/* Stats - 右侧紧凑展示 */}
             <div className="hidden sm:flex items-center gap-6 text-sm">
               <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-gray-900">{stats.totalPeople || pagination.total}</span>
-                <span className="text-gray-500">位研究者</span>
+                <span className="font-semibold text-stone-900">{stats.totalPeople || pagination.total}</span>
+                <span className="text-stone-500">位研究者</span>
               </div>
-              <div className="w-px h-4 bg-gray-200"></div>
+              <div className="w-px h-4 bg-stone-200"></div>
               <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-gray-900">{TOPICS.length}</span>
-                <span className="text-gray-500">话题</span>
+                <span className="font-semibold text-stone-900">{TOPICS.length}</span>
+                <span className="text-stone-500">话题</span>
               </div>
-              <div className="w-px h-4 bg-gray-200"></div>
+              <div className="w-px h-4 bg-stone-200"></div>
               <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-gray-900">{ORGANIZATIONS.length}</span>
-                <span className="text-gray-500">机构</span>
+                <span className="font-semibold text-stone-900">{ORGANIZATIONS.length}</span>
+                <span className="text-stone-500">机构</span>
               </div>
             </div>
           </div>
@@ -234,10 +370,10 @@ export function ResearcherDirectory() {
               placeholder="搜索人物、公司或话题..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 px-4 pl-10 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 text-gray-900 placeholder:text-gray-400"
+              className="w-full h-10 px-4 pl-10 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-400 text-stone-900 placeholder:text-stone-400 shadow-sm transition-all"
             />
             <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -247,15 +383,16 @@ export function ResearcherDirectory() {
           </div>
 
           {/* View Mode Tabs */}
-          <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
+          <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl">
             {VIEW_MODES.map((mode) => (
               <button
                 key={mode.key}
                 onClick={() => handleViewModeChange(mode.key)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+                onMouseEnter={() => handleTabHover(mode.key)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
                   viewMode === mode.key
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'gradient-btn shadow-sm'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
                 }`}
               >
                 <span className="text-xs">{mode.icon}</span>
@@ -269,14 +406,14 @@ export function ResearcherDirectory() {
         {viewMode === 'topic' && (
           <div className="mb-4">
             <div className={`flex flex-wrap gap-1.5 overflow-hidden transition-all duration-300 ${
-              expandedFilters ? 'max-h-none' : 'max-h-20'
+              expandedFilters ? 'max-h-[500px]' : 'max-h-[72px]'
             }`}>
               <button
                 onClick={() => setSelectedTopic(null)}
-                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   selectedTopic === null
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                    ? 'gradient-btn'
+                    : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
                 }`}
               >
                 全部
@@ -285,10 +422,11 @@ export function ResearcherDirectory() {
                 <button
                   key={topic}
                   onClick={() => setSelectedTopic(topic)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+                  onMouseEnter={() => handleTopicHover(topic)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                     selectedTopic === topic
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                      ? 'gradient-btn'
+                      : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
                   }`}
                 >
                   {topic}
@@ -298,7 +436,7 @@ export function ResearcherDirectory() {
             {TOPICS.length > 15 && (
               <button
                 onClick={() => setExpandedFilters(!expandedFilters)}
-                className="mt-2 text-xs text-blue-600 hover:text-blue-700 flex items-center gap-0.5"
+                className="mt-2 text-xs text-orange-600 hover:text-orange-700 flex items-center gap-0.5"
               >
                 {expandedFilters ? '收起' : `展开全部`}
                 <svg className={`w-3.5 h-3.5 transition-transform ${expandedFilters ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -312,14 +450,14 @@ export function ResearcherDirectory() {
         {viewMode === 'organization' && (
           <div className="mb-4">
             <div className={`flex flex-wrap gap-1.5 overflow-hidden transition-all duration-300 ${
-              expandedFilters ? 'max-h-none' : 'max-h-20'
+              expandedFilters ? 'max-h-[500px]' : 'max-h-[72px]'
             }`}>
               <button
                 onClick={() => setSelectedOrg(null)}
-                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   selectedOrg === null
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                    ? 'gradient-btn'
+                    : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
                 }`}
               >
                 全部
@@ -328,10 +466,11 @@ export function ResearcherDirectory() {
                 <button
                   key={org}
                   onClick={() => setSelectedOrg(org)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+                  onMouseEnter={() => handleOrgHover(org)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                     selectedOrg === org
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                      ? 'gradient-btn'
+                      : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
                   }`}
                 >
                   {org}
@@ -341,7 +480,7 @@ export function ResearcherDirectory() {
             {ORGANIZATIONS.length > 15 && (
               <button
                 onClick={() => setExpandedFilters(!expandedFilters)}
-                className="mt-2 text-xs text-blue-600 hover:text-blue-700 flex items-center gap-0.5"
+                className="mt-2 text-xs text-orange-600 hover:text-orange-700 flex items-center gap-0.5"
               >
                 {expandedFilters ? '收起' : `展开全部`}
                 <svg className={`w-3.5 h-3.5 transition-transform ${expandedFilters ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -356,10 +495,10 @@ export function ResearcherDirectory() {
           <div className="flex flex-wrap gap-1.5 mb-4">
             <button
               onClick={() => setSelectedRole(null)}
-              className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                 selectedRole === null
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                  ? 'gradient-btn'
+                  : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
               }`}
             >
               全部
@@ -368,10 +507,11 @@ export function ResearcherDirectory() {
               <button
                 key={role.key}
                 onClick={() => setSelectedRole(role.key)}
-                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+                onMouseEnter={() => handleRoleHover(role.key)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   selectedRole === role.key
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                    ? 'gradient-btn'
+                    : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
                 }`}
               >
                 {role.label}
@@ -382,38 +522,35 @@ export function ResearcherDirectory() {
 
         {/* Results Count - 更小巧 */}
         <div className="flex items-center mb-3">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-stone-500">
             共 {pagination.total} 位研究者
+            {isValidating && !loading && <span className="ml-2 text-orange-500">更新中...</span>}
           </p>
         </div>
 
         {/* Loading State */}
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 animate-pulse">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="bg-white rounded-xl h-40"></div>
-            ))}
-          </div>
+          <LoadingSkeleton />
         ) : (
           <>
-            {/* People Grid - 4列布局，更紧凑间距 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-              {people.map((person, index) => (
+            {/* People Grid - 4列布局 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {allPeople.map((person, index) => (
                 <ResearcherCard
                   key={person.id}
                   person={person}
-                  rank={viewMode === 'trending' && page === 1 ? index + 1 : undefined}
+                  rank={viewMode === 'trending' && page === 1 && index < 12 ? index + 1 : undefined}
                   isHot={isHot(person)}
                 />
               ))}
             </div>
 
             {/* Empty State */}
-            {people.length === 0 && !loading && (
+            {allPeople.length === 0 && !loading && (
               <div className="text-center py-12">
                 <div className="text-4xl mb-3">🔍</div>
-                <h3 className="text-sm font-medium text-gray-900 mb-1">未找到匹配的研究者</h3>
-                <p className="text-xs text-gray-500">尝试调整筛选条件或搜索关键词</p>
+                <h3 className="text-sm font-medium text-stone-900 mb-1">未找到匹配的研究者</h3>
+                <p className="text-xs text-stone-500">尝试调整筛选条件或搜索关键词</p>
               </div>
             )}
 
@@ -421,7 +558,7 @@ export function ResearcherDirectory() {
             {pagination.hasMore && (
               <div ref={sentinelRef} className="mt-6 h-12 flex items-center justify-center">
                 {loadingMore && (
-                  <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316', borderRightColor: '#ec4899' }}></div>
                 )}
               </div>
             )}

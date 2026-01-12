@@ -30,15 +30,11 @@ interface ContentTabsProps {
 
 type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
 
-// Tab 配置
+// Tab 配置 - 移除了 x、youtube、openalex、exa（与其他楼层重复或质量不高）
+// github 也整合到代表作品楼层了
 const TAB_CONFIG: Record<string, { icon: string; label: string }> = {
   cards: { icon: '💡', label: '学习卡片' },
-  youtube: { icon: '▶️', label: 'YouTube' },
-  x: { icon: '𝕏', label: 'X/Twitter' },
-  github: { icon: '💻', label: '开源项目' },
-  openalex: { icon: '📚', label: '论文' },
   podcast: { icon: '🎙️', label: '播客' },
-  exa: { icon: '📰', label: '文章' },
 };
 
 // 卡片类型配置
@@ -80,17 +76,17 @@ const CardItem = ({ card }: { card: Card }) => {
   const config = CARD_TYPE_CONFIG[card.type] || CARD_TYPE_CONFIG.insight;
 
   return (
-    <div className={`bg-white rounded-xl p-4 border-l-4 ${config.color} shadow-sm hover:shadow-md transition-shadow`}>
-      <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+    <div className={`bg-stone-50 rounded-xl p-4 border-l-4 ${config.color} hover:shadow-md transition-all hover:bg-orange-50/30`}>
+      <div className="flex items-center gap-2 text-sm text-stone-500 mb-2">
         <span>{config.icon}</span>
         <span>{config.label}</span>
       </div>
-      <h4 className="font-medium text-gray-900 mb-2">{card.title}</h4>
-      <p className="text-sm text-gray-600 line-clamp-3">{card.content}</p>
+      <h4 className="font-medium text-stone-900 mb-2">{card.title}</h4>
+      <p className="text-sm text-stone-600 line-clamp-3">{card.content}</p>
       {card.tags.length > 0 && (
         <div className="flex flex-wrap gap-1 mt-3">
           {card.tags.slice(0, 3).map((tag, idx) => (
-            <span key={idx} className="px-2 py-0.5 bg-gray-100 text-gray-500 text-xs rounded-full">
+            <span key={idx} className="px-2 py-0.5 bg-stone-100 text-stone-500 text-xs rounded-full border border-stone-200">
               {tag}
             </span>
           ))}
@@ -111,16 +107,19 @@ const VideoItem = ({ item }: { item: RawPoolItem }) => {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+      className="group block bg-stone-50 rounded-xl overflow-hidden hover:shadow-md transition-all border border-transparent hover:border-orange-100"
     >
       {/* 缩略图 */}
-      <div className="relative aspect-video bg-gray-100">
+      <div className="relative aspect-video bg-stone-200">
         {thumbnailUrl && (
           <img src={thumbnailUrl} alt={item.title} className="w-full h-full object-cover" />
         )}
         {/* 播放按钮 */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+          <div
+            className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+            style={{ background: 'var(--gradient-primary)' }}
+          >
             <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
@@ -128,18 +127,18 @@ const VideoItem = ({ item }: { item: RawPoolItem }) => {
         </div>
         {/* 分类标签 */}
         {category && category !== 'analysis' && (
-          <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/70 text-white text-xs rounded">
+          <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/70 text-white text-xs rounded-md">
             {VIDEO_CATEGORY_CONFIG[category as VideoCategory]?.label || category}
           </div>
         )}
       </div>
       {/* 信息 */}
       <div className="p-3">
-        <h4 className="font-medium text-gray-900 text-sm line-clamp-2 group-hover:text-blue-600 transition-colors">
+        <h4 className="font-medium text-stone-900 text-sm line-clamp-2 group-hover:text-orange-600 transition-colors">
           {item.title}
         </h4>
         {item.publishedAt && (
-          <div className="text-xs text-gray-400 mt-1">{formatDate(item.publishedAt)}</div>
+          <div className="text-xs text-stone-400 mt-1">{formatDate(item.publishedAt)}</div>
         )}
       </div>
     </a>
@@ -158,11 +157,12 @@ const XPostItem = ({ item }: { item: RawPoolItem }) => {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-black"
+      className="block bg-stone-50 rounded-xl p-4 hover:shadow-md transition-all border-l-4 hover:bg-orange-50/30"
+      style={{ borderLeftColor: '#1c1917' }}
     >
-      <p className="text-gray-800 text-sm line-clamp-4 whitespace-pre-wrap">{item.text || item.title}</p>
+      <p className="text-stone-700 text-sm line-clamp-4 whitespace-pre-wrap">{item.text || item.title}</p>
       {item.publishedAt && (
-        <div className="text-xs text-gray-400 mt-2">{formatDate(item.publishedAt)}</div>
+        <div className="text-xs text-stone-400 mt-2">{formatDate(item.publishedAt)}</div>
       )}
     </a>
   );
@@ -179,25 +179,25 @@ const GithubRepoItem = ({ item }: { item: RawPoolItem }) => {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow"
+      className="block bg-stone-50 rounded-xl p-4 hover:shadow-md transition-all hover:bg-orange-50/30 border border-transparent hover:border-orange-100"
     >
       <div className="flex items-start gap-3">
-        <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
+        <div className="w-10 h-10 bg-stone-900 rounded-xl flex items-center justify-center flex-shrink-0">
           <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
           </svg>
         </div>
         <div className="flex-1 min-w-0">
-          <h4 className="font-medium text-gray-900 truncate">{item.title}</h4>
-          <p className="text-sm text-gray-500 line-clamp-2 mt-1">{item.text}</p>
-          <div className="flex items-center gap-4 mt-2 text-xs text-gray-400">
+          <h4 className="font-medium text-stone-900 truncate">{item.title}</h4>
+          <p className="text-sm text-stone-500 line-clamp-2 mt-1">{item.text}</p>
+          <div className="flex items-center gap-4 mt-2 text-xs text-stone-400">
             {language && (
               <span className="flex items-center gap-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
                 {language}
               </span>
             )}
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1 text-orange-600">
               ⭐ {stars.toLocaleString()}
             </span>
             {forks > 0 && (
@@ -222,13 +222,13 @@ const PaperItem = ({ item }: { item: RawPoolItem }) => {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-green-400"
+      className="block bg-stone-50 rounded-xl p-4 hover:shadow-md transition-all border-l-4 border-l-emerald-400 hover:bg-emerald-50/30"
     >
-      <h4 className="font-medium text-gray-900 line-clamp-2">{item.title}</h4>
-      <p className="text-sm text-gray-500 line-clamp-2 mt-1">{item.text}</p>
-      <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+      <h4 className="font-medium text-stone-900 line-clamp-2">{item.title}</h4>
+      <p className="text-sm text-stone-500 line-clamp-2 mt-1">{item.text}</p>
+      <div className="flex items-center gap-3 mt-2 text-xs text-stone-400">
         {venue && <span>📍 {venue}</span>}
-        {citedBy > 0 && <span>📚 被引用 {citedBy}</span>}
+        {citedBy > 0 && <span className="text-orange-600 font-medium">📚 被引用 {citedBy}</span>}
         {item.publishedAt && <span>{formatDate(item.publishedAt)}</span>}
       </div>
     </a>
@@ -244,11 +244,11 @@ const ArticleItem = ({ item }: { item: RawPoolItem }) => {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow"
+      className="block bg-stone-50 rounded-xl p-4 hover:shadow-md transition-all hover:bg-orange-50/30 border border-transparent hover:border-orange-100"
     >
-      <h4 className="font-medium text-gray-900 line-clamp-2">{item.title}</h4>
-      <p className="text-sm text-gray-500 line-clamp-2 mt-1">{item.text}</p>
-      <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+      <h4 className="font-medium text-stone-900 line-clamp-2">{item.title}</h4>
+      <p className="text-sm text-stone-500 line-clamp-2 mt-1">{item.text}</p>
+      <div className="flex items-center gap-3 mt-2 text-xs text-stone-400">
         <span>🌐 {domain}</span>
         {item.publishedAt && <span>{formatDate(item.publishedAt)}</span>}
       </div>
@@ -261,6 +261,7 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
   const [loadedItems, setLoadedItems] = useState<Record<string, RawPoolItem[]>>({});
   const [loadingTab, setLoadingTab] = useState<string | null>(null);
   const [videoFilter, setVideoFilter] = useState<VideoCategory>('all');
+  const [showAllCards, setShowAllCards] = useState(false);  // 控制学习卡片展开/收起
 
   // 确定要显示的 tabs
   const availableTabs = [
@@ -308,7 +309,7 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
     if (loadingTab === activeTab) {
       return (
         <div className="flex items-center justify-center py-12">
-          <div className="w-8 h-8 border-3 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-8 h-8 rounded-full animate-spin" style={{ border: '3px solid transparent', borderTopColor: '#f97316', borderRightColor: '#ec4899' }}></div>
         </div>
       );
     }
@@ -316,15 +317,20 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
     if (activeTab === 'cards') {
       if (cards.length === 0) {
         return (
-          <div className="text-center py-12 text-gray-400">
+          <div className="text-center py-12 text-stone-400">
             <div className="text-4xl mb-2">💡</div>
             <div>暂无学习卡片</div>
           </div>
         );
       }
 
-      // 按类型分组
-      const groupedCards = cards.reduce((acc, card) => {
+      // 默认显示4个卡片（2行），展开后显示全部
+      const DEFAULT_VISIBLE_COUNT = 4;
+      const displayCards = showAllCards ? cards : cards.slice(0, DEFAULT_VISIBLE_COUNT);
+      const hasMoreCards = cards.length > DEFAULT_VISIBLE_COUNT;
+
+      // 按类型分组（用于展示的卡片）
+      const groupedCards = displayCards.reduce((acc, card) => {
         if (!acc[card.type]) acc[card.type] = [];
         acc[card.type].push(card);
         return acc;
@@ -334,12 +340,14 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
         <div className="space-y-6">
           {Object.entries(groupedCards).map(([type, typeCards]) => {
             const config = CARD_TYPE_CONFIG[type] || CARD_TYPE_CONFIG.insight;
+            // 计算该类型的总数（用于显示）
+            const totalCount = cards.filter(c => c.type === type).length;
             return (
               <div key={type}>
-                <h3 className="text-sm font-medium text-gray-500 mb-3 flex items-center gap-1.5">
+                <h3 className="text-sm font-medium text-stone-500 mb-3 flex items-center gap-1.5">
                   <span>{config.icon}</span>
                   <span>{config.label}</span>
-                  <span className="text-gray-400">({typeCards.length})</span>
+                  <span className="text-stone-400">({totalCount})</span>
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {typeCards.map(card => (
@@ -349,6 +357,20 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
               </div>
             );
           })}
+
+          {/* 展开/收起按钮 */}
+          {hasMoreCards && (
+            <button
+              onClick={() => setShowAllCards(!showAllCards)}
+              className="w-full py-2.5 text-sm text-stone-500 hover:text-orange-600 transition-colors flex items-center justify-center gap-1 border-t border-stone-100 mt-4"
+            >
+              {showAllCards ? (
+                <>收起 <span className="text-xs">▲</span></>
+              ) : (
+                <>展开更多 ({cards.length - DEFAULT_VISIBLE_COUNT} 条) <span className="text-xs">▼</span></>
+              )}
+            </button>
+          )}
         </div>
       );
     }
@@ -357,7 +379,7 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
 
     if (items.length === 0) {
       return (
-        <div className="text-center py-12 text-gray-400">
+        <div className="text-center py-12 text-stone-400">
           <div className="text-4xl mb-2">{TAB_CONFIG[activeTab]?.icon || '📄'}</div>
           <div>暂无内容</div>
         </div>
@@ -399,9 +421,9 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
   };
 
   return (
-    <section className="bg-white rounded-2xl shadow-sm overflow-hidden">
+    <section className="card-base overflow-hidden">
       {/* Tab 导航 */}
-      <div className="border-b border-gray-100 overflow-x-auto">
+      <div className="border-b border-stone-100 overflow-x-auto">
         <div className="flex">
           {availableTabs.map(tab => {
             const config = TAB_CONFIG[tab.key];
@@ -413,15 +435,15 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex items-center gap-1.5 px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                   activeTab === tab.key
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                    ? 'border-orange-500 text-orange-600'
+                    : 'border-transparent text-stone-500 hover:text-stone-700'
                 }`}
               >
                 <span>{config.icon}</span>
                 <span>{config.label}</span>
                 {tab.count > 0 && (
                   <span className={`px-1.5 py-0.5 rounded-full text-xs ${
-                    activeTab === tab.key ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-500'
+                    activeTab === tab.key ? 'bg-orange-100 text-orange-600' : 'bg-stone-100 text-stone-500'
                   }`}>
                     {tab.count}
                   </span>
@@ -439,10 +461,10 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
             <button
               key={key}
               onClick={() => setVideoFilter(key as VideoCategory)}
-              className={`px-3 py-1.5 text-sm rounded-full transition-colors ${
+              className={`px-3 py-1.5 text-sm rounded-full transition-all ${
                 videoFilter === key
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'gradient-btn'
+                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
               }`}
             >
               {label}

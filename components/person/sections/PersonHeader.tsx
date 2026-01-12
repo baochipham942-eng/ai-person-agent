@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 interface OfficialLink {
   type: string;
@@ -53,23 +54,23 @@ function getCountryFlag(countryCode: string | null | undefined): string {
   return String.fromCodePoint(...[...code].map(c => c.charCodeAt(0) + offset));
 }
 
-// 话题颜色映射
+// 话题颜色映射（保持多色，优化样式）
 const TOPIC_COLORS: Record<string, string> = {
-  'RAG': 'bg-purple-500/15 text-purple-700',
-  'Agent': 'bg-blue-500/15 text-blue-700',
-  '推理': 'bg-green-500/15 text-green-700',
-  '多模态': 'bg-orange-500/15 text-orange-700',
-  '对齐': 'bg-red-500/15 text-red-700',
-  'Scaling': 'bg-cyan-500/15 text-cyan-700',
-  '大语言模型': 'bg-indigo-500/15 text-indigo-700',
-  'Transformer': 'bg-pink-500/15 text-pink-700',
-  '开源': 'bg-emerald-500/15 text-emerald-700',
-  'AGI': 'bg-rose-500/15 text-rose-700',
-  '强化学习': 'bg-amber-500/15 text-amber-700',
+  'RAG': 'bg-purple-50 text-purple-600 border border-purple-100',
+  'Agent': 'bg-blue-50 text-blue-600 border border-blue-100',
+  '推理': 'bg-green-50 text-green-600 border border-green-100',
+  '多模态': 'bg-orange-50 text-orange-600 border border-orange-100',
+  '对齐': 'bg-red-50 text-red-600 border border-red-100',
+  'Scaling': 'bg-cyan-50 text-cyan-600 border border-cyan-100',
+  '大语言模型': 'bg-indigo-50 text-indigo-600 border border-indigo-100',
+  'Transformer': 'bg-pink-50 text-pink-600 border border-pink-100',
+  '开源': 'bg-emerald-50 text-emerald-600 border border-emerald-100',
+  'AGI': 'bg-rose-50 text-rose-600 border border-rose-100',
+  '强化学习': 'bg-amber-50 text-amber-600 border border-amber-100',
 };
 
 function getTopicColor(topic: string): string {
-  return TOPIC_COLORS[topic] || 'bg-gray-500/15 text-gray-700';
+  return TOPIC_COLORS[topic] || 'bg-stone-50 text-stone-600 border border-stone-100';
 }
 
 // 链接图标组件
@@ -129,6 +130,117 @@ const LinkIcon = ({ type }: { type: string }) => {
   }
 };
 
+// 获取链接显示名称
+function getLinkDisplayName(type: string): string {
+  const names: Record<string, string> = {
+    x: 'X (Twitter)',
+    youtube: 'YouTube',
+    github: 'GitHub',
+    linkedin: 'LinkedIn',
+    scholar: 'Google Scholar',
+    website: '个人网站',
+    blog: '博客',
+    wikipedia: 'Wikipedia',
+  };
+  return names[type] || type;
+}
+
+// 官方账号下拉组件
+function OfficialLinksDropdown({ links }: { links: OfficialLink[] }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 链接排序优先级
+  const linkPriority: Record<string, number> = {
+    website: 1, blog: 2, x: 3, github: 4, youtube: 5, linkedin: 6, scholar: 7, wikipedia: 8
+  };
+  const sortedLinks = [...links].sort(
+    (a, b) => (linkPriority[a.type] || 99) - (linkPriority[b.type] || 99)
+  );
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 150);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  if (links.length === 0) return null;
+
+  return (
+    <div
+      ref={dropdownRef}
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        className="flex items-center gap-1.5 px-2.5 py-1 bg-stone-50 hover:bg-orange-50 text-stone-600 hover:text-orange-600 text-xs rounded-md transition-colors border border-stone-200 hover:border-orange-200"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>
+        <span>官方账号</span>
+        <span className="text-xs text-stone-400">({links.length})</span>
+        <svg
+          className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div
+          className="absolute right-0 top-full z-50 min-w-[180px] bg-white rounded-xl shadow-lg border border-stone-200 py-1 overflow-hidden"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {sortedLinks.map((link, idx) => (
+            <a
+              key={idx}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-2 hover:bg-orange-50 text-stone-600 hover:text-orange-600 transition-colors"
+            >
+              <LinkIcon type={link.type} />
+              <span className="text-sm">{getLinkDisplayName(link.type)}</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // 格式化日期为年份
 function formatYear(dateStr: string | null | undefined): string {
   if (!dateStr) return '';
@@ -141,26 +253,18 @@ function formatYear(dateStr: string | null | undefined): string {
 
 export function PersonHeader({ person }: PersonHeaderProps) {
   const [avatarError, setAvatarError] = useState(false);
-  const [timelineExpanded, setTimelineExpanded] = useState(false);
+  const [timelineExpanded, setTimelineExpanded] = useState(true);
 
-  // 获取头像 URL
+  // 获取头像 URL（使用温暖色调）
   const getAvatarUrl = () => {
     if (!person.avatarUrl || avatarError) {
-      return `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=3b82f6&color=fff&size=200`;
+      return `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=f97316&color=fff&size=200`;
     }
     if (person.avatarUrl.startsWith('/avatars/')) {
       return person.avatarUrl;
     }
     return person.avatarUrl;
   };
-
-  // 链接排序优先级
-  const linkPriority: Record<string, number> = {
-    website: 1, blog: 2, x: 3, github: 4, youtube: 5, linkedin: 6, scholar: 7, wikipedia: 8
-  };
-  const sortedLinks = [...(person.officialLinks || [])].sort(
-    (a, b) => (linkPriority[a.type] || 99) - (linkPriority[b.type] || 99)
-  );
 
   // 生成当前职位文本
   const currentTitle = person.currentTitle || (
@@ -169,100 +273,67 @@ export function PersonHeader({ person }: PersonHeaderProps) {
       : person.occupation[0] || ''
   );
 
-  // 获取教育背景摘要
-  const educationSummary = person.education?.[0];
-
-  // 履历数据（按时间倒序，取最近5条）
+  // 履历数据（按 startDate 降序，最新的在前，取最近5条）
   const timelineRoles = (person.personRoles || [])
     .sort((a, b) => {
-      const aDate = a.endDate || a.startDate || '9999';
-      const bDate = b.endDate || b.startDate || '9999';
+      const aDate = a.startDate || '0000';
+      const bDate = b.startDate || '0000';
       return bDate.localeCompare(aDate);
     })
     .slice(0, 5);
 
   return (
-    <section className="bg-white rounded-xl shadow-sm overflow-hidden">
-      <div className="p-5 sm:p-6">
-        <div className="flex gap-5">
+    <section className="card-base overflow-hidden">
+      {/* 渐变背景 */}
+      <div
+        className="p-4 sm:p-5"
+        style={{
+          background: 'linear-gradient(135deg, rgba(249,115,22,0.06) 0%, rgba(236,72,153,0.04) 50%, rgba(59,130,246,0.03) 100%)'
+        }}
+      >
+        <div className="flex gap-4 items-start">
           {/* 头像 */}
           <div className="flex-shrink-0">
             <img
               src={getAvatarUrl()}
               alt={person.name}
-              className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover ring-2 ring-gray-100"
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover ring-1 ring-stone-100"
               onError={() => setAvatarError(true)}
             />
           </div>
 
           {/* 基本信息 */}
           <div className="flex-1 min-w-0">
-            {/* 名字 + 国家 */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-                {person.name}
-              </h1>
-              {person.country && (
-                <span className="text-lg">{getCountryFlag(person.country)}</span>
-              )}
+            {/* 顶部：名字 + 国家 + 官方账号 */}
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-lg sm:text-xl font-bold text-stone-900 leading-none">
+                  {person.name}
+                </h1>
+                {person.country && (
+                  <span className="text-base leading-none">{getCountryFlag(person.country)}</span>
+                )}
+              </div>
+              {/* 官方账号下拉 - 放右侧 */}
+              <OfficialLinksDropdown links={person.officialLinks || []} />
             </div>
-
-            {/* 别名 */}
-            {person.aliases.length > 0 && (
-              <p className="text-sm text-gray-400 mt-0.5">
-                {person.aliases.slice(0, 2).join(' / ')}
-              </p>
-            )}
 
             {/* 当前职位 */}
             {currentTitle && (
-              <p className="text-sm text-gray-600 mt-1.5">{currentTitle}</p>
+              <p className="text-sm text-stone-600 mt-2">{currentTitle}</p>
             )}
 
             {/* 话题标签 */}
             {person.topics && person.topics.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-3">
-                {person.topics.slice(0, 4).map((topic, idx) => (
-                  <span
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {person.topics.slice(0, 5).map((topic, idx) => (
+                  <Link
                     key={idx}
-                    className={`px-2 py-0.5 text-xs font-medium rounded-md ${getTopicColor(topic)}`}
+                    href={`/?view=topic&topic=${encodeURIComponent(topic)}`}
+                    className={`px-2 py-0.5 text-xs font-medium rounded-md ${getTopicColor(topic)} hover:opacity-80 hover:scale-105 transition-all cursor-pointer`}
                   >
                     {topic}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            {/* 快速信息 */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-xs text-gray-500">
-              {educationSummary && (
-                <span className="flex items-center gap-1">
-                  <span>🎓</span>
-                  <span>{educationSummary.degree} @ {educationSummary.school}</span>
-                </span>
-              )}
-              {person.organization[0] && !currentTitle && (
-                <span className="flex items-center gap-1">
-                  <span>🏢</span>
-                  <span>{person.organization[0]}</span>
-                </span>
-              )}
-            </div>
-
-            {/* 官方链接 */}
-            {sortedLinks.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-3">
-                {sortedLinks.slice(0, 6).map((link, idx) => (
-                  <a
-                    key={idx}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-2 py-1 bg-gray-50 hover:bg-gray-100 text-gray-500 hover:text-gray-700 text-xs rounded-md transition-colors"
-                  >
-                    <LinkIcon type={link.type} />
-                    <span className="capitalize">{link.type === 'x' ? 'X' : link.type}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
@@ -274,11 +345,11 @@ export function PersonHeader({ person }: PersonHeaderProps) {
           <div className="mt-4">
             <button
               onClick={() => setTimelineExpanded(!timelineExpanded)}
-              className="flex items-center justify-between w-full px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm text-gray-600 transition-colors"
+              className="flex items-center justify-between w-full px-3 py-2 bg-white/60 hover:bg-white/80 rounded-lg text-sm text-stone-600 transition-colors border border-stone-100"
             >
               <span className="flex items-center gap-1.5">
                 <span>📋</span>
-                <span>个人履历</span>
+                <span className="font-medium">个人履历</span>
               </span>
               <svg
                 className={`w-4 h-4 transition-transform ${timelineExpanded ? 'rotate-180' : ''}`}
@@ -291,31 +362,39 @@ export function PersonHeader({ person }: PersonHeaderProps) {
             </button>
 
             {timelineExpanded && (
-              <div className="mt-2 pl-3 border-l-2 border-gray-100 space-y-2">
+              <div className="mt-2 pl-3 border-l-2 border-stone-200 space-y-1.5">
                 {timelineRoles.map((role, idx) => {
                   const isCurrent = !role.endDate;
                   const startYear = formatYear(role.startDate);
                   const endYear = role.endDate ? formatYear(role.endDate) : 'now';
                   const dateRange = startYear ? `${startYear} - ${endYear}` : '';
+                  const orgName = role.organizationNameZh || role.organizationName;
 
                   return (
                     <div
                       key={role.id}
-                      className={`relative pl-4 py-1.5 ${idx === 0 ? '' : ''}`}
+                      className="relative pl-3 py-1"
                     >
                       <div
-                        className={`absolute -left-[5px] top-2.5 w-2 h-2 rounded-full ${
-                          isCurrent ? 'bg-green-500' : 'bg-gray-300'
+                        className={`absolute -left-[5px] top-2 w-2 h-2 rounded-full ring-2 ring-white ${
+                          isCurrent ? 'bg-emerald-500' : 'bg-stone-300'
                         }`}
                       />
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex-1 min-w-0">
-                          <span className={`text-sm ${isCurrent ? 'text-gray-900 font-medium' : 'text-gray-600'}`}>
-                            {role.roleZh || role.role} @ {role.organizationNameZh || role.organizationName}
+                          <span className={`text-sm ${isCurrent ? 'text-stone-900 font-medium' : 'text-stone-600'}`}>
+                            {role.roleZh || role.role} @{' '}
+                            <Link
+                              href={`/?view=organization&organization=${encodeURIComponent(orgName)}`}
+                              className="hover:text-orange-600 hover:underline transition-colors"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {orgName}
+                            </Link>
                           </span>
                         </div>
                         {dateRange && (
-                          <span className="text-xs text-gray-400 whitespace-nowrap">{dateRange}</span>
+                          <span className="text-xs text-stone-400 whitespace-nowrap">{dateRange}</span>
                         )}
                       </div>
                     </div>

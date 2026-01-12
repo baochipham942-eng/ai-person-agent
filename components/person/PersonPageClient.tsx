@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   PersonHeader,
   CoreContribution,
   FeaturedWorks,
   VideoSection,
+  CourseSection,
   RelatedPeople,
   ContentTabs,
 } from './sections';
@@ -35,6 +37,8 @@ interface PersonRole {
   organizationName: string;
   organizationNameZh: string | null;
   organizationType: string;
+  advisorId?: string;
+  advisorName?: string;
 }
 
 interface RelatedPerson {
@@ -88,6 +92,13 @@ interface Paper {
   };
 }
 
+interface TopicDetail {
+  topic: string;
+  rank: number;
+  description?: string;
+  quote?: { text: string; source: string; url?: string };
+}
+
 interface PersonData {
   id: string;
   name: string;
@@ -105,6 +116,7 @@ interface PersonData {
   officialLinks: OfficialLink[];
   topics: string[];
   topicRanks: Record<string, number> | null;
+  topicDetails?: TopicDetail[] | null;
   cards: Card[];
   personRoles?: PersonRole[];
   relations?: Relation[];
@@ -114,6 +126,7 @@ interface PersonData {
   education?: Education[] | null;
   currentTitle?: string | null;
   papers?: Paper[];
+  courseCount?: number;
 }
 
 interface PersonPageClientProps {
@@ -123,28 +136,34 @@ interface PersonPageClientProps {
 // 状态徽章组件
 function StatusBadge({ status, completeness }: { status: string; completeness: number }) {
   const statusConfig: Record<string, { label: string; color: string }> = {
-    pending: { label: '待处理', color: 'bg-gray-100 text-gray-600' },
-    building: { label: '构建中', color: 'bg-blue-100 text-blue-600' },
-    ready: { label: '已就绪', color: 'bg-green-100 text-green-600' },
-    partial: { label: '部分完成', color: 'bg-yellow-100 text-yellow-600' },
-    error: { label: '错误', color: 'bg-red-100 text-red-600' },
+    pending: { label: '待处理', color: 'bg-stone-100 text-stone-600 border border-stone-200' },
+    building: { label: '构建中', color: 'bg-orange-50 text-orange-600 border border-orange-100' },
+    ready: { label: '已就绪', color: 'bg-emerald-50 text-emerald-600 border border-emerald-100' },
+    partial: { label: '部分完成', color: 'bg-amber-50 text-amber-600 border border-amber-100' },
+    error: { label: '错误', color: 'bg-red-50 text-red-600 border border-red-100' },
   };
 
   const config = statusConfig[status] || statusConfig.pending;
 
   return (
     <div className="flex items-center gap-2">
-      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${config.color}`}>
+      <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${config.color}`}>
         {config.label}
       </span>
       {completeness > 0 && completeness < 100 && (
-        <span className="text-xs text-gray-400">{completeness}%</span>
+        <span className="text-xs text-stone-400">{completeness}%</span>
       )}
     </div>
   );
 }
 
 export default function PersonPageClient({ person }: PersonPageClientProps) {
+  const searchParams = useSearchParams();
+
+  // 从 URL 读取 section 和 highlight 参数
+  const urlSection = searchParams.get('section'); // 'topics' | 'role' | etc.
+  const urlHighlight = searchParams.get('highlight'); // 具体的标签名
+
   // 记录页面访问
   useEffect(() => {
     const recordView = async () => {
@@ -164,15 +183,15 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
   const videoCount = person.sourceTypeCounts?.youtube || 0;
 
   return (
-    <div className="min-h-screen bg-gray-50/80">
-      {/* 顶部导航 */}
-      <header className="bg-white border-b border-gray-200/80 sticky top-0 z-50 shadow-sm">
+    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
+      {/* 顶部导航 - 玻璃拟态 */}
+      <header className="glass-header border-b border-subtle sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-12">
             {/* 返回按钮 */}
             <Link
               href="/"
-              className="flex items-center gap-1.5 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center gap-1.5 text-stone-600 hover:text-orange-600 transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -187,7 +206,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
       </header>
 
       {/* 主内容 */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-5 space-y-5">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* 1. 人物头部 - 整合可折叠履历 */}
         <PersonHeader
           person={{
@@ -214,12 +233,16 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           />
         )}
 
-        {/* 3. 代表作品（产品/论文/话题贡献） */}
+        {/* 3. 代表作品（产品/论文/话题贡献 + 开源项目） */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}
           topics={person.topics}
           topicRanks={person.topicRanks}
+          topicDetails={person.topicDetails}
+          personId={person.id}
+          initialTab={urlSection === 'topics' ? 'topics' : undefined}
+          highlightTopic={urlSection === 'topics' ? urlHighlight : undefined}
         />
 
         {/* 4. 视频内容 */}
@@ -228,12 +251,18 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           videoCount={videoCount}
         />
 
-        {/* 5. 关联人物 */}
+        {/* 5. 课程 */}
+        <CourseSection
+          personId={person.id}
+          courseCount={person.courseCount || 0}
+        />
+
+        {/* 6. 关联人物 */}
         {person.relations && person.relations.length > 0 && (
           <RelatedPeople relations={person.relations} />
         )}
 
-        {/* 6. 更多内容 - X/GitHub/播客等 */}
+        {/* 7. 更多内容 - X/GitHub/播客等 */}
         <ContentTabs
           personId={person.id}
           cards={person.cards}

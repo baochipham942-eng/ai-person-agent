@@ -6,3 +6,4 @@ export { TimelineSection } from './TimelineSection';
 export { ContentTabs } from './ContentTabs';
 export { FeaturedWorks } from './FeaturedWorks';
 export { VideoSection } from './VideoSection';
+export { CourseSection } from './CourseSection';

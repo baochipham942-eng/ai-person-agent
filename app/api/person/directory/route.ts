@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
 import { Prisma } from '@prisma/client';
 
+// 允许边缘缓存，但客户端始终重新验证
 export const dynamic = 'force-dynamic';
+export const revalidate = 60; // ISR: 60秒后重新验证
 
 // 机构名称映射 - 将显示名称映射到数据库中的各种变体
 // 注意：数据库中可能存储组合格式如 "月之暗面 Kimi"、"清华大学、智谱AI" 等
@@ -135,18 +137,18 @@ export async function GET(request: Request) {
 
     const hasMore = start + limit < total;
 
-    // 统计信息 - 只在第一页时返回，减少查询
+    // 统计信息 - 只在第一页且无筛选时返回，复用 total 避免额外查询
     let stats = null;
-    if (page === 1) {
-      const totalPeople = await prisma.people.count({ where: { status: { not: 'error' } } });
+    if (page === 1 && !topic && !organization && !roleCategory && !search) {
       stats = {
-        totalPeople,
-        totalTopics: 20, // 预定义话题数
-        totalOrgs: 15
+        totalPeople: total, // 复用已查询的 total，避免额外查询
+        totalTopics: 30, // 预定义话题数
+        totalOrgs: 30
       };
     }
 
-    return NextResponse.json({
+    // 构建响应并添加缓存头
+    const response = NextResponse.json({
       data: people,
       pagination: {
         page,
@@ -156,6 +158,11 @@ export async function GET(request: Request) {
       },
       ...(stats && { stats })
     });
+
+    // 添加缓存控制头 - 允许 CDN 缓存 60 秒，客户端缓存 10 秒
+    response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+
+    return response;
   } catch (error: any) {
     console.error('Failed to fetch directory:', error);
     return NextResponse.json(

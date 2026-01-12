@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 
 interface RawPoolItem {
   id: string;
@@ -15,6 +16,7 @@ interface RawPoolItem {
     videoCategory?: string;
     viewCount?: number;
     duration?: string;
+    tags?: string[];  // AI 话题标签
   };
 }
 
@@ -91,13 +93,13 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
     : videos.filter(v => v.metadata?.videoCategory === filter);
 
   return (
-    <section className="bg-white rounded-xl shadow-sm overflow-hidden">
+    <section className="card-base overflow-hidden">
       {/* 标题栏 */}
-      <div className="px-5 py-3 border-b border-gray-100">
+      <div className="px-5 py-3 border-b border-stone-100">
         <div className="flex items-center gap-2">
           <span className="text-base">🎬</span>
-          <h2 className="text-sm font-medium text-gray-900">听 TA 亲自讲</h2>
-          <span className="text-xs text-gray-400">({videoCount})</span>
+          <h2 className="text-sm font-medium text-stone-900">听 TA 亲自讲</h2>
+          <span className="text-xs text-stone-400">({videoCount})</span>
         </div>
 
         {/* 分类筛选 */}
@@ -107,10 +109,10 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
               <button
                 key={key}
                 onClick={() => setFilter(key as VideoCategory)}
-                className={`px-2.5 py-1 text-xs font-medium rounded-full transition-colors ${
+                className={`px-2.5 py-1 text-xs font-medium rounded-full transition-all ${
                   filter === key
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'gradient-btn'
+                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
                 }`}
               >
                 {label}
@@ -124,7 +126,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
       <div className="p-5">
         {loading ? (
           <div className="flex items-center justify-center py-8">
-            <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316', borderRightColor: '#ec4899' }}></div>
           </div>
         ) : filteredVideos.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -135,15 +137,17 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
               const category = video.metadata?.videoCategory;
 
               return (
-                <a
+                <div
                   key={video.id}
-                  href={video.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block rounded-xl overflow-hidden bg-gray-50 hover:shadow-md transition-shadow"
+                  onClick={(e) => {
+                    // 如果点击的是链接，不触发卡片导航
+                    if ((e.target as HTMLElement).closest('a')) return;
+                    window.open(video.url, '_blank', 'noopener,noreferrer');
+                  }}
+                  className="group block rounded-xl overflow-hidden bg-stone-50 hover:shadow-md transition-all border border-transparent hover:border-orange-100 cursor-pointer"
                 >
                   {/* 缩略图 */}
-                  <div className="relative aspect-video bg-gray-200">
+                  <div className="relative aspect-video bg-stone-200">
                     {thumbnailUrl && (
                       <img
                         src={thumbnailUrl}
@@ -153,43 +157,60 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                     )}
                     {/* 播放按钮遮罩 */}
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <div
+                        className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+                        style={{ background: 'var(--gradient-primary)' }}
+                      >
+                        <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </div>
                     </div>
                     {/* 分类标签 */}
                     {category && category !== 'analysis' && (
-                      <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/70 text-white text-[10px] rounded">
+                      <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/70 text-white text-[10px] rounded-md">
                         {CATEGORY_CONFIG[category as VideoCategory]?.label || category}
                       </div>
                     )}
                     {/* 时长 */}
                     {video.metadata?.duration && (
-                      <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 text-white text-[10px] rounded">
+                      <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-black/80 text-white text-[10px] rounded-md">
                         {video.metadata.duration}
                       </div>
                     )}
                   </div>
                   {/* 信息 */}
                   <div className="p-3">
-                    <h4 className="text-sm font-medium text-gray-900 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    <h4 className="text-sm font-medium text-stone-900 line-clamp-2 group-hover:text-orange-600 transition-colors">
                       {video.title}
                     </h4>
-                    <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-400">
+                    <div className="flex items-center gap-2 mt-1.5 text-xs text-stone-400">
                       {video.metadata?.viewCount && (
                         <span>👁️ {(video.metadata.viewCount / 1000).toFixed(0)}K</span>
                       )}
                       {video.publishedAt && <span>{formatDate(video.publishedAt)}</span>}
                     </div>
+                    {/* 话题标签 */}
+                    {video.metadata?.tags && video.metadata.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {video.metadata.tags.slice(0, 3).map(tag => (
+                          <Link
+                            key={tag}
+                            href={`/?view=topic&topic=${encodeURIComponent(tag)}`}
+                            className="px-1.5 py-0.5 text-[10px] bg-orange-50 text-orange-600 rounded-md hover:bg-orange-100 transition-colors"
+                          >
+                            {tag}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </a>
+                </div>
               );
             })}
           </div>
         ) : (
-          <div className="text-center py-8 text-gray-400">
+          <div className="text-center py-8 text-stone-400">
             <div className="text-3xl mb-2">🎬</div>
             <div className="text-sm">暂无视频内容</div>
           </div>
@@ -198,7 +219,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
         {/* 查看更多 */}
         {filteredVideos.length > 6 && (
           <div className="text-center mt-4">
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-stone-400">
               还有 {filteredVideos.length - 6} 个视频
             </span>
           </div>

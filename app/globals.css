@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 温暖色调 */
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --muted: #78716c;
+
+  /* 渐变色 */
+  --gradient-primary: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+  --gradient-subtle: linear-gradient(135deg, #fef3c7 0%, #fce7f3 50%, #ede9fe 100%);
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03), 0 1px 3px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-glow: 0 4px 14px 0 rgb(249 115 22 / 0.15);
 }
 
 @theme inline {
@@ -12,15 +24,115 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ========== 设计系统工具类 ========== */
+
+/* 玻璃拟态效果 */
+.glass-header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 渐变按钮 */
+.gradient-btn {
+  background: var(--gradient-primary);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.gradient-btn:hover {
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+/* 卡片基础样式 */
+.card-base {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.card-base:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* 可交互卡片 - 悬停时抬起 */
+.card-interactive {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.card-interactive:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* 细腻边框 */
+.border-subtle {
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+/* 渐变背景容器 */
+.gradient-bg {
+  background: var(--gradient-primary);
+}
+
+.gradient-bg-subtle {
+  background: var(--gradient-subtle);
+}
+
+/* 渐变边框 */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--gradient-primary);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* 滚动条美化 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

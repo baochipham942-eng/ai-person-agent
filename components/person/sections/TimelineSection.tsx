@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 interface PersonRole {
   id: string;
   role: string;
@@ -9,6 +11,8 @@ interface PersonRole {
   organizationName: string;
   organizationNameZh: string | null;
   organizationType: string;
+  advisorId?: string | null;
+  advisorName?: string | null;
 }
 
 interface TimelineSectionProps {
@@ -19,7 +23,7 @@ interface TimelineSectionProps {
 // 分类关键词
 const EDUCATION_KEYWORDS = ['university', 'college', 'school', 'academy', 'institute'];
 const INVESTMENT_KEYWORDS = ['partner', 'investor', 'venture', 'capital', 'fund', 'angel', 'board member', 'advisor', 'co-chair', 'chairman'];
-const INVESTMENT_ORGS = ['y combinator', 'openai foundation'];
+const INVESTMENT_ORGS = ['y combinator'];
 
 function categorizeRole(role: PersonRole): 'career' | 'education' | 'investment' {
   const orgType = role.organizationType?.toLowerCase() || '';
@@ -50,6 +54,24 @@ function formatDate(dateStr: string | null | undefined): string {
   }
 }
 
+function formatYear(dateStr: string | null | undefined): string {
+  if (!dateStr) return '';
+  try {
+    const date = new Date(dateStr);
+    return `${date.getFullYear()}年`;
+  } catch {
+    return dateStr;
+  }
+}
+
+// 判断是否为实习经历
+const INTERN_KEYWORDS = ['实习', 'intern', 'internship'];
+
+function isInternRole(roleTitle: string): boolean {
+  const lower = roleTitle?.toLowerCase() || '';
+  return INTERN_KEYWORDS.some(k => lower.includes(k));
+}
+
 function calculateDuration(start: string | null | undefined, end: string | null | undefined): string {
   if (!start) return '';
   const startDate = new Date(start);
@@ -71,10 +93,34 @@ function calculateDuration(start: string | null | undefined, end: string | null 
 const RoleItem = ({ role }: { role: PersonRole }) => {
   const orgName = role.organizationNameZh || role.organizationName;
   const roleTitle = role.roleZh || role.role;
-  const duration = calculateDuration(role.startDate, role.endDate);
+  const isIntern = isInternRole(roleTitle);
+
+  // 实习经历没有结束时间时，只显示年份；其他经历显示"至今"
+  const hasNoEndDate = !role.endDate;
+  const duration = (isIntern && hasNoEndDate) ? '' : calculateDuration(role.startDate, role.endDate);
 
   // 使用 Google Favicon API 获取机构图标
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(role.organizationName.replace(/\s+/g, '').toLowerCase())}.com&sz=32`;
+
+  // 格式化时间显示
+  const renderTimeRange = () => {
+    if (!role.startDate) return null;
+
+    // 实习经历没有结束时间：只显示开始年份
+    if (isIntern && hasNoEndDate) {
+      return <>{formatYear(role.startDate)} (实习)</>;
+    }
+
+    // 正常显示时间范围
+    return (
+      <>
+        {formatDate(role.startDate)}
+        {' - '}
+        {role.endDate ? formatDate(role.endDate) : '至今'}
+        {duration && ` · ${duration}`}
+      </>
+    );
+  };
 
   return (
     <div className="flex gap-3 py-3 border-b border-gray-100 last:border-0">
@@ -95,11 +141,18 @@ const RoleItem = ({ role }: { role: PersonRole }) => {
         <div className="font-medium text-gray-900">{roleTitle}</div>
         <div className="text-sm text-gray-600">{orgName}</div>
         <div className="text-xs text-gray-400 mt-0.5">
-          {role.startDate && formatDate(role.startDate)}
-          {role.startDate && ' - '}
-          {role.endDate ? formatDate(role.endDate) : '至今'}
-          {duration && ` · ${duration}`}
+          {renderTimeRange()}
         </div>
+        {/* 导师链接 */}
+        {role.advisorId && role.advisorName && (
+          <Link
+            href={`/person/${role.advisorId}`}
+            className="inline-flex items-center gap-1 mt-1.5 text-xs text-purple-600 hover:text-purple-700 hover:underline"
+          >
+            <span>👨‍🏫</span>
+            <span>师从 {role.advisorName}</span>
+          </Link>
+        )}
       </div>
     </div>
   );
