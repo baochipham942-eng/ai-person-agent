@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Link from 'next/link';
 
 interface Product {
@@ -106,12 +106,48 @@ function formatYear(dateStr: string | null): string {
 }
 
 export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic }: FeaturedWorksProps) {
-  const [activeTab, setActiveTab] = useState<TabKey>(initialTab || 'products');
   const [showAllPapers, setShowAllPapers] = useState(false);
   const [githubRepos, setGithubRepos] = useState<GithubRepo[]>([]);
   const [loadingRepos, setLoadingRepos] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const hasScrolled = useRef(false);
+
+  // 检查各 tab 是否有内容 - 使用 useMemo 缓存计算结果
+  const hasProducts = products && products.length > 0;
+  const hasPapers = papers && papers.length > 0;
+  const hasTopics = topics && topics.length > 0;
+  // 产品 tab 现在也包含开源项目，所以如果有 personId 就总是显示（开源项目会动态加载）
+  const hasProductsOrGithub = hasProducts || !!personId;
+
+  // 构建可用的 tabs - 使用 useMemo 避免重复计算
+  const tabs = useMemo(() => {
+    const result: { key: TabKey; label: string; count?: number }[] = [];
+    // 产品/项目 tab 始终显示（如果有 personId，因为可能有开源项目）
+    if (hasProductsOrGithub) result.push({ key: 'products', label: '产品/项目' });
+    if (hasPapers) result.push({ key: 'papers', label: '核心论文', count: papers?.length });
+    if (hasTopics) result.push({ key: 'topics', label: '话题贡献', count: topics?.length });
+    return result;
+  }, [hasProductsOrGithub, hasPapers, hasTopics, papers?.length, topics?.length]);
+
+  // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
+  const validInitialTab = useMemo(() => {
+    // 如果指定了 initialTab 且该 tab 可用，使用它
+    if (initialTab && tabs.some(t => t.key === initialTab)) {
+      return initialTab;
+    }
+    // 否则使用第一个可用的 tab
+    return tabs[0]?.key || 'products';
+  }, [initialTab, tabs]);
+
+  const [activeTab, setActiveTab] = useState<TabKey>(validInitialTab);
+
+  // 当 validInitialTab 变化时更新 activeTab（处理初始 tab 无效的情况）
+  useEffect(() => {
+    const isCurrentTabValid = tabs.some(t => t.key === activeTab);
+    if (!isCurrentTabValid && tabs.length > 0) {
+      setActiveTab(tabs[0].key);
+    }
+  }, [activeTab, tabs]);
 
   // 加载开源项目数据
   const loadGithubRepos = useCallback(async () => {
@@ -148,32 +184,9 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     }
   }, [initialTab]);
 
-  // 检查各 tab 是否有内容
-  const hasProducts = products && products.length > 0;
-  const hasPapers = papers && papers.length > 0;
-  const hasTopics = topics && topics.length > 0;
-  // 产品 tab 现在也包含开源项目，所以如果有 personId 就总是显示（开源项目会动态加载）
-  const hasProductsOrGithub = hasProducts || !!personId;
-
   // 如果没有任何内容，不渲染
   if (!hasProductsOrGithub && !hasPapers && !hasTopics) {
     return null;
-  }
-
-  // 构建可用的 tabs
-  const tabs: { key: TabKey; label: string; count?: number }[] = [];
-  // 产品/项目 tab 始终显示（如果有 personId，因为可能有开源项目）
-  if (hasProductsOrGithub) tabs.push({ key: 'products', label: '产品/项目' });
-  if (hasPapers) tabs.push({ key: 'papers', label: '核心论文', count: papers!.length });
-  if (hasTopics) tabs.push({ key: 'topics', label: '话题贡献', count: topics!.length });
-
-  // 如果当前 tab 没有内容，切换到第一个有内容的 tab
-  if (
-    (activeTab === 'products' && !hasProductsOrGithub) ||
-    (activeTab === 'papers' && !hasPapers) ||
-    (activeTab === 'topics' && !hasTopics)
-  ) {
-    setActiveTab(tabs[0]?.key || 'products');
   }
 
   // 生成话题贡献数据：优先使用 topicDetails，否则从 topics + topicRanks 生成

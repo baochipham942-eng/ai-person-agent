@@ -271,23 +271,28 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
       .map(([key, count]) => ({ key, count }))
   ].filter(tab => TAB_CONFIG[tab.key]);
 
-  // 加载 tab 内容
-  const loadItemsForType = useCallback(async (type: string) => {
-    if (type === 'cards' || loadedItems[type]) return;
+  // 追踪已加载过的 tab 类型，避免重复请求
+  const loadedTabsRef = useRef<Set<string>>(new Set());
 
+  // 加载 tab 内容 - 移除对 loadedItems 的依赖以避免无限循环
+  const loadItemsForType = useCallback(async (type: string) => {
+    if (type === 'cards' || loadedTabsRef.current.has(type)) return;
+
+    // 标记为已加载（即使失败也不重试，避免无限循环）
+    loadedTabsRef.current.add(type);
     setLoadingTab(type);
     try {
       const response = await fetch(`/api/person/${personId}/items?type=${type}&limit=50`);
       if (response.ok) {
         const result = await response.json();
-        setLoadedItems(prev => ({ ...prev, [type]: result.data }));
+        setLoadedItems(prev => ({ ...prev, [type]: result.data || [] }));
       }
     } catch (error) {
       console.error('Failed to load items:', error);
     } finally {
       setLoadingTab(null);
     }
-  }, [personId, loadedItems]);
+  }, [personId]);
 
   // 切换 tab 时加载数据
   useEffect(() => {
