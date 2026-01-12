@@ -135,6 +135,17 @@ function getTopicIcon(topic: string): string {
   return TOPIC_ICONS[topic] || '📚';
 }
 
+// 从 URL 获取 Google Favicon
+function getGoogleFavicon(url: string | undefined, size: number = 128): string | null {
+  if (!url) return null;
+  try {
+    const hostname = new URL(url).hostname;
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=${size}`;
+  } catch {
+    return null;
+  }
+}
+
 // 格式化日期
 function formatYear(dateStr: string | null): string {
   if (!dateStr) return '';
@@ -357,7 +368,10 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
           <div className="space-y-4">
             {hasProducts ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {realProducts.slice(0, 6).map((product, idx) => (
+                {realProducts.slice(0, 6).map((product, idx) => {
+                  // 优先使用 logo，其次从 url 获取 favicon，最后用 emoji
+                  const logoUrl = product.logo || getGoogleFavicon(product.url);
+                  return (
                   <a
                     key={idx}
                     href={product.url || '#'}
@@ -366,21 +380,25 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                     className="block p-4 bg-gradient-to-br from-stone-50 to-white hover:from-orange-50/50 hover:to-white rounded-xl transition-all hover:shadow-md border border-stone-100 hover:border-orange-200 group"
                   >
                     <div className="flex items-start gap-3">
-                      {/* 产品 Logo/Icon */}
-                      {product.logo ? (
+                      {/* 产品 Logo/Icon - 优先用 logo，其次 Google Favicon，最后 emoji */}
+                      {logoUrl ? (
                         <img
-                          src={product.logo}
+                          src={logoUrl}
                           alt={product.name}
-                          className="w-12 h-12 rounded-xl object-cover flex-shrink-0 border border-stone-100"
+                          className="w-12 h-12 rounded-xl object-contain flex-shrink-0 border border-stone-100 bg-white p-1"
+                          onError={(e) => {
+                            // favicon 加载失败时隐藏图片，显示 fallback
+                            (e.target as HTMLImageElement).style.display = 'none';
+                            (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                          }}
                         />
-                      ) : (
-                        <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                          style={{ background: 'var(--gradient-primary)' }}
-                        >
-                          <span className="text-white text-xl">{product.icon || '🚀'}</span>
-                        </div>
-                      )}
+                      ) : null}
+                      <div
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${logoUrl ? 'hidden' : ''}`}
+                        style={{ background: 'var(--gradient-primary)' }}
+                      >
+                        <span className="text-white text-xl">{product.icon || '🚀'}</span>
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
                           <h4 className="text-sm font-semibold text-stone-900 group-hover:text-orange-600 transition-colors">{product.name}</h4>
@@ -418,7 +436,8 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                       </div>
                     </div>
                   </a>
-                ))}
+                  );
+                })}
               </div>
             ) : (
               <div className="text-center py-8 text-stone-400">
