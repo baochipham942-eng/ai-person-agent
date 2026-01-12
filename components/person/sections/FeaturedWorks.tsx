@@ -5,13 +5,19 @@ import Link from 'next/link';
 
 interface Product {
   name: string;
-  org: string;
-  year: string;
+  org?: string;
+  year?: string | number;
   description: string;
   url?: string;
   icon?: string;
-  stats?: string | { stars?: number; forks?: number };
-  type?: 'product' | 'project' | 'opensource';  // 区分产品/项目/开源
+  logo?: string;        // 产品 Logo URL
+  category?: string;    // 产品类别: AI Model, Platform, Tool, Framework, Service
+  stats?: {
+    users?: string;     // 用户数: "10M+", "1B+"
+    revenue?: string;   // 营收: "$1B ARR"
+    valuation?: string; // 估值
+    downloads?: string; // 下载量
+  };
 }
 
 interface Paper {
@@ -60,7 +66,7 @@ interface FeaturedWorksProps {
   highlightTopic?: string | null;  // 需要高亮的话题
 }
 
-type TabKey = 'products' | 'papers' | 'topics';
+type TabKey = 'products' | 'opensource' | 'papers' | 'topics';
 
 // 排名徽章样式
 function getRankBadgeStyle(rank: number): string {
@@ -112,22 +118,35 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const sectionRef = useRef<HTMLElement>(null);
   const hasScrolled = useRef(false);
 
+  // 过滤真正的产品（排除 GitHub 仓库类型）
+  const realProducts = useMemo(() => {
+    if (!products || products.length === 0) return [];
+    return products.filter(p => {
+      // 排除 GitHub 类型的数据（这些应该在开源项目 Tab 显示）
+      const isGithub = (p as any).type === 'github' ||
+                       (p.url && p.url.includes('github.com'));
+      return !isGithub;
+    });
+  }, [products]);
+
   // 检查各 tab 是否有内容 - 使用 useMemo 缓存计算结果
-  const hasProducts = products && products.length > 0;
+  const hasProducts = realProducts.length > 0;
   const hasPapers = papers && papers.length > 0;
   const hasTopics = topics && topics.length > 0;
-  // 产品 tab 现在也包含开源项目，所以如果有 personId 就总是显示（开源项目会动态加载）
-  const hasProductsOrGithub = hasProducts || !!personId;
+  // 开源项目通过 personId 动态加载
+  const hasOpensource = !!personId;
 
   // 构建可用的 tabs - 使用 useMemo 避免重复计算
   const tabs = useMemo(() => {
     const result: { key: TabKey; label: string; count?: number }[] = [];
-    // 产品/项目 tab 始终显示（如果有 personId，因为可能有开源项目）
-    if (hasProductsOrGithub) result.push({ key: 'products', label: '产品/项目' });
+    // 产品 tab（只显示真正的产品）
+    if (hasProducts) result.push({ key: 'products', label: '代表产品' });
+    // 开源项目 tab
+    if (hasOpensource) result.push({ key: 'opensource', label: '开源项目' });
     if (hasPapers) result.push({ key: 'papers', label: '核心论文', count: papers?.length });
     if (hasTopics) result.push({ key: 'topics', label: '话题贡献', count: topics?.length });
     return result;
-  }, [hasProductsOrGithub, hasPapers, hasTopics, papers?.length, topics?.length]);
+  }, [hasProducts, hasOpensource, hasPapers, hasTopics, papers?.length, topics?.length]);
 
   // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
   const validInitialTab = useMemo(() => {
@@ -166,9 +185,9 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     }
   }, [personId, githubRepos.length]);
 
-  // 当切换到产品 tab 且有 personId 时加载开源项目
+  // 当切换到开源项目 tab 时加载 GitHub 仓库
   useEffect(() => {
-    if (activeTab === 'products' && personId) {
+    if (activeTab === 'opensource' && personId) {
       loadGithubRepos();
     }
   }, [activeTab, personId, loadGithubRepos]);
@@ -185,7 +204,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   }, [initialTab]);
 
   // 如果没有任何内容，不渲染
-  if (!hasProductsOrGithub && !hasPapers && !hasTopics) {
+  if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics) {
     return null;
   }
 
@@ -228,42 +247,66 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
 
       {/* 内容区域 */}
       <div className="p-5">
-        {/* 产品/项目（整合开源项目） */}
+        {/* 代表产品 */}
         {activeTab === 'products' && (
-          <div className="space-y-6">
-            {/* 产品/项目 */}
-            {hasProducts && (
+          <div className="space-y-4">
+            {hasProducts ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {products!.slice(0, 6).map((product, idx) => (
+                {realProducts.slice(0, 6).map((product, idx) => (
                   <a
                     key={idx}
                     href={product.url || '#'}
                     target={product.url ? '_blank' : undefined}
                     rel={product.url ? 'noopener noreferrer' : undefined}
-                    className="block p-4 bg-stone-50 hover:bg-orange-50/50 rounded-xl transition-all hover:shadow-sm border border-transparent hover:border-orange-100"
+                    className="block p-4 bg-gradient-to-br from-stone-50 to-white hover:from-orange-50/50 hover:to-white rounded-xl transition-all hover:shadow-md border border-stone-100 hover:border-orange-200 group"
                   >
                     <div className="flex items-start gap-3">
-                      <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: 'var(--gradient-primary)' }}
-                      >
-                        <span className="text-white text-lg">{product.icon || '🚀'}</span>
-                      </div>
+                      {/* 产品 Logo/Icon */}
+                      {product.logo ? (
+                        <img
+                          src={product.logo}
+                          alt={product.name}
+                          className="w-12 h-12 rounded-xl object-cover flex-shrink-0 border border-stone-100"
+                        />
+                      ) : (
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                          style={{ background: 'var(--gradient-primary)' }}
+                        >
+                          <span className="text-white text-xl">{product.icon || '🚀'}</span>
+                        </div>
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <h4 className="text-sm font-semibold text-stone-900">{product.name}</h4>
+                          <h4 className="text-sm font-semibold text-stone-900 group-hover:text-orange-600 transition-colors">{product.name}</h4>
+                          {product.category && (
+                            <span className="px-1.5 py-0.5 bg-stone-100 text-stone-500 text-[10px] rounded-md">
+                              {product.category}
+                            </span>
+                          )}
                         </div>
-                        <p className="text-xs text-stone-500 mt-0.5">{product.org} · {product.year}</p>
-                        <p className="text-xs text-stone-600 mt-1.5 line-clamp-2">{product.description}</p>
-                        {product.stats && (
-                          <p className="text-xs text-orange-600 font-medium mt-1.5">
-                            {typeof product.stats === 'string'
-                              ? product.stats
-                              : `⭐ ${product.stats.stars?.toLocaleString() || 0}`}
+                        {(product.org || product.year) && (
+                          <p className="text-xs text-stone-500 mt-0.5">
+                            {product.org}{product.org && product.year ? ' · ' : ''}{product.year}
                           </p>
                         )}
+                        <p className="text-xs text-stone-600 mt-1.5 line-clamp-2">{product.description}</p>
+                        {/* 产品数据展示 */}
+                        {product.stats && (
+                          <div className="flex items-center gap-3 mt-2 text-xs">
+                            {product.stats.users && (
+                              <span className="text-orange-600 font-medium">👥 {product.stats.users}</span>
+                            )}
+                            {product.stats.revenue && (
+                              <span className="text-emerald-600 font-medium">💰 {product.stats.revenue}</span>
+                            )}
+                            {product.stats.downloads && (
+                              <span className="text-blue-600 font-medium">⬇️ {product.stats.downloads}</span>
+                            )}
+                          </div>
+                        )}
                         {product.url && (
-                          <p className="text-xs text-blue-500 mt-2 flex items-center gap-1">
+                          <p className="text-xs text-blue-500 mt-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                             🔗 查看详情 →
                           </p>
                         )}
@@ -272,68 +315,67 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                   </a>
                 ))}
               </div>
-            )}
-
-            {/* 开源项目 */}
-            {(githubRepos.length > 0 || loadingRepos) && (
-              <div>
-                <h3 className="text-xs font-medium text-stone-500 mb-3 flex items-center gap-1.5">
-                  <span>💻</span>
-                  <span>开源项目</span>
-                </h3>
-                {loadingRepos ? (
-                  <div className="flex items-center justify-center py-6">
-                    <div className="w-5 h-5 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316' }}></div>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {githubRepos.map(repo => (
-                      <a
-                        key={repo.id}
-                        href={repo.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block p-4 bg-stone-50 hover:bg-orange-50/50 rounded-xl transition-all hover:shadow-sm border border-transparent hover:border-orange-100"
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-stone-900 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                            </svg>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-semibold text-stone-900 truncate">{repo.title}</h4>
-                            <p className="text-xs text-stone-600 mt-1 line-clamp-2">
-                              {repo.metadata?.deepwikiSummary || repo.text}
-                            </p>
-                            <div className="flex items-center gap-3 mt-2 text-xs text-stone-400">
-                              {repo.metadata?.language && (
-                                <span className="flex items-center gap-1">
-                                  <span className="w-2 h-2 rounded-full bg-amber-400"></span>
-                                  {repo.metadata.language}
-                                </span>
-                              )}
-                              {repo.metadata?.stars && (
-                                <span className="text-orange-600 font-medium">⭐ {repo.metadata.stars.toLocaleString()}</span>
-                              )}
-                              {repo.metadata?.forks && repo.metadata.forks > 0 && (
-                                <span>🍴 {repo.metadata.forks.toLocaleString()}</span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                )}
+            ) : (
+              <div className="text-center py-8 text-stone-400">
+                <div className="text-3xl mb-2">🚀</div>
+                <div className="text-sm">暂无代表产品信息</div>
+                <p className="text-xs text-stone-400 mt-1">产品信息正在补充中...</p>
               </div>
             )}
+          </div>
+        )}
 
-            {/* 无内容提示 */}
-            {!hasProducts && githubRepos.length === 0 && !loadingRepos && (
+        {/* 开源项目 */}
+        {activeTab === 'opensource' && (
+          <div className="space-y-4">
+            {loadingRepos ? (
+              <div className="flex items-center justify-center py-8">
+                <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316' }}></div>
+              </div>
+            ) : githubRepos.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {githubRepos.map(repo => (
+                  <a
+                    key={repo.id}
+                    href={repo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-4 bg-stone-50 hover:bg-orange-50/50 rounded-xl transition-all hover:shadow-sm border border-transparent hover:border-orange-100 group"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-stone-900 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm font-semibold text-stone-900 truncate group-hover:text-orange-600 transition-colors">{repo.title}</h4>
+                        <p className="text-xs text-stone-600 mt-1 line-clamp-2">
+                          {repo.metadata?.deepwikiSummary || repo.text}
+                        </p>
+                        <div className="flex items-center gap-3 mt-2 text-xs text-stone-400">
+                          {repo.metadata?.language && (
+                            <span className="flex items-center gap-1">
+                              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                              {repo.metadata.language}
+                            </span>
+                          )}
+                          {repo.metadata?.stars && (
+                            <span className="text-orange-600 font-medium">⭐ {repo.metadata.stars.toLocaleString()}</span>
+                          )}
+                          {repo.metadata?.forks && repo.metadata.forks > 0 && (
+                            <span>🍴 {repo.metadata.forks.toLocaleString()}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            ) : (
               <div className="text-center py-8 text-stone-400">
-                <div className="text-3xl mb-2">🏆</div>
-                <div className="text-sm">暂无代表作品</div>
+                <div className="text-3xl mb-2">💻</div>
+                <div className="text-sm">暂无开源项目</div>
               </div>
             )}
           </div>

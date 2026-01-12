@@ -64,12 +64,19 @@ interface Quote {
 
 interface Product {
   name: string;
-  org: string;
-  year: string;
+  org?: string;
+  year?: string | number;
   description: string;
   url?: string;
   icon?: string;
-  stats?: string;
+  logo?: string;        // 产品 Logo URL
+  category?: string;    // 产品类别: AI Model, Platform, Tool, Framework, Service
+  stats?: {
+    users?: string;     // 用户数: "10M+", "1B+"
+    revenue?: string;   // 营收: "$1B ARR"
+    valuation?: string; // 估值
+    downloads?: string; // 下载量
+  };
 }
 
 interface Education {
@@ -233,7 +240,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           />
         )}
 
-        {/* 3. 代表作品（产品/论文/话题贡献 + 开源项目） */}
+        {/* 3. 代表作品（代表产品/开源项目/核心论文/话题贡献） */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}
@@ -245,30 +252,30 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           highlightTopic={urlSection === 'topics' ? urlHighlight : undefined}
         />
 
-        {/* 4. 视频内容 */}
-        <VideoSection
-          personId={person.id}
-          videoCount={videoCount}
-        />
-
-        {/* 5. 课程 */}
-        <CourseSection
-          personId={person.id}
-          courseCount={person.courseCount || 0}
-        />
-
-        {/* 6. 关联人物 */}
-        {person.relations && person.relations.length > 0 && (
-          <RelatedPeople relations={person.relations} />
-        )}
-
-        {/* 7. 更多内容 - X/GitHub/播客等 */}
+        {/* 4. 播客 & 学习卡片 */}
         <ContentTabs
           personId={person.id}
           cards={person.cards}
           sourceTypeCounts={person.sourceTypeCounts || {}}
           officialLinks={person.officialLinks}
         />
+
+        {/* 5. 视频内容 */}
+        <VideoSection
+          personId={person.id}
+          videoCount={videoCount}
+        />
+
+        {/* 6. 课程 */}
+        <CourseSection
+          personId={person.id}
+          courseCount={person.courseCount || 0}
+        />
+
+        {/* 7. 关联人物 */}
+        {person.relations && person.relations.length > 0 && (
+          <RelatedPeople relations={person.relations} />
+        )}
       </main>
     </div>
   );
