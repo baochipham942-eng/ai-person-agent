@@ -55,6 +55,26 @@ interface GithubRepo {
   };
 }
 
+interface Card {
+  id: string;
+  type: string;
+  title: string;
+  content: string;
+  tags: string[];
+  importance: number;
+}
+
+interface BlogItem {
+  id: string;
+  url: string;
+  title: string;
+  text: string;
+  publishedAt: string | null;
+  metadata?: {
+    domain?: string;
+  };
+}
+
 interface FeaturedWorksProps {
   products?: Product[] | null;
   papers?: Paper[];
@@ -64,9 +84,10 @@ interface FeaturedWorksProps {
   personId?: string;  // 用于加载开源项目
   initialTab?: TabKey;  // 从 URL 初始化的 tab
   highlightTopic?: string | null;  // 需要高亮的话题
+  cards?: Card[];  // 学习卡片
 }
 
-type TabKey = 'products' | 'opensource' | 'papers' | 'topics';
+type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs';
 
 // 排名徽章样式
 function getRankBadgeStyle(rank: number): string {
@@ -111,10 +132,22 @@ function formatYear(dateStr: string | null): string {
   }
 }
 
-export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic }: FeaturedWorksProps) {
+// 卡片类型配置
+const CARD_TYPE_CONFIG: Record<string, { icon: string; label: string; color: string }> = {
+  insight: { icon: '💡', label: '核心洞见', color: 'border-l-blue-400' },
+  quote: { icon: '💬', label: '金句', color: 'border-l-purple-400' },
+  story: { icon: '📖', label: '故事', color: 'border-l-orange-400' },
+  method: { icon: '🔧', label: '方法论', color: 'border-l-green-400' },
+  fact: { icon: '📊', label: '事实', color: 'border-l-cyan-400' },
+};
+
+export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards }: FeaturedWorksProps) {
   const [showAllPapers, setShowAllPapers] = useState(false);
+  const [showAllCards, setShowAllCards] = useState(false);
   const [githubRepos, setGithubRepos] = useState<GithubRepo[]>([]);
+  const [blogItems, setBlogItems] = useState<BlogItem[]>([]);
   const [loadingRepos, setLoadingRepos] = useState(false);
+  const [loadingBlogs, setLoadingBlogs] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const hasScrolled = useRef(false);
 
@@ -133,8 +166,10 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const hasProducts = realProducts.length > 0;
   const hasPapers = papers && papers.length > 0;
   const hasTopics = topics && topics.length > 0;
-  // 开源项目通过 personId 动态加载
+  const hasCards = cards && cards.length > 0;
+  // 开源项目和博客通过 personId 动态加载
   const hasOpensource = !!personId;
+  const hasBlogs = !!personId; // 博客通过 API 加载
 
   // 构建可用的 tabs - 使用 useMemo 避免重复计算
   const tabs = useMemo(() => {
@@ -145,8 +180,12 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     if (hasOpensource) result.push({ key: 'opensource', label: '开源项目' });
     if (hasPapers) result.push({ key: 'papers', label: '核心论文', count: papers?.length });
     if (hasTopics) result.push({ key: 'topics', label: '话题贡献', count: topics?.length });
+    // 学习卡片 tab
+    if (hasCards) result.push({ key: 'cards', label: '学习卡片', count: cards?.length });
+    // 博客 tab
+    if (hasBlogs) result.push({ key: 'blogs', label: '博客' });
     return result;
-  }, [hasProducts, hasOpensource, hasPapers, hasTopics, papers?.length, topics?.length]);
+  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, papers?.length, topics?.length, cards?.length]);
 
   // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
   const validInitialTab = useMemo(() => {
@@ -185,12 +224,36 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     }
   }, [personId, githubRepos.length]);
 
+  // 加载博客数据
+  const loadBlogItems = useCallback(async () => {
+    if (!personId || blogItems.length > 0) return;
+    setLoadingBlogs(true);
+    try {
+      const response = await fetch(`/api/person/${personId}/items?type=exa&limit=10`);
+      if (response.ok) {
+        const result = await response.json();
+        setBlogItems(result.data || []);
+      }
+    } catch (error) {
+      console.error('Failed to load blog items:', error);
+    } finally {
+      setLoadingBlogs(false);
+    }
+  }, [personId, blogItems.length]);
+
   // 当切换到开源项目 tab 时加载 GitHub 仓库
   useEffect(() => {
     if (activeTab === 'opensource' && personId) {
       loadGithubRepos();
     }
   }, [activeTab, personId, loadGithubRepos]);
+
+  // 当切换到博客 tab 时加载博客
+  useEffect(() => {
+    if (activeTab === 'blogs' && personId) {
+      loadBlogItems();
+    }
+  }, [activeTab, personId, loadBlogItems]);
 
   // 如果有 initialTab，滚动到该 section
   useEffect(() => {
@@ -204,7 +267,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   }, [initialTab]);
 
   // 如果没有任何内容，不渲染
-  if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics) {
+  if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics && !hasCards && !hasBlogs) {
     return null;
   }
 
@@ -539,6 +602,129 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
             </div>
             {topicContributions.length > 2 && (
               <p className="text-center text-xs text-stone-400 mt-1">← 左右滑动查看更多 →</p>
+            )}
+          </div>
+        )}
+
+        {/* 学习卡片 */}
+        {activeTab === 'cards' && (
+          <div className="space-y-6">
+            {hasCards ? (
+              <>
+                {(() => {
+                  const DEFAULT_VISIBLE_COUNT = 4;
+                  const displayCards = showAllCards ? cards! : cards!.slice(0, DEFAULT_VISIBLE_COUNT);
+                  const hasMoreCards = cards!.length > DEFAULT_VISIBLE_COUNT;
+
+                  // 按类型分组
+                  const groupedCards = displayCards.reduce((acc, card) => {
+                    if (!acc[card.type]) acc[card.type] = [];
+                    acc[card.type].push(card);
+                    return acc;
+                  }, {} as Record<string, Card[]>);
+
+                  return (
+                    <>
+                      {Object.entries(groupedCards).map(([type, typeCards]) => {
+                        const config = CARD_TYPE_CONFIG[type] || CARD_TYPE_CONFIG.insight;
+                        const totalCount = cards!.filter(c => c.type === type).length;
+                        return (
+                          <div key={type}>
+                            <h3 className="text-sm font-medium text-stone-500 mb-3 flex items-center gap-1.5">
+                              <span>{config.icon}</span>
+                              <span>{config.label}</span>
+                              <span className="text-stone-400">({totalCount})</span>
+                            </h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              {typeCards.map(card => (
+                                <div
+                                  key={card.id}
+                                  className={`bg-stone-50 rounded-xl p-4 border-l-4 ${config.color} hover:shadow-md transition-all hover:bg-orange-50/30`}
+                                >
+                                  <div className="flex items-center gap-2 text-sm text-stone-500 mb-2">
+                                    <span>{config.icon}</span>
+                                    <span>{config.label}</span>
+                                  </div>
+                                  <h4 className="font-medium text-stone-900 mb-2">{card.title}</h4>
+                                  <p className="text-sm text-stone-600 line-clamp-3">{card.content}</p>
+                                  {card.tags.length > 0 && (
+                                    <div className="flex flex-wrap gap-1 mt-3">
+                                      {card.tags.slice(0, 3).map((tag, idx) => (
+                                        <span key={idx} className="px-2 py-0.5 bg-stone-100 text-stone-500 text-xs rounded-full border border-stone-200">
+                                          {tag}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
+
+                      {/* 展开/收起按钮 */}
+                      {hasMoreCards && (
+                        <button
+                          onClick={() => setShowAllCards(!showAllCards)}
+                          className="w-full py-2.5 text-sm text-stone-500 hover:text-orange-600 transition-colors flex items-center justify-center gap-1 border-t border-stone-100 mt-4"
+                        >
+                          {showAllCards ? (
+                            <>收起 <span className="text-xs">▲</span></>
+                          ) : (
+                            <>展开更多 ({cards!.length - DEFAULT_VISIBLE_COUNT} 条) <span className="text-xs">▼</span></>
+                          )}
+                        </button>
+                      )}
+                    </>
+                  );
+                })()}
+              </>
+            ) : (
+              <div className="text-center py-8 text-stone-400">
+                <div className="text-3xl mb-2">💡</div>
+                <div className="text-sm">暂无学习卡片</div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* 博客 */}
+        {activeTab === 'blogs' && (
+          <div className="space-y-4">
+            {loadingBlogs ? (
+              <div className="flex items-center justify-center py-8">
+                <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316' }}></div>
+              </div>
+            ) : blogItems.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {blogItems.map(item => {
+                  const domain = item.metadata?.domain || (item.url ? new URL(item.url).hostname : '');
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-stone-50 rounded-xl p-4 hover:shadow-md transition-all hover:bg-orange-50/30 border border-transparent hover:border-orange-100"
+                    >
+                      <h4 className="font-medium text-stone-900 line-clamp-2">{item.title}</h4>
+                      <p className="text-sm text-stone-500 line-clamp-2 mt-1">{item.text}</p>
+                      <div className="flex items-center gap-3 mt-2 text-xs text-stone-400">
+                        <span>🌐 {domain}</span>
+                        {item.publishedAt && (
+                          <span>{formatYear(item.publishedAt)}</span>
+                        )}
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-stone-400">
+                <div className="text-3xl mb-2">📝</div>
+                <div className="text-sm">暂无博客文章</div>
+              </div>
             )}
           </div>
         )}

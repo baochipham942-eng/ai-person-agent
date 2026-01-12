@@ -199,7 +199,7 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
               <div className="mb-4 px-3 py-2 bg-gradient-to-r from-orange-50 to-pink-50 rounded-lg border border-orange-100">
                 <div className="flex items-center gap-2 text-xs text-orange-700">
                   <span>💡</span>
-                  <span>推荐学习路径：按序号顺序学习效果更佳</span>
+                  <span>推荐学习路径：按入门→进阶顺序学习效果更佳</span>
                 </div>
               </div>
             )}
@@ -246,16 +246,6 @@ function CourseCard({ course }: { course: Course }) {
             className="w-full h-full object-cover"
           />
 
-          {/* 学习顺序标记 */}
-          {course.learningOrder && (
-            <div
-              className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow"
-              style={{ background: 'var(--gradient-primary)' }}
-            >
-              {course.learningOrder}
-            </div>
-          )}
-
           {/* 平台标签 */}
           <div
             className={`absolute top-2 right-2 px-2 py-0.5 text-[10px] font-medium rounded-md ${platformInfo.color}`}
@@ -281,14 +271,6 @@ function CourseCard({ course }: { course: Course }) {
             <div className="px-1.5 py-0.5 bg-stone-100 text-stone-600 text-[10px] rounded-md">
               {typeIcon} {course.type === 'free' ? '免费' : course.type === 'paid' ? '付费' : '可旁听'}
             </div>
-            {course.learningOrder && (
-              <div
-                className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
-                style={{ background: 'var(--gradient-primary)' }}
-              >
-                {course.learningOrder}
-              </div>
-            )}
           </div>
         )}
 

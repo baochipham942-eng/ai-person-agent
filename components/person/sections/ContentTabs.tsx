@@ -30,10 +30,8 @@ interface ContentTabsProps {
 
 type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
 
-// Tab 配置 - 移除了 x、youtube、openalex、exa（与其他楼层重复或质量不高）
-// github 也整合到代表作品楼层了
+// Tab 配置 - 只保留播客，学习卡片已移动到代表作品模块
 const TAB_CONFIG: Record<string, { icon: string; label: string }> = {
-  cards: { icon: '💡', label: '学习卡片' },
   podcast: { icon: '🎙️', label: '播客' },
 };
 
@@ -257,15 +255,14 @@ const ArticleItem = ({ item }: { item: RawPoolItem }) => {
 };
 
 export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }: ContentTabsProps) {
-  const [activeTab, setActiveTab] = useState('cards');
+  const [activeTab, setActiveTab] = useState('podcast');
   const [loadedItems, setLoadedItems] = useState<Record<string, RawPoolItem[]>>({});
   const [loadingTab, setLoadingTab] = useState<string | null>(null);
   const [videoFilter, setVideoFilter] = useState<VideoCategory>('all');
   const [showAllCards, setShowAllCards] = useState(false);  // 控制学习卡片展开/收起
 
-  // 确定要显示的 tabs
+  // 确定要显示的 tabs - 只显示播客
   const availableTabs = [
-    { key: 'cards', count: cards.length },
     ...Object.entries(sourceTypeCounts || {})
       .filter(([_, count]) => count > 0)
       .map(([key, count]) => ({ key, count }))
@@ -424,6 +421,11 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
         );
     }
   };
+
+  // 如果没有任何可用的 tab，不渲染
+  if (availableTabs.length === 0) {
+    return null;
+  }
 
   return (
     <section className="card-base overflow-hidden">

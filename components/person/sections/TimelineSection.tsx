@@ -90,14 +90,15 @@ function calculateDuration(start: string | null | undefined, end: string | null 
   return '';
 }
 
-const RoleItem = ({ role }: { role: PersonRole }) => {
+const RoleItem = ({ role, isFirst }: { role: PersonRole; isFirst: boolean }) => {
   const orgName = role.organizationNameZh || role.organizationName;
   const roleTitle = role.roleZh || role.role;
   const isIntern = isInternRole(roleTitle);
 
   // 实习经历没有结束时间时，只显示年份；其他经历显示"至今"
   const hasNoEndDate = !role.endDate;
-  const duration = (isIntern && hasNoEndDate) ? '' : calculateDuration(role.startDate, role.endDate);
+  // 只有第一行才计算持续时间（涉及"至今"）
+  const duration = (isIntern && hasNoEndDate) ? '' : (isFirst ? calculateDuration(role.startDate, role.endDate) : (role.endDate ? calculateDuration(role.startDate, role.endDate) : ''));
 
   // 使用 Google Favicon API 获取机构图标
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(role.organizationName.replace(/\s+/g, '').toLowerCase())}.com&sz=32`;
@@ -109,6 +110,12 @@ const RoleItem = ({ role }: { role: PersonRole }) => {
     // 实习经历没有结束时间：只显示开始年份
     if (isIntern && hasNoEndDate) {
       return <>{formatYear(role.startDate)} (实习)</>;
+    }
+
+    // 非第一行且没有结束日期：不显示"至今"，只显示开始时间或不显示时间
+    if (!isFirst && hasNoEndDate) {
+      // 数据不完整，只显示开始年份
+      return <>{formatYear(role.startDate)}</>;
     }
 
     // 正常显示时间范围
@@ -226,8 +233,8 @@ export function TimelineSection({ personRoles, qid }: TimelineSectionProps) {
               </h3>
               <div className="border border-gray-100 rounded-xl overflow-hidden">
                 <div className="divide-y divide-gray-100">
-                  {section.roles.map(role => (
-                    <RoleItem key={role.id} role={role} />
+                  {section.roles.map((role, index) => (
+                    <RoleItem key={role.id} role={role} isFirst={index === 0} />
                   ))}
                 </div>
               </div>

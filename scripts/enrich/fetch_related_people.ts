@@ -3,7 +3,9 @@
  * 从 Wikidata 获取 P185(导师)/P802(学生) 等关系
  * 同时将导师关联到教育类型的 PersonRole 记录
  *
- * 用法: npx tsx scripts/enrich/fetch_related_people.ts [--limit N] [--link-advisors]
+ * 用法: npx tsx scripts/enrich/fetch_related_people.ts [--limit N] [--link-advisors] [--quiet]
+ *
+ * --quiet: 静默模式，只输出最终统计（避免上下文过长）
  */
 
 import { prisma } from '../../lib/db/prisma';
@@ -62,9 +64,18 @@ async function main() {
   const limitArg = args.find(a => a.startsWith('--limit='));
   const limit = limitArg ? parseInt(limitArg.split('=')[1]) : undefined;
   const linkAdvisors = args.includes('--link-advisors');
+  const quiet = args.includes('--quiet');
 
-  console.log('🔗 开始获取人物关联关系...\n');
-  console.log(`关联导师到履历: ${linkAdvisors ? '是' : '否'}\n`);
+  const log = (msg: string) => { if (!quiet) console.log(msg); };
+  const logProgress = (current: number, total: number) => {
+    // 静默模式下每 20 条输出一次进度
+    if (quiet && current % 20 === 0) {
+      console.log(`进度: ${current}/${total}`);
+    }
+  };
+
+  console.log('🔗 开始获取人物关联关系...');
+  console.log(`模式: ${quiet ? '静默' : '详细'}, 关联导师: ${linkAdvisors ? '是' : '否'}`);
 
   // 1. 获取所有有 QID 的人物
   const people = await prisma.people.findMany({
@@ -80,7 +91,7 @@ async function main() {
     orderBy: { influenceScore: 'desc' }
   });
 
-  console.log(`📋 找到 ${people.length} 个有 QID 的人物\n`);
+  console.log(`📋 找到 ${people.length} 个有 QID 的人物`);
 
   // 2. 获取数据库中所有人物的 QID 映射
   const allPeople = await prisma.people.findMany({
@@ -96,18 +107,19 @@ async function main() {
 
   for (let i = 0; i < people.length; i++) {
     const person = people[i];
-    console.log(`[${i + 1}/${people.length}] ${person.name} (${person.qid})`);
+    log(`[${i + 1}/${people.length}] ${person.name} (${person.qid})`);
+    logProgress(i + 1, people.length);
 
     try {
       // 从 Wikidata 获取关联关系
       const relations = await getWikidataRelations(person.qid);
 
       if (relations.length === 0) {
-        console.log('  无关联人物');
+        log('  无关联人物');
         continue;
       }
 
-      console.log(`  找到 ${relations.length} 个关联人物`);
+      log(`  找到 ${relations.length} 个关联人物`);
 
       for (const rel of relations) {
         totalRelations++;
@@ -116,7 +128,7 @@ async function main() {
         const relatedPersonId = qidToPersonId.get(rel.qid);
 
         if (!relatedPersonId) {
-          console.log(`    ⚠️ ${rel.label} (${rel.qid}) 不在数据库中`);
+          log(`    ⚠️ ${rel.label} (${rel.qid}) 不在数据库中`);
           skippedNotInDb++;
           continue;
         }
@@ -142,20 +154,20 @@ async function main() {
             update: {} // 如果存在则不更新
           });
 
-          console.log(`    ✅ ${rel.relationType}: ${qidToName.get(rel.qid)}`);
+          log(`    ✅ ${rel.relationType}: ${qidToName.get(rel.qid)}`);
           newRelations++;
 
           // 如果是导师关系，且开启了 --link-advisors，则关联到 PersonRole
           if (linkAdvisors && rel.relationType === 'advisor') {
             const linkedCount = await linkAdvisorToRoles(person.id, relatedPersonId);
             if (linkedCount > 0) {
-              console.log(`    🔗 关联导师到 ${linkedCount} 条履历`);
+              log(`    🔗 关联导师到 ${linkedCount} 条履历`);
               advisorLinksCount += linkedCount;
             }
           }
         } catch (err: any) {
           if (err.code !== 'P2002') { // 忽略唯一约束冲突
-            console.error(`    ❌ 创建关联失败: ${err.message}`);
+            log(`    ❌ 创建关联失败: ${err.message}`);
           }
         }
       }
@@ -164,7 +176,7 @@ async function main() {
       await new Promise(r => setTimeout(r, 300));
 
     } catch (error) {
-      console.error(`  ❌ 获取关联失败: ${error}`);
+      log(`  ❌ 获取关联失败: ${error}`);
     }
   }
 

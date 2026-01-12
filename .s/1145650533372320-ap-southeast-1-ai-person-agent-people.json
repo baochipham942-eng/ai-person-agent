@@ -9,14 +9,14 @@
     "initializer": "",
     "initializationTimeout": 3,
     "codeSize": 6284775,
-    "codeChecksum": "856689743291555033",
+    "codeChecksum": "7936431300607281421",
     "memorySize": 512,
     "gpuMemorySize": null,
     "environmentVariables": {
       "PORT": "9000"
     },
     "createdTime": "2025-12-30T10:22:02Z",
-    "lastModifiedTime": "2026-01-07T13:40:15Z",
+    "lastModifiedTime": "2026-01-12T10:59:58Z",
     "instanceConcurrency": 50,
     "instanceSoftConcurrency": null,
     "customContainerConfig": null,

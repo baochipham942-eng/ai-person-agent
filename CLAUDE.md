@@ -196,6 +196,46 @@ npx tsx scripts/fix_missing_avatars.ts             # 头像
 - 需要事务或错误重试
 - 生产环境定时任务
 
+## 脚本执行最佳实践
+
+### 避免 "Prompt is too long" 错误
+
+长时间运行的脚本可能产生大量输出，导致 Claude Code 上下文超限。解决方法：
+
+**1. 使用 `--quiet` 模式**
+```bash
+npx tsx scripts/enrich/xxx.ts --quiet
+```
+脚本应支持静默模式，只输出进度摘要和最终统计。
+
+**2. 过滤 Prisma debug 日志**
+```bash
+npx tsx scripts/xxx.ts 2>&1 | grep -v "^prisma:"
+```
+
+**3. 输出重定向到文件**
+```bash
+npx tsx scripts/xxx.ts > /tmp/output.log 2>&1
+tail -50 /tmp/output.log  # 只查看最后部分
+```
+
+**4. 分批处理**
+```bash
+npx tsx scripts/xxx.ts --limit=50  # 每次只处理50条
+```
+
+**5. 脚本编写规范**
+```typescript
+const quiet = args.includes('--quiet');
+const log = (msg: string) => { if (!quiet) console.log(msg); };
+
+// 静默模式下每 N 条输出一次进度
+if (quiet && i % 20 === 0) console.log(`进度: ${i}/${total}`);
+
+// 最终统计始终输出
+console.log(`📊 完成: 处理 ${total} 条，成功 ${success} 条`);
+```
+
 ## Documentation
 - `PROJECT_CONSTITUTION.md` - Architecture, deployment, error book
 - `workflow_documentation.md` - Data flows, APIs, KPIs

@@ -240,7 +240,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           />
         )}
 
-        {/* 3. 代表作品（代表产品/开源项目/核心论文/话题贡献） */}
+        {/* 3. 代表作品（代表产品/开源项目/核心论文/话题贡献/学习卡片/博客） */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}
@@ -250,12 +250,13 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           personId={person.id}
           initialTab={urlSection === 'topics' ? 'topics' : undefined}
           highlightTopic={urlSection === 'topics' ? urlHighlight : undefined}
+          cards={person.cards}
         />
 
-        {/* 4. 播客 & 学习卡片 */}
+        {/* 4. 播客（只保留播客，学习卡片已移动到代表作品） */}
         <ContentTabs
           personId={person.id}
-          cards={person.cards}
+          cards={[]}
           sourceTypeCounts={person.sourceTypeCounts || {}}
           officialLinks={person.officialLinks}
         />
