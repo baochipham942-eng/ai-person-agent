@@ -177,7 +177,7 @@ npx tsx scripts/fix_missing_avatars.ts             # 头像
 | 网站地图 | `mcp__firecrawl__firecrawl_map` | 手动探索 |
 | GitHub PR/Issue | `mcp__github__*` | gh CLI |
 | 文件操作 | `mcp__filesystem__*` | Read/Write |
-| 浏览器自动化 | `mcp__playwright__*` | puppeteer |
+| 浏览器自动化 | `agent-browser` (CLI) | `mcp__playwright__*` |
 | 文档查询 | `mcp__context7__query-docs` | WebFetch |
 | 快速搜索 | `mcp__duckduckgo__search` | WebSearch |
 
@@ -239,6 +239,29 @@ if (quiet && i % 20 === 0) console.log(`进度: ${i}/${total}`);
 // 最终统计始终输出
 console.log(`📊 完成: 处理 ${total} 条，成功 ${success} 条`);
 ```
+
+## Browser Automation (agent-browser)
+
+浏览器自动化**首选** `agent-browser` CLI，使用 Ref 工作流：
+
+```bash
+# 核心流程
+agent-browser open <url>              # 打开页面
+agent-browser snapshot -i             # 获取交互元素 [ref=e1, e2...]
+agent-browser click @e1               # 用 ref 点击（不用 CSS 选择器）
+agent-browser fill @e2 "text"         # 填充输入框
+agent-browser screenshot /tmp/x.png   # 截图
+agent-browser close                   # 关闭
+
+# 常用命令
+agent-browser snapshot --json         # JSON 输出，便于解析
+agent-browser wait 2000               # 等待毫秒
+agent-browser wait --load networkidle # 等待网络空闲
+agent-browser get text @e1            # 获取元素文本
+agent-browser --session s1 open url   # 命名会话（支持并行）
+```
+
+详细文档: `.claude/skills/agent-browser/SKILL.md`
 
 ## Documentation
 - `PROJECT_CONSTITUTION.md` - Architecture, deployment, error book

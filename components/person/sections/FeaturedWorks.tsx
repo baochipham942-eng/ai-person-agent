@@ -36,7 +36,8 @@ interface Paper {
 interface TopicDetail {
   topic: string;
   rank: number;
-  description?: string;
+  reason?: string;       // 推荐语：人物与话题的关系
+  description?: string;  // 兼容旧字段
   paperCount?: number;
   citations?: number;
   quote?: { text: string; source: string; url?: string };
@@ -618,9 +619,9 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                       )}
                     </div>
 
-                    {/* 话题描述 */}
-                    {item.description && (
-                      <p className="text-sm text-stone-600 line-clamp-2 leading-relaxed mb-3">{item.description}</p>
+                    {/* 话题推荐语 */}
+                    {(item.reason || item.description) && (
+                      <p className="text-sm text-stone-600 line-clamp-2 leading-relaxed mb-3">{item.reason || item.description}</p>
                     )}
 
                     {/* 统计数据 */}
