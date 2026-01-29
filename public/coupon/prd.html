@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保时捷卡券中心 - PRD文档</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <style>
+        .prd-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            height: calc(100vh - 120px);
+            padding: 24px;
+        }
+
+        .prd-left, .prd-right {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .prd-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .prd-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        /* 卡券类型导航 */
+        .coupon-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .coupon-nav-item {
+            padding: 6px 16px;
+            background: #f5f5f5;
+            border-radius: 16px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .coupon-nav-item:hover {
+            background: #fff5f5;
+            border-color: #d4001a;
+        }
+
+        .coupon-nav-item.active {
+            background: #d4001a;
+            color: #fff;
+        }
+
+        /* 二级导航样式 */
+        .coupon-nav-secondary .coupon-nav-item {
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+
+        .coupon-nav-secondary .coupon-nav-item:hover {
+            border-color: #d4001a;
+            color: #d4001a;
+        }
+
+        .coupon-nav-secondary .coupon-nav-item.active {
+            background: #fff5f5;
+            color: #d4001a;
+            border-color: #d4001a;
+        }
+
+        /* Markdown 内容样式 */
+        .markdown-content {
+            line-height: 1.8;
+        }
+
+        .markdown-content h1 {
+            font-size: 24px;
+            margin: 0 0 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #d4001a;
+        }
+
+        .markdown-content h2 {
+            font-size: 18px;
+            margin: 24px 0 12px;
+            color: #333;
+        }
+
+        .markdown-content h3 {
+            font-size: 15px;
+            margin: 16px 0 8px;
+            color: #666;
+        }
+
+        .markdown-content p {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .markdown-content ul, .markdown-content ol {
+            margin: 8px 0;
+            padding-left: 24px;
+        }
+
+        .markdown-content li {
+            margin: 4px 0;
+        }
+
+        .markdown-content code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 13px;
+        }
+
+        .markdown-content pre {
+            background: #f5f5f5;
+            padding: 16px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .markdown-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+
+        .markdown-content th, .markdown-content td {
+            border: 1px solid #e8e8e8;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .markdown-content th {
+            background: #fafafa;
+            font-weight: 500;
+        }
+
+        .markdown-content blockquote {
+            border-left: 4px solid #d4001a;
+            margin: 16px 0;
+            padding: 12px 16px;
+            background: #fff5f5;
+            color: #666;
+        }
+
+        /* ==================== 流程图样式 ==================== */
+        .flow-diagram {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .flow-diagram-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0;
+            margin-bottom: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .flow-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 流程节点 */
+        .flow-node {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-node-blue {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 2px solid #90caf9;
+        }
+
+        .flow-node-yellow {
+            background: #fff8e1;
+            color: #f57c00;
+            border: 2px solid #ffcc80;
+        }
+
+        .flow-node-green {
+            background: #e8f5e9;
+            color: #388e3c;
+            border: 2px solid #a5d6a7;
+        }
+
+        .flow-node-gray {
+            background: #f5f5f5;
+            color: #616161;
+            border: 2px solid #e0e0e0;
+        }
+
+        .flow-node-red {
+            background: #ffebee;
+            color: #d32f2f;
+            border: 2px solid #ef9a9a;
+        }
+
+        .flow-node-purple {
+            background: #f3e5f5;
+            color: #7b1fa2;
+            border: 2px solid #ce93d8;
+        }
+
+        /* 菱形判断节点 */
+        .flow-node-diamond {
+            padding: 12px 16px;
+            background: #fff8e1;
+            color: #f57c00;
+            border: 2px solid #ffcc80;
+            transform: rotate(0deg);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+
+        /* 连接线 - 箭头 */
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            color: #9e9e9e;
+            font-size: 20px;
+            padding: 0 8px;
+            position: relative;
+        }
+
+        .flow-arrow::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: #bdbdbd;
+        }
+
+        .flow-arrow::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #bdbdbd;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        /* 带标签的箭头 */
+        .flow-arrow-label {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+        }
+
+        .flow-arrow-label::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: #bdbdbd;
+        }
+
+        .flow-arrow-label::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #bdbdbd;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .flow-arrow-label .label {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #666;
+            white-space: nowrap;
+            background: #f8f9fa;
+            padding: 0 4px;
+        }
+
+        /* 双向箭头 */
+        .flow-arrow-double {
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+        }
+
+        .flow-arrow-double::before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-right: 8px solid #bdbdbd;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .flow-arrow-double .line {
+            width: 20px;
+            height: 2px;
+            background: #bdbdbd;
+        }
+
+        .flow-arrow-double::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #bdbdbd;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        /* 向下的箭头和连接 */
+        .flow-down-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 60px;
+        }
+
+        .flow-vline {
+            width: 2px;
+            height: 20px;
+            background: #bdbdbd;
+        }
+
+        .flow-down-arrow {
+            width: 0;
+            height: 0;
+            border-top: 8px solid #bdbdbd;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        /* 分支容器 */
+        .flow-branch {
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .flow-branch-container {
+            position: relative;
+            margin-top: 8px;
+        }
+
+        /* 回退连接线 */
+        .flow-return-line {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: #ef9a9a;
+        }
+
+        .flow-return-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #ef9a9a;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        /* 复杂流程布局 */
+        .flow-complex {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .flow-main-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .flow-sub-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-left: 180px;
+            position: relative;
+        }
+
+        .flow-sub-row::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: -30px;
+            width: 2px;
+            height: 50px;
+            background: #ef9a9a;
+        }
+
+        .flow-sub-row::after {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: #ef9a9a;
+            transform: translateY(-50%);
+        }
+
+        /* 发券流程样式 */
+        .flow-issue {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .flow-issue-main {
+            display: flex;
+            align-items: center;
+        }
+
+        .flow-issue-branch {
+            display: flex;
+            margin-left: 48px;
+            position: relative;
+        }
+
+        .flow-issue-branch::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: -20px;
+            width: 2px;
+            height: 40px;
+            background: #a5d6a7;
+        }
+
+        .flow-branch-yes, .flow-branch-no {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .flow-branch-yes {
+            margin-bottom: 20px;
+        }
+
+        .flow-branch-yes::before {
+            content: '有';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            color: #388e3c;
+            background: #f8f9fa;
+            padding: 2px 4px;
+        }
+
+        .flow-branch-no::before {
+            content: '无';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            color: #d32f2f;
+            background: #f8f9fa;
+            padding: 2px 4px;
+        }
+
+        /* 发券流程新布局 */
+        .flow-issue-layout {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .flow-issue-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .flow-issue-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-condition-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 10px;
+        }
+
+        .flow-condition-text {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* JSON 展示样式 */
+        .json-container {
+            background: #1e1e1e;
+            border-radius: 4px;
+            padding: 20px;
+            overflow: auto;
+            height: 100%;
+        }
+
+        .json-content {
+            font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #d4d4d4;
+            white-space: pre;
+        }
+
+        .json-key { color: #9cdcfe; }
+        .json-string { color: #ce9178; }
+        .json-number { color: #b5cea8; }
+        .json-boolean { color: #569cd6; }
+        .json-null { color: #569cd6; }
+        .json-bracket { color: #ffd700; }
+
+        /* 搜索框 */
+        .search-box {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-input {
+            padding: 6px 12px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 13px;
+            width: 200px;
+        }
+
+        .search-input:focus {
+            border-color: #d4001a;
+            outline: none;
+        }
+
+        .btn-copy {
+            padding: 6px 10px;
+            background: #f5f5f5;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: all 0.2s;
+        }
+
+        .btn-copy:hover {
+            background: #fff;
+            border-color: #d4001a;
+            color: #d4001a;
+        }
+
+        .btn-copy.copied {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            color: #4caf50;
+        }
+
+        /* 高亮匹配 */
+        .highlight {
+            background: #ffeb3b;
+            padding: 0 2px;
+            border-radius: 2px;
+            color: #000;
+        }
+
+        @media (max-width: 1200px) {
+            .prd-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .prd-left, .prd-right {
+                min-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo">PORSCHE</span>
+            <span class="divider">|</span>
+            <span class="title">卡券中心 - PRD文档</span>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-default btn-sm" onclick="window.location.href='./coupon-create.html'">返回</button>
+        </div>
+    </header>
+
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+        <a href="./index.html">卡券中心</a>
+        <span>&gt;</span>
+        <a href="./coupon-create.html">新增券组</a>
+        <span>&gt;</span>
+        PRD文档
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="prd-container">
+        <!-- 左侧：PRD文档 -->
+        <div class="prd-left">
+            <div class="prd-header">
+                <span>卡券类型PRD</span>
+            </div>
+            <div class="prd-body">
+                <!-- 一级导航 -->
+                <div class="coupon-nav coupon-nav-primary" id="couponNavPrimary">
+                    <div class="coupon-nav-item active" data-category="overview">概述</div>
+                    <div class="coupon-nav-item" data-category="lifestyle">车品生活</div>
+                    <div class="coupon-nav-item" data-category="vehicle">用车服务</div>
+                    <div class="coupon-nav-item" data-category="ecommerce">电商券</div>
+                </div>
+                <!-- 二级导航 -->
+                <div class="coupon-nav coupon-nav-secondary" id="couponNavSecondary" style="display: none; border-bottom: none; margin-bottom: 16px;">
+                </div>
+                <div class="markdown-content" id="markdownContent"></div>
+                <!-- 流程图容器 -->
+                <div id="flowDiagrams" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- 右侧：JSON关系图 -->
+        <div class="prd-right">
+            <div class="prd-header">
+                <span>字段关系结构</span>
+                <div class="search-box">
+                    <input type="text" class="search-input" id="jsonSearch" placeholder="搜索字段...">
+                    <button class="btn-copy" id="copyJsonBtn" title="复制JSON">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="prd-body" style="padding: 16px;">
+                <div class="json-container">
+                    <div class="json-content" id="jsonContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 流程图模板 -->
+    <template id="flowLifecycle">
+        <div class="flow-diagram">
+            <div class="flow-diagram-title">券组生命周期状态</div>
+            <div class="flow-complex">
+                <div class="flow-main-row">
+                    <div class="flow-node flow-node-blue">创建</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-node flow-node-gray">草稿</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-node flow-node-yellow">待审核</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-node flow-node-green">已上线</div>
+                    <div class="flow-arrow-double"><span class="line"></span></div>
+                    <div class="flow-node flow-node-gray">已下架</div>
+                </div>
+                <div class="flow-sub-row">
+                    <div class="flow-node flow-node-red">已驳回</div>
+                    <div class="flow-arrow" style="transform: scaleX(-1);"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="flowInstance">
+        <div class="flow-diagram">
+            <div class="flow-diagram-title">卡券实例状态</div>
+            <div class="flow-complex">
+                <div class="flow-main-row">
+                    <div class="flow-node flow-node-blue">待激活</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-node flow-node-green">待使用</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-node flow-node-purple">已使用</div>
+                </div>
+                <div style="display: flex; gap: 80px; margin-top: 8px; margin-left: 30px;">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="flow-vline"></div>
+                        <div class="flow-down-arrow"></div>
+                        <div class="flow-node flow-node-gray" style="margin-top: 8px;">已作废</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; margin-left: 30px;">
+                        <div class="flow-vline"></div>
+                        <div class="flow-down-arrow"></div>
+                        <div class="flow-node flow-node-red" style="margin-top: 8px;">已过期</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="flowIssue">
+        <div class="flow-diagram">
+            <div class="flow-diagram-title">发券流程</div>
+            <svg width="700" height="280" style="display: block;">
+                <!-- 主流程线 -->
+                <!-- 开始 -> 检查剩余数量 -->
+                <line x1="60" y1="60" x2="130" y2="60" stroke="#bdbdbd" stroke-width="2"/>
+                <polygon points="130,60 122,55 122,65" fill="#bdbdbd"/>
+
+                <!-- 检查剩余数量 -> 判断 -->
+                <line x1="230" y1="60" x2="280" y2="60" stroke="#bdbdbd" stroke-width="2"/>
+                <polygon points="280,60 272,55 272,65" fill="#bdbdbd"/>
+
+                <!-- 判断菱形 -> 有剩余（上方分支） -->
+                <line x1="330" y1="30" x2="330" y2="10" stroke="#a5d6a7" stroke-width="2"/>
+                <line x1="330" y1="10" x2="410" y2="10" stroke="#a5d6a7" stroke-width="2"/>
+                <line x1="410" y1="10" x2="410" y2="40" stroke="#a5d6a7" stroke-width="2"/>
+                <polygon points="410,40 405,32 415,32" fill="#a5d6a7"/>
+                <text x="360" y="6" font-size="11" fill="#388e3c">有</text>
+
+                <!-- 上传Excel -> 发券（上方） -->
+                <line x1="480" y1="60" x2="530" y2="60" stroke="#a5d6a7" stroke-width="2"/>
+                <polygon points="530,60 522,55 522,65" fill="#a5d6a7"/>
+
+                <!-- 发券 -> 结束（上方） -->
+                <line x1="600" y1="60" x2="650" y2="60" stroke="#a5d6a7" stroke-width="2"/>
+                <polygon points="650,60 642,55 642,65" fill="#a5d6a7"/>
+
+                <!-- 判断菱形 -> 无剩余（下方分支） -->
+                <line x1="330" y1="90" x2="330" y2="140" stroke="#ef9a9a" stroke-width="2"/>
+                <polygon points="330,140 325,132 335,132" fill="#ef9a9a"/>
+                <text x="340" y="120" font-size="11" fill="#d32f2f">无</text>
+
+                <!-- 创建新券组 -> 发券（下方） -->
+                <line x1="390" y1="170" x2="530" y2="170" stroke="#ef9a9a" stroke-width="2"/>
+                <polygon points="530,170 522,165 522,175" fill="#ef9a9a"/>
+
+                <!-- 发券（下方）-> 汇合到结束 -->
+                <line x1="600" y1="170" x2="680" y2="170" stroke="#ef9a9a" stroke-width="2"/>
+                <line x1="680" y1="170" x2="680" y2="60" stroke="#bdbdbd" stroke-width="2"/>
+                <polygon points="680,60 675,68 685,68" fill="#bdbdbd"/>
+
+                <!-- 节点 -->
+                <!-- 开始 -->
+                <ellipse cx="35" cy="60" rx="30" ry="20" fill="#e3f2fd" stroke="#90caf9" stroke-width="2"/>
+                <text x="35" y="64" text-anchor="middle" font-size="12" fill="#1976d2">开始</text>
+
+                <!-- 检查剩余数量 -->
+                <rect x="135" y="40" width="90" height="40" rx="20" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="2"/>
+                <text x="180" y="64" text-anchor="middle" font-size="12" fill="#388e3c">检查剩余数量</text>
+
+                <!-- 判断菱形 -->
+                <polygon points="330,30 380,60 330,90 280,60" fill="#fff8e1" stroke="#ffcc80" stroke-width="2"/>
+                <text x="330" y="56" text-anchor="middle" font-size="11" fill="#f57c00">剩余</text>
+                <text x="330" y="68" text-anchor="middle" font-size="11" fill="#f57c00">数量?</text>
+
+                <!-- 上传Excel（上方） -->
+                <rect x="410" y="40" width="70" height="40" rx="20" fill="#e3f2fd" stroke="#90caf9" stroke-width="2"/>
+                <text x="445" y="58" text-anchor="middle" font-size="11" fill="#1976d2">上传</text>
+                <text x="445" y="70" text-anchor="middle" font-size="11" fill="#1976d2">Excel</text>
+
+                <!-- 发券（上方） -->
+                <rect x="535" y="40" width="60" height="40" rx="20" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="2"/>
+                <text x="565" y="64" text-anchor="middle" font-size="12" fill="#388e3c">发券</text>
+
+                <!-- 结束 -->
+                <ellipse cx="680" cy="60" rx="30" ry="20" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="2"/>
+                <text x="680" y="64" text-anchor="middle" font-size="12" fill="#616161">结束</text>
+
+                <!-- 创建新券组（下方） -->
+                <rect x="270" y="150" width="120" height="40" rx="20" fill="#ffebee" stroke="#ef9a9a" stroke-width="2"/>
+                <text x="330" y="174" text-anchor="middle" font-size="12" fill="#d32f2f">创建新券组</text>
+
+                <!-- 发券（下方） -->
+                <rect x="535" y="150" width="60" height="40" rx="20" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="2"/>
+                <text x="565" y="174" text-anchor="middle" font-size="12" fill="#388e3c">发券</text>
+            </svg>
+        </div>
+    </template>
+
+    <script>
+        // PRD 文档内容（Markdown 格式）
+        const prdContent = {
+            overview: `# 保时捷卡券系统 PRD 概述
+
+## 系统定位
+保时捷卡券中心是一个统一的优惠券管理平台，整合了保时捷中国（PCN）各业务线的卡券需求，提供标准化的券组创建、发放、核销、统计等全生命周期管理。
+
+## 业务领域划分
+
+| 业务领域 | 包含券类型 | 核心场景 |
+|---------|-----------|---------|
+| 车品生活 | 会员券、三方券、活动礼品券、PEC券、Lifestyle券 | 会员权益、品牌合作、活动营销 |
+| 用车服务 | 售后服务券、取送车券、品牌保障券、TEQ券、RSA券 | 4S店服务、道路救援、质保延保 |
+| 电商 | 电商券 | 保时捷商城促销 |
+
+## 核心概念
+
+### 券组（Coupon Group）
+券组是卡券的模板定义，包含卡券的所有规则配置。一个券组可以发放多张卡券实例。
+
+### 卡券实例（Coupon Instance）
+卡券实例是实际发放给用户的券，每张券有唯一券码，绑定到具体用户或车辆。
+
+### 抵扣类型
+- **满减券**：消费满X元减Y元
+- **折扣券**：消费打X折
+- **兑换券**：直接兑换商品/服务
+- **项目抵扣券**：指定项目免费
+
+### 归属类型
+- **跟人**：绑定用户ID，用户名下所有车可用
+- **跟车**：绑定VIN码，仅该车可用
+
+### 适用范围
+定义卡券可以在哪些商品/服务上使用：
+- **全部商品**：不限制，所有商品/服务均可使用
+- **指定商品**：仅限特定SKU或服务项目可用
+
+### 适用经销商
+定义卡券可以在哪些门店核销：
+- **全网经销商**：全国所有保时捷授权经销商均可使用
+- **指定经销商**：仅限选定的特定门店可使用（支持多选）
+
+### 成本中心
+卡券优惠成本的承担方：
+- **PCN-会员**：会员相关权益
+- **PCN-售后**：售后服务相关
+- **PCN-电商**：电商促销相关
+- **PCN-三方**：第三方合作权益
+- **经销商**：经销商自行承担
+
+### 履约平台
+卡券核销的执行平台：
+- **PCN自有平台**：保时捷官方系统
+- **Dealer线下门店**：经销商门店系统
+- **第三方APP**：合作伙伴系统
+
+### 激活方式
+卡券从"待激活"变为"可使用"的触发条件：
+- **发放即激活**：发券后立即可用
+- **固定时间激活**：指定日期统一激活
+- **用户领取后激活**：用户主动领取后激活
+- **用户领取后N天激活**：领取N天后自动激活
+
+### 核销渠道
+支持核销卡券的系统：
+- **OMP**
+- **MPA**
+- **PWSA**
+- **POAS**
+
+---
+
+## 重要规则速查
+
+| 券类型 | 归属类型 | 成本中心 | 核销渠道 |
+|-------|---------|---------|---------|
+| 会员券 | 固定跟人 | PCN-会员 | OMP、MPA |
+| 三方券 | 固定跟人 | PCN-三方 | OMP、MPA |
+| 售后服务券 | 可切换 | PCN-售后 | PWSA、OMP、MPA、POAS |
+| 取送车券 | 可切换 | PCN-售后 | PWSA、OMP、MPA |
+| 品牌保障券 | 固定跟车 | PCN-售后 | PWSA、OMP、MPA |
+| 活动礼品券 | 固定跟车 | PCN-三方 | OMP、MPA |
+| PEC券 | 固定跟人 | PCN-PEC | OMP、MPA |
+| Lifestyle券 | 固定跟人 | PCN-Lifestyle | OMP、MPA |
+| TEQ券 | 固定跟人 | PCN-TEQ | PWSA、OMP、MPA |
+| RSA券 | 固定跟人 | PCN-RSA | PWSA、OMP、MPA |
+| 电商券 | 固定跟人 | PCN-电商 | OMP、MPA |
+
+## 生命周期状态
+
+<!-- FLOW:lifecycle -->
+
+<!-- FLOW:instance -->
+
+## 发券流程
+
+<!-- FLOW:issue -->
+`,
+
+            member: `# 会员券 PRD
+
+## 定义
+会员券是保时捷会员体系中的核心权益载体，主要用于会员年费减免和会籍赠送场景。
+
+## 业务领域
+**车品生活**
+
+## 抵扣类型
+
+### 满减券
+- **使用门槛**：固定为0元（无门槛）
+- **优惠金额**：
+  - 911元 - 会员年费减免
+  - 1267元 - 会员年费+注册费
+- **使用场景**：会员续费支付时自动抵扣
+
+### 兑换券
+- **兑换内容**：赠送会籍年数（1-5年）
+- **使用场景**：直接兑换为会员时长
+
+## 成本中心
+- PCN-会员（默认）
+- 经销商
+
+## 履约平台
+PCN自有平台（固定）
+
+## 归属类型
+**固定跟人**（不可切换）
+
+> 会员券绑定用户会员身份，不与车辆关联
+
+## 激活方式
+- 发放即激活
+- 固定时间激活
+- 用户领取后激活
+- 用户领取后N天激活
+
+## 核销渠道
+- OMP
+- MPA
+
+## 特殊规则
+1. 会员券优惠金额为固定选项，不可自定义
+2. 兑换券的会籍年数上限为5年
+3. 每人领取上限默认为1张
+4. 归属类型固定为跟人，不可修改
+`,
+
+            thirdparty: `# 三方券 PRD
+
+## 定义
+三方券是保时捷与第三方品牌合作的权益券，用户可凭券兑换合作伙伴提供的商品或服务。
+
+## 业务领域
+**车品生活**
+
+## 抵扣类型
+
+### 兑换券（唯一类型）
+- **三方品牌**：必填，如"星巴克"、"万豪酒店"
+- **兑换内容**：具体兑换物，如"大杯拿铁"、"行政套房1晚"
+
+## 成本中心
+PCN-三方（固定，由账号权限带入）
+
+## 履约平台
+可选择：
+- PCN自有平台
+- Dealer线下门店
+- 第三方APP
+
+## 归属类型
+**固定跟人**（不可切换）
+
+> 三方券通常为用户个人权益，不与车辆绑定
+
+## 激活方式
+- 发放即激活
+- 固定时间激活
+- 用户领取后激活
+- 用户领取后N天激活
+
+## 核销渠道
+- OMP
+- MPA
+
+## 特殊规则
+1. 必须填写三方品牌名称
+2. 必须填写具体兑换内容
+3. 卡券标题自动拼接为：\`{兑换内容} 兑换券\`
+4. 预览区展示兑换内容模块
+
+## 合作品牌示例
+
+| 品牌 | 兑换内容示例 |
+|-----|------------|
+| 星巴克 | 大杯拿铁、星冰乐 |
+| 万豪酒店 | 行政套房1晚 |
+| 南航 | 商务舱升舱券 |
+| 高尔夫球场 | 18洞果岭券 |
+`,
+
+            aftersales: `# 售后服务券 PRD
+
+## 定义
+售后服务券是保时捷4S店服务的优惠凭证，可用于保养、维修、检测等售后场景。
+
+## 业务领域
+**用车服务**
+
+## 抵扣类型
+
+### 满减券
+- **使用门槛**：自定义金额（如满500减100）
+- **优惠金额**：自定义
+- **使用场景**：达到消费门槛后减免
+
+### 折扣券
+- **使用门槛**：自定义金额
+- **折扣力度**：1-99折
+- **使用场景**：按比例减免
+
+### 项目抵扣券
+- **可选项目**：
+  - 常规保养
+  - 车辆检测
+  - 精致洗车
+  - 充电服务
+  - 取送车服务
+  - 轮胎更换
+  - 机油更换
+- **使用场景**：指定项目免单
+
+## 成本中心
+PCN-售后（固定，由账号权限带入）
+
+## 履约平台
+可选择：
+- PCN自有平台
+- Dealer线下门店
+- 第三方APP
+
+## 归属类型
+**可切换**：跟人 / 跟车
+
+## 激活方式
+- 发放即激活
+- 固定时间激活
+- 用户领取后激活
+- 用户领取后N天激活
+
+## 核销渠道
+- PWSA（保时捷车间服务系统）
+- OMP
+- MPA
+- POAS（保时捷订单预约系统）
+
+## 适用门店
+- **全网经销商**：默认，全国所有4S店可用
+- **指定经销商**：限定特定门店使用
+
+## 特殊规则
+1. 满减券和折扣券都有门槛设置
+2. 项目抵扣券的项目为单选
+3. 支持限制适用门店范围
+4. 预览区展示适用经销商信息
+`,
+
+            pickup: `# 取送车券 PRD
+
+## 定义
+取送车券是保时捷上门取送车服务的优惠凭证，减免取送车服务费用。
+
+## 业务领域
+**用车服务**
+
+## 抵扣类型
+
+### 满减券
+- **使用门槛**：自定义金额
+- **优惠金额**：自定义
+- **使用场景**：取送车服务费满减
+
+### 折扣券
+- **使用门槛**：自定义金额
+- **折扣力度**：1-99折
+- **使用场景**：取送车服务费折扣
+
+## 成本中心
+PCN-售后（固定）
+
+## 履约平台
+可选择：
+- PCN自有平台
+- Dealer线下门店
+- 第三方APP
+
+## 归属类型
+**可切换**：跟人 / 跟车
+
+## 核销渠道
+- PWSA
+- OMP
+- MPA
+
+## 适用门店
+- 全网经销商
+- 指定经销商
+`,
+
+            brandprotect: `# 品牌保障券 PRD
+
+## 定义
+品牌保障券是保时捷认证二手车或延保服务的权益凭证，为车主提供品牌质保服务。
+
+## 业务领域
+**用车服务**
+
+## 抵扣类型
+
+### 项目抵扣券（唯一类型）
+- **抵扣项目**：品牌质保服务
+- **使用场景**：认证二手车购买、延保服务购买
+
+## 成本中心
+PCN-售后（固定）
+
+## 履约平台
+可选择：
+- PCN自有平台
+- Dealer线下门店
+- 第三方APP
+
+## 归属类型
+**固定跟车**（不可切换）
+
+> 品牌保障与具体车辆绑定，随车转移
+
+## 核销渠道
+- PWSA
+- OMP
+- MPA
+
+## 特殊规则
+1. 必须绑定VIN码
+2. 归属类型固定为跟车
+3. 随车辆过户自动转移
+`,
+
+            giftexchange: `# 活动礼品券 PRD
+
+## 定义
+活动礼品券是保时捷营销活动中发放的礼品兑换凭证，用于兑换实物礼品。
+
+## 业务领域
+**车品生活**
+
+## 抵扣类型
+
+### 项目抵扣券（唯一类型）
+- **抵扣项目**：活动指定礼品
+- **使用场景**：线下活动礼品领取
+
+## 成本中心
+PCN-三方（固定）
+
+## 履约平台
+可选择：
+- PCN自有平台
+- Dealer线下门店
+- 第三方APP
+
+## 归属类型
+**固定跟车**（不可切换）
+
+## 核销渠道
+- OMP
+- MPA
+
+## 特殊规则
+1. 归属类型固定为跟车
+2. 通常用于线下活动场景
+3. 礼品实物由活动方提供
+`,
+
+            pec: `# PEC券 PRD
+
+## 定义
+PEC（Porsche Exclusive Customization）券是保时捷个性化定制服务的权益券。
+
+## 业务领域
+**车品生活**
+
+## 抵扣类型
+
+### 项目抵扣券（唯一类型）
+- **抵扣项目**：PEC定制服务
+- **使用场景**：车辆个性化改装、定制配件
+
+## 成本中心
+PCN-PEC（固定）
+
+## 履约平台
+PCN自有平台（固定）
+
+## 归属类型
+**固定跟人**（不可切换）
+
+## 核销渠道
+- OMP
+- MPA
+
+## 服务范围
+- 外观定制（车身颜色、轮毂等）
+- 内饰定制（真皮、碳纤维等）
+- 性能定制（动力套件等）
+- 专属铭牌
+`,
+
+            lifestyle: `# Lifestyle券 PRD
+
+## 定义
+Lifestyle券是保时捷生活方式类服务的权益券，涵盖保时捷品牌相关的高端生活服务。
+
+## 业务领域
+**车品生活**
+
+## 抵扣类型
+
+### 项目抵扣券（唯一类型）
+- **抵扣项目**：Lifestyle相关服务
+- **使用场景**：保时捷体验中心、品牌活动等
+
+## 成本中心
+PCN-Lifestyle（固定）
+
+## 履约平台
+PCN自有平台（固定）
+
+## 归属类型
+**固定跟人**（不可切换）
+
+## 核销渠道
+- OMP
+- MPA
+
+## 服务范围
+- 保时捷体验中心活动
+- 品牌限定活动参与资格
+- 保时捷设计精品店优惠
+- 合作品牌生活方式服务
+`,
+
+            teq: `# TEQ券 PRD
+
+## 定义
+TEQ（Tequipment）券是保时捷原厂配件及精品的优惠券。
+
+## 业务领域
+**用车服务**
+
+## 抵扣类型
+
+### 项目抵扣券（唯一类型）
+- **抵扣项目**：TEQ原厂配件/精品
+- **使用场景**：购买保时捷原厂配件和精品
+
+## 成本中心
+PCN-TEQ（固定）
+
+## 履约平台
+可选择：
+- PCN自有平台
+- Dealer线下门店
+- 第三方APP
+
+## 归属类型
+**固定跟人**（不可切换）
+
+## 核销渠道
+- PWSA
+- OMP
+- MPA
+
+## 产品范围
+- 原厂轮毂
+- 行李架系统
+- 车内精品（脚垫、车衣等）
+- 儿童安全座椅
+- 原厂改装套件
+`,
+
+            rsa: `# RSA券 PRD
+
+## 定义
+RSA（Roadside Assistance）券是保时捷道路救援服务的权益券。
+
+## 业务领域
+**用车服务**
+
+## 抵扣类型
+
+### 项目抵扣券（唯一类型）
+- **抵扣项目**：道路救援服务
+- **使用场景**：车辆故障、事故现场救援
+
+## 成本中心
+PCN-RSA（固定）
+
+## 履约平台
+可选择：
+- PCN自有平台
+- Dealer线下门店
+- 第三方APP
+
+## 归属类型
+**固定跟人**（不可切换）
+
+## 核销渠道
+- PWSA
+- OMP
+- MPA
+
+## 服务内容
+- 24小时道路救援热线
+- 现场紧急维修
+- 拖车服务
+- 代步车服务
+- 酒店住宿安排
+`,
+
+            ecommerce: `# 电商券 PRD
+
+## 定义
+电商券是保时捷官方商城的购物优惠券，用于商城商品的促销活动。
+
+## 业务领域
+**电商**
+
+## 抵扣类型
+
+### 项目抵扣券
+- **抵扣项目**：同适用商品（不可修改）
+- **使用场景**：指定商品免费兑换
+
+### 满减券
+- **使用门槛**：自定义金额
+- **优惠金额**：自定义
+- **使用场景**：订单满减
+
+## 成本中心
+- PCN-电商（默认）
+- TP（代运营）
+
+## 履约平台
+PCN自有平台（固定）
+
+## 归属类型
+**固定跟人**（不可切换）
+
+## 激活方式
+**固定时间激活**（固定，不可选择）
+
+> 电商券通常用于大促活动，需要统一激活时间
+
+## 核销渠道
+- OMP
+- MPA
+
+## 适用范围配置
+
+### 活动类型
+- 跨店铺：多店铺通用
+- TP代运营：代运营店铺专用
+- PCN自营：官方自营店铺
+
+### 商品范围
+- 全部商品
+- 指定商品（需选择具体SKU）
+
+## 特殊规则
+1. 激活方式固定为固定时间激活
+2. 项目抵扣券的抵扣项目=适用商品
+3. 显示"适用范围"配置模块
+4. 底部显示"关联商品"按钮
+`
+        };
+
+        // 字段关系 JSON 结构
+        const fieldRelations = {
+            "couponGroup": {
+                "_description": "券组配置 - 卡券的模板定义",
+                "basicInfo": {
+                    "_description": "基本信息",
+                    "name": { "type": "string", "required": true, "maxLength": 50, "description": "券组名称" },
+                    "description": { "type": "string", "required": true, "maxLength": 200, "description": "券组描述" },
+                    "image": { "type": "url", "required": false, "description": "卡券图片URL" }
+                },
+                "typeAndCost": {
+                    "_description": "类型与成本",
+                    "businessDomain": {
+                        "type": "enum",
+                        "required": true,
+                        "options": ["lifestyle", "vehicle", "ecommerce"],
+                        "labels": { "lifestyle": "车品生活", "vehicle": "用车服务", "ecommerce": "电商券" },
+                        "description": "业务领域",
+                        "cascadeTo": "businessType"
+                    },
+                    "businessType": {
+                        "type": "enum",
+                        "required": true,
+                        "dependsOn": "businessDomain",
+                        "optionsByDomain": {
+                            "lifestyle": ["member", "thirdparty", "giftexchange", "pec", "lifestyletype"],
+                            "vehicle": ["aftersales", "pickup", "brandprotect", "teq", "rsa"],
+                            "ecommerce": ["ecommerce"]
+                        },
+                        "labels": {
+                            "member": "会员券", "thirdparty": "三方券", "giftexchange": "活动礼品券",
+                            "pec": "PEC券", "lifestyletype": "Lifestyle券", "aftersales": "售后服务券",
+                            "pickup": "取送车券", "brandprotect": "品牌保障券", "teq": "TEQ券",
+                            "rsa": "RSA券", "ecommerce": "电商券"
+                        },
+                        "description": "业务类型",
+                        "cascadeTo": ["discountType", "costCenter", "fulfillmentPlatform", "ownerType", "activationType", "redeemChannel"]
+                    },
+                    "discountType": {
+                        "type": "enum",
+                        "required": true,
+                        "dependsOn": "businessType",
+                        "optionsByType": {
+                            "member": ["threshold", "exchange"],
+                            "thirdparty": ["exchange-thirdparty"],
+                            "aftersales": ["threshold-aftersales", "discount", "project-aftersales"],
+                            "pickup": ["threshold-pickup", "discount-pickup"],
+                            "ecommerce": ["project-ecom", "threshold-ecom"]
+                        },
+                        "description": "抵扣类型"
+                    }
+                },
+                "usageRules": {
+                    "_description": "使用规则",
+                    "ownerType": {
+                        "type": "enum | readonly",
+                        "dependsOn": "businessType",
+                        "rules": {
+                            "固定跟人": ["member", "thirdparty", "pec", "lifestyletype", "teq", "rsa", "ecommerce"],
+                            "固定跟车": ["brandprotect", "giftexchange"],
+                            "可切换": ["aftersales", "pickup"]
+                        },
+                        "description": "归属类型"
+                    },
+                    "activationType": {
+                        "type": "enum | readonly",
+                        "dependsOn": "businessType",
+                        "rules": {
+                            "ecommerce": { "fixed": "fixedDate" },
+                            "default": { "options": ["immediate", "fixedDate", "userActivate", "delayActivate"] }
+                        },
+                        "description": "激活方式"
+                    },
+                    "redeemChannel": {
+                        "type": "enum[]",
+                        "required": true,
+                        "dependsOn": "businessType",
+                        "optionsByType": {
+                            "member": ["OMP", "MPA"],
+                            "thirdparty": ["OMP", "MPA"],
+                            "aftersales": ["PWSA", "OMP", "MPA", "POAS"],
+                            "pickup": ["PWSA", "OMP", "MPA"],
+                            "brandprotect": ["PWSA", "OMP", "MPA"],
+                            "giftexchange": ["OMP", "MPA"],
+                            "pec": ["OMP", "MPA"],
+                            "lifestyle": ["OMP", "MPA"],
+                            "teq": ["PWSA", "OMP", "MPA"],
+                            "rsa": ["PWSA", "OMP", "MPA"],
+                            "ecommerce": ["OMP", "MPA"]
+                        },
+                        "description": "核销渠道"
+                    },
+                    "applicableScope": {
+                        "type": "enum",
+                        "required": true,
+                        "options": ["all", "specified"],
+                        "labels": {
+                            "all": "全部商品",
+                            "specified": "指定商品"
+                        },
+                        "description": "适用范围",
+                        "showFor": ["ecommerce", "aftersales", "teq"]
+                    },
+                    "applicableDealers": {
+                        "type": "enum",
+                        "required": true,
+                        "options": ["all", "specified"],
+                        "labels": {
+                            "all": "全网经销商",
+                            "specified": "指定经销商"
+                        },
+                        "description": "适用经销商",
+                        "showFor": ["aftersales", "pickup", "brandprotect", "teq", "rsa"]
+                    }
+                }
+            },
+            "costCenterConfig": {
+                "_description": "成本中心配置",
+                "byBusinessType": {
+                    "member": { "default": "PCN-会员", "editable": true, "options": ["PCN-会员", "经销商"] },
+                    "thirdparty": { "default": "PCN-三方", "editable": false },
+                    "aftersales": { "default": "PCN-售后", "editable": false },
+                    "pickup": { "default": "PCN-售后", "editable": false },
+                    "brandprotect": { "default": "PCN-售后", "editable": false },
+                    "giftexchange": { "default": "PCN-三方", "editable": false },
+                    "pec": { "default": "PCN-PEC", "editable": false },
+                    "lifestyle": { "default": "PCN-Lifestyle", "editable": false },
+                    "teq": { "default": "PCN-TEQ", "editable": false },
+                    "rsa": { "default": "PCN-RSA", "editable": false },
+                    "ecommerce": { "default": "PCN-电商", "editable": true, "options": ["PCN-电商", "TP"] }
+                }
+            },
+            "cascadeRules": {
+                "_description": "字段联动规则汇总",
+                "businessDomain → businessType": "业务领域决定可选的业务类型",
+                "businessType → discountType": "业务类型决定可选的抵扣类型",
+                "businessType → costCenter": "业务类型决定成本中心是否可编辑",
+                "businessType → ownerType": "业务类型决定归属类型是否可切换",
+                "businessType → activationType": "业务类型决定激活方式（电商券固定）",
+                "businessType → redeemChannel": "业务类型决定可选的核销渠道",
+                "discountType → discountConfig": "抵扣类型决定显示哪种配置表单",
+                "activationType → validityConfig": "激活方式决定显示哪种有效期配置"
+            }
+        };
+
+        // 二级导航配置
+        const categoryConfig = {
+            overview: { types: [], showSecondary: false },
+            lifestyle: {
+                types: [
+                    { key: 'member', label: '会员券' },
+                    { key: 'thirdparty', label: '三方券' },
+                    { key: 'giftexchange', label: '活动礼品券' },
+                    { key: 'pec', label: 'PEC券' },
+                    { key: 'lifestyle', label: 'Lifestyle券' }
+                ],
+                showSecondary: true
+            },
+            vehicle: {
+                types: [
+                    { key: 'aftersales', label: '售后服务券' },
+                    { key: 'pickup', label: '取送车券' },
+                    { key: 'brandprotect', label: '品牌保障券' },
+                    { key: 'teq', label: 'TEQ券' },
+                    { key: 'rsa', label: 'RSA券' }
+                ],
+                showSecondary: true
+            },
+            ecommerce: { types: [], showSecondary: false }
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMarkdown('overview');
+            renderJSON(fieldRelations);
+
+            // 一级导航点击
+            document.getElementById('couponNavPrimary').addEventListener('click', function(e) {
+                if (e.target.classList.contains('coupon-nav-item')) {
+                    const category = e.target.dataset.category;
+
+                    // 更新一级导航激活状态
+                    document.querySelectorAll('#couponNavPrimary .coupon-nav-item').forEach(function(item) {
+                        item.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+
+                    // 处理二级导航
+                    const config = categoryConfig[category];
+                    const secondaryNav = document.getElementById('couponNavSecondary');
+
+                    if (config.showSecondary && config.types.length > 0) {
+                        // 渲染二级导航
+                        secondaryNav.innerHTML = config.types.map(function(t, i) {
+                            return '<div class="coupon-nav-item' + (i === 0 ? ' active' : '') + '" data-type="' + t.key + '">' + t.label + '</div>';
+                        }).join('');
+                        secondaryNav.style.display = 'flex';
+                        // 默认显示该分类下第一个券类型
+                        renderMarkdown(config.types[0].key);
+                    } else {
+                        // 隐藏二级导航
+                        secondaryNav.style.display = 'none';
+                        secondaryNav.innerHTML = '';
+                        // 概述或电商券直接显示
+                        if (category === 'overview') {
+                            renderMarkdown('overview');
+                        } else if (category === 'ecommerce') {
+                            renderMarkdown('ecommerce');
+                        }
+                    }
+                }
+            });
+
+            // 二级导航点击
+            document.getElementById('couponNavSecondary').addEventListener('click', function(e) {
+                if (e.target.classList.contains('coupon-nav-item')) {
+                    const type = e.target.dataset.type;
+                    document.querySelectorAll('#couponNavSecondary .coupon-nav-item').forEach(function(item) {
+                        item.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    renderMarkdown(type);
+                }
+            });
+
+            document.getElementById('jsonSearch').addEventListener('input', function(e) {
+                highlightJSON(e.target.value);
+            });
+
+            // 复制JSON按钮
+            document.getElementById('copyJsonBtn').addEventListener('click', function() {
+                const jsonStr = JSON.stringify(fieldRelations, null, 2);
+                navigator.clipboard.writeText(jsonStr).then(function() {
+                    const btn = document.getElementById('copyJsonBtn');
+                    btn.classList.add('copied');
+                    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                    setTimeout(function() {
+                        btn.classList.remove('copied');
+                        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+                    }, 2000);
+                });
+            });
+        });
+
+        // 渲染 Markdown（使用 DOMPurify 净化）
+        function renderMarkdown(type) {
+            const content = prdContent[type] || '# 内容加载中...';
+
+            // 先替换流程图占位符，再解析和净化
+            let processedContent = content;
+            processedContent = processedContent.replace(/<!-- FLOW:lifecycle -->/g, '{{FLOW_LIFECYCLE}}');
+            processedContent = processedContent.replace(/<!-- FLOW:instance -->/g, '{{FLOW_INSTANCE}}');
+            processedContent = processedContent.replace(/<!-- FLOW:issue -->/g, '{{FLOW_ISSUE}}');
+
+            const rawHtml = marked.parse(processedContent);
+            let cleanHtml = DOMPurify.sanitize(rawHtml);
+
+            // 在净化后替换流程图模板
+            cleanHtml = cleanHtml.replace(/\{\{FLOW_LIFECYCLE\}\}/g, getFlowTemplate('flowLifecycle'));
+            cleanHtml = cleanHtml.replace(/\{\{FLOW_INSTANCE\}\}/g, getFlowTemplate('flowInstance'));
+            cleanHtml = cleanHtml.replace(/\{\{FLOW_ISSUE\}\}/g, getFlowTemplate('flowIssue'));
+
+            document.getElementById('markdownContent').innerHTML = cleanHtml;
+        }
+
+        // 获取流程图模板
+        function getFlowTemplate(templateId) {
+            const template = document.getElementById(templateId);
+            if (template) {
+                return template.innerHTML;
+            }
+            return '';
+        }
+
+        // 渲染 JSON
+        function renderJSON(obj) {
+            const container = document.getElementById('jsonContent');
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            const jsonStr = JSON.stringify(obj, null, 2);
+            const highlighted = syntaxHighlightSafe(jsonStr);
+            container.appendChild(highlighted);
+        }
+
+        // JSON 语法高亮
+        function syntaxHighlightSafe(json) {
+            const fragment = document.createDocumentFragment();
+            const lines = json.split('\n');
+
+            lines.forEach(function(line, index) {
+                const tokens = tokenizeLine(line);
+                tokens.forEach(function(token) {
+                    const span = document.createElement('span');
+                    span.textContent = token.value;
+                    if (token.type) {
+                        span.className = 'json-' + token.type;
+                    }
+                    fragment.appendChild(span);
+                });
+                if (index < lines.length - 1) {
+                    fragment.appendChild(document.createTextNode('\n'));
+                }
+            });
+
+            return fragment;
+        }
+
+        function tokenizeLine(line) {
+            const tokens = [];
+            let i = 0;
+
+            while (i < line.length) {
+                if (/\s/.test(line[i])) {
+                    let ws = '';
+                    while (i < line.length && /\s/.test(line[i])) {
+                        ws += line[i++];
+                    }
+                    tokens.push({ type: null, value: ws });
+                    continue;
+                }
+
+                if (/[\[\]{}]/.test(line[i])) {
+                    tokens.push({ type: 'bracket', value: line[i++] });
+                    continue;
+                }
+
+                if (line[i] === '"') {
+                    let str = '"';
+                    i++;
+                    while (i < line.length && line[i] !== '"') {
+                        if (line[i] === '\\' && i + 1 < line.length) {
+                            str += line[i++];
+                        }
+                        str += line[i++];
+                    }
+                    if (i < line.length) {
+                        str += line[i++];
+                    }
+                    let isKey = false;
+                    let j = i;
+                    while (j < line.length && /\s/.test(line[j])) j++;
+                    if (line[j] === ':') {
+                        isKey = true;
+                    }
+                    tokens.push({ type: isKey ? 'key' : 'string', value: str });
+                    continue;
+                }
+
+                if (/[-0-9]/.test(line[i])) {
+                    let num = '';
+                    while (i < line.length && /[-0-9.eE+]/.test(line[i])) {
+                        num += line[i++];
+                    }
+                    tokens.push({ type: 'number', value: num });
+                    continue;
+                }
+
+                if (line.substr(i, 4) === 'true') {
+                    tokens.push({ type: 'boolean', value: 'true' });
+                    i += 4;
+                    continue;
+                }
+                if (line.substr(i, 5) === 'false') {
+                    tokens.push({ type: 'boolean', value: 'false' });
+                    i += 5;
+                    continue;
+                }
+                if (line.substr(i, 4) === 'null') {
+                    tokens.push({ type: 'null', value: 'null' });
+                    i += 4;
+                    continue;
+                }
+
+                tokens.push({ type: null, value: line[i++] });
+            }
+
+            return tokens;
+        }
+
+        function highlightJSON(keyword) {
+            const container = document.getElementById('jsonContent');
+            const jsonStr = JSON.stringify(fieldRelations, null, 2);
+
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+
+            if (!keyword || keyword.length === 0) {
+                container.appendChild(syntaxHighlightSafe(jsonStr));
+                return;
+            }
+
+            const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp('(' + escapedKeyword + ')', 'gi');
+
+            const lines = jsonStr.split('\n');
+            lines.forEach(function(line, index) {
+                const tokens = tokenizeLine(line);
+                tokens.forEach(function(token) {
+                    if (token.value.match(regex)) {
+                        const parts = token.value.split(regex);
+                        parts.forEach(function(part) {
+                            if (part.toLowerCase() === keyword.toLowerCase()) {
+                                const highlightSpan = document.createElement('span');
+                                highlightSpan.className = 'highlight';
+                                highlightSpan.textContent = part;
+                                container.appendChild(highlightSpan);
+                            } else if (part) {
+                                const span = document.createElement('span');
+                                span.textContent = part;
+                                if (token.type) {
+                                    span.className = 'json-' + token.type;
+                                }
+                                container.appendChild(span);
+                            }
+                        });
+                    } else {
+                        const span = document.createElement('span');
+                        span.textContent = token.value;
+                        if (token.type) {
+                            span.className = 'json-' + token.type;
+                        }
+                        container.appendChild(span);
+                    }
+                });
+                if (index < lines.length - 1) {
+                    container.appendChild(document.createTextNode('\n'));
+                }
+            });
+
+            // 滚动到第一个匹配项
+            const firstMatch = container.querySelector('.highlight');
+            if (firstMatch) {
+                const jsonContainer = container.closest('.json-container');
+                if (jsonContainer) {
+                    const containerRect = jsonContainer.getBoundingClientRect();
+                    const matchRect = firstMatch.getBoundingClientRect();
+                    const scrollTop = jsonContainer.scrollTop + (matchRect.top - containerRect.top) - 100;
+                    jsonContainer.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

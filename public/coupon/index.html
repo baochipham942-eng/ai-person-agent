@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保时捷卡券中心 - 券组列表</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo">PORSCHE</span>
+            <span class="divider">|</span>
+            <span class="title">卡券中心</span>
+        </div>
+        <div class="header-right">
+            <span class="user-info">David Huang</span>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 筛选区 -->
+        <div class="filter-section">
+            <div class="filter-row">
+                <div class="filter-item">
+                    <input type="text" class="input-search" placeholder="券组名称/ID">
+                </div>
+                <div class="filter-item">
+                    <select class="select-filter">
+                        <option value="">业务领域</option>
+                        <option value="lifestyle">车品生活</option>
+                        <option value="vehicle">用车服务</option>
+                        <option value="ecommerce">电商券</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <select class="select-filter">
+                        <option value="">抵扣类型</option>
+                        <option value="threshold">满减券</option>
+                        <option value="discount">折扣券</option>
+                        <option value="project">项目抵扣券</option>
+                        <option value="exchange">兑换券</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <select class="select-filter">
+                        <option value="">状态</option>
+                        <option value="draft">草稿</option>
+                        <option value="pending">待审核</option>
+                        <option value="online">已上线</option>
+                        <option value="offline">已下架</option>
+                        <option value="rejected">已驳回</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <select class="select-filter">
+                        <option value="">成本中心</option>
+                        <option value="pcn-platform">PCN-平台运营</option>
+                        <option value="pcn-ecommerce">PCN-电商</option>
+                        <option value="pcn-aftersales">PCN-售后</option>
+                        <option value="pcn-clp">PCN-CLP</option>
+                        <option value="pcn-pm">PCN-PM</option>
+                        <option value="tp">TP</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <select class="select-filter">
+                        <option value="">履约平台</option>
+                        <option value="pcn">PCN自有平台</option>
+                        <option value="dealer">Dealer线下门店</option>
+                        <option value="third-party">第三方app</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label class="filter-label">创建时间</label>
+                    <input type="date" class="input-date">
+                    <span class="date-separator">~</span>
+                    <input type="date" class="input-date">
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label">有效期</label>
+                    <input type="date" class="input-date">
+                    <span class="date-separator">~</span>
+                    <input type="date" class="input-date">
+                </div>
+                <div class="filter-actions">
+                    <button class="btn btn-primary btn-search">搜索</button>
+                    <button class="btn btn-default">重置</button>
+                    <button class="btn btn-danger" onclick="location.href='./coupon-create.html'">+ 创建券组</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 列表区 -->
+        <div class="table-section">
+            <div class="table-info">
+                <span>共 <strong>18</strong> 条数据</span>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table" id="couponGroupTable">
+                    <thead>
+                        <tr>
+                            <th class="sticky-left" style="min-width: 180px;">券组名称</th>
+                            <th>抵扣类型</th>
+                            <th>业务领域</th>
+                            <th>业务类型</th>
+                            <th>发放场景</th>
+                            <th>状态</th>
+                            <th>成本中心</th>
+                            <th>履约平台</th>
+                            <th>核销渠道</th>
+                            <th>发放数</th>
+                            <th>激活数</th>
+                            <th>核销数</th>
+                            <th>作废数</th>
+                            <th>过期数</th>
+                            <th>有效期</th>
+                            <th>创建人</th>
+                            <th>创建时间</th>
+                            <th class="sticky-right" style="min-width: 180px;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 草稿状态 - 满减券 -->
+                        <tr data-id="CPN-2024-001" data-status="draft">
+                            <td class="sticky-left name-cell">911限量版保养券</td>
+                            <td>满减券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>活动发放</td>
+                            <td><span class="status status-draft">草稿</span></td>
+                            <td>PCN-售后</td>
+                            <td>PCN自有</td>
+                            <td>PWSA</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-01-15<br>2024-12-31</td>
+                            <td>张伟</td>
+                            <td>2024-01-10</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="submitForReview('CPN-2024-001', '911限量版保养券')">提交审核</a>
+                                <a href="./coupon-create.html" class="action-link">编辑</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-001', '911限量版保养券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="deleteCouponGroup('CPN-2024-001', '911限量版保养券')">删除</a>
+                            </td>
+                        </tr>
+                        <!-- 草稿状态 - 折扣券 -->
+                        <tr data-id="CPN-2024-002" data-status="draft">
+                            <td class="sticky-left name-cell">Cayenne精品折扣券</td>
+                            <td>折扣券</td>
+                            <td>车品生活</td>
+                            <td>电商</td>
+                            <td>系统发放</td>
+                            <td><span class="status status-draft">草稿</span></td>
+                            <td>PCN-电商</td>
+                            <td>PCN自有</td>
+                            <td>OMP</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-02-01<br>2024-06-30</td>
+                            <td>李明</td>
+                            <td>2024-01-20</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="submitForReview('CPN-2024-002', 'Cayenne精品折扣券')">提交审核</a>
+                                <a href="./coupon-create.html" class="action-link">编辑</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-002', 'Cayenne精品折扣券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="deleteCouponGroup('CPN-2024-002', 'Cayenne精品折扣券')">删除</a>
+                            </td>
+                        </tr>
+                        <!-- 待审核状态 - 满减券 -->
+                        <tr data-id="CPN-2024-003" data-status="pending">
+                            <td class="sticky-left name-cell">Macan配件满减券</td>
+                            <td>满减券</td>
+                            <td>车品生活</td>
+                            <td>电商</td>
+                            <td>系统发放</td>
+                            <td><span class="status status-pending">待审核</span></td>
+                            <td>PCN-电商</td>
+                            <td>第三方app</td>
+                            <td>OMP</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-02-01<br>2024-06-30</td>
+                            <td>李明</td>
+                            <td>2024-01-20</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-create.html" class="action-link">查看</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-003', 'Macan配件满减券')">复制</a>
+                            </td>
+                        </tr>
+                        <!-- 待审核状态 - 项目抵扣券 -->
+                        <tr data-id="CPN-2024-004" data-status="pending">
+                            <td class="sticky-left name-cell">Panamera首保服务券</td>
+                            <td>项目抵扣券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>购车发放</td>
+                            <td><span class="status status-pending">待审核</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>POAS</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-03-01<br>2025-02-28</td>
+                            <td>王芳</td>
+                            <td>2024-02-15</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-create.html" class="action-link">查看</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-004', 'Panamera首保服务券')">复制</a>
+                            </td>
+                        </tr>
+                        <!-- 已上线状态 - 项目抵扣券 -->
+                        <tr data-id="CPN-2024-005" data-status="online">
+                            <td class="sticky-left name-cell">Taycan充电服务券</td>
+                            <td>项目抵扣券</td>
+                            <td>用车服务</td>
+                            <td>充电</td>
+                            <td>购车发放</td>
+                            <td><span class="status status-online">已上线</span></td>
+                            <td>PCN-CLP</td>
+                            <td>PCN自有</td>
+                            <td>POS</td>
+                            <td>1,520</td>
+                            <td>892</td>
+                            <td>456</td>
+                            <td>28</td>
+                            <td>144</td>
+                            <td>2024-01-01<br>2024-12-31</td>
+                            <td>王芳</td>
+                            <td>2023-12-15</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-005', 'Taycan充电服务券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="offlineCouponGroup('CPN-2024-005', 'Taycan充电服务券')">下架</a>
+                            </td>
+                        </tr>
+                        <!-- 已上线状态 - 满减券 -->
+                        <tr data-id="CPN-2024-006" data-status="online">
+                            <td class="sticky-left name-cell">718保养满减券</td>
+                            <td>满减券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>活动发放</td>
+                            <td><span class="status status-online">已上线</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>POAS</td>
+                            <td>2,000</td>
+                            <td>1,580</td>
+                            <td>920</td>
+                            <td>45</td>
+                            <td>180</td>
+                            <td>2024-01-01<br>2024-12-31</td>
+                            <td>张伟</td>
+                            <td>2023-12-20</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-006', '718保养满减券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="offlineCouponGroup('CPN-2024-006', '718保养满减券')">下架</a>
+                            </td>
+                        </tr>
+                        <!-- 已上线状态 - 折扣券 -->
+                        <tr data-id="CPN-2024-007" data-status="online">
+                            <td class="sticky-left name-cell">会员专属8折券</td>
+                            <td>折扣券</td>
+                            <td>车品生活</td>
+                            <td>电商</td>
+                            <td>会员专享</td>
+                            <td><span class="status status-online">已上线</span></td>
+                            <td>PCN-电商</td>
+                            <td>PCN自有</td>
+                            <td>OMP</td>
+                            <td>5,000</td>
+                            <td>3,200</td>
+                            <td>1,850</td>
+                            <td>120</td>
+                            <td>450</td>
+                            <td>2024-01-01<br>2024-12-31</td>
+                            <td>李明</td>
+                            <td>2023-12-01</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-007', '会员专属8折券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="offlineCouponGroup('CPN-2024-007', '会员专属8折券')">下架</a>
+                            </td>
+                        </tr>
+                        <!-- 已上线状态 - 兑换券 -->
+                        <tr data-id="CPN-2024-008" data-status="online">
+                            <td class="sticky-left name-cell">精洗服务兑换券</td>
+                            <td>兑换券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>购车发放</td>
+                            <td><span class="status status-online">已上线</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>Dealer</td>
+                            <td>800</td>
+                            <td>650</td>
+                            <td>480</td>
+                            <td>20</td>
+                            <td>50</td>
+                            <td>2024-01-01<br>2024-12-31</td>
+                            <td>陈磊</td>
+                            <td>2023-12-10</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-008', '精洗服务兑换券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="offlineCouponGroup('CPN-2024-008', '精洗服务兑换券')">下架</a>
+                            </td>
+                        </tr>
+                        <!-- 已下架状态 - 兑换券 -->
+                        <tr data-id="CPN-2024-009" data-status="offline">
+                            <td class="sticky-left name-cell">Macan周年礼遇券</td>
+                            <td>兑换券</td>
+                            <td>车品生活</td>
+                            <td>礼品</td>
+                            <td>手动发放</td>
+                            <td><span class="status status-offline">已下架</span></td>
+                            <td>PCN-PM</td>
+                            <td>Dealer</td>
+                            <td>Dealer</td>
+                            <td>500</td>
+                            <td>320</td>
+                            <td>280</td>
+                            <td>15</td>
+                            <td>25</td>
+                            <td>2023-06-01<br>2023-12-31</td>
+                            <td>陈磊</td>
+                            <td>2023-05-20</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-009', 'Macan周年礼遇券')">复制</a>
+                                <a href="#" class="action-link" onclick="onlineCouponGroup('CPN-2024-009', 'Macan周年礼遇券')">上架</a>
+                            </td>
+                        </tr>
+                        <!-- 已下架状态 - 满减券 -->
+                        <tr data-id="CPN-2024-010" data-status="offline">
+                            <td class="sticky-left name-cell">春节特惠满减券</td>
+                            <td>满减券</td>
+                            <td>车品生活</td>
+                            <td>电商</td>
+                            <td>活动发放</td>
+                            <td><span class="status status-offline">已下架</span></td>
+                            <td>PCN-电商</td>
+                            <td>PCN自有</td>
+                            <td>OMP</td>
+                            <td>3,000</td>
+                            <td>2,800</td>
+                            <td>2,100</td>
+                            <td>200</td>
+                            <td>500</td>
+                            <td>2024-01-20<br>2024-02-20</td>
+                            <td>刘洋</td>
+                            <td>2024-01-15</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-010', '春节特惠满减券')">复制</a>
+                                <a href="#" class="action-link" onclick="onlineCouponGroup('CPN-2024-010', '春节特惠满减券')">上架</a>
+                            </td>
+                        </tr>
+                        <!-- 已下架状态 - 项目抵扣券 -->
+                        <tr data-id="CPN-2024-011" data-status="offline">
+                            <td class="sticky-left name-cell">冬季检测服务券</td>
+                            <td>项目抵扣券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>系统发放</td>
+                            <td><span class="status status-offline">已下架</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>POAS</td>
+                            <td>1,200</td>
+                            <td>980</td>
+                            <td>750</td>
+                            <td>80</td>
+                            <td>150</td>
+                            <td>2023-11-01<br>2024-02-28</td>
+                            <td>王芳</td>
+                            <td>2023-10-25</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-011', '冬季检测服务券')">复制</a>
+                                <a href="#" class="action-link" onclick="onlineCouponGroup('CPN-2024-011', '冬季检测服务券')">上架</a>
+                            </td>
+                        </tr>
+                        <!-- 已驳回状态 - 满减券 -->
+                        <tr data-id="CPN-2024-012" data-status="rejected">
+                            <td class="sticky-left name-cell">Panamera精品券</td>
+                            <td>满减券</td>
+                            <td>车品生活</td>
+                            <td>精品</td>
+                            <td>活动发放</td>
+                            <td><span class="status status-rejected">已驳回</span></td>
+                            <td>TP</td>
+                            <td>第三方app</td>
+                            <td>MPA</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-03-01<br>2024-09-30</td>
+                            <td>刘洋</td>
+                            <td>2024-02-28</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-create.html" class="action-link">编辑</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-012', 'Panamera精品券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="deleteCouponGroup('CPN-2024-012', 'Panamera精品券')">删除</a>
+                            </td>
+                        </tr>
+                        <!-- 已驳回状态 - 折扣券 -->
+                        <tr data-id="CPN-2024-013" data-status="rejected">
+                            <td class="sticky-left name-cell">新会员9折券</td>
+                            <td>折扣券</td>
+                            <td>车品生活</td>
+                            <td>电商</td>
+                            <td>新用户发放</td>
+                            <td><span class="status status-rejected">已驳回</span></td>
+                            <td>PCN-电商</td>
+                            <td>PCN自有</td>
+                            <td>OMP</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-04-01<br>2024-06-30</td>
+                            <td>李明</td>
+                            <td>2024-03-15</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-create.html" class="action-link">编辑</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-013', '新会员9折券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="deleteCouponGroup('CPN-2024-013', '新会员9折券')">删除</a>
+                            </td>
+                        </tr>
+                        <!-- 已驳回状态 - 兑换券 -->
+                        <tr data-id="CPN-2024-014" data-status="rejected">
+                            <td class="sticky-left name-cell">取送车服务兑换券</td>
+                            <td>兑换券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>购车发放</td>
+                            <td><span class="status status-rejected">已驳回</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>Dealer</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-05-01<br>2024-12-31</td>
+                            <td>陈磊</td>
+                            <td>2024-04-10</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-create.html" class="action-link">编辑</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-014', '取送车服务兑换券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="deleteCouponGroup('CPN-2024-014', '取送车服务兑换券')">删除</a>
+                            </td>
+                        </tr>
+                        <!-- 草稿状态 - 项目抵扣券 -->
+                        <tr data-id="CPN-2024-015" data-status="draft">
+                            <td class="sticky-left name-cell">轮胎更换服务券</td>
+                            <td>项目抵扣券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>会员专享</td>
+                            <td><span class="status status-draft">草稿</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>POAS</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-06-01<br>2024-12-31</td>
+                            <td>张伟</td>
+                            <td>2024-05-20</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="submitForReview('CPN-2024-015', '轮胎更换服务券')">提交审核</a>
+                                <a href="./coupon-create.html" class="action-link">编辑</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-015', '轮胎更换服务券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="deleteCouponGroup('CPN-2024-015', '轮胎更换服务券')">删除</a>
+                            </td>
+                        </tr>
+                        <!-- 草稿状态 - 兑换券 -->
+                        <tr data-id="CPN-2024-016" data-status="draft">
+                            <td class="sticky-left name-cell">机油更换兑换券</td>
+                            <td>兑换券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>购车发放</td>
+                            <td><span class="status status-draft">草稿</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>Dealer</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-07-01<br>2025-06-30</td>
+                            <td>陈磊</td>
+                            <td>2024-06-15</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="submitForReview('CPN-2024-016', '机油更换兑换券')">提交审核</a>
+                                <a href="./coupon-create.html" class="action-link">编辑</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-016', '机油更换兑换券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="deleteCouponGroup('CPN-2024-016', '机油更换兑换券')">删除</a>
+                            </td>
+                        </tr>
+                        <!-- 已上线状态 - 满减券（高使用率） -->
+                        <tr data-id="CPN-2024-017" data-status="online">
+                            <td class="sticky-left name-cell">夏季空调检测满减券</td>
+                            <td>满减券</td>
+                            <td>用车服务</td>
+                            <td>售后</td>
+                            <td>系统发放</td>
+                            <td><span class="status status-online">已上线</span></td>
+                            <td>PCN-售后</td>
+                            <td>Dealer</td>
+                            <td>POAS</td>
+                            <td>3,500</td>
+                            <td>3,200</td>
+                            <td>2,800</td>
+                            <td>100</td>
+                            <td>200</td>
+                            <td>2024-05-01<br>2024-09-30</td>
+                            <td>王芳</td>
+                            <td>2024-04-20</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-instance.html" class="action-link action-primary">管理</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-017', '夏季空调检测满减券')">复制</a>
+                                <a href="#" class="action-link action-danger" onclick="offlineCouponGroup('CPN-2024-017', '夏季空调检测满减券')">下架</a>
+                            </td>
+                        </tr>
+                        <!-- 待审核状态 - 兑换券 -->
+                        <tr data-id="CPN-2024-018" data-status="pending">
+                            <td class="sticky-left name-cell">VIP客户专属礼遇券</td>
+                            <td>兑换券</td>
+                            <td>车品生活</td>
+                            <td>礼品</td>
+                            <td>VIP专享</td>
+                            <td><span class="status status-pending">待审核</span></td>
+                            <td>PCN-PM</td>
+                            <td>Dealer</td>
+                            <td>Dealer</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2024-08-01<br>2024-12-31</td>
+                            <td>刘洋</td>
+                            <td>2024-07-20</td>
+                            <td class="sticky-right action-cell">
+                                <a href="./coupon-create.html" class="action-link">查看</a>
+                                <a href="#" class="action-link" onclick="copyCouponGroup('CPN-2024-018', 'VIP客户专属礼遇券')">复制</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <div class="pagination">
+                <span class="pagination-info">每页显示</span>
+                <select class="pagination-select">
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                </select>
+                <span class="pagination-info">条</span>
+                <div class="pagination-buttons">
+                    <button class="page-btn" disabled>&lt;</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <span class="page-ellipsis">...</span>
+                    <button class="page-btn">16</button>
+                    <button class="page-btn">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 提交审核确认弹窗 -->
+    <div class="modal-overlay hidden" id="submitReviewModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">提交审核</div>
+                <button class="modal-close" onclick="hideModal('submitReviewModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon" style="background: #e6f7ff;">📋</div>
+                    <div class="modal-warning-title">确认提交「<span id="submitReviewName"></span>」审核？</div>
+                    <div class="modal-warning-desc">提交后将进入审核流程，审核期间无法编辑</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('submitReviewModal')">取消</button>
+                <button class="btn btn-danger" id="confirmSubmitReview">确认提交</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除确认弹窗 -->
+    <div class="modal-overlay hidden" id="deleteModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">删除券组</div>
+                <button class="modal-close" onclick="hideModal('deleteModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon">⚠️</div>
+                    <div class="modal-warning-title">确认删除「<span id="deleteName"></span>」？</div>
+                    <div class="modal-warning-desc">删除后无法恢复，请谨慎操作</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('deleteModal')">取消</button>
+                <button class="btn btn-confirm-danger" id="confirmDelete">确认删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制确认弹窗 -->
+    <div class="modal-overlay hidden" id="copyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">复制券组</div>
+                <button class="modal-close" onclick="hideModal('copyModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <label class="form-label required">新券组名称</label>
+                    <div class="form-control">
+                        <input type="text" class="form-input" id="copyNewName" style="max-width: 100%;">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('copyModal')">取消</button>
+                <button class="btn btn-danger" id="confirmCopy">确认复制</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 下架确认弹窗 -->
+    <div class="modal-overlay hidden" id="offlineModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">下架券组</div>
+                <button class="modal-close" onclick="hideModal('offlineModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon">⚠️</div>
+                    <div class="modal-warning-title">确认下架「<span id="offlineName"></span>」？</div>
+                    <div class="modal-warning-desc">下架后用户将无法使用该券组下的卡券</div>
+                </div>
+                <div class="form-row" style="margin-top: 24px;">
+                    <label class="form-label required">下架原因</label>
+                    <div class="form-control">
+                        <textarea class="form-textarea" id="offlineReason" placeholder="请输入下架原因" maxlength="200"></textarea>
+                        <div class="char-count"><span id="offlineReasonCount">0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('offlineModal')">取消</button>
+                <button class="btn btn-confirm-danger" id="confirmOffline">确认下架</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上架确认弹窗 -->
+    <div class="modal-overlay hidden" id="onlineModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">上架券组</div>
+                <button class="modal-close" onclick="hideModal('onlineModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon" style="background: #f6ffed;">✅</div>
+                    <div class="modal-warning-title">确认上架「<span id="onlineName"></span>」？</div>
+                    <div class="modal-warning-desc">上架后用户可以正常使用该券组下的卡券</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('onlineModal')">取消</button>
+                <button class="btn btn-danger" id="confirmOnline">确认上架</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 操作成功提示 -->
+    <div class="toast hidden" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保时捷卡券中心 - 卡券管理</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo">PORSCHE</span>
+            <span class="divider">|</span>
+            <span class="title">卡券中心</span>
+        </div>
+        <div class="header-right">
+            <span class="user-info">David Huang</span>
+        </div>
+    </header>
+
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+        <a href="./index.html">卡券中心</a>
+        <span>&gt;</span>
+        卡券管理
+    </div>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <div class="page-title">
+                Taycan充电服务券
+                <span class="page-id">ID: CPN-2024-001892</span>
+                <a href="#" class="page-link">查看详情 →</a>
+            </div>
+        </div>
+
+        <!-- 统计卡片 -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-label">发放量</div>
+                <div class="stat-value">1,520<span class="stat-total">/ 2,000</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">激活量</div>
+                <div class="stat-value">892<span class="stat-total">/ 1,520</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">核销量</div>
+                <div class="stat-value">456<span class="stat-total">/ 892</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">过期量</div>
+                <div class="stat-value">144<span class="stat-unit">张</span></div>
+            </div>
+        </div>
+
+        <!-- 筛选与操作区 -->
+        <div class="filter-section">
+            <div class="filter-row">
+                <div class="filter-item">
+                    <input type="text" class="input-search" placeholder="卡券Code">
+                </div>
+                <div class="filter-item">
+                    <input type="text" class="input-search" placeholder="用户ID/VIN">
+                </div>
+                <div class="filter-item">
+                    <select class="select-filter">
+                        <option value="">状态</option>
+                        <option value="inactive">待激活</option>
+                        <option value="active">待使用</option>
+                        <option value="used">已核销</option>
+                        <option value="void">已作废</option>
+                        <option value="expired">已过期</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label">发放时间</label>
+                    <input type="date" class="input-date" value="2024-01-01">
+                    <span class="date-separator">~</span>
+                    <input type="date" class="input-date" value="2024-12-31">
+                </div>
+                <div class="filter-actions">
+                    <button class="btn btn-primary btn-search">搜索</button>
+                    <button class="btn btn-default" id="btnVoid" onclick="showModal('voidModal')">批量作废</button>
+                    <button class="btn btn-default" id="btnActivate" onclick="showModal('activateModal')">批量激活</button>
+                    <button class="btn btn-default" id="btnRetry">批量重推</button>
+                    <button class="btn btn-danger" onclick="showModal('issueModal')">+ 发放</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 列表区 -->
+        <div class="table-section">
+            <div class="table-info">
+                <span>共 <strong>20</strong> 条</span>
+                <a href="#" class="action-link" style="margin-left: 16px;" onclick="exportCoupons()">批量导出</a>
+                <a href="#" class="action-link" onclick="showModal('importModal')">批量导入</a>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table" id="couponInstanceTable">
+                    <thead>
+                        <tr>
+                            <th class="sticky-left" style="width: 40px;"><input type="checkbox" class="table-checkbox" id="selectAll"></th>
+                            <th class="sticky-left-second" style="left: 40px; min-width: 150px;">卡券Code</th>
+                            <th>接收用户(Local/VIN)</th>
+                            <th>状态</th>
+                            <th>发放时间</th>
+                            <th>发放人</th>
+                            <th>发放原因</th>
+                            <th>激活时间</th>
+                            <th>核销时间</th>
+                            <th>核销渠道</th>
+                            <th class="sticky-right" style="min-width: 150px;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 待激活状态 - 可激活/作废 -->
+                        <tr data-id="CPN20250101001" data-status="inactive">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101001</td>
+                            <td>WP0ZZZ99ZTS</td>
+                            <td><span class="status status-inactive">待激活</span></td>
+                            <td>2025-01-15</td>
+                            <td>张三</td>
+                            <td>新车交付礼</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="activateCoupon('CPN20250101001')">激活</a>
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101001')">作废</a>
+                            </td>
+                        </tr>
+                        <!-- 待激活状态 - 需重推 -->
+                        <tr data-id="CPN20250101002" data-status="inactive" data-need-retry="true">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101002</td>
+                            <td>WP0ZZZ99ZTK</td>
+                            <td><span class="status status-inactive">待激活</span></td>
+                            <td>2025-01-14</td>
+                            <td>张三</td>
+                            <td>新车交付礼</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="activateCoupon('CPN20250101002')">激活</a>
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101002')">作废</a>
+                                <a href="#" class="action-link" onclick="retryCoupon('CPN20250101002')">重推</a>
+                            </td>
+                        </tr>
+                        <!-- 待激活状态 -->
+                        <tr data-id="CPN20250101003" data-status="inactive">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101003</td>
+                            <td>WP0ZZZ99ZTL</td>
+                            <td><span class="status status-inactive">待激活</span></td>
+                            <td>2025-01-13</td>
+                            <td>李四</td>
+                            <td>保养回馈</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="activateCoupon('CPN20250101003')">激活</a>
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101003')">作废</a>
+                            </td>
+                        </tr>
+                        <!-- 待使用状态 -->
+                        <tr data-id="CPN20250101004" data-status="active">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101004</td>
+                            <td>WP0ZZZ99ZTM</td>
+                            <td><span class="status status-active">待使用</span></td>
+                            <td>2025-01-10</td>
+                            <td>李四</td>
+                            <td>保养回馈</td>
+                            <td>2025-01-12</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101004')">作废</a>
+                            </td>
+                        </tr>
+                        <!-- 待使用状态 -->
+                        <tr data-id="CPN20250101005" data-status="active">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101005</td>
+                            <td>WP0ZZZ99ZTN</td>
+                            <td><span class="status status-active">待使用</span></td>
+                            <td>2025-01-09</td>
+                            <td>王五</td>
+                            <td>客户关怀</td>
+                            <td>2025-01-11</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101005')">作废</a>
+                            </td>
+                        </tr>
+                        <!-- 待使用状态 -->
+                        <tr data-id="CPN20250101006" data-status="active">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101006</td>
+                            <td>WP0ZZZ99ZTO</td>
+                            <td><span class="status status-active">待使用</span></td>
+                            <td>2025-01-08</td>
+                            <td>赵六</td>
+                            <td>活动赠送</td>
+                            <td>2025-01-10</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101006')">作废</a>
+                            </td>
+                        </tr>
+                        <!-- 已核销状态 -->
+                        <tr data-id="CPN20250101007" data-status="used">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101007</td>
+                            <td>WP0ZZZ99ZTP</td>
+                            <td><span class="status status-used">已核销</span></td>
+                            <td>2025-01-05</td>
+                            <td>王五</td>
+                            <td>客户关怀</td>
+                            <td>2025-01-06</td>
+                            <td>2025-01-20</td>
+                            <td>门店POS</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="reverseCoupon('CPN20250101007')">反核销</a>
+                            </td>
+                        </tr>
+                        <!-- 已核销状态 -->
+                        <tr data-id="CPN20250101008" data-status="used">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101008</td>
+                            <td>WP0ZZZ99ZTQ</td>
+                            <td><span class="status status-used">已核销</span></td>
+                            <td>2025-01-04</td>
+                            <td>钱七</td>
+                            <td>节日促销</td>
+                            <td>2025-01-05</td>
+                            <td>2025-01-18</td>
+                            <td>PWSA</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="reverseCoupon('CPN20250101008')">反核销</a>
+                            </td>
+                        </tr>
+                        <!-- 已核销状态 -->
+                        <tr data-id="CPN20250101009" data-status="used">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101009</td>
+                            <td>WP0ZZZ99ZTR</td>
+                            <td><span class="status status-used">已核销</span></td>
+                            <td>2025-01-03</td>
+                            <td>张三</td>
+                            <td>新车交付礼</td>
+                            <td>2025-01-04</td>
+                            <td>2025-01-15</td>
+                            <td>OMP</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="reverseCoupon('CPN20250101009')">反核销</a>
+                            </td>
+                        </tr>
+                        <!-- 已核销状态 -->
+                        <tr data-id="CPN20250101010" data-status="used">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101010</td>
+                            <td>WP0ZZZ99ZTU</td>
+                            <td><span class="status status-used">已核销</span></td>
+                            <td>2025-01-02</td>
+                            <td>李四</td>
+                            <td>保养回馈</td>
+                            <td>2025-01-03</td>
+                            <td>2025-01-12</td>
+                            <td>Dealer</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="reverseCoupon('CPN20250101010')">反核销</a>
+                            </td>
+                        </tr>
+                        <!-- 已作废状态 -->
+                        <tr data-id="CPN20250101011" data-status="void">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101011</td>
+                            <td>WP0ZZZ99ZTV</td>
+                            <td><span class="status status-void">已作废</span></td>
+                            <td>2025-01-08</td>
+                            <td>赵六</td>
+                            <td>活动赠送</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                -
+                            </td>
+                        </tr>
+                        <!-- 已作废状态 -->
+                        <tr data-id="CPN20250101012" data-status="void">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101012</td>
+                            <td>WP0ZZZ99ZTW</td>
+                            <td><span class="status status-void">已作废</span></td>
+                            <td>2025-01-07</td>
+                            <td>钱七</td>
+                            <td>节日促销</td>
+                            <td>2025-01-08</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                -
+                            </td>
+                        </tr>
+                        <!-- 已作废状态 -->
+                        <tr data-id="CPN20250101013" data-status="void">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101013</td>
+                            <td>WP0ZZZ99ZTX</td>
+                            <td><span class="status status-void">已作废</span></td>
+                            <td>2025-01-06</td>
+                            <td>张三</td>
+                            <td>新车交付礼</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                -
+                            </td>
+                        </tr>
+                        <!-- 已过期状态 -->
+                        <tr data-id="CPN20250101014" data-status="expired">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101014</td>
+                            <td>WP0ZZZ99ZTY</td>
+                            <td><span class="status status-expired">已过期</span></td>
+                            <td>2024-12-01</td>
+                            <td>钱七</td>
+                            <td>节日促销</td>
+                            <td>2024-12-05</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                -
+                            </td>
+                        </tr>
+                        <!-- 已过期状态 -->
+                        <tr data-id="CPN20250101015" data-status="expired">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101015</td>
+                            <td>WP0ZZZ99ZTZ</td>
+                            <td><span class="status status-expired">已过期</span></td>
+                            <td>2024-11-20</td>
+                            <td>李四</td>
+                            <td>保养回馈</td>
+                            <td>2024-11-25</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                -
+                            </td>
+                        </tr>
+                        <!-- 已过期状态 - 未激活就过期 -->
+                        <tr data-id="CPN20250101016" data-status="expired">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101016</td>
+                            <td>WP0ZZZ99ZUA</td>
+                            <td><span class="status status-expired">已过期</span></td>
+                            <td>2024-11-15</td>
+                            <td>王五</td>
+                            <td>客户关怀</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                -
+                            </td>
+                        </tr>
+                        <!-- 待激活状态 - 需重推 -->
+                        <tr data-id="CPN20250101017" data-status="inactive" data-need-retry="true">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101017</td>
+                            <td>WP0ZZZ99ZUB</td>
+                            <td><span class="status status-inactive">待激活</span></td>
+                            <td>2025-01-16</td>
+                            <td>赵六</td>
+                            <td>活动赠送</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="activateCoupon('CPN20250101017')">激活</a>
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101017')">作废</a>
+                                <a href="#" class="action-link" onclick="retryCoupon('CPN20250101017')">重推</a>
+                            </td>
+                        </tr>
+                        <!-- 待使用状态 -->
+                        <tr data-id="CPN20250101018" data-status="active">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101018</td>
+                            <td>WP0ZZZ99ZUC</td>
+                            <td><span class="status status-active">待使用</span></td>
+                            <td>2025-01-17</td>
+                            <td>钱七</td>
+                            <td>节日促销</td>
+                            <td>2025-01-18</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101018')">作废</a>
+                            </td>
+                        </tr>
+                        <!-- 待激活状态 -->
+                        <tr data-id="CPN20250101019" data-status="inactive">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101019</td>
+                            <td>WP0ZZZ99ZUD</td>
+                            <td><span class="status status-inactive">待激活</span></td>
+                            <td>2025-01-18</td>
+                            <td>张三</td>
+                            <td>新车交付礼</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="activateCoupon('CPN20250101019')">激活</a>
+                                <a href="#" class="action-link action-danger" onclick="voidCoupon('CPN20250101019')">作废</a>
+                            </td>
+                        </tr>
+                        <!-- 已核销状态 -->
+                        <tr data-id="CPN20250101020" data-status="used">
+                            <td class="sticky-left"><input type="checkbox" class="table-checkbox"></td>
+                            <td class="sticky-left-second" style="left: 40px;">CPN20250101020</td>
+                            <td>WP0ZZZ99ZUE</td>
+                            <td><span class="status status-used">已核销</span></td>
+                            <td>2025-01-01</td>
+                            <td>李四</td>
+                            <td>保养回馈</td>
+                            <td>2025-01-02</td>
+                            <td>2025-01-10</td>
+                            <td>POAS</td>
+                            <td class="sticky-right action-cell">
+                                <a href="#" class="action-link action-primary" onclick="reverseCoupon('CPN20250101020')">反核销</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <div class="pagination">
+                <span class="pagination-info">每页</span>
+                <select class="pagination-select">
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                </select>
+                <span class="pagination-info">条</span>
+                <div class="pagination-buttons">
+                    <button class="page-btn" disabled>&lt;</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <span class="page-ellipsis">...</span>
+                    <button class="page-btn">13</button>
+                    <button class="page-btn">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 发放卡券弹窗 -->
+    <div class="modal-overlay hidden" id="issueModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">发放卡券</div>
+                <button class="modal-close" onclick="hideModal('issueModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info-card">
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">当前库存/总数</div>
+                        <div class="modal-info-value">550<span class="modal-info-total">/ 1000</span></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">有效期</div>
+                        <div class="modal-info-value" style="font-size: 20px; color: #333;">2024-12-31</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="form-label required">发放方式</label>
+                    <div class="form-control">
+                        <div class="radio-group" id="issueMethod">
+                            <label class="radio-item">
+                                <input type="radio" name="issueMethod" value="rule" checked>
+                                <span>规则发放</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="issueMethod" value="excel">
+                                <span>Excel名单</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- 规则发放内容 -->
+                <div id="issueRuleContent">
+                    <div class="form-row">
+                        <label class="form-label required">目标用户类型</label>
+                        <div class="form-control">
+                            <div class="radio-group">
+                                <label class="radio-item">
+                                    <input type="radio" name="userType" value="localId" checked>
+                                    <span>Local ID</span>
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="userType" value="ciam">
+                                    <span>CIAM</span>
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="userType" value="vin">
+                                    <span>VIN</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label required">用户列表</label>
+                        <div class="form-control">
+                            <textarea class="user-list-textarea" placeholder="请输入ID，一行一个"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label required">发放数量/人</label>
+                        <div class="form-control">
+                            <input type="number" class="form-input" style="width: 120px;" value="1" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Excel发放内容 -->
+                <div id="issueExcelContent" class="hidden">
+                    <div class="form-row">
+                        <label class="form-label required">Excel名单</label>
+                        <div class="form-control">
+                            <div class="excel-upload">
+                                <div class="excel-upload-icon">📄</div>
+                                <div class="excel-upload-text">上传发放Excel</div>
+                            </div>
+                            <div class="excel-upload-hint">
+                                下载 <a href="#">Excel 模版</a>，文件要求 xlsx 格式，不超过 20M
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="form-label required">发放原因</label>
+                    <div class="form-control">
+                        <select class="form-select">
+                            <option value="">请选择发放原因</option>
+                            <option value="newcar">新车交付礼</option>
+                            <option value="maintenance">保养回馈</option>
+                            <option value="care">客户关怀</option>
+                            <option value="activity">活动赠送</option>
+                            <option value="promotion">节日促销</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('issueModal')">取消</button>
+                <button class="btn btn-danger">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 批量激活弹窗 -->
+    <div class="modal-overlay hidden" id="activateModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">批量激活</div>
+                <button class="modal-close" onclick="hideModal('activateModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info-card">
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">待激活数量/总数</div>
+                        <div class="modal-info-value">550<span class="modal-info-total">/ 1000</span></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">有效期</div>
+                        <div class="modal-info-value" style="font-size: 20px; color: #333;">2024-12-31</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="form-label required">激活方式</label>
+                    <div class="form-control">
+                        <div class="radio-group" id="activateMethod">
+                            <label class="radio-item">
+                                <input type="radio" name="activateMethod" value="rule" checked>
+                                <span>规则激活</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="activateMethod" value="excel">
+                                <span>Excel名单</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- 规则激活内容 -->
+                <div id="activateRuleContent">
+                    <div class="form-row">
+                        <label class="form-label"></label>
+                        <div class="form-control">
+                            <div style="color: #666; font-size: 13px; margin-bottom: 12px;">
+                                ℹ️ 将激活所有符合条件的待激活卡券
+                            </div>
+                            <div style="color: #999; font-size: 13px; margin-bottom: 8px;">筛选条件（可选）</div>
+                            <div class="filter-item">
+                                <label class="filter-label">发放时间</label>
+                                <input type="date" class="input-date" placeholder="开始日期">
+                                <span class="date-separator">至</span>
+                                <input type="date" class="input-date" placeholder="结束日期">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Excel激活内容 -->
+                <div id="activateExcelContent" class="hidden">
+                    <div class="form-row">
+                        <label class="form-label required">Excel名单</label>
+                        <div class="form-control">
+                            <div class="excel-upload">
+                                <div class="excel-upload-icon">📄</div>
+                                <div class="excel-upload-text">上传发放Excel</div>
+                            </div>
+                            <div class="excel-upload-hint">
+                                下载 <a href="#">Excel 模版</a>，文件要求 xlsx 格式，不超过 20M
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('activateModal')">取消</button>
+                <button class="btn btn-danger">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 批量作废弹窗 -->
+    <div class="modal-overlay hidden" id="voidModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">批量作废</div>
+                <button class="modal-close" onclick="hideModal('voidModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon">⚠️</div>
+                    <div class="modal-warning-title">确认作废已选中的 <span id="batchVoidCount">0</span> 张卡券？</div>
+                    <div class="modal-warning-desc">作废后无法恢复，请谨慎操作</div>
+                </div>
+                <div class="form-row" style="margin-top: 24px;">
+                    <label class="form-label required">作废原因</label>
+                    <div class="form-control">
+                        <textarea class="form-textarea" id="batchVoidReason" placeholder="请输入作废原因" maxlength="200"></textarea>
+                        <div class="char-count"><span id="batchVoidReasonCount">0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('voidModal')">取消</button>
+                <button class="btn btn-confirm-danger" id="confirmBatchVoid">确认作废</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 单个激活确认弹窗 -->
+    <div class="modal-overlay hidden" id="singleActivateModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">激活卡券</div>
+                <button class="modal-close" onclick="hideModal('singleActivateModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon" style="background: #e6f7ff;">✓</div>
+                    <div class="modal-warning-title">确认激活卡券「<span id="activateCouponCode"></span>」？</div>
+                    <div class="modal-warning-desc">激活后用户即可使用该卡券</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('singleActivateModal')">取消</button>
+                <button class="btn btn-danger" id="confirmSingleActivate">确认激活</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 单个作废确认弹窗 -->
+    <div class="modal-overlay hidden" id="singleVoidModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">作废卡券</div>
+                <button class="modal-close" onclick="hideModal('singleVoidModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon">⚠️</div>
+                    <div class="modal-warning-title">确认作废卡券「<span id="voidCouponCode"></span>」？</div>
+                    <div class="modal-warning-desc">作废后无法恢复，请谨慎操作</div>
+                </div>
+                <div class="form-row" style="margin-top: 24px;">
+                    <label class="form-label required">作废原因</label>
+                    <div class="form-control">
+                        <textarea class="form-textarea" id="singleVoidReason" placeholder="请输入作废原因" maxlength="200"></textarea>
+                        <div class="char-count"><span id="singleVoidReasonCount">0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('singleVoidModal')">取消</button>
+                <button class="btn btn-confirm-danger" id="confirmSingleVoid">确认作废</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 反核销确认弹窗 -->
+    <div class="modal-overlay hidden" id="reverseModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">反核销</div>
+                <button class="modal-close" onclick="hideModal('reverseModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon">⚠️</div>
+                    <div class="modal-warning-title">确认反核销卡券「<span id="reverseCouponCode"></span>」？</div>
+                    <div class="modal-warning-desc">反核销后卡券将恢复为待使用状态</div>
+                </div>
+                <div class="form-row" style="margin-top: 24px;">
+                    <label class="form-label required">反核销原因</label>
+                    <div class="form-control">
+                        <textarea class="form-textarea" id="reverseReason" placeholder="请输入反核销原因" maxlength="200"></textarea>
+                        <div class="char-count"><span id="reverseReasonCount">0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('reverseModal')">取消</button>
+                <button class="btn btn-confirm-danger" id="confirmReverse">确认反核销</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 重推确认弹窗 -->
+    <div class="modal-overlay hidden" id="retryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">重推卡券</div>
+                <button class="modal-close" onclick="hideModal('retryModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon" style="background: #e6f7ff;">🔄</div>
+                    <div class="modal-warning-title">确认重推卡券「<span id="retryCouponCode"></span>」？</div>
+                    <div class="modal-warning-desc">将重新推送卡券通知给用户</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('retryModal')">取消</button>
+                <button class="btn btn-danger" id="confirmRetry">确认重推</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 批量重推确认弹窗 -->
+    <div class="modal-overlay hidden" id="batchRetryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">批量重推</div>
+                <button class="modal-close" onclick="hideModal('batchRetryModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <div class="modal-warning-icon" style="background: #e6f7ff;">🔄</div>
+                    <div class="modal-warning-title">确认重推已选中的 <span id="batchRetryCount">0</span> 张卡券？</div>
+                    <div class="modal-warning-desc">将重新推送卡券通知给用户</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('batchRetryModal')">取消</button>
+                <button class="btn btn-danger" id="confirmBatchRetry">确认重推</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导入弹窗 -->
+    <div class="modal-overlay hidden" id="importModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">批量导入</div>
+                <button class="modal-close" onclick="hideModal('importModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <label class="form-label required">导入类型</label>
+                    <div class="form-control">
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="importType" value="activate" checked>
+                                <span>批量激活</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="importType" value="void">
+                                <span>批量作废</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="form-label required">Excel文件</label>
+                    <div class="form-control">
+                        <div class="excel-upload" id="importUploadArea">
+                            <div class="excel-upload-icon">📄</div>
+                            <div class="excel-upload-text">点击或拖拽上传Excel</div>
+                        </div>
+                        <div class="excel-upload-hint">
+                            下载 <a href="#">Excel 模版</a>，文件要求 xlsx 格式，不超过 20M
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="hideModal('importModal')">取消</button>
+                <button class="btn btn-danger" id="confirmImport">确认导入</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 操作成功提示 -->
+    <div class="toast hidden" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>

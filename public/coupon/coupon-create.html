@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保时捷卡券中心 - 新增券组</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo">PORSCHE</span>
+            <span class="divider">|</span>
+            <span class="title">卡券中心</span>
+        </div>
+        <div class="header-right">
+            <span class="user-info">David Huang</span>
+        </div>
+    </header>
+
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+        <a href="./index.html">卡券中心</a>
+        <span>&gt;</span>
+        新增券组
+        <button class="btn btn-default btn-sm" style="margin-left: auto;" onclick="window.open('./prd.html', '_blank')">查看PRD</button>
+    </div>
+
+    <!-- 主内容区 -->
+    <main class="main-content" style="padding-bottom: 80px;">
+        <div class="form-page">
+            <!-- 左侧表单 -->
+            <div class="form-main">
+                <!-- 基本信息 -->
+                <div class="form-section">
+                    <div class="form-section-header">基本信息</div>
+                    <div class="form-section-body">
+                        <div class="form-row">
+                            <label class="form-label required">名称</label>
+                            <div class="form-control">
+                                <input type="text" class="form-input" id="couponName" placeholder="请输入券组名称" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">描述</label>
+                            <div class="form-control">
+                                <textarea class="form-textarea" id="couponDesc" placeholder="请输入券组描述" maxlength="200"></textarea>
+                                <div class="char-count"><span id="descCount">0</span>/200</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">卡券图片</label>
+                            <div class="form-control">
+                                <div class="upload-area">
+                                    <div class="upload-icon">📷</div>
+                                    <div class="upload-text">点击或拖拽上传</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 类型与成本 -->
+                <div class="form-section">
+                    <div class="form-section-header">类型与成本</div>
+                    <div class="form-section-body">
+                        <div class="form-row">
+                            <label class="form-label required">业务领域</label>
+                            <div class="form-control">
+                                <div class="radio-group" id="businessDomain">
+                                    <label class="radio-item">
+                                        <input type="radio" name="businessDomain" value="lifestyle">
+                                        <span>车品生活</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="businessDomain" value="vehicle" checked>
+                                        <span>用车服务</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="businessDomain" value="ecommerce">
+                                        <span>电商券</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">业务类型</label>
+                            <div class="form-control">
+                                <div class="radio-group" id="businessType">
+                                    <!-- 车品生活选项 -->
+                                    <label class="radio-item business-type-option hidden" data-domain="lifestyle">
+                                        <input type="radio" name="businessType" value="member">
+                                        <span>会员券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option hidden" data-domain="lifestyle">
+                                        <input type="radio" name="businessType" value="thirdparty">
+                                        <span>三方券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option hidden" data-domain="lifestyle">
+                                        <input type="radio" name="businessType" value="giftexchange">
+                                        <span>活动礼品券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option hidden" data-domain="lifestyle">
+                                        <input type="radio" name="businessType" value="pec">
+                                        <span>PEC券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option hidden" data-domain="lifestyle">
+                                        <input type="radio" name="businessType" value="lifestyletype">
+                                        <span>Lifestyle券</span>
+                                    </label>
+                                    <!-- 用车服务选项 -->
+                                    <label class="radio-item business-type-option" data-domain="vehicle">
+                                        <input type="radio" name="businessType" value="aftersales" checked>
+                                        <span>售后服务券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option" data-domain="vehicle">
+                                        <input type="radio" name="businessType" value="pickup">
+                                        <span>取送车券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option" data-domain="vehicle">
+                                        <input type="radio" name="businessType" value="brandprotect">
+                                        <span>品牌保障券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option" data-domain="vehicle">
+                                        <input type="radio" name="businessType" value="teq">
+                                        <span>TEQ券</span>
+                                    </label>
+                                    <label class="radio-item business-type-option" data-domain="vehicle">
+                                        <input type="radio" name="businessType" value="rsa">
+                                        <span>RSA券</span>
+                                    </label>
+                                    <!-- 电商券选项 -->
+                                    <label class="radio-item business-type-option hidden" data-domain="ecommerce">
+                                        <input type="radio" name="businessType" value="ecommerce">
+                                        <span>电商券</span>
+                                    </label>
+                                </div>
+                                <div class="form-hint hidden" id="businessTypeHint">请先选择业务领域</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">抵扣类型</label>
+                            <div class="form-control">
+                                <div class="radio-group" id="discountType">
+                                    <!-- 会员券：满减、兑换 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="member">
+                                        <input type="radio" name="discountType" value="threshold">
+                                        <span>满减券</span>
+                                    </label>
+                                    <label class="radio-item discount-type-option hidden" data-types="member">
+                                        <input type="radio" name="discountType" value="exchange">
+                                        <span>兑换券</span>
+                                    </label>
+                                    <!-- 三方券：仅兑换 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="thirdparty">
+                                        <input type="radio" name="discountType" value="exchange-thirdparty">
+                                        <span>兑换券</span>
+                                    </label>
+                                    <!-- PEC券：仅项目抵扣 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="pec">
+                                        <input type="radio" name="discountType" value="project-pec">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <!-- Lifestyle券：仅项目抵扣 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="lifestyletype">
+                                        <input type="radio" name="discountType" value="project-lifestyle">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <!-- 售后服务券：满减、折扣、项目抵扣 -->
+                                    <label class="radio-item discount-type-option" data-types="aftersales">
+                                        <input type="radio" name="discountType" value="threshold-aftersales">
+                                        <span>满减券</span>
+                                    </label>
+                                    <label class="radio-item discount-type-option" data-types="aftersales">
+                                        <input type="radio" name="discountType" value="discount">
+                                        <span>折扣券</span>
+                                    </label>
+                                    <label class="radio-item discount-type-option" data-types="aftersales">
+                                        <input type="radio" name="discountType" value="project-aftersales">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <!-- 取送车券：满减、折扣 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="pickup">
+                                        <input type="radio" name="discountType" value="threshold-pickup">
+                                        <span>满减券</span>
+                                    </label>
+                                    <label class="radio-item discount-type-option hidden" data-types="pickup">
+                                        <input type="radio" name="discountType" value="discount-pickup">
+                                        <span>折扣券</span>
+                                    </label>
+                                    <!-- 品牌保障券：仅项目抵扣 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="brandprotect">
+                                        <input type="radio" name="discountType" value="project-brandprotect">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <!-- 活动礼品券：仅项目抵扣 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="giftexchange">
+                                        <input type="radio" name="discountType" value="project-giftexchange">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <!-- TEQ券：仅项目抵扣 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="teq">
+                                        <input type="radio" name="discountType" value="project-teq">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <!-- RSA券：仅项目抵扣 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="rsa">
+                                        <input type="radio" name="discountType" value="project-rsa">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <!-- 电商券：项目抵扣、满减 -->
+                                    <label class="radio-item discount-type-option hidden" data-types="ecommerce">
+                                        <input type="radio" name="discountType" value="project-ecom">
+                                        <span>项目抵扣券</span>
+                                    </label>
+                                    <label class="radio-item discount-type-option hidden" data-types="ecommerce">
+                                        <input type="radio" name="discountType" value="threshold-ecom">
+                                        <span>满减券</span>
+                                    </label>
+                                </div>
+                                <div class="form-hint hidden" id="discountTypeHint">请先选择业务类型</div>
+                            </div>
+                        </div>
+                        <!-- 三方品牌名称（仅三方券显示） -->
+                        <div class="form-row hidden" id="thirdpartyBrandRow">
+                            <label class="form-label required">三方品牌</label>
+                            <div class="form-control">
+                                <input type="text" class="form-input" id="thirdpartyBrand" placeholder="请输入三方品牌名称">
+                            </div>
+                        </div>
+                        <!-- 兑换内容（仅三方券兑换券显示） -->
+                        <div class="form-row hidden" id="exchangeContentRow">
+                            <label class="form-label required">兑换内容</label>
+                            <div class="form-control">
+                                <input type="text" class="form-input" id="exchangeContent" placeholder="请输入兑换内容，如：星巴克大杯拿铁">
+                            </div>
+                        </div>
+                        <!-- 会员券 - 满减券配置（门槛默认0，金额可选911/1267） -->
+                        <div class="form-row hidden" id="thresholdConfigMember">
+                            <label class="form-label required">满减规则</label>
+                            <div class="form-control">
+                                <div class="inline-form">
+                                    <span>满</span>
+                                    <input type="number" class="form-input" style="width: 120px;" id="thresholdAmountMember" value="0" readonly style="background: #f5f5f5;">
+                                    <span>元，减</span>
+                                    <select class="form-select" style="width: 200px;" id="reduceAmountMember">
+                                        <option value="">请选择优惠金额</option>
+                                        <option value="911">911元（会员年费减免）</option>
+                                        <option value="1267">1267元（会员年费+注册费）</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 会员券 - 兑换券配置（赠送会籍年数1~5年） -->
+                        <div class="form-row hidden" id="exchangeConfigMember">
+                            <label class="form-label required">赠送会籍年数</label>
+                            <div class="form-control">
+                                <select class="form-select" style="width: 160px;" id="membershipYears">
+                                    <option value="">请选择年数</option>
+                                    <option value="1">1年</option>
+                                    <option value="2">2年</option>
+                                    <option value="3">3年</option>
+                                    <option value="4">4年</option>
+                                    <option value="5">5年</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 电商券 - 满减券配置 -->
+                        <div class="form-row hidden" id="thresholdConfigEcom">
+                            <label class="form-label required">满减规则</label>
+                            <div class="form-control">
+                                <div class="inline-form">
+                                    <span>满</span>
+                                    <input type="number" class="form-input" style="width: 120px;" id="thresholdAmountEcom" placeholder="金额" min="0">
+                                    <span>元，减</span>
+                                    <input type="number" class="form-input" style="width: 120px;" id="reduceAmountEcom" placeholder="金额" min="0">
+                                    <span>元</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 电商券 - 项目抵扣券配置（抵扣项目同适用商品，不可修改） -->
+                        <div class="form-row hidden" id="projectConfigEcom">
+                            <label class="form-label required">抵扣项目</label>
+                            <div class="form-control">
+                                <input type="text" class="form-input" id="projectEcomValue" value="同适用商品" readonly style="background: #f5f5f5;">
+                                <div class="form-hint">抵扣项目默认与适用商品一致，不支持修改</div>
+                            </div>
+                        </div>
+                        <!-- 售后服务券 - 满减券配置 -->
+                        <div class="form-row hidden" id="thresholdConfigAftersales">
+                            <label class="form-label required">满减规则</label>
+                            <div class="form-control">
+                                <div class="inline-form">
+                                    <span>满</span>
+                                    <input type="number" class="form-input" style="width: 120px;" id="thresholdAmountAftersales" placeholder="金额" min="0">
+                                    <span>元，减</span>
+                                    <input type="number" class="form-input" style="width: 120px;" id="reduceAmountAftersales" placeholder="金额" min="0">
+                                    <span>元</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 售后服务券 - 折扣券配置 -->
+                        <div class="form-row hidden" id="discountConfig">
+                            <label class="form-label required">折扣规则</label>
+                            <div class="form-control">
+                                <div class="inline-form">
+                                    <span>满</span>
+                                    <input type="number" class="form-input" style="width: 120px;" id="discountThreshold" placeholder="金额" min="0">
+                                    <span>元，打</span>
+                                    <input type="number" class="form-input" style="width: 80px;" id="discountRate" placeholder="折扣" min="1" max="99" step="0.1">
+                                    <span>折</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 售后服务券 - 项目抵扣券配置 -->
+                        <div class="form-row hidden" id="projectConfigAftersales">
+                            <label class="form-label required">抵扣项目</label>
+                            <div class="form-control">
+                                <select class="form-select" id="projectSelectAftersales">
+                                    <option value="">请选择抵扣项目</option>
+                                    <option value="maintenance">常规保养</option>
+                                    <option value="inspection">车辆检测</option>
+                                    <option value="wash">精致洗车</option>
+                                    <option value="charging">充电服务</option>
+                                    <option value="pickup">取送车服务</option>
+                                    <option value="tire">轮胎更换</option>
+                                    <option value="oil">机油更换</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 卡券标题（自动拼接，可修改） -->
+                        <div class="form-row">
+                            <label class="form-label required">卡券标题</label>
+                            <div class="form-control">
+                                <input type="text" class="form-input" id="couponTitle" placeholder="自动拼接：优惠内容 + 抵扣类型">
+                                <div class="form-hint">自动拼接优惠内容和抵扣类型，可手动修改</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">成本中心</label>
+                            <div class="form-control">
+                                <!-- 会员券的成本中心选项 -->
+                                <div class="radio-group hidden" id="costCenterMember">
+                                    <label class="radio-item">
+                                        <input type="radio" name="costCenter" value="pcn-member" checked>
+                                        <span>PCN-会员</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="costCenter" value="dealer">
+                                        <span>经销商</span>
+                                    </label>
+                                </div>
+                                <!-- 电商券的成本中心选项 -->
+                                <div class="radio-group hidden" id="costCenterEcommerce">
+                                    <label class="radio-item">
+                                        <input type="radio" name="costCenterEcom" value="pcn-ecom" checked>
+                                        <span>PCN-电商</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="costCenterEcom" value="tp">
+                                        <span>TP</span>
+                                    </label>
+                                </div>
+                                <!-- 其他券类型的成本中心（只读） -->
+                                <input type="text" class="form-input" id="costCenterReadonly" value="PCN-售后" readonly style="background: #f5f5f5;">
+                                <div class="form-hint" id="costCenterHint">由账号权限自动带入</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">履约平台</label>
+                            <div class="form-control">
+                                <!-- 会员券/电商券的履约平台（固定值） -->
+                                <input type="text" class="form-input hidden" id="fulfillmentPlatformFixed" value="PCN自有平台" readonly style="background: #f5f5f5;">
+                                <!-- 售后服务券的履约平台（下拉选择） -->
+                                <select class="form-select" id="fulfillmentPlatform">
+                                    <option value="">请选择履约平台</option>
+                                    <option value="pcn">PCN自有平台</option>
+                                    <option value="dealer">Dealer线下门店</option>
+                                    <option value="thirdparty">第三方app</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">发放场景</label>
+                            <div class="form-control">
+                                <select class="form-select" id="issueScene">
+                                    <option value="">请选择发放场景</option>
+                                    <option value="platform">平台运营</option>
+                                    <option value="ecommerce">电商</option>
+                                    <option value="aftersales">售后</option>
+                                    <option value="clp">CLP</option>
+                                    <option value="pfs">PFS</option>
+                                    <option value="pbi">PBI保险</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 适用范围（仅电商券显示） -->
+                <div class="form-section hidden" id="scopeSection">
+                    <div class="form-section-header">适用范围</div>
+                    <div class="form-section-body">
+                        <div class="form-row">
+                            <label class="form-label required">活动类型</label>
+                            <div class="form-control">
+                                <div class="radio-group" id="activityType">
+                                    <label class="radio-item">
+                                        <input type="radio" name="activityType" value="cross-store">
+                                        <span>跨店铺</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="activityType" value="tp-operation">
+                                        <span>TP代运营</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="activityType" value="pcn-self">
+                                        <span>PCN自营</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">商品范围</label>
+                            <div class="form-control">
+                                <div class="radio-group" id="productScope">
+                                    <label class="radio-item">
+                                        <input type="radio" name="productScope" value="all" checked>
+                                        <span>全部商品</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="productScope" value="specified">
+                                        <span>指定商品</span>
+                                    </label>
+                                </div>
+                                <div class="form-hint hidden" id="specifiedProductHint" style="color: #666; margin-top: 8px;">
+                                    <button type="button" class="btn btn-default btn-sm" disabled>选择指定商品（暂未实现）</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 使用规则 -->
+                <div class="form-section">
+                    <div class="form-section-header">使用规则</div>
+                    <div class="form-section-body">
+                        <div class="form-row">
+                            <label class="form-label required">归属类型</label>
+                            <div class="form-control">
+                                <!-- 固定跟人：三方券、PEC、Lifestyle、TEQ、RSA、电商 -->
+                                <input type="text" class="form-input hidden" id="ownerTypeFixedPerson" value="跟人" readonly style="background: #f5f5f5;">
+                                <!-- 固定跟车：品牌保障券、活动礼品券 -->
+                                <input type="text" class="form-input hidden" id="ownerTypeFixedVehicle" value="跟车" readonly style="background: #f5f5f5;">
+                                <!-- 可切换：会员券、售后服务券、取送车券 -->
+                                <div class="radio-group" id="ownerTypeGroup">
+                                    <label class="radio-item">
+                                        <input type="radio" name="ownerType" value="person" checked>
+                                        <span>跟人</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="ownerType" value="vehicle">
+                                        <span>跟车</span>
+                                    </label>
+                                </div>
+                                <div class="form-hint" id="ownerTypeHint">跟人：绑定用户ID；跟车：绑定车辆VIN码</div>
+                                <div class="form-hint hidden" id="ownerTypeFixedPersonHint">该券类型默认跟人，不可切换</div>
+                                <div class="form-hint hidden" id="ownerTypeFixedVehicleHint">该券类型默认跟车，不可切换</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">激活方式</label>
+                            <div class="form-control">
+                                <!-- 电商券固定为固定时间激活 -->
+                                <input type="text" class="form-input hidden" id="activationTypeFixed" value="固定时间激活" readonly style="background: #f5f5f5;">
+                                <!-- 其他券类型可选择 -->
+                                <div class="radio-group" id="activationType">
+                                    <label class="radio-item activation-type-option" data-types="member,aftersales">
+                                        <input type="radio" name="activationType" value="immediate">
+                                        <span>发放即激活</span>
+                                    </label>
+                                    <label class="radio-item activation-type-option" data-types="member,aftersales">
+                                        <input type="radio" name="activationType" value="fixedDate">
+                                        <span>固定时间激活</span>
+                                    </label>
+                                    <label class="radio-item activation-type-option" data-types="member,aftersales">
+                                        <input type="radio" name="activationType" value="userActivate">
+                                        <span>用户领取后激活</span>
+                                    </label>
+                                    <label class="radio-item activation-type-option" data-types="member,aftersales">
+                                        <input type="radio" name="activationType" value="delayActivate">
+                                        <span>用户领取后N天激活</span>
+                                    </label>
+                                </div>
+                                <div class="form-hint hidden" id="activationTypeFixedHint">电商券只能选择固定时间激活</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">有效期</label>
+                            <div class="form-control">
+                                <!-- 发放即激活的有效期选项 -->
+                                <div id="validityImmediate" class="hidden">
+                                    <div class="radio-group" style="margin-bottom: 12px;">
+                                        <label class="radio-item">
+                                            <input type="radio" name="validityTypeImmediate" value="fixed" checked>
+                                            <span>固定时间段</span>
+                                        </label>
+                                        <label class="radio-item">
+                                            <input type="radio" name="validityTypeImmediate" value="days">
+                                            <span>发放后X天有效</span>
+                                        </label>
+                                    </div>
+                                    <div id="validityImmediateFixed">
+                                        <div class="date-range">
+                                            <input type="date" class="form-input" id="validityStartDate">
+                                            <span>至</span>
+                                            <input type="date" class="form-input" id="validityEndDate">
+                                        </div>
+                                    </div>
+                                    <div id="validityImmediateDays" class="hidden">
+                                        <div class="inline-form">
+                                            <span>发放后</span>
+                                            <input type="number" class="form-input" style="width: 80px;" id="validityDays" min="1">
+                                            <span>天有效</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 固定时间激活的有效期选项 -->
+                                <div id="validityFixedDate" class="hidden">
+                                    <div class="inline-form" style="margin-bottom: 12px;">
+                                        <span>激活日期</span>
+                                        <input type="date" class="form-input" style="width: 160px;" id="activationDate">
+                                    </div>
+                                    <div class="inline-form">
+                                        <span>激活后</span>
+                                        <input type="number" class="form-input" style="width: 80px;" id="validityAfterActivation1" min="1">
+                                        <span>天有效</span>
+                                    </div>
+                                </div>
+                                <!-- 用户领取后激活的有效期选项 -->
+                                <div id="validityUserActivate" class="hidden">
+                                    <div class="radio-group" style="margin-bottom: 12px;">
+                                        <label class="radio-item">
+                                            <input type="radio" name="validityTypeUser" value="fixed" checked>
+                                            <span>固定时间段内有效</span>
+                                        </label>
+                                        <label class="radio-item">
+                                            <input type="radio" name="validityTypeUser" value="days">
+                                            <span>激活后X天有效</span>
+                                        </label>
+                                    </div>
+                                    <div id="validityUserFixed">
+                                        <div class="date-range">
+                                            <input type="date" class="form-input" id="validityUserStartDate">
+                                            <span>至</span>
+                                            <input type="date" class="form-input" id="validityUserEndDate">
+                                        </div>
+                                    </div>
+                                    <div id="validityUserDays" class="hidden">
+                                        <div class="inline-form">
+                                            <span>激活后</span>
+                                            <input type="number" class="form-input" style="width: 80px;" id="validityAfterActivation2" min="1">
+                                            <span>天有效</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 用户领取后N天激活的有效期选项 -->
+                                <div id="validityDelayActivate" class="hidden">
+                                    <div class="inline-form" style="margin-bottom: 12px;">
+                                        <span>发放后</span>
+                                        <input type="number" class="form-input" style="width: 80px;" id="activationWindow" min="1">
+                                        <span>天内可激活</span>
+                                        <span style="color: #d4001a; margin-left: 8px; font-size: 12px;">⚠️ 待确定：超期未激活是作废还是过期？</span>
+                                    </div>
+                                    <div class="inline-form">
+                                        <span>激活后</span>
+                                        <input type="number" class="form-input" style="width: 80px;" id="validityAfterActivation3" min="1">
+                                        <span>天有效</span>
+                                    </div>
+                                </div>
+                                <div class="form-hint" id="validityHint">请先选择激活方式</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">核销渠道</label>
+                            <div class="form-control">
+                                <div class="radio-group" id="redeemChannelGroup">
+                                    <!-- 会员券核销渠道：OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="member">
+                                        <input type="radio" name="redeemChannel" value="omp">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="member">
+                                        <input type="radio" name="redeemChannel" value="mpa">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- 三方券核销渠道：OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="thirdparty">
+                                        <input type="radio" name="redeemChannel" value="omp-thirdparty">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="thirdparty">
+                                        <input type="radio" name="redeemChannel" value="mpa-thirdparty">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- PEC券核销渠道：OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="pec">
+                                        <input type="radio" name="redeemChannel" value="omp-pec">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="pec">
+                                        <input type="radio" name="redeemChannel" value="mpa-pec">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- Lifestyle券核销渠道：OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="lifestyletype">
+                                        <input type="radio" name="redeemChannel" value="omp-lifestyle">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="lifestyletype">
+                                        <input type="radio" name="redeemChannel" value="mpa-lifestyle">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- 电商券核销渠道：OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="ecommerce">
+                                        <input type="radio" name="redeemChannel" value="omp-ecom">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="ecommerce">
+                                        <input type="radio" name="redeemChannel" value="mpa-ecom">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- 售后服务券核销渠道：PWSA、OMP、MPA、POAS -->
+                                    <label class="radio-item redeem-channel-option" data-types="aftersales">
+                                        <input type="radio" name="redeemChannel" value="pwsa">
+                                        <span>PWSA</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option" data-types="aftersales">
+                                        <input type="radio" name="redeemChannel" value="omp-aftersales">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option" data-types="aftersales">
+                                        <input type="radio" name="redeemChannel" value="mpa-aftersales">
+                                        <span>MPA</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option" data-types="aftersales">
+                                        <input type="radio" name="redeemChannel" value="poas">
+                                        <span>POAS</span>
+                                    </label>
+                                    <!-- TEQ券核销渠道：PWSA、OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="teq">
+                                        <input type="radio" name="redeemChannel" value="pwsa-teq">
+                                        <span>PWSA</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="teq">
+                                        <input type="radio" name="redeemChannel" value="omp-teq">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="teq">
+                                        <input type="radio" name="redeemChannel" value="mpa-teq">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- RSA券核销渠道：PWSA、OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="rsa">
+                                        <input type="radio" name="redeemChannel" value="pwsa-rsa">
+                                        <span>PWSA</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="rsa">
+                                        <input type="radio" name="redeemChannel" value="omp-rsa">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="rsa">
+                                        <input type="radio" name="redeemChannel" value="mpa-rsa">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- 取送车券核销渠道：PWSA、OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="pickup">
+                                        <input type="radio" name="redeemChannel" value="pwsa-pickup">
+                                        <span>PWSA</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="pickup">
+                                        <input type="radio" name="redeemChannel" value="omp-pickup">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="pickup">
+                                        <input type="radio" name="redeemChannel" value="mpa-pickup">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- 品牌保障券核销渠道：PWSA、OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="brandprotect">
+                                        <input type="radio" name="redeemChannel" value="pwsa-brandprotect">
+                                        <span>PWSA</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="brandprotect">
+                                        <input type="radio" name="redeemChannel" value="omp-brandprotect">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="brandprotect">
+                                        <input type="radio" name="redeemChannel" value="mpa-brandprotect">
+                                        <span>MPA</span>
+                                    </label>
+                                    <!-- 活动礼品券核销渠道：OMP、MPA -->
+                                    <label class="radio-item redeem-channel-option hidden" data-types="giftexchange">
+                                        <input type="radio" name="redeemChannel" value="omp-giftexchange">
+                                        <span>OMP</span>
+                                    </label>
+                                    <label class="radio-item redeem-channel-option hidden" data-types="giftexchange">
+                                        <input type="radio" name="redeemChannel" value="mpa-giftexchange">
+                                        <span>MPA</span>
+                                    </label>
+                                </div>
+                                <div class="form-hint hidden" id="redeemChannelHint">请先选择业务类型</div>
+                            </div>
+                        </div>
+                        <!-- 适用门店（仅售后服务券、取送车券显示） -->
+                        <div class="form-row hidden" id="applicableDealerRow">
+                            <label class="form-label required">适用门店</label>
+                            <div class="form-control">
+                                <div class="radio-group" id="applicableDealerGroup">
+                                    <label class="radio-item">
+                                        <input type="radio" name="applicableDealer" value="all" checked>
+                                        <span>全网经销商</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="applicableDealer" value="specified">
+                                        <span>指定经销商</span>
+                                    </label>
+                                </div>
+                                <div class="form-hint hidden" id="specifiedDealerHint" style="margin-top: 8px;">
+                                    <button type="button" class="btn btn-default btn-sm" id="selectDealerBtn">选择指定经销商</button>
+                                    <span class="selected-dealer-count hidden" id="selectedDealerCount">已选择 0 家</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">发放数量</label>
+                            <div class="form-control">
+                                <div class="inline-form">
+                                    <input type="number" class="form-input" style="width: 160px;" id="totalCount" placeholder="请输入" min="1">
+                                    <span>张</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label required">每人领取上限</label>
+                            <div class="form-control">
+                                <div class="inline-form">
+                                    <input type="number" class="form-input" style="width: 120px;" id="perUserLimit" min="1" value="1">
+                                    <span>张</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 自定义内容区域 -->
+                        <div id="customContentContainer">
+                            <!-- 自定义内容1 -->
+                            <div class="custom-content-group" data-index="1">
+                                <div class="form-row">
+                                    <label class="form-label">自定义标题1</label>
+                                    <div class="form-control">
+                                        <input type="text" class="form-input custom-title" id="customTitle1" placeholder="请输入标题" value="使用规则" maxlength="20">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label">自定义内容</label>
+                                    <div class="form-control">
+                                        <textarea class="form-textarea custom-content" id="customContent1" placeholder="请输入内容，每行一条" maxlength="500"></textarea>
+                                        <div class="char-count"><span id="customCount1">0</span>/500</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 自定义内容2 -->
+                            <div class="custom-content-group" data-index="2">
+                                <div class="form-row">
+                                    <label class="form-label">自定义标题2</label>
+                                    <div class="form-control">
+                                        <input type="text" class="form-input custom-title" id="customTitle2" placeholder="请输入标题" value="注意事项" maxlength="20">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label">自定义内容</label>
+                                    <div class="form-control">
+                                        <textarea class="form-textarea custom-content" id="customContent2" placeholder="请输入内容，每行一条" maxlength="500"></textarea>
+                                        <div class="char-count"><span id="customCount2">0</span>/500</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label"></label>
+                            <div class="form-control">
+                                <button type="button" class="btn btn-default btn-sm" id="addCustomContentBtn">
+                                    <span>+</span> 添加自定义内容
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 通知规则 -->
+                <div class="form-section">
+                    <div class="form-section-header">通知规则</div>
+                    <div class="form-section-body">
+                        <div class="notification-item">
+                            <div class="notification-switch">
+                                <label class="switch">
+                                    <input type="checkbox" id="notifyIssue">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span>发放通知</span>
+                            </div>
+                            <div class="notification-strategy">
+                                <select class="form-select" id="notifyIssueStrategy" disabled>
+                                    <option value="">请选择通知策略</option>
+                                    <option value="1">卡券发放通知-标准版</option>
+                                    <option value="2">卡券发放通知-VIP版</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-switch">
+                                <label class="switch">
+                                    <input type="checkbox" id="notifyActivate">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span>激活通知</span>
+                            </div>
+                            <div class="notification-strategy">
+                                <select class="form-select" id="notifyActivateStrategy" disabled>
+                                    <option value="">请选择通知策略</option>
+                                    <option value="1">卡券激活通知-标准版</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-switch">
+                                <label class="switch">
+                                    <input type="checkbox" id="notifyRedeem">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span>核销通知</span>
+                            </div>
+                            <div class="notification-strategy">
+                                <select class="form-select" id="notifyRedeemStrategy" disabled>
+                                    <option value="">请选择通知策略</option>
+                                    <option value="1">卡券核销通知-标准版</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-switch">
+                                <label class="switch">
+                                    <input type="checkbox" id="notifyExpireSoon">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span>即将过期通知</span>
+                            </div>
+                            <div class="notification-strategy">
+                                <select class="form-select" id="notifyExpireSoonStrategy" disabled>
+                                    <option value="">请选择通知策略</option>
+                                    <option value="1">卡券即将过期通知-标准版</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-switch">
+                                <label class="switch">
+                                    <input type="checkbox" id="notifyExpired">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span>已过期通知</span>
+                            </div>
+                            <div class="notification-strategy">
+                                <select class="form-select" id="notifyExpiredStrategy" disabled>
+                                    <option value="">请选择通知策略</option>
+                                    <option value="1">卡券已过期通知-标准版</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-switch">
+                                <label class="switch">
+                                    <input type="checkbox" id="notifyVoid">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span>作废通知</span>
+                            </div>
+                            <div class="notification-strategy">
+                                <select class="form-select" id="notifyVoidStrategy" disabled>
+                                    <option value="">请选择通知策略</option>
+                                    <option value="1">卡券作废通知-标准版</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧预览 -->
+            <div class="form-preview">
+                <div class="preview-card">
+                    <div class="preview-title">卡券预览</div>
+                    <div class="coupon-preview">
+                        <div class="coupon-tag" id="previewTag">售后服务券</div>
+                        <div class="coupon-name" id="previewName">10元 满减券</div>
+                        <div class="coupon-code">
+                            <span>券码：D9HA-71JF-E09A-J07Q-L8U</span>
+                            <span class="coupon-code-copy">复制</span>
+                        </div>
+                        <div class="coupon-validity" id="previewValidity">有效期：请配置有效期</div>
+                    </div>
+                    <!-- 适用经销商模块（仅售后服务券、取送车券显示） -->
+                    <div class="preview-dealer hidden" id="previewDealerSection">
+                        <div class="preview-dealer-row">
+                            <span class="preview-dealer-label">适用经销商</span>
+                            <span class="preview-dealer-value" id="previewDealerValue">全网经销商可用</span>
+                            <span class="preview-dealer-arrow">›</span>
+                        </div>
+                    </div>
+                    <!-- 动态自定义内容预览区域 -->
+                    <div id="previewCustomContentContainer">
+                        <div class="preview-rules" data-preview-index="1">
+                            <div class="preview-rules-title">使用规则</div>
+                            <div class="preview-rules-list">
+                                <span class="preview-placeholder">请输入自定义内容</span>
+                            </div>
+                        </div>
+                        <div class="preview-rules" data-preview-index="2" style="margin-top: 12px;">
+                            <div class="preview-rules-title">注意事项</div>
+                            <div class="preview-rules-list">
+                                <span class="preview-placeholder">请输入自定义内容</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部操作栏 -->
+    <div class="form-footer">
+        <div class="form-footer-left">
+            <!-- 电商券关联商品按钮 -->
+            <button class="btn btn-default hidden" id="linkProductBtn">关联商品</button>
+        </div>
+        <div class="form-footer-right">
+            <button class="btn btn-default" onclick="location.href='index.html'">取消</button>
+            <button class="btn btn-default">保存草稿</button>
+            <button class="btn btn-danger">提交审核</button>
+        </div>
+    </div>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
