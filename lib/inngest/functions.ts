@@ -36,8 +36,8 @@ export const buildPersonJob = inngest.createFunction(
         concurrency: {
             limit: 5, // 最多同时运行5个任务
         },
+        triggers: [{ event: 'person/created' }],
     },
-    { event: 'person/created' },
     async ({ event, step }) => {
         const { personId, personName, qid, officialLinks, aliases, englishName, orcid, forceRefresh = false } = event.data;
 

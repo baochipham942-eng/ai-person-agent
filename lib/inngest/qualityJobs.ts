@@ -13,8 +13,8 @@ export const weeklyQualityCheck = inngest.createFunction(
     {
         id: 'quality-weekly-check',
         retries: 1,
+        triggers: [{ cron: '0 3 * * 1' }], // 每周一凌晨 3 点
     },
-    { cron: '0 3 * * 1' }, // 每周一凌晨 3 点
     async ({ step }) => {
         console.log('[Quality] Starting weekly quality check...');
 
@@ -84,8 +84,8 @@ export const manualQualityCheck = inngest.createFunction(
     {
         id: 'quality-manual-check',
         retries: 1,
+        triggers: [{ event: 'quality/check' }],
     },
-    { event: 'quality/check' },
     async ({ event, step }) => {
         const { personId } = event.data || {};
 

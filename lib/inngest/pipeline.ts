@@ -43,8 +43,8 @@ export const buildPersonJobV2 = inngest.createFunction(
         id: 'build-person-page-v2',
         retries: 3,
         concurrency: { limit: 5 },
+        triggers: [{ event: 'person/created.v2' }],
     },
-    { event: 'person/created.v2' },
     async ({ event, step }) => {
         const {
             personId,
