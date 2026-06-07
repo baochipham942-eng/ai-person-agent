@@ -51,6 +51,9 @@ interface Relation {
   id: string;
   relationType: string;
   description?: string | null;
+  reviewStatus?: string | null;
+  evidenceUrl?: string | null;
+  evidenceNote?: string | null;
   relatedPerson: RelatedPerson;
 }
 

@@ -36,8 +36,23 @@ const CATEGORY_CONFIG: Record<VideoCategory, { label: string }> = {
 
 // 提取 YouTube 视频 ID
 function extractVideoId(url: string): string | null {
-  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-  return match ? match[1] : null;
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.replace(/^www\./, '');
+    if (hostname === 'youtu.be') {
+      return parsed.pathname.split('/').filter(Boolean)[0] || null;
+    }
+    if (hostname.endsWith('youtube.com')) {
+      const fromQuery = parsed.searchParams.get('v');
+      if (fromQuery) return fromQuery;
+      const match = parsed.pathname.match(/\/(?:shorts|embed|live)\/([^/?#]+)/);
+      return match?.[1] || null;
+    }
+  } catch {
+    const match = url.match(/(?:v=|youtu\.be\/|\/shorts\/|\/embed\/|\/live\/)([A-Za-z0-9_-]{6,})/);
+    return match?.[1] || null;
+  }
+  return null;
 }
 
 // 格式化日期
@@ -149,12 +164,21 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                   className="group block rounded-xl overflow-hidden bg-stone-50 hover:shadow-md transition-all border border-transparent hover:border-orange-100 cursor-pointer"
                 >
                   {/* 缩略图 */}
-                  <div className="relative aspect-video bg-stone-200">
+                  <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-stone-100 to-stone-200">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center text-stone-400">
+                      <svg className="w-9 h-9 text-stone-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <span className="text-xs font-medium line-clamp-2">{video.title || '视频内容'}</span>
+                    </div>
                     {thumbnailUrl && (
                       <img
                         src={thumbnailUrl}
                         alt={video.title}
-                        className="w-full h-full object-cover"
+                        className="absolute inset-0 w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).style.display = 'none';
+                        }}
                       />
                     )}
                     {/* 播放按钮遮罩 */}

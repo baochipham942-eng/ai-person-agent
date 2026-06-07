@@ -13,6 +13,9 @@ interface Relation {
   id: string;
   relationType: string;
   description?: string | null;
+  reviewStatus?: string | null;
+  evidenceUrl?: string | null;
+  evidenceNote?: string | null;
   relatedPerson: RelatedPerson;
 }
 
@@ -34,7 +37,11 @@ const RELATION_CONFIG: Record<string, { label: string; color: string }> = {
 interface MergedRelation {
   personId: string;
   relatedPerson: RelatedPerson;
-  relationTypes: string[];
+  relations: Array<{
+    relationType: string;
+    reviewStatus?: string | null;
+    evidenceNote?: string | null;
+  }>;
 }
 
 function mergeRelations(relations: Relation[]): MergedRelation[] {
@@ -45,15 +52,23 @@ function mergeRelations(relations: Relation[]): MergedRelation[] {
     if (personMap.has(personId)) {
       // 已存在，添加关系类型（去重）
       const existing = personMap.get(personId)!;
-      if (!existing.relationTypes.includes(rel.relationType)) {
-        existing.relationTypes.push(rel.relationType);
+      if (!existing.relations.some(item => item.relationType === rel.relationType)) {
+        existing.relations.push({
+          relationType: rel.relationType,
+          reviewStatus: rel.reviewStatus,
+          evidenceNote: rel.evidenceNote,
+        });
       }
     } else {
       // 新人物
       personMap.set(personId, {
         personId,
         relatedPerson: rel.relatedPerson,
-        relationTypes: [rel.relationType],
+        relations: [{
+          relationType: rel.relationType,
+          reviewStatus: rel.reviewStatus,
+          evidenceNote: rel.evidenceNote,
+        }],
       });
     }
   }
@@ -119,17 +134,23 @@ export function RelatedPeople({ relations }: RelatedPeopleProps) {
 
               {/* 关系标签 - 支持多个 */}
               <div className="flex flex-wrap justify-center gap-1 mt-2">
-                {item.relationTypes.map((relationType) => {
-                  const config = RELATION_CONFIG[relationType] || {
-                    label: relationType,
+                {item.relations.map((relation) => {
+                  const isNeedsReview = relation.reviewStatus === 'needs_review';
+                  const config = RELATION_CONFIG[relation.relationType] || {
+                    label: relation.relationType,
                     color: 'bg-stone-50 text-stone-600 border-stone-100'
                   };
                   return (
                     <span
-                      key={relationType}
-                      className={`px-2 py-0.5 text-[10px] font-medium rounded-full border ${config.color}`}
+                      key={relation.relationType}
+                      title={relation.evidenceNote || undefined}
+                      className={`px-2 py-0.5 text-[10px] font-medium rounded-full border ${
+                        isNeedsReview
+                          ? 'bg-stone-50 text-stone-400 border-stone-200 border-dashed'
+                          : config.color
+                      }`}
                     >
-                      {config.label}
+                      {config.label}{isNeedsReview ? '待核' : ''}
                     </span>
                   );
                 })}

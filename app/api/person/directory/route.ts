@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
 import { Prisma } from '@prisma/client';
+import { normalizeHighlights } from '@/lib/utils/person-json';
 
 // 允许边缘缓存，但客户端始终重新验证
 export const dynamic = 'force-dynamic';
@@ -137,6 +138,10 @@ export async function GET(request: Request) {
     ]);
 
     const hasMore = start + limit < total;
+    const normalizedPeople = people.map(person => ({
+      ...person,
+      highlights: normalizeHighlights(person.highlights),
+    }));
 
     // 统计信息 - 只在第一页且无筛选时返回，复用 total 避免额外查询
     let stats = null;
@@ -150,7 +155,7 @@ export async function GET(request: Request) {
 
     // 构建响应并添加缓存头
     const response = NextResponse.json({
-      data: people,
+      data: normalizedPeople,
       pagination: {
         page,
         limit,

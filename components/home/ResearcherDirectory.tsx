@@ -94,7 +94,11 @@ const VIEW_MODES: { key: ViewMode; icon: string; label: string }[] = [
 ];
 
 // SWR fetcher
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to fetch directory');
+  return res.json();
+};
 
 // 构建 API URL
 function buildApiUrl(params: {
@@ -220,7 +224,7 @@ export function ResearcherDirectory() {
   });
 
   // 使用 SWR 获取数据
-  const { data, error, isLoading, isValidating } = useSWR<ApiResponse>(
+  const { data, error, isLoading, isValidating, mutate } = useSWR<ApiResponse>(
     apiUrl,
     fetcher,
     {
@@ -257,7 +261,8 @@ export function ResearcherDirectory() {
     hasMore: data?.pagination?.hasMore || false
   };
 
-  const stats: Stats = data?.stats || { totalPeople: pagination.total, totalTopics: TOPICS.length, totalPapers: 0 };
+  const hasFirstPageData = Boolean(data?.pagination);
+  const displayTotalPeople = data?.stats?.totalPeople ?? (hasFirstPageData ? pagination.total : null);
 
   // 加载更多
   const handleLoadMore = useCallback(() => {
@@ -319,8 +324,9 @@ export function ResearcherDirectory() {
   // 判断是否本周热门（本周访问量 > 10）
   const isHot = (person: Person) => person.weeklyViewCount > 10;
 
-  const loading = isLoading && page === 1;
+  const loading = isLoading && page === 1 && allPeople.length === 0 && !data;
   const loadingMore = isValidating && page > 1;
+  const hasLoadError = Boolean(error && allPeople.length === 0);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -342,8 +348,14 @@ export function ResearcherDirectory() {
             {/* Stats - 右侧紧凑展示 */}
             <div className="hidden sm:flex items-center gap-6 text-sm">
               <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-stone-900">{stats.totalPeople || pagination.total}</span>
-                <span className="text-stone-500">位研究者</span>
+                {displayTotalPeople === null ? (
+                  <span className="font-medium text-stone-500">加载中</span>
+                ) : (
+                  <>
+                    <span className="font-semibold text-stone-900">{displayTotalPeople}</span>
+                    <span className="text-stone-500">位研究者</span>
+                  </>
+                )}
               </div>
               <div className="w-px h-4 bg-stone-200"></div>
               <div className="flex items-center gap-1.5">
@@ -384,13 +396,13 @@ export function ResearcherDirectory() {
           </div>
 
           {/* View Mode Tabs */}
-          <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl">
+          <div className="flex w-full sm:w-auto items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1">
             {VIEW_MODES.map((mode) => (
               <button
                 key={mode.key}
                 onClick={() => handleViewModeChange(mode.key)}
                 onMouseEnter={() => handleTabHover(mode.key)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                className={`flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
                   viewMode === mode.key
                     ? 'gradient-btn shadow-sm'
                     : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
@@ -411,7 +423,7 @@ export function ResearcherDirectory() {
             }`}>
               <button
                 onClick={() => setSelectedTopic(null)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   selectedTopic === null
                     ? 'gradient-btn'
                     : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
@@ -424,7 +436,7 @@ export function ResearcherDirectory() {
                   key={topic}
                   onClick={() => setSelectedTopic(topic)}
                   onMouseEnter={() => handleTopicHover(topic)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                  className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                     selectedTopic === topic
                       ? 'gradient-btn'
                       : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
@@ -455,7 +467,7 @@ export function ResearcherDirectory() {
             }`}>
               <button
                 onClick={() => setSelectedOrg(null)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   selectedOrg === null
                     ? 'gradient-btn'
                     : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
@@ -468,7 +480,7 @@ export function ResearcherDirectory() {
                   key={org}
                   onClick={() => setSelectedOrg(org)}
                   onMouseEnter={() => handleOrgHover(org)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                  className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                     selectedOrg === org
                       ? 'gradient-btn'
                       : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
@@ -496,7 +508,7 @@ export function ResearcherDirectory() {
           <div className="flex flex-wrap gap-1.5 mb-4">
             <button
               onClick={() => setSelectedRole(null)}
-              className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+              className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                 selectedRole === null
                   ? 'gradient-btn'
                   : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
@@ -509,7 +521,7 @@ export function ResearcherDirectory() {
                 key={role.key}
                 onClick={() => setSelectedRole(role.key)}
                 onMouseEnter={() => handleRoleHover(role.key)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   selectedRole === role.key
                     ? 'gradient-btn'
                     : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
@@ -524,14 +536,29 @@ export function ResearcherDirectory() {
         {/* Results Count - 更小巧 */}
         <div className="flex items-center mb-3">
           <p className="text-xs text-stone-500">
-            共 {pagination.total} 位研究者
+            {displayTotalPeople === null ? '正在加载研究者' : `共 ${pagination.total} 位研究者`}
             {isValidating && !loading && <span className="ml-2 text-orange-500">更新中...</span>}
           </p>
         </div>
 
         {/* Loading State */}
-        {loading ? (
-          <LoadingSkeleton />
+        {hasLoadError ? (
+          <div className="text-center py-12">
+            <div className="text-4xl mb-3">⏳</div>
+            <h3 className="text-sm font-medium text-stone-900 mb-1">加载失败</h3>
+            <p className="text-xs text-stone-500 mb-4">数据库可能正在唤醒</p>
+            <button
+              onClick={() => mutate()}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium gradient-btn"
+            >
+              重试
+            </button>
+          </div>
+        ) : loading ? (
+          <div>
+            <div className="mb-3 text-xs text-stone-500">正在加载研究者</div>
+            <LoadingSkeleton />
+          </div>
         ) : (
           <>
             {/* People Grid - 4列布局 */}

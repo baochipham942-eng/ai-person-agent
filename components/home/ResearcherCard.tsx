@@ -108,7 +108,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
   const roleLabel = person.roleCategory ? ROLE_LABELS[person.roleCategory] : null;
   // 优先使用 currentTitle 中的机构，回退到 organization[0]
   const primaryOrg = extractOrgFromTitle(person.currentTitle) || person.organization[0] || '';
-  const highlights = (person.highlights as Highlight[]) || [];
+  const highlights = person.highlights || [];
 
   return (
     <Link href={`/person/${person.id}`} className="block group">

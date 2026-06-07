@@ -8,6 +8,7 @@
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
+import { normalizeOfficialLinks } from '@/lib/utils/person-json';
 
 const GITHUB_API_URL = 'https://api.github.com';
 
@@ -151,8 +152,8 @@ export async function updateMissingAvatars(
     console.log(`[Avatar] Found ${peopleWithoutAvatar.length} people without avatars`);
 
     for (const person of peopleWithoutAvatar) {
-        const links = (person.officialLinks as any[]) || [];
-        const githubLink = links.find((l: any) => l.type === 'github');
+        const links = normalizeOfficialLinks(person.officialLinks);
+        const githubLink = links.find(l => l.type === 'github');
         const githubHandle = githubLink?.handle || githubLink?.url?.match(/github\.com\/([^\/]+)/)?.[1];
 
         if (!githubHandle) {

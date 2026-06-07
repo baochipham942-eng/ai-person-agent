@@ -2,6 +2,15 @@ import { Suspense } from 'react';
 import { prisma } from '@/lib/db/prisma';
 import { notFound } from 'next/navigation';
 import { PersonPageClient } from '@/components/person/PersonPageClient';
+import {
+    normalizeEducation,
+    normalizeMetadata,
+    normalizeOfficialLinks,
+    normalizeProducts,
+    normalizeQuotes,
+    normalizeTopicDetails,
+    normalizeTopicRanks,
+} from '@/lib/utils/person-json';
 
 // ISR 缓存：1小时后重新验证
 export const revalidate = 3600;
@@ -124,15 +133,15 @@ export default async function PersonPage({ params }: PersonPageProps) {
         occupation: person.occupation,
         organization: person.organization,
         aliases: person.aliases,
-        officialLinks: (person.officialLinks as any[]) || [],
+        officialLinks: normalizeOfficialLinks(person.officialLinks),
         // 话题和排名
         topics: person.topics || [],
-        topicRanks: (person.topicRanks as Record<string, number>) || null,
-        topicDetails: (person.topicDetails as any[]) || null,
+        topicRanks: normalizeTopicRanks(person.topicRanks),
+        topicDetails: normalizeTopicDetails(person.topicDetails),
         // 新增字段
-        quotes: (person.quotes as any[]) || null,
-        products: (person.products as any[]) || null,
-        education: (person.education as any[]) || null,
+        quotes: normalizeQuotes(person.quotes),
+        products: normalizeProducts(person.products),
+        education: normalizeEducation(person.education),
         currentTitle: person.currentTitle || null,
         courseCount, // 课程数量
         // 论文数据
@@ -142,7 +151,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
             text: p.text,
             url: p.url,
             publishedAt: p.publishedAt?.toISOString() || null,
-            metadata: (p.metadata as any) || {},
+            metadata: normalizeMetadata(p.metadata),
         })),
         // 不再传递 rawPoolItems，改为客户端懒加载
         rawPoolItems: [], // 空数组，客户端会按需加载
@@ -178,6 +187,9 @@ export default async function PersonPage({ params }: PersonPageProps) {
                 id: rel.id,
                 relationType: rel.relationType, // B 是我的 relationType，直接使用
                 description: rel.description,
+                reviewStatus: rel.reviewStatus,
+                evidenceUrl: rel.evidenceUrl,
+                evidenceNote: rel.evidenceNote,
                 relatedPerson: {
                     id: rel.relatedPerson.id,
                     name: rel.relatedPerson.name,
@@ -199,6 +211,9 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     id: rel.id + '-reverse',
                     relationType: reverseType[rel.relationType] || rel.relationType,
                     description: rel.description,
+                    reviewStatus: rel.reviewStatus,
+                    evidenceUrl: rel.evidenceUrl,
+                    evidenceNote: rel.evidenceNote,
                     relatedPerson: {
                         id: rel.person.id,
                         name: rel.person.name,
@@ -216,4 +231,3 @@ export default async function PersonPage({ params }: PersonPageProps) {
         </Suspense>
     );
 }
-
