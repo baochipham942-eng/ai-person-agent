@@ -7,6 +7,7 @@
 
 import { prisma } from '../../lib/db/prisma';
 import { chatStructuredCompletion } from '../../lib/ai/deepseek';
+import { relationReviewFields, validateRelationCandidate } from '../../lib/agents/relation-validation';
 
 // Exa API
 const EXA_API_URL = 'https://api.exa.ai/search';
@@ -215,6 +216,25 @@ async function main() {
 
         console.log(`    ✅ ${rel.relatedPersonName} (${rel.relationType}): ${rel.description}`);
 
+        const validationInput = {
+          personId: person.id,
+          relatedPersonId: finalRelatedId,
+          relationType: rel.relationType,
+          description: rel.description,
+          source: 'exa',
+          confidence: 0.8,
+          evidenceTexts: results.map(r => `${r.title || ''}\n${r.text || ''}`),
+          evidenceUrls: results.map(r => r.url).filter(Boolean),
+        };
+        const validation = await validateRelationCandidate(prisma, validationInput);
+
+        if (!validation.ok) {
+          console.log(`    🚫 校验未通过: ${validation.reasons.join('; ')}`);
+          continue;
+        }
+
+        console.log(`    🔒 校验通过: ${validation.evidence.join('; ')}`);
+
         if (!dryRun) {
           try {
             await prisma.personRelation.create({
@@ -225,6 +245,7 @@ async function main() {
                 description: rel.description,
                 source: 'exa',
                 confidence: 0.8,
+                ...relationReviewFields(validationInput, validation),
               }
             });
             totalCreated++;

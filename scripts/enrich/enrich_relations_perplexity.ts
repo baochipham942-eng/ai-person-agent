@@ -7,6 +7,7 @@
 
 import { prisma } from '../../lib/db/prisma';
 import { searchPerplexity } from '../../lib/datasources/perplexity';
+import { relationReviewFields, validateRelationCandidate } from '../../lib/agents/relation-validation';
 
 // 关系类型
 const RELATION_TYPES = ['advisor', 'cofounder', 'colleague', 'collaborator'] as const;
@@ -15,6 +16,8 @@ interface ParsedRelation {
   relatedPersonName: string;
   relationType: string;
   description: string;
+  evidenceText: string;
+  evidenceUrls: string[];
 }
 
 /**
@@ -78,6 +81,8 @@ If no relationships are confirmed, return: NO_RELATIONS`;
                   relatedPersonName: matchedName,
                   relationType,
                   description: description.slice(0, 15), // 限制长度
+                  evidenceText: response.content,
+                  evidenceUrls: response.citations || [],
                 });
               }
             }
@@ -165,6 +170,26 @@ async function main() {
 
       console.log(`    ✅ ${rel.relatedPersonName} (${rel.relationType}): ${rel.description}`);
 
+      const validationInput = {
+        personId: person.id,
+        relatedPersonId,
+        relationType: rel.relationType,
+        description: rel.description,
+        source: 'perplexity',
+        confidence: 0.9,
+        evidenceTexts: [rel.evidenceText],
+        evidenceUrls: rel.evidenceUrls,
+      };
+      const validation = await validateRelationCandidate(prisma, validationInput);
+
+      if (!validation.ok) {
+        console.log(`    🚫 校验未通过: ${validation.reasons.join('; ')}`);
+        totalSkipped++;
+        continue;
+      }
+
+      console.log(`    🔒 校验通过: ${validation.evidence.join('; ')}`);
+
       if (!dryRun) {
         try {
           await prisma.personRelation.create({
@@ -175,6 +200,7 @@ async function main() {
               description: rel.description,
               source: 'perplexity',
               confidence: 0.9,
+              ...relationReviewFields(validationInput, validation),
             }
           });
           totalCreated++;

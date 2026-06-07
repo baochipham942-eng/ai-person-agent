@@ -7,6 +7,7 @@
 
 import { prisma } from '../../lib/db/prisma';
 import { chatStructuredCompletion } from '../../lib/ai/deepseek';
+import { relationReviewFields, validateRelationCandidate } from '../../lib/agents/relation-validation';
 
 // 关系类型定义
 const RELATION_TYPES = [
@@ -31,6 +32,17 @@ interface AIRelation {
   relationType: string;
   description: string;
   confidence: number;
+}
+
+interface StoredRelation {
+  personId: string;
+  relatedPersonId: string;
+  relationType: string;
+  description: string;
+  confidence: number;
+  reviewStatus?: string;
+  evidenceUrl?: string;
+  evidenceNote?: string;
 }
 
 /**
@@ -193,36 +205,50 @@ async function inferRelationWithAI(candidate: RelationCandidate): Promise<AIRela
 /**
  * 创建关系记录
  */
-async function createRelation(
+function toStoredRelation(
   personAId: string,
   personBId: string,
   relationType: string,
   description: string,
   confidence: number
-): Promise<void> {
-  // 对于 advisor/advisee 关系，需要确定方向
-  // advisor: personA 是 personB 的导师
-  // advisee: personA 是 personB 的学生 -> 转换为 personB 是 personA 的导师
-
+): StoredRelation {
   let finalPersonId = personAId;
   let finalRelatedPersonId = personBId;
   let finalRelationType = relationType;
 
-  if (relationType === 'advisee') {
-    // 反转关系
+  // PersonRelation 语义：{ personId: A, relatedPersonId: B, advisor } = B 是 A 的导师。
+  // AI prompt 语义：advisor = A 是 B 的导师；advisee = A 是 B 的学生。
+  if (relationType === 'advisor') {
     finalPersonId = personBId;
     finalRelatedPersonId = personAId;
     finalRelationType = 'advisor';
+  } else if (relationType === 'advisee') {
+    finalPersonId = personAId;
+    finalRelatedPersonId = personBId;
+    finalRelationType = 'advisor';
   }
 
+  return {
+    personId: finalPersonId,
+    relatedPersonId: finalRelatedPersonId,
+    relationType: finalRelationType,
+    description,
+    confidence,
+  };
+}
+
+async function createRelation(relation: StoredRelation): Promise<void> {
   await prisma.personRelation.create({
     data: {
-      personId: finalPersonId,
-      relatedPersonId: finalRelatedPersonId,
-      relationType: finalRelationType,
-      description,
+      personId: relation.personId,
+      relatedPersonId: relation.relatedPersonId,
+      relationType: relation.relationType,
+      description: relation.description,
       source: 'ai-inference',
-      confidence,
+      confidence: relation.confidence,
+      reviewStatus: relation.reviewStatus,
+      evidenceUrl: relation.evidenceUrl,
+      evidenceNote: relation.evidenceNote,
     }
   });
 }
@@ -272,16 +298,32 @@ async function main() {
 
     if (relation) {
       console.log(`  ✅ ${relation.relationType}: ${relation.description} (置信度: ${relation.confidence})`);
+      const storedRelation = toStoredRelation(
+        c.personAId,
+        c.personBId,
+        relation.relationType,
+        relation.description,
+        relation.confidence
+      );
+
+      const validationInput = {
+        ...storedRelation,
+        source: 'ai-inference',
+      };
+      const validation = await validateRelationCandidate(prisma, validationInput);
+
+      if (!validation.ok) {
+        console.log(`  🚫 校验未通过: ${validation.reasons.join('; ')}`);
+        skipped++;
+        continue;
+      }
+
+      console.log(`  🔒 校验通过: ${validation.evidence.join('; ')}`);
+      Object.assign(storedRelation, relationReviewFields(validationInput, validation));
 
       if (!dryRun) {
         try {
-          await createRelation(
-            c.personAId,
-            c.personBId,
-            relation.relationType,
-            relation.description,
-            relation.confidence
-          );
+          await createRelation(storedRelation);
           created++;
         } catch (error: any) {
           if (error.code === 'P2002') {

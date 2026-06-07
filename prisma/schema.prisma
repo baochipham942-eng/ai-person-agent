@@ -232,6 +232,9 @@ model PersonRelation {
   description     String?
   source          String   @default("wikidata")
   confidence      Float    @default(1.0)
+  reviewStatus    String   @default("needs_review") // trusted, confirmed, needs_review
+  evidenceUrl     String?
+  evidenceNote    String?
   createdAt       DateTime @default(now())
 
   person          People   @relation("PersonRelations", fields: [personId], references: [id], onDelete: Cascade)
@@ -240,6 +243,7 @@ model PersonRelation {
   @@unique([personId, relatedPersonId, relationType])
   @@index([personId])
   @@index([relatedPersonId])
+  @@index([reviewStatus])
 }
 
 // 课程表 - 记录人物开设/主讲的公开课程
