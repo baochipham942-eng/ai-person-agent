@@ -1,0 +1,4888 @@
+{
+  "generatedAt": "2026-06-07T14:17:27.349Z",
+  "summary": {
+    "total": 286,
+    "trusted": 78,
+    "confirmedByRoles": 77,
+    "needsReview": 131,
+    "bySource": {
+      "exa": 4,
+      "perplexity": 204,
+      "wikidata": 78
+    },
+    "needsReviewByType": {
+      "colleague": 35,
+      "collaborator": 70,
+      "cofounder": 21,
+      "advisor": 5
+    }
+  },
+  "needsReview": [
+    {
+      "id": "cmkaf62yl0003xlphma9xemd1",
+      "person": "朱军",
+      "related": "唐杰",
+      "type": "colleague",
+      "description": "清华AI同事",
+      "source": "exa",
+      "confidence": 0.8,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ut934005znk4negtwz7xd",
+      "person": "Aidan Gomez",
+      "related": "Lukasz Kaiser",
+      "type": "collaborator",
+      "description": "Transformer论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w0rai0003sw4dss9vm0x9",
+      "person": "Andrej Karpathy",
+      "related": "Greg Brockman",
+      "type": "cofounder",
+      "description": "OpenAI联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9w1sgh000psw4du814x6vw",
+      "person": "Andrej Karpathy",
+      "related": "Mark Chen",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "same organization exists but dates do not prove overlap"
+      ]
+    },
+    {
+      "id": "cmk9w16du0009sw4dd0u50ziw",
+      "person": "Andrej Karpathy",
+      "related": "伊恩·J·古德费洛",
+      "type": "colleague",
+      "description": "同期Google Brain实",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "same organization exists but dates do not prove overlap"
+      ]
+    },
+    {
+      "id": "cmk9ue8mn000hnk4nfmircxh1",
+      "person": "Andrej Karpathy",
+      "related": "吴恩达",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "advisor relation lacks PersonRole advisor link"
+      ]
+    },
+    {
+      "id": "cmk9w124j0005sw4descx877w",
+      "person": "Andrej Karpathy",
+      "related": "彼得·阿比尔",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "advisor relation lacks PersonRole advisor link"
+      ]
+    },
+    {
+      "id": "cmk9w17np000bsw4dqle86fey",
+      "person": "Andrej Karpathy",
+      "related": "彼得罗·佩罗纳",
+      "type": "collaborator",
+      "description": "共同发表视觉论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w18x4000dsw4da8i9h9va",
+      "person": "Andrej Karpathy",
+      "related": "阿列克谢·A·埃夫罗斯",
+      "type": "collaborator",
+      "description": "共同发表视觉论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w1mn8000lsw4d0fgfez1z",
+      "person": "Andrej Karpathy",
+      "related": "雷亚·哈德塞尔",
+      "type": "colleague",
+      "description": "DeepMind同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w13fx0007sw4dnaul7rqh",
+      "person": "Andrej Karpathy",
+      "related": "鲁斯兰·萨拉赫丁诺夫",
+      "type": "advisor",
+      "description": "博士联合导师",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "advisor relation lacks PersonRole advisor link"
+      ]
+    },
+    {
+      "id": "cmk9ugvee0011nk4nf0qnwipd",
+      "person": "Chris Olah",
+      "related": "Dario Amodei",
+      "type": "cofounder",
+      "description": "共同创立Anthropic[3",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 5,
+      "overlap_count": 5,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9ugqqm000znk4n5ecimpik",
+      "person": "Chris Olah",
+      "related": "Geoffrey Hinton",
+      "type": "collaborator",
+      "description": "共同署名论文“Concrete",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uoy4o004jnk4nu1e2aa5u",
+      "person": "Christopher Manning",
+      "related": "Richard Socher",
+      "type": "cofounder",
+      "description": "共同创立AIX基金[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 4,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 4,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9up0pw004nnk4ndzlun69x",
+      "person": "Christopher Manning",
+      "related": "吴恩达",
+      "type": "collaborator",
+      "description": "共同创立斯坦福HAI[2][3",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uozfj004lnk4nbt3e9ca6",
+      "person": "Christopher Manning",
+      "related": "李飞飞",
+      "type": "collaborator",
+      "description": "共同创立斯坦福HAI[1][2",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 12,
+      "overlap_count": 12,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9veqq4002v2k4mgjkzp7gw",
+      "person": "Daniel Gross",
+      "related": "Paul Graham",
+      "type": "advisor",
+      "description": "YC导师",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "advisor relation lacks PersonRole advisor link"
+      ]
+    },
+    {
+      "id": "cmk9utujt0063nk4nvbyds4na",
+      "person": "Dario Amodei",
+      "related": "Jakub Pachocki",
+      "type": "colleague",
+      "description": "Anthropic同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "same organization exists but dates do not prove overlap"
+      ]
+    },
+    {
+      "id": "cmk9va66p001v2k4mcwjx4t5z",
+      "person": "Dario Amodei",
+      "related": "Shane Legg",
+      "type": "colleague",
+      "description": "曾同在Google Brain",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ul5m5002hnk4nlobgr5ij",
+      "person": "Demis Hassabis",
+      "related": "Elon Musk",
+      "type": "colleague",
+      "description": "共同签署AI公开信",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ukqcl0029nk4noun03tjy",
+      "person": "Demis Hassabis",
+      "related": "Geoffrey Hinton",
+      "type": "collaborator",
+      "description": "共同署多篇论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 6,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v30mq000r2k4m4xoc3o9n",
+      "person": "Demis Hassabis",
+      "related": "James Manyika",
+      "type": "colleague",
+      "description": "同为谷歌高管[3]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uli41002vnk4nnplpcfpl",
+      "person": "Demis Hassabis",
+      "related": "John Giannandrea",
+      "type": "colleague",
+      "description": "共属谷歌高管",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ul2nd002fnk4njw2qcvhy",
+      "person": "Demis Hassabis",
+      "related": "Sam Altman",
+      "type": "colleague",
+      "description": "共同任AI安全峰会代表",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uko2a0027nk4ny2kkw0e3",
+      "person": "Demis Hassabis",
+      "related": "Yoshua Bengio",
+      "type": "collaborator",
+      "description": "共同署多篇论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v31yk000t2k4mrt22wj9r",
+      "person": "Demis Hassabis",
+      "related": "Zoubin Ghahramani",
+      "type": "colleague",
+      "description": "同在Google/DeepMi",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "same organization exists but dates do not prove overlap"
+      ]
+    },
+    {
+      "id": "cmk9ulgrw002tnk4nepm5v7qe",
+      "person": "Demis Hassabis",
+      "related": "吴恩达",
+      "type": "collaborator",
+      "description": "同为AI界学者，多次同台论坛与",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ulrp40033nk4nu8j8p895",
+      "person": "Demis Hassabis",
+      "related": "拉里·佩奇",
+      "type": "colleague",
+      "description": "DeepMind母公司创始人",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ulogb0031nk4ns6vsqqeo",
+      "person": "Demis Hassabis",
+      "related": "斯图尔特·罗素",
+      "type": "collaborator",
+      "description": "共同签署AI公开信",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uldwb002rnk4n8wnikhs1",
+      "person": "Demis Hassabis",
+      "related": "杰夫·迪恩",
+      "type": "colleague",
+      "description": "同属谷歌高层，在Google/",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uljgg002xnk4ntcmgclp0",
+      "person": "Demis Hassabis",
+      "related": "萨提亚·纳德拉",
+      "type": "collaborator",
+      "description": "微软与DeepMind合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ullw2002znk4nc9wm3syo",
+      "person": "Demis Hassabis",
+      "related": "马克斯·泰格马克",
+      "type": "collaborator",
+      "description": "共同签署AI公开信",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vj627004b2k4ms83m1df7",
+      "person": "Elon Musk",
+      "related": "Ilya Sutskever",
+      "type": "cofounder",
+      "description": "OpenAI联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9vj7m5004d2k4mp62zy80j",
+      "person": "Elon Musk",
+      "related": "Sam Altman",
+      "type": "cofounder",
+      "description": "OpenAI联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9vj927004f2k4mtkumj6ne",
+      "person": "Elon Musk",
+      "related": "Shane Legg",
+      "type": "colleague",
+      "description": "投资其创立的DeepMind",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ujn5p001xnk4n77c4j7jh",
+      "person": "Geoffrey Hinton",
+      "related": "Aidan Gomez",
+      "type": "collaborator",
+      "description": "共同署名Transformer",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ujj69001vnk4nm4va0xbp",
+      "person": "Geoffrey Hinton",
+      "related": "Demis Hassabis",
+      "type": "colleague",
+      "description": "谷歌/DeepMind同属Al",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ujcq0001pnk4n8a4yhldd",
+      "person": "Geoffrey Hinton",
+      "related": "Ilya Sutskever",
+      "type": "cofounder",
+      "description": "共同创立DNNresearch",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 18,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9ujwub0021nk4n3szibu20",
+      "person": "Geoffrey Hinton",
+      "related": "Noam Shazeer",
+      "type": "collaborator",
+      "description": "共同署名Transformer",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ujym60023nk4nhokjpd5g",
+      "person": "Geoffrey Hinton",
+      "related": "Oriol Vinyals",
+      "type": "collaborator",
+      "description": "共同署名Transformer",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ujqen001znk4nm8l5wz1l",
+      "person": "Geoffrey Hinton",
+      "related": "Quoc Le",
+      "type": "collaborator",
+      "description": "共同署名Transformer",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ujzxv0025nk4nqmyuhqxm",
+      "person": "Geoffrey Hinton",
+      "related": "亚历克斯·克里泽夫斯基",
+      "type": "cofounder",
+      "description": "共同创立DNNresearch",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9v1wdz000j2k4ms8cclcz5",
+      "person": "Geoffrey Hinton",
+      "related": "斯图尔特·罗素",
+      "type": "collaborator",
+      "description": "合著AI安全公开信[2]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v1yt3000l2k4mhwoygrxu",
+      "person": "Geoffrey Hinton",
+      "related": "马克斯·泰格马克",
+      "type": "collaborator",
+      "description": "合著AI安全公开信[2]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ui6su001bnk4na2v9hjgc",
+      "person": "Greg Brockman",
+      "related": "Elon Musk",
+      "type": "cofounder",
+      "description": "OpenAI联创[2]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9uighs001dnk4nl1ymb5f4",
+      "person": "Greg Brockman",
+      "related": "Ilya Sutskever",
+      "type": "cofounder",
+      "description": "OpenAI联创[2]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9uin5n001lnk4nifua7ms7",
+      "person": "Greg Brockman",
+      "related": "Jakub Pachocki",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "same organization exists but dates do not prove overlap"
+      ]
+    },
+    {
+      "id": "cmk9v0sif000b2k4moaebcols",
+      "person": "Greg Brockman",
+      "related": "Paul Graham",
+      "type": "collaborator",
+      "description": "YC支持OpenAI[5]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ui5gp0019nk4nwyvotv4g",
+      "person": "Greg Brockman",
+      "related": "Sam Altman",
+      "type": "cofounder",
+      "description": "OpenAI联创[2]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9uil5h001jnk4nute99oy3",
+      "person": "Greg Brockman",
+      "related": "苏姿丰",
+      "type": "collaborator",
+      "description": "与OpenAI洽谈芯片合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v0vdi000d2k4mqje9v4oo",
+      "person": "Greg Brockman",
+      "related": "萨提亚·纳德拉",
+      "type": "colleague",
+      "description": "合作OpenAI微软基础模型合",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v0pnc00092k4mx9cpe2c5",
+      "person": "Greg Brockman",
+      "related": "黄仁勋",
+      "type": "collaborator",
+      "description": "OpenAI‑英伟达合作[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9waae8001lsw4dba65gzzz",
+      "person": "Ilya Sutskever",
+      "related": "Alexandr Wang",
+      "type": "collaborator",
+      "description": "OpenAI与Scale有合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uoe1d004fnk4ndm4z2cu6",
+      "person": "Ilya Sutskever",
+      "related": "Dan Hendrycks",
+      "type": "collaborator",
+      "description": "安全研究合作者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uniz8003lnk4n58jrlbxm",
+      "person": "Ilya Sutskever",
+      "related": "Sam Altman",
+      "type": "cofounder",
+      "description": "OpenAI联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9unspq003vnk4nc6gd7pqp",
+      "person": "Ilya Sutskever",
+      "related": "Shane Legg",
+      "type": "collaborator",
+      "description": "共同论文作者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9unpcs003rnk4ns7diesi7",
+      "person": "Ilya Sutskever",
+      "related": "Wojciech Zaremba",
+      "type": "cofounder",
+      "description": "OpenAI联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9v502a00152k4mb6tk2yf0",
+      "person": "Ilya Sutskever",
+      "related": "亚历克斯·克里泽夫斯基",
+      "type": "collaborator",
+      "description": "论文合作者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9wa7ad001jsw4dyvnn6urb",
+      "person": "Ilya Sutskever",
+      "related": "李飞飞",
+      "type": "collaborator",
+      "description": "曾共同参与AI研究讨论",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uo0ng0043nk4n4tq56h36",
+      "person": "Ilya Sutskever",
+      "related": "杰夫·迪恩",
+      "type": "colleague",
+      "description": "共事于Google",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v4v8t00112k4m2vptcr0s",
+      "person": "Ilya Sutskever",
+      "related": "科拉伊·卡武克丘奥卢",
+      "type": "colleague",
+      "description": "同在Google Brain任",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v511v00172k4mu7uj3vfm",
+      "person": "Ilya Sutskever",
+      "related": "萨提亚·纳德拉",
+      "type": "colleague",
+      "description": "OpenAI合作伙伴关系",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9v4yup00132k4m90usss7w",
+      "person": "Ilya Sutskever",
+      "related": "雅各布·乌什科雷特",
+      "type": "colleague",
+      "description": "同在OpenAI任职",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9unxev0041nk4nf4agb4uz",
+      "person": "Ilya Sutskever",
+      "related": "黄仁勋",
+      "type": "collaborator",
+      "description": "SSI融资与合作方",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vos4n005n2k4mwi73f93t",
+      "person": "Jan Leike",
+      "related": "Dan Hendrycks",
+      "type": "collaborator",
+      "description": "共署名AI安全公开信",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vojzg005f2k4mva1bt27b",
+      "person": "Jan Leike",
+      "related": "Dario Amodei",
+      "type": "collaborator",
+      "description": "合作研究论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9voyxq005p2k4mrowgoruf",
+      "person": "Jan Leike",
+      "related": "Sam McCandlish",
+      "type": "colleague",
+      "description": "曾同在OpenAI工作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "same organization exists but dates do not prove overlap"
+      ]
+    },
+    {
+      "id": "cmk9vop5j005j2k4mynjo2pa8",
+      "person": "Jan Leike",
+      "related": "Shane Legg",
+      "type": "collaborator",
+      "description": "DeepMind安全研究合作者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uhkzy0017nk4np7t4j42g",
+      "person": "Jason Wei",
+      "related": "Hyung Won Chung",
+      "type": "collaborator",
+      "description": "谷歌共发论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ushel005vnk4nyadmqa4r",
+      "person": "Jeremy Howard",
+      "related": "Andrej Karpathy",
+      "type": "collaborator",
+      "description": "深度学习教育合作者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9usjpb005xnk4n95gab5hm",
+      "person": "Jeremy Howard",
+      "related": "Marc Andreessen",
+      "type": "collaborator",
+      "description": "曾寻求其风投意见",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9umlgl0039nk4na5few2ww",
+      "person": "John Schulman",
+      "related": "Dario Amodei",
+      "type": "cofounder",
+      "description": "OpenAI联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9v3s5v000x2k4msc80sf4o",
+      "person": "John Schulman",
+      "related": "Elon Musk",
+      "type": "collaborator",
+      "description": "OpenAI早期支持者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9umk2m0037nk4n7spqztdt",
+      "person": "John Schulman",
+      "related": "Greg Brockman",
+      "type": "cofounder",
+      "description": "OpenAI联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9umq46003fnk4nay4radza",
+      "person": "John Schulman",
+      "related": "Mira Murati",
+      "type": "cofounder",
+      "description": "Thinking Machin",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 5,
+      "overlap_count": 5,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9v8gmq001n2k4m4d2cgdq2",
+      "person": "Lukasz Kaiser",
+      "related": "Barret Zoph",
+      "type": "collaborator",
+      "description": "Transformer论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9urd73005bnk4nqo9dv1jm",
+      "person": "Lukasz Kaiser",
+      "related": "Geoffrey Hinton",
+      "type": "collaborator",
+      "description": "共同发表论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uroh5005lnk4nab7d7bqq",
+      "person": "Lukasz Kaiser",
+      "related": "John Schulman",
+      "type": "collaborator",
+      "description": "数学问题验证论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uregx005dnk4napgjvsbo",
+      "person": "Lukasz Kaiser",
+      "related": "Noam Shazeer",
+      "type": "collaborator",
+      "description": "Transformer论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9urjba005hnk4n1vg4y5qq",
+      "person": "Lukasz Kaiser",
+      "related": "Oriol Vinyals",
+      "type": "collaborator",
+      "description": "共同研究",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uri1u005fnk4na8e91mcc",
+      "person": "Lukasz Kaiser",
+      "related": "Quoc Le",
+      "type": "collaborator",
+      "description": "共同研究",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9urkzo005jnk4n6wqwbl7j",
+      "person": "Lukasz Kaiser",
+      "related": "Wojciech Zaremba",
+      "type": "collaborator",
+      "description": "Codex开发",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9urx7n005rnk4nl0q9vzmv",
+      "person": "Lukasz Kaiser",
+      "related": "阿希什·瓦斯瓦尼",
+      "type": "collaborator",
+      "description": "共写Transformer论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uryiq005tnk4nc017uogu",
+      "person": "Lukasz Kaiser",
+      "related": "雅各布·乌什科雷特",
+      "type": "collaborator",
+      "description": "共写Transformer论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vmd39004x2k4mf1fgzfxx",
+      "person": "Mira Murati",
+      "related": "Andy Jassy",
+      "type": "collaborator",
+      "description": "亚马逊AI合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vmb93004v2k4mmhz58er9",
+      "person": "Mira Murati",
+      "related": "Cristiano Amon",
+      "type": "collaborator",
+      "description": "高通Sora合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vm5ue004r2k4maqck96tc",
+      "person": "Mira Murati",
+      "related": "萨提亚·纳德拉",
+      "type": "collaborator",
+      "description": "微软OpenAI战略合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vgfbs003j2k4m4zfnf5be",
+      "person": "Mustafa Suleyman",
+      "related": "Boris Power",
+      "type": "colleague",
+      "description": "Inflection共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vgdzs003h2k4m8uo575z3",
+      "person": "Mustafa Suleyman",
+      "related": "John Giannandrea",
+      "type": "colleague",
+      "description": "谷歌共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vga4m003f2k4mbiplhafq",
+      "person": "Mustafa Suleyman",
+      "related": "萨提亚·纳德拉",
+      "type": "colleague",
+      "description": "微软共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vcvhz002h2k4me5rlzazp",
+      "person": "Noam Shazeer",
+      "related": "Aidan Gomez",
+      "type": "collaborator",
+      "description": "共同作者Transformer",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vfe3a002z2k4menldivfv",
+      "person": "Oriol Vinyals",
+      "related": "Demis Hassabis",
+      "type": "collaborator",
+      "description": "AlphaFold等合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vfboh002x2k4mfeag9hvi",
+      "person": "Oriol Vinyals",
+      "related": "Yann LeCun",
+      "type": "collaborator",
+      "description": "共同论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vfk0s00372k4msx766xyq",
+      "person": "Oriol Vinyals",
+      "related": "Zoubin Ghahramani",
+      "type": "colleague",
+      "description": "共同在Google任职",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "same organization exists but dates do not prove overlap"
+      ]
+    },
+    {
+      "id": "cmk9uy71h00032k4mykjwdyu2",
+      "person": "Percy Liang",
+      "related": "Christopher Manning",
+      "type": "collaborator",
+      "description": "斯坦福合作者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 8,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vbi2m00232k4m28b6ax96",
+      "person": "Quoc Le",
+      "related": "Greg Brockman",
+      "type": "colleague",
+      "description": "共同在Google Brain",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vbwvi002d2k4m7qw66mzc",
+      "person": "Quoc Le",
+      "related": "Hyung Won Chung",
+      "type": "collaborator",
+      "description": "共作者LaMDA/Flan等论",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vbkh900252k4m46f126y0",
+      "person": "Quoc Le",
+      "related": "Ilya Sutskever",
+      "type": "collaborator",
+      "description": "共作者seq2seq论文[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vbpyv002b2k4m1bd8heun",
+      "person": "Quoc Le",
+      "related": "Jason Wei",
+      "type": "collaborator",
+      "description": "共作者CoT相关论文[5]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vblw400272k4mt6qyp7cq",
+      "person": "Quoc Le",
+      "related": "Oriol Vinyals",
+      "type": "collaborator",
+      "description": "共作者seq2seq论文[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vc12j002f2k4myfrgrq4d",
+      "person": "Quoc Le",
+      "related": "杰夫·迪恩",
+      "type": "collaborator",
+      "description": "共创Google Brain",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vn81y00592k4md99q2925",
+      "person": "Richard Socher",
+      "related": "Clément Delangue",
+      "type": "advisor",
+      "description": "HuggingFace导师[3",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "advisor relation lacks PersonRole advisor link"
+      ]
+    },
+    {
+      "id": "cmk9vn6s500572k4m3hgtst3m",
+      "person": "Richard Socher",
+      "related": "李飞飞",
+      "type": "collaborator",
+      "description": "共同发表ImageNet相关论",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 12,
+      "overlap_count": 12,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vigu700452k4m2kp0vwtp",
+      "person": "Sam Altman",
+      "related": "Dan Hendrycks",
+      "type": "collaborator",
+      "description": "安全委员会合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vi8ta003x2k4m45q26cev",
+      "person": "Sam Altman",
+      "related": "Dylan Field",
+      "type": "collaborator",
+      "description": "OpenAI产品及集成合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vi4yj003v2k4miivs2922",
+      "person": "Sam Altman",
+      "related": "Emad Mostaque",
+      "type": "collaborator",
+      "description": "就AI监管公开对话",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vi0e9003r2k4mrmgn2vbv",
+      "person": "Sam Altman",
+      "related": "黄仁勋",
+      "type": "collaborator",
+      "description": "英伟达OpenAI合作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vkx2s004n2k4muisv9kvw",
+      "person": "Shane Legg",
+      "related": "科拉伊·卡武克丘奥卢",
+      "type": "cofounder",
+      "description": "DeepMind联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 9,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9uq66e004rnk4nhpqgnktn",
+      "person": "Wojciech Zaremba",
+      "related": "Andrej Karpathy",
+      "type": "cofounder",
+      "description": "OpenAI联合创始人[2][",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 7,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9uqmvx0055nk4n1fwe9uid",
+      "person": "Wojciech Zaremba",
+      "related": "Elon Musk",
+      "type": "cofounder",
+      "description": "OpenAI联创董事[2][7",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9uq84i004tnk4ni1lgpxcc",
+      "person": "Wojciech Zaremba",
+      "related": "Greg Brockman",
+      "type": "cofounder",
+      "description": "OpenAI联合创始人[2][",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9v7k5t001h2k4m3q2mnn9x",
+      "person": "Wojciech Zaremba",
+      "related": "Jan Leike",
+      "type": "collaborator",
+      "description": "论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 6,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uqd1q004xnk4n6mh39q8a",
+      "person": "Wojciech Zaremba",
+      "related": "John Schulman",
+      "type": "cofounder",
+      "description": "OpenAI联合创始人[2][",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9v7mtj001l2k4m8kbv3xkf",
+      "person": "Wojciech Zaremba",
+      "related": "Paul Graham",
+      "type": "colleague",
+      "description": "YC资助OpenAI",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uqkbg0051nk4nz2gwspxn",
+      "person": "Wojciech Zaremba",
+      "related": "Sam Altman",
+      "type": "cofounder",
+      "description": "OpenAI联创董事[2][7",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 6,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "cofounder relation lacks shared founder-role evidence"
+      ]
+    },
+    {
+      "id": "cmk9v7hgn001d2k4mu2gvl59m",
+      "person": "Wojciech Zaremba",
+      "related": "Shane Legg",
+      "type": "colleague",
+      "description": "同为AI创企创始人",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ufnuk000tnk4nbude1xyv",
+      "person": "Yann LeCun",
+      "related": "Alexandr Wang",
+      "type": "colleague",
+      "description": "Meta首席AI官",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uflj8000rnk4n5s6f6ct0",
+      "person": "Yann LeCun",
+      "related": "Geoffrey Hinton",
+      "type": "collaborator",
+      "description": "共同获图灵奖",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w3n4r000zsw4df9znp7x2",
+      "person": "Yann LeCun",
+      "related": "Guillaume Lample",
+      "type": "colleague",
+      "description": "同在Meta AI工作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w3tqd0015sw4d4xnjt52j",
+      "person": "Yann LeCun",
+      "related": "乔尔·皮诺",
+      "type": "colleague",
+      "description": "共同在Meta/FAIR工作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ueuha000lnk4nq0q0wkjs",
+      "person": "Yoshua Bengio",
+      "related": "Geoffrey Hinton",
+      "type": "collaborator",
+      "description": "共同获图灵奖",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w2jar000tsw4d1yru00t2",
+      "person": "Yoshua Bengio",
+      "related": "Hugo Larochelle",
+      "type": "collaborator",
+      "description": "多篇论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 7,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uevuk000nnk4nul616026",
+      "person": "Yoshua Bengio",
+      "related": "Raquel Urtasun",
+      "type": "collaborator",
+      "description": "多篇自动驾驶论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9ueshy000jnk4n71uv7eu6",
+      "person": "Yoshua Bengio",
+      "related": "Yann LeCun",
+      "type": "collaborator",
+      "description": "共同获图灵奖",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uex76000pnk4ns68g8qxi",
+      "person": "Yoshua Bengio",
+      "related": "Zoubin Ghahramani",
+      "type": "collaborator",
+      "description": "共同署名AI治理公开信",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w2mf8000xsw4d1d0e0cej",
+      "person": "Yoshua Bengio",
+      "related": "伊恩·J·古德费洛",
+      "type": "collaborator",
+      "description": "生成模型研究合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w2htt000rsw4d9dsjx52c",
+      "person": "Yoshua Bengio",
+      "related": "德米特里·巴丹瑙",
+      "type": "collaborator",
+      "description": "共同发表深度学习论文",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9w2klm000vsw4ds7860ne2",
+      "person": "Yoshua Bengio",
+      "related": "鲁斯兰·萨拉赫丁诺夫",
+      "type": "collaborator",
+      "description": "深度学习论文合著",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "collaborator requires paper/project evidence outside PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vnu9z005d2k4mdbd3hfbp",
+      "person": "布莱恩·卡坦扎罗",
+      "related": "Andrej Karpathy",
+      "type": "colleague",
+      "description": "NVIDIA同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vjua9004j2k4m6uhbofuw",
+      "person": "杨植麟",
+      "related": "徐立",
+      "type": "colleague",
+      "description": "曾同台WAIC论坛[1][3]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9vjvvo004l2k4mvrxpvzz4",
+      "person": "杨植麟",
+      "related": "王小川",
+      "type": "colleague",
+      "description": "同属清华系AI创业圈[6][7",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "needs_review",
+      "reasons": [
+        "no shared organization in PersonRole"
+      ]
+    }
+  ],
+  "confirmedByRoles": [
+    {
+      "id": "cmkaf62m80001xlphzxvvew5j",
+      "person": "刘知远",
+      "related": "唐杰",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "exa",
+      "confidence": 0.8,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 1,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "advisor linked from PersonRole"
+      ]
+    },
+    {
+      "id": "cmkaf5aaz0001gc9nw28tx75m",
+      "person": "Chip Huyen",
+      "related": "吴恩达",
+      "type": "advisor",
+      "description": "斯坦福导师",
+      "source": "exa",
+      "confidence": 0.85,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 2,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "advisor linked from PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9uwnzb00012k4mdggxgd74",
+      "person": "Andrej Karpathy",
+      "related": "Ashok Elluswamy",
+      "type": "colleague",
+      "description": "同为特斯拉Autopilot负",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9w1gkg000hsw4dcpvbk0mi",
+      "person": "Andrej Karpathy",
+      "related": "Barret Zoph",
+      "type": "colleague",
+      "description": "同期Google Brain/",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ue1y70009nk4nye6lieo5",
+      "person": "Andrej Karpathy",
+      "related": "Christopher Manning",
+      "type": "advisor",
+      "description": "斯坦福博导[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 3,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "advisor linked from PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9udwz80003nk4nmr93yvpq",
+      "person": "Andrej Karpathy",
+      "related": "Demis Hassabis",
+      "type": "colleague",
+      "description": "2015在DeepMind实习",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ue6b0000fnk4nb4uc2cmd",
+      "person": "Andrej Karpathy",
+      "related": "Elon Musk",
+      "type": "colleague",
+      "description": "OpenAI联合创始人&特斯拉",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9udvpx0001nk4nmd8gvthr",
+      "person": "Andrej Karpathy",
+      "related": "Geoffrey Hinton",
+      "type": "colleague",
+      "description": "2011谷歌Brain实习同组",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ue0p70007nk4nszj66dvt",
+      "person": "Andrej Karpathy",
+      "related": "Ilya Sutskever",
+      "type": "colleague",
+      "description": "OpenAI联合创始团队[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 5,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9udyas0005nk4nl6up9g9a",
+      "person": "Andrej Karpathy",
+      "related": "John Schulman",
+      "type": "colleague",
+      "description": "OpenAI早期同事[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ue51z000dnk4n2bw4fsns",
+      "person": "Andrej Karpathy",
+      "related": "Sam Altman",
+      "type": "colleague",
+      "description": "OpenAI联合创始团队[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 5,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ue3b1000bnk4n09479igt",
+      "person": "Andrej Karpathy",
+      "related": "Wojciech Zaremba",
+      "type": "colleague",
+      "description": "OpenAI早期研究同事[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 7,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ugkwt000vnk4ndybs5hko",
+      "person": "Chris Olah",
+      "related": "Andrej Karpathy",
+      "type": "colleague",
+      "description": "同在OpenAI任职[2][3",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ugn69000xnk4ntg7syycs",
+      "person": "Chris Olah",
+      "related": "Greg Brockman",
+      "type": "colleague",
+      "description": "同在OpenAI任职[1][3",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ugy6q0015nk4ngi8hs20t",
+      "person": "Chris Olah",
+      "related": "Sam Altman",
+      "type": "colleague",
+      "description": "OpenAI时期同事[1][3",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uz3h100052k4mz8g6oilc",
+      "person": "Chris Olah",
+      "related": "Sam McCandlish",
+      "type": "colleague",
+      "description": "共同创立Anthropic",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vehsz002r2k4mqnx8ifr6",
+      "person": "Daniel Gross",
+      "related": "Ilya Sutskever",
+      "type": "cofounder",
+      "description": "共同创办SSI[3][1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 4,
+      "cofounder_org_count": 1,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "both sides have founder roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9veldr002t2k4mk42t8uqh",
+      "person": "Daniel Gross",
+      "related": "Sam Altman",
+      "type": "colleague",
+      "description": "同为YC合伙人[5][3]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uttra0061nk4n699gvsmv",
+      "person": "Dario Amodei",
+      "related": "Daniela Amodei",
+      "type": "colleague",
+      "description": "Anthropic联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9va7gy001x2k4mljjiwgpn",
+      "person": "Dario Amodei",
+      "related": "Jan Leike",
+      "type": "colleague",
+      "description": "曾同在OpenAI工作[3]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9va4wd001t2k4mbkn0fqs8",
+      "person": "Dario Amodei",
+      "related": "Sam Altman",
+      "type": "colleague",
+      "description": "OpenAI副总裁",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ulz6t0035nk4nulsvikza",
+      "person": "Demis Hassabis",
+      "related": "David Silver",
+      "type": "colleague",
+      "description": "DeepMind研究员",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 5,
+      "overlap_count": 4,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ul1ah002dnk4nas40rm51",
+      "person": "Demis Hassabis",
+      "related": "Mustafa Suleyman",
+      "type": "cofounder",
+      "description": "DeepMind联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 4,
+      "cofounder_org_count": 2,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "both sides have founder roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ukwwg002bnk4n8bmdl6zy",
+      "person": "Demis Hassabis",
+      "related": "Oriol Vinyals",
+      "type": "colleague",
+      "description": "DeepMind同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ul82w002jnk4nt91eiip8",
+      "person": "Demis Hassabis",
+      "related": "Shane Legg",
+      "type": "cofounder",
+      "description": "DeepMind联创[1][4",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 7,
+      "overlap_count": 5,
+      "cofounder_org_count": 1,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "both sides have founder roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ulckf002pnk4nm9lhm9as",
+      "person": "Demis Hassabis",
+      "related": "科拉伊·卡武克丘奥卢",
+      "type": "colleague",
+      "description": "DeepMind早期核心研究员",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 6,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vja1b004h2k4myolg3ojm",
+      "person": "Elon Musk",
+      "related": "Ashok Elluswamy",
+      "type": "colleague",
+      "description": "特斯拉Autopilot负责人",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9v204q000n2k4mbsrb6nkv",
+      "person": "Geoffrey Hinton",
+      "related": "拉里·佩奇",
+      "type": "colleague",
+      "description": "同在Google任职[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uijsz001hnk4nku7y3jrq",
+      "person": "Greg Brockman",
+      "related": "Jan Leike",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9v0avl00072k4maljqj7wb",
+      "person": "Greg Brockman",
+      "related": "John Schulman",
+      "type": "colleague",
+      "description": "OpenAI早期同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uiif9001fnk4n5hp5eoxn",
+      "person": "Greg Brockman",
+      "related": "Mira Murati",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uipsq001nnk4nb35dsglh",
+      "person": "Greg Brockman",
+      "related": "Sam McCandlish",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9upiz7004pnk4nb2puppfe",
+      "person": "Guillaume Lample",
+      "related": "Arthur Mensch",
+      "type": "cofounder",
+      "description": "共同创立Mistral AI",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 1,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "both sides have founder roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9v53ue00192k4mvlqvxod1",
+      "person": "Ilya Sutskever",
+      "related": "Barret Zoph",
+      "type": "colleague",
+      "description": "谷歌Brain同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uo5bm0049nk4nqvgic625",
+      "person": "Ilya Sutskever",
+      "related": "Daniela Amodei",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9unn92003pnk4n259l5w3d",
+      "person": "Ilya Sutskever",
+      "related": "Greg Brockman",
+      "type": "colleague",
+      "description": "OpenAI共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uo9pv004dnk4n7b1k1p7t",
+      "person": "Ilya Sutskever",
+      "related": "Jakub Pachocki",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9unved003znk4nmpcd9x2g",
+      "person": "Ilya Sutskever",
+      "related": "Jan Leike",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9unu1x003xnk4nlz7n80l6",
+      "person": "Ilya Sutskever",
+      "related": "Mira Murati",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uofcn004hnk4nzudbunfp",
+      "person": "Ilya Sutskever",
+      "related": "Sam McCandlish",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9uo8dm004bnk4ncgdm6qrl",
+      "person": "Ilya Sutskever",
+      "related": "吴恩达",
+      "type": "colleague",
+      "description": "共事于Google Brain",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vomxd005h2k4m48i85tac",
+      "person": "Jan Leike",
+      "related": "Demis Hassabis",
+      "type": "colleague",
+      "description": "DeepMind同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9voquw005l2k4mljnxa6ys",
+      "person": "Jan Leike",
+      "related": "Jakub Pachocki",
+      "type": "colleague",
+      "description": "曾同在OpenAI工作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9w8rli001hsw4dypm8h14t",
+      "person": "John Schulman",
+      "related": "Barret Zoph",
+      "type": "colleague",
+      "description": "同在Thinking Mach",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9umorh003dnk4nbwiq5g84",
+      "person": "John Schulman",
+      "related": "Ilya Sutskever",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9umv2j003jnk4not5bkiba",
+      "person": "John Schulman",
+      "related": "Jakub Pachocki",
+      "type": "colleague",
+      "description": "OpenAI同事[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9umnf5003bnk4ne0rsnlba",
+      "person": "John Schulman",
+      "related": "Sam Altman",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9umrgf003hnk4nqav1urft",
+      "person": "John Schulman",
+      "related": "Sam McCandlish",
+      "type": "colleague",
+      "description": "OpenAI同事[1]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9ursy2005pnk4nbjkxilhz",
+      "person": "Lukasz Kaiser",
+      "related": "Jan Leike",
+      "type": "colleague",
+      "description": "皆在OpenAI任职[1][4",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vma7w004t2k4mmsa0bw8p",
+      "person": "Mira Murati",
+      "related": "Ashok Elluswamy",
+      "type": "colleague",
+      "description": "特斯拉共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vm451004p2k4mxb9mz0la",
+      "person": "Mira Murati",
+      "related": "Bob McGrew",
+      "type": "colleague",
+      "description": "OpenAI同事兼顾问",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 4,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vmdvr004z2k4mulik84ic",
+      "person": "Mira Murati",
+      "related": "Jakub Pachocki",
+      "type": "colleague",
+      "description": "OpenAI共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vmgpf00532k4mz2str9qb",
+      "person": "Mira Murati",
+      "related": "Jerry Tworek",
+      "type": "colleague",
+      "description": "OpenAI共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vmfq400512k4mvs5twtbv",
+      "person": "Mira Murati",
+      "related": "Mark Chen",
+      "type": "colleague",
+      "description": "OpenAI共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vmi1z00552k4m8r0hd1rw",
+      "person": "Mira Murati",
+      "related": "Sam McCandlish",
+      "type": "colleague",
+      "description": "OpenAI共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vg8t6003d2k4mdynsv4b9",
+      "person": "Mustafa Suleyman",
+      "related": "Shane Legg",
+      "type": "cofounder",
+      "description": "DeepMind联创",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 6,
+      "overlap_count": 4,
+      "cofounder_org_count": 2,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "both sides have founder roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vfl8a00392k4mhsyr6pwi",
+      "person": "Oriol Vinyals",
+      "related": "David Silver",
+      "type": "colleague",
+      "description": "曾同在DeepMind工作",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vfh5l00332k4mpzqrap00",
+      "person": "Oriol Vinyals",
+      "related": "Noam Shazeer",
+      "type": "colleague",
+      "description": "共事于Google Brain",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vffck00312k4m834obza2",
+      "person": "Oriol Vinyals",
+      "related": "Quoc Le",
+      "type": "colleague",
+      "description": "共事于Google Brain",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vbnrm00292k4m4em6zlp7",
+      "person": "Quoc Le",
+      "related": "Noam Shazeer",
+      "type": "colleague",
+      "description": "同为Google Brain研",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vnb1p005b2k4mteahxobp",
+      "person": "Richard Socher",
+      "related": "Marc Benioff",
+      "type": "colleague",
+      "description": "Salesforce共事[4]",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9via5b003z2k4ms8yv2pxr",
+      "person": "Sam Altman",
+      "related": "Daniela Amodei",
+      "type": "colleague",
+      "description": "OpenAI前安全负责人",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vhtlf003l2k4m0h1f4268",
+      "person": "Sam Altman",
+      "related": "Greg Brockman",
+      "type": "colleague",
+      "description": "OpenAI联创兼总裁",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vickb00412k4m2hcpm6an",
+      "person": "Sam Altman",
+      "related": "Jakub Pachocki",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vhylu003p2k4muix7z0u9",
+      "person": "Sam Altman",
+      "related": "Jan Leike",
+      "type": "colleague",
+      "description": "OpenAI前对齐负责人",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vhxat003n2k4mdwvgc7us",
+      "person": "Sam Altman",
+      "related": "Mira Murati",
+      "type": "colleague",
+      "description": "OpenAI前CTO",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 4,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vi3n9003t2k4mag39mo4s",
+      "person": "Sam Altman",
+      "related": "Paul Graham",
+      "type": "advisor",
+      "description": "YC导师与早期支持者",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 2,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "advisor linked from PersonRole"
+      ]
+    },
+    {
+      "id": "cmk9viimy00472k4m486z904r",
+      "person": "Sam Altman",
+      "related": "Sam McCandlish",
+      "type": "colleague",
+      "description": "OpenAI同事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9v7lhg001j2k4mhezq87pr",
+      "person": "Wojciech Zaremba",
+      "related": "Daniela Amodei",
+      "type": "colleague",
+      "description": "OpenAI共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9v7isp001f2k4mjzyk6on9",
+      "person": "Wojciech Zaremba",
+      "related": "Mira Murati",
+      "type": "colleague",
+      "description": "OpenAI共事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 6,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9w3s3g0013sw4dbcmdfa64",
+      "person": "Yann LeCun",
+      "related": "迈克·施罗普费尔",
+      "type": "colleague",
+      "description": "共同在Facebook任职",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9w3pe40011sw4dlrij6srb",
+      "person": "Yann LeCun",
+      "related": "马克·扎克伯格",
+      "type": "colleague",
+      "description": "同为Meta高管",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vdp81002p2k4mi061a76e",
+      "person": "亚历克·拉德福德",
+      "related": "Elon Musk",
+      "type": "colleague",
+      "description": "早期OpenAI董事",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vdhum002j2k4m42k5lyhw",
+      "person": "亚历克·拉德福德",
+      "related": "Greg Brockman",
+      "type": "colleague",
+      "description": "均曾在OpenAI任职",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vdj7e002l2k4mwtfovmu7",
+      "person": "亚历克·拉德福德",
+      "related": "Ilya Sutskever",
+      "type": "colleague",
+      "description": "均在OpenAI研究",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmk9vdlq5002n2k4mi26xav1k",
+      "person": "亚历克·拉德福德",
+      "related": "Sam Altman",
+      "type": "colleague",
+      "description": "OpenAI时期上级",
+      "source": "perplexity",
+      "confidence": 0.9,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "overlapping roles at the same organization"
+      ]
+    },
+    {
+      "id": "cmkaf5ama0003gc9nfeenuop9",
+      "person": "Rachel Thomas",
+      "related": "Jeremy Howard",
+      "type": "cofounder",
+      "description": "fast.ai联创",
+      "source": "exa",
+      "confidence": 0.95,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 1,
+      "advisor_role_count": 0,
+      "bucket": "confirmed_by_roles",
+      "reasons": [
+        "both sides have founder roles at the same organization"
+      ]
+    }
+  ],
+  "trusted": [
+    {
+      "id": "cmk8gvhav000buu33povtwhjl",
+      "person": "Andrej Karpathy",
+      "related": "李飞飞",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 6,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9weib5001xlpm2hutq4y6z",
+      "person": "Christopher Manning",
+      "related": "克里斯蒂娜·N·图塔诺娃",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wf118001zlpm2g4lp9eef",
+      "person": "Christopher Manning",
+      "related": "塞缪尔·瑞安·鲍曼",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wf6an0021lpm2l6qcdhm9",
+      "person": "Christopher Manning",
+      "related": "梁明涛",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wdkkn001llpm2b4kl9tk0",
+      "person": "Geoffrey Hinton",
+      "related": "乔治·爱德华·达尔",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wcweq001flpm2103mlnfw",
+      "person": "Geoffrey Hinton",
+      "related": "克里斯托弗·K·I·威廉姆斯",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wb8up0015lpm2ft928tvu",
+      "person": "Geoffrey Hinton",
+      "related": "卡尔·爱德华·拉斯穆森",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wa448000zlpm2lk1deg4w",
+      "person": "Geoffrey Hinton",
+      "related": "安德烈·姆尼赫",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wdglo001jlpm2bs802siw",
+      "person": "Geoffrey Hinton",
+      "related": "尼蒂什·斯里瓦斯塔瓦",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wbdyq0017lpm2w3je1kx0",
+      "person": "Geoffrey Hinton",
+      "related": "布伦丹·J·弗雷",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wb01g0013lpm2am7uvc2k",
+      "person": "Geoffrey Hinton",
+      "related": "拉德福德·M·尼尔",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wapen0011lpm2deeip939",
+      "person": "Geoffrey Hinton",
+      "related": "理查德·S·泽梅尔",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 8,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wdrei001nlpm29sxbmbti",
+      "person": "Geoffrey Hinton",
+      "related": "纳夫迪普·杰特利",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wdx76001plpm2he5h639w",
+      "person": "Geoffrey Hinton",
+      "related": "蒂门·蒂勒曼",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wd6ba001hlpm2j5diyyh3",
+      "person": "Geoffrey Hinton",
+      "related": "詹姆斯·马滕斯",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9we3er001rlpm2r203zlc8",
+      "person": "Geoffrey Hinton",
+      "related": "阿卜杜勒-拉赫曼·穆罕默德",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9vq8f3000114axrwuh0677",
+      "person": "Hugo Larochelle",
+      "related": "Yoshua Bengio",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk8gux9c0007uu333g5zoafy",
+      "person": "Ilya Sutskever",
+      "related": "Geoffrey Hinton",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 3,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w9jo3000xlpm2yviwoxng",
+      "person": "Percy Liang",
+      "related": "凯尔文·顾",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 4,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w9dda000vlpm2x6qd19gx",
+      "person": "Percy Liang",
+      "related": "雅各布·斯坦哈特",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 8,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9hhwv6000f10pumewq3mtd",
+      "person": "Quoc Le",
+      "related": "吴恩达",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 2,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk8gv4ng0009uu33r1iiswei",
+      "person": "Richard Socher",
+      "related": "Christopher Manning",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 4,
+      "overlap_count": 4,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 2,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk8guk5m0005uu33k39rh2if",
+      "person": "Wojciech Zaremba",
+      "related": "Yann LeCun",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 2,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 4,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w8tyc000plpm2j2g2l19j",
+      "person": "Yann LeCun",
+      "related": "马克·奥雷利奥·兰扎托",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w7wb6000hlpm2fiwvm5zj",
+      "person": "Yoshua Bengio",
+      "related": "Yann Dauphin",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w6t3v0007lpm2ouy2rsz7",
+      "person": "Yoshua Bengio",
+      "related": "帕斯卡尔·文森特",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w7ifn000dlpm2w85j6li1",
+      "person": "Yoshua Bengio",
+      "related": "恰拉尔·居尔切赫雷",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w75w7000blpm2ed51fkfm",
+      "person": "Yoshua Bengio",
+      "related": "拉兹万·帕斯卡努",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w7nrz000flpm2dk7x02wg",
+      "person": "Yoshua Bengio",
+      "related": "杜米特鲁·埃尔汉",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9w71wc0009lpm2uoddvp6h",
+      "person": "Yoshua Bengio",
+      "related": "詹姆斯·伯格斯特拉",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wj6ka003dlpm2z8ozyoud",
+      "person": "Zoubin Ghahramani",
+      "related": "亚林·加尔",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wiyrt0039lpm2eebqypzb",
+      "person": "Zoubin Ghahramani",
+      "related": "伊恩·默里",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wiczj0033lpm2uta8rrc0",
+      "person": "Zoubin Ghahramani",
+      "related": "凯瑟琳·A·海勒",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 10,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wj2n0003blpm227g6mp6m",
+      "person": "Zoubin Ghahramani",
+      "related": "大卫·杜维诺",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wiq690037lpm2aje3hj6z",
+      "person": "Zoubin Ghahramani",
+      "related": "大卫·洛佩兹-帕兹",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 0,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wilhe0035lpm2jkxiczvs",
+      "person": "Zoubin Ghahramani",
+      "related": "沙基尔·穆罕默德",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9vspes000n14axqfsye32a",
+      "person": "丹·克莱因",
+      "related": "Christopher Manning",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wofpg004blpm2kobjbibw",
+      "person": "丹·克莱因",
+      "related": "Percy Liang",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wmxis0045lpm22t3o9r1e",
+      "person": "亚林·加尔",
+      "related": "Aidan Gomez",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 3,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9vqi8f000314axu7whdgqa",
+      "person": "伊恩·J·古德费洛",
+      "related": "Yoshua Bengio",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 2,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wndi30047lpm2949j16r1",
+      "person": "卡尔·爱德华·拉斯穆森",
+      "related": "大卫·杜维诺",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 3,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wmeh90041lpm2hro4re2j",
+      "person": "吉滕德拉·马利克",
+      "related": "乔恩·巴伦",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wlntg003tlpm2dgerxgqy",
+      "person": "吉滕德拉·马利克",
+      "related": "乔治亚·吉奥克萨里",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wlj0l003rlpm2x5s6ts7g",
+      "person": "吉滕德拉·马利克",
+      "related": "保罗·德贝维奇",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wltdl003vlpm24n5mw5ve",
+      "person": "吉滕德拉·马利克",
+      "related": "巴拉特·哈里哈兰",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wksh2003llpm24tmq84yh",
+      "person": "吉滕德拉·马利克",
+      "related": "彼得罗·佩罗纳",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 4,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wm1zt003xlpm2scddso7z",
+      "person": "吉滕德拉·马利克",
+      "related": "索拉布·古普塔",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wm7gv003zlpm23t4gs45h",
+      "person": "吉滕德拉·马利克",
+      "related": "舒布汉·图尔西亚尼",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wl5q8003nlpm20ru50gt8",
+      "person": "吉滕德拉·马利克",
+      "related": "谢尔盖·贝隆吉",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wlbp3003plpm2v4sos3hp",
+      "person": "吉滕德拉·马利克",
+      "related": "阿列克谢·A·埃夫罗斯",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9vshaz000l14axw05infm7",
+      "person": "吉米·巴",
+      "related": "Geoffrey Hinton",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 2,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9whvt5002zlpm2oghv8pg1",
+      "person": "吴恩达",
+      "related": "奥尼·汉农",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9whoqf002tlpm264l6qbgm",
+      "person": "吴恩达",
+      "related": "彼得·阿比尔",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9whkyo002rlpm23l9ssm8a",
+      "person": "吴恩达",
+      "related": "普拉纳夫·拉杰普尔卡",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9why360031lpm2w5i4l70u",
+      "person": "吴恩达",
+      "related": "李宏乐",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9whra3002vlpm2xht9g3nl",
+      "person": "吴恩达",
+      "related": "阿舒托什·萨克塞纳",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9whtr8002xlpm2541e80ew",
+      "person": "吴恩达",
+      "related": "齐科·科尔特",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wjloe003flpm2yhqf1s87",
+      "person": "妮基·帕尔玛",
+      "related": "阿希什·瓦斯瓦尼",
+      "type": "collaborator",
+      "description": "合作伙伴",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 4,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmkajbuqp004dg2e83wg5gaji",
+      "person": "彼得·阿比尔",
+      "related": "John Schulman",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 2,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wo1d00049lpm28d33p9q8",
+      "person": "彼得罗·佩罗纳",
+      "related": "李飞飞",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 3,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9hjhig000l10puh2j9ppve",
+      "person": "拉里·佩奇",
+      "related": "谢尔盖·布林",
+      "type": "collaborator",
+      "description": "合作伙伴",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wga1o0029lpm2xudiu9i2",
+      "person": "李飞飞",
+      "related": "于克朱",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wgz6h002llpm2ug9jwqc2",
+      "person": "李飞飞",
+      "related": "吉姆·范",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wgi2x002dlpm2z64sluko",
+      "person": "李飞飞",
+      "related": "塞雷娜·杨-利维",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wg63f0027lpm2gtvxdjvv",
+      "person": "李飞飞",
+      "related": "胡安·卡洛斯·尼布勒斯",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 7,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wgvya002jlpm231wr3p2m",
+      "person": "李飞飞",
+      "related": "苏浩",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wgl66002flpm2nkot2aif",
+      "person": "李飞飞",
+      "related": "蒂姆尼特·格布鲁",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 7,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wgq6j002hlpm2lx4lyxvo",
+      "person": "李飞飞",
+      "related": "贾扬清",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wgd6x002blpm23l23x3o8",
+      "person": "李飞飞",
+      "related": "贾斯汀·约翰逊",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 6,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wmkx70043lpm2577rnsp9",
+      "person": "理查德·S·泽梅尔",
+      "related": "詹姆斯·马滕斯",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 4,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk8gufuq0001uu330x1nxe05",
+      "person": "科拉伊·卡武克丘奥卢",
+      "related": "Yann LeCun",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 1,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wk4zx003hlpm2y9gv05wq",
+      "person": "谢尔盖·布林",
+      "related": "拉里·佩奇",
+      "type": "collaborator",
+      "description": "合作伙伴",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 3,
+      "overlap_count": 3,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9woq27004dlpm2p23z5vv9",
+      "person": "郑宇怀",
+      "related": "Aidan Gomez",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 3,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 6,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9vrx0h000f14axf6cjm5iw",
+      "person": "郑宇怀",
+      "related": "Geoffrey Hinton",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9himy5000h10pu5jijc774",
+      "person": "阿希什·瓦斯瓦尼",
+      "related": "妮基·帕尔玛",
+      "type": "collaborator",
+      "description": "合作伙伴",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 4,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9vqzuw000714axpibxetee",
+      "person": "雷亚·哈德塞尔",
+      "related": "Yann LeCun",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 1,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 1,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9vs6k5000h14ax3pv6knis",
+      "person": "鲁斯兰·萨拉赫丁诺夫",
+      "related": "Geoffrey Hinton",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 7,
+      "overlap_count": 1,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 0,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    },
+    {
+      "id": "cmk9wp2du004flpm24ctrr5m6",
+      "person": "鲁斯兰·萨拉赫丁诺夫",
+      "related": "尼蒂什·斯里瓦斯塔瓦",
+      "type": "advisor",
+      "description": "博士导师",
+      "source": "wikidata",
+      "confidence": 1,
+      "same_org_count": 2,
+      "overlap_count": 0,
+      "cofounder_org_count": 0,
+      "advisor_role_count": 4,
+      "bucket": "trusted",
+      "reasons": [
+        "trusted structured source"
+      ]
+    }
+  ]
+}

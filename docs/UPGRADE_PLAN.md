@@ -140,6 +140,7 @@ export async function generate(prompt, { primary = 'deepseek', fallback = 'gemin
 ## #5 Prisma 6 升级 + Schema 评估 (P1)
 
 - Prisma 5.22 → 6.x(已 GA),注意 breaking changes(需查 migration guide)
+- 2026-06-07 评估已完成：当前 schema 在 Prisma 5.22 与 Prisma 6.19.3 下均 validate 通过；Prisma 6 仅提示 `driverAdapters` preview 已废弃，升级时可从 `previewFeatures` 移除。当前仓库无 `Bytes` 字段、无 `NotFoundError` / `findUniqueOrThrow` 捕获、无隐式多对多 relation，官方迁移指南里的主要破坏点暂未命中。依赖版本升级仍单独处理，需同步 `prisma` / `@prisma/client` / `@prisma/adapter-neon` 与锁文件。
 - People 表 7 个字段塞 JSON(officialLinks/topicRanks/highlights/quotes/products/education/lastFetchedAt):
   - 查询无法索引、无类型校验
   - 评估: highlights/quotes/products 是否拆成关联表(参考已有 Card/PersonRole 模式)
