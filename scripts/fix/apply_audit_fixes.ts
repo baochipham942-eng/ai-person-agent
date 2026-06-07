@@ -170,6 +170,19 @@ async function doDateFix() {
     console.log(`  小计: 修复 ${ok} 条 | 定位失败 ${miss} 条`);
 }
 
+async function doCurrentTitleFix() {
+    console.log('\n========== ⑤ currentTitle 修正 ==========');
+    let ok = 0, miss = 0;
+    for (const f of (fixes.currentTitleFix || []) as Array<{ person: string; newTitle: string }>) {
+        const person = await prisma.people.findFirst({ where: { name: { contains: f.person } }, select: { id: true, name: true, currentTitle: true } });
+        if (!person) { miss++; warns.push(`[currentTitleFix] 未找到: ${f.person}`); continue; }
+        ok++;
+        console.log(`  ${person.name}: "${person.currentTitle || '(空)'}"  ->  "${f.newTitle}"`);
+        if (EXECUTE) await prisma.people.update({ where: { id: person.id }, data: { currentTitle: f.newTitle } });
+    }
+    console.log(`  小计: 修正 ${ok} 条 | 未找到 ${miss} 条`);
+}
+
 async function main() {
     console.log(`\n模式: ${mode}${ONLY ? ` | 仅: ${ONLY.join(',')}` : ''}`);
     // 顺序: 合并先于改名
@@ -177,6 +190,7 @@ async function main() {
     if (want('orgRename')) await doOrgRename();
     if (want('relationDelete')) await doRelationDelete();
     if (want('dateFix')) await doDateFix();
+    if (want('currentTitleFix')) await doCurrentTitleFix();
 
     if (warns.length) {
         console.log(`\n⚠️  警告 (${warns.length}):`);

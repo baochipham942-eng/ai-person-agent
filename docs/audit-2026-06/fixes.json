@@ -54,5 +54,14 @@
     { "person": "Andrej Karpathy", "org": "Google Research", "role": "实习生", "end": "2013-09-01", "markEstimate": true },
     { "person": "Andrej Karpathy", "org": "Google Brain", "role": "实习生", "end": "2011-09-01", "markEstimate": true },
     { "person": "Andrej Karpathy", "org": "Google DeepMind", "role": "实习生", "end": "2015-09-01", "markEstimate": true }
+  ],
+  "currentTitleFix": [
+    { "person": "Mira Murati", "newTitle": "Founder & CEO @ Thinking Machines Lab" },
+    { "person": "Wojciech Zaremba", "newTitle": "Co-founder @ OpenAI" },
+    { "person": "苏姿丰", "newTitle": "Chair & CEO @ AMD" },
+    { "person": "James Manyika", "newTitle": "SVP, Research & Technology @ Google" },
+    { "person": "张鹏", "newTitle": "CEO @ 智谱AI" },
+    { "person": "Rachel Thomas", "newTitle": "Co-founder @ fast.ai" },
+    { "person": "Arvind Krishna", "newTitle": "Chairman & CEO @ IBM" }
   ]
 }
