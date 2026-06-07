@@ -294,3 +294,25 @@ model Course {
   @@index([type])
   @@index([level])
 }
+
+/// 清洗审计日志: 记录每条 item 在各清洗阶段的决策, 用于回溯/度量/数据飞轮
+model QAAuditLog {
+  id          String   @id @default(cuid())
+  personId    String
+  url         String
+  urlHash     String
+  sourceType  String
+  stage       String   // L0(规则) | L1(语义) | L2(模糊去重)
+  verdict     String   // keep | reject | review | duplicate
+  // L1 语义评分 (L0/L2 可空)
+  aboutPerson Float?
+  aiRelevant  Float?
+  quality     Float?
+  reason      String?
+  createdAt   DateTime @default(now())
+
+  @@index([personId])
+  @@index([verdict])
+  @@index([stage])
+  @@index([createdAt])
+}

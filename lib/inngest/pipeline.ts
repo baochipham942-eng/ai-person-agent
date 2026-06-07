@@ -16,7 +16,7 @@ import {
     DataSourceResult,
 } from '@/lib/datasources';
 import { routerAgent, RouterInput } from '@/lib/agents/router-agent';
-import { qaAgent } from '@/lib/agents/qa-agent';
+import { cleanItems } from '@/lib/agents/clean-orchestrator';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
 import { savePersonRoles } from '@/lib/datasources/career';
 import { hashUrl } from '@/lib/datasources/adapter';
@@ -169,7 +169,7 @@ export const buildPersonJobV2 = inngest.createFunction(
 
         console.log(`[V2 Job] Total items before QA: ${allItems.length}`);
 
-        // Step 4: QA Agent 质检
+        // Step 4: 三段式清洗 (L0 规则硬过滤 -> L2 模糊去重 -> L1 语义判定 + 审计日志)
         const qaResult = await step.run('qa-check', async () => {
             // 获取已存在的 URL hashes（用于去重）
             const existingItems = await prisma.rawPoolItem.findMany({
@@ -178,10 +178,25 @@ export const buildPersonJobV2 = inngest.createFunction(
             });
             const existingHashes = new Set(existingItems.map(i => i.urlHash));
 
-            return await qaAgent.check(allItems, personContext, existingHashes);
+            const result = await cleanItems(allItems, personContext, {
+                existingUrlHashes: existingHashes,
+                persistAudit: true,
+                personId,
+            });
+
+            // 返回精简结果 (避免 step 序列化大对象)
+            return {
+                approved: result.approved,
+                report: {
+                    approvedCount: result.stats.approved,
+                    fixedCount: result.l0.report.fixedCount,
+                    rejectedCount: result.stats.l0Rejected + result.stats.dedupDropped + result.stats.semanticRejected,
+                    reviewCount: result.stats.semanticReview,
+                },
+            };
         });
 
-        console.log(`[V2 Job] QA Result: ${qaResult.report.approvedCount} approved, ${qaResult.report.fixedCount} fixed, ${qaResult.report.rejectedCount} rejected`);
+        console.log(`[V2 Job] QA Result: ${qaResult.report.approvedCount} approved, ${qaResult.report.fixedCount} fixed, ${qaResult.report.rejectedCount} rejected, ${qaResult.report.reviewCount} review`);
 
         // Step 5: 保存到数据库
         const savedCount = await step.run('save-items', async () => {
