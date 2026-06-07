@@ -74,11 +74,31 @@ async function doOrgMerge() {
         totalRoles += roleCount; totalPeople += peopleCount; totalDeleted += memberOrgs.length;
 
         if (EXECUTE) {
-            await prisma.$transaction(async (tx) => {
-                await tx.personRole.updateMany({ where: { organizationId: { in: memberIds } }, data: { organizationId: canonical.id } });
-                await tx.organization.deleteMany({ where: { id: { in: memberIds } } });
-            });
-            await syncPeopleOrgArray(nameZhMap, true);
+            try {
+                let merged = 0, dedupedDup = 0;
+                const roleKey = (r: { personId: string; role: string; startDate: Date | null }) =>
+                    `${r.personId}|${r.role}|${r.startDate?.toISOString() ?? 'null'}`;
+                await prisma.$transaction(async (tx) => {
+                    // 预取 canonical 已有键集合, 内存判重(避免逐条 findFirst 往返导致事务超时)
+                    const canonRoles = await tx.personRole.findMany({ where: { organizationId: canonical.id }, select: { personId: true, role: true, startDate: true } });
+                    const keys = new Set(canonRoles.map(roleKey));
+                    const memberRoles = await tx.personRole.findMany({
+                        where: { organizationId: { in: memberIds } },
+                        select: { id: true, personId: true, role: true, startDate: true },
+                    });
+                    for (const r of memberRoles) {
+                        const k = roleKey(r);
+                        // 撞唯一键(canonical 已有 或 同批已repoint) -> 删 member 侧重复; 否则 repoint
+                        if (keys.has(k)) { await tx.personRole.delete({ where: { id: r.id } }); dedupedDup++; }
+                        else { await tx.personRole.update({ where: { id: r.id }, data: { organizationId: canonical.id } }); keys.add(k); merged++; }
+                    }
+                    await tx.organization.deleteMany({ where: { id: { in: memberIds } } });
+                }, { timeout: 60000, maxWait: 15000 });
+                await syncPeopleOrgArray(nameZhMap, true);
+                if (dedupedDup > 0) console.log(`     ↳ repoint ${merged} 条, 另删 ${dedupedDup} 条重复履历`);
+            } catch (e) {
+                warns.push(`[orgMerge] 簇 "${cluster.keep}" 执行失败(已回滚): ${(e as Error).message?.slice(0, 200)}`);
+            }
         }
     }
     console.log(`  小计: repoint ${totalRoles} roles | 更新 ${totalPeople} 人 | 删 ${totalDeleted} 个冗余机构`);
