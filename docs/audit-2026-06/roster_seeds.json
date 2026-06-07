@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "source": "AUDIT_FINDINGS.md §7",
+    "note": "2025-2026 缺失人物种子。插入前必须先跑 dedup 核对(尤其 Lilian Weng/Justin Johnson)。influenceScore 不预设(待重算)。",
+    "dedupRisk": ["Lilian Weng↔李莲", "Justin Johnson↔贾斯汀·约翰逊"]
+  },
+  "seeds": [
+    { "name": "Aravind Srinivas", "nameZh": "阿拉文德·斯里尼瓦斯", "roleCategory": "founder", "organization": ["Perplexity"], "currentTitle": "Co-founder & CEO @ Perplexity", "aliases": ["Aravind Srinivas"], "reason": "AI 原生搜索标杆" },
+    { "name": "Deepak Pathak", "nameZh": "迪帕克·帕塔克", "roleCategory": "founder", "organization": ["Skild AI"], "currentTitle": "Founder & CEO @ Skild AI", "aliases": [], "reason": "具身智能产业新锐" },
+    { "name": "Brett Adcock", "nameZh": "布雷特·阿德科克", "roleCategory": "founder", "organization": ["Figure AI"], "currentTitle": "Founder & CEO @ Figure AI", "aliases": [], "reason": "人形机器人商业化标杆" },
+    { "name": "Michael Truell", "nameZh": "迈克尔·特鲁尔", "roleCategory": "founder", "organization": ["Anysphere"], "currentTitle": "Co-founder & CEO @ Anysphere (Cursor)", "aliases": ["Cursor"], "reason": "AI coding 一号位" },
+    { "name": "Shengjia Zhao", "nameZh": "赵晟佳", "roleCategory": "researcher", "organization": ["Meta Superintelligence Labs"], "currentTitle": "Chief Scientist @ Meta Superintelligence Labs", "aliases": ["赵晟佳"], "reason": "GPT-4/o1 核心" },
+    { "name": "Noam Brown", "nameZh": "诺姆·布朗", "roleCategory": "researcher", "organization": ["OpenAI"], "currentTitle": "推理研究负责人 @ OpenAI", "aliases": [], "reason": "o1/o3 推理奠基人" },
+    { "name": "Lilian Weng", "nameZh": "翁丽莲", "roleCategory": "founder", "organization": ["Thinking Machines Lab"], "currentTitle": "Co-founder @ Thinking Machines Lab", "aliases": ["翁丽莲", "翁荔"], "reason": "前 OpenAI 安全 VP", "dedupCheck": ["李莲", "翁丽莲", "翁荔", "Lilian"] },
+    { "name": "Tim Brooks", "nameZh": "蒂姆·布鲁克斯", "roleCategory": "researcher", "organization": ["Google DeepMind"], "currentTitle": "世界模型团队负责人 @ Google DeepMind", "aliases": [], "reason": "Sora 共同负责人" },
+    { "name": "Justin Johnson", "nameZh": "贾斯汀·约翰逊", "roleCategory": "founder", "organization": ["World Labs"], "currentTitle": "Co-founder @ World Labs", "aliases": ["贾斯汀·约翰逊"], "reason": "空间智能", "dedupCheck": ["贾斯汀·约翰逊", "Justin Johnson"] },
+    { "name": "Ben Mildenhall", "nameZh": "本·米尔登霍尔", "roleCategory": "founder", "organization": ["World Labs"], "currentTitle": "Co-founder @ World Labs", "aliases": [], "reason": "NeRF 发明者" },
+    { "name": "Liam Fedus", "nameZh": "利亚姆·费杜斯", "roleCategory": "founder", "organization": ["Periodic Labs"], "currentTitle": "Co-founder @ Periodic Labs", "aliases": ["William Fedus"], "reason": "前 OpenAI 后训练 VP" },
+    { "name": "Junyang Lin", "nameZh": "林俊旸", "roleCategory": "researcher", "organization": ["阿里通义千问"], "currentTitle": "前 Qwen 技术负责人", "aliases": ["林俊旸"], "reason": "中国开源大模型技术一号位" },
+    { "name": "Bindu Reddy", "nameZh": "宾杜·雷迪", "roleCategory": "founder", "organization": ["Abacus.AI"], "currentTitle": "Co-founder & CEO @ Abacus.AI", "aliases": [], "reason": "agentic AI 平台" }
+  ]
+}
