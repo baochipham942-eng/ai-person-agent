@@ -41,12 +41,16 @@ export interface SemanticQAConfig {
     batchSize: number;
     chain: ProviderName[];
     maxTextChars: number;
+    concurrency: number;  // 并发批数 (中转站限流, 默认 5)
+    requestDelayMs: number;  // 批次窗口之间的等待时间
 }
 
 const DEFAULT_CONFIG: SemanticQAConfig = {
     batchSize: 8,
     chain: ['gemini', 'deepseek'],
     maxTextChars: 600,
+    concurrency: 5,
+    requestDelayMs: 0,
 };
 
 export interface SemanticQAResult {
@@ -61,6 +65,10 @@ function chunk<T>(arr: T[], size: number): T[][] {
     const out: T[][] = [];
     for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
     return out;
+}
+
+function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function buildPrompt(items: NormalizedItem[], person: PersonContext, maxChars: number): ChatMessage[] {
@@ -104,7 +112,9 @@ export async function semanticQA(
     let failedBatches = 0;
 
     const batches = chunk(items, cfg.batchSize);
-    for (const batch of batches) {
+
+    // 单批处理: 返回该批的评分结果
+    const processBatch = async (batch: NormalizedItem[]): Promise<SemanticQAResult['scored']> => {
         try {
             const { data } = await generateStructured(
                 buildPrompt(batch, person, cfg.maxTextChars),
@@ -112,22 +122,25 @@ export async function semanticQA(
                 { chain: cfg.chain, maxTokens: 1500, temperature: 0.2 }
             );
             const byIndex = new Map(data.scores.map(s => [s.index, s]));
-            batch.forEach((item, i) => {
+            return batch.map((item, i) => {
                 const s = byIndex.get(i);
-                if (s) {
-                    scored.push({ item, score: { aboutPerson: s.aboutPerson, aiRelevant: s.aiRelevant, quality: s.quality, verdict: s.verdict, reason: s.reason } });
-                } else {
-                    // 模型漏了这条 -> review
-                    scored.push({ item, score: { aboutPerson: 0, aiRelevant: 0, quality: 0, verdict: 'review', reason: '模型未返回该条评分' } });
-                }
+                return s
+                    ? { item, score: { aboutPerson: s.aboutPerson, aiRelevant: s.aiRelevant, quality: s.quality, verdict: s.verdict, reason: s.reason } }
+                    : { item, score: { aboutPerson: 0, aiRelevant: 0, quality: 0, verdict: 'review' as const, reason: '模型未返回该条评分' } };
             });
         } catch (e) {
             failedBatches++;
             console.warn(`[semanticQA] batch failed, marking ${batch.length} items as review: ${(e as Error).message?.slice(0, 120)}`);
-            for (const item of batch) {
-                scored.push({ item, score: { aboutPerson: 0, aiRelevant: 0, quality: 0, verdict: 'review', reason: '质检服务失败,待重试' } });
-            }
+            return batch.map(item => ({ item, score: { aboutPerson: 0, aiRelevant: 0, quality: 0, verdict: 'review' as const, reason: '质检服务失败,待重试' } }));
         }
+    };
+
+    // 并发池: 同时跑 cfg.concurrency 个批次 (中转站限流保护)
+    for (let i = 0; i < batches.length; i += cfg.concurrency) {
+        if (i > 0 && cfg.requestDelayMs > 0) await sleep(cfg.requestDelayMs);
+        const window = batches.slice(i, i + cfg.concurrency);
+        const results = await Promise.all(window.map(processBatch));
+        for (const r of results) scored.push(...r);
     }
 
     const keep = scored.filter(s => s.score.verdict === 'keep').map(s => s.item);
