@@ -244,7 +244,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           />
         )}
 
-        {/* 3. 代表作品（代表产品/开源项目/核心论文/话题贡献/学习卡片/博客/播客） */}
+        {/* 3. 代表作品（代表成果/开源项目/核心论文/话题贡献/学习卡片/博客/播客） */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}

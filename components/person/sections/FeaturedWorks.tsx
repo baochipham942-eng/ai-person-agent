@@ -212,8 +212,8 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   // 构建可用的 tabs - 使用 useMemo 避免重复计算
   const tabs = useMemo(() => {
     const result: { key: TabKey; label: string; count?: number }[] = [];
-    // 产品 tab（只显示真正的产品）
-    if (hasProducts) result.push({ key: 'products', label: '代表产品' });
+    // 成果 tab（承载产品、模型、工具、框架、数据集等代表性产出）
+    if (hasProducts) result.push({ key: 'products', label: '代表成果' });
     // 开源项目 tab
     if (hasOpensource) result.push({ key: 'opensource', label: '开源项目' });
     if (hasPapers) result.push({ key: 'papers', label: '核心论文', count: papers?.length });
@@ -374,7 +374,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
 
       {/* 内容区域 */}
       <div className="p-5">
-        {/* 代表产品 */}
+        {/* 代表成果 */}
         {activeTab === 'products' && (
           <div className="space-y-4">
             {hasProducts ? (
@@ -455,8 +455,8 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
             ) : (
               <div className="text-center py-8 text-stone-400">
                 <div className="text-3xl mb-2">🚀</div>
-                <div className="text-sm">暂无代表产品信息</div>
-                <p className="text-xs text-stone-400 mt-1">产品信息正在补充中...</p>
+                <div className="text-sm">暂无代表成果信息</div>
+                <p className="text-xs text-stone-400 mt-1">成果信息正在补充中...</p>
               </div>
             )}
           </div>

@@ -186,8 +186,8 @@ function buildCards(person: CandidatePerson, seed: EnrichmentSeed): StarterCard[
   for (const product of seed.products || []) {
     cards.push({
       type: 'fact',
-      title: `${product.name}: ${person.name} 的代表线索`,
-      content: `${person.name} 当前处于 candidate 状态，${product.name} 是后续补全时最值得优先核实的代表项目。${product.description}`,
+      title: `${product.name}: ${person.name} 的代表成果线索`,
+      content: `${product.name} 是 ${person.name} 的代表成果线索，后续可继续补强来源与细节。${product.description}`,
       tags: compact([product.category, product.type, ...topics]).slice(0, 6),
       sourceUrl: product.url,
       importance: 3,
