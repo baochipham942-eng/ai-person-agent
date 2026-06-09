@@ -10,7 +10,6 @@
 import { z } from 'zod';
 import { generateStructured, type ChatMessage } from './provider';
 import { CARD_GENERATION_SYSTEM_PROMPT, CARD_GENERATION_USER_PROMPT, TOPIC_EXTRACTION_PROMPT } from './prompts';
-import { prisma } from '@/lib/db/prisma';
 import { getIdentityScore } from '@/lib/utils/identity';
 import { simhash, hammingDistance } from '@/lib/utils/dedup';
 
@@ -34,9 +33,14 @@ const CardSchema = z.object({
     content: z.string(),
     tags: z.array(z.string()).default([]),
     sourceUrl: z.string().optional(),
-    importance: z.number().default(3),
+    importance: z.coerce.number().default(3).transform(value => Math.min(5, Math.max(1, Math.round(value)))),
 });
 const CardArraySchema = z.object({ cards: z.array(CardSchema) });
+
+async function loadPrisma() {
+    const db = await import('@/lib/db/prisma');
+    return db.prisma;
+}
 
 /** 归一化标题用于去重 (小写 + 去空白标点) */
 function normalizeTitle(s: string): string {
@@ -51,7 +55,7 @@ export async function generateCardsForPerson(
     personId: string,
     personName: string,
     rawItems: { title: string; text: string; url: string }[],
-    options: { topN?: number; englishName?: string } = {}
+    options: { topN?: number; englishName?: string; existingCards?: { title: string; content: string }[] } = {}
 ): Promise<Card[]> {
     if (rawItems.length === 0) {
         console.log(`[CardGeneration] No raw items for person ${personId}`);
@@ -77,7 +81,7 @@ export async function generateCardsForPerson(
     }));
 
     // 取最近 20 张已有卡片作为去重上下文
-    const existingCards = await prisma.card.findMany({
+    const existingCards = options.existingCards ?? await (await loadPrisma()).card.findMany({
         where: { personId },
         select: { title: true, content: true },
         orderBy: { createdAt: 'desc' },
@@ -144,6 +148,7 @@ export async function extractTopicsForPerson(
 export async function saveCardsToDatabase(personId: string, cards: Card[]): Promise<void> {
     if (cards.length === 0) return;
 
+    const prisma = await loadPrisma();
     const existingCards = await prisma.card.findMany({
         where: { personId },
         select: { title: true, content: true },

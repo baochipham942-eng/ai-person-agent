@@ -21,6 +21,9 @@ type RelationRow = {
   description: string | null;
   source: string;
   confidence: number;
+  reviewStatus: string;
+  evidenceUrl: string | null;
+  evidenceNote: string | null;
   same_org_count: number;
   overlap_count: number;
   cofounder_org_count: number;
@@ -47,6 +50,16 @@ const sql = neon(process.env.DATABASE_URL);
 
 function toBucket(row: RelationRow): ReviewRow {
   const reasons: string[] = [];
+
+  if (row.reviewStatus === 'trusted') {
+    reasons.push(row.evidenceNote || 'trusted review status');
+    return { ...row, bucket: 'trusted', reasons };
+  }
+
+  if (row.reviewStatus === 'confirmed') {
+    reasons.push(row.evidenceNote || 'confirmed review status');
+    return { ...row, bucket: 'confirmed_by_roles', reasons };
+  }
 
   if (row.source === 'wikidata') {
     reasons.push('trusted structured source');
@@ -103,6 +116,9 @@ async function main() {
         r.description,
         r.source,
         r.confidence,
+        r."reviewStatus",
+        r."evidenceUrl",
+        r."evidenceNote",
         COALESCE(shared.same_org_count, 0)::int AS same_org_count,
         COALESCE(shared.overlap_count, 0)::int AS overlap_count,
         COALESCE(shared.cofounder_org_count, 0)::int AS cofounder_org_count,

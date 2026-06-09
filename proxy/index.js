@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const http = require('http');
 const https = require('https');
-const zlib = require('zlib');
 
 const TARGET_HOST = 'ai-person-agent.vercel.app';
 
@@ -46,18 +46,6 @@ function serveStaticFile(req, res, urlPath) {
 const server = http.createServer((req, res) => {
     // Parse URL to handle query strings
     const urlPath = req.url.split('?')[0];
-
-    // Serve coupon static files locally
-    if (urlPath.startsWith('/coupon')) {
-        // Redirect /coupon to /coupon/ so index.html is served
-        if (urlPath === '/coupon') {
-            res.writeHead(301, { 'Location': '/coupon/' });
-            res.end();
-            return;
-        }
-        serveStaticFile(req, res, urlPath);
-        return;
-    }
 
     // Serve all avatars locally (manual + seed)
     if (urlPath.startsWith('/avatars/')) {

@@ -1,11 +1,11 @@
 # 内容清洗 & 聚合逻辑优化方案
 
-> 生成: 2026-06-07
+> 生成: 2026-06-09
 > 范围: QA Agent 清洗链路 + Inngest pipeline 聚合链路 + 卡片/职业数据聚合
 > 结论: 当前清洗=纯规则关键词匹配(门槛形同虚设),聚合=无序截断+精确去重(脏数据累积)。
 >       新接入的 gemini-3-flash-preview 额度正好补上"语义判断"这一层。
 
-## ✅ 实现进度 (2026-06-07)
+## ✅ 实现进度 (2026-06-09)
 
 清洗地基已落地并端到端验证:
 - `lib/ai/provider.ts` — 多 provider 统一抽象 + 降级链 + 结构化输出(json_object+zod+修复重试)
@@ -14,9 +14,20 @@
 - `lib/agents/clean-orchestrator.ts` — 三段式编排 `cleanItems()`: L0(规则硬过滤,复用 QAAgent 关掉关键词判定) → L2(模糊去重) → L1(语义) + 审计落库
 - `QAAuditLog` 表已 push (记录每条 item 各阶段决策)
 - `lib/inngest/pipeline.ts` qa-check 步骤已接入 `cleanItems`
+- `RouterAgent` 已接入 QAAuditLog 反馈: route step 读取近 90 天各来源 verdict 分布, 可选低质源自动降权/跳过, 高通过率源提权, fetch 阶段按 priority 收紧 `maxResults`
+- 卡片重聚合脚本已补齐并执行: `scripts/enrich/regenerate_cards.ts` 默认 dry-run, 只使用最新 `QAAuditLog` verdict=keep 的 RawPoolItem, 支持 `--list`/`--person`/`--top-n`/`--min-items`/`--include-candidates`/`--candidates-only`/`--execute`, 并走 Neon raw SQL 避开 Bun+Prisma native engine 签名问题。ready 人群新增 327 张卡、覆盖 59 人；candidate 人群追加 41 张卡、11 人当前均有 5-7 张卡；薄输入保护 `--min-items=3` 已加，topN 已作为保存上限执行，18 张薄输入误生成卡已删除，复核 `thin=[]`。
+- career 规范化入口已补齐并执行 safe fix: `savePersonRoles()` 入库前标准化机构名、跳过无机构 P39 职位、无 QID 机构不再用 fake qid upsert、笼统 Employee 不覆盖更具体职位；新增 `audit_career_normalization.ts`、`export_career_review_buckets.ts`、`apply_career_normalization_safe.ts`、`apply_career_review_safe_fixes.ts`、`apply_career_review_decisions.ts` 和 `apply_current_title_decisions.ts`(默认 dry-run)。本轮合并 Cambricon Technologies / DeepSeek 重复机构，去重 Christopher Manning / Noam Shazeer 的 organization 数组，删除 Zuckerberg 1 条 exact duplicate role，删除空 CTO Organization，把 CEO/professor/board of directors member position-like Organization 清到 0，并把 Daniela Amodei / Ethan Mollick / Marc Benioff / Marian Croak / 唐杰 / 李莲的 Employee 泛化 role 更新为具体职位，补正李开复在 Apple / CMU 的 2 条泛化履历，删除 Mira Murati @ Goldman Sachs 的冲突 Employee 行；随后把 33 条 education generic role 按证据更新为学位/学习阶段，删除 3 条不可信教育噪声；再按 10 条来源支持决策补正 currentTitle / People.organization。当前 Organization 622 / PersonRole 1114 / vagueRoles 0 / currentTitle mismatch 23。
+- influenceScore v2 已补齐并执行: `scripts/enrich/recalculate_influence_v2.ts` 使用产品导向权重重算 230 人，主榜定义为影响力榜，权重保持 AI 原创贡献 35 / 产业生态 25 / 权威信号 20 / 学习价值 10 / 近况 10；`candidate`/`pending` 乘数 0.35；候选池清空和 prune 第一批后均已重算，`scripts/enrich/calculate_topic_ranks_v2.ts` 已更新 229 人、54 个 topic。
+- roster candidate flow 已补齐并执行: `scripts/enrich/apply_roster_candidates.ts` 默认 dry-run，`--execute` 已插入 11 个 `status=candidate` 新人并更新 Lilian Weng / Justin Johnson 两个既有人物。
+- roster enrichment flow 已补齐并执行: `docs/audit-2026-06/roster_enrichment.json` 提供可审种子，`scripts/enrich/apply_roster_enrichment.ts` 默认 dry-run，`--execute` 已为 11 个 candidate 补齐 topics / products / officialLinks / sourceWhitelist；重跑为 13 matched / 0 missing / 0 delta。
+- candidate deep enrichment 第一段已执行: `scripts/enrich/apply_candidate_deep_enrichment.ts` 默认 dry-run，`--execute` 已为 11 个 candidate 追加去重 RawPoolItem 19 条、QA keep 19 条、source-backed starter cards 26 张、GitHub 高置信头像 4 个；重跑为 0 delta。
+- candidate live fetch 第二段已执行: `scripts/enrich/fetch_candidate_live_sources.ts` 默认 dry-run，`--execute` 已把 11 个 candidate 的 officialLinks 真抓并回填 RawPoolItem / QAAuditLog；当前 21 条 live RawPoolItem，11 个 candidate completeness=45，7 个头像通过核图保留。candidate 卡片重聚合后共有 29 条 RawPoolItem / 29 条 QA keep / 67 张卡；`export_candidate_readiness.ts` 已导出 11 人事实门槛达标，`promote_candidate_readiness.ts --execute` 先将 7 个有头像 candidate 升为 ready。随后 `candidate_avatar_decisions.json` 与 `apply_candidate_avatar_decisions.ts --execute` 为剩余 4 人补齐来源支持真人头像，并将 Aravind Srinivas / Brett Adcock / Junyang Lin / Tim Brooks 升为 ready；当前 active 136 / ready 94 / candidate 0。
+- career / relation review buckets 已补齐: `scripts/audit/export_career_review_buckets.ts` 和 `scripts/audit/export_relation_review_buckets.ts` 均为只读导出，分别生成 career 和 relation 的后续人工裁定包。
+- prune 第一批已执行: `scripts/audit/export_prune_candidates.ts` 已导出 `prune_candidates.json`；`scripts/fix/prune_raw_pool_items.ts --execute` 已按 safe 边界删除 `duplicate` 157 / `empty_content` 460 / `incomplete` 2，共 619 条 RawPoolItem，并保留 `prune_archive_safe.json` 快照。当前 RawPoolItem 审计面 3688 条，只剩 `reject` 1199 条作为下一批候选，review 311 条保留人工看。
+- relation 高敏复核、弱 colleague 清理和证据小批次已执行: `scripts/fix/apply_relation_review_decisions.ts` 默认 dry-run，`--execute` 已确认 OpenAI/DNNresearch/Anthropic/Thinking Machines/AIX/YC/Transformer/HAI/ImageNet/Seq2Seq/FLAN/GAN/Bahdanau attention/AlexNet/Turing Award/AlphaFold/Codex 等 52 条外部证据关系，删除 12 条高敏或描述错误 false-positive、27 条无共同机构证据的 Perplexity colleague 噪声、32 条公司合作/公开信共同署名/泛泛同台等弱 collaborator 边，以及最终 8 条无日期 overlap 或无共享机构证据的 colleague 边；`export_relation_review.ts` 已尊重 DB reviewStatus，needsReview 131→0，高敏 advisor/cofounder/collaborator/colleague bucket 已清空。
 - **验证**: 造测试集跑通; 关键根因(只提"Google"的内容旧逻辑误收)被 L1 正确判 reject (ap=0); 抓错人正确拒; tsc 0 错误
 
-待办: ① 卡片有序聚合 + 语义去重(§二 P0-3) ② career 规范化合并(§二 P1-5) ③ 全量重洗回填 ④ A/B 误收误拒度量
+待办: ① 抽样确认 reject prune 第二批 ② 按 career buckets 分批裁定剩余 currentTitle mismatch ③ 设计卡片 generation-based 展示替换机制 ④ A/B 误收误拒度量
 
 ---
 
@@ -91,6 +102,8 @@
 - 喂 LLM 前按 `L1.quality * 0.6 + getIdentityScore * 0.4` 排序,取 Top-N(而非 DB 默认前 10)。
 - 卡片生成换 `generateObject` + zod(接 #1 LLM 抽象层),失败重试 + 非静默告警。
 - 卡片去重: 标题精确 → 标题/内容语义相似(embedding 或 LLM 判重)。
+- 已补一次性重聚合入口 `scripts/enrich/regenerate_cards.ts`: 默认 dry-run、不删旧卡,使用最新 QA keep 结果过滤输入; `--execute` 只追加去重后的新卡。importance 已在 schema 层 clamp 到 1-5，topN 在保存前硬截断。
+- 当前产品口径: 短期继续 append-only + QA keep + topN 去重；真正改展示层时，用 generation-based 替换机制让新 generation 替换前台展示，旧卡保留历史，不直接物理删卡。
 
 **4. QA 审计落库 `QAAuditLog` 表** (修 AO2)
 - 每条 item 的 verdict/score/reason 落库,字段: `personId, url, sourceType, verdict, aboutPerson, aiRelevant, quality, reason, createdAt`。
@@ -101,9 +114,12 @@
 **5. career 数据规范化合并** (修 A5)
 - 入库前: 组织名标准化(复用 `ORG_ALIASES`)+ 模糊去重 + 日期冲突消解(多源取高置信)。
 - 职位笼统("Employee")用 LLM 结合上下文补精确职位。
+- 已补入口防线: 无机构 P39 不再把 CEO/professor 当 Organization; 无 QID 机构按 name/nameZh 查找或创建,避免重复 Organization; 更具体 role 会覆盖同区间的 Employee, Employee 不覆盖既有具体职位。
+- 已补存量审计: `career_normalization_audit.json` 当前 Organization 622 / PersonRole 1114 / People 230; duplicate org clusters 0, position-like org 0, duplicate role group 0, vague roles 0, People.organization 重复 0, currentTitle org mismatch 23。
+- 已执行 safe fix: 合并 Cambricon/DeepSeek 同名机构各 1 条 role ref,去重 Christopher Manning/Noam Shazeer 的 organization 数组,删除 Zuckerberg 1 条 exact duplicate role,删除空 CTO Organization,把 Elon Musk 在 OpenAI 的泛化 Employee 修为 Co-chair,删除 5 条 `Employee @ 董事会成员`,更新 Daniela Amodei / Ethan Mollick / Marc Benioff / Marian Croak / 唐杰 / 李莲的 Employee 泛化 role,补正李开复在 Apple / CMU 的 2 条泛化履历,删除 Mira Murati @ Goldman Sachs 的冲突 Employee 行,并把 CEO/professor/board of directors member position-like Organization 清到 0。
 
 **6. Router 反馈闭环** (修 A6)
-- 读 QAAuditLog 统计各源近期命中率,命中率持续低于阈值的源,下次降权或跳过。
+- 已接入: 读 QAAuditLog 统计各源近期命中率,样本足够且低质率高的可选源下次降权或跳过；核心源只降权不自动关闭；fetch 阶段会按 priority 收紧 `maxResults`。
 
 **7. confidence 校准** (修 C7)
 - 各 adapter confidence 重新定义口径,或废弃 confidence 阈值改用 L1.quality 统一打分。

@@ -18,6 +18,25 @@ export interface SourceDecision {
     reason: string;
 }
 
+export interface SourceQualitySignal {
+    source: SourceType;
+    total: number;
+    keep: number;
+    reject: number;
+    review: number;
+    duplicate: number;
+    emptyContent: number;
+    incomplete: number;
+    badRate: number;
+    keepRate: number;
+}
+
+export interface RouterFeedback {
+    source: SourceType;
+    action: 'boost' | 'downgrade' | 'skip';
+    reason: string;
+}
+
 export interface SearchStrategy {
     primaryName: string;
     alternativeNames: string[];
@@ -29,6 +48,7 @@ export interface RouterDecision {
     enabledSources: SourceDecision[];
     searchStrategy: SearchStrategy;
     confidenceThreshold: number;
+    sourceFeedback: RouterFeedback[];
 }
 
 export interface OfficialLink {
@@ -42,6 +62,31 @@ export interface RouterInput {
     officialLinks: OfficialLink[];
     orcid?: string;
     qid?: string;
+    sourceQuality?: SourceQualitySignal[];
+}
+
+type SourcePriority = SourceDecision['priority'];
+
+const MIN_SOURCE_QUALITY_SAMPLE = 20;
+const NOISY_SOURCE_BAD_RATE = 0.55;
+const SKIP_SOURCE_BAD_RATE = 0.75;
+const STRONG_SOURCE_KEEP_RATE = 0.65;
+const SKIPPABLE_SOURCES = new Set<SourceType>(['youtube', 'podcast', 'baike', 'ai_knowledge', 'perplexity']);
+
+function priorityDown(priority: SourcePriority): SourcePriority {
+    if (priority === 'high') return 'medium';
+    if (priority === 'medium') return 'low';
+    return 'low';
+}
+
+function priorityUp(priority: SourcePriority): SourcePriority {
+    if (priority === 'low') return 'medium';
+    if (priority === 'medium') return 'high';
+    return 'high';
+}
+
+function formatRate(value: number): string {
+    return `${Math.round(value * 100)}%`;
 }
 
 // ============== Router Agent 实现 ==============
@@ -158,21 +203,94 @@ export class RouterAgent {
         }
 
         // 生成搜索策略
-        const searchStrategy = this.buildSearchStrategy(person, isChinese);
+        const searchStrategy = this.buildSearchStrategy(person);
 
         // 根据人物类型设置置信度阈值
         const confidenceThreshold = isAcademic ? 70 : isTechFounder ? 60 : 50;
 
+        const routed = this.applySourceQualityFeedback(enabledSources, input.sourceQuality);
+
         console.log(`[RouterAgent] Decision for ${person.name}:`);
         console.log(`  - Type: ${isAcademic ? 'Academic' : isTechFounder ? 'TechFounder' : 'General'}`);
-        console.log(`  - Sources: ${enabledSources.map(s => `${s.source}(${s.priority})`).join(', ')}`);
+        console.log(`  - Sources: ${routed.sources.map(s => `${s.source}(${s.priority})`).join(', ')}`);
+        if (routed.feedback.length > 0) {
+            console.log(`  - QA feedback: ${routed.feedback.map(f => `${f.source}:${f.action}`).join(', ')}`);
+        }
         console.log(`  - Confidence threshold: ${confidenceThreshold}`);
 
         return {
-            enabledSources,
+            enabledSources: routed.sources,
             searchStrategy,
             confidenceThreshold,
+            sourceFeedback: routed.feedback,
         };
+    }
+
+    private applySourceQualityFeedback(
+        sources: SourceDecision[],
+        sourceQuality: SourceQualitySignal[] | undefined
+    ): { sources: SourceDecision[]; feedback: RouterFeedback[] } {
+        if (!sourceQuality || sourceQuality.length === 0) {
+            return { sources, feedback: [] };
+        }
+
+        const bySource = new Map(sourceQuality.map(s => [s.source, s]));
+        const feedback: RouterFeedback[] = [];
+        const routed: SourceDecision[] = [];
+
+        for (const source of sources) {
+            const signal = bySource.get(source.source);
+            if (!signal || signal.total < MIN_SOURCE_QUALITY_SAMPLE) {
+                routed.push(source);
+                continue;
+            }
+
+            const badRate = Number.isFinite(signal.badRate)
+                ? signal.badRate
+                : (signal.reject + signal.duplicate + signal.emptyContent + signal.incomplete + signal.review * 0.5) / signal.total;
+            const keepRate = Number.isFinite(signal.keepRate)
+                ? signal.keepRate
+                : signal.keep / signal.total;
+
+            if (badRate >= SKIP_SOURCE_BAD_RATE && this.canSkipNoisySource(source)) {
+                const reason = `近期 QA 样本 ${signal.total} 条, 低质率 ${formatRate(badRate)}, 跳过可选搜索源`;
+                feedback.push({ source: source.source, action: 'skip', reason });
+                continue;
+            }
+
+            if (badRate >= NOISY_SOURCE_BAD_RATE) {
+                const priority = priorityDown(source.priority);
+                const reason = `近期 QA 样本 ${signal.total} 条, 低质率 ${formatRate(badRate)}, 降权`;
+                routed.push({ ...source, priority, reason: `${source.reason}; ${reason}` });
+                feedback.push({ source: source.source, action: 'downgrade', reason });
+                continue;
+            }
+
+            if (keepRate >= STRONG_SOURCE_KEEP_RATE && source.priority !== 'high') {
+                const priority = priorityUp(source.priority);
+                const reason = `近期 QA 样本 ${signal.total} 条, 通过率 ${formatRate(keepRate)}, 提权`;
+                routed.push({ ...source, priority, reason: `${source.reason}; ${reason}` });
+                feedback.push({ source: source.source, action: 'boost', reason });
+                continue;
+            }
+
+            routed.push(source);
+        }
+
+        return { sources: routed, feedback };
+    }
+
+    private canSkipNoisySource(source: SourceDecision): boolean {
+        if (!SKIPPABLE_SOURCES.has(source.source)) return false;
+
+        const params = source.params || {};
+        const hasExplicitIdentity =
+            typeof params.handle === 'string' ||
+            typeof params.channelId === 'string' ||
+            typeof params.orcid === 'string' ||
+            typeof params.qid === 'string';
+
+        return !hasExplicitIdentity;
     }
 
     /**
@@ -230,7 +348,7 @@ export class RouterAgent {
     /**
      * 构建搜索策略
      */
-    private buildSearchStrategy(person: PersonContext, isChinese: boolean): SearchStrategy {
+    private buildSearchStrategy(person: PersonContext): SearchStrategy {
         const primaryName = person.englishName || person.name;
 
         // 收集所有可能的名字变体

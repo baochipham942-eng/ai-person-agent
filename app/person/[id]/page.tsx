@@ -41,7 +41,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
             where: { id },
             include: {
                 cards: {
-                    orderBy: { importance: 'desc' },
+                    orderBy: [{ importance: 'desc' }, { createdAt: 'desc' }],
                     take: 10, // 首屏裁剪：从 20 减到 10
                 },
                 roles: {

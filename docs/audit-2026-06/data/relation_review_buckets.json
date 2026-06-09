@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-06-09T03:13:26.774Z",
+  "sourceReviewGeneratedAt": "2026-06-09T03:12:46.339Z",
+  "originalSummary": {
+    "total": 207,
+    "trusted": 78,
+    "confirmedByRoles": 129,
+    "needsReview": 0,
+    "bySource": {
+      "exa": 3,
+      "perplexity": 126,
+      "wikidata": 78
+    },
+    "needsReviewByType": {}
+  },
+  "summary": {
+    "totalNeedsReview": 0,
+    "byBucket": {},
+    "byType": {},
+    "bySource": {}
+  },
+  "guidance": {
+    "high_sensitivity_advisor": "Do not auto-confirm without advisor/source evidence. Highest product trust risk.",
+    "cofounder_same_org_but_role_missing": "Likely important; confirm only with explicit founder/cofounder evidence.",
+    "cofounder_no_structured_evidence": "Do not keep as cofounder without external evidence; strong deletion candidate if source remains unsupported.",
+    "collaborator_publication_claim": "Verify against publication/project source before confirming.",
+    "colleague_same_org_dates_missing": "Usually lower product value; confirm only if overlap dates or source-backed team evidence exists.",
+    "colleague_no_shared_org": "Weakest relation bucket; deletion candidates after sample review."
+  },
+  "buckets": {}
+}

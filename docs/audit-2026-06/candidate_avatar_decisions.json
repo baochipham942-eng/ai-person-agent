@@ -1,0 +1,45 @@
+{
+  "decisions": [
+    {
+      "personId": "8d7bc7ca-841a-4913-b15e-64165ddc5970",
+      "person": "Aravind Srinivas",
+      "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Aravind_Srinivas_2024.jpg",
+      "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Aravind_Srinivas_2024.jpg",
+      "evidenceNote": "Wikimedia Commons portrait from TechCrunch Disrupt 2024; image clearly shows Aravind Srinivas wearing a Perplexity shirt.",
+      "rejectedAlternatives": [
+        "GitHub avatar was not used because prior review considered it an identicon or too weak as a display portrait."
+      ]
+    },
+    {
+      "personId": "dcd29168-b633-4544-ac94-f6518fa62dc8",
+      "person": "Brett Adcock",
+      "avatarUrl": "https://images.ctfassets.net/3drndowvgqds/3hjg3ub4qIVBri0HqS5Wc2/dcf1779e1c49607bc709552ac3393424/Vettery_Img_Bio.png?fm=webp&q=75&w=800",
+      "evidenceUrl": "https://www.brettadcock.com/bio",
+      "evidenceNote": "Brett Adcock's personal bio page includes this clear founder portrait hosted from the site asset CDN.",
+      "rejectedAlternatives": [
+        "Figure AI company logo and generic site imagery were not used because they are not person portraits."
+      ]
+    },
+    {
+      "personId": "4fbc2ee6-3d34-4b6f-8a18-147b409e96ac",
+      "person": "Junyang Lin",
+      "avatarUrl": "https://nextomoro.com/content/images/2026/05/lin-junyang.png",
+      "evidenceUrl": "https://nextomoro.com/lin-junyang/",
+      "evidenceNote": "Nextomoro profile for Lin Junyang includes a clear person portrait tied to the Qwen biography.",
+      "rejectedAlternatives": [
+        "Qwen project social cards and logos were not used because they are product imagery.",
+        "GitHub avatar was not used because it is not a clear person portrait."
+      ]
+    },
+    {
+      "personId": "0c0739ab-c1a9-47de-9f7f-229500a371ef",
+      "person": "Tim Brooks",
+      "avatarUrl": "https://www.timothybrooks.com/about/portrait.jpg",
+      "evidenceUrl": "https://www.timothybrooks.com/about/",
+      "evidenceNote": "Tim Brooks' personal about page hosts a clear portrait image.",
+      "rejectedAlternatives": [
+        "Hugging Face social card was not used because it is not a person portrait."
+      ]
+    }
+  ]
+}

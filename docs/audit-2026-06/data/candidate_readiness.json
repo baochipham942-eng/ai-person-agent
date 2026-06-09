@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-06-09T06:16:22.576Z",
+  "criteria": {
+    "readyForPromotionReview": [
+      "completeness >= 45",
+      "rawCount >= 2",
+      "keepCount >= 2",
+      "liveCount >= 1",
+      "cardCount >= 5",
+      "avatar is tracked separately and does not block factual readiness"
+    ]
+  },
+  "summary": {},
+  "buckets": {}
+}

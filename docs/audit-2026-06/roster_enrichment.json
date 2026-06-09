@@ -1,0 +1,203 @@
+{
+  "_meta": {
+    "source": "2026-06 candidate roster enrichment",
+    "note": "Minimum viable profile data for candidate People rows. Keep status=candidate; do not imply full verification."
+  },
+  "people": [
+    {
+      "name": "Aravind Srinivas",
+      "topics": ["AI 搜索", "大语言模型", "Agent"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.perplexity.ai/", "label": "Perplexity" },
+        { "type": "github", "url": "https://github.com/aravindsrinivas", "handle": "aravindsrinivas" },
+        { "type": "x", "url": "https://x.com/AravSrinivas", "handle": "@AravSrinivas" }
+      ],
+      "products": [
+        { "name": "Perplexity", "description": "AI 原生搜索与答案引擎", "org": "Perplexity", "year": 2022, "url": "https://www.perplexity.ai/", "category": "Platform", "type": "ai-search" }
+      ],
+      "topicDetails": [
+        { "topic": "AI 搜索", "rank": 99, "reason": "Perplexity 的共同创始人与 CEO，代表 AI 原生搜索产品方向。" }
+      ]
+    },
+    {
+      "name": "Deepak Pathak",
+      "topics": ["具身智能", "机器人", "强化学习"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.cs.cmu.edu/~dpathak/", "label": "CMU profile" },
+        { "type": "website", "url": "https://www.skild.ai/", "label": "Skild AI" },
+        { "type": "github", "url": "https://github.com/pathak22", "handle": "pathak22" }
+      ],
+      "products": [
+        { "name": "Skild AI", "description": "面向通用机器人的基础模型与机器人智能平台", "org": "Skild AI", "year": 2023, "url": "https://www.skild.ai/", "category": "Platform", "type": "robotics" }
+      ],
+      "topicDetails": [
+        { "topic": "具身智能", "rank": 99, "reason": "长期研究机器人学习与具身智能，并创办 Skild AI。" }
+      ]
+    },
+    {
+      "name": "Brett Adcock",
+      "topics": ["具身智能", "机器人", "产业化"],
+      "officialLinks": [
+        { "type": "website", "url": "https://brettadcock.com/", "label": "Personal site" },
+        { "type": "website", "url": "https://www.figure.ai/", "label": "Figure AI" },
+        { "type": "x", "url": "https://x.com/adcock_brett", "handle": "@adcock_brett" }
+      ],
+      "products": [
+        { "name": "Figure AI", "description": "面向通用人形机器人的商业化公司", "org": "Figure AI", "year": 2022, "url": "https://www.figure.ai/", "category": "Platform", "type": "robotics" }
+      ],
+      "topicDetails": [
+        { "topic": "机器人", "rank": 99, "reason": "Figure AI 创始人，推动人形机器人商业化落地。" }
+      ]
+    },
+    {
+      "name": "Michael Truell",
+      "topics": ["AI Coding", "Agent", "开发者工具"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.cursor.com/", "label": "Cursor" },
+        { "type": "github", "url": "https://github.com/truell20", "handle": "truell20" }
+      ],
+      "products": [
+        { "name": "Cursor", "description": "AI 原生代码编辑器与开发者工具", "org": "Anysphere", "year": 2023, "url": "https://www.cursor.com/", "category": "Tool", "type": "ai-coding" }
+      ],
+      "topicDetails": [
+        { "topic": "AI Coding", "rank": 99, "reason": "Anysphere/Cursor 创始人之一，代表 AI coding 产品化方向。" }
+      ]
+    },
+    {
+      "name": "Shengjia Zhao",
+      "topics": ["大语言模型", "推理", "对齐"],
+      "officialLinks": [
+        { "type": "github", "url": "https://github.com/ShengjiaZhao", "handle": "ShengjiaZhao" },
+        { "type": "website", "url": "https://ai.meta.com/", "label": "Meta AI" }
+      ],
+      "products": [
+        { "name": "GPT-4 / o1", "description": "大模型与推理模型研究贡献", "org": "OpenAI", "year": 2024, "url": "https://openai.com/research/", "category": "AI Model", "type": "llm" },
+        { "name": "Meta Superintelligence Labs", "description": "Meta 的超级智能研究组织", "org": "Meta", "year": 2025, "url": "https://ai.meta.com/", "category": "Research", "type": "lab" }
+      ],
+      "topicDetails": [
+        { "topic": "推理", "rank": 99, "reason": "在大模型与推理模型方向有核心研究贡献。" }
+      ]
+    },
+    {
+      "name": "Noam Brown",
+      "topics": ["推理", "强化学习", "AGI"],
+      "officialLinks": [
+        { "type": "website", "url": "https://noambrown.github.io/", "label": "Personal site" },
+        { "type": "website", "url": "https://openai.com/", "label": "OpenAI" }
+      ],
+      "products": [
+        { "name": "o1", "description": "OpenAI 推理模型方向代表产品", "org": "OpenAI", "year": 2024, "url": "https://openai.com/o1/", "category": "AI Model", "type": "reasoning" },
+        { "name": "CICERO", "description": "结合对话与策略推理的 Diplomacy AI 系统", "org": "Meta AI", "year": 2022, "url": "https://ai.meta.com/research/cicero/", "category": "AI System", "type": "reasoning" }
+      ],
+      "topicDetails": [
+        { "topic": "推理", "rank": 99, "reason": "从博弈 AI 到 OpenAI 推理模型，长期聚焦推理与规划能力。" }
+      ]
+    },
+    {
+      "name": "Tim Brooks",
+      "topics": ["视频生成", "多模态", "世界模型"],
+      "officialLinks": [
+        { "type": "website", "url": "https://timothybrooks.com/", "label": "Personal site" },
+        { "type": "website", "url": "https://huggingface.co/timbrooks", "label": "Hugging Face profile" },
+        { "type": "website", "url": "https://deepmind.google/", "label": "Google DeepMind" }
+      ],
+      "products": [
+        { "name": "Sora", "description": "OpenAI 文本到视频生成模型", "org": "OpenAI", "year": 2024, "url": "https://openai.com/sora/", "category": "AI Model", "type": "video" }
+      ],
+      "topicDetails": [
+        { "topic": "视频生成", "rank": 99, "reason": "Sora 共同负责人之一，代表视频生成与世界模型方向。" }
+      ]
+    },
+    {
+      "name": "Ben Mildenhall",
+      "topics": ["空间智能", "3D 生成", "计算机视觉"],
+      "officialLinks": [
+        { "type": "website", "url": "https://bmild.github.io/", "label": "Personal site" },
+        { "type": "github", "url": "https://github.com/bmild", "handle": "bmild" },
+        { "type": "website", "url": "https://www.worldlabs.ai/", "label": "World Labs" }
+      ],
+      "products": [
+        { "name": "NeRF", "description": "神经辐射场，推动 3D 表示与新视角合成", "org": "Google Research", "year": 2020, "url": "https://www.matthewtancik.com/nerf", "category": "Framework", "type": "3d" },
+        { "name": "World Labs", "description": "空间智能公司", "org": "World Labs", "year": 2024, "url": "https://www.worldlabs.ai/", "category": "Platform", "type": "spatial-ai" }
+      ],
+      "topicDetails": [
+        { "topic": "空间智能", "rank": 99, "reason": "NeRF 核心作者，后加入 World Labs 推进空间智能。" }
+      ]
+    },
+    {
+      "name": "Liam Fedus",
+      "topics": ["大语言模型", "MoE", "后训练"],
+      "officialLinks": [
+        { "type": "website", "url": "https://periodiclabs.ai/", "label": "Periodic Labs" },
+        { "type": "github", "url": "https://github.com/liamfedus", "handle": "liamfedus" }
+      ],
+      "products": [
+        { "name": "Switch Transformer", "description": "稀疏 MoE Transformer 代表工作", "org": "Google Research", "year": 2021, "url": "https://arxiv.org/abs/2101.03961", "category": "Paper", "type": "llm" },
+        { "name": "Periodic Labs", "description": "面向科学发现的 AI 实验室", "org": "Periodic Labs", "year": 2025, "url": "https://periodiclabs.ai/", "category": "Research", "type": "science-ai" }
+      ],
+      "topicDetails": [
+        { "topic": "MoE", "rank": 99, "reason": "Switch Transformer 作者之一，代表稀疏专家模型路线。" }
+      ]
+    },
+    {
+      "name": "Junyang Lin",
+      "topics": ["大语言模型", "开源", "中文大模型"],
+      "officialLinks": [
+        { "type": "website", "url": "https://qwenlm.github.io/", "label": "Qwen" },
+        { "type": "github", "url": "https://github.com/QwenLM/Qwen", "handle": "QwenLM/Qwen" }
+      ],
+      "products": [
+        { "name": "Qwen", "description": "阿里通义千问开源大模型系列", "org": "阿里通义千问", "year": 2023, "url": "https://qwenlm.github.io/", "category": "AI Model", "type": "llm" }
+      ],
+      "topicDetails": [
+        { "topic": "中文大模型", "rank": 99, "reason": "Qwen 技术负责人之一，代表中国开源大模型工程路线。" }
+      ]
+    },
+    {
+      "name": "Bindu Reddy",
+      "topics": ["Agent", "企业 AI", "平台"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.abacus.ai/", "label": "Abacus.AI" },
+        { "type": "profile", "url": "https://www.abacus.ai/bindu-reddy", "label": "Abacus.AI profile" },
+        { "type": "x", "url": "https://x.com/bindureddy", "handle": "@bindureddy" }
+      ],
+      "products": [
+        { "name": "Abacus.AI", "description": "面向企业的 AI agent 与应用平台", "org": "Abacus.AI", "year": 2019, "url": "https://www.abacus.ai/", "category": "Platform", "type": "enterprise-ai" }
+      ],
+      "topicDetails": [
+        { "topic": "Agent", "rank": 99, "reason": "围绕企业 AI agent 与平台化应用建设 Abacus.AI。" }
+      ]
+    },
+    {
+      "name": "李莲",
+      "topics": ["Agent", "对齐", "AI 安全"],
+      "officialLinks": [
+        { "type": "website", "url": "https://lilianweng.github.io/", "label": "Personal blog" },
+        { "type": "github", "url": "https://github.com/lilianweng", "handle": "lilianweng" },
+        { "type": "x", "url": "https://x.com/lilianweng", "handle": "@lilianweng" },
+        { "type": "website", "url": "https://thinkingmachines.ai/", "label": "Thinking Machines Lab" }
+      ],
+      "products": [
+        { "name": "Thinking Machines Lab", "description": "面向 AI 系统和产品的研究实验室", "org": "Thinking Machines Lab", "year": 2025, "url": "https://thinkingmachines.ai/", "category": "Research", "type": "lab" }
+      ],
+      "topicDetails": [
+        { "topic": "AI 安全", "rank": 99, "reason": "长期公开写作与研究 AI agent、对齐和安全议题。" }
+      ]
+    },
+    {
+      "name": "贾斯汀·约翰逊",
+      "topics": ["空间智能", "计算机视觉", "3D 生成"],
+      "officialLinks": [
+        { "type": "website", "url": "https://web.eecs.umich.edu/~justincj/", "label": "Personal site" },
+        { "type": "github", "url": "https://github.com/jcjohnson", "handle": "jcjohnson" },
+        { "type": "website", "url": "https://www.worldlabs.ai/", "label": "World Labs" }
+      ],
+      "products": [
+        { "name": "World Labs", "description": "空间智能公司", "org": "World Labs", "year": 2024, "url": "https://www.worldlabs.ai/", "category": "Platform", "type": "spatial-ai" }
+      ],
+      "topicDetails": [
+        { "topic": "空间智能", "rank": 99, "reason": "计算机视觉研究者，加入 World Labs 推动空间智能产品化。" }
+      ]
+    }
+  ]
+}

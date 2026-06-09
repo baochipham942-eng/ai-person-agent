@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-06-09T06:24:24.160Z",
+  "mode": "dry-run",
+  "decisions": 4,
+  "summary": {
+    "matched": 4,
+    "missing": 0,
+    "alreadyApplied": 4,
+    "skippedExistingAvatar": 0,
+    "updated": 0,
+    "wouldUpdate": 0
+  },
+  "results": [
+    {
+      "personId": "8d7bc7ca-841a-4913-b15e-64165ddc5970",
+      "person": "Aravind Srinivas",
+      "status": "already_applied",
+      "previousAvatarUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Aravind_Srinivas_2024.jpg",
+      "nextAvatarUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Aravind_Srinivas_2024.jpg",
+      "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Aravind_Srinivas_2024.jpg",
+      "evidenceNote": "Wikimedia Commons portrait from TechCrunch Disrupt 2024; image clearly shows Aravind Srinivas wearing a Perplexity shirt."
+    },
+    {
+      "personId": "dcd29168-b633-4544-ac94-f6518fa62dc8",
+      "person": "Brett Adcock",
+      "status": "already_applied",
+      "previousAvatarUrl": "https://images.ctfassets.net/3drndowvgqds/3hjg3ub4qIVBri0HqS5Wc2/dcf1779e1c49607bc709552ac3393424/Vettery_Img_Bio.png?fm=webp&q=75&w=800",
+      "nextAvatarUrl": "https://images.ctfassets.net/3drndowvgqds/3hjg3ub4qIVBri0HqS5Wc2/dcf1779e1c49607bc709552ac3393424/Vettery_Img_Bio.png?fm=webp&q=75&w=800",
+      "evidenceUrl": "https://www.brettadcock.com/bio",
+      "evidenceNote": "Brett Adcock's personal bio page includes this clear founder portrait hosted from the site asset CDN."
+    },
+    {
+      "personId": "4fbc2ee6-3d34-4b6f-8a18-147b409e96ac",
+      "person": "Junyang Lin",
+      "status": "already_applied",
+      "previousAvatarUrl": "https://nextomoro.com/content/images/2026/05/lin-junyang.png",
+      "nextAvatarUrl": "https://nextomoro.com/content/images/2026/05/lin-junyang.png",
+      "evidenceUrl": "https://nextomoro.com/lin-junyang/",
+      "evidenceNote": "Nextomoro profile for Lin Junyang includes a clear person portrait tied to the Qwen biography."
+    },
+    {
+      "personId": "0c0739ab-c1a9-47de-9f7f-229500a371ef",
+      "person": "Tim Brooks",
+      "status": "already_applied",
+      "previousAvatarUrl": "https://www.timothybrooks.com/about/portrait.jpg",
+      "nextAvatarUrl": "https://www.timothybrooks.com/about/portrait.jpg",
+      "evidenceUrl": "https://www.timothybrooks.com/about/",
+      "evidenceNote": "Tim Brooks' personal about page hosts a clear portrait image."
+    }
+  ]
+}

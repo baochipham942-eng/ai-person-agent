@@ -1,0 +1,419 @@
+{
+  "_meta": {
+    "source": "2026-06-09 high-sensitivity relation review",
+    "note": "Only confirm relations with explicit external evidence. Delete curated high-sensitivity false positives and low-value Perplexity colleague_no_shared_org relations after bucket review."
+  },
+  "decisions": [
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://openai.com/index/introducing-openai/",
+      "evidenceNote": "OpenAI launch post lists Ilya Sutskever, Greg Brockman, Andrej Karpathy, John Schulman, Wojciech Zaremba as founding members and names Sam Altman / Elon Musk as co-chairs/funders.",
+      "relationIds": [
+        "cmk9w0rai0003sw4dss9vm0x9",
+        "cmk9vj627004b2k4ms83m1df7",
+        "cmk9vj7m5004d2k4mp62zy80j",
+        "cmk9ui6su001bnk4na2v9hjgc",
+        "cmk9uighs001dnk4nl1ymb5f4",
+        "cmk9ui5gp0019nk4nwyvotv4g",
+        "cmk9uniz8003lnk4n58jrlbxm",
+        "cmk9unpcs003rnk4ns7diesi7",
+        "cmk9umk2m0037nk4n7spqztdt",
+        "cmk9uq66e004rnk4nhpqgnktn",
+        "cmk9uqmvx0055nk4n1fwe9uid",
+        "cmk9uq84i004tnk4ni1lgpxcc",
+        "cmk9uqd1q004xnk4n6mh39q8a",
+        "cmk9uqkbg0051nk4nz2gwspxn"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://www.computerworld.com/article/1400799/google-acquires-toronto-university-startup-focused-on-neural-networks.html",
+      "evidenceNote": "Computerworld reports DNNresearch was set up by Geoffrey Hinton and graduate students Alex Krizhevsky and Ilya Sutskever.",
+      "relationIds": [
+        "cmk9ujcq0001pnk4n8a4yhldd",
+        "cmk9ujzxv0025nk4nqmyuhqxm"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://reinvent.awsevents.com/content/dam/reinvent/2024/slides/aim/AIM123-S_Leverage-Anthropics-Claude-models-for-AIs-evolving-landscape-sponsored-by-Anthropic.pdf",
+      "evidenceNote": "Anthropic-sponsored AWS re:Invent deck lists Dario Amodei as CEO & Co-founder and Chris Olah as Co-founder.",
+      "relationIds": [
+        "cmk9ugvee0011nk4nf0qnwipd"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://www.wired.com/story/thinking-machines-lab-mira-murati-funding/",
+      "evidenceNote": "WIRED reports Thinking Machines is led by Mira Murati and lists John Schulman among her cofounders.",
+      "relationIds": [
+        "cmk9umq46003fnk4nay4radza"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://venturebeat.com/entrepreneur/top-ai-execs-including-richard-socher-launch-aix-ventures",
+      "evidenceNote": "VentureBeat reports Richard Socher launched AIX Ventures and describes Socher and his cofounders, including Chris Manning, as joining together as a venture firm.",
+      "relationIds": [
+        "cmk9uoy4o004jnk4nu1e2aa5u"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1706.03762",
+      "evidenceNote": "The arXiv record for Attention Is All You Need lists Ashish Vaswani, Noam Shazeer, Jakob Uszkoreit, Aidan N. Gomez and Lukasz Kaiser as coauthors.",
+      "relationIds": [
+        "cmk9ut934005znk4negtwz7xd",
+        "cmk9uregx005dnk4napgjvsbo",
+        "cmk9urx7n005rnk4nl0q9vzmv",
+        "cmk9uryiq005tnk4nc017uogu",
+        "cmk9vcvhz002h2k4me5rlzazp"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://news.stanford.edu/stories/2024/03/stanford-hai-now-whats-next",
+      "evidenceNote": "Stanford Report describes Fei-Fei Li and Chris Manning among HAI's original founders.",
+      "relationIds": [
+        "cmk9uozfj004lnk4nbt3e9ca6"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://collaborate.princeton.edu/en/publications/imagenet-a-large-scale-hierarchical-image-database/",
+      "evidenceNote": "The ImageNet CVPR 2009 publication record lists Richard Socher and Li Fei-Fei as coauthors.",
+      "relationIds": [
+        "cmk9vn6s500572k4m3hgtst3m"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1409.3215",
+      "evidenceNote": "The arXiv record for Sequence to Sequence Learning with Neural Networks lists Ilya Sutskever, Oriol Vinyals and Quoc V. Le as coauthors.",
+      "relationIds": [
+        "cmk9vbkh900252k4m46f126y0",
+        "cmk9vblw400272k4mt6qyp7cq"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/2210.11416",
+      "evidenceNote": "The arXiv record for Scaling Instruction-Finetuned Language Models lists Hyung Won Chung, Jason Wei and Quoc V. Le among the coauthors.",
+      "relationIds": [
+        "cmk9vbpyv002b2k4m1bd8heun",
+        "cmk9vbwvi002d2k4m7qw66mzc"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1406.2661",
+      "evidenceNote": "The arXiv record for Generative Adversarial Nets lists Ian Goodfellow and Yoshua Bengio as coauthors.",
+      "relationIds": [
+        "cmk9w2mf8000xsw4d1d0e0cej"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1409.0473",
+      "evidenceNote": "The arXiv record for Neural Machine Translation by Jointly Learning to Align and Translate lists Dzmitry Bahdanau and Yoshua Bengio as coauthors.",
+      "relationIds": [
+        "cmk9w2htt000rsw4d9dsjx52c"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://papers.neurips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks",
+      "evidenceNote": "The NeurIPS record for ImageNet Classification with Deep Convolutional Neural Networks lists Alex Krizhevsky and Ilya Sutskever as coauthors.",
+      "relationIds": [
+        "cmk9v502a00152k4mb6tk2yf0"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/2210.11416",
+      "evidenceNote": "The arXiv record for Scaling Instruction-Finetuned Language Models lists Jason Wei and Hyung Won Chung among the coauthors.",
+      "relationIds": [
+        "cmk9uhkzy0017nk4np7t4j42g"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/2110.14168",
+      "evidenceNote": "The arXiv record for Training Verifiers to Solve Math Word Problems lists Lukasz Kaiser and John Schulman as coauthors.",
+      "relationIds": [
+        "cmk9uroh5005lnk4nab7d7bqq"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://awards.acm.org/about/2018-turing",
+      "evidenceNote": "ACM named Yoshua Bengio, Geoffrey Hinton and Yann LeCun as the 2018 A.M. Turing Award recipients.",
+      "relationIds": [
+        "cmk9uflj8000rnk4n5s6f6ct0",
+        "cmk9ueuha000lnk4nq0q0wkjs",
+        "cmk9ueshy000jnk4n71uv7eu6"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://openai.com/index/introducing-openai/",
+      "evidenceNote": "OpenAI's launch post lists John Schulman as an early research engineer and Elon Musk as a co-chair/funder, supporting the early OpenAI relationship edge.",
+      "relationIds": [
+        "cmk9v3s5v000x2k4msc80sf4o"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://techcrunch.com/2013/02/18/start-at-a-startup-princeton/",
+      "evidenceNote": "TechCrunch reports Daniel Gross met YC's Paul Graham shortly before Demo Day and Graham gave concrete product-direction advice; this supports the YC mentor/advisor relation.",
+      "relationIds": [
+        "cmk9veqq4002v2k4mgjkzp7gw"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1706.03741",
+      "evidenceNote": "The arXiv record for Deep reinforcement learning from human preferences lists Jan Leike, Shane Legg and Dario Amodei as coauthors.",
+      "relationIds": [
+        "cmk9vojzg005f2k4mva1bt27b",
+        "cmk9vop5j005j2k4mynjo2pa8"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1412.7449",
+      "evidenceNote": "The arXiv record for Grammar as a Foreign Language lists Oriol Vinyals, Lukasz Kaiser and Geoffrey Hinton as coauthors.",
+      "relationIds": [
+        "cmk9urd73005bnk4nqo9dv1jm",
+        "cmk9urjba005hnk4n1vg4y5qq"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1112.6209",
+      "evidenceNote": "The arXiv record for Building high-level features using large scale unsupervised learning lists Quoc V. Le and Jeff Dean as coauthors.",
+      "relationIds": [
+        "cmk9vc12j002f2k4myfrgrq4d"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/2107.03374",
+      "evidenceNote": "The arXiv record for Evaluating Large Language Models Trained on Code lists Jan Leike, Lukasz Kaiser and Wojciech Zaremba as coauthors.",
+      "relationIds": [
+        "cmk9v7k5t001h2k4m3q2mnn9x",
+        "cmk9urkzo005jnk4n6wqwbl7j"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://www.nature.com/articles/s41586-021-03819-2",
+      "evidenceNote": "The Nature AlphaFold paper lists Oriol Vinyals and Demis Hassabis among the authors.",
+      "relationIds": [
+        "cmk9vfe3a002z2k4menldivfv"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1606.02447",
+      "evidenceNote": "The arXiv record for Learning Language Games through Interaction lists Percy Liang and Christopher D. Manning as coauthors.",
+      "relationIds": [
+        "cmk9uy71h00032k4mykjwdyu2"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://jmlr.org/papers/volume13/larochelle12a/larochelle12a.pdf",
+      "evidenceNote": "The JMLR paper Learning Algorithms for the Classification Restricted Boltzmann Machine lists Hugo Larochelle and Yoshua Bengio as authors.",
+      "relationIds": [
+        "cmk9w2jar000tsw4d1yru00t2"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://arxiv.org/abs/1606.06565",
+      "evidenceNote": "The referenced Concrete Problems in AI Safety author list includes Chris Olah but not Geoffrey Hinton; the concrete coauthor claim is unsupported.",
+      "relationIds": [
+        "cmk9ugqqm000znk4n5ecimpik"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "docs/audit-2026-06/data/relation_review_buckets.json",
+      "evidenceNote": "These remaining project/forum/company-level descriptions do not provide a source-backed personal collaborator edge; the product relation surface should not show company partnerships, public-dialogue appearances or common-signature claims as collaborator relations.",
+      "relationIds": [
+        "cmk9v1wdz000j2k4ms8cclcz5",
+        "cmk9v1yt3000l2k4mhwoygrxu",
+        "cmk9ulgrw002tnk4nepm5v7qe",
+        "cmk9ulogb0031nk4ns6vsqqeo",
+        "cmk9uljgg002xnk4ntcmgclp0",
+        "cmk9ullw2002znk4nc9wm3syo",
+        "cmk9v0sif000b2k4moaebcols",
+        "cmk9uil5h001jnk4nute99oy3",
+        "cmk9v0pnc00092k4mx9cpe2c5",
+        "cmk9waae8001lsw4dba65gzzz",
+        "cmk9uoe1d004fnk4ndm4z2cu6",
+        "cmk9wa7ad001jsw4dyvnn6urb",
+        "cmk9unxev0041nk4nf4agb4uz",
+        "cmk9vos4n005n2k4mwi73f93t",
+        "cmk9usjpb005xnk4n95gab5hm",
+        "cmk9vmd39004x2k4mf1fgzfxx",
+        "cmk9vmb93004v2k4mmhz58er9",
+        "cmk9vm5ue004r2k4maqck96tc",
+        "cmk9vigu700452k4m2kp0vwtp",
+        "cmk9vi8ta003x2k4m45q26cev",
+        "cmk9vi4yj003v2k4miivs2922",
+        "cmk9vi0e9003r2k4mrmgn2vbv",
+        "cmk9uex76000pnk4ns68g8qxi"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1602.08210",
+      "evidenceNote": "The arXiv record for Architectural Complexity Measures of Recurrent Neural Networks lists Ruslan Salakhutdinov and Yoshua Bengio as coauthors.",
+      "relationIds": [
+        "cmk9w2klm000vsw4ds7860ne2"
+      ]
+    },
+    {
+      "action": "confirm",
+      "evidenceUrl": "https://arxiv.org/abs/1609.08144",
+      "evidenceNote": "The arXiv record for Google's Neural Machine Translation System lists Quoc V. Le and Lukasz Kaiser as coauthors.",
+      "relationIds": [
+        "cmk9uri1u005fnk4na8e91mcc"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "docs/audit-2026-06/data/relation_review_buckets.json",
+      "evidenceNote": "Final collaborator bucket review found no direct source-backed paper/project evidence for these broad publication or education-collaboration claims; leaving them visible would overstate weak or unsupported edges.",
+      "relationIds": [
+        "cmk9w17np000bsw4dqle86fey",
+        "cmk9w18x4000dsw4da8i9h9va",
+        "cmk9ukqcl0029nk4noun03tjy",
+        "cmk9uko2a0027nk4ny2kkw0e3",
+        "cmk9unspq003vnk4nc6gd7pqp",
+        "cmk9vfboh002x2k4mfeag9hvi",
+        "cmk9uevuk000nnk4nul616026",
+        "cmk9ushel005vnk4nyadmqa4r"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "docs/audit-2026-06/data/relation_review_buckets.json",
+      "evidenceNote": "Final colleague bucket review found no date-proven role overlap for these same-organization colleague claims; several current PersonRole timelines explicitly start after the other person left, and the remaining rows are broad organization claims without shared dated employment evidence.",
+      "relationIds": [
+        "cmk9w1sgh000psw4du814x6vw",
+        "cmk9w16du0009sw4dd0u50ziw",
+        "cmk9utujt0063nk4nvbyds4na",
+        "cmk9v31yk000t2k4mrt22wj9r",
+        "cmk9uin5n001lnk4nifua7ms7",
+        "cmk9voyxq005p2k4mrowgoruf",
+        "cmk9vfk0s00372k4msx766xyq"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "docs/audit-2026-06/data/relation_review_buckets.json",
+      "evidenceNote": "Final colleague bucket review found no shared organization in PersonRole for the Zhu Jun-Tang Jie edge, so the Tsinghua colleague claim is unsupported by structured career evidence.",
+      "relationIds": [
+        "cmkaf62yl0003xlphma9xemd1"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://www.mathgenealogy.org/id.php?id=258986",
+      "evidenceNote": "Math Genealogy lists Fei-Fei Li as Andrej Karpathy's doctoral advisor; these PhD-advisor claims point to other people and lack supporting advisor evidence.",
+      "relationIds": [
+        "cmk9ue8mn000hnk4nfmircxh1",
+        "cmk9w124j0005sw4descx877w",
+        "cmk9w13fx0007sw4dnaul7rqh"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://openai.com/index/introducing-openai/",
+      "evidenceNote": "OpenAI's launch post supports John Schulman as an early founding member but does not list Dario Amodei as an OpenAI cofounder; this relation conflates later OpenAI overlap with cofounder status.",
+      "relationIds": [
+        "cmk9umlgl0039nk4na5few2ww"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://www.britannica.com/topic/DeepMind",
+      "evidenceNote": "Britannica identifies DeepMind's founders as Demis Hassabis, Shane Legg and Mustafa Suleyman; Koray Kavukcuoglu is not part of the founder set, so this cofounder relation is a false positive.",
+      "relationIds": [
+        "cmk9vkx2s004n2k4muisv9kvw"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://venturebeat.com/ai/hugging-face-triples-investment-in-open-source-machine-learning-models/",
+      "evidenceNote": "VentureBeat identifies Richard Socher as an individual investor in Hugging Face, not as Clément Delangue's advisor or mentor; the available relation type is therefore misleading.",
+      "relationIds": [
+        "cmk9vn81y00592k4md99q2925"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://arxiv.org/abs/1706.03762",
+      "evidenceNote": "The Transformer paper author list does not include Geoffrey Hinton; these relations used a false 'coauthored Transformer' description and should not be shown as collaborator edges.",
+      "relationIds": [
+        "cmk9ujn5p001xnk4n77c4j7jh",
+        "cmk9ujwub0021nk4n3szibu20",
+        "cmk9ujym60023nk4nhokjpd5g",
+        "cmk9ujqen001znk4nm8l5wz1l"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://news.stanford.edu/stories/2024/03/stanford-hai-now-whats-next",
+      "evidenceNote": "Stanford Report's original HAI founder set includes Fei-Fei Li, James Landay, Chris Manning and John Etchemendy; this does not support the claim that Andrew Ng co-founded Stanford HAI with Chris Manning.",
+      "relationIds": [
+        "cmk9up0pw004nnk4ndzlun69x"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "https://arxiv.org/abs/1706.03762",
+      "evidenceNote": "The Transformer paper author list does not include Barret Zoph; this relation used a false 'Transformer coauthor' description and should not be shown as a collaborator edge.",
+      "relationIds": [
+        "cmk9v8gmq001n2k4m4d2cgdq2"
+      ]
+    },
+    {
+      "action": "delete",
+      "evidenceUrl": "docs/audit-2026-06/data/relation_review_buckets.json",
+      "evidenceNote": "Local relation review bucket classifies these as Perplexity colleague_no_shared_org: no shared organization, no overlap, and weak colleague/circle descriptions; product value is lower than risk of showing unsupported relationship edges.",
+      "relationIds": [
+        "cmk9w1mn8000lsw4d0fgfez1z",
+        "cmk9va66p001v2k4mcwjx4t5z",
+        "cmk9ul5m5002hnk4nlobgr5ij",
+        "cmk9v30mq000r2k4m4xoc3o9n",
+        "cmk9uli41002vnk4nnplpcfpl",
+        "cmk9ul2nd002fnk4njw2qcvhy",
+        "cmk9ulrp40033nk4nu8j8p895",
+        "cmk9uldwb002rnk4n8wnikhs1",
+        "cmk9vj927004f2k4mtkumj6ne",
+        "cmk9ujj69001vnk4nm4va0xbp",
+        "cmk9v0vdi000d2k4mqje9v4oo",
+        "cmk9uo0ng0043nk4n4tq56h36",
+        "cmk9v4v8t00112k4m2vptcr0s",
+        "cmk9v511v00172k4mu7uj3vfm",
+        "cmk9v4yup00132k4m90usss7w",
+        "cmk9vgfbs003j2k4m4zfnf5be",
+        "cmk9vgdzs003h2k4m8uo575z3",
+        "cmk9vga4m003f2k4mbiplhafq",
+        "cmk9vbi2m00232k4m28b6ax96",
+        "cmk9v7mtj001l2k4m8kbv3xkf",
+        "cmk9v7hgn001d2k4mu2gvl59m",
+        "cmk9ufnuk000tnk4nbude1xyv",
+        "cmk9w3n4r000zsw4df9znp7x2",
+        "cmk9w3tqd0015sw4d4xnjt52j",
+        "cmk9vnu9z005d2k4mdbd3hfbp",
+        "cmk9vjua9004j2k4m6uhbofuw",
+        "cmk9vjvvo004l2k4mvrxpvzz4"
+      ]
+    }
+  ]
+}
