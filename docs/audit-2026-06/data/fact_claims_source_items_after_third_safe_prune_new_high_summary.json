@@ -1,0 +1,260 @@
+{
+  "generatedAt": "2026-06-09T15:24:44.991Z",
+  "claimsIn": "docs/audit-2026-06/data/fact_claims_source_items_after_third_safe_prune.jsonl",
+  "reviewsIn": [
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_second_new_high_after_safe_prune_mimo.jsonl"
+  ],
+  "out": "docs/audit-2026-06/data/fact_claims_source_items_after_third_safe_prune_new_high.jsonl",
+  "postPruneHighSourceClaims": 1440,
+  "previouslyReviewedHighSourceClaims": 1387,
+  "newHighSourceClaims": 53,
+  "previousReviewClaims": 1950,
+  "bySurface": {
+    "featured.blogs": 53
+  },
+  "bySourceType": {
+    "exa": 53
+  },
+  "topPeople": [
+    {
+      "key": "丁洁",
+      "count": 9
+    },
+    {
+      "key": "姚顺雨",
+      "count": 8
+    },
+    {
+      "key": "周明",
+      "count": 7
+    },
+    {
+      "key": "Jaana Dogan",
+      "count": 5
+    },
+    {
+      "key": "布莱恩·卡坦扎罗",
+      "count": 4
+    },
+    {
+      "key": "朱军",
+      "count": 4
+    },
+    {
+      "key": "杰夫·迪恩",
+      "count": 3
+    },
+    {
+      "key": "肖弘",
+      "count": 3
+    },
+    {
+      "key": "刘知远",
+      "count": 2
+    },
+    {
+      "key": "戴文渊",
+      "count": 2
+    },
+    {
+      "key": "李莲",
+      "count": 2
+    },
+    {
+      "key": "汤姆·布朗",
+      "count": 2
+    },
+    {
+      "key": "Jason Wei",
+      "count": 1
+    },
+    {
+      "key": "唐杰",
+      "count": 1
+    }
+  ],
+  "examples": [
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyedvrv0002ot7i4hxtbykb]:fb0e7084c180",
+      "person": "Jaana Dogan",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 8,
+      "objectLabel": "Bio - jbd.dev",
+      "url": "https://jbd.dev/bio/"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyedxm30004ot7imk7cnjog]:462670529c22",
+      "person": "Jaana Dogan",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 7,
+      "objectLabel": "About - jbd.dev",
+      "url": "https://jbd.dev/about/"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyee4vo000cot7iux88ckcp]:364ed30d5ce5",
+      "person": "Jaana Dogan",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 6,
+      "objectLabel": "Jaana Dogan :unverified:: \"I don't know if AI is going to…\" - Mastodon",
+      "url": "https://m.rakyll.org/@rakyll/112143239129626770"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyee5yl000eot7iulisajta]:a5a25e65fa5a",
+      "person": "Jaana Dogan",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 5,
+      "objectLabel": "10610 followers - Jaana Dogan - Medium",
+      "url": "https://rakyll.medium.com/followers"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyee8ft000got7i33c8lb6k]:467104227a6c",
+      "person": "Jaana Dogan",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 4,
+      "objectLabel": "CPDD: Critical Path Driven Development - Jaana Dogan - Medium",
+      "url": "https://rakyll.medium.com/cpdd-critical-path-driven-development-6c2592fb8ea4"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmju0o87507z8rmtbp81fbsoq]:018b26529bcc",
+      "person": "Jason Wei",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 10,
+      "objectLabel": "Six intuitions about large language models",
+      "url": "https://www.jasonwei.net/blog/some-intuitions-about-large-language-models"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0x9kz09cbrmtbk5tldjbu]:e061ce5f7adf",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 9,
+      "objectLabel": "Expert Consensus on the Ethical Requirements for ...",
+      "url": "https://cdn.sciengine.com/doi/articleIndex/10.13865/j.cnki.cjbmb.2025.06.1272"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xa7309cmrmtbiax4ck2j]:6a4c2cc61d9b",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 8,
+      "objectLabel": "家族性渗出性玻璃体视网膜病变的筛查与诊断",
+      "url": "https://www.ijo.cn/gjykcn/article/abstract/202104017?st=search"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xasb09csrmtbqhxascui]:8b667a9f61c3",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 3,
+      "objectLabel": "我用AI“复活”了爷爷",
+      "url": "https://m.cyzone.cn/article/721012"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xbdx09d0rmtb95ueb51o]:f1545aaa29d7",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 10,
+      "objectLabel": "文学院卓越班赴武汉市光谷实验中学金融港校区观摩丁洁 ...",
+      "url": "https://chinese.ccnu.edu.cn/info/1037/15837.htm"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xek709dgrmtb0qsum3nu]:9c1f598c4b3f",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 7,
+      "objectLabel": "丁洁- 佰仟金融- 催收员",
+      "url": "https://www.linkedin.com/in/%E6%B4%81-%E4%B8%81-949562132"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xetz09dirmtbz8cqv148]:ab5f2eb850ea",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 6,
+      "objectLabel": "法学期刊文章-中国法学期刊大全-北大法宝V6官网",
+      "url": "https://www.pkulaw.com/journal/articlebyauthor?author=%E4%B8%81%E6%B4%81&way=subHead"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xf4g09dkrmtbr8jxnsw3]:7b2c0b99b187",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 5,
+      "objectLabel": "5下《5 草船借箭》-第1课时-丁洁-有PPT 51备课部编版小学语文",
+      "url": "https://www.bilibili.com/video/BV1XS4y1F7TG/"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xfvk09dormtbkyf7r84y]:e7ee849e88ce",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 2,
+      "objectLabel": "SJTU Computer Science & Engineering",
+      "url": "https://www.cs.sjtu.edu.cn/en/PeopleDetail.aspx?id=262"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjuuyrhu0ifermtb1js5i3lh]:4ae60cbe9019",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 4,
+      "objectLabel": "丁洁- 88查",
+      "url": "https://www.1688.com/enterprise/207XulQCgRAliuO5RIad6Ok14ovfLmMaY.html"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjtxj78902n4rmtbzndi6ez7]:3e425e4c7995",
+      "person": "刘知远",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 9,
+      "objectLabel": "Liu Zhiyuan",
+      "url": "https://en.wikipedia.org/wiki/Liu_Zhiyuan"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0k9jl07g5rmtbvz6uydwo]:fe5752ba8205",
+      "person": "刘知远",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 10,
+      "objectLabel": "Rethinking machine unlearning for large language models",
+      "url": "https://www.nature.com/articles/s42256-025-00985-0?error=cookies_not_supported&code=0810ad2c-f010-4c5f-9626-69e920173517"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zrj109rbrmtbfid2ptrv]:e99ed3bf76aa",
+      "person": "周明",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 5,
+      "objectLabel": "专访澜舟科技周明：我不追求AGI",
+      "url": "https://www.jazzyear.com/article_info.html?id=1252"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zsdv09rjrmtbgsdgbz65]:8ceef291baed",
+      "person": "周明",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 7,
+      "objectLabel": "AGI远不止ChatGPT，跟顶尖学者聊大模型演变|乱翻书103",
+      "url": "https://www.youtube.com/watch?v=KdhWLyq3OuM"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zsr409rprmtb55751fun]:e85106172164",
+      "person": "周明",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 8,
+      "objectLabel": "对话AI顶尖大牛周明老师：GPT时代，感觉自己跟不上了",
+      "url": "https://blog.csdn.net/Datawhale/article/details/130453072"
+    }
+  ]
+}

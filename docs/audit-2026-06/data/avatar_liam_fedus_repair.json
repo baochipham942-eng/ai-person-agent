@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-06-11T18:50:00+08:00",
+  "reason": "Add a verified local compressed WebP avatar for Liam Fedus using his Fellows Fund profile page.",
+  "avatars": [
+    {
+      "person": "Liam Fedus",
+      "imageUrl": "https://cdn.prod.website-files.com/65eb80ea2637c99301d84bd8/68dca109dcfd3067a7278213_Liam.png",
+      "evidenceUrl": "https://www.fellowsfundvc.com/fellow/william-fedus",
+      "evidenceNote": "Fellows Fund profile page is titled William Fedus, names William (Liam) Fedus, states he is Co-Founder of Periodic Labs, and embeds this portrait image.",
+      "overwriteExisting": false
+    }
+  ]
+}

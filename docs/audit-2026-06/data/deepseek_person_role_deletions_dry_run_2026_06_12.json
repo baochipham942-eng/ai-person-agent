@@ -1,0 +1,39 @@
+{
+  "summary": {
+    "mode": "dry-run",
+    "deletions": 3,
+    "deleted": 0,
+    "wouldDelete": 3,
+    "missing": 0,
+    "mismatched": 0
+  },
+  "log": [
+    {
+      "action": "would_delete_role",
+      "id": "cmjy86xdg000o10ws0dhx3lh3",
+      "person": "梁文锋",
+      "organization": "Foshan University",
+      "role": "Student",
+      "reason": "Wrong-person educational capture; Liang Wenfeng's supported education is Zhejiang University, not Foshan University.",
+      "evidenceUrl": "https://en.wikipedia.org/wiki/Liang_Wenfeng"
+    },
+    {
+      "action": "would_delete_role",
+      "id": "cmjy6w4un001k4anvxbuwqew6",
+      "person": "梁文锋",
+      "organization": "HKBU COMP",
+      "role": "Research & Development Staff",
+      "reason": "Wrong-person/current-title pollution; supported current role is Founder & CEO at DeepSeek.",
+      "evidenceUrl": "https://en.wikipedia.org/wiki/Liang_Wenfeng"
+    },
+    {
+      "action": "would_delete_role",
+      "id": "cmjy6xlq4002b4anvbl4e30y3",
+      "person": "罗福莉",
+      "organization": "Lab of Robotics Oriented Intelligence",
+      "role": "China Editor",
+      "reason": "Wrong-person/noisy role capture; it is unrelated to Luo Fuli's AI career path and pollutes current affiliation.",
+      "evidenceUrl": "https://github.com/XiaomiMiMo/MiMo"
+    }
+  ]
+}

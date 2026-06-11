@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "source": "Business Insider Igor Babuschkin xAI departure article and GitHub profile",
+    "generatedAt": "2026-06-11T19:24:00+08:00",
+    "note": "Minimum enrichment for Igor Babuschkin."
+  },
+  "people": [
+    {
+      "name": "Igor Babuschkin",
+      "topics": ["大语言模型", "强化学习", "AI 工程", "AGI"],
+      "officialLinks": [
+        {
+          "type": "github",
+          "url": "https://github.com/ibab",
+          "handle": "ibab",
+          "label": "GitHub profile"
+        },
+        {
+          "type": "website",
+          "url": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8",
+          "label": "Business Insider profile coverage"
+        }
+      ],
+      "products": [
+        {
+          "name": "xAI",
+          "description": "Elon Musk 创办的 AI 公司，Igor Babuschkin 是其早期联合创始人之一。",
+          "org": "xAI",
+          "year": 2023,
+          "url": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8",
+          "category": "AI Lab",
+          "type": "company"
+        },
+        {
+          "name": "Babuschkin Ventures",
+          "description": "Igor Babuschkin 离开 xAI 后创办的 AI safety research venture。",
+          "org": "Babuschkin Ventures",
+          "year": 2025,
+          "url": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8",
+          "category": "AI Safety",
+          "type": "venture"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "AI 工程",
+          "rank": 82,
+          "reason": "Business Insider 报道称 Igor Babuschkin 与 Elon Musk 在 2023 年共同创办 xAI，后来离开并启动新的 AI safety venture。"
+        }
+      ]
+    }
+  ]
+}

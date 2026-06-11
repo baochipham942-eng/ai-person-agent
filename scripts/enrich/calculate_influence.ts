@@ -25,7 +25,7 @@ interface InfluenceFactors {
 async function calculateContentRichness(personId: string): Promise<number> {
   const [rawPoolCount, cardCount] = await Promise.all([
     prisma.rawPoolItem.count({ where: { personId } }),
-    prisma.card.count({ where: { personId } })
+    prisma.card.count({ where: { personId, isActive: true } })
   ]);
 
   // 基准：10 个 RawPoolItem = 50 分，20 个 = 80 分，30+ = 100 分

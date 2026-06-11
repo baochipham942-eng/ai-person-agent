@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-06-11T15:29:53.695Z",
+  "mode": "dry-run",
+  "policyVersion": "2026-06-11",
+  "criteria": {
+    "status": "candidate",
+    "completeness": ">= 45",
+    "rawCount": ">= 2",
+    "keepCount": ">= 2",
+    "liveCount": ">= 1",
+    "cardCount": ">= 5",
+    "avatarUrl": "required for promotion"
+  },
+  "summary": {
+    "candidates": 1,
+    "promotable": 0,
+    "held": 1,
+    "updated": 0
+  },
+  "promotable": [],
+  "held": [
+    {
+      "id": "1269f982-437d-4204-a358-014819814898",
+      "name": "Tamera Lanham",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": null,
+      "rawCount": 4,
+      "liveCount": 4,
+      "keepCount": 4,
+      "cardCount": 5,
+      "blockers": [
+        "avatar_missing"
+      ]
+    }
+  ]
+}

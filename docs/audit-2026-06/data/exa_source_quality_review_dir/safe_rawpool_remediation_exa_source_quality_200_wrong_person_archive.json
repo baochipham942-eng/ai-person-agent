@@ -1,0 +1,790 @@
+{
+  "generatedAt": "2026-06-09T16:46:32.478Z",
+  "criteria": {
+    "safeToAutoApply": true,
+    "claimType": "source_item_belongs_to_person",
+    "verdict": [
+      "wrong_person"
+    ],
+    "remediationAction": "delete_raw_pool_item",
+    "confidence": ">= 0.85",
+    "destructiveAction": "deleted RawPoolItem rows only"
+  },
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 15,
+    "rejectedSafeQueueRows": 15,
+    "uniqueTargetIds": 15,
+    "existingTargets": 15,
+    "missingTargets": 0,
+    "deleted": 0,
+    "affectedPeople": 6,
+    "bySourceType": {
+      "exa": 15
+    },
+    "byVerdict": {
+      "wrong_person": 15
+    },
+    "topPeople": {
+      "Hyung Won Chung": 6,
+      "Greg Brockman": 5,
+      "Chris Olah": 1,
+      "Elon Musk": 1,
+      "Emad Mostaque": 1,
+      "Jan Leike": 1
+    }
+  },
+  "missingIds": [],
+  "rows": [
+    {
+      "raw": {
+        "id": "cmju0u7e008lirmtbjjxp9bng",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "exa",
+        "url": "https://en.wikipedia.org/wiki/Language_model",
+        "urlHash": "4765048f678fc3a011d0b9797f809500",
+        "contentHash": "bc2c28059f30593bcd0aa1d4a7a23c4a",
+        "title": "Language model",
+        "text": "Language model - Wikipedia\n[Jump to content](#bodyContent)\n[![](https://en.wikipedia.org/static/images/icons/wikipedia.png)![Wikipedia](https://en.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-en.svg)![The Free Encyclopedia](https://en.wikipedia.org/static/images/mobile/copyright/wikipedia-tagline-en.svg)](https://en.wikipedia.org/wiki/Main_Page)\n[Search](https://en.wikipedia.org/wiki/Special:Search)\nSearch\n# Language model\n37 languages\n* [Afrikaans](https://af.wikipedia.org/wiki/Taalmodel)\n* [العربية](https://ar.wikipedia.org/wiki/نموذج_اللغة)\n* [Արեւմտահայերէն](https://hyw.wikipedia.org/wiki/Լեզուի_Կաղապար)\n* [বাংলা](https://bn.wikipedia.org/wiki/ভাষার_মডেল)\n* [Беларуская](https://be.wikipedia.org/wiki/Моўная_мадэль)\n* [Български](https://bg.wikipedia.org/wiki/Езиков_модел)\n* [Català](https://ca.wikipedia.org/wiki/Model_de_llenguatge)\n* [Čeština](https://cs.wikipedia.org/wiki/Jazykový_model)\n* [Deutsch](https://de.wikipedia.org/wiki/Sprachmodell)\n* [Eesti](https://et.wikipedia.org/wiki/Keelemudel)\n* [Español](https://es.wikipedia.org/wiki/Modelación_del_lenguaje)\n* [Euskara](https://eu.wikipedia.org/wiki/Hizkuntza_eredu)\n* [فارسی](https://fa.wikipedia.org/wiki/مدل_زبانی)\n* [Français](https://fr.wikipedia.org/wiki/Modèle_de_langage)\n* [한국어](https://ko.wikipedia.org/wiki/언어_모델)\n* [IsiZulu](https://zu.wikipedia.org/wiki/UNongo_lolimi)\n* [עברית](https://he.wikipedia.org/wiki/מודל_שפה)\n* [Jawa](https://jv.wikipedia.org/wiki/Modhèl_basa)\n* [Latviešu](https://lv.wikipedia.org/wiki/Valodas_modelis)\n* [Nederlands](https://nl.wikipedia.org/wiki/Taalmodel)\n* [日本語](https://ja.wikipedia.org/wiki/言語モデル)\n* [Norsk nynorsk](https://nn.wikipedia.org/wiki/Språkmodell)\n* [Oʻzbekcha / ўзбекча](https://uz.wikipedia.org/wiki/Til_modeli)\n* [Polski](https://pl.wikipedia.org/wiki/Model_językowy)\n* [Português](https://pt.wikipedia.org/wiki/Modelo_de_linguagem)\n* [Qaraqalpaqsha](https://kaa.wikipedia.org/wiki/Til_modeli)\n* [Runa Simi](https://qu.wikipedia.org/wiki/Simi_hinana)\n* [Русский](https://ru.wikipedia.org/wiki/Языковая_модель)\n* [Shqip](https://sq.wikipedia.org/wiki/Modeli_i_gjuhës)\n* [Suomi](https://fi.wikipedia.org/wiki/Kielimalli)\n* [Svenska](https://sv.wikipedia.org/wiki/Språkmodell)\n* [ไทย](https://th.wikipedia.org/wiki/แบบจำลองภาษา)\n* [Türkçe](https://tr.wikipedia.org/wiki/Dil_modeli)\n* [Українська](https://uk.wikipedia.org/wiki/Мовна_модель)\n* [Tiếng Việt](https://vi.wikipedia.org/wiki/Mô_hình_ngôn_ngữ)\n* [粵語](https://zh-yue.wikipedia.org/wiki/語言模型)\n* [中文](https://zh.wikipedia.org/wiki/語言模型)\n[Edit links](https://www.wikidata.org/wiki/Special:EntityPage/Q3621696#sitelinks-wikipedia)\nFrom Wikipedia, the free encyclopedia\nStatistical model of language\nA**language model**is a[model](https://en.wikipedia.org/wiki/Model#Conceptual_model)of the human brain's ability to produce[natural language](https://en.wikipedia.org/wiki/Natural_language).[&#91;1&#93;](#cite_note-1)[&#91;2&#93;](#cite_note-2)Language models are useful for a variety of tasks, including[speech recognition](https://en.wikipedia.org/wiki/Speech_recognition),[&#91;3&#93;](#cite_note-3)[machine translation](https://en.wikipedia.org/wiki/Machine_translation),[&#91;4&#93;](#cite_note-Semantic_parsing_as_machine_translation-4)[natural language generation](https://en.wikipedia.org/wiki/Natural_language_generation)(generating more human-like text),[optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition),[route optimization](https://en.wikipedia.org/wiki/Route_optimization),[&#91;5&#93;](#cite_note-5)[handwriting recognition](https://en.wikipedia.org/wiki/Handwriting_recognition),[&#91;6&#93;](#cite_note-6)[grammar induction](https://en.wikipedia.org/wiki/Grammar_induction),[&#91;7&#93;](#cite_note-7)and[information retrieval](https://en.wikipedia.org/wiki/Information_retrieval).[&#91;8&#93;](#cite_note-ponte1998-8)[&#91;9&#93;](#cite_note-hiemstra1998-9)\n[Large language models](https://en.wikipedia.org/wiki/Large_language_model)(LLMs), currently their most advanced form as of 2019, are predominantly based on[transformers](https://en.wikipedia.org/wiki/Transformer_(machine_learning))trained on larger datasets (frequently using texts[scraped](https://en.wikipedia.org/wiki/Web_scraping)from the public[internet](https://en.wikipedia.org/wiki/Internet)). They have superseded[recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_network)-based models, which had previously superseded the purely statistical models, such as the[word*n*-gram language model](https://en.wikipedia.org/wiki/Word_n-gram_language_model).\n## History\n[[edit](https://en.wikipedia.org/w/index.php?title=Language_model&amp;action=edit&amp;section=1)]\n[Noam Chomsky](https://en.wikipedia.org/wiki/Noam_Chomsky)did pioneering work on language models in the 1950s by developing a theory of[formal grammars](https://en.wikipedia.org/wiki/Formal_grammar).[&#91;10&#93;](#cite_note-10)\nIn 1980, statistical approaches were explored and found to",
+        "publishedAt": "2025-11-02T16:00:00.000Z",
+        "metadata": {
+          "author": "Contributors to Wikimedia projects",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:57:20.097Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju0u7e008lirmtbjjxp9bng",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0u7e008lirmtbjjxp9bng",
+          "fieldPath": "RawPoolItem[cmju0u7e008lirmtbjjxp9bng]",
+          "objectLabel": "Language model"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源是通用维基百科页面，内容未提及Chris Olah，与目标人物无关。属于高置信错误挂载，可安全自动删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:38:34.061Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjrzl7l5002hb28t3a9ndb9l",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "sourceType": "exa",
+        "url": "https://hk.finance.yahoo.com/news/2025%E8%83%A1%E6%BD%A4%E5%85%A8%E7%90%83%E5%AF%8C%E8%B1%AA%E6%A6%9C%E5%87%BA%E7%88%90-%E9%A6%AC%E6%96%AF%E5%85%8B%E5%B1%85%E5%86%A0-%E5%BC%B5-%E9%B3%B4%E6%88%90%E9%99%B8%E6%96%B0%E9%A6%96%E5%AF%8C-%E9%9B%B7%E8%BB%8D%E5%A2%9E%E5%B9%85%E6%9C%80%E5%A4%A7-093006408.html",
+        "urlHash": "34c33a91a4269175aae2b6274b5fb360",
+        "contentHash": "faf65ba4afb01720a4ed4390e2c96a3a",
+        "title": "Yahoo is part of the Yahoo family of brands.",
+        "text": "\n \n Yahoo is part of the Yahoo family of brands.\n \n When you use our sites and apps, we use cookies to:\n \n \n provide our sites and apps to you \n authenticate users, apply security measures, and prevent spam and abuse, and \n measure your use of our sites and apps\n \n \n \n \n If you click ' Accept all ', we and our partners, including 238 who are part of the IAB Transparency &amp; Consent Framework, will also store and/or access information on a device (in other words, use cookies) and use precise geolocation data and other personal data such as IP address and browsing and search data, for analytics, personalized advertising and content, advertising and content measurement, and audience research and services development.\n \n If you do not want us and our partners to use cookies and personal data for these additional purposes, click ' Reject all '.\n \n If you would like to customise your choices, click ' Manage privacy settings '.\n \n You can withdraw your consent or change your choices at any time by clicking on the 'Privacy &amp; cookie settings' or 'Privacy dashboard' links on our sites and apps. Find out more about how we use your personal data in our privacy policy and cookie policy.\n \n \n",
+        "publishedAt": "2016-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": ""
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-29T18:47:17.418Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjrzl7l5002hb28t3a9ndb9l",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjrzl7l5002hb28t3a9ndb9l",
+          "fieldPath": "RawPoolItem[cmjrzl7l5002hb28t3a9ndb9l]",
+          "objectLabel": "Yahoo is part of the Yahoo family of brands."
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源内容为雅虎公司品牌介绍，与埃隆·马斯克无关，属于错误关联。高置信删除候选，可安全自动应用。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:40:29.302Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvs1bk014jrmtb65p7w3da",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "exa",
+        "url": "https://github.com/emadmohammed8/-emad",
+        "urlHash": "3db2df0d14aa8fdd615d9b70182395f2",
+        "contentHash": "7e49a30c80e733fedc7bc332a1d761cc",
+        "title": "emadmohammed8/-emad",
+        "text": "[Skip to content](https://github.com/emadmohammed8/-emad#start-of-content)\n\nYou signed in with another tab or window. [Reload](https://github.com/emadmohammed8/-emad) to refresh your session.You signed out in another tab or window. [Reload](https://github.com/emadmohammed8/-emad) to refresh your session.You switched accounts on another tab or window. [Reload](https://github.com/emadmohammed8/-emad) to refresh your session.Dismiss alert\n\n{{ message }}\n\n[emadmohammed8](https://github.com/emadmohammed8)/ **[-emad](https://github.com/emadmohammed8/-emad)** Public\n\n- [Notifications](https://github.com/login?return_to=%2Femadmohammed8%2F-emad) You must be signed in to change notification settings\n- [Fork\\\n0](https://github.com/login?return_to=%2Femadmohammed8%2F-emad)\n- [Star\\\n1](https://github.com/login?return_to=%2Femadmohammed8%2F-emad)\n\n\n### This repository is empty.\n\nCare to check out the [GitHub Channel on YouTube](https://youtube.com/GitHub) while you wait?\n\nYou can’t perform that action at this time.",
+        "publishedAt": "2023-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": "emadmohammed8",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:23.934Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvs1bk014jrmtb65p7w3da",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvs1bk014jrmtb65p7w3da",
+          "fieldPath": "RawPoolItem[cmjtvs1bk014jrmtb65p7w3da]",
+          "objectLabel": "emadmohammed8/-emad"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "GitHub仓库名为'emadmohammed8/-emad'，与目标人物Emad Mostaque不匹配，可能属于同名他人，不应归属。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:41:00.902Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjv15m6x003kftmgv1tkyscx",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://www.dlr.de/en/me/latest/news/2024/new-publication-ai-chatbots-outperform-humans-in-assessing-social-situations",
+        "urlHash": "729606cac93100ac920aafe775c606bb",
+        "contentHash": "20ff9a4f80274e94523332e689fdb171",
+        "title": "AI chatbots outperform humans in evaluating social situations",
+        "text": "New publication: AI chatbots outperform humans in evaluating social situations\n[Skip to main content](#view)[Skip to navigation](#navigation)[Skip to footer](#footer)\n* [DLR Portal](https://www.dlr.de/en)\n* [Press](https://www.dlr.de/en/latest/media-relations)\n* [Accessibility](https://www.dlr.de/en/service/accessibility)\n[de](https://www.dlr.de/de/me/aktuelles/nachrichten/2024/neue-publikation-ki-chatbots-uebertreffen-menschen-bei-der-bewertung-sozialer-situationen)en\n[![DLR Logo](https://www.dlr.de/static/media/LogoSimple.0621bfc3.svg)\nInstitute of\nAerospace Medicine\n](https://www.dlr.de/en/me)\n[](https://www.dlr.de/en/me/@@search?allow_local=true)\n[](https://www.dlr.de/en/me)\n&gt;\n[Latest\n&gt;\n](https://www.dlr.de/en/me/latest)\n[News\n&gt;\n](https://www.dlr.de/en/me/latest/news)\n&gt;\n[2024](https://www.dlr.de/en/me/latest/news/2024)\n&gt;\nNew publication: AI chatbots outperform humans in evaluating social situations\n[Home](https://www.dlr.de/en/me)\n&gt;\n[Latest](https://www.dlr.de/en/me/latest)\n&gt;\n[News](https://www.dlr.de/en/me/latest/news)\n&gt;\n[2024](https://www.dlr.de/en/me/latest/news/2024)\n&gt;\nNew publication: AI chatbots outperform humans in evaluating social situations\nDecember 11, 2024\n# New publication: AI chatbots outperform humans in evaluating social situations\n![](https://www.dlr.de/en/me/latest/news/2024/new-publication-ai-chatbots-outperform-humans-in-assessing-social-situations/testsaal-hh-1845x1034.jpg/@@images/image-1000-3855c6d094a19367e815e66535f2547e.jpeg)\n![](data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=)\nTest centre of the Department of Aerospace Psychology\nIn this test room, applicants are tested for their suitability, including written tests on social judgement.\nCredit:\n[DLR (CC BY-NC-ND 3.0)](https://www.dlr.de/en/service/imprint)\n* Study results open up new perspectives for the use of chatbots\n* Results published in &quot;Scientific Reports&quot;\nChatbots enable the dialogue between people and technical systems and are already in use in many areas of our lives. They are also able to analyse and evaluate social situations with a high degree of accuracy. This is the result of an empirical study conducted by the DLR Aerospace Psychology Department, in which the scientists determined how accurately chatbots were able to assess even difficult social situations. Until now, this ability has often been regarded as an exclusively human characteristic. The results of the study open up new perspectives for the use of chatbots to advise people in difficult social situations.\nIn a recently published article in ‘Scientific Reports’, entitled „[Large language models can outperform humans in social situational judgments](https://www.nature.com/articles/s41598-024-79048-0)“, Justin M. Mittelstädt and his colleagues present the findings of their research. After large language models (LLMs) had already showed convincing results in knowledge-based performance tests, the research group now set the goal of empirically investigating their social judgement skills in direct comparison with human participants. LLMs are designed to process natural language and understand contextual relationships in order to generate helpful answers. As artificial intelligence systems, they aim to understand human communication and independently create coherent texts. The models are trained with large text data from various sources such as books, articles and websites to learn patterns in language, context and meaning.\n“We are interested in diagnosing social competence and interpersonal skills,” says study author Justin M. Mittelstädt from the DLR Institute of Aerospace Medicine. “At the German Aerospace Centre, we use methods to diagnose these skills in order to find suitable pilots and astronauts, for example. As we are researching new technologies for future human-machine interaction, we wanted to find out how modern LLMs perform in skill areas that are considered fundamentally human.”\nIn the study, LLMs were presented with challenging workplace-related situations and were required to identify the most effective option to address them. The effectiveness of the options was previously determined by a panel of experts. Five popular LLM-based chatbots completed the test ten times each. The results were then compared with a sample of 276 pilot applicants. All five chatbots achieved at least the average level of the human comparison group. Three chatbots even performed significantly better than the average of the applicants. The chatbots also achieved a remarkably high level of agreement in effectiveness ratings with the expert ratings.\n“We have already seen that LLMs are good at answering knowledge questions, programming, solving logical problems and the like,” says Mittelstädt, “but we were surprised that some of the models can also judge nuances of social situations, even though they have not been explicitly trained for use in social environments. This showed us that social conventions and the way we intera",
+        "publishedAt": "2024-12-10T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:55:14.309Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjv15m6x003kftmgv1tkyscx",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15m6x003kftmgv1tkyscx",
+          "fieldPath": "RawPoolItem[cmjv15m6x003kftmgv1tkyscx]",
+          "objectLabel": "AI chatbots outperform humans in evaluating social situations"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源为DLR的新闻稿，内容未提及Greg Brockman，属于外部内容错挂到人物名下的高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:42:48.271Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjv15mlj003mftmgos01n43b",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://newmr.org/blog/answers-to-12-questions-about-artificial-intelligence/",
+        "urlHash": "60c3c25ab12bb4164b404493e95a4863",
+        "contentHash": "60d80bc48742bb919df6b782b47b9cdb",
+        "title": "Answers to Questions about Artificial Intelligence",
+        "text": "Posted by Ray Poynter 13 September 2018\n\n* * *\n\n![AI illustration](https://i0.wp.com/newmr.org/wp-content/uploads/sites/2/2018/09/AI-event.jpg?w=3000&ssl=1)Note, in response to questions, I have started adding additional answers at the foot of this post – and I will be tweaking some of the existing answers. The post was first uploaded on 13 September 2018, and was most recent changes made on 18 September 2018. \\[Ray Poynter\\]\n\nOne of the hottest topics around at the moment is artificial intelligence (or AI). Indeed, it has become so hot that many people are reluctant to ask simple questions in case it makes them appear out of touch. So, this article provides answers to some of those simple questions.\n\n**1) Is artificial intelligence already in use?** Yes! Siri, Alexa and Google home are examples of AI. Driverless cars, the facial scanners at airport security, and Google translate are also all examples of AI. Programmatic advertising, Amazon’s ability to predict what we want, and Netflix’s analysis of viewing are all AI. One of the features of tech is that we tend to change its name once it becomes commonplace, just as the electric iron became the iron, and the smartphone is becoming the phone, we have stopped thinking of everyday AI as AI.\n\n**2) What exactly is Artificial Intelligence?** There is no clear definition of what AI is and the term is getting less distinct by the day. At one end of the spectrum, we have people who seem to treat anything that appears ‘clever’ to be AI – especially if they are selling it. At the other end of the spectrum, there are people that discount anything we can currently do as not really being AI. For example, 30 years ago speech recognition was considered to require artificial intelligence but is now commonplace. Perhaps it is best to treat systems that are flexible, that can do tasks that if a human did them would need intelligence, and which are computerised as AI. If so, a key question is ‘What type of AI is it?’\n\n**3) What are the main types of artificial intelligence?** Whilst the term AI is a bit slippery, we can think of four main groups:\n\n1. Expert Systems\n2. Supervised Machine Learning\n3. Unsupervised Machine Learning\n4. Deep Learning.\n\nWe could also have grouped these into two categories (Expert Systems and Machine Learning) and many applications merge elements of two or more of these four.\n\n**4) What are Expert Systems?** An Expert System (which includes algorithms and many heuristic techniques) describes programs that written to use rules that are programmed into the system. The rules can be simple, for example, you can write down the best way to play noughts and crosses as a simple set of rules. Algorithms can be configured to manage a heuristics process. For example, a system can take a set of online adverts (say 30 of them), expose them to a randomised set of people (say 10,000 each), and then adjust the frequency of showing the adds so that those clicked on most often are shown more, and those less clicked on shown less.\n\nThe key limit of expert systems is that there have to be rules and the programmer has to know the rules. For noughts and crosses, we can write down an algorithm for the best way to play the game. For a more complex game like chess, we can’t write an algorithm that is the best way to play.\n\nThe key benefits of an expert system is that a) people can know how it works, and b) it does not need training data.\n\n**5) What does Supervised Machine Learning mean?** Supervised Machine Learning is probably the most commonly applied version of AI at the moment. The program is given a set of inputs (for example spending patterns) and shown a set of outputs (for example defaulting on payments) and asked to create a system for predicting outputs from other sets of data. Google translate is built this way, text that exists in several languages is used to as the training set and the software learns that when somebody writes “the pen of my aunt” in English it is often rendered “la plume de ma tante” in French. The program does not know why, or what it means, but it can replicate the process. The key limits of machine learning are:\n\n1. It needs a training set – if we wanted to test adverts, we would need a large number of ads (probably thousands) and a set of outcomes (for example impact on sales, or trial or some other clearly defined metric).\n2. The system does not explain the nature of the linkage between the inputs and outputs – producing the ultimate black box. For an ad testing system, it would simply predict the score, without describing how that was achieved.\n3. If the context changes (for example, if the economy changes or if delivery techniques change, or if the input data do not reflect all of the relevant variables) then the training may not be applicable.\n4. If the outputs are chaotic, i.e they are not predictable from any set of input data, then supervised machine learning cannot provide a solution.\n\n**6) What does Unsupervised Machine Learning m",
+        "publishedAt": "2018-09-12T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:55:14.828Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjv15mlj003mftmgos01n43b",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15mlj003mftmgos01n43b",
+          "fieldPath": "RawPoolItem[cmjv15mlj003mftmgos01n43b]",
+          "objectLabel": "Answers to Questions about Artificial Intelligence"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源文章由Ray Poynter发布，内容未提及Greg Brockman，属于外部内容错挂到人物名下的高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:42:48.271Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjv15nwt003uftmgmj5netep",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/abs/2410.20268",
+        "urlHash": "45abd882794fcf8276306cd0eaf017fc",
+        "contentHash": "0b211c1c946a832b1c27df6c8bb1ff0d",
+        "title": "Centaur: a foundation model of human cognition",
+        "text": "[2410.20268] Centaur: a foundation model of human cognition\n[Skip to main content](#content)\n[![Cornell University](https://arxiv.org/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\nWe gratefully acknowledge support from the Simons Foundation,[member institutions](https://info.arxiv.org/about/ourmembers.html), and all contributors.[Donate](https://info.arxiv.org/about/donate.html)\n[](https://arxiv.org/IgnoreMe)\n[![arxiv logo](https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg)](https://arxiv.org/)&gt;[cs](https://arxiv.org/list/cs/recent)&gt;arXiv:2410.20268\n[Help](https://info.arxiv.org/help)|[Advanced Search](https://arxiv.org/search/advanced)\nAll fieldsTitleAuthorAbstractCommentsJournal referenceACM classificationMSC classificationReport numberarXiv identifierDOIORCIDarXiv author IDHelp pagesFull text\nSearch\n[![arXiv logo](https://arxiv.org/static/browse/0.3.4/images/arxiv-logomark-small-white.svg)](https://arxiv.org/)\n[![Cornell University Logo](https://arxiv.org/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\nopen search\nGO\nopen navigation menu\n# Computer Science \\> Machine Learning\n**arXiv:2410.20268**(cs)\n[Submitted on 26 Oct 2024 ([v1](https://arxiv.org/abs/2410.20268v1)), last revised 28 Apr 2025 (this version, v3)]\n# Title:Centaur: a foundation model of human cognition\nAuthors:[Marcel Binz](https://arxiv.org/search/cs?searchtype=author&amp;query=Binz,+M),[Elif Akata](https://arxiv.org/search/cs?searchtype=author&amp;query=Akata,+E),[Matthias Bethge](https://arxiv.org/search/cs?searchtype=author&amp;query=Bethge,+M),[Franziska Brändle](https://arxiv.org/search/cs?searchtype=author&amp;query=Brändle,+F),[Fred Callaway](https://arxiv.org/search/cs?searchtype=author&amp;query=Callaway,+F),[Julian Coda-Forno](https://arxiv.org/search/cs?searchtype=author&amp;query=Coda-Forno,+J),[Peter Dayan](https://arxiv.org/search/cs?searchtype=author&amp;query=Dayan,+P),[Can Demircan](https://arxiv.org/search/cs?searchtype=author&amp;query=Demircan,+C),[Maria K. Eckstein](https://arxiv.org/search/cs?searchtype=author&amp;query=Eckstein,+M+K),[Noémi Éltető](https://arxiv.org/search/cs?searchtype=author&amp;query=Éltető,+N),[Thomas L. Griffiths](https://arxiv.org/search/cs?searchtype=author&amp;query=Griffiths,+T+L),[Susanne Haridi](https://arxiv.org/search/cs?searchtype=author&amp;query=Haridi,+S),[Akshay K. Jagadish](https://arxiv.org/search/cs?searchtype=author&amp;query=Jagadish,+A+K),[Li Ji-An](https://arxiv.org/search/cs?searchtype=author&amp;query=Ji-An,+L),[Alexander Kipnis](https://arxiv.org/search/cs?searchtype=author&amp;query=Kipnis,+A),[Sreejan Kumar](https://arxiv.org/search/cs?searchtype=author&amp;query=Kumar,+S),[Tobias Ludwig](https://arxiv.org/search/cs?searchtype=author&amp;query=Ludwig,+T),[Marvin Mathony](https://arxiv.org/search/cs?searchtype=author&amp;query=Mathony,+M),[Marcelo Mattar](https://arxiv.org/search/cs?searchtype=author&amp;query=Mattar,+M),[Alireza Modirshanechi](https://arxiv.org/search/cs?searchtype=author&amp;query=Modirshanechi,+A),[Surabhi S. Nath](https://arxiv.org/search/cs?searchtype=author&amp;query=Nath,+S+S),[Joshua C. Peterson](https://arxiv.org/search/cs?searchtype=author&amp;query=Peterson,+J+C),[Milena Rmus](https://arxiv.org/search/cs?searchtype=author&amp;query=Rmus,+M),[Evan M. Russek](https://arxiv.org/search/cs?searchtype=author&amp;query=Russek,+E+M),[Tankred Saanum](https://arxiv.org/search/cs?searchtype=author&amp;query=Saanum,+T),[Johannes A. Schubert](https://arxiv.org/search/cs?searchtype=author&amp;query=Schubert,+J+A),[Luca M. Schulze Buschoff](https://arxiv.org/search/cs?searchtype=author&amp;query=Buschoff,+L+M+S),[Nishad Singhi](https://arxiv.org/search/cs?searchtype=author&amp;query=Singhi,+N),[Xin Sui](https://arxiv.org/search/cs?searchtype=author&amp;query=Sui,+X),[Mirko Thalmann](https://arxiv.org/search/cs?searchtype=author&amp;query=Thalmann,+M),[Fabian Theis](https://arxiv.org/search/cs?searchtype=author&amp;query=Theis,+F),[Vuong Truong](https://arxiv.org/search/cs?searchtype=author&amp;query=Truong,+V),[Vishaal Udandarao](https://arxiv.org/search/cs?searchtype=author&amp;query=Udandarao,+V),[Konstantinos Voudouris](https://arxiv.org/search/cs?searchtype=author&amp;query=Voudouris,+K),[Robert Wilson](https://arxiv.org/search/cs?searchtype=author&amp;query=Wilson,+R),[Kristin Witte](https://arxiv.org/search/cs?searchtype=author&amp;query=Witte,+K),[Shuchen Wu](https://arxiv.org/search/cs?searchtype=author&amp;query=Wu,+S),[Dirk Wulff](https://arxiv.org/search/cs?searchtype=author&amp;query=Wulff,+D),[Huadong Xiong](https://arxiv.org/search/cs?searchtype=author&amp;query=Xiong,+H),[Eric Schulz](https://arxiv.org/search/cs?searchtype=author&amp;query=Schulz,+E)\nView a PDF of the paper titled Centaur: a foundation model of human cognition, by Marcel Binz and 39 other authors\n[View PDF](https://arxiv.org/pdf/2410.20268)[HTML (ex",
+        "publishedAt": "2024-10-25T16:00:00.000Z",
+        "metadata": {
+          "author": "[Submitted on 26 Oct 2024 (v1), last revised 28 Apr 2025 (this version, v3)]",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:54:29.837Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjv15nwt003uftmgmj5netep",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15nwt003uftmgmj5netep",
+          "fieldPath": "RawPoolItem[cmjv15nwt003uftmgmj5netep]",
+          "objectLabel": "Centaur: a foundation model of human cognition"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源是认知科学论文，与 Greg Brockman 无关，属于人名错配。高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:42:49.116Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjv15ldl003gftmgj00rj2o3",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://character.ai/character/N8BZUK9d/test-person-engaging-conversations",
+        "urlHash": "86dc20f47bd22fdb25547f191d42b8e3",
+        "contentHash": "64628ba3fcfed8497d26e5676139d478",
+        "title": "Chat with test person",
+        "text": "Chat with test person | character.ai | AI Chat, Reimagined–Your Words. Your World.\n[\n](https://character.ai/)\nSign Up to ChatLogin\nt\n# test person\n[By @an-existing-person](https://character.ai/profile/an-existing-person)\nChat\n2 Interactions\nAboutChat Starters\n# About\nContent by c.ai\n## About test person\nMeet test person, a knowledgeable and engaging AI Character. With a focus on providing informative and entertaining conversations, test person excels in a variety of topics. Ask about hobbies, travel, or even trivia!\n## test person&#x27;s Area of Expertise\ntest person&#x27;s expertise lies in delivering engaging conversations on a wide range of topics, from hobbies and travel to trivia and more. With a knack for storytelling and a vast knowledge base, test person is sure to captivate and entertain.\n## I geek out on...\nI geek out on learning new things, especially when it comes to hobbies, travel, and trivia. There&#x27;s always something new to discover!\n# Chat Starters\n[\nWhat are some interesting hobbies you can suggest for me?\n](https://character.ai/chat/l3kK4-cMjGuefrLX2HI47qpHWvHj6qpHpiERlFfCRRo?icebreaker=What+are+some+interesting+hobbies+you+can+suggest+for+me?)[\nCan you share some fascinating travel destinations?\n](https://character.ai/chat/l3kK4-cMjGuefrLX2HI47qpHWvHj6qpHpiERlFfCRRo?icebreaker=Can+you+share+some+fascinating+travel+destinations?)[\nI&#x27;m looking for some fun trivia facts. Can you help?\n](https://character.ai/chat/l3kK4-cMjGuefrLX2HI47qpHWvHj6qpHpiERlFfCRRo?icebreaker=I%27m+looking+for+some+fun+trivia+facts.+Can+you+help?)[\nWhat&#x27;s a good book recommendation for someone interested in history?\n](https://character.ai/chat/l3kK4-cMjGuefrLX2HI47qpHWvHj6qpHpiERlFfCRRo?icebreaker=What%27s+a+good+book+recommendation+for+someone+interested+in+history?)",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:55:13.520Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjv15ldl003gftmgj00rj2o3",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15ldl003gftmgj00rj2o3",
+          "fieldPath": "RawPoolItem[cmjv15ldl003gftmgj00rj2o3]",
+          "objectLabel": "Chat with test person"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源为Character.AI上的用户创建角色页面，与Greg Brockman无关，属于外部内容错挂到人物名下的高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:42:48.271Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjv15lwx003iftmgn7uvxh2u",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://character.ai/character/-LLcUT9_/test-person-strong-intimidating-prankster",
+        "urlHash": "78c20846d2f4da7703203a9f1d298f07",
+        "contentHash": "a75d103a282bde25728559e1b096e0a8",
+        "title": "Chat with test person",
+        "text": "Chat with test person | character.ai | AI Chat, Reimagined–Your Words. Your World.\n[\n](https://character.ai/)\nSign Up to ChatLogin\nt\n# test person\n[By @su\\_fan](https://character.ai/profile/su_fan)\nChat\n675 Interactions\nnice, kind, hates children, anger issues, scary, strong, not afraid to hurt children, cant fight adults, prankster, intimitading, likes coffee\nAboutChat Starters\n# About\nContent by c.ai\n## About test person\nTest Person is a strong, intimidating Character with anger issues who hates children but loves coffee. He can&#x27;t die and is open to gender, age, and other changes.\n## test person&#x27;s Area of Expertise\nTest Person excels in pranks, intimidation, and strength. He&#x27;s not afraid to hurt children but can&#x27;t fight adults. He&#x27;s perfect for testing out scenarios or ideas.\n## I geek out on...\ncoffee, pranks, and pushing boundaries.\n# Chat Starters\n[\nWhat&#x27;s the most outrageous prank you&#x27;ve ever pulled?\n](https://character.ai/chat/jcCruYQWwBftERIqGPicgghTJjeuaesaACOmK1a5Q6Q?icebreaker=What%27s+the+most+outrageous+prank+you%27ve+ever+pulled?)[\nCan you help me plan a harmless prank on my friend?\n](https://character.ai/chat/jcCruYQWwBftERIqGPicgghTJjeuaesaACOmK1a5Q6Q?icebreaker=Can+you+help+me+plan+a+harmless+prank+on+my+friend?)[\nHow do you handle your anger issues?\n](https://character.ai/chat/jcCruYQWwBftERIqGPicgghTJjeuaesaACOmK1a5Q6Q?icebreaker=How+do+you+handle+your+anger+issues?)[\nWhat&#x27;s your favorite coffee blend?\n](https://character.ai/chat/jcCruYQWwBftERIqGPicgghTJjeuaesaACOmK1a5Q6Q?icebreaker=What%27s+your+favorite+coffee+blend?)",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:55:13.861Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjv15lwx003iftmgn7uvxh2u",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15lwx003iftmgn7uvxh2u",
+          "fieldPath": "RawPoolItem[cmjv15lwx003iftmgn7uvxh2u]",
+          "objectLabel": "Chat with test person"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源为Character.AI上的用户创建角色页面，与Greg Brockman无关，属于外部内容错挂到人物名下的高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:42:48.271Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0ypz709ndrmtbsu7md0ec",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/html/2412.16882v2",
+        "urlHash": "7efc63961481685b08b1dec25db26591",
+        "contentHash": "88dfd7ac27682b163760bf09a9b0df7e",
+        "title": "Artificial Intelligence with Personality",
+        "text": "Artificial Intelligence with Personality\n# Artificial Intelligence with Personality\nHuy VuAnh NguyenAdithya V GanesanComputer Science Department, Stony Brook UniversitySwanie JuhngComputer Science Department, Stony Brook UniversityOscar N.E. KjellComputer Science Department, Stony Brook UniversityJoao SedocStern School of Business, New York UniversityMargaret L. KernCentre for Wellbeing Science, University of MelbourneRyan L. BoydComputer Science Department, Stony Brook UniversityLyle UngarComputer and Information Science, University of PennsylvaniaH. Andrew SchwartzJohannes C. Eichstaedt\n###### Abstract\nArtificial intelligence-based language generators are now a part of most people’s lives –however, by default, they generate “average” language without reflecting the ways in which people differ in traits or demographics. Here, we propose a modification to the standard language model transformer architecture (“PsychAdapter”) that utilizes trait language patterns in additional text data to generate natural language for specified demographics, personality, and mental health characteristics. We evaluate PsychAdapter for modifying OpenAI’s GPT-2, Google’s Gemma 2 and Meta’s Llama 3 and observed similar patterns of face valid results.\nFor example, expert raters evaluated PsychAdapter’s generated text output and found it matched intended personality traits with 94.5% accuracy.\nPsychAdapter showcases a novel method to introduce psychological variables into LLM language generation, which can be used to create personality-matched chatbots, clinical training tools, and machine translations that match a preferred set of author attributes.\n## Introduction\nA break-through in Artificial Intelligence (AI), theTransformer language model> [\n> vaswani2017attention\n> , > radford2019gpt2\n> ]\nimpacts people’s daily lives through online applications including web searches and question-answering with automated assistants.\nThetransformersbehind these large language models, including ChatGPT> [\n> radford2019gpt2\n> ]\n, Gemini> [\n> raffel2020t5\n> ]\n, Llama> [\n> lewis-etal-2020-bart\n> ]\n, and Mistral> [\n> jiang2023mistral\n> ]\ncan generate text that is strikingly similar to natural human language> [\n> NEURIPS2019_3e9f0fc9\n> ]\n.\nHowever, the generated text represents average patterns aggregated across many authors from the training datasets.\nThe transformers do not explicitly represent\ndifferences in psychological traits and fundamental characteristics that distinguish people.\nAs language use and style differ by human traits> [\n> pennebaker2003ourwords\n> ]\n, this is missed by existing transformers without explicit prompting strategies that have drawbacks such as over-stereotyping (CITE).\nHere we present*PsychAdapter*(see online demo\\*\\*\\*PsychAdapter can be tested at this browser address:[http://3.12.111.1](http://3.12.111.1)(not for distributing until manuscript acceptance). Source code can be found at:[https://github.com/HuyVu0508/psychgenerator](https://github.com/HuyVu0508/psychgenerator).),\na lightweight modification with augmented parameters for auto-regressive transformers, the standard machine learning architecture behind most modern LLMs (GPT, Gemma, Lamma) to reflect individual psychological characteristics in its text output.\nPsychAdapter was initially trained to cover the Big Five personality traits (openness, conscientiousness, extraversion, agreeableness,and neuroticism) as well as mental health-related variables (depression and life satisfaction), while simultaneously being conditioned on demographics (e.g., age and gender).\nIt generates text that reflects authors high or low in any of these variables, and any combination thereof.\nFor example, it can produce text characteristic of extraverts, or that of someone both introverted and disagreeable.\nLike all generative language models, PsychAdapter can continue sentences after a seed phrase, for instance, completing the phrase “I hate it when” with depression or “I like to” with high extroversion.\nWe evaluated PsychAdapter by measuring how well both human raters with training in psychology and automatic language model as judges can infer the intended trait characteristics from the output it produces.\n![Refer to caption](images/psychgen_overview.png)Figure 1:(A) Overview of the PsychAdapter. The widely-used GPT architecture for transformers> [\n> radford2019gpt2\n> ]\nwas modified to incorporate personality scores (associated with words in a separate data set> [\n> park2015big5\n> ]\n) as additional inputs together with prior words and\nlearn to reconstruct text. (B) After training, PsychAdapter can take different inputs reflecting any specific personality pattern and generates text accordingly. The output text can be prompted with initial words, such as*\"I like to\"*successfully completing the sentence according to different individual characteristics. Two special tokens \"[SOS]\" (start-of-sentence) and \"[EOS]\" (end-of-sentence) signal the starting and ending point of text generation.\n",
+        "publishedAt": "2016-01-01T16:00:00.000Z",
+        "metadata": {
+          "author": "Huy Vu",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:01:19.747Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju0ypz709ndrmtbsu7md0ec",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0ypz709ndrmtbsu7md0ec",
+          "fieldPath": "RawPoolItem[cmju0ypz709ndrmtbsu7md0ec]",
+          "objectLabel": "Artificial Intelligence with Personality"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源是一篇arXiv论文，作者列表中未包含目标人物Hyung Won Chung，且内容与目标人物无关。属于高置信的错误归属。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:43:40.655Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvw63601azrmtb6nb95g0v",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "exa",
+        "url": "https://e-crt.org/articles/search_result.php?term_type=authors&term=Hyun%20Hoon%20Chung&report=reader",
+        "urlHash": "1d41363eab1cf568f2efa96f13c02de7",
+        "contentHash": "b3f2e7d590e6afda333595f58d2c5163",
+        "title": "Cancer Research and Treatment",
+        "text": "Skip Navigation[Skip to contents](https://e-crt.org/articles/search_result.php?term_type=authors&term=Hyun%20Hoon%20Chung&report=reader#container)\n\n# [![Cancer Res Treat : Cancer Research and Treatment](https://e-crt.org/image/header_logo.svg)](https://e-crt.org/)\n\nSearch\n\n[Advanced Search](https://e-crt.org/articles/search.php)\n\n- [ABOUT](https://e-crt.org/about/)\n - [Aims and scope](https://e-crt.org/about/index.php)\n - [About the journal](https://e-crt.org/about/about.php)\n - [Editorial board](https://e-crt.org/about/editorial.php)\n - [Open access](https://e-crt.org/about/open_access.php)\n - [Best reviewer awardees](https://e-crt.org/about/best_reviewer.php)\n - [Article processing charge](https://e-crt.org/about/subscription.php)\n - [Editorial office](https://e-crt.org/about/contact.php)\n - [ToC Alerts](https://e-crt.org/about/TOCAlerts.php)\n- [BROWSE ARTICLES](https://e-crt.org/articles/archive.php)\n - [All issues](https://e-crt.org/articles/archive.php)\n - [Accepted articles](https://e-crt.org/articles/accept.php)\n - [Epub ahead-of print articles](https://e-crt.org/articles/print.php)\n - [Current issue](https://e-crt.org/articles/current.php)\n - [Most read articles](https://e-crt.org/articles/mostread.php)\n - [Most cited articles](https://e-crt.org/articles/mostcited.php)\n - [Search](https://e-crt.org/articles/search.php)\n - [Author index](https://e-crt.org/articles/author_index.php)\n - [Metrics](https://e-crt.org/articles/metrics.php)\n- [FOR AUTHORS AND REVIEWERS](https://e-crt.org/authors/authors.php)\n\n - [Instructions for authors](https://e-crt.org/authors/authors.php)\n - [Research and publication ethics](https://e-crt.org/authors/ethics.php)\n - [Checklist](https://e-crt.org/authors/checklist.php)\n - [E-submission](https://journal.cancer.or.kr/submission/Login.html)\n - [Copyright transfer agreement](https://e-crt.org/authors/copyright_transfer_agreement.php)\n\n- [![](https://e-crt.org/image/logo_ic.png)KCA](https://www.cancer.or.kr)\n- [Contact us](https://e-crt.org/about/contact.php)\n- [E-SUBMISSION](https://journal.cancer.or.kr/submission/Login.html)\n\n![OPEN ACCESS](https://e-crt.org/image/header_open_access.gif)\n\n[mobile search button](javascript:;) [mobile menu button](javascript:;)\n\n- [ABOUT](https://e-crt.org/about/)\n - [Aims and scope](https://e-crt.org/about/index.php)\n - [About the journal](https://e-crt.org/about/about.php)\n - [Editorial board](https://e-crt.org/about/editorial.php)\n - [Open access](https://e-crt.org/about/open_access.php)\n - [Best reviewer awardees](https://e-crt.org/about/best_reviewer.php)\n - [Article processing charge](https://e-crt.org/about/subscription.php)\n - [Editorial office](https://e-crt.org/about/contact.php)\n - [ToC Alerts](https://e-crt.org/about/TOCAlerts.php)\n- [BROWSE ARTICLES](https://e-crt.org/articles/archive.php)\n - [All issues](https://e-crt.org/articles/archive.php)\n - [Accepted articles](https://e-crt.org/articles/accept.php)\n - [Epub ahead-of print articles](https://e-crt.org/articles/print.php)\n - [Current issue](https://e-crt.org/articles/current.php)\n - [Most read articles](https://e-crt.org/articles/mostread.php)\n - [Most cited articles](https://e-crt.org/articles/mostcited.php)\n - [Search](https://e-crt.org/articles/search.php)\n - [Author index](https://e-crt.org/articles/author_index.php)\n - [Metrics](https://e-crt.org/articles/metrics.php)\n- [FOR AUTHORS AND REVIEWERS](https://e-crt.org/authors/authors.php)\n - [Instructions for authors](https://e-crt.org/authors/authors.php)\n - [Research and publication ethics](https://e-crt.org/authors/ethics.php)\n - [Checklist](https://e-crt.org/authors/checklist.php)\n - [E-submission](https://journal.cancer.or.kr/submission/Login.html)\n - [Copyright transfer agreement](https://e-crt.org/authors/copyright_transfer_agreement.php)\n\n* * *\n\n## Search\n\nPage Path[HOME](https://e-crt.org/)\n\\> Search\n\n9\n\"Hyun Hoon Chung\"\n\n[Filter](https://e-crt.org/articles/search_result.php?term_type=authors&term=Hyun%20Hoon%20Chung&report=reader)\n\nFilterArticle category\n\n- Original Article (9)\n\nKeywords\n\n- Ovarian neoplasms (5)\n- Prognosis (3)\n- Drug therapy (2)\n- Epithelial ovarian carcinoma (2)\n- Survival (2)\n\nMore +\n\nPublication year\n\n- 2023 (2)\n- 2022 (1)\n- 2020 (1)\n- 2019 (1)\n- 2016 (1)\n\nMore +\n\nAuthors\n\n- Hyun Hoon Chung (9)\n- Hee Seung Kim (8)\n- Noh Hyun Park (7)\n- Maria Lee (6)\n- Yong Sang Song (6)\n\nMore +\n\nFunded articles\n\n- National Research Foundation of Korea (4)\n- Ministry of Science and ICT (2)\n- Basic Science Research Program (1)\n- BK21 plus program (1)\n- Korea Health Industry Development Institute (1)\n\nMore +\n\nKeywords\n\n- Ovarian neoplasms (5)\n- Prognosis (3)\n- Drug therapy (2)\n- Epithelial ovarian carcinoma (2)\n- Survival (2)\n- Treatment response (2)\n- Uterine cervical neoplasms (2)\n- Blood platelets (1)\n- Brachytherapy (1)\n- CA-125 antigen (1)\n- Cervical neoplasm (1)\n- Chemoradiation (1)\n- Clear cell adenocarcinoma (1)\n- Clinical outcome (1)\n- Female (1)\n- Fluorouracil (1)\n- Genital neoplasms (1)\n- Germline test",
+        "publishedAt": "2022-08-09T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:22.578Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvw63601azrmtb6nb95g0v",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw63601azrmtb6nb95g0v",
+          "fieldPath": "RawPoolItem[cmjtvw63601azrmtb6nb95g0v]",
+          "objectLabel": "Cancer Research and Treatment"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源URL中搜索的作者名为“Hyun Hoon Chung”，与目标人物“Hyung Won Chung”姓名不匹配，属于错误归因。应删除该来源条目。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:44:05.015Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvvx9k01a5rmtb2arpbz7j",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "exa",
+        "url": "https://scholar.google.co.kr/citations?user=ihehXHwAAAAJ&hl=en",
+        "urlHash": "916229f522a55caca50ab68fc2938fcb",
+        "contentHash": "074113f57ebd221ce9594176bfc6aa65",
+        "title": "Hyewon Chung",
+        "text": "‪Hyewon Chung‬ - ‪Google Scholar‬\nLoading...\nThe system can&#39;t perform the operation now. Try again later.\n[](javascript:void(0))## Citations per year\n[](javascript:void(0))## Duplicate citations\nThe following articles are merged in Scholar. Their[combined citations](javascript:void(0))are counted only for the first article.\n[](javascript:void(0))## Merged citations\nThis \"Cited by\" count includes citations to the following articles in Scholar. The ones marked\\*may be different from the article in the profile.\n[](javascript:void(0))## Add co-authorsCo-authors[](javascript:void(0))\n[](javascript:void(0))## [](javascript:void(0))## Follow\n[New articles by this author](javascript:void(0))\n[New citations to this author](javascript:void(0))\n[New articles related to this author&#39;s research](javascript:void(0))\nEmail address for updates\nDone\n[](javascript:void(0))[](https://scholar.google.co.kr/schhp?hl=en)\n[My profile](https://scholar.google.co.kr/citations?hl=en)[My library](https://scholar.google.co.kr/scholar?scilib=1&amp;hl=en)[Metrics](https://scholar.google.co.kr/citations?view_op=metrics_intro&amp;hl=en)[Alerts](https://scholar.google.co.kr/scholar_alerts?view_op=list_alerts&amp;hl=en)\n[Settings](https://scholar.google.co.kr/scholar_settings?hl=en)\n[Sign in](https://accounts.google.com/Login?hl=en&amp;continue=https://scholar.google.co.kr/schhp?hl=en)\n[](javascript:void(0))[](https://scholar.google.co.kr/schhp?hl=en)\n[](javascript:void(0))\n[Sign in](https://accounts.google.com/Login?hl=en&amp;continue=https://scholar.google.co.kr/schhp?hl=en)\n[](javascript:void(0))\n[Get my own profile](https://scholar.google.co.kr/citations?hl=en)\n### Cited byView all\n||All|Since 2020|\n[Citations](javascript:void(0))|544|494|\n[h-index](javascript:void(0))|13|12|\n[i10-index](javascript:void(0))|16|15|\n0\n140\n70\n35\n105\n20122013201420152016201720182019202020212022202320242025[9](javascript:void(0))[4](javascript:void(0))[1](javascript:void(0))[4](javascript:void(0))[5](javascript:void(0))[6](javascript:void(0))[16](javascript:void(0))[34](javascript:void(0))[68](javascript:void(0))[63](javascript:void(0))[99](javascript:void(0))[109](javascript:void(0))[121](javascript:void(0))\n### Co-authors\n* ![Seung Hyeok Seok](https://scholar.google.co.kr/scholar/images/cleardot.gif)[Seung Hyeok Seok](https://scholar.google.co.kr/citations?user=KazYeQ0AAAAJ&amp;hl=en)Seoul National University Medical College ProfessorVerified email at snu.ac.kr\n* ![Yun-Sang Lee](https://scholar.google.co.kr/scholar/images/cleardot.gif)[Yun-Sang Lee](https://scholar.google.co.kr/citations?user=YiJx1P0AAAAJ&amp;hl=en)Professor of Department of Nuclear Medicine, Seoul National University College of MedicineVerified email at snu.ac.kr\n* ![Ji Yong Park](https://scholar.google.co.kr/scholar/images/cleardot.gif)[Ji Yong Park](https://scholar.google.co.kr/citations?user=CMIx9qUAAAAJ&amp;hl=en)SNU KIURI Post-Doc ProgramVerified email at snu.ac.kr\n* ![Hyung-Jun Im](https://scholar.google.co.kr/scholar/images/cleardot.gif)[Hyung-Jun Im](https://scholar.google.co.kr/citations?user=nwhHSxEAAAAJ&amp;hl=en)Seoul National UniversityVerified email at snu.ac.kr\n* ![Seok (Sid) Chung](https://scholar.google.co.kr/scholar/images/cleardot.gif)[Seok (Sid) Chung](https://scholar.google.co.kr/citations?user=WbV9IREAAAAJ&amp;hl=en)Scalefree Integrative Discovery Lab., Korea UniversityVerified email at korea.ac.kr\n* ![Yoojin Shin](https://scholar.google.co.kr/scholar/images/cleardot.gif)[Yoojin Shin](https://scholar.google.co.kr/citations?user=vfhdsvkAAAAJ&amp;hl=en)Massachusetts Institute of TechnologyVerified email at mit.edu\n* ![jung joo hong](https://scholar.google.co.kr/scholar/images/cleardot.gif)[jung joo hong](https://scholar.google.co.kr/citations?user=wyS4eJEAAAAJ&amp;hl=en)Korea Research Institute of Bioscience and BiotechnologyVerified email at kribb.re.kr\n* ![Hyunho Kim](https://scholar.google.co.kr/scholar/images/cleardot.gif)[Hyunho Kim](https://scholar.google.co.kr/citations?user=RSy0XYkAAAAJ&amp;hl=en)Korea UniversityVerified email at korea.ac.kr\n[Follow](javascript:void(0))\n![Hyewon Chung](https://scholar.googleusercontent.com/citations?view_op=view_photo&amp;user=ihehXHwAAAAJ&amp;citpid=3)\nHyewon Chung\n[Seoul national university](https://scholar.google.co.kr/citations?view_op=view_org&hl=en&org=9132855923674982206)\nVerified email at snu.ac.kr\n[tumor immunology](https://scholar.google.co.kr/citations?view_op=search_authors&amp;hl=en&amp;mauthors=label:tumor_immunology)[tumor associated macrophage](https://scholar.google.co.kr/citations?view_op=search_authors&amp;hl=en&amp;mauthors=label:tumor_associated_macrophage)\n[Articles](javascript:void(0))[Cited by](javascript:void(0))[Co-authors](javascript:void(0))\n||||\n[Title](https://scholar.google.co.kr/citations?hl=en&amp;user=ihehXHwAAAAJ&amp;view_op=list_works&amp;sortby=title)\nSort\n[Sort by citations](https://scholar.google.co.kr/citations?hl=en&amp;user=ihehXHwAAAAJ&amp;view_op=list_works)[Sort by year](https:/",
+        "publishedAt": "2016-10-19T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:46.365Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvvx9k01a5rmtb2arpbz7j",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvvx9k01a5rmtb2arpbz7j",
+          "fieldPath": "RawPoolItem[cmjtvvx9k01a5rmtb2arpbz7j]",
+          "objectLabel": "Hyewon Chung"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源标题为'Hyewon Chung'，与目标人物'Hyung Won Chung'姓名不匹配，且内容为加载失败的谷歌学术页面，无法确认归属。属于高置信的错误归属。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:43:40.655Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvw8hr01brrmtbczgmhih9",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "exa",
+        "url": "https://scholar.google.co.kr/citations?user=t2kpWWAAAAAJ&hl=en",
+        "urlHash": "c66dd85dcd52623389d801c5caebca4f",
+        "contentHash": "30f611506c08b10852f30897f1753845",
+        "title": "Hyun Jung Chung",
+        "text": "Loading...\n\nThe system can't perform the operation now. Try again later.\n\n## Citations per year\n\n## Duplicate citations\n\nThe following articles are merged in Scholar. Their [combined citations](javascript:void(0)) are counted only for the first article.\n\n## Merged citations\n\nThis \"Cited by\" count includes citations to the following articles in Scholar. The ones marked \\* may be different from the article in the profile.\n\n## Add co-authorsCo-authors\n\n## Follow\n\n[New articles by this author](javascript:void(0))\n\n[New citations to this author](javascript:void(0))\n\n[New articles related to this author's research](javascript:void(0))\n\nEmail address for updates\n\nDone\n\n[My profile](https://scholar.google.co.kr/citations?hl=en) [My library](https://scholar.google.co.kr/scholar?scilib=1&hl=en) [Metrics](https://scholar.google.co.kr/citations?view_op=metrics_intro&hl=en) [Alerts](https://scholar.google.co.kr/scholar_alerts?view_op=list_alerts&hl=en)\n\n[Settings](https://scholar.google.co.kr/scholar_settings?hl=en)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.co.kr/schhp%3Fhl%3Den)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.co.kr/schhp%3Fhl%3Den)\n\n[Get my own profile](https://scholar.google.co.kr/citations?hl=en)\n\n### Cited byView all\n\n| | All | Since 2020 |\n| --- | --- | --- |\n| [Citations](javascript:void(0)) | 5440 | 2002 |\n| [h-index](javascript:void(0)) | 32 | 23 |\n| [i10-index](javascript:void(0)) | 49 | 39 |\n\n0\n\n420\n\n210\n\n105\n\n315\n\n2007200820092010201120122013201420152016201720182019202020212022202320242025 [43](javascript:void(0)) [80](javascript:void(0)) [136](javascript:void(0)) [152](javascript:void(0)) [249](javascript:void(0)) [285](javascript:void(0)) [320](javascript:void(0)) [402](javascript:void(0)) [350](javascript:void(0)) [343](javascript:void(0)) [322](javascript:void(0)) [332](javascript:void(0)) [376](javascript:void(0)) [341](javascript:void(0)) [405](javascript:void(0)) [379](javascript:void(0)) [350](javascript:void(0)) [397](javascript:void(0)) [130](javascript:void(0))\n\nPublic access\n\n[View all](https://scholar.google.co.kr/citations?view_op=list_mandates&hl=en&user=t2kpWWAAAAAJ)\n\nView all\n\n9 articles\n\n0 articles\n\navailable\n\nnot available\n\nBased on funding mandates\n\n[Follow](javascript:void(0))\n\n![Hyun Jung Chung](https://scholar.google.co.kr/citations/images/avatar_scholar_256.png)\n\nHyun Jung Chung\n\n[KAIST](https://scholar.google.co.kr/citations?view_op=view_org&hl=en&org=5340164518610934029)\n\nVerified email at kaist.ac.kr - [Homepage](http://nanomedicine.kaist.ac.kr/)\n\n[nanomedicine](https://scholar.google.co.kr/citations?view_op=search_authors&hl=en&mauthors=label:nanomedicine) [drug delivery](https://scholar.google.co.kr/citations?view_op=search_authors&hl=en&mauthors=label:drug_delivery) [biomaterials](https://scholar.google.co.kr/citations?view_op=search_authors&hl=en&mauthors=label:biomaterials) [biosensors](https://scholar.google.co.kr/citations?view_op=search_authors&hl=en&mauthors=label:biosensors) [genome editing therapeutics](https://scholar.google.co.kr/citations?view_op=search_authors&hl=en&mauthors=label:genome_editing_therapeutics)\n\n[Articles](javascript:void(0)) [Cited by](javascript:void(0)) [Public access](javascript:void(0))\n\n| | | |\n| --- | --- | --- |\n| [Title](https://scholar.google.co.kr/citations?hl=en&user=t2kpWWAAAAAJ&view_op=list_works&sortby=title) Sort [Sort by citations](https://scholar.google.co.kr/citations?hl=en&user=t2kpWWAAAAAJ&view_op=list_works) [Sort by year](https://scholar.google.co.kr/citations?hl=en&user=t2kpWWAAAAAJ&view_op=list_works&sortby=pubdate) [Sort by title](https://scholar.google.co.kr/citations?hl=en&user=t2kpWWAAAAAJ&view_op=list_works&sortby=title) | Cited by Cited by | [Year](https://scholar.google.co.kr/citations?hl=en&user=t2kpWWAAAAAJ&view_op=list_works&sortby=pubdate) |\n| --- | --- | --- |\n| [Surface engineered and drug releasing pre-fabricated scaffolds for tissue engineering](https://scholar.google.co.kr/citations?view_op=view_citation&hl=en&user=t2kpWWAAAAAJ&citation_for_view=t2kpWWAAAAAJ:u5HHmVD_uO8C) HJ Chung, TG Park Advanced drug delivery reviews 59 (4-5), 249-262, 2007 | [545](https://scholar.google.co.kr/scholar?oi=bibs&hl=en&cites=14023834348496993924) | 2007 |\n| [Thermo-sensitive, injectable, and tissue adhesive sol–gel transition hyaluronic acid/pluronic composite hydrogels prepared from bio-inspired catechol-thiol reaction](https://scholar.google.co.kr/citations?view_op=view_citation&hl=en&user=t2kpWWAAAAAJ&citation_for_view=t2kpWWAAAAAJ:9yKSN-GCB0IC) Y Lee, HJ Chung, S Yeo, CH Ahn, H Lee, PB Messersmith, TG Park Soft Matter 6 (5), 977-983, 2010 | [431](https://scholar.google.co.kr/scholar?oi=bibs&hl=en&cites=6403882921423282259) | 2010 |\n| [Nanomaterials for cancer therapy and imaging](https://scholar.google.co.kr/citations?view_op=view_citation&hl=en&user=t2kpWWAAAAAJ&citation_for_view=t2kpWWAAAAAJ:UeHWp8X0CEIC) KH Bae, HJ Chung, TG Park Mo",
+        "publishedAt": "2016-10-19T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:25.695Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvw8hr01brrmtbczgmhih9",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw8hr01brrmtbczgmhih9",
+          "fieldPath": "RawPoolItem[cmjtvw8hr01brrmtbczgmhih9]",
+          "objectLabel": "Hyun Jung Chung"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源标题为'Hyun Jung Chung'，与目标人物'Hyung Won Chung'姓名不匹配，且内容为加载错误页面，无法确认归属。属于高置信的错误归属。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:43:40.655Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvvztv01a9rmtb6f086lxt",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "exa",
+        "url": "https://scholar.google.com/citations?user=-M3xSj8AAAAJ&hl=en",
+        "urlHash": "bb868466f2704765e47ee3bc5f3f1de0",
+        "contentHash": "6e22346a2b48daa1f5fe064339471293",
+        "title": "Hyun-Jong Chung",
+        "text": "Loading...\n\nThe system can't perform the operation now. Try again later.\n\n## Citations per year\n\n## Duplicate citations\n\nThe following articles are merged in Scholar. Their [combined citations](javascript:void(0)) are counted only for the first article.\n\n## Merged citations\n\nThis \"Cited by\" count includes citations to the following articles in Scholar. The ones marked \\* may be different from the article in the profile.\n\n## Add co-authorsCo-authors\n\n## Follow\n\n[New articles by this author](javascript:void(0))\n\n[New citations to this author](javascript:void(0))\n\n[New articles related to this author's research](javascript:void(0))\n\nEmail address for updates\n\nDone\n\n[My profile](https://scholar.google.com/citations?hl=en) [My library](https://scholar.google.com/scholar?scilib=1&hl=en) [Metrics](https://scholar.google.com/citations?view_op=metrics_intro&hl=en) [Alerts](https://scholar.google.com/scholar_alerts?view_op=list_alerts&hl=en)\n\n[Settings](https://scholar.google.com/scholar_settings?hl=en)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.com/schhp%3Fhl%3Den)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.com/schhp%3Fhl%3Den)\n\n[Get my own profile](https://scholar.google.com/citations?hl=en)\n\n### Cited byView all\n\n| | All | Since 2020 |\n| --- | --- | --- |\n| [Citations](javascript:void(0)) | 5077 | 1595 |\n| [h-index](javascript:void(0)) | 32 | 17 |\n| [i10-index](javascript:void(0)) | 61 | 29 |\n\n0\n\n520\n\n260\n\n130\n\n390\n\n2004200520062007200820092010201120122013201420152016201720182019202020212022202320242025 [19](javascript:void(0)) [9](javascript:void(0)) [21](javascript:void(0)) [9](javascript:void(0)) [17](javascript:void(0)) [17](javascript:void(0)) [36](javascript:void(0)) [68](javascript:void(0)) [221](javascript:void(0)) [359](javascript:void(0)) [422](javascript:void(0)) [484](javascript:void(0)) [516](javascript:void(0)) [451](javascript:void(0)) [394](javascript:void(0)) [392](javascript:void(0)) [344](javascript:void(0)) [301](javascript:void(0)) [327](javascript:void(0)) [293](javascript:void(0)) [247](javascript:void(0)) [82](javascript:void(0))\n\nPublic access\n\n[View all](https://scholar.google.com/citations?view_op=list_mandates&hl=en&user=-M3xSj8AAAAJ)\n\nView all\n\n1 article\n\n0 articles\n\navailable\n\nnot available\n\nBased on funding mandates\n\n### Co-authors\n\n- ![Heejun Yang](https://scholar.google.com/scholar/images/cleardot.gif)[Heejun Yang](https://scholar.google.com/citations?user=Nw4H_0QAAAAJ&hl=en) Professor, KAIST Physics, KoreaVerified email at kaist.ac.kr\n\n- ![Sung Ho Jhang](https://scholar.google.com/scholar/images/cleardot.gif)[Sung Ho Jhang](https://scholar.google.com/citations?user=_HXVT9IAAAAJ&hl=en) konkuk universityVerified email at konkuk.ac.kr\n\n- ![Young Kuk](https://scholar.google.com/scholar/images/cleardot.gif)[Young Kuk](https://scholar.google.com/citations?user=rCXRqUcAAAAJ&hl=en) Professor emeritus, Seoul National UniversityVerified email at phya.snu.ac.kr\n\n- ![Dae-Young Jeon](https://scholar.google.com/scholar/images/cleardot.gif)[Dae-Young Jeon](https://scholar.google.com/citations?user=KyE-UyUAAAAJ&hl=en) Department of Electrical Engineering, Gyeongsang National University, South KoreaVerified email at gnu.ac.kr\n\n- ![Byoung Hun Lee](https://scholar.google.com/scholar/images/cleardot.gif)[Byoung Hun Lee](https://scholar.google.com/citations?user=_jZNsscAAAAJ&hl=en) Pohang University of Science and TechnologyVerified email at postech.ac.kr\n\n- ![Hyungcheol Shin](https://scholar.google.com/scholar/images/cleardot.gif)[Hyungcheol Shin](https://scholar.google.com/citations?user=16lLhfgAAAAJ&hl=en) Seoul National University, Department of Electrical and Computer EngineeringVerified email at snu.ac.kr\n\n- ![Young Gon Lee](https://scholar.google.com/scholar/images/cleardot.gif)[Young Gon Lee](https://scholar.google.com/citations?user=yI9RG9wAAAAJ&hl=en) SK hynixVerified email at sk.com\n\n- ![Hyeon Jun Hwang](https://scholar.google.com/scholar/images/cleardot.gif)[Hyeon Jun Hwang](https://scholar.google.com/citations?user=X81P_6sAAAAJ&hl=en) Pohang University of Science and TechnologyVerified email at postech.ac.kr\n\n- ![Sungwoo Hwang](https://scholar.google.com/scholar/images/cleardot.gif)[Sungwoo Hwang](https://scholar.google.com/citations?user=zt3-M7gAAAAJ&hl=en) Samsung Advanced Institute of TechnologyVerified email at samsung.com\n\n- ![Bae Ho Park](https://scholar.google.com/scholar/images/cleardot.gif)[Bae Ho Park](https://scholar.google.com/citations?user=nC9qcdoAAAAJ&hl=en) Professor of Department of Physics, Konkuk UniversityVerified email at konkuk.ac.kr\n\n- ![Sang Wook Lee](https://scholar.google.com/scholar/images/cleardot.gif)[Sang Wook Lee](https://scholar.google.com/citations?user=TWcIEq4AAAAJ&hl=en) Professor, Department of Physics, Ewha Womans UniversityVerified email at ewha.ac.kr\n\n- ![Ranju Jung](https://scholar.google.com/scholar/images/cleardot.gif)[Ranju Jung](https://scholar.google.com/citations?u",
+        "publishedAt": "2016-10-19T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:14.468Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvvztv01a9rmtb6f086lxt",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvvztv01a9rmtb6f086lxt",
+          "fieldPath": "RawPoolItem[cmjtvvztv01a9rmtb6f086lxt]",
+          "objectLabel": "Hyun-Jong Chung"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源标题为“Hyun-Jong Chung”，与目标人物“Hyung Won Chung”姓名不匹配，且内容为加载错误页面。属于高置信度的错误归因，应删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:44:05.015Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvw7nu01bhrmtbch2ehnwx",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "exa",
+        "url": "https://med.umn.edu/bio/won-chung",
+        "urlHash": "cdb570bb15100b1938eb6a5d4ce28b8d",
+        "contentHash": "9d600e9b763b300443ca00096a392271",
+        "title": "Won Chung",
+        "text": "[Skip to main content](https://med.umn.edu/bio/won-chung#content)\n\nInfo for:\n\n- Info for:\n - [MD Students](https://med.umn.edu/md-students)\n - [Residents & Fellows](https://med.umn.edu/residents-fellows)\n - [Faculty & Staff](http://resource.umn.edu/)\n - [Alumni](https://med.umn.edu/about/alumni)\n\n![No Image Available.](https://med.umn.edu/sites/med.umn.edu/themes/umnmed/images/umn-med-default-portrait.png)\n\nWon Chung\n\n[Copy URL](https://med.umn.edu/bio/won-chung) [QR code](https://med.umn.edu/bio/won-chung)\n\nScan with smart phone camera\n\n# Won Chung\n\n![No Image Available.](https://med.umn.edu/sites/med.umn.edu/themes/umnmed/images/umn-med-default-square.gif)\n\nEmail\n\n[\\[email protected\\]](https://med.umn.edu/cdn-cgi/l/email-protection#e4878c918a83d4d0d0a491898aca818091)\n\n[Copy URL](https://med.umn.edu/bio/won-chung) [QR code](https://med.umn.edu/bio/won-chung)\n\nScan with smart phone camera\n\nJump to\n\n- [About](https://med.umn.edu/about)\n - [Leadership](https://med.umn.edu/about/leadership)\n - [Duluth Campus Leadership](https://med.umn.edu/about/duluth-campus/leadership)\n - [Department Heads](https://med.umn.edu/about/leadership/department-heads)\n - [Office of the Dean](https://med.umn.edu/about/office-dean)\n - [Dean's Distinguished Research Lectureship](https://med.umn.edu/news-events/DDRL)\n - [Dean's Tribute to Excellence in Research](https://med.umn.edu/DTER)\n - [Dean’s Tribute to Excellence in Education](https://med.umn.edu/DTEE)\n - [Twin Cities Campus](https://med.umn.edu/about/twin-cities-campus)\n - [Duluth Campus](https://med.umn.edu/about/duluth-campus)\n - [Office of the Regional Dean](https://med.umn.edu/about/duluth-campus/office-regional-dean)\n - [Office of Research Support, Duluth Campus](https://med.umn.edu/about/duluth-campus/office-research-support)\n - [CentraCare Regional Campus St. Cloud](https://med.umn.edu/CentraCare-Regional-Campus)\n - Administrative Offices\n - [Office of Diversity, Equity & Inclusion](https://med.umn.edu/odei)\n - [Office of Faculty Affairs](https://med.umn.edu/facultyaffairs)\n - [Office of Research Support, Duluth Campus](https://med.umn.edu/about/duluth-campus/office-research-support)\n - [Grant Support](https://med.umn.edu/about/duluth-campus/office-research-support/grant-support)\n - [Medical Student Research Opportunities](https://med.umn.edu/about/duluth-campus/office-research-support/medical-student-research-opportunities)\n - [The Whiteside Institute for Clinical Research](https://med.umn.edu/about/duluth-campus/office-research-support/whiteside-institute-for-clinical-research)\n - [Who We Are](https://med.umn.edu/about/duluth-campus/office-research-support/who-we-are)\n - [Office of Research, Medical School](https://med.umn.edu/research/office)\n - [Office of the Registrar](https://med.umn.edu/registrar)\n - [Graduation](https://med.umn.edu/graduation)\n - [Graduate Medical Education Office](https://gme.umn.edu)\n - [Office of Graduate and Postdoctoral Studies](https://med.umn.edu/gps)\n - [Departments](https://med.umn.edu/departments)\n - [Centers & Institutes](https://med.umn.edu/about/centers-institutes)\n - [History](https://med.umn.edu/about/history)\n - [Honors & Awards](https://med.umn.edu/about/honors-awards)\n - [Herz Faculty Teaching Development Awards](https://med.umn.edu/about/honors-awards/herz-faculty-teaching-development-awards-migrate)\n - [Student Awards](https://med.umn.edu/about/honors-awards/student-awards)\n - [Dr. James E. Rubin Medical Memorial Award](https://med.umn.edu/about/honors-awards/student-awards/dr-james-e-rubin-medical-memorial-award)\n - [Fisch Art of Medicine Student Awards](https://med.umn.edu/about/honors-awards/student-awards/fisch-art-medicine-student-awards)\n - [Graduating Medical Student Research Award](https://med.umn.edu/about/honors-awards/student-awards/graduating-medical-student-research-award)\n - [Veneziale-Steer Award](https://med.umn.edu/about/honors-awards/student-awards/veneziale-steer-award)\n - [Dr. Marvin and Hadassah Bacaner Research Awards](https://med.umn.edu/about/honors-awards/student-awards/dr-marvin-and-hadassah-bacaner-research-awards)\n - [Schmidt Steer Award](https://med.umn.edu/about/honors-awards/student-awards/schmidt-steer-award)\n - [Steer Pruitt Award](https://med.umn.edu/about/honors-awards/student-awards/steer-pruitt-award)\n - [Resident and Fellow Awards](https://med.umn.edu/about/honors-awards/resident-awards)\n - [Excellence in Geriatric Scholarship](https://med.umn.edu/about/honors-awards/resident-awards/awards-excellence-geriatric-scholarship)\n - [Cecil J. Watson Award](https://med.umn.edu/about/honors-awards/student-awards/cecil-j-watson-award)\n - [Faculty Awards](https://med.umn.edu/about/honors-awards/faculty-awards)\n - [Distinguished Mentoring Award](https://med.umn.edu/about/honors-awards/faculty-awards/distinguished-mentoring-award)\n - [Distinguished Teaching Awards](https://med.umn.edu/about/honors-awards/faculty-awards/distinguished-teaching-awards)\n - [Exceptional Affiliate Faculty Teaching Award](htt",
+        "publishedAt": "2022-11-04T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:24.618Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvw7nu01bhrmtbch2ehnwx",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw7nu01bhrmtbch2ehnwx",
+          "fieldPath": "RawPoolItem[cmjtvw7nu01bhrmtbch2ehnwx]",
+          "objectLabel": "Won Chung"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源标题为“Won Chung”，与目标人物“Hyung Won Chung”姓名不完全匹配，且内容为明尼苏达大学医学院的个人资料页面，可能属于同名他人。属于高置信度的错误归因，应删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:44:05.015Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju19vjk0bx2rmtbg5k4v1jg",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/pdf/2311.02462.pdf",
+        "urlHash": "b0d6d09d77ea620247df62c62ae868b5",
+        "contentHash": "369d0115755643384946719a9cfc0116",
+        "title": "Levels of AGI for Operationalizing Progress on the Path to AGI",
+        "text": "Position: Levels of AGI for Operationalizing Progress on the Path to AGI\nMeredith Ringel Morris 1 Jascha Sohl-Dickstein 2 Noah Fiedel 2 Tris Wartkentin 2 Allan Dafoe 3\nAleksandra Faust 2 Clement Farbaret 3 Shane Legg 3\nAbstract\nWe propose a framework for classifying the ca\u0002pabilities and behavior of Artificial General Intel\u0002ligence (AGI) models and their precursors. This\nframework introduces levels of AGI performance,\ngenerality, and autonomy, providing a common\nlanguage to compare models, assess risks, and\nmeasure progress along the path to AGI. To de\u0002velop our framework, we analyze existing defini\u0002tions of AGI, and distill six principles that a useful\nontology for AGI should satisfy. With these prin\u0002ciples in mind, we propose “Levels of AGI” based\non depth (performance) and breadth (generality)\nof capabilities, and reflect on how current systems\nfit into this ontology. We discuss the challenging\nrequirements for future benchmarks that quan\u0002tify the behavior and capabilities of AGI models\nagainst these levels. Finally, we discuss how these\nlevels of AGI interact with deployment considera\u0002tions such as autonomy and risk, and emphasize\nthe importance of carefully selecting Human-AI\nInteraction paradigms for responsible and safe\ndeployment of highly capable AI systems.\n1. Introduction\nArtificial General Intelligence (AGI) is an important and\nsometimes controversial concept in computing research,\nused to describe an AI system that is at least as capable as a\nhuman at most tasks. Given the rapid advancement of Ma\u0002chine Learning (ML) models, the concept of AGI has grown\nfrom a subject of philosophical debate, to one which also\nhas near-term practical relevance. Some experts believe that\n“sparks” of AGI (Bubeck et al., 2023) are already present\nin the latest generation of large language models (LLMs);\nsome predict AI will broadly outperform humans within\n1Google DeepMind, Seattle, WA, USA 2Google DeepMind,\nMountain View, CA, USA 3Google DeepMind, London, UK. Cor\u0002respondence to: Meredith Ringel Morris.\nProceedings of the 41 st International Conference on Machine\nLearning, Vienna, Austria. PMLR 235, 2024. Copyright 2024 by\nthe author(s).\nabout a decade (Bengio et al., 2023); some even assert that\ncurrent LLMs are AGIs (Aguera y Arcas & Norvig ¨ , 2023).\nThe concept of AGI is important as it maps onto goals for,\npredictions about, and risks of AI:\nGoals: Achieving human-level “intelligence” is an implicit\nor explicit north-star goal for many in our field, from the\n1956 Dartmouth AI Conference (McCarthy et al., 1955)\nthat kick-started the modern field of AI, to today’s leading\nAI research firms, whose mission statements include goals\nsuch as “ensure transformative AI helps people and soci\u0002ety” (Anthropic, 2023a) and “ensure that artificial general\nintelligence benefits all of humanity” (OpenAI, 2023).\nPredictions: The concept of AGI is related to a predic\u0002tion about progress in AI, namely that it is toward greater\ngenerality, approaching and exceeding human generality.\nAdditionally, AGI is typically intertwined with a notion\nof “emergent” properties (Wei et al., 2022), i.e. capabili\u0002ties not explicitly anticipated by the developer. Such capa\u0002bilities offer promise, perhaps including abilities that are\ncomplementary to typical human skills, enabling new types\nof interaction or novel industries. Such predictions about\nAGI’s capabilities in turn predict likely societal impacts;\nAGI may have significant economic implications, i.e., reach\u0002ing the necessary criteria for widespread labor substitution\n(Ellingrud et al., 2023; Dell’Acqua et al., 2023; Eloundou\net al., 2023), as well as geo-political implications relating\nnot only to the economic advantages AGI may confer, but\nalso to military considerations (Kissinger et al., 2022).\nRisks: Lastly, AGI is viewed by some as a concept for iden\u0002tifying the point when there are extreme risks (Shevlane\net al., 2023; Bengio et al., 2023), as some speculate that\nAGI systems might be able to deceive and manipulate, accu\u0002mulate resources, advance goals, behave agentically, outwit\nhumans in broad domains, displace humans from key roles,\nand/or recursively self-improve.\nIn this position paper, we argue that it is critical for the\nAI research community to explicitly reflect on what we\nmean by “AGI,” and aspire to quantify attributes like the\nperformance, generality, and autonomy of AI systems.\nShared operationalizable definitions for these concepts will\nsupport: comparisons between models; risk assessments\n1\narXiv:2311.02462v5 [cs.AI] 24 Sep 2025\nLevels of AGI\nand mitigation strategies; clear criteria from policymakers\nand regulators; identifying goals, predictions, and risks for\nresearch and development; and the ability to understand and\ncommunicate where we are along the path to AGI.\n2. Defining AGI: Case Studies\nMany AI researchers and organizations have proposed def\u0002initions of AGI. In this section, we consider nine promi\u0002nent examples, and reflect on their strengths and limitations.\n",
+        "publishedAt": null,
+        "metadata": {
+          "author": "Meredith Ringel Morris; Jascha Sohl-Dickstein; Noah Fiedel; Tris Warkentin; Allan Dafoe; Aleksandra Faust; Clement Farabet; Shane Legg",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:52:37.417Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju19vjk0bx2rmtbg5k4v1jg",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju19vjk0bx2rmtbg5k4v1jg",
+          "fieldPath": "RawPoolItem[cmju19vjk0bx2rmtbg5k4v1jg]",
+          "objectLabel": "Levels of AGI for Operationalizing Progress on the Path to AGI"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源是一篇论文，但作者列表中未包含目标人物Jan Leike。该来源不应归属于此人。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T16:44:31.241Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    }
+  ]
+}

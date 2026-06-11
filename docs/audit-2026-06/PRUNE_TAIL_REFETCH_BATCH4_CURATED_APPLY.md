@@ -1,0 +1,86 @@
+# Refetch Source Apply
+
+Generated at: 2026-06-10T14:41:06.746Z
+Mode: execute
+Input: docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch4_curated.jsonl
+
+## Counts
+
+| Metric | Value |
+| --- | --- |
+| input rows | 20 |
+| eligible source rows | 18 |
+| selected source rows | 18 |
+| skipped source/decision rows | 6 |
+| existing RawPoolItems | 8 |
+| raw inserted | 10 |
+| raw updated | 8 |
+| keep audits inserted | 10 |
+| keep audits already existed | 8 |
+
+## Decisions
+
+| Decision | Count |
+| --- | --- |
+| replace_source | 15 |
+| augment_source | 3 |
+
+## Source Types
+
+| Source type | Count |
+| --- | --- |
+| exa | 10 |
+| official | 4 |
+| paper | 3 |
+| podcast | 1 |
+
+## Top Hosts
+
+| Host | Count |
+| --- | --- |
+| arxiv.org | 2 |
+| a16z.com | 1 |
+| ai.meta.com | 1 |
+| cbsnews.com | 1 |
+| cdn.openai.com | 1 |
+| darioamodei.com | 1 |
+| digitaleconomy.stanford.edu | 1 |
+| forbes.com | 1 |
+| jan.leike.name | 1 |
+| montgomerysummit.com | 1 |
+| noamshazeer.com | 1 |
+| papers.neurips.cc | 1 |
+| podcasts.apple.com | 1 |
+| research.google | 1 |
+| ted.com | 1 |
+| transformer-circuits.pub | 1 |
+| ycombinator.com | 1 |
+
+## Sample Applied Rows
+
+| Person | Decision | Type | Title | Host | Raw | Audit |
+| --- | --- | --- | --- | --- | --- | --- |
+| Chris Olah | replace_source | exa | A Mathematical Framework for Transformer Circuits | transformer-circuits.pub | inserted_raw | inserted_keep_audit |
+| Dario Amodei | replace_source | exa | Dario Amodei | darioamodei.com | updated_raw | keep_audit_exists |
+| Dario Amodei | replace_source | exa | Read the full transcript of our interview with Anthropic CEO Dario Amodei - CBS... | cbsnews.com | inserted_raw | inserted_keep_audit |
+| Dario Amodei | replace_source | official | Dario Amodei - Stanford Digital Economy Lab | digitaleconomy.stanford.edu | inserted_raw | inserted_keep_audit |
+| Guillaume Lample | augment_source | exa | Guillaume Lample | forbes.com | inserted_raw | inserted_keep_audit |
+| Guillaume Lample | replace_source | official | LLaMA: Open and Efficient Foundation Language Models - Meta AI | ai.meta.com | inserted_raw | inserted_keep_audit |
+| Guillaume Lample | replace_source | paper | [PDF] arXiv:1901.07291v1 [cs.CL] 22 Jan 2019 | arxiv.org | inserted_raw | inserted_keep_audit |
+| Jan Leike | replace_source | exa | Jan Leike | jan.leike.name | updated_raw | keep_audit_exists |
+| Mustafa Suleyman | replace_source | exa | Mustafa Suleyman | ted.com | updated_raw | keep_audit_exists |
+| Noam Shazeer | replace_source | exa | Noam Shazeer \| AI Scientist, Google Gemini Co-Lead | noamshazeer.com | updated_raw | keep_audit_exists |
+| Noam Shazeer | replace_source | exa | Universally Accessible Intelligence \| Andreessen Horowitz | a16z.com | inserted_raw | inserted_keep_audit |
+| Sam Altman | augment_source | exa | Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware :... | ycombinator.com | inserted_raw | inserted_keep_audit |
+| Sam Altman | augment_source | podcast | #107 - Vinod Khosla and Sam Al… – Y Combinator Startup Podcast – Apple Podcasts | podcasts.apple.com | inserted_raw | inserted_keep_audit |
+| 亚历克·拉德福德 | replace_source | official | [PDF] Language Models are Unsupervised Multitask Learners \| OpenAI | cdn.openai.com | updated_raw | keep_audit_exists |
+| 杰夫·迪恩 | replace_source | official | Jeffrey Dean - Google Research | research.google | updated_raw | keep_audit_exists |
+| 阿希什·瓦斯瓦尼 | replace_source | exa | Ashish Vaswani - The Montgomery Summit | montgomerysummit.com | inserted_raw | inserted_keep_audit |
+| 阿希什·瓦斯瓦尼 | replace_source | paper | [1706.03762] Attention Is All You Need - arXiv | arxiv.org | updated_raw | keep_audit_exists |
+| 阿希什·瓦斯瓦尼 | replace_source | paper | [PDF] Attention is All you Need - NIPS | papers.neurips.cc | updated_raw | keep_audit_exists |
+
+## Safety
+
+- Additive only: this script does not delete existing RawPoolItem rows.
+- It does not rewrite representative works, cards, roles, products, or People fields.
+- Rows with hard blockers are skipped by default; low-authority selected sources are skipped by default.

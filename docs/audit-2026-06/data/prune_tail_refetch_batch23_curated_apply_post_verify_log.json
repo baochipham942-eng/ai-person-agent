@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-06-10T20:13:17.566Z",
+  "summary": {
+    "generatedAt": "2026-06-10T20:13:17.564Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch23_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch23_curated_apply_post_verify_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH23_CURATED_APPLY_POST_VERIFY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 2,
+    "selectedSourceRows": 2,
+    "skippedRows": 18,
+    "existingRawPoolItems": 2,
+    "rawInserted": 0,
+    "rawUpdated": 2,
+    "keepAuditsInserted": 0,
+    "keepAuditsExisting": 2,
+    "byDecision": {
+      "augment_source": 2
+    },
+    "bySourceType": {
+      "exa": 2
+    },
+    "topPeople": {
+      "Ilya Sutskever": 1,
+      "Mira Murati": 1
+    },
+    "topHosts": {
+      "dwarkesh.com": 1,
+      "wired.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 17,
+      "blocked": 1
+    }
+  }
+}

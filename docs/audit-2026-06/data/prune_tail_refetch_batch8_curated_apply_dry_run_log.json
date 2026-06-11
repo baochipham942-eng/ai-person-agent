@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-06-10T16:04:12.233Z",
+  "summary": {
+    "generatedAt": "2026-06-10T16:04:12.228Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch8_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch8_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH8_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 24,
+    "selectedSourceRows": 24,
+    "skippedRows": 3,
+    "existingRawPoolItems": 11,
+    "rawInserted": 13,
+    "rawUpdated": 11,
+    "keepAuditsInserted": 13,
+    "keepAuditsExisting": 11,
+    "byDecision": {
+      "replace_source": 19,
+      "augment_source": 5
+    },
+    "bySourceType": {
+      "exa": 19,
+      "youtube": 1,
+      "official": 3,
+      "podcast": 1
+    },
+    "topPeople": {
+      "Emad Mostaque": 5,
+      "Demis Hassabis": 4,
+      "Andrej Karpathy": 3,
+      "Geoffrey Hinton": 3,
+      "Aidan Gomez": 2,
+      "Chris Olah": 2,
+      "Christopher Manning": 2,
+      "Alexandr Wang": 1,
+      "Arthur Mensch": 1,
+      "Dario Amodei": 1
+    },
+    "topHosts": {
+      "forbes.com": 3,
+      "nobelprize.org": 3,
+      "time.com": 2,
+      "achievement.org": 1,
+      "aidangomez.ca": 1,
+      "colah.github.io": 1,
+      "corporate-awards.ieee.org": 1,
+      "cs.toronto.edu": 1,
+      "darioamodei.com": 1,
+      "discover.research.utoronto.ca": 1,
+      "docs.getunbound.ai": 1,
+      "dwarkesh.com": 1,
+      "isomorphiclabs.com": 1,
+      "mastersofscale.com": 1,
+      "nlp.stanford.edu": 1,
+      "podcasts.apple.com": 1,
+      "polytechnique.edu": 1,
+      "stability.ai": 1,
+      "youtube.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 3
+    }
+  }
+}

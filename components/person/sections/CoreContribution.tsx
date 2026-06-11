@@ -46,7 +46,7 @@ export function CoreContribution({ content, quotes }: CoreContributionProps) {
                 style={{ borderLeft: '3px solid', borderImage: 'linear-gradient(135deg, #f97316, #ec4899, #8b5cf6) 1' }}
               >
                 <p className="text-sm text-stone-700 italic leading-relaxed">
-                  "<LinkedText text={quote.text} />"
+                  &ldquo;<LinkedText text={quote.text} />&rdquo;
                 </p>
                 <div className="mt-2 flex items-center gap-2 text-xs text-stone-500">
                   {quote.url && (

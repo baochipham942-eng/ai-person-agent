@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-06-10T16:39:51.172Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch10.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch10_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH10_CURATED.md",
+  "inputRows": 20,
+  "outputRows": 20,
+  "inputSelectedSources": 28,
+  "outputSelectedSources": 12,
+  "removedSelectedSources": 16,
+  "rowsChanged": 11,
+  "rowsDeferredToHumanReview": 7,
+  "byDecision": {
+    "replace_source": 8,
+    "human_review": 8,
+    "augment_source": 3,
+    "no_good_source": 1
+  },
+  "removedHosts": {
+    "lennysnewsletter.com": 2,
+    "blog.eladgil.com": 1,
+    "cnbc.com": 1,
+    "developing.dev": 1,
+    "en.wikipedia.org": 1,
+    "junzhu.chem8.org": 1,
+    "mittrchina.com": 1,
+    "news.wit.edu.cn": 1,
+    "podcasts.apple.com": 1,
+    "snowan.gitbook.io": 1,
+    "stationf.co": 1,
+    "tsinghua.edu.cn": 1,
+    "xiaguangshe.com": 1,
+    "youtube.com": 1,
+    "zh.wikipedia.org": 1
+  },
+  "keptHosts": {
+    "wired.com": 2,
+    "cs.tsinghua.edu.cn": 1,
+    "erichorvitz.com": 1,
+    "goldmansachs.com": 1,
+    "hkforum.com": 1,
+    "lilianweng.github.io": 1,
+    "m.36kr.com": 1,
+    "microsoft.com": 1,
+    "ted.com": 1,
+    "troweprice.com": 1,
+    "tsinghua.edu.cn": 1
+  }
+}

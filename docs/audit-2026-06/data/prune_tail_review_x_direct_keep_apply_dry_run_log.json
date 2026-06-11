@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-06-10T22:04:51.979Z",
+  "summary": {
+    "generatedAt": "2026-06-10T22:04:51.979Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_review_x_direct_keep_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_x_direct_keep_apply_dry_run_archive.json",
+    "stage": "manual_prune_tail_review_x_direct_keep",
+    "decisions": 10,
+    "existingTargets": 10,
+    "missingTargets": 0,
+    "auditRowsInserted": 10,
+    "deleted": 0,
+    "byAction": {
+      "keep_raw_pool_item": 10
+    },
+    "byVerdict": {
+      "keep": 10
+    },
+    "byPerson": {
+      "Boris Cherny": 3,
+      "Arthur Mensch": 2,
+      "Lukasz Kaiser": 2,
+      "Oriol Vinyals": 1,
+      "Richard Socher": 1,
+      "杰夫·迪恩": 1
+    }
+  }
+}

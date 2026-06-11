@@ -1,6 +1,8 @@
 import { generateText } from 'ai';
 import { deepseek } from './deepseek';
 
+type GenerateTextParams = Parameters<typeof generateText>[0];
+
 /**
  * 使用 DeepSeek 将文本翻译为简体中文
  */
@@ -25,7 +27,7 @@ export async function translateToSimplifiedChinese(text: string): Promise<string
             prompt: text,
             temperature: 0.3,
             maxTokens: 500,
-        } as any);
+        } as GenerateTextParams);
 
         return result.text.trim() || text;
     } catch (error) {
@@ -57,7 +59,7 @@ export async function translateBatch(texts: string[]): Promise<string[]> {
             prompt: nonEmpty.join('\n'),
             temperature: 0.3,
             maxTokens: 1000,
-        } as any);
+        } as GenerateTextParams);
 
         const translated = result.text.trim().split('\n');
 

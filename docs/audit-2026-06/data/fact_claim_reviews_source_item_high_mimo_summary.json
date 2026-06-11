@@ -1,0 +1,4035 @@
+{
+  "generatedAt": "2026-06-09T12:50:36.820Z",
+  "input": "docs/audit-2026-06/data/fact_claims.jsonl",
+  "output": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl",
+  "model": "mimo-v2.5-pro",
+  "filters": {
+    "person": null,
+    "personId": null,
+    "claimType": "source_item_belongs_to_person",
+    "priority": "high",
+    "limit": 1537,
+    "batchSize": 8,
+    "concurrency": 4
+  },
+  "totalClaims": 12376,
+  "selectedClaims": 1537,
+  "reviewedClaims": 1537,
+  "byVerdict": {
+    "supported": 1093,
+    "wrong_person": 196,
+    "needs_source": 91,
+    "over_attributed": 101,
+    "stale": 36,
+    "unsupported": 18,
+    "unclear": 2
+  },
+  "byAction": {
+    "keep": 1093,
+    "remove": 267,
+    "needs_source": 97,
+    "rewrite": 52,
+    "human_review": 28
+  },
+  "byClaimType": {
+    "source_item_belongs_to_person": 1537
+  },
+  "needsAttention": [
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:RawPoolItem[cmjtvqcsz00vqrmtb40wq3u8d]:7e6b51492737",
+      "person": "Aidan Gomez",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Damien Nicks: Getting your work-life balance right, starting a business and why the next 10 years are crucial",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和摘要均指向 'Damien Nicks'，与人物 'Aidan Gomez' 无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:RawPoolItem[cmjw73qoo0001ykszkcn9rbra]:469a4ebee5e8",
+      "person": "Aakash Gupta",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Acash512/GoogleLensClone",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据（如个人资料链接、社交媒体关联）来确认归属。"
+    },
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:RawPoolItem[cmjw73r9g0003ykszfn4ni7we]:40f163b88056",
+      "person": "Aakash Gupta",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Acash512/COVID-19_Tracker_India",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据来确认归属。"
+    },
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:RawPoolItem[cmjw73suh000fykszw5kbdolm]:7ca2baa209e0",
+      "person": "Aakash Gupta",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Acash512/TicTacToe_DesktopApp",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据来确认归属。"
+    },
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:RawPoolItem[cmjw73t3r000hykszzyulwd9q]:2fde7f1a0146",
+      "person": "Aakash Gupta",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Acash512/Aris",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据来确认归属。"
+    },
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:RawPoolItem[cmjw73yyp0013ykszaqk2ag8t]:2efc3a4badc9",
+      "person": "Aakash Gupta",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Main Aur Mumbai | Aakash Gupta | Stand-up Comedy",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该YouTube视频是关于一位名为Aakash Gupta的脱口秀演员，内容是孟买生活喜剧，与人物库中作为Apollo.io产品副总裁的Aakash Gupta（产品增长、大语言模型领域）无关。属于同名错配。"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:RawPoolItem[cmju0gc1o06mkrmtbqj3m8nmc]:3c229476382f",
+      "person": "Aidan Gomez",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Cohere is hiring for folks interested in building omnimodal models fusing vision, audio, and text.",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "LinkedIn帖子是Aidan Gomez以CEO身份发布的公司招聘信息，属于公司业务宣传，而非个人代表成果或贡献。将公司招聘入口归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:RawPoolItem[cmju0gcoc06murmtbru3bagwz]:7db299e3d96c",
+      "person": "Aidan Gomez",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Today Cohere is very excited to introduce Command A, the first in a series… | Aidan Gomez | 28 comments",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "LinkedIn帖子是Aidan Gomez以CEO身份宣布公司新模型（Command A）的发布，属于公司产品发布，而非个人技术贡献。将具体模型版本作为个人成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmjtvqexk00w8rmtbngas9qsb]:1e637732b304",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Who is Alexandr Wang, AI pioneer, world's youngest self-made billionaire?",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章称Alexandr Wang是Meta的首席AI官，这与当前人物上下文（Scale AI的CEO）不符，信息可能过时或错误。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmjtvqfla00wermtbstqg2yn3]:3d44434d97d4",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "5 things to know about tech mogul Alexandr Wang, world’s youngest self-made billionaire",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要主要是网站导航和无关内容，未包含足够信息来验证文章是否确实关于Alexandr Wang。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmju0j7830767rmtb34zqhyvq]:ea6f4a55a193",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Scale AI Announces Next Phase of Company's Evolution",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Scale AI官方博客宣布Alexandr Wang加入Meta，这与当前人物上下文（Scale AI的CEO）冲突，表明职位已过时。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmju0jalf076zrmtbr0owsf1n]:1db6587625b6",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Inside the rise of Alexandr Wang and Meta’s $14 billion bet that the MIT dropout will help bring AI supremacy | Fortune",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Fortune文章详细描述Alexandr Wang加入Meta，这与当前人物上下文（Scale AI的CEO）不符，信息可能过时。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmju0jcvn077jrmtbzp8lz3w7]:e13680d58212",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "From Scale AI to Meta’s AI boss: Who is Alexandr Wang, the 28-year-old MIT dropout gunning for OpenAI?",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章标题和内容称Alexandr Wang是Meta的AI负责人，这与当前人物上下文（Scale AI的CEO）冲突，表明职位信息过时。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmjuugp8g0g9zrmtbq08opms3]:9b0712221046",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Alexandr Wang is now leading Meta's AI dream team. Will ...",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Fortune文章称Alexandr Wang领导Meta的AI团队，这与当前人物上下文（Scale AI的CEO）不符，信息可能过时。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmjuugu5x0gaprmtbzxtzbwx9]:8a40d7c4889d",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meet 29-year-old Alexandr Wang: MIT dropout and Scale AI founder hired by Mark Zuckerberg to head Meta’s superintelligence labs",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "文章标题称其被Meta聘用领导超级智能实验室，但其当前职位仍是Scale AI的CEO。此信息可能过时或错误，与已知事实冲突。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmjw747k3001pykszdvetw3z7]:afb3ca4138f3",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "alexandr/6882demos",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub仓库名为'alexandr'，但无法仅凭此确认所有者是Scale AI的Alexandr Wang。需要更多证据证明归属。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmjw747te001rykszpioh0ske]:0ba20b1d4330",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "alexandr/simpletextserver",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub仓库名为'alexandr'，但无法仅凭此确认所有者是Scale AI的Alexandr Wang。需要更多证据证明归属。"
+    },
+    {
+      "claimId": "cmjtv2h8i0009i0048zkgoqwc:RawPoolItem[cmjw748vr001zykszwrc5o5hy]:00a0217a21a6",
+      "person": "Alexandr Wang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "alexandr/layer-identity-token-nodejs",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub仓库名为'alexandr'，但无法仅凭此确认所有者是Scale AI的Alexandr Wang。需要更多证据证明归属。"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:RawPoolItem[cmjtlahhp0019efnhye3o6qgv]:b1c1bef831b7",
+      "person": "Andrej Karpathy",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ImageNet Large Scale Visual Recognition Challenge",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中未包含 Andrej Karpathy，该成果属于其他研究者，不应归因于他。"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:RawPoolItem[cmju0wlfi095yrmtb9zzhv5w6]:0bf78afdcc11",
+      "person": "Andrej Karpathy",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "LLM Council: Andrej Karpathy’s AI for Reliable Answers",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该内容是第三方网站（Analytics Vidhya）的文章，标题虽提及Andrej Karpathy，但作者为Harsh Mishra，且内容包含大量无关的课程推广链接。这属于对个人成果的过度归因，将第三方分析/营销内容等同于个人作品。"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:RawPoolItem[cmju0wlpv0962rmtbsegiuoo4]:7fedf3e983cc",
+      "person": "Andrej Karpathy",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Andrej Karpathy's LLM COUNCIL | Fully Explained | by NSAI",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该内容是第三方作者（NSAI）在Medium上对Andrej Karpathy项目的解释性文章，并非Karpathy本人发布或署名的原创内容。将其作为个人代表成果展示属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:RawPoolItem[cmjuuktyx0gxyrmtb0ak0rt58]:7f522c1fdd57",
+      "person": "Arthur Mensch",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Machine Learning Apr 2025",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "内容为arXiv论文列表页面，作者列表中未包含Arthur Mensch，无法证明其相关性。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:RawPoolItem[cmjtvphik00qcrmtbjxzuv5w4]:4c9889c6cffc",
+      "person": "Arthur Mensch",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jensen Huang & Arthur Mensch: Why Every Nation Needs Its ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的文本仅为YouTube页面框架代码，未包含视频标题、描述或内容，无法确认其是否关于Arthur Mensch。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:RawPoolItem[cmju0q71t0874rmtb8q65nh17]:9a335206310e",
+      "person": "Arthur Mensch",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "From Academia to Industry: The Journey of Arthur Mench",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章标题和内容中的人名拼写为'Arthur Mench'，与目标人物'Arthur Mensch'不符，可能指向错误实体。"
+    },
+    {
+      "claimId": "cmjv6furu0009mfghtf6a48k2:RawPoolItem[cmjw7rr480001tk58rcydqkt9]:2143bb0054f0",
+      "person": "Bob McGrew",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "bmcgrew/baxter_interface",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub仓库baxter_interface属于用户bmcgrew，但无法从给定信息确认该用户就是Bob McGrew本人，且人物上下文信息不足。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbldg0001pnypz7xp3m9c]:badc18e867d7",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Error saving GPT - [object Object] when I update my custom ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是OpenAI社区论坛的帖子，讨论GPT保存错误，作者为Jiaqing_Zhang，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbn6w0003pnypvnv3gbhm]:a4a9bfc62ee7",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Object Object Error when using AI outputs - Questions",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是n8n社区论坛的帖子，讨论AI输出错误，作者为匿名用户，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbo2y0007pnypwik9zz7u]:f74b2552e2b6",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "LLM object must define bindTools method when using ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是GitHub上的LangGraph.js项目issue，报告者为sid-js，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbp6l000dpnyp92qa3uva]:945362e3ab21",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "File upload failed: [object Object] - Google AI Studio",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是Google AI开发者论坛的帖子，讨论文件上传错误，作者为Yi_Lu，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbpmi000fpnypj0v5fhli]:5106b94f9615",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "[object Object] - Microsoft Q&A",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是关于OneDrive在Chrome中出现错误的Microsoft Q&A问题，提问者为Anthony Pineda，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbqyy000lpnypsigr7wjn]:88cc484bdde1",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "GPT-4 Technical Report",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是OpenAI的GPT-4技术报告，作者为OpenAI团队，未提及Boris Cherny，属于人名错配。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbt9g000ppnyp41ifvso4]:bcb58d64debc",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Introduction to Large Language Models",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是Google Developers关于大型语言模型的介绍页面，属于Google官方资源，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbvr1000rpnypywrpdpci]:4d73cc5238df",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ChatGPT",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是ChatGPT的维基百科页面，属于通用知识介绍，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbw2w000tpnypw3frf2vy]:6c9fc9f2722f",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Large language model",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是大型语言模型的维基百科页面，属于通用知识介绍，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnc0y40011pnyp20516i32]:5aea061e4311",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Large Language Models Explained",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是Couchbase博客上关于大型语言模型的解释文章，作者为Couchbase Product Marketing，与Boris Cherny无关。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmju0u42w08ksrmtbzgif95yj]:12aaea23f05d",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Unsolved problems in AI | Chris Olah and Lex Fridman",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频标题和描述显示主要嘉宾为Dario Amodei和Amanda Askell，Chris Olah仅为嘉宾之一，且内容非其主导，归因不准确。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmju0u7e008lirmtbjjxp9bng]:ae96cf9dfe8d",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Language model",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容为维基百科关于语言模型的通用词条，并非Chris Olah的个人作品或贡献，将其挂在个人名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmju1981h0bqhrmtb4eul4jr8]:f5f7bfa7c7a4",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Large language models, explained with a minimum of math and jargon",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者为Timothy B. Lee和Sean Trott，内容为通用科普，并非Chris Olah的作品或观点，归因错误。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmjtxmfht03bsrmtbs2ygc6kq]:feec13057f5d",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "A Mathematical Framework for Transformer Circuits",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "论文《A Mathematical Framework for Transformer Circuits》是 Anthropic 团队的集体成果，Chris Olah 是通讯作者之一，但并非唯一或主要负责人。将其作为个人代表成果展示，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmjtxmotm03darmtbj6vdh6lp]:f48daacf0393",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "06.20: It's Romance Science!",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《06.20: It's Romance Science!》来自 'Fated Mates' 频道，内容为浪漫小说讨论，与 Chris Olah 的 AI 研究员身份和主题完全无关，极可能是同名或错误归因。"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmju0w3p408yqrmtbyoxsy47n]:2d18c414f273",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Stanford AI Lab Papers and Talks at EMNLP 2024",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "该内容为斯坦福AI实验室（SAIL）的博客文章，汇总了EMNLP 2024的论文，但未明确提及Christopher Manning的个人贡献或角色。将整个实验室的成果归因给个人不合适。"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmju0w68l08zormtb1iyj3h0g]:fd6c6499700c",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Toward expert-level medical question answering with large language models",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该内容为Nature Medicine论文，作者列表中未显示Christopher Manning的名字。虽然可能有关联，但缺乏直接证据证明其贡献。"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmju0w6vg0900rmtb4l1v7ewg]:526c6b93c339",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Industrial applications of large language models",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该内容为Scientific Reports论文，作者列表中未显示Christopher Manning的名字。缺乏直接证据证明其参与或贡献。"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxvl001qqrmtbwjpsp3xb]:b6b3f676aa6f",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Steelers' Aaron Rodgers on Similar Career Path as Tom Brady w/Buccaneers, Peyton Manning w/Broncos?",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容标题提及 'Peyton Manning'（美式橄榄球运动员），与计算机科学家 Christopher Manning 无关，属于同名实体错误归因。"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxw9601r2rmtbv6g7jiy8]:f3873bbdfb9c",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "NFFC Average Draft Position - QBs",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容为 'RotoWire Fantasy Football Podcast'，与计算机科学家 Christopher Manning 无关，属于同名实体错误归因。"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxwki01r8rmtbku6tonit]:0561dcf122e8",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "PPP 295 - Starting Pitcher Update & Streamers - 6-28-23",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该播客内容是关于棒球幻想体育的，与人物Christopher Manning（NLP学者）的专业领域和身份完全不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:RawPoolItem[cmjuuplbp0hmlrmtbghqnnr5j]:a65dfada425d",
+      "person": "Daniela Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Daniela Amodei: The Biography of Anthropic's Co-Founder Shaping Safe AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题和内容关于Daniela Amodei，但来源网站（bestreborns.com）权威性不足，需核实信息准确性。"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:RawPoolItem[cmjtvn9kq00d0rmtbb0kupab2]:2fd1d56de216",
+      "person": "Daniela Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Daniela Amadori",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于欧洲大学研究所的财务官 Daniela Amadori，与目标人物 Daniela Amodei（Anthropic 总裁）姓名不匹配，属于错误人物。"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:RawPoolItem[cmjtvna2s00d2rmtb919jzyfj]:561fe7855473",
+      "person": "Daniela Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Dario Amodei — The Urgency of Interpretability",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于 Dario Amodei 的博客文章，与目标人物 Daniela Amodei 不匹配，属于错误人物。"
+    },
+    {
+      "claimId": "cmjtswmqg00033est2ofuqdw0:RawPoolItem[cmjw7rwkd0003tk58pxsf1ltj]:5d69e96ec74c",
+      "person": "Dario Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "damodei/gym",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "GitHub仓库'damodei/gym'是OpenAI Gym的个人复刻或分支，并非Dario Amodei的原创或主要代表成果。将其作为个人开源项目展示，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtswmqg00033est2ofuqdw0:RawPoolItem[cmjw7rwtt0005tk582th1h76s]:97672d8b15b3",
+      "person": "Dario Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "damodei/neural-turing-machines",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "GitHub仓库'damodei/neural-turing-machines'是对他人论文的实现尝试，并非Dario Amodei的原创研究或主要贡献。将其作为个人开源项目展示，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtswmqg00033est2ofuqdw0:RawPoolItem[cmjw7rxcn0007tk58wz2d25hz]:4e17ef9b62b5",
+      "person": "Dario Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "damodei/caffe",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "GitHub仓库'damodei/caffe'是Caffe深度学习框架的个人复刻或分支，并非Dario Amodei的原创或主要代表成果。将其作为个人开源项目展示，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsw84q00023esto9f6h0w6:RawPoolItem[cmju0o0ds07yqrmtbm1clbgh3]:322e23b9c23f",
+      "person": "Demis Hassabis",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "A new era of intelligence with Gemini 3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章是关于Gemini 3模型的发布，虽然作者署名包含Demis Hassabis，但核心内容是公司产品发布，将具体模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsw84q00023esto9f6h0w6:RawPoolItem[cmju0on0k0812rmtb43xz6jis]:7d95f8857211",
+      "person": "Demis Hassabis",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Google’s top AI scientist says ‘learning how to learn’ will be next generation’s most needed skill",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题提及“Google’s top AI scientist”，可能指Demis Hassabis，但摘要未提供足够信息确认其本人参与或内容直接相关，需要更多证据。"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:RawPoolItem[cmjtvs6gq0155rmtbwat5ggem]:9c144fe1ae10",
+      "person": "Dylan Field",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tips For Your Pokemon Sword and Shield Adventure| PUCL #416",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于宝可梦游戏的播客，与Dylan Field（Figma CEO）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:RawPoolItem[cmjtvs8an0157rmtbapczaz0q]:6ec522c09480",
+      "person": "Dylan Field",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Postcards from Pearl - Ep. 100A - Silly Scoop Stakeout",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是儿童冒险播客，与Dylan Field（Figma CEO）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmju1ncjo0eh3rmtbxq7k695j]:a77cb94c1a31",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Year Ahead: AI",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是一篇关于2026年AI趋势的综合性文章，其中一小节提及Elon Musk的Grok项目，但文章主体并非关于他个人，将其作为该人物页面的代表内容不合适。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97ttt001bp5lf0cwd4s32]:10eb76b7e8c3",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "mRNA-1273 and BNT162b2 COVID-19 vaccines elicit antibodies with differences in Fc-mediated effector functions",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗的免疫学研究，与Elon Musk的领域和身份无关。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tty001dp5lfgp7dvsak]:0f538decb42b",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "mRNA-1273 vaccine-induced antibodies maintain Fc effector functions across SARS-CoV-2 variants of concern",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗的免疫学研究，与Elon Musk的领域和身份无关。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tu2001fp5lfevzp0434]:fd4824b8c26d",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Discrete SARS-CoV-2 antibody titers track with functional humoral stability",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19抗体的研究，与Elon Musk的领域和身份无关。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuf001jp5lfypdjobwa]:69a96b3a0829",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Early cross-coronavirus reactive signatures of humoral immunity against COVID-19",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19免疫学的研究，与Elon Musk的领域和身份无关。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuk001lp5lfv2qi5h4c]:4983d343adcb",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "SARS-CoV-2 antibodies protect against reinfection for at least 6 months in a multicentre seroepidemiological workplace cohort",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19抗体保护作用的研究，与Elon Musk的领域和身份无关。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuz001rp5lfmxqzngs9]:a64f5f9c7cce",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Subtle immunological differences in mRNA-1273 and BNT162b2 COVID-19 vaccine induced Fc-functional profiles",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗免疫学差异的研究，与Elon Musk的领域和身份无关。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tv7001tp5lf1yh3bpc0]:3a23f8ad21dd",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Early cross-coronavirus reactive signatures of protective humoral immunity against COVID-19",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19免疫学的研究，与Elon Musk的领域和身份无关。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tva001vp5lf03l9quup]:69bfc664ac3b",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Serological Markers of SARS-CoV-2 Reinfection",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中无Elon Musk，内容为医学研究，与Elon Musk的公开身份和领域不符。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tw30023p5lfpouu4ws4]:00aa3c3a0ae5",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Adapting Disease Prevention Protocols for Human Spaceflight During COVID-19",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文作者列表中无Elon Musk。内容涉及SpaceX任务，但Elon Musk是公司创始人，并非论文作者，将具体研究论文归因于个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97txa002bp5lfhm30lfzs]:ed692bc28031",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "SARS-CoV-2 infection and reinfection in a seroepidemiological workplace cohort in the United States",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中无Elon Musk，内容为流行病学研究，与Elon Musk的公开身份和领域不符。"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:RawPoolItem[cmjtvrru5013brmtbro4egf78]:08f1bc3993ce",
+      "person": "Emad Mostaque",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Emad Mostaque: The Visionary Behind Stable Diffusion and the Future of Decentralized AI (Biography)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章标题称其为‘Stable Diffusion背后的远见者’，但Stable Diffusion是团队和学术合作成果，过度归因给个人CEO。"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:RawPoolItem[cmju15elp0ay8rmtbxm26fdlo]:c83da327cea7",
+      "person": "Emad Mostaque",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Evolution of LLMs: From T5 and GPT to Mixtral, o1, Claude 3.7, and Grok 3.5 — A Journey Through Completion, Reasoning, and First Principles",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者是Roberto Infante，内容是关于LLM技术演进的综述，与Emad Mostaque无直接关联，不应挂在其名下。"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:RawPoolItem[cmju15kuk0azarmtbx47mensp]:166593369814",
+      "person": "Emad Mostaque",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "20VC: Who Wins the AI Race; Startups or Incumbents & Does Having Proprietary Data Really Matter For Startups Today?",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要信息不足，无法确认该播客是否包含Emad Mostaque的访谈或相关内容，需要进一步核实。"
+    },
+    {
+      "claimId": "cmjs1jjy0005tb28te81500go:RawPoolItem[cmju0jdrd077trmtb1cndrag7]:fdfeb0b78a87",
+      "person": "Geoffrey Hinton",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Job Predictions Collide, RTO Tightens, Workweeks Shift, and Consulting Gets Rebuilt",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和摘要未提及 Geoffrey Hinton，内容主题为职场预测和管理，与该人物无关，属于错误归因。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15bui001sftmgnp886p1p]:cb826b96d5fa",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "[Closed] Request for proposals: benchmarking LLM agents on consequential real-world tasks | Open Philanthropy",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "内容是Open Philanthropy的提案征集，与Greg Brockman个人无直接关联，属于机构级内容。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15q9w004aftmgccd63xgq]:7f592cfb56b5",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Kernels of selfhood: GPT-4o shows humanlike patterns of cognitive dissonance moderated by free choice",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "内容是PNAS上关于GPT-4o认知失调的研究论文，作者列表中未包含Greg Brockman，属于团队/机构成果。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15qjk004cftmg2ypenct4]:445689829871",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI Model Spec",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是OpenAI的官方Model Spec文档，属于公司级技术规范，不应归因给个人作为代表成果。"
+    },
+    {
+      "claimId": "cmjs1jjy0005tb28te81500go:RawPoolItem[cmjse8fn00023co6yjseh4xo1]:3283dc0ab171",
+      "person": "Geoffrey Hinton",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "可怕！AI教父诺贝尔奖得主杰弗里辛顿：人工智能已具备意识，未来将接管世界 | DeepSeek | OpenAI |  AI Agent | 智能革命 | 失业 | 智商碾压",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要提及辛顿，但未明确说明是本人出镜、访谈还是第三方分析。需核实视频内容是否包含辛顿本人的直接言论或参与。"
+    },
+    {
+      "claimId": "cmjs1jjy0005tb28te81500go:RawPoolItem[cmjse8fn30027co6yosb22dqf]:84a99f826fea",
+      "person": "Geoffrey Hinton",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "人工智能教父杰弗里·辛顿 Geoffrey Hinton",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要为人物介绍，但未明确是本人参与的访谈、演讲还是第三方制作的传记分析。需核实视频性质。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15qta004eftmgimk74dg7]:6f25cd991c4b",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI Finally Launched GPT-5. Here's Everything You Need to Know",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "文章是关于OpenAI发布GPT-5的新闻报道，作者是Kylie Robison，并非Greg Brockman撰写或发布。将公司产品发布新闻归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15r2w004gftmg1iybw6uj]:6a489a53110b",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "What is AI, how do apps like ChatGPT work and why are there concerns?",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "文章是BBC关于AI的通用科普报道，作者是BBC News，并非Greg Brockman撰写或发布。将通用行业报道归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv16ojw005oftmgntv1j9kx]:acf3d587e03a",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "文章是TechCrunch关于ChatGPT的通用介绍，作者是Kyle Wiggers等人，并非Greg Brockman撰写或发布。将公司产品介绍归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15rmj004kftmgs6f9bvbv]:fae286f3e4d5",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "337. Are personality tests legit?",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《337. Are personality tests legit?》来自 'The Psychology of your 20s'，内容与 Greg Brockman 的专业领域（AI、OpenAI）无关，标题和摘要均未提及他。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15rvx004mftmgwce6r8r6]:01e61614b2ca",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "873. Luke takes the MBTI Personality Test",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《873. Luke takes the MBTI Personality Test》来自 'Luke's ENGLISH Podcast'，内容是关于英语学习和性格测试，与 Greg Brockman 无关。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15s5j004oftmgr3ob44a0]:98f2ef7069a1",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "#112: Personality Tests",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《#112: Personality Tests》来自 'English Learning for Curious Minds'，内容是关于英语学习，与 Greg Brockman 无关。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15sot004sftmgm5hbekhl]:63f666d42f87",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "209. Who Are You Really? On Personality and Flourishing with Professor Brian Little",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《209. Who Are You Really?...》来自 'Exam Study Expert'，内容是关于学习科学和性格，与 Greg Brockman 无关。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvqfug00wirmtbyrsdmg4d]:ccc59de14753",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Llama (language model)",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "Llama 是 Meta AI 的团队产品，Guillaume Lample 是 Mistral AI 的联合创始人，未在 Llama 项目中担任明确个人角色。将整个模型族归因于个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvqn0000yormtbqvq512ls]:80b655b4d56f",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "A Careful Examination of Large Language Model Performance on Grade School Arithmetic",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有 Guillaume Lample，而是 Hugh Zhang 等人。内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvqqd400zermtbazp9f1tg]:30d7ade83d56",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Posts",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "博客作者是 Guillaume Laforge，与 Guillaume Lample 是不同的人。内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmju0ma2m07pfrmtbxx5ml160]:2acd1120d220",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Daily Papers - Hugging Face",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "Hugging Face Daily Papers 页面是通用论文列表，未提及 Guillaume Lample。内容与目标人物无直接关联。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmju1oqgi0etbrmtbtgumdu2z]:12795c641365",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "LLaMA: Open and Efficient Foundation Language Models | Research",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "LLaMA 是 Meta AI 的团队产品，Guillaume Lample 是作者之一，但将整个模型族作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmju1oqq80etdrmtbjftt67q2]:73be6866e8ca",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "NLIR: Natural Language Intermediate Representation for Mechanized Theorem Proving",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中没有 Guillaume Lample，而是 Guillaume Baudart 等人。内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvri5f012drmtbb4nw55qd]:63c22e679209",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Roncin, Cesar VS Lample, Guillaume",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频内容为国际象棋比赛记录，与Guillaume Lample作为AI研究员和企业家的身份及专业领域无关。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmju0mwb207w7rmtbldfuut6p]:e424e998df01",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "X-IA #14: Generative AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确提及Guillaume Lample，无法确认其是否参与或内容是否与其相关。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvvmmx0191rmtbzn50t7a4]:0b9f0195f391",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "小扎煲汤挖人，马斯克直呼疯狂！吴恩达揭秘AI人才“亿级 ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章内容主要关于吴恩达（Andrew Ng）的年度总结和AI人才争夺，仅提及 Hyung Won Chung 为被挖角的OpenAI研究员，并非其个人作品或主要相关方。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmju0yp9509n5rmtbcvsg8p4s]:c53d9fc0544b",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Large Language Model-Based Autonomous Agent for Prognostics and Health Management",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者为Joon-Young Kim，与Hyung Won Chung无关。内容被错误归因。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvwlce01hlrmtbmys3c1tu]:f645fa62de61",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "K League 1 R32 and K League 2 R31 Recap",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容为韩国足球联赛回顾，与Hyung Won Chung（AI研究员）无关，属于同名或错误归因。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmju0yw9p09otrmtbs3h6553u]:c9bcabe506f7",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Titillating Sports with Rick Tittle - August 15, 2025",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《Titillating Sports with Rick Tittle》是体育类节目，内容摘要与Hyung Won Chung的AI研究员身份及专业领域完全无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvwipn01gnrmtbuv8dh289]:0db08c130f7b",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "💸 How to Get Rich in the AI Era—Hyung Won Chung’s Viral Strategy! 🧪📈",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题和摘要将Hyung Won Chung描述为分享“致富策略”，这更像是营销或个人发展内容，而非其作为AI研究员的专业代表成果，归因层级不当。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvwjcl01gxrmtbhqzbcd67]:0aa404fc60ce",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Korean Cipher with OpenAI o1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题《Korean Cipher with OpenAI o1》和摘要将OpenAI o1模型的发布与Hyung Won Chung个人挂钩，但o1是OpenAI的团队产品，未明确其个人贡献角色，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:RawPoolItem[cmjtvoncu00mxrmtbog41xro9]:72a104cc17a1",
+      "person": "Ilya Sutskever",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Fellow Detail Page | Royal Society",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "页面内容将Ilya Sutskever描述为OpenAI的首席科学家，但根据人物上下文，他已离开OpenAI并创立新公司，职位信息过时。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeebyp000kot7iot0rm1nt]:59074eef45bd",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Building AI Tools: LLM Integration, Dependence, and the Path to LLM-Agnostic Applications",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者是Akanksha Sinha，内容是关于LLM应用开发的通用技术文章，与Jaana Dogan无关。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeedj5000mot7i4qti4fc1]:d64ab69abe04",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI Agents in Data Engineering: The Next Evolution in Automated Pipelines",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者是Navya Jammalamadaka，内容是关于数据工程中AI代理的技术文章，与Jaana Dogan无关。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeefgi000oot7i295n57ev]:c19e975b2560",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Llamaindex vs Langchain: What's the difference?",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者是Ivan Belcic和Cole Stryker，内容是关于LlamaIndex与LangChain的技术对比，与Jaana Dogan无关。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeeh9d000qot7iefxqnzq3]:380afb33cb69",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Building Enterprise Solutions with LLMs - GoPenAI",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者是Greger Ottosson，内容是关于企业LLM解决方案的技术文章，与Jaana Dogan无关。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeejpz000sot7iyksi5nm3]:3e0602022718",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Intelligence Brief on Artificial Intelligence 2025",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者是Panu Hentunen，内容是关于2025年人工智能的综合报告，与Jaana Dogan无关。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeeode000uot7itw32yhvh]:077ae3cc2501",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jan: Open source ChatGPT-alternative that runs 100% offline - Jan",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是Jan项目的官方网站，这是一个开源ChatGPT替代品，与Jaana Dogan无关。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeersj000wot7i3c6hye80]:284c626ac747",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jan - Open-source ChatGPT alternative that runs 100% offline",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是关于开源项目Jan，但未提及Jaana Dogan的个人贡献或角色。将整个项目归因于她属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmjtvspbo015rrmtbzrj08f6i]:20233795631b",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jan Leike (@janleike) on X | Danilo T.",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是第三方Danilo T.在LinkedIn上关于Jan Leike的帖子，并非Jan Leike本人发布或直接相关的内容。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmju143rk0amhrmtbi2obhskz]:7dc9133d6bc3",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": null,
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是一篇关于LLM推理的综述论文，作者列表中未包含Jan Leike。内容与Jan Leike无直接关联。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmju19pnz0bv6rmtbonasss2e]:49d17334873c",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI former safety leader Jan Leike joins rival AI startup Anthropic",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "内容报道了Jan Leike于2024年5月从OpenAI离职并加入Anthropic。这与人物上下文中“当前职位”为OpenAI研究员的信息冲突，表明其职位状态可能已过时。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmju19u220bwirmtbv28ju36j]:99338081d5ce",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Risks from power-seeking AI systems - Problem profile",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "内容是80,000 Hours关于AI风险的通用问题概述，作者为Cody Fenwick和Zershaaneh Qureshi，未提及Jan Leike。内容与该人物无直接关联。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmjtvwgpc01fprmtbjro7vmth]:9d34eaaedb46",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI, Robot",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "内容是Google DeepMind的播客，标题和摘要均未提及Jan Leike。内容与该人物无直接关联。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmjtvwfvm01ffrmtb4oa05unj]:f2c122eed9f9",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI&#39;s Safety vs. Innovation: A Bold Critique by Jan Leike!",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题暗示是关于Jan Leike对OpenAI的评论，但摘要未明确显示其本人是否出镜或参与，需要核实视频内容是否包含其直接观点。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvw93l01c1rmtbdx6r366o]:039759581fc9",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Stanford AI Club: Jason Wei on 3 Key Ideas in AI in 2025",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "内容摘要显示Jason Wei目前在Meta工作，但人物上下文仍标注其为OpenAI研究员，职位信息可能已过时。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvw9vn01cfrmtbfx9qn2cz]:ef4b262e72ad",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Another High-Profile OpenAI Researcher Departs for Meta",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章明确报道Jason Wei已从OpenAI离职加入Meta，但人物上下文仍标注其为OpenAI研究员，职位信息过时。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvwasj01ctrmtbo3p5pdp2]:bb90488b329e",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jason Wei, AI Researcher, OpenAI: Some intuitions About ...",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "视频标题和摘要显示Jason Wei在OpenAI工作，但结合其他信息其可能已离职，职位信息可能过时，需核实。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvwecf01enrmtbaob6g9th]:818e4973abcd",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "About – Wei Yi – Medium",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该Medium页面属于名为Wei Yi的用户，其个人简介显示为AstraZeneca的高级数据科学家，与目标人物Jason Wei（OpenAI研究科学家）不符。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvwi7n01gfrmtbxewtht3g]:0357f4685aef",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "西电，西安电子科技大学，导师信息，教师，个人主页",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该页面是西安电子科技大学教师魏峰的个人主页，内容涉及微波工程论文，与目标人物Jason Wei（AI研究科学家）完全无关。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmju0oux90828rmtb8y0g7jbk]:32d1edffa9e9",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers with Code - Jerry Wei",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该页面是Papers with Code上作者Jerry Wei的论文列表，与目标人物Jason Wei姓名不符，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmju0p8it083mrmtbq72mtedu]:7bd6262d069d",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Do you make plans for your weekends(新)你为周末做规划吗",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容为雅思口语学习，与 Jason Wei 的研究领域（大语言模型、推理、NLP）无关，且无证据表明他参与此内容。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvv0yq016vrmtbda2cpgw2]:f76024cbef78",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "John Schulman , a prominent AI researcher and co-founder ...",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "LinkedIn 帖子内容提到 John Schulman 已从 Anthropic 离职，但人物上下文显示其当前职位为 'Co-founder @ Anthropic'，信息可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:RawPoolItem[cmjw767tn0083yksz22k4rvlb]:30577aa8e1ae",
+      "person": "Jeremy Howard",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "jph00/AmazingTodo",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub 仓库 'jph00/AmazingTodo' 的所有者用户名 'jph00' 与 Jeremy Howard 的常用用户名一致，但仓库内容（Angular 示例项目）与其主要领域（AI、教育）关联较弱，且无直接证据证明其个人贡献或领导角色。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:RawPoolItem[cmjw76c9s008dykszatux9v6n]:f38f9b6c8341",
+      "person": "Jeremy Howard",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "What is Solveit? Showing some recent use cases",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确显示 Jeremy Howard 的参与角色（如主讲、嘉宾），仅提及课程和平台链接。需要证据证明其个人贡献或领导角色。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:RawPoolItem[cmjw76ctm008hykszra4d01cu]:6a43d7bc4562",
+      "person": "Jeremy Howard",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "MonsterUI: Beautiful Python Web Apps in Minutes",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频介绍 MonsterUI 库，但未明确说明 Jeremy Howard 的个人角色（如创建者、核心开发者）。该库可能属于团队或公司（answer.ai）成果，直接归因给个人可能过度。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:RawPoolItem[cmjw76efw008rykszcbrd0vta]:6573dc1878ce",
+      "person": "Jeremy Howard",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Intro to FastHTML",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频介绍 FastHTML 框架，但未明确说明 Jeremy Howard 的个人角色（如创建者、核心开发者）。该框架可能属于团队或公司（fast.ai/Answer.ai）成果，直接归因给个人可能过度。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvv5940173rmtbtaujzdbi]:66cb0e11c40d",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "dblp: John Schulman",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容为dblp数据库页面，但摘要仅显示通用调查信息，未提供John Schulman的具体出版物列表或贡献细节，证据不足。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvv6lq0175rmtbi13hwj0n]:d318b33d3485",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI cofounder John Schulman leaves Anthropic months after joining",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "内容为Yahoo新闻，标题称John Schulman离开Anthropic，但人物上下文显示其当前职位为Anthropic联合创始人，信息可能过时或冲突。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvvet6017lrmtbwzh4b74m]:71c5b41766bb",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI Co-founder John Schulman leaves rival AI firm Anthropic | Medial",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "内容为Medial新闻，标题称John Schulman离开Anthropic，但人物上下文显示其当前职位为Anthropic联合创始人，信息可能过时或冲突。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmju118o40a47rmtbnt54676b]:917f45fa73dc",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Mindstorms in Natural Language-Based Societies of Mind",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为arXiv论文《Mindstorms in Natural Language-Based Societies of Mind》，作者列表中未包含John Schulman，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvvvei019trmtb1v2z0dbm]:f59f70dc70bf",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "DeJohn/Cashay",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客 'DeJohn/Cashay' 的标题和内容（'Catfish: The Podcast'）与 John Schulman 的身份（计算机科学家）完全无关，且 'DeJohn' 可能是其他人名，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvvvyf019xrmtb4four8sc]:b22b00f7b538",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Episode 926 Behind the Seams featuring GA Tech Baseball's Josh Schulman hosted by John Stuper with Dave Dagostino",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题明确提到 'GA Tech Baseball's Josh Schulman'，嘉宾是 Josh Schulman 而非 John Schulman，属于人名错配。"
+    },
+    {
+      "claimId": "4fbc2ee6-3d34-4b6f-8a18-147b409e96ac:RawPoolItem[7581c1eb-2636-4257-b723-7b863a08d8de]:0ff6d0a84850",
+      "person": "Junyang Lin",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "GitHub - QwenLM/Qwen: The official repo of Qwen (通义千问) chat & pretrained large language model proposed by Alibaba Cloud.",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GitHub仓库是阿里云通义千问团队的官方项目，Junyang Lin是前技术负责人，但将整个团队项目归为其个人代表成果不合适。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxqn0t04awrmtbcf9715sb]:8fc552d6132e",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "From Transformer to GPT-5: Hear \"First-Principles Thinking ...",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章将 GPT-4、GPT-5、o1、o3 等 OpenAI 核心产品的研发成果过度归因于个人。Lukasz Kaiser 是 Transformer 论文作者之一，但文章描述其‘深度参与并领导’这些具体产品开发，缺乏明确证据支持此领导角色。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxqngu04b0rmtb474zzxvq]:6df9937f699d",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lukasz Kaiser - Member Of Technical Staff at OpenAI | The Org",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "来源显示其职位为‘Member Of Technical Staff’，但人物页面上下文显示其当前职位为‘Research Scientist @ OpenAI Foundation’。职位信息可能已过时。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxr28904f7rmtbvvwpmwbf]:64b163b7f5f4",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Petr Mrazek, Chicago Blackhawks stifle Blues | CHGO Blackhawks Postgame Podcast",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容是关于芝加哥黑鹰队的冰球比赛，与人物 Lukasz Kaiser（AI研究员）无关，属于同名实体或错误归因。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxqofk04b8rmtbeppq4lbt]:a7709b09a198",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lukasz Kaiser",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是DBLP网站的通用公告，与Lukasz Kaiser个人无关。页面标题虽为“Lukasz Kaiser”，但内容是关于DBLP团队处理请求的延迟和科学自由声明，属于网站运营信息，不应归因于该人物。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxqqq404byrmtb2831hzep]:4d83855bb171",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lukasz Kaiser: A Pioneer in Machine Learning and Neural ...",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章将TensorFlow、Tensor2Tensor、GPT-4等团队或公司级产品/项目过度归因于Kaiser个人。例如，称其“在TensorFlow开发中发挥关键作用”、“参与GPT-4开发”，但未明确其具体领导或核心贡献角色，易造成个人代表成果的误解。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxqrap04c4rmtb5sexlpjd]:532493fd15bf",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Who is Lukasz Kaiser? - FourWeekMBA",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章将TensorFlow、BERT、GPT-3等团队成果过度归因于Kaiser个人。例如，称其“共同编写了TensorFlow”、“在GPT-3开发中发挥关键作用”，但未提供其具体领导或核心贡献的证据，属于机构级产品归因错误。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmju14dsi0asxrmtbnrnxoyg5]:420a7896f524",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Perceiver AR: general-purpose, long-context autoregressive generation",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该内容是Google DeepMind关于Perceiver AR模型的博客文章，作者列表中未包含Lukasz Kaiser。将其挂在Kaiser名下属于错误归因，可能源于同名或信息混淆。"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw771o600axyksz99rxr4mp]:5e2d7cf7f042",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI in 2026: 3 Predictions For What’s To Come (a16z Big Ideas)",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容为a16z机构发布的行业预测，由多位分析师讲解，Marc Andreessen未直接出镜或参与，不应归为个人代表成果。"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw771xp00azyksz2h9q1u83]:257464eaabb0",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Where does consumer AI stand at the end of 2025?",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容为a16z机构发布的消费者AI分析，由多位投资者讨论，Marc Andreessen未直接出镜或参与，不应归为个人代表成果。"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw772tp00b5yksz5w8vy1xb]:faf58f9233a2",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI Is Coming For These 3 Industries In 2026 (a16z Big Ideas)",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容为a16z机构发布的行业预测，由多位分析师讲解，Marc Andreessen未直接出镜或参与，不应归为个人代表成果。"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw773dn00b9yksz9on8mnzo]:b1ede85f8982",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "This is how startups quietly pull ahead",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频内容明确为Ben Horowitz的分享，与Marc Andreessen无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw773mv00bbykszynuq6j0z]:7fb8ca2e3737",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "How AI Agents Will Transform in 2026 (a16z Big Ideas)",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容为a16z机构发布的AI Agent预测，由多位分析师讲解，Marc Andreessen未直接出镜或参与，不应归为个人代表成果。"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw7749900bfykszhupi6ulv]:821c3591e4dc",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "How AI Will Transform Fintech In 2026",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该视频内容明确显示为 a16z General Partner David Haber 和 Plaid CEO Zach Perret 的对话，与 Marc Andreessen 无直接关联。将他人内容错误归因。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:RawPoolItem[cmju0u7kl08lkrmtbsdwek9ec]:202359d29d50",
+      "person": "Mira Murati",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Mira Murati's Open Source AI Breakthrough at Thinking ...",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "LinkedIn帖子将团队在LLM确定性方面的突破性工作归功于Mira Murati个人，但这是团队成果，且帖子作者非官方，归因层级可能过高。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:RawPoolItem[cmju0u8nc08lyrmtbroot6yzq]:b906caf2a3ff",
+      "person": "Mira Murati",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Mira Murati's Thinking Machines Solves the Mystery of LLM ...",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "YouTube视频标题将公司（Thinking Machines）解决LLM‘重掷诅咒’的成果直接归因于Mira Murati个人，这是团队成果，归因层级可能不当。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:RawPoolItem[cmju0u9c608mcrmtb9qje42nb]:46062b14e44a",
+      "person": "Mira Murati",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Mira Murati's Thinking Machines Study: Your LLM Isn't ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题提及Mira Murati及其公司，但作者为Rohit Kumar Thakur，且内容为付费墙后的摘要，无法确认文章是否由她本人撰写或代表其官方观点。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:RawPoolItem[cmju0ujvt08rgrmtbfbnv8xhk]:70f9ed6e89e3",
+      "person": "Mira Murati",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Trevor Highlights Arizona's Ultra-MAGA Governor Candidate Kari Lake | Mira Murati & Ralph Macchio",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题包含Mira Murati，但内容摘要仅为节目名称“The Daily Show: Ears Edition”，未提供任何关于她参与或内容相关的证据，极可能是同名或无关内容。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:RawPoolItem[cmjtvo85g00jbrmtb2v7tqqms]:f53ccbafd6cd",
+      "person": "Mustafa Suleyman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Conversations in Review: AI, Geopolitics, and Lifestyle Revelations",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题未明确提及Mustafa Suleyman，仅从摘要无法确认其是否为嘉宾或内容是否相关。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:RawPoolItem[cmjtvo72900inrmtb44fajejo]:1e8320c0e33f",
+      "person": "Mustafa Suleyman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Mustafa Suleyman et al: Key challenges for delivering clinical impact with artificial intelligence.",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题为'Mustafa Suleyman et al'，但内容摘要指向一篇学术文章，可能并非其个人主导或代表成果，存在团队成果过度归因风险。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:RawPoolItem[cmjtvo7j200ivrmtb2gjn3uph]:63c36788179c",
+      "person": "Mustafa Suleyman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Mustafa Suleyman et al Teaching Machines to Read and Comprehend",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题为'Mustafa Suleyman et al'，但内容摘要指向一篇关于机器阅读的论文，可能并非其个人主导或代表成果，存在团队成果过度归因风险。"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:RawPoolItem[cmjtxhsj502bqrmtbodvjytts]:49e4d86535c1",
+      "person": "Noam Shazeer",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "BBC Learning Zone",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为BBC Learning Zone的维基百科页面，与Noam Shazeer无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:RawPoolItem[cmjtxht6c02byrmtbr8tkufmk]:143cb8879e07",
+      "person": "Noam Shazeer",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Continuity announcers in the United Kingdom",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为英国 continuity announcers 的维基百科页面，与Noam Shazeer无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:RawPoolItem[cmjtxhtn602c6rmtb7cfov4f6]:eaa77cc6bc5b",
+      "person": "Noam Shazeer",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "List of former BBC newsreaders and journalists",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是关于BBC前新闻主播和记者的列表，与Noam Shazeer（AI研究员）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:RawPoolItem[cmjtxi3qm02fwrmtbk1kele5i]:e7e8bb3b8a28",
+      "person": "Noam Shazeer",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "20VC: The Biggest AI Leaders on What Matters More; Model Size or Data Size & Where Does The Value in AI Accrue; to Startups or to Incumbents",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题提及AI领导者，但摘要未明确显示Noam Shazeer是否为嘉宾或主题，需要进一步核实。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:RawPoolItem[cmjtvxm1r01mgrmtbu1z3ps72]:d756c3fd5629",
+      "person": "Oriol Vinyals",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Gemini 2.0 and the evolution of agentic AI | Oriol Vinyals",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "内容标题将Gemini 2.0（一个具体模型版本）与Oriol Vinyals直接关联，但摘要中其职位描述为‘VP of Drastic Research and Gemini co-lead’，与已知职位不符，且将具体产品版本归因于个人。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:RawPoolItem[cmjtvxqqe01ocrmtb2emkbhzi]:be37c426f745",
+      "person": "Oriol Vinyals",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Oriol Vinyals - GM-RKB",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源为GM-RKB知识库，内容提及Oriol Vinyals与Gopher LLM、Chinchilla LLM等模型相关，但未明确其具体贡献角色，存在过度归因风险。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:RawPoolItem[cmjtvxs2801oyrmtb8r2mifum]:6fb7174ea795",
+      "person": "Oriol Vinyals",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OriolVinyalsML Flash News List",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "来源为区块链新闻网站，内容将Oriol Vinyals与Gemini 2.5 Pro等具体模型版本、加密货币市场影响等直接关联，存在过度归因和将营销内容混为个人成果的问题。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:RawPoolItem[cmju11pkf0a5yrmtbcnrn9www]:ffacea234ac5",
+      "person": "Oriol Vinyals",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "3 Common Misunderstandings About AI in 2025",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者是 Nikita Ostrovsky，Oriol Vinyals 仅在文中被引用。将整篇文章归于 Oriol Vinyals 名下属于人名错配。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:RawPoolItem[cmjtvy08401smrmtb54rkzbf5]:5ce310c94903",
+      "person": "Oriol Vinyals",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Life is like a game",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题为《Life is like a game》，但摘要仅显示“Google DeepMind: The Podcast”，未明确提及 Oriol Vinyals 是否为嘉宾或主持人，需要进一步核实。"
+    },
+    {
+      "claimId": "cmjtv3hfy000ii0041pbzgdg1:RawPoolItem[cmju15xtr0b38rmtbiegkm7ce]:485ff51b1771",
+      "person": "Percy Liang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers with Code - Percy Liang",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "页面标题为“Papers with Code - Percy Liang”，但摘要内容显示的是通用趋势论文，并未明确展示其个人论文列表，证据不足。"
+    },
+    {
+      "claimId": "cmjtv3hfy000ii0041pbzgdg1:RawPoolItem[cmjuuv3zy0i6prmtbbh5dpmky]:2ddbee31b337",
+      "person": "Percy Liang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "DISC: Dynamic Decomposition Improves LLM Inference Scaling",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文《DISC: Dynamic Decomposition Improves LLM Inference Scaling》的作者列表中未包含 Percy Liang，内容与人物不匹配。"
+    },
+    {
+      "claimId": "cmjv6furu000cmfghk9hx1jql:RawPoolItem[cmjw77pnt00dfykszrexw702s]:0e1056bdfda6",
+      "person": "Paul Graham",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Paul Graham but Podcast - EP 2: Do Things That Don't Scale",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "该播客是第三方对Paul Graham文章《Do Things That Don't Scale》的解读和讨论，并非Paul Graham本人创作或参与的原始内容。将其作为Paul Graham的个人成果展示，归因层级错误。"
+    },
+    {
+      "claimId": "cmjtv3hfy000ii0041pbzgdg1:RawPoolItem[cmjtvxnri01n4rmtbuv5uchod]:20265f2fba7a",
+      "person": "Percy Liang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers with Code - Percy Liang",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "该链接指向Papers with Code上按作者‘Percy Liang’搜索的页面，这是一个聚合搜索结果页面，并非Percy Liang本人发布或拥有的内容。将其作为其个人成果展示不正确。"
+    },
+    {
+      "claimId": "cmjtv3hfy000ii0041pbzgdg1:RawPoolItem[cmju15t6k0b1ermtb5x7gum93]:6fab561317db",
+      "person": "Percy Liang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Stanford CS229 I Machine Learning I Building Large ...",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "该视频是斯坦福CS229课程的客座讲座，主讲人是博士生Yann Dubois，Percy Liang是其导师之一。将整个课程视频作为Percy Liang的个人成果展示，过度归因了团队或课程项目的成果。"
+    },
+    {
+      "claimId": "cmjtv3hfy000ii0041pbzgdg1:RawPoolItem[cmjtvxyu301s6rmtbpyc04nhg]:8664dfee437d",
+      "person": "Percy Liang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "[May 29, 2023] Your Daily NLP",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题和摘要未明确提及 Percy Liang 的参与或贡献，无法确认其是否为嘉宾或相关人物。"
+    },
+    {
+      "claimId": "cmjtv3hfy000ii0041pbzgdg1:RawPoolItem[cmjtvxxkn01rqrmtbmgzdmxfz]:1010dfb848d6",
+      "person": "Percy Liang",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Stanford CS336 Lang. Modeling from Scratch | Spring 2025 | Lec. 3: Architectures, Hyperparameters",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题是斯坦福CS336课程，但未明确显示Percy Liang是讲师或主讲人。仅凭课程名称无法确认其个人贡献。"
+    },
+    {
+      "claimId": "cmjv6furu000rmfghqtakiwi7:RawPoolItem[cmjw77xhq00e1ykszhnlzznah]:a24944deb6ad",
+      "person": "Rachel Thomas",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "racheltho/web-dev",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub仓库属于Rachel Thomas，但摘要内容（Web开发登录系统）与她的主要领域（教育、开源、高效训练）关联较弱，需要更多证据确认其代表性。"
+    },
+    {
+      "claimId": "cmjtv37mu000gi004uo73uum0:RawPoolItem[cmjtxs5zd04mqrmtbpdmyxku3]:57ec2099e446",
+      "person": "Quoc Le",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "LaMDA: Language Models for Dialog Applications",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "LaMDA论文作者列表很长，Quoc Le未在提供的作者列表中出现。将整个论文成果归因于他个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv37mu000gi004uo73uum0:RawPoolItem[cmjtxs6q504myrmtb0d3bsn82]:6cc72d8357c2",
+      "person": "Quoc Le",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Inside the Billion-Dollar Startup Bringing AI Into the Physical World",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "文章是关于Physical Intelligence公司的报道，CEO是Karol Hausman。文中未提及Quoc Le，内容与他无关。"
+    },
+    {
+      "claimId": "cmjtv37mu000gi004uo73uum0:RawPoolItem[cmju10fdr09zvrmtb0vvuqgwm]:3376a3008960",
+      "person": "Quoc Le",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Transformer (deep learning architecture)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Transformer架构是Google团队成果，原始论文作者为Vaswani等人。将整个架构归因于Quoc Le个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv37mu000gi004uo73uum0:RawPoolItem[cmju1qw610f6hrmtbat7zheh9]:20d4b896a9f4",
+      "person": "Quoc Le",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding - ACL Anthology",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "BERT论文作者为Jacob Devlin、Ming-Wei Chang、Kenton Lee、Kristina Toutanova，未包含Quoc Le。内容与他无关。"
+    },
+    {
+      "claimId": "cmjtv37mu000gi004uo73uum0:RawPoolItem[cmjtxsgwm04rfrmtb29nfo6y3]:d2857a0f7d22",
+      "person": "Quoc Le",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Một số ca khúc hát về quê hương của dân tộc thiểu số Trung Quốc",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容是关于中国少数民族歌曲的越南语节目，与计算机科学家Quoc Le无关。可能是同名实体。"
+    },
+    {
+      "claimId": "cmjv6furu000imfghhcj4mp17:RawPoolItem[cmjw78gue00fxykszmzkraq3s]:2b13e6fcb4f8",
+      "person": "Rob Bensinger",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "TetraspaceW/VanDNationGame",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "GitHub 仓库所有者为 TetraspaceW，与 Rob Bensinger 无直接关联。Rob Bensinger 是 MIRI 的研究传播经理，其公开活动主要围绕 AI 对齐，而非游戏开发。"
+    },
+    {
+      "claimId": "cmjv6furu000imfghhcj4mp17:RawPoolItem[cmjw78h3o00fzyksz9zmszx6f]:ef7ed822202a",
+      "person": "Rob Bensinger",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "TetraspaceW/achaekek",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "GitHub 仓库所有者为 TetraspaceW，与 Rob Bensinger 无直接关联。Rob Bensinger 是 MIRI 的研究传播经理，其公开活动主要围绕 AI 对齐，而非 Manifold Markets API 开发。"
+    },
+    {
+      "claimId": "cmjv6furu000imfghhcj4mp17:RawPoolItem[cmjw78hvh00g5ykszdoeufjpl]:16c4c62a55c0",
+      "person": "Rob Bensinger",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "TetraspaceW/ai-views-snapshots",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "GitHub 仓库所有者为 TetraspaceW。虽然摘要提及基于 Rob Bensinger 的图像/通信工具，但仓库本身并非 Rob Bensinger 创建或维护，不应归因于他。"
+    },
+    {
+      "claimId": "cmjv6furu000imfghhcj4mp17:RawPoolItem[cmjw78i4z00g7yksz3zd8i8te]:c29ede9df61c",
+      "person": "Rob Bensinger",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "TetraspaceW/map-bot",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "GitHub 仓库所有者为 TetraspaceW，与 Rob Bensinger 无直接关联。Rob Bensinger 是 MIRI 的研究传播经理，其公开活动主要围绕 AI 对齐，而非 Discord 机器人开发。"
+    },
+    {
+      "claimId": "cmjv6furu000imfghhcj4mp17:RawPoolItem[cmjw78ie700g9ykszeslsr0fg]:59ddede09689",
+      "person": "Rob Bensinger",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "TetraspaceW/AdventOfCode",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "GitHub 仓库所有者为 TetraspaceW，与 Rob Bensinger 无直接关联。Rob Bensinger 是 MIRI 的研究传播经理，其公开活动主要围绕 AI 对齐，而非 Advent of Code 解题。"
+    },
+    {
+      "claimId": "cmjv6furu000imfghhcj4mp17:RawPoolItem[cmjw78ixu00gdykszhucx2ula]:60a919fdaa55",
+      "person": "Rob Bensinger",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "TetraspaceW/borgy-transaction-sorter",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "GitHub 仓库所有者为 TetraspaceW，与 Rob Bensinger 无直接关联。Rob Bensinger 是 MIRI 的研究传播经理，其公开活动主要围绕 AI 对齐，而非预算应用开发。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:RawPoolItem[cmjty4qda053trmtb21idfhqy]:cf66e5f6f1e8",
+      "person": "Sam Altman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Where is AI Taking Us? | Sam Altman & Vinod Khosla",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题包含Sam Altman，但提供的文本仅为YouTube页面框架，未包含视频具体内容或描述，无法确认其是否为访谈或相关分析。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:RawPoolItem[cmjuuk3fq0guyrmtbbrgjzz20]:777bc96ed97f",
+      "person": "Sam Altman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "About | OpenAI",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容为OpenAI公司的官方介绍页面，并非专门关于Sam Altman个人。将其挂在个人名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:RawPoolItem[cmjty50bc055frmtbfffp5w2h]:e34b22755013",
+      "person": "Sam Altman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Scarlett Johansson vs OpenAI",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题为《Scarlett Johansson vs OpenAI》，内容是关于斯嘉丽·约翰逊与OpenAI的争议，并非Sam Altman本人的访谈或直接相关分析。将其挂在Sam Altman名下属于人名错配。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:RawPoolItem[cmjse8b470007co6ymopwa5pn]:de90232446fb",
+      "person": "Sam Altman",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Sam Altman Shows Me GPT 5... And What's Next",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题《Sam Altman Shows Me GPT 5...》将具体产品版本GPT-5作为个人展示成果，属于过度归因。内容是访谈，但标题和摘要将公司产品版本与个人强绑定。"
+    },
+    {
+      "claimId": "cmjv6furu000omfghlc37bleh:RawPoolItem[cmjw78qgp00h1ykszui44kmny]:d6c17fca22ce",
+      "person": "Santiago Valdarrama",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "How WaterScope is Using Machine Learning to Ensure Safe Drinking Water",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频内容是关于 WaterScope 的采访，受访者是 Sammy Madhi，与 Santiago Valdarrama 无关。"
+    },
+    {
+      "claimId": "cmjv6furu000omfghlc37bleh:RawPoolItem[cmjw78rfn00h5yksz5yyonlya]:62977e8bf35a",
+      "person": "Santiago Valdarrama",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Machine Learning in Product: Swayable",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频内容是关于 Swayable 的采访，受访者是 Valerie Coffman，与 Santiago Valdarrama 无关。"
+    },
+    {
+      "claimId": "cmjv6furu000omfghlc37bleh:RawPoolItem[cmjw78rov00h7ykszp4n1sobd]:e2d8f62102b0",
+      "person": "Santiago Valdarrama",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Machine Learning in Product: Machine Learning for Software Developers",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频摘要明确说明主讲人是 Dustin Boss，而非 Santiago Valdarrama。内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjv6furu000omfghlc37bleh:RawPoolItem[cmjw78rzo00h9ykszkvgci67h]:cf81ce102480",
+      "person": "Santiago Valdarrama",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Machine Learning in Product: How ML is Improving Communication",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频摘要明确说明主讲人是 Andrew Blumenfeld 和 Eugene Joseph，而非 Santiago Valdarrama。内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjv6furu000omfghlc37bleh:RawPoolItem[cmjw78s9000hbykszbla6hvlt]:8f2ed37e99df",
+      "person": "Santiago Valdarrama",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Developer-Friendly Machine Learning Platform | Telepath",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频是 Telepath 公司的产品宣传，未提及 Santiago Valdarrama 的个人角色或贡献。将公司级产品归因给个人不合适。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:RawPoolItem[cmjtvofbz00lprmtb5rgfvv8w]:1bea9f6bfbb6",
+      "person": "Shane Legg",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The road to AGI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题为“The road to AGI”，但提供的文本仅显示“Google DeepMind: The Podcast”，未明确提及Shane Legg是否参与或为其内容，需要进一步核实。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:RawPoolItem[cmjtvofyd00lvrmtb4h1wxz9x]:9a3bde3f813e",
+      "person": "Shane Legg",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "James Barrat - The Intelligence Explosion: When AI Beats Humans At Everything",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和摘要均指向James Barrat，与Shane Legg无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:RawPoolItem[cmju0ix4z074frmtbc8sy9ehu]:8be94d6caab9",
+      "person": "Shane Legg",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Azeem’s Picks: Demis Hassabis on DeepMind’s Journey from Games to Fundamental Science",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和摘要均指向Demis Hassabis，与Shane Legg无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjv6furu0004mfghxllk5gjq:RawPoolItem[cmjw78wfy00hpykszn9wp6gx0]:d497a9c81e15",
+      "person": "Scott Wu",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ScottSWu/ece4750-tut3-pymtl",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub 仓库用户名为 ScottSWu，与人物 Scott Wu 匹配，但内容为课程教程，无法确认是否为同一人或其个人项目。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:RawPoolItem[cmju0iq8g071yrmtbqlfrdpsd]:6dbde4cf9cbc",
+      "person": "Shane Legg",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【人工智能】2028年人类将实现AGI？| Shane Legg | 思维革命 | 最小化 AGI | 能力边界 | 对齐难题 | 认知觉醒 | 脑力工业革命 | 思维链推理",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题和摘要将Shane Legg称为‘AGI概念奠基人’，这属于过度归因。AGI概念是领域共识，非个人独创。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:RawPoolItem[cmju0ybgy09h5rmtbvbaujwko]:674721c4e92c",
+      "person": "Wojciech Zaremba",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Towards Logically Sound Natural Language Reasoning with Logic-Enhanced Language Model Agents",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该论文作者列表中未包含Wojciech Zaremba，内容与该人物无关，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:RawPoolItem[cmju1lsle0e6jrmtba2zvxcoe]:1fd7f592ea85",
+      "person": "Wojciech Zaremba",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": null,
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "提供的文本仅为arXiv的reCAPTCHA页面，无法判断内容是否与Wojciech Zaremba相关，需要人工核实。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:RawPoolItem[cmjtxl5bw030xrmtbk8n07157]:96c40bd57398",
+      "person": "Wojciech Zaremba",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Wojciech Zaremba",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "DBLP 页面标题为人物姓名，但提供的文本内容仅为网站通用设置说明，未包含任何关于该人物的具体信息或学术成果。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:RawPoolItem[cmjtxl7bz031ormtbf08g4ys2]:c503a733a8b6",
+      "person": "Wojciech Zaremba",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Who is Wojciech Zaremba? The Man Leading OpenAI’s Research",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章将 ChatGPT、GPT-3、Codex 等 OpenAI 团队产品过度归因于 Zaremba 个人，称其为“负责人”或“唯一负责”，这夸大了个人贡献，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:RawPoolItem[cmjtxl809031wrmtbsw4c2d5h]:86b6cf61a4da",
+      "person": "Wojciech Zaremba",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Who’s Wojciech Zaremba? The Man Main OpenAI’s Analysis",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章将 ChatGPT、GPT-3、Codex 等 OpenAI 团队产品过度归因于 Zaremba 个人，称其为“负责人”或“唯一负责”，这夸大了个人贡献，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:RawPoolItem[cmjtxlcvz033hrmtbmhqxe11e]:5150e633203f",
+      "person": "Wojciech Zaremba",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Yes, Your Grace Ep. 10: Most Progressive Couple 1200s",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《Yes, Your Grace Ep. 10: Most Progressive Couple 1200s》内容为游戏实况，与 Wojciech Zaremba 的 AI 领域背景无关，且无证据表明他参与。属于人名错配。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:RawPoolItem[cmjtvm7bt001jrmtbgwk42e92]:97137e6cb524",
+      "person": "Yann LeCun",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meta chief AI scientist Yann LeCun plans to exit and launch own start-up",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章标题声称Yann LeCun计划离开Meta并创办自己的公司，但根据人物上下文，他目前仍是Meta的VP & Chief AI Scientist，此信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:RawPoolItem[cmjtvm7z6001prmtb94sfho2q]:68c478729869",
+      "person": "Yann LeCun",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "‘Imagine a Cube Floating in the Air’: The New AI Dream Allegedly Driving Yann LeCun Away from Meta",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章标题声称Yann LeCun因AI新梦想而离开Meta，但根据人物上下文，他目前仍是Meta的VP & Chief AI Scientist，此信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:RawPoolItem[cmju0prr7085ermtbnzcv0qwa]:7dbbd7c56468",
+      "person": "Yann LeCun",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Techmeme: Yann LeCun says his unnamed AI startup will not receive financial backing from Meta, will focus on advanced AI world models, and hints it will be Paris-based (Benoit Berthelot/Bloomberg)",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章标题声称Yann LeCun表示其AI初创公司不会获得Meta支持，但根据人物上下文，他目前仍是Meta的VP & Chief AI Scientist，此信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:RawPoolItem[cmju0pvxm085ormtbuwev9kof]:304dfb039976",
+      "person": "Yann LeCun",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The rise of Yann LeCun, the 65-year-old NYU professor who is planning to leave Mark Zuckerberg's highly paid team at Meta to launch his own AI startup | Fortune",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章标题声称Yann LeCun计划离开Meta并创办自己的公司，但根据人物上下文，他目前仍是Meta的VP & Chief AI Scientist，此信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:RawPoolItem[cmk9rqwwl0007p8lkcex0g493]:c891ed761d6b",
+      "person": "Yann LeCun",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "lagrtest11 nsnyu run3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是NYU/Netscale团队在DARPA LAGR项目中的机器人竞赛，属于团队项目成果，未明确Yann LeCun的个人角色或贡献。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:RawPoolItem[cmjw794dq00idykszyotelf1z]:5fef907fe855",
+      "person": "Yoshua Bengio",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "yoshua/fast-ff-inference",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GitHub仓库由'yoshua'创建，但内容仅为编译说明，无明确证据表明是Yoshua Bengio本人或与其研究直接相关，需要更多来源确认。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:RawPoolItem[cmjtvmmhi008rrmtb6m8vr5gi]:baef5cf1ec27",
+      "person": "Yoshua Bengio",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Creator of AI: We Have 2 Years Before Everything Changes! These Jobs Won't Exist in 24 Months!",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题和摘要未明确显示Yoshua Bengio是嘉宾或作者，仅凭标题无法确认内容是否关于或来自该人物。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xbyu09d2rmtber902ujh]:abf47fbe6dec",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI编程导航站",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容来自 dingliwen.com，与人物丁洁（Ding Jie）姓名不符，属于同名或错误归因。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xcp609d6rmtb1jp2pybx]:3007c3fe879a",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Alibaba’s DingTalk integrates with six AI partners, unveils new AI search feature",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章是关于阿里巴巴钉钉（DingTalk）的新闻，与人物丁洁（Ding Jie）无关，属于名称混淆。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xcz009d8rmtb1sdjlc7o]:c0de0295df86",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI智能体研发之路-工程篇（二）：Dify智能体开发平台一键部署-腾讯云开发者社区-腾讯云",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者为 LDG_AGI，内容是关于Dify平台的部署教程，与人物丁洁（Ding Jie）无关。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xgc709dqrmtbzmjmes65]:f2d949160b90",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Ning Ding | TsinghuaC3I",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "页面明确显示为 Ning Ding（丁宁），与人物丁洁（Ding Jie）姓名不符，属于同名错误归因。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xgm509dsrmtb6vp6rjsa]:25f2f789990f",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "DingTalk: In the AI era, I most want to have interoperability with WeChat.",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章是关于钉钉（DingTalk）的报道，与人物丁洁（Ding Jie）无关，属于名称混淆。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjuuyprh0if2rmtb65kug61c]:aa11c3ce71c3",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ChinAI #247: XiaoIce, a Strange Species of Chatbot",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者为 Jeffrey Ding，内容是关于小冰的分析，与人物丁洁（Ding Jie）无关。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjuvgqst0izsrmtbbuefpguv]:343bc0e804f2",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Ningning Ding",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "页面明确显示为 Ningning Ding（丁宁宁），与人物丁洁（Ding Jie）姓名不符，属于同名错误归因。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkolm02yrrmtb6hoc86iq]:ff33acf4753a",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "时间的形状补丁二：如何制造一台时间机器",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客主讲人为汪洁，与人物丁洁（Ding Jie）姓名不符，属于同名错误归因。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:RawPoolItem[cmju0mk0y07shrmtbv2i7wfb0]:b43371c45457",
+      "person": "Yoshua Bengio",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "&quot;I CREATED AI AND I&#39;M HERE TO WARN YOU&quot;",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题“I CREATED AI”可能夸大其词，Yoshua Bengio是AI先驱但非唯一创造者。摘要未明确其个人角色，可能误导。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkfoy02w1rmtb5w9uxsrm]:f13425925c0c",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "翰博高新(301321)公司高管",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于翰博高新公司高管的财经页面，与人物丁洁（AI研究员）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkify02xbrmtb7wi9o71o]:cd6c32dbb8e6",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁苏-江南大学-智能制造学院（君远学院）",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于江南大学副教授丁苏的页面，与人物丁洁（明尼苏达大学副教授）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0x9az09c7rmtb3hheddin]:baa382a25af4",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI赋能电子信息类研究生人才培养质量提升路径研究",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容页面无法访问，无法验证是否与人物丁洁相关，缺少足够证据。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkovk02ytrmtbp281s42i]:2caa32e1959f",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "009  佟晨洁x作家丁天：不走捷径，是女性的一种体面",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题明确为“佟晨洁x作家丁天”，内容与AI研究员丁洁无关，属于同名或姓名相似的错误匹配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkp5h02yvrmtbfqtb76nh]:8bdd31978350",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "流感季这些地方须清洁（丁医生聊健康）",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题为“丁医生聊健康”，内容为医学健康话题，与AI研究员丁洁的专业领域不符，属于同名或姓名相似的错误匹配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkpf602yxrmtbith35end]:36a60593cccb",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "89. 外部记忆与中立观察的神话 — 洁妮·贾丁",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题为“洁妮·贾丁”，内容为科学概念讨论，与AI研究员丁洁无关，属于同名或姓名相似的错误匹配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkpoy02yzrmtb7h35wyws]:a3b05b21f602",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "3、【科普故事】地球公公的清洁工",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题为“丁呱呱亲子阅读”，内容为儿童科普故事，与AI研究员丁洁的专业领域不符，属于同名或姓名相似的错误匹配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xgwa09durmtbg28no164]:6b0defd8e9b5",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "EP129 閒聊的小布丁- 讓安潔莉娜裘莉瘋狂的法力刺青是什麼？是祝福還是.....? #布丁好朋友系列_Rita來囉",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题为“布丁好朋友”，内容为闲聊话题，与AI研究员丁洁的专业领域不符，属于同名或姓名相似的错误匹配。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxns8203marmtb4n08kqyz]:0c1793bccfa8",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meta AI Research Head Joelle Pineau resigns amid AI race",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "文章标题称其为“Meta AI Research Head”，但根据人物上下文，她已离开Meta，职位信息可能过时。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxnsi103mermtbvxnryzsu]:894b9b63a583",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Joëlle Pineau net worth and salary income estimation",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "内容为个人净资产估算，属于八卦或推测性信息，缺乏可靠来源，不适合在专业人物页面展示。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxnssx03mirmtbk216hoez]:72fafcbacf5b",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meta's Head of AI Research Joelle Pineau Announces Departure",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "内容报道乔尔·皮诺将于2025年5月30日离开Meta。根据人物上下文，其当前职位是麦吉尔大学研究科学家，表明该离职事件已发生，职位信息过时。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxnt4003mmrmtb7nzouabi]:adc5989ecf87",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meta's head of AI research stepping down",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "内容报道乔尔·皮诺计划于2025年5月底离开Meta。根据人物上下文，其当前职位是麦吉尔大学研究科学家，表明该离职事件已发生，职位信息过时。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmju1m20o0e8krmtbq0oly6wp]:278294de04bf",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Introducing gpt-oss | Joelle Pineau",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是乔尔·皮诺在LinkedIn上分享OpenAI发布gpt-oss模型的帖子。这是她对他人成果的评论，而非她个人或其团队的代表成果，归因层级错误。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmju1m2fi0e8qrmtb3f9otxvt]:1f0f60a4c1c7",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Cohere's Joelle Pineau On Why A.I. Isn't a Black Box",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "内容标题称乔尔·皮诺为Cohere首席AI官，但人物上下文显示其当前职位是麦吉尔大学研究科学家。职位信息可能已过时或存在冲突。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjuuf37v0fwgrmtbg4fjk3tb]:566a70ad256a",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "内容为Meta官方高管页面，显示乔尔·皮诺为Meta副总裁兼FAIR负责人。根据人物上下文，其当前职位是麦吉尔大学研究科学家，该页面信息已过时。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxnxa103nurmtb6ugwpn4r]:9995c7245789",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "20VC: Cohere's Chief Scientist on Why Scaling Laws Will Continue | Whether You Can Buy Success in AI with Talent Acquisitions | The Future of Synthetic Data & What It Means for Models | Why AI Coding is Akin to Image Generation in 2015 with Joelle Pinea",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "播客标题称乔尔·皮诺为Cohere首席科学家，但人物上下文显示其当前职位是麦吉尔大学研究科学家。职位信息可能已过时或存在冲突。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxnvk103nermtb00hkt8wl]:3a14c5a41e1f",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Joelle Pineau Joins Cohere as Chief AI Officer",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "视频内容涉及该人物加入Cohere担任首席AI官，但其当前职位信息（Research Scientist @ McGill University）可能已过时，需核实最新职位。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxnvu603ngrmtbc6g3vsnl]:4762a65f0cd3",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meta’s Head of AI Research Plans to Leave in May",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "视频内容涉及该人物计划离开Meta，但其当前职位信息（Research Scientist @ McGill University）可能已过时，需核实最新职位和状态。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:RawPoolItem[cmjtxnwef03nkrmtbrhf9899n]:81e47e03d166",
+      "person": "乔尔·皮诺",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Radical Talks, Masterclass Edition: Joelle Pineau on Turning AI Research into Real World Impact",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "视频摘要称该人物为Cohere首席AI官，但其当前职位信息（Research Scientist @ McGill University）可能已过时，需核实最新职位。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:RawPoolItem[cmjtxln5w0357rmtbkfs2psy5]:8597dae8062c",
+      "person": "亚历克·拉德福德",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Alec Radford",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "DBLP页面是Alec Radford的学术出版物列表，但提供的摘要文本仅是网站通用的隐私和功能说明，未包含任何关于人物的具体信息。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:RawPoolItem[cmjtxlngk0359rmtbcv9wlfhu]:8d664de151e8",
+      "person": "亚历克·拉德福德",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Alec  Radford - Home",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "ACM个人资料页面的摘要文本完全是关于网站Cookie政策的通用说明，未提供任何关于Alec Radford本人的信息。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:RawPoolItem[cmju0oe4a07zqrmtbhrvr6ixb]:386d7f23fdbe",
+      "person": "亚历克·拉德福德",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "A Comprehensive Guide To Alec Radford: The Innovator ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该内容标题和摘要明确指向亚历克·拉德福德，但来源网站（marineagronomy.org）与人物领域不符，且内容为通用介绍，缺乏具体贡献细节或可靠来源佐证。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:RawPoolItem[cmjtxlzu1037wrmtbl8tvtpwd]:fc46d4b006b3",
+      "person": "亚历克·拉德福德",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "How To Build The Future: Sam Altman",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客《How To Build The Future: Sam Altman》的标题和摘要均指向Sam Altman，与亚历克·拉德福德无关。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:RawPoolItem[cmjtxly2q0373rmtbnojkea7j]:74f1b59d183f",
+      "person": "亚历克·拉德福德",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Evolution of samples from 32x32 Imagenet 1K DCGAN",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频内容是关于DCGAN模型的演示，但未明确说明亚历克·拉德福德是作者或上传者。需要核实其是否为该视频的创作者或主要贡献者。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:RawPoolItem[cmjtxlydi037crmtb2bp5sy2e]:6c7bf38aa35e",
+      "person": "亚历克·拉德福德",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Paths through face manifold for conv/deconv GAN",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频内容是关于GAN模型的演示，但未明确说明亚历克·拉德福德是作者或上传者。需要核实其是否为该视频的创作者或主要贡献者。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:RawPoolItem[cmjtxlynr037grmtbe3an3y74]:e5cc7e23cf1f",
+      "person": "亚历克·拉德福德",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Face manifold from conv/deconv variational autoencoder",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频内容是关于变分自编码器的演示，但未明确说明亚历克·拉德福德是作者或上传者。需要核实其是否为该视频的创作者或主要贡献者。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:RawPoolItem[cmju16znt0b87rmtb983o12qs]:2ec6908b7820",
+      "person": "凯文·斯科特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI ‘scientists’ joined these research teams: here’s what happened",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章作者为Nicola Jones，内容是关于AI‘科学家’加入研究团队的新闻报道，未提及凯文·斯科特。将此外部内容挂在其名下属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:RawPoolItem[cmju171sq0b8xrmtb6epybcma]:05014bf3c327",
+      "person": "凯文·斯科特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Microsoft CTO Kevin Scott says what he's seeing in early ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "标题表明内容关于凯文·斯科特，但提供的摘要为空，无法确认具体内容是否确实关于他以及是否适合展示。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:RawPoolItem[cmjuuk7740gw4rmtbtdvjlpyc]:e2f5ad73967a",
+      "person": "凯文·斯科特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Kevin Scott: Putting AI into the hands of people everywhere",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "标题表明是凯文·斯科特的演讲或访谈，但提供的摘要仅为视频统计数据，无法确认视频内容是否确实关于他本人及其观点。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjtxj29g02l8rmtbxdyk2ga8]:3b624ab64c9a",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "中国大模型团队登Nature封面，刘知远语出惊人：期待明年“用 ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题提及人物姓名，但提供的摘要为空，无法确认内容是否确实关于该人物或其贡献，需要进一步核实。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0k7ml07fzrmtbinm71o90]:947c2f110df9",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Scaling Latent Reasoning via Looped Language Models",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "论文作者列表中未出现刘知远，该成果属于其他研究团队，不应归因于他。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0k8bh07g1rmtbo6kigksk]:b0b24078ca82",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Thinker: Training LLMs in Hierarchical Thinking for Deep Search via Multi-Turn Interaction",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "论文作者列表中未出现刘知远，该成果属于其他研究团队，不应归因于他。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0ka6m07g7rmtb2d1tgif6]:0074f50481bb",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Chinese finance whizz whose DeepSeek AI model stunned the world",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章主角是DeepSeek创始人梁文锋，与刘知远无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju1b87r0c8brmtb4i1gkje4]:f00be7450f97",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": null,
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "论文作者列表中未出现刘知远，该成果属于其他研究团队，不应归因于他。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju1baio0c8trmtbtdibt6tr]:3928fad87a32",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "融合大语言模型与向量知识库的应用文生成框架",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "论文作者列表中未出现刘知远，该成果属于其他研究团队，不应归因于他。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjuugfyt0g92rmtblajefpnu]:16a6b3bf3938",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": null,
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "论文作者列表中未出现刘知远，该成果属于其他研究团队，不应归因于他。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0khy607h8rmtb34jg9om5]:42777d665bd7",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "335｜陈孝良、蔡雄删、刘峰、何清：AI·异变｜格致SELF",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频标题和摘要明确列出嘉宾为陈孝良、蔡雄删、刘峰、何清，未提及刘知远。内容与刘知远无直接关联。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0kiy407hgrmtb65578g1d]:3536066202bc",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "CI 2019 Plenary Talks: Human Crowds and AI",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频标题和摘要列出主持人和演讲者为Melissa Valentine、Lukas Biewald等，未提及刘知远。内容与刘知远无直接关联。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjtxjing02rgrmtby6zm6z4j]:c3f45ba34dfb",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "资治通鉴_ 王淑妃开封替死 刘知远建立后汉",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容是关于历史人物（后汉高祖刘知远），与当前页面的AI学者刘知远无关，属于同名不同人。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0kkki07hyrmtbqdqe3kuw]:7117ce0b0165",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "222闺智部•刘知远夫人【古文】",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容是关于历史人物（刘知远夫人），与当前页面的AI学者刘知远无关，属于同名不同人。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0kfi007gsrmtbwfp3uwgf]:1823802f4a10",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ACL AI is really coming! ! !",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要均未提及人物姓名或明确关联，无法确认内容是否关于或来自该人物。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0khg907h2rmtb6umxhs1y]:3d2b71344a70",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Improving Power Management and Usage with AI (IJCAI2019 video 887)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要均未提及人物姓名或明确关联，无法确认内容是否关于或来自该人物。"
+    },
+    {
+      "claimId": "cmjtsxyrk00063esttwxwxw14:RawPoolItem[cmju1e9f10cn4rmtbgf3tf74x]:94a403f1c276",
+      "person": "吴恩达",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要仅为arXiv的通用页面框架，未显示论文标题、作者或任何具体内容，无法判断是否与吴恩达相关。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmjtxj3yu02lormtb4od9tou6]:b24fcabe6a7c",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "20251123 台指周文下周解析與預判｜loco劉醇隆",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章标题和内容显示为关于台股分析的博客，作者为“loco劉醇隆”，与周伯文无关。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmju12en30af3rmtb7waeyjgm]:8d2d1f6127e4",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ViPER: Empowering the Self-Evolution of Visual Perception Abilities in Vision-Language Models",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文作者列表中未出现周伯文，该成果是团队研究，不应归因于个人。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmju1ov6s0eugrmtba9qxvq4j]:4ca6b8636799",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "周伯文提出AGI4S六问：AI拓展知识边界，但探索的罗盘始终 ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的文本内容为模板占位符，无法确认文章是否关于周伯文或其观点。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmjuuitfr0gn1rmtbe6okxxqd]:54e49d58ea25",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Web-CogReasoner: Towards Knowledge-Induced Cognitive Reasoning for Web Agents",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文作者列表中未出现周伯文，该成果是团队研究，不应归因于个人。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmjuvfh120itgrmtbzog7w2du]:5a3781edc6f0",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "2025-11-15-財經重要新聞(深度學習BERT模型篩濾實驗-非投資建議)｜AIStock",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为财经新闻聚合，与周伯文无直接关联，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmjtxj7js02narmtb4swfgeer]:03b8a71f5ec5",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "古文观止|卷一周文|004臧僖伯谏观鱼",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容为《古文观止》朗读，与AI从业者周伯文无关，属于同名或错误关联。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmjtxj6y402n0rmtb4i7r18eq]:2aaa812054f0",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "京东正式推出产业版ChatGPT，命名“ChatJD”",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于京东云推出ChatJD，属于公司级产品发布。周伯文曾是京东云AI负责人，但将具体产品版本（ChatJD）直接归为其个人代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxk4zr02tbrmtbv7lp8rdy]:25c1c6d1f7b6",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "强一股份：以探针卡守“中国芯”",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章内容是关于强一股份（半导体公司）及其董事长周明。人物页面的周明是AI从业者，与文章中的半导体公司董事长周明是同名不同人。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxk6hf02tfrmtb47uhwqvp]:51ac0234bfa9",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "周明 - 浙江大学个人主页",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "链接指向浙江大学生命科学学院研究员周明的个人主页，研究方向为植物生物学。人物页面的周明是AI从业者，两者是同名不同人。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxk6t002thrmtbp544u9ff]:55e2154bb5c2",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "强一股份登陆科创板科创板第600家企业花落苏州 - 苏州新闻",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章内容是关于强一股份上市，其董事长周明出席仪式。人物页面的周明是AI从业者，与文章中的半导体公司董事长周明是同名不同人。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxk7kx02tjrmtb7s0t2kjq]:03a705bf51a5",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "科创板第600家公司上市强一股份十年攻坚打破垄断",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章内容是关于强一股份上市，其董事长周明接受专访。人物页面的周明是AI从业者，与文章中的半导体公司董事长周明是同名不同人。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxk98302ttrmtbr94g72v8]:5ec770c4b83c",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "周姓名男孩名字大全（620个）",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“周姓名男孩名字大全”的起名网站页面，与人物页面的AI从业者周明完全无关。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxkaka02u1rmtb5zjqohig]:f72016ac0b16",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "「失信心」為由被炒 吳樹培指中大校董誹謗  校董會未齊腳下決議  吳：沒獲邀申辯 - 20231214 - 要聞",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章内容是关于香港中文大学校董会解雇副校长吴树培的新闻，与人物页面的AI从业者周明完全无关。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zugx09sdrmtbms669lqw]:58947cacec1b",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Ming-Omni: A Unified Multimodal Model for Perception and Generation",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "论文《Ming-Omni: A Unified Multimodal Model for Perception and Generation》的作者列表很长，包含“Jun Zhou”。需要核实此“Jun Zhou”是否就是人物页面的周明（Jun Zhou），以及其具体贡献角色。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjtxvjhd04ubrmtb5oi0rv4q]:bfbc8e6e9830",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Microsoft Word - JeepyTA Future of Learning with LLMs Book Chapter",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该PDF论文作者为Xiner Liu等人，来自宾夕法尼亚大学，与唐杰教授无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjtxvjrv04udrmtbpmy32pil]:0fa0bfccec5c",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Natural Language Processing Group",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该页面为中国科学院计算技术研究所NLP研究组官网，未提及唐杰教授，属于机构页面错配。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjty4dto04z3rmtbqf7damc0]:a76403951ba2",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Top 10 Chinese AI Companies Like DeepSeek You Need To Know",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该文章介绍中国AI公司，未提及唐杰教授，属于内容错配。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjty4esv04zjrmtbkuy7fgfs]:e862bbd4551b",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tencent AI Lab Launches New Open Source Framework to Aid the Rise of Intelligent Agents in Deep Research",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该文章介绍腾讯AI Lab的开源框架，未提及唐杰教授，属于内容错配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zvfq09svrmtb1fia326b]:71a1e5c4c42a",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Zhu Min in Dialogue with Zhang Yaqin: Technological Breakthroughs and the Future of Innovation in the AI+ Era-PBCSF Tsinghua University",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容标题和摘要明确显示对话者为 Zhu Min（朱民）和 Zhang Yaqin（张亚勤），与人物“周明”无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zx6i09tdrmtbtf9lue0u]:76887f4cd06b",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Ming-UniVision: Joint Image Understanding and Generation with a Unified Continuous Tokenizer",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文作者列表中未出现“周明”或其英文名“Ming Zhou”，该成果属于团队（如 inclusionAI），不应归因于个人。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjuuy94e0icmrmtbcrze21d3]:d2447ea9656d",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers by Mingwei Zhu",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确显示作者为“Mingwei Zhu”，与人物“周明”姓名不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxkhhx02wtrmtbhogktukk]:5eec70c611b7",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "没有你怎么飞翔 - 周明瑶",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容标题为“没有你怎么飞翔 - 周明瑶”，属于音乐内容，与人物“周明”无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxkhsj02wzrmtbftwn5pmw]:7019df2aa8d8",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "没有你怎么飞翔 - 周明瑶",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容标题为“没有你怎么飞翔 - 周明瑶”，属于音乐内容，与人物“周明”无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxki3r02x5rmtbszjxqr6w]:6fcab9b60b1d",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "003_这个姜津津应该就是周明",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容标题“003_这个姜津津应该就是周明”及摘要为小说内容，与AI从业者“周明”无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmjtxkief02x9rmtbdyoafhih]:9bfa08a1c7b4",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "004_小说里可没说周明沣的声音",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容标题“004_小说里可没说周明沣的声音”及摘要为小说内容，与AI从业者“周明”无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjuv0tla0ijtrmtbssxh4pe8]:da87fd5b3ef4",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "tjb-tech - Overview",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该GitHub主页明确显示用户为Jiabin Tang（唐家龙），是香港大学博士生，与目标人物唐杰（清华大学教授）不符。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjuv0tvf0ijvrmtb41856hom]:c94d707b4892",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jialong Tang's Homepage",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该个人主页明确显示为Jialong Tang（唐家龙），在阿里巴巴达摩院工作，与目标人物唐杰（清华大学教授）不符。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjtxvl8x04unrmtb6w4drz1t]:a3ce9608b137",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI大模型时代快来了！未来或刷新智能终端体验想象力",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确提及唐杰本人，无法确认其是否为视频主讲人或直接相关者。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjtxvltb04urrmtb0p3iw9qb]:a805ba14f737",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "清华首个AI学生华智冰首次露正脸唱歌 面容姣好 声音甜美",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于清华大学虚拟学生“华智冰”的新闻报道，属于团队或机构成果，未明确提及唐杰的个人贡献或角色。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjtxvm8b04utrmtbif53k03w]:a4701b5c0a9b",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "小冰团队再次声明：清华虚拟学生华智冰演唱视频并非仅AI换脸",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于华智冰技术争议的团队声明，属于团队或机构层面的回应，未明确提及唐杰的个人贡献或角色。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjtxvmiv04uvrmtb5320w8ip]:3e50e5536622",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "中國首個人工智能學生「華智冰」 將入讀清華大學-TVB News-20210604",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于华智冰入学的新闻报道，属于团队或机构成果，未明确提及唐杰的个人贡献或角色。"
+    },
+    {
+      "claimId": "cmjtxdvoh000d5p08r4ygmu04:RawPoolItem[cmju1334l0ahkrmtbn4exzi3l]:1359119a8b13",
+      "person": "埃里克·霍维茨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks - Microsoft Research",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "内容为微软研究院关于Magentic-One多智能体系统的文章，但作者列表中未包含埃里克·霍维茨。将团队成果归因于个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxdvoh000d5p08r4ygmu04:RawPoolItem[cmjtxpn6t0411rmtbt6f0k046]:9e4ec8b4426c",
+      "person": "埃里克·霍维茨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Buying/selling major takeaways from Milwaukee's Christmas loss to the 76ers",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容是关于密尔沃基雄鹿队篮球比赛的，与埃里克·霍维茨（AI科学家）的专业领域完全无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxdvoh000d5p08r4ygmu04:RawPoolItem[cmjtxpngy0413rmtbbi4knpno]:e0ccf43c6a80",
+      "person": "埃里克·霍维茨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "VOW WrestleMania Weekend Preview (Part 2)",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容是关于职业摔跤的，与埃里克·霍维茨（AI科学家）的专业领域完全无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjvd3qrm0002kvtppziawz5i:RawPoolItem[cmjw79plg00k7ykszerjylws5]:6ea21f534bc3",
+      "person": "塞巴斯蒂安·布贝克",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Textbooks Are All You Need",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频讨论‘Textbooks Are All You Need’方法及phi-1/1.5模型，但摘要未明确塞巴斯蒂安·布贝克是论文作者或演讲者，可能属于团队成果或他人演讲，归因层级可能错误。"
+    },
+    {
+      "claimId": "cmjvd3qrm0002kvtppziawz5i:RawPoolItem[cmjw79q4200kbykszmu6atfpy]:cd08fd89fcee",
+      "person": "塞巴斯蒂安·布贝克",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Sparks of AGI: early experiments with GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题为‘Sparks of AGI: early experiments with GPT-4’，摘要提及论文链接，但未明确塞巴斯蒂安·布贝克是演讲者或论文作者，可能属于团队成果或他人演讲，归因层级可能错误。"
+    },
+    {
+      "claimId": "cmjvd3qrm0002kvtppziawz5i:RawPoolItem[cmjw79qdr00kdyksz937ueuog]:958a7e263cd6",
+      "person": "塞巴斯蒂安·布贝克",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Learning threshold neurons via the Edge of Stability",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题为‘Learning threshold neurons via the Edge of Stability’，摘要提及论文作者包括S. Bubeck，但演讲者是Kwangjun Ahn和Felipe Suarez，塞巴斯蒂安·布贝克可能只是论文合作者，非演讲者，归因层级可能错误。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i5un06y9rmtb7filv3cu]:241d77187dd7",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lossless Compression of Large Language Model-Generated Text via Next-Token Prediction",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者为Yu Mao、Holger Pirk和Chun Jason Xue，与姚顺雨无关。内容被错误归因。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i6rw06yfrmtb41pae8yf]:b52bf8550522",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "An Embodied Intelligence System for Coal Mine Safety Assessment Based on Multi-Level Large Language Models",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者为Yi Sun和Faxiu Ji，与姚顺雨无关。内容被错误归因。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju19xeh0bxqrmtbdn3tfyft]:a52ff6b65092",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "低调实盘周记2025年12月20日—茅台分红",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为投资周记，作者为“低调FIRE道”，与姚顺雨的AI研究者身份无关，且无证据表明是其本人。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjuunqvv0he4rmtbieb4z49t]:d5a519299d68",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Yuan Yao-人工智能-上海期智研究院",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于Yuan Yao（姚远）的个人介绍，与姚顺雨是不同的人。人名错配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg0qm01uqrmtbcaznnq13]:ea010917f2dc",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Shunyu Yao - Personal Website",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "个人网站内容显示其当前职位为 Google DeepMind 研究科学家，而人物上下文显示其为 OpenAI 研究员，职位信息可能过时。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg12u01uwrmtbyuyz798i]:4079e8e2e1f0",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Dr. Shunyu Yao",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "个人网站内容显示其当前职位为 Google DeepMind 研究科学家，而人物上下文显示其为 OpenAI 研究员，职位信息可能过时。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg1t501vcrmtbtxvnabx6]:ddb18ade09c0",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "姚舜禹",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向重庆大学法学院讲师姚舜禹，其研究领域为知识产权法，与姚顺雨的 AI 研究员身份完全不同，属于同名不同人。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i11v06xhrmtb4wemo96r]:f13f265c3d81",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI expert Yao Shunyu appointed as Chief AI Scientist at Tencent",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "新闻称姚顺雨加入腾讯任首席 AI 科学家，而人物上下文显示其为 OpenAI 研究员，职位信息可能过时或存在冲突。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i1bc06xjrmtb1isj2wy2]:a62a38afeab5",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "EP06-AI产业链25年巡礼总结和26年展望(GPU ASIC 谷歌 ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客内容提及姚顺雨，但未明确其具体角色或贡献，仅作为行业讨论的一部分提及，缺乏足够证据证明其直接关联。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i1lt06xlrmtbmznawrax]:cbd40da45cd5",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "第十八届中国大学生计算机设计大赛济南决赛区（软件应用与 ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向杭州师范大学学生姚舜禹，其参与计算机设计大赛，与姚顺雨的 AI 研究员身份完全不同，属于同名不同人。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:RawPoolItem[cmju0v20e08u1rmtb51r38w2e]:7e6a898f3289",
+      "person": "季逸超",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "People|PEI-Lab",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为香港理工大学PEI-Lab的人员页面，主要介绍Prof. Song Guo及其团队，与季逸超无关。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:RawPoolItem[cmjtxga18021krmtb8dlvsufc]:afa57becb942",
+      "person": "季逸超",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "现实主义也可以很先锋 --- 漫谈北京人艺和当下戏剧 （下）",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为播客《削峰填谷 PEAK CUT》的剧集，主题是北京人艺和戏剧，与季逸超的AI从业者身份和背景无关。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:RawPoolItem[cmjtxgac0021srmtbp5zma5vp]:f3b946e3c500",
+      "person": "季逸超",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "一份报纸40年里的兴衰",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题和摘要未明确显示季逸超是主持人、嘉宾或作者，无法确认归属。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:RawPoolItem[cmjtxgamt0220rmtbjitlmod7]:a321a335d924",
+      "person": "季逸超",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "第十三集：每个人都有要跨越的山峰！Everyone has their own peaks to reach！",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题和摘要未明确显示季逸超是主持人、嘉宾或作者，无法确认归属。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:RawPoolItem[cmjtxgax7022armtb6jrgbqyk]:4b7ab83239c6",
+      "person": "季逸超",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "1986年北京女文青的三轮挎斗进藏之旅",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题和摘要未明确显示季逸超是主持人、嘉宾或作者，无法确认归属。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:RawPoolItem[cmjtxgb7f022krmtb91kvvicc]:e7b4cd6668ee",
+      "person": "季逸超",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "(1/8/25): The balance between production and peaking, can FSU offense soar without special RB",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容为美国佛罗里达州立大学橄榄球分析，与季逸超的AI从业者身份及中国背景明显不符。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:RawPoolItem[cmjuvdcgy0ipwrmtbuwpg0294]:94ebdcb4dc8e",
+      "person": "季逸超",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "(1/8/25): The balance between production and peaking, can FSU offense soar without special RB",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容为美国佛罗里达州立大学橄榄球分析，与季逸超的AI从业者身份及中国背景明显不符。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxpymx0428rmtbs8srat5t]:4d55c5ea2abb",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Michael J. Catanzaro",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向另一位名为Michael J. Catanzaro的数学家/数据科学家，其背景、职位和研究领域与布莱恩·卡坦扎罗完全不同，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxpz79042grmtb2zswi2gb]:528aea10895e",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Catanzaro, Claudio FIDE Chess Profile",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于一位名叫Claudio Catanzaro的意大利国际象棋棋手（2007年出生），与布莱恩·卡坦扎罗无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxpzvr042ormtbvcxkwvv4]:8d964331ae96",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Claudio Catanzaro | Top Chess Players",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于一位名叫Claudio Catanzaro的意大利国际象棋棋手（2007年出生），与布莱恩·卡坦扎罗无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxq0ai042srmtb3nupyhk0]:551b5f21989c",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Catapano, Francesco FIDE Chess Profile",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于一位名叫Francesco Catapano的意大利国际象棋棋手（1965年出生），与布莱恩·卡坦扎罗无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxq1lf0436rmtblv0a10ph]:069f8ff0e2d8",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Francis A Catanzaro, MD",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于一位名叫Francis A Catanzaro的麻醉科医生，与布莱恩·卡坦扎罗无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmju0ybx209hdrmtbt2kdjmkb]:e440c92c50a2",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Computer Science Apr 2025",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是arXiv计算机科学领域的论文列表页面，并非关于布莱恩·卡坦扎罗的个人内容。页面中未提及该人物，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxq9t4046irmtb18k2tff6]:f2de9140a55d",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Seth and Joe Show Episode 35: WWE Royal Rumble 2019, NJPW, AEW, and UFC!",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该播客内容（The Seth and Joe Show）是关于摔角和格斗的娱乐节目，与布莱恩·卡坦扎罗的计算机科学家身份无关，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxq8p4045wrmtbrp98wb9t]:b13f4322b39d",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Open-Source AI 101: Enabling American Innovation | NVIDIA GTC D.C.",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确显示布莱恩·卡坦扎罗是主持人、嘉宾或主讲人，无法确认其个人角色。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxq8z00462rmtbdwlt8kn1]:ced1c60e567d",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Share Your Science: Scaling Deep Learning with GPUs",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "视频发布于2015年，摘要显示其当时职位为百度高级研究员，与当前英伟达副总裁职位不符，信息过时。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxqa30046mrmtbmxs15fjd]:a68d128f1fe3",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Wrestling Geeks Alliance: NJPW: The New Beginning",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容《Wrestling Geeks Alliance: NJPW: The New Beginning》属于体育（摔跤）类别，与布莱恩·卡坦扎罗的机器学习/英伟达背景无关。内容摘要未提及该人物，极可能是同名或错误归因。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxqaoq0472rmtbdqgvd6f8]:0fb8123acbbe",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Monday Mayhem Warriors: Bad Times Don't Last But Bad Guys Do",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容《Monday Mayhem Warriors: Bad Times Don't Last But Bad Guys Do》属于体育（摔跤）类别，与布莱恩·卡坦扎罗的机器学习/英伟达背景无关。内容摘要未提及该人物，极可能是同名或错误归因。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmjtxitoh02jbrmtb7whjftgt]:cf5ed0dae9d6",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "鏡週刊 北京傳真》 全球新興科技峰會 貼近看EmTech科技創新青年",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要提及峰会和颁奖，但未明确说明戴文渊本人是否出席、获奖或参与。仅凭标题无法确认内容是否直接关于他。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmjtxityk02jdrmtbpfk9e6il]:268d4a8970b3",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "“决策类AI独角兽”再次递表港交所，增收背后难逃连年亏损",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容是关于第四范式公司上市的财经分析，属于公司层面的报道，并非直接关于戴文渊个人的访谈、演讲或个人成就。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmjtxiv2l02jtrmtb8bfuyxx9]:d37c4d471eff",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【財經速遞】第四範式擬來港上市 集資約6億美元",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容是关于第四范式公司上市的财经新闻，属于公司层面的报道，并非直接关于戴文渊个人的访谈、演讲或个人成就。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmjtxiwfd02k3rmtbmajbda00]:6436d8ffe298",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "#新股 簡介 : #第四範式(6682.HK)",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容是关于第四范式公司新股的简介，属于公司层面的报道，并非直接关于戴文渊个人的访谈、演讲或个人成就。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjgo902qwrmtbpb1wz5dp]:67395368ec8e",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "朱华-北京大学肿瘤医院 教学信息服务平台",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向北京大学肿瘤医院的“朱华”，与目标人物清华大学的“朱军”姓名不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjjuw02rmrmtb4ih17m5i]:b3df0a760293",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "FacultyandStaff _中国人民大学新闻学院",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是中国人民大学新闻学院的教职工列表页面，与目标人物清华大学的“朱军”无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmjtxiqoe02ilrmtbc5156cm4]:74198aac406c",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meet the young talent scaling Alibaba's AI future at Tongyi Lab, developer of Qwen models",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章标题和内容明确关于阿里巴巴通义实验室和Qwen模型，与戴文渊（第四范式创始人）无关。属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmju0gfaa06nsrmtb1cswl9an]:e4146a2244e2",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": null,
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中无戴文渊，且内容为清华大学等机构的研究综述，与戴文渊无关。属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju0jxhh07durmtbw4jqm3bh]:0d607ae8b7bf",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Junrui Zhu (朱君睿)",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向清华大学本科生朱君睿（Junrui Zhu），与目标人物朱军（清华大学教授）姓名、身份均不匹配。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju0jz9p07e4rmtb3qmtt64a]:5f0070d291e5",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jun Zhu",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "Google Scholar页面显示作者为清华大学生命科学中心的Jun Zhu，研究方向为AI4S、蛋白质组学等，与目标人物朱军（AI教授、生数科技）的研究领域和背景不符。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju0jzjv07e6rmtbhe3ergbs]:195d75bfcec2",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "A survey of large language models in smart education",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表为XIAO Jianli, HUANG Xingyu, JIANG Fei，来自上海理工大学和重庆科技研究院，与目标人物朱军无关。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju0k0j907ecrmtbx4m72a3u]:ce70d5dc8b2b",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "JD.com Unveils AI-Powered Industrial Large Model to Drive Next-Gen Supply Chain Transformation",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "文章是关于京东工业发布供应链大模型的新闻，全文未提及朱军或其相关研究，与目标人物无关联。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju1fkp40cxjrmtbijqwlwux]:53573f23b11e",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jun Yu's Homepage",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为哈尔滨工业大学（深圳）教授Jun Yu的个人主页，与目标人物朱军（清华大学教授）姓名、单位均不匹配。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjuuv9od0i87rmtbwfvuc8lt]:d35fda66c5b2",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "China's emergency management authorities step up use of AI model",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "文章是关于中国应急管理部使用“久安”AI模型的新闻，全文未提及朱军或其相关研究，与目标人物无关联。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjqfd02skrmtbkj76f7bg]:64f73582df9e",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "第四章 1 朱元璋巧夺定远强占滁州，军威大震声名远播",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为关于明朝皇帝朱元璋的历史播客，与目标人物朱军（AI教授）完全无关。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju0k3w607f4rmtbx77m02g1]:e786191a4996",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "这家清华帮AI企业完成超3亿元A轮融资，发力安全AI基础设施",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题提及“清华帮AI企业”瑞莱智慧，但摘要未明确提及朱军。需要核实朱军是否为该公司创始人或核心成员。"
+    },
+    {
+      "claimId": "cmjtwkgug0004opf3th1cmczu:RawPoolItem[cmju19rmy0bvqrmtbi4ck3ew1]:9d301caedae6",
+      "person": "李开复",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "手搓第一个AI程序后，这位90后博士决定“颠覆式”创业",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该内容主要报道一位90后创业者的创业故事，李开复仅作为其创业项目（DeeCamp）的导师被提及，并非文章主角。将整篇文章挂在李开复名下，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkgug0004opf3th1cmczu:RawPoolItem[cmjuuxypc0iairmtbmn91dmih]:382943eb787d",
+      "person": "李开复",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "回望2025｜大厂入场斗法，“AI六小龙”变“四小强”",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该内容是关于中国AI行业格局的年终报道，李开复作为零一万物创始人被多次引用，但文章主体是行业分析，并非其个人专访或代表作。挂在个人名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkgug0004opf3th1cmczu:RawPoolItem[cmjuuxz8u0iakrmtbhj5obavq]:494e5efd4321",
+      "person": "李开复",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "年终报道丨“人工智能+”：中国AI开源破局，烟火落地",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该内容是关于中国AI开源生态的年终报道，李开复作为行业人士被提及，但文章主体是宏观行业分析，并非其个人专访或代表作。挂在个人名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkgug0004opf3th1cmczu:RawPoolItem[cmjtxhqpa02aurmtbr5ldljck]:730f03a077c2",
+      "person": "李开复",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "李开复的10句经典名言",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容是第三方整理的李开复名言合集，并非李开复本人的原创演讲或访谈，将其作为个人代表成果展示不合适。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmjtxlx0y036rrmtbteap59rm]:d92e131733b5",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lilian Weng | VP of Research and Safety at OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "文章标题称Lilian Weng为OpenAI研究与安全副总裁，但根据后续信息，她已于2024年11月离职。此职位信息可能已过时。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmjtxm0nb0386rmtbk7du2ova]:112b6f04cfb5",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "dblp: Lily Weng",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "页面标题为'dblp: Lily Weng'，但内容主要是dblp网站的通用说明和捐款请求，未提供关于Lilian Weng的具体学术成果或出版物列表。无法确认此页面是否包含其有效学术信息。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmjtxm0xj038armtb588666lt]:5237c3f8d410",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lilian Leung – Designer & Researcher",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "页面标题为'Lilian Leung – Designer & Researcher'，内容描述的是一位位于加拿大BC省的设计师和艺术家，与AI科学家李莲（Lilian Weng）明显不是同一人。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmju1awtx0c1vrmtbpkknyyes]:6e66da7ac20f",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers by Lilian Weng",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "页面标题为“Papers by Lilian Weng”，但摘要内容是GPT-4o系统卡的作者列表，其中包含Lilian Weng。这属于团队成果（GPT-4o）的作者列表，而非其个人代表成果。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmjtxmady03b0rmtbnd85tz4a]:604717eade9e",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Girl Geek X @OpenAI Lightning Talks &amp; Panel",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确提及李莲本人是否参与或出镜。仅凭活动在OpenAI举办和主题相关，不足以确认其个人关联。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmjtxmci503bmrmtb6r49vqty]:acd79593530e",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "10 minutes paper (episode 27): LLM powered autonomous agents",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未提及李莲。仅凭主题（LLM Agent）相关，无法确认其个人关联或贡献。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:RawPoolItem[cmjtxg55s01xirmtbyqyhhtrd]:2b5e53c2eb5c",
+      "person": "李飞飞",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The 100 Most Influential People in AI 2025",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "TIME 100 AI 2025榜单页面未在提供的文本中明确列出李飞飞，仅显示了部分其他入选者。需要确认她是否在该榜单中。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:RawPoolItem[cmjtzd97n059urmtb3di0yzdj]:1d744b285ae1",
+      "person": "李飞飞",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Future of AI Is Built on 3D, Not Language Alone",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确提及李飞飞本人，无法确认内容是否直接关于她或由她参与，需要进一步核实。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmju0khlm07h4rmtbsrvjj6ht]:3e8f7635ee07",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "最重要目标是超越Anthropic等前沿公司，成为世界领先的AGI ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容摘要为空，无法判断是否确实关于杨植麟或其言论，需要查看完整文章以确认。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmju0knqo07iirmtble34hsob]:8f1558cc8fa1",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Trending Papers - Hugging Face",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为Hugging Face的论文趋势页面，搜索作者为Ruiyang Zhang，与杨植麟无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmjuui52p0gh0rmtbhuufc5pz]:0b94bc2a2b0d",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "2025最后一天，Kimi杨植麟发内部信：我们手里还有100亿现金",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容摘要为空，无法判断是否确实关于杨植麟或其言论，需要查看完整文章以确认。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmjuvd79v0insrmtb0dwtq4e5]:2f6fc96b3874",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Zhejian Yang (杨哲健)",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于吉林大学博士生杨哲健（Zhejian Yang）的个人主页和研究，与杨植麟无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmjtxg91r020mrmtbp4xzhotf]:f047b97c518f",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "这群年轻天才，杀出中国科技未来一片天！ #杨植麟 #姚颂 #稚晖君 #金金乐道 #dou来守护钱袋子 @金金乐道家",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题包含杨植麟标签，但内容摘要未明确说明视频是否包含其本人或直接相关分析，需要进一步核实。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmju0kp2207iormtboikg9x76]:faf73e511182",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "你有没有感觉，AI黑话越来越多？ 最近小珺访谈杨植麟的文章里也讲到了团队管理要用RL，不要用SFT；联想到我前几天有个视频也在讲上下文管理同样适用于大模型和组织管理，似乎类似的AI黑话越来越多，这种",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题提及杨植麟访谈，但内容摘要未明确视频是否包含其本人或直接相关分析，需要核实。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmju0kpby07iqrmtbg3ukowht]:c271481aa4d8",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "250925- Kimi AI测评：200万字上下文背后的真实体验 | Kimi AI Review: Reality Behind 2M Context",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频是第三方对Kimi AI产品的测评，并非杨植麟本人内容或直接贡献，将产品测评归因于个人代表成果不准确。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:RawPoolItem[cmju0ksda07jgrmtbycg0x7vb]:3f8ceda540ab",
+      "person": "杨植麟",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "撞车DeepSeek NSA，Kimi杨植麟署名的新注意力架构MoBA发布，代码也公开#ai #deepsleep #kimi",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题将团队成果（新注意力架构MoBA）直接归因于杨植麟个人署名，但未明确其具体贡献角色（如论文作者、项目负责人），存在过度归因风险。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:RawPoolItem[cmjtxoerb03rgrmtborlmwzlz]:6c7819b2ec9a",
+      "person": "杰夫·迪恩",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Outstanding scholars named to Spring 2025 Dean's List - DePauw University",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于DePauw大学的院长名单，与杰夫·迪恩（计算机科学家）无关，属于同名实体错误匹配。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:RawPoolItem[cmjtxofm403rmrmtb30104c5s]:82361ce59a63",
+      "person": "杰夫·迪恩",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "ECU Students Named To President's, Deans' Fall Honor Rolls | East Central University",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于东中央大学的院长名单，与杰夫·迪恩（计算机科学家）无关，属于同名实体错误匹配。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:RawPoolItem[cmjty4cts04yjrmtbp5vk781u]:48cebad615d1",
+      "person": "杰夫·迪恩",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Intelligence Brief on Artificial Intelligence 2025",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该报告作者为Panu Hentunen，内容是关于2025年人工智能的综合情报简报，与杰夫·迪恩个人无直接关联。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:RawPoolItem[cmjtzv1ew065brmtb8x0z8tze]:6dff1cabc492",
+      "person": "杰夫·迪恩",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Kevin J. Dean posted on the topic",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "LinkedIn帖子作者是Kevin J. Dean，内容是关于AI对学习的影响，与杰夫·迪恩（Jeff Dean）无关。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:RawPoolItem[cmju15oyo0azwrmtb5ciejjjn]:6c42e2fabbf0",
+      "person": "桑达尔·皮查伊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "DeepMind CEO为谷歌攻关AI杀手级应用",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "文章主要讨论DeepMind CEO德米斯·哈萨比斯及其团队的工作，桑达尔·皮查伊仅作为背景信息被提及，将此内容归于其名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:RawPoolItem[cmju15qyv0b0krmtbf6gtp1ux]:57f2901983b5",
+      "person": "桑达尔·皮查伊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "DeepMind CEO为谷歌攻关AI杀手级应用",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "文章核心是报道DeepMind CEO德米斯·哈萨比斯的工作，桑达尔·皮查伊仅作为公司决策背景被提及，将此内容归于其名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:RawPoolItem[cmju15rlr0b0qrmtbf5p1e91h]:f1ecf988abf8",
+      "person": "桑达尔·皮查伊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "谷歌CEO 桑达尔·皮查伊（Sundar Pichai） 刚刚发表了一项 ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容为社交媒体用户对皮查伊言论的转述和解读，非原始来源，无法直接验证其准确性，需要更权威的原始来源。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:RawPoolItem[cmju15rzl0b0yrmtb7llz7r25]:f9e61a033530",
+      "person": "桑达尔·皮查伊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "750亿美元的豪赌：谷歌是否在为Gemini项目赌上自己的帝国？",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "文章分析谷歌公司对Gemini项目的投资决策，属于公司战略层面，桑达尔·皮查伊作为CEO是决策者之一，但将此分析性文章归于其个人名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxsgle04rbrmtbzii168xv]:0483bec125ab",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Thomas Brown Biography - ESPN",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于美式橄榄球运动员Thomas Brown的传记，与Anthropic联合创始人汤姆·布朗（Tom Brown）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmju0l1yk07ksrmtbh6bxgkvr]:30dc070629c7",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tom Brown co-founded Anthropic after helping build GPT ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Instagram帖子标题提及汤姆·布朗，但摘要为空，无法确认内容是否确实关于该人物或适合展示。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmju1cfxr0cb1rmtb68lizoss]:483f5925bf31",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Brown begins to implement University-wide AI tools",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章标题中的“Brown”指布朗大学（Brown University），而非人物汤姆·布朗。内容讨论大学AI工具，与人物无关。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmju1cg930cb5rmtbf7x8st9x]:4bd5de086ad7",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Q&A with Michael Littman: What’s on the mind of Brown’s first associate provost for AI",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章标题和内容明确关于布朗大学（Brown University）的Michael Littman教授，与人物汤姆·布朗无关。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxsp7204sprmtbz4w6wzbv]:f5f737404156",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Magnificent Gladioli with Tom Brown, Head Gardener & Tutor at West Dean College of Arts and Conservation - Episode 22",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题中的Tom Brown是园艺师，与AI领域的汤姆·布朗（Anthropic联合创始人）无关，属于同名不同人。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxsph804srrmtb6tx61i51]:18a8d7100019",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Fantastic Bulbs for Forcing Indoors with Tom Brown - Episode 90",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题中的Tom Brown是园艺师，与AI领域的汤姆·布朗（Anthropic联合创始人）无关，属于同名不同人。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxsps404strmtbnc608e8p]:44c90701153a",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tom Browne's News | Brownlow fallout, Chris Scott's comments on North Melbourne's priority picks, Hawks 2013 reunion",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题中的Tom Browne是体育记者，与AI领域的汤姆·布朗（Anthropic联合创始人）无关，属于同名不同人。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:RawPoolItem[cmjtxp0zf03xbrmtbhq1ccvhm]:945dd5538be8",
+      "person": "桑达尔·皮查伊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Sundar Pichai&#39;s advice for all entrepreneurs!",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题为《Sundar Pichai's advice for all entrepreneurs!》，但摘要显示上传者为“Jaspal”，内容可能是第三方剪辑或评论，而非皮查伊本人的直接言论或官方内容。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:RawPoolItem[cmjtxp19a03xfrmtb3n2tymg0]:5d4627393449",
+      "person": "桑达尔·皮查伊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Sundar Pichai&#39;s favorite ACTRESS?😂💃",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "视频标题《Sundar Pichai's favorite ACTRESS?😂💃》和摘要（#sundarpichai #theboys #shorts #iit）表明这是娱乐性、非正式的剪辑内容，与皮查伊作为谷歌CEO的专业身份和贡献无关。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:RawPoolItem[cmjtxp26903xrrmtbh0ln1ju0]:9494bdd29bbc",
+      "person": "桑达尔·皮查伊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Sundar Pichai&#39;s Personal Journey to Google CEO✨✨",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题《Sundar Pichai's Personal Journey to Google CEO✨✨》和摘要表明是关于皮查伊个人经历的介绍，但未明确是官方内容、采访还是第三方制作，需要核实来源和内容性质。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxssbq04svrmtbcg8pakqx]:37bb5d669b5b",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tom Browne's News | The big deal Essendon have put in front of Ben McKay, could the Maynard/Brayshaw incident bring about a rule change, semi-final previews",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容属于体育记者Tom Browne，与AI科学家汤姆·布朗（Tom Brown）无关，人名错配。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjuvk7ew0j8yrmtbwwhkknv0]:33372bceeef7",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tom Browne's News | Grand Final ticketing issues, who replaces Dan McStay, North Melbourne's priority pick submission",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容属于体育记者Tom Browne，与AI科学家汤姆·布朗（Tom Brown）无关，人名错配。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:RawPoolItem[cmjw7ar6v00n1ykszqvxua4ut]:4f08161a4c59",
+      "person": "汤晓鸥",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【最新消息】7月4日【世界人工智能大会】（WAIC 2024）在【上海】隆重召开，由【商汤科技】打造的【首个面向C端用户】的可控人物视频生成大模型—【Vimi】入选WAIC展览展示最高荣誉【镇馆之宝】",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于商汤科技公司产品Vimi的新闻报道，未提及汤晓鸥个人角色或贡献，将公司级产品成果归因给个人不当。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:RawPoolItem[cmjw7arg600n3yksz9jdaw3ao]:afc70e82039a",
+      "person": "汤晓鸥",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【最新消息】7月4日【世界人工智能大会】（WAIC 2024）在【上海】隆重召开，由【商汤科技】打造的【首个面向C端用户】的可控人物视频生成大模型—【Vimi】入选WAIC展览展示最高荣誉【镇馆之宝】",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于商汤科技公司产品Vimi的新闻报道，未提及汤晓鸥个人角色或贡献，将公司级产品成果归因给个人不当。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:RawPoolItem[cmjw7arph00n5ykszreocsp2h]:88bac2fa3bb0",
+      "person": "汤晓鸥",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "护眼、矫姿、提专注，智能台灯3.0时代的引领者——商汤科技“元萝卜光翼灯”陪伴和守护成长，让孩子学习更轻松！@SenseTime商汤科技 #智能台灯 #商汤科技#元萝卜光翼灯",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于商汤科技公司产品“元萝卜光翼灯”的宣传，未提及汤晓鸥个人角色或贡献，将公司级产品成果归因给个人不当。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:RawPoolItem[cmjw7arzw00n7yksz06ujawa4]:330d1b90aa73",
+      "person": "汤晓鸥",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "护眼、矫姿、提专注，智能台灯3.0时代的引领者——商汤科技“元萝卜光翼灯”陪伴和守护成长，让孩子学习更轻松！@SenseTime商汤科技 #智能台灯 #商汤科技 #元萝卜光翼灯",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于商汤科技公司产品“元萝卜光翼灯”的宣传，未提及汤晓鸥个人角色或贡献，将公司级产品成果归因给个人不当。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:RawPoolItem[cmjw7atve00njyksznvm2de6i]:d0ff25f4742e",
+      "person": "汤晓鸥",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【SOLOX SNOW51】与【商汤科技】正式签订合作协议，并在现场【联合发布】了【AI人工智能高山滑雪模拟机】教学系统。当AI邂逅体育，我们将迎来怎样奇趣的生活体验？科技照进现实世界#ai #商湯",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频内容是关于商汤科技公司合作与产品（如秒画、商量）的新闻，未提及汤晓鸥个人角色或贡献，将公司级业务成果归因给个人不当。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:RawPoolItem[cmju1f93t0cu8rmtbdgw45apa]:486db2685ab4",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Mark Chen",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于OpenAI的Mark Chen，与科拉伊·卡武克丘奥卢无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:RawPoolItem[cmjtxnger03j1rmtbny431icv]:a78df57ead3e",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Koray Kavukcuoglu",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "链接指向DBLP个人主页，但提供的文本仅为网站通用隐私设置说明，未包含任何关于该人物的具体信息或成果。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:RawPoolItem[cmju0rdbg08durmtbrs4h1dot]:4667c9d65e05",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "gpt-oss-120b & gpt-oss-20b Model Card",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文《gpt-oss-120b & gpt-oss-20b Model Card》作者列表为OpenAI团队，未显示科拉伊·卡武克丘奥卢是作者或贡献者。将OpenAI的模型成果归因于谷歌的个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:RawPoolItem[cmju0reo408e4rmtb9q51i21m]:ccf5c8c002fe",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Deep learning",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容为维基百科关于“深度学习”的通用词条，并非关于科拉伊·卡武克丘奥卢个人的特定内容。将通用技术词条挂在个人名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:RawPoolItem[cmju0rfn208eermtbtyoti95t]:68149438c11b",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Convolutional neural network",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容为维基百科关于“卷积神经网络”的通用词条，并非关于科拉伊·卡武克丘奥卢个人的特定内容。将通用技术词条挂在个人名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:RawPoolItem[cmjtxns5h03m8rmtbh1qespj9]:57cb5432d68f",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Towards the future",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "播客标题为 'Google DeepMind: The Podcast'，未明确提及人物姓名或角色。仅凭标题和来源无法确认该集是否包含对科拉伊·卡武克丘奥卢的访谈或讨论。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:RawPoolItem[cmjtxnr2203lsrmtb980jactm]:d986af1d9142",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Under the hood with Google AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题 'Under the hood with Google AI' 未提及人物姓名。摘要提到 'Google leadership'，但未明确科拉伊·卡武克丘奥卢是否出镜或为主要发言人。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:RawPoolItem[cmjw7bdne00phykszu1ltsiyx]:c5ec50ee35e7",
+      "person": "罗福莉",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "deepseek天才少女罗福莉：公布小米最新MiMo大模型！",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频标题提及人物，但内容摘要为课程广告，未明确展示人物本人或其具体贡献，将此营销内容归为个人代表成果不合适。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:RawPoolItem[cmjw7beos00ppyksz2zm1xrhd]:be91d3f31148",
+      "person": "罗福莉",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【DeepSeek全技术栈拆解】架构创新、训练范式、 强化学习三大突破，如何定义下一代开源模型？#人工智能 #大模型 #ai #deepseek #deepseekai #大模型 #大模型训练",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频标题提及 DeepSeek 技术，但内容摘要为课程广告，未明确展示人物本人或其具体贡献，将此营销内容归为个人代表成果不合适。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmjuv08z10iimrmtb625uh9wp]:696e8317e82c",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers with Code - Hongshen Xu",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为作者Hongshen Xu的论文列表，但肖弘的英文名通常为Hong Xiao，且上下文未显示关联。可能为同名不同人。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmjuvd66l0in4rmtbt0zl8jnl]:0143a133f52b",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "比羊肉還要騷的小騷貨---ピジャ",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和内容与肖弘完全无关，属于错误归因。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fl4606j0rmtbxv5zpaz3]:999e21cc7870",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Zhiping Xiao - ACL Anthology",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“Zhiping Xiao”的论文列表，与目标人物“肖弘”（Red Xiao）姓名不符，属于同名不同人，不应归因于此人物。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0flox06j4rmtbchyfq9wf]:e886d6af6fca",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers by Yanghua Xiao",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“Yanghua Xiao”的论文列表，与目标人物“肖弘”（Red Xiao）姓名不符，属于同名不同人，不应归因于此人物。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju1b0o90c3vrmtbh66omlnz]:d60e1fac6b66",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers by Hongru Xiao",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“Hongru Xiao”的论文列表，与目标人物“肖弘”（Red Xiao）姓名不符，属于同名不同人，不应归因于此人物。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju1b36i0c5lrmtbcargnh73]:91ad39209574",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Robust LLM Training Infrastructure at ByteDance",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于字节跳动LLM训练基础设施的论文，作者列表中未发现“肖弘”或“Red Xiao”，且主题与人物背景（Manus AI创始人）不直接相关，归因错误。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmjuvd6ga0incrmtbr4yg2mvi]:1394a9003818",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【听小主播读英语】Llama Llama Red Pajama",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容《听小主播读英语》与人物肖弘（Manus AI创始人）无关，属于儿童英语教育内容，可能为同名实体或错误关联。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fo1z06jirmtb93hth6y3]:162946dd654d",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The $100M AI Nobody&#39;s Talking About (Manus 1.6 MAX)  [EP543]  #ai",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频聚焦于Manus 1.6 MAX产品版本，而非创始人肖弘个人。将具体产品版本作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0hn5806wkrmtb8lm7j6xw]:9a63fb819e5d",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI创业终局揭秘大厂角色与未来趋势：明鏡新聞時時報20251230",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确提及肖弘，仅讨论AI创业和Meta，无法确认内容是否直接关于或涉及该人物。"
+    },
+    {
+      "claimId": "cmjtxcp4w00055p0854gyxgh2:RawPoolItem[cmjtxn27503hdrmtbgldeqeiu]:927d805487a7",
+      "person": "贾里德·卡普兰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Space Policy Edition: A Mob at the U.S. Capitol",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和摘要（Space Policy Edition）与贾里德·卡普兰（AI研究员）的专业领域（物理、AI）完全不符，极可能是同名或错误归因。"
+    },
+    {
+      "claimId": "cmjtxcp4w00055p0854gyxgh2:RawPoolItem[cmjtxn2hj03hhrmtbsfgfat29]:62723f8be1e2",
+      "person": "贾里德·卡普兰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "BSB OT 63 - Examining Mark Messier's New York Celebrity Status",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和摘要（关于冰球运动员Mark Messier）与贾里德·卡普兰的专业领域（物理、AI）完全不符，极可能是同名或错误归因。"
+    },
+    {
+      "claimId": "cmjtxcp4w00055p0854gyxgh2:RawPoolItem[cmjtxmwiq03fhrmtb58le2nhi]:d88cc9caaddc",
+      "person": "贾里德·卡普兰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "- YouTube",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "提供的YouTube链接内容仅为YouTube登录页面和通用页脚信息，未包含任何与贾里德·卡普兰相关的具体内容，无法确认归属。"
+    },
+    {
+      "claimId": "cmjtxcp4w00055p0854gyxgh2:RawPoolItem[cmju0myx007wjrmtb6lli7lwi]:5ef4a1465d35",
+      "person": "贾里德·卡普兰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Anthropic",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "维基百科页面是关于Anthropic公司的条目，虽然提及贾里德·卡普兰是联合创始人之一，但内容主体是公司而非个人，将其作为个人代表成果展示属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxcp4w00055p0854gyxgh2:RawPoolItem[cmjtxn1bz03h1rmtbb3rnuq5u]:3641607227b8",
+      "person": "贾里德·卡普兰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Updated Playbook for Booking Global Travel in 2023 with Jared Kamrowski",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题明确显示嘉宾为Jared Kamrowski（旅行专家），与贾里德·卡普兰（AI研究员）姓名不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxd9gj00095p08xgbzoqfe:RawPoolItem[cmju0u97m08marmtbva1dlgou]:aa561b779478",
+      "person": "迈克·施罗普费尔",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Why GPT-4o’s sudden shutdown left people grieving",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章内容是关于OpenAI的GPT-4o模型及其用户反应，与迈克·施罗普费尔无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxd9gj00095p08xgbzoqfe:RawPoolItem[cmjtxobv903qyrmtbc0py5whz]:79a1aa926987",
+      "person": "迈克·施罗普费尔",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Do We Want Another Death Stranding? - Easy Allies Podcast - May 27, 2022",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客内容是关于游戏《死亡搁浅》的讨论，与迈克·施罗普费尔无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtxd9gj00095p08xgbzoqfe:RawPoolItem[cmjtxo4ql03pgrmtbd7xwddgm]:bd792678ed61",
+      "person": "迈克·施罗普费尔",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "PyTorch Developer Conference Keynote - Mike Schroepfer",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题为《PyTorch Developer Conference Keynote - Mike Schroepfer》，将PyTorch这一团队/公司级开源框架的开发者大会主题演讲归因给个人，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxd9gj00095p08xgbzoqfe:RawPoolItem[cmjtxo5u203pormtb0yhnov34]:5e1926b87b83",
+      "person": "迈克·施罗普费尔",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Ronald and Valerie Sugar Distinguished Speaker Series feat. Mike Schroepfer, CTO at Facebook",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "视频标题中提及的职位“CTO at Facebook”可能已过时，根据人物上下文，其当前职位为Meta的Senior Fellow。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:RawPoolItem[cmju148xv0ap7rmtbapi0eb6g]:4f94f254ecec",
+      "person": "闫俊杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "闫俊杰应战AI“淘汰赛”",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题指向闫俊杰，但提供的摘要和正文内容为空，无法确认具体内容是否直接关于该人物或其贡献。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:RawPoolItem[cmjtxi4bx02g2rmtblemznhm6]:a85509ae38ba",
+      "person": "闫俊杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI语音克隆进入“零样本”时代？解析TTS模型四大流派与问鼎榜首的MiniMax",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "视频内容是关于MiniMax公司TTS模型的分析，并非直接关于闫俊杰个人。将公司技术成果的分析视频挂在个人名下，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:RawPoolItem[cmju14bd10aqzrmtbmwb50vd8]:e8d8e4856fbd",
+      "person": "闫俊杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "MiniMax首次披露业绩！将与智谱争夺大模型“第一股”",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要为空，无法判断文章内容是否确实关于闫俊杰本人，需要查看原文以确认。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:RawPoolItem[cmjuvfsr50iv8rmtbyf2i5xk5]:4b4877b213ec",
+      "person": "闫俊杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "MiniMax 闫俊杰和罗永浩四小时访谈：走出中国AI 的第三条路",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要为空，无法判断文章内容是否确实关于闫俊杰本人，需要查看原文以确认。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:RawPoolItem[cmjtxi82h02gormtb01hvhr8j]:69975d565617",
+      "person": "闫俊杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "2022年1月20日",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的YouTube视频标题仅为日期，摘要为空，无法确认内容是否与闫俊杰本人相关或适合展示。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:RawPoolItem[cmjtxq1s10438rmtbn7wftyny]:932e0a2d9ccd",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Papers with Code - Ashish Vaswani",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的Papers with Code页面摘要内容是通用的热门论文列表，并未直接展示阿希什·瓦斯瓦尼的个人成果或页面，无法确认其相关性。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:RawPoolItem[cmju0zk1m09purmtbrvhj4t0m]:6ab1691e0e8a",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "What If We're Doing AI All Wrong?",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的文本摘要仅包含Bloomberg文章的链接列表，未提及阿希什·瓦斯瓦尼。无法确认该文章是否确实关于或来自他。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:RawPoolItem[cmju0zme809qarmtb5zsxehiq]:a5714bf040bb",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "🚀 Breaking Down Google’s Transformer Revolution: “Attention is All You Need” (Deep Dive)",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "这是一篇由第三方（Milind Zodge）撰写的关于Transformer论文的分析文章，并非阿希什·瓦斯瓦尼本人的作品或直接贡献。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:RawPoolItem[cmjtxq99h0468rmtb827x00xq]:8cc97f3be89c",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Stanford CS224N: NLP with Deep Learning | Winter 2019 | Lecture 14 – Transformers and Self-Attention",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "这是斯坦福大学的课程讲座视频，内容是关于Transformer，但并非阿希什·瓦斯瓦尼本人主讲或参与。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:RawPoolItem[cmjtxq9jn046ermtbodwlztmc]:9e05776a2e85",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lessons Learned From the Early Innings of AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未提及阿希什·瓦斯瓦尼。无法确认他是否参与或出现在该视频中。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:RawPoolItem[cmjtxqb1m0478rmtb730gxppr]:f76b66c6bc5e",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Panel Discussion On Building AI For The World | Accel AI Summit 2025",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确提及阿希什·瓦斯瓦尼是否为该讨论的参与者，无法确认其个人关联。"
+    },
+    {
+      "claimId": "cmjtxe7r3000g5p0868zhzky2:RawPoolItem[cmju0gwot06rnrmtbadqfzf9r]:14e6e3dc8eb9",
+      "person": "雅各布·乌什科雷特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Trending Papers - Hugging Face",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为Hugging Face的论文趋势页面，与雅各布·乌什科雷特无关。URL搜索参数显示作者为Artur Pokropek，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtxe7r3000g5p0868zhzky2:RawPoolItem[cmju0gx3x06rrrmtbooofglae]:c2705d47048c",
+      "person": "雅各布·乌什科雷特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "All Large Language Models Directory - All LLMs",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为大型语言模型目录网站，由@johnrushx创建，与雅各布·乌什科雷特无直接关联，属于错误归因。"
+    },
+    {
+      "claimId": "cmjtxe7r3000g5p0868zhzky2:RawPoolItem[cmjtxql1f04a6rmtbg2hb6vhm]:611bef26aa0d",
+      "person": "雅各布·乌什科雷特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "#TEDAI 2024 Panel Highlight &quot;Architecture and Scale&quot; #AI#LLMs#GenAI",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "视频摘要中称其为Inceptive Nucleics的CEO，但人物上下文显示其当前职位是谷歌机器学习工程师，职位信息可能已过时。"
+    },
+    {
+      "claimId": "cmjtxe7r3000g5p0868zhzky2:RawPoolItem[cmjtxqlvy04airmtb4xnywuwp]:7a871dab0cdf",
+      "person": "雅各布·乌什科雷特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "No Priors Ep. 29 | With Inceptive CEO Jakob Uszkoreit",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "视频标题和摘要称其为Inceptive的CEO，但人物上下文显示其当前职位是谷歌机器学习工程师，职位信息可能已过时。"
+    },
+    {
+      "claimId": "cmjtxe7r3000g5p0868zhzky2:RawPoolItem[cmjtxqmgr04amrmtbz7ltkc6l]:6e1a696ac1f2",
+      "person": "雅各布·乌什科雷特",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Where is ChatGPT-5, Has LLM Hit Its Ceiling?? | TEDAI San Francisco 2024 Panel Recap",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题和摘要未明确提及雅各布·乌什科雷特，仅凭标题无法确认其是否参与或内容是否关于他。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:RawPoolItem[cmjtxs2zi04lirmtb01apfdpe]:6dd96bbc69ad",
+      "person": "马克·扎克伯格",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Zuck buys Chinese AI company Manus",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "文章标题和内容将Meta公司的收购行为归因于马克·扎克伯格个人（'Zuck buys'），这是将公司级商业决策过度归因给个人。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:RawPoolItem[cmjtxs48804m0rmtbwgm175tm]:efd8e7923b7a",
+      "person": "马克·扎克伯格",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Why Zuck JUST PAID $2B For This 8-Month-Old AI Startup",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是第三方（FunOfInvesting）对Meta收购Manus的分析视频，并非扎克伯格本人发布或参与的官方内容。将第三方分析直接归为个人代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:RawPoolItem[cmjtxs53b04mermtbfcpwk9qq]:e6f77804c803",
+      "person": "马克·扎克伯格",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Meta's Mark Zuck announces new AI model Mango to ...",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是第三方新闻（MEXC News）报道Meta公司发布新AI模型Mango，将公司级产品发布直接归为扎克伯格个人代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:RawPoolItem[cmjtxs6q604n0rmtbns1bs39k]:5b92d937aae3",
+      "person": "马克·扎克伯格",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Inside Mark Zuckerberg’s turbulent bet on AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题和摘要表明是关于扎克伯格AI投资的深度分析，但正文被付费墙阻挡，无法核实具体内容是否直接涉及其个人角色或贡献。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:RawPoolItem[cmjtxsaov04p4rmtbpi3c17q0]:e1ffbc43e4a7",
+      "person": "马克·扎克伯格",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Trump Bails Out Farmers & Sean Duffy and RFK Jr. Pitch Airport \"Improvements\" | Cory Doctorow",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "播客标题和摘要均未提及马克·扎克伯格，内容是关于特朗普、科里·多克托罗等，与该人物无关。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:RawPoolItem[cmju0mdgm07pvrmtbmef8kvc0]:216982bdefed",
+      "person": "黄仁勋",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "CES 2026：当黄仁勋谈论“物理AI”，未来的确定性在哪里？",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题提及黄仁勋，但提供的文本内容被加密或乱码，无法验证其具体内容和相关性。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:RawPoolItem[cmju1b07y0c3hrmtb0w16vfdl]:1385cc6faffc",
+      "person": "黄仁勋",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "黄仁勋：1、AI计算的真正瓶颈在于能效，未来的突破将来自于 ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要内容为加密或乱码文本，无法验证其是否为关于黄仁勋的有效内容。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:RawPoolItem[cmjuugy5p0gbnrmtbwy15k4bz]:b1b4c6add05b",
+      "person": "黄仁勋",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "黄仁勋：AI会让人变“超人”？｜李飞飞紧急呼吁教育改革",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "视频标题和摘要表明内容是第三方（UponlyTech）对黄仁勋观点的解读和分析，并非黄仁勋本人的直接访谈或原创内容。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmjtxkkac02xxrmtbt0m8ghpr]:22a8444050e8",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Should We Build Superintelligence?",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "视频内容描述为Joi Ito主持，Catherine Olsson和John Havens参与的辩论，未提及黄铁军。摘要和标题均无关联，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmjtxke9602v1rmtbi69chk1z]:6913b34a0f8e",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Huangpu jun xiao yu guo min ge ming jun 黃埔軍校與國民革命軍",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为一本关于黄埔军校的历史书籍，作者为刘峙，与黄铁军（AI从业者）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmjtxkek502vermtbe49rdxdw]:bbbc6d337688",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "胡汉民自述 : 1879-1936",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容《胡汉民自述 : 1879-1936》是关于国民党元老胡汉民的回忆录，作者为胡汉民。与AI从业者黄铁军无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmju15vuv0b2grmtblmrblc9u]:c439fc9c2d0a",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tencent releases Hunyuan 2.0, its next-generation AI model",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是关于腾讯发布Hunyuan 2.0模型的新闻，未提及黄铁军。将公司级产品发布归因给个人，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmju15y1c0b3crmtbmncunhj9]:7843bf0f55b8",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "面向AI算力场景的多元异构混合训练系统研究",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文《面向AI算力场景的多元异构混合训练系统研究》作者为中国移动相关研究人员，与黄铁军无关。将团队研究成果归因给个人，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmju1tben0fnprmtbpasx6jbn]:c6dabfbcdab5",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "黄铁军：AI为人类提供了更快的智能进化路径",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "标题《黄铁军：AI为人类提供了更快的智能进化路径》与另一条内容相同，但提供的摘要显示“稿件已删除”，无法验证内容是否确实关于黄铁军。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmju1tgy20fp7rmtb2qx8ljbd]:8413f93b463f",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "人工智能技术与应用前沿",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "文章《人工智能技术与应用前沿》作者为包义明、林阳、屠要峰，来自中兴通讯。内容未提及黄铁军，将公司技术文章归因给个人，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmju1thg90fpdrmtbaa57ch0a]:7a8f41139048",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Computer Science > Machine Learning",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文作者为Yang Liu等人，未提及黄铁军。将团队或机构成果（如Xmodel-2.5）归因给个人，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmjtxkj3902xjrmtbnv1htztu]:6e8b79d0ed41",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "黄铁军：科技创新影响着我们的工作方式、生活方式、思维方式",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "视频标题包含黄铁军姓名，但摘要内容与标题主题不符，疑似错误或无关内容，需人工核实。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmjtxkjp902xrrmtbvymm2hx5]:44fc7a49a650",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Origin and Nature of Intelligence Workshop 2022",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "视频标题未直接提及黄铁军，摘要也未明确其角色。内容可能与智源研究院相关，但缺乏直接证据证明其个人参与或贡献。"
+    }
+  ]
+}

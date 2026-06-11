@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-06-10T22:07:24.940Z",
+  "summary": {
+    "generatedAt": "2026-06-10T22:07:24.940Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_review_low_context_x_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_low_context_x_apply_dry_run_archive.json",
+    "stage": "manual_prune_tail_review_low_context_x",
+    "decisions": 3,
+    "existingTargets": 3,
+    "missingTargets": 0,
+    "auditRowsInserted": 3,
+    "deleted": 3,
+    "byAction": {
+      "delete_raw_pool_item": 3
+    },
+    "byVerdict": {
+      "reject": 3
+    },
+    "byPerson": {
+      "Chris Olah": 2,
+      "Yann LeCun": 1
+    }
+  }
+}

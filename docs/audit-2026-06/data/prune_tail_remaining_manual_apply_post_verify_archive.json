@@ -1,0 +1,2727 @@
+{
+  "generatedAt": "2026-06-10T21:05:35.615Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:05:35.615Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_remaining_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_remaining_manual_apply_post_verify_archive.json",
+    "stage": "manual_prune_tail_after_refetch",
+    "decisions": 89,
+    "existingTargets": 0,
+    "missingTargets": 89,
+    "auditRowsInserted": 0,
+    "deleted": 0,
+    "byAction": {
+      "delete_raw_pool_item": 89
+    },
+    "byVerdict": {
+      "reject": 89
+    },
+    "byPerson": {
+      "Elon Musk": 10,
+      "Mustafa Suleyman": 6,
+      "桑达尔·皮查伊": 5,
+      "Ilya Sutskever": 4,
+      "Oriol Vinyals": 4,
+      "亚历克·拉德福德": 4,
+      "杰夫·迪恩": 4,
+      "科拉伊·卡武克丘奥卢": 4,
+      "阿希什·瓦斯瓦尼": 4,
+      "Andrej Karpathy": 3,
+      "Boris Cherny": 3,
+      "Emad Mostaque": 3,
+      "Greg Brockman": 3,
+      "埃里克·霍维茨": 3,
+      "布莱恩·卡坦扎罗": 3,
+      "李开复": 3,
+      "李飞飞": 3,
+      "Lukasz Kaiser": 2,
+      "Marc Andreessen": 2,
+      "Quoc Le": 2,
+      "Sam Altman": 2,
+      "黄仁勋": 2,
+      "David Ha": 1,
+      "Demis Hassabis": 1,
+      "Geoffrey Hinton": 1,
+      "Hyung Won Chung": 1,
+      "Jan Leike": 1,
+      "Mira Murati": 1,
+      "Noam Shazeer": 1,
+      "Shane Legg": 1,
+      "吴恩达": 1,
+      "李莲": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0wlfi095yrmtb9zzhv5w6",
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wlfi095yrmtb9zzhv5w6",
+          "objectLabel": "LLM Council: Andrej Karpathy’s AI for Reliable Answers"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容带有明显的营销和课程推广性质，片段中有效信息密度极低。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.138Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://www.analyticsvidhya.com/blog/2025/12/llm-council-by-andrej-karpathy/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0o0ds07yqrmtbm1clbgh3",
+        "personId": "cmjtsw84q00023esto9f6h0w6",
+        "person": "Demis Hassabis",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0o0ds07yqrmtbm1clbgh3",
+          "objectLabel": "A new era of intelligence with Gemini 3"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：谷歌产品发布公告，与 Hassabis 个人关联度极低且内容空洞。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://blog.google/intl/en-africa/company-news/outreach-and-initiatives/a-new-era-of-intelligence-with-gemini-3/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjs97tsd0013p5lfg0lqdcmo",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjs97tsd0013p5lfg0lqdcmo",
+          "objectLabel": "Elon Musk's record $447 billion fortune means he's nearly $200 billion ahead of Jeff Bezos — and worth more than Costco"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为财富比较的新闻，虽涉及Elon Musk但缺乏AI/科技相关性且质量低。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://finance.yahoo.com/news/elon-musks-record-447-billion-121646298.html"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjv19wie008cftmg9zokn9tx",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv19wie008cftmg9zokn9tx",
+          "objectLabel": "Summarizing books with human feedback"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为 OpenAI 机构的研究发布，未直接提及或关于 Greg Brockman 本人。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://openai.com/blog/summarizing-books/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjv16rg60068ftmgp1i0yigh",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv16rg60068ftmgp1i0yigh",
+          "objectLabel": "They are admitting[1] that the new model is the gpt2- ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：Hacker News 的讨论帖网页片段，内容破碎且未指向目标人物。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://news.ycombinator.com/item?id=40345909"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvwgtf01ftrmtbuex96s3j",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwgtf01ftrmtbuex96s3j",
+          "objectLabel": "Cornell AI history lecture"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：标题为Cornell AI历史讲座，内容未明确提及Hyung Won Chung，可能为他人。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 15,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=CcP8db8TeKI"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxhrb602b6rmtb7391pcbk",
+        "personId": "cmjtwkgug0004opf3th1cmczu",
+        "person": "李开复",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhrb602b6rmtb7391pcbk",
+          "objectLabel": "2015.03.16中天青年論壇完整版【李開復－人生變奏曲】"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：侧重于人生理想与创业经验的泛泛谈论，缺乏 AI 领域的专业价值。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 15,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=w13dZ_cczkQ"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxhpfp02a6rmtbnsi5brdd",
+        "personId": "cmjtwkgug0004opf3th1cmczu",
+        "person": "李开复",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhpfp02a6rmtbnsi5brdd",
+          "objectLabel": "曾向得罪过的人道歉！李开复：患病后整个价值观改变了[大咖一日行第7期精彩看点]"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容侧重于个人患病经历和人生感悟，与AI/科技行业相关性较低。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 15,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=lKpbYF84xzc"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxnr2203lsrmtb980jactm",
+        "personId": "cmjtxcx2r00075p08egm5tuq9",
+        "person": "科拉伊·卡武克丘奥卢",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxnr2203lsrmtb980jactm",
+          "objectLabel": "Under the hood with Google AI"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容泛指谷歌领导层和 Gemini 产品，未直接关联到 Koray 个人。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 15,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=STMN5N-bDko"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq9jn046ermtbodwlztmc",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq9jn046ermtbodwlztmc",
+          "objectLabel": "Lessons Learned From the Early Innings of AI"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：泛论 AI 发展趋势，内容中未出现目标人物。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 15,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=3NlbV__F1jg"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjrzl7k4001tb28t8p8rzl4x",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjrzl7k4001tb28t8p8rzl4x",
+          "objectLabel": "Four takeaways from Walter Isaacson’s biography of Elon Musk | CNN Business"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容是关于马斯克传记的总结，但未突出AI/科技相关主题，信息偏传记性质。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 18,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://edition.cnn.com/2023/09/12/tech/elon-musk-isaacson-biography-takeaways/index.html"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjrzl7kn0027b28truliiusg",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjrzl7kn0027b28truliiusg",
+          "objectLabel": "美国国家工程院新增院士名单出炉，马斯克入选，张宏江、方岱宁等入选外籍院士！"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容报道马斯克入选美国国家工程院院士，属于荣誉事件，但与AI/科技行业关联不直接。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 18,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://www.sdxz2050.com/16584.html"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjv15pbj0044ftmgenov1xog",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15pbj0044ftmgenov1xog",
+          "objectLabel": "GPT-4o System Card"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：这是 GPT-4o 的技术系统卡文档，不涉及 Greg Brockman 的个人信息。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 18,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://arxiv.org/abs/2410.21276"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvnpax00enrmtbxgudsr3z",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnpax00enrmtbxgudsr3z",
+          "objectLabel": "The AI Friend Zone"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：标题提及Greylock的AI内容，但未明确关联Mustafa Suleyman本人。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 18,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://greylock.com/greymatter/inflectionai-the-ai-friend-zone/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjuusc6q0ht4rmtbb4djq3z6",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuusc6q0ht4rmtbb4djq3z6",
+          "objectLabel": "The Coming Wave Book"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容是关于《The Coming Wave》这本书的推广，并非直接关于Mustafa Suleyman本人。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 19,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://the-coming-wave.com/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1083t09wxrmtbtp5v8s6s",
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1083t09wxrmtbtp5v8s6s",
+          "objectLabel": "Sang Michael Xie - Stanford Computer Science"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容关于另一位研究员Sang Michael Xie，属于抓取错误。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 19,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://cs.stanford.edu/~eix/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju10fdr09zvrmtb0vvuqgwm",
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10fdr09zvrmtb0vvuqgwm",
+          "objectLabel": "Transformer (deep learning architecture)"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：通用的维基百科词条，并非专门针对 Quoc Le 本人的介绍或特定贡献。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 19,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://en.m.wikipedia.org/wiki/Transformer_(machine_learning_model)"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjrz1ax50014b28tw6j90eeg",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjrz1ax50014b28tw6j90eeg",
+          "objectLabel": "https://www.cnn.com/2023/05/16/tech/sam-altman-openai-congress"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为CNN市场新闻摘要，完全不涉及Sam Altman或AI。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 19,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://www.cnn.com/2023/05/16/tech/sam-altman-openai-congress"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtzeatf05c2rmtbhgu9ro3k",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzeatf05c2rmtbhgu9ro3k",
+          "objectLabel": "The Case That A.I. Is Thinking"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为《纽约客》关于 AI 思考能力的通用深度报道，未聚焦于 Sam Altman 本人。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 19,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://www.newyorker.com/magazine/2025/11/10/the-case-that-ai-is-thinking"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxpy8f0422rmtb239gk6om",
+        "personId": "cmjtxe137000e5p08x4puluzz",
+        "person": "布莱恩·卡坦扎罗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpy8f0422rmtb239gk6om",
+          "objectLabel": "Bryan Catanzaro"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容描述的是UC Berkeley的博士生Bryan Catanzaro，与目标人物（英伟达副总裁）不是同一人。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://embedded.eecs.berkeley.edu/mescal/people/catanzaro.html"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtzrru405wirmtbvq24zjdf",
+        "personId": "cmjtsxhyo00053est14oy641y",
+        "person": "李飞飞",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzrru405wirmtbvq24zjdf",
+          "objectLabel": "Artificial Intelligence Index Report 2025"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为2025年AI指数报告的通用介绍，并非关于李飞飞个人的信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju15rzl0b0yrmtb7llz7r25",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15rzl0b0yrmtb7llz7r25",
+          "objectLabel": "750亿美元的豪赌：谷歌是否在为Gemini项目赌上自己的帝国？"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容主要讨论谷歌的Gemini项目投资，未明确聚焦皮查伊本人，属于机构层面话题。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://xpert.digital/zh-cn/750%E4%BA%BF%E7%BE%8E%E5%85%83%E7%9A%84%E8%B5%8C%E6%B3%A8/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju15qyv0b0krmtbf6gtp1ux",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15qyv0b0krmtbf6gtp1ux",
+          "objectLabel": "DeepMind CEO为谷歌攻关AI杀手级应用"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：标题和内容聚焦DeepMind CEO，而非桑达尔·皮查伊，属于抓错人。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://www.oror.vip/?p=554653"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju15wcj0b2mrmtbzgbz4yic",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15wcj0b2mrmtbzgbz4yic",
+          "objectLabel": "Google launches Gemini, the AI model it hopes will take down GPT-4"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容主要关于谷歌 Gemini 产品发布，未直接涉及皮查伊本人的观点或动态。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://www.theverge.com/2023/12/6/23990466/google-gemini-llm-ai-model"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxosmm03uhrmtbptw4j63m",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxosmm03uhrmtbptw4j63m",
+          "objectLabel": "Who Is Sundar Pichai?"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：标题虽提及皮查伊，但内容为投资理财文章，完全不相关。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://www.investopedia.com/articles/investing/090815/look-sundar-pichai-googles-new-ceo.asp"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxotve03uvrmtbrdzdlo48",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxotve03uvrmtbrdzdlo48",
+          "objectLabel": "谷歌CEO桑达尔·皮查伊：从穷小子到完美总裁"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容主要讲述皮查伊的成长故事，未涉及AI或科技行业相关话题，且质量较低。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "http://www.xinhuanet.com/zgjx/2016-07/25/c_135537808.htm"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0r58008cormtbmlf8wujv",
+        "personId": "cmjtxcx2r00075p08egm5tuq9",
+        "person": "科拉伊·卡武克丘奥卢",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0r58008cormtbmlf8wujv",
+          "objectLabel": "AlphaFold"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为 AlphaFold 的维基百科词条，未直接提及目标人物。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://en.wikipedia.org/wiki/AlphaFold"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0rfn208eermtbtyoti95t",
+        "personId": "cmjtxcx2r00075p08egm5tuq9",
+        "person": "科拉伊·卡武克丘奥卢",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0rfn208eermtbtyoti95t",
+          "objectLabel": "Convolutional neural network"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：通用的维基百科词条，未聚焦于目标人物。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://en.wikipedia.org/wiki/Convolutional_neural_network"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq2ci043grmtbrehk21v8",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq2ci043grmtbrehk21v8",
+          "objectLabel": "Generating Long Sequences with Sparse Transformers"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：该论文的作者名单中并不包含目标人物。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 20,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "exa",
+          "originalUrl": "https://arxiv.org/pdf/1904.10509.pdf"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjse4n1u002zc6jtadmtsra1",
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4n1u002zc6jtadmtsra1",
+          "objectLabel": "Researchgate sent me a fake paper called "
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容残缺不全，无法获取有效信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 21,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/geoffreyhinton/status/1916912033280262458"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvo2jq00gtrmtbkqr2jcn1",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo2jq00gtrmtbkqr2jcn1",
+          "objectLabel": "We just dropped what we believe is the world's largest study of AI conversations + it found what you talk to AI about has a lot to do with what time it is. @MicrosoftAI researchers found 3 different trends by day, time, and month and 1 rock solid constant https://microsoft.ai/news/its-about-time-the-copilot-usage-report-2025/"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：官方账号发布的公司研究报告，与人物本人的背景或动态无关。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 21,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/mustafasuleyman/status/1998833489333100814"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvxvyo01qyrmtbg5rb7f44",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxvyo01qyrmtbg5rb7f44",
+          "objectLabel": "//blog.google/products/gemini/gemini-2-5-pro-latest-preview/"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容是关于Gemini产品的博客，非关于Oriol Vinyals本人。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 21,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/OriolVinyalsML/status/1930680107116511719"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxlvqp036frmtbmtu4r7qp",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxlvqp036frmtbmtu4r7qp",
+          "objectLabel": "All samples shown are complete generations with no human editing. No stitching together of sub-generations. For unicorn example GPT-2 produced an <endoftext> token at the end. Some on the blog I *think* may be crops - though."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容讨论GPT-2生成样本的技术细节，但未明确提及亚历克·拉德福德本人，aboutPerson不达标。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 21,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/AlecRad/status/1096179085695344640"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxlvc5036brmtb4shiwtqs",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxlvc5036brmtb4shiwtqs",
+          "objectLabel": "Appendix of paper computes 8 gram overlap metrics for samples with training data. Of course this does break on paraphrasing and even with k=40 the model has pretty high entropy... Curious about whether there are higher recall, scalable, comparison methods!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容涉及论文中n-gram重叠指标，但未指向亚历克·拉德福德个人，aboutPerson不达标。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 21,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/AlecRad/status/1096177194982752256"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq5gd044krmtbw8dm7ntn",
+        "personId": "cmjtxe137000e5p08x4puluzz",
+        "person": "布莱恩·卡坦扎罗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq5gd044krmtbw8dm7ntn",
+          "objectLabel": "//blogs.nvidia.com/blog/open-models-data-ai/"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：英伟达关于开源模型与数据的官方博客，不属于人物个人信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 21,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ctnzr/status/1983227946400678069"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxkyxn02zlrmtbflff4xn2",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxkyxn02zlrmtbflff4xn2",
+          "objectLabel": "Mira Murati, Chief Technology Officer, OpenAI - Behind the ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容主要为微软促销广告，仅标题提及Mira Murati，实际无关。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 21,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "exa",
+          "originalUrl": "https://www.microsoft.com/en-us/behind-the-tech/mira-murati-chief-technology-officer-openai"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju14hfk0av1rmtbb5udnbdr",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju14hfk0av1rmtbb5udnbdr",
+          "objectLabel": "I'm starting to feel sacred about some of my older theory papers... Maybe time to proactively push them through myself..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为个人情绪表达，未涉及AI或科技相关话题，信息密度低。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 22,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/lukaszkaiser/status/1977216798325195258"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvo1lb00gfrmtbskffm0kl",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo1lb00gfrmtbskffm0kl",
+          "objectLabel": "//www.youtube.com/watch?v=XWGnWcmns_M"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅包含视频链接，无任何实质性文本内容。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 22,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/mustafasuleyman/status/2001374004960203048"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxhufw02cgrmtbsysq54rm",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhufw02cgrmtbsysq54rm",
+          "objectLabel": "//blog.google/products/gemini/gemini-3-deep-think/"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅包含官方博客链接，无本人原创观点或实质描述。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 22,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/NoamShazeer/status/1996679619031060680"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1felz0cv8rmtbwx1mipvt",
+        "personId": "cmjtxcx2r00075p08egm5tuq9",
+        "person": "科拉伊·卡武克丘奥卢",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1felz0cv8rmtbwx1mipvt",
+          "objectLabel": "//blog.google/technology/ai/google-gemini-ai/"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅包含一个指向 Gemini 的官方链接，无正文描述。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 22,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/koraykv/status/1732420934664171546"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0wrnx097irmtbwnsq8lij",
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wrnx097irmtbwnsq8lij",
+          "objectLabel": "The top comment on all of these is usually “ai” with 3000 likes"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：社交媒体随感，主要讨论评论区现象，缺乏专业技术含量或行业深度。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 22,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/karpathy/status/2002894301509124407"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjxnlnl30007a6el8maxx17g",
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnlnl30007a6el8maxx17g",
+          "objectLabel": "No. I just keep thinking on by default"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：关于个人习惯的简短回复，信息密度极低。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 22,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/bcherny/status/2007220052110766298"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjxnln8q0005a6el43ilktbc",
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnln8q0005a6el43ilktbc",
+          "objectLabel": "Same repo, separate git checkouts"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：关于 Git 操作的简短技术回复，缺乏背景信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 22,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/bcherny/status/2007226686153338910"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwhfpjr000556p4qca5z3jz",
+        "personId": "cmjv6furu000lmfghb5zze4nm",
+        "person": "David Ha",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhfpjr000556p4qca5z3jz",
+          "objectLabel": "In the end Yann couldn’t show up 😢 but we still had a blast. Here is the recording:"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：属于活动花絮和录像发布，缺乏具体的观点或技术事实。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/hardmaru/status/2001840121231086078"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjse4zbx003dc6jt097bqvw6",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zbx003dc6jt097bqvw6",
+          "objectLabel": "Over 4 billion visits per month"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：泛指平台流量数据，缺乏对人物或AI技术的深度关联。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/elonmusk/status/2005724568095473819"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1nlud0ej9rmtbv430jfyp",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1nlud0ej9rmtbv430jfyp",
+          "objectLabel": "Share Grok links with friends!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：纯粹的社交分享引导，无任何实质性信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/elonmusk/status/2004454227779965173"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1nnck0ejrrmtbyvc3w8yg",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1nnck0ejrrmtbyvc3w8yg",
+          "objectLabel": "Try Grok image edit and video edit"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：纯粹的产品功能推广短语，缺乏信息价值。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/elonmusk/status/2004023623078891674"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjse4zbr0039c6jtgmmwmnpf",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zbr0039c6jtgmmwmnpf",
+          "objectLabel": "Yeah, and the scheme was working too"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：语境不明的短句，无任何有效信息价值。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/elonmusk/status/2005757282190254378"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvwd6q01e3rmtb9na0w5qg",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwd6q01e3rmtb9na0w5qg",
+          "objectLabel": "Almost looks like there should be an e to the minus 4 pi next eh"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：随意的数学公式调侃，信息密度极低，无入库价值。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/EMostaque/status/2003967682018934938"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvwbvz01ddrmtbcc97kga5",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwbvz01ddrmtbcc97kga5",
+          "objectLabel": "New wave in a few weeks"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：模糊的预告性言论，缺乏具体信息和实质内容。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/EMostaque/status/2005950846517878816"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvouz400o4rmtb8pr7wo5w",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvouz400o4rmtb8pr7wo5w",
+          "objectLabel": "Human culture is critical civilization-enabling infrastructure.  One that’s hard to improve, easy to destroy."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：虽为本人言论，但属于泛泛的文化哲学思考，与AI领域无关。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ilyasut/status/1584558471839506432"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvowcm00ocrmtbn1n98df1",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvowcm00ocrmtbn1n98df1",
+          "objectLabel": "Real progress in AI can only be achieved through a very intense work ethic"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：属于泛泛而谈的成功学言论，缺乏具体的技术或行业深度。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ilyasut/status/1359586696682160128"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvovm200o8rmtba4dlxo9r",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvovm200o8rmtba4dlxo9r",
+          "objectLabel": "seeing reality as it is and not the way we want it to be is hard work, actually"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：简短的哲学感悟，缺乏与AI或科技行业相关的实质内容。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ilyasut/status/1569361455102959616"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxqxb204e9rmtbnvm3xnry",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqxb204e9rmtbnvm3xnry",
+          "objectLabel": "Sara is an amazing researcher and personal attacks should have no place in our community."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为对他人研究者的辩护，不涉及Lukasz Kaiser本人，且无AI相关实质内容。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/lukaszkaiser/status/1919459685268390350"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwhjy8c001t56p4778p89zi",
+        "personId": "cmjv6furu000emfgh0aoztt24",
+        "person": "Marc Andreessen",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhjy8c001t56p4778p89zi",
+          "objectLabel": "My email app and my texting app are now both amazing at AI-auto-summarizing all of the spam/fraud/ph"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：关于个人应用体验的琐碎吐槽，信息密度过低。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/pmarca/status/1953259983325544715"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwhjxnn001r56p4fes5rw3z",
+        "personId": "cmjv6furu000emfgh0aoztt24",
+        "person": "Marc Andreessen",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhjxnn001r56p4fes5rw3z",
+          "objectLabel": "The new American credentialing system: Degree from MIT < Drop out of MIT before graduating < Drop ou"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：属于社交媒体上的段子或调侃，缺乏严肃的行业洞察。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/pmarca/status/1956488823241924618"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvo27q00gprmtbsyf39h7i",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo27q00gprmtbsyf39h7i",
+          "objectLabel": "Copilot just got smarter! Starting today, we're rolling out the latest GPT-5.2 model from our partners at OpenAI to consumer @Copilot, coming first to Microsoft 365 Premium users. Can't wait to see what you do with it."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：官方账号发布的产品技术升级通告，缺乏人物相关性。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/mustafasuleyman/status/1999184598987866194"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvo1wj00gjrmtbkk5e0q2j",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo1wj00gjrmtbkk5e0q2j",
+          "objectLabel": "The team just added a little extra holiday spirit to @Copilot! Meet Eggnog Mode Mico - live now in the US, UK, and Canada, only available for the holidays. Toggle on by just clicking the ⛄ icon while talking to Mico."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：官方账号发布的节日营销活动，无人物价值。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 23,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/mustafasuleyman/status/2000974208994517453"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju18gk80bmermtbf88ns0nb",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju18gk80bmermtbf88ns0nb",
+          "objectLabel": "AND world-class leadership & strategy 😉"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为模糊的称赞，与AI/科技无关，低质。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/OriolVinyalsML/status/1992334060719673653"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvxt1o01permtb8bl47x1a",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxt1o01permtb8bl47x1a",
+          "objectLabel": "Create an image at 41.4036° N, 2.1744° E, January 1st, 1983, 15:00 hours."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为坐标和时间指令，与Oriol Vinyals无关。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/OriolVinyalsML/status/1993333671286206751"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju11ytn0a8mrmtbyb6a08r0",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju11ytn0a8mrmtbyb6a08r0",
+          "objectLabel": "Visual Retweeting powered by Nano Banana Pro 🍌 Prompt used: Create a clever infographic to illustrate <copy_paste_tweet>"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为转发营销工具，与人物本人及AI无关，低质。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/OriolVinyalsML/status/1991568871673983154"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxlwt6036prmtbbci85wby",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxlwt6036prmtbbci85wby",
+          "objectLabel": "Dynamic eval improves an AWD-LSTM baseline by 0.11 nats. Can't be sure it'd have equal sized benefits for both architectures (though https://arxiv.org/abs/1904.08378 suggests it works fine) but if that gain carried over, the Transformer-XL model would be 48.6 test perplexity."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：讨论动态评估和模型性能，未涉及亚历克·拉德福德本人。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/AlecRad/status/1129208336904155136"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0pqnn0858rmtbo82pglwk",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0pqnn0858rmtbo82pglwk",
+          "objectLabel": "The jump from o3-mini to o3 feels surprisingly large for just a reasoning model. Makes me wonder how much of the gap is from longer CoT vs actual capability improvements."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：讨论o3-mini到o3的模型能力提升，未涉及亚历克·拉德福德，不相关。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/AlecRad/status/1873124567890123456"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju177j00ba9rmtbyg3sf6t5",
+        "personId": "cmjtsxyrk00063esttwxwxw14",
+        "person": "吴恩达",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju177j00ba9rmtbyg3sf6t5",
+          "objectLabel": "OpenReview is one of the most important pillars supporting AI research and knowledge sharing, through open peer review and publishing. But as a non-profit, it needs our community’s support. Please consider making a donation to this great institution!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容是关于OpenReview的捐赠呼吁，虽然与AI相关，但并非关于吴恩达本人。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/AndrewYNg/status/2001842857070743613"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxphqx03zzrmtb1ysdu88f",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxphqx03zzrmtb1ysdu88f",
+          "objectLabel": "Upcoming panel at the @GalienFdn Patient Summit: "
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅提及即将参加一个患者峰会，未涉及AI或科技相关内容，与目标人物关联弱。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/erichorvitz/status/1978867478500700296"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0ydra09idrmtb55d062e6",
+        "personId": "cmjtxe137000e5p08x4puluzz",
+        "person": "布莱恩·卡坦扎罗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0ydra09idrmtb55d062e6",
+          "objectLabel": "Thank you for your partnership 🙏"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：纯礼貌性回复，无任何科技或行业相关信息。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ctnzr/status/2000695631128477816"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwhht2s001b56p4lr954frr",
+        "personId": "cmjtwkgug0004opf3th1cmczu",
+        "person": "李开复",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhht2s001b56p4lr954frr",
+          "objectLabel": "More decks to go, but has designing beautiful slides been a pain point? Upgrades from our Presentati"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：属于公司旗下 AI 产品的营销推广，缺乏李开复个人的实质性内容。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/kaifulee/status/1983598624107065581"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0itqf0732rmtbx1lc790u",
+        "personId": "cmjtxcatd00025p08uv2ks3h0",
+        "person": "李莲",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0itqf0732rmtbx1lc790u",
+          "objectLabel": "We have various teams working on AI safety at OpenAI. Let us know if you are interested!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为OpenAI招聘宣传，泛泛而谈，缺乏具体信息价值。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/lilianweng/status/1729566906892640501"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwu2f69001ry6e2ux15thrh",
+        "personId": "cmjtsxhyo00053est14oy641y",
+        "person": "李飞飞",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwu2f69001ry6e2ux15thrh",
+          "objectLabel": "Omg… you did it @martin_casado !🤩❤️‍🔥"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：社交媒体上的私人互动感叹，缺乏专业相关性或信息密度。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/drfeifei/status/2005807939974553908"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwu2gpx001vy6e2vjrdtalc",
+        "personId": "cmjtsxhyo00053est14oy641y",
+        "person": "李飞飞",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwu2gpx001vy6e2vjrdtalc",
+          "objectLabel": "Whoa! Love this wormhole experience of teleporting between Marble worlds! 🤩"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：对特定技术体验的感性评价，缺乏具体的事实或深度观点。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 24,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/drfeifei/status/2000697944748568952"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtzryyu0608rmtb4avzx76s",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzryyu0608rmtb4avzx76s",
+          "objectLabel": "Gemini 3 Flash ranks #3 in the LMArena leaderboard (which is especially notable given its API pricing and its low latency)."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为排行榜信息，未体现杰夫·迪恩个人贡献或观点。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/jeffdean/status/2001335803642024157"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtzrzis060krmtb8pcs45nx",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzrzis060krmtb8pcs45nx",
+          "objectLabel": "Nice comparison of Gemini 3 Flash versus Gemini 3 Pro (two bars on the left).  Gemini 3 Flash nearly matches Gemini 3 Pro on Humanity's Last Exam accuracy, while being more token efficient (right graph, lower is better)."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容为模型性能比较，无杰夫·迪恩个人观点或信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/jeffdean/status/2001330993433829692"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtzs1j6061mrmtbc3gefnsg",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzs1j6061mrmtbc3gefnsg",
+          "objectLabel": "Waymo's system, fueled by careful collection of a large volume of fully autonomous data, is the most advanced, large-scale application of embodied AI today.  Very proud to see this level of engineering rigor tackling safe autonomous driving making the roads safer for everyone (and it has been nice to see various Google research collaborations with Waymo be a part of these advances!). The insights here are foundational for how we design and safely scale all complex AI systems. Read more at:"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容关于Waymo和AI系统，但未聚焦杰夫·迪恩，属于机构宣传而非个人相关。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/jeffdean/status/1998432670376935656"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq51l044ermtbwcryk925",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq51l044ermtbwcryk925",
+          "objectLabel": "Thank you, Aurko. Our collaborations were really fun."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：社交礼仪性互动，不包含有效的个人观点或事实。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ashVaswani/status/1998984938356711912"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq5wk044qrmtbclte20hp",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq5wk044qrmtbclte20hp",
+          "objectLabel": "Thanks for the notes, @HannaHajishirzi . The team is looking into it and we'll get back with updates."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：社交媒体上的日常工作回复，信息密度极低。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ashVaswani/status/1997806326005834136"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjse3uky001hc6jtl9yi1mzi",
+        "personId": "cmjs1by3o002wb28tsdopns4d",
+        "person": "黄仁勋",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse3uky001hc6jtl9yi1mzi",
+          "objectLabel": "Another share of Jensen Huang's quote on resilience and hardship."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容仅涉及通用的挫折教育语录，缺乏 AI 或科技行业相关性。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/Seds_Digitizing/status/2005872437347717220"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjse3ukz001jc6jt4qnzjpbz",
+        "personId": "cmjs1by3o002wb28tsdopns4d",
+        "person": "黄仁勋",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse3ukz001jc6jt4qnzjpbz",
+          "objectLabel": "Biography and family details of Jensen Huang, emphasizing his background and values."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：侧重于个人传记和家庭背景描述，缺乏AI技术或行业洞察。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/yibingsg/status/2005726667466236367"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0wqqo097crmtb5jcbyz3h",
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wqqo097crmtb5jcbyz3h",
+          "objectLabel": "Yeah it wrote a script to start the pairing process and then told me "
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：官方推文片段，内容过于简短且缺乏上下文，无法提供有效的技术或行业信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/karpathy/status/2005097695279824904"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjxnlrja000va6elm8c5qlgd",
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnlrja000va6elm8c5qlgd",
+          "objectLabel": "I haven’t found that to be an issue, since glancing at the convo usually gives me the context I need"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：碎片化社交媒体回复，信息密度低且缺乏上下文。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/bcherny/status/2007187082649976896"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1nnx90ejzrmtbwczwxto9",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1nnx90ejzrmtbwczwxto9",
+          "objectLabel": "//x.com/elonmusk/status/2003989532111413332"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容仅包含推文链接，无任何实质性文本内容。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/elonmusk/status/2003989532111413332"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0w5jr08zermtbse096xtj",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0w5jr08zermtbse096xtj",
+          "objectLabel": "//x.com/elonmusk/status/2006108047609930069"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容仅包含链接，无任何实质性文字信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/elonmusk/status/2006108047609930069"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjse4zc8003rc6jt3683cp4o",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zc8003rc6jt3683cp4o",
+          "objectLabel": "Hopefully, 60 Minutes reports on it soon"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容极其简短且无背景信息，属于无意义的碎片化信息。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.140Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/elonmusk/status/2005660964948181233"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju15i030ayurmtbdd9dd9ge",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15i030ayurmtbdd9dd9ge",
+          "objectLabel": "Yes let’s upgrade math lib first"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容过于简短且缺乏上下文，属于琐碎的日常技术回复。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.141Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/EMostaque/status/2003585070276444348"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvos9y00njrmtb89kqc26f",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvos9y00njrmtb89kqc26f",
+          "objectLabel": "Really cool project!!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容过于简短且泛泛而谈，缺乏具体信息价值。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.141Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 25,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ilyasut/status/1981081837285118117"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju14au00aqprmtb7w2xezt5",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju14au00aqprmtb7w2xezt5",
+          "objectLabel": "//arxiv.org/abs/2505.05410"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅包含一个论文链接，缺乏具体内容描述，信息密度过低。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.141Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 26,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/janleike/status/1945992912321556803"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvo8og00jlrmtbhejak2hm",
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo8og00jlrmtbhejak2hm",
+          "objectLabel": "//x.com/ShaneLegg/status/1994438350262898713"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅包含链接，无任何文本内容。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.141Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 26,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ShaneLegg/status/1994438350262898713"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxpgx003ztrmtbrnkrive0",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpgx003ztrmtbrnkrive0",
+          "objectLabel": "//arxiv.org/abs/2511.02687"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅包含论文预印本链接，缺乏对内容的描述或观点。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.141Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 26,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/erichorvitz/status/1986051752395743537"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxpgaw03zprmtbudt4ky5u",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpgaw03zprmtbudt4ky5u",
+          "objectLabel": "//edhub.ama-assn.org/jn-learning/audio-player/19019635"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：仅包含外部音频链接，缺乏背景介绍或实质性观点。 Refetch ended in human_review after curation. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.141Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 26,
+          "refetchDecision": "human_review",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/erichorvitz/status/1991951638152773952"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1ibdo0dd4rmtb1o66sazs",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1ibdo0dd4rmtb1o66sazs",
+          "objectLabel": "An exciting new approach for doing continual learning, using nested optimization for enhancing long context processing."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "删除。该行原始 QA 已判为 reject，原因：内容仅提及一种新方法，未明确指向杰夫·迪恩本人，且信息密度低。 Refetch returned no_good_source. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:02:12.141Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_remaining_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 26,
+          "refetchDecision": "no_good_source",
+          "latestVerdict": "reject",
+          "priority": "low",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/JeffDean/status/1986938111839129858"
+        }
+      },
+      "raw": null
+    }
+  ]
+}

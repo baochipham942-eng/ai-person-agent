@@ -1,0 +1,2755 @@
+{
+  "generatedAt": "2026-06-09T11:39:03.024Z",
+  "input": "docs/audit-2026-06/data/fact_claims.jsonl",
+  "output": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl",
+  "model": "mimo-v2.5-pro",
+  "filters": {
+    "person": null,
+    "personId": null,
+    "claimType": "representative_achievement",
+    "priority": null,
+    "limit": 540,
+    "batchSize": 8,
+    "concurrency": 4
+  },
+  "totalClaims": 12376,
+  "selectedClaims": 540,
+  "reviewedClaims": 540,
+  "byVerdict": {
+    "supported": 238,
+    "needs_source": 64,
+    "over_attributed": 236,
+    "unclear": 1,
+    "wrong_person": 1
+  },
+  "byAction": {
+    "keep": 238,
+    "needs_source": 67,
+    "rewrite": 220,
+    "human_review": 1,
+    "remove": 14
+  },
+  "byClaimType": {
+    "representative_achievement": 540
+  },
+  "needsAttention": [
+    {
+      "claimId": "cmjv6furu000smfghreks2bnf:People.products[0]:4debff44d17b",
+      "person": "Allie K. Miller",
+      "claimType": "representative_achievement",
+      "objectLabel": "Open Machine",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Allie K. Miller 被标注为 Open Machine 的创始人，但缺少足够来源证明其创始人身份及该公司的具体业务。"
+    },
+    {
+      "claimId": "cmjv6furu000smfghreks2bnf:People.products[1]:0d171f891206",
+      "person": "Allie K. Miller",
+      "claimType": "representative_achievement",
+      "objectLabel": "IBM Watson's multimodal AI team",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "IBM Watson's multimodal AI team 是一个团队，而非个人可代表的产品或项目。即使 Allie K. Miller 曾领导该团队，将整个团队成果作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjv6furu000smfghreks2bnf:People.products[2]:ba4298f469c8",
+      "person": "Allie K. Miller",
+      "claimType": "representative_achievement",
+      "objectLabel": "AWS Machine Learning for Startups and Venture Capital",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AWS Machine Learning for Startups and Venture Capital 是 AWS 内部的一个业务部门或项目，而非个人可代表的产品。将其作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjv6furu000smfghreks2bnf:People.products[4]:d79e6653e543",
+      "person": "Allie K. Miller",
+      "claimType": "representative_achievement",
+      "objectLabel": "The AI Pipeline",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Allie K. Miller 被标注为 The AI Pipeline 的创始人，但缺少足够来源证明其创始人身份及该倡议的具体内容。"
+    },
+    {
+      "claimId": "cmjv6furu000kmfgha9aias1i:People.products[0]:f991da43d8f4",
+      "person": "Amanda Askell",
+      "claimType": "representative_achievement",
+      "objectLabel": "Claude",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude 是 Anthropic 公司的产品，Amanda Askell 是团队负责人，但将整个产品作为个人代表成果归因层级过高。个人贡献应聚焦于其具体负责的领域（如性格与价值观对齐）。"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:People.products[1]:c8c1a5f26619",
+      "person": "Aidan Gomez",
+      "claimType": "representative_achievement",
+      "objectLabel": "Command R+",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Command R+ 是 Cohere 公司的一个具体模型版本，作为创始人，展示公司级产品族更合适，而非单个模型。"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:People.products[2]:3b6056f0115d",
+      "person": "Aidan Gomez",
+      "claimType": "representative_achievement",
+      "objectLabel": "Cohere API",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "模型未返回该 claim 的判定"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:People.products[3]:1373e509a007",
+      "person": "Aidan Gomez",
+      "claimType": "representative_achievement",
+      "objectLabel": "Embed v3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Embed v3 是 Cohere 公司的一个具体模型版本，作为创始人，展示公司级产品族更合适，而非单个模型。"
+    },
+    {
+      "claimId": "cmkb1l3j70004h7l9e8gy2bko:People.products[1]:c711a2824db3",
+      "person": "Alexander Amini",
+      "claimType": "representative_achievement",
+      "objectLabel": "Themis AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "信息显示他是 Themis AI 的联合创始人，但缺少足够来源文本确认其具体角色和贡献。"
+    },
+    {
+      "claimId": "cmkb1l3j70004h7l9e8gy2bko:People.products[2]:861d33bd60ef",
+      "person": "Alexander Amini",
+      "claimType": "representative_achievement",
+      "objectLabel": "TennisTek",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "信息显示他是 TennisTek 的创始人，但缺少足够来源文本确认其具体角色和贡献。"
+    },
+    {
+      "claimId": "cmkb1l3j70004h7l9e8gy2bko:People.products[3]:c37d94f38ae2",
+      "person": "Alexander Amini",
+      "claimType": "representative_achievement",
+      "objectLabel": "Liquid Neural Networks",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Liquid Neural Networks 是 MIT CSAIL 的研究项目，角色为 contributor，不足以作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:People.products[0]:7ce124efd411",
+      "person": "Andrej Karpathy",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-2",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-2 是 OpenAI 的团队研究成果，Andrej Karpathy 未在其中担任明确领导或核心作者角色，将其列为个人代表成果归因层级错误。"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:People.products[1]:d25a039dcc20",
+      "person": "Andrej Karpathy",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ChatGPT 是 OpenAI 的产品，Andrej Karpathy 未在其中担任明确领导或核心作者角色，将其列为个人代表成果归因层级错误。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[0]:e963f42b1b8a",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "Alexa+",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Alexa+ 是亚马逊的产品，Andy Jassy 作为 CEO 可以展示其领导的公司级产品族，但此条未提供其具体贡献角色，且产品描述过于具体，易被视为个人直接成果。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[1]:6f10e607d70b",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "Amazon Nova",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Amazon Nova 是亚马逊的模型，Andy Jassy 作为 CEO 可以展示其领导的公司级产品族，但此条未提供其具体贡献角色，且产品描述过于具体，易被视为个人直接成果。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[2]:13011bf046bb",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "AWS Bedrock",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AWS Bedrock 是亚马逊云服务的产品，Andy Jassy 作为亚马逊 CEO 可以展示其领导的公司级产品族，但此条未提供其具体贡献角色，且产品描述过于具体，易被视为个人直接成果。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[3]:a4f12600e980",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "AWS SageMaker",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AWS SageMaker 是 AWS 的一个具体平台服务，而非公司级产品族。作为 CEO，Andy Jassy 领导整个 AWS，但将单个服务作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[4]:34c4728ce46c",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "AWS Trainium2",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AWS Trainium2 是 AWS 的一个具体定制芯片产品，属于硬件工具。作为 CEO，Andy Jassy 领导整个 AWS，但将单个芯片型号作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[5]:4415136bebc2",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "Amazon Q",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Amazon Q 是 AWS 的一个具体 AI 代码助手服务。作为 CEO，Andy Jassy 领导整个 AWS，但将单个 AI 工具服务作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[6]:e7d708b3bddc",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "AWS AgentCore",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AWS AgentCore 是 AWS 的一个具体 AI Agent 基础设施工具。作为 CEO，Andy Jassy 领导整个 AWS，但将单个工具框架作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[7]:8c06212fadd0",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "Strands",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Strands 是 AWS 的一个具体开源 AI Agent 工具包。作为 CEO，Andy Jassy 领导整个 AWS，但将单个开源工具包作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[8]:04a7ae26b508",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "objectLabel": "Rufus",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Rufus 是 Amazon 的一个具体 AI 购物助手工具。作为 Amazon CEO，Andy Jassy 领导整个公司，但将单个商业工具作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[0]:c2bf9b357407",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "objectLabel": "Mistral 7B",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Mistral 7B 是 Mistral AI 的一个具体模型版本。作为创始人，Arthur Mensch 可以展示 Mistral AI 公司级产品族，但单个模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtn2pr00066qvtrraqb618:People.products[2]:1e8c395cf02e",
+      "person": "Ashok Elluswamy",
+      "claimType": "representative_achievement",
+      "objectLabel": "Cybercab Robotaxi",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Cybercab Robotaxi 是 Tesla 的具体服务/商业入口，而非一个产品族或方法。将具体服务归为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtn2pr00066qvtrraqb618:People.products[3]:6787fe9cde31",
+      "person": "Ashok Elluswamy",
+      "claimType": "representative_achievement",
+      "objectLabel": "Optimus",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述中提到 Elluswamy 自 2025 年夏季起领导 Optimus 团队，但当前信息（2024年）不足以确认此未来状态，且缺乏可靠来源支持。"
+    },
+    {
+      "claimId": "cmk8gtzii0007j1tn5q2gmszd:People.products[1]:ef407998f375",
+      "person": "Barret Zoph",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4o",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4o 是一个具体的模型版本。尽管描述中提到其担任领导角色，但将单个模型版本作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmk8gtzii0007j1tn5q2gmszd:People.products[2]:8da5872c803f",
+      "person": "Barret Zoph",
+      "claimType": "representative_achievement",
+      "objectLabel": "o1",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "o1 是一个具体的模型版本，且角色仅为‘contributor’。将单个模型版本作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "f6c05518-a46b-42fa-a830-2d29ebd64049:People.products[0]:e654d3f1c8c0",
+      "person": "Ben Mildenhall",
+      "claimType": "representative_achievement",
+      "objectLabel": "NeRF",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "NeRF 是一个具体的学术论文/方法，而非一个产品族或平台。将单个方法作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[1]:e171124e777b",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "objectLabel": "Mixtral 8x7B",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "创始人/CEO 可以展示其领导的公司级产品族，但 Mixtral 8x7B 是 Mistral AI 的一个具体模型版本，属于团队成果，不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[2]:9487aad6d9cd",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "objectLabel": "Le Chat",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Le Chat 是 Mistral AI 的官方聊天助手产品，属于公司级商业入口或营销口径，不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[3]:5011ba616b45",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codestral",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Codestral 是 Mistral AI 的一个具体模型版本，属于团队成果，不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:People.products[0]:82d13a291e49",
+      "person": "Arvind Krishna",
+      "claimType": "representative_achievement",
+      "objectLabel": "watsonx",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Arvind Krishna 作为 IBM 的 CEO，可以展示其领导的公司级产品族。但 watsonx 是一个平台，需要来源证明其作为 CEO 的领导角色或具体贡献。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:People.products[1]:19e6b7cc7c55",
+      "person": "Arvind Krishna",
+      "claimType": "representative_achievement",
+      "objectLabel": "Granite Language Models",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Granite Language Models 是 IBM 的模型家族，属于公司级产品。需要来源证明 Arvind Krishna 作为 CEO 的领导角色或具体贡献。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:People.products[2]:2bdd33c8f52e",
+      "person": "Arvind Krishna",
+      "claimType": "representative_achievement",
+      "objectLabel": "REL AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "REL AI 是 IBM 的 AI 代理和助手产品，属于公司级产品。需要来源证明 Arvind Krishna 作为 CEO 的领导角色或具体贡献。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:People.products[3]:1af22201ddc9",
+      "person": "Arvind Krishna",
+      "claimType": "representative_achievement",
+      "objectLabel": "IBM Quantum System Two",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "IBM Quantum System Two 是 IBM 的量子计算系统，属于公司级产品。需要来源证明 Arvind Krishna 作为 CEO 的领导角色或具体贡献。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:People.products[0]:643eafc331fe",
+      "person": "Boris Cherny",
+      "claimType": "representative_achievement",
+      "objectLabel": "Claude Code",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude Code 是 Anthropic 的产品，Boris Cherny 的职位是 Head of Claude Code Integration，但 claim 将其角色标注为 'creator'，这过度归因了个人贡献，应更准确地描述为领导或参与。"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[0]:65ec50d881fa",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为单个模型版本，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[1]:b7e91e269c3c",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ChatGPT 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体产品，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[2]:ac2bcf5ee664",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "objectLabel": "Whisper API",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Whisper API 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体 API，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[3]:e22ea7ab7fd8",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "objectLabel": "Text and Code Embeddings",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Text and Code Embeddings 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体模型，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[4]:5488fcd10083",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4 Plugins",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 Plugins 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体功能，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。"
+    },
+    {
+      "claimId": "cmjv6furu0003mfgha0mzdgpj:People.products[0]:8b4b1c7585dd",
+      "person": "Cat Wu",
+      "claimType": "representative_achievement",
+      "objectLabel": "Claude Code",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude Code 是 Anthropic 公司的一个具体产品或功能，Cat Wu 的角色是 product lead，这属于团队成果，而非个人代表成果。"
+    },
+    {
+      "claimId": "cmjv6furu0003mfgha0mzdgpj:People.products[1]:ea538acc079c",
+      "person": "Cat Wu",
+      "claimType": "representative_achievement",
+      "objectLabel": "Dagster Cloud",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Dagster Cloud 是 Elementl 公司的产品，Cat Wu 的角色是 led development，这属于团队成果，而非个人代表成果。"
+    },
+    {
+      "claimId": "cmjv6furu000dmfghyv96kktn:People.products[1]:2cb95c601442",
+      "person": "Chamath Palihapitiya",
+      "claimType": "representative_achievement",
+      "objectLabel": "Software Factory",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Software Factory 是 8090 公司的一个具体产品，Chamath Palihapitiya 的角色是 founder，这属于公司级产品族下的具体产品，而非个人代表成果。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:People.products[2]:78beef862dd8",
+      "person": "Chris Olah",
+      "claimType": "representative_achievement",
+      "objectLabel": "Claude",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude 是 Anthropic 公司的旗舰产品，Chris Olah 作为研究员参与其安全和对齐研究，但“contributor”角色不足以将整个公司级产品归因为其个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtwpt0006j1tnwajuv48o:People.products[2]:a4ca34fd79d4",
+      "person": "Dan Hendrycks",
+      "claimType": "representative_achievement",
+      "objectLabel": "Humanity's Last Exam",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Dan Hendrycks 被列为 'Humanity's Last Exam' 的 creator，但未提供足够证据（如论文、官方公告）证明其个人贡献角色，仅凭产品描述不足以支撑。"
+    },
+    {
+      "claimId": "cmk8gtwpt0006j1tnwajuv48o:People.products[3]:c744214f5781",
+      "person": "Dan Hendrycks",
+      "claimType": "representative_achievement",
+      "objectLabel": "Introduction to AI Safety, Ethics, and Society",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "教材 'Introduction to AI Safety, Ethics, and Society' 被归为 Dan Hendrycks 的 creator，但缺少来源（如出版信息、作者列表）证实其个人角色。"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:People.products[0]:1a5e7ab2ac0e",
+      "person": "Daniela Amodei",
+      "claimType": "representative_achievement",
+      "objectLabel": "Claude",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude 是 Anthropic 的公司级产品族，Daniela Amodei 作为 co-founder 可展示领导成果，但 'co-creator' 口径可能过度归因具体产品，需明确其领导角色。"
+    },
+    {
+      "claimId": "cmjtswmqg00033est2ofuqdw0:People.products[1]:ee6640ac8e7f",
+      "person": "Dario Amodei",
+      "claimType": "representative_achievement",
+      "objectLabel": "Constitutional AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Constitutional AI 被归为 Dario Amodei 的 co-creator，但未提供证据（如论文作者列表）证明其个人贡献，可能属于团队成果。"
+    },
+    {
+      "claimId": "cmjv6furu000lmfghb5zze4nm:People.products[1]:a52a073a86d7",
+      "person": "David Ha",
+      "claimType": "representative_achievement",
+      "objectLabel": "AI Scientist",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "AI Scientist 被归为 David Ha 的 co-creator，但未提供证据（如论文、项目页面）证明其个人贡献角色，可能属于团队成果。"
+    },
+    {
+      "claimId": "cmjv6furu000lmfghb5zze4nm:People.products[2]:62d515b1b8f0",
+      "person": "David Ha",
+      "claimType": "representative_achievement",
+      "objectLabel": "Japanese Language Models",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "人物角色为 co-creator，但展示的是公司级产品族（Japanese Language Models），而非具体项目或论文。作为创始人，展示公司级产品族是合理的，但当前描述过于宽泛，可能过度归因。"
+    },
+    {
+      "claimId": "cmk8gtu6q0005j1tn4tow992q:People.products[4]:399e8afd89a7",
+      "person": "David Silver",
+      "claimType": "representative_achievement",
+      "objectLabel": "AlphaProof",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "David Silver 的职位描述未明确提及 AlphaProof，角色口径（contributor）较弱，需要具体来源证明其贡献。"
+    },
+    {
+      "claimId": "cmk8gtu6q0005j1tn4tow992q:People.products[5]:af1a83cac1fc",
+      "person": "David Silver",
+      "claimType": "representative_achievement",
+      "objectLabel": "AlphaGeometry 2",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "David Silver 的职位描述未明确提及 AlphaGeometry 2，角色口径（contributor）较弱，需要具体来源证明其贡献。"
+    },
+    {
+      "claimId": "cmjwtn0wb00036qvtin9tmhfk:People.products[1]:f5f53ca95188",
+      "person": "Clément Delangue",
+      "claimType": "representative_achievement",
+      "objectLabel": "Transformers Library",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Transformers Library 是 Hugging Face 公司开发的开源库，作为联合创始人，其贡献是领导公司，而非直接作为该具体库的‘co-creator’。将具体库版本归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[0]:6fc7f2cd3f21",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "objectLabel": "Snapdragon processors",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Snapdragon processors 是高通公司的产品线，Cristiano Amon 作为CEO，其领导的是整个公司，而非具体处理器产品线。将具体产品线归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[1]:95856784dfc4",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "objectLabel": "Oryon CPU",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Oryon CPU 是高通公司收购 Nuvia 后开发的具体产品，作为CEO，其领导的是整个公司，而非具体CPU产品。将具体产品归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[2]:d2c797fbddea",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "objectLabel": "Qualcomm 5G technology",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Qualcomm 5G technology 是高通公司的技术平台，作为CEO，其领导的是整个公司，而非具体技术平台。将具体技术平台归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[3]:2374389fcb8e",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "objectLabel": "Qualcomm 4G technology",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Qualcomm 4G technology 是高通公司的技术平台，作为CEO，其领导的是整个公司，而非具体技术平台。将具体技术平台归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjtsw84q00023esto9f6h0w6:People.products[2]:a2766d35e301",
+      "person": "Demis Hassabis",
+      "claimType": "representative_achievement",
+      "objectLabel": "Gemini",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Gemini 是 Google 的旗舰多模态模型，由 Google DeepMind 团队开发。作为 DeepMind CEO，其领导角色成立，但 Gemini 更偏向 Google 整体 AI 战略产品，直接作为个人代表成果可能过度归因。"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:People.products[1]:f49ac82d05ac",
+      "person": "Dylan Field",
+      "claimType": "representative_achievement",
+      "objectLabel": "Figma Make",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Figma Make 是 Figma 平台内的一个具体 AI 工具或功能。作为 CEO，其领导角色成立，但将单个工具版本作为个人代表成果可能过度归因。"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:People.products[2]:fcb2a5ac61c3",
+      "person": "Dylan Field",
+      "claimType": "representative_achievement",
+      "objectLabel": "FigJam",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "FigJam 是 Figma 平台内的一个具体协作工具。作为 CEO，其领导角色成立，但将单个工具版本作为个人代表成果可能过度归因。"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:People.products[0]:3dee8facdf3e",
+      "person": "Emad Mostaque",
+      "claimType": "representative_achievement",
+      "objectLabel": "Stable Diffusion",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Stable Diffusion 是 Stability AI 公司开发的具体模型版本，Emad Mostaque 作为公司创始人/CEO，其代表成果应为公司级产品族（如 Stability AI Platform），而非单个模型。"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:People.products[2]:7002944b8711",
+      "person": "Emad Mostaque",
+      "claimType": "representative_achievement",
+      "objectLabel": "Stable Audio Open",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Stable Audio Open 是 Stability AI 公司开发的具体模型版本，Emad Mostaque 作为公司创始人/CEO，其代表成果应为公司级产品族，而非单个模型。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[0]:48c749d75429",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "ChatGPT 是 OpenAI 公司的具体产品，Fidji Simo 的角色是‘contributor’，缺乏明确的领导或核心贡献口径，不足以作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[1]:18fb2e3ea36d",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "objectLabel": "DALL-E",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "DALL-E 是 OpenAI 公司的具体产品，Fidji Simo 的角色是‘contributor’，缺乏明确的领导或核心贡献口径，不足以作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[2]:4d0e3af8d376",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "objectLabel": "Sora",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Sora 是 OpenAI 的一个具体 AI 视频生成模型。Fidji Simo 作为 CEO of Applications，其角色是领导应用层业务，但将单个模型版本作为其个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[3]:a023647a37a3",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT Store",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT Store 是 OpenAI 的一个具体商业平台/市场入口。Fidji Simo 作为 CEO of Applications，其角色是领导应用层业务，但将单个商业平台作为其个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[4]:78904f5537ad",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "objectLabel": "Personal Shopping Agent",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Personal Shopping Agent 是 OpenAI 的一个具体 AI 工具/代理。Fidji Simo 作为 CEO of Applications，其角色是领导应用层业务，但将单个工具作为其个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:People.products[0]:6ad4b604fca8",
+      "person": "Greg Brockman",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ChatGPT 是 OpenAI 公司级产品，Greg Brockman 作为联合创始人兼总裁，其角色是领导公司，而非直接作为该具体产品的“共同创建者”。将具体产品版本归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:People.products[1]:877d86338037",
+      "person": "Greg Brockman",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 公司级模型产品，Greg Brockman 作为联合创始人兼总裁，其角色是领导公司，而非直接作为该具体模型的“共同创建者”。将具体模型版本归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:People.products[2]:8d5f710740a6",
+      "person": "Greg Brockman",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codex",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Codex 是 OpenAI 公司级模型产品，Greg Brockman 作为联合创始人兼总裁，其角色是领导公司，而非直接作为该具体模型的“负责人”。将具体模型版本归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:People.products[3]:44dedd2f177e",
+      "person": "Greg Brockman",
+      "claimType": "representative_achievement",
+      "objectLabel": "OpenAI API",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "OpenAI API 是 OpenAI 公司级平台产品，Greg Brockman 作为联合创始人兼总裁，其角色是领导公司，而非直接作为该具体 API 的“共同创建者”。将具体 API/SDK 归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:People.products[0]:93b0569c21cd",
+      "person": "Guillaume Lample",
+      "claimType": "representative_achievement",
+      "objectLabel": "Mistral 7B",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Mistral 7B 是 Mistral AI 公司级模型产品，Guillaume Lample 作为联合创始人兼首席科学家，其角色是领导公司，而非直接作为该具体模型的“共同创建者”。将具体模型版本归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:People.products[1]:a918ab81474d",
+      "person": "Guillaume Lample",
+      "claimType": "representative_achievement",
+      "objectLabel": "Mixtral 8x7B",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Mixtral 8x7B 是 Mistral AI 公司级模型产品，Guillaume Lample 作为联合创始人兼首席科学家，其角色是领导公司，而非直接作为该具体模型的“共同创建者”。将具体模型版本归因给个人属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:People.products[2]:c833de9993a6",
+      "person": "Guillaume Lample",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codestral",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Codestral 是 Mistral AI 公司级产品，作为创始人/首席科学家，其领导的是公司整体产品族，而非单个模型版本。将具体模型版本作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:People.products[3]:dc5615cc8764",
+      "person": "Guillaume Lample",
+      "claimType": "representative_achievement",
+      "objectLabel": "XLM",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "XLM 是 Meta AI 的研究项目，Guillaume Lample 是论文作者之一。将具体研究模型作为个人代表成果，且未明确其核心贡献角色（如第一作者），属于过度归因。"
+    },
+    {
+      "claimId": "cmkb1leu90007h7l98w9lsqmm:People.products[1]:a7f76a17708a",
+      "person": "Hamel Husain",
+      "claimType": "representative_achievement",
+      "objectLabel": "AI Evals for Engineers & PMs Course",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AI Evals for Engineers & PMs Course 是 Parlance Labs 推出的具体课程产品。作为创始人，其领导的是公司整体业务，将单个课程产品作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjv6furu0008mfghimpelg81:People.products[1]:0760c7df1c3c",
+      "person": "Han Xiao",
+      "claimType": "representative_achievement",
+      "objectLabel": "PromptPerfect",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "PromptPerfect 是 Jina AI 推出的具体工具产品。作为创始人，其领导的是公司整体产品族，将单个工具产品作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjv6furu0008mfghimpelg81:People.products[2]:27c2cde4e615",
+      "person": "Han Xiao",
+      "claimType": "representative_achievement",
+      "objectLabel": "Jina Embeddings",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Jina Embeddings 是 Jina AI 推出的具体模型产品。作为创始人，其领导的是公司整体产品族，将单个模型产品作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjv6furu0008mfghimpelg81:People.products[3]:255aeed3633f",
+      "person": "Han Xiao",
+      "claimType": "representative_achievement",
+      "objectLabel": "SceneXplain",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "SceneXplain 是 Jina AI 推出的具体平台产品。作为创始人，其领导的是公司整体产品族，将单个平台产品作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:People.products[1]:e0c43f96c605",
+      "person": "Haofan Wang",
+      "claimType": "representative_achievement",
+      "objectLabel": "InstantID",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "InstantID 是一个具体的开源模型，而非公司级产品族。虽然 Haofan Wang 是联合创始人，但将单个模型版本作为个人代表成果，归因层级过低，属于过度归因。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:People.products[2]:f001dc0cc061",
+      "person": "Haofan Wang",
+      "claimType": "representative_achievement",
+      "objectLabel": "InstantStyle",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "InstantStyle 是一个具体的开源模型，而非公司级产品族。虽然 Haofan Wang 是联合创始人，但将单个模型版本作为个人代表成果，归因层级过低，属于过度归因。"
+    },
+    {
+      "claimId": "cmk8gu3w60008j1tn7qe1m7yt:People.products[3]:f9cc2585df83",
+      "person": "Harrison Chase",
+      "claimType": "representative_achievement",
+      "objectLabel": "LangChainJS",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "LangChainJS 是 LangChain 框架的一个具体语言版本（TypeScript/JavaScript），属于单个版本或实现。将其作为创始人 Harrison Chase 的独立代表成果，归因层级过低，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:People.products[0]:05f032ea712f",
+      "person": "Hyung Won Chung",
+      "claimType": "representative_achievement",
+      "objectLabel": "o1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Hyung Won Chung 是 o1 模型的‘foundational contributor’，但 o1 是 OpenAI 的团队产品，将单个模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:People.products[1]:f8ce4c32cb75",
+      "person": "Hyung Won Chung",
+      "claimType": "representative_achievement",
+      "objectLabel": "o1-preview",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "o1-preview 是 o1 模型的一个具体版本，将其作为个人代表成果属于对团队成果的过度归因。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:People.products[2]:2adf1c93e1c8",
+      "person": "Hyung Won Chung",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4o",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4o 是 OpenAI 的团队产品，Hyung Won Chung 的角色是‘contributor’，将单个模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:People.products[3]:acc143e65bcd",
+      "person": "Hyung Won Chung",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codex mini",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称 Hyung Won Chung 领导了 Codex mini 的训练工作，但提供的来源链接是其个人主页，缺乏直接证明其领导角色的可靠证据。"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:People.products[4]:91142c191f32",
+      "person": "Hyung Won Chung",
+      "claimType": "representative_achievement",
+      "objectLabel": "T5X",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "T5X 是 Google 的团队框架，Hyung Won Chung 的角色是‘key contributor’，将单个框架作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:People.products[0]:ffe10286c640",
+      "person": "Ilya Sutskever",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-3 是 OpenAI 的团队产品，Ilya Sutskever 的角色是‘lead’，但将单个模型版本作为个人代表成果归因层级过高，应展示其领导的更广泛项目或研究方向。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:People.products[1]:30c5f8efb418",
+      "person": "Ilya Sutskever",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 的团队产品，Ilya Sutskever 的角色是‘lead’，但将单个模型版本作为个人代表成果归因层级过高，应展示其领导的更广泛项目或研究方向。"
+    },
+    {
+      "claimId": "cmk8gtd9c0001j1tn2k0tcm42:People.products[0]:8f59eef0bdcd",
+      "person": "Jakub Pachocki",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 的团队成果，Jakub Pachocki 的角色是首席科学家，但 claim 将其标注为 'lead'，这不足以将单个模型版本归因为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtd9c0001j1tn2k0tcm42:People.products[1]:739e5f844f2c",
+      "person": "Jakub Pachocki",
+      "claimType": "representative_achievement",
+      "objectLabel": "OpenAI Five",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "OpenAI Five 是 OpenAI 的团队项目，Jakub Pachocki 的角色是首席科学家，但 claim 将其标注为 'lead'，这不足以将单个具体项目归因为个人代表成果。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:People.products[0]:ed494a5421a4",
+      "person": "Jan Leike",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 的团队成果，Jan Leike 的角色是 'contributor'，这不足以将单个模型版本归因为个人代表成果。其贡献描述（对齐、安全）是团队工作的一部分。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:People.products[2]:360ff5abf921",
+      "person": "Jan Leike",
+      "claimType": "representative_achievement",
+      "objectLabel": "Deep RL from Human Preferences",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Deep RL from Human Preferences 是一篇论文（框架），Jan Leike 是 'contributor'，这不足以将单篇论文归因为个人代表成果，除非他是核心作者或负责人。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:People.products[2]:04e49d201426",
+      "person": "Jason Wei",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4o",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4o 是 OpenAI 的具体模型版本，属于团队成果。仅凭 'contributor' 角色不足以将其作为个人代表成果展示，这属于过度归因。"
+    },
+    {
+      "claimId": "cmkb1ll880009h7l92oakzlul:People.products[0]:36ea781b0500",
+      "person": "Jay Alammar",
+      "claimType": "representative_achievement",
+      "objectLabel": "Cohere Platform",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Cohere Platform 是公司级的商业 API 平台，属于团队和公司成果。仅凭 'contributor' 角色不足以支撑其作为个人代表成果。"
+    },
+    {
+      "claimId": "cmkb1ll880009h7l92oakzlul:People.products[1]:0316452c9894",
+      "person": "Jay Alammar",
+      "claimType": "representative_achievement",
+      "objectLabel": "Cohere Rerank",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Cohere Rerank 是公司级的具体工具/服务，属于团队成果。仅凭 'contributor' 角色不足以支撑其作为个人代表成果。"
+    },
+    {
+      "claimId": "cmkb1ll880009h7l92oakzlul:People.products[2]:0897cd4a41be",
+      "person": "Jay Alammar",
+      "claimType": "representative_achievement",
+      "objectLabel": "Cohere Toolkit",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Cohere Toolkit 是公司级的开发工具包，属于团队成果。仅凭 'contributor' 角色不足以支撑其作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtaq40000j1tnpj0p90jh:People.products[0]:f84cb881c36e",
+      "person": "Jerry Tworek",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "needs_source",
+      "reason": "GPT-4 是 OpenAI 的具体模型版本，属于团队成果。'lead' 角色描述模糊，且未提供具体领导范围证明，不足以支撑其作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtaq40000j1tnpj0p90jh:People.products[1]:f9b659b38051",
+      "person": "Jerry Tworek",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ChatGPT 是 OpenAI 的旗舰产品，但将其作为个人代表成果展示，即使标注了“lead”角色，也属于将公司级产品过度归因给个人。缺乏具体证据证明其个人领导作用。"
+    },
+    {
+      "claimId": "cmk8gtaq40000j1tnpj0p90jh:People.products[2]:e4dc9d4f67c4",
+      "person": "Jerry Tworek",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codex",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Codex 是 OpenAI 的一个具体模型/产品。将其作为个人代表成果，即使标注“lead”，也属于将团队成果过度归因。缺乏其个人核心贡献的直接证据。"
+    },
+    {
+      "claimId": "cmk8gtaq40000j1tnpj0p90jh:People.products[3]:eb9df69e8d22",
+      "person": "Jerry Tworek",
+      "claimType": "representative_achievement",
+      "objectLabel": "o1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "o1 是 OpenAI 的一个具体模型版本。将其作为个人代表成果，即使标注“lead”，也属于将具体模型版本过度归因给个人。缺乏其个人核心领导作用的直接证据。"
+    },
+    {
+      "claimId": "cmk8gtaq40000j1tnpj0p90jh:People.products[4]:76c98d1a590f",
+      "person": "Jerry Tworek",
+      "claimType": "representative_achievement",
+      "objectLabel": "o3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "o3 是 OpenAI 的一个具体模型版本。将其作为个人代表成果，即使标注“lead”，也属于将具体模型版本过度归因给个人。缺乏其个人核心领导作用的直接证据。"
+    },
+    {
+      "claimId": "cmjwtn23i00056qvt25cav9oa:People.products[2]:99c87fe8c236",
+      "person": "John Giannandrea",
+      "claimType": "representative_achievement",
+      "objectLabel": "Apple Neural Engine",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Apple Neural Engine 是 Apple Silicon 中的硬件加速器。将其作为个人代表成果，即使标注“contributor”，也属于将硬件团队成果过度归因给个人。描述中的归因较模糊。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:People.products[2]:e5d3d07f7169",
+      "person": "John Schulman",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ChatGPT 是 OpenAI 的商业产品，John Schulman 的贡献是参与其核心技术研发，但作为“contributor”将整个产品平台列为个人代表成果层级过高，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:People.products[3]:c193767285e2",
+      "person": "John Schulman",
+      "claimType": "representative_achievement",
+      "objectLabel": "Claude",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude 是 Anthropic 的商业产品，John Schulman 作为“contributor”参与研发，但将整个产品平台列为个人代表成果层级过高，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "4fbc2ee6-3d34-4b6f-8a18-147b409e96ac:People.products[0]:f26c6fcbbb3b",
+      "person": "Junyang Lin",
+      "claimType": "representative_achievement",
+      "objectLabel": "Qwen",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Junyang Lin 的职位是“前 Qwen 技术负责人”，但 claim 中未明确其个人贡献角色（如负责人、核心开发者）。需要来源确认其具体领导或核心贡献角色，以判断是否足以支撑作为个人代表成果。"
+    },
+    {
+      "claimId": "9ea8342a-8bf5-4a16-8b1b-a42e0ce4c4f7:People.products[0]:d8cec12a960b",
+      "person": "Liam Fedus",
+      "claimType": "representative_achievement",
+      "objectLabel": "Switch Transformer",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Switch Transformer 是 Google Research 的论文，但 claim 中未明确 Liam Fedus 的个人贡献角色（如第一作者、核心贡献者）。需要来源确认其具体贡献，以判断是否足以支撑作为个人代表成果。"
+    },
+    {
+      "claimId": "cmkb1lswc000ah7l9krrnshmc:People.products[3]:73abadda1305",
+      "person": "Louis-François Bouchard",
+      "claimType": "representative_achievement",
+      "objectLabel": "start-machine-learning",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "Louis-François Bouchard 在开源项目 start-machine-learning 中的角色是贡献者，而非核心创建者或负责人，不足以支撑其作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:People.products[1]:303f6dac7b80",
+      "person": "Lukasz Kaiser",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "Lukasz Kaiser 在 GPT-4 中的角色是贡献者，这是一个大型团队成果，将单个模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtn1i000046qvtb4epssr5:People.products[0]:8aadb7ea40eb",
+      "person": "Marc Benioff",
+      "claimType": "representative_achievement",
+      "objectLabel": "Einstein",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Einstein 是 Salesforce 公司级 AI 平台产品族，作为创始人可以展示其领导的公司产品，但具体平台（如 Einstein）是团队成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtn1i000046qvtb4epssr5:People.products[1]:b999e6bc6e71",
+      "person": "Marc Benioff",
+      "claimType": "representative_achievement",
+      "objectLabel": "Agentforce",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Agentforce 是 Salesforce 公司级 AI 代理平台，作为创始人可以展示其领导的公司产品，但具体平台是团队成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtn1i000046qvtb4epssr5:People.products[2]:0f1b261f4c21",
+      "person": "Marc Benioff",
+      "claimType": "representative_achievement",
+      "objectLabel": "Data 360 (formerly Data Cloud)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Data 360 是 Salesforce 公司级数据平台，作为创始人可以展示其领导的公司产品，但具体平台是团队成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjv6furu0007mfghx9at95m7:People.products[0]:1360ba067e38",
+      "person": "Marian Croak",
+      "claimType": "representative_achievement",
+      "objectLabel": "Voice over IP (VoIP)",
+      "verdict": "over_attributed",
+      "action": "needs_source",
+      "reason": "VoIP 是一项广泛的技术，Marian Croak 在 AT&T/Bell Labs 担任领导角色，但将其作为个人代表成果可能过度归因，需要更具体的个人贡献证据。"
+    },
+    {
+      "claimId": "cmk8gtjqg0002j1tn8c1p2bee:People.products[0]:18a640d7f658",
+      "person": "Mark Chen",
+      "claimType": "representative_achievement",
+      "objectLabel": "DALL-E",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Mark Chen 是 OpenAI 首席研究官，但 DALL-E 是团队开发的模型，需要证据证明他作为‘lead’的具体领导角色。"
+    },
+    {
+      "claimId": "cmk8gtjqg0002j1tn8c1p2bee:People.products[1]:71cda28e6af5",
+      "person": "Mark Chen",
+      "claimType": "representative_achievement",
+      "objectLabel": "DALL-E 2",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Mark Chen 是 OpenAI 首席研究官，但 DALL-E 2 是团队开发的模型，需要证据证明他作为‘lead’的具体领导角色。"
+    },
+    {
+      "claimId": "cmk8gtjqg0002j1tn8c1p2bee:People.products[2]:53dab62cd28f",
+      "person": "Mark Chen",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codex",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Codex 是 OpenAI 的一个具体模型版本，用于驱动 GitHub Copilot。作为首席研究官，其领导角色可能涵盖更广泛的项目，但将单个模型版本作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmk8gtjqg0002j1tn8c1p2bee:People.products[3]:808fb1081a8d",
+      "person": "Mark Chen",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4 Vision",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 Vision 是 GPT-4 的一个具体多模态版本。作为首席研究官，其领导角色可能涵盖更广泛的项目，但将单个模型版本作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmk8gtjqg0002j1tn8c1p2bee:People.products[4]:acb3b49a4784",
+      "person": "Mark Chen",
+      "claimType": "representative_achievement",
+      "objectLabel": "o1 reasoning models",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "o1 reasoning models 是 OpenAI 的一个具体模型系列。作为首席研究官，其领导角色可能涵盖更广泛的项目，但将单个模型系列作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmk8gtjqg0002j1tn8c1p2bee:People.products[5]:c8cfa03d6c46",
+      "person": "Mark Chen",
+      "claimType": "representative_achievement",
+      "objectLabel": "Image GPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Image GPT 是 OpenAI 的一个具体模型。作为首席研究官，其领导角色可能涵盖更广泛的项目，但将单个模型作为个人代表成果，归因层级过高。且“contributor”角色过于宽泛，不足以支撑代表成果。"
+    },
+    {
+      "claimId": "cmjwtipll0000fvaejh6rd1u4:People.products[1]:2ade85e2a964",
+      "person": "Matthew Prince",
+      "claimType": "representative_achievement",
+      "objectLabel": "Replicate",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "Replicate 是一个独立的 AI 平台公司，被 Cloudflare 收购。Matthew Prince 作为 Cloudflare 的创始人/CEO，对 Replicate 的贡献角色是“contributor”，这过于宽泛且不足以支撑其作为个人代表成果。收购后的整合工作属于公司业务，而非个人核心成就。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:People.products[0]:ee0505201947",
+      "person": "Mira Murati",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Mira Murati 在 OpenAI 担任 CTO，但 ChatGPT 是一个具体的产品/平台，而非她个人领导的整个产品族。将单个产品直接归为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:People.products[1]:c95edd95d4a6",
+      "person": "Mira Murati",
+      "claimType": "representative_achievement",
+      "objectLabel": "DALL-E",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DALL-E 是 OpenAI 的一个具体模型产品。Mira Murati 作为 CTO 可能参与领导，但将单个模型版本直接列为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:People.products[2]:e7e20ec7d2ac",
+      "person": "Mira Murati",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 的一个具体模型版本。Mira Murati 作为 CTO 可能参与领导，但将单个模型版本直接列为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:People.products[3]:77333ea6a0d0",
+      "person": "Mira Murati",
+      "claimType": "representative_achievement",
+      "objectLabel": "Sora",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Sora 是 OpenAI 的一个具体模型产品。Mira Murati 作为 CTO 可能参与领导，但将单个模型版本直接列为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:People.products[4]:63e8a72b4578",
+      "person": "Mira Murati",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codex",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Codex 是 OpenAI 的一个具体模型产品。Mira Murati 作为 CTO 可能参与领导，但将单个模型版本直接列为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:People.products[2]:15992d97a8e4",
+      "person": "Mustafa Suleyman",
+      "claimType": "representative_achievement",
+      "objectLabel": "Inflection-2.5",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Inflection-2.5 是 Inflection AI 公司的具体模型版本。作为联合创始人，展示其领导的公司级产品族（如 Inflection AI）是合适的，但将单个模型版本作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "1295afc9-cc97-47ae-baf9-589ece0469a4:People.products[0]:7430a93f7661",
+      "person": "Noam Brown",
+      "claimType": "representative_achievement",
+      "objectLabel": "o1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "o1 是 OpenAI 的一个具体推理模型。Noam Brown 是推理研究负责人，但将单个模型版本作为个人代表成果属于过度归因。应展示其领导的推理研究方向或项目。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:People.products[1]:c38fcab92198",
+      "person": "Oriol Vinyals",
+      "claimType": "representative_achievement",
+      "objectLabel": "AlphaFold",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AlphaFold 是 Google DeepMind 的一个大型团队项目。Oriol Vinyals 的角色是‘contributor’（贡献者），这通常不足以支撑将其作为个人代表成果。应展示其领导或作为核心作者的项目。"
+    },
+    {
+      "claimId": "cmjtv37mu000gi004uo73uum0:People.products[0]:9b801b40626b",
+      "person": "Quoc Le",
+      "claimType": "representative_achievement",
+      "objectLabel": "AutoML",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AutoML 是谷歌云的一个平台/产品线，Quoc Le 是研究员，其角色为“lead”可能指研究领导，但将整个公司级产品平台归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjtv37mu000gi004uo73uum0:People.products[3]:4109a919c20c",
+      "person": "Quoc Le",
+      "claimType": "representative_achievement",
+      "objectLabel": "Gemini",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Gemini 是 Google DeepMind 的机构级产品，作为“contributor”角色不足以支撑其作为个人代表成果。这属于团队成果过度归因给个人。"
+    },
+    {
+      "claimId": "cmjwtn3c600076qvt4mhi18na:People.products[1]:382cc59036f0",
+      "person": "Raquel Urtasun",
+      "claimType": "representative_achievement",
+      "objectLabel": "Waabi Driver",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "Waabi Driver 是 Waabi 公司旗下的一个具体 AI 模型产品。作为创始人，展示公司级产品族（Waabi）是合适的，但将具体模型版本作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjwtn3c600076qvt4mhi18na:People.products[2]:c91865de70bd",
+      "person": "Raquel Urtasun",
+      "claimType": "representative_achievement",
+      "objectLabel": "Waabi World",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "Waabi World 是 Waabi 公司旗下的一个具体工具产品。作为创始人，展示公司级产品族（Waabi）是合适的，但将具体工具产品作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjv6furu000pmfghv7drjtak:People.products[2]:cfb6ac6f3efd",
+      "person": "Richard Socher",
+      "claimType": "representative_achievement",
+      "objectLabel": "ARI",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "ARI 是 You.com 公司旗下的一个具体服务产品。作为创始人，展示公司级产品族（You.com）是合适的，但将具体服务产品作为个人代表成果属于过度归因。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:People.products[0]:f23057604244",
+      "person": "Sam Altman",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGPT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ChatGPT 是 OpenAI 的一个具体产品。Sam Altman 是 OpenAI 的 CEO，但作为“founder”角色展示具体产品版本属于过度归因。应展示其领导的公司级产品族（如 OpenAI）或更宽泛的领域。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:People.products[1]:a0e86425bd59",
+      "person": "Sam Altman",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 公司级产品，Sam Altman 作为创始人/CEO 可以展示其领导的公司产品族，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:People.products[2]:8b9bb53ae104",
+      "person": "Sam Altman",
+      "claimType": "representative_achievement",
+      "objectLabel": "DALL-E 3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DALL-E 3 是 OpenAI 公司级产品，Sam Altman 作为创始人/CEO 可以展示其领导的公司产品族，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:People.products[3]:392465e1b52f",
+      "person": "Sam Altman",
+      "claimType": "representative_achievement",
+      "objectLabel": "Sora",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Sora 是 OpenAI 公司级产品，Sam Altman 作为创始人/CEO 可以展示其领导的公司产品族，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:People.products[4]:1eba37a51419",
+      "person": "Sam Altman",
+      "claimType": "representative_achievement",
+      "objectLabel": "OpenAI API",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "OpenAI API 是公司级平台/商业入口，Sam Altman 作为创始人/CEO 可以展示其领导的公司产品族，但具体 API/SDK 不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtnrs0003j1tnxgp9scm3:People.products[1]:0be387e74350",
+      "person": "Sam McCandlish",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-2",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-2 是 OpenAI 公司级产品，Sam McCandlish 作为 Research Lead 可以展示其参与的项目，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtnrs0003j1tnxgp9scm3:People.products[2]:3d39680b7087",
+      "person": "Sam McCandlish",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-3 是 OpenAI 公司级产品，Sam McCandlish 作为 Research Lead 可以展示其参与的项目，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtnrs0003j1tnxgp9scm3:People.products[3]:5d8637c86423",
+      "person": "Sam McCandlish",
+      "claimType": "representative_achievement",
+      "objectLabel": "Reinforcement Learning from Human Feedback (RLHF)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "RLHF 是 OpenAI 公司级研究方法/框架，Sam McCandlish 作为贡献者可以展示其参与，但具体技术框架不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmkb1kqmm0000h7l9aopl15vr:People.products[0]:522a3486da46",
+      "person": "Sergey Levine",
+      "claimType": "representative_achievement",
+      "objectLabel": "RTX",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "RTX是一个由多个机构合作的大型项目，人物角色仅为‘contributor’。将整个项目作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:People.products[1]:44259c2a9506",
+      "person": "Shane Legg",
+      "claimType": "representative_achievement",
+      "objectLabel": "Google DeepMind",
+      "verdict": "over_attributed",
+      "action": "needs_source",
+      "reason": "Google DeepMind是一个大型研究机构，人物角色‘chief AGI scientist’是高级职位，但将整个机构作为个人代表成果，归因层级可能过高。需要确认其是否为该机构的最高领导层或核心创始人。"
+    },
+    {
+      "claimId": "05890706-c071-4c25-b406-fe2ff2c6b59d:People.products[0]:ae332e607142",
+      "person": "Shengjia Zhao",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4 / o1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4/o1是OpenAI的旗舰模型产品，属于团队成果。人物角色未明确，仅说明‘研究贡献’，缺乏具体的个人领导或核心贡献口径，将其作为个人代表成果归因不当。"
+    },
+    {
+      "claimId": "05890706-c071-4c25-b406-fe2ff2c6b59d:People.products[1]:19d20d6cf1ba",
+      "person": "Shengjia Zhao",
+      "claimType": "representative_achievement",
+      "objectLabel": "Meta Superintelligence Labs",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Meta Superintelligence Labs 是一个机构级研究组织，而非个人领导或创建的具体产品。将整个实验室作为个人代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjwtis2t0003fvae8pm58dp0:People.products[1]:b8ba2f1dc4de",
+      "person": "Strive Masiyiwa",
+      "claimType": "representative_achievement",
+      "objectLabel": "Cassava AI Multi-Model Exchange (CAIMEx)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Cassava AI Multi-Model Exchange (CAIMEx) 是公司旗下的一个具体平台或产品，而非公司级产品族。作为创始人，将其作为个人代表成果层级过细，属于过度归因。"
+    },
+    {
+      "claimId": "cmjwtis2t0003fvae8pm58dp0:People.products[2]:34f82e88eab4",
+      "person": "Strive Masiyiwa",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPU-as-a-Service (GPUaaS)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPU-as-a-Service (GPUaaS) 是公司的一项具体服务，而非公司级产品族。作为创始人，将其作为个人代表成果层级过细，属于过度归因。"
+    },
+    {
+      "claimId": "cmkb1m43s000dh7l9umnfwgco:People.products[5]:4a952d2f90e2",
+      "person": "Tianqi Chen",
+      "claimType": "representative_achievement",
+      "objectLabel": "FlashInfer",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "FlashInfer 是一个开源协作项目，Tianqi Chen 的角色是贡献者（contributor），不足以作为其个人代表成果展示。"
+    },
+    {
+      "claimId": "0c0739ab-c1a9-47de-9f7f-229500a371ef:People.products[0]:80c3b7d6e62c",
+      "person": "Tim Brooks",
+      "claimType": "representative_achievement",
+      "objectLabel": "Sora",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Sora 是 OpenAI 的公司级产品，Tim Brooks 是 Google DeepMind 的团队负责人，未提供其在 Sora 项目中的具体个人贡献角色（如项目负责人、核心作者）。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:People.products[0]:303f6dac7b80",
+      "person": "Wojciech Zaremba",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4 是 OpenAI 公司级的大型产品，Wojciech Zaremba 作为 Co-founder 和 contributor 的角色，不足以将其作为个人代表成果展示，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmkb1lzay000ch7l9ddgrfbmn:People.products[0]:88a5bc628b2a",
+      "person": "Yann Dubois",
+      "claimType": "representative_achievement",
+      "objectLabel": "OpenAI o1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "OpenAI o1 是 OpenAI 公司级的前沿模型，Yann Dubois 作为 contributor 的角色，不足以将其作为个人代表成果展示，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:People.products[0]:a5e1257bb6fb",
+      "person": "Yann LeCun",
+      "claimType": "representative_achievement",
+      "objectLabel": "PyTorch",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "PyTorch 是 Meta AI 的团队项目，Yann LeCun 作为 VP & Chief AI Scientist 可能有领导或贡献，但 'contributor' 角色过于宽泛，不足以将其作为个人代表成果展示。这属于机构级产品过度归因。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:People.products[1]:50224108f8d9",
+      "person": "Yann LeCun",
+      "claimType": "representative_achievement",
+      "objectLabel": "Llama 3",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Llama 3 是 Meta AI 的团队产品，Yann LeCun 作为 VP & Chief AI Scientist 可能有领导或贡献，但 'contributor' 角色不足以支撑其作为个人代表成果。这属于具体模型版本过度归因。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:People.products[2]:e87272df2b5b",
+      "person": "Yann LeCun",
+      "claimType": "representative_achievement",
+      "objectLabel": "Meta AI",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Meta AI 是 Meta 的 AI 助手产品，属于公司级业务入口。Yann LeCun 作为 VP & Chief AI Scientist 可能有领导或贡献，但 'contributor' 角色不足以将其作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:People.products[1]:ffca3ce989fb",
+      "person": "Yoshua Bengio",
+      "claimType": "representative_achievement",
+      "objectLabel": "GAN",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GAN（生成对抗网络）是 Ian Goodfellow 等人提出的，Yoshua Bengio 是论文作者之一，但 'contributor' 角色过于宽泛。作为共同作者，可以展示，但需要更精确的口径（如 'co-author'）。"
+    },
+    {
+      "claimId": "cmjv6furu0005mfghkppozqo8:People.products[1]:2f78d14aa199",
+      "person": "Zoubin Ghahramani",
+      "claimType": "representative_achievement",
+      "objectLabel": "Google Brain",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Google Brain 是 Google 的大型研究团队，Zoubin Ghahramani 担任 VP of Research，但 'lead' 角色可能过于宽泛。作为高级领导，可以展示，但需要更精确的口径（如 'VP of Research'）。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:People.products[0]:277a53d0af32",
+      "person": "乔尔·皮诺",
+      "claimType": "representative_achievement",
+      "objectLabel": "Llama",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Llama是Meta FAIR团队的系列模型，将整个产品族归因给个人“lead”角色过于宽泛，可能过度归因。"
+    },
+    {
+      "claimId": "cmk9vntqv0006azb957fpcc3f:People.products[0]:a74a1842ad8b",
+      "person": "乔恩·巴伦",
+      "claimType": "representative_achievement",
+      "objectLabel": "Lens Blur",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Lens Blur是Google Camera的一个功能特性，将具体产品功能作为个人代表成果，归因层级过低。"
+    },
+    {
+      "claimId": "cmk9vntqv0006azb957fpcc3f:People.products[1]:e2dcc2d98778",
+      "person": "乔恩·巴伦",
+      "claimType": "representative_achievement",
+      "objectLabel": "HDR+",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "HDR+是Google相机的一个具体计算摄影系统，将具体产品功能作为个人代表成果，归因层级过低。"
+    },
+    {
+      "claimId": "cmk9vntqv0006azb957fpcc3f:People.products[2]:090b7ebb1a20",
+      "person": "乔恩·巴伦",
+      "claimType": "representative_achievement",
+      "objectLabel": "Jump",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Jump 是 Google 的一个具体产品/系统，人物角色仅为 contributor，属于团队成果，不适合作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmk9vntqv0006azb957fpcc3f:People.products[3]:cff24a917670",
+      "person": "乔恩·巴伦",
+      "claimType": "representative_achievement",
+      "objectLabel": "Portrait Mode",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Portrait Mode 是 Google Camera 的一个功能特性，人物角色仅为 contributor，属于团队成果，不适合作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:People.products[2]:7dc254cd99d4",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "representative_achievement",
+      "objectLabel": "SAM 3D",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "SAM 3D 被描述为乔治亚·吉奥克萨里 lead 的模型，但缺乏足够证据证明其领导角色，且该模型可能属于团队成果。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:People.products[3]:5b92b115d62d",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "representative_achievement",
+      "objectLabel": "PyTorch3D",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "PyTorch3D 是 Meta 的开源库，人物角色仅为 contributor，属于团队成果，不适合作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:People.products[4]:7ba350de13a8",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "representative_achievement",
+      "objectLabel": "Detectron",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Detectron 是 Meta 的对象检测库，人物角色仅为 contributor，属于团队成果，不适合作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:People.products[2]:d0923f49d729",
+      "person": "亚历克·拉德福德",
+      "claimType": "representative_achievement",
+      "objectLabel": "CLIP",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "CLIP是OpenAI的团队研究成果，'co-developer'角色过于宽泛，不足以将其作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:People.products[3]:a055593629e2",
+      "person": "亚历克·拉德福德",
+      "claimType": "representative_achievement",
+      "objectLabel": "Whisper",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Whisper是OpenAI的团队项目，'contributor'角色过于宽泛，不足以将其作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:People.products[4]:a486a03062b3",
+      "person": "亚历克·拉德福德",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-4",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GPT-4是OpenAI的大型团队成果，'architecture research contributor'角色不足以将其作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmjvfbf9f0001lqwqebtiu8qm:People.products[2]:c6a0374b4612",
+      "person": "亚历克斯·克里泽夫斯基",
+      "claimType": "representative_achievement",
+      "objectLabel": "CIFAR-10 and CIFAR-100 datasets",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "CIFAR-10/100数据集是广泛使用的基准，但'lead'角色需要具体来源证明其个人领导作用。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:People.products[0]:f5e947d8d0e6",
+      "person": "凯文·斯科特",
+      "claimType": "representative_achievement",
+      "objectLabel": "GitHub Copilot",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "凯文·斯科特是微软CTO，但GitHub Copilot是GitHub/Microsoft的产品，'leader'角色过于宽泛，缺乏其个人具体领导或创建该产品的直接证据，易被视为公司级产品过度归因。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:People.products[1]:a1387d66a11f",
+      "person": "凯文·斯科特",
+      "claimType": "representative_achievement",
+      "objectLabel": "DeepSpeed",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DeepSpeed是微软的开源库，'leader'角色未明确其个人贡献，作为CTO可能支持，但直接列为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:People.products[2]:70a19948e38b",
+      "person": "凯文·斯科特",
+      "claimType": "representative_achievement",
+      "objectLabel": "ONNX Runtime",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ONNX Runtime是微软的开源推理引擎，'leader'角色模糊，缺乏其个人直接领导该项目的证据，属于团队或公司级成果过度归因。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:People.products[0]:f12b62dbdaaf",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "representative_achievement",
+      "objectLabel": "Sepsis Detection System",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物角色为'lead'，但Sepsis Detection System是杜克大学医院的系统，需要来源确认其个人在该项目中的具体领导作用，否则可能为团队成果。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:People.products[1]:d59b0f6067f2",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "representative_achievement",
+      "objectLabel": "Surgical Complications Prediction System",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物角色为'lead'，但Surgical Complications Prediction System是杜克大学的系统，需要来源确认其个人在该项目中的具体领导作用。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:People.products[2]:980f0bdf562d",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "representative_achievement",
+      "objectLabel": "Multiple Sclerosis Mobile Study App",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物角色为'lead'，但Multiple Sclerosis Mobile Study App是杜克大学的应用，需要来源确认其个人在该项目中的具体领导作用。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:People.products[4]:cb95afbd4a89",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "representative_achievement",
+      "objectLabel": "EquityMedQA",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "EquityMedQA 是 Google Research 的团队数据集项目，人物角色为 contributor，不足以作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmjvd3d5v0001kvtpdo7mjnhw:People.products[0]:d9c2d9561c69",
+      "person": "利昂·琼斯",
+      "claimType": "representative_achievement",
+      "objectLabel": "Transformer architecture",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "Transformer 架构的论文作者中没有名为 Leon Jones 的人，且其职业背景（音乐家）与AI研究不符，存在严重人名错配。"
+    },
+    {
+      "claimId": "cmjvd5h5e0008kvtpx9afvlid:People.products[3]:dda205aded87",
+      "person": "印奇",
+      "claimType": "representative_achievement",
+      "objectLabel": "ShuffleNet",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ShuffleNet是旷视科技团队研发的深度学习算法，属于具体的算法模型。仅凭创始人身份，将单个算法模型作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjvd5h5e0008kvtpx9afvlid:People.products[4]:32b9109296ad",
+      "person": "印奇",
+      "claimType": "representative_achievement",
+      "objectLabel": "DorefaNet",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DorefaNet是旷视科技团队研发的深度学习算法，属于具体的算法模型。仅凭创始人身份，将单个算法模型作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjvd5h5e0008kvtpx9afvlid:People.products[5]:ab5e6a8da818",
+      "person": "印奇",
+      "claimType": "representative_achievement",
+      "objectLabel": "RepVGG",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "RepVGG是旷视科技团队研发的深度学习算法，属于具体的算法模型。仅凭创始人身份，将单个算法模型作为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjvd5h5e0008kvtpx9afvlid:People.products[6]:dc17f06289aa",
+      "person": "印奇",
+      "claimType": "representative_achievement",
+      "objectLabel": "千里浩瀚 G-ASD (Geely Afari Smart Driving)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "千里浩瀚G-ASD是千里智驾与吉利合作的智能驾驶解决方案。印奇是千里智驾的创始人，但该产品是具体的合作项目/解决方案，且涉及另一家公司（吉利），作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.products[0]:c727c924d159",
+      "person": "吉姆·范",
+      "claimType": "representative_achievement",
+      "objectLabel": "Voyager",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Voyager是OpenAI团队研发的AI智能体。吉姆·范是斯坦福大学研究员，其角色为‘spearheaded’（领导/推动），但该成果属于OpenAI机构。将机构级项目成果直接归为个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.products[1]:2d098b6c7c92",
+      "person": "吉姆·范",
+      "claimType": "representative_achievement",
+      "objectLabel": "MineDojo",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "MineDojo 是 OpenAI 的研究项目，吉姆·范的角色为 spearheaded，但缺少具体来源证明其个人领导或核心贡献。NeurIPS 2022 杰出论文奖可能属于团队，需确认个人贡献。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.products[2]:c71195bd23a2",
+      "person": "吉姆·范",
+      "claimType": "representative_achievement",
+      "objectLabel": "Eureka",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Eureka 是 NVIDIA 的 AI 模型，吉姆·范的角色为 spearheaded，但缺少来源证明其个人领导或核心贡献。该模型可能属于团队成果。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.products[3]:0bb0848e05a0",
+      "person": "吉姆·范",
+      "claimType": "representative_achievement",
+      "objectLabel": "VIMA",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "VIMA 是 NVIDIA 的多模态基础模型，吉姆·范的角色为 spearheaded，但缺少来源证明其个人领导或核心贡献。该模型可能属于团队成果。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.products[4]:11212ef4dd53",
+      "person": "吉姆·范",
+      "claimType": "representative_achievement",
+      "objectLabel": "GR00T",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GR00T 是 NVIDIA 的旗舰项目，吉姆·范的角色为 lead，但缺少来源证明其个人领导或核心贡献。该项目属于 GEAR 团队，需确认个人角色。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.products[5]:6ca8059e2cfe",
+      "person": "吉姆·范",
+      "claimType": "representative_achievement",
+      "objectLabel": "GEAR",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "GEAR 是 NVIDIA 的研究团队，吉姆·范的角色为 co-lead，但缺少来源证明其个人领导或核心贡献。团队领导角色需官方确认。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.products[6]:d7d5e572448b",
+      "person": "吉姆·范",
+      "claimType": "representative_achievement",
+      "objectLabel": "World of Bits",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "World of Bits 是 OpenAI 的 AI 代理项目，吉姆·范的角色为 contributor，但缺少来源证明其具体贡献。贡献者角色可能过于宽泛。"
+    },
+    {
+      "claimId": "cmjvfb5w00000lqwqatt1bmoy:People.products[1]:f1aa061d5855",
+      "person": "吉滕德拉·马利克",
+      "claimType": "representative_achievement",
+      "objectLabel": "Rapid Motor Adaptation (RMA)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Rapid Motor Adaptation (RMA) 是 UC Berkeley 的 AI 工具，吉滕德拉·马利克的角色为 creator，但缺少具体来源证明其个人创建或核心贡献。需确认论文作者或项目领导。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:People.products[1]:6322ef7f7724",
+      "person": "唐杰",
+      "claimType": "representative_achievement",
+      "objectLabel": "ChatGLM",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ChatGLM是智谱AI公司的产品系列，唐杰作为联合创始人（co-creator）可以展示其领导或参与，但“ChatGLM”本身是一个具体的模型系列名称，更偏向于公司级产品，而非个人直接创造的单一成果。建议展示为“智谱AI大模型”等更宽泛的口径。"
+    },
+    {
+      "claimId": "cmjtxdvoh000d5p08r4ygmu04:People.products[0]:6723293315be",
+      "person": "埃里克·霍维茨",
+      "claimType": "representative_achievement",
+      "objectLabel": "Aether Committee",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "埃里克·霍维茨作为微软首席科学官，其创立Aether委员会的角色可信，但提供的来源提示为空，缺少具体证据支持其“创始人”身份。"
+    },
+    {
+      "claimId": "cmjtxdvoh000d5p08r4ygmu04:People.products[1]:a591d4146268",
+      "person": "埃里克·霍维茨",
+      "claimType": "representative_achievement",
+      "objectLabel": "One Hundred Year Study on AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "埃里克·霍维茨是“AI百年研究”的联合创始人之一，但提供的来源提示为空，且该研究由斯坦福大学主导，需要具体证据确认其个人贡献角色。"
+    },
+    {
+      "claimId": "cmk9vm5ln0003azb9hxxnr506:People.products[0]:7cf54b545d70",
+      "person": "吉米·巴",
+      "claimType": "representative_achievement",
+      "objectLabel": "Adam Optimizer",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Adam Optimizer 是 Diederik Kingma 和 Jimmy Ba 共同提出的算法，但将其作为个人代表成果展示，且仅标注为“creator”，可能过度归因。该算法是学术论文成果，非个人领导的产品族或项目。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:People.products[0]:add8301caf45",
+      "person": "周伯文",
+      "claimType": "representative_achievement",
+      "objectLabel": "京东智能供应链平台",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "周伯文在京东云担任领导职务，但“京东智能供应链平台”是京东云的业务平台，将其作为个人代表成果可能过度归因。角色“leader”不够具体，需明确其个人贡献。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:People.products[1]:f516fe9e795d",
+      "person": "周伯文",
+      "claimType": "representative_achievement",
+      "objectLabel": "京东云 (JD Cloud)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "周伯文曾担任京东云总裁，但“京东云”是京东集团的业务板块，将其作为个人代表成果可能过度归因。角色“president”是职位，但平台本身是公司级产品。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:People.products[2]:78d2f7d62571",
+      "person": "周伯文",
+      "claimType": "representative_achievement",
+      "objectLabel": "New Hub",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“New Hub”是京东的AI平台，周伯文作为“creator”可能过度归因。该平台是团队成果，且“creator”角色不够明确，需具体说明其个人贡献。"
+    },
+    {
+      "claimId": "cmjtxdvoh000d5p08r4ygmu04:People.products[3]:5a1c160e41fa",
+      "person": "埃里克·霍维茨",
+      "claimType": "representative_achievement",
+      "objectLabel": "Video Authenticator",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Video Authenticator 是微软公司的工具，将个人角色标注为‘contributor’过于宽泛，缺乏具体领导或核心贡献证据，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjvd3qrm0002kvtppziawz5i:People.products[1]:0130b2ae906d",
+      "person": "塞巴斯蒂安·布贝克",
+      "claimType": "representative_achievement",
+      "objectLabel": "Orca series (Orca, Orca 2)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Orca 系列是微软研究院的团队项目，将个人角色标注为‘contributor’过于宽泛，缺乏具体领导或核心贡献证据，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmk9w1bkq000elbppgqbjqu0h:People.products[0]:0a5bde7523e7",
+      "person": "塞缪尔·瑞安·鲍曼",
+      "claimType": "representative_achievement",
+      "objectLabel": "Claude",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude 是 Anthropic 公司的核心产品，将个人角色标注为‘contributor’过于宽泛，缺乏具体领导或核心贡献证据，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmk9w2ptg000mlbpp7qeuope0:People.products[0]:4b96565a8c10",
+      "person": "大卫·洛佩兹-帕兹",
+      "claimType": "representative_achievement",
+      "objectLabel": "DomainBed",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DomainBed 是 Meta FAIR 的团队项目，将个人角色标注为‘contributor’过于宽泛，缺乏具体领导或核心贡献证据，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmk9w2ptg000mlbpp7qeuope0:People.products[1]:504ca002e39e",
+      "person": "大卫·洛佩兹-帕兹",
+      "claimType": "representative_achievement",
+      "objectLabel": "Meta Lingua",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Meta Lingua 是 Meta 的团队项目，将个人角色标注为‘contributor’过于宽泛，缺乏具体领导或核心贡献证据，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:People.products[0]:354b94656463",
+      "person": "姚顺雨",
+      "claimType": "representative_achievement",
+      "objectLabel": "Operator",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Operator 是 OpenAI 的公司级产品，作为 Researcher 的 'contributor' 角色不足以支撑其作为个人代表成果。这属于团队成果过度归因给个人。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:People.products[1]:130c278ebd80",
+      "person": "姚顺雨",
+      "claimType": "representative_achievement",
+      "objectLabel": "Deep Research",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Deep Research 是 OpenAI 的公司级产品，作为 Researcher 的 'contributor' 角色不足以支撑其作为个人代表成果。这属于团队成果过度归因给个人。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:People.products[2]:c4a1b0a307c0",
+      "person": "姚顺雨",
+      "claimType": "representative_achievement",
+      "objectLabel": "Computer-using Agent",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Computer-using Agent 是 OpenAI 的公司级产品，作为 Researcher 的 'contributor' 角色不足以支撑其作为个人代表成果。这属于团队成果过度归因给个人。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:People.products[2]:06934991f9e7",
+      "person": "季逸超",
+      "claimType": "representative_achievement",
+      "objectLabel": "Manus",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Manus 是蝴蝶效应/Monica 的公司级产品，季逸超作为 'co-creator' 角色，但缺少足够证据证明其具体贡献。需要来源确认其个人角色。"
+    },
+    {
+      "claimId": "cmjvfc7q50004lqwq80uz63rc:People.products[2]:88a40af7d52f",
+      "person": "张鹏",
+      "claimType": "representative_achievement",
+      "objectLabel": "智谱API / GLM Coding Plan",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "智谱API / GLM Coding Plan是公司的商业API平台和营销入口，属于具体业务入口而非产品族，将其作为CEO个人的代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmk9vp7jo000cazb9n1nhsd2b:People.products[0]:0dc9d9f85dbd",
+      "person": "彼得罗·佩罗纳",
+      "claimType": "representative_achievement",
+      "objectLabel": "Merlin Bird ID",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Merlin Bird ID是康奈尔鸟类学实验室的产品，佩罗纳的贡献是算法开发（contributor），但将其作为个人代表成果归因层级过高，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmk9vp7jo000cazb9n1nhsd2b:People.products[1]:edb93cffbd07",
+      "person": "彼得罗·佩罗纳",
+      "claimType": "representative_achievement",
+      "objectLabel": "iNaturalist",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "iNaturalist是独立平台，佩罗纳的贡献是算法开发（contributor），但将其作为个人代表成果归因层级过高，属于团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:People.products[3]:bfe5c0448db9",
+      "person": "季逸超",
+      "claimType": "representative_achievement",
+      "objectLabel": "Jigsaw",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "季逸超作为Peak Labs创始人，展示其领导的公司级产品Jigsaw是合理的。但描述中缺少具体来源链接，无法验证其作为‘creator’的具体贡献细节。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:People.products[0]:c6ad6ebfb782",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "representative_achievement",
+      "objectLabel": "cuDNN",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "cuDNN是NVIDIA公司级的深度学习库，布莱恩·卡坦扎罗作为应用深度学习研究副总裁，其角色更可能是领导或参与，而非个人‘creator’。将公司级产品归因为个人创建，归因层级错误。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:People.products[1]:37cb0815c3e2",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "representative_achievement",
+      "objectLabel": "DLSS 2.0",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DLSS 2.0是NVIDIA公司的图形技术产品，布莱恩·卡坦扎罗作为副总裁，其角色更可能是领导或参与，而非个人‘lead’。将公司级产品版本归因为个人领导，归因层级错误。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:People.products[2]:cc3f0d0766cd",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "representative_achievement",
+      "objectLabel": "Megatron",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Megatron是NVIDIA公司级的大模型训练框架，布莱恩·卡坦扎罗作为副总裁，其角色更可能是领导或参与，而非个人‘contributor’。将公司级框架归因为个人贡献，归因层级错误。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:People.products[3]:f5657ad78805",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "representative_achievement",
+      "objectLabel": "NeMo Data Curator",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "NeMo Data Curator是NVIDIA公司级的数据工具，布莱恩·卡坦扎罗作为副总裁，其角色更可能是领导或参与，而非个人‘contributor’。将公司级工具归因为个人贡献，归因层级错误。"
+    },
+    {
+      "claimId": "cmk9vuvfw0001klcc8j012sq2:People.products[0]:2c2fa25ea89b",
+      "person": "帕斯卡尔·文森特",
+      "claimType": "representative_achievement",
+      "objectLabel": "I-JEPA",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "帕斯卡尔·文森特作为Meta AI研究总监，领导I-JEPA项目是合理的。但描述中缺少具体来源链接，无法验证其作为‘lead’的具体贡献细节。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:People.products[1]:8cc7be0db4d5",
+      "person": "徐立",
+      "claimType": "representative_achievement",
+      "objectLabel": "SenseTime proprietary deep learning platform",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "徐立的当前身份是《仁心俱乐部》出品人/总制片人，与计算机视觉领域无关。将商汤科技的深度学习平台归因于他，存在人名错配或身份过时问题。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:People.products[4]:64c9d4a0e5cc",
+      "person": "戴文渊",
+      "claimType": "representative_achievement",
+      "objectLabel": "Phancy",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "戴文渊是第四范式创始人，但“Phancy”被归于“范式集团”，且为2025年新业务。需要明确其与第四范式的关系，以及戴文渊在该业务中的具体领导角色证明。"
+    },
+    {
+      "claimId": "cmjvfedau000blqwq5jiqakh8:People.products[2]:aea1364de496",
+      "person": "拉里·佩奇",
+      "claimType": "representative_achievement",
+      "objectLabel": "Google Gemini",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Gemini是谷歌的AI模型产品线，拉里·佩奇的角色是‘contributor’，这过于模糊。作为创始人，他领导公司，但将具体AI模型版本归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjvfedau000blqwq5jiqakh8:People.products[3]:2fee17625ede",
+      "person": "拉里·佩奇",
+      "claimType": "representative_achievement",
+      "objectLabel": "Android",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Android是谷歌收购并发展的移动操作系统，拉里·佩奇的角色是‘contributor’，这过于模糊。作为创始人，他领导公司，但将具体平台产品归为个人代表成果层级过高。"
+    },
+    {
+      "claimId": "cmjvd42bl0003kvtpyayxr48b:People.products[1]:397243121e0d",
+      "person": "斯图尔特·罗素",
+      "claimType": "representative_achievement",
+      "objectLabel": "International Association for Safe and Ethical Artificial Intelligence (IASEAI)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "IASEAI被描述为罗素创立并领导的组织，但缺乏足够来源证实其创始人身份及该组织的具体影响力。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:People.products[1]:56b2e0465ec7",
+      "person": "朱军",
+      "claimType": "representative_achievement",
+      "objectLabel": "Vidu 2.0",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Vidu 2.0是Vidu平台的一个具体模型版本，属于团队成果的迭代，不应作为个人独立的代表成果展示。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:People.products[2]:57d258f4e7e1",
+      "person": "朱军",
+      "claimType": "representative_achievement",
+      "objectLabel": "Vidu Q1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Vidu Q1是Vidu平台的一个具体模型版本，属于团队成果的迭代，不应作为个人独立的代表成果展示。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:People.products[3]:097acf318ed6",
+      "person": "朱军",
+      "claimType": "representative_achievement",
+      "objectLabel": "Vidu MaaS Platform",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Vidu MaaS Platform是Vidu平台的API/SDK服务入口，属于商业产品接口，不应作为个人独立的代表成果展示。"
+    },
+    {
+      "claimId": "cmk9vx3ay000bklccun8po0tb:People.products[0]:e84f953a67f9",
+      "person": "李宏乐",
+      "claimType": "representative_achievement",
+      "objectLabel": "LG AI Research Center (North American Artificial Intelligence Research Center)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "李宏乐是LG AI研究中心的负责人，但该中心是机构级实体，需要明确证据证明其个人在该中心的领导角色和具体贡献。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:People.products[0]:1543e7d1cc85",
+      "person": "李莲",
+      "claimType": "representative_achievement",
+      "objectLabel": "Thinking Machines Lab",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Thinking Machines Lab是李莲作为联合创始人参与的机构，但将其作为个人“代表成果”展示，将机构整体成果过度归因于个人。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:People.products[2]:bf9a858c1ba1",
+      "person": "杰夫·迪恩",
+      "claimType": "representative_achievement",
+      "objectLabel": "MapReduce",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "MapReduce是Google的分布式计算框架，杰夫·迪恩是参与者之一，但将其作为个人代表成果可能过度归因，因为这是团队成果。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:People.products[3]:47995665e50a",
+      "person": "杰夫·迪恩",
+      "claimType": "representative_achievement",
+      "objectLabel": "BigTable",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "BigTable是Google的分布式存储系统，杰夫·迪恩是参与者之一，但将其作为个人代表成果可能过度归因，因为这是团队成果。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:People.products[4]:da0ab598d183",
+      "person": "杰夫·迪恩",
+      "claimType": "representative_achievement",
+      "objectLabel": "Gemini",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Gemini是Google的AI模型，杰夫·迪恩作为首席科学家有领导角色，但将其作为个人代表成果可能过度归因，因为这是公司级产品。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:People.products[4]:1256a525fbc2",
+      "person": "桑达尔·皮查伊",
+      "claimType": "representative_achievement",
+      "objectLabel": "Gemini",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "作为CEO，桑达尔·皮查伊领导谷歌整体业务，但Gemini是谷歌团队开发的AI模型产品族，将具体模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjwswgtl0000gelzb8c58cmk:People.products[0]:96d23bb7085b",
+      "person": "梁文锋",
+      "claimType": "representative_achievement",
+      "objectLabel": "DeepSeek",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "梁文锋被列为DeepSeek创始人，但当前职位信息显示其为HKBU COMP研发人员，与DeepSeek的关联性需要更多来源确认。"
+    },
+    {
+      "claimId": "cmjwswgtl0000gelzb8c58cmk:People.products[1]:330662a32962",
+      "person": "梁文锋",
+      "claimType": "representative_achievement",
+      "objectLabel": "High-Flyer (幻方量化)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "梁文锋被列为幻方量化联合创始人，但当前职位信息显示其为HKBU COMP研发人员，与幻方量化的关联性需要更多来源确认。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:People.products[2]:567f6f68fff0",
+      "person": "汤姆·布朗",
+      "claimType": "representative_achievement",
+      "objectLabel": "OpenAI Gym",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "OpenAI Gym是OpenAI团队开发的工具包，汤姆·布朗作为贡献者角色，将其作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:People.products[3]:6ca2ad0edc34",
+      "person": "汤姆·布朗",
+      "claimType": "representative_achievement",
+      "objectLabel": "OpenAI Universe",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "OpenAI Universe是OpenAI团队开发的平台，汤姆·布朗作为贡献者角色，将其作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:People.products[1]:a7fbac399603",
+      "person": "汤晓鸥",
+      "claimType": "representative_achievement",
+      "objectLabel": "SenseNova (日日新)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "SenseNova是商汤科技的公司级产品体系，作为创始人可以展示其领导的公司产品族，但具体的大模型版本或平台入口不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:People.products[2]:8ff72e1d8919",
+      "person": "汤晓鸥",
+      "claimType": "representative_achievement",
+      "objectLabel": "SenseRobot (元萝卜)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "SenseRobot是商汤科技推出的具体消费级产品，作为创始人可以展示其领导的公司产品线，但单个产品型号不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:People.products[3]:c1618052ca57",
+      "person": "汤晓鸥",
+      "claimType": "representative_achievement",
+      "objectLabel": "SenseAR",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "SenseAR是商汤科技的AR开发者平台，作为创始人可以展示其领导的公司产品线，但具体平台或SDK不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:People.products[2]:03db7d7cadb0",
+      "person": "沈向洋",
+      "claimType": "representative_achievement",
+      "objectLabel": "Microsoft Research Asia",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "微软亚洲研究院是机构级研究实体，沈向洋是创始成员和负责人，但将其作为个人“产品”代表成果归因层级不当。"
+    },
+    {
+      "claimId": "cmk8gu8570009j1tnfxx0l6gw:People.products[0]:13fe5517e77d",
+      "person": "王小川",
+      "claimType": "representative_achievement",
+      "objectLabel": "Baichuan 1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Baichuan 1是百川智能发布的具体模型版本，作为创始人可以展示其领导的公司产品线，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gu8570009j1tnfxx0l6gw:People.products[1]:0b515db53faa",
+      "person": "王小川",
+      "claimType": "representative_achievement",
+      "objectLabel": "Baichuan 2",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Baichuan 2是百川智能发布的具体模型版本，作为创始人可以展示其领导的公司产品线，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gu8570009j1tnfxx0l6gw:People.products[2]:11403c2cec93",
+      "person": "王小川",
+      "claimType": "representative_achievement",
+      "objectLabel": "Baichuan-M1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Baichuan-M1 是百川智能公司级产品，作为创始人可以展示公司产品族，但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gu8570009j1tnfxx0l6gw:People.products[3]:bfb246fcf8f7",
+      "person": "王小川",
+      "claimType": "representative_achievement",
+      "objectLabel": "福棠·百川儿科大模型 (Futang·Baichuan Pediatric Model)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "福棠·百川儿科大模型是百川智能与医院合作的特定产品，作为创始人可以展示公司产品线，但单个合作模型不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmk9vzys20006lbpp7qflw4kt:People.products[1]:98dc7e019494",
+      "person": "理查德·S·泽梅尔",
+      "claimType": "representative_achievement",
+      "objectLabel": "Toronto Paper Matching System",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Toronto Paper Matching System被标注为泽梅尔的代表成果，但缺乏足够证据证明他是该系统的创始人或主要负责人。"
+    },
+    {
+      "claimId": "cmk9vzys20006lbpp7qflw4kt:People.products[2]:6978a688f0b6",
+      "person": "理查德·S·泽梅尔",
+      "claimType": "representative_achievement",
+      "objectLabel": "SmartFinance",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "SmartFinance被标注为泽梅尔的代表成果，但缺乏足够证据证明他是该金融科技公司的创始人或主要负责人。"
+    },
+    {
+      "claimId": "cmk9vzys20006lbpp7qflw4kt:People.products[3]:a36db42e2cdd",
+      "person": "理查德·S·泽梅尔",
+      "claimType": "representative_achievement",
+      "objectLabel": "ARNI (Artificial and Natural Intelligence Institute)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ARNI是哥伦比亚大学/NSF的研究所，泽梅尔作为负责人可以展示其领导角色，但将整个研究所作为个人代表成果可能过度归因。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:People.products[0]:b899b159e3e7",
+      "person": "罗福莉",
+      "claimType": "representative_achievement",
+      "objectLabel": "DeepSeek-V2",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DeepSeek-V2是DeepSeek公司的模型产品，罗福莉作为参与者（contributor）不足以支撑该单个模型版本作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:People.products[1]:f67c8684d59a",
+      "person": "罗福莉",
+      "claimType": "representative_achievement",
+      "objectLabel": "VECO",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "VECO 是 DeepSeek 的多语言预训练模型，但 claim 中仅提及罗福莉 led the development，缺乏具体来源（如论文、官方公告）证明其领导角色。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:People.products[2]:f9a5d4676aff",
+      "person": "罗福莉",
+      "claimType": "representative_achievement",
+      "objectLabel": "Xiaomi MiMo",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Xiaomi MiMo 是小米公司的首个推理大模型，属于公司级产品。罗福莉的角色仅为 contributor，不足以将其作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmk9w1io8000flbpph1qw9gkt:People.products[0]:ac722deaa62f",
+      "person": "胡安·卡洛斯·尼布勒斯",
+      "claimType": "representative_achievement",
+      "objectLabel": "xLAM",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "xLAM 是 Salesforce 的内部大模型家族，属于公司级产品。胡安·卡洛斯·尼布勒斯的角色仅为 contributor，不足以将其作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:People.products[1]:d59c4af7c512",
+      "person": "苏姿丰",
+      "claimType": "representative_achievement",
+      "objectLabel": "MI400 Series",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "MI400 Series 被描述为 2025 年部署的 AI 加速器芯片，但缺乏足够来源证明其存在及苏姿丰的具体领导角色。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:People.products[2]:12df520b9609",
+      "person": "苏姿丰",
+      "claimType": "representative_achievement",
+      "objectLabel": "MI455X",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "MI455X 被描述为旗舰 AI 处理器，但缺乏足够来源证明其存在及苏姿丰的具体领导角色。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:People.products[3]:92837a65881d",
+      "person": "苏姿丰",
+      "claimType": "representative_achievement",
+      "objectLabel": "MI500 Series",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "MI500系列是AMD公司级产品线，作为CEO领导该产品族可以展示，但具体型号（MI500）和未来规划（2027年）属于具体版本/营销口径，归因层级过细。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:People.products[0]:dccf91eac07c",
+      "person": "苏浩",
+      "claimType": "representative_achievement",
+      "objectLabel": "ImageNet",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ImageNet是斯坦福/普林斯顿大学主导的知名数据集，苏浩作为“贡献者”的角色过于宽泛，缺乏具体贡献证据，易被误解为核心创建者。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:People.products[1]:f2ad9e552696",
+      "person": "苏浩",
+      "claimType": "representative_achievement",
+      "objectLabel": "ShapeNet",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ShapeNet是普林斯顿大学主导的3D模型库，苏浩作为“贡献者”的角色过于宽泛，缺乏具体贡献证据，易被误解为核心创建者。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:People.products[2]:a933c0fba9cc",
+      "person": "苏浩",
+      "claimType": "representative_achievement",
+      "objectLabel": "PointNet",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "PointNet是斯坦福大学主导的深度学习模型，苏浩作为“贡献者”的角色过于宽泛，缺乏具体贡献证据，易被误解为核心作者。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:People.products[3]:a2efc6508e3f",
+      "person": "苏浩",
+      "claimType": "representative_achievement",
+      "objectLabel": "SAPIEN",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "SAPIEN是加州大学圣地亚哥分校主导的机器人模拟器，苏浩作为“贡献者”的角色过于宽泛，缺乏具体贡献证据，易被误解为核心创建者。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:People.products[4]:0c8d358d0e85",
+      "person": "苏浩",
+      "claimType": "representative_achievement",
+      "objectLabel": "ManiSkill",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ManiSkill是加州大学圣地亚哥分校主导的机器人基准，苏浩作为“贡献者”的角色过于宽泛，缺乏具体贡献证据，易被误解为核心创建者。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:People.products[0]:3050c7c9a31c",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "representative_achievement",
+      "objectLabel": "Digital Persona",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "谢尔盖·贝隆吉是 Digital Persona 的联合创始人，但给定信息中缺少直接来源文本证明其角色，需要补充证据。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:People.products[1]:521c7459d400",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "representative_achievement",
+      "objectLabel": "Anchovi Labs",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "谢尔盖·贝隆吉是 Anchovi Labs 的联合创始人，但给定信息中缺少直接来源文本证明其角色，需要补充证据。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:People.products[2]:cf50c578bef3",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "representative_achievement",
+      "objectLabel": "Orpix",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "谢尔盖·贝隆吉是 Orpix 的联合创始人，但给定信息中缺少直接来源文本证明其角色，需要补充证据。"
+    },
+    {
+      "claimId": "cmjvg0fes0001tu91i6wz8zno:People.products[2]:81ef9bede302",
+      "person": "贾佳亚",
+      "claimType": "representative_achievement",
+      "objectLabel": "Vonnex",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Vonnex 是贾佳亚团队在港科大开发的机器人，属于团队成果，将其作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjvfe2l0000alqwqnhk4p1am:People.products[0]:6b46e728b70b",
+      "person": "萨提亚·纳德拉",
+      "claimType": "representative_achievement",
+      "objectLabel": "Microsoft Copilot",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Microsoft Copilot 是微软公司级产品，作为CEO，纳德拉领导公司，但将其个人角色标注为‘创始人’不准确，且该产品是具体商业入口，归因层级过高。"
+    },
+    {
+      "claimId": "cmjvfe2l0000alqwqnhk4p1am:People.products[1]:9737a9c35f6f",
+      "person": "萨提亚·纳德拉",
+      "claimType": "representative_achievement",
+      "objectLabel": "Azure OpenAI Service",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Azure OpenAI Service 是微软云平台的具体服务，属于团队和公司级成果。将个人角色标注为‘创始人’不准确，且该服务是具体API/商业入口。"
+    },
+    {
+      "claimId": "cmjvfe2l0000alqwqnhk4p1am:People.products[2]:1d507a94d33b",
+      "person": "萨提亚·纳德拉",
+      "claimType": "representative_achievement",
+      "objectLabel": "Bing Chat",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Bing Chat 是微软搜索引擎的具体功能或产品版本，属于公司级产品。将个人角色标注为‘创始人’不准确，且该产品是具体商业入口。"
+    },
+    {
+      "claimId": "cmjvfe2l0000alqwqnhk4p1am:People.products[3]:69a198169dd8",
+      "person": "萨提亚·纳德拉",
+      "claimType": "representative_achievement",
+      "objectLabel": "GitHub Copilot",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "GitHub Copilot 是GitHub（微软旗下）的具体产品，属于团队和公司级成果。将个人角色标注为‘创始人’不准确，且该产品是具体工具/商业入口。"
+    },
+    {
+      "claimId": "cmk9vn1800004azb9vtrfj590:People.products[1]:ec3f2c9e2850",
+      "person": "蒂姆尼特·格布鲁",
+      "claimType": "representative_achievement",
+      "objectLabel": "AI Fairness 360",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AI Fairness 360 是微软研究院FATE实验室的开源工具，属于团队成果。将个人角色标注为‘contributor’（贡献者）可能过于宽泛，且缺少具体贡献细节，归因层级不够清晰。"
+    },
+    {
+      "claimId": "cmk9w0gti0009lbpp2v1f3pjt:People.products[0]:fc31fa433700",
+      "person": "詹姆斯·马滕斯",
+      "claimType": "representative_achievement",
+      "objectLabel": "Hyper",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Hyper 被描述为一个平台，但缺少足够证据证明詹姆斯·马滕斯是其‘lead’（负责人）。其公开身份是Google DeepMind研究科学家，与此产品关联性不明。"
+    },
+    {
+      "claimId": "cmk9vn8pg0005azb9egtb11gm:People.products[1]:b39afa833866",
+      "person": "贾扬清",
+      "claimType": "representative_achievement",
+      "objectLabel": "TensorFlow",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "TensorFlow是Google Brain团队的大型开源框架，贾扬清作为研究科学家参与贡献，但并非其创建者或核心领导者，将其列为个人代表成果归因过重。"
+    },
+    {
+      "claimId": "cmk9vn8pg0005azb9egtb11gm:People.products[3]:59ddc917eb72",
+      "person": "贾扬清",
+      "claimType": "representative_achievement",
+      "objectLabel": "ONNX",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ONNX是行业协作的开放标准，贾扬清是主要推动者和贡献者之一，但将其列为个人‘创建者’可能过度归因，因为这是多方合作成果。"
+    },
+    {
+      "claimId": "cmk9vn8pg0005azb9egtb11gm:People.products[4]:ddae63fc348b",
+      "person": "贾扬清",
+      "claimType": "representative_achievement",
+      "objectLabel": "PyTorch 1.0",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "PyTorch 1.0是Facebook（Meta）团队的重大版本发布，贾扬清作为联合负责人参与，但将其作为个人代表成果可能过度归因，因为这是团队产品。"
+    },
+    {
+      "claimId": "cmk9vwfkh0008klcct5gvli32:People.products[0]:5151278a7404",
+      "person": "贾斯汀·约翰逊",
+      "claimType": "representative_achievement",
+      "objectLabel": "Motivate AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "贾斯汀·约翰逊是World Labs的联合创始人，但Motivate AI的创始人身份缺乏足够证据支持，可能与其他同名实体混淆。"
+    },
+    {
+      "claimId": "cmjtxcp4w00055p0854gyxgh2:People.products[1]:e5f6cce23395",
+      "person": "贾里德·卡普兰",
+      "claimType": "representative_achievement",
+      "objectLabel": "GPT-3",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "GPT-3是OpenAI的团队成果，卡普兰的角色是‘contributor’，这属于团队成果过度归因给个人，不符合代表成果口径。"
+    },
+    {
+      "claimId": "cmjtxcp4w00055p0854gyxgh2:People.products[2]:870e71c7afd1",
+      "person": "贾里德·卡普兰",
+      "claimType": "representative_achievement",
+      "objectLabel": "Codex",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "Codex是OpenAI的团队成果，卡普兰的角色是‘contributor’，这属于团队成果过度归因给个人，不符合代表成果口径。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:People.products[0]:6778954f24b4",
+      "person": "郑宇怀",
+      "claimType": "representative_achievement",
+      "objectLabel": "Urban Air",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "郑宇怀被标注为Urban Air的‘lead’，但缺少足够证据（如论文、官方页面）来证实其具体领导角色和贡献。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:People.products[1]:f21a037301d7",
+      "person": "郑宇怀",
+      "claimType": "representative_achievement",
+      "objectLabel": "GeoLife",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "郑宇怀被标注为GeoLife的‘lead’，但缺少足够证据（如论文、官方页面）来证实其具体领导角色和贡献。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:People.products[2]:b7c7f660df4a",
+      "person": "郑宇怀",
+      "claimType": "representative_achievement",
+      "objectLabel": "T-Drive",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "郑宇怀被标注为T-Drive的‘lead’，但缺少足够证据（如论文、官方页面）来证实其具体领导角色和贡献。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:People.products[3]:5826049c6f57",
+      "person": "郑宇怀",
+      "claimType": "representative_achievement",
+      "objectLabel": "CityNoise",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "郑宇怀被标注为CityNoise的‘lead’，但缺少足够证据（如论文、官方页面）来证实其具体领导角色和贡献。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:People.products[4]:95284c5e8eed",
+      "person": "郑宇怀",
+      "claimType": "representative_achievement",
+      "objectLabel": "Urban Computing Framework / Xiong'an Intelligent City OS",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物角色为‘lead’，但未提供具体来源证明郑宇怀在京东或雄安新区项目中的领导角色。信息不足，无法判断归因是否准确。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:People.products[5]:c4640573c397",
+      "person": "郑宇怀",
+      "claimType": "representative_achievement",
+      "objectLabel": "Guiyang City Big Data Platform",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物角色为‘lead’，但未提供具体来源证明郑宇怀在贵阳大数据示范项目中的领导角色。信息不足，无法判断归因是否准确。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:People.products[0]:d373e214e982",
+      "person": "闫俊杰",
+      "claimType": "representative_achievement",
+      "objectLabel": "abab 6",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "abab 6 是MiniMax公司的具体模型版本。作为创始人，闫俊杰可以展示其领导的公司级产品族（如MiniMax大模型），但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:People.products[1]:8f355e3fb130",
+      "person": "闫俊杰",
+      "claimType": "representative_achievement",
+      "objectLabel": "abab 6.5",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "abab 6.5 是MiniMax公司的具体模型版本。作为创始人，闫俊杰可以展示其领导的公司级产品族（如MiniMax大模型），但单个模型版本不应作为个人代表成果。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:People.products[6]:78e0b1fac78e",
+      "person": "闫俊杰",
+      "claimType": "representative_achievement",
+      "objectLabel": "MiniMax Agent",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "MiniMax Agent 是公司级产品，作为创始人可展示其领导的产品族，但单个产品入口（Agent）作为个人代表成果归因层级过细。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:People.products[7]:d86564a870f4",
+      "person": "闫俊杰",
+      "claimType": "representative_achievement",
+      "objectLabel": "M1",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "M1 是公司研发的具体模型版本，作为创始人可展示其领导的技术方向，但单个模型版本作为个人代表成果归因层级过细。"
+    },
+    {
+      "claimId": "cmk9w26e5000jlbppfsi84dzz:People.products[0]:c90fc63dfc78",
+      "person": "阿舒托什·萨克塞纳",
+      "claimType": "representative_achievement",
+      "objectLabel": "Katapult",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "阿舒托什·萨克塞纳是 Katapult 的联合创始人，但缺少足够证据证明其个人贡献角色和公司具体业务细节。"
+    },
+    {
+      "claimId": "cmk9w26e5000jlbppfsi84dzz:People.products[1]:722b81463163",
+      "person": "阿舒托什·萨克塞纳",
+      "claimType": "representative_achievement",
+      "objectLabel": "Brain of Things",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "阿舒托什·萨克塞纳是 Brain of Things 的联合创始人，但缺少足够证据证明其个人贡献角色和公司具体业务细节。"
+    },
+    {
+      "claimId": "cmk9w26e5000jlbppfsi84dzz:People.products[2]:3c17b66301ff",
+      "person": "阿舒托什·萨克塞纳",
+      "claimType": "representative_achievement",
+      "objectLabel": "Caspar AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "阿舒托什·萨克塞纳是 Caspar AI 的联合创始人，但缺少足够证据证明其个人贡献角色和公司具体业务细节。"
+    },
+    {
+      "claimId": "cmk9w26e5000jlbppfsi84dzz:People.products[3]:79b9998994a3",
+      "person": "阿舒托什·萨克塞纳",
+      "claimType": "representative_achievement",
+      "objectLabel": "TorqueAGI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "阿舒托什·萨克塞纳是 TorqueAGI 的创始人，但缺少足够证据证明其个人贡献角色和公司具体业务细节。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:People.products[0]:60ec01d20a51",
+      "person": "陈冕",
+      "claimType": "representative_achievement",
+      "objectLabel": "Lovart",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "陈冕是 Lovart AI 的创始人，但缺少足够证据证明其个人贡献角色和产品具体细节。"
+    },
+    {
+      "claimId": "cmjvg0clk0000tu918gyqe858:People.products[0]:13e02a170611",
+      "person": "颜水成",
+      "claimType": "representative_achievement",
+      "objectLabel": "Skywork-13B",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Skywork-13B 是昆仑万维公司的具体模型版本，人物角色为共同创作者，但缺少其个人具体贡献的明确证据，易被视为团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjvg0clk0000tu918gyqe858:People.products[1]:a432392a2ca8",
+      "person": "颜水成",
+      "claimType": "representative_achievement",
+      "objectLabel": "Tiangong AI Search",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Tiangong AI Search 是昆仑万维公司的具体产品入口，人物角色为贡献者，但缺少其个人具体贡献的明确证据，易被视为公司业务成果过度归因。"
+    },
+    {
+      "claimId": "cmjvg0clk0000tu918gyqe858:People.products[2]:b779d9a0a68e",
+      "person": "颜水成",
+      "claimType": "representative_achievement",
+      "objectLabel": "Tiangong 3.5",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Tiangong 3.5 是昆仑万维公司的具体模型版本，人物角色为贡献者，但缺少其个人具体贡献的明确证据，易被视为团队成果过度归因。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:People.products[0]:89f789b476b1",
+      "person": "马克·扎克伯格",
+      "claimType": "representative_achievement",
+      "objectLabel": "Meta AI",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Meta AI 是Meta公司的具体产品/服务，人物角色为共同创作者，但作为CEO，其贡献更偏向领导公司级产品族，而非具体产品的共同创造。此归因层级不准确。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:People.products[1]:232bbb212dcc",
+      "person": "马克·扎克伯格",
+      "claimType": "representative_achievement",
+      "objectLabel": "Llama",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Llama 是Meta公司的具体模型系列，人物角色为共同创作者，但作为CEO，其贡献更偏向领导公司级开源战略，而非具体模型的共同创造。此归因层级不准确。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:People.products[0]:b1454d1ba1a0",
+      "person": "黄铁军",
+      "claimType": "representative_achievement",
+      "objectLabel": "悟道1.0",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "黄铁军作为院长领导智源研究院，但“悟道1.0”是机构级产品，将具体模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:People.products[1]:259320fcbc36",
+      "person": "黄铁军",
+      "claimType": "representative_achievement",
+      "objectLabel": "悟道·文源",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“悟道·文源”是智源研究院团队研发的模型，作为院长领导机构，但将具体模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:People.products[2]:781223fcb424",
+      "person": "黄铁军",
+      "claimType": "representative_achievement",
+      "objectLabel": "神经机器翻译工具包",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“神经机器翻译工具包”是智源研究院的开源软件，作为院长领导机构，但将具体工具包作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:People.products[3]:220ee48299e1",
+      "person": "黄铁军",
+      "claimType": "representative_achievement",
+      "objectLabel": "交互式智能政务助手",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“交互式智能政务助手”是智源研究院的平台产品，作为院长领导机构，但将具体应用平台作为个人代表成果归因层级过高。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:People.products[2]:3776b2f3ced2",
+      "person": "马克·扎克伯格",
+      "claimType": "representative_achievement",
+      "objectLabel": "Ray-Ban Meta",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Ray-Ban Meta 是 Meta 公司与 Ray-Ban 合作的智能眼镜产品线。作为 CEO，扎克伯格可以展示其领导的公司级产品族，但将具体产品型号（Ray-Ban Meta）标注为个人“co-creator”代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:People.products[3]:ea105bbfcbb6",
+      "person": "马克·扎克伯格",
+      "claimType": "representative_achievement",
+      "objectLabel": "Meta AI Studio",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Meta AI Studio 是 Meta 公司推出的平台。作为 CEO，扎克伯格可以展示其领导的公司级产品族，但将具体平台产品标注为个人“co-creator”代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjvd4dfw0004kvtp4osum05g:People.products[0]:e0a8607231c0",
+      "person": "马克斯·泰格马克",
+      "claimType": "representative_achievement",
+      "objectLabel": "Improving the News",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "马克斯·泰格马克是 MIT 教授和 AI 安全倡导者。将“Improving the News”作为其代表成果，角色为“lead”，但缺少足够来源证明其具体领导角色或该产品与其个人工作的直接关联。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:People.products[1]:e0297993657b",
+      "person": "黄仁勋",
+      "claimType": "representative_achievement",
+      "objectLabel": "H100 GPU",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "H100 GPU 是 NVIDIA 公司的一个具体硬件产品型号。作为创始人/CEO，黄仁勋可以展示其领导的公司级产品族（如 GPU 架构），但将具体型号（H100）标注为个人代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:People.products[2]:356fbef84063",
+      "person": "黄仁勋",
+      "claimType": "representative_achievement",
+      "objectLabel": "TensorRT",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "TensorRT 是 NVIDIA 公司的一个具体软件工具/SDK。作为创始人/CEO，黄仁勋可以展示其领导的公司级产品族，但将具体工具（TensorRT）标注为个人代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:People.products[3]:626792504784",
+      "person": "黄仁勋",
+      "claimType": "representative_achievement",
+      "objectLabel": "NeMo",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "NeMo 是 NVIDIA 公司的一个具体对话式 AI 开发框架/工具包。作为创始人/CEO，黄仁勋可以展示其领导的公司级产品族，但将具体框架（NeMo）标注为个人代表成果，属于过度归因。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:People.products[4]:ace70faad43a",
+      "person": "黄仁勋",
+      "claimType": "representative_achievement",
+      "objectLabel": "Blackwell GPU",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Blackwell GPU 是 NVIDIA 公司的一个具体硬件架构/产品代号。作为创始人/CEO，黄仁勋可以展示其领导的公司级产品族，但将具体架构（Blackwell）标注为个人代表成果，属于过度归因。"
+    }
+  ]
+}

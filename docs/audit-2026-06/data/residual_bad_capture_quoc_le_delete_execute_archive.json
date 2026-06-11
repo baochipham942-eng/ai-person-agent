@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-06-11T02:18:37.884Z",
+  "summary": {
+    "generatedAt": "2026-06-11T02:18:37.884Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/residual_bad_capture_quoc_le_delete_decision_2026_06_11.json",
+    "archive": "docs/audit-2026-06/data/residual_bad_capture_quoc_le_delete_execute_archive.json",
+    "stage": "manual_residual_bad_capture_delete",
+    "decisions": 1,
+    "existingTargets": 1,
+    "missingTargets": 0,
+    "auditRowsInserted": 1,
+    "deleted": 1,
+    "byAction": {
+      "delete_raw_pool_item": 1
+    },
+    "byVerdict": {
+      "reject": 1
+    },
+    "byPerson": {
+      "Quoc Le": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "claimId": "residual-bad-capture-delete:cmjtxs3xe04lurmtboobjce24",
+        "person": "Quoc Le",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxs3xe04lurmtboobjce24",
+          "objectLabel": "Le Viet Quoc - Fulbright"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.86,
+        "reason": "The Fulbright profile capture is mostly navigation text and does not provide usable Quoc Le evidence. Better keep replacements for the same person/Fulbright context already exist. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjtxs3xe04lurmtboobjce24",
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "sourceType": "exa",
+        "url": "https://fulbright.edu.vn/our-team/le-viet-quoc/",
+        "urlHash": "a7c4fa559eda2a0048486fc041520170",
+        "contentHash": "07de56a9fec9df2e7e5e8168c068b532",
+        "title": "Le Viet Quoc - Fulbright",
+        "text": "Thank you!\n\nWe’re processing your information...\n\nKeep exploring\n\n[![image](https://fulbright.edu.vn/wp-content/webp-express/webp-images/doc-root/wp-content/themes/new-fulbright/assets/images/icon-search.png.webp)](javascript:;)\n\n- [en](https://fulbright.edu.vn/)\n- [vi](https://fulbright.edu.vn/vi/our-team/le-viet-quoc-2/)\n\n[Apply](https://apply.fulbright.edu.vn/)\n\nMENUMENU\n\n- [About us](https://fulbright.edu.vn/the-fulbright-story/)\n - #### About us\n\n ![](https://fulbright.edu.vn/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2025/01/slide-intro1.jpg.webp)\n - [The Fulbright story](https://fulbright.edu.vn/the-fulbright-story/)\n - [Our Mission](https://fulbright.edu.vn/our-mission/)\n - [Leadership](https://fulbright.edu.vn/office-of-the-president/)\n - [Academic Team](https://fulbright.edu.vn/academic-team/)\n- [Study at Fulbright](https://fulbright.edu.vn/why-fulbright/)\n - #### Why choose Fulbright?\n\n ![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20656%20480%22%3E%3C/svg%3E)\n - [Why choose Fulbright](https://fulbright.edu.vn/why-fulbright/)\n - [Curriculum overview](https://fulbright.edu.vn/why-choose-fulbright-curriculum/)\n - [Bridge Program](https://fulbright.edu.vn/bridge-program/)\n - [The Core Curriculum](https://fulbright.edu.vn/the-core-curriculum/)\n - [Majors and Minors](https://fulbright.edu.vn/why-choose-fulbright-majors/)\n - [Co-curricular and Experiential learning](https://fulbright.edu.vn/why-choose-fulbright-co-curricular-and-experiential-learning/)\n - [Course Catalogue](https://fulbright.edu.vn/why-choose-fulbright-our-courses/)\n - [Learning Support](https://fulbright.edu.vn/learning-support/)\n- [Apply to us](https://fulbright.edu.vn/apply-to-us/)\n - #### How to apply us\n\n ![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20656%20480%22%3E%3C/svg%3E)\n - [How To Apply To Us](https://fulbright.edu.vn/apply-to-us/)\n - [Admission FAQs](https://fulbright.edu.vn/how-to-apply-to-us-faq/)\n - [Admissions team](https://fulbright.edu.vn/how-to-apply-to-us-admissions-team/)\n - [Admissions application guides](https://fulbright.edu.vn/admissions-application-guides/)\n- [Tuition and Support](https://fulbright.edu.vn/tuition-and-aid/)\n - #### Overview\n\n ![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20656%20480%22%3E%3C/svg%3E)\n - [Tuition, Scholarships & Financial Support overview](https://fulbright.edu.vn/tuition-and-aid/)\n - [Tuition](https://fulbright.edu.vn/tuition-and-aid-tuition/)\n - [Scholarships](https://fulbright.edu.vn/tuition-and-aid-scholarships/)\n - [Financial Support](https://fulbright.edu.vn/tuition-and-aidfinancial-aid/)\n - [FAQs](https://fulbright.edu.vn/tuition-and-aidfaqs/)\n - [Financial Support Application Guides](https://fulbright.edu.vn/financial-aid-application-guides/)\n- [Life @ Fulbright](https://fulbright.edu.vn/life-fulbright/)\n - #### Communities\n\n ![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20300%20220%22%3E%3C/svg%3E)\n - [Life @ Fulbright](https://fulbright.edu.vn/life-fulbright/)\n - [Student Projects](https://fulbright.edu.vn/student-projects/)\n - [Student affairs & Services team](https://fulbright.edu.vn/student-affairs-services/)\n - [Residential Life](https://fulbright.edu.vn/residential-life/)\n - [Wellness](https://fulbright.edu.vn/wellness/)\n - [Student Engagement](https://fulbright.edu.vn/student-engagement/)\n - [Career Services](https://fulbright.edu.vn/career-services/)\n - [Campus Development](https://fulbright.edu.vn/campus-development/)\n - [Alumni](https://fulbright.edu.vn/alumni/)\n- [Graduate Program](https://fulbright.edu.vn/graduate-program/)\n\n- [News and events](https://fulbright.edu.vn/news/)\n - [News](https://fulbright.edu.vn/news/)\n - [Events](https://fulbright.edu.vn/events-at-fulbright/)\n - [Humans of Fulbright](https://fulbright.edu.vn/humans-of-fulbright/)\n - [Resources and Media Room](https://fulbright.edu.vn/resources-and-media-room/)\n- [Initiatives](https://fulbright.edu.vn/our-team/le-viet-quoc/)\n - [Center for Entrepreneurship & Innovation](https://fulbright.edu.vn/centre-of-entrepreneurship-and-innovation/)\n - [YSEALI Academy](https://fulbright.edu.vn/yseali-academy/)\n - [IP and Tech Transfer](https://fulbright.edu.vn/ip-and-tech-transfer-program/)\n - [Vietnam Studies Center](https://fulbright.edu.vn/vietnam-studies-center/)\n - [Fulbright X](https://fulbright.edu.vn/fulbrightx-program/)\n- [Giving](https://fulbright.edu.vn/giving/)\n - [Why Give?](https://fulbright.edu.vn/why-give/)\n - [Make a gift](https://fulbright.edu.vn/make-a-gift/)\n - [Get Involved](https://fulbright.edu.vn/get-involved/)\n - [Our Priorities and Areas for Support](https://fulbright.edu.vn/our-priorities-and-areas-for-support/)\n - [Contact us](https://fulbright.edu.vn/contact-us/)\n- [Join us](https://fulbright.edu.vn/join-us/)\n- [Contact us](https://fulbright.edu.vn/contact-us/)\n- [My Fulbright](htt",
+        "publishedAt": null,
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:32:12.386Z",
+        "processed": false
+      }
+    }
+  ]
+}

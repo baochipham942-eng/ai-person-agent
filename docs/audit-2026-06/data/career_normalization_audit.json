@@ -1,200 +1,20 @@
 {
-  "generatedAt": "2026-06-09T05:53:35.962Z",
+  "generatedAt": "2026-06-11T16:26:48.999Z",
   "summary": {
-    "organizations": 622,
-    "roles": 1114,
-    "people": 230,
+    "organizations": 620,
+    "roles": 1147,
+    "people": 253,
     "duplicateOrgClusters": 0,
     "positionLikeOrganizations": 0,
     "duplicateRoleGroups": 0,
     "vagueRoles": 0,
     "peopleOrganizationDuplicates": 0,
-    "currentTitleOrgMismatches": 23
+    "currentTitleOrgMismatches": 0
   },
   "duplicateOrgClusters": [],
   "positionLikeOrganizations": [],
   "duplicateRoleGroups": [],
   "vagueRoles": [],
   "peopleOrganizationDuplicates": [],
-  "currentTitleOrgMismatches": [
-    {
-      "person": "Aakash Gupta",
-      "currentTitle": "VP of Product @ Apollo.io",
-      "titleOrganization": "Apollo.io",
-      "knownOrganizations": [
-        "Product Growth"
-      ]
-    },
-    {
-      "person": "Haofan Wang",
-      "currentTitle": "Co-founder & CEO @ InstantID",
-      "titleOrganization": "InstantID",
-      "knownOrganizations": [
-        "Lovart AI"
-      ]
-    },
-    {
-      "person": "Hugo Larochelle",
-      "currentTitle": "Research Director @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": [
-        "谷歌大脑"
-      ]
-    },
-    {
-      "person": "Strive Masiyiwa",
-      "currentTitle": "Non-Executive Director @ Netflix Inc.",
-      "titleOrganization": "Netflix Inc.",
-      "knownOrganizations": [
-        "Cassava Technologies"
-      ]
-    },
-    {
-      "person": "Yann Dauphin",
-      "currentTitle": "Research Scientist @ Anthropic",
-      "titleOrganization": "Anthropic",
-      "knownOrganizations": []
-    },
-    {
-      "person": "乔恩·巴伦",
-      "currentTitle": "Research Scientist @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": [
-        "计算机科学家"
-      ]
-    },
-    {
-      "person": "乔治亚·吉奥克萨里",
-      "currentTitle": "Research Scientist @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": [
-        "Facebook人工智能研究院",
-        "加州理工学院"
-      ]
-    },
-    {
-      "person": "伊恩·J·古德费洛",
-      "currentTitle": "Research Director @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": [
-        "谷歌"
-      ]
-    },
-    {
-      "person": "何凯明",
-      "currentTitle": "Research Scientist @ Meta AI",
-      "titleOrganization": "Meta AI",
-      "knownOrganizations": [
-        "爱荷华州立大学",
-        "艾姆斯国家实验室"
-      ]
-    },
-    {
-      "person": "保罗·德贝维奇",
-      "currentTitle": "Research Scientist @ Google",
-      "titleOrganization": "Google",
-      "knownOrganizations": [
-        "南加州大学",
-        "网飞"
-      ]
-    },
-    {
-      "person": "克里斯蒂娜·N·图塔诺娃",
-      "currentTitle": "Research Scientist @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": [
-        "微软研究院",
-        "谷歌研究院"
-      ]
-    },
-    {
-      "person": "卡尔·爱德华·拉斯穆森",
-      "currentTitle": "professor @ professor",
-      "titleOrganization": "professor",
-      "knownOrganizations": [
-        "剑桥大学",
-        "丹麦技术大学"
-      ]
-    },
-    {
-      "person": "大卫·洛佩兹-帕兹",
-      "currentTitle": "Research Scientist @ Meta AI",
-      "titleOrganization": "Meta AI",
-      "knownOrganizations": [
-        "Facebook人工智能研究院"
-      ]
-    },
-    {
-      "person": "奥尼·汉农",
-      "currentTitle": "Research Scientist @ Meta AI",
-      "titleOrganization": "Meta AI",
-      "knownOrganizations": [
-        "Facebook人工智能研究院"
-      ]
-    },
-    {
-      "person": "安德烈·姆尼赫",
-      "currentTitle": "Professor @ Princeton University",
-      "titleOrganization": "Princeton University",
-      "knownOrganizations": [
-        "谷歌DeepMind"
-      ]
-    },
-    {
-      "person": "德米特里·巴丹瑙",
-      "currentTitle": "Research Scientist @ Apple",
-      "titleOrganization": "Apple",
-      "knownOrganizations": [
-        "蒙特利尔大学"
-      ]
-    },
-    {
-      "person": "杜米特鲁·埃尔汉",
-      "currentTitle": "Staff Research Scientist @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": [
-        "谷歌研究院"
-      ]
-    },
-    {
-      "person": "索拉布·古普塔",
-      "currentTitle": "Research Scientist @ Meta AI",
-      "titleOrganization": "Meta AI",
-      "knownOrganizations": []
-    },
-    {
-      "person": "蒂门·蒂勒曼",
-      "currentTitle": "Senior Staff Research Scientist @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": []
-    },
-    {
-      "person": "詹姆斯·伯格斯特拉",
-      "currentTitle": "CEO @ Hyperopt",
-      "titleOrganization": "Hyperopt",
-      "knownOrganizations": []
-    },
-    {
-      "person": "詹姆斯·马滕斯",
-      "currentTitle": "Research Scientist @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": []
-    },
-    {
-      "person": "阿卜杜勒-拉赫曼·穆罕默德",
-      "currentTitle": "Research Scientist @ Google DeepMind",
-      "titleOrganization": "Google DeepMind",
-      "knownOrganizations": [
-        "Facebook人工智能研究院"
-      ]
-    },
-    {
-      "person": "阿舒托什·萨克塞纳",
-      "currentTitle": "Associate Professor @ Cornell University",
-      "titleOrganization": "Cornell University",
-      "knownOrganizations": [
-        "斯坦福大学"
-      ]
-    }
-  ]
+  "currentTitleOrgMismatches": []
 }

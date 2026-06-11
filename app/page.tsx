@@ -1,5 +1,7 @@
 import { Suspense } from 'react';
 import { ResearcherDirectory } from '@/components/home/ResearcherDirectory';
+import { getInitialDirectoryFilters } from '@/lib/person-directory-config';
+import { fetchPersonDirectory } from '@/lib/person-directory';
 
 function LoadingFallback() {
   return (
@@ -26,10 +28,33 @@ function LoadingFallback() {
   );
 }
 
-export default function HomePage() {
+interface HomePageProps {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const resolvedSearchParams = await searchParams;
+  const initialFilters = getInitialDirectoryFilters({
+    view: resolvedSearchParams?.view,
+    topic: resolvedSearchParams?.topic,
+    organization: resolvedSearchParams?.organization,
+    role: resolvedSearchParams?.role,
+    search: resolvedSearchParams?.search,
+  });
+
+  const initialData = await fetchPersonDirectory({
+    page: 1,
+    limit: 12,
+    topic: initialFilters.topic,
+    organization: initialFilters.organization,
+    roleCategory: initialFilters.role,
+    search: initialFilters.search,
+    sortBy: 'influenceScore',
+  });
+
   return (
     <Suspense fallback={<LoadingFallback />}>
-      <ResearcherDirectory />
+      <ResearcherDirectory initialData={initialData} initialFilters={initialFilters} />
     </Suspense>
   );
 }

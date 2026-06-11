@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-06-10T20:53:52.174Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch26.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch26_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH26_CURATED.md",
+  "inputRows": 15,
+  "outputRows": 15,
+  "inputSelectedSources": 20,
+  "outputSelectedSources": 15,
+  "removedSelectedSources": 5,
+  "rowsChanged": 5,
+  "rowsDeferredToHumanReview": 4,
+  "byDecision": {
+    "human_review": 4,
+    "replace_source": 9,
+    "augment_source": 1,
+    "no_good_source": 1
+  },
+  "removedHosts": {
+    "learn.microsoft.com": 2,
+    "chessprogramming.org": 1,
+    "jan.leike.name": 1,
+    "podcasts.musixmatch.com": 1
+  },
+  "keptHosts": {
+    "aisfoundation.ai": 4,
+    "tedai-sanfrancisco.ted.com": 4,
+    "ai.meta.com": 2,
+    "mustafa-suleyman.ai": 2,
+    "bbc.com": 1,
+    "blog.google": 1,
+    "meta.com": 1
+  }
+}

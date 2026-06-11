@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-11T07:02:22.508Z",
+  "mode": "execute",
+  "formula": {
+    "aiOriginalContribution": 35,
+    "industryEcosystem": 25,
+    "authority": 20,
+    "learningValue": 10,
+    "recency": 10,
+    "statusMultiplier": {
+      "ready": 1,
+      "active": 1,
+      "building": 0.55,
+      "candidate": 0.35,
+      "pending": 0.35,
+      "error": 0
+    }
+  },
+  "people": [
+    {
+      "id": "a41dc2bc-fdb6-4e77-b937-eb7b048db9d1",
+      "name": "Nick Frosst",
+      "status": "ready",
+      "roleCategory": "founder",
+      "currentTitle": "Co-founder @ Cohere",
+      "aiContributionScore": 5,
+      "githubStars": 0,
+      "citationCount": 0,
+      "hIndex": 0,
+      "counts": {
+        "cards": 5,
+        "raw": 2,
+        "keep": 2,
+        "sources": 2,
+        "courses": 0,
+        "recentKeep": 2
+      },
+      "breakdown": {
+        "aiOriginal": 16.055045871559635,
+        "industryEcosystem": 12.73,
+        "authority": 2.6500000000000004,
+        "learningValue": 1.9100000000000001,
+        "recency": 4.9360834200617285,
+        "subtotal": 38.28112929162136,
+        "statusMultiplier": 1,
+        "finalScore": 38.28
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-06-10T08:40:46.611Z",
+  "mode": "execute",
+  "planIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json",
+  "reviewIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json",
+  "peopleConsidered": 1,
+  "peopleEligible": 1,
+  "existingCards": 12,
+  "replacementCards": 5,
+  "skippedPeople": 0
+}

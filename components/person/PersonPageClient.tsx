@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   PersonHeader,
@@ -24,6 +23,7 @@ interface Card {
   title: string;
   content: string;
   tags: string[];
+  sourceUrl?: string | null;
   importance: number;
 }
 
@@ -33,6 +33,8 @@ interface PersonRole {
   roleZh: string | null;
   startDate?: string | null;
   endDate?: string | null;
+  source?: string | null;
+  confidence?: number | null;
   organizationName: string;
   organizationNameZh: string | null;
   organizationType: string;
@@ -44,6 +46,7 @@ interface RelatedPerson {
   id: string;
   name: string;
   avatarUrl: string | null;
+  currentTitle?: string | null;
   organization: string[];
 }
 
@@ -115,6 +118,7 @@ interface PersonData {
   description: string | null;
   whyImportant: string | null;
   avatarUrl: string | null;
+  updatedAt: string;
   gender?: string | null;
   country?: string | null;
   qid: string;
@@ -140,39 +144,29 @@ interface PersonData {
 
 interface PersonPageClientProps {
   person: PersonData;
+  initialSection?: 'topics' | null;
+  highlightTopic?: string | null;
 }
 
-// 状态徽章组件
-function StatusBadge({ status, completeness }: { status: string; completeness: number }) {
-  const statusConfig: Record<string, { label: string; color: string }> = {
-    pending: { label: '待处理', color: 'bg-stone-100 text-stone-600 border border-stone-200' },
-    building: { label: '构建中', color: 'bg-orange-50 text-orange-600 border border-orange-100' },
-    ready: { label: '已就绪', color: 'bg-emerald-50 text-emerald-600 border border-emerald-100' },
-    partial: { label: '部分完成', color: 'bg-amber-50 text-amber-600 border border-amber-100' },
-    error: { label: '错误', color: 'bg-red-50 text-red-600 border border-red-100' },
-  };
-
-  const config = statusConfig[status] || statusConfig.pending;
+function SourceSummary({ person }: { person: PersonData }) {
+  const sourceTypeTotal = Object.values(person.sourceTypeCounts || {}).reduce((sum, count) => sum + count, 0);
+  const cardSources = person.cards.filter(card => card.sourceUrl).length;
+  const relationSources = (person.relations || []).filter(relation => relation.evidenceUrl).length;
+  const sourceCount = sourceTypeTotal + cardSources + relationSources;
+  const updatedAt = formatDate(person.updatedAt);
 
   return (
-    <div className="flex items-center gap-2">
-      <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${config.color}`}>
-        {config.label}
-      </span>
-      {completeness > 0 && completeness < 100 && (
-        <span className="text-xs text-stone-400">{completeness}%</span>
-      )}
+    <div className="flex flex-wrap items-center justify-end gap-2 text-xs text-stone-500">
+      <span>更新 {updatedAt}</span>
+      <span className="hidden h-3 w-px bg-stone-200 sm:block" />
+      <span>{sourceCount > 0 ? `${sourceCount} 条资料来源` : '资料来源整理中'}</span>
+      <span className="hidden h-3 w-px bg-stone-200 sm:block" />
+      <span className="text-orange-600">自动整理，重要事实请看来源</span>
     </div>
   );
 }
 
-export default function PersonPageClient({ person }: PersonPageClientProps) {
-  const searchParams = useSearchParams();
-
-  // 从 URL 读取 section 和 highlight 参数
-  const urlSection = searchParams.get('section'); // 'topics' | 'role' | etc.
-  const urlHighlight = searchParams.get('highlight'); // 具体的标签名
-
+export default function PersonPageClient({ person, initialSection, highlightTopic }: PersonPageClientProps) {
   // 记录页面访问
   useEffect(() => {
     const recordView = async () => {
@@ -181,7 +175,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
         });
-      } catch (error) {
+      } catch {
         // 静默失败
       }
     };
@@ -210,8 +204,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
               <span className="text-sm font-medium">返回</span>
             </Link>
 
-            {/* 状态 */}
-            <StatusBadge status={person.status} completeness={person.completeness} />
+            <SourceSummary person={person} />
           </div>
         </div>
       </header>
@@ -252,8 +245,8 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           topicRanks={person.topicRanks}
           topicDetails={person.topicDetails}
           personId={person.id}
-          initialTab={urlSection === 'topics' ? 'topics' : undefined}
-          highlightTopic={urlSection === 'topics' ? urlHighlight : undefined}
+          initialTab={initialSection === 'topics' ? 'topics' : undefined}
+          highlightTopic={initialSection === 'topics' ? highlightTopic : undefined}
           cards={person.cards}
           podcastCount={person.sourceTypeCounts?.podcast || 0}
           githubCount={githubCount}
@@ -283,3 +276,15 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
 
 // 兼容旧的命名导出
 export { PersonPageClient };
+
+function formatDate(value: string): string {
+  try {
+    return new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }).format(new Date(value));
+  } catch {
+    return '最近';
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-06-09T15:39:11.951Z",
+  "archive": "docs/audit-2026-06/data/safe_rawpool_remediation_fifth_new_high_after_safe_prune_archive.json",
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_fifth_new_high_after_safe_prune_mimo_summary.json",
+    "safeDecisions": 7,
+    "rejectedSafeQueueRows": 0,
+    "uniqueTargetIds": 7,
+    "existingTargets": 7,
+    "missingTargets": 0,
+    "deleted": 7,
+    "affectedPeople": 3,
+    "bySourceType": {
+      "exa": 7
+    },
+    "byVerdict": {
+      "wrong_person": 7
+    },
+    "topPeople": {
+      "姚顺雨": 4,
+      "肖弘": 2,
+      "丁洁": 1
+    }
+  }
+}

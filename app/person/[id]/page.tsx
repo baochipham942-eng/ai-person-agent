@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { prisma } from '@/lib/db/prisma';
 import { notFound } from 'next/navigation';
 import { PersonPageClient } from '@/components/person/PersonPageClient';
@@ -29,10 +28,15 @@ export async function generateStaticParams() {
 
 interface PersonPageProps {
     params: Promise<{ id: string }>;
+    searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function PersonPage({ params }: PersonPageProps) {
+export default async function PersonPage({ params, searchParams }: PersonPageProps) {
     const { id } = await params;
+    const resolvedSearchParams = await searchParams;
+    const section = firstParam(resolvedSearchParams?.section);
+    const highlight = firstParam(resolvedSearchParams?.highlight);
+    const initialSection = section === 'topics' ? 'topics' : null;
 
     // 合并所有查询为单个 Promise.all，减少数据库往返
     const [person, typeCounts, courseCount, papers] = await Promise.all([
@@ -41,6 +45,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
             where: { id },
             include: {
                 cards: {
+                    where: { isActive: true },
                     orderBy: [{ importance: 'desc' }, { createdAt: 'desc' }],
                     take: 10, // 首屏裁剪：从 20 减到 10
                 },
@@ -62,6 +67,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                                 id: true,
                                 name: true,
                                 avatarUrl: true,
+                                currentTitle: true,
                                 organization: true,
                             }
                         }
@@ -76,6 +82,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                                 id: true,
                                 name: true,
                                 avatarUrl: true,
+                                currentTitle: true,
                                 organization: true,
                             }
                         }
@@ -125,6 +132,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
         description: person.description,
         whyImportant: person.whyImportant,
         avatarUrl: person.avatarUrl,
+        updatedAt: person.updatedAt.toISOString(),
         gender: person.gender,
         country: person.country,
         qid: person.qid,
@@ -162,6 +170,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
             title: card.title,
             content: card.content,
             tags: card.tags,
+            sourceUrl: card.sourceUrl,
             importance: card.importance,
         })),
         personRoles: person.roles.map(role => ({
@@ -170,6 +179,8 @@ export default async function PersonPage({ params }: PersonPageProps) {
             roleZh: role.roleZh,
             startDate: role.startDate?.toISOString() || undefined,
             endDate: role.endDate?.toISOString() || undefined,
+            source: role.source,
+            confidence: role.confidence,
             organizationName: role.organization.name,
             organizationNameZh: role.organization.nameZh,
             organizationType: role.organization.type,
@@ -194,6 +205,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     id: rel.relatedPerson.id,
                     name: rel.relatedPerson.name,
                     avatarUrl: rel.relatedPerson.avatarUrl,
+                    currentTitle: rel.relatedPerson.currentTitle,
                     organization: rel.relatedPerson.organization,
                 }
             })),
@@ -218,6 +230,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                         id: rel.person.id,
                         name: rel.person.name,
                         avatarUrl: rel.person.avatarUrl,
+                        currentTitle: rel.person.currentTitle,
                         organization: rel.person.organization,
                     }
                 };
@@ -226,8 +239,15 @@ export default async function PersonPage({ params }: PersonPageProps) {
     };
 
     return (
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 rounded-full animate-spin border-3 border-transparent border-t-orange-500"></div></div>}>
-            <PersonPageClient person={personData} />
-        </Suspense>
+        <PersonPageClient
+            person={personData}
+            initialSection={initialSection}
+            highlightTopic={initialSection === 'topics' ? highlight : null}
+        />
     );
+}
+
+function firstParam(value?: string | string[] | null): string | null {
+    if (Array.isArray(value)) return value[0] || null;
+    return value || null;
 }

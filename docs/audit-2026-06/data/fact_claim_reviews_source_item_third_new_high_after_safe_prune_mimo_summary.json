@@ -1,0 +1,276 @@
+{
+  "generatedAt": "2026-06-09T15:26:15.299Z",
+  "input": "docs/audit-2026-06/data/fact_claims_source_items_after_third_safe_prune_new_high.jsonl",
+  "output": "docs/audit-2026-06/data/fact_claim_reviews_source_item_third_new_high_after_safe_prune_mimo.jsonl",
+  "model": "mimo-v2.5-pro",
+  "filters": {
+    "person": null,
+    "personId": null,
+    "claimType": null,
+    "priority": null,
+    "limit": 9999,
+    "batchSize": 8,
+    "concurrency": 4
+  },
+  "totalClaims": 53,
+  "selectedClaims": 53,
+  "reviewedClaims": 53,
+  "byVerdict": {
+    "wrong_person": 22,
+    "supported": 26,
+    "needs_source": 5
+  },
+  "byAction": {
+    "remove": 22,
+    "keep": 26,
+    "needs_source": 5
+  },
+  "byClaimType": {
+    "source_item_belongs_to_person": 53
+  },
+  "needsAttention": [
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0k9jl07g5rmtbvz6uydwo]:fe5752ba8205",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Rethinking machine unlearning for large language models",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中未出现“刘知远”，该内容与人物不匹配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zsr409rprmtb55751fun]:e85106172164",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "对话AI顶尖大牛周明老师：GPT时代，感觉自己跟不上了",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题提及“周明老师”，但提供的摘要为空，无法确认内容是否确实关于该人物。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju1g39n0czrrmtbrhwnfhp9]:c4c1f08fa565",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "AI大牛周明发布MChat：生成可控，参数规模可负担",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "文章标题提及“周明发布MChat”，但提供的摘要为空，无法确认内容是否确实关于该人物及其具体贡献。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xasb09csrmtbqhxascui]:8b667a9f61c3",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "我用AI“复活”了爷爷",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章《我用AI“复活”了爷爷》内容与人物丁洁（明尼苏达大学副教授，研究AI安全）的专业领域和身份不符，极可能是同名的其他人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xbdx09d0rmtb95ueb51o]:f1545aaa29d7",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "文学院卓越班赴武汉市光谷实验中学金融港校区观摩丁洁 ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是华中师范大学文学院观摩“丁洁语文名师工作室”的活动，与人物丁洁（明尼苏达大学副教授，研究AI安全）的专业领域和身份不符，属于同名的其他人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xek709dgrmtb0qsum3nu]:9c1f598c4b3f",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁- 佰仟金融- 催收员",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "LinkedIn档案显示为“佰仟金融-催收员”，与人物丁洁（明尼苏达大学副教授，研究AI安全）的专业领域和身份不符，属于同名的其他人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xetz09dirmtbz8cqv148]:ab5f2eb850ea",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "法学期刊文章-中国法学期刊大全-北大法宝V6官网",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "链接指向北大法宝的法学期刊作者页面，与人物丁洁（明尼苏达大学副教授，研究AI安全）的专业领域不符，极可能是同名的法学研究者。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xf4g09dkrmtbr8jxnsw3]:7b2c0b99b187",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "5下《5 草船借箭》-第1课时-丁洁-有PPT 51备课部编版小学语文",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "B站视频标题为小学语文备课内容，与人物丁洁（明尼苏达大学副教授，研究AI安全）的专业领域和身份不符，属于同名的其他人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xfvk09dormtbkyf7r84y]:e7ee849e88ce",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "SJTU Computer Science & Engineering",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "链接指向上海交通大学计算机学院人员详情页，但人物丁洁的当前职位在明尼苏达大学，且未提供足够证据证明此页面属于同一人，极可能是同名的其他人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjuuyrhu0ifermtb1js5i3lh]:4ae60cbe9019",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁- 88查",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "链接指向1688企业查询页面，与人物丁洁（明尼苏达大学副教授，研究AI安全）的专业领域和身份不符，极可能是同名的其他人。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjtxj78902n4rmtbzndi6ez7]:3e425e4c7995",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Liu Zhiyuan",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "维基百科页面描述的是五代十国时期的后汉开国皇帝刘知远，与人物刘知远（清华大学副教授，研究NLP）完全不符，属于同名的历史人物。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyee5yl000eot7iulisajta]:a5a25e65fa5a",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "10610 followers - Jaana Dogan - Medium",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容为Jaana Dogan的Medium主页（rakyll.medium.com）的粉丝列表页面，虽能证明其账号存在，但作为“代表成果”展示价值较低，且未提供具体文章内容。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0x9kz09cbrmtbk5tldjbu]:e061ce5f7adf",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Expert Consensus on the Ethical Requirements for ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章《Expert Consensus on the Ethical Requirements for Generative AI-Assisted Academic Writing》讨论的是AI辅助学术写作的伦理，与人物丁洁（AI安全、大语言模型研究者）的专业领域不符，且未在摘要中找到其作为作者的证据。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xa7309cmrmtbiax4ck2j]:6a4c2cc61d9b",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "家族性渗出性玻璃体视网膜病变的筛查与诊断",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章《家族性渗出性玻璃体视网膜病变的筛查与诊断》属于眼科医学领域，与人物丁洁（计算机科学/AI研究者）的专业领域完全不符，且文末引用显示作者为“丁洁, 龚健杨”，但此“丁洁”极大概率是同名的眼科医生。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxfyxa01uarmtbc8vpqrey]:eea0134a329c",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "两位清华天才Yao Shunyu投身大模型，跨学科人才或将成为 ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "文章讨论了两位同名的清华毕业生Yao Shunyu，其中一位是物理系的姚顺宇（加入Anthropic），另一位是计算机系的姚顺雨（加入OpenAI）。文章内容主要聚焦于物理系的姚顺宇，与目标人物姚顺雨（计算机系，OpenAI研究员）不符。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg2lg01vqrmtbucct2fu2]:e0830e3fe231",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "姚舜禹-计算机科学与技术",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于北师港浸大（UIC）校友姚舜禹的分享，其姓名、毕业院校（UIC）和当前就读学校（弗吉尼亚理工大学）均与目标人物姚顺雨（清华毕业，OpenAI研究员）不符。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg4cy01x0rmtb13633kyh]:bba0445c0429",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "东南大学姚玉宇导师主页",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是东南大学医学院研究员姚玉宇的导师主页，其研究领域（心血管疾病）和所属机构（东南大学医学院）与目标人物姚顺雨（计算机/AI领域，OpenAI）完全不同。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg4u901x8rmtbij4lbwc0]:4f8336199f05",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "YE Bo-Shanghai Jiao Tong University School of Medicine",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是上海交通大学医学院胸外科医生YE Bo的教师主页，其姓名、专业领域（临床医学/外科）和所属机构（上海胸科医院）与目标人物姚顺雨（计算机/AI领域，OpenAI）不符。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg5wh01y0rmtbjcnqwcrr]:599508b6a98b",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "YAO Xiaoying-Shanghai Jiao Tong University School of Medicine",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是上海交通大学医学院渥太华联合医学院教师YAO Xiaoying的页面，其姓名、专业领域（医学）和所属机构与目标人物姚顺雨（计算机/AI领域，OpenAI）不符。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxsg0104r3rmtbxt26mmy3]:5a1b4c7f2ea3",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tom Brown - LinkedIn",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该LinkedIn资料描述的是半导体行业的Tom Brown，与页面人物（Anthropic联合创始人、数据科学家）在职业领域、公司和经历上完全不符，属于同名不同人。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fktt06iyrmtbq79mrig1]:fdd832e856ad",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "GitHub - charliezcr/Xiaohao: The embodied intelligence of Shenhao's humanoid robot Xiaohao",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该GitHub仓库属于用户‘charliezcr’，项目描述为‘Shenhao's humanoid robot Xiaohao’，与页面人物肖弘（Manus AI创始人兼CEO）无直接关联，属于不同实体。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0flem06j2rmtb190ibw7y]:10947843f016",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Cognitive Intelligence AI Solution Provider",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该网站是‘Xiao-i’公司的官方页面，与页面人物肖弘（Manus AI创始人兼CEO）在姓名拼写、公司和业务领域上均不匹配，属于不同实体。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju1b1ww0c4nrmtb5fnow57g]:20a2f4b38e2f",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Xiao-I Corporation Reports Unaudited Full Year 2023 Financial Results",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该新闻稿是关于‘Xiao-I Corporation’的财务业绩，其CEO为‘Hui Yuan’，与页面人物肖弘（Manus AI创始人兼CEO）在姓名、公司和职位上均不匹配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i6ic06ydrmtbn8n1vx0k]:3117565933aa",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Large Language Models for UAVs: Current State and Pathways to the Future",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者为Shumaila Javaid, Nasir Saeed, Bin He，与姚顺雨无关。内容被错误归因。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmju1kp260dyarmtbykamarvp]:2ebe539b7084",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "View Generalization for Single Image Textured 3D Models ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的文本仅为网站导航元素，无法确认内容是否与人物相关或其贡献。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmju1ck300ccdrmtblyad7wev]:43062ddcff2e",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "戴文渊解读第四范式财报：AI大模型在回归商业本质算经济账",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要为空，无法确认内容是否确实关于该人物或其贡献。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjism02rirmtbbjdeterm]:4b8e3c9248f0",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Chinese Central Government's Official Web Portal",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为中国政府门户网站关于黄菊副总理的页面，与朱军教授无关。"
+    }
+  ]
+}

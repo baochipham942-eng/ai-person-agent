@@ -1,0 +1,181 @@
+{
+  "generatedAt": "2026-06-11T13:08:44.799Z",
+  "mode": "execute",
+  "input": "docs/audit-2026-06/data/candidate_china_ai_core_source_depth_repairs.json",
+  "summary": {
+    "missingPeople": 0,
+    "sourceDeletes": 0,
+    "sources": 6,
+    "cards": 0,
+    "avatars": 0,
+    "errors": 0
+  },
+  "missingPeople": [],
+  "deletedSources": [],
+  "sources": [
+    {
+      "person": "Robin Li",
+      "url": "https://en.wikipedia.org/wiki/Robin_Li",
+      "status": "updated",
+      "auditStatus": "already_keep",
+      "textLength": 10002,
+      "title": "Robin Li profile"
+    },
+    {
+      "person": "Robin Li",
+      "url": "https://apnews.com/article/e7fa36ad28215db42f720a3ac028e2c4",
+      "status": "updated",
+      "auditStatus": "already_keep",
+      "textLength": 10002,
+      "title": "Baidu unveils Ernie 4.0 AI model"
+    },
+    {
+      "person": "Jingren Zhou",
+      "url": "https://www.pingwest.com/a/306482",
+      "status": "updated",
+      "auditStatus": "already_keep",
+      "textLength": 1383,
+      "title": "Jingren Zhou selected as 2025 AI figure"
+    },
+    {
+      "person": "Jingren Zhou",
+      "url": "https://www.cs.columbia.edu/~jrzhou/",
+      "status": "updated",
+      "auditStatus": "already_keep",
+      "textLength": 3020,
+      "title": "Jingren Zhou personal profile"
+    },
+    {
+      "person": "Dong Yu",
+      "url": "https://en.wikipedia.org/wiki/Dong_Yu_(computer_scientist)",
+      "status": "updated",
+      "auditStatus": "already_keep",
+      "textLength": 8581,
+      "title": "Dong Yu profile"
+    },
+    {
+      "person": "Dong Yu",
+      "url": "https://signalprocessingsociety.org/newsletter/2021/05/industry-leaders-signal-processing-and-machine-learning-dong-yu",
+      "status": "updated",
+      "auditStatus": "already_keep",
+      "textLength": 10002,
+      "title": "IEEE Signal Processing Society profile of Dong Yu"
+    }
+  ],
+  "cards": [
+    {
+      "person": "Robin Li",
+      "title": "百度联合创始人兼 CEO",
+      "status": "already_exists",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Robin_Li"
+    },
+    {
+      "person": "Robin Li",
+      "title": "公开演示 Ernie 4.0",
+      "status": "already_exists",
+      "sourceUrl": "https://apnews.com/article/e7fa36ad28215db42f720a3ac028e2c4"
+    },
+    {
+      "person": "Robin Li",
+      "title": "百度大模型产品路线代表",
+      "status": "already_exists",
+      "sourceUrl": "https://apnews.com/article/e7fa36ad28215db42f720a3ac028e2c4"
+    },
+    {
+      "person": "Robin Li",
+      "title": "搜索技术创业背景",
+      "status": "already_exists",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Robin_Li"
+    },
+    {
+      "person": "Robin Li",
+      "title": "中国生成式 AI 商业化代表",
+      "status": "already_exists",
+      "sourceUrl": "https://apnews.com/article/e7fa36ad28215db42f720a3ac028e2c4"
+    },
+    {
+      "person": "Jingren Zhou",
+      "title": "阿里云 CTO 与通义业务负责人",
+      "status": "already_exists",
+      "sourceUrl": "https://www.pingwest.com/a/306482"
+    },
+    {
+      "person": "Jingren Zhou",
+      "title": "通义系列大模型研发应用",
+      "status": "already_exists",
+      "sourceUrl": "https://www.pingwest.com/a/306482"
+    },
+    {
+      "person": "Jingren Zhou",
+      "title": "Alibaba Group 技术管理背景",
+      "status": "already_exists",
+      "sourceUrl": "https://www.cs.columbia.edu/~jrzhou/"
+    },
+    {
+      "person": "Jingren Zhou",
+      "title": "学术与工业双背景",
+      "status": "already_exists",
+      "sourceUrl": "https://www.cs.columbia.edu/~jrzhou/"
+    },
+    {
+      "person": "Jingren Zhou",
+      "title": "2025 年度 AI 人物",
+      "status": "already_exists",
+      "sourceUrl": "https://www.pingwest.com/a/306482"
+    },
+    {
+      "person": "Dong Yu",
+      "title": "腾讯 AI Lab 与 Tencent Cloud AI 领导者",
+      "status": "already_exists",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dong_Yu_(computer_scientist)"
+    },
+    {
+      "person": "Dong Yu",
+      "title": "大语言模型与多模态方向",
+      "status": "already_exists",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dong_Yu_(computer_scientist)"
+    },
+    {
+      "person": "Dong Yu",
+      "title": "IEEE 行业领袖资料",
+      "status": "already_exists",
+      "sourceUrl": "https://signalprocessingsociety.org/newsletter/2021/05/industry-leaders-signal-processing-and-machine-learning-dong-yu"
+    },
+    {
+      "person": "Dong Yu",
+      "title": "语音和对话 AI 研究积累",
+      "status": "already_exists",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dong_Yu_(computer_scientist)"
+    },
+    {
+      "person": "Dong Yu",
+      "title": "微软到腾讯的研究迁移",
+      "status": "already_exists",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dong_Yu_(computer_scientist)"
+    }
+  ],
+  "avatars": [
+    {
+      "person": "Robin Li",
+      "status": "skipped_existing_avatar",
+      "previousAvatarUrl": "/avatars/robin-li-9fb63f41.webp",
+      "nextAvatarUrl": null,
+      "evidenceUrl": "https://en.wikipedia.org/wiki/Robin_Li"
+    },
+    {
+      "person": "Jingren Zhou",
+      "status": "skipped_existing_avatar",
+      "previousAvatarUrl": "/avatars/jingren-zhou-eefec500.webp",
+      "nextAvatarUrl": null,
+      "evidenceUrl": "https://www.pingwest.com/a/306482"
+    },
+    {
+      "person": "Dong Yu",
+      "status": "skipped_existing_avatar",
+      "previousAvatarUrl": "/avatars/dong-yu-d6d8b5dd.webp",
+      "nextAvatarUrl": null,
+      "evidenceUrl": "https://tech.ifeng.com/a/20170502/44581379_0.shtml"
+    }
+  ],
+  "errors": []
+}

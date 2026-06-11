@@ -1,0 +1,298 @@
+{
+  "generatedAt": "2026-06-10T20:51:53.256Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/prune_tail_refetch_claims.jsonl",
+    "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch26.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 20,
+      "offset": 500,
+      "searchResults": 5,
+      "maxCandidates": 10,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "advanced",
+      "tavilyRawContent": "text",
+      "tavilyKeyCount": 11,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": null
+    }
+  },
+  "selectedTasks": 15,
+  "existingRows": 0,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 15,
+  "byDecision": {
+    "replace_source": 12,
+    "augment_source": 2,
+    "no_good_source": 1
+  },
+  "byPerson": {
+    "Jan Leike": 1,
+    "Mustafa Suleyman": 3,
+    "Shane Legg": 5,
+    "Yann LeCun": 1,
+    "埃里克·霍维茨": 2,
+    "杰夫·迪恩": 1,
+    "科拉伊·卡武克丘奥卢": 1,
+    "马克·扎克伯格": 1
+  },
+  "selectedHosts": {
+    "jan.leike.name": 1,
+    "bbc.com": 1,
+    "mustafa-suleyman.ai": 2,
+    "aisfoundation.ai": 4,
+    "tedai-sanfrancisco.ted.com": 4,
+    "podcasts.musixmatch.com": 1,
+    "ai.meta.com": 2,
+    "learn.microsoft.com": 2,
+    "blog.google": 1,
+    "chessprogramming.org": 1,
+    "meta.com": 1
+  },
+  "selectedSources": 20,
+  "candidateCount": 148,
+  "sample": [
+    {
+      "person": "Jan Leike",
+      "target": "//arxiv.org/abs/2505.05410",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Publications - Jan Leike",
+          "host": "jan.leike.name",
+          "url": "https://jan.leike.name/publications.html"
+        }
+      ],
+      "rationale": "候选来源中，Jan Leike的个人官方出版物页面（jan.leike.name/publications.html）是权威、可访问的直接来源，明确列出了其论文列表，可直接证明其与目标论文（//arxiv.org/abs/2505.05410）的关系，符合替换要求。其他来源要么未直接关联目标论文，要么权威性不足。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "//www.bbc.com/audio/play/m002nv8b",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "The Interview | Mustafa Suleyman, Artificial Intelligence pioneer - BBC",
+          "host": "bbc.com",
+          "url": "https://www.bbc.com/audio/play/w3ct8c48"
+        }
+      ],
+      "rationale": "原始链接为BBC音频页面，但无内容。候选中有一个BBC官方音频页面（w3ct8c48），标题和描述明确包含人物姓名和访谈主题，可作为权威替换来源。其他候选要么不匹配原始链接，要么权威性不足或仅作辅助。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "//x.com/mustafasuleyman/status/1985777196460622327",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman",
+          "host": "mustafa-suleyman.ai",
+          "url": "https://mustafa-suleyman.ai"
+        }
+      ],
+      "rationale": "原始来源为社交媒体链接，缺乏实质内容。候选来源中，本人官方主页（mustafa-suleyman.ai）最权威，能直接证明其职位、作品及观点，适合作为替换来源。其他来源虽权威，但未直接关联原始推文。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "//x.com/mustafasuleyman/status/1986433769046483430",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman",
+          "host": "mustafa-suleyman.ai",
+          "url": "https://mustafa-suleyman.ai"
+        }
+      ],
+      "rationale": "原来源为社交媒体链接，无实质内容。候选中的本人官方主页（mustafa-suleyman.ai）权威、可访问，直接证明其职位、作品及观点，是理想的替换来源。"
+    },
+    {
+      "person": "Shane Legg",
+      "target": "//x.com/ShaneLegg/status/1990846672608370840",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Shane Legg - Nominating Committee | The AI Safety Foundation",
+          "host": "aisfoundation.ai",
+          "url": "https://www.aisfoundation.ai/about/legg"
+        },
+        {
+          "title": "Shane Legg | TEDAI San Francisco",
+          "host": "tedai-sanfrancisco.ted.com",
+          "url": "https://tedai-sanfrancisco.ted.com/speakers/shane-legg"
+        }
+      ],
+      "rationale": "原始来源（X/Twitter链接）无内容，需替换或补强。候选中有两个权威机构页面（AI Safety Foundation和TED）明确提供了Shane Legg的职位和背景信息，可作为可靠来源。其他候选多为媒体或博客，权威性不足或缺乏实质内容。"
+    },
+    {
+      "person": "Shane Legg",
+      "target": "//x.com/ShaneLegg/status/1994438350262898713",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "The Arrival of AGI with Shane Legg (co-founder of DeepMind)",
+          "host": "podcasts.musixmatch.com",
+          "url": "https://podcasts.musixmatch.com/podcast/google-deepmind-the-podcast-01hh4n1t15vakneqvn1t08g3db/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-01kc98eh5zfqt85dnqwdfqmzyv"
+        }
+      ],
+      "rationale": "原始来源仅为一个无内容的X链接。候选中，Google DeepMind官方播客的转录页面是最佳替代，它直接包含Shane Legg本人的访谈，明确其职位和关于AGI的观点，权威且可访问。"
+    },
+    {
+      "person": "Shane Legg",
+      "target": "//x.com/ShaneLegg/status/1995550043890241688",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Shane Legg | TEDAI San Francisco",
+          "host": "tedai-sanfrancisco.ted.com",
+          "url": "https://tedai-sanfrancisco.ted.com/speakers/shane-legg"
+        },
+        {
+          "title": "Shane Legg - Nominating Committee - The AI Safety Foundation",
+          "host": "aisfoundation.ai",
+          "url": "https://www.aisfoundation.ai/about/legg"
+        }
+      ],
+      "rationale": "原始来源（X帖子链接）因无内容被拒绝。候选中，TEDAI和AI Safety Foundation页面是权威机构资料，直接证明Shane Legg的职位和背景，适合作为替换来源。其他候选多为社交、新闻或第三方内容，权威性不足。"
+    },
+    {
+      "person": "Shane Legg",
+      "target": "//x.com/ShaneLegg/status/1999116798612881863",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Shane Legg | TEDAI San Francisco",
+          "host": "tedai-sanfrancisco.ted.com",
+          "url": "https://tedai-sanfrancisco.ted.com/speakers/shane-legg"
+        },
+        {
+          "title": "Shane Legg - Nominating Committee - The AI Safety Foundation",
+          "host": "aisfoundation.ai",
+          "url": "https://www.aisfoundation.ai/about/legg"
+        }
+      ],
+      "rationale": "原始来源（X/Twitter链接）无文本内容，已被拒绝。候选中TED官方活动页面和AI安全基金会页面均为权威机构资料，能直接证明Shane Legg的职位、研究方向和观点，适合作为替换来源。其他候选多为社交媒体或第三方内容，权威性不足。"
+    },
+    {
+      "person": "Shane Legg",
+      "target": "//x.com/ShaneLegg/status/2001349255043424647",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Shane Legg | TEDAI San Francisco",
+          "host": "tedai-sanfrancisco.ted.com",
+          "url": "https://tedai-sanfrancisco.ted.com/speakers/shane-legg"
+        },
+        {
+          "title": "Shane Legg - Nominating Committee - The AI Safety Foundation",
+          "host": "aisfoundation.ai",
+          "url": "https://www.aisfoundation.ai/about/legg"
+        }
+      ],
+      "rationale": "原来源（X/Twitter链接）已失效且无内容。候选来源中，TED官方活动页面和AI安全基金会页面均直接、权威地证明了Shane Legg的职位和背景，符合替换要求。其他候选来源要么权威性不足，要么缺乏直接证据。"
+    },
+    {
+      "person": "Yann LeCun",
+      "target": "Based on FAIR's V-JEPA 2.",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "V-JEPA: The next step toward advanced machine intelligence",
+          "host": "ai.meta.com",
+          "url": "https://ai.meta.com/blog/v-jepa-yann-lecun-ai-model-video-joint-embedding-predictive-architecture"
+        },
+        {
+          "title": "Yann LeCun - AI at Meta",
+          "host": "ai.meta.com",
+          "url": "https://ai.meta.com/people/396469589677838/yann-lecun"
+        }
+      ],
+      "rationale": "候选来源中，Meta官方博客和人物页面能直接、权威地证明Yann LeCun与FAIR及V-JEPA项目的关系，符合证据要求。其他来源要么权威性不足，要么缺乏直接关联，或需登录访问。"
+    },
+    {
+      "person": "埃里克·霍维茨",
+      "target": "//arxiv.org/abs/2511.02687",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "埃里克·霍维茨在人工智能的新时代 | Microsoft Learn",
+          "host": "learn.microsoft.com",
+          "url": "https://learn.microsoft.com/zh-cn/shows/microsoft-research-luminaries/eric-horvitz-on-new-era-of-artificial-intelligence"
+        }
+      ],
+      "rationale": "候选来源中，微软官方Learn页面明确提及埃里克·霍维茨及其职位和观点，可作为权威补充来源。但原始问题中的论文链接（//arxiv.org/abs/2511.02687）在候选中未找到直接证明埃里克·霍维茨是作者的证据，因此需要进一步查询以确认其与论文的关系。"
+    },
+    {
+      "person": "埃里克·霍维茨",
+      "target": "//edhub.ama-assn.org/jn-learning/audio-player/19019635",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "埃里克·霍维茨在人工智能的新时代 | Microsoft Learn",
+          "host": "learn.microsoft.com",
+          "url": "https://learn.microsoft.com/zh-cn/shows/microsoft-research-luminaries/eric-horvitz-on-new-era-of-artificial-intelligence"
+        }
+      ],
+      "rationale": "候选来源中，learn.microsoft.com的页面直接关联埃里克·霍维茨及其观点，是权威的官方来源，可替换原弱匹配来源。其他候选要么不相关，要么未提及人物，或内容为空。"
+    },
+    {
+      "person": "杰夫·迪恩",
+      "target": "An exciting new approach for doing continual learning, using nested optimization for enhancing long context processing.",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "候选来源均未提及杰夫·迪恩，无法建立该观点与人物的直接关联。原始来源（推特）本身证据不足，且候选中无权威替代。需要更明确的个人归属来源。"
+    },
+    {
+      "person": "科拉伊·卡武克丘奥卢",
+      "target": "//x.com/koraykv/status/1919770524177051687",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Koray Kavukcuoglu - Google Blog",
+          "host": "blog.google",
+          "url": "https://blog.google/authors/koray-kavukcuoglu"
+        },
+        {
+          "title": "Koray Kavukcuoglu - Chessprogramming wiki",
+          "host": "chessprogramming.org",
+          "url": "https://www.chessprogramming.org/Koray_Kavukcuoglu"
+        }
+      ],
+      "rationale": "原始来源（推文链接）内容过薄，无法作为权威依据。候选中的谷歌官方博客作者页是最佳替换，直接证明其职位和职责。Chessprogramming维基页面可作为补充，提供更详细的背景信息。其他候选均不相关或不符合要求。"
+    },
+    {
+      "person": "马克·扎克伯格",
+      "target": "马克·扎克伯格 on X",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mark Zuckerberg, Founder, Chairman and Chief Executive Officer",
+          "host": "meta.com",
+          "url": "https://www.meta.com/about/leadership/mark-zuckerberg"
+        }
+      ],
+      "rationale": "原始来源（X个人主页）因内容为空被拒绝。Meta官方领导层页面是权威、可访问的官方来源，能直接证明扎克伯格作为Meta创始人、董事长兼CEO的身份，符合替换要求。其他候选来源要么权威性不足，要么预览文本中缺乏直接证据。"
+    }
+  ]
+}

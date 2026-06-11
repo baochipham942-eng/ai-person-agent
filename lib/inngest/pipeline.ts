@@ -266,7 +266,7 @@ export const buildPersonJobV2 = inngest.createFunction(
                 report: {
                     approvedCount: result.stats.approved,
                     fixedCount: result.l0.report.fixedCount,
-                    rejectedCount: result.stats.l0Rejected + result.stats.dedupDropped + result.stats.semanticRejected,
+                    rejectedCount: result.stats.sourceQualityRejected + result.stats.l0Rejected + result.stats.dedupDropped + result.stats.semanticRejected,
                     reviewCount: result.stats.semanticReview,
                 },
             };

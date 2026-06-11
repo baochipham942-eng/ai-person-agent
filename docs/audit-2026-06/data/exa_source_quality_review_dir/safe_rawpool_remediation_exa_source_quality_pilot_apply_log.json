@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-06-09T16:28:53.517Z",
+  "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/safe_rawpool_remediation_exa_source_quality_pilot_archive.json",
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 7,
+    "rejectedSafeQueueRows": 0,
+    "uniqueTargetIds": 7,
+    "existingTargets": 7,
+    "missingTargets": 0,
+    "deleted": 7,
+    "affectedPeople": 2,
+    "bySourceType": {
+      "exa": 7
+    },
+    "byVerdict": {
+      "unsupported": 1,
+      "wrong_person": 6
+    },
+    "topPeople": {
+      "Aidan Gomez": 6,
+      "Alexandr Wang": 1
+    }
+  }
+}

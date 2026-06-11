@@ -261,7 +261,7 @@ async function main() {
       organization: true,
       officialLinks: true,
       _count: {
-        select: { rawPoolItems: true, roles: true, cards: true }
+        select: { rawPoolItems: true, roles: true, cards: { where: { isActive: true } } }
       }
     },
     take: limit,
@@ -310,7 +310,7 @@ async function main() {
     const updated = await prisma.people.findUnique({
       where: { id: person.id },
       include: {
-        _count: { select: { rawPoolItems: true, roles: true, cards: true } }
+        _count: { select: { rawPoolItems: true, roles: true, cards: { where: { isActive: true } } } }
       }
     });
 

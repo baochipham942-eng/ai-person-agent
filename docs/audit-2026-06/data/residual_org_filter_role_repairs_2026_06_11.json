@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-06-11T23:15:00+08:00",
+  "purpose": "Resolve residual role-status organization filter ambiguity after the main OpenAI/Anthropic pass.",
+  "people": [
+    {
+      "personId": "cmjtxcx2r00075p08egm5tuq9",
+      "person": "科拉伊·卡武克丘奥卢",
+      "currentTitle": "Chief Technology Officer, Google DeepMind / Chief AI Architect @ Google",
+      "organizations": ["Google", "Google DeepMind", "谷歌DeepMind"],
+      "evidenceUrl": "https://www.theverge.com/podcast/936445/sundar-pichai-ai-search-google-zero-youtube-web",
+      "evidenceNote": "Sundar Pichai described Koray Kavukcuoglu taking on Google's chief AI architect role; FT interview also identifies him as DeepMind CTO and Google chief AI architect."
+    },
+    {
+      "personId": "cmk8gtu6q0005j1tn4tow992q",
+      "person": "David Silver",
+      "currentTitle": "Founder @ Ineffable Intelligence / Professor @ UCL",
+      "organizations": ["Ineffable Intelligence", "University College London", "UCL", "Google DeepMind"],
+      "evidenceUrl": "https://www.thetimes.com/business/companies-markets/article/ex-google-ai-scientist-wins-11-billion-for-new-london-start-up-zk6620qjz",
+      "evidenceNote": "The Times reported Silver founded Ineffable Intelligence, remains a UCL professor, and is a former Google DeepMind reinforcement-learning lead."
+    },
+    {
+      "personId": "cmk9voz1p000bazb98cg49jhu",
+      "person": "丹·克莱因",
+      "currentTitle": "Professor @ UC Berkeley",
+      "organizations": ["University of California, Berkeley", "加州大学伯克利分校", "Stanford University"],
+      "evidenceUrl": "https://people.eecs.berkeley.edu/~klein/",
+      "evidenceNote": "Dan Klein's UC Berkeley page lists him as Professor in the Computer Science Division and gives Stanford MS/PhD dates."
+    }
+  ],
+  "roles": [
+    {
+      "id": "cmk8hzzfw002pa1k31wc760am",
+      "person": "David Silver",
+      "organization": "Google DeepMind",
+      "role": "Lead Researcher",
+      "roleZh": "研究负责人",
+      "startDate": "2010-01-01",
+      "endDate": "2026-01-01",
+      "source": "manual_org_filter_review_2026_06_11",
+      "confidence": 0.85,
+      "evidenceUrl": "https://www.thetimes.com/business/companies-markets/article/ex-google-ai-scientist-wins-11-billion-for-new-london-start-up-zk6620qjz"
+    },
+    {
+      "id": "cmk9bz7q60003bu2mnaszylyu",
+      "person": "David Silver",
+      "organization": "Google DeepMind",
+      "role": "Lead researcher on AlphaGo, AlphaZero, and MuZero",
+      "roleZh": "AlphaGo、AlphaZero、MuZero 研究负责人",
+      "startDate": "2013-01-01",
+      "endDate": "2026-01-01",
+      "source": "manual_org_filter_review_2026_06_11",
+      "confidence": 0.85,
+      "evidenceUrl": "https://www.thetimes.com/business/companies-markets/article/ex-google-ai-scientist-wins-11-billion-for-new-london-start-up-zk6620qjz"
+    },
+    {
+      "id": "cmkb2cg6d0009o21qa8qgxzle",
+      "person": "丹·克莱因",
+      "organization": "University of California, Berkeley",
+      "role": "Professor",
+      "roleZh": "教授",
+      "startDate": null,
+      "endDate": null,
+      "source": "manual_org_filter_review_2026_06_11",
+      "confidence": 0.95,
+      "evidenceUrl": "https://people.eecs.berkeley.edu/~klein/"
+    },
+    {
+      "id": "cmkb2cl7a000eo21qd76hhg2o",
+      "person": "丹·克莱因",
+      "organization": "Stanford University",
+      "role": "MS/PhD in Computer Science",
+      "roleZh": "计算机科学硕博",
+      "startDate": "1999-01-01",
+      "endDate": "2004-01-01",
+      "source": "manual_org_filter_review_2026_06_11",
+      "confidence": 0.95,
+      "evidenceUrl": "https://people.eecs.berkeley.edu/~klein/"
+    }
+  ]
+}

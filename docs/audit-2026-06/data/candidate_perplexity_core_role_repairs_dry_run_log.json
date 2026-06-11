@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "roles": 3,
+    "insertedRoles": 0,
+    "wouldInsertRoles": 3,
+    "existingRoles": 0,
+    "missingPeople": 0,
+    "orgsInserted": 0,
+    "orgsWouldInsert": 1
+  },
+  "log": [
+    {
+      "action": "would_insert_role",
+      "organizationAction": "existing_org",
+      "person": "Denis Yarats",
+      "personId": "75f61bf6-b50a-4499-80cd-026315b26e0f",
+      "organization": "Perplexity",
+      "organizationId": "b9fd46a2-3378-479c-b52b-e242e2ed7e33",
+      "role": "Co-founder & CTO",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "existing_org",
+      "person": "Andy Konwinski",
+      "personId": "854f0b2e-12f1-43e0-9aa0-d0fe3a498fe3",
+      "organization": "Perplexity",
+      "organizationId": "b9fd46a2-3378-479c-b52b-e242e2ed7e33",
+      "role": "Co-founder",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "would_insert_org",
+      "person": "Andy Konwinski",
+      "personId": "854f0b2e-12f1-43e0-9aa0-d0fe3a498fe3",
+      "organization": "Laude Institute",
+      "organizationId": "c3206f06-f0de-4eb0-b56f-4a21d1238bc9",
+      "role": "Founder",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    }
+  ]
+}

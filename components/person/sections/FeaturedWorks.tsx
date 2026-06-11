@@ -1,10 +1,12 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface Product {
   name: string;
+  type?: string;
   org?: string;
   year?: string | number;
   description: string;
@@ -62,6 +64,7 @@ interface Card {
   title: string;
   content: string;
   tags: string[];
+  sourceUrl?: string | null;
   importance: number;
 }
 
@@ -177,6 +180,9 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const [loadingRepos, setLoadingRepos] = useState(false);
   const [loadingBlogs, setLoadingBlogs] = useState(false);
   const [loadingPodcast, setLoadingPodcast] = useState(false);
+  const [reposError, setReposError] = useState(false);
+  const [blogsError, setBlogsError] = useState(false);
+  const [podcastError, setPodcastError] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const hasScrolled = useRef(false);
 
@@ -186,7 +192,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     return products
       .filter(p => {
         // 排除 GitHub 类型的数据（这些应该在开源项目 Tab 显示）
-        const isGithub = (p as any).type === 'github' ||
+        const isGithub = p.type === 'github' ||
                          (p.url && p.url.includes('github.com'));
         return !isGithub;
       })
@@ -213,19 +219,19 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const tabs = useMemo(() => {
     const result: { key: TabKey; label: string; count?: number }[] = [];
     // 成果 tab（承载产品、模型、工具、框架、数据集等代表性产出）
-    if (hasProducts) result.push({ key: 'products', label: '代表成果' });
+    if (hasProducts) result.push({ key: 'products', label: '代表成果', count: realProducts.length });
     // 开源项目 tab
-    if (hasOpensource) result.push({ key: 'opensource', label: '开源项目' });
+    if (hasOpensource) result.push({ key: 'opensource', label: '开源项目', count: githubCount });
     if (hasPapers) result.push({ key: 'papers', label: '核心论文', count: papers?.length });
     if (hasTopics) result.push({ key: 'topics', label: '话题贡献', count: topics?.length });
     // 学习卡片 tab
     if (hasCards) result.push({ key: 'cards', label: '学习卡片', count: cards?.length });
     // 博客 tab
-    if (hasBlogs) result.push({ key: 'blogs', label: '博客' });
+    if (hasBlogs) result.push({ key: 'blogs', label: '博客', count: blogCount });
     // 播客 tab
     if (hasPodcast) result.push({ key: 'podcast', label: '播客', count: podcastCount });
     return result;
-  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasPodcast, papers?.length, topics?.length, cards?.length, podcastCount]);
+  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasPodcast, realProducts.length, githubCount, papers?.length, topics?.length, cards?.length, blogCount, podcastCount]);
 
   // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
   const validInitialTab = useMemo(() => {
@@ -248,34 +254,36 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   }, [activeTab, tabs]);
 
   // 加载开源项目数据
-  const loadGithubRepos = useCallback(async () => {
-    if (!personId || githubRepos.length > 0) return;
+  const loadGithubRepos = useCallback(async (force = false) => {
+    if (!personId || (!force && githubRepos.length > 0)) return;
     setLoadingRepos(true);
+    setReposError(false);
     try {
       const response = await fetch(`/api/person/${personId}/items?type=github&limit=6`);
-      if (response.ok) {
-        const result = await response.json();
-        setGithubRepos(result.data || []);
-      }
+      if (!response.ok) throw new Error('Failed to load github repos');
+      const result = await response.json();
+      setGithubRepos(result.data || []);
     } catch (error) {
       console.error('Failed to load github repos:', error);
+      setReposError(true);
     } finally {
       setLoadingRepos(false);
     }
   }, [personId, githubRepos.length]);
 
   // 加载博客数据
-  const loadBlogItems = useCallback(async () => {
-    if (!personId || blogItems.length > 0) return;
+  const loadBlogItems = useCallback(async (force = false) => {
+    if (!personId || (!force && blogItems.length > 0)) return;
     setLoadingBlogs(true);
+    setBlogsError(false);
     try {
       const response = await fetch(`/api/person/${personId}/items?type=exa&limit=10`);
-      if (response.ok) {
-        const result = await response.json();
-        setBlogItems(result.data || []);
-      }
+      if (!response.ok) throw new Error('Failed to load blog items');
+      const result = await response.json();
+      setBlogItems(result.data || []);
     } catch (error) {
       console.error('Failed to load blog items:', error);
+      setBlogsError(true);
     } finally {
       setLoadingBlogs(false);
     }
@@ -296,17 +304,18 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   }, [activeTab, personId, loadBlogItems]);
 
   // 加载播客数据
-  const loadPodcastItems = useCallback(async () => {
-    if (!personId || podcastItems.length > 0) return;
+  const loadPodcastItems = useCallback(async (force = false) => {
+    if (!personId || (!force && podcastItems.length > 0)) return;
     setLoadingPodcast(true);
+    setPodcastError(false);
     try {
       const response = await fetch(`/api/person/${personId}/items?type=podcast&limit=20`);
-      if (response.ok) {
-        const result = await response.json();
-        setPodcastItems(result.data || []);
-      }
+      if (!response.ok) throw new Error('Failed to load podcast items');
+      const result = await response.json();
+      setPodcastItems(result.data || []);
     } catch (error) {
       console.error('Failed to load podcast items:', error);
+      setPodcastError(true);
     } finally {
       setLoadingPodcast(false);
     }
@@ -350,23 +359,24 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-base">🏆</span>
-            <h2 className="text-sm font-medium text-stone-900">代表作品</h2>
+            <h2 className="text-sm font-medium text-stone-900">成果与资料</h2>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1.5 mt-3">
+        <div className="flex gap-1.5 mt-3 overflow-x-auto pb-1 scrollbar-hide">
           {tabs.map(tab => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-all ${
+              className={`flex-shrink-0 whitespace-nowrap px-3 py-1.5 text-sm font-medium rounded-lg transition-all ${
                 activeTab === tab.key
                   ? 'gradient-btn shadow-sm'
                   : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
               }`}
             >
               {tab.label}
+              {typeof tab.count === 'number' && <span className="ml-1 opacity-70">({tab.count})</span>}
             </button>
           ))}
         </div>
@@ -393,16 +403,17 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                     <div className="flex items-start gap-3">
                       {/* 产品 Logo/Icon - 优先用 logo，其次 Google Favicon，最后 emoji - 懒加载 */}
                       {logoUrl ? (
-                        <img
+                        <Image
                           src={logoUrl}
                           alt={product.name}
+                          width={48}
+                          height={48}
+                          unoptimized
                           className="w-12 h-12 rounded-xl object-contain flex-shrink-0 border border-stone-100 bg-white p-1"
-                          loading="lazy"
-                          decoding="async"
                           onError={(e) => {
                             // favicon 加载失败时隐藏图片，显示 fallback
-                            (e.target as HTMLImageElement).style.display = 'none';
-                            (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling?.classList.remove('hidden');
                           }}
                         />
                       ) : null}
@@ -510,10 +521,14 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                 ))}
               </div>
             ) : (
+              reposError ? (
+                <LazyLoadError onRetry={() => loadGithubRepos(true)} />
+              ) : (
               <div className="text-center py-8 text-stone-400">
                 <div className="text-3xl mb-2">💻</div>
-                <div className="text-sm">暂无开源项目</div>
+                <div className="text-sm">暂无已整理内容</div>
               </div>
+              )
             )}
           </div>
         )}
@@ -521,7 +536,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
         {/* 核心论文 - 增强展示，默认显示2篇 */}
         {activeTab === 'papers' && hasPapers && (
           <div className="space-y-3">
-            {(showAllPapers ? papers! : papers!.slice(0, 2)).map((paper, idx) => (
+            {(showAllPapers ? papers! : papers!.slice(0, 2)).map((paper) => (
               <a
                 key={paper.id}
                 href={paper.url}
@@ -649,7 +664,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                       style={{ borderLeftWidth: '3px' }}
                     >
                       <p className="text-xs text-stone-700 italic line-clamp-2 leading-relaxed">
-                        "{item.quote.text}"
+                        <span aria-hidden="true">“</span>{item.quote.text}<span aria-hidden="true">”</span>
                       </p>
                       <div className="flex items-center gap-1 mt-1.5 text-[10px] text-stone-500">
                         {item.quote.url && <span className="text-blue-500">🔗</span>}
@@ -718,6 +733,20 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                                   <div className="flex items-center gap-2 text-sm text-stone-500 mb-2">
                                     <span>{config.icon}</span>
                                     <span>{config.label}</span>
+                                    {card.sourceUrl ? (
+                                      <a
+                                        href={card.sourceUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-700 border border-emerald-100 hover:bg-emerald-100"
+                                      >
+                                        有来源
+                                      </a>
+                                    ) : (
+                                      <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-500">
+                                        自动整理
+                                      </span>
+                                    )}
                                   </div>
                                   <h4 className="font-medium text-stone-900 mb-2">{card.title}</h4>
                                   <p className="text-sm text-stone-600 line-clamp-3">{card.content}</p>
@@ -795,10 +824,14 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                 })}
               </div>
             ) : (
+              blogsError ? (
+                <LazyLoadError onRetry={() => loadBlogItems(true)} />
+              ) : (
               <div className="text-center py-8 text-stone-400">
                 <div className="text-3xl mb-2">📝</div>
-                <div className="text-sm">暂无博客文章</div>
+                <div className="text-sm">暂无已整理内容</div>
               </div>
+              )
             )}
           </div>
         )}
@@ -845,14 +878,34 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                 })}
               </div>
             ) : (
+              podcastError ? (
+                <LazyLoadError onRetry={() => loadPodcastItems(true)} />
+              ) : (
               <div className="text-center py-8 text-stone-400">
                 <div className="text-3xl mb-2">🎙️</div>
-                <div className="text-sm">暂无播客内容</div>
+                <div className="text-sm">暂无已整理内容</div>
               </div>
+              )
             )}
           </div>
         )}
       </div>
     </section>
+  );
+}
+
+function LazyLoadError({ onRetry }: { onRetry: () => void }) {
+  return (
+    <div className="text-center py-8 text-stone-500">
+      <div className="text-sm font-medium text-stone-700 mb-1">加载失败</div>
+      <p className="text-xs text-stone-400 mb-3">这块资料暂时没有取回来</p>
+      <button
+        type="button"
+        onClick={onRetry}
+        className="px-3 py-1.5 rounded-lg text-xs font-medium gradient-btn"
+      >
+        重试
+      </button>
+    </div>
   );
 }

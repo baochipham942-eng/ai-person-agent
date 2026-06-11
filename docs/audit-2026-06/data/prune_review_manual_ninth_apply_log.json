@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-06-10T11:57:26.943Z",
+  "summary": {
+    "generatedAt": "2026-06-10T11:57:26.943Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_ninth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_ninth_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 40,
+    "existingTargets": 40,
+    "missingTargets": 0,
+    "auditRowsInserted": 40,
+    "deleted": 40,
+    "byAction": {
+      "delete_raw_pool_item": 40
+    },
+    "byVerdict": {
+      "reject": 40
+    },
+    "byPerson": {
+      "Andrej Karpathy": 3,
+      "Elon Musk": 3,
+      "Geoffrey Hinton": 3,
+      "Greg Brockman": 3,
+      "Ilya Sutskever": 3,
+      "Jaana Dogan": 3,
+      "Jason Wei": 3,
+      "John Schulman": 3,
+      "Lukasz Kaiser": 3,
+      "Jan Leike": 2,
+      "Jeremy Howard": 2,
+      "Marc Andreessen": 2,
+      "Matthew Berman": 2,
+      "Boris Cherny": 1,
+      "Daniela Amodei": 1,
+      "Dario Amodei": 1,
+      "Guillaume Lample": 1,
+      "Hyung Won Chung": 1
+    }
+  }
+}

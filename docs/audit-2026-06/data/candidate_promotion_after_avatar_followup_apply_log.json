@@ -1,0 +1,116 @@
+{
+  "generatedAt": "2026-06-11T08:09:47.093Z",
+  "mode": "execute",
+  "policyVersion": "2026-06-11",
+  "criteria": {
+    "status": "candidate",
+    "completeness": ">= 45",
+    "rawCount": ">= 2",
+    "keepCount": ">= 2",
+    "liveCount": ">= 1",
+    "cardCount": ">= 5",
+    "avatarUrl": "required for promotion"
+  },
+  "summary": {
+    "candidates": 7,
+    "promotable": 3,
+    "held": 4,
+    "updated": 3
+  },
+  "promotable": [
+    {
+      "id": "9c400879-a2f7-49d1-935e-47aaa444091c",
+      "name": "Evan Hubinger",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": "/avatars/evan-hubinger-8673685b.webp",
+      "rawCount": 4,
+      "liveCount": 4,
+      "keepCount": 4,
+      "cardCount": 5,
+      "blockers": []
+    },
+    {
+      "id": "ad2a20a8-72eb-4a80-9779-3d1b6054fc02",
+      "name": "Trenton Bricken",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": "/avatars/trenton-bricken-6876e6f4.webp",
+      "rawCount": 3,
+      "liveCount": 2,
+      "keepCount": 3,
+      "cardCount": 5,
+      "blockers": []
+    },
+    {
+      "id": "18a8394b-d6e4-4230-a2f6-c381fa468c3c",
+      "name": "Tristan Hume",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": "/avatars/tristan-hume-b37184e1.webp",
+      "rawCount": 4,
+      "liveCount": 2,
+      "keepCount": 4,
+      "cardCount": 6,
+      "blockers": []
+    }
+  ],
+  "held": [
+    {
+      "id": "4b23782c-4ce8-4ed7-bfdd-8bc0f79343a7",
+      "name": "Catherine Olsson",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": null,
+      "rawCount": 3,
+      "liveCount": 2,
+      "keepCount": 3,
+      "cardCount": 5,
+      "blockers": [
+        "avatar_missing"
+      ]
+    },
+    {
+      "id": "dd0022ee-5895-46a9-b741-4d4d32dc70db",
+      "name": "Nicholas Joseph",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": null,
+      "rawCount": 3,
+      "liveCount": 2,
+      "keepCount": 3,
+      "cardCount": 5,
+      "blockers": [
+        "avatar_missing"
+      ]
+    },
+    {
+      "id": "127ecbaa-aa90-412f-8c99-951d431a7688",
+      "name": "Phil Blunsom",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": null,
+      "rawCount": 2,
+      "liveCount": 2,
+      "keepCount": 2,
+      "cardCount": 5,
+      "blockers": [
+        "avatar_missing"
+      ]
+    },
+    {
+      "id": "1269f982-437d-4204-a358-014819814898",
+      "name": "Tamera Lanham",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": null,
+      "rawCount": 4,
+      "liveCount": 4,
+      "keepCount": 4,
+      "cardCount": 5,
+      "blockers": [
+        "avatar_missing"
+      ]
+    }
+  ]
+}

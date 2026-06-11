@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-06-11T18:20:00+08:00",
+  "reason": "Replace Bindu Reddy's generic Abacus about-page og image with the profile portrait embedded on her Abacus profile page, localized as compressed WebP.",
+  "avatars": [
+    {
+      "person": "Bindu Reddy",
+      "imageUrl": "https://abacus.ai/static/imgs/teamA9.webp",
+      "evidenceUrl": "https://www.abacus.ai/bindu-reddy",
+      "evidenceNote": "Abacus profile page is titled Bindu Reddy and embeds /static/imgs/teamA9.webp with alt='Bindu Reddy'.",
+      "overwriteExisting": true
+    }
+  ]
+}

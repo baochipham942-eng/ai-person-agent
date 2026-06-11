@@ -33,6 +33,7 @@ export interface GenerateOptions {
 }
 
 const DEFAULT_CHAIN: ProviderName[] = ['deepseek', 'gemini'];
+type GenerateTextParams = Parameters<typeof generateText>[0];
 
 // ============== Provider 模型实例 (懒加载缓存) ==============
 
@@ -107,7 +108,7 @@ export async function generate(
                 messages: messages.map(m => ({ role: m.role, content: m.content })),
                 temperature: options.temperature ?? 0.7,
                 maxOutputTokens: options.maxTokens ?? 2000,
-            } as any);
+            } as GenerateTextParams);
             return { text: result.text, provider: name };
         } catch (e) {
             lastErr = e;
@@ -168,7 +169,7 @@ export async function generateStructured<T>(
                 temperature: options.temperature ?? 0.3,
                 maxOutputTokens: options.maxTokens ?? 2000,
                 providerOptions: { openai: { response_format: { type: 'json_object' } } },
-            } as any);
+            } as GenerateTextParams);
 
             // 第一次尝试解析 + 校验
             try {
@@ -185,7 +186,7 @@ export async function generateStructured<T>(
                     temperature: 0,
                     maxOutputTokens: options.maxTokens ?? 2000,
                     providerOptions: { openai: { response_format: { type: 'json_object' } } },
-                } as any);
+                } as GenerateTextParams);
                 return { data: schema.parse(extractJson(repair.text)), provider: name };
             }
         } catch (e) {

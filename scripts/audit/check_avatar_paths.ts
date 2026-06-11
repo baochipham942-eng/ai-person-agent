@@ -18,7 +18,7 @@ async function check() {
         select: { id: true, name: true, avatarUrl: true }
     });
 
-    let missing: { id: string; name: string; avatarUrl: string }[] = [];
+    const missing: { id: string; name: string; avatarUrl: string }[] = [];
     let ok = 0;
 
     for (const p of people) {

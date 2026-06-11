@@ -1,0 +1,1681 @@
+{
+  "generatedAt": "2026-06-10T12:00:12.119Z",
+  "summary": {
+    "generatedAt": "2026-06-10T12:00:12.119Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_tenth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_tenth_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 40,
+    "existingTargets": 40,
+    "missingTargets": 0,
+    "auditRowsInserted": 40,
+    "deleted": 40,
+    "byAction": {
+      "delete_raw_pool_item": 40
+    },
+    "byVerdict": {
+      "reject": 40
+    },
+    "byPerson": {
+      "Elon Musk": 3,
+      "Greg Brockman": 3,
+      "Ilya Sutskever": 3,
+      "Jason Wei": 3,
+      "Lukasz Kaiser": 3,
+      "Mira Murati": 3,
+      "Mustafa Suleyman": 3,
+      "Noam Shazeer": 3,
+      "Oriol Vinyals": 3,
+      "Percy Liang": 3,
+      "Quoc Le": 3,
+      "Andrej Karpathy": 2,
+      "Geoffrey Hinton": 2,
+      "John Schulman": 1,
+      "Matthew Berman": 1,
+      "Sam Altman": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wv090984rmtbdc9blrk2",
+          "objectLabel": "Fully neural menugen"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容过于简略，仅有标题重复，缺乏实质性信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.067Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju0wv090984rmtbdc9blrk2",
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "sourceType": "x",
+        "url": "https://x.com/karpathy/status/1992677051892195416",
+        "urlHash": "a16aa7cbc932ede04625b1acea8529f9",
+        "contentHash": "f231b1bdb231b0d14bcc88ac41eff1d9",
+        "title": "Fully neural menugen",
+        "text": "Fully neural menugen",
+        "publishedAt": "2025-12-31T04:59:35.427Z",
+        "metadata": {
+          "author": "karpathy",
+          "postId": "1992677051892195416",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:59:52.953Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wt0r097qrmtbd5h9olsp",
+          "objectLabel": "I could certainly imagine that "
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容过于简短且缺乏上下文，无实质性信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju0wt0r097qrmtbd5h9olsp",
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "sourceType": "x",
+        "url": "https://x.com/karpathy/status/1998082007893717478",
+        "urlHash": "2de027923d34c74f23a3eb449c52e33f",
+        "contentHash": "dd355d4a1b5e2a949edc7c47b2eb4c43",
+        "title": "I could certainly imagine that ",
+        "text": "I could certainly imagine that ",
+        "publishedAt": "2025-12-31T04:59:35.427Z",
+        "metadata": {
+          "author": "karpathy",
+          "postId": "1998082007893717478",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:59:50.379Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0w6f808zsrmtbrx6ncz7x",
+          "objectLabel": "//x.com/elonmusk/status/2003892131572994539"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为推文链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju0w6f808zsrmtbrx6ncz7x",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "sourceType": "x",
+        "url": "https://x.com/elonmusk/status/2003892131572994539",
+        "urlHash": "4af3b212915abddb1b0486c313de62ea",
+        "contentHash": "e732047d65a9a8abc2a35aadb809cfd0",
+        "title": "//x.com/elonmusk/status/2003892131572994539",
+        "text": "//x.com/elonmusk/status/2003892131572994539",
+        "publishedAt": "2025-12-31T04:59:08.815Z",
+        "metadata": {
+          "author": "elonmusk",
+          "postId": "2003892131572994539",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:59:21.092Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zc5003nc6jtxq779ngd",
+          "objectLabel": "//x.com/elonmusk/status/2005698800695009510"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含社交媒体链接，缺乏实质性文字内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjse4zc5003nc6jtxq779ngd",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "sourceType": "x",
+        "url": "https://x.com/elonmusk/status/2005698800695009510",
+        "urlHash": "58f7f5ca1fb1bc897b0b3e8411a624a6",
+        "contentHash": "8ac7c4afbbdfb90372529172665441e0",
+        "title": "//x.com/elonmusk/status/2005698800695009510",
+        "text": "//x.com/elonmusk/status/2005698800695009510",
+        "publishedAt": "2025-12-30T01:34:34.469Z",
+        "metadata": {
+          "author": "elonmusk",
+          "postId": "2005698800695009510"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-30T01:34:34.469Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zc3003lc6jtztye94cw",
+          "objectLabel": "//x.com/elonmusk/status/2005699538808697062"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含社交媒体链接，缺乏实质性文字内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjse4zc3003lc6jtztye94cw",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "sourceType": "x",
+        "url": "https://x.com/elonmusk/status/2005699538808697062",
+        "urlHash": "77209449eb85b6ed66349df8c99d87d5",
+        "contentHash": "e6ea01ea3f6408e7d796b505fa3fd098",
+        "title": "//x.com/elonmusk/status/2005699538808697062",
+        "text": "//x.com/elonmusk/status/2005699538808697062",
+        "publishedAt": "2025-12-30T01:34:34.467Z",
+        "metadata": {
+          "author": "elonmusk",
+          "postId": "2005699538808697062"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-30T01:34:34.468Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4n1m002pc6jtiaal5qua",
+          "objectLabel": "There is a book on Amazon called "
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容残缺不全，仅有半句引言，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjse4n1m002pc6jtiaal5qua",
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "sourceType": "x",
+        "url": "https://x.com/geoffreyhinton/status/1931667061412921855",
+        "urlHash": "fc65d1c81c6c8fe7992486bedcce752d",
+        "contentHash": "3ecd4f8cad3757818e022560618530e6",
+        "title": "There is a book on Amazon called ",
+        "text": "There is a book on Amazon called ",
+        "publishedAt": "2025-12-30T01:34:18.537Z",
+        "metadata": {
+          "author": "geoffreyhinton",
+          "postId": "1931667061412921855",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:49:14.050Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jabs076xrmtb8fhjigro",
+          "objectLabel": "Geoffrey Hinton: In time, AI will have self-awareness, consciousness #shorts"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "短视频标题党，内容仅标签无实质信息，质量低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju0jabs076xrmtb8fhjigro",
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=LuNN32Tmc9c",
+        "urlHash": "09028d4987b56ce864def5a4c01ab444",
+        "contentHash": "cb16f6f13875519b0c87cf4801442b9e",
+        "title": "Geoffrey Hinton: In time, AI will have self-awareness, consciousness #shorts",
+        "text": "news #artificialintelligence #ai.",
+        "publishedAt": "2023-10-10T12:05:14.000Z",
+        "metadata": {
+          "tags": [
+            "AGI",
+            "对齐",
+            "可解释性"
+          ],
+          "videoId": "LuNN32Tmc9c",
+          "isOfficial": false,
+          "thumbnailUrl": "https://i.ytimg.com/vi/LuNN32Tmc9c/hqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:49:19.625Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10et909ztrmtbvoyqdaj3",
+          "objectLabel": "embedded-mongo"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "数据库模拟工具，不涉及 AI 技术。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju10et909ztrmtbvoyqdaj3",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/embedded-mongo",
+        "urlHash": "f9fe5182c85e30e119b42c57717f485f",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "embedded-mongo",
+        "text": "== What ==\n\nA Ruby implementation of the MongoDB interface.\n\nJust swap out the line \"Mongo::Connection.new\" in your application\nwith \"EmbeddedMongo::Connection.new\" and leave the rest of the code\nalone.  No server process needed!\n\nE.g.\n\n    conn = EmbeddedMongo::Connection.new\n    coll = conn['test']['embedded']\n    coll.insert({ 'hello' => 'world' })\n    coll.find.to_a\n    # => [{\"_id\"=>BSON::ObjectId('4e1b4027f626214e9e000001'), \"hello\"=>\"world\"}]\n\n== Goal ==\n\nembedded-mongo's goal is to provide the same interface as mongodb but\nbe embedded inside the calling process.  This allows unit tests to be\nrun without the overhead of database roundtrips or the creation of\nad-hoc mock layers.  It also allows one to start using the mongodb\ninterface for new projects without having to set up a real database.\nI don't think there's a use-case for it in production, though I could\nbe wrong.\n\n== Status ==\n\nMost of the query semantics have been coded.  Many of the database\nmanagement operations have not.  Nothing involving execution of\nJavaScript has been coded, because that sounds like work.  Persistence\nhasn't been added, though that could be as easy as a Marshal or YAML\ndump when needed.\n\nI think the next thing to add is indexes.  Currently everything works\nvia a linear scan of the database.\n",
+        "publishedAt": "2025-10-03T19:29:04.000Z",
+        "metadata": {
+          "forks": 10,
+          "stars": 123,
+          "topics": [],
+          "language": "Ruby",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:50.718Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10htf0a0lrmtb05cacfww",
+          "objectLabel": "gmail-archiver"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "个人邮件处理脚本，无 AI 价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju10htf0a0lrmtb05cacfww",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/gmail-archiver",
+        "urlHash": "18222ade504973b149814d9ba0ce138c",
+        "contentHash": "7abf7d7c55ab4f2bfecf198c0cc6a9ae",
+        "title": "gmail-archiver",
+        "text": "From when I had 2M emails in my Gmail inbox and needed to start removing messages",
+        "publishedAt": "2025-02-09T16:48:20.000Z",
+        "metadata": {
+          "forks": 1,
+          "stars": 9,
+          "topics": [],
+          "language": "Ruby",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:53.456Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10drw09zhrmtbmmhc12el",
+          "objectLabel": "kaggle"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "个人 GitHub 仓库，自述内容不完善，缺乏参考价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju10drw09zhrmtbmmhc12el",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/kaggle",
+        "urlHash": "e5c4bfe63a8891ff34162607bdbd0e7c",
+        "contentHash": "5babec3c5e9c79344d16940dd56b0fcd",
+        "title": "kaggle",
+        "text": "A collection of Kaggle solutions. Not very polished.",
+        "publishedAt": "2025-12-28T20:39:43.000Z",
+        "metadata": {
+          "forks": 146,
+          "stars": 773,
+          "topics": [],
+          "language": "Python",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:49.684Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvorln00nfrmtb9ne80c52",
+          "objectLabel": "//x.com/ilyasut/status/1994424504370581726"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含推文链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvorln00nfrmtb9ne80c52",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "sourceType": "x",
+        "url": "https://x.com/ilyasut/status/1994424504370581726",
+        "urlHash": "07cbb6795e39745320c2590c45456957",
+        "contentHash": "f3e8608d6b558049a65d2f95d9db12b2",
+        "title": "//x.com/ilyasut/status/1994424504370581726",
+        "text": "//x.com/ilyasut/status/1994424504370581726",
+        "publishedAt": "2025-12-31T02:33:21.251Z",
+        "metadata": {
+          "author": "ilyasut",
+          "postId": "1994424504370581726",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:12:50.532Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvotle00nrrmtba3gpkm27",
+          "objectLabel": "I am starting a new company:"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容极度空泛，仅为预告性质，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvotle00nrrmtba3gpkm27",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "sourceType": "x",
+        "url": "https://x.com/ilyasut/status/1803472978753303014",
+        "urlHash": "f80668d11b1e0c80f772dbc640c13206",
+        "contentHash": "03c377e7748d1413d5935e3efa804124",
+        "title": "I am starting a new company:",
+        "text": "I am starting a new company:",
+        "publishedAt": "2025-12-31T02:33:21.251Z",
+        "metadata": {
+          "author": "ilyasut",
+          "postId": "1803472978753303014",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:12:51.940Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju122qv0aafrmtblayyegu3",
+          "objectLabel": "Mountain: identified. Time to climb"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "虽然是本人发布，但内容仅为一句口号，缺乏实质性的信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju122qv0aafrmtblayyegu3",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "sourceType": "x",
+        "url": "https://x.com/ilyasut/status/1831341857714119024",
+        "urlHash": "69c77b13f546dcb6e2662cd71e29c688",
+        "contentHash": "78c9d5c5cca79eb4ac64b944ab63016f",
+        "title": "Mountain: identified. Time to climb",
+        "text": "Mountain: identified. Time to climb",
+        "publishedAt": null,
+        "metadata": {
+          "author": "ilyasut",
+          "postId": "1831341857714119024",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:03:56.263Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw762b0007fyksz836j2h3r",
+          "objectLabel": "jasonwei20/chinese-nlp-preprocessing"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "GitHub 仓库内容过于简单，仅为基础预处理脚本，信息价值低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjw762b0007fyksz836j2h3r",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "sourceType": "github",
+        "url": "https://github.com/jasonwei20/chinese-nlp-preprocessing",
+        "urlHash": "79745085b23842489b4d621d4fa58c65",
+        "contentHash": "6261d09a66da3908173631d4fc36015a",
+        "title": "jasonwei20/chinese-nlp-preprocessing",
+        "text": "Simple preprocessing scripts for Chinese NLP.",
+        "publishedAt": "2019-12-18T23:24:45.000Z",
+        "metadata": {
+          "stars": 5,
+          "language": "Python"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:32.363Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw763de007nyksz0poxicrd",
+          "objectLabel": "jasonwei20/generate_masks"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "简单的工具性代码封装，缺乏原创观点或深度信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjw763de007nyksz0poxicrd",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "sourceType": "github",
+        "url": "https://github.com/jasonwei20/generate_masks",
+        "urlHash": "2c0f87e873eccc0f2c210ba875777ea9",
+        "contentHash": "42b2191dab9f2ac48a7e075f40043dc3",
+        "title": "jasonwei20/generate_masks",
+        "text": "Generate masks for images using Mask-RCNN from matterport.",
+        "publishedAt": "2022-09-16T07:30:04.000Z",
+        "metadata": {
+          "stars": 2,
+          "language": "Jupyter Notebook"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:33.746Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw762kc007hykszzff49ho4",
+          "objectLabel": "jasonwei20/isr-pal"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "早期特定主题的项目代码，对了解人物核心学术贡献价值有限。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjw762kc007hykszzff49ho4",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "sourceType": "github",
+        "url": "https://github.com/jasonwei20/isr-pal",
+        "urlHash": "f136bc0e2201b11a25965229ded59637",
+        "contentHash": "b65ce5e5b27aea824cd241f5b52e9aeb",
+        "title": "jasonwei20/isr-pal",
+        "text": "Deep Learning for Bias Detection in the Israeli-Palestinian Conflict",
+        "publishedAt": "2023-12-09T19:56:50.000Z",
+        "metadata": {
+          "stars": 3,
+          "language": "Python"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:32.698Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwiqtyz000fl6wwnmbs3uup",
+          "objectLabel": "Michael asked great questions -- thanks for having me on."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "官方账号的日常致谢，缺乏实质性信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjwiqtyz000fl6wwnmbs3uup",
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "sourceType": "x",
+        "url": "https://x.com/johnschulman2/status/2001541637806395633",
+        "urlHash": "765ca7569f8e10447a9a06493e8552d0",
+        "contentHash": "1b4914c48e1d7aa0800d7675c6b559dc",
+        "title": "Michael asked great questions -- thanks for having me on.",
+        "text": "Michael asked great questions -- thanks for having me on.",
+        "publishedAt": "2025-12-17T16:00:00.000Z",
+        "metadata": {
+          "author": "johnschulman2",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T22:54:37.115Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju17sdt0betrmtbs829l8lx",
+          "objectLabel": "Congratulations on Maverick, looks like a great model!!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为简单的祝贺性社交辞令，缺乏实质性的技术信息或观点。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju17sdt0betrmtbs829l8lx",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "x",
+        "url": "https://x.com/lukaszkaiser/status/1908793917442842719",
+        "urlHash": "a2b405034e70e2275a0ec38ea007704b",
+        "contentHash": "f76e60968191abe4b91ee469fc519eac",
+        "title": "Congratulations on Maverick, looks like a great model!!",
+        "text": "Congratulations on Maverick, looks like a great model!!",
+        "publishedAt": "2025-12-31T05:07:55.026Z",
+        "metadata": {
+          "author": "lukaszkaiser",
+          "postId": "1908793917442842719",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:22.769Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqxmd04edrmtb7xvskece",
+          "objectLabel": "I love the last sentence"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为一句无上下文的话，不涉及人物或AI，无信息价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxqxmd04edrmtb7xvskece",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "x",
+        "url": "https://x.com/lukaszkaiser/status/1918092207434989713",
+        "urlHash": "eb80ecf3b6bf97704e0dc9566ef73416",
+        "contentHash": "dfaff197a197a4717b4468d5d8035ec1",
+        "title": "I love the last sentence",
+        "text": "I love the last sentence",
+        "publishedAt": "2025-12-31T03:30:53.299Z",
+        "metadata": {
+          "author": "lukaszkaiser",
+          "postId": "1918092207434989713",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:31:17.557Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxquod04d4rmtbyeehkcir",
+          "objectLabel": "I read only a few small excerpts that people showed me but they were wrong on the OpenAI side, so please take the informedness of the gossip with reservations - it's still gossip"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容主要关于对OpenAI内部传闻的回应，缺乏实质性的技术或行业价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxquod04d4rmtbyeehkcir",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "x",
+        "url": "https://x.com/lukaszkaiser/status/1991943174672240797",
+        "urlHash": "c9df7b92e22d99331bf79d82af611b8e",
+        "contentHash": "c214a490692c7a2757aa3997ad3fa57f",
+        "title": "I read only a few small excerpts that people showed me but they were wrong on the OpenAI side, so please take the informedness of the gossip with reservations - it's still gossip",
+        "text": "I read only a few small excerpts that people showed me but they were wrong on the OpenAI side, so please take the informedness of the gossip with reservations - it's still gossip",
+        "publishedAt": "2025-12-31T03:30:53.299Z",
+        "metadata": {
+          "author": "lukaszkaiser",
+          "postId": "1991943174672240797",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:18.953Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjv6furu000fmfgh7ck5ol2j",
+        "person": "Matthew Berman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw77e1g00cbykszoyxtzg7a",
+          "objectLabel": "The Big Lie About Smarter AI Models"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "视频描述区纯推广链接，无实质内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjw77e1g00cbykszoyxtzg7a",
+        "personId": "cmjv6furu000fmfgh7ck5ol2j",
+        "person": "Matthew Berman",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=mwpxEFpdlYo",
+        "urlHash": "4f7bc9c6941305f3f3efc871b99bbf22",
+        "contentHash": "ce28e89df462910791ebc7bac675f37e",
+        "title": "The Big Lie About Smarter AI Models",
+        "text": "Check out the Dell Pro Max Workstation with the NVIDIA RTX PRO! https://bit.ly/dell-ai-factory-with-nvidia\n\ntheinformation.com/articles/openais-organizational-problems-hurt-chatgpt\n\nDownload The Subtle Art of Not Being Replaced 👇🏼\nhttp://bit.ly/3WLNzdV\n\nDownload Humanities Last Prompt Engineering Guide 👇🏼\nhttps://bit.ly/4kFhajz\n\nJoin My Newsletter for Regular AI Updates 👇🏼\nhttps://forwardfuture.ai\n\nDiscover The Best AI Tools👇🏼\nhttps://tools.forwardfuture.ai\n\nMy Links 🔗\n👉🏻 X: https://x.com/matthewberman\n👉🏻 Forward Future X: https://x.com/forward_future_\n👉🏻 Instagram: https://www.instagram.com/matthewberman_ai\n👉🏻 Discord: https://discord.gg/xxysSXBxFW\n👉🏻 TikTok: https://www.tiktok.com/@matthewberman_ai\n\nMedia/Sponsorship Inquiries ✅ \nhttps://bit.ly/44TC45V",
+        "publishedAt": "2025-12-19T09:28:41.000Z",
+        "metadata": {
+          "tags": [
+            "大语言模型",
+            "对齐",
+            "产品"
+          ],
+          "thumbnailUrl": "https://i.ytimg.com/vi/mwpxEFpdlYo/hqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:31:34.227Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxl1z002zzrmtb28gnc23l",
+          "objectLabel": "6 things to know about Mira Murati, the most interesting person in tech right now"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅包含网页菜单和登录链接，未抓取到正文有效信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxl1z002zzrmtb28gnc23l",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "sourceType": "exa",
+        "url": "https://www.fastcompany.com/90855799/6-things-to-know-about-openais-mira-murati-the-most-interesting-person-in-tech-right-now",
+        "urlHash": "6efb95f8bb2eacd2af6e5890b3766dfb",
+        "contentHash": "d9d329b68b8eb8d109007fa00d9f0f72",
+        "title": "6 things to know about Mira Murati, the most interesting person in tech right now",
+        "text": "![Hamburger menu icon](https://www.fastcompany.com/_public/3_line_burger.svg)\nLOGIN\n\n[![Fast company logo](https://www.fastcompany.com/_public/fc_logo.svg)](https://www.fastcompany.com)\n\n[SUBSCRIBE](https://www.fastcompany.com/subscribe?utm_source=topnav&utm_medium=button&utm_campaign=sticky)\n\n- [Premium](https://www.fastcompany.com/premium)\n- [Design](https://www.fastcompany.com/co-design)\n- [Tech](https://www.fastcompany.com/technology)\n- [Work Life](https://www.fastcompany.com/work-life)\n- [News](https://www.fastcompany.com/news)\n- [Impact](https://www.fastcompany.com/impact)\n- [Podcasts](https://www.fastcompany.com/podcasts)\n- [Video](https://www.fastcompany.com/videos)\n- [INNOVATION FESTIVAL](https://www.fastcompany.com/section/innovation-festival)\n\n\\|\n\n[FastCo Works](https://www.fastcompany.com/fcw)\n\n- [Capital One](https://www.fastcompany.com/fcw/capital-one)\n- [IBM](https://www.fastcompany.com/fcw/ibm)\n- [SAP](https://www.fastcompany.com/fcw/sap)\n\nadvertisement\n\nBY [Chris Morris](https://www.fastcompany.com/user/chris-r-morris)\n\nChatGPT and Dall-E might get the lion’s share of the spotlight, but Mira Murati may be the real star of OpenAI.\n\nMurati is the chief technology officer at OpenAI, the startup behind ChatGPT—the most advanced AI chatbot ever to be deployed to a mass audience—and _Fast Company_’s Most Innovative Company of 2023.\n\nThe job got even more interesting near the end of 2023. On November 17, she was named interim CEO after [former CEO Sam Altman was pushed out of the company](https://www.fastcompany.com/90985360/sam-altman-out-at-openai-cto-mira-murati-to-take-over). She relinquished that role soon after to Emmett Shear, then, on Nov. 29, Altman returned (formally) as CEO—and one of the first things he did was praise Murati’s leadership of the company in his absence. (She is now back in her previous role as CTO.)\n\n“Mira did an amazing job throughout all of this, serving the mission, the team, and the company selflessly throughout,” [he wrote](https://openai.com/blog/sam-altman-returns-as-ceo-openai-has-a-new-initial-board). “She is an incredible leader and OpenAI would not be OpenAI without her. Thank you.” (Murati, [via Twitter/X](https://twitter.com/miramurati/status/1730032754887430352), was just as effusive in her support for Altman.)\n\nEarlier this year, _Fast Company_ senior writer Ainsley Harris visited OpenAI and learned how Murati and the company innovate ( [read the full story here](https://www.fastcompany.com/90850342/openai-mira-murati-chatgpt-dall-e-gpt-4)).\n\nBorn in Albania and a veteran of Tesla, where she led development of the Model X, Murati has been with OpenAI since 2018. While the world gawks at the technology and argues about its potential, she and her team are focused on improving OpenAI’s products. After all, billions of dollars are riding on the success of their technology, which could be Silicon Valley’s most disruptive since the iPhone.\n\nThe honing of the tech, as well as the global conversation around it, is likely to go on for quite a while. In the meantime, here are a few things to know about Murati.\n\n## **She has a long history of influencing how people interact with new technology**\n\nMurati’s interest in AI started in 2013, when she joined Tesla. At the time, the company was releasing early versions of Autopilot, its AI-enabled driver-assistance software, and working on AI-enabled robots for its factories. That led Murati to consider other real-world applications.\n\nShe moved over to Leap Motion in 2016 to work on the startup’s augmented reality system to replace keyboards. As VP of product and engineering, she hoped to make interacting with a computer “as intuitive as playing with a ball,” she tells _Fast Company’_ s Harris. But she soon realized the VR-based technology wasn’t close to being ready for a mass audience.\n\nAs Murati considered her next move, Harris writes, she came to the conclusion that a “massive advancement in technology” would have to play a role in solving the world’s biggest challenges. That led to her joining OpenAI in 2018, and her oversight of the rollouts of Dall-E and ChatGPT.\n\n## **She’s one of the primary advocates of public testing**\n\nLong before Google’s Bard rolled out or anyone had heard of Elon Musk’s Grok, OpenAI’s products were widely available.\n\nMurati is passionate about testing these products with the general public. “You could make technological progress in a vacuum without real-world contacts,” she tells _Fast Company_. “But then the question is, Are you actually moving in the right direction?”\n\nBuilding artificial general intelligence (AGI) solely within the confines of the lab, [she argues](https://fortune.com/longform/chatgpt-openai-sam-altman-microsoft/), can make the societal shock even more disturbing when it does come out. Conditioning the company’s large language models through reinforcement learning with human feedback is a more effective method of addressing any challenges in how the AI performs, and a way ",
+        "publishedAt": "2023-11-30T16:00:00.000Z",
+        "metadata": {
+          "author": "Chris Morris",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:26:43.260Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxkzhy02zprmtbi9gvxifk",
+          "objectLabel": "In Kosovo, Mira Murati's Story Sparks a New Generation of ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为 Medium 网站的导航和登录链接。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxkzhy02zprmtbi9gvxifk",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "sourceType": "exa",
+        "url": "https://medium.com/design-bootcamp/in-kosovo-mira-muratis-story-sparks-a-new-generation-of-ai-builders-7ef0a0444e94",
+        "urlHash": "98a9344176b5a62b676712980da2969d",
+        "contentHash": "3a4076697178164873d7c15c7b260dda",
+        "title": "In Kosovo, Mira Murati's Story Sparks a New Generation of ...",
+        "text": "In Kosovo, Mira Murati’s Story Sparks a New Generation of AI Builders | by Christine Ying | Bootcamp | Medium\n[Sitemap](https://medium.com/sitemap/sitemap.xml)\n[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&amp;referrer=utm_source=mobileNavBar&amp;source=post_page---top_nav_layout_nav-----------------------------------------)\nSign up\n[Sign in](https://medium.com/m/signin?operation=login&amp;redirect=https://medium.com/design-bootcamp/in-kosovo-mira-muratis-story-sparks-a-new-generation-of-ai-builders-7ef0a0444e94&amp;source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n[Medium Logo](https://medium.com/?source=post_page---top_nav_layout_nav-----------------------------------------)\n[\nWrite\n](https://medium.com/m/signin?operation=register&amp;redirect=https://medium.com/new-story&amp;source=---top_nav_layout_nav-----------------------new_post_topnav------------------)\n[\nSearch\n](https://medium.com/search?source=post_page---top_nav_layout_nav-----------------------------------------)\nSign up\n[Sign in](https://medium.com/m/signin?operation=login&amp;redirect=https://medium.com/design-bootcamp/in-kosovo-mira-muratis-story-sparks-a-new-generation-of-ai-builders-7ef0a0444e94&amp;source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n![](https://miro.medium.com/v2/resize:fill:64:64/1*dmbNkD5D-u45r44go_cf0g.png)\n[## Bootcamp\n](https://medium.com/design-bootcamp?source=post_page---publication_nav-48e972f5c24e-7ef0a0444e94---------------------------------------)\n·[\n![Bootcamp](https://miro.medium.com/v2/resize:fill:76:76/1*_wDJs77bAPiwuAe9qOK5Zg.png)\n](https://medium.com/design-bootcamp?source=post_page---post_publication_sidebar-48e972f5c24e-7ef0a0444e94---------------------------------------)\nFrom idea to product, one lesson at a time. To submit your story:[https://tinyurl.com/bootspub1](https://tinyurl.com/bootspub1)\n# In Kosovo, Mira Murati’s Story Sparks a New Generation of AI Builders\n[\n![Christine Ying](https://miro.medium.com/v2/resize:fill:64:64/1*h0Fm7_l44yYqg6gBa4wB5w.jpeg)\n](https://medium.com/@ccying?source=post_page---byline--7ef0a0444e94---------------------------------------)\n[Christine Ying](https://medium.com/@ccying?source=post_page---byline--7ef0a0444e94---------------------------------------)\n4 min read\n·Sep 18, 2025\n[\n](https://medium.com/m/signin?actionUrl=https://medium.com/_/vote/design-bootcamp/7ef0a0444e94&amp;operation=register&amp;redirect=https://medium.com/design-bootcamp/in-kosovo-mira-muratis-story-sparks-a-new-generation-of-ai-builders-7ef0a0444e94&amp;user=Christine+Ying&amp;userId=d9643835f7d2&amp;source=---header_actions--7ef0a0444e94---------------------clap_footer------------------)\n--\n1\n[](https://medium.com/m/signin?actionUrl=https://medium.com/_/bookmark/p/7ef0a0444e94&amp;operation=register&amp;redirect=https://medium.com/design-bootcamp/in-kosovo-mira-muratis-story-sparks-a-new-generation-of-ai-builders-7ef0a0444e94&amp;source=---header_actions--7ef0a0444e94---------------------bookmark_footer------------------)\nListen\nShare\nEarlier this year, my company acquired a Data &amp; AI consultancy based in Pristina, Kosovo. That was my reason for visiting —to meet the people behind the team we were joining forces with.\nPress enter or click to view image in full size\n![]()\nTownhall held in Pristina, Kosovo on September 15, 2025\nDuring my trip earlier this week, I spent time with one of the founders DJ. His passion for Kosovo’s future was so strong it almost brought me to tears. Only afterward, when I looked at[DJ’s LinkedIn profile](https://www.linkedin.com/in/driloni/), did I see the line that perfectly captured what I had just experienced:\n*“On a mission to make Kosovo #1 in agentic AI builders per km² —more than anywhere else on Earth.”*\nThose words weren’t marketing. They were the conviction of someone who believes deeply in his country and its people. And his declaration made me see Kosovo not just as a new partner, but as a place with world-changing potential.\n## **Young, Gritty, and Building**\nOver three days in Pristina, I met dozens of computer science undergraduates and early-career professionals. They were young, gritty, and determined to make their mark. They weren’t just studying theory; they were experimenting, collaborating, and putting their skills to work with a confidence well beyond their experience.\nBeing around them reminded me of what it feels like to stand on the edge of new possibilities —the beginning of careers, the start of a new industry, the building of a country itself. I left not just with new connections, but with the conviction that I want to keep coming back.\n## A Role Model in Tech\nPress enter or click to view image in full size\n![]()\nAlbanian-American Mira Murati, former CTO and interim CEO of OpenAI, left to launch her own AI startup, Thinking Machines Lab; Getty Images.\nWhen Kosovars talk about success in the tech world, one name comes up again",
+        "publishedAt": "2025-10-01T03:26:20.515Z",
+        "metadata": {
+          "author": "Christine Ying",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:26:40.054Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxkymm02zjrmtbpqfmu9jf",
+          "objectLabel": "Meet Mira Murati, the 36-year-old tech prodigy who shot to ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为 Fortune 网站的菜单栏，缺乏具体报道内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxkymm02zjrmtbpqfmu9jf",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "sourceType": "exa",
+        "url": "https://fortune.com/2025/10/03/mira-murati-career-ai-thinking-machines-goldman-sachs-tesla-leap-openai/",
+        "urlHash": "f63d834b0759ba45d5df7f65b956c9ff",
+        "contentHash": "c256de86bd0bc23cf8cbc42576b29b8d",
+        "title": "Meet Mira Murati, the 36-year-old tech prodigy who shot to ...",
+        "text": "Search\n[](https://fortune.com/)\nSubscribe\n* [Home](https://fortune.com/)\n* [Latest](https://fortune.com/section/latest/)\n* [Fortune 500](https://fortune.com/section/fortune-500/)\n* [Finance](https://fortune.com/section/finance/)\n* [Tech](https://fortune.com/section/tech/)\n* [Leadership](https://fortune.com/section/leadership/)\n* [Lifestyle](https://fortune.com/section/lifestyle/)\n* [Rankings](https://fortune.com/ranking/)\n* [Multimedia](#)\n[Success](https://fortune.com/section/success/)[]()\n# Meet Mira Murati, the 36-year-old tech prodigy who shot to fame at OpenAI and now runs a startup that’s a poaching target for Mark Zuckerberg\n![Dave Smith](https://fortune.com/img-assets/wp-content/uploads/2023/05/Smith_Dave_bio.jpg?format=webp&amp;w=1440&amp;q=100)\nBy\n[Dave Smith](https://fortune.com/author/dave-smith/)\nDave Smith\nEditor, U.S. News\nDown Arrow Button Icon\nOctober 3, 2025, 6:05 AM ET\nAdd us on\n![Mira Murati in a red dress in front of some trees](https://fortune.com/img-assets/wp-content/uploads/2025/10/GettyImages-2151935071-e1759430729242.jpg?format=webp&amp;w=1440&amp;q=100)\nMira Murati, founder of Thinking Machines Labs and former CTO at OpenAI, attends the 2024 Met Gala Celebrating &quot;Sleeping Beauties: Reawakening Fashion&quot; at The Metropolitan Museum of Art on May 6, 2024 in New York City.Cindy Ord / MG24—Getty Images for The Met Museum and Vogue\nShe may not have the same name recognition as other tech execs like Tim Cook, Bill Gates, or Mark Zuckerberg—not yet, anyway—but Mira Murati is one of the most-watched entrepreneurs in Silicon Valley. The former chief technology officer from OpenAI, who left to launch her own AI startup last year, just celebrated a major milestone: Her company, Thinking Machines Lab, just[launched its first product this week](https://thinkingmachines.ai/blog/announcing-tinker/), called Tinker. Rather than be another generative-AI chatbot like ChatGPT, Tinker is designed to help researchers and developers fine-tune AI models without the need to manage massive computing infrastructure. The launch represents the first commercial product from Thinking Machines, which raised a record-breaking $2 billion in seed funding at a $12 billion valuation.[](https://www.wired.com/story/thinking-machines-lab-first-product-fine-tune/)\nMurati, the 36-year-old Albanian-American engineer-turned-executive, has emerged as a defining figure in the AI boom. Her journey from a mechanical engineering student to the chief technology officer who helped create ChatGPT exemplifies the rapid transformation of both AI technology and the careers of those building it. More recently, her[ability to resist Mark Zuckerberg’s aggressive recruitment](https://www.wired.com/story/mark-zuckerberg-ai-recruiting-spree-thinking-machines/)efforts—including reported billion-dollar offers to acquire her company and poach her talent—has solidified her reputation as a leader willing to chart her own course in an industry dominated by tech giants.[](https://en.wikipedia.org/wiki/Mira_Murati)\n### From Albania to the world stage\nBorn on December 16, 1988, in Vlorë, Albania, during the final years of the country’s totalitarian regime, Murati’s early life was shaped by political upheaval and economic uncertainty. Her parents, both high school teachers[who taught literature](https://www.microsoft.com/en-us/behind-the-tech/mira-murati-chief-technology-officer-openai), encouraged her academic pursuits, but Murati told Microsoft’s CTO Kevin Scott in 2023 that she had an “organic interest towards math and science,” where she excelled in Olympiads and competitions throughout her schooling.[](https://kitrum.com/blog/empowering-women-in-tech-the-inspiring-story-of-mira-murati-cto-of-openai/)\nAt 16, Murati won a scholarship from United World Colleges—a program that brings together students from over 80 countries to promote intercultural understanding and social responsibility—to study at[Pearson](https://fortune.com/company/pearson/)College on Vancouver Island in British Columbia. But a[](https://timesofindia.indiatimes.com/education/news/mira-murati-education-qualifications-how-uwc-roots-and-dartmouth-training-shaped-the-visionary-behind-chatgpt-and-sora/articleshow/123000391.cms)fter graduating from Pearson in 2005, Murati pursued an unusual academic path that would prove prescient for her later career. She[enrolled in a dual-degree program](https://www.srdsjournal.eu/academicprofiles/Ermira-Murati.html), completing a Bachelor of Arts in Mathematics from Colby College in 2011 and a Bachelor of Engineering in Mechanical Engineering from Dartmouth College’s Thayer School of Engineering in 2012. This combination of liberal arts and engineering disciplines provided her with both analytical thinking skills and technical expertise, which would prove handy in her later roles in Silicon Valley.[](https://www.theaireport.ai/articles/mira-murati-net-worth-2025-ex-openai-ctos-fortune)\nMurati’s professional journey began with a[summer ana",
+        "publishedAt": "2025-10-02T16:00:00.000Z",
+        "metadata": {
+          "author": "Dave Smith",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:26:38.927Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnu1t00fhrmtb9ukiaovf",
+          "objectLabel": "DeepMind cofounder Mustafa Suleyman will run Microsoft’s new consumer AI unit"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "标题虽然相关，但正文内容全是论坛登录和注册的UI文本，缺乏实质信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvnu1t00fhrmtb9ukiaovf",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "sourceType": "exa",
+        "url": "https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/",
+        "urlHash": "bdfd5888aa9476e686ef3155d3052ebc",
+        "contentHash": "7908dd944c0d578837849762cd8bb725",
+        "title": "DeepMind cofounder Mustafa Suleyman will run Microsoft’s new consumer AI unit",
+        "text": "DeepMind cofounder Mustafa Suleyman will run Microsoft’s new consumer AI unit | Ars OpenForum\n[**Log in](https://arstechnica.com/civis/login/)[**Register](https://arstechnica.com/civis/register/)\n[![Ars OpenForum](https://cdn.arstechnica.net/civis/styles/ars/ars/ars-open-forum.svg)](https://arstechnica.com/civis/)\n[**](https://arstechnica.com/civis/forums/-/-/th-nnm-navigate)\n**[**](https://arstechnica.com/civis/search/)**\n**[**](https://arstechnica.com/civis/search/)\n### Search\nEverywhereThreadsThis forumThis thread\n**Search titles only**\nBy:\nSearch[Advanced search…](https://arstechnica.com/civis/search/)\nEverywhereThreadsThis forumThis thread\n**Search titles only**\nBy:\nSearch[Advanced…](https://arstechnica.com/civis/search/)\nMenu\nInstall the app\nInstall\n* [Forums](https://arstechnica.com/civis/forums/)\n* [Ars Lykaion](https://arstechnica.com/civis/forums/-/list#ars-lykaion.1)\n* [News &amp; Discussion](https://arstechnica.com/civis/forums/news-discussion.2/)\nYou are using an out of date browser. It may not display this or other websites correctly.\nYou should upgrade or use an[alternative browser](https://www.google.com/chrome/).\n# DeepMind cofounder Mustafa Suleyman will run Microsoft’s new consumer AI unit\n* **Thread starter[JournalBot](https://arstechnica.com/civis/members/journalbot.159028/)\n* **Start date[Mar 19, 2024](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/)\n[Jump to latest](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/latest)[Follow](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/watch)[Reply](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/add-reply)\n[Muted(0)](https://arstechnica.com/civis/threads/muted?thread_id=1499577)\n* [Mar 19, 2024](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/post-42684875)\n* [**Replies: 31](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/#posts)\n* [Add bookmark](https://arstechnica.com/civis/posts/42684875/bookmark)\n* [**](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/?thutp_user_id=159028)\nMost staffers from Suleyman&#039;s startup, Inflection, will join Microsoft as well.\n[See full article...](https://arstechnica.com/ai/2024/03/deepmind-cofounder-mustafa-suleyman-will-run-microsofts-new-consumer-ai-unit/)\nClick to expand...\n[![JournalBot](https://cdn.arstechnica.net/civis/data/avatars/m/159/159028.jpg?1668194844)](https://arstechnica.com/civis/members/journalbot.159028/)\nWritten by\n### [JournalBot](https://arstechnica.com/civis/members/journalbot.159028/)\nArs Legatus Legionis\n***Subscriptor++***\n* Messages116,614\n* Reaction score6\n[Upvote](javascript:)\n0(0/0)\n[Sort by date](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/)[Sort by votes](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/?order=vote_score)\n[![TatsuyaShiba](https://cdn.arstechnica.net/civis/data/avatars/s/877/877047.jpg?1687808622)](https://arstechnica.com/civis/members/tatsuyashiba.877047/)\n#### [TatsuyaShiba](https://arstechnica.com/civis/members/tatsuyashiba.877047/)\n##### Smack-Fu Master, in training\n**2y**[37](https://arstechnica.com/civis/search/member?user_id=877047)\n[Mar 19, 2024](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/post-42684900)\n* [#2](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/post-42684900)\n* [Mar 19, 2024](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/post-42684900)\n* [Add bookmark](https://arstechnica.com/civis/posts/42684900/bookmark)\n* [**](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/?thutp_user_id=877047)\n* [#2](https://arstechnica.com/civis/threads/deepmind-cofounder-mustafa-suleyman-will-run-microsoft%E2%80%99s-new-consumer-ai-unit.1499577/post-42684900)\nAfter missing the bus on mobile, it looks like Microsoft is poised to become the leader in consumer AI technology.\n&#8226;&#8226;&#8226;\n#### More options\n[Report](https://arstechnica.com/civis/posts/42684900/report)[Add bookmark](https://arstechnica.com/civis/posts/42684900/bookmark)[Share](https://arstechnica.com/civis/threads/",
+        "publishedAt": "2024-04-23T16:00:00.000Z",
+        "metadata": {
+          "author": "JournalBot",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:18:39.581Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnna200e9rmtb8vm42tmg",
+          "objectLabel": "Greylock's First Researcher In Residence"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为机构通用页面，无目标人物相关实质内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvnna200e9rmtb8vm42tmg",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "sourceType": "exa",
+        "url": "https://greylock.com/firm-news/greylocks-first-researcher-in-residence/",
+        "urlHash": "26d2da23ba851d32bfbdf8aabcc2b733",
+        "contentHash": "aa08e3790d01290b4a89cb0afcd40602",
+        "title": "Greylock's First Researcher In Residence",
+        "text": "Greylock&#039;s First Researcher In Residence | Greylock\n[![Greylock Logo Reverse](https://greylock.com/wp-content/uploads/2023/10/greylock-logo-1.svg)](https://greylock.com)\n[Portfolio](https://greylock.com/portfolio/)\n[All Companies](https://greylock.com/portfolio/)[AI](https://greylock.com/ai/)[Cybersecurity](https://greylock.com/cybersecurity/)[Infrastructure](https://greylock.com/infrastructure/)[Saas](https://greylock.com/saas/)[Consumer](https://greylock.com/consumer/)[Marketplaces & Commerce](https://greylock.com/marketplace-and-commerce/)[Fintech & Crypto](https://greylock.com/fintech-and-crypto/)\n[Edge](https://greylock.com/edge/)\n[Team](https://greylock.com/team/)\n[Firm](https://greylock.com/firm/)\n[Perspective](https://greylock.com/firm/)[Specialists](https://greylock.com/specialists/)\n[Blog](https://greylock.com/blog/)\n[News & Insights](https://greylock.com/blog/)[Newsletter](https://greylock.com/newsletter/)\n[Jobs](https://greylock.com/jobs/)\n![icon hamburger](https://greylock.com/wp-content/themes/greylock-new/images/icon-hamburger.png)\n![icon close](https://greylock.com/wp-content/themes/greylock-new/images/icon-close.png)\n[Portfolio](https://greylock.com/portfolio/)\n[All Companies](https://greylock.com/portfolio/)[AI](https://greylock.com/ai/)[Cybersecurity](https://greylock.com/cybersecurity/)[Infrastructure](https://greylock.com/infrastructure/)[Saas](https://greylock.com/saas/)[Consumer](https://greylock.com/consumer/)[Marketplaces & Commerce](https://greylock.com/marketplace-and-commerce/)[Fintech & Crypto](https://greylock.com/fintech-and-crypto/)\n[Edge](https://greylock.com/edge/)\n[Team](https://greylock.com/team/)\n[Firm](https://greylock.com/firm/)\n[Perspective](https://greylock.com/firm/)[Specialists](https://greylock.com/specialists/)\n[Blog](https://greylock.com/blog/)\n[News & Insights](https://greylock.com/blog/)[Newsletter](https://greylock.com/newsletter/)\n[Jobs](https://greylock.com/jobs/)\n[**linkedin](https://www.linkedin.com/company/greylock-partners/)[**twitter](https://twitter.com/GreylockVC)[**youtube](https://www.youtube.com/channel/UCZ7x7yDBbEFCGztD8BYvRhA)\n//[Contact Us](https://greylock.com/contact-us/)//[LP Login](https://greylock.altareturn.com/)\n[Firm News](https://greylock.com/firm-news/)08.08.23\n# Greylock&#8217;s First Researcher In Residence\n[**twitter](http://twitter.com/share?url=https://greylock.com/firm-news/greylocks-first-researcher-in-residence/)[**linkedin](http://www.linkedin.com/shareArticle?mini=true&url=https://greylock.com/firm-news/greylocks-first-researcher-in-residence/)[![icon email](https://greylock.com/wp-content/themes/greylock-new/images/svg/icon-email-dark.svg)email]()\n## Greylock has a storied history of partnering with exceptional Entrepreneurs in Residence, resulting in the identification, inception, and growth of market-defining companies. For instance, Mustafa Suleyman started Inflection.AI, Stuart Bowers joined Apple as a leader in AI and Robotics, and D.J. Patil went on to lead data science for the White House.\nFor the first time, we are looking for a proficient AI researcher to join us in the newly created role of Researcher in Residence, on a part-time basis. We’ve crafted this role for someone who might be transitioning between research or industry roles, or in late stages of a graduate program, looking to thoughtfully explore their next step.\nYour time with Greylock will be structured to afford you the flexibility to focus on uncovering your next venture, be it as a founder, a team member in a scaling company, or in academia. Greylock’s network, reach, and company understanding will be a powerful catalyst for your efforts. All the while, you will collaboratively work with Greylock’s investment team and a selection of our AI portfolio companies to accelerate the most compelling opportunities at the frontier of AI.\nIf you are an ambitious AI researcher who would like to explore spending time with us, please reach out to researcher@greylock.com. We are excited to collaborate on helping to build the intelligent future together.\nSee below for more details on the role.\n## Additional details:\nAs a Researcher in Residence at Greylock, you will be at the nexus of pioneering research and practical application. Your collaboration with our investment team and Greylock-backed entrepreneurs will be instrumental in steering and propelling the next generation of AI-centric products.\nThis role offers the opportunity for an experienced AI researcher to deliberately explore their next move, while collaborating closely with us in our AI investing practice, and applying your expertise to help accelerate our portfolio of AI companies. We hope to partner with you for at least six months and are flexible to extend as our partnership progresses. This is a paid position.\n## Our ideal candidate will possess:\n* A robust technical foundation, ideally anchored with a Ph.D. in Computer Science or a pertinent field. Substantial industry experience in a research",
+        "publishedAt": "2023-08-07T16:00:00.000Z",
+        "metadata": {
+          "author": "Greylock Partners",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:55:58.452Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnrs700ezrmtbcj41r44e",
+          "objectLabel": "Meeting Mustafa Suleyman, CEO of Microsoft AI"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容被 LinkedIn 登录墙阻挡，全是用户协议等无关信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvnrs700ezrmtbcj41r44e",
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "sourceType": "exa",
+        "url": "https://www.linkedin.com/posts/chloe-shih_microsoft-microsoftai-copilot-activity-7342973808506454016-FewJ",
+        "urlHash": "6605422fdde902dc6b43e7eaa80c06bc",
+        "contentHash": "572cf37bb29590f337e91290e05c6214",
+        "title": "Meeting Mustafa Suleyman, CEO of Microsoft AI",
+        "text": "Meeting Mustafa Suleyman, CEO of Microsoft AI | Chloe Shih posted on the topic | LinkedIn\nAgree & Join LinkedIn\nBy clicking Continue to join or sign in, you agree to LinkedIn’s[User Agreement](https://www.linkedin.com/legal/user-agreement?trk=linkedin-tc_auth-button_user-agreement),[Privacy Policy](https://www.linkedin.com/legal/privacy-policy?trk=linkedin-tc_auth-button_privacy-policy), and[Cookie Policy](https://www.linkedin.com/legal/cookie-policy?trk=linkedin-tc_auth-button_cookie-policy).\n``````````````[Skip to main content](#main-content)\n[![View profile for Chloe Shih]()](https://www.linkedin.com/in/chloe-shih?trk=public_post_feed-actor-image)\n[Chloe Shih](https://www.linkedin.com/in/chloe-shih?trk=public_post_feed-actor-name)Chloe Shih is an Influencer\n5mo\n* [Report this post](https://www.linkedin.com/uas/login?session_redirect=https://www.linkedin.com/posts/chloe-shih_microsoft-microsoftai-copilot-activity-7342973808506454016-FewJ&amp;trk=public_post_ellipsis-menu-semaphore-sign-in-redirect&amp;guestReportContentType=POST&amp;_f=guest-reporting)\nMeet Mustafa Suleyman, CEO of[Microsoft AI](https://mx.linkedin.com/company/microsoft-ai?trk=public_post-text), previous co-founder of[Inflection AI](https://www.linkedin.com/company/inflectionai?trk=public_post-text)and[Google DeepMind](https://uk.linkedin.com/company/googledeepmind?trk=public_post-text), and my FIRST meeting at Cannes Lions 😳Last week was the first time that creators had a \\*significant\\* presence at[Cannes Lions International Festival of Creativity](https://uk.linkedin.com/company/cannes-lions-international-advertising-festival?trk=public_post-text), the world’s most important event for advertising, media, and marketing.[Microsoft](https://www.linkedin.com/company/microsoft?trk=public_post-text)asked if I’d be down to meet with Mustafa, and I was like “UH YES!”\nThis was our first time meeting, so I wanted to keep the topics lightweight and fun. It was also scorchingly hot on the beach. We were all melting with no AC 🥲 so please excuse me if I look like I’m about to faint.\nThe goal for this chat was to get to know Mustafa on a more human level and hear where his head's been at during his first time at Cannes Lions! Hope we’re able to extend these Tech Talks into fuller podcast episodes where we can really get into the nitty gritty. 🙂↕️🔥𝗥𝗮𝗽𝗶𝗱𝗙𝗶𝗿𝗲𝗧𝗼𝗽𝗶𝗰𝘀:\n1. Highlights + Challenges of Mustafa’s first year as CEO of Microsoft AI\n2. Goals and learnings at Cannes Lions\n3. Prepared for networking here? 👀4. How do you recharge?\n5. Book recommendations\n6. Mustafa’s vision for Copilot\n7. Where were you during AlphaGo? What did you think?\n8. Mustafa’s superpower 👀9. Most embarrassing thing you’ve asked Copilot\n10. The 4Qs of AI: IQ, EQ, AQ, SQ\n11. AI’s impact on video creation\n12. Advice for new grads 🎓13. Mustafa’s personal goal this year\nHope you enjoyed this casual tech talk on the beach with Mustafa! There is a chance we can do a more formal, longer podcast, so drop any of your questions you'd want me to ask him next time! 👇🏻\\_\\_\\_\nProduced by: Chloe Shih\nIG ([@chloe.shih](http://@chloe.shih?trk=public_post-text)):[https://lnkd.in/gfmjs-Av](https://www.linkedin.com/redir/redirect?url=https://lnkd.in/gfmjs-Av&amp;urlhash=G6O9&amp;trk=public_post-text)YT (@chloeshih):[https://lnkd.in/gsCiXY4d](https://www.linkedin.com/redir/redirect?url=https://lnkd.in/gsCiXY4d&amp;urlhash=JA5j&amp;trk=public_post-text)📧 business inquiries:[business@colorsofchloe.com](https://www.linkedin.com/redir/redirect?url=mailto:business@colorsofchloe.com&amp;urlhash=ypqS&amp;trk=public_post-text)Disclaimer: This video is not sponsored.\n✚Follow[Chloe Shih 🔜Cannes Lions](https://www.linkedin.com/in/chloe-shih?trk=public_post-text)for more tech and creator economy news!\nShout-out to[Sean Morgan](https://www.linkedin.com/in/sean-morgan-a771945b?trk=public_post-text)and[Joshua Walker](https://ca.linkedin.com/in/joshuawalkerbusiness?trk=public_post-text)for setting up this meeting! 😀[#microsoft](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/feed/hashtag/microsoft&amp;trk=public_post-text)[#microsoftai](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/feed/hashtag/microsoftai&amp;trk=public_post-text)[#copilot](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/feed/hashtag/copilot&amp;trk=public_post-text)[#mustafasuleyman](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/feed/hashtag/mustafasuleyman&amp;trk=public_post-text)[#canneslions](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/feed/hashtag/canneslions&amp;trk=public_post-text)[#canneslions2025](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/feed/hashtag/canneslions2025&amp;trk=public_post-text)[#techtalk](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin",
+        "publishedAt": "2025-07-01T02:32:37.620Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:32:50.791Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhw1802curmtbwc16nm3t",
+          "objectLabel": "//accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faistudio.google.com%2Fapp%2Fprompts%2Fgemini-2.5-pro-exp-03-25&dsh=S1295802257%3A1767142348797561&followup=https%3A%2F%2Faistudio.google.com%2Fapp%2Fprompts%2Fgemini-2.5-pro-exp-03-25&ifkv=Ac2yZaWs4Klu3a4gToZJexWjZkdK_5OJzp698hVgxDfrBAp5Un3tlcGx3trepS4SbnFF2MtnbL-reg&passive=1209600&flowName=WebLiteSignIn&flowEntry=ServiceLogin"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为 Google AI Studio 的登录跳转链接。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxhw1802curmtbwc16nm3t",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "sourceType": "x",
+        "url": "https://x.com/NoamShazeer/status/1904581818357342336",
+        "urlHash": "f4fe669afa93336f0234703eed919c50",
+        "contentHash": "f2ba30a615c27fbb6c141ad08dcd3a55",
+        "title": "//accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faistudio.google.com%2Fapp%2Fprompts%2Fgemini-2.5-pro-exp-03-25&dsh=S1295802257%3A1767142348797561&followup=https%3A%2F%2Faistudio.google.com%2Fapp%2Fprompts%2Fgemini-2.5-pro-exp-03-25&ifkv=Ac2yZaWs4Klu3a4gToZJexWjZkdK_5OJzp698hVgxDfrBAp5Un3tlcGx3trepS4SbnFF2MtnbL-reg&passive=1209600&flowName=WebLiteSignIn&flowEntry=ServiceLogin",
+        "text": "//accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faistudio.google.com%2Fapp%2Fprompts%2Fgemini-2.5-pro-exp-03-25&dsh=S1295802257%3A1767142348797561&followup=https%3A%2F%2Faistudio.google.com%2Fapp%2Fprompts%2Fgemini-2.5-pro-exp-03-25&ifkv=Ac2yZaWs4Klu3a4gToZJexWjZkdK_5OJzp698hVgxDfrBAp5Un3tlcGx3trepS4SbnFF2MtnbL-reg&passive=1209600&flowName=WebLiteSignIn&flowEntry=ServiceLogin",
+        "publishedAt": "2025-12-31T03:24:03.464Z",
+        "metadata": {
+          "author": "NoamShazeer",
+          "postId": "1904581818357342336",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:00:06.332Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhvfh02cqrmtbdqmq47tq",
+          "objectLabel": "//gemini.google.com/share/3dd88f1abbd8"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含一个外部链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxhvfh02cqrmtbdqmq47tq",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "sourceType": "x",
+        "url": "https://x.com/NoamShazeer/status/1922441270401605831",
+        "urlHash": "4832d1872c38b45de282ab8660adf645",
+        "contentHash": "0fd5cacf74839dcf481cb7f0cbbec3c1",
+        "title": "//gemini.google.com/share/3dd88f1abbd8",
+        "text": "//gemini.google.com/share/3dd88f1abbd8",
+        "publishedAt": "2025-12-31T03:24:03.464Z",
+        "metadata": {
+          "author": "NoamShazeer",
+          "postId": "1922441270401605831",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:00:05.966Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1hlnt0d9zrmtb9okt43xp",
+          "objectLabel": "//x.com/NoamShazeer/status/1871543210987654321"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含链接，缺乏实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju1hlnt0d9zrmtb9okt43xp",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "sourceType": "x",
+        "url": "https://x.com/NoamShazeer/status/1871543210987654321",
+        "urlHash": "90603e6f08ea1e43d0c4d731581a9763",
+        "contentHash": "b45ce1922adbed2a9c38422c10f4a4e4",
+        "title": "//x.com/NoamShazeer/status/1871543210987654321",
+        "text": "//x.com/NoamShazeer/status/1871543210987654321",
+        "publishedAt": "2025-12-31T05:15:40.337Z",
+        "metadata": {
+          "author": "NoamShazeer",
+          "postId": "1871543210987654321",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:16:00.617Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuoxyx0hk2rmtbnq6cepgn",
+          "objectLabel": "Dr. Oriol Vinyals | IEEE Signal Processing Society"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "页面内容不完整，仅包含导航栏和页眉，无实质信息，质量极低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjuuoxyx0hk2rmtbnq6cepgn",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "sourceType": "exa",
+        "url": "https://signalprocessingsociety.org/newsletter/2022/02/industry-leaders-signal-processing-and-machine-learning-dr-oriol-vinyals",
+        "urlHash": "b921b2d7d8d4e6af2f146972ac463504",
+        "contentHash": "958569e866e6225880fcfd1f17d7e5d8",
+        "title": "Dr. Oriol Vinyals | IEEE Signal Processing Society",
+        "text": "[Skip to main content](https://signalprocessingsociety.org/signalprocessingsociety.org#main-content)\n\n- [IEEE.org](http://www.ieee.org/)\n- [IEEE _Xplore_ ®](https://www.ieeexplore.ieee.org/Xplore/guesthome.jsp)\n- [IEEE Standards](http:=)\n- [IEEE Spectrum](http://spectrum.ieee.org/)\n- [More Sites](http://www.ieee.org/sitemap.html)\n- [Subscribe to Newsletter](https://info.signalprocessingsociety.org/newsletter-subscribe)\n\n- [Create Account](https://www.ieee.org/profile/public/createwebaccount/showRegister.html)\n- [Sign in](https://signalprocessingsociety.org/saml_login)\n\n[![](https://signalprocessingsociety.org/sites/all/themes/evolve_sub/assets/images/SPS-logo-new.svg)](https://signalprocessingsociety.org/)\n\n- [Our Story](https://signalprocessingsociety.org/our-story)\n - [Our Story](https://signalprocessingsociety.org/our-story)\n - [Mission](https://signalprocessingsociety.org/our-story/scope-mission)\n - [What is Signal Processing?](https://signalprocessingsociety.org/our-story/signal-processing-101)\n - [SPS Day](https://signalprocessingsociety.org/our-story/sps-day)\n - [Boards & Committees](https://signalprocessingsociety.org/our-story/boards-and-committees)\n - [Board of Governors](https://signalprocessingsociety.org/our-story/board-governors)\n - [Executive Committee](https://signalprocessingsociety.org/our-story/executive-committee)\n - [Awards Board](https://signalprocessingsociety.org/our-story/awards-board)\n - [Conferences Board](https://signalprocessingsociety.org/our-story/conference-board)\n - [Membership Board](https://signalprocessingsociety.org/our-story/membership-board)\n - [Publications Board](https://signalprocessingsociety.org/our-story/publications-board)\n - [Technical Directions Board](https://signalprocessingsociety.org/our-story/technical-directions-board)\n - [Standing Committees](https://signalprocessingsociety.org/our-story/standing-committees)\n - [Liaisons & Representatives](https://signalprocessingsociety.org/our-story/society-liaisonsrepresentatives)\n - [Education Board](https://signalprocessingsociety.org/our-story/education-board)\n - [Industry Board](https://signalprocessingsociety.org/our-story/industry-board)\n - [Our Members](https://signalprocessingsociety.org/our-story/our-members)\n - [Society History](https://signalprocessingsociety.org/our-story/society-history)\n - [State of the Society](https://signalprocessingsociety.org/our-story/state-society)\n - [SPS Branding Materials](https://signalprocessingsociety.org/our-story/sps-branding-materials)\n - [Contact Us](https://signalprocessingsociety.org/contact)\n - [SPS Staff](https://signalprocessingsociety.org/our-story/sps-staff)\n - [Sitemap](https://signalprocessingsociety.org/sitemap)\n- [Publications & Resources](https://signalprocessingsociety.org/publications-resources)\n - [Publications & Resources](https://signalprocessingsociety.org/publications-resources)\n - [Publications](https://signalprocessingsociety.org/publications-resources/publications)\n - [IEEE Signal Processing Magazine](https://signalprocessingsociety.org/publications-resources/ieee-signal-processing-magazine)\n - [IEEE Journal of Selected Topics in Signal Processing](https://signalprocessingsociety.org/publications-resources/ieee-journal-selected-topics-signal-processing)\n - [IEEE Signal Processing Letters](https://signalprocessingsociety.org/publications-resources/ieee-signal-processing-letters)\n - [IEEE Transactions on Computational Imaging](https://signalprocessingsociety.org/publications-resources/ieee-transactions-computational-imaging)\n - [IEEE Transactions on Image Processing](https://signalprocessingsociety.org/publications-resources/ieee-transactions-image-processing)\n - [IEEE Transactions on Information Forensics and Security](https://signalprocessingsociety.org/publications-resources/ieee-transactions-information-forensics-and-security)\n - [IEEE Transactions on Multimedia](https://signalprocessingsociety.org/publications-resources/ieee-transactions-multimedia)\n - [IEEE Transactions on Signal and Information Processing over Networks](https://signalprocessingsociety.org/publications-resources/ieee-transactions-signal-and-information-processing-over-networks)\n - [IEEE Transactions on Signal Processing](https://signalprocessingsociety.org/publications-resources/ieee-transactions-signal-processing)\n - [IEEE TCI](https://signalprocessingsociety.org/publications-resources/ieee-transactions-computational-imaging)\n - [IEEE TSIPN](https://signalprocessingsociety.org/publications-resources/ieee-transactions-signal-and-information-processing-over-networks)\n - [Data & Challenges](https://signalprocessingsociety.org/publications-resources/challenges-and-data-collections)\n - [Submit Manuscript](https://signalprocessingsociety.org/publications-resources/submit-manuscript)\n - [Guidelines](https://signalprocessingsociety.org/publications-resources/guidelines)\n - [Information for Authors](https://signalprocessingsociety.org/publications-resources/information-authors)\n - [Spe",
+        "publishedAt": null,
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:53:32.026Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvy24r01t8rmtbrbwr2zse",
+          "objectLabel": "babel_main"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "BABEL项目内容与Oriol Vinyals无关，且无AI相关性。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvy24r01t8rmtbrbwr2zse",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "sourceType": "github",
+        "url": "https://github.com/OriolVinyals/babel_main",
+        "urlHash": "745760a99d8056a4916035297653833e",
+        "contentHash": "df533dd6a05748635217bd1ca940e397",
+        "title": "babel_main",
+        "text": "Stuff for the BABEL project.",
+        "publishedAt": "2021-07-02T22:04:24.000Z",
+        "metadata": {
+          "forks": 0,
+          "stars": 1,
+          "topics": [],
+          "language": "Python",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:54:03.844Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvy2ql01tgrmtbc18d0cyx",
+          "objectLabel": "iceberk_windows"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "代码仓库内容与Oriol Vinyals无关，且无AI相关性。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvy2ql01tgrmtbc18d0cyx",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "sourceType": "github",
+        "url": "https://github.com/OriolVinyals/iceberk_windows",
+        "urlHash": "1b766880fd749328398eb38148086f0c",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "iceberk_windows",
+        "text": "iceberk\n=======\n\nsome experimental code. README to be written, but here is one thing:\n\nBears are vegetarians. Go bears!\n",
+        "publishedAt": "2021-07-02T22:04:12.000Z",
+        "metadata": {
+          "forks": 0,
+          "stars": 0,
+          "topics": [],
+          "language": "Python",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:54:07.481Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15ufr0b1wrmtb6a2f5w4z",
+          "objectLabel": "How Should We Evaluate Machine Learning for AI?: Percy Liang"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为 YouTube 登录和关于页面的占位符链接，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju15ufr0b1wrmtb6a2f5w4z",
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "sourceType": "exa",
+        "url": "https://www.youtube.com/watch?v=7CcSm0PAr-Y",
+        "urlHash": "cd16c1d05fcf63259e878da3d480db64",
+        "contentHash": "8bd45bf1b063e404d2569bd0c8dd9ccd",
+        "title": "How Should We Evaluate Machine Learning for AI?: Percy Liang",
+        "text": "[iframe](https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en)\n\n[About](https://www.youtube.com/about/) [Press](https://www.youtube.com/about/press/) [Copyright](https://www.youtube.com/about/copyright/) [Contact us](https://www.youtube.com/t/contact_us/) [Creators](https://www.youtube.com/creators/) [Advertise](https://www.youtube.com/ads/) [Developers](https://developers.google.com/youtube) [Terms](https://www.youtube.com/t/terms) [Privacy](https://www.youtube.com/t/privacy) [Policy & Safety](https://www.youtube.com/about/policies/) [How YouTube works](https://www.youtube.com/howyoutubeworks?utm_campaign=ytgen&utm_source=ythp&utm_medium=LeftNav&utm_content=txt&u=https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%3Futm_source%3Dythp%26utm_medium%3DLeftNav%26utm_campaign%3Dytgen) [Test new features](https://www.youtube.com/new) [NFL Sunday Ticket](https://tv.youtube.com/learn/nflsundayticket)\n\n© 2025 Google LLC",
+        "publishedAt": "2018-12-31T05:06:20.785Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:06:52.120Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxjm701lcrmtbjpkx2et3",
+          "objectLabel": "Percy Liang"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "页面加载错误且包含非中英文字符，无实质性参考价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvxjm701lcrmtbjpkx2et3",
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "sourceType": "exa",
+        "url": "https://scholar.google.ca/citations?user=pouyVyUAAAAJ&hl=th",
+        "urlHash": "8507f375f3e5ac7389aa873764affe85",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "Percy Liang",
+        "text": "‪Percy Liang‬ - ‪Google Scholar‬\nกำลังโหลด...\nระบบไม่สามารถดำเนินการได้ในขณะนี้โปรดลองใหม่อีกครั้งในภายหลัง[](javascript:void(0))## การอ้างอิงต่อปี[](javascript:void(0))## การอ้างอิงซ้ำกันบทความต่อไปนี้รวมอยู่ในScholar จำนวน[การอ้างอิงที่รวมเข้าด้วยกัน](javascript:void(0))ของบทความเหล่านี้จะนับเฉพาะบทความแรกเท่านั้น\n[](javascript:void(0))## การอ้างอิงที่รวมเข้าด้วยกันจำนวน\"อ้างอิงโดย\" นี้รวมถึงการอ้างอิงไปยังบทความต่อไปนี้ในScholar บทความที่ทำเครื่องหมาย\\*อาจต่างจากบทความนั้นในโปรไฟล์\n[](javascript:void(0))## เพิ่มผู้เขียนร่วมผู้เขียนร่วม[](javascript:void(0))\n[](javascript:void(0))## [](javascript:void(0))## ติดตาม[บทความใหม่โดยผู้เขียนคนนี้](javascript:void(0))\n[การอ้างอิงใหม่สำหรับผู้เขียนคนนี้](javascript:void(0))\n[บทความใหม่ที่เกี่ยวข้องกับงานวิจัยของผู้เขียนคนนี้](javascript:void(0))\nที่อยู่อีเมลที่ใช้รับข้อมูลอัปเดตเสร็จสิ้น[](javascript:void(0))[](https://scholar.google.ca/schhp?hl=th)\n[โปรไฟล์ของฉัน](https://scholar.google.ca/citations?hl=th)[ห้องสมุดของฉัน](https://scholar.google.ca/scholar?scilib=1&amp;hl=th)[เมตริก](https://scholar.google.ca/citations?view_op=metrics_intro&amp;hl=th)[การแจ้งเตือน](https://scholar.google.ca/scholar_alerts?view_op=list_alerts&amp;hl=th)\n[การตั้งค่า](https://scholar.google.ca/scholar_settings?hl=th)\n[ลงชื่อเข้าสู่ระบบ](https://accounts.google.com/Login?hl=th&amp;continue=https://scholar.google.ca/schhp?hl=th)\n[](javascript:void(0))[](https://scholar.google.ca/schhp?hl=th)\n[](javascript:void(0))\n[ลงชื่อเข้าสู่ระบบ](https://accounts.google.com/Login?hl=th&amp;continue=https://scholar.google.ca/schhp?hl=th)\n[](javascript:void(0))\n[รับโปรไฟล์ของฉันเอง](https://scholar.google.ca/citations?hl=th)\n### อ้างโดยดูทั้งหมด||ทั้งหมด|ตั้งแต่ปี 2020|\n[การอ้างอิง](javascript:void(0))|123068|110645|\n[ดัชนี h](javascript:void(0))|135|122|\n[ดัชนี i10](javascript:void(0))|320|300|\n0\n38000\n19000\n9500\n28500\n20122013201420152016201720182019202020212022202320242025[360](javascript:void(0))[445](javascript:void(0))[599](javascript:void(0))[790](javascript:void(0))[1063](javascript:void(0))[1459](javascript:void(0))[2436](javascript:void(0))[3928](javascript:void(0))[5334](javascript:void(0))[7646](javascript:void(0))[10815](javascript:void(0))[18773](javascript:void(0))[29992](javascript:void(0))[37585](javascript:void(0))\nการเข้าถึงแบบสาธารณะ[ดูทั้งหมด](https://scholar.google.ca/citations?view_op=list_mandates&amp;hl=th&amp;user=pouyVyUAAAAJ)\nดูทั้งหมด67 บทความ0 บทความใช้งานได้ใช้ไม่ได้อิงตามข้อกำหนดในการรับเงินสนับสนุน[ติดตาม](javascript:void(0))\n![Percy Liang](https://scholar.googleusercontent.com/citations?view_op=view_photo&amp;user=pouyVyUAAAAJ&amp;citpid=1)\nPercy Liang\nAssociate Professor of Computer Science,[Stanford University](https://scholar.google.ca/citations?view_op=view_org&hl=th&org=8539678734835078480)\nยืนยันอีเมลแล้วที่cs.stanford.edu -[หน้าแรก](http://cs.stanford.edu/~pliang)\n[machine learning](https://scholar.google.ca/citations?view_op=search_authors&amp;hl=th&amp;mauthors=label:machine_learning)[natural language processing](https://scholar.google.ca/citations?view_op=search_authors&amp;hl=th&amp;mauthors=label:natural_language_processing)\n[บทความ](javascript:void(0))[อ้างโดย](javascript:void(0))[การเข้าถึงแบบสาธารณะ](javascript:void(0))\n||||\n[ชื่อ](https://scholar.google.ca/citations?hl=th&amp;user=pouyVyUAAAAJ&amp;view_op=list_works&amp;sortby=title)\nจัดเรียง[เรียงตามการอ้างอิง](https://scholar.google.ca/citations?hl=th&amp;user=pouyVyUAAAAJ&amp;view_op=list_works)[เรียงตามปี](https://scholar.google.ca/citations?hl=th&amp;user=pouyVyUAAAAJ&amp;view_op=list_works&amp;sortby=pubdate)[เรียงตามชื่อ](https://scholar.google.ca/citations?hl=th&amp;user=pouyVyUAAAAJ&amp;view_op=list_works&amp;sortby=title)\n|\nอ้างโดยอ้างโดย|[ปี](https://scholar.google.ca/citations?hl=th&amp;user=pouyVyUAAAAJ&amp;view_op=list_works&amp;sortby=pubdate)|\n[Squad: 100,000+ questions for machine comprehension of text](https://scholar.google.ca/citations?view_op=view_citation&amp;hl=th&amp;user=pouyVyUAAAAJ&amp;citation_for_view=pouyVyUAAAAJ:dshw04ExmUIC)\nP Rajpurkar, J Zhang, K Lopyrev, P Liang\narXiv preprint arXiv:1606.05250, 2016\n|[10878](https://scholar.google.ca/scholar?oi=bibs&amp;hl=th&amp;cites=11037830585227643418)|2016|\n[On the opportunities and risks of foundation models](https://scholar.google.ca/citations?view_op=view_citation&amp;hl=th&amp;user=pouyVyUAAAAJ&amp;citation_for_view=pouyVyUAAAAJ:NXb4pA-qfm4C)\nR Bommasani\narXiv preprint arXiv:2108.07258, 2021\n|[8104](https://scholar.google.ca/scholar?oi=bibs&amp;hl=th&amp;cites=9595110325981705564,4521845832766876825)|2021|\n[Prefix-tuning: Optimizing continuous prompts for generation](https://scholar.google.ca/citations?view_op=view_citation&amp;hl=th&amp;user=pouyVyUAAAAJ&amp;citation_for_view=pouyVyUAAAAJ:ruyezt5ZtCIC)\nXL Li, P Liang\narXiv preprint arXiv:2101.00190, 2021\n|[6075](https://scholar.google.ca/scholar?oi=bibs&amp;hl=th&amp;cites=8278065458136258265)|2021|\n[Emergent abilities of large language models](https://scholar.google.ca/c",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:13:13.828Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxoji01ngrmtbwipw64fw",
+          "objectLabel": "Percy Liang | Stanford University | 371 Publications | 15623 Citations | Related Authors"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容几乎全是学术平台的工具菜单和功能介绍，无个人实质性数据。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtvxoji01ngrmtbwipw64fw",
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "sourceType": "exa",
+        "url": "https://scispace.com/authors/percy-liang-2xssuim1te",
+        "urlHash": "e1bce531644568495978a0946dc6fe0f",
+        "contentHash": "334fc1268214ff405baf04ed58f9a089",
+        "title": "Percy Liang | Stanford University | 371 Publications | 15623 Citations | Related Authors",
+        "text": "[Home](https://scispace.com/)\n\n* * *\n\n[Chat with PDF](https://scispace.com/authors/[slug])[Literature Review](https://scispace.com/search)[AI Writer](https://scispace.com/ai-writer)[Find Topics](https://scispace.com/concepts)[Paraphraser](https://scispace.com/paraphraser)[Citation Generator](https://scispace.com/citation-generator/apa-28t1c)[Extract Data](https://scispace.com/extract-data)[AI Detector](https://scispace.com/ai-detector)[PDF to Video](https://scispace.com/pdf-to-video)\n\n* * *\n\n[Affiliate Program](https://scispace.com/influencer-program)\n\n* * *\n\n[iOS App](https://apps.apple.com/app/scispace/id6742434138)[Chrome Extension](https://chrome.google.com/webstore/detail/scispace-copilot/cipccbpjpemcnijhjcdjmkjhmhniiick)[Use on ChatGPT](https://chat.openai.com/g/g-NgAcklHd8-scispace)[Contact Us](https://discord.gg/cR3r8wP92C)\n\n# Percy Liang\n\n[Stanford University](https://scispace.com/institutions/stanford-university-24e5cwqm)\n\n371 Papers\n\n15.6K Citations\n\nPercy Liang is an academic researcher from Stanford University. The author has contributed to research in topics: Computer science & Parsing. The author has an hindex of 75, co-authored 306 publications. Previous affiliations of Percy Liang include University of California, Berkeley & Google.\n\n##### Chat about Author\n\n##### Papers\n\nSort by: Citation Count\n\nPDF\n\nOpen Access\nMore filters\n\n•Proceedings Article• [10.18653/V1/D16-1264](https://doi.org/10.18653/V1/D16-1264)\n\n[**SQuAD: 100,000+ Questions for Machine Comprehension of Text**](https://scispace.com/papers/squad-100-000-questions-for-machine-comprehension-of-text-2i40ni6vfp)\n\n[Pranav Rajpurkar,](https://scispace.com/authors/pranav-rajpurkar-487kyarik2) [Jian Zhang,](https://scispace.com/authors/jian-zhang-4kq2k7uv52) [Konstantin Lopyrev,](https://scispace.com/authors/konstantin-lopyrev-ha2ortaluy) [Percy Liang](https://scispace.com/authors/percy-liang-2xssuim1te) +3 more[Stanford University](https://scispace.com/institutions/stanford-university-24e5cwqm)\n\n- 16 Jun 2016\n\nShow Less\n\nTL;DR: The Stanford Question Answering Dataset (SQuAD) as mentioned in this paper is a reading comprehension dataset consisting of 100,000+ questions posed by crowdworkers on a set of Wikipedia articles, where the answer to each question is a segment of text from the corresponding reading passage.\n\n...read moreread less\n\n5.8K\n\nPodcast\n\n•Posted Content\n\n[**SQuAD: 100,000+ Questions for Machine Comprehension of Text**](https://scispace.com/papers/squad-100-000-questions-for-machine-comprehension-of-text-4i6uo4cz9r)\n\n[Pranav Rajpurkar,](https://scispace.com/authors/pranav-rajpurkar-487kyarik2) [Jian Zhang,](https://scispace.com/authors/jian-zhang-4kq2k7uv52) [Konstantin Lopyrev,](https://scispace.com/authors/konstantin-lopyrev-ha2ortaluy) [Percy Liang](https://scispace.com/authors/percy-liang-2xssuim1te) +3 more[Stanford University](https://scispace.com/institutions/stanford-university-24e5cwqm)\n\n- 16 Jun [2016](https://scispace.com/journals/arxiv-computation-and-language-39f4jlbk/2016)\n\n - [arXiv: Computation and Language](https://scispace.com/journals/arxiv-computation-and-language-39f4jlbk)\n\nShow Less\n\nTL;DR: The Stanford Question Answering Dataset (SQuAD) as mentioned in this paper is a reading comprehension dataset consisting of 100,000+ questions posed by crowdworkers on a set of Wikipedia articles, where the answer to each question is a segment of text from the corresponding reading passage.\n\n...read moreread less\n\n5.8K\n\nPodcast\n\n•Proceedings Article\n\n[**Semantic Parsing on Freebase from Question-Answer Pairs**](https://scispace.com/papers/semantic-parsing-on-freebase-from-question-answer-pairs-y7fve0pp42)\n\n[Jonathan Berant,](https://scispace.com/authors/jonathan-berant-xq0yi3eath) [Andrew Chia Chen Chou,](https://scispace.com/authors/andrew-chia-chen-chou-1jfmcny9fw) [Roy Frostig,](https://scispace.com/authors/roy-frostig-4tazdgtj9y) [Percy Liang](https://scispace.com/authors/percy-liang-2xssuim1te) +3 more[Stanford University](https://scispace.com/institutions/stanford-university-24e5cwqm)\n\n- 01 Oct 2013\n\nShow Less\n\nTL;DR: This paper trains a semantic parser that scales up to Freebase and outperforms their state-of-the-art parser on the dataset of Cai and Yates (2013), despite not having annotated logical forms.\n\n...read moreread less\n\n2.1K\n\n[PDF](https://scispace.com/pdf/semantic-parsing-on-freebase-from-question-answer-pairs-y7fve0pp42.pdf) Podcast\n\n•Proceedings Article• [10.18653/V1/P18-2124](https://doi.org/10.18653/V1/P18-2124)\n\n[**Know What You Don't Know: Unanswerable Questions for SQuAD**](https://scispace.com/papers/know-what-you-don-t-know-unanswerable-questions-for-squad-8v0gmbccp2)\n\n[Pranav Rajpurkar,](https://scispace.com/authors/pranav-rajpurkar-487kyarik2) [Robin Jia,](https://scispace.com/authors/robin-jia-3zdsh516nu) [Percy Liang](https://scispace.com/authors/percy-liang-2xssuim1te) +2 more[Stanford University](https://scispace.com/institutions/stanford-university-24e5cwqm)\n\n- 11 Jun 2018\n\nShow L",
+        "publishedAt": "2018-10-10T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:13:22.011Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxs53p04mgrmtbmrf5zcab",
+          "objectLabel": "Biography:Quoc Viet Le - HandWiki"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "虽然标题相关，但正文内容多为维基系统的导航文字，信息密度极低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxs53p04mgrmtbmrf5zcab",
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "sourceType": "exa",
+        "url": "https://handwiki.org/wiki/Biography:Quoc_Viet_Le",
+        "urlHash": "69fd12910fac6afbae2784e62b340f70",
+        "contentHash": "001096b5e446e1ba80f3eec2be415891",
+        "title": "Biography:Quoc Viet Le - HandWiki",
+        "text": "## Anonymous\n\n### Not logged in\n\n- [Create account](https://handwiki.org/wiki/index.php?title=Special:CreateAccount&returnto=Biography%3AQuoc+Viet+Le)\n- [Log in](https://handwiki.org/wiki/index.php?title=Special:UserLogin&returnto=Biography%3AQuoc+Viet+Le)\n\n[**HandWiki**](https://handwiki.org/wiki/Start)\n\n### Search\n\n# Biography:Quoc Viet Le\n\nFrom HandWiki\n\n### Namespaces\n\n- [Biography](https://handwiki.org/wiki/Biography:Quoc_Viet_Le)\n- [Discussion](https://handwiki.org/wiki/index.php?title=Biography_discussion:Quoc_Viet_Le&action=edit&redlink=1)\n\n### More\n\n- More\n\n### Page actions\n\n- [Read](https://handwiki.org/wiki/Biography:Quoc_Viet_Le)\n- [View source](https://handwiki.org/wiki/index.php?title=Biography:Quoc_Viet_Le&action=edit)\n- [History](https://handwiki.org/wiki/index.php?title=Biography:Quoc_Viet_Le&action=history)\n- [ZWI Export](https://handwiki.org/wiki/index.php?title=Biography:Quoc_Viet_Le&action=mzwi)\n\n**Short description**: Vietnamese-American computer scientist\n\n| Quoc Viet Le |\n| --- |\n| Born | 1982 (age 41–42) Hương Thủy, Thừa Thiên Huế, Vietnam |\n| Education | Australian National University [Stanford University](https://handwiki.org/wiki/Organization:Stanford_University) |\n| **Scientific career** |\n| Fields | [Machine learning](https://handwiki.org/wiki/Machine_learning) |\n| Institutions | [Google Brain](https://handwiki.org/wiki/Company:Google_Brain) |\n| [Thesis](https://handwiki.org/wiki/Thesis) | _Scalable feature learning_(2013) |\n| [Doctoral advisor](https://handwiki.org/wiki/Social:Doctoral_advisor) | [Andrew Ng](https://handwiki.org/wiki/Biography:Andrew_Ng) |\n| Other academic advisors | Alex Smola |\n\n**Quoc Viet Le** (born 1982), or **Quoc Le**, **Le Viet Quoc**, is a Vietnamese-American computer scientist and a machine learning pioneer at [Google Brain](https://handwiki.org/wiki/Company:Google_Brain), which he established with others from Google. He co-invented doc2vec[\\[1\\]](https://handwiki.org/handwiki.org#cite_note-1) and [seq2seq](https://handwiki.org/wiki/Seq2seq)[\\[2\\]](https://handwiki.org/handwiki.org#cite_note-2) models in [natural language processing](https://handwiki.org/wiki/Natural_language_processing). Le also initiated and lead the AutoML initiative at Google Brain, including the proposal of [neural architecture search](https://handwiki.org/wiki/Neural_architecture_search).[\\[3\\]](https://handwiki.org/handwiki.org#cite_note-3)[\\[4\\]](https://handwiki.org/handwiki.org#cite_note-tipsmake-4)[\\[5\\]](https://handwiki.org/handwiki.org#cite_note-Wired-5)[\\[6\\]](https://handwiki.org/handwiki.org#cite_note-6)\n\n## Contents\n\n- [1Education and career](https://handwiki.org/handwiki.org#Education_and_career)\n- [2Honors and awards](https://handwiki.org/handwiki.org#Honors_and_awards)\n- [3See also](https://handwiki.org/handwiki.org#See_also)\n- [4References](https://handwiki.org/handwiki.org#References)\n\n## Education and career\n\nLe was born in Hương Thủy in the Thừa Thiên Huế province of Vietnam.[\\[4\\]](https://handwiki.org/handwiki.org#cite_note-tipsmake-4) He studied at Quốc Học Huế High School.[\\[7\\]](https://handwiki.org/handwiki.org#cite_note-7) In 2004, Le moved to Australia and attended Australian National University for Bachelor's program, during which he worked under Alex Smola on [Kernel method](https://handwiki.org/wiki/Kernel_method) in machine learning.[\\[8\\]](https://handwiki.org/handwiki.org#cite_note-8) In 2007, Le moved to [Stanford University](https://handwiki.org/wiki/Organization:Stanford_University) for graduate studies in computer science, where his PhD advisor was [Andrew Ng](https://handwiki.org/wiki/Biography:Andrew_Ng).\n\nIn 2011, Le became a cofounder of Google Brain along with his then PhD advisor Andrew Ng and fellow student [Jeff Dean](https://handwiki.org/wiki/Biography:Jeff_Dean) and [Google](https://handwiki.org/wiki/Company:Google) researcher Greg Corrado.[\\[4\\]](https://handwiki.org/handwiki.org#cite_note-tipsmake-4) In 2014, [Ilya Sutskever](https://handwiki.org/wiki/Biography:Ilya_Sutskever), [Oriol Vinyals](https://handwiki.org/wiki/Biography:Oriol_Vinyals) and Le proposed the [seq2seq](https://handwiki.org/wiki/Seq2seq) model for [machine translation](https://handwiki.org/wiki/Machine_translation). In the same year, [Tomáš Mikolov](https://handwiki.org/wiki/Biography:Tom%C3%A1%C5%A1_Mikolov) and Le proposed the doc2vec model for representation learning of documents.\n\n## Honors and awards\n\nLe was named MIT Technology Review's innovators under 35 in 2014.[\\[9\\]](https://handwiki.org/handwiki.org#cite_note-9) He has been interviewed by and his research has been reported in major media outlets including Wired,[\\[5\\]](https://handwiki.org/handwiki.org#cite_note-Wired-5) [_The New York Times_](https://www.wikipedia.org/wiki/The%20New%20York%20Times) ,[\\[10\\]](https://handwiki.org/handwiki.org#cite_note-10) the Atlantic,[\\[11\\]](https://handwiki.org/handwiki.org#cite_note-11) and the MIT Technology Review.[\\[12\\]](https://handwiki.org/handwiki.org#c",
+        "publishedAt": "2022-11-24T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:23:12.505Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxs5zd04mqrmtbpdmyxku3",
+          "objectLabel": "LaMDA: Language Models for Dialog Applications"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容关于 LaMDA 论文及其作者，未直接体现与 Quoc Le 的强关联。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxs5zd04mqrmtbpdmyxku3",
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "sourceType": "exa",
+        "url": "https://ui.adsabs.harvard.edu/abs/2022arXiv220108239T/abstract",
+        "urlHash": "ec60a8c31f7dcfdf19bdc9c472f8aa57",
+        "contentHash": "17b63272734a9affa9db2d3825d74de9",
+        "title": "LaMDA: Language Models for Dialog Applications",
+        "text": "Now on home page\n\n## ADS\n\n## LaMDA: Language Models for Dialog Applications\n\n- [Thoppilan, Romal](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Thoppilan%2C+Romal%22);\n- [De Freitas, Daniel](https://ui.adsabs.harvard.edu/search/?q=author%3A%22De+Freitas%2C+Daniel%22);\n- [Hall, Jamie](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Hall%2C+Jamie%22);\n- [Shazeer, Noam](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Shazeer%2C+Noam%22);\n- [Kulshreshtha, Apoorv](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Kulshreshtha%2C+Apoorv%22);\n- [Cheng, Heng-Tze](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Cheng%2C+Heng-Tze%22);\n- [Jin, Alicia](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Jin%2C+Alicia%22);\n- [Bos, Taylor](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Bos%2C+Taylor%22);\n- [Baker, Leslie](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Baker%2C+Leslie%22);\n- [Du, Yu](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Du%2C+Yu%22);\n- [Li, YaGuang](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Li%2C+YaGuang%22);\n- [Lee, Hongrae](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Lee%2C+Hongrae%22);\n- [Zheng, Huaixiu Steven](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Zheng%2C+Huaixiu+Steven%22);\n- [Ghafouri, Amin](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Ghafouri%2C+Amin%22);\n- [Menegali, Marcelo](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Menegali%2C+Marcelo%22);\n- [Huang, Yanping](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Huang%2C+Yanping%22);\n- [Krikun, Maxim](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Krikun%2C+Maxim%22);\n- [Lepikhin, Dmitry](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Lepikhin%2C+Dmitry%22);\n- [Qin, James](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Qin%2C+James%22);\n- [Chen, Dehao](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Chen%2C+Dehao%22);\n- [Xu, Yuanzhong](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Xu%2C+Yuanzhong%22);\n- [Chen, Zhifeng](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Chen%2C+Zhifeng%22);\n- [Roberts, Adam](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Roberts%2C+Adam%22);\n- [Bosma, Maarten](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Bosma%2C+Maarten%22);\n- [Zhao, Vincent](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Zhao%2C+Vincent%22);\n- [Zhou, Yanqi](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Zhou%2C+Yanqi%22);\n- [Chang, Chung-Ching](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Chang%2C+Chung-Ching%22);\n- [Krivokon, Igor](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Krivokon%2C+Igor%22);\n- [Rusch, Will](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Rusch%2C+Will%22);\n- [Pickett, Marc](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Pickett%2C+Marc%22);\n- [Srinivasan, Pranesh](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Srinivasan%2C+Pranesh%22);\n- [Man, Laichee](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Man%2C+Laichee%22);\n- [Meier-Hellstern, Kathleen](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Meier-Hellstern%2C+Kathleen%22);\n- [Ringel Morris, Meredith](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Ringel+Morris%2C+Meredith%22);\n- [Doshi, Tulsee](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Doshi%2C+Tulsee%22);\n- [Delos Santos, Renelito](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Delos+Santos%2C+Renelito%22);\n- [Duke, Toju](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Duke%2C+Toju%22);\n- [Soraker, Johnny](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Soraker%2C+Johnny%22);\n- [Zevenbergen, Ben](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Zevenbergen%2C+Ben%22);\n- [Prabhakaran, Vinodkumar](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Prabhakaran%2C+Vinodkumar%22);\n- [Diaz, Mark](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Diaz%2C+Mark%22);\n- [Hutchinson, Ben](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Hutchinson%2C+Ben%22);\n- [Olson, Kristen](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Olson%2C+Kristen%22);\n- [Molina, Alejandra](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Molina%2C+Alejandra%22);\n- [Hoffman-John, Erin](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Hoffman-John%2C+Erin%22);\n- [Lee, Josh](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Lee%2C+Josh%22);\n- [Aroyo, Lora](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Aroyo%2C+Lora%22);\n- [Rajakumar, Ravi](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Rajakumar%2C+Ravi%22);\n- [Butryna, Alena](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Butryna%2C+Alena%22);\n- [Lamm, Matthew](https://ui.adsabs.harvard.edu/search/?q=author%3A%22Lamm%2C+Matthew%22)\n- _and 10 more_\n\n#### Abstract\n\nWe present LaMDA: Language Models for Dialog Applications. LaMDA is a family of Transformer-based neural language models specialized for dialog, which have up to 137B parameters and are pre-trained on 1",
+        "publishedAt": "2021-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": "Le, Quoc",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:50:50.178Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10kz10a1nrmtb0tnjohic",
+          "objectLabel": "//x.com/quocleix/status/1470585186538512385"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmju10kz10a1nrmtb0tnjohic",
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "sourceType": "x",
+        "url": "https://x.com/quocleix/status/1470585186538512385",
+        "urlHash": "49ae5b75cfae3ae8fc13bfd6875b68d7",
+        "contentHash": "412c85c9e9df093f768902adc1c06f93",
+        "title": "//x.com/quocleix/status/1470585186538512385",
+        "text": "//x.com/quocleix/status/1470585186538512385",
+        "publishedAt": "2025-12-31T05:02:25.892Z",
+        "metadata": {
+          "author": "quocleix",
+          "postId": "1470585186538512385",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:02:46.574Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv37koy000gv6e869tl1yk4",
+          "objectLabel": "Sam Altman, OpenAI Inc: Profile and Biography"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容主要为彭博社的金融行情导航链接，有效信息密度极低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:58:58.068Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjv37koy000gv6e869tl1yk4",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "sourceType": "biography",
+        "url": "https://www.bloomberg.com/profile/person/16408119",
+        "urlHash": "https://www.bloomberg.com/profile/person/16408119",
+        "contentHash": "",
+        "title": "Sam Altman, OpenAI Inc: Profile and Biography",
+        "text": "[Skip To Content](https://www.bloomberg.com/www.bloomberg.com#skip-to-main-content)\n\nQuick Links\n\n- [Stocks](https://www.bloomberg.com/markets/stocks)\n- [Currencies](https://www.bloomberg.com/markets/currencies)\n- [Commodities](https://www.bloomberg.com/markets/commodities)\n- [Rates & Bonds](https://www.bloomberg.com/markets/rates-bonds)\n- [Sectors](https://www.bloomberg.com/markets/sectors)\n- [Watchlist](https://www.bloomberg.com/markets/watchlist)\n\nRecently Viewed Companies\n\n# Samuel Altman \"Sam\" CEO/Co-Founder, OpenAI Inc",
+        "publishedAt": null,
+        "metadata": null,
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T22:51:58.195Z",
+        "processed": true
+      }
+    }
+  ]
+}

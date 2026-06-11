@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-06-09T16:46:15.852Z",
+  "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/safe_rawpool_remediation_exa_source_quality_200_wrong_person_archive.json",
+  "summary": {
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 15,
+    "rejectedSafeQueueRows": 15,
+    "uniqueTargetIds": 15,
+    "existingTargets": 15,
+    "missingTargets": 0,
+    "deleted": 0,
+    "affectedPeople": 6,
+    "bySourceType": {
+      "exa": 15
+    },
+    "byVerdict": {
+      "wrong_person": 15
+    },
+    "topPeople": {
+      "Hyung Won Chung": 6,
+      "Greg Brockman": 5,
+      "Chris Olah": 1,
+      "Elon Musk": 1,
+      "Emad Mostaque": 1,
+      "Jan Leike": 1
+    }
+  }
+}

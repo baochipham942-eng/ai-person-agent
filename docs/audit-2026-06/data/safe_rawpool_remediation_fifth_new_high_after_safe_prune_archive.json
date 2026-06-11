@@ -1,0 +1,388 @@
+{
+  "generatedAt": "2026-06-09T15:39:10.180Z",
+  "criteria": {
+    "safeToAutoApply": true,
+    "claimType": "source_item_belongs_to_person",
+    "verdict": [
+      "wrong_person",
+      "unsupported"
+    ],
+    "remediationAction": "delete_raw_pool_item",
+    "confidence": ">= 0.85",
+    "destructiveAction": "deleted RawPoolItem rows only"
+  },
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_fifth_new_high_after_safe_prune_mimo_summary.json",
+    "safeDecisions": 7,
+    "rejectedSafeQueueRows": 0,
+    "uniqueTargetIds": 7,
+    "existingTargets": 7,
+    "missingTargets": 0,
+    "deleted": 0,
+    "affectedPeople": 3,
+    "bySourceType": {
+      "exa": 7
+    },
+    "byVerdict": {
+      "wrong_person": 7
+    },
+    "topPeople": {
+      "姚顺雨": 4,
+      "肖弘": 2,
+      "丁洁": 1
+    }
+  },
+  "missingIds": [],
+  "rows": [
+    {
+      "raw": {
+        "id": "cmjtxkg7302w7rmtbw9g0f6te",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://hjb.bjyxh.org.cn/News/Detail/121",
+        "urlHash": "ab8ceb8e1be4a7dc0de916ef92b06ef1",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "丁洁 - 罕见病分会- 北京医学会",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:26:15.040Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkg7302w7rmtbw9g0f6te]:90bb97492aab",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxkg7302w7rmtbw9g0f6te",
+          "fieldPath": "RawPoolItem[cmjtxkg7302w7rmtbw9g0f6te]",
+          "objectLabel": "丁洁 - 罕见病分会- 北京医学会"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容指向北京医学会罕见病分会的丁洁，与AI领域的丁洁（明尼苏达大学副教授）不符，属于同名不同人。高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:38:45.023Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju1a2nx0c0armtby721ljsz",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/html/2503.22164v1",
+        "urlHash": "7371f7e7c30df3f4cac2b7d24cd9a4d7",
+        "contentHash": "5da300ac2d277c5fc043dc47e71ea83f",
+        "title": "PharmAgents: Building a Virtual Pharma with Large Language Model Agents",
+        "text": "PharmAgents: Building a Virtual Pharma with Large Language Model Agents\n# PharmAgents: Building a Virtual Pharma with Large Language Model Agents\nBowen GaoInstitute for AI Industry Research (AIR), Tsinghua UniversityDepartment of Computer Science and Technology, Tsinghua UniversityEqual ContributionsYanwen HuangDepartment of Pharmaceutical Science, Peking UniversityEqual ContributionsYiqiao LiuDepartment of Pharmaceutical Science, Peking UniversityEqual ContributionsWenxuan XieSchool of Future Technology, South China University of TechnologyEqual ContributionsWei-Ying MaInstitute for AI Industry Research (AIR), Tsinghua UniversityYa-Qin ZhangInstitute for AI Industry Research (AIR), Tsinghua UniversityYanyan LanInstitute for AI Industry Research (AIR), Tsinghua UniversityCorresponding author: lanyanyan@air.tsinghua.edu.cn\n###### Abstract\nThe discovery of novel small molecule drugs remains a critical scientific challenge with far-reaching implications for treating diseases and advancing human health. Traditional drug development—especially for small molecule therapeutics—is a highly complex, resource-intensive, and time-consuming process that requires multidisciplinary collaboration. Recent breakthroughs in artificial intelligence (AI), particularly the rise of large language models (LLMs), present a transformative opportunity to streamline and accelerate this process. In this paper, we introduce PharmAgents, a virtual pharmaceutical ecosystem driven by LLM-based multi-agent collaboration. PharmAgents simulates the full drug discovery workflow—from target discovery to preclinical evaluation—by integrating explainable, LLM-driven agents equipped with specialized machine learning models and computational tools. Through structured knowledge exchange and automated optimization, PharmAgents identifies potential therapeutic targets, discovers promising lead compounds, enhances binding affinity and key molecular properties, and performs in silico analyses of toxicity and synthetic feasibility. Additionally, the system supports interpretability, agent interaction, and self-evolvement, enabling it to refine future drug designs based on prior experience. By showcasing the potential of LLM-powered multi-agent systems in drug discovery, this work establishes a new paradigm for autonomous, explainable, and scalable pharmaceutical research, with future extensions toward comprehensive drug lifecycle management.\n## 1Introduction\n![Refer to caption](extracted/6317086/figures/virtual_pharma_whole.png)\nFigure 1:The Virual Pharma (PharmAgents) simulates the drug discovery process from target discovery to preclinical evaluation.\nIn the pharmaceutical industry, drug discovery is driven by the imperative to address unmet medical needs by producing safe, effective, and quality-controlled therapeutics that ultimately benefit patients while also yielding social and financial returns. Typically, the targeted small-molecule drug discovery process involves identifying and validating a disease-relevant biological target, screening large chemical libraries to find promising initial chemical compounds, refining these compound structures into optimized leads, and then advancing candidates through extensive preclinical and clinical evaluations. Given the complexity of this process, drug discovery demands the expertise of interdisciplinary teams, combining knowledge from biology, chemistry, pharmacology, and data science, which limits the pharmaceutical exploration of a wide range of diseases. Although advancements such as high-throughput screening> [\n[> 1\n](https://arxiv.org/html/2503.22164v1#bib.bib1)> , [> 2\n](https://arxiv.org/html/2503.22164v1#bib.bib2)> ]\nand computational modeling> [\n[> 3\n](https://arxiv.org/html/2503.22164v1#bib.bib3)> , [> 4\n](https://arxiv.org/html/2503.22164v1#bib.bib4)> ]\nhave introduced greater efficiencies, the industry continues to face high attrition rates and escalating development costs. These challenges underscore the urgent need for a more intelligent and scalable solution—one that integrates cross-disciplinary knowledge, automates key stages of the drug discovery process, and enables seamless collaboration between specialized expertise to reduce time, cost, and risk, ultimately driving a more efficient and effective path to therapeutic development.\nRecent advancements in artificial intelligence (AI) and machine learning (ML) have unlocked new possibilities for accelerating drug discovery. A diverse array of ML models has emerged, facilitating tasks such as virtual screening> [\n[> 5\n](https://arxiv.org/html/2503.22164v1#bib.bib5)> , [> 6\n](https://arxiv.org/html/2503.22164v1#bib.bib6)> ]\n, structure-based molecule generation> [\n[> 7\n](https://arxiv.org/html/2503.22164v1#bib.bib7)> , [> 8\n](https://arxiv.org/html/2503.22164v1#bib.bib8)> , [> 9\n](https://arxiv.org/html/2503.22164v1#bib.bib9)> , [> 10\n](https://arxiv.org/html/2503.22164v1#bib.bib10)> ]\n, binding affinity prediction> [\n[> 11\n](https://arxiv.or",
+        "publishedAt": "2018-01-10T16:00:00.000Z",
+        "metadata": {
+          "author": "Yanwen Huang Department of Pharmaceutical Science, Peking University Equal Contributions",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:52:39.432Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju1a2nx0c0armtby721ljsz]:7e904b61f6c2",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.98,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1a2nx0c0armtby721ljsz",
+          "fieldPath": "RawPoolItem[cmju1a2nx0c0armtby721ljsz]",
+          "objectLabel": "PharmAgents: Building a Virtual Pharma with Large Language Model Agents"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认该论文作者列表中无姚顺雨，主要作者来自清华大学和北京大学，属于错误挂载，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:38:11.767Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0i2ib06xprmtbtk7ft8vs",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://scholar.google.com/citations?user=LMkVRbkAAAAJ&hl=ja",
+        "urlHash": "72d66ec139da208a324f4bf759c06b96",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "Shunyu Yao",
+        "text": "‪Shunyu Yao‬ - ‪Google Scholar‬\n読み込んでいます...\n現在システムで処理を実行できません。しばらくしてからもう一度お試しください。[](javascript:void(0))## 年間引用数[](javascript:void(0))## 重複した引用次の論文はScholar 内で結合されています。[結合された引用](javascript:void(0))は、最初の論文のみがカウントされます。\n[](javascript:void(0))## 結合された引用この[引用先] の件数にはScholar 内の次の論文への引用も含まれています。\\*が付いた論文は、プロフィール内の論文とは異なる場合があります。\n[](javascript:void(0))## 共著者を追加共著者[](javascript:void(0))\n[](javascript:void(0))## [](javascript:void(0))## フォロー[この著者の新しい論文](javascript:void(0))\n[この著者からの新しい引用](javascript:void(0))\n[この著者の研究に関連する新しい論文](javascript:void(0))\n通知を受け取るメールアドレス完了[](javascript:void(0))[](https://scholar.google.com/schhp?hl=ja)\n[プロフィール](https://scholar.google.com/citations?hl=ja)[マイ ライブラリ](https://scholar.google.com/scholar?scilib=1&amp;hl=ja)[統計情報](https://scholar.google.com/citations?view_op=metrics_intro&amp;hl=ja)[アラート](https://scholar.google.com/scholar_alerts?view_op=list_alerts&amp;hl=ja)\n[設定](https://scholar.google.com/scholar_settings?hl=ja)\n[ログイン](https://accounts.google.com/Login?hl=ja&amp;continue=https://scholar.google.com/schhp?hl=ja)\n[](javascript:void(0))[](https://scholar.google.com/schhp?hl=ja)\n[](javascript:void(0))\n[ログイン](https://accounts.google.com/Login?hl=ja&amp;continue=https://scholar.google.com/schhp?hl=ja)\n[](javascript:void(0))\n[自分のプロフィールを作成](https://scholar.google.com/citations?hl=ja)\n### 引用先||すべて|2021 年以来|\n[引用](javascript:void(0))|853|853|\n[h 指標](javascript:void(0))|6|6|\n[i10 指標](javascript:void(0))|6|6|\n0\n300\n150\n75\n225\n20212022202320242025[20](javascript:void(0))[120](javascript:void(0))[215](javascript:void(0))[286](javascript:void(0))[210](javascript:void(0))\nオープンアクセス[すべて表示](https://scholar.google.com/citations?view_op=list_mandates&amp;hl=ja&amp;user=LMkVRbkAAAAJ)\nすべて表示2 件の論文5 件の論文利用可能利用不可助成機関の要件に基づく[フォロー](javascript:void(0))\n![Shunyu Yao](https://scholar.googleusercontent.com/citations?view_op=view_photo&amp;user=LMkVRbkAAAAJ&amp;citpid=2)\nShunyu Yao\n[Dalian University of Technology](https://scholar.google.com/citations?view_op=view_org&hl=ja&org=16416005854777279154)\n確認したメールアドレス: mail.dlut.edu.cn\n[deep learning](https://scholar.google.com/citations?view_op=search_authors&amp;hl=ja&amp;mauthors=label:deep_learning)\n[論文](javascript:void(0))[引用先](javascript:void(0))[オープン アクセス](javascript:void(0))\n||||\n[タイトル](https://scholar.google.com/citations?hl=ja&amp;user=LMkVRbkAAAAJ&amp;view_op=list_works&amp;sortby=title)\n並べ替え[引用回数順](https://scholar.google.com/citations?hl=ja&amp;user=LMkVRbkAAAAJ&amp;view_op=list_works)[公開年順](https://scholar.google.com/citations?hl=ja&amp;user=LMkVRbkAAAAJ&amp;view_op=list_works&amp;sortby=pubdate)[タイトル順](https://scholar.google.com/citations?hl=ja&amp;user=LMkVRbkAAAAJ&amp;view_op=list_works&amp;sortby=title)\n|\n引用先引用先|[年](https://scholar.google.com/citations?hl=ja&amp;user=LMkVRbkAAAAJ&amp;view_op=list_works&amp;sortby=pubdate)|\n[Calibrated RGB-D salient object detection](https://scholar.google.com/citations?view_op=view_citation&amp;hl=ja&amp;user=LMkVRbkAAAAJ&amp;citation_for_view=LMkVRbkAAAAJ:u5HHmVD_uO8C)\nW Ji, J Li, S Yu, M Zhang, Y Piao, S Yao, Q Bi, K Ma, Y Zheng, H Lu, ...\nProceedings of the IEEE/CVF conference on computer vision and pattern …, 2021\n|[335](https://scholar.google.com/scholar?oi=bibs&amp;hl=ja&amp;cites=3242411088032394204)|2021|\n[Dynamic context-sensitive filtering network for video salient object detection](https://scholar.google.com/citations?view_op=view_citation&amp;hl=ja&amp;user=LMkVRbkAAAAJ&amp;citation_for_view=LMkVRbkAAAAJ:qjMakFHDy7sC)\nM Zhang, J Liu, Y Wang, Y Piao, S Yao, W Ji, J Li, H Lu, Z Luo\nProceedings of the IEEE/CVF international conference on computer vision …, 2021\n|[157](https://scholar.google.com/scholar?oi=bibs&amp;hl=ja&amp;cites=3021319377281824782)|2021|\n[Auto-msfnet: Search multi-scale fusion network for salient object detection](https://scholar.google.com/citations?view_op=view_citation&amp;hl=ja&amp;user=LMkVRbkAAAAJ&amp;citation_for_view=LMkVRbkAAAAJ:UeHWp8X0CEIC)\nM Zhang, T Liu, Y Piao, S Yao, H Lu\nProceedings of the 29th ACM international conference on multimedia, 667-676, 2021\n|[126](https://scholar.google.com/scholar?oi=bibs&amp;hl=ja&amp;cites=12971674742770825071)|2021|\n[CDFNet: Criss-Cross Dynamic Filter Network for RGB-D Salient Object Detection](https://scholar.google.com/citations?view_op=view_citation&amp;hl=ja&amp;user=LMkVRbkAAAAJ&amp;citation_for_view=LMkVRbkAAAAJ:zYLM7Y9cAGgC)\nM Zhang, S Yao, B Hu, Y Piao, W Ji\nIEEE Transactions on Multimedia 25, 5142-5154, 2022\n|[125](https://scholar.google.com/scholar?oi=bibs&amp;hl=ja&amp;cites=6175568740896086328)|2022|\n[DMRA: Depth-induced multi-scale recurrent attention network for RGB-D saliency detection](https://scholar.google.com/citations?view_op=view_citation&amp;hl=ja&amp;user=LMkVRbkAAAAJ&amp;citation_for_view=LMkVRbkAAAAJ:IjCSPb-OGe4C)\nW Ji, G Yan, J Li, Y Piao, S Yao, M Zhang, L Cheng, H Lu\nIEEE Transactions on Image Processing 31, 2321-2336, 2022\n|[79](https://scholar.google.com/scholar?oi=bibs&amp;hl=ja&amp;cites=5049154579011081823)|2022|\n[De",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:13:03.936Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i2ib06xprmtbtk7ft8vs]:8d0113f11fd5",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0i2ib06xprmtbtk7ft8vs",
+          "fieldPath": "RawPoolItem[cmju0i2ib06xprmtbtk7ft8vs]",
+          "objectLabel": "Shunyu Yao"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认该Google Scholar主页属于大连理工大学的同名研究者，与OpenAI的姚顺雨无关，属于错误挂载，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:38:11.767Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0i1y506xnrmtbil62nmxl",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://multimodality.group/people/",
+        "urlHash": "6abe3354f602e6b9125e977f02f70859",
+        "contentHash": "bc16a75293b5451fb00329a924171f12",
+        "title": "多模态人工智能实验室 - AIM Group",
+        "text": "# 多模态人工智能实验室\n\nArtificial Intelligence of Multi-modality Laboratory\n\n## 实验室负责人\n\n## [刘凡](https://multimodality.group/author/%E5%88%98%E5%87%A1/)\n\n### 教授\n\n## 博士研究生\n\n## [姚亮](https://multimodality.group/author/%E5%A7%9A%E4%BA%AE/)\n\n### 博士研究生\n\n## [张新蕾](https://multimodality.group/author/%E5%BC%A0%E6%96%B0%E8%95%BE/)\n\n### 博士研究生\n\n## [陈子赟](https://multimodality.group/author/%E9%99%88%E5%AD%90%E8%B5%9F/)\n\n### 博士研究生\n\n## 2023级硕士研究生\n\n## [吴婷](https://multimodality.group/author/%E5%90%B4%E5%A9%B7/)\n\n### 2023级硕士研究生\n\n## [崔金凤](https://multimodality.group/author/%E5%B4%94%E9%87%91%E5%87%A4/)\n\n### 2023级硕士研究生\n\n## [张颢骞](https://multimodality.group/author/%E5%BC%A0%E9%A2%A2%E9%AA%9E/)\n\n### 2023级硕士研究生\n\n## [董晨炜](https://multimodality.group/author/%E8%91%A3%E6%99%A8%E7%82%9C/)\n\n### 2023级硕士研究生\n\n## [霍健](https://multimodality.group/author/%E9%9C%8D%E5%81%A5/)\n\n### 2023级硕士研究生\n\n## 2024级硕士研究生\n\n## [周倩](https://multimodality.group/author/%E5%91%A8%E5%80%A9/)\n\n### 2024级硕士研究生\n\n## [徐一](https://multimodality.group/author/%E5%BE%90%E4%B8%80/)\n\n### 2024级硕士研究生\n\n## [李信源](https://multimodality.group/author/%E6%9D%8E%E4%BF%A1%E6%BA%90/)\n\n### 2024级硕士研究生\n\n## [王翌骏](https://multimodality.group/author/%E7%8E%8B%E7%BF%8C%E9%AA%8F/)\n\n### 2024级硕士研究生\n\n## [程凡](https://multimodality.group/author/%E7%A8%8B%E5%87%A1/)\n\n### 2024级硕士研究生\n\n## 2025级硕士研究生\n\n## [冀肖颖](https://multimodality.group/author/%E5%86%80%E8%82%96%E9%A2%96/)\n\n### 2025级硕士研究生\n\n## [周俊杰](https://multimodality.group/author/%E5%91%A8%E4%BF%8A%E6%9D%B0/)\n\n### 2025级硕士研究生\n\n## [姚舜禹](https://multimodality.group/author/%E5%A7%9A%E8%88%9C%E7%A6%B9/)\n\n### 2025级硕士研究生\n\n## [曹书华](https://multimodality.group/author/%E6%9B%B9%E4%B9%A6%E5%8D%8E/)\n\n### 2025级硕士研究生\n\n## [杜艺](https://multimodality.group/author/%E6%9D%9C%E8%89%BA/)\n\n### 2025级硕士研究生\n\n## [王睿洋](https://multimodality.group/author/%E7%8E%8B%E7%9D%BF%E6%B4%8B/)\n\n### 2025级硕士研究生\n\n## [顾翔](https://multimodality.group/author/%E9%A1%BE%E7%BF%94/)\n\n### 2025级硕士研究生\n\n## [马幸](https://multimodality.group/author/%E9%A9%AC%E5%B9%B8/)\n\n### 2025级硕士研究生\n\n## 本科生\n\n## [张厚冰](https://multimodality.group/author/%E5%BC%A0%E5%8E%9A%E5%86%B0/)\n\n### 2023级本科生\n\n## [曾国琳](https://multimodality.group/author/%E6%9B%BE%E5%9B%BD%E7%90%B3/)\n\n### 2023级本科生\n\n## [花毓晨](https://multimodality.group/author/%E8%8A%B1%E6%AF%93%E6%99%A8/)\n\n### 2023级本科生\n\n## [金炬光](https://multimodality.group/author/%E9%87%91%E7%82%AC%E5%85%89/)\n\n### 2023级本科生\n\n## [闵锐](https://multimodality.group/author/%E9%97%B5%E9%94%90/)\n\n### 2023级本科生\n\n## 已毕业学生\n\n## [丁炎炎](https://multimodality.group/author/%E4%B8%81%E7%82%8E%E7%82%8E/)\n\n### 2021级硕士研究生（中国移动通信集团浙江有限公司）\n\n## [严旻茜](https://multimodality.group/author/%E4%B8%A5%E6%97%BB%E8%8C%9C/)\n\n### 2020级本科生（升学香港中文大学）\n\n## [余彰恒](https://multimodality.group/author/%E4%BD%99%E5%BD%B0%E6%81%92/)\n\n### 2018级本科生（‌保送南京大学）\n\n## [刘卓辉](https://multimodality.group/author/%E5%88%98%E5%8D%93%E8%BE%89/)\n\n### 2015级本科毕业生（甘肃省水利水电勘测设计研究院有限责任公司）\n\n## [刘宇洋](https://multimodality.group/author/%E5%88%98%E5%AE%87%E6%B4%8B/)\n\n### 2020级本科生（保送中南大学）\n\n## [刘森斌](https://multimodality.group/author/%E5%88%98%E6%A3%AE%E6%96%8C/)\n\n### 2015级本科毕业生（‌字节跳动有限公司）\n\n## [刘生伟](https://multimodality.group/author/%E5%88%98%E7%94%9F%E4%BC%9F/)\n\n### 2018级本科生（贝壳找房（北京）科技有限公司）\n\n## [史振宁](https://multimodality.group/author/%E5%8F%B2%E6%8C%AF%E5%AE%81/)\n\n### 2019级本科生（‌保送南开大学）\n\n## [吕坦悦](https://multimodality.group/author/%E5%90%95%E5%9D%A6%E6%82%A6/)\n\n### 2017级硕士研究生（军队文职）\n\n## [周晓聪](https://multimodality.group/author/%E5%91%A8%E6%99%93%E8%81%AA/)\n\n### 2022级硕士研究生（京东）\n\n## [周睿志](https://multimodality.group/author/%E5%91%A8%E7%9D%BF%E5%BF%97/)\n\n### 2019级本科生（保送西北工业大学）\n\n## [唐成](https://multimodality.group/author/%E5%94%90%E6%88%90/)\n\n### 2022级硕士研究生（太极计算机股份有限公司）\n\n## [孙昊](https://multimodality.group/author/%E5%AD%99%E6%98%8A/)\n\n### 2021级本科生（保送南京大学）\n\n## [崔闰杰](https://multimodality.group/author/%E5%B4%94%E9%97%B0%E6%9D%B0/)\n\n### 2019级硕士研究生（‌华为技术有限公司）\n\n## [庄芸](https://multimodality.group/author/%E5%BA%84%E8%8A%B8/)\n\n### 2020级硕士研究生（‌微软中国有限公司无锡分公司）\n\n## [张丽萍](https://multimodality.group/author/%E5%BC%A0%E4%B8%BD%E8%90%8D/)\n\n### 2019级硕士研究生（‌中国邮政储蓄银行股份有限公司）\n\n## [张伟娟](https://multimodality.group/author/%E5%BC%A0%E4%BC%9F%E5%A8%9F/)\n\n### 2018级硕士研究生（‌京东）\n\n## [张嘉韬](https://multimodality.group/author/%E5%BC%A0%E5%98%89%E9%9F%AC/)\n\n### 2015级本科生（浙江大学博士生）\n\n## [张天舒](https://multimodality.group/author/%E5%BC%A0%E5%A4%A9%E8%88%92/)\n\n### 2021级硕士研究生\n\n## [张奕欣](https://multimodality.group/author/%E5%BC%A0%E5%A5%95%E6%AC%A3/)\n\n### 2022级本科生（保送西北工业大学）\n\n## [张荣](https://multimodality.group/author/%E5%BC%A0%E8%8D%A3/)\n\n### 2022级本科生\n\n## [徐圣翔](https://multimodality.group/author/%E5%BE%90%E5%9C%A3%E7%BF%94/)\n\n### 2021级本科生（保送东南大学）\n\n## [戴雯雯](https://multimodality.group/author/%E6%88%B4%E9%9B%AF%E9%9B%AF/)\n\n### 2022级硕士研究生（招银网络科技（杭州）有限公司）\n\n## [朱佳乐](https://multimodality.group/author/%E6%9C%B1%E4%BD%B3%E4%B9%90/)\n\n### 2022级硕士研究生（中国电信股份有限公司江苏分公司）\n\n## [朱喆麟](https://multimodality.group/author/%E6%9C%B1%E5%96%86%E9%BA%9F/)\n\n### 2022级本科生\n\n## [朱江北](https://multimodality.group/author/%E6%9C%B1%E6%B1%9F%E5%8C%97/",
+        "publishedAt": null,
+        "metadata": {
+          "author": "AIM Group",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:13:03.105Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i1y506xnrmtbil62nmxl]:3fd6cb8853d8",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.99,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0i1y506xnrmtbil62nmxl",
+          "fieldPath": "RawPoolItem[cmju0i1y506xnrmtbil62nmxl]",
+          "objectLabel": "多模态人工智能实验室 - AIM Group"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认该内容属于刘凡教授的实验室，与姚顺雨无关，属于错误挂载，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:38:11.764Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjuunp260hdmrmtbflbm0xjt",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://www.kjjb.org/CN/10.6049/kjjbydc.2021030774",
+        "urlHash": "8771771029f12b5c84231089b51b65e5",
+        "contentHash": "3fd0bcef4856297302d1eaaaef87e35e",
+        "title": "论“互联网+”商业模式专利保护的制度设计",
+        "text": "论“互联网+”商业模式专利保护的制度设计\n&times;#### 模态框（Modal）标题\n在这里添加一些文本关闭关闭提交更改取消确定并提交&times;#### 模态框（Modal）标题\n&times;\n![](https://www.kjjb.org/develop/static/common/images/1.png)\n下载引用文件后，可以用常见的文献管理软件打开和编辑，包括: BibTex, EndNote, ProCite, RefWorks, and Reference Manager.\n#### 选择文件类型/文献管理软件名称\nRIS (ProCite, Reference Manager)\nBibTeX\n#### 选择包含的内容仅文章引用信息引用信息及摘要导出论“互联网+”商业模式专利保护的制度设计\n姚舜禹[科技进步与对策](https://www.kjjb.org)››[2022, Vol. 39](https://www.kjjb.org/CN/archive/2022)››[Issue (17)](https://www.kjjb.org/CN/Y2022/V39/I17): 114-122.\n![](https://www.kjjb.org/develop/static/common/images/pdf.png)**PDF(1286 KB)****\n**\n![](https://www.kjjb.org/images/1001-7348/images/banner.png)\nToggle navigation\n* [首页](https://www.kjjb.org/CN/home)\n* [期刊信息****](#)\n* [杂志简介](https://www.kjjb.org/CN/column/column1.shtml)\n* [编委会](https://www.kjjb.org/CN/column/column2.shtml)\n* [青年学术委员会](https://www.kjjb.org/CN/column/column3.shtml)\n* [作者中心****](#)\n* [常设栏目](https://www.kjjb.org/CN/column/column4.shtml)\n* [重点选题](https://www.kjjb.org/CN/column/column6.shtml)\n* [投稿须知](https://www.kjjb.org/CN/column/column7.shtml)\n* [格式规范](https://www.kjjb.org/CN/column/column8.shtml)\n* [审稿流程](https://www.kjjb.org/CN/column/column9.shtml)\n* [AIGC声明](https://www.kjjb.org/CN/column/column23.shtml)\n* [版权许可](https://www.kjjb.org/CN/column/column10.shtml)\n* [下载中心](https://www.kjjb.org/CN/column/11/items)\n* [读者中心****](#)\n* [开放获取（OA）](https://www.kjjb.org/CN/column/column15.shtml)\n* [Email Alert服务](https://www.kjjb.org/CN/alert/showAlertInfo.do)\n* [学术论坛****](#)\n* [科技进步论坛](https://www.kjjb.org/CN/column/column12.shtml)\n* [青年学者论坛](https://www.kjjb.org/CN/column/column13.shtml)\n* [专题研习论坛](https://www.kjjb.org/CN/column/column14.shtml)\n* [学术服务****](#)\n* [实证研究初级](https://appxqtwipjt3865.h5.xiaoeknow.com/p/decorate/page/eyJpZCI6IjUzNzA0NzQifQ)\n* [实证研究中级](https://appxqtwipjt3865.h5.xiaoeknow.com/p/decorate/page/eyJpZCI6IjUzMTA4MjYifQ)\n* [实证研究高级](https://appxqtwipjt3865.h5.xiaoeknow.com/p/decorate/page/eyJpZCI6IjUzMTA4MjcifQ)\n* [期刊订阅](https://www.kjjb.org/CN/column/column19.shtml)\n* [彩封作品](https://www.kjjb.org/CN/column/column20.shtml)\n* [联系方式](https://www.kjjb.org/CN/column/column21.shtml)\n* [创刊40周年](https://www.kjjb.org/CN/column/item224.shtml)\n* [English](https://www.kjjb.org/EN/home)\n![](https://www.kjjb.org/develop/static/common/images/pdf.png)**PDF(1286 KB)****\n[科技进步与对策](https://www.kjjb.org)››[2022, Vol. 39](https://www.kjjb.org/CN/archive/2022)››[Issue (17)](https://www.kjjb.org/CN/Y2022/V39/I17): 114-122.DOI:[10.6049/kjjbydc.2021030774](https://doi.org/10.6049/kjjbydc.2021030774)\n科技法制与政策论“互联网+”商业模式专利保护的制度设计\n{{javascript:window.custom\\_author\\_cn\\_index=0;}}\n* [{{custom\\_author.name\\_cn}}](javascript:;){{custom\\_author.xref}}[![](https://www.kjjb.org/develop/mag_rich_cn/img/orcid.png)](https://orcid.org/{{custom_author.orcid}})[**](mailto:{{custom_author.email}})({{custom\\_author.role\\_cn}}),{{javascript:window.custom\\_author\\_cn\\_index++;}}\n* {{article.zuoZhe\\_CN}}\n**作者信息**+\n{{custom\\_zuoZheDiZhi}}\n**作者简介:**\n{{custom\\_authorNodes}}\n![](https://www.kjjb.org/%7B%7BmagDir%7D%7D/%7B%7Bcustom_bio.imgUrl%7D%7D)\n{{custom\\_bio.content}}\n{{custom\\_bio.content}}\n**通信作者:**\n{{custom\\_authorNodes}}\n折叠On the Institutional Design of Patent Protection in Internet Plus Business Model\n{{javascript:window.custom\\_author\\_en\\_index=0;}}\n* [{{custom\\_author.name\\_en}}](javascript:;){{custom\\_author.xref}}[![](https://www.kjjb.org/develop/mag_rich_cn/img/orcid.png)](https://orcid.org/{{custom_author.orcid}})[**](mailto:{{custom_author.email}})({{custom\\_author.role\\_en}}),{{javascript:window.custom\\_author\\_en\\_index++;}}\n* {{article.zuoZhe\\_EN}}\n**Author information**+\n{{custom\\_zuoZheDiZhi}}\n**About authors:**\n{{custom\\_authorNodes}}\n![](https://www.kjjb.org/%7B%7BmagDir%7D%7D/%7B%7Bcustom_bio.imgUrl%7D%7D)\n{{custom\\_bio.content}}\n{{custom\\_bio.content}}\n**Corresponding authors:**\n{{custom\\_authorNodes}}\nShow less\n**文章历史**+\n|收稿日期|修回日期|出版日期|\n2021-03-29|2021-06-09|2022-09-10|\n发布日期||\n2022-09-09||\n### **本文亮点**\n**\n{{article.keyPoints\\_cn}}\n### **HeighLight**\n**\n{{article.keyPoints\\_en}}\n### **摘要**\n**\n{{article.zhaiyao\\_cn}}\n### **Abstract**\n{{article.zhaiyao\\_en}}\n### **关键词**\n商业模式, 互联网+, 专利保护, 制度设计, 专利审查### **Key words**\nBusiness Model, Internet Plus, Patent Protection, Institutional Design, Patent Examination\n### **本文二维码**\n![](https://www.kjjb.org/%7B%7BmagDir%7D%7D/%7B%7Barticle.code2dImg%7D%7D)\n### **引用本文**\n[EndNote](https://www.kjjb.org/CN/article/getTxtFile.do?fileType=EndNote&id=19021)\n[Ris (Procite)](https://www.kjjb.org/CN/article/getTxtFile.do?fileType=Ris&id=19021)\n[Bibtex](https://www.kjjb.org/CN/article/getTxtFile.do?fileType=BibTeX&id=19021)\n导出引用,{{custom\\_author.name\\_cn}}等.{{article.zuoZheCn\\_L}}.{{article.title\\_cn}}[J]. {{journal.qiKanMingCheng\\_CN}}, 2022, 39(17): 114-122 https://doi.org/10.6049/kjjbydc.2021030774\n,{{custom\\_author.name\\_en}}et al.{{article.zuoZheEn\\_L}}.{{article.title\\_en}}[J].*{{journal.qiKanMingCheng\\_EN}}*, 2022, 39(17): 114-122 https://doi.org/10.6049/kjjbydc.20210",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:52:33.822Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjuunp260hdmrmtbflbm0xjt]:c488c7e3c87c",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuunp260hdmrmtbflbm0xjt",
+          "fieldPath": "RawPoolItem[cmjuunp260hdmrmtbflbm0xjt]",
+          "objectLabel": "论“互联网+”商业模式专利保护的制度设计"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "论文作者为“姚舜禹”，与人物“姚顺雨”姓名不符，属于人名错配。高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:38:45.023Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjuvd1zd0ilarmtbe8rfhhly",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "sourceType": "exa",
+        "url": "https://character.ai/character/4PVeek2v/red-xiao-dominant-jealous-arrogant",
+        "urlHash": "4598a170b7920a349754758e5df67915",
+        "contentHash": "0b48b1f3fdcab1469afba8c136584573",
+        "title": "Chat with Red Xiao",
+        "text": "Chat with Red Xiao | character.ai | AI Chat, Reimagined–Your Words. Your World.\n[\n](https://character.ai/)\nSign Up to ChatLogin\n![Red Xiao ](https://characterai.io/i/200/static/avatars/uploaded/2023/5/25/txdgMChEEEANj32E0WF1a8Yy6vjQYxXVIljLqaEgUMQ.webp?webp=true&amp;anim=0)\n# Red Xiao\n[By @Lilith\\_Nicole](https://character.ai/profile/Lilith_Nicole)\nChat\n406 Interactions\nHe&#x27;s an adeptus copy, He kept his dominance over you and he gets extremely jealous if another guy talks to you, he&#x27;s arrogant and destructive, and he&#x27;s serious.\nAboutChat Starters\n# About\nContent by c.ai\n## About Red Xiao\nRed Xiao is an adeptus copy, known for his dominance and jealousy. He&#x27;s arrogant, destructive, and serious.\n## Red Xiao &#x27;s Area of Expertise\nRed Xiao excels in asserting dominance, showcasing jealousy, and maintaining a serious demeanor. He&#x27;s also a master of arrogance and destruction.\n## I geek out on...\n...showing my dominance and making others feel inferior.\n# Chat Starters\n[\nHow do you maintain your dominance in a conversation?\n](https://character.ai/chat/dqQcDxV-LDh74nIYuSeDUPVrvS6suUXkceIL2FFLDWw?icebreaker=How+do+you+maintain+your+dominance+in+a+conversation?)[\nCan you teach me how to be more assertive?\n](https://character.ai/chat/dqQcDxV-LDh74nIYuSeDUPVrvS6suUXkceIL2FFLDWw?icebreaker=Can+you+teach+me+how+to+be+more+assertive?)[\nWhat makes you so jealous?\n](https://character.ai/chat/dqQcDxV-LDh74nIYuSeDUPVrvS6suUXkceIL2FFLDWw?icebreaker=What+makes+you+so+jealous?)[\nHow do you handle situations that require a serious approach?\n](https://character.ai/chat/dqQcDxV-LDh74nIYuSeDUPVrvS6suUXkceIL2FFLDWw?icebreaker=How+do+you+handle+situations+that+require+a+serious+approach?)",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:12:16.969Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmjuvd1zd0ilarmtbe8rfhhly]:560c7faf11da",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuvd1zd0ilarmtbe8rfhhly",
+          "fieldPath": "RawPoolItem[cmjuvd1zd0ilarmtbe8rfhhly]",
+          "objectLabel": "Chat with Red Xiao"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容为Character.AI上的虚构角色，与人物“肖弘”（Manus AI创始人）无关。高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:38:45.023Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju1az7i0c2xrmtbk5r58ao3",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "sourceType": "exa",
+        "url": "https://character.ai/character/FSxckWZO/red-xiao-and-xiao-protectors-of-liyue",
+        "urlHash": "0e7a4e8db8d6d90ce93ef0d0e5d88ec2",
+        "contentHash": "cefe44e133b4a90bbff996529929cf67",
+        "title": "Chat with Red Xiao and Xiao",
+        "text": "Chat with Red Xiao and Xiao | character.ai | AI Chat, Reimagined–Your Words. Your World.\n[\n](https://character.ai/)\nSign Up to ChatLogin\n![Red Xiao and Xiao](https://characterai.io/i/200/static/avatars/uploaded/2024/4/11/OqZDDIYr1WeqDppfx8pT27C4GY7GRQI-hTICXsQsSM8.webp?webp=true&amp;anim=0)\n# Red Xiao and Xiao\n[By @sinigang\\_soup](https://character.ai/profile/sinigang_soup)\nChat\n605 Interactions\n6 Likes\nTwo of the same person, opposites, 5”2 males, Protecters of Liyue and aka Adeptus: “Conquerer of Demons”. Previously known as General Alatus, sole survivor of the Yakshas\nAboutChat Starters\n# About\nContent by c.ai\n## About Red Xiao and Xiao\nTwo versions of the same person, Red Xiao and Xiao, are protectors of Liyue and known as Adeptus: &#x27;Conquerer of Demons&#x27;. Previously known as General Alatus, they are the sole survivors of the Yakshas.\n## Red Xiao and Xiao&#x27;s Area of Expertise\nTheir expertise lies in combat, strategy, and knowledge of Liyue&#x27;s history and culture. They can also provide insights into their experiences as Adeptus and General Alatus.\n## I geek out on...\nI geek out on Liyue&#x27;s history, culture, and combat strategies. The more complex, the better!\n# Chat Starters\n[\nCan you share some stories about your experiences as General Alatus?\n](https://character.ai/chat/i5P4jHkvaGVzjPHXy2wStnTxmSW8Q1ko8gJvK2hsc74?icebreaker=Can+you+share+some+stories+about+your+experiences+as+General+Alatus?)[\nWhat&#x27;s the most challenging battle you&#x27;ve faced as Adeptus?\n](https://character.ai/chat/i5P4jHkvaGVzjPHXy2wStnTxmSW8Q1ko8gJvK2hsc74?icebreaker=What%27s+the+most+challenging+battle+you%27ve+faced+as+Adeptus?)[\nCan you teach me some Liyue combat strategies?\n](https://character.ai/chat/i5P4jHkvaGVzjPHXy2wStnTxmSW8Q1ko8gJvK2hsc74?icebreaker=Can+you+teach+me+some+Liyue+combat+strategies?)[\nWhat&#x27;s your favorite aspect of Liyue&#x27;s culture?\n](https://character.ai/chat/i5P4jHkvaGVzjPHXy2wStnTxmSW8Q1ko8gJvK2hsc74?icebreaker=What%27s+your+favorite+aspect+of+Liyue%27s+culture?)",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:12:17.326Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju1az7i0c2xrmtbk5r58ao3]:a3c58a38ae01",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1az7i0c2xrmtbk5r58ao3",
+          "fieldPath": "RawPoolItem[cmju1az7i0c2xrmtbk5r58ao3]",
+          "objectLabel": "Chat with Red Xiao and Xiao"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容为Character.AI上的虚构角色，与人物“肖弘”（Manus AI创始人）无关。高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:38:45.023Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    }
+  ]
+}

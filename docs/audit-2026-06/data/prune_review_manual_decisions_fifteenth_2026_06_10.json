@@ -1,0 +1,941 @@
+{
+  "generatedAt": "2026-06-10T12:18:42.169Z",
+  "input": "docs/audit-2026-06/data/prune_candidates_after_fourteenth_manual_review_prune.json",
+  "scope": "eighth manual prune batch; latest reject tail only by default; selected after active Card/source URL and People JSON dependency checks",
+  "criteria": {
+    "includeReview": false,
+    "limit": 40,
+    "perPerson": 3,
+    "signals": [
+      "google scholar",
+      "github",
+      "linkedin",
+      "medium",
+      "crunchbase",
+      "handwiki",
+      "the org",
+      "登录",
+      "导航",
+      "网页框架",
+      "网页菜单",
+      "系统错误",
+      "抓取失败",
+      "无实质",
+      "缺乏实质",
+      "内容仅为",
+      "仅为",
+      "ui"
+    ]
+  },
+  "summary": {
+    "sourceRowsScanned": 227,
+    "signalRows": 35,
+    "missingRawRows": 0,
+    "dependencySkipped": 19,
+    "decisions": 11
+  },
+  "decisions": [
+    {
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxm5gk039wrmtb8veoxcng",
+        "objectLabel": "//x.com/lilianweng/status/1863436864411341112"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "内容仅为社交媒体链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxm313038yrmtboa7enghs",
+        "objectLabel": "//x.com/lilianweng/status/1973455232341516731"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmju0irhf072ermtbsdw1dew6",
+        "objectLabel": "Join us if you are interested for a chat at Defcon & the AI Security Forum! 🙌"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "仅为简短的会议社交邀请，缺乏实质性的观点或事实。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmju15zpr0b3yrmtbrztv6nea",
+        "objectLabel": "//x.com/sundarpichai/status/1983651375449076215"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxoymy03wjrmtb4kps02a6",
+        "objectLabel": "//x.com/sundarpichai/status/1990812770762215649"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxoxsi03w7rmtbsxlt5jfj",
+        "objectLabel": "//x.com/sundarpichai/status/1990865172152660047"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxq6vc0452rmtbpw9csjqc",
+        "objectLabel": "** https://x.com/ashVaswani/status/1997210521851027487"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxqb1m0478rmtb730gxppr",
+        "objectLabel": "Panel Discussion On Building AI For The World | Accel AI Summit 2025"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "泛 AI 行业讨论，未明确提及目标人物。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxqjcr049mrmtbzx0qgda7",
+        "objectLabel": "//x.com/kyosu/status/1464848539675250691"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmju0h0bp06strmtbmla0n7hn",
+        "objectLabel": "//x.com/kyosu/status/1559457478781374465"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    },
+    {
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxqhlm049armtbh9vhialw",
+        "objectLabel": "//x.com/kyosu/status/1582297592691466240"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.9,
+      "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+      "reviewedAt": "2026-06-10T12:18:42.169Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "manual_prune_low_information_capture"
+      }
+    }
+  ],
+  "byPerson": {
+    "李莲": 3,
+    "桑达尔·皮查伊": 3,
+    "雅各布·乌什科雷特": 3,
+    "阿希什·瓦斯瓦尼": 2
+  },
+  "selectedRows": [
+    {
+      "rawId": "cmjtxm5gk039wrmtb8veoxcng",
+      "person": "李莲",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/lilianweng/status/1863436864411341112",
+      "url": "https://x.com/lilianweng/status/1863436864411341112",
+      "urlHash": "d519b8f841205a25f786546777623883",
+      "reason": "内容仅为社交媒体链接，缺乏实质性文本信息。",
+      "auditedAt": "2026-06-07T05:06:13.053Z",
+      "personId": "cmjtxcatd00025p08uv2ks3h0"
+    },
+    {
+      "rawId": "cmjtxm313038yrmtboa7enghs",
+      "person": "李莲",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/lilianweng/status/1973455232341516731",
+      "url": "https://x.com/lilianweng/status/1973455232341516731",
+      "urlHash": "5ffbc558915f7548ba76b058d6056c0f",
+      "reason": "仅包含社交媒体链接，无实质性文本内容。",
+      "auditedAt": "2026-06-07T05:06:13.053Z",
+      "personId": "cmjtxcatd00025p08uv2ks3h0"
+    },
+    {
+      "rawId": "cmju0irhf072ermtbsdw1dew6",
+      "person": "李莲",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "Join us if you are interested for a chat at Defcon & the AI Security Forum! 🙌",
+      "url": "https://x.com/lilianweng/status/1818850249290706953",
+      "urlHash": "3a064e49310d3be77c67e575a8fbabc7",
+      "reason": "仅为简短的会议社交邀请，缺乏实质性的观点或事实。",
+      "auditedAt": "2026-06-07T05:06:13.053Z",
+      "personId": "cmjtxcatd00025p08uv2ks3h0"
+    },
+    {
+      "rawId": "cmju15zpr0b3yrmtbrztv6nea",
+      "person": "桑达尔·皮查伊",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/sundarpichai/status/1983651375449076215",
+      "url": "https://x.com/sundarpichai/status/1983651375449076215",
+      "urlHash": "9d11660f41f92b0d0d66ba13ba10f8bc",
+      "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。",
+      "auditedAt": "2026-06-07T05:07:28.675Z",
+      "personId": "cmjtxdlcn000b5p08yoct3be8"
+    },
+    {
+      "rawId": "cmjtxoymy03wjrmtb4kps02a6",
+      "person": "桑达尔·皮查伊",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/sundarpichai/status/1990812770762215649",
+      "url": "https://x.com/sundarpichai/status/1990812770762215649",
+      "urlHash": "fd254fd7cb1fde0a05c46e0eeeff5916",
+      "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。",
+      "auditedAt": "2026-06-07T05:07:28.675Z",
+      "personId": "cmjtxdlcn000b5p08yoct3be8"
+    },
+    {
+      "rawId": "cmjtxoxsi03w7rmtbsxlt5jfj",
+      "person": "桑达尔·皮查伊",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/sundarpichai/status/1990865172152660047",
+      "url": "https://x.com/sundarpichai/status/1990865172152660047",
+      "urlHash": "034c0be12a27f6708dc97be21abb58b9",
+      "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。",
+      "auditedAt": "2026-06-07T05:07:28.675Z",
+      "personId": "cmjtxdlcn000b5p08yoct3be8"
+    },
+    {
+      "rawId": "cmjtxq6vc0452rmtbpw9csjqc",
+      "person": "阿希什·瓦斯瓦尼",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "** https://x.com/ashVaswani/status/1997210521851027487",
+      "url": "https://x.com/ashVaswani/status/1997210521851027487",
+      "urlHash": "793e894623942d08cbfa01ba3b672ed4",
+      "reason": "仅包含社交媒体链接，无实质性文本内容。",
+      "auditedAt": "2026-06-07T05:14:13.849Z",
+      "personId": "cmjtxe4kc000f5p08n4sq7547"
+    },
+    {
+      "rawId": "cmjtxqb1m0478rmtb730gxppr",
+      "person": "阿希什·瓦斯瓦尼",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "youtube",
+      "title": "Panel Discussion On Building AI For The World | Accel AI Summit 2025",
+      "url": "https://www.youtube.com/watch?v=pfuDtMiQAhc",
+      "urlHash": "e3866ffc1b8b1bf228932bd580030917",
+      "reason": "泛 AI 行业讨论，未明确提及目标人物。",
+      "auditedAt": "2026-06-07T05:14:13.849Z",
+      "personId": "cmjtxe4kc000f5p08n4sq7547"
+    },
+    {
+      "rawId": "cmjtxqjcr049mrmtbzx0qgda7",
+      "person": "雅各布·乌什科雷特",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/kyosu/status/1464848539675250691",
+      "url": "https://x.com/kyosu/status/1464848539675250691",
+      "urlHash": "eab6bbe070219702392c3359a1fee6ae",
+      "reason": "仅包含社交媒体链接，无实质性文本内容。",
+      "auditedAt": "2026-06-07T05:08:43.629Z",
+      "personId": "cmjtxe7r3000g5p0868zhzky2"
+    },
+    {
+      "rawId": "cmju0h0bp06strmtbmla0n7hn",
+      "person": "雅各布·乌什科雷特",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/kyosu/status/1559457478781374465",
+      "url": "https://x.com/kyosu/status/1559457478781374465",
+      "urlHash": "13374a2a0c5980c8ce9b156281469ede",
+      "reason": "仅包含社交媒体链接，无实质性文本内容。",
+      "auditedAt": "2026-06-07T05:08:43.629Z",
+      "personId": "cmjtxe7r3000g5p0868zhzky2"
+    },
+    {
+      "rawId": "cmjtxqhlm049armtbh9vhialw",
+      "person": "雅各布·乌什科雷特",
+      "status": "ready",
+      "verdict": "reject",
+      "sourceType": "x",
+      "title": "//x.com/kyosu/status/1582297592691466240",
+      "url": "https://x.com/kyosu/status/1582297592691466240",
+      "urlHash": "1681ea3a426595568ff4956b9c44124d",
+      "reason": "仅包含社交媒体链接，无实质性文本内容。",
+      "auditedAt": "2026-06-07T05:08:43.629Z",
+      "personId": "cmjtxe7r3000g5p0868zhzky2"
+    }
+  ],
+  "skipped": [
+    {
+      "row": {
+        "rawId": "cmjtlbe47001tefnhy3ohqmt4",
+        "person": "Andrej Karpathy",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Andrej Karpathy",
+        "url": "https://github.com/karpathy",
+        "urlHash": "9c5bd82c5c1657a163e7c0bc1f797827",
+        "reason": "仅为 GitHub 个人主页的导航栏和界面 UI 文本，无实质信息。",
+        "auditedAt": "2026-06-07T03:03:30.853Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjsme4n800009u972zrrxrei",
+            "name": "Andrej Karpathy"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtvpoc700qmrmtbe0grujy9",
+        "person": "Arthur Mensch",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Arthur Mensch - 人工智能",
+        "url": "https://www.actuia.com/cn/actors/arthur-mensch/",
+        "urlHash": "52d74a007b7e9184379b4ed8340197af",
+        "reason": "页面仅包含多语言导航链接，无任何关于人物的具体描述或事实。",
+        "auditedAt": "2026-06-07T03:11:49.189Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmju0sdc808i4rmtbeemt73bd",
+            "personId": "cmjtv28ik0007i004hn1xz67d",
+            "title": "法国AI委员会成员，参与国家AI战略制定"
+          },
+          {
+            "id": "cmjuulsyj0h3ormtbf9eydl92",
+            "personId": "cmjtv28ik0007i004hn1xz67d",
+            "title": "Mistral AI的快速崛起与核心成就"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtvpkrv00qirmtb5l92onhn",
+        "person": "Arthur Mensch",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Arthur Mensch arthurmensch",
+        "url": "https://github.com/arthurmensch",
+        "urlHash": "51f8f9b7e272fb617285f3b1be3b3397",
+        "reason": "内容仅为 GitHub 的登录和跳转提示，缺乏实质性的人物或技术信息。",
+        "auditedAt": "2026-06-07T03:11:49.189Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjtv28ik0007i004hn1xz67d",
+            "name": "Arthur Mensch"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtxm6sz03airmtbsk44flid",
+        "person": "Chris Olah",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Christopher Olah colah",
+        "url": "https://github.com/colah",
+        "urlHash": "c5a10984fddf497d4272b9a0a2c52ca3",
+        "reason": "仅为 GitHub 个人主页的登录/跳转页面，缺乏实质性的信息内容。",
+        "auditedAt": "2026-06-07T05:13:31.900Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmjtxngl803j3rmtb3g5fj1q8",
+            "personId": "cmjtxcggg00035p08qz4fgjbn",
+            "title": "“我想清晰地理解事物并很好地解释它们”"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtvrru5013brmtbro4egf78",
+        "person": "Emad Mostaque",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Emad Mostaque: The Visionary Behind Stable Diffusion and the Future of Decentralized AI (Biography)",
+        "url": "https://masculinesynergy.com/who-is-emad-mostaque/",
+        "urlHash": "c8ca6359608f936ba6b2454c5c0468e4",
+        "reason": "抓取内容主要为网站元数据和导航，缺乏人物传记的实质内容。",
+        "auditedAt": "2026-06-07T05:11:22.095Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmjtvxd5t01j3rmtbf295lilh",
+            "personId": "cmjtv2pq7000bi0044hykxl36",
+            "title": "从牛津数学家到AI革命者：创立Stability AI"
+          },
+          {
+            "id": "cmjtvxd5t01j6rmtb0jw1x74g",
+            "personId": "cmjtv2pq7000bi0044hykxl36",
+            "title": "英国-孟加拉裔AI企业家，Stability AI联合创始人"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjsmr9so0015q8o9vbaj3slp",
+        "person": "Greg Brockman",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "x",
+        "title": "GPT-5.2 for compiling reports:",
+        "url": "https://x.com/gdb/status/2005410922022801671",
+        "urlHash": "da71d1d73291d8e7463535a977e64d09",
+        "reason": "内容过于简短且缺乏实质性信息，疑似随手发布的动态。",
+        "auditedAt": "2026-06-07T03:05:53.586Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmjsms79l001wq8o9d0njfcjr",
+            "personId": "cmjsmop1e00017wc35sdo9tff",
+            "title": "用 GPT-5.2 自动编译报告"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtvuxri016prmtbfkyp9diu",
+        "person": "John Schulman",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "John Schulman joschu",
+        "url": "https://github.com/joschu",
+        "urlHash": "6200d531be3449f995818243d4645186",
+        "reason": "内容仅为 GitHub 登录状态和 UI 提示，无实质性个人信息。",
+        "auditedAt": "2026-06-07T03:13:39.417Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjtv30df000ei004hqk0pamw",
+            "name": "John Schulman"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtvnosx00efrmtbvesdazp0",
+        "person": "Mustafa Suleyman",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "A New Paradigm in Human-Machine Interaction",
+        "url": "https://greylock.com/portfolio-news/a-new-paradigm-in-human-machine-interaction/",
+        "urlHash": "65148778c94d1d768236d55110d42161",
+        "reason": "仅为机构通用页面，未涉及目标人物具体信息。",
+        "auditedAt": "2026-06-07T05:04:35.910Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmjuutf970hz7rmtbvij3el04",
+            "personId": "cmjtsz3vd000a3est4svv1iy9",
+            "title": "“我们将有能力用自然语言向计算机传达思想”"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtvnlfm00e3rmtb9xvqo38z",
+        "person": "Mustafa Suleyman",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Mustafa Suleyman",
+        "url": "https://greylock.com/team/mustafa-suleyman/",
+        "urlHash": "cbe1bdf42347fd0ad520c18eccf54b16",
+        "reason": "仅为个人主页的占位符或导航栏，无具体内容。",
+        "auditedAt": "2026-06-07T05:04:35.910Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmju14ziu0awlrmtb5z9wab7u",
+            "personId": "cmjtsz3vd000a3est4svv1iy9",
+            "title": "投资与顾问：聚焦早期AI团队与项目"
+          },
+          {
+            "id": "cmjuutf970hz4rmtbooh7e7yc",
+            "personId": "cmjtsz3vd000a3est4svv1iy9",
+            "title": "DeepMind 联合创始人，现为 Inflection AI CEO"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmju099gc06dsrmtb3fwrzi1b",
+        "person": "Sam Altman",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "OpenAI",
+        "url": "https://openai.com/",
+        "urlHash": "f6e0102ffa544eac43a6520e738f0057",
+        "reason": "仅为 OpenAI 公司的产品导航页面，不包含关于 Sam Altman 的具体信息。",
+        "auditedAt": "2026-06-07T05:03:32.307Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjtv3pwq000ki004fsebecez",
+            "name": "Jason Wei"
+          },
+          {
+            "id": "cmjtxecfs000h5p088f0rb7vd",
+            "name": "Lukasz Kaiser"
+          },
+          {
+            "id": "0c0739ab-c1a9-47de-9f7f-229500a371ef",
+            "name": "Tim Brooks"
+          },
+          {
+            "id": "cmjtsy8k300073est1f38zcel",
+            "name": "Mira Murati"
+          },
+          {
+            "id": "cmjtv30df000ei004hqk0pamw",
+            "name": "John Schulman"
+          },
+          {
+            "id": "cmjtxc0fm00005p08usgwkddl",
+            "name": "Wojciech Zaremba"
+          },
+          {
+            "id": "cmjtsx87a00043estei08y4na",
+            "name": "Ilya Sutskever"
+          },
+          {
+            "id": "cmjtxcp4w00055p0854gyxgh2",
+            "name": "贾里德·卡普兰"
+          },
+          {
+            "id": "cmjtxc4op00015p081bdqzfmb",
+            "name": "亚历克·拉德福德"
+          },
+          {
+            "id": "cmjtxcjfw00045p08hrhp2m4t",
+            "name": "汤姆·布朗"
+          },
+          {
+            "id": "05890706-c071-4c25-b406-fe2ff2c6b59d",
+            "name": "Shengjia Zhao"
+          },
+          {
+            "id": "cmjtwk8kl0000opf3xwqc9tr4",
+            "name": "姚顺雨"
+          },
+          {
+            "id": "cmjsmop1e00017wc35sdo9tff",
+            "name": "Greg Brockman"
+          },
+          {
+            "id": "cmjsme4n800009u972zrrxrei",
+            "name": "Andrej Karpathy"
+          },
+          {
+            "id": "cmjrz11xi0002b28tg14eugjo",
+            "name": "Sam Altman"
+          },
+          {
+            "id": "1295afc9-cc97-47ae-baf9-589ece0469a4",
+            "name": "Noam Brown"
+          },
+          {
+            "id": "cmjtv3tsv000li004co65fad9",
+            "name": "Hyung Won Chung"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtxl6ln031grmtbtsalc0sr",
+        "person": "Wojciech Zaremba",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "wojzaremba - Overview",
+        "url": "https://github.com/wojzaremba",
+        "urlHash": "a6fbf7c434def513e416e42d568ca47c",
+        "reason": "内容仅为 GitHub 个人主页的 UI 提示文本，缺乏实质性信息。",
+        "auditedAt": "2026-06-07T05:08:01.527Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjtxc0fm00005p08usgwkddl",
+            "name": "Wojciech Zaremba"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtvm43g000lrmtbcnbdkhqn",
+        "person": "Yann LeCun",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Index of /exdb/mnist",
+        "url": "http://yann.lecun.com/exdb/mnist/",
+        "urlHash": "7baada9d9b902faff040c6e70eb35377",
+        "reason": "仅是指向MNIST数据集的目录索引页，虽在LeCun官网但无实质内容，与AI关联弱。",
+        "auditedAt": "2026-06-07T03:04:19.138Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmjtvn6n100cprmtbd7tfmu8g",
+            "personId": "cmjtsvcil00003esttihbrsjm",
+            "title": "创建并开源 MNIST 手写数字数据集"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtxnpl903larmtbqgc6tivm",
+        "person": "乔尔·皮诺",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Joelle Pineau",
+        "url": "https://ai.meta.com/people/1914216782353556/joelle-pineau/",
+        "urlHash": "a2c370e3a9d768a70d5bce308dcb1766",
+        "reason": "抓取内容仅为 Meta AI 官网的通用菜单项，无个人具体信息。",
+        "auditedAt": "2026-06-07T05:11:49.380Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmjtxond403tdrmtbyapy5su4",
+            "personId": "cmjtxd3ym00085p08timmi73e",
+            "title": "研究聚焦于复杂部分可观测领域的决策"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmju0jobh07b4rmtbppl2e6hl",
+        "person": "乔尔·皮诺",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Joelle Pineau | TEDAI San Francisco - TED Talks",
+        "url": "https://tedai-sanfrancisco.ted.com/speakers/joelle-pineau/",
+        "urlHash": "671431d9ad41c1a3fa5bd5ab886444a3",
+        "reason": "仅为 TEDAI 会议官网的导航链接，无人物背景或演讲实质内容。",
+        "auditedAt": "2026-06-07T05:11:49.380Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmju0kjtk07hrrmtbsaurt34u",
+            "personId": "cmjtxd3ym00085p08timmi73e",
+            "title": "专注于复杂系统中的规划与学习"
+          },
+          {
+            "id": "cmjuug1lp0g7zrmtbeujaqem4",
+            "personId": "cmjtxd3ym00085p08timmi73e",
+            "title": "学术与工业界双栖的AI先驱"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtxlms20355rmtbyh7sed51",
+        "person": "亚历克·拉德福德",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "Alec Radford Newmu",
+        "url": "https://github.com/newmu",
+        "urlHash": "a7b86af82b463cf95eef3a73c3eb9924",
+        "reason": "页面内容为GitHub的通用导航菜单，缺乏人物具体研究或背景。",
+        "auditedAt": "2026-06-07T05:12:45.763Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjtxc4op00015p081bdqzfmb",
+            "name": "亚历克·拉德福德"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmju0ie7s06zhrmtb3favnpm2",
+        "person": "李莲",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "lilianweng - Overview",
+        "url": "https://github.com/lilianweng",
+        "urlHash": "fa5c2e402822145a7a58a4399ef19ac3",
+        "reason": "仅为 GitHub 导航栏和登录界面的 HTML 碎片，缺乏实质性内容。",
+        "auditedAt": "2026-06-07T05:06:13.053Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjtxcatd00025p08uv2ks3h0",
+            "name": "李莲"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtxnezu03itrmtb3cwwvlil",
+        "person": "科拉伊·卡武克丘奥卢",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "koray kavukcuoglu",
+        "url": "https://scholar.google.com/citations?user=sGFyDIUAAAAJ&hl=en",
+        "urlHash": "efbdabf27c5f8f1d2e173af3f756e7d6",
+        "reason": "页面加载错误，无实质性文本内容。",
+        "auditedAt": "2026-06-07T05:10:53.146Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmju1g42q0d00rmtbbvo1c09i",
+            "personId": "cmjtxcx2r00075p08egm5tuq9",
+            "title": "世界顶尖AI专家，拥有超过26万次学术引用"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmju0gph006pvrmtbnmayf015",
+        "person": "雅各布·乌什科雷特",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "exa",
+        "title": "After leaving Google, Jakob Uszkoreit started Inceptive to apply AI to… | CNBC",
+        "url": "https://www.linkedin.com/posts/cnbc_after-leaving-google-jakob-uszkoreit-started-activity-7217503001391824896-tZou",
+        "urlHash": "1945ce09ad392cb00633bf0d7bf6c5d6",
+        "reason": "抓取内容为LinkedIn登录墙和用户协议，无实际人物信息。",
+        "auditedAt": "2026-06-07T05:08:43.629Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "active_card_source_url",
+        "refs": [
+          {
+            "id": "cmju1djvn0ci9rmtbs3wtqhd6",
+            "personId": "cmjtxe7r3000g5p0868zhzky2",
+            "title": "AI将从根本上改变制药业的工作方式"
+          }
+        ]
+      }
+    },
+    {
+      "row": {
+        "rawId": "cmjtxs9su04oermtbqc2pjzen",
+        "person": "马克·扎克伯格",
+        "status": "ready",
+        "verdict": "reject",
+        "sourceType": "x",
+        "title": "马克·扎克伯格 on X",
+        "url": "https://x.com/finkd",
+        "urlHash": "47b395d0f65fa22028cb6cb6fb825563",
+        "reason": "内容仅为搜索无结果的说明，无实际AI相关帖子，信息价值为零。",
+        "auditedAt": "2026-06-07T05:16:20.185Z"
+      },
+      "reason": "display_dependency",
+      "dependency": {
+        "type": "people_display_or_source_json",
+        "refs": [
+          {
+            "id": "cmjtxkqy9000039ylucg15kqs",
+            "name": "马克·扎克伯格"
+          }
+        ]
+      }
+    }
+  ]
+}

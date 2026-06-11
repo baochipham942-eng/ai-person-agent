@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-06-10T06:22:34.971Z",
+  "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo.jsonl",
+  "inputRows": 836,
+  "rewriteRows": 20,
+  "missingRawPoolItems": 0,
+  "productImpacts": 4,
+  "cardImpacts": 4,
+  "impactConfidence": {
+    "high": 3,
+    "medium": 3,
+    "low": 2
+  },
+  "byPerson": {
+    "杨植麟": 4,
+    "桑达尔·皮查伊": 2,
+    "Andrej Karpathy": 1,
+    "Chris Olah": 1,
+    "Elon Musk": 1,
+    "Emad Mostaque": 1,
+    "Greg Brockman": 1,
+    "Guillaume Lample": 1,
+    "John Schulman": 1,
+    "Lukasz Kaiser": 1,
+    "Noam Shazeer": 1,
+    "Yann LeCun": 1,
+    "亚历克·拉德福德": 1,
+    "刘知远": 1,
+    "朱军": 1,
+    "李开复": 1
+  },
+  "byStatus": {
+    "ready": 15,
+    "active": 5
+  },
+  "byNextStep": {
+    "human_confirm_source_scope_before_surface_change": 15,
+    "human_confirm_then_rewrite_impacted_surface": 5
+  }
+}

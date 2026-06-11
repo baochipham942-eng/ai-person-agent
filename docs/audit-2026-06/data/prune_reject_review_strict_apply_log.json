@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-06-10T08:48:42.883Z",
+  "summary": {
+    "generatedAt": "2026-06-10T08:48:42.883Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_reject_review_buckets.json",
+    "archive": "docs/audit-2026-06/data/prune_reject_review_strict_archive.json",
+    "strictCandidates": 266,
+    "existingTargets": 266,
+    "missingTargets": 0,
+    "deleted": 266,
+    "byBucket": {
+      "empty_or_unusable_capture": 126,
+      "author_or_direct_evidence_missing": 114,
+      "wrong_person_or_same_name": 25,
+      "non_ai_domain_mismatch": 1
+    },
+    "bySourceType": {
+      "exa": 166,
+      "x": 60,
+      "github": 17,
+      "youtube": 14,
+      "podcast": 4,
+      "openalex": 3,
+      "biography": 2
+    },
+    "topPeople": {
+      "亚历克·拉德福德": 14,
+      "Oriol Vinyals": 12,
+      "Percy Liang": 11,
+      "Greg Brockman": 10,
+      "Guillaume Lample": 10,
+      "Mira Murati": 10,
+      "Dylan Field": 9,
+      "Aakash Gupta": 8,
+      "Alexandr Wang": 8,
+      "Mustafa Suleyman": 8,
+      "Wojciech Zaremba": 7,
+      "阿希什·瓦斯瓦尼": 7,
+      "Dario Amodei": 6,
+      "Demis Hassabis": 6,
+      "Elon Musk": 6,
+      "Geoffrey Hinton": 6,
+      "John Schulman": 6,
+      "埃里克·霍维茨": 6,
+      "李开复": 6,
+      "Andrej Karpathy": 5,
+      "Chris Olah": 5,
+      "Noam Shazeer": 5,
+      "乔尔·皮诺": 5,
+      "李莲": 5,
+      "杰夫·迪恩": 5
+    }
+  }
+}

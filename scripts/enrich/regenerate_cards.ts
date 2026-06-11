@@ -8,8 +8,10 @@
  *   bun scripts/enrich/regenerate_cards.ts --person="Andrej Karpathy" --top-n=12
  *   bun scripts/enrich/regenerate_cards.ts --limit=5 --execute
  *   bun scripts/enrich/regenerate_cards.ts --limit=5 --min-items=1 --execute
+ *   bun scripts/enrich/regenerate_cards.ts --include-active --person="周伯文"
  *   bun scripts/enrich/regenerate_cards.ts --include-candidates --limit=20 --execute
  *   bun scripts/enrich/regenerate_cards.ts --candidates-only --limit=20 --execute
+ *   bun scripts/enrich/regenerate_cards.ts --person="周明" --generation-id=cardgen-2026-06-10 --execute
  */
 import 'dotenv/config';
 import crypto from 'crypto';
@@ -67,8 +69,10 @@ const PERSON = readStringArg('person');
 const EXECUTE = args.includes('--execute');
 const LIST_ONLY = args.includes('--list');
 const INCLUDE_UNAUDITED = args.includes('--include-unaudited');
+const INCLUDE_ACTIVE = args.includes('--include-active');
 const INCLUDE_CANDIDATES = args.includes('--include-candidates');
 const CANDIDATES_ONLY = args.includes('--candidates-only');
+const GENERATION_ID = readStringArg('generation-id') ?? `cardgen:${new Date().toISOString()}`;
 
 if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL');
 const sql = neon(process.env.DATABASE_URL);
@@ -101,11 +105,16 @@ async function loadPeople(): Promise<DbPerson[]> {
     LEFT JOIN (
       SELECT "personId", COUNT(*)::int AS card_count
       FROM "Card"
+      WHERE "isActive" = true
       GROUP BY "personId"
     ) c ON c."personId" = p.id
     WHERE (
       (${CANDIDATES_ONLY} AND p.status = ${'candidate'})
-      OR (${!CANDIDATES_ONLY} AND (p.status = ${'ready'} OR (${INCLUDE_CANDIDATES} AND p.status = ${'candidate'})))
+      OR (${!CANDIDATES_ONLY} AND (
+        p.status = ${'ready'}
+        OR (${INCLUDE_ACTIVE} AND p.status = ${'active'})
+        OR (${INCLUDE_CANDIDATES} AND p.status = ${'candidate'})
+      ))
     )
       AND (${person}::text IS NULL OR p.id = ${person} OR p.name ILIKE ${personLike})
     GROUP BY p.id, c.card_count
@@ -138,6 +147,7 @@ async function loadExistingCards(personId: string, limit?: number): Promise<Exis
     SELECT title, content
     FROM "Card"
     WHERE "personId" = ${personId}
+      AND "isActive" = true
     ORDER BY "createdAt" DESC
     LIMIT ${take}
   ` as ExistingCard[];
@@ -169,7 +179,10 @@ async function saveCards(personId: string, cards: Card[]): Promise<number> {
   for (const card of cards) {
     const now = new Date();
     await sql`
-      INSERT INTO "Card" (id, "personId", type, title, content, tags, "sourceUrl", importance, "createdAt", "updatedAt")
+      INSERT INTO "Card" (
+        id, "personId", type, title, content, tags, "sourceUrl", importance,
+        "generationId", "isActive", "createdAt", "updatedAt"
+      )
       VALUES (
         ${crypto.randomUUID()},
         ${personId},
@@ -179,6 +192,8 @@ async function saveCards(personId: string, cards: Card[]): Promise<number> {
         ${card.tags},
         ${card.sourceUrl || null},
         ${card.importance},
+        ${GENERATION_ID},
+        ${true},
         ${now},
         ${now}
       )
@@ -191,7 +206,7 @@ async function saveCards(personId: string, cards: Card[]): Promise<number> {
 async function main() {
   const people = await loadPeople();
 
-  console.log(`Card regeneration mode: ${EXECUTE ? 'execute' : 'dry-run'} | people=${people.length} | topN=${TOP_N} | minItems=${MIN_ITEMS}`);
+  console.log(`Card regeneration mode: ${EXECUTE ? 'execute' : 'dry-run'} | people=${people.length} | topN=${TOP_N} | minItems=${MIN_ITEMS} | generationId=${GENERATION_ID}`);
 
   let totalGenerated = 0;
   let totalSaved = 0;

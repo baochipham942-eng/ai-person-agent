@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-06-09T15:48:24.339Z",
+  "claimsIn": "docs/audit-2026-06/data/fact_claims_source_items_after_eighth_safe_prune.jsonl",
+  "reviewsIn": [
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_second_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_third_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_fourth_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_fifth_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_sixth_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_seventh_new_high_after_safe_prune_mimo.jsonl"
+  ],
+  "out": "docs/audit-2026-06/data/fact_claims_source_items_after_eighth_safe_prune_new_high.jsonl",
+  "postPruneHighSourceClaims": 1430,
+  "previouslyReviewedHighSourceClaims": 1428,
+  "newHighSourceClaims": 2,
+  "previousReviewClaims": 2055,
+  "bySurface": {
+    "featured.blogs": 2
+  },
+  "bySourceType": {
+    "exa": 2
+  },
+  "topPeople": [
+    {
+      "key": "姚顺雨",
+      "count": 2
+    }
+  ],
+  "examples": [
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg03q01uirmtb5lakmdjt]:ad67377d5f68",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 8,
+      "objectLabel": "Shunyu Yao （姚舜禹） - Mine Economics Analyst at S&P ...",
+      "url": "https://cn.linkedin.com/in/shunyu-yao-%EF%BC%88%E5%A7%9A%E8%88%9C%E7%A6%B9%EF%BC%89-ba362169"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg1dq01v2rmtbg33byd2t]:6c39e51a2177",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 7,
+      "objectLabel": "姚舜禹 - AIM Group",
+      "url": "https://multimodality.group/author/%E5%A7%9A%E8%88%9C%E7%A6%B9/"
+    }
+  ]
+}

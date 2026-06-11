@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "source": "Business Insider Igor Babuschkin xAI departure article and GitHub profile",
+    "generatedAt": "2026-06-11T19:24:00+08:00",
+    "note": "Add Igor Babuschkin as a former xAI co-founder and current Babuschkin Ventures founder."
+  },
+  "seeds": [
+    {
+      "name": "Igor Babuschkin",
+      "nameZh": "伊戈尔·巴布施金",
+      "roleCategory": "founder",
+      "organization": ["xAI", "Babuschkin Ventures"],
+      "currentTitle": "Founder @ Babuschkin Ventures / former Co-founder @ xAI",
+      "aliases": ["ibab"],
+      "reason": "xAI 联合创始人之一，2025 年离开 xAI 并创办 Babuschkin Ventures；补齐 xAI 技术创始团队中的关键人物。"
+    }
+  ]
+}

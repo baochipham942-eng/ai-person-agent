@@ -1,0 +1,447 @@
+{
+  "generatedAt": "2026-06-10T07:40:35.036Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/refetch_source_followup_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/exa_source_quality_mimo_claims.jsonl",
+    "output": "docs/audit-2026-06/data/exa_source_quality_review_dir/refetch_source_followup_mixed_mimo.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 78,
+      "offset": 0,
+      "searchResults": 5,
+      "maxCandidates": 8,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "anysearch",
+      "tavilySearchDepth": null,
+      "tavilyRawContent": null,
+      "tavilyKeyCount": null,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": false
+    }
+  },
+  "selectedTasks": 78,
+  "existingRows": 48,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 78,
+  "byDecision": {
+    "augment_source": 15,
+    "no_good_source": 20,
+    "replace_source": 40,
+    "human_review": 3
+  },
+  "byPerson": {
+    "Andrej Karpathy": 3,
+    "Christopher Manning": 1,
+    "Elon Musk": 1,
+    "Ilya Sutskever": 1,
+    "John Schulman": 1,
+    "Mustafa Suleyman": 3,
+    "Oriol Vinyals": 1,
+    "Shane Legg": 1,
+    "Wojciech Zaremba": 2,
+    "Yann LeCun": 1,
+    "Yoshua Bengio": 5,
+    "丁洁": 1,
+    "亚历克·拉德福德": 3,
+    "凯文·斯科特": 1,
+    "刘知远": 5,
+    "吴恩达": 4,
+    "周伯文": 4,
+    "周明": 7,
+    "季逸超": 3,
+    "戴文渊": 3,
+    "朱军": 2,
+    "李开复": 1,
+    "李飞飞": 4,
+    "杨植麟": 5,
+    "汤姆·布朗": 4,
+    "科拉伊·卡武克丘奥卢": 1,
+    "贾里德·卡普兰": 1,
+    "阿希什·瓦斯瓦尼": 2,
+    "闫俊杰": 3,
+    "雅各布·乌什科雷特": 1,
+    "马克·扎克伯格": 1,
+    "黄铁军": 2
+  },
+  "selectedHosts": {
+    "ycombinator.com": 2,
+    "cs.stanford.edu": 1,
+    "karpathy.ai": 1,
+    "theguardian.com": 1,
+    "cs.toronto.edu": 1,
+    "cdss.berkeley.edu": 1,
+    "news.berkeley.edu": 1,
+    "dwarkesh.com": 1,
+    "mustafa-suleyman.ai": 2,
+    "blogs.microsoft.com": 2,
+    "signalprocessingsociety.org": 1,
+    "podwise.ai": 1,
+    "tedai-sanfrancisco.ted.com": 1,
+    "ted.com": 1,
+    "cims.nyu.edu": 2,
+    "lexfridman.com": 1,
+    "cifar.ca": 1,
+    "nature.com": 3,
+    "singjupost.com": 2,
+    "yoshuabengio.org": 1,
+    "aiforgood.itu.int": 1,
+    "piaofang.maoyan.com": 1,
+    "inspirehep.net": 1,
+    "cdn.openai.com": 2,
+    "arxiv.org": 3,
+    "youtube.com": 1,
+    "linkedin.com": 1,
+    "ui.adsabs.harvard.edu": 1,
+    "cs.tsinghua.edu.cn": 3,
+    "lzy.thunlp.org": 2,
+    "en.wikipedia.org": 2,
+    "cloud.tencent.com": 1,
+    "hub.baai.ac.cn": 5,
+    "m.21jingji.com": 1,
+    "scholar.google.com": 1,
+    "langboat.com": 1,
+    "chuangxin.com": 1,
+    "technologyreview.com": 1,
+    "innovatorsunder35.com": 1,
+    "zh.wikipedia.org": 1,
+    "finance.ifeng.com": 1,
+    "wap.chinanews.com": 1,
+    "news.qq.com": 1,
+    "m.36kr.com": 1,
+    "time.com": 1,
+    "sqz.ac.cn": 3,
+    "mp.weixin.qq.com": 2,
+    "thepaper.cn": 1,
+    "rsc.org": 1,
+    "stsci.edu": 1,
+    "blog.google": 1,
+    "eu.36kr.com": 1,
+    "semanticscholar.org": 1,
+    "baike.baidu.com": 2,
+    "isc.org.cn": 1,
+    "xiaoyuzhoufm.com": 1,
+    "fortunechina.com": 1,
+    "ainext.tw": 2,
+    "cnbc.com": 2,
+    "about.fb.com": 1,
+    "baai.ac.cn": 1,
+    "devpress.csdn.net": 1
+  },
+  "selectedSources": 86,
+  "candidateCount": 623,
+  "sample": [
+    {
+      "person": "Andrej Karpathy",
+      "target": "The LLM Operating System, as Elucidated by Andrej Karpathy in the Introduction to Large Language Models Presentation",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Andrej Karpathy: Software Is Changing (Again) : YC Startup Library | Y Combinator",
+          "host": "ycombinator.com",
+          "url": "https://www.ycombinator.com/library/MW-andrej-karpathy-software-is-changing-again"
+        }
+      ],
+      "rationale": "原始来源为LinkedIn第三方文章，权威性弱。候选中Y Combinator页面收录了Karpathy的官方演讲，可作为权威补强来源。其他候选多为二次解读或笔记，权威性不足。建议进一步搜索Karpathy的官方演讲视频或转录作为最佳替换来源。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "The Wisdom Hidden in Plain Sight: What Andrej Karpathy Reveals About Our AI Future",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接证明Andrej Karpathy与目标文章《The Wisdom Hidden in Plain Sight》的关联，或未权威阐述其观点。CMU PDF仅提及姓名，个人主页内容虚构，其他为第三方转录或评论。需要寻找原始演讲、采访或官方发布。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "Andrej Karpathy",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Andrej Karpathy Academic Website - Stanford Computer Science",
+          "host": "cs.stanford.edu",
+          "url": "https://cs.stanford.edu/people/karpathy"
+        },
+        {
+          "title": "Andrej Karpathy",
+          "host": "karpathy.ai",
+          "url": "https://karpathy.ai"
+        }
+      ],
+      "rationale": "原始来源（Google Scholar页面）无法访问且为索引页。候选中，斯坦福大学官方学术页面和个人官网（karpathy.ai）是权威、可访问的一手来源，能直接证明其职位、研究背景和当前活动，符合替换要求。其他来源权威性不足或受限。"
+    },
+    {
+      "person": "Christopher Manning",
+      "target": "Toward expert-level medical question answering with large language models",
+      "decision": "no_good_source",
+      "confidence": 0.95,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未提供Christopher Manning是目标文章《Toward expert-level medical question answering with large language models》作者或贡献者的直接证据。虽然第一个候选来源是Manning的个人页面，但内容与目标文章无关。其他候选来源均为相关领域论文，但作者列表中均无Manning。需要更精确的查询来定位包含其姓名的作者列表或贡献声明。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk, AI and the antichrist: the biggest tech stories of ...",
+      "decision": "replace_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Elon Musk, AI and the antichrist: the biggest tech stories of 2025 | Technology | The Guardian",
+          "host": "theguardian.com",
+          "url": "https://www.theguardian.com/technology/2025/dec/22/biggest-tech-stories-2025"
+        }
+      ],
+      "rationale": "原始来源（卫报文章）是权威媒体的完整报道，标题和预览明确关联Elon Musk与AI，能直接证明其在2025年AI领域的角色和故事。其他候选要么是旧文、目录页或转载，权威性或相关性不足。因此选择原始卫报文章作为替换来源。"
+    },
+    {
+      "person": "Ilya Sutskever",
+      "target": "Ilya Sutskever",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Ilya Sutskever's home page",
+          "host": "cs.toronto.edu",
+          "url": "https://www.cs.toronto.edu/~ilya"
+        }
+      ],
+      "rationale": "原始来源（谷歌学术主页）加载失败且为索引页，不可用。候选中，多伦多大学官方个人主页（cs.toronto.edu/~ilya）是权威、可访问的学术机构页面，直接证明了Ilya Sutskever的职位和背景，符合替换要求。其他候选来源权威性不足或为辅助线索。"
+    },
+    {
+      "person": "John Schulman",
+      "target": "A conversation with John Schulman on research cultures ...",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "ChatGPT architect, Berkeley alum John Schulman on his journey ...",
+          "host": "cdss.berkeley.edu",
+          "url": "https://cdss.berkeley.edu/news/chatgpt-architect-berkeley-alum-john-schulman-his-journey-ai"
+        },
+        {
+          "title": "ChatGPT architect, Berkeley alum John Schulman on his journey with AI - Berkeley News",
+          "host": "news.berkeley.edu",
+          "url": "https://news.berkeley.edu/2023/04/20/chatgpt-architect-berkeley-alum-john-schulman-on-his-journey-with-ai"
+        },
+        {
+          "title": "John Schulman (OpenAI Cofounder) - Reasoning, RLHF, & Plan for ...",
+          "host": "dwarkesh.com",
+          "url": "https://www.dwarkesh.com/p/john-schulman"
+        }
+      ],
+      "rationale": "原始LinkedIn来源因登录墙和弱匹配被标记。候选中有多个权威机构来源（伯克利官方新闻）和明确的播客官方页面，能直接证明John Schulman的身份和贡献，适合作为补强来源。这些来源可访问、权威，且直接关联人物与作品。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "Mustafa Suleyman | Edge.org",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman",
+          "host": "mustafa-suleyman.ai",
+          "url": "https://mustafa-suleyman.ai"
+        }
+      ],
+      "rationale": "原始来源（Edge.org）内容简短且权威性不足。候选来源中，本人官方主页（mustafa-suleyman.ai）是最佳替代，它直接、权威地证明了其当前职位（微软AI首席执行官）及背景，符合优先选择官方主页的原则。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "Mustafa Suleyman Brings Knowledge and Past Controversy as He Joins Microsoft’s AI Effort",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot - The Official Microsoft Blog",
+          "host": "blogs.microsoft.com",
+          "url": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot"
+        }
+      ],
+      "rationale": "原始来源（WSJ文章）因预览文本仅为导航元素，无法确认正文内容，被标记为弱匹配。候选中的微软官方博客是权威的一手来源，直接宣布了Mustafa Suleyman加入微软领导Copilot的职位，完全满足证据要求，可替换原始来源。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "Meet Mustafa Suleyman, the man Microsoft 'prised' from Google to lead its AI charge",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Announcing Copilot leadership update - The Official Microsoft Blog",
+          "host": "blogs.microsoft.com",
+          "url": "https://blogs.microsoft.com/blog/2026/03/17/announcing-copilot-leadership-update"
+        },
+        {
+          "title": "Mustafa Suleyman",
+          "host": "mustafa-suleyman.ai",
+          "url": "https://mustafa-suleyman.ai"
+        }
+      ],
+      "rationale": "原来源（Times of India文章）仅为新闻报道，且预览未提供正文，无法确认其准确性。候选来源中，微软官方博客和本人官方网站均直接、权威地证明了Mustafa Suleyman作为微软AI CEO的职位，符合替换要求。"
+    },
+    {
+      "person": "Oriol Vinyals",
+      "target": "Gemini 2.0 and the evolution of agentic AI | Oriol Vinyals",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Industry Leaders in Signal Processing and Machine Learning: Dr. Oriol Vinyals | IEEE Signal Processing Society",
+          "host": "signalprocessingsociety.org",
+          "url": "https://signalprocessingsociety.org/newsletter/2022/02/industry-leaders-signal-processing-and-machine-learning-dr-oriol-vinyals"
+        },
+        {
+          "title": "Gemini 2.0 and the Evolution of Agentic AI with Oriol Vinyals | Google DeepMind: The Podcast | Podwise",
+          "host": "podwise.ai",
+          "url": "https://podwise.ai/episodes/2502702"
+        }
+      ],
+      "rationale": "原始来源（YouTube视频）内容过薄且缺乏可引用的转录。候选中，IEEE文章可提供权威背景，Podwise摘要提供了明确的职位和讨论内容，两者可共同补强人物与作品/观点/职位的关系。但均非官方主页或完整转录，故为补强而非替换。"
+    },
+    {
+      "person": "Shane Legg",
+      "target": "Shane Legg on AI's Future: AGI Implications for Boards and ...",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Shane Legg | TEDAI San Francisco",
+          "host": "tedai-sanfrancisco.ted.com",
+          "url": "https://tedai-sanfrancisco.ted.com/speakers/shane-legg"
+        },
+        {
+          "title": "Shane Legg | Speaker | TED",
+          "host": "ted.com",
+          "url": "https://www.ted.com/speakers/shane_legg"
+        }
+      ],
+      "rationale": "原始来源（LinkedIn用户帖子）为弱匹配的社交媒体内容，无法直接证明Shane Legg本人的观点或职位。候选中的TED官方活动页面和TED演讲者页面均为权威机构资料页，能直接、可靠地证明Shane Legg作为Google DeepMind联合创始人兼首席AGI科学家的身份，符合替换要求。"
+    },
+    {
+      "person": "Wojciech Zaremba",
+      "target": "https://github.com/wzaremba",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "News | NYU Courant",
+          "host": "cims.nyu.edu",
+          "url": "https://cims.nyu.edu/dynamic/news/1428"
+        }
+      ],
+      "rationale": "NYU官方校友访谈页面是权威的机构来源，明确确认了Wojciech Zaremba作为OpenAI联合创始人的身份，直接满足证据要求，可有效替换原始GitHub页面。"
+    },
+    {
+      "person": "Wojciech Zaremba",
+      "target": "48160725836910182202",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Alumni Q&A with Wojciech Zaremba, Co-Founder of OpenAI",
+          "host": "cims.nyu.edu",
+          "url": "https://cims.nyu.edu/dynamic/news/1428"
+        },
+        {
+          "title": "#215 - Wojciech Zaremba: OpenAI Codex, GPT-3, Robotics, and the Future of AI",
+          "host": "lexfridman.com",
+          "url": "https://lexfridman.com/wojciech-zaremba"
+        }
+      ],
+      "rationale": "原始VIAF来源仅为搜索界面，证据薄弱。候选中的NYU官方校友访谈和Lex Fridman播客页面均为权威来源，能直接、明确地证明Wojciech Zaremba作为OpenAI联合创始人的身份和贡献，符合替换要求。其他候选因权威性不足或证据较弱被拒绝。"
+    },
+    {
+      "person": "Yann LeCun",
+      "target": "AI on a CALCULATOR? (Without Internet) | Yann LeCun | 36 comments",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均无法直接证明原始LinkedIn帖子（AI on a CALCULATOR?）是否为Yann LeCun本人发布或与其相关。候选来源要么是通用采访、奖项页面、旧博客文章，要么是其他用户对LeCun观点的转述，缺乏直接、权威的证据链。需要更精确的来源来验证帖子的真实性和作者身份。"
+    },
+    {
+      "person": "Yoshua Bengio",
+      "target": "The current state of AI and Deep Learning",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Yoshua Bengio – CIFAR",
+          "host": "cifar.ca",
+          "url": "https://cifar.ca/bios/yoshua-bengio"
+        },
+        {
+          "title": "‘It keeps me awake at night’: machine-learning pioneer on AI’s threat to humanity",
+          "host": "nature.com",
+          "url": "https://www.nature.com/articles/d41586-025-03686-1"
+        }
+      ],
+      "rationale": "原始来源（Medium文章）为弱匹配的公司/产品页面，无法有效证明Yoshua Bengio的贡献。候选中CIFAR官方页面和Nature采访文章均为权威来源，能直接、可靠地证明其身份、职位及在AI/深度学习领域的核心贡献，适合作为替换来源。"
+    },
+    {
+      "person": "Yoshua Bengio",
+      "target": "'It keeps me awake at night': machine-learning pioneer on ...",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "'It keeps me awake at night': machine-learning pioneer on AI’s threat to humanity",
+          "host": "nature.com",
+          "url": "https://www.nature.com/articles/d41586-025-03686-1"
+        }
+      ],
+      "rationale": "原始来源（Nature文章）本身是权威媒体对Yoshua Bengio的采访，标题和预览直接证明了其内容聚焦于本人对AI威胁的个人观点，符合证据要求。候选来源中，虽然有其他权威媒体文章（如CNBC）和本人官方博客，但均非原始来源的直接替代或更优补充。因此，保留原始来源作为最佳选择。"
+    },
+    {
+      "person": "Yoshua Bengio",
+      "target": "The Catastrophic Risks of AI — and a Safer Path | Yoshua ...",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Transcript of The Catastrophic Risks of AI — and a Safer Path: Yoshua Bengio – The Singju Post",
+          "host": "singjupost.com",
+          "url": "https://singjupost.com/transcript-of-the-catastrophic-risks-of-ai-and-a-safer-path-yoshua-bengio"
+        }
+      ],
+      "rationale": "候选来源中，singjupost.com提供了原始YouTube视频的完整转录文本，直接证明Yoshua Bengio在TED2025的演讲内容，解决了原始来源缺乏上下文和角色辨识的问题。其他来源要么是二次报道，要么是论坛讨论，权威性不足。"
+    },
+    {
+      "person": "Yoshua Bengio",
+      "target": "‘Malicious use is already happening’: machine-learning pioneer on making AI safer",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "‘Malicious use is already happening’: machine-learning pioneer on making AI safer",
+          "host": "nature.com",
+          "url": "https://www.nature.com/articles/d41586-025-03760-8"
+        }
+      ],
+      "rationale": "原始来源（Nature文章）是权威期刊，标题直接表明是Yoshua Bengio关于AI安全的访谈，符合人物与观点关系。其他候选来源要么权威性不足，要么主题不完全匹配，无法替代原始来源。"
+    },
+    {
+      "person": "Yoshua Bengio",
+      "target": "Yoshua Bengio - AI for Good - ITU",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Yoshua Bengio: Home",
+          "host": "yoshuabengio.org",
+          "url": "https://yoshuabengio.org/en"
+        },
+        {
+          "title": "Yoshua Bengio - AI for Good Global Summit",
+          "host": "aiforgood.itu.int",
+          "url": "https://aiforgood.itu.int/speaker/yoshua-bengio"
+        }
+      ],
+      "rationale": "原始来源（ITU活动页面）本身是有效的官方来源，但内容预览不完整。候选来源中，本人官方网站（yoshuabengio.org）和ITU活动页面（aiforgood.itu.int）均能直接、权威地证明Yoshua Bengio的身份、职位和与AI领域的关联，可作为补强来源。其他候选多为商业或第三方平台，权威性不足。"
+    }
+  ]
+}

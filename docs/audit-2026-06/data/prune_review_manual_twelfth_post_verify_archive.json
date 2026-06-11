@@ -1,0 +1,880 @@
+{
+  "generatedAt": "2026-06-10T12:07:54.151Z",
+  "summary": {
+    "generatedAt": "2026-06-10T12:07:54.151Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_twelfth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_twelfth_post_verify_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 40,
+    "existingTargets": 0,
+    "missingTargets": 40,
+    "auditRowsInserted": 0,
+    "deleted": 0,
+    "byAction": {
+      "delete_raw_pool_item": 40
+    },
+    "byVerdict": {
+      "reject": 40
+    },
+    "byPerson": {
+      "Greg Brockman": 3,
+      "Mustafa Suleyman": 3,
+      "Sam Altman": 3,
+      "Shane Legg": 3,
+      "Wojciech Zaremba": 3,
+      "Yann LeCun": 3,
+      "Yoshua Bengio": 3,
+      "乔尔·皮诺": 3,
+      "亚历克·拉德福德": 3,
+      "吴恩达": 3,
+      "唐杰": 3,
+      "埃里克·霍维茨": 3,
+      "Percy Liang": 2,
+      "Noam Shazeer": 1,
+      "布莱恩·卡坦扎罗": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjsmrbjf001dq8o9kxixgcre",
+          "objectLabel": "Santa mode for Codex:"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为标题式短语，无实际信息产出。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10a4m09xvrmtbf29cpxs8",
+          "objectLabel": "welcome @ErnestRyu to the team, to help accelerate scientific and mathematical discoveries!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "欢迎新员工的社交动态，对了解人物核心观点无实质价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1092509xfrmtbjdnaxthy",
+          "objectLabel": "Your Year in ChatGPT is a demo ChatGPT app — you can build your own experience just like it."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "属于产品 Demo 的营销推广，信息价值较低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju14acb0aqbrmtb47n81b4t",
+          "objectLabel": "//www.youtube.com/watch?v=SP76PvgMzVU"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为视频链接，缺乏实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju148770aorrmtbe16nlzbo",
+          "objectLabel": "//x.com/mustafasuleyman/status/1996666613861642736"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为社交媒体链接，无任何实质性信息内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsz3vd000a3est4svv1iy9",
+        "person": "Mustafa Suleyman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo37m00h3rmtbp7sc1v2c",
+          "objectLabel": "CEO's vibe coding' 👏👏"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "虽然是官方账号，但内容仅为简短口号，缺乏实质性信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhwx902d6rmtb7rryk9q1",
+          "objectLabel": "//x.com/NoamShazeer/status/1904581814632800629"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为推文链接，内容缺失，无参考价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvy28z01tarmtbzdaojgfb",
+          "objectLabel": "simple-env"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为个人开发环境配置文件，无AI相关性或信息价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxsbk01p2rmtbchk0b2tv",
+          "objectLabel": "Open AI means AI that is open."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容过于简短且属于同义反复，缺乏实质性的信息价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv37e5b000dv6e82om760tg",
+          "objectLabel": "A first preview of something we expect to see a lot more of soon:"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容过于简短模糊，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjty4z900557rmtbajiszma4",
+          "objectLabel": "sam altman | artificial intelligence | openai"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "典型的关键词堆砌内容，无实质性观点或事实。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzs2aa0622rmtbsq63o3fm",
+          "objectLabel": "Sam Altman. CEO of openAi"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "标题党短视频，内容纯属频道推广，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0ipm7071srmtbp2vknw4l",
+          "objectLabel": "//x.com/ShaneLegg/status/1985345983547412556"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为社交媒体链接，缺乏实质性文字内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo6t600ilrmtbmzm65p5m",
+          "objectLabel": "//x.com/ShaneLegg/status/2002328217156506043"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvo9za00k3rmtbp3klgn2f",
+          "objectLabel": "Like a rocket... and from a research perspective, there's so much more good stuff to come 🚀"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容过于空洞，仅为简短的情绪化表达，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxc0fm00005p08usgwkddl",
+        "person": "Wojciech Zaremba",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxlgcn0343rmtbnhvj0uxa",
+          "objectLabel": "active-delays"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容关于脑成像数据处理，与Zaremba本人及AI/科技领域无关。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxc0fm00005p08usgwkddl",
+        "person": "Wojciech Zaremba",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxldgw033lrmtb26ipqvxx",
+          "objectLabel": "algorithm-learning"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容是关于算法学习的框架，虽可能关联其研究但未明确指向Wojciech Zaremba本人。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxc0fm00005p08usgwkddl",
+        "person": "Wojciech Zaremba",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxlemc033trmtbb0xumqgz",
+          "objectLabel": "btest"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容为B-test统计测试工具，不明确与Zaremba本人相关。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsvcil00003esttihbrsjm",
+        "person": "Yann LeCun",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju17pva0bdzrmtbh56df7wu",
+          "objectLabel": "Pamphlets"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "LeCun官网导航页，仅列出链接无实质信息，质量低且AI相关性不足。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsvcil00003esttihbrsjm",
+        "person": "Yann LeCun",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0qgzf0886rmtbqt20hw3d",
+          "objectLabel": "Yann LeCun"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为Google Scholar页面加载错误信息，无实质内容，质量极低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsvcil00003esttihbrsjm",
+        "person": "Yann LeCun",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmdt7003vrmtbu90pgaf8",
+          "objectLabel": "Yann LeCun"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容仅为 YouTube 网页底部的通用法律和功能链接，无实质内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsvqew00013est5j2tsqcx",
+        "person": "Yoshua Bengio",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmbs20031rmtbmhol2tm3",
+          "objectLabel": "Yoshua Bengio | Stanford HAI"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "页面内容仅为导航栏和订阅信息，缺乏关于人物的实质性描述。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsvqew00013est5j2tsqcx",
+        "person": "Yoshua Bengio",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw793m100i7ykszm8vrujla",
+          "objectLabel": "yoshua/dl-nature-review"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "GitHub 仓库描述过于空洞，无实际参考价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsvqew00013est5j2tsqcx",
+        "person": "Yoshua Bengio",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw794dq00idykszyotelf1z",
+          "objectLabel": "yoshua/fast-ff-inference"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "GitHub 仓库内容仅含编译指令，缺乏实质性信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxd3ym00085p08timmi73e",
+        "person": "乔尔·皮诺",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jpz507burmtbt66f4dqf",
+          "objectLabel": "dblp: Joelle Pineau"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为DBLP页面的导航和政治声明，缺乏实质性的人物学术信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxd3ym00085p08timmi73e",
+        "person": "乔尔·皮诺",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1m20o0e8krmtbq0oly6wp",
+          "objectLabel": "Introducing gpt-oss | Joelle Pineau"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容包含虚假或误导性的AI模型信息（如OpenAI发布gpt-oss），质量不可靠。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxd3ym00085p08timmi73e",
+        "person": "乔尔·皮诺",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jp0807barmtb075mazvi",
+          "objectLabel": "Joelle Pineau"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容抓取失败，显示为系统加载错误，无实质信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0pdxw084armtbbe8pnvqw",
+          "objectLabel": "Evaluating Large Language Models Trained on Code"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅显示arXiv页面标题，未明确提及Alec Radford，且无实质内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxltbn0361rmtbxx2sqjey",
+          "objectLabel": "** https://x.com/AlecRad/status/1094811970211962880"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含一个链接，无实质内容，aiRelevant和quality均不达标。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxluim0367rmtbklxqgjpq",
+          "objectLabel": "** https://x.com/AlecRad/status/1094832026677473280"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含一个链接，无实质内容，aiRelevant和quality均不达标。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsxyrk00063esttwxwxw14",
+        "person": "吴恩达",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmihc006brmtbu8xdco76",
+          "objectLabel": "Andrew Ng"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为 YouTube 频道的通用页面框架和法律条款，无任何实质性人物信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsxyrk00063esttwxwxw14",
+        "person": "吴恩达",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmi600063rmtbdo9jif98",
+          "objectLabel": "Andrew Ng"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "Medium 简介信息过于简略，仅包含关键词，缺乏实质性的事实或观点。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsxyrk00063esttwxwxw14",
+        "person": "吴恩达",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmhuh005trmtbtfcimb3s",
+          "objectLabel": "Andrew Ng | Stanford HAI"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为斯坦福 HAI 机构的通用导航和订阅信息，缺乏关于人物的实质性描述。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxjaiz02o6rmtbzpejueqb",
+          "objectLabel": "GitHub - tanxchen/knowledge-note: :pencil: 知识笔记"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "GitHub 用户 tanxchen 的个人笔记，无证据表明是目标人物。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxj4xd02m4rmtbb19grqed",
+          "objectLabel": "Jie Tang (唐杰)"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "网页抓取失败，内容为Google Scholar的加载错误提示。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwi289w000pbxr3t6eydc5m",
+          "objectLabel": "GLM-4.7 ranked **no.1** among all open models"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为简短的排名声明，缺乏实质性的技术细节或观点。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju137zz0ailrmtbkroxsfao",
+          "objectLabel": "//x.com/erichorvitz/status/1940680186896568695"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含推文链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju136i20ai4rmtblm33ue6i",
+          "objectLabel": "//x.com/erichorvitz/status/1979183888644690213"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含社交媒体链接，无实质性文字内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpgma03zrrmtbka5qjaxr",
+          "objectLabel": "//x.com/erichorvitz/status/1991600918174040344"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含社交媒体链接，无实质性文字内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxe137000e5p08x4puluzz",
+        "person": "布莱恩·卡坦扎罗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpvts041irmtbeulm5oot",
+          "objectLabel": "Bryan Catanzaro"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容抓取失败，仅包含学术搜索界面的系统提示文字。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:06:38.940Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    }
+  ]
+}

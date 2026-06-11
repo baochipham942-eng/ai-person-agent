@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-06-10T11:25:00.065Z",
+  "summary": {
+    "generatedAt": "2026-06-10T11:25:00.065Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/org_review_decisions_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/org_review_first_dry_run_archive.json",
+    "decisions": 10,
+    "mergeDecisions": 7,
+    "keepDecisions": 3,
+    "skipped": 0,
+    "memberOrganizations": 7,
+    "rolesRepointed": 9,
+    "duplicateRolesDeleted": 0,
+    "peopleUpdated": 7
+  },
+  "skipped": []
+}

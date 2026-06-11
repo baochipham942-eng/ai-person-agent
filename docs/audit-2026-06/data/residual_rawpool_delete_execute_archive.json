@@ -1,0 +1,460 @@
+{
+  "generatedAt": "2026-06-11T02:09:55.593Z",
+  "summary": {
+    "generatedAt": "2026-06-11T02:09:55.593Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/residual_rawpool_delete_decisions_2026_06_11.json",
+    "archive": "docs/audit-2026-06/data/residual_rawpool_delete_execute_archive.json",
+    "stage": "manual_residual_rawpool_delete",
+    "decisions": 12,
+    "existingTargets": 12,
+    "missingTargets": 0,
+    "auditRowsInserted": 12,
+    "deleted": 12,
+    "byAction": {
+      "delete_raw_pool_item": 12
+    },
+    "byVerdict": {
+      "reject": 12
+    },
+    "byPerson": {
+      "汤姆·布朗": 4,
+      "Jason Wei": 1,
+      "Marc Andreessen": 1,
+      "Wojciech Zaremba": 1,
+      "刘知远": 1,
+      "周明": 1,
+      "唐杰": 1,
+      "李莲": 1,
+      "阿希什·瓦斯瓦尼": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjtvwhcn01g3rmtb64m5w1qa",
+        "person": "Jason Wei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwhcn01g3rmtb64m5w1qa",
+          "objectLabel": "WeiLab"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "WeiLab page is a bioinformatics lab site and does not provide evidence for AI researcher Jason Wei. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjtvwhcn01g3rmtb64m5w1qa",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "sourceType": "exa",
+        "url": "https://wei-group.net/",
+        "urlHash": "25f85cb47d2f698910d914690b82c485",
+        "contentHash": "6216a73f9547d15ccd52cedd339bdea4",
+        "title": "WeiLab",
+        "text": "WeiLab\n* ## Welcome to WeiLab\nThe main work of our Lab is to develop artificial intelligence algorithms and their applications in Bioinformatics.\n* [Learn More](#)\n* [Contact Us](https://wei-group.net/contact)\n* ## WELCOME TO WeiLab\nWe are looking for talented and motivated undergraduate and graduate students. If you are interested in Machine Learning, Deep Learning, and Bioinformatics, please feel free to contact with me!\n* [Learn More](research.html)\n* [Contact Us](contact.html)\n### Research interests\n* ##### Peptide Drug discovery\nOur lab aims to developing an automated computational pipeline for peptide drug design and discovery, which involves bioactive peptide generation, prediction, and functional analysis (such as peptide toxicity).\n* * ##### Epigenomic data analysis\nOur lab focuses on developing computational methods to accurately annotate epigenetic modifications in whole-genome scale, and study their functions in gene regulatory network.\n* * ##### Developing machine learning algorithms\nOur lab also focuses on the development of generic machine learning algorithms and applied them for analyzing biological sequence data and imaging data. We particularly interest in designing new representation learning architectures to automatically learn and extract the functional patterns underlying different data.\n### News\n* **[Apr-27-2025]**Congrats! Our work**\"A self-conformation-aware pre-training framework for molecular property prediction with substructure interpretability\"**has been accepted for publication on**Nature Communications**!\n* **[Oct-22-2024]**Congrats!**Prof. Wei**was promoted as Co-Editor-in-Chief of the journal -**Current Bioinformatics(Impact Factor=2.4)**!\n* **[Oct-14-2024]**Congrats!**Prof. Wei**was appointed as Associate Editor of the journal -**Journal of Translational Medicine(Impact Factor=6.1)**!\n* **[Jul-31-2024]**Congrats!**Prof. Wei**was promoted as an Associate Editor of the journal -**Biology Methods & Protocols**!\n* **[Jun-28-2024]**Congrats!**Prof. Wei**was promoted as an Assistant Specialty Chief Editor of the journal -**Frontiers in Genetics**!\n* **[Mar-4-2024]**Congrats!**Prof. Wei**was appointed as an Editor of journal**Methods (JCR-1)**!\n* **[Sep-12-2023]**Our work**\"Retrosynthesis prediction with an interpretable deep-learning framework based on molecular assembly tasks\"**has been accepted for publication on**Nature Communications**.\n* **[Aug-24-2023]**Congrats!**Prof. Wei**recieve the support by the**National Science Fund for Excellent Young Scholars of China (国家优秀青年基金)!**\n* **[Mar-10-2023]**Our work**\"ExamPle: explainable deep learning framework for the prediction of plant small secreted peptides\"**has been accepted for publication on Bioinformatics.\n* **[Feb-14-2023] Prof. Wei**is now guest editting a special issue in journal**'Biology Methods and Protocols' (Oxford University Press)**, focusing on**'[Deep learning with applications to epigenetic data analysis](https://academic.oup.com/biomethods/pages/call-for-papers-deep-learning-with-applications-to-epigenetic-data-analysis)'**. The journal would have its first Impact Factor in this Spring.**Related submission is very welcome**.\n* **[Jan-29-2023]**Our work**\"Explainable deep hypergraph learning modeling the peptide secondary structure prediction\"**has been accepted for publication on**Advanced Science**.\n* **[Jan-18-2023]**Our work**\"DeepBIO: An automated and interpretable deep-learning platform for high-throughput biological sequence prediction, functional annotation, and visualization analysis\"**has been accepted for publication on**Nucleic Acids Research**.\n* **[Nov-17-2022] Prof. Wei**was named**\"Highly Cited Researcher\"**in Computer Science by Clarivate Analytics 2021! \n* **[Oct-3-2022]**Our work**\" iDNA-ABF: multi-scale deep biological language learning model for the interpretable prediction of DNA methylations\"**has been accepted for publication on**Genome Biology**.\n* **[Jun-24-2022] Prof. Wei**was appointed as the Editorial Board Member of**\"Biology Methods and Protocols\" (Oxford University Press).**\n* **[May-18-2022]**Our work**\" Predicting protein-peptide binding residues via interpretable deep learning\"**has been accepted for publication on**Bioinformatics**.\n* **[Apr-26-2022]**Our collaborative work**\"Recent advances in the prediction of subcellular localization of proteins and related topics.\"**has been accepted for publication on**Frontiers in Bioinformatics**.\n* **[Apr-20-2022]**Our work**\"scIMC: a platform for benchmarking comparison and visualization analysis of scRNA-seq data imputation methods\"**has been accepted for publication on**Nucleic Acids Research**.\n* [Learn More](https://wei-group.net/news)\n### Global Visitors\n### Recruitment\nI'm looking for talented and motivated undergraduate and graduate students. If you are interested in Machine Learning, Deep Learning, and Bioinformatics, please feel free to contact with me!\n### Contact Us\nRoom 404,Joint SDU-NTU Centre for Artificial Intelligence R",
+        "publishedAt": "2022-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:37.176Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjw771o600axyksz99rxr4mp",
+        "person": "Marc Andreessen",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw771o600axyksz99rxr4mp",
+          "objectLabel": "AI in 2026: 3 Predictions For What’s To Come (a16z Big Ideas)"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.88,
+        "reason": "a16z Big Ideas video is institution-level content and the captured text does not establish Marc Andreessen as the speaker or subject. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjw771o600axyksz99rxr4mp",
+        "personId": "cmjv6furu000emfgh0aoztt24",
+        "person": "Marc Andreessen",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=J6_nNjy3al8",
+        "urlHash": "16f0e25ee1b215f78d1e61b794838ba8",
+        "contentHash": "066f8f27e887207ff08f8d2dbd52ec0b",
+        "title": "AI in 2026: 3 Predictions For What’s To Come (a16z Big Ideas)",
+        "text": "AI is reshaping how discovery, connection, and business advantage are created.\n\nIn part three of Big Ideas 2026, we explore three shifts defining where AI goes next when the stakes are real and the impact compounds. Oliver Hsu explains how advances in AI reasoning and robotics are moving science toward autonomous labs, accelerating discovery while making interpretability essential. Bryan Kim explores how consumer AI is evolving beyond productivity toward connection, identity, and helping people feel seen. David Haber breaks down why the most durable AI companies are those where AI reinforces the business model itself, driving revenue, outcomes, and compounding advantage.\n\nTimecodes:\n0:00  Big Ideas for 2026\n0:28  Autonomous Labs and AI in Scientific Discovery\n3:55  Market Dynamics and Early Adopters in Autonomous Science\n5:08  Public-Private Partnerships Accelerating AI-Driven Science\n6:21  AI in Consumer Applications: From Productivity to Connectivity\n7:08  AI and Human Connection: Startups vs. Incumbents\n7:47  AI as a Relationship Facilitator\n8:39  Personalization and the Future of Consumer AI\n9:31  AI Reinforcing Business Models\n10:05  Case Study: AI in Plaintiff Law and Lending\n11:26  Compounding Advantages and Proprietary Data\n12:29  Smarter Outcomes and the Future of AI-Driven Platforms\n\nResources:\nFollow Oliver on X: https://twitter.com/oyhsu\nFollow Bryan Kim on X: https://twitter.com/kirbyman01 \nFollow David Haber on X: https://twitter.com/dhaber \n\nRead more all of our 2026 Big Ideas\nPart 1: https://a16z.com/newsletter/big-ideas-2026-part-1\nPart 2: https://a16z.com/newsletter/big-ideas-2026-part-2\nPart 3: https://a16z.com/newsletter/big-ideas-2026-part-3\n\nStay Updated:\n\nIf you enjoyed this episode, be sure to like, subscribe, and share with your friends!\n\nFind a16z on X: https://twitter.com/a16z\n\nFind a16z on LinkedIn: https://www.linkedin.com/company/a16z\n\nListen to the a16z Podcast on Spotify: https://open.spotify.com/show/5bC65RDvs3oxnLyqqvkUYX\n\nListen to the a16z Podcast on Apple Podcasts: https://podcasts.apple.com/us/podcast/a16z-podcast/id842818711\n\nFollow our host: https://twitter.com/eriktorenberg\n\nPlease note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details please see a16z.com/disclosures.\n\nPlease note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details, please see http://a16z.com/disclosures.",
+        "publishedAt": "2025-12-31T06:00:34.000Z",
+        "metadata": {
+          "tags": [
+            "推理",
+            "机器人",
+            "可解释性"
+          ],
+          "thumbnailUrl": "https://i.ytimg.com/vi/J6_nNjy3al8/hqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:31:17.866Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmju1lsle0e6jrmtba2zvxcoe",
+        "person": "Wojciech Zaremba",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1lsle0e6jrmtba2zvxcoe",
+          "objectLabel": "arXiv PDF bad capture"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "Captured content is only the arXiv reCAPTCHA shell and contains no paper title, author, or Wojciech Zaremba evidence. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmju1lsle0e6jrmtba2zvxcoe",
+        "personId": "cmjtxc0fm00005p08usgwkddl",
+        "person": "Wojciech Zaremba",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/pdf/2310.01405",
+        "urlHash": "ec6b0cb9d571b55df4157455c2acd9f3",
+        "contentHash": "805397657b7019e14ef58ef79ab2a09a",
+        "title": "",
+        "text": "arXiv reCAPTCHA\n[![Cornell University](https://static.arxiv.org/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\n[We gratefully acknowledge support from\nthe Simons Foundation and member institutions.](https://confluence.cornell.edu/x/ALlRF)\n# [![arxiv logo](https://static.arxiv.org/images/arxiv-logo-one-color-white.svg)](https://arxiv.org/)",
+        "publishedAt": "2025-03-03T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:19:16.226Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmju0k8bh07g1rmtbo6kigksk",
+        "person": "刘知远",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0k8bh07g1rmtbo6kigksk",
+          "objectLabel": "Thinker: Training LLMs in Hierarchical Thinking for Deep Search via Multi-Turn Interaction"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "Captured arXiv author list does not include Zhiyuan Liu/刘知远, so the paper is not evidence for this person. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmju0k8bh07g1rmtbo6kigksk",
+        "personId": "cmjtwkqqg0009opf3c1r9t5xj",
+        "person": "刘知远",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/abs/2511.07943",
+        "urlHash": "ed81a676e8155e95dc25da036150474e",
+        "contentHash": "f8639e7fa6370b08262b780c3aa8d8b6",
+        "title": "Thinker: Training LLMs in Hierarchical Thinking for Deep Search via Multi-Turn Interaction",
+        "text": "[2511.07943] Thinker: Training LLMs in Hierarchical Thinking for Deep Search via Multi-Turn Interaction\n[Skip to main content](#content)\n[![Cornell University](https://arxiv.org/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\nWe gratefully acknowledge support from the Simons Foundation,[member institutions](https://info.arxiv.org/about/ourmembers.html), and all contributors.[Donate](https://info.arxiv.org/about/donate.html)\n[](https://arxiv.org/IgnoreMe)\n[![arxiv logo](https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg)](https://arxiv.org/)&gt;[cs](https://arxiv.org/list/cs/recent)&gt;arXiv:2511.07943\n[Help](https://info.arxiv.org/help)|[Advanced Search](https://arxiv.org/search/advanced)\nAll fieldsTitleAuthorAbstractCommentsJournal referenceACM classificationMSC classificationReport numberarXiv identifierDOIORCIDarXiv author IDHelp pagesFull text\nSearch\n[![arXiv logo](https://arxiv.org/static/browse/0.3.4/images/arxiv-logomark-small-white.svg)](https://arxiv.org/)\n[![Cornell University Logo](https://arxiv.org/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\nopen search\nGO\nopen navigation menu\n# Computer Science \\> Artificial Intelligence\n**arXiv:2511.07943**(cs)\n[Submitted on 11 Nov 2025 ([v1](https://arxiv.org/abs/2511.07943v1)), last revised 14 Nov 2025 (this version, v2)]\n# Title:Thinker: Training LLMs in Hierarchical Thinking for Deep Search via Multi-Turn Interaction\nAuthors:[Jun Xu](https://arxiv.org/search/cs?searchtype=author&amp;query=Xu,+J),[Xinkai Du](https://arxiv.org/search/cs?searchtype=author&amp;query=Du,+X),[Yu Ao](https://arxiv.org/search/cs?searchtype=author&amp;query=Ao,+Y),[Peilong Zhao](https://arxiv.org/search/cs?searchtype=author&amp;query=Zhao,+P),[Yang Li](https://arxiv.org/search/cs?searchtype=author&amp;query=Li,+Y),[Ling Zhong](https://arxiv.org/search/cs?searchtype=author&amp;query=Zhong,+L),[Lin Yuan](https://arxiv.org/search/cs?searchtype=author&amp;query=Yuan,+L),[Zhongpu Bo](https://arxiv.org/search/cs?searchtype=author&amp;query=Bo,+Z),[Xiaorui Wang](https://arxiv.org/search/cs?searchtype=author&amp;query=Wang,+X),[Mengshu Sun](https://arxiv.org/search/cs?searchtype=author&amp;query=Sun,+M),[Zhengke Gui](https://arxiv.org/search/cs?searchtype=author&amp;query=Gui,+Z),[Dalong Zhang](https://arxiv.org/search/cs?searchtype=author&amp;query=Zhang,+D),[Zhaoyang Wang](https://arxiv.org/search/cs?searchtype=author&amp;query=Wang,+Z),[Qiwei Wang](https://arxiv.org/search/cs?searchtype=author&amp;query=Wang,+Q),[Yangyang Hou](https://arxiv.org/search/cs?searchtype=author&amp;query=Hou,+Y),[Zhiying Yin](https://arxiv.org/search/cs?searchtype=author&amp;query=Yin,+Z),[Haofen Wang](https://arxiv.org/search/cs?searchtype=author&amp;query=Wang,+H),[Huajun Chen](https://arxiv.org/search/cs?searchtype=author&amp;query=Chen,+H),[Lei Liang](https://arxiv.org/search/cs?searchtype=author&amp;query=Liang,+L),[Jun Zhou](https://arxiv.org/search/cs?searchtype=author&amp;query=Zhou,+J)\nView a PDF of the paper titled Thinker: Training LLMs in Hierarchical Thinking for Deep Search via Multi-Turn Interaction, by Jun Xu and 19 other authors\n[View PDF](https://arxiv.org/pdf/2511.07943)[HTML (experimental)](https://arxiv.org/html/2511.07943v2)> > Abstract:\n> Efficient retrieval of external knowledge bases and web pages is crucial for enhancing the reasoning abilities of LLMs. Previous works on training LLMs to leverage external retrievers for solving complex problems have predominantly employed end-to-end reinforcement learning. However, these approaches neglect supervision over the reasoning process, making it difficult to guarantee logical coherence and rigor. To address these limitations, we propose Thinker, a hierarchical thinking model for deep search through multi-turn interaction, making the reasoning process supervisable and verifiable. It decomposes complex problems into independently solvable sub-problems, each dually represented in both natural language and an equivalent logical function to support knowledge base and web searches. Concurrently, dependencies between sub-problems are passed as parameters via these logical functions, enhancing the logical coherence of the problem-solving process. To avoid unnecessary external searches, we perform knowledge boundary determination to check if a sub-problem is within the LLM&#39;s intrinsic knowledge, allowing it to answer directly. Experimental results indicate that with as few as several hundred training samples, the performance of Thinker is competitive with established baselines. Furthermore, when scaled to the full training set, Thinker significantly outperforms these methods across various datasets and model sizes. The source code is available at [> this https URL\n](https://github.com/OpenSPG/KAG-Thinker)> . Comments:|Accepted to AAAI 2026. Extended version with full Appendix|\nSubjects:|Artificial Intelligence (cs.AI); Com",
+        "publishedAt": "2025-11-10T16:00:00.000Z",
+        "metadata": {
+          "author": "[Submitted on 11 Nov 2025 (v1), last revised 14 Nov 2025 (this version, v2)]",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:11:03.611Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjuuyb0d0id2rmtb8g3wavkz",
+        "person": "周明",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuyb0d0id2rmtb8g3wavkz",
+          "objectLabel": "zhong ming"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "Google Scholar capture is a loading/error shell for zhong ming, not usable evidence for 周明. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjuuyb0d0id2rmtb8g3wavkz",
+        "personId": "cmjtwkwvi000copf3rlb2nlrz",
+        "person": "周明",
+        "sourceType": "exa",
+        "url": "https://scholar.google.com.hk/citations?user=CnLP3-gAAAAJ&hl=en",
+        "urlHash": "30d1929041c3eaf940a9e985814345b6",
+        "contentHash": "8ff783df16a5a6b2256d843f16da9206",
+        "title": "zhong ming",
+        "text": "Loading...\n\nThe system can't perform the operation now. Try again later.\n\n## Citations per year\n\n## Duplicate citations\n\nThe following articles are merged in Scholar. Their [combined citations](javascript:void(0)) are counted only for the first article.\n\n## Merged citations\n\nThis \"Cited by\" count includes citations to the following articles in Scholar. The ones marked \\* may be different from the article in the profile.\n\n## Add co-authorsCo-authors\n\n## Follow\n\n[New articles by this author](javascript:void(0))\n\n[New citations to this author](javascript:void(0))\n\n[New articles related to this author's research](javascript:void(0))\n\nEmail address for updates\n\nDone\n\n[My profile](https://scholar.google.com.hk/citations?hl=en) [My library](https://scholar.google.com.hk/scholar?scilib=1&hl=en) [Metrics](https://scholar.google.com.hk/citations?view_op=metrics_intro&hl=en) [Alerts](https://scholar.google.com.hk/scholar_alerts?view_op=list_alerts&hl=en)\n\n[Settings](https://scholar.google.com.hk/scholar_settings?hl=en)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.com.hk/schhp%3Fhl%3Den)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.com.hk/schhp%3Fhl%3Den)\n\n[Get my own profile](https://scholar.google.com.hk/citations?hl=en)\n\n### Cited byView all\n\n| | All | Since 2020 |\n| --- | --- | --- |\n| [Citations](javascript:void(0)) | 13898 | 9739 |\n| [h-index](javascript:void(0)) | 60 | 51 |\n| [i10-index](javascript:void(0)) | 196 | 175 |\n\n0\n\n2200\n\n1100\n\n550\n\n1650\n\n20122013201420152016201720182019202020212022202320242025 [36](javascript:void(0)) [79](javascript:void(0)) [120](javascript:void(0)) [304](javascript:void(0)) [573](javascript:void(0)) [781](javascript:void(0)) [915](javascript:void(0)) [1158](javascript:void(0)) [1365](javascript:void(0)) [1630](javascript:void(0)) [2179](javascript:void(0)) [1799](javascript:void(0)) [2029](javascript:void(0)) [733](javascript:void(0))\n\nPublic access\n\n[View all](https://scholar.google.com.hk/citations?view_op=list_mandates&hl=en&user=CnLP3-gAAAAJ)\n\nView all\n\n164 articles\n\n110 articles\n\navailable\n\nnot available\n\nBased on funding mandates\n\n### Co-authors\n\n- ![Weike Pan](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Weike Pan](https://scholar.google.com.hk/citations?user=pC5Q26MAAAAJ&hl=en) Professor, Shenzhen UniversityVerified email at szu.edu.cn\n\n- ![qiuzhen lin](https://scholar.google.com.hk/scholar/images/cleardot.gif)[qiuzhen lin](https://scholar.google.com.hk/citations?user=87XNTVsAAAAJ&hl=en) Shenzhen UniversityVerified email at szu.edu.cn\n\n- ![Meikang Qiu, ACM Distinguished Scientist](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Meikang Qiu, ACM Distinguished Scie...](https://scholar.google.com.hk/citations?user=smMVdtwAAAAJ&hl=en) Professor, Highly Cited Researcher, IEEE CS Distinguished Contributor, Augusta University, GAVerified email at augusta.edu\n\n- ![Dr. Weipeng Cao](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Dr. Weipeng Cao](https://scholar.google.com.hk/citations?user=XOJyPbIAAAAJ&hl=en) Associate Researcher, Guangdong Laboratory of Artificial Intelligence and Digital Economy (Shenzhen)Verified email at gml.ac.cn\n\n- ![jianyong chen](https://scholar.google.com.hk/scholar/images/cleardot.gif)[jianyong chen](https://scholar.google.com.hk/citations?user=cG_sUoYAAAAJ&hl=en) Shenzhen universityVerified email at szu.edu.cn\n\n- ![Laizhong Cui](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Laizhong Cui](https://scholar.google.com.hk/citations?user=cb8kYbUAAAAJ&hl=en) Shenzhen UniversityVerified email at szu.edu.cn\n\n- ![Lingjie Li](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Lingjie Li](https://scholar.google.com.hk/citations?user=0SatikoAAAAJ&hl=en) College of Big Data and Internet, Shenzhen Technology UniversityVerified email at sztu.edu.cn\n\n- ![Dugang Liu](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Dugang Liu](https://scholar.google.com.hk/citations?user=JQiDCZUAAAAJ&hl=en) College of Computer Science and Software Engineering, Shenzhen UniversityVerified email at szu.edu.cn\n\n- ![Chengwen Luo](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Chengwen Luo](https://scholar.google.com.hk/citations?user=DPW5Pj8AAAAJ&hl=en) Shenzhen UniversityVerified email at szu.edu.cn\n\n- ![Shu Yang](https://scholar.google.com.hk/scholar/images/cleardot.gif)[Shu Yang](https://scholar.google.com.hk/citations?user=JKR65R0AAAAJ&hl=en) 深圳大学Verified email at szu.edu.cn\n\n- ![F. Richard Yu](https://scholar.google.com.hk/scholar/images/cleardot.gif)[F. Richard Yu](https://scholar.google.com.hk/citations?user=zuGMGBoAAAAJ&hl=en) Carleton University, FCAE, MAE, FIEEE, FEICVerified email at carleton.ca\n\n\n[Follow](javascript:void(0))\n\n![zhong ming](https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=CnLP3-gAAAAJ&citpid=1)\n\nzhong ming\n\n[Other names](javascript:void(0)) 明仲\n\n深圳大学计算机与软件学院教授\n\nVerified email at szu.edu.cn\n\n",
+        "publishedAt": "2016-10-19T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:14:56.348Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjtxj73i02n2rmtbap3a7fti",
+        "person": "唐杰",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxj73i02n2rmtbap3a7fti",
+          "objectLabel": "SJTU Computer Science & Engineering"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "SJTU profile content is for Feilong Tang and does not match 清华 Tang Jie/唐杰. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjtxj73i02n2rmtbap3a7fti",
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "sourceType": "exa",
+        "url": "https://cs.sjtu.edu.cn/cse/en/PeopleDetail.aspx?id=343",
+        "urlHash": "bc9dfeba7bb8cab73defbec96faa8c4a",
+        "contentHash": "f6526d683c922b14be53e3110330d6fb",
+        "title": "SJTU Computer Science & Engineering",
+        "text": "2005年毕业于上海交通大学计算机系，获博士学位。 \n 2009.6-2011.5, 日本学术振兴会(JSPS, Japan Society for the Promotion of Science)博士后（JSPS-Postdoctoral Fellowships for Foreign Researchers，Research Fellow) (JSPS No. P 09059) \n 2007.9-2008.10，日本会津大学客座研究员(Visiting Resercher) \n 2004.5--2005.6，香港大学，科研助理 \n \n \n 2012.12-  上海交通大学，教授\n \n \n 2007.12-2012.11  上海交通大学  副教授\n \n \n 2005.6-2007.11    上海交通大学  讲师\n \n \n \n 1. Feilong Tang. Bidirectional Active Learning with Gold-Instance-Based Human Training. in IJCAI 2019, Macao, China.  CCF A\n \n \n 2. Feilong Tang. Dynamically Adaptive Cooperation Transmission among Satellite-Ground Integrated Networks.   Accepted by InfoCom 2020, China. CCF A \n \n \n 3. Feilong Tang. Optimal Complex Task Assignment in Service Crowdsourcing.  Accepted by IJCAI 2020, Japan. CCF A \n \n \n 4. Feilong Tang, Heteng Zhang, and\nLaurence T. Yang. Multipath Cooperative Routing with Efficient Acknowledgement\nfor LEO Satellite Networks. IEEE Transactions on Mobile Computing (TMC),\nVol.18, No. 1, pp. 179-192, 2019.   CCF A\n \n \n 5. Feilong Tang, Heteng Zhang, Luoyi Fu,\nXu Li. Distributed Stable Routing with Adaptive Power Control for Multi-Flow\nand Multi-Hop Mobile Cognitive Networks. IEEE Transactions on Mobile Computing\n(TMC), Vol.18, No.12, pp. 2829-2841, 2019.  CCF A\n \n \n 6. Feilong Tang, Minyi Guo, Song Guo and Cheng-Zhong Xu. Mobility Prediction Based Joint Stable Routing and Channel Assignment for Mobile Ad Hoc Cognitive Networks. IEEE Transactions on Parallel and Distributed Systems (TPDS), VOL. 27, NO. 3, pp.789-802, 2016.   CCF A   \n \n \n 7. Jing Chen,\nFeilong Tang*, Heteng Zhang and Laurence T. Yang. Lightweight Retransmission for\nRandom Access in Satellite Networks.  InfoCom 2018.  CCF\nA  \n \n \n 8. Jiacheng Liu, Xiaofeng Hou and Feilong Tang*. Fine-Grained Machine Teaching with Attention Modeling. Accepted by AAAI 2020. CCF A \n9. Feilong Tang, Yanqin Yang, Laurence T. Yang, Tong Zhou, Minyi Guo.\nDelay-Minimized Routing in Mobile Cognitive Networks for Time-Critical\nApplications. IEEE Trans. Industrial Informatics 13(3): 1398-1409 (2017)  \n上海交大A类   \n10. Feilong Tang, Jie Li. Joint Rate Adaptation, Channel Assignment and\nRouting to Maximize Social Welfare in Multi-Hop Cognitive Radio Networks. IEEE\nTransactions on Wireless Communications 16(4): 2097-2110 (2017)  CCF B \n11. Feilong Tang, Heteng Zhang, and Jie Li. Joint Topology Control and\nStable Routing Based on PU Prediction for Multi-Hop Mobile Cognitive Networks.\nIEEE Transactions on Wireless Communications (TWC), Vol.17, No. 3, pp. 1713-1726,\n2018.   CCF\nB\n \n \n 12. Feilong\nTang, Ilsun You and Minyi Guo. An efficient classification approach for\nlarge-scale mobile ubiquitous computing. Information Sciences 232: 419-436\n(2013). 上海交大A类 \n13. Feilong Tang, Minglu Li and Joshua Zhexue Huang. Automatic Transaction\nCompensation for Reliable Grid Applications. Journal of Computer Science &amp;\nTechnology (JCST), 21(4): 529-536, 2006.  CCF B \n14. Xiaoyan Wang, Jie Li and Feilong Tang. Network Coding Aware\nCooperative MAC Protocol for Wireless Ad Hoc Networks. IEEE Transactions on\nParallel and Distributed Systems (TPDS), Vol.25, No.1, pp.167-179, 2014. \nCCF A \n15. Shui Yu, Wanlei Zhou, Weijia Jia, Song Guo, Yong Xiang and Feilong\nTang. Discriminating DDoS Attacks from Flash Crowds Using Flow Correlation\nCoefficient. EEE Transactions on Parallel and Distributed Systems (TPDS),\nVol.23, No.6, pp.1073-1080, 2012.  CCF A \n16. Ming Zhu, Xiao-Yang Liu, Feilong Tang et al. Public Vehicles for\nFuture Urban Transportation, IEEE Transactions on Intelligent Transportation\nSystems,Vol.17, No.12, pp. 3344 – 3353, 2016. (SCI, EI)  上海交大A类 \n17. Xiao-Jun Xu, Jin-Song Bao, Bin Yao, Jingyu Zhou, Feilong Tang, Minyi\nGuo, Jianqiu Xu: Reverse Furthest Neighbors Query in Road Networks. Journal of\nComputer Science &amp; Technology (JCST), 32(1): 155-167 (2017) (SCI, EI) \n CCF B \n18. Feilong Tang, Laurence T. Yang, Jie Li and Minyi Guo. A Dynamical and\nLoad-Balanced Flow Scheduling Approach for Big Data Centers in Clouds.IEEE Transactions on\nCloud Computing (TCC), Vol.6, No.4, 2018. \n19. Feilong Tang, Lu Li, Leonard Barolli: An Efficient Sampling and\nClassification Approach for Flow Detection in SDN-Based Big Data Centers. AINA\n2017: 1106-1115 (Best Paper Award, 2/561)  \n20. Feilong Tang, Minyi Guo, Mianxiong Dong, Minglu Li. Towards Context-Aware\nWorkflow Management for Ubiquitous Computing. Proceedings of the 2008\nInternational conference on Embedded Software and Systems (ICESS 2008), IEEE\nComputer Society, pp. 221-228, July 2008. (Best Paper Award)\n \n \n 21. Hongkun Chen, Feilong Tang*, Linghe Kong et al.  Optimal Resource Allocation through Joint VM Selection and Placement in Private Clouds. in NPC 2019.   (Best Paper Award, CCF C) \n \n \n 22. Feilong\nTang, Leonard Barolli, Jie Li. A Joint Design for Distributed Stable Routing\nand Channel Assignment over Multi-Hop and Multi-Flow Mobile Ad Hoc Cognitive\nNetworks. IEEE Transactions on Industrial Informatics (TII), Vol.10, No.2, pp.\n1606-1615, 2014. 上海交大A类 \n \n \n 23.Feilon",
+        "publishedAt": "2019-08-31T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:02:45.619Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmju1avpw0c1nrmtbbrqutid4",
+        "person": "李莲",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1avpw0c1nrmtbbrqutid4",
+          "objectLabel": "【学习笔记】博客Lilian Weng - LLM Powered Autonomous Agents"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.88,
+        "reason": "CSDN article is a third-party study note about Lilian Weng's blog, not primary evidence or person-authored content. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmju1avpw0c1nrmtbbrqutid4",
+        "personId": "cmjtxcatd00025p08uv2ks3h0",
+        "person": "李莲",
+        "sourceType": "exa",
+        "url": "https://blog.csdn.net/weixin_45838549/article/details/136748893",
+        "urlHash": "66b3b96c93b89317f86269192623c182",
+        "contentHash": "a9ce8aadae5d9609e87f693e9ec6989c",
+        "title": "【学习笔记】博客Lilian Weng - LLM Powered Autonomous ...",
+        "text": "# 【学习笔记】博客Lilian Weng - LLM Powered Autonomous Agents\n\n最新推荐文章于 2025-05-22 10:45:00 发布\n\n[草莓冰沙wa](https://blog.csdn.net/weixin_45838549) 最新推荐文章于 2025-05-22 10:45:00 发布\n\n阅读量1.7k收藏12\n\n点赞数\n10\n\nCC 4.0 BY-SA版权\n\n分类专栏： [大模型](https://blog.csdn.net/weixin_45838549/category_12607173.html) 文章标签： [学习](https://so.csdn.net/so/search/s.do?q=%E5%AD%A6%E4%B9%A0&t=all&o=vip&s=&l=&f=&viparticle=&from_tracking_code=tag_word&from_code=app_blog_art) [笔记](https://so.csdn.net/so/search/s.do?q=%E7%AC%94%E8%AE%B0&t=all&o=vip&s=&l=&f=&viparticle=&from_tracking_code=tag_word&from_code=app_blog_art) [人工智能](https://so.csdn.net/so/search/s.do?q=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD&t=all&o=vip&s=&l=&f=&viparticle=&from_tracking_code=tag_word&from_code=app_blog_art)\n\n版权声明：本文为博主原创文章，遵循 [CC 4.0 BY-SA](http://creativecommons.org/licenses/by-sa/4.0/) 版权协议，转载请附上原文出处链接和本声明。\n\n本文链接： [https://blog.csdn.net/weixin\\_45838549/article/details/136748893](https://blog.csdn.net/weixin_45838549/article/details/136748893)\n\n[大模型专栏收录该内容](https://blog.csdn.net/weixin_45838549/category_12607173.html)\n\n8 篇文章\n\n订阅专栏\n\n原博链接： [https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)\n\n1. Agent关键组件\n\n(1) 规划(Planning)\n\n- 任务分解\n - 思维链 [**Chain of thought**](https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/#chain-of-thought-cot) (CoT; [Wei et al. 2022](https://arxiv.org/abs/2201.11903)) ：逐步思考能力\n - 思维树Tree of Thoughts ( [Yao et al. 2023](https://arxiv.org/abs/2305.10601))：广度优先搜索(BFS)、深度优先搜索(DFS)\n- 自我反思：纠正以前错误，迭代改进\n - ReAct ( [Yao et al. 2023](https://arxiv.org/abs/2210.03629))将动作空间扩展为特定于任务的离散动作和语言空间的组合\n - Reflexion ( [Shinn & Labash 2023](https://arxiv.org/abs/2303.11366))是一个为Agent提供动态记忆和自我反思能力以提高推理能力的框架\n - Chain of Hindsight (CoH; [Liu et al. 2023](https://arxiv.org/abs/2302.02676))鼓励模型通过显式地呈现一系列过去的输出来改进自己的输出，每个输出都有反馈注释\n\n(2) 记忆(Memory)\n\n- 人脑中的记忆类型：感觉记忆、短期记忆、长期记忆\n\n\n> 外部记忆可以缓解注意力持续时间有限的限制。标准做法是将信息的嵌入表示保存到支持快速最大内积搜索(MIPS)的矢量存储数据库中。为了优化检索速度，通常的选择是近似最近邻(ANN)算法。\n\n\n(3) 工具使用(Tool use)\n\n- MRKL ( [Karpas et al. 2022](https://arxiv.org/abs/2205.00445))\n- TALM (Tool Augmented Language Models; [Parisi et al. 2022](https://arxiv.org/abs/2205.12255))\n- Toolformer ( [Schick et al. 2023](https://arxiv.org/abs/2302.04761))\n- HuggingGPT ( [Shen et al. 2023](https://arxiv.org/abs/2303.17580))：1) 任务规划 2)模型选择 3)任务执行 4)响应生成\n- API-Bank ( [Li et al. 2023](https://arxiv.org/abs/2304.08244))\n\n1. 挑战\n\n- 有限的上下文长度\n- 长期计划和任务分解中的挑战\n- 自然语言接口的可靠性\n\n确定要放弃本次机会？\n\n福利倒计时\n\n_:_ _:_\n\n立减 ¥\n\n普通VIP年卡可用\n\n[立即使用](https://mall.csdn.net/vip)\n\n[草莓冰沙wa](https://blog.csdn.net/weixin_45838549)\n\n[关注](javascript:;)关注\n\n- 10\n点赞\n\n- 踩\n\n- [12](javascript:;)\n收藏\n\n觉得还不错?\n一键收藏\n\n- 知道了\n[0](https://blog.csdn.net/blog.csdn.net#commentBox)\n评论\n\n- [分享](javascript:;)\n\n\n复制链接\n\n\n\n分享到 QQ\n\n\n\n分享到新浪微博\n\n\n\n扫一扫\n\n- 举报\n\n\n\n举报\n\n\n专栏目录\n\n[_LLM_ 驱动的自主代理 _LLM_ _Powered_ _Autonomous_ _Agents_](https://dreamit.blog.csdn.net/article/details/131467998)\n\n[AI天才研究院](https://blog.csdn.net/universsky2015)\n\n06-306496\n\n[Planning 规划子目标和分解：代理将大型任务分解为较小的、可管理的子目标，从而能够高效处理复杂任务。反思和细化：智能体可以对过去的行为进行自我批评和自我反省，从错误中吸取教训，并为未来的步骤进行提炼，从而提高最终结果的质量。Memory 记忆短期记忆：我认为所有的上下文 _学习_（参见提示工程）都是利用模型的短期记忆来 _学习_ 的。长期记忆：这为代理提供了长时间保留和调用（无限）信息的能力，通常是通过利用外部载体存储和快速检索。Tool use 工具使用。](https://dreamit.blog.csdn.net/article/details/131467998)\n\n[OpenAI 的 AI 安全负责人： _LLM_ 支持的自主代理 _LLM_ _Powered_ _Autonomous_ _Agents_](https://dreamit.blog.csdn.net/article/details/132059497)\n\n[AI天才研究院](https://blog.csdn.net/universsky2015)\n\n08-022183\n\n[AI助手可以将用户输入解析为多个任务：\\[{“task”：task，“id”，task\\_id，“dep”：dependency\\_task\\_ids，“args”：{“text”：text，“image”：URL，“audio “：网址，“视频”：网址}}\\]。一个有趣的观察结果是，虽然基于 _LLM_ 的评估得出的结论是 GPT _-_ 4 和 ChemCrow 的表现几乎相当，但专家针对解决方案的完成度和化学正确性进行的人工评估表明，ChemCrow 的性能大幅优于 GPT _-_ 4。您必须首先以直截了当的方式回答用户的请求。](https://dreamit.blog.csdn.net/article/details/132059497)\n\n参与评论您还未登录，请先登录后发表或查看评论\n\n[(读书 _笔记_ _-_ 大模型) _LLM_ _Powered_ _Autonomous_ _Agents_](https://blog.csdn.net/junerli/article/details/138510030)\n\n[junerli的博客](https://blog.csdn.net/junerli)\n\n05-061965\n\n[有限的上下文长度： _LLM_ 处理上下文信息的能力有限，尽管 self _-_ reflection 等机制可以从过去的错误中 _学习_，但更长或无限的上下文窗口将会带来很大的好处。感知记忆：这是记忆的早期阶段，它能够在原始刺激结束后保持对感官信息（视觉、听觉等）的印象。显式、陈述性记忆：这是对事实和事件的记忆，指的是那些可以有意识地回忆起来的记忆，包括情景记忆（事件和经过）和语义记忆（事实和概念）；反思和完善：智能体可以对过去的行为展开自我批评和自我反思，从错误中吸取教训，并针对未来的步骤进行完善，提高最终结果的质量。](https://blog.csdn.net/junerli/article/details/138510030)\n\n[_Lilian_ _Weng_ 最新万字长文：从 CoT 到 Aha Moment，揭秘大模型「思考」的奥秘！\\\n\\\n最新发布](https://blog.csdn.net/m0_59164304/article/details/148081101)\n\n[m0\\_59164304的博客](https://blog.csdn.net/m0_59164304)\n\n05-221128\n\n[最近，北大校友、前 OpenAI 应用 AI 研究负责人 _Lilian_ _Weng_ 更新了一篇长长长长长长长 _博客_《Why We Think》。](https://blog.csdn.net/m0_59164304/article/details/148081101)\n\n[_LLM_ 驱动式自主代理 _LLM_ _Powered_ _Autonomous_ _Agents_](https://dreamit.blog.csdn.net/article/details/145387204)\n\n[AI天才研究院](https://blog.csdn.net/universsky2015)\n\n01-28586\n\n[人类反馈数据是一组 Dh={(x,yi,ri,zi)}i=1n ，其中 x 是提示，每个 yi 是模型完成， ri 是对 yi 的人类评分， zi 是相应的人类提供的事后诸葛亮反馈。Reflexion 具有标准的强化 _学习_ 设置，其中奖励模型提供简单的二元奖励，动作空间遵循 ReAct 中的设置，特定任务的动作空间通过语言增强以实现复杂的推理步骤。您必须首先以直接的方式",
+        "publishedAt": "2024-03-14T16:00:00.000Z",
+        "metadata": {
+          "author": "weixin_45838549",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:47.060Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjuuzofb0ihmrmtbt5nlseeo",
+        "person": "汤姆·布朗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuzofb0ihmrmtbt5nlseeo",
+          "objectLabel": "Anonymous OpenReview PDF"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "OpenReview capture is an anonymous multimodal Theory-of-Mind paper and contains no Tom Brown evidence. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjuuzofb0ihmrmtbt5nlseeo",
+        "personId": "cmjtxcjfw00045p08hrhp2m4t",
+        "person": "汤姆·布朗",
+        "sourceType": "exa",
+        "url": "https://openreview.net/pdf/e0a8c2a621d5903258557069fd539f32c491b16f.pdf",
+        "urlHash": "c8fd00ad5858a20bc978249d467217f4",
+        "contentHash": "81ed0f551058764c73b65c721a933cf3",
+        "title": "",
+        "text": "Under review as a conference paper at ICLR 2025\nSCALING MULTIMODAL THEORY-OF-MIND WITH\nWEAK-TO-STRONG BAYESIAN REASONING\nAnonymous authors\nPaper under double-blind review\nABSTRACT\n1 Theory-of-Mind (ToM) enables individuals to the mental states of the others, such\n2 as thoughts, beliefs, and desires. To replicate this cognitive ability in machines,\n3 especially under complex multimodal environments, recent advances combine\n4 Bayesian-based state inference with deep learning models to estimate mental states,\n5 where the Bayesian model handles state transitions and a language model (LM)\n6 estimates the likelihood of intermediate states. However, while post-training an LM\n7 to specialise in ToM tasks improves performance, the computational cost increases\n8 as the LM scales, limiting the model size to 7 billion parameters. Despite this post\u00029 training process, smaller LMs still struggle with the physical and mental modelling\n10 demands of ToM due to their limited world knowledge and reasoning capacity. To\n11 address this, we propose a scalable solution that leverages the strengths of larger\n12 LMs (up to 70 and 405 billion parameters, respectively), including their vast world\n13 knowledge and atomic-level reasoning capabilities, without increasing post-training\n14 resource requirements. Our method transfers ToM-specific behaviours from a post\u000215 trained small LM to guide the latent reasoning of a larger LM during test time. This\n16 weak-to-strong control mechanism enables the larger LM to improve Bayesian\n17 likelihood estimation at each inference step, harnessing its reasoning power in\n18 ToM scenarios while reducing the need for additional training resources. Extensive\n19 experiments demonstrate the significant effectiveness of our scaled approach. It is\n20 better at inferring human mental states in complex and interactive environments,\n21 outperforming the state-of-the-art solution by ∼ 4.6% across multiple tasks on the\n22 multimodal ToM benchmark and unseen scenarios.\n23 1 INTRODUCTION\n24 A key aspect of human social cognition is Theory-of-Mind (ToM)—the ability to comprehend and\n25 attribute mental states such as beliefs, desires, and intentions to ourselves and others. This capacity\n26 allows individuals to recognize that others may have perspectives and motivations distinct from\n27 their own, forming the foundation of social understanding and interaction (Dennett, 1988; Gopnik &\n28 Wellman, 2012). Building on this concept, a critical challenge lies in enabling artificial intelligence\n29 (AI) to acquire human-level ToM capabilities. Equipping AI systems with such abilities could\n30 significantly enhance their potential for human-like interactions and unlock broader capacities for\n31 commonsense and context-aware reasoning (Lake et al., 2017; Wu et al., 2021; Ma et al., 2023).\n32 Among the ongoing efforts to advance ToM abilities in machines, two broadly classed strategies are\n33 the highly structured Bayesian approaches and the less structured end-to-end approaches, respectively:\n34 (i) Bayesian ToM models use cognitively structured probabilistic frameworks to represent causal\n35 relationships between the mind and the world, enabling inverse inference of mental states from sparse\n36 behavioral observations (Baker et al., 2017; Jara-Ettinger, 2019; Shu et al., 2021). These models are\n37 highly interpretable and support key ToM functions like explanation and inductive learning, excelling\n38 in well-defined domains with precise predictions and few-shot generalization (Shum et al., 2019;\n39 Zhi-Xuan et al., 2022). However, they require extensive inductive constraints (e.g., abstractions,\n40 priors, and causal relationships) provided by experts, limiting their scalability to complex and\n41 unconstrained practical environments. (ii) End-to-end models of ToM involve training deep models\n42 directly on ToM data (Rabinowitz et al., 2018; Shu et al., 2021; Sclar et al., 2022). These models,\n43 such as ToMnet (Rabinowitz et al., 2018), autonomously learn complex patterns and relationships\n44 from data without explicitly concepts like agents, beliefs, and goals. However, because these models\n1\nUnder review as a conference paper at ICLR 2025\n45 do not explicitly encode principles of physics or theories of psychology, they lack transparency and\n46 may draw conclusions that violate physical laws, logical coherence, or commonsense reasoning.\n47 Additionally, their data-driven nature makes them less reliable in, and adaptable to, dynamic or\n48 novel environments, particularly where data is sparse or unrepresentative (Sap et al., 2022; Zhi-Xuan\n49 et al., 2022; Ullman, 2023; Strachan et al., 2024).\n50 The recent interdisciplinary milestone, BIPALM (Bayesian inverse planning accelerated by language\n51 model), merges the strengths of Bayesian ToM models and deep learning to facilitate robust reasoning\n52 in complex multimodal scenarios (Jin et al., 2024). It uses a Bayesian ToM model to predict agents’\n53 mental states in mul",
+        "publishedAt": "2024-11-26T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:01:52.871Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmju1cgtb0cbdrmtbjzuswfbz",
+        "person": "汤姆·布朗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1cgtb0cbdrmtbjzuswfbz",
+          "objectLabel": "Tom Brown"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.95,
+        "reason": "NYCA profile is for a payments/legal executive named Tom Brown, not the AI researcher Tom Brown. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmju1cgtb0cbdrmtbjzuswfbz",
+        "personId": "cmjtxcjfw00045p08hrhp2m4t",
+        "person": "汤姆·布朗",
+        "sourceType": "exa",
+        "url": "https://www.nyca.com/team/tom-brown/",
+        "urlHash": "b30190eb2576b58baa71de6708011a04",
+        "contentHash": "295f3902ea41f9febea9bff32836748c",
+        "title": "Tom Brown",
+        "text": "## Tom Brown\n\n![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/Tom_d5126dc391.jpg)\n\n## Publications\n\n[**Paying with Plastic: Maybe Not So Crazy** \\\n\\\nThe University of Chicago Law Review\\\n\\\nAug 18, 2023](https://chicagounbound.uchicago.edu/uclrev/vol73/iss1/5/)\n\n**50-STATE SURVEY: Money Transmitter Licensing Requirements**\n\nCalifornia State Assembly, Committee on Banking and Finance\n\nAug 18, 2023\n\n## Portfolio Coverage\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/abra_f6c34e3d00_b47e02132c.png)](https://www.abra.com/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/Nyca_Portfolio_Logos_Feb_2023_copy_080662846c.jpg)](https://www.getapril.com/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/Ascend_9072c2b8ef.jpg)](https://www.useascend.com/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/crossmint_3b2f29c3ec.png)](https://www.crossmint.com/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/fairplay_d82af59653.png)](https://fairplay.ai/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/Fin3_04c2f73bfd.jpg)](https://www.fin3.tech/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/Forage_8d1b0e1190.jpg)](https://www.joinforage.com/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/nala_65a21c755c.jpg)](https://www.nala.com/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/protego_9f9cc2eb36.jpeg)](https://www.protegotrust.com/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/Sardine_1f501cc032.jpg)](https://www.sardine.ai/)\n\n[![Type a description of this image](https://morphic-images.s3.us-east-2.amazonaws.com/184/Copy_of_Zero_Hash_New_f7fc3ad13f.jpg)](https://zerohash.com/)\n\nScroll left...",
+        "publishedAt": "2023-08-17T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:12:01.055Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjtxsiwy04rrrmtb2sgyizvg",
+        "person": "汤姆·布朗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxsiwy04rrrmtb2sgyizvg",
+          "objectLabel": "Tom Brown - Men's Basketball"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.95,
+        "reason": "Le Moyne basketball roster is a same-name athlete page and unrelated to the AI researcher Tom Brown. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjtxsiwy04rrrmtb2sgyizvg",
+        "personId": "cmjtxcjfw00045p08hrhp2m4t",
+        "person": "汤姆·布朗",
+        "sourceType": "exa",
+        "url": "https://lemoynedolphins.com/sports/mens-basketball/roster/tom-brown/4978",
+        "urlHash": "1c89a845349cd6b4915eecc47e661740",
+        "contentHash": "df316107e7feb8729d0546ff562d93e4",
+        "title": "Tom Brown - Men's Basketball",
+        "text": "[Skip To Main Content](https://lemoynedolphins.com/sports/mens-basketball/roster/tom-brown/4978#main-content)\nPause All Rotators [Skip To Main Content](https://lemoynedolphins.com/sports/mens-basketball/roster/tom-brown/4978#main-content)\n\n![Le Moyne main logo](https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/lemoyne.sidearmsports.com/responsive_2022/images/svgs/logo_main.svg)\n\n## 2019-20 Men's Basketball Roster\n\nChoose a Player:Brown, TomChuks-Mady, BBCwikla, ColtonEgozi, MikeGairey, OsheaGarner, MalikGueye, SouleymaneHernandez, NinoJennings, ZayLeavell, TimRivera, LonnieRoland, RyanSelf, WyattGo\n\n- [Bio](https://lemoynedolphins.com/sports/mens-basketball/roster/tom-brown/4978#sidearm-roster-player-bio)\n- [Related](https://lemoynedolphins.com/sports/mens-basketball/roster/tom-brown/4978#sidearm-roster-player-related)\n- [Stats](https://lemoynedolphins.com/sports/mens-basketball/roster/tom-brown/4978#sidearm-roster-player-stats)\n- [Historical](https://lemoynedolphins.com/sports/mens-basketball/roster/tom-brown/4978#sidearm-roster-player-historical)\n\n### Biography\n\n### Related Content\n\nThere is no related content available.\n\n#### Related Headlines\n\n#### Related Press Clips\n\n#### Related Videos\n\n#### Related Photos\n\n### Statistics\n\nSeason:\n\n2019-20\n\n- [2016-17](javascript:void(0);)\n- [2017-18](javascript:void(0);)\n- [2018-19](javascript:void(0);)\n- [2019-20](javascript:void(0);)\n\n#### Season Statistics\n\n#### Season Statistics\n\nNo statistics available for this season.\n\n#### Career Statistics\n\nThere are no statistics available for this player.\n\n### Historical Player Information\n\n- 4\n\n\n\n\n\n2016-17Freshman\n\n\n\nForward\n\n\n\n6'4\"\n215 lbs\n\n\n\n\n\n4\n\n- 4\n\n\n\n\n\n2017-18Sophomore\n\n\n\nForward\n\n\n\n6'4\"\n215 lbs\n\n\n\n\n\n4\n\n- 4\n\n\n\n\n\n2018-19Junior\n\n\n\nForward\n\n\n\n6'4\"\n215 lbs\n\n\n\n\n\n4\n\n- 4\n\n\n\n\n\n2019-20Senior\n\n\n\nForward\n\n\n\n6'4\"\n215 lbs\n\n\n\n\n\n4\n\n\n![Site logo](https://lemoynedolphins.com/images/logos/site/site.png?width=48)\n\nAd Blocker Detected\n\nThanks for visiting !\n\nThe use of software that blocks ads hinders our ability to serve you the content you came here to enjoy.\n\nWe ask that you consider turning off your ad blocker so we can deliver you the best experience possible while you are here.\n\nThank you for your support!\n\n[Learn More About Ad Blockers](http://www.sidearmsports.com/blockers)\n\nClose",
+        "publishedAt": "2022-10-05T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:32:31.810Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjtxshkp04rlrmtbi0cguqkl",
+        "person": "汤姆·布朗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxshkp04rlrmtbi0cguqkl",
+          "objectLabel": "Tom Brown Park"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.98,
+        "reason": "Tom Brown Park is a municipal park page, not evidence for the AI researcher Tom Brown. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjtxshkp04rlrmtbi0cguqkl",
+        "personId": "cmjtxcjfw00045p08hrhp2m4t",
+        "person": "汤姆·布朗",
+        "sourceType": "exa",
+        "url": "https://www.talgov.com/parks/parks-tombrown",
+        "urlHash": "5355782d65fe3e801bd197c7af5b462b",
+        "contentHash": "830933e781bcf87036f294e838f2c657",
+        "title": "Tom Brown Park",
+        "text": "![](https://www.talgov.com/Uploads//Uploads/Public/Images/Banners/header2.jpg)\n\n![](https://www.talgov.com/Uploads//Uploads/Public/Images/Banners/header2.jpg)\n\n| |\n| --- |\n| ### Tom Brown Park![Tom Brown Park Playground](https://www.talgov.com/uploads/public/images/parks/parks/tombrown.jpg) **Hours of Operation**: Sunrise to Sunset Located in the eastern part of Tallahassee, just east of Capital Circle SE between Mahan Drive and Apalachee Parkway, sits a huge park with everything you could want to do in it. This is the City of Tallahassee's premier place to play, with numerous baseball and softball fields, tennis courts, and wide open spaces Tom Brown Park also hosts many of Tallahassee's special events, including the 4th of July Fireworks Show. Large special events are held here periodically, so you will be sure to frequent this park quite a lot. The park was dedicated on January 30, 1977 and named after Thomas Irvin Brown, Jr., a coach for Leon High School (1944-1946). He was also a coach for the Babe Ruth League for 20 years and a Leon County Commissioner for 14 years. His time, efforts and energies touched the lives of many of our leading young citizens. Tom Brown played the game of sports by giving it his all! - [Tom Brown Park Map](https://www.talgov.com/Uploads/Public/Documents/parks/parks/tombrownpermit.pdf) (PDF) - [Disc Golf](https://www.talgov.com/parks/sports-discgolf.aspx) - [Take a glance at the Magnolia Mountain Bike Trail](https://www.talgov.com/Uploads/Public/Documents/parks/parks/magnoliatrail.pdf) (PDF) - [See the Lafayette Passage Paddling Trail](https://www.talgov.com/parks/parks-lafayette.aspx) - [Check out the trails available at City parks](https://www.talgov.com/Uploads/Public/Documents/parks/parks/trails.pdf)(PDF) |\n\n| | |\n| --- | --- |\n| ![Loading...](https://www.talgov.com/Integrations/Centralpoint/Resources/ProgressIcon.gif) | Loading... |",
+        "publishedAt": null,
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:32:30.073Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "residual-delete:cmjtxpy950424rmtb6fucjm3a",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpy950424rmtb6fucjm3a",
+          "objectLabel": "Attention Is All You Need"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.86,
+        "reason": "This RawPoolItem is only an arXiv reCAPTCHA bad capture. Better keep replacements for the same paper already exist for Ashish Vaswani, including Google Research, NeurIPS, arXiv abs, and papers.nips sources. No active card or People JSON dependency."
+      },
+      "raw": {
+        "id": "cmjtxpy950424rmtb6fucjm3a",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/html/1706.03762v7",
+        "urlHash": "7b358c1c1d34854066f1f10a67da12c9",
+        "contentHash": "805397657b7019e14ef58ef79ab2a09a",
+        "title": "Attention Is All You Need",
+        "text": "arXiv reCAPTCHA\n[![Cornell University](https://static.arxiv.org/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\n[We gratefully acknowledge support from\nthe Simons Foundation and member institutions.](https://confluence.cornell.edu/x/ALlRF)\n# [![arxiv logo](https://static.arxiv.org/images/arxiv-logo-one-color-white.svg)](https://arxiv.org/)",
+        "publishedAt": "2025-09-15T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:57.564Z",
+        "processed": false
+      }
+    }
+  ]
+}

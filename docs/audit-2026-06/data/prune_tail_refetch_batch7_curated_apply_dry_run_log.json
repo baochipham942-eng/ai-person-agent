@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-06-10T15:44:44.749Z",
+  "summary": {
+    "generatedAt": "2026-06-10T15:44:44.743Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch7_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch7_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH7_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 12,
+    "selectedSourceRows": 12,
+    "skippedRows": 11,
+    "existingRawPoolItems": 3,
+    "rawInserted": 9,
+    "rawUpdated": 3,
+    "keepAuditsInserted": 9,
+    "keepAuditsExisting": 3,
+    "byDecision": {
+      "augment_source": 6,
+      "replace_source": 6
+    },
+    "bySourceType": {
+      "paper": 1,
+      "official": 3,
+      "exa": 6,
+      "youtube": 1,
+      "podcast": 1
+    },
+    "topPeople": {
+      "桑达尔·皮查伊": 3,
+      "雅各布·乌什科雷特": 3,
+      "Arthur Mensch": 1,
+      "埃里克·霍维茨": 1,
+      "科拉伊·卡武克丘奥卢": 1,
+      "迈克·施罗普费尔": 1,
+      "阿希什·瓦斯瓦尼": 1,
+      "黄仁勋": 1
+    },
+    "topHosts": {
+      "bbc.com": 1,
+      "blog.google": 1,
+      "congress.gov": 1,
+      "csis.org": 1,
+      "learn.hms.harvard.edu": 1,
+      "live.worldbank.org": 1,
+      "podcasts.apple.com": 1,
+      "proceedings.neurips.cc": 1,
+      "ted.com": 1,
+      "tedai-sanfrancisco.ted.com": 1,
+      "viterbischool.usc.edu": 1,
+      "youtube.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 11
+    }
+  }
+}

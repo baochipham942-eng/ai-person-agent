@@ -1,0 +1,863 @@
+{
+  "generatedAt": "2026-06-10T20:29:07.472Z",
+  "summary": {
+    "generatedAt": "2026-06-10T20:29:07.471Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch24_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch24_curated_apply_post_verify_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH24_CURATED_APPLY_POST_VERIFY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 9,
+    "selectedSourceRows": 9,
+    "skippedRows": 12,
+    "existingRawPoolItems": 9,
+    "rawInserted": 0,
+    "rawUpdated": 9,
+    "keepAuditsInserted": 0,
+    "keepAuditsExisting": 9,
+    "byDecision": {
+      "replace_source": 5,
+      "augment_source": 4
+    },
+    "bySourceType": {
+      "exa": 3,
+      "official": 3,
+      "podcast": 1,
+      "youtube": 2
+    },
+    "topPeople": {
+      "Oriol Vinyals": 4,
+      "Noam Shazeer": 2,
+      "杰夫·迪恩": 2,
+      "Percy Liang": 1
+    },
+    "topHosts": {
+      "research.google": 2,
+      "youtube.com": 2,
+      "engineering.stanford.edu": 1,
+      "innovatorsunder35.com": 1,
+      "noamshazeer.com": 1,
+      "podcasts.apple.com": 1,
+      "technologyreview.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 12
+    }
+  },
+  "existing": [
+    {
+      "id": "a76dde11-b674-4570-8fb7-1c733c1bc12f",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "url": "https://research.google/people/noamshazeer",
+      "urlHash": "9f3ae3282c6da13ee5d8b8722d2862dca9188bbd347044445a0664f783a3216a",
+      "sourceType": "official",
+      "title": "Noam Shazeer",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "a84ac284-3127-4461-b919-5fd284835dad",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "url": "https://www.noamshazeer.com",
+      "urlHash": "6c3082c129f5cf91e6cebf183ab3e57ee382c0402a8f2788a06846114a9c5a42",
+      "sourceType": "exa",
+      "title": "Noam Shazeer | AI Scientist, Google Gemini Co-Lead",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "f3a37185-a426-4453-8424-010c3c3d15e0",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "url": "https://podcasts.apple.com/us/podcast/gemini-2-0-and-the-evolution-of-agentic-ai-with-oriol-vinyals/id1476316441?i=1000680164363",
+      "urlHash": "5d0c36287d04222ea721703227541947c8b69c46e79b2ca50e20fb5b6c91d907",
+      "sourceType": "podcast",
+      "title": "Gemini 2.0 and the Evolution o… - Google DeepMind: The Podcast - Apple Podcasts",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7ebb4974-662d-4484-873a-431eaaa885a8",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "url": "https://www.youtube.com/watch?v=78mEYaztGaw",
+      "urlHash": "f7b90a24ebcf4474aba357dceff7bfa008c649a82455d4319c55d636b92c6028",
+      "sourceType": "youtube",
+      "title": "Gemini 2.0 and the evolution of agentic AI | Oriol Vinyals",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "60343bed-1919-4136-b88a-27c27c4150dd",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "url": "https://www.innovatorsunder35.com/the-list/oriol-vinyals",
+      "urlHash": "84f8ad21c509ba14a52a391ff5620289616a10e6856bb27f4e421105f87d4d5d",
+      "sourceType": "exa",
+      "title": "Oriol Vinyals | Innovators Under 35",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "e017f22e-4dc5-4d44-8a64-19fcf9f44da1",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "url": "https://www.technologyreview.com/innovator/oriol-vinyals",
+      "urlHash": "cc4831c3d57807913b25d0c0a25a0c0f0bef34bd1bb126db8ced3635228d95f5",
+      "sourceType": "exa",
+      "title": "Oriol Vinyals | MIT Technology Review",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "dec0dca1-e0c0-4ad0-a81a-e4adc870df17",
+      "personId": "cmjtv3hfy000ii0041pbzgdg1",
+      "person": "Percy Liang",
+      "url": "https://engineering.stanford.edu/people/percy-liang",
+      "urlHash": "b144b85cac9b0333d11a5068826b05d10253fb5d4402d02f74fc70b440eef235",
+      "sourceType": "official",
+      "title": "Percy Liang | Stanford University School of Engineering",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "d32c086b-b2a3-46c2-a74a-42d223c02358",
+      "personId": "cmjtxdf96000a5p08z94252m2",
+      "person": "杰夫·迪恩",
+      "url": "https://www.youtube.com/watch?v=8hfpLa5wPGo",
+      "urlHash": "3f6749ae8e914391b19845fd1df70857d5ffc8b67219d8b21be58a135d606910",
+      "sourceType": "youtube",
+      "title": "Gemini co-leads on project origins and what's next",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "6d16e3ef-15ba-42ed-af29-682475e8ecb6",
+      "personId": "cmjtxdf96000a5p08z94252m2",
+      "person": "杰夫·迪恩",
+      "url": "https://research.google/people/jeff",
+      "urlHash": "46eaf75b4d9abf9f6ace0a454dd87a9e1c98a401938277d6859fc8cbd2db24f5",
+      "sourceType": "official",
+      "title": "Jeffrey Dean - Google Research",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmjtxhuti02cmrmtb2xtzhslb",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.noamshazeer.com",
+      "urlHash": "6c3082c129f5cf91e6cebf183ab3e57ee382c0402a8f2788a06846114a9c5a42",
+      "contentHash": "64c419991ed182ce4e029468da6dd207dcff410869afc5a01eee4236343a5125",
+      "sourceType": "exa",
+      "title": "Noam Shazeer | AI Scientist, Google Gemini Co-Lead",
+      "text": "Evidence quote: Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation Selection reason: 本人官方主页，明确列出其职位、贡献（如Transformer）及当前角色，权威性高。 Source preview: top of page Noam Shazeer Noam Shazeer Noam Shazeer About Noam Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation Sparsely-gated Mixture of Experts (2016) Mesh-Tensorflow (2018) - first practical system for training giant Transformers on supercomputers T5 (2019) Major contributor to Google’s LaMDA dialog system, a project led by Daniel De Freitas Shazeer started at Google in 2000, where he improved the search engine's spelling corrector. ... MiMo rationale: 原推文为泛泛祝贺，缺乏具体信息。候选中的本人官方主页（noamshazeer.com）是权威、可访问的来源，能直接证明其职位、贡献及与AI领域的关联，适合作为替换来源。 Evidence requirements: Source must name Noam Shazeer directly. | Source must support why \"Huge congrats to the team on an amazing model. Thousands of contributors. Billions of use cases. Feeling the AGI!\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Noam Shazeer Huge congrats the team amazing model. Thousands contributors. Billions use cases. Feeling official source | Noam Shazeer Huge congrats the team amazing model. Thousands contributors. Billions use cases. Feeling 谷歌 Character.ai evidence | Noam Shazeer Huge congrats the team amazing model. Thousands contributors. Billions use cases. Feeling interview transcript",
+      "selectedHost": "noamshazeer.com",
+      "reason": "本人官方主页，明确列出其职位、贡献（如Transformer）及当前角色，权威性高。",
+      "evidenceQuote": "Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxhuti02cmrmtb2xtzhslb",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:18:56.573Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/NoamShazeer/status/1991050754581541217",
+          "title": "Huge congrats to the team on an amazing model.  Thousands of contributors.  Billions of use cases.  Feeling the AGI!",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=泛泛而谈的祝贺推文，缺乏具体的技术见解或信息价值。.",
+          "evidenceRequirements": [
+            "Source must name Noam Shazeer directly.",
+            "Source must support why \"Huge congrats to the team on an amazing model. Thousands of contributors. Billions of use cases. Feeling the AGI!\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Noam Shazeer Huge congrats the team amazing model. Thousands contributors. Billions use cases. Feeling official source",
+            "Noam Shazeer Huge congrats the team amazing model. Thousands contributors. Billions use cases. Feeling 谷歌 Character.ai evidence",
+            "Noam Shazeer Huge congrats the team amazing model. Thousands contributors. Billions use cases. Feeling interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhuti02cmrmtb2xtzhslb",
+          "objectLabel": "Huge congrats to the team on an amazing model.  Thousands of contributors.  Billions of use cases.  Feeling the AGI!"
+        },
+        "selectedReason": "本人官方主页，明确列出其职位、贡献（如Transformer）及当前角色，权威性高。",
+        "evidenceQuote": "Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation",
+        "candidateAuthorityScore": 44,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxhy6e02dsrmtbo13pzhmi",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://research.google/people/noamshazeer",
+      "urlHash": "9f3ae3282c6da13ee5d8b8722d2862dca9188bbd347044445a0664f783a3216a",
+      "contentHash": "cd776ea8c5fe667e4a9e92dbb4abe95ec3b9c28868534b476eb56856e1b8857b",
+      "sourceType": "official",
+      "title": "Noam Shazeer",
+      "text": "Selection reason: 谷歌官方研究者页面，权威且直接证明其职位与贡献。 Source preview: Noam Shazeer Skip to main content Explore our many areas of focus Explore all research areas Applied AI & sciences Image 1: earth_AI_nav Earth AIImage 2: health_AI_nav Health AIImage 3: science_AI_nav Science AIImage 4: sustainability_crisis_resilience_nav Sustainability & crisis resilience Foundational ML & algorithms Image 5: algorithms_theory_nav Algorithms & theoryImage 6: information_retrieval_nav Information retrievalImage 7: machine_intelligence_nav Machine intelligenceImage 8: machine_perception_nav Machine perceptionImage 9: NLP_nav Natural language processing People, systems & quantum AI Image 10: human_computer_interaction_nav Human-computer interaction and visualizationImage 11:... MiMo rationale: 原始来源为无意义乱码，需替换。谷歌官方研究者页面权威且直接证明Noam Shazeer的职位与贡献，符合证据要求。其他候选来源要么权威性不足，要么缺乏直接证据。 Evidence requirements: Source must name Noam Shazeer directly. | Source must support why \"recent 7515. posts4 that%). strictly We match also your criteria enabled a\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Noam Shazeer recent 7515. posts4 that% strictly match also your criteria enabled official source | Noam Shazeer recent 7515. posts4 that% strictly match also your criteria enabled 谷歌 Character.ai evidence | Noam Shazeer recent 7515. posts4 that% strictly match also your criteria enabled interview transcript",
+      "selectedHost": "research.google",
+      "reason": "谷歌官方研究者页面，权威且直接证明其职位与贡献。",
+      "evidenceQuote": null,
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxhy6e02dsrmtbo13pzhmi",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:19:45.065Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/NoamShazeer/status/1881845901872001293",
+          "title": "recent  7515. posts4 that%). strictly We match also your criteria enabled a",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为无意义的乱码或抓取错误。.",
+          "evidenceRequirements": [
+            "Source must name Noam Shazeer directly.",
+            "Source must support why \"recent 7515. posts4 that%). strictly We match also your criteria enabled a\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Noam Shazeer recent 7515. posts4 that% strictly match also your criteria enabled official source",
+            "Noam Shazeer recent 7515. posts4 that% strictly match also your criteria enabled 谷歌 Character.ai evidence",
+            "Noam Shazeer recent 7515. posts4 that% strictly match also your criteria enabled interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhy6e02dsrmtbo13pzhmi",
+          "objectLabel": "recent  7515. posts4 that%). strictly We match also your criteria enabled a"
+        },
+        "selectedReason": "谷歌官方研究者页面，权威且直接证明其职位与贡献。",
+        "evidenceQuote": null,
+        "candidateAuthorityScore": 39,
+        "candidateAuthoritySignals": [
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju11xu60a8crmtb4wpwflaq",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.innovatorsunder35.com/the-list/oriol-vinyals",
+      "urlHash": "84f8ad21c509ba14a52a391ff5620289616a10e6856bb27f4e421105f87d4d5d",
+      "contentHash": "bd2403861941c3576aa001e8ef21b6313eee4fd0b2c9fe64efc59a713af01873",
+      "sourceType": "exa",
+      "title": "Oriol Vinyals | Innovators Under 35",
+      "text": "Evidence quote: When he was 15 years old, Oriol Vinyals became obsessed with StarCraft... Vinyals soon became the top-ranked player in Spain. “I almost knew the game would return later in my life,” he says. “I was fascinated by the artificial-intelligence problems it presents.” Selection reason: MIT Technology Review旗下权威奖项页面，内容与上一来源高度一致，提供额外佐证。 Source preview: MIT Tehnology Review Innovators Under 35 Language Photo of Oriol Vinyals Artificial intelligence & robotics Oriol Vinyals When he was 15 years old, Oriol Vinyals became obsessed with StarCraft, a video game in which three factions vie for control of the map—like chess if it were played not only with black and white pieces but also with red ones. Vinyals soon became the top-ranked player in Spain. “I almost knew the game would return later in my life,” he says. “I was fascinated by the artificial-intelligence problems it presents.” It was more than a decade before Vinyals’s premonition came to pass. While he was studying at UC Berkeley, he helped to create an AI bot that was able to play Sta... MiMo rationale: 原推文内容（“Game is far from over. GL HF”）被判定为低质游戏评论。候选来源中，MIT Technology Review及其奖项页面提供了权威背景，证明Oriol Vinyals早年对游戏（StarCraft）的痴迷及其对AI研究的启发，这为原推文提供了合理的上下文和关联性，可作为补强来源。其他来源要么缺乏具体证据，要么权威性不足。 Evidence requirements: Source must name Oriol Vinyals directly. | Source must support why \"Game is far from over. GL HF\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Oriol Vinyals Game far from over. official source | Oriol Vinyals Game far from over. 谷歌 Transformer evidence | Oriol Vinyals Game far from over. interview transcript",
+      "selectedHost": "innovatorsunder35.com",
+      "reason": "MIT Technology Review旗下权威奖项页面，内容与上一来源高度一致，提供额外佐证。",
+      "evidenceQuote": "When he was 15 years old, Oriol Vinyals became obsessed with StarCraft... Vinyals soon became the top-ranked player in Spain. “I almost knew the game would return later in my life,” he says. “I was fascinated by the artificial-intelligence problems it presents.”",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju11xu60a8crmtb4wpwflaq",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:21:38.885Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/OriolVinyalsML/status/1992625021408129185",
+          "title": "Game is far from over. GL HF",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为游戏相关评论，与AI/科技无关，低质。.",
+          "evidenceRequirements": [
+            "Source must name Oriol Vinyals directly.",
+            "Source must support why \"Game is far from over. GL HF\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Oriol Vinyals Game far from over. official source",
+            "Oriol Vinyals Game far from over. 谷歌 Transformer evidence",
+            "Oriol Vinyals Game far from over. interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju11xu60a8crmtb4wpwflaq",
+          "objectLabel": "Game is far from over. GL HF"
+        },
+        "selectedReason": "MIT Technology Review旗下权威奖项页面，内容与上一来源高度一致，提供额外佐证。",
+        "evidenceQuote": "When he was 15 years old, Oriol Vinyals became obsessed with StarCraft... Vinyals soon became the top-ranked player in Spain. “I almost knew the game would return later in my life,” he says. “I was fascinated by the artificial-intelligence problems it presents.”",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju11xu60a8crmtb4wpwflaq",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.technologyreview.com/innovator/oriol-vinyals",
+      "urlHash": "cc4831c3d57807913b25d0c0a25a0c0f0bef34bd1bb126db8ced3635228d95f5",
+      "contentHash": "06ff0108d44fb682ca4573a89ae400f008afc5ed11d962198d63ed20a3b78891",
+      "sourceType": "exa",
+      "title": "Oriol Vinyals | MIT Technology Review",
+      "text": "Evidence quote: When he was 15 years old, Oriol Vinyals became obsessed with StarCraft... Vinyals soon became the top-ranked player in Spain. “I almost knew the game would return later in my life,” he says. “I was fascinated by the artificial-intelligence problems it presents.” Selection reason: 权威媒体人物简介，明确提及Oriol Vinyals与游戏（StarCraft）的关联及其对AI研究的影响，可补强原推文背景。 Source preview: Skip to Content MIT Technology Review Featured Topics Newsletters Events Audio MIT Technology Review Featured Topics Newsletters Events Audio Pioneers Pushing the edge of science, these innovators are creating new approaches to tackling technology challenges. Age: : 33 Affiliation: : Google DeepMind Showing computers how to learn might seem like a game, but it’s also serious business. When he was 15 years old, Oriol Vinyals became obsessed with StarCraft, a video game in which three factions vie for control of the map—like chess if it were played not only with black and white pieces but also with red ones. Vinyals soon became the top-ranked player in Spain. “I almost knew the game would ret... MiMo rationale: 原推文内容（“Game is far from over. GL HF”）被判定为低质游戏评论。候选来源中，MIT Technology Review及其奖项页面提供了权威背景，证明Oriol Vinyals早年对游戏（StarCraft）的痴迷及其对AI研究的启发，这为原推文提供了合理的上下文和关联性，可作为补强来源。其他来源要么缺乏具体证据，要么权威性不足。 Evidence requirements: Source must name Oriol Vinyals directly. | Source must support why \"Game is far from over. GL HF\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Oriol Vinyals Game far from over. official source | Oriol Vinyals Game far from over. 谷歌 Transformer evidence | Oriol Vinyals Game far from over. interview transcript",
+      "selectedHost": "technologyreview.com",
+      "reason": "权威媒体人物简介，明确提及Oriol Vinyals与游戏（StarCraft）的关联及其对AI研究的影响，可补强原推文背景。",
+      "evidenceQuote": "When he was 15 years old, Oriol Vinyals became obsessed with StarCraft... Vinyals soon became the top-ranked player in Spain. “I almost knew the game would return later in my life,” he says. “I was fascinated by the artificial-intelligence problems it presents.”",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju11xu60a8crmtb4wpwflaq",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:21:38.885Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/OriolVinyalsML/status/1992625021408129185",
+          "title": "Game is far from over. GL HF",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为游戏相关评论，与AI/科技无关，低质。.",
+          "evidenceRequirements": [
+            "Source must name Oriol Vinyals directly.",
+            "Source must support why \"Game is far from over. GL HF\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Oriol Vinyals Game far from over. official source",
+            "Oriol Vinyals Game far from over. 谷歌 Transformer evidence",
+            "Oriol Vinyals Game far from over. interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju11xu60a8crmtb4wpwflaq",
+          "objectLabel": "Game is far from over. GL HF"
+        },
+        "selectedReason": "权威媒体人物简介，明确提及Oriol Vinyals与游戏（StarCraft）的关联及其对AI研究的影响，可补强原推文背景。",
+        "evidenceQuote": "When he was 15 years old, Oriol Vinyals became obsessed with StarCraft... Vinyals soon became the top-ranked player in Spain. “I almost knew the game would return later in my life,” he says. “I was fascinated by the artificial-intelligence problems it presents.”",
+        "candidateAuthorityScore": 53,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxwkt01rarmtb2f2beez5",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://podcasts.apple.com/us/podcast/gemini-2-0-and-the-evolution-of-agentic-ai-with-oriol-vinyals/id1476316441?i=1000680164363",
+      "urlHash": "5d0c36287d04222ea721703227541947c8b69c46e79b2ca50e20fb5b6c91d907",
+      "contentHash": "058984c1e433b6894a12dee3dca4d1536abcc63281b2fd7b7e98f829de6f5334",
+      "sourceType": "podcast",
+      "title": "Gemini 2.0 and the Evolution o… - Google DeepMind: The Podcast - Apple Podcasts",
+      "text": "Evidence quote: In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead. Selection reason: 官方播客描述明确指出Oriol Vinyals是Gemini的联合负责人，提供了权威的职位和贡献证明。 Source preview: Google DeepMind: The Podcast Gemini 2.0 and the Evolution of Agentic AI with Oriol Vinyals In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead. They discuss the evolution of agents from single-task models to more general-purpose models capable of broader applications, like Gemini. Vinyals guides Hannah through the two-step process behind multi modal models: pre-training (imitation learning) and post-training (reinforcement learning). They discuss the complexities of scaling and the importance of innovation in architecture and training processes. They close on a quick whirlwind tour of some of the new agentic capabilities recently released by Google ... MiMo rationale: 原始来源（推文）内容不匹配。候选来源中，维基百科和官方播客描述均明确、权威地证明了Oriol Vinyals作为Gemini技术负责人/联合负责人的角色，可作为补强来源，直接支持其与Gemini项目的关联。 Evidence requirements: Source must name Oriol Vinyals directly. | Source must support why \"//deepmind.google/models/gemini-diffusion/\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Oriol Vinyals official profile AI research | Oriol Vinyals //deepmind.google/models/gemini-diffusion/ official source | Oriol Vinyals //deepmind.google/models/gemini-diffusion/ 谷歌 Transformer evidence | Oriol Vinyals //deepmind.google/models/gemini-diffusion/ interview transcript",
+      "selectedHost": "podcasts.apple.com",
+      "reason": "官方播客描述明确指出Oriol Vinyals是Gemini的联合负责人，提供了权威的职位和贡献证明。",
+      "evidenceQuote": "In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvxwkt01rarmtb2f2beez5",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:20:17.066Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/OriolVinyalsML/status/1924952304324837469",
+          "title": "//deepmind.google/models/gemini-diffusion/",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容是关于DeepMind的Gemini扩散模型，而非Oriol Vinyals本人，属于机构内容。.",
+          "evidenceRequirements": [
+            "Source must name Oriol Vinyals directly.",
+            "Source must support why \"//deepmind.google/models/gemini-diffusion/\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Oriol Vinyals official profile AI research",
+            "Oriol Vinyals //deepmind.google/models/gemini-diffusion/ official source",
+            "Oriol Vinyals //deepmind.google/models/gemini-diffusion/ 谷歌 Transformer evidence",
+            "Oriol Vinyals //deepmind.google/models/gemini-diffusion/ interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxwkt01rarmtb2f2beez5",
+          "objectLabel": "//deepmind.google/models/gemini-diffusion/"
+        },
+        "selectedReason": "官方播客描述明确指出Oriol Vinyals是Gemini的联合负责人，提供了权威的职位和贡献证明。",
+        "evidenceQuote": "In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead.",
+        "candidateAuthorityScore": 29,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page",
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxtnh01pqrmtbcvs3xs5n",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.youtube.com/watch?v=78mEYaztGaw",
+      "urlHash": "f7b90a24ebcf4474aba357dceff7bfa008c649a82455d4319c55d636b92c6028",
+      "contentHash": "9d934cb48525f0375c1720777adf72477650e371cd2f4edddb986fa33e5cb784",
+      "sourceType": "youtube",
+      "title": "Gemini 2.0 and the evolution of agentic AI | Oriol Vinyals",
+      "text": "Evidence quote: In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead. They discuss the evolution of agents... Vinyals guides Hannah through the two-step process behind multi modal models: pre-training (imitation learning) and post-training (reinforcement learning). Selection reason: 官方播客视频，标题和描述明确提及Oriol Vinyals作为嘉宾，讨论Gemini的预训练和后训练过程，可作为权威补充来源。 Source preview: Gemini 2.0 and the evolution of agentic AI | Oriol Vinyals Google DeepMind 886000 subscribers 2177 likes Description 98261 views Posted: 12 Dec 2024 In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead. They discuss the evolution of agents from single-task models to more general-purpose models capable of broader applications, like Gemini. Vinyals guides Hannah through the two-step process behind multi modal models: pre-training (imitation learning) and post-training (reinforcement learning). They discuss the complexities of scaling and the importance of innovation in architecture and training processes. They close on a quick whirlwind tour of some of... MiMo rationale: 原始来源（推文）内容泛泛，未明确指向Oriol Vinyals本人。候选中的YouTube官方播客视频明确以Oriol Vinyals为嘉宾，讨论Gemini的预训练和后训练，可作为权威补充来源，增强人物与观点的关联性。 Evidence requirements: Source must name Oriol Vinyals directly. | Source must support why \"The secret behind Gemini 3? Simple: Improving pre-training & post-training 🤯 Pre-training: Contra the popular belief t...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular paper authors | Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular official source | Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular 谷歌 Transformer evidence | Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular interview transcript",
+      "selectedHost": "youtube.com",
+      "reason": "官方播客视频，标题和描述明确提及Oriol Vinyals作为嘉宾，讨论Gemini的预训练和后训练过程，可作为权威补充来源。",
+      "evidenceQuote": "In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead. They discuss the evolution of agents... Vinyals guides Hannah through the two-step process behind multi modal models: pre-training (imitation learning) and post-training (reinforcement learning).",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvxtnh01pqrmtbcvs3xs5n",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:22:04.585Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/OriolVinyalsML/status/1990854455802343680",
+          "title": "The secret behind Gemini 3? Simple: Improving pre-training & post-training 🤯 Pre-training: Contra the popular belief that scaling is over—which we discussed in our NeurIPS '25 talk with @ilyasut and @quocleix—the team delivered a drastic jump. The delta between 2.5 and 3.0 is as big as we've ever seen. No walls in sight! Post-training: Still a total greenfield. There's lots of room for algorithmic progress and improvement, and 3.0 hasn't been an exception, thanks to our stellar team. Congratulations to the whole team 💙💙💙",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容是关于Gemini 3的讨论，虽提及团队但未明确指向Oriol Vinyals本人，且信息较泛。.",
+          "evidenceRequirements": [
+            "Source must name Oriol Vinyals directly.",
+            "Source must support why \"The secret behind Gemini 3? Simple: Improving pre-training & post-training 🤯 Pre-training: Contra the popular belief t...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular paper authors",
+            "Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular official source",
+            "Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular 谷歌 Transformer evidence",
+            "Oriol Vinyals The secret behind Gemini Simple: Improving pre-training post-training Pre-training: Contra the popular interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxtnh01pqrmtbcvs3xs5n",
+          "objectLabel": "The secret behind Gemini 3? Simple: Improving pre-training & post-training 🤯 Pre-training: Contra the popular belief that scaling is over—which we discussed in our NeurIPS '25 talk with @ilyasut and @quocleix—the team delivered a drastic jump. The delta between 2.5 and 3.0 is as big as we've ever seen. No walls in sight! Post-training: Still a total greenfield. There's lots of room for algorithmic progress and improvement, and 3.0 hasn't been an exception, thanks to our stellar team. Congratulations to the whole team 💙💙💙"
+        },
+        "selectedReason": "官方播客视频，标题和描述明确提及Oriol Vinyals作为嘉宾，讨论Gemini的预训练和后训练过程，可作为权威补充来源。",
+        "evidenceQuote": "In this episode, Hannah is joined by Oriol Vinyals, VP of Drastic Research and Gemini co-lead. They discuss the evolution of agents... Vinyals guides Hannah through the two-step process behind multi modal models: pre-training (imitation learning) and post-training (reinforcement learning).",
+        "candidateAuthorityScore": 29,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page",
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxre701omrmtb5vgpc9t0",
+      "personId": "cmjtv3hfy000ii0041pbzgdg1",
+      "person": "Percy Liang",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://engineering.stanford.edu/people/percy-liang",
+      "urlHash": "b144b85cac9b0333d11a5068826b05d10253fb5d4402d02f74fc70b440eef235",
+      "contentHash": "e885f89c06c41a0823454eb3bdf68123e69ca6c81e9b23c874c74eec9a449edc",
+      "sourceType": "official",
+      "title": "Percy Liang | Stanford University School of Engineering",
+      "text": "Evidence quote: Percy Liang is an Associate Professor of Computer Science at Stanford University... and the director of the Center for Research on Foundation Models (CRFM). He is currently focused on making foundation models (in particular, language models) more accessible through open-source... Selection reason: 斯坦福大学官方工程学院页面，明确列出Percy Liang的职位、研究方向（包括开源基础模型），是权威的机构资料页。 Source preview: Skip to secondary navigation Stanford University (link is external) 100 Stanford Engineering 1925–2025. A Century of Discovery, Innovation, and Impact Main content start Professor of Computer Science and Senior Fellow at the Stanford Institute for Human-Centered AI Percy Liang Professor of Computer Science and Senior Fellow at the Stanford Institute for Human-Centered AI Percy Liang is an Associate Professor of Computer Science at Stanford University (B.S. from MIT, 2004; Ph.D. from UC Berkeley, 2011) and the director of the Center for Research on Foundation Models (CRFM). He is currently focused on making foundation models (in particular, language models) more accessible through open-sourc... MiMo rationale: 原始来源为一条简短的社交媒体评论，信息密度低。斯坦福大学官方工程学院页面提供了Percy Liang的权威身份、职位及其专注于开源基础模型的研究方向，能有效补强其与开源AI主张的关联，适合作为替换来源。 Evidence requirements: Source must name Percy Liang directly. | Source must support why \"Amazing work - congrats to the Olmo team! Look forward to the day when open-source is the default.\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Percy Liang Amazing work congrats the Olmo team! Look forward the day when open-source official source | Percy Liang Amazing work congrats the Olmo team! Look forward the day when open-source 斯坦福大学 大语言模型 evidence | Percy Liang Amazing work congrats the Olmo team! Look forward the day when open-source interview transcript",
+      "selectedHost": "engineering.stanford.edu",
+      "reason": "斯坦福大学官方工程学院页面，明确列出Percy Liang的职位、研究方向（包括开源基础模型），是权威的机构资料页。",
+      "evidenceQuote": "Percy Liang is an Associate Professor of Computer Science at Stanford University... and the director of the Center for Research on Foundation Models (CRFM). He is currently focused on making foundation models (in particular, language models) more accessible through open-source...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvxre701omrmtb5vgpc9t0",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:22:43.388Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/percyliang/status/1991545594482159619",
+          "title": "Amazing work - congrats to the Olmo team!  Look forward to the day when open-source is the default.",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=社交媒体简短评论，信息密度极低且缺乏主体确认。.",
+          "evidenceRequirements": [
+            "Source must name Percy Liang directly.",
+            "Source must support why \"Amazing work - congrats to the Olmo team! Look forward to the day when open-source is the default.\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Percy Liang Amazing work congrats the Olmo team! Look forward the day when open-source official source",
+            "Percy Liang Amazing work congrats the Olmo team! Look forward the day when open-source 斯坦福大学 大语言模型 evidence",
+            "Percy Liang Amazing work congrats the Olmo team! Look forward the day when open-source interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxre701omrmtb5vgpc9t0",
+          "objectLabel": "Amazing work - congrats to the Olmo team!  Look forward to the day when open-source is the default."
+        },
+        "selectedReason": "斯坦福大学官方工程学院页面，明确列出Percy Liang的职位、研究方向（包括开源基础模型），是权威的机构资料页。",
+        "evidenceQuote": "Percy Liang is an Associate Professor of Computer Science at Stanford University... and the director of the Center for Research on Foundation Models (CRFM). He is currently focused on making foundation models (in particular, language models) more accessible through open-source...",
+        "candidateAuthorityScore": 37,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju14h2p0auxrmtbtmre5qvz",
+      "personId": "cmjtxdf96000a5p08z94252m2",
+      "person": "杰夫·迪恩",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://research.google/people/jeff",
+      "urlHash": "46eaf75b4d9abf9f6ace0a454dd87a9e1c98a401938277d6859fc8cbd2db24f5",
+      "contentHash": "3aec18f978fecdf844172de350858ad52316249e0b0e30ff0ef83d5e0b06569b",
+      "sourceType": "official",
+      "title": "Jeffrey Dean - Google Research",
+      "text": "Evidence quote: I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research. Selection reason: 谷歌官方人物页面，明确杰夫·迪恩身份为谷歌首席科学家，专注于AI研究，可作为权威背景来源。 Source preview: Google Research Jeffrey Dean I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research. My areas of focus include machine learning and AI and applications of AI to problems that help billions of people in societally beneficial ways. I have a broad variety of interests, including machine learning, large-scale distributed systems, computer systems performance, compression techniques, information retrieval, application of machine learning to search and other related problems, microprocessor architecture, compiler optimizations, and the development of new products that organize information in new and interesting ways... MiMo rationale: 原始来源为推文，权威性不足。候选中谷歌官方研究页面能直接证明杰夫·迪恩的职位和AI研究背景，适合作为权威替换来源。其他来源未直接关联其个人贡献。 Evidence requirements: Source must name 杰夫·迪恩 directly. | Source must support why \"Continued progress on using AI for mathematical problem solving. Nice work, @CarinaLHong and team!\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 杰夫·迪恩 Continued progress using for mathematical problem solving. Nice work, @CarinaLHong and team! official source | 杰夫·迪恩 Continued progress using for mathematical problem solving. Nice work, @CarinaLHong and team! 谷歌 数字设备公司 evidence | 杰夫·迪恩 Continued progress using for mathematical problem solving. Nice work, @CarinaLHong and team! interview transcript",
+      "selectedHost": "research.google",
+      "reason": "谷歌官方人物页面，明确杰夫·迪恩身份为谷歌首席科学家，专注于AI研究，可作为权威背景来源。",
+      "evidenceQuote": "I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju14h2p0auxrmtbtmre5qvz",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:27:45.273Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/jeffdean/status/1998084670052040754",
+          "title": "Continued progress on using AI for mathematical problem solving.  Nice work, @CarinaLHong and team!",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容仅提及AI数学问题解决，未涉及杰夫·迪恩本人，属于泛泛而谈的转发。.",
+          "evidenceRequirements": [
+            "Source must name 杰夫·迪恩 directly.",
+            "Source must support why \"Continued progress on using AI for mathematical problem solving. Nice work, @CarinaLHong and team!\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "杰夫·迪恩 Continued progress using for mathematical problem solving. Nice work, @CarinaLHong and team! official source",
+            "杰夫·迪恩 Continued progress using for mathematical problem solving. Nice work, @CarinaLHong and team! 谷歌 数字设备公司 evidence",
+            "杰夫·迪恩 Continued progress using for mathematical problem solving. Nice work, @CarinaLHong and team! interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju14h2p0auxrmtbtmre5qvz",
+          "objectLabel": "Continued progress on using AI for mathematical problem solving.  Nice work, @CarinaLHong and team!"
+        },
+        "selectedReason": "谷歌官方人物页面，明确杰夫·迪恩身份为谷歌首席科学家，专注于AI研究，可作为权威背景来源。",
+        "evidenceQuote": "I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research.",
+        "candidateAuthorityScore": 16,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxolfo03svrmtbsgulcw59",
+      "personId": "cmjtxdf96000a5p08z94252m2",
+      "person": "杰夫·迪恩",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.youtube.com/watch?v=8hfpLa5wPGo",
+      "urlHash": "3f6749ae8e914391b19845fd1df70857d5ffc8b67219d8b21be58a135d606910",
+      "contentHash": "05b55afb7e63a15b6017c0a3e664cdb4672f2e1a4d66ee89e7ee5c018d8f6928",
+      "sourceType": "youtube",
+      "title": "Gemini co-leads on project origins and what's next",
+      "text": "Evidence quote: Logan Kilpatrick sat down at Gradient Canopy with four of the people who built it: Jeff Dean, Koray Kavukcuoglu, Noam Shazeer, and Oriol Vinyals. Selection reason: 视频标题和描述明确显示杰夫·迪恩作为Gemini项目联合负责人参与讨论，直接证明其领导角色。 Source preview: Gemini co-leads on project origins and what's next Google for Developers 2640000 subscribers 55 likes Description 768 views Posted: 29 May 2026 To mark the launch of Gemini 3.5 Flash, Logan Kilpatrick sat down at Gradient Canopy with four of the people who built it: Jeff Dean, Koray Kavukcuoglu, Noam Shazeer, and Oriol Vinyals. They talked about the origin of the Gemini project, the bet on a single unified model, why each Flash generation now outperforms the previous Pro, and what's coming next. Subscribe to Google for Developers → Speaker: Logan Kilpatrick, Jeff Dean, Koray Kavukcuoglu, Noam Shazeer, Oriol Vinyals Products Mentioned: Google AI, Gemini 2 comments Transcript: Even before we ... MiMo rationale: 原始来源（推文）过于泛泛，缺乏个人具体信息。候选来源中，官方资料页和明确提及杰夫·迪恩领导角色的视频可有效替换，提供权威且直接的证据。 Evidence requirements: Source must name 杰夫·迪恩 directly. | Source must support why \"A huge number of people from all across Google working on Gemini, software and hardware infrastructure, datacenter oper...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 杰夫·迪恩 huge number people from all across Google working Gemini, software and hardware official source | 杰夫·迪恩 huge number people from all across Google working Gemini, software and hardware 谷歌 数字设备公司 evidence | 杰夫·迪恩 huge number people from all across Google working Gemini, software and hardware interview transcript",
+      "selectedHost": "youtube.com",
+      "reason": "视频标题和描述明确显示杰夫·迪恩作为Gemini项目联合负责人参与讨论，直接证明其领导角色。",
+      "evidenceQuote": "Logan Kilpatrick sat down at Gradient Canopy with four of the people who built it: Jeff Dean, Koray Kavukcuoglu, Noam Shazeer, and Oriol Vinyals.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxolfo03svrmtbsgulcw59",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T20:27:12.014Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/JeffDean/status/1958526982020604250",
+          "title": "A huge number of people from all across Google working on Gemini, software and hardware infrastructure, datacenter operations, clean energy procurement and many other aspects all contribute mightly to this ongoing effort of delivering our AI models with the highest efficiency.",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=泛泛而谈谷歌团队的整体贡献，缺乏针对杰夫·迪恩个人的具体信息。.",
+          "evidenceRequirements": [
+            "Source must name 杰夫·迪恩 directly.",
+            "Source must support why \"A huge number of people from all across Google working on Gemini, software and hardware infrastructure, datacenter oper...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "杰夫·迪恩 huge number people from all across Google working Gemini, software and hardware official source",
+            "杰夫·迪恩 huge number people from all across Google working Gemini, software and hardware 谷歌 数字设备公司 evidence",
+            "杰夫·迪恩 huge number people from all across Google working Gemini, software and hardware interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxolfo03svrmtbsgulcw59",
+          "objectLabel": "A huge number of people from all across Google working on Gemini, software and hardware infrastructure, datacenter operations, clean energy procurement and many other aspects all contribute mightly to this ongoing effort of delivering our AI models with the highest efficiency."
+        },
+        "selectedReason": "视频标题和描述明确显示杰夫·迪恩作为Gemini项目联合负责人参与讨论，直接证明其领导角色。",
+        "evidenceQuote": "Logan Kilpatrick sat down at Gradient Canopy with four of the people who built it: Jeff Dean, Koray Kavukcuoglu, Noam Shazeer, and Oriol Vinyals.",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page",
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmju18gk80bmermtbf88ns0nb",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxt1o01permtb8bl47x1a",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju11ytn0a8mrmtbyb6a08r0",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxlwt6036prmtbbci85wby",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0pqnn0858rmtbo82pglwk",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju177j00ba9rmtbyg3sf6t5",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxphqx03zzrmtb1ysdu88f",
+      "personId": "cmjtxdvoh000d5p08r4ygmu04",
+      "person": "埃里克·霍维茨",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0ydra09idrmtb55d062e6",
+      "personId": "cmjtxe137000e5p08x4puluzz",
+      "person": "布莱恩·卡坦扎罗",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjwhht2s001b56p4lr954frr",
+      "personId": "cmjtwkgug0004opf3th1cmczu",
+      "person": "李开复",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0itqf0732rmtbx1lc790u",
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjwu2f69001ry6e2ux15thrh",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjwu2gpx001vy6e2vjrdtalc",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

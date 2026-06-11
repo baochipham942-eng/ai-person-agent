@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-10T08:43:54.740Z",
+  "planIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json",
+  "reviewIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json",
+  "people": [
+    {
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "expected": 5,
+      "actual": 5,
+      "missing": [],
+      "extra": []
+    },
+    {
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "expected": 3,
+      "actual": 3,
+      "missing": [],
+      "extra": []
+    },
+    {
+      "personId": "cmjtwkcw00002opf3k1hdzjor",
+      "person": "杨植麟",
+      "expected": 5,
+      "actual": 5,
+      "missing": [],
+      "extra": []
+    },
+    {
+      "personId": "cmjtwkkz70006opf3yblhugno",
+      "person": "闫俊杰",
+      "expected": 6,
+      "actual": 6,
+      "missing": [],
+      "extra": []
+    },
+    {
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "expected": 5,
+      "actual": 5,
+      "missing": [],
+      "extra": []
+    }
+  ],
+  "totalExpected": 24,
+  "totalActual": 24,
+  "mismatchedPeople": 0
+}

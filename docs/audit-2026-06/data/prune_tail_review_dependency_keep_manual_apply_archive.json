@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-06-10T21:49:05.733Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:49:05.733Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_review_dependency_keep_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_dependency_keep_manual_apply_archive.json",
+    "stage": "manual_prune_tail_review_dependency_keep_direct",
+    "decisions": 3,
+    "existingTargets": 3,
+    "missingTargets": 0,
+    "auditRowsInserted": 3,
+    "deleted": 0,
+    "byAction": {
+      "keep_raw_pool_item": 3
+    },
+    "byVerdict": {
+      "keep": 3
+    },
+    "byPerson": {
+      "Lukasz Kaiser": 1,
+      "Yann LeCun": 1,
+      "埃里克·霍维茨": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqpyn04bqrmtbkskudnf1",
+          "objectLabel": "Lukasz Kaiser lukaszkaiser"
+        },
+        "reason": "GitHub profile 正文抓取成功并直接命中 Lukasz Kaiser 及关键身份信号；该 RawPoolItem 当前用于人物展示来源，可保留为官方个人技术主页来源。"
+      },
+      "raw": {
+        "id": "cmjtxqpyn04bqrmtbkskudnf1",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "exa",
+        "url": "https://github.com/lukaszkaiser",
+        "urlHash": "c4f9a72da694688cdb1793e2e726f370",
+        "contentHash": "0aaf4fa6d086ca3134781fb57f4bfeee",
+        "title": "Lukasz Kaiser lukaszkaiser",
+        "text": "[Skip to content](https://github.com/lukaszkaiser#start-of-content)\n\nYou signed in with another tab or window. Reload to refresh your session.You signed out in another tab or window. Reload to refresh your session.You switched accounts on another tab or window. Reload to refresh your session.Dismiss alert\n\n{{ message }}\n\n![@lukaszkaiser](https://avatars.githubusercontent.com/u/684901?s=64&v=4)**lukaszkaiser** [Follow](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Flukaszkaiser)\n\nMore\n\n- [Overview](https://github.com/lukaszkaiser)\n- [Repositories](https://github.com/lukaszkaiser?tab=repositories)\n- [Projects](https://github.com/lukaszkaiser?tab=projects)\n- [Packages](https://github.com/lukaszkaiser?tab=packages)\n- [Stars](https://github.com/lukaszkaiser?tab=stars)\n\n![@lukaszkaiser](https://avatars.githubusercontent.com/u/684901?s=64&v=4)\n**lukaszkaiser**\n[Follow](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Flukaszkaiser)\n\n[![View lukaszkaiser's full-sized avatar](https://avatars.githubusercontent.com/u/684901?v=4)](https://avatars.githubusercontent.com/u/684901?v=4)\n\n# Lukasz Kaiser lukaszkaiser\n\n[Follow](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Flukaszkaiser)\n\n[624\\\nfollowers](https://github.com/lukaszkaiser?tab=followers)· [1\\\nfollowing](https://github.com/lukaszkaiser?tab=following)\n\n- OpenAI\n\n- San Francisco\n- [https://scholar.google.com/citations?user=JWmiQR0AAAAJ&hl=en](https://scholar.google.com/citations?user=JWmiQR0AAAAJ&hl=en)\n\n## [Achievements](https://github.com/lukaszkaiser?tab=achievements)\n\n[![Achievement: Arctic Code Vault Contributor](https://github.githubassets.com/assets/arctic-code-vault-contributor-default-df8d74122a06.png)](https://github.com/lukaszkaiser?achievement=arctic-code-vault-contributor&tab=achievements)[![Achievement: Pull Shark](https://github.githubassets.com/assets/pull-shark-default-498c279a747d.png)x2](https://github.com/lukaszkaiser?achievement=pull-shark&tab=achievements) [![Achievement: Starstruck](https://github.githubassets.com/assets/starstruck-default-b6610abad518.png)](https://github.com/lukaszkaiser?achievement=starstruck&tab=achievements)\n\n## [Achievements](https://github.com/lukaszkaiser?tab=achievements)\n\n[![Achievement: Arctic Code Vault Contributor](https://github.githubassets.com/assets/arctic-code-vault-contributor-default-df8d74122a06.png)](https://github.com/lukaszkaiser?achievement=arctic-code-vault-contributor&tab=achievements)[![Achievement: Pull Shark](https://github.githubassets.com/assets/pull-shark-default-498c279a747d.png)x2](https://github.com/lukaszkaiser?achievement=pull-shark&tab=achievements) [![Achievement: Starstruck](https://github.githubassets.com/assets/starstruck-default-b6610abad518.png)](https://github.com/lukaszkaiser?achievement=starstruck&tab=achievements)\n\nBlock or Report\n\n# Block or report lukaszkaiser\n\n**Block user**\n\nPrevent this user from interacting with your repositories and sending you notifications.\nLearn more about [blocking users](https://docs.github.com/articles/blocking-a-user-from-your-personal-account).\n\nYou must be logged in to block users.\n\nAdd an optional note:\n\nPlease don't include any personal information such as legal names or email addresses. Maximum 100 characters, markdown supported. This note will be visible to only you.\n\nBlock user\n\n**Report abuse**\n\nContact GitHub support about this user’s behavior.\nLearn more about [reporting abuse](https://docs.github.com/articles/reporting-abuse-or-spam).\n\n[Report abuse](https://github.com/contact/report-abuse?report=lukaszkaiser+%28user%29)\n\nMore\n\n- [Overview](https://github.com/lukaszkaiser)\n- [Repositories](https://github.com/lukaszkaiser?tab=repositories)\n- [Projects](https://github.com/lukaszkaiser?tab=projects)\n- [Packages](https://github.com/lukaszkaiser?tab=packages)\n- [Stars](https://github.com/lukaszkaiser?tab=stars)\n\n## Popular repositories Loading\n\n1. [NeuralGPU](https://github.com/lukaszkaiser/NeuralGPU) NeuralGPUPublic\n\n\n\nCode for the Neural GPU\n\n\n\n[48](https://github.com/lukaszkaiser/NeuralGPU/stargazers) [1](https://github.com/lukaszkaiser/NeuralGPU/forks)\n\n2. [models](https://github.com/lukaszkaiser/models) modelsPublic\n\n\n\nForked from [tensorflow/models](https://github.com/tensorflow/models)\n\n\n\nModels built with TensorFlow\n\n\n\nPython[7](https://github.com/lukaszkaiser/models/stargazers) [1](https://github.com/lukaszkaiser/models/forks)\n\n3. [transformer-language-model](https://github.com/lukaszkaiser/transformer-language-model) transformer-language-modelPublic\n\n\n\nForked from [MichalRyszardWojcik/transformer-language-model](https://github.com/MichalRyszardWojcik/transformer-language-model)\n\n\n\nA clean no-jargon mathematical definition of transforrmer language model with a Python implementation that focuses on clarity rather than efficiency.\n\n\n\nJupyter Notebook[4](https://github.com/lukaszkaiser/transformer-language-model/stargazers)\n\n4. [trax](https://github.com/lukaszkaiser/trax) traxPublic\n\n\n\nForked f",
+        "publishedAt": null,
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:31:07.632Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpbmt03yzrmtbqcpxjxvi",
+          "objectLabel": "Eric Horvitz, MD, PhD | PCAST | The White House"
+        },
+        "reason": "White House PCAST archived profile 正文抓取成功，直接命中 Eric Horvitz、PCAST 与 Microsoft 等身份信号；来源为官方政府归档页，可支撑其 AI 治理与社会影响相关卡片。"
+      },
+      "raw": {
+        "id": "cmjtxpbmt03yzrmtbqcpxjxvi",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "sourceType": "exa",
+        "url": "https://bidenwhitehouse.archives.gov/pcast/members/eric-horvitz/",
+        "urlHash": "955a2eb283c47ba0bdcd76e84b447755",
+        "contentHash": "5dd41efe56265feb2bd2d2c3f1cf10dc",
+        "title": "Eric Horvitz, MD, PhD | PCAST | The White House",
+        "text": "[Skip to content](https://bidenwhitehouse.archives.gov/pcast/members/eric-horvitz/#content)\n\nThis is historical material “frozen in time”. The website is no longer updated and links to external websites and some internal pages may not work.\n\nNavigate this Section\n\nSelectFrances Arnold, PhDArati Prabhakar, PhDMaria T. Zuber, PhDDan E. Arvizu, PhDDennis Assanis, PhDJohn Banovetz, PhDAshton Carter, PhD (1954-2022)Frances Colón, PhDLisa A. Cooper, MD, MPHJohn O. Dabiri, PhDWilliam Dally, PhDSue Desmond-Hellmann, MD, MPHInez Fung, ScDAndrea Goldsmith, PhDLaura H. Greene, PhDPaula Hammond, PhDEric Horvitz, MD, PhDJoe Kiani, MSEEJonathan Levin, PhDSteve Pacala, PhDSaul Perlmutter, PhDWilliam Press, PhDJennifer Richeson, PhDVicki Sato, PhDLisa T. Su, PhDKathryn Sullivan, PhDTerence Tao, PhDPhil Venables, MScCatherine Woteki, PhD\n\n![](https://bidenwhitehouse.archives.gov/wp-content/uploads/2021/08/Horvitz_fun-photo-2.jpeg)\n\nEric Horvitz, PhD, MD, is a computer scientist and a leading researcher in artificial intelligence (AI) and issues at the intersection of technology, people, and society – including the technical and societal challenges and opportunities presented by AI’s uses.\n\n- Served as President of the American Association for the Advancement of Intelligence (AAAI) and on advisory committees for the National Science Foundation, National Institutes of Health, DARPA, Office of Naval Research, and Allen Institute for AI.\n- Awarded the Feigenbaum Prize and the Allen Newell Award for advances in AI.\n- Influential contributions and leadership with fielding frontier technologies in biomedicine, transportation, aerospace, and computing systems and services.\n- Member of U.S. National Academy Engineering, American Academy of Arts and Sciences, American College of Medical Informatics, and American Philosophical Society.\n\n[Scroll to Top\\\nScroll to Top \\\nTop](https://bidenwhitehouse.archives.gov/pcast/members/eric-horvitz/#content)",
+        "publishedAt": null,
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:30:02.405Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtsvcil00003esttihbrsjm",
+        "person": "Yann LeCun",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvm7bt001jrmtbgwk42e92",
+          "objectLabel": "Meta chief AI scientist Yann LeCun plans to exit and launch own start-up"
+        },
+        "reason": "Financial Times 页面正文抓取成功，直接命中 Yann LeCun、Meta chief AI scientist 和 launch own start-up 等关键信息；作为可靠媒体来源可支撑相关人物卡片。"
+      },
+      "raw": {
+        "id": "cmjtvm7bt001jrmtbgwk42e92",
+        "personId": "cmjtsvcil00003esttihbrsjm",
+        "person": "Yann LeCun",
+        "sourceType": "exa",
+        "url": "https://on.ft.com/4p7I45C",
+        "urlHash": "103bf0af5e94ec2f27f3f5bdd3d30ae0",
+        "contentHash": "d8da66dbb22c77ef2e564e41ee7e393b",
+        "title": "Meta chief AI scientist Yann LeCun plans to exit and launch own start-up",
+        "text": "[Accessibility help](https://www.ft.com/accessibility) [Skip to navigation](https://on.ft.com/on.ft.com#site-navigation) [Skip to main content](https://on.ft.com/on.ft.com#site-content) [Skip to footer](https://on.ft.com/on.ft.com#site-footer)\n\n# > Meta chief AI scientist Yann LeCun plans to exit and launch own start-up\n\nSubscribe to unlock this article\n\n## Try unlimited access\n\nOnly $1 for 4 weeks\n\nThen $75 per month. Complete digital access to quality FT journalism on any device. Cancel anytime during your trial.\n\n[Keep reading for $1](https://www.ft.com/buy/offer/41218b9e-c8ae-c934-43ad-71b13fcb4465?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de) What’s included\n\n- Global news & analysis\n- Expert opinion\n- FT App on Android & iOS\n- First FT: the day’s biggest stories\n- 20+ curated newsletters\n- Follow topics & set alerts with myFT\n- FT Videos & Podcasts\n- 10 additional monthly gift articles to share\n- Lex: FT’s flagship investment column\n- 15+ Premium newsletters from leading experts\n- FT Digital Edition: our digitised print edition\n\n## Explore more offers.\n\n### Standard Digital\n\n$45 per month\n\nEssential digital access to quality FT journalism on any device. Pay a year upfront and save 20%.\n\n[Select](https://www.ft.com/buy/offer/c8ad55e6-ba74-fea0-f9da-a4546ae2ee23?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de) What's included\n\n- Global news & analysis\n- Expert opinion\n- FT App on Android & iOS\n- FT Edit: Access on iOS and web\n- FirstFT: the day's biggest stories\n- 20+ curated newsletters\n- Follow topics & set alerts with myFT\n- FT Videos & Podcasts\n- 10 monthly gift articles to share\n\n### Premium Digital\n\n$75 per month\n\nComplete digital access to quality FT journalism with expert analysis from industry leaders. Pay a year upfront and save 20%.\n\n[Select](https://www.ft.com/buy/offer/713f1e28-0bc5-8261-f1e6-eebab6f7600e?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de) What's included\n\n- Global news & analysis\n- Expert opinion\n- FT App on Android & iOS\n- FT Edit: Access on iOS and web\n- FirstFT: the day's biggest stories\n- 20+ curated newsletters\n- Follow topics & set alerts with myFT\n- FT Videos & Podcasts\n- 20 monthly gift articles to share\n- Lex: FT's flagship investment column\n- 15+ Premium newsletters by leading experts\n- FT Digital Edition: our digitised print edition\n\n### Premium & FT Weekend Print\n\n$79 per month\n\nFT Weekend newspaper delivered Saturday plus complete digital access.\n\n[Select](https://www.ft.com/buy/offer/bb616920-4f40-ec2f-a476-7abe0d3af4a0?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de) What's included\n\n- FT Weekend Print delivery\n- Plus\n- Everything in **Premium Digital**\n\nCheck whether you already have access via your [university](https://find-your-subscription.ft.com/?segmentId=a0e9a794-4c6d-bb35-e4dc-8bd409e0f54f&ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de) or [organisation.](https://subs.enterprise.ft.com/en-gb/licence-finder/?segmentId=9fb23d7d-afe4-12f3-3eaa-ff7a41e9d073&ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de)\n\n[Terms & Conditions](https://help.ft.com/legal-privacy/terms-and-conditions/) apply\n\n## Explore our full range of subscriptions.\n\n### For individuals\n\nDiscover all the plans currently available in your country\n\n[Digital](https://subs.ft.com/spa3_digital_v2?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de) [Print](https://subs.ft.com/spa3_uk3m?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de) [Print + Digital](https://subs.ft.com/bundleoptions?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de)\n\n### For multiple readers\n\nDigital access for organisations. Includes exclusive features and content.\n\n[FT Professional](https://professional.ft.com/en-gb/services/professional-subscriptions/?segmentId=8ac1f4a9-6888-8ffa-13aa-f337ac9a4e03&ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de)\n\n## Why the FT?\n\nSee why over a million readers pay to read the Financial Times.\n\n[Find out why](https://subs.ft.com/whytheft?ft-content-uuid=c586eb77-a16e-4363-ab0b-e877898b70de)\n\nClose side navigation menu\n\nSearch the FTSearch\n\n[Subscribe for full access](https://on.ft.com/products?segmentId=4526c036-7527-ab37-9a29-0b0403fa0b5f)",
+        "publishedAt": "2025-11-10T16:00:00.000Z",
+        "metadata": {
+          "author": "Hannah Murphy, George Hammond, Stephen Morris, Melissa Heikkilä",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:31:37.626Z",
+        "processed": false
+      }
+    }
+  ]
+}

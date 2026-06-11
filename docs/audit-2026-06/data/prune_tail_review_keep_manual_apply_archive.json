@@ -1,0 +1,164 @@
+{
+  "generatedAt": "2026-06-10T21:43:44.170Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:43:44.170Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_review_keep_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_keep_manual_apply_archive.json",
+    "stage": "manual_prune_tail_review_keep_direct",
+    "decisions": 4,
+    "existingTargets": 4,
+    "missingTargets": 0,
+    "auditRowsInserted": 4,
+    "deleted": 0,
+    "byAction": {
+      "keep_raw_pool_item": 4
+    },
+    "byVerdict": {
+      "keep": 4
+    },
+    "byPerson": {
+      "Chris Olah": 2,
+      "Noam Shazeer": 1,
+      "朱军": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmju1c75r0ccprmtbeafm5dml",
+        "person": "Noam Shazeer",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1hiap0d9hrmtbffp301xg",
+          "objectLabel": "Character.AI CEO Noam Shazeer returns to Google"
+        },
+        "reason": "TechCrunch 正文抓取成功且直接命中 Noam Shazeer，标题和正文均支持其 Character.AI CEO 身份及返回 Google 事件；适合作为人物页直接来源。"
+      },
+      "raw": {
+        "id": "cmju1hiap0d9hrmtbffp301xg",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "sourceType": "exa",
+        "url": "https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/",
+        "urlHash": "56a4bfa5cf3acd99678c34b87bd82f4e",
+        "contentHash": "3816d7862d30d9d59ea2e543d432ce21",
+        "title": "Character.AI CEO Noam Shazeer returns to Google",
+        "text": "Character.AI CEO Noam Shazeer returns to Google | TechCrunch\n[![](https://techcrunch.com/wp-content/uploads/2024/09/tc-lockup.svg)TechCrunch Desktop Logo](https://techcrunch.com)[![](https://techcrunch.com/wp-content/uploads/2024/09/tc-logo-mobile.svg)TechCrunch Mobile Logo](https://techcrunch.com)\nSearch\nSubmit\n* Site Search Toggle\nMega Menu Toggle\n### Topics\n[Latest](https://techcrunch.com/latest/)\n[AI](https://techcrunch.com/category/artificial-intelligence/)\n[Amazon](https://techcrunch.com/tag/amazon/)\n[Apps](https://techcrunch.com/category/apps/)\n[Biotech &amp; Health](https://techcrunch.com/category/biotech-health/)\n[Climate](https://techcrunch.com/category/climate/)\n[Cloud Computing](https://techcrunch.com/tag/cloud-computing/)\n[Commerce](https://techcrunch.com/category/commerce/)\n[Crypto](https://techcrunch.com/category/cryptocurrency/)\n[Enterprise](https://techcrunch.com/category/enterprise/)\n[EVs](https://techcrunch.com/tag/evs/)\n[Fintech](https://techcrunch.com/category/fintech/)\n[Fundraising](https://techcrunch.com/category/fundraising/)\n[Gadgets](https://techcrunch.com/category/gadgets/)\n[Gaming](https://techcrunch.com/category/gaming/)\n[Google](https://techcrunch.com/tag/google/)\n[Government &amp; Policy](https://techcrunch.com/category/government-policy/)\n[Hardware](https://techcrunch.com/category/hardware/)\n[Instagram](https://techcrunch.com/tag/instagram/)\n[Layoffs](https://techcrunch.com/tag/layoffs/)\n[Media &amp; Entertainment](https://techcrunch.com/category/media-entertainment/)\n[Meta](https://techcrunch.com/tag/meta/)\n[Microsoft](https://techcrunch.com/tag/microsoft/)\n[Privacy](https://techcrunch.com/category/privacy/)\n[Robotics](https://techcrunch.com/category/robotics/)\n[Security](https://techcrunch.com/category/security/)\n[Social](https://techcrunch.com/category/social/)\n[Space](https://techcrunch.com/category/space/)\n[Startups](https://techcrunch.com/category/startups/)\n[TikTok](https://techcrunch.com/tag/tiktok/)\n[Transportation](https://techcrunch.com/category/transportation/)\n[Venture](https://techcrunch.com/category/venture/)\n### More from TechCrunch\n[Staff](https://techcrunch.com/about-techcrunch/)\n[Events](https://techcrunch.com/events/)\n[Startup Battlefield](https://techcrunch.com/startup-battlefield/)\n[StrictlyVC](https://strictlyvc.com/)\n[Newsletters](https://techcrunch.com/newsletters/)\n[Podcasts](https://techcrunch.com/podcasts/)\n[Videos](https://techcrunch.com/video/)\n[Partner Content](https://techcrunch.com/sponsored/)\n[TechCrunch Brand Studio](https://techcrunch.com/brand-studio/)\n[Crunchboard](https://www.crunchboard.com/)\n[Contact Us](https://techcrunch.com/contact-us/)\n![Noam Shazeer](https://techcrunch.com/wp-content/uploads/2024/08/Noam-Shazeer.jpg?w=1024)**Image Credits:**Winni Wintermeyer for The Washington Post / Getty Images\n[AI](https://techcrunch.com/category/artificial-intelligence/)\n[](https://www.facebook.com/sharer.php?u=https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/)[](https://twitter.com/intent/tweet?url=https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/&#038;text=Character.AI+CEO+Noam+Shazeer+returns+to+Google&#038;via=techcrunch)[](https://www.linkedin.com/shareArticle?url=https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/&#038;title=Character.AI+CEO+Noam+Shazeer+returns+to+Google&#038;summary=In+a+big+move,+Character.AI+co-founder+and+CEO+Noam+Shazeer+is+returning+to+Google+after+leaving+the+company+in+October+2021+to+found+the+a16z-backed+chatbot+startup.+In+his+previous+stint,+Shazeer+spearheaded+the+team+of+researchers+that+built LaMDA (Language+Model+for+Dialogue+Applications),+a+language+model+that was+used+for+conversational+AI+tools.+Character.AI+co-founder+Daniel+[…]&#038;mini=1&#038;source=TechCrunch)[](https://www.reddit.com/submit?url=https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/&#038;title=Character.AI+CEO+Noam+Shazeer+returns+to+Google)[](mailto:?subject=Character.AI+CEO+Noam+Shazeer+returns+to+Google&#038;body=Article:+https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/)[](https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/)\n# Character.AI CEO Noam Shazeer returns to Google\n[Ivan Mehta](https://techcrunch.com/author/ivan-mehta/)\n10:52 AM PDT ·August 2, 2024\n[](https://www.facebook.com/sharer.php?u=https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/)[](https://twitter.com/intent/tweet?url=https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/&#038;text=Character.AI+CEO+Noam+Shazeer+returns+to+Google&#038;via=techcrunch)[](https://www.linkedin.com/shareArticle?url=https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/&#038;title=Character.AI+CEO+Noam+Shazeer+returns+to+Google&#038;summary=In+a+big+move,+Character.AI+co-founder+and+CEO+Noam+Shazeer+is+retur",
+        "publishedAt": "2024-08-01T16:00:00.000Z",
+        "metadata": {
+          "author": "Ivan Mehta",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:54:44.288Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmg9p03bwrmtbe515a3n7",
+          "objectLabel": "In-context Learning and Induction Heads"
+        },
+        "reason": "Transformer Circuits 文章正文抓取成功并直接命中 Chris Olah，来源为研究项目原文，可支持其可解释性研究与代表作品关系。"
+      },
+      "raw": {
+        "id": "cmjtxmg9p03bwrmtbe515a3n7",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "exa",
+        "url": "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html",
+        "urlHash": "7656867a194afe25db894cf1f5791f5b",
+        "contentHash": "dc78360e61d5488966d4027d317a0edc",
+        "title": "In-context Learning and Induction Heads",
+        "text": "In-context Learning and Induction Heads\n[](https://anthropic.com)[Transformer Circuits Thread](https://transformer-circuits.pub/)\n# In-context Learning and Induction Heads\n### Authors\nCatherine Olsson∗,[Nelson Elhage∗](https://nelhage.com/),[Neel Nanda∗](https://www.neelnanda.io/),Nicholas Joseph†,Nova DasSarma†,Tom Henighan†,[Ben Mann†](https://benjmann.net/),Amanda Askell,Yuntao Bai,Anna Chen,Tom Conerly,Dawn Drain,Deep Ganguli,[Zac Hatfield-Dodds](https://zhd.dev),Danny Hernandez,Scott Johnston,Andy Jones,Jackson Kernion,Liane Lovitt,Kamal Ndousse,Dario Amodei,Tom Brown,Jack Clark,Jared Kaplan,Sam McCandlish,[Chris Olah‡](https://colah.github.io/)\n### Affiliation\n[Anthropic](https://www.anthropic.com/)\n### Published\nMar 8, 2022\n\\* Core Research Contributor;† Core Infrastructure Contributor;‡ Correspondence to[colah@anthropic.com](colah@anthropic.com);[Author contributions statement below](#author-contributions).\nAs Transformer generative models continue to scale and gain increasing real world use, addressing their associated safety problems becomes increasingly important.Mechanistic interpretability– attempting to reverse engineer the detailed computations performed by the model –offers one possible avenue for addressing these safety issues. If we can understand the internal structures that cause Transformer models to produce the outputs they do, then we may be able to address current safety problems more systematically, as well as anticipating safety problems in future more powerful models.Note thatmechanistic interpretabilityis a subset of the broader field ofinterpretability, which encompasses many different methods for explaining the outputs of a neural network. Mechanistic interpretability is distinguished by a specific focus on trying to systematically characterize the internal circuitry of a neural net.\nIn the past, mechanistic interpretability has largely focused on CNN vision models, but recently, we[presented](https://transformer-circuits.pub/2021/framework/index.html)some very preliminary progress on mechanistic interpretability for Transformer language models​​. Specifically, in our prior work we developed a mathematical framework for decomposing the operations of transformers, which allowed us to make sense of small (1 and 2 layer attention-only) models and give a near-complete account of how they function. Perhaps the most interesting finding was theinduction head, a circuit whose function is to look back over the sequence for previous instances of the current token (call it`A`), find the token that came after it last time (call it`B`), and then predict that the same completion will occur again (e.g. forming the sequence`[A][B] …[A] →[B]`). In other words, induction heads “complete the pattern” by copying and completing sequences that have occurred before. Mechanically, induction heads in our models are implemented by a circuit of two attention heads: the first head is a “previous token head” which copies information from the previous token into the next token, while the second head (the actual “induction head”) uses that information to find tokens preceded by the present token. For 2-layer attention-only models,Note that induction heads don’t occur in 1 layer models, because they require a composition of attention heads in different layers.we were able to show precisely that induction heads implement this pattern copying behavior and appear to be the primary source of in-context learning.\nUltimately, however, our goal is to reverse-engineer frontier language models (which often contain hundreds of layers and billions or trillions of parameters), not merely 2-layer attention-only models. Unfortunately, both the presence of many layers, and the presence of MLPs, makes it much more difficult to mathematically pin down the precise circuitry of these models. However, a different approach is possible: by empirically observing, perturbing, and studying the learning process and the formation of various structures, we can try to assemble anindirectcase for what might be happening mechanistically inside the network. This is somewhat similar to how a neuroscientist might gain understanding of how part of the brain functions by looking at neural development over time, studying patients with an injury to that part of the brain, perturbing brain function in animals, or looking at a select small number of relevant neurons.\nIn this paper, we take the first preliminary steps towards building such an indirect case. In particular, we present preliminary and indirect evidence for a tantalizing hypothesis:that induction heads might constitute the mechanism for the actual majority of all in-context learning in large transformer models. Specifically, the thesis is that there are circuits which have the same or similar mechanism to the 2-layer induction heads and which perform a “fuzzy” or “nearest neighbor” version of pattern completion, completing`[A\\*][B\\*] …[A] →[B]`, where`A\\* ≈A`and`B\\* ≈B`are similar in so",
+        "publishedAt": "2022-03-07T16:00:00.000Z",
+        "metadata": {
+          "author": "Catherine Olsson∗,",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:27:48.446Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmc0703bgrmtbcgjsy7fj",
+          "objectLabel": "Christopher Olah - ACL Anthology"
+        },
+        "reason": "ACL Anthology 作者页正文抓取成功并直接命中 Christopher Olah，能支持其论文作者身份与学术作品索引。"
+      },
+      "raw": {
+        "id": "cmjtxmc0703bgrmtbcgjsy7fj",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "exa",
+        "url": "https://aclanthology.org/people/c/christopher-olah/",
+        "urlHash": "60d8239006b5226bccf9da8c481a332d",
+        "contentHash": "d6a5bd0e8121d4caa49f17489d2dd0fd",
+        "title": "Christopher Olah - ACL Anthology",
+        "text": "## ChristopherOlah\n\n* * *\n\n#### 2023\n\n[pdf](https://aclanthology.org/2023.findings-acl.847.pdf) [bib](https://aclanthology.org/2023.findings-acl.847.bib) [abs](https://aclanthology.org/people/c/christopher-olah/#abstract-2023--findings-acl--847)\n\n**[Discovering Language Model Behaviors with Model-Written Evaluations](https://aclanthology.org/2023.findings-acl.847/)**\n\n[Ethan Perez](https://aclanthology.org/people/e/ethan-perez/)\n\\|\n[Sam Ringer](https://aclanthology.org/people/s/sam-ringer/)\n\\|\n[Kamile Lukosiute](https://aclanthology.org/people/k/kamile-lukosiute/)\n\\|\n[Karina Nguyen](https://aclanthology.org/people/k/karina-nguyen/)\n\\|\n[Edwin Chen](https://aclanthology.org/people/e/edwin-chen/)\n\\|\n[Scott Heiner](https://aclanthology.org/people/s/scott-heiner/)\n\\|\n[Craig Pettit](https://aclanthology.org/people/c/craig-pettit/)\n\\|\n[Catherine Olsson](https://aclanthology.org/people/c/catherine-olsson/)\n\\|\n[Sandipan Kundu](https://aclanthology.org/people/s/sandipan-kundu/)\n\\|\n[Saurav Kadavath](https://aclanthology.org/people/s/saurav-kadavath/)\n\\|\n[Andy Jones](https://aclanthology.org/people/a/andy-jones/)\n\\|\n[Anna Chen](https://aclanthology.org/people/a/anna-chen/)\n\\|\n[Benjamin Mann](https://aclanthology.org/people/b/benjamin-mann/)\n\\|\n[Brian Israel](https://aclanthology.org/people/b/brian-israel/)\n\\|\n[Bryan Seethor](https://aclanthology.org/people/b/bryan-seethor/)\n\\|\n[Cameron McKinnon](https://aclanthology.org/people/c/cameron-mckinnon/)\n\\|\n[Christopher Olah](https://aclanthology.org/people/c/christopher-olah/)\n\\|\n[Da Yan](https://aclanthology.org/people/d/da-yan/)\n\\|\n[Daniela Amodei](https://aclanthology.org/people/d/daniela-amodei/)\n\\|\n[Dario Amodei](https://aclanthology.org/people/d/dario-amodei/)\n\\|\n[Dawn Drain](https://aclanthology.org/people/d/dawn-drain/)\n\\|\n[Dustin Li](https://aclanthology.org/people/d/dustin-li/)\n\\|\n[Eli Tran-Johnson](https://aclanthology.org/people/e/eli-tran-johnson/)\n\\|\n[Guro Khundadze](https://aclanthology.org/people/g/guro-khundadze/)\n\\|\n[Jackson Kernion](https://aclanthology.org/people/j/jackson-kernion/)\n\\|\n[James Landis](https://aclanthology.org/people/j/james-landis/)\n\\|\n[Jamie Kerr](https://aclanthology.org/people/j/jamie-kerr/)\n\\|\n[Jared Mueller](https://aclanthology.org/people/j/jared-mueller/)\n\\|\n[Jeeyoon Hyun](https://aclanthology.org/people/j/jeeyoon-hyun/)\n\\|\n[Joshua Landau](https://aclanthology.org/people/j/joshua-landau/)\n\\|\n[Kamal Ndousse](https://aclanthology.org/people/k/kamal-ndousse/)\n\\|\n[Landon Goldberg](https://aclanthology.org/people/l/landon-goldberg/)\n\\|\n[Liane Lovitt](https://aclanthology.org/people/l/liane-lovitt/)\n\\|\n[Martin Lucas](https://aclanthology.org/people/m/martin-lucas/)\n\\|\n[Michael Sellitto](https://aclanthology.org/people/m/michael-sellitto/)\n\\|\n[Miranda Zhang](https://aclanthology.org/people/m/miranda-zhang/)\n\\|\n[Neerav Kingsland](https://aclanthology.org/people/n/neerav-kingsland/)\n\\|\n[Nelson Elhage](https://aclanthology.org/people/n/nelson-elhage/)\n\\|\n[Nicholas Joseph](https://aclanthology.org/people/n/nicholas-joseph/)\n\\|\n[Noemi Mercado](https://aclanthology.org/people/n/noemi-mercado/)\n\\|\n[Nova DasSarma](https://aclanthology.org/people/n/nova-dassarma/)\n\\|\n[Oliver Rausch](https://aclanthology.org/people/o/oliver-rausch/)\n\\|\n[Robin Larson](https://aclanthology.org/people/r/robin-larson/)\n\\|\n[Sam McCandlish](https://aclanthology.org/people/s/sam-mccandlish/)\n\\|\n[Scott Johnston](https://aclanthology.org/people/s/scott-johnston/)\n\\|\n[Shauna Kravec](https://aclanthology.org/people/s/shauna-kravec/)\n\\|\n[Sheer El Showk](https://aclanthology.org/people/s/sheer-el-showk/)\n\\|\n[Tamera Lanham](https://aclanthology.org/people/t/tamera-lanham/)\n\\|\n[Timothy Telleen-Lawton](https://aclanthology.org/people/t/timothy-telleen-lawton/)\n\\|\n[Tom Brown](https://aclanthology.org/people/t/tom-brown/)\n\\|\n[Tom Henighan](https://aclanthology.org/people/t/tom-henighan/)\n\\|\n[Tristan Hume](https://aclanthology.org/people/t/tristan-hume/)\n\\|\n[Yuntao Bai](https://aclanthology.org/people/y/yuntao-bai/)\n\\|\n[Zac Hatfield-Dodds](https://aclanthology.org/people/z/zac-hatfield-dodds/)\n\\|\n[Jack Clark](https://aclanthology.org/people/j/jack-clark/)\n\\|\n[Samuel R. Bowman](https://aclanthology.org/people/s/samuel-bowman/)\n\\|\n[Amanda Askell](https://aclanthology.org/people/a/amanda-askell/)\n\\|\n[Roger Grosse](https://aclanthology.org/people/r/roger-grosse/)\n\\|\n[Danny Hernandez](https://aclanthology.org/people/d/danny-hernandez/)\n\\|\n[Deep Ganguli](https://aclanthology.org/people/d/deep-ganguli/)\n\\|\n[Evan Hubinger](https://aclanthology.org/people/e/evan-hubinger/)\n\\|\n[Nicholas Schiefer](https://aclanthology.org/people/n/nicholas-schiefer/)\n\\|\n[Jared Kaplan](https://aclanthology.org/people/j/jared-kaplan/)\n\n[Findings of the Association for Computational Linguistics: ACL 2023](https://aclanthology.org/volumes/2023.findings-acl/)\n\nAs language models (LMs) scale, they develop many novel behaviors, good and bad, exacerbating the need to evaluate how they behave. Prior work creates evaluati",
+        "publishedAt": "2025-05-08T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:27:42.919Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxc5rk00025p08vck9van4",
+        "person": "朱军",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxjf5802q8rmtb01uhbllu",
+          "objectLabel": "朱军| 香港中文大学（深圳）理工学院"
+        },
+        "reason": "香港中文大学（深圳）理工学院官方教师页正文抓取成功并直接命中朱军，能支持其任职信息和人物身份。"
+      },
+      "raw": {
+        "id": "cmjtxjf5802q8rmtb01uhbllu",
+        "personId": "cmjtwkuo5000bopf37qiylene",
+        "person": "朱军",
+        "sourceType": "exa",
+        "url": "http://sse.cuhk.edu.cn/faculty/zhujun",
+        "urlHash": "0857c011e73100e2061b121cd133d24b",
+        "contentHash": "9d88ebc1a3ea0887236978bb98198c39",
+        "title": "朱军| 香港中文大学（深圳）理工学院",
+        "text": "朱军 | 香港中文大学（深圳）理工学院搜索[**](javascript:void(0))\n[![](http://sse.cuhk.edu.cn/sites/default/files/styles/crop_freeform/public/2024-07/%E5%AD%A6%E9%99%A2logo120.png?itok=ZwqEtyWz)![](http://sse.cuhk.edu.cn/sites/default/files/styles/crop_freeform/public/2024-07/%E5%AD%A6%E9%99%A2logo120.png?itok=ZwqEtyWz)](http://sse.cuhk.edu.cn/)\n[**搜索](javascript:void(0);)\n搜索[**返回主站](https://www.cuhk.edu.cn/)\n**[English](http://sse.cuhk.edu.cn/en/faculty/zhujun)\n### * [学院概况**](http://sse.cuhk.edu.cn/node/411)\n* [学院简介](http://sse.cuhk.edu.cn/page/25)\n* [院长致辞](http://sse.cuhk.edu.cn/page/24)\n* [学院手册](http://sse.cuhk.edu.cn/sites/default/files/2025-05/%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2_%E6%8B%9B%E7%94%9F%E6%89%8B%E5%86%8C_202505.pdf)\n* [学院视频](http://sse.cuhk.edu.cn/taxonomy/term/52)\n* [联系我们](http://sse.cuhk.edu.cn/page/26)\n* [学院资讯**](http://sse.cuhk.edu.cn/taxonomy/term/1)\n* [学院新闻](http://sse.cuhk.edu.cn/taxonomy/term/1)\n* [学院简报](http://sse.cuhk.edu.cn/taxonomy/term/184)\n* [“师说”教授专访](http://sse.cuhk.edu.cn/taxonomy/term/202)\n* [最新公告](http://sse.cuhk.edu.cn/taxonomy/term/3)\n* [教育教学**](http://sse.cuhk.edu.cn/node/412)\n* **[本科专业](http://sse.cuhk.edu.cn/Undergraduateprogrammes)\n* [数学与应用数学](http://sse.cuhk.edu.cn/page/538)\n* [物理学](http://sse.cuhk.edu.cn/page/1009)\n* [化学](http://sse.cuhk.edu.cn/page/802)\n* [材料科学与工程](http://sse.cuhk.edu.cn/page/962)\n* [新能源科学与工程](http://sse.cuhk.edu.cn/page/537)\n* [电子与计算机工程](http://sse.cuhk.edu.cn/page/539)\n* [金融工程（与经管学院、数据科学学院联合开办）](http://sse.cuhk.edu.cn/page/423)\n* [香港中文大学特别交流学习计划](http://sse.cuhk.edu.cn/page/2004)\n* [双主修项目](http://sse.cuhk.edu.cn/page/1732)\n* [哥伦比亚大学工程学院3+2直硕项目（哥大班）](http://sse.cuhk.edu.cn/page/1970)\n* [本硕连读精英班（翔龙鸣凤班）](http://sse.cuhk.edu.cn/page/1668)\n* [直硕计划](http://sse.cuhk.edu.cn/page/1669)\n* [直博班](http://sse.cuhk.edu.cn/page/1666)\n* [教务Q&amp;A](http://sse.cuhk.edu.cn/page/37)\n* **[理学硕士项目](http://sse.cuhk.edu.cn/Masterprogrammes)\n* [通信工程理学硕士](https://ssemsc.cuhk.edu.cn/node/35)\n* [计算机与信息工程理学硕士](https://ssemsc.cuhk.edu.cn/node/98)\n* [集成电路与系统理学硕士](https://ssemsc.cuhk.edu.cn/node/88)\n* [金融数学理学硕士](https://ssemsc.cuhk.edu.cn/node/89)\n* [人工智能（科学应用）理学硕士](https://ssemsc.cuhk.edu.cn/node/215)\n* [人工智能与机器人理学硕士](https://ssemsc.cuhk.edu.cn/node/99)\n* [供应链与物流管理高级管理人员硕士（兼读制）](https://emscsclm.cuhk.edu.cn)\n* **[研究型硕博项目](http://sse.cuhk.edu.cn/PhDprogrammes)\n* [数学](http://sse.cuhk.edu.cn/page/757)\n* [物理学](http://sse.cuhk.edu.cn/page/991)\n* [化学](http://sse.cuhk.edu.cn/page/1700)\n* [材料科学与工程](http://sse.cuhk.edu.cn/page/748)\n* [能源科学与工程](http://sse.cuhk.edu.cn/page/931)\n* [计算机与信息工程](http://sse.cuhk.edu.cn/page/749)\n* [生物医学工程](http://sse.cuhk.edu.cn/page/1323)\n* 师资力量**\n* [教职人员](http://sse.cuhk.edu.cn/teacher-search)\n* [研究人员](http://sse.cuhk.edu.cn/taxonomy/term/158)\n* 学术科研**\n* [科研领域](http://sse.cuhk.edu.cn/page/30)\n* [实验室](http://sse.cuhk.edu.cn/page/laboratories)\n* [科研速递](http://sse.cuhk.edu.cn/taxonomy/term/188)\n* **[学术活动](http://sse.cuhk.edu.cn/taxonomy/term/192)\n* [翔龙鸣凤科学论坛](http://sse.cuhk.edu.cn/taxonomy/term/192)\n* [活动预告](http://sse.cuhk.edu.cn/taxonomy/term/66)\n* [活动回顾](http://sse.cuhk.edu.cn/taxonomy/term/172)\n* [材料表征与制备中心](https://mcpc.cuhk.edu.cn/)\n* [理工学生**](http://sse.cuhk.edu.cn/taxonomy/term/203)\n* [学生活动](http://sse.cuhk.edu.cn/taxonomy/term/203)\n* [学生成就](http://sse.cuhk.edu.cn/taxonomy/term/159)\n* [学生风采](http://sse.cuhk.edu.cn/taxonomy/term/160)\n* [学生社团](http://sse.cuhk.edu.cn/page/1599)\n* **[创新作坊](http://sse.cuhk.edu.cn/page/430)\n* [关于我们](http://sse.cuhk.edu.cn/page/1134)\n* [设备列表](http://sse.cuhk.edu.cn/page/1135)\n* [创意点子](http://sse.cuhk.edu.cn/page/1139)\n* 职业发展**\n* [关于我们](http://sse.cuhk.edu.cn/page/434)\n* [职业手册]()\n* **[国际合作与交流](http://sse.cuhk.edu.cn/page/34)\n* [交流交换项目](https://oal.cuhk.edu.cn/exchange_visiting_program)\n* [联合培养项目](http://sse.cuhk.edu.cn/page/38)\n* **[升学与就业活动](http://sse.cuhk.edu.cn/taxonomy/term/163)\n* [最新动态](http://sse.cuhk.edu.cn/taxonomy/term/163)\n* [行业分享](http://sse.cuhk.edu.cn/taxonomy/term/162)\n* [求职工作坊](http://sse.cuhk.edu.cn/taxonomy/term/164)\n* [升学工作坊](http://sse.cuhk.edu.cn/taxonomy/term/165)\n* [升学就业咨询平台](https://apply.cuhk.edu.cn/matrix-base/rs/plan/SSECD)\n* [校友录](http://sse.cuhk.edu.cn/taxonomy/term/166)\n* [人才招聘](https://www.cuhk.edu.cn/zh-hans/taxonomy/term/45)\n* **[学院概况](http://sse.cuhk.edu.cn/node/411)\n* [学院简介](http://sse.cuhk.edu.cn/page/25)\n* [院长致辞](http://sse.cuhk.edu.cn/page/24)\n* [学院手册](http://sse.cuhk.edu.cn/sites/default/files/2025-05/%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2_%E6%8B%9B%E7%94%9F%E6%89%8B%E5%86%8C_202505.pdf)\n* [学院视频](http://sse.cuhk.edu.cn/taxonomy/term/52)\n* [联系我们](http://sse.cuhk.edu.cn/page/26)\n* **[学院资讯](http://sse.cuhk.edu.cn/taxonomy/term/1)\n* [学院新闻](http://sse.cuhk.edu.cn/taxonomy/term/1)\n* [学院简报](http://sse.cuhk.edu.cn/taxonomy/term/184)\n* [“师说”教授专访](http://sse.cuhk.edu.cn/taxonomy/term/202)\n* [最新公告](http://sse.cuhk.edu.cn/taxonomy/term/3)\n* **[教育教学](http://sse.cuhk.edu.cn/node/412)\n**\n* [本科专业](http://sse.cuhk.edu.cn/Undergraduateprogrammes)\n* [数学与应用数学](http://sse.cuhk.edu.cn/page/538)\n* [物理学](http://sse.cuhk.edu.cn/page/1",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:25:27.020Z",
+        "processed": false
+      }
+    }
+  ]
+}

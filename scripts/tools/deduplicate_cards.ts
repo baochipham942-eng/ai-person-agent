@@ -7,11 +7,11 @@ async function main() {
     console.log('Starting Learning Card deduplication...');
 
     const people = await prisma.people.findMany();
-    let totalDeleted = 0;
+    let totalArchived = 0;
 
     for (const p of people) {
         const cards = await prisma.card.findMany({
-            where: { personId: p.id },
+            where: { personId: p.id, isActive: true },
             orderBy: { createdAt: 'desc' } // Keep newest? Or oldest? Maybe newest is better.
         });
 
@@ -34,15 +34,16 @@ async function main() {
         }
 
         if (toDeleteIds.length > 0) {
-            await prisma.card.deleteMany({
-                where: { id: { in: toDeleteIds } }
+            await prisma.card.updateMany({
+                where: { id: { in: toDeleteIds }, isActive: true },
+                data: { isActive: false, archivedAt: new Date() }
             });
-            console.log(`[${p.name}] Deleted ${toDeleteIds.length} duplicate cards.`);
-            totalDeleted += toDeleteIds.length;
+            console.log(`[${p.name}] Archived ${toDeleteIds.length} duplicate cards.`);
+            totalArchived += toDeleteIds.length;
         }
     }
 
-    console.log(`\nCard deduplication complete. Deleted ${totalDeleted} items.`);
+    console.log(`\nCard deduplication complete. Archived ${totalArchived} items.`);
 }
 
 main()

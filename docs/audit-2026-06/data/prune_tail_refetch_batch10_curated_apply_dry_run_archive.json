@@ -1,0 +1,912 @@
+{
+  "generatedAt": "2026-06-10T16:40:22.725Z",
+  "summary": {
+    "generatedAt": "2026-06-10T16:40:22.724Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch10_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch10_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH10_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 11,
+    "selectedSourceRows": 11,
+    "skippedRows": 9,
+    "existingRawPoolItems": 4,
+    "rawInserted": 7,
+    "rawUpdated": 4,
+    "keepAuditsInserted": 7,
+    "keepAuditsExisting": 4,
+    "byDecision": {
+      "replace_source": 8,
+      "augment_source": 3
+    },
+    "bySourceType": {
+      "exa": 8,
+      "official": 3
+    },
+    "topPeople": {
+      "黄仁勋": 3,
+      "唐杰": 2,
+      "埃里克·霍维茨": 2,
+      "朱军": 1,
+      "李开复": 1,
+      "李莲": 1,
+      "雅各布·乌什科雷特": 1
+    },
+    "topHosts": {
+      "cs.tsinghua.edu.cn": 1,
+      "erichorvitz.com": 1,
+      "goldmansachs.com": 1,
+      "hkforum.com": 1,
+      "lilianweng.github.io": 1,
+      "m.36kr.com": 1,
+      "microsoft.com": 1,
+      "ted.com": 1,
+      "troweprice.com": 1,
+      "tsinghua.edu.cn": 1,
+      "wired.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 9
+    }
+  },
+  "existing": [
+    {
+      "id": "d4045413-07fb-40c8-b9b9-b6ed00c7e020",
+      "personId": "cmjtwksri000aopf3xzym5sx8",
+      "person": "唐杰",
+      "url": "https://m.36kr.com/p/2670785766946564",
+      "urlHash": "2cf6bdacaf8ced45e5f22f8ea066ac2865047485052824b48eb7af360bf6ba6b",
+      "sourceType": "exa",
+      "title": "清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果-36氪",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7033bc7c-d385-4a67-ba5f-827f89b164af",
+      "personId": "cmjtwksri000aopf3xzym5sx8",
+      "person": "唐杰",
+      "url": "https://www.tsinghua.edu.cn/info/1177/108799.htm",
+      "urlHash": "ca906c060dc83220eee5dfc45f4c73e16f996cefa23657e0f355b620ec852341",
+      "sourceType": "official",
+      "title": "计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ...",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "cd189ff0-ce2f-46f4-a12f-9111cea669ea",
+      "personId": "cmjtwkuo5000bopf37qiylene",
+      "person": "朱军",
+      "url": "https://www.cs.tsinghua.edu.cn/info/1121/3551.htm",
+      "urlHash": "bde32fc862a33eaea72feec84c0c762625123cd223ec17f2d785abf0e989b207",
+      "sourceType": "official",
+      "title": "朱军 - 清华大学计算机科学与技术系",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "26124463-67b0-4f5c-a18a-7b951378ca8e",
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "url": "https://www.ted.com/talks/jakob_uszkoreit_how_ai_sidesteps_traditional_science",
+      "urlHash": "a5c8f1c891861aa842ead3e155fb69db83f73ba369e3d3d7e6c9fa4859e3f0db",
+      "sourceType": "exa",
+      "title": "How AI sidesteps traditional science",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmjtxvedc04tprmtba9e8k9cq",
+      "personId": "cmjtwksri000aopf3xzym5sx8",
+      "person": "唐杰",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://m.36kr.com/p/2670785766946564",
+      "urlHash": "2cf6bdacaf8ced45e5f22f8ea066ac2865047485052824b48eb7af360bf6ba6b",
+      "contentHash": "b48cf4bf9a500143776637607c709151abbd941802e3c82d2353a697e441e3b9",
+      "sourceType": "exa",
+      "title": "清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果-36氪",
+      "text": "Evidence quote: “2024年，从GPT到GPT Zero会是重大的阶段性成果，我们相信这一天会在不久的未来到来。” 在2月29日举行的2024中关村论坛系列活动——第二届北京人工智能产业创新发展大会上，清华大学基础大模型研究中心主任、清华大学计算机系WeBank讲席教授唐杰发表了演讲，并对大模型在2024年的发展给出了自己的判断。 Selection reason: 标题与原始声明完全一致，内容为唐杰在2024中关村论坛的演讲实录，明确支持其观点。 Source preview: 清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果 “2024年，从GPT到GPT Zero会是重大的阶段性成果，我们相信这一天会在不久的未来到来。” 在2月29日举行的2024中关村论坛系列活动——第二届北京人工智能产业创新发展大会上，清华大学基础大模型研究中心主任、清华大学计算机系WeBank讲席教授唐杰发表了演讲，并对大模型在2024年的发展给出了自己的判断。 唐杰在中国人工智能领域的重要性无需多言，在OpenAI的文生视频模型Sora震惊全球后，包括「甲子光年」在内的很多在场观众都很期待，作为国产大模型研究先驱学者的唐杰，对Sora有什么看法，对未来又有怎样的判断？ 唐杰认为Sora“可能是目前为止最好的文本到视频生成模型”，而针对由Scaling Law（规模法则）产生的智能涌现，他回应了两个当下颇具争议的问题： 在他看来，2023年是大模型的实践应用落地之年，今年更多的大模型将开始全面面向AGI，“我非常坚信2024年将开启AGI元年。” 以下为唐杰演讲实录，原标题为《ChatGLM：从大模型到AGI的一点思考》，经「甲子光年」整理，有删改。 1.从“算法之战”到“大模型落地应用之战” 今天我带来的题目是《ChatGLM：从大模型到AGI的一点思考》。我们在清华大学各位老师和学校领导的支持下，成立了“人工智能基础模型研究中心”。我今天报告里讲到的几乎所有模型和算法都开源了。‍ 刚才也有很多学者和产业界的朋友都提到了OpenAI，OpenAI确实引领了整个大模型的发展，其中有一个非常重要的时间节点，也是国际上比较公认的“大模型元年”——2020年，GPT... MiMo rationale: 候选来源中，36氪的文章标题与原始声明完全一致，且内容为唐杰在2024中关村论坛的演讲实录，明确支持其观点，是权威、可访问的媒体来源，可直接替换原始来源。其他来源要么观点不完全匹配，要么权威性不足，或未直接支持原始声明。 Evidence requirements: Source must name 唐杰 directly. | Source must support why \"清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 唐杰 清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果 official source | 唐杰 清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果 清华大学、智谱AI 大语言模型 evidence | 唐杰 清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果 interview transcript",
+      "selectedHost": "m.36kr.com",
+      "reason": "标题与原始声明完全一致，内容为唐杰在2024中关村论坛的演讲实录，明确支持其观点。",
+      "evidenceQuote": "“2024年，从GPT到GPT Zero会是重大的阶段性成果，我们相信这一天会在不久的未来到来。” 在2月29日举行的2024中关村论坛系列活动——第二届北京人工智能产业创新发展大会上，清华大学基础大模型研究中心主任、清华大学计算机系WeBank讲席教授唐杰发表了演讲，并对大模型在2024年的发展给出了自己的判断。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxvedc04tprmtba9e8k9cq",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:26:28.314Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.jazzyear.com/article_info.html?id=1228",
+          "title": "清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题高度相关且确认是目标人物，但正文抓取内容仅为登录注册界面信息。.",
+          "evidenceRequirements": [
+            "Source must name 唐杰 directly.",
+            "Source must support why \"清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "唐杰 清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果 official source",
+            "唐杰 清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果 清华大学、智谱AI 大语言模型 evidence",
+            "唐杰 清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxvedc04tprmtba9e8k9cq",
+          "objectLabel": "清华大学唐杰：从GPT到GPT Zero会是今年重大阶段性成果"
+        },
+        "selectedReason": "标题与原始声明完全一致，内容为唐杰在2024中关村论坛的演讲实录，明确支持其观点。",
+        "evidenceQuote": "“2024年，从GPT到GPT Zero会是重大的阶段性成果，我们相信这一天会在不久的未来到来。” 在2月29日举行的2024中关村论坛系列活动——第二届北京人工智能产业创新发展大会上，清华大学基础大模型研究中心主任、清华大学计算机系WeBank讲席教授唐杰发表了演讲，并对大模型在2024年的发展给出了自己的判断。",
+        "candidateAuthorityScore": 53,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxvezl04trrmtb3bbr1qji",
+      "personId": "cmjtwksri000aopf3xzym5sx8",
+      "person": "唐杰",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.tsinghua.edu.cn/info/1177/108799.htm",
+      "urlHash": "ca906c060dc83220eee5dfc45f4c73e16f996cefa23657e0f355b620ec852341",
+      "contentHash": "0134ef4747fc5c57faec2a2c2edb3c1e5426ac72716107b4d6b40844bf070fde",
+      "sourceType": "official",
+      "title": "计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ...",
+      "text": "Evidence quote: 清华大学计算机系教授唐杰受邀作题为“生成式人工智能大模型的现状和未来”的专题报告。 Selection reason: 清华大学官方新闻页面，直接证明唐杰教授在清华做客荷声讲坛并阐释生成式人工智能大模型，内容权威且完整。 Source preview: 清华主页 清华新闻 综合时讯 正文 计算机系教授唐杰做客荷声讲坛 阐释生成式人工智能大模型的现状和未来 清华大学新闻网12月18日电（记者 徐子越 摄影 张玉光）12月7日下午，由清华大学校机关党委主办的“荷声讲坛”系列报告会第五十讲在一教举行，清华大学计算机系教授唐杰受邀作题为“生成式人工智能大模型的现状和未来”的专题报告。校机关党委常务副书记孙海涛主持报告会。 唐杰作专题报告 唐杰围绕大模型发展历程、解密大模型、通用人工智能未来趋势三方面内容，结合实际研究情况，对生成式人工智能大模型的现状和未来进行了系统阐释。他梳理了人工智能的发展脉络并表示，预训练大模型是新一代人工智能应用的基础设施，通用能力强，可完成多场景任务，具备从单模态向多模态发展、从文本向视觉发展的趋势。 随后，唐杰进一步介绍了人工智能发展的三个阶段，即让计算机把人类的知识描述出来，实现知识的可搜索性的“符号AI”阶段；数据驱动的统计学习法初步实现针对文本、图像、语音等的感知与识别，实现知识的可计算性的“感知智能”阶段；机器认知实现自动学习认知目标，实现“认知”的可计算性的“认知智能”阶段。唐杰还介绍了带领团队进行算法创新，设计GLM系列模型，并在斯坦福大学大模型中心报告的世界主流大模型评测中，作为亚洲唯一入选模型在准确性、恶意性方面与GPT-3持平，鲁棒性和校准误差在所有模型中表现最佳的情况。 讲座现场 主题报告后，唐杰与现场师生进行了交流互动，回答了大家提出的问题。来自校机关党委各党支部的200余名党员和部分教职工参加学习。 编辑：徐子越 审核：刘蔚如 郭玲 2023年12月18日 16:28:03 相关新... MiMo rationale: 原始来源（tsinghua.edu.cn）虽被标记为正文信息缺失，但其标题和预览已明确包含关键信息（人物、事件、主题），且为清华大学官方域名，权威性高。候选中无其他来源能更直接、权威地证明该事件。因此，选择原始来源作为替换，其内容足以支持声明。 Evidence requirements: Source must name 唐杰 directly. | Source must support why \"计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 唐杰 计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ... official source | 唐杰 计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ... 清华大学、智谱AI 大语言模型 evidence | 唐杰 计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ... interview transcript",
+      "selectedHost": "tsinghua.edu.cn",
+      "reason": "清华大学官方新闻页面，直接证明唐杰教授在清华做客荷声讲坛并阐释生成式人工智能大模型，内容权威且完整。",
+      "evidenceQuote": "清华大学计算机系教授唐杰受邀作题为“生成式人工智能大模型的现状和未来”的专题报告。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxvezl04trrmtb3bbr1qji",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:26:56.290Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.tsinghua.edu.cn/info/1177/108799.htm",
+          "title": "计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ...",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=确认是目标人物在清华的讲座，但抓取内容大部分为网页导航，正文信息缺失。.",
+          "evidenceRequirements": [
+            "Source must name 唐杰 directly.",
+            "Source must support why \"计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "唐杰 计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ... official source",
+            "唐杰 计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ... 清华大学、智谱AI 大语言模型 evidence",
+            "唐杰 计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ... interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxvezl04trrmtb3bbr1qji",
+          "objectLabel": "计算机系教授唐杰做客荷声讲坛阐释生成式人工智能大模型 ..."
+        },
+        "selectedReason": "清华大学官方新闻页面，直接证明唐杰教授在清华做客荷声讲坛并阐释生成式人工智能大模型，内容权威且完整。",
+        "evidenceQuote": "清华大学计算机系教授唐杰受邀作题为“生成式人工智能大模型的现状和未来”的专题报告。",
+        "candidateAuthorityScore": 35,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxpfzy03znrmtb0aft6do7",
+      "personId": "cmjtxdvoh000d5p08r4ygmu04",
+      "person": "埃里克·霍维茨",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://erichorvitz.com/AAAI_Presidential_Lecture_Eric_Horvitz.htm",
+      "urlHash": "98b58c2547ca22a2646b189478d9255b5ab7228d2c82fa8a7c874cc5e211dc9a",
+      "contentHash": "2e25edf57ef5f2d94f75cf263bc113a7930afbba7381b038d1f52db3cc6b04ef",
+      "sourceType": "exa",
+      "title": "Artificial Intelligence in the Open World - AAAI Presidential Address",
+      "text": "Evidence quote: Artificial Intelligence in the Open World AAAI Presidential Address by Eric Horvitz July 2008 Transcript Selection reason: 这是埃里克·霍维茨个人网站上托管的2008年AAAI主席演讲的完整转录，是原始来源的权威替代。 Source preview: Artificial Intelligence in the Open World AAAI Presidential Address by Eric Horvitz July 2008 Transcript Slides Abstract I share reflections at several levels on directions with moving beyond the closed-world aspects of AI methods and prototypes to pursue a deeper understanding of open-world intelligence. I start with highlights of the rich intellectual history of the pursuit of computational mechanisms underlying thought and intelligent behavior, touching on core contributions of Alonzo Church and Alan Turing, John von Neumann, Herbert Simon, John McCarthy, and others. I discuss the goal of creating computational agents that can prosper, despite inescapable incompleteness in sensing, reaso... MiMo rationale: 原始来源仅为推文，信息量低。候选中，埃里克·霍维茨个人网站上的页面直接提供了其2008年AAAI主席演讲的完整转录，是权威、可访问且直接证明人物与作品关系的来源，完美替代原始来源。 Evidence requirements: Source must name 埃里克·霍维茨 directly. | Source must support why \"Here's the transcript of my presidential lecture at AAAI 2008. Concepts about\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 埃里克·霍维茨 Here the transcript presidential lecture AAAI 2008. Concepts about official source | 埃里克·霍维茨 Here the transcript presidential lecture AAAI 2008. Concepts about 微软研究院 微软 evidence | 埃里克·霍维茨 Here the transcript presidential lecture AAAI 2008. Concepts about interview transcript",
+      "selectedHost": "erichorvitz.com",
+      "reason": "这是埃里克·霍维茨个人网站上托管的2008年AAAI主席演讲的完整转录，是原始来源的权威替代。",
+      "evidenceQuote": "Artificial Intelligence in the Open World AAAI Presidential Address by Eric Horvitz July 2008 Transcript",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxpfzy03znrmtb0aft6do7",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:32:44.962Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/erichorvitz/status/2001026380470136869",
+          "title": "Here's the transcript of my presidential lecture at AAAI 2008. Concepts about ",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然是官方来源，但内容仅为一句话的演讲导语，信息量极低。.",
+          "evidenceRequirements": [
+            "Source must name 埃里克·霍维茨 directly.",
+            "Source must support why \"Here's the transcript of my presidential lecture at AAAI 2008. Concepts about\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "埃里克·霍维茨 Here the transcript presidential lecture AAAI 2008. Concepts about official source",
+            "埃里克·霍维茨 Here the transcript presidential lecture AAAI 2008. Concepts about 微软研究院 微软 evidence",
+            "埃里克·霍维茨 Here the transcript presidential lecture AAAI 2008. Concepts about interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpfzy03znrmtb0aft6do7",
+          "objectLabel": "Here's the transcript of my presidential lecture at AAAI 2008. Concepts about "
+        },
+        "selectedReason": "这是埃里克·霍维茨个人网站上托管的2008年AAAI主席演讲的完整转录，是原始来源的权威替代。",
+        "evidenceQuote": "Artificial Intelligence in the Open World AAAI Presidential Address by Eric Horvitz July 2008 Transcript",
+        "candidateAuthorityScore": 12,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxpad803ymrmtbtjd8horb",
+      "personId": "cmjtxdvoh000d5p08r4ygmu04",
+      "person": "埃里克·霍维茨",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.microsoft.com/en-us/research/people/horvitz",
+      "urlHash": "27d431769795dde5e5ca2e8f063b3b1ff0e64a474a90d3427fdcfe9554946753",
+      "contentHash": "b1142fed6ed9b700f317ee3e7ec23abb4b7f047d9d540f0e4cfa44dc7d66f930",
+      "sourceType": "official",
+      "title": "Eric Horvitz, Chief Scientific Officer - Microsoft",
+      "text": "Evidence quote: Eric Horvitz, Chief Scientific Officer - Microsoft Selection reason: 微软官方人物主页，权威且直接证明其职位与贡献，是最佳替换来源。 Source preview: Microsoft Research Publications Code & data People Microsoft Research blog Artificial intelligence Audio & acoustics Computer vision Graphics & multimedia Human-computer interaction Human language technologies Search & information retrieval Data platforms and analytics Hardware & devices Programming languages & software engineering Quantum computing Security, privacy & cryptography Systems & networking Algorithms Mathematics Ecology & environment Economics Medical, health & genomics Social sciences Technology for emerging markets Academic programs Events & academic conferences Microsoft Research Forum Behind the Tech podcast Microsoft Research blog Microsoft Research Forum Microsoft Researc... MiMo rationale: 原来源为Google Scholar个人资料页，信息密度低。候选中的微软官方人物主页（microsoft.com/research/people/horvitz）是权威、可访问的一级来源，能直接证明埃里克·霍维茨的职位（首席科学官）及其与微软的关系，完全符合替换要求。 Evidence requirements: Source must name 埃里克·霍维茨 directly. | Source must support why \"Eric Horvitz\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 埃里克·霍维茨 Eric Horvitz official source | 埃里克·霍维茨 Eric Horvitz 微软研究院 微软 evidence | 埃里克·霍维茨 Eric Horvitz interview transcript",
+      "selectedHost": "microsoft.com",
+      "reason": "微软官方人物主页，权威且直接证明其职位与贡献，是最佳替换来源。",
+      "evidenceQuote": "Eric Horvitz, Chief Scientific Officer - Microsoft",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxpad803ymrmtbtjd8horb",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:27:17.116Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.com/citations?user=V4OPEAgAAAAJ&hl=en",
+          "title": "Eric Horvitz",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=Google Scholar个人资料页，确认本人但内容仅为加载界面，信息密度极低，需人工判断是否入库。.",
+          "evidenceRequirements": [
+            "Source must name 埃里克·霍维茨 directly.",
+            "Source must support why \"Eric Horvitz\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "埃里克·霍维茨 Eric Horvitz official source",
+            "埃里克·霍维茨 Eric Horvitz 微软研究院 微软 evidence",
+            "埃里克·霍维茨 Eric Horvitz interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpad803ymrmtbtjd8horb",
+          "objectLabel": "Eric Horvitz"
+        },
+        "selectedReason": "微软官方人物主页，权威且直接证明其职位与贡献，是最佳替换来源。",
+        "evidenceQuote": "Eric Horvitz, Chief Scientific Officer - Microsoft",
+        "candidateAuthorityScore": 4,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjuvfig50itwrmtbu75o06dp",
+      "personId": "cmjtwkuo5000bopf37qiylene",
+      "person": "朱军",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.cs.tsinghua.edu.cn/info/1121/3551.htm",
+      "urlHash": "bde32fc862a33eaea72feec84c0c762625123cd223ec17f2d785abf0e989b207",
+      "contentHash": "7f33cab835b658211ba66d914a52c23c53ec7beb0857fbb92effae2425c901b6",
+      "sourceType": "official",
+      "title": "朱军-清华大学计算机科学与技术系",
+      "text": "Evidence quote: 姓名：朱军 职称：教授 邮箱：dcszj@mail.tsinghua.edu.cn Selection reason: 清华大学计算机系官方教师主页，明确列出朱军的姓名、职称、教育背景、研究领域等权威信息，是证明其身份和职位的直接来源。 Source preview: English 首页 > 师资状况 > 教职工名录 > 智能技术与系统实验室 > 正高 > 正文 朱军 | | | | | --- --- | | 职称 | 教授 | 电话 | | | 邮箱 | dcszj@mail.tsinghua.edu.cn | undefined undefined 姓名：朱军 职称：教授 邮箱：dcszj@mail.tsinghua.edu.cn 主页： 教育背景 教育背景 工学学士 (计算机), 清华大学, 中国, 2005 工学博士 (计算机), 清华大学, 中国, 2009 社会兼职 社会兼职 2018-今，IEEE Trans. on PAMI副主编（Associate Editor-in-Chief） 2015-2018，卡内基梅隆大学兼职教授 2014-2018， IEEE Trans. on PAMI编委（Associate Editor） 2014-2019，ICML领域主席 2014-2019，UAI领域主席 2013,2015,2018,2019，NIPS领域主席 2014，ICML地区联合主席 2014 –至今，中国计算机学会学术工委委员 研究领域 研究领域 机器学习，贝叶斯方法，深度学习，数据挖掘 研究概况 研究概况 研究工作围绕机器学习基础理论、高效算法和应用展开，注重理论与实际问题结合。针对复杂数据隐含结构的学习与利用中的共性问题，研究了结构学习及基于结构的统计学习中若干关键问题，提出：（1）最大熵判别式学习的PAC-Bayes理论与方法；（2）正则化贝叶斯推理及正则化非参数贝叶斯推理理论；（3）贝叶斯模型的最大间隔学习... MiMo rationale: 原始来源（中关村论坛页面）内容空泛，缺乏朱军本人具体信息。候选中清华大学计算机系官方教师主页是权威、可访问、直接证明朱军身份和职位的最佳来源，可替换原始来源。 Evidence requirements: Source must name 朱军 directly. | Source must support why \"Zhu Jun\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 朱军 Zhu Jun official source | 朱军 Zhu Jun 清华大学、生数科技 开源 evidence | 朱军 Zhu Jun interview transcript",
+      "selectedHost": "cs.tsinghua.edu.cn",
+      "reason": "清华大学计算机系官方教师主页，明确列出朱军的姓名、职称、教育背景、研究领域等权威信息，是证明其身份和职位的直接来源。",
+      "evidenceQuote": "姓名：朱军 职称：教授 邮箱：dcszj@mail.tsinghua.edu.cn",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuvfig50itwrmtbu75o06dp",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:27:49.305Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.zgcforum.com.cn/en2024/guest/t2606/104644",
+          "title": "Zhu Jun",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=页面标题为Zhu Jun，但内容主要是论坛导航和新闻，缺乏关于朱军本人的具体信息，需人工确认。.",
+          "evidenceRequirements": [
+            "Source must name 朱军 directly.",
+            "Source must support why \"Zhu Jun\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "朱军 Zhu Jun official source",
+            "朱军 Zhu Jun 清华大学、生数科技 开源 evidence",
+            "朱军 Zhu Jun interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuvfig50itwrmtbu75o06dp",
+          "objectLabel": "Zhu Jun"
+        },
+        "selectedReason": "清华大学计算机系官方教师主页，明确列出朱军的姓名、职称、教育背景、研究领域等权威信息，是证明其身份和职位的直接来源。",
+        "evidenceQuote": "姓名：朱军 职称：教授 邮箱：dcszj@mail.tsinghua.edu.cn",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxhluc028qrmtbw9pk3gak",
+      "personId": "cmjtwkgug0004opf3th1cmczu",
+      "person": "李开复",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.hkforum.com/cn/speaker/101-%E6%9D%8E%E5%BC%80%E5%A4%8D",
+      "urlHash": "6a77318629f42c40fac0d7451d3afc6267eb5239cdbde9deaea78d862389605f",
+      "contentHash": "c641724d285cf07019f220a06e807b3dc9a79d88ecd79f2fc60e91ae16a54d49",
+      "sourceType": "exa",
+      "title": "李开复- 香港中美论坛",
+      "text": "Evidence quote: 李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官，后者专注开发开源人工智能模型。 Selection reason: 权威机构官方嘉宾页，明确列出李开复的职位（零一万物CEO、创新工场董事长）和背景，信息权威且集中。 Source preview: English 中文 繁体 香港中美论坛2025 日程 议题 视频 要闻 会议 报告 我们的使命 行动倡议 我们的伙伴 关于CUSEF 中文 English 中文 繁体 嘉宾 李开复 零一万物首席执行官 李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官，后者专注开发开源人工智能模型。李博士曾任谷歌大中华区总裁及微软全球副总裁。他于卡内基梅隆大学获取电脑学博士学位，随后在该校展开职业生涯，出任助理教授。 相关信息 [视频] AI主题演讲2025-11-17 分享: 我们的使命 组织结构 关于CUSEF 联系我们 ©2023 - 2026 中美交流基金会 | 版权所有 MiMo rationale: 香港中美论坛的嘉宾页是权威机构官方页面，直接、清晰地列出了李开复的现任职位（零一万物CEO、创新工场董事长）和过往经历，完全满足证据要求，可替换信息量不足的维基百科来源。 Evidence requirements: Source must name 李开复 directly. | Source must support why \"Kai-Fu Lee\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 李开复 Kai-Fu Lee official source | 李开复 Kai-Fu Lee 创新工场、零一万物 大语言模型 evidence | 李开复 Kai-Fu Lee interview transcript",
+      "selectedHost": "hkforum.com",
+      "reason": "权威机构官方嘉宾页，明确列出李开复的职位（零一万物CEO、创新工场董事长）和背景，信息权威且集中。",
+      "evidenceQuote": "李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官，后者专注开发开源人工智能模型。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxhluc028qrmtbw9pk3gak",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:29:04.624Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.m.wikipedia.org/wiki/Kai-Fu_Lee",
+          "title": "Kai-Fu Lee",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容仅包含维基百科的开头定义，信息量较少，需人工判断是否保留。.",
+          "evidenceRequirements": [
+            "Source must name 李开复 directly.",
+            "Source must support why \"Kai-Fu Lee\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "李开复 Kai-Fu Lee official source",
+            "李开复 Kai-Fu Lee 创新工场、零一万物 大语言模型 evidence",
+            "李开复 Kai-Fu Lee interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhluc028qrmtbw9pk3gak",
+          "objectLabel": "Kai-Fu Lee"
+        },
+        "selectedReason": "权威机构官方嘉宾页，明确列出李开复的职位（零一万物CEO、创新工场董事长）和背景，信息权威且集中。",
+        "evidenceQuote": "李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官，后者专注开发开源人工智能模型。",
+        "candidateAuthorityScore": 38,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxlxqo036zrmtbpa0306xx",
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://lilianweng.github.io/posts/2024-02-05-human-data-quality",
+      "urlHash": "3f0ec5b9351660f6da1c64fd7297971bedf92368b24123482db0e5386bde4b29",
+      "contentHash": "c523e5d62c2efe3f9e675491752aad69aad21bec70098cb8913785cc37e70ac9",
+      "sourceType": "exa",
+      "title": "Thinking about High-Quality Human Data | Lil'Log",
+      "text": "Evidence quote: Author: Lilian Weng Selection reason: 本人官方技术博客，明确署名Lilian Weng，内容详实，是其专业身份和工作的直接证明。 Source preview: Thinking about High-Quality Human Data Date: February 5, 2024 | Estimated Reading Time: 20 min | Author: Lilian Weng Table of Contents Human Raters ↔ Data Quality + The Wisdom of the Crowd + Rater Agreement + Rater Disagreement & Two Paradigms Data Quality ↔ Model Training + Influence Functions + Prediction Changes during Training + Noisy Cross-Validation Citation References Special thank you to [Ian Kivlichan for many useful pointers (E.g. the 100+ year old Nature paper “Vox populi”) and nice feedback. 🙏 ] High-quality data is the fuel for modern data deep learning model training. Most of the task-specific labeled data comes from human annotation, such as classification task or RLHF label... MiMo rationale: 原始Google Scholar来源信息密度低。候选中，本人官方博客（Lil'Log）是证明其技术身份和工作的最佳权威来源。霞光社的报道提供了其最新、具体的职业变动信息，可作为补充。两者结合能有效补强人物页面的信息。 Evidence requirements: Source must name 李莲 directly. | Source must support why \"Lilian Weng\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 李莲 Lilian Weng official source | 李莲 Lilian Weng Dropbox公司 Affirm evidence | 李莲 Lilian Weng interview transcript",
+      "selectedHost": "lilianweng.github.io",
+      "reason": "本人官方技术博客，明确署名Lilian Weng，内容详实，是其专业身份和工作的直接证明。",
+      "evidenceQuote": "Author: Lilian Weng",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxlxqo036zrmtbpa0306xx",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:29:37.571Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.com/citations?user=dCa-pW8AAAAJ&hl=en",
+          "title": "Lilian Weng",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=Google Scholar页面仅显示引用数据，缺乏实质性内容，信息密度低。.",
+          "evidenceRequirements": [
+            "Source must name 李莲 directly.",
+            "Source must support why \"Lilian Weng\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "李莲 Lilian Weng official source",
+            "李莲 Lilian Weng Dropbox公司 Affirm evidence",
+            "李莲 Lilian Weng interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxlxqo036zrmtbpa0306xx",
+          "objectLabel": "Lilian Weng"
+        },
+        "selectedReason": "本人官方技术博客，明确署名Lilian Weng，内容详实，是其专业身份和工作的直接证明。",
+        "evidenceQuote": "Author: Lilian Weng",
+        "candidateAuthorityScore": 15,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxq9rb046grmtbwu191mqt",
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.ted.com/talks/jakob_uszkoreit_how_ai_sidesteps_traditional_science",
+      "urlHash": "a5c8f1c891861aa842ead3e155fb69db83f73ba369e3d3d7e6c9fa4859e3f0db",
+      "contentHash": "6129a07bb47b3277aca289c10062181d3492873b4eb21485180491c63030a2dd",
+      "sourceType": "exa",
+      "title": "Jakob Uszkoreit: How AI sidesteps traditional science | TED Talk",
+      "text": "Evidence quote: Jakob Uszkoreit: How AI sidesteps traditional science | TED Talk Selection reason: TED官方演讲页面，直接证明其在TEDAI的演讲者身份，权威且可访问。 Source preview: Jakob Uszkoreit: How AI sidesteps traditional science | TED Talk Opens in a new window Opens an external website Opens an external website in a new window This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. To learn more, view the following link: Privacy Policy Manage Preferences Ideas change everything WATCH TED Talks Browse the library of TED talks and speakersPlaylists 100+ collections of TED Talks, for curious mindsTED Series Go deeper into fascinating topics with original video series from TEDTED-Ed videos Watch, share and create lessons with TED-EdTEDx Talks Talks from independe... MiMo rationale: 原始来源（TEDAI San Francisco页面）内容空泛，仅为导航链接。候选中TED官方演讲页面和Apple Podcasts页面均能直接、权威地证明其演讲者身份及Transformer论文作者身份，可有效替换或补强。 Evidence requirements: Source must name 雅各布·乌什科雷特 directly. | Source must support why \"Jakob Uszkoreit | TEDAI San Francisco - TED Talks\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 雅各布·乌什科雷特 Jakob Uszkoreit TEDAI San Francisco TED Talks official source | 雅各布·乌什科雷特 Jakob Uszkoreit TEDAI San Francisco TED Talks 谷歌 Transformer evidence | 雅各布·乌什科雷特 Jakob Uszkoreit TEDAI San Francisco TED Talks interview transcript",
+      "selectedHost": "ted.com",
+      "reason": "TED官方演讲页面，直接证明其在TEDAI的演讲者身份，权威且可访问。",
+      "evidenceQuote": "Jakob Uszkoreit: How AI sidesteps traditional science | TED Talk",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxq9rb046grmtbwu191mqt",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:31:09.503Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://tedai-sanfrancisco.ted.com/speakers/jakob-uszkoreit/",
+          "title": "Jakob Uszkoreit | TEDAI San Francisco - TED Talks",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容多为会议网站的导航链接，缺乏具体的个人介绍或演讲细节。.",
+          "evidenceRequirements": [
+            "Source must name 雅各布·乌什科雷特 directly.",
+            "Source must support why \"Jakob Uszkoreit | TEDAI San Francisco - TED Talks\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "雅各布·乌什科雷特 Jakob Uszkoreit TEDAI San Francisco TED Talks official source",
+            "雅各布·乌什科雷特 Jakob Uszkoreit TEDAI San Francisco TED Talks 谷歌 Transformer evidence",
+            "雅各布·乌什科雷特 Jakob Uszkoreit TEDAI San Francisco TED Talks interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq9rb046grmtbwu191mqt",
+          "objectLabel": "Jakob Uszkoreit | TEDAI San Francisco - TED Talks"
+        },
+        "selectedReason": "TED官方演讲页面，直接证明其在TEDAI的演讲者身份，权威且可访问。",
+        "evidenceQuote": "Jakob Uszkoreit: How AI sidesteps traditional science | TED Talk",
+        "candidateAuthorityScore": 12,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjuuh1wm0gc9rmtbvbsnque8",
+      "personId": "cmjs1by3o002wb28tsdopns4d",
+      "person": "黄仁勋",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.wired.com/story/nvidia-hardware-is-eating-the-world-jensen-huang",
+      "urlHash": "4041861a2ded4521b66bb4a076fabcd493406bc161bc9968d5f0a1ed7b7df1de",
+      "contentHash": "4c507aa16fbcb260c5ddecc6a2a49a35eb1bc764832c84b62ab2d8c9580a4d34",
+      "sourceType": "exa",
+      "title": "Nvidia CEO Jensen Huang Is Powering the AI Revolution - WIRED",
+      "text": "Evidence quote: The Nvidia CEO is so invested in where AI is headed that, after nearly 90 minutes of spirited conversation, I came away convinced the future will be a neural net nirvana. Selection reason: WIRED文章标题和预览文本明确将黄仁勋与NVIDIA CEO及AI革命关联，是可靠的媒体来源。 Source preview: Lauren Goode The Big Story Nvidia Hardware Is Eating the World Tech companies can’t get enough of this tech company. Earnings are off the charts. WIRED probes the mind of its CEO, Jensen Huang. Photograph: Ryan Young Talking to Jensen Huang should come with a warning label. The Nvidia CEO is so invested in where AI is headed that, after nearly 90 minutes of spirited conversation, I came away convinced the future will be a neural net nirvana. I could see it all: a robot renaissance, medical godsends, self-driving cars, chatbots that remember. The buildings on the company’s Santa Clara campus weren’t helping. Wherever my eyes landed I saw triangles within triangles, the shape that helped make... MiMo rationale: 原始来源抓取内容不足，缺乏实质性描述。候选中，维基百科页面直接证明黄仁勋的职位，WIRED文章标题和内容明确关联其角色与AI革命，两者均权威、可访问且能直接证明人物与作品/观点/职位关系，适合作为替换来源。 Evidence requirements: Source must name 黄仁勋 directly. | Source must support why \"Nvidia CEO Jensen Huang Is Powering the AI Revolution\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 黄仁勋 Nvidia CEO Jensen Huang Powering the Revolution official source | 黄仁勋 Nvidia CEO Jensen Huang Powering the Revolution NVIDIA 芯片 evidence | 黄仁勋 Nvidia CEO Jensen Huang Powering the Revolution interview transcript",
+      "selectedHost": "wired.com",
+      "reason": "WIRED文章标题和预览文本明确将黄仁勋与NVIDIA CEO及AI革命关联，是可靠的媒体来源。",
+      "evidenceQuote": "The Nvidia CEO is so invested in where AI is headed that, after nearly 90 minutes of spirited conversation, I came away convinced the future will be a neural net nirvana.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuuh1wm0gc9rmtbvbsnque8",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:32:19.212Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.wired.com/story/nvidia-hardware-is-eating-the-world-jensen-huang/?mod=ANLink",
+          "title": "Nvidia CEO Jensen Huang Is Powering the AI Revolution",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题高度相关，但正文抓取内容仅为网页导航信息，缺乏实质性描述。.",
+          "evidenceRequirements": [
+            "Source must name 黄仁勋 directly.",
+            "Source must support why \"Nvidia CEO Jensen Huang Is Powering the AI Revolution\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "黄仁勋 Nvidia CEO Jensen Huang Powering the Revolution official source",
+            "黄仁勋 Nvidia CEO Jensen Huang Powering the Revolution NVIDIA 芯片 evidence",
+            "黄仁勋 Nvidia CEO Jensen Huang Powering the Revolution interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuh1wm0gc9rmtbvbsnque8",
+          "objectLabel": "Nvidia CEO Jensen Huang Is Powering the AI Revolution"
+        },
+        "selectedReason": "WIRED文章标题和预览文本明确将黄仁勋与NVIDIA CEO及AI革命关联，是可靠的媒体来源。",
+        "evidenceQuote": "The Nvidia CEO is so invested in where AI is headed that, after nearly 90 minutes of spirited conversation, I came away convinced the future will be a neural net nirvana.",
+        "candidateAuthorityScore": 30,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": [
+          "replacement_contains_auxiliary_low_authority_source"
+        ]
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju1b3un0c61rmtbenyb6lt8",
+      "personId": "cmjs1by3o002wb28tsdopns4d",
+      "person": "黄仁勋",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.goldmansachs.com/insights/articles/nvidias-jensen-huang-dissects-the-ai-revolution",
+      "urlHash": "956e7f976b7e944f1b0293490683189d7bce0c4821f79aa0133842f11099eb27",
+      "contentHash": "f91c8b08c735c031fadb4bf21b018fe7326198686b2bd758940ef3773bd42711",
+      "sourceType": "exa",
+      "title": "Nvidia’s Jensen Huang dissects the AI revolution | Goldman Sachs",
+      "text": "Evidence quote: Nvidia’s Jensen Huang dissects the AI revolution Selection reason: 高盛官方访谈，标题和预览直接引用黄仁勋对AI革命的见解，权威性高，可补强人物观点。 Source preview: Nvidia’s Jensen Huang dissects the AI revolution David Solomon and Jensen Huang David Solomon and Jensen Huang Superfast chips are in high demand — not just by the artificial intelligence industry, but also by companies that work in computer graphics, robotics, autonomous vehicles, or drug discovery. “It’s fun to see all these amazing applications being created,” says Jensen Huang, the CEO of Nvidia. Speaking to David Solomon, the CEO of Goldman Sachs, at the Communacopia + Technology conference in San Francisco, Huang explained how computer graphics, for example, rely heavily on AI infrastructure. “We compute one pixel, and we infer the other 32,” he says in an edition of Goldman Sachs Tal... MiMo rationale: 原来源（纽约客）权威但抓取内容仅为导语，信息密度低。候选中WIRED和高盛来源标题直接关联人物与AI革命主题，权威性高，可作为补充来源，增强证据链。其他候选或权威性不足，或需进一步验证。 Evidence requirements: Source must name 黄仁勋 directly. | Source must support why \"How Jensen Huang’s Nvidia Is Powering the A.I. Revolution\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 黄仁勋 How Jensen Huang Nvidia Powering the A.I. Revolution official source | 黄仁勋 How Jensen Huang Nvidia Powering the A.I. Revolution NVIDIA 芯片 evidence | 黄仁勋 How Jensen Huang Nvidia Powering the A.I. Revolution interview transcript",
+      "selectedHost": "goldmansachs.com",
+      "reason": "高盛官方访谈，标题和预览直接引用黄仁勋对AI革命的见解，权威性高，可补强人物观点。",
+      "evidenceQuote": "Nvidia’s Jensen Huang dissects the AI revolution",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1b3un0c61rmtbenyb6lt8",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:31:42.910Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.newyorker.com/magazine/2023/12/04/how-jensen-huangs-nvidia-is-powering-the-ai-revolution",
+          "title": "How Jensen Huang’s Nvidia Is Powering the A.I. Revolution",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=来源权威但抓取内容仅为导语，信息密度较低，需人工确认全文价值。.",
+          "evidenceRequirements": [
+            "Source must name 黄仁勋 directly.",
+            "Source must support why \"How Jensen Huang’s Nvidia Is Powering the A.I. Revolution\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "黄仁勋 How Jensen Huang Nvidia Powering the A.I. Revolution official source",
+            "黄仁勋 How Jensen Huang Nvidia Powering the A.I. Revolution NVIDIA 芯片 evidence",
+            "黄仁勋 How Jensen Huang Nvidia Powering the A.I. Revolution interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1b3un0c61rmtbenyb6lt8",
+          "objectLabel": "How Jensen Huang’s Nvidia Is Powering the A.I. Revolution"
+        },
+        "selectedReason": "高盛官方访谈，标题和预览直接引用黄仁勋对AI革命的见解，权威性高，可补强人物观点。",
+        "evidenceQuote": "Nvidia’s Jensen Huang dissects the AI revolution",
+        "candidateAuthorityScore": 24,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjse3ul1001nc6jta6hh5uc1",
+      "personId": "cmjs1by3o002wb28tsdopns4d",
+      "person": "黄仁勋",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.troweprice.com/en/us/insights/the-long-view-nvidia",
+      "urlHash": "b350fdebc7acd0033c4eea7ea5ab3f23eececdd9cefc9719d6ed8c9fb811c11a",
+      "contentHash": "3bc1ce0efc57cd4c11fc970c520b58de24c763b0773aedbf4271120001e21256",
+      "sourceType": "exa",
+      "title": "The Long View: Interview with Jensen Huang, Founder and CEO of Nvidia Corporation | T. Rowe Price",
+      "text": "Evidence quote: The Long View: Interview with Jensen Huang, Founder and CEO of Nvidia Corporation Selection reason: T. Rowe Price官方发布的深度访谈，标题明确包含黄仁勋姓名与职位，内容聚焦AI与领导力。 Source preview: The Long View: Interview with Jensen Huang, Founder and CEO of Nvidia Corporation May 2025, On the Horizon Overview In these special episodes of “The Angle,” Eric Veiel, head of Global Investments and chief investment officer at T. Rowe Price Associates, welcomes CEOs and industry leaders to share their personal stories, leadership strategies, and lessons learned from running successful companies. Listen as we pull back the curtain on what it truly takes to lead a company in today’s fast-paced and ever-changing business landscape. In this episode, Eric is joined by Nvidia Founder and CEO, Jensen Huang, as he talks about the advancements coming in artificial intelligence, the importance of b... MiMo rationale: 原始来源仅为标题，缺乏实质内容。候选中CNBC和T. Rowe Price的页面提供了明确的访谈转录或深度内容，可直接补强证据。其他来源权威性不足或需进一步验证。 Evidence requirements: Source must name 黄仁勋 directly. | Source must support why \"Detailed summary and insights from Jensen Huang's recent long-form interview on AI, work, and entrepreneurship.\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 黄仁勋 Detailed summary and insights from Jensen Huang recent long-form interview AI, work, official source | 黄仁勋 Detailed summary and insights from Jensen Huang recent long-form interview AI, work, NVIDIA 芯片 evidence | 黄仁勋 Detailed summary and insights from Jensen Huang recent long-form interview AI, work, interview transcript",
+      "selectedHost": "troweprice.com",
+      "reason": "T. Rowe Price官方发布的深度访谈，标题明确包含黄仁勋姓名与职位，内容聚焦AI与领导力。",
+      "evidenceQuote": "The Long View: Interview with Jensen Huang, Founder and CEO of Nvidia Corporation",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjse3ul1001nc6jta6hh5uc1",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:34:54.535Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/tychozzz/status/2000089333173309679",
+          "title": "Detailed summary and insights from Jensen Huang's recent long-form interview on AI, work, and entrepreneurship.",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然指向深度访谈总结，但当前抓取内容仅为标题性质，缺乏实质性观点。.",
+          "evidenceRequirements": [
+            "Source must name 黄仁勋 directly.",
+            "Source must support why \"Detailed summary and insights from Jensen Huang's recent long-form interview on AI, work, and entrepreneurship.\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "黄仁勋 Detailed summary and insights from Jensen Huang recent long-form interview AI, work, official source",
+            "黄仁勋 Detailed summary and insights from Jensen Huang recent long-form interview AI, work, NVIDIA 芯片 evidence",
+            "黄仁勋 Detailed summary and insights from Jensen Huang recent long-form interview AI, work, interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse3ul1001nc6jta6hh5uc1",
+          "objectLabel": "Detailed summary and insights from Jensen Huang's recent long-form interview on AI, work, and entrepreneurship."
+        },
+        "selectedReason": "T. Rowe Price官方发布的深度访谈，标题明确包含黄仁勋姓名与职位，内容聚焦AI与领导力。",
+        "evidenceQuote": "The Long View: Interview with Jensen Huang, Founder and CEO of Nvidia Corporation",
+        "candidateAuthorityScore": 24,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmjtxjf5802q8rmtb01uhbllu",
+      "personId": "cmjtwkuo5000bopf37qiylene",
+      "person": "朱军",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju15rlr0b0qrmtbf5p1e91h",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjuuiw830go1rmtbafcwnd78",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxnn5l03kfrmtbh50yo05s",
+      "personId": "cmjtxcx2r00075p08egm5tuq9",
+      "person": "科拉伊·卡武克丘奥卢",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvpyur00sermtbo4554ol7",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0qxs708birmtbwnzijgxe",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjxnlqax000na6eldcwxc7xo",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjxnlsgo0011a6elum6o9oi4",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjxnlr7w000ta6elyolsa1ah",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "source": "Manual China AI company roster pass",
+    "generatedAt": "2026-06-11T20:45:00+08:00",
+    "note": "Add source-backed current figures for Baidu, Alibaba, and Tencent roster gaps."
+  },
+  "seeds": [
+    {
+      "name": "Robin Li",
+      "nameZh": "李彦宏",
+      "roleCategory": "founder",
+      "organization": ["百度", "Baidu"],
+      "currentTitle": "Co-founder & CEO @ Baidu",
+      "aliases": ["李彦宏", "Li Yanhong"],
+      "reason": "百度联合创始人兼 CEO，公开代表百度推进 ERNIE / 文心系列大模型，是百度当前 AI 方向的关键人物。"
+    },
+    {
+      "name": "Jingren Zhou",
+      "nameZh": "周靖人",
+      "roleCategory": "engineer",
+      "organization": ["阿里巴巴", "阿里云", "Alibaba", "通义"],
+      "currentTitle": "Chief Technology Officer, Alibaba Cloud / Qwen business lead @ Alibaba",
+      "aliases": ["周靖人", "Zhou Jingren"],
+      "reason": "阿里云首席技术官、通义业务负责人，负责阿里通义系列大模型研发和应用，是阿里大模型体系中此前缺失的核心人物。"
+    },
+    {
+      "name": "Dong Yu",
+      "nameZh": "俞栋",
+      "roleCategory": "researcher",
+      "organization": ["腾讯", "Tencent", "腾讯AI Lab", "Tencent Cloud AI"],
+      "currentTitle": "Distinguished Scientist, Tencent AI Lab / Chief Scientist, Tencent Cloud AI @ Tencent",
+      "aliases": ["俞栋", "Yu Dong"],
+      "reason": "腾讯 AI Lab 杰出科学家、Tencent Cloud AI 首席科学家，长期从事语音、对话、多模态和大模型研究，是腾讯当前 AI 技术体系的重要人物。"
+    }
+  ]
+}

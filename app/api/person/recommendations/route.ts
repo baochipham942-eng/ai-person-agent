@@ -6,6 +6,21 @@ export const dynamic = 'force-dynamic';
 // 热度排序映射（用于前端排序）
 // 数据库已自动处理排序，无需硬编码映射
 
+interface RecommendationPersonRow {
+    id: string;
+    name: string;
+    avatarUrl: string | null;
+    occupation: string[];
+    description: string | null;
+    whyImportant: string | null;
+    status: string;
+    aiContributionScore: number;
+}
+
+interface CountRow {
+    count: number;
+}
+
 export async function GET(request: Request) {
     try {
         const { searchParams } = new URL(request.url);
@@ -14,7 +29,7 @@ export async function GET(request: Request) {
         const start = (page - 1) * limit;
 
         // 使用 raw sql 绕过 Prisma Client 的 cached plan 错误
-        const people = await prisma.$queryRaw<any[]>`
+        const people = await prisma.$queryRaw<RecommendationPersonRow[]>`
             SELECT id, name, "avatarUrl", occupation, description, "whyImportant", status, "aiContributionScore"
             FROM "People"
             WHERE status != 'error'
@@ -26,7 +41,7 @@ export async function GET(request: Request) {
         const paginated = people;
 
         // 获取总数以便分页
-        const totalResult = await prisma.$queryRaw<any[]>`
+        const totalResult = await prisma.$queryRaw<CountRow[]>`
             SELECT COUNT(*)::int as count 
             FROM "People" 
             WHERE status != 'error'
@@ -44,7 +59,7 @@ export async function GET(request: Request) {
                 hasMore
             }
         });
-    } catch (error: any) {
+    } catch (error) {
         console.error('Failed to fetch people recommendations:', error);
         return NextResponse.json(
             { error: 'Failed to fetch people recommendations' },

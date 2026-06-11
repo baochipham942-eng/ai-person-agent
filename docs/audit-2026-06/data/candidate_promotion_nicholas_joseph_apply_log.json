@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-06-11T09:13:38.324Z",
+  "mode": "execute",
+  "policyVersion": "2026-06-11",
+  "criteria": {
+    "status": "candidate",
+    "completeness": ">= 45",
+    "rawCount": ">= 2",
+    "keepCount": ">= 2",
+    "liveCount": ">= 1",
+    "cardCount": ">= 5",
+    "avatarUrl": "required for promotion"
+  },
+  "summary": {
+    "candidates": 1,
+    "promotable": 1,
+    "held": 0,
+    "updated": 1
+  },
+  "promotable": [
+    {
+      "id": "dd0022ee-5895-46a9-b741-4d4d32dc70db",
+      "name": "Nicholas Joseph",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": "/avatars/nicholas-joseph-4e4e356e.webp",
+      "rawCount": 3,
+      "liveCount": 2,
+      "keepCount": 3,
+      "cardCount": 5,
+      "blockers": []
+    }
+  ],
+  "held": []
+}

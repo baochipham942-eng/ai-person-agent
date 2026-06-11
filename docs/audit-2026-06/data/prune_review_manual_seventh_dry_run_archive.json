@@ -1,0 +1,1319 @@
+{
+  "generatedAt": "2026-06-10T11:18:33.603Z",
+  "summary": {
+    "generatedAt": "2026-06-10T11:18:33.603Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_seventh_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_seventh_dry_run_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 38,
+    "existingTargets": 38,
+    "missingTargets": 0,
+    "auditRowsInserted": 38,
+    "deleted": 38,
+    "byAction": {
+      "delete_raw_pool_item": 38
+    },
+    "byVerdict": {
+      "reject": 38
+    },
+    "byPerson": {
+      "Jan Leike": 16,
+      "Emad Mostaque": 15,
+      "Greg Brockman": 4,
+      "Hyung Won Chung": 3
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw9n401cdrmtbwiohw15t",
+          "objectLabel": "Emad Mostaque CEO Stability AI: The AI Entrepreneur to Watch."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured page is only title/navigation text, with no substantive person or AI evidence."
+      },
+      "raw": {
+        "id": "cmjtvw9n401cdrmtbwiohw15t",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "exa",
+        "url": "https://turnonai.com/why-trending/emad-mostaque-ceo-stability-ai-the-ai-entrepreneur-to-watch/sophia-smith/",
+        "urlHash": "a8aa3efd68934a44ad60504401c03546",
+        "contentHash": "fc66dde741d5441930863e37a98ca2d0",
+        "title": "Emad Mostaque CEO Stability AI: The AI Entrepreneur to Watch.",
+        "text": "Emad Mostaque CEO Stability AI: The AI Entrepreneur to Watch. &#8211; TurnOnAi\n[Skip to content](#primary-content)\n[TurnOnAi](https://turnonai.com/)\nSee Where AI Impacts&#8230; !\nSearch for:\n[**](https://turnonai.com/ai-education/racist-ai-friend-or-foe-dangers-and-advantages/sophia-smith/)\n[**](#)\nSearch for:\n# Emad Mostaque CEO Stability AI: The AI Entrepreneur to Watch.\nPosted on[August 3, 2023August 7, 2023](https://turnonai.com/why-trending/emad-mostaque-ceo-stability-ai-the-ai-entrepreneur-to-watch/sophia-smith/)by[Sophia Smith](https://turnonai.com/author/sophia-smith/)\n[]()[]()[]()[]()[]()[]()[]()[]()[]()[](https://www.addtoany.com/share)\nEmad Mostaque is an AI entrepreneur and researcher making waves in Generative AI. He is the founder and CEO of Stability AI, a company that develops and deploys open, generative AI models.\n* **Stability AI is a company that develops safe and ethical generative AI models.**\n* **Emad Mostaque: AI engineer, advocate, and visionary.**\n* **Text-to-image AI can help you create unique and creative images quickly and easily.**\n##### Pro\nStability AI&#8217;s research communities can develop breakthrough AI models applied to imaging, language, code, audio, video, 3D content, design, biotech, and other scientific research.\n##### Con\nStability AI models are still under development, and they can sometimes generate images that are unrealistic or offensive.\n##### Verdict\nStability AI has made significant progress, but it is too early to say how it will fare in the long term. As people increasingly turn to augmented reality, it will be interesting to see how Stability AI integrates with this technology.\n* **[Emad-Mostaque-Work](#Emad-Mostaque-Work)**\n* [**Net Worth**](#Net-Worth)\n* [**Biography**](#Biography)\n* [**Most-Important-thing-about-Emad-Mostaque**](#Most-Important-thing-about-Emad-Mostaque)\n* **[Getty-Images-vs.-Stability-AI-Lawsuit](#Getty-Images-vs.-Stability-AI-Lawsuit)**\n* **[Conclusion](#Conclusion)**\n## **Emad Mostaque Work**\nMostaque&#8217;s work on generative AI has been groundbreaking. His company&#8217;s flagship product, Stable Diffusion, is a text-to-image model that can generate realistic and creative images from text descriptions. Notably, people have used Stable Diffusion to create various models, including realistic portraits, landscapes, and even works of art.\nStable Diffusion first generates a low-resolution image based on the text description. Once the user creates the initial design, they can iteratively add more detail and realism until they achieve the desired result. Additionally, Stable Diffusion gets its name from the process known as diffusion modeling.\nBasically, Stable Diffusion can be used for various purposes, including creating realistic artwork, generating new product designs, and even developing[new medical treatments.](https://turnonai.com/ai-healthcare/how-ai-is-revolutionizing-medicine-creation/sophia-smith/)The potential impact of generative AI on society is vast, and Mostaque is committed to ensuring that it is used for good.\nMostaque is a strong advocate for the responsible development and use of AI. He believes that AI can be a powerful tool for good, but it is essential to use it safely and ethically. Although, Emad Mostaque has spoken out about the need for clear policies and principles for expanding and using AI. Besides, he has worked to promote the responsible use of AI through his work with the World Economic Forum and other organizations.\n## Net Worth\nAs of August 2023, Emad Mostaque has an estimated net worth of around £803 million ($1.1 billion). Mostaque is the CEO and founder of Stability AI, a company that develops artificial intelligence (AI) technology. Stability AI raised over $100 million in funding and achieved a valuation of over $1 billion. Mostaque derives a large part of his personal wealth from owning Stability AI stock.\n## Biography\nMostaque was born in Jordan in 1983, and moved to the UK with his family when he was seven years old. He studied at the University of Oxford. After graduating, Mostaque worked as a hedge fund manager for several years. He also worked as a research scientist at Google AI before founding Stability AI. He chillingly prophesied to his Google coworkers that they would die in 2023 and will be remembered for it. In 2019, he founded Symmitree, a company that aimed to reduce the cost of technology for people living in poverty. Symmitree was acquired by Stability AI in 2020.\nExplicitly, Mr. Mostaque is a controversial figure in the AI industry. Although, he has been criticized for his views on the potential dangers of AI, and for handling the Stable Diffusion project. However, many see him as a visionary leader in AI, and his work has helped raise awareness of the potential benefits and risks of this technology.\n## Most Important thing about Emad Mostaque\nOne of the most essential things about Emad Mostaque is his passion for artificial intelligence (AI). Emad Mostaque&#8217;s passion for ar",
+        "publishedAt": "2023-08-02T16:00:00.000Z",
+        "metadata": {
+          "author": "Sophia Smith",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:51:53.224Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju159qx0ax4rmtb6fgwuf1i",
+          "objectLabel": "10 Brilliant AI Insights from Stability AI's Founder Emad ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Medium capture failed into login/site-map text, with no usable article content."
+      },
+      "raw": {
+        "id": "cmju159qx0ax4rmtb6fgwuf1i",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "exa",
+        "url": "https://medium.com/@vardhanam.daga/10-brilliant-ai-insights-from-stability-ais-founder-emad-mostaque-182905c11a60",
+        "urlHash": "b39bd81a63ece1f575688b66a539d2e5",
+        "contentHash": "f06fc306ba456446534c0a5f7e5f53e8",
+        "title": "10 Brilliant AI Insights from Stability AI's Founder Emad ...",
+        "text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)\n\n[Open in app](https://rsci.app.link/?%24canonical_url=https%3A%2F%2Fmedium.com%2Fp%2F182905c11a60&%7Efeature=LoOpenInAppButton&%7Echannel=ShowPostUnderUser&%7Estage=mobileNavBar&source=post_page---top_nav_layout_nav-----------------------------------------)\n\nSign up\n\n[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F%40vardhanam.daga%2F10-brilliant-ai-insights-from-stability-ais-founder-emad-mostaque-182905c11a60&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n\n[Medium Logo](https://medium.com/?source=post_page---top_nav_layout_nav-----------------------------------------)\n\n[Write](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---top_nav_layout_nav-----------------------new_post_topnav------------------)\n\nSign up\n\n[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F%40vardhanam.daga%2F10-brilliant-ai-insights-from-stability-ais-founder-emad-mostaque-182905c11a60&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n\n# 10 Brilliant AI Insights from Stability AI’s Founder Emad Mostaque\n\n## I watched an hour long podcast, so you don’t have to\n\n[Vardhanam Daga](https://medium.com/@vardhanam.daga?source=post_page---byline--182905c11a60---------------------------------------)\n\n2 min read\n\n·\n\nMar 17, 2025\n\n--\n\nListen\n\nShare\n\n“In one year, AI will generate complex apps like Uber from scratch”. — Emad Mostaque.\n\nLet that sink in. The future of AI is not just coming; it’s already here. And leading the charge is Emad Mostaque, the visionary founder of Stability AI, the company behind the AI image model Stable Diffusion. Here are some of his insights from a podcast that you’ll find linked later.\n\nInsights:\n\n01. AI will revolutionize software development. It will create complex apps from scratch within a year.\n02. Generative AI is expanding. It’s tackling video, code, and 3D assets. Content creation will never be the same.\n03. AI will augment human creativity. It will empower small teams to rival tech giants.\n04. Personalized AI will be our trusted collaborator. It will learn from us and anticipate our needs.\n05. Democratization of AI is crucial. Open-source models and datasets will create a future where AI benefits all.\n06. AI will eat the world. Industries will be disrupted. Jobs will be transformed. Embrace the change or be left behind.\n07. Professionals must adapt to the AI landscape. Mastering AI-assisted tools is key to problem-solving and innovation.\n08. AI models are getting smarter and faster. They’ll run on smartphones for real-time, personalized experiences.\n09. The future of AI lies in multimodality. Models will seamlessly handle diverse inputs and outputs, revolutionizing human-AI interaction.\n10. The AI revolution presents challenges. Equal access, ethics, transparency, and accountability require ongoing dialogue.\n\nIn case you are not happy with this summary, you can watch the full podcast here — [https://www.youtube.com/watch?v=VeaT6ucXuMI](https://www.youtube.com/watch?v=VeaT6ucXuMI)\n\n[AI](https://medium.com/tag/ai?source=post_page-----182905c11a60---------------------------------------)\n\n[Artificial Intelligence](https://medium.com/tag/artificial-intelligence?source=post_page-----182905c11a60---------------------------------------)\n\n[Future Of Ai](https://medium.com/tag/future-of-ai?source=post_page-----182905c11a60---------------------------------------)\n\n[Stable Diffusion](https://medium.com/tag/stable-diffusion?source=post_page-----182905c11a60---------------------------------------)\n\n[**Written by Vardhanam Daga**](https://medium.com/@vardhanam.daga?source=post_page---post_author_info--182905c11a60---------------------------------------)\n\n[506 followers](https://medium.com/@vardhanam.daga/followers?source=post_page---post_author_info--182905c11a60---------------------------------------)\n\n· [152 following](https://medium.com/@vardhanam.daga/following?source=post_page---post_author_info--182905c11a60---------------------------------------)\n\nWe run a Content Consulting Agency. Website: [www.k42consulting.com](http://www.k42consulting.com) e-mail: [vardhanam@k42consulting.com](mailto:vardhanam@k42consulting.com)\n\n## No responses yet\n\n[Help](https://help.medium.com/hc/en-us?source=post_page-----182905c11a60---------------------------------------)\n\n[Status](https://status.medium.com/?source=post_page-----182905c11a60---------------------------------------)\n\n[About](https://medium.com/about?autoplay=1&source=post_page-----182905c11a60---------------------------------------)\n\n[Careers](https://medium.com/jobs-at-medium/work-at-medium-959d1a85284e?source=post_page-----182905c11a60---------------------------------------)\n\n[Press](mailto:pressinquiries@medium.com)\n\n[Blog](https://blog.medium.com/?source=post_page-----182905c11a60-------------------------",
+        "publishedAt": "2025-03-31T05:06:00.316Z",
+        "metadata": {
+          "author": "Vardhanam Daga",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:51:43.523Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1594n0ax0rmtb1pgblmrr",
+          "objectLabel": "Emad Mostaque on UBAI, AI and the future of work"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "LinkedIn capture is only user agreement/privacy text, with no usable source content."
+      },
+      "raw": {
+        "id": "cmju1594n0ax0rmtb1pgblmrr",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "exa",
+        "url": "https://www.linkedin.com/posts/peterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR",
+        "urlHash": "6eae680839338efab4c81685e7b34c98",
+        "contentHash": "0f5ef3a0c827b5b7eebcef3e9edf8a73",
+        "title": "Emad Mostaque on UBAI, AI and the future of work",
+        "text": "Agree & Join LinkedIn\n\nBy clicking Continue to join or sign in, you agree to LinkedIn’s [User Agreement](https://www.linkedin.com/legal/user-agreement?trk=linkedin-tc_auth-button_user-agreement), [Privacy Policy](https://www.linkedin.com/legal/privacy-policy?trk=linkedin-tc_auth-button_privacy-policy), and [Cookie Policy](https://www.linkedin.com/legal/cookie-policy?trk=linkedin-tc_auth-button_cookie-policy).\n\n [Skip to main content](https://www.linkedin.com/www.linkedin.com#main-content)\n\n[Peter H. Diamandis](https://www.linkedin.com/in/peterdiamandis?trk=public_post_feed-actor-name) Peter H. Diamandis is an Influencer\n\nData-driven optimist inspiring entrepreneurs through research, investment & community to create an abundant future for humanity \\| M.D. \\| Futurist \\| Speaker \\| Podcast Host \\| 4x NY Times Best-Selling Author\n\n3mo\n\n- [Report this post](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=POST&_f=guest-reporting)\n\n[Emad Mostaque](https://uk.linkedin.com/in/emad-mostaque-9840ba274?trk=public_post-text) left Stability AI to build a system that saves humanity, not replaces it.\nIn this episode, we talked about:\n\\- Why capitalism won’t survive advanced AI\n\\- What UBAI (Universal Basic AI) could mean for society\n\\- Why public sector jobs are the safest\n\\- How we avoid a dystopian AI future\nThis conversation was one of the most unique and forward-thinking I’ve had about what comes after the AI revolution.\nWatch the full episode: search “Moonshots Emad Mostaque UBAI” on YouTube (also link the comments).\n\n…more\n\n[275](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_social-actions-reactions) [36 Comments](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_social-actions-comments)\n\n[Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_like-cta) [Comment](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_comment-cta)\n\nShare\n\n- Copy\n- LinkedIn\n- Facebook\n- X\n\n[Peter H. Diamandis](https://www.linkedin.com/in/peterdiamandis?trk=public_post_comment_actor-name)\n\nData-driven optimist inspiring entrepreneurs through research, investment & community to create an abundant future for humanity \\| M.D. \\| Futurist \\| Speaker \\| Podcast Host \\| 4x NY Times Best-Selling Author\n\n3mo\n\n- [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting)\n\nlink to episode: [https://youtu.be/fxmXYfHTCwU](https://youtu.be/fxmXYfHTCwU?trk=public_post_comment-text)\n\n[Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_comment_like) [Reply](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_comment_reply) [4 Reactions](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_comment_reactions) 5 Reactions\n\n[Sean Fenlon](https://www.linkedin.com/in/seanfenlon?trk=public_post_comment_actor-name)\n\nFounder & CEO at Symphony42 -- AI Agents for Customer Acquisition\n\n3mo\n\n- [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-activity-7354572214039367680-EZUR&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting)\n\nI have gone through the episode three times. I’m still not processing all of it. Emad is next level. Like the Satoshi Nakamoto of AI :-O\n\n[Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fpeterdiamandis_emad-mostaqueleft-stability-ai-to-build-a",
+        "publishedAt": "2025-07-31T05:06:00.316Z",
+        "metadata": {
+          "author": "251,753 followers",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:51:42.908Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwfhc01f7rmtbt1iugf1m",
+          "objectLabel": "x.com/EMostaque/status/1998414521334202803"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwfhc01f7rmtbt1iugf1m",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/1998414521334202803",
+        "urlHash": "0cb7184d6473fa841cf9401703f34b27",
+        "contentHash": "ec65216e2bf5251cd58d79afaa7beda8",
+        "title": "//x.com/EMostaque/status/1998414521334202803",
+        "text": "//x.com/EMostaque/status/1998414521334202803",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "1998414521334202803",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:08.281Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwf2g01f1rmtbwpvcjkfm",
+          "objectLabel": "x.com/EMostaque/status/1998686465279025190"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwf2g01f1rmtbwpvcjkfm",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/1998686465279025190",
+        "urlHash": "93a7cefd39c65f46177b16c6ae0a2035",
+        "contentHash": "9bc1d1e8834b9f50f7173bad12456f7d",
+        "title": "//x.com/EMostaque/status/1998686465279025190",
+        "text": "//x.com/EMostaque/status/1998686465279025190",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "1998686465279025190",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:07.468Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1mvu50eeurmtbxl5itzzz",
+          "objectLabel": "x.com/EMostaque/status/2000235691943600559"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmju1mvu50eeurmtbxl5itzzz",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2000235691943600559",
+        "urlHash": "94aafb1edfeadc7e390f9f80a63bdae0",
+        "contentHash": "9b65564ae278113cb0e241e9d775f83d",
+        "title": "//x.com/EMostaque/status/2000235691943600559",
+        "text": "//x.com/EMostaque/status/2000235691943600559",
+        "publishedAt": "2025-12-31T05:19:51.064Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2000235691943600559",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:07.085Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15jnf0az2rmtbh0b9njbi",
+          "objectLabel": "x.com/EMostaque/status/2002882982558798152"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmju15jnf0az2rmtbh0b9njbi",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2002882982558798152",
+        "urlHash": "946eabac5feac3ef4ed7d947a4fc14e6",
+        "contentHash": "0b1a90cefdc72a0af45f790760db7cc0",
+        "title": "//x.com/EMostaque/status/2002882982558798152",
+        "text": "//x.com/EMostaque/status/2002882982558798152",
+        "publishedAt": "2025-12-31T05:06:22.832Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2002882982558798152",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:05.520Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwdus01efrmtbsmhhur8j",
+          "objectLabel": "x.com/EMostaque/status/2003204017284137359"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwdus01efrmtbsmhhur8j",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2003204017284137359",
+        "urlHash": "be946b7b0e670b1910632f7efd8eea5a",
+        "contentHash": "86977780dd25a14c0d1d6df0a967e095",
+        "title": "//x.com/EMostaque/status/2003204017284137359",
+        "text": "//x.com/EMostaque/status/2003204017284137359",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2003204017284137359",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:05.136Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15hfi0ayqrmtbgh2qqqy5",
+          "objectLabel": "x.com/EMostaque/status/2003952697117233594"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmju15hfi0ayqrmtbgh2qqqy5",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2003952697117233594",
+        "urlHash": "24e0b9c404a736f2c20c6ebf0684c998",
+        "contentHash": "26ad8f113b727e9adffeed868407b0bd",
+        "title": "//x.com/EMostaque/status/2003952697117233594",
+        "text": "//x.com/EMostaque/status/2003952697117233594",
+        "publishedAt": "2025-12-31T05:06:22.832Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2003952697117233594",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:04.699Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwdi601e9rmtbslt7oe61",
+          "objectLabel": "x.com/EMostaque/status/2003950770593657229"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwdi601e9rmtbslt7oe61",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2003950770593657229",
+        "urlHash": "42c1851e7c6a5425ded7c9339a59d019",
+        "contentHash": "0bfb25796a4f5aa85691195847afd889",
+        "title": "//x.com/EMostaque/status/2003950770593657229",
+        "text": "//x.com/EMostaque/status/2003950770593657229",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2003950770593657229",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:04.315Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwcvi01dxrmtb3twdw3b1",
+          "objectLabel": "x.com/EMostaque/status/2005242180076740830"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwcvi01dxrmtb3twdw3b1",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2005242180076740830",
+        "urlHash": "b1beed9e933ce717a27558774a2f7a7d",
+        "contentHash": "5ccddbe1a657ed3eb2745c9901062ef0",
+        "title": "//x.com/EMostaque/status/2005242180076740830",
+        "text": "//x.com/EMostaque/status/2005242180076740830",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2005242180076740830",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:03.930Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwcka01dprmtbz9qxgeox",
+          "objectLabel": "x.com/EMostaque/status/2005949753327018068"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwcka01dprmtbz9qxgeox",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2005949753327018068",
+        "urlHash": "dcd1108b6a980f35dd3cff0a42b00a49",
+        "contentHash": "e6bda2f814758c9c49de89d8ae4f6b3e",
+        "title": "//x.com/EMostaque/status/2005949753327018068",
+        "text": "//x.com/EMostaque/status/2005949753327018068",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2005949753327018068",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:03.484Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwb9901d1rmtbqadqvz5k",
+          "objectLabel": "x.com/EMostaque/status/2006148206611087619"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwb9901d1rmtbqadqvz5k",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2006148206611087619",
+        "urlHash": "1345f8d252c0fbdf2bbf460aa9ea0a1f",
+        "contentHash": "99a6ff061d70b3699d4a587448fb6b63",
+        "title": "//x.com/EMostaque/status/2006148206611087619",
+        "text": "//x.com/EMostaque/status/2006148206611087619",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2006148206611087619",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:02.639Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1mm8r0ebxrmtbb4e7bqbw",
+          "objectLabel": "AI HQ: Stability AI CEO Emad Mostaque"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured page is only site navigation/header text, with no substantive event content."
+      },
+      "raw": {
+        "id": "cmju1mm8r0ebxrmtbb4e7bqbw",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "exa",
+        "url": "https://www.axioshq.com/event/ai-hq-stability-ai",
+        "urlHash": "e4fdb4137a722c56d4fe6f28f3565250",
+        "contentHash": "041718b5d9fa6dc2f6da73c40dca84c5",
+        "title": "AI HQ: Stability AI CEO Emad Mostaque",
+        "text": "AI HQ: Stability AI CEO Emad Mostaque\n[Skip to content](#main-content)\n[![Axios HQ logo](https://www.axioshq.com/hs-fs/hubfs/hq-logo-nop.webp?width=800&amp;height=130&amp;name=hq-logo-nop.webp)](/)\nProducts\nSoftware &amp; Services\n* [\n##### Axios HQ software\nSee all Axios HQ has to offer, and go deeper on key features.\n](https://www.axioshq.com/features)\n* [\n##### Smart Brevity training\nLearn the proven techniques that bring our communication style to life.\n](https://www.axioshq.com/pricing/training)\n* [\n##### Newsletter editing\nPartner with our team to audit and improve your internal newsletters.\n](https://www.axioshq.com/pricing/editing)\nSoftware features\n* [![Ai Writing help](https://www.axioshq.com/hubfs/Ai%20Writing%20help.png)\n##### AI writing help\nBrainstorm critical updates and synthesize key details.\n](https://www.axioshq.com/features/ai)\n* [![SB guidance](https://www.axioshq.com/hubfs/SB%20guidance.png)\n##### Smart Brevity guidance\nGet editing assistance to make your updates more engaging.\n](https://www.axioshq.com/features/smart-brevity-guidance)\n* [![Icon - Templates-1](https://www.axioshq.com/hubfs/Icon%20-%20Templates-1.png)\n##### Best-practice templates\nSee real-life communications from industry-leading organizations.\n](https://www.axioshq.com/features/best-practice-templates)\n* [![Icon - Collaborative editing](https://www.axioshq.com/hubfs/Icon%20-%20Collaborative%20editing.png)\n##### Collaborative editing\nHelp your team work together, each contributing their own part.\n](https://www.axioshq.com/features/collaborative-editing)\n* [![Icon - Analytics-1](https://www.axioshq.com/hubfs/Icon%20-%20Analytics-1.png)\n##### Powerful analytics\nTrack what your audience wants —and what keeps them engaged.\n](https://www.axioshq.com/features/powerful-analytics)\n* [![Artboard Image Alternate-1](https://www.axioshq.com/hubfs/Artboard%20Image%20Alternate-1.png)\n##### Design customization\nUse our proven format, with your colors, logos, and fonts.\n](https://www.axioshq.com/features/design-customization)\n* [![Integrations-2](https://www.axioshq.com/hubfs/Integrations-2.png)\n##### Integrations\nKeep your audience lists secure and always up to date.\n](https://www.axioshq.com/features/integrations)\nCustomer stories\n* [![Case Studies](https://www.axioshq.com/hubfs/Screen%20Shot%202022-03-18%20at%208_58_35%20AM-1%20(1).webp)\n##### Case studies\nRead success stories from orgs of all sizes.\nRead more\n](https://www.axioshq.com/case-studies)\n* [![Testimonials](https://www.axioshq.com/hubfs/Screen%20Shot%202023-06-01%20at%208-2.webp)\n##### Testimonials\nSee what users love most about Axios HQ.\nRead more\n](https://www.axioshq.com/testimonials)\nSolutions\nFor your teams\n* [\n##### Founders &amp; CEOs\n](https://www.axioshq.com/teams/executives)\n* [\n##### Communicators\n](https://www.axioshq.com/teams/communicators)\n* [\n##### Department leaders\n](https://www.axioshq.com/teams/department-leaders)\n* [\n##### Operations\n](https://www.axioshq.com/teams/operations)\nFor your goals\n* [![Streamline Communication-3](https://www.axioshq.com/hubfs/chub_backup/Streamline%20Communication-3.png)\n##### Streamline communication\nOur features make your message clearer and more memorable.\n](https://www.axioshq.com/goals/streamline-communication)\n* [![Align-2](https://www.axioshq.com/hubfs/Align-2.png)\n##### Align staff and stakeholders\nOur features help teams get aligned, stay aligned, and drive aligned action.\n](https://www.axioshq.com/goals/align-stakeholders)\n* [![Hands](https://www.axioshq.com/hubfs/Hands.png)\n##### Boost employee engagement\nOur features help you keep readers focused and track their attention.\n](https://www.axioshq.com/goals/improve-employee-engagement)\n* [![Power growth](https://www.axioshq.com/hubfs/Power%20growth.png)\n##### Power productivity and growth\nOur features get people the details they need to get back to work.\n](https://www.axioshq.com/goals/efficiency-and-productivity-in-the-workplace)\n* [![Transparency trust](https://www.axioshq.com/hubfs/Transparency%20trust.png)\n##### Increase transparency and trust\nOur features help people feel respected and connected with your top leaders.\n](https://www.axioshq.com/goals/transparency-in-the-workplace)\n* [![Build culture and connection](https://www.axioshq.com/hubfs/Build%20culture%20and%20connection.png)\n##### Build culture and connection\nOur features help you keep teams aligned, engaged, and connected.\n](https://www.axioshq.com/goals/workplace-culture)\nIndustries\nIndustry support\n* [![Industry-menu](https://www.axioshq.com/hubfs/Nonprofit%20Lower-1.webp)\n##### Axios HQ is here to help every\ncompany, association, and nonprofit communicate more effectively.\n]()\nIndustries\n* [![Healthcare icon](https://www.axioshq.com/hubfs/Healthcare%20icon.png)\n##### Healthcare\nPrecision in your work and your words\n](https://www.axioshq.com/industry/healthcare)\n* [![Finance icon](https://www.axioshq.com/hubfs/Finance%20icon.png)\n##### Financial Services\nSecure, engaging insights worth your time\n](",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:19:54.651Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwaxs01cxrmtb1eby6ut5",
+          "objectLabel": "Thank you sir, the epub/pdf is free..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Short thank-you/link reply with no useful AI or profile evidence."
+      },
+      "raw": {
+        "id": "cmjtvwaxs01cxrmtb1eby6ut5",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "x",
+        "url": "https://x.com/EMostaque/status/2006157170581143975",
+        "urlHash": "09a1c7fb4cc4e3081d1ee4bc4b9063d8",
+        "contentHash": "15ef0dda01d5448486b39de4c8fcbe84",
+        "title": "Thank you sir, the epub/pdf is free on https://ii.inc/web/the-last-economy too!",
+        "text": "Thank you sir, the epub/pdf is free on https://ii.inc/web/the-last-economy too!",
+        "publishedAt": "2025-12-31T02:35:53.782Z",
+        "metadata": {
+          "author": "EMostaque",
+          "postId": "2006157170581143975",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:28.864Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwa8e01cnrmtbgsdjcmh7",
+          "objectLabel": "x.com/janleike/status/1948446443414728825"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwa8e01cnrmtbgsdjcmh7",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1948446443414728825",
+        "urlHash": "52e66f2298b89a797c36a2718b33ff6e",
+        "contentHash": "b6f010b0e83cdf6c20724944f66a8278",
+        "title": "//x.com/janleike/status/1948446443414728825",
+        "text": "//x.com/janleike/status/1948446443414728825",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1948446443414728825",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:06.122Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju19zuc0byurmtb3ybwdqwy",
+          "objectLabel": "x.com/janleike/status/1972731245303054658"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmju19zuc0byurmtb3ybwdqwy",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1972731245303054658",
+        "urlHash": "2a4d65728af12105872c1170e9a86558",
+        "contentHash": "2ad3afd12263cf1c6de5ea477a8ef769",
+        "title": "//x.com/janleike/status/1972731245303054658",
+        "text": "//x.com/janleike/status/1972731245303054658",
+        "publishedAt": "2025-12-31T05:09:46.984Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1972731245303054658",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:05.749Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju19zjd0byormtbdsnyikmx",
+          "objectLabel": "x.com/janleike/status/1972731242706804984"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmju19zjd0byormtbdsnyikmx",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1972731242706804984",
+        "urlHash": "6dd97fab871b9eac6280ad7c5d628a79",
+        "contentHash": "95c74287912d40c80b98912967b3120c",
+        "title": "//x.com/janleike/status/1972731242706804984",
+        "text": "//x.com/janleike/status/1972731242706804984",
+        "publishedAt": "2025-12-31T05:09:46.984Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1972731242706804984",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:05.353Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju149y00apzrmtb91qe0woy",
+          "objectLabel": "x.com/janleike/status/1972731239372341438"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmju149y00apzrmtb91qe0woy",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1972731239372341438",
+        "urlHash": "5c5d8546e1c9143a8fcd120fd2e53c07",
+        "contentHash": "a65d9f31df5f5cd776c7f8f619b689ae",
+        "title": "//x.com/janleike/status/1972731239372341438",
+        "text": "//x.com/janleike/status/1972731239372341438",
+        "publishedAt": "2025-12-31T05:05:16.472Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1972731239372341438",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:04.525Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw8x801bxrmtbxyk7bm4o",
+          "objectLabel": "x.com/janleike/status/1972731237480718734"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw8x801bxrmtbxyk7bm4o",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1972731237480718734",
+        "urlHash": "97406f08f6ec86acedd23f7bab35e756",
+        "contentHash": "f30c5529cba2eafd2cefac6792aa840d",
+        "title": "//x.com/janleike/status/1972731237480718734",
+        "text": "//x.com/janleike/status/1972731237480718734",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1972731237480718734",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:04.165Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1485m0aoprmtbdyphj8tb",
+          "objectLabel": "x.com/janleike/status/1991955832637161644"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmju1485m0aoprmtbdyphj8tb",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1991955832637161644",
+        "urlHash": "64b031b7179d7353f4fab0f61486d64b",
+        "contentHash": "f0ddeb14ae09d84a8e007cb3b962ada4",
+        "title": "//x.com/janleike/status/1991955832637161644",
+        "text": "//x.com/janleike/status/1991955832637161644",
+        "publishedAt": "2025-12-31T05:05:16.472Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1991955832637161644",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:02.712Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw8ld01btrmtb7kceed0h",
+          "objectLabel": "x.com/janleike/status/1991955830040863011"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw8ld01btrmtb7kceed0h",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1991955830040863011",
+        "urlHash": "de320e0f525393e40bac7e8598c114fe",
+        "contentHash": "feb23ef654ae74836276eca7e3283e0f",
+        "title": "//x.com/janleike/status/1991955830040863011",
+        "text": "//x.com/janleike/status/1991955830040863011",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1991955830040863011",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:02.289Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw7ir01bdrmtbjsr48qhm",
+          "objectLabel": "x.com/janleike/status/1997011950400950509"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw7ir01bdrmtbjsr48qhm",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1997011950400950509",
+        "urlHash": "1ff253aeef895de48d4f95225fb9dc5f",
+        "contentHash": "0a858e9c68885631018ecfd815ecbc60",
+        "title": "//x.com/janleike/status/1997011950400950509",
+        "text": "//x.com/janleike/status/1997011950400950509",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1997011950400950509",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:01.141Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw77b01bbrmtbcp3mdrnc",
+          "objectLabel": "x.com/janleike/status/1998153915595169835"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw77b01bbrmtbcp3mdrnc",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1998153915595169835",
+        "urlHash": "bcee4c3fa94154d3a2554dc735993bb4",
+        "contentHash": "c6010695b57c5e2894850f4d88d20e9b",
+        "title": "//x.com/janleike/status/1998153915595169835",
+        "text": "//x.com/janleike/status/1998153915595169835",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1998153915595169835",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:00.731Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw9kc01cbrmtbw565sah3",
+          "objectLabel": "x.com/janleike/status/1963676634642555111"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw9kc01cbrmtbw565sah3",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1963676634642555111",
+        "urlHash": "7fbadba3f385f29d0824aa3e807afe41",
+        "contentHash": "16067efe17eae878da0c1db5d5441847",
+        "title": "//x.com/janleike/status/1963676634642555111",
+        "text": "//x.com/janleike/status/1963676634642555111",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1963676634642555111",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:39.281Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvvoop0197rmtb6shic183",
+          "objectLabel": "Jan Leike Google Scholar"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google Scholar capture failed into system UI placeholder text."
+      },
+      "raw": {
+        "id": "cmjtvvoop0197rmtb6shic183",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "exa",
+        "url": "https://scholar.google.co.uk/citations?user=beiWcokAAAAJ&hl=en",
+        "urlHash": "82aa90a1c4e668fb78dadf34d789e38a",
+        "contentHash": "fa660391ec7c6e5924badc5eaa68797d",
+        "title": "Jan Leike",
+        "text": "Loading...\n\nThe system can't perform the operation now. Try again later.\n\n## Citations per year\n\n## Duplicate citations\n\nThe following articles are merged in Scholar. Their [combined citations](javascript:void(0)) are counted only for the first article.\n\n## Merged citations\n\nThis \"Cited by\" count includes citations to the following articles in Scholar. The ones marked \\* may be different from the article in the profile.\n\n## Add co-authorsCo-authors\n\n## Follow\n\n[New articles by this author](javascript:void(0))\n\n[New citations to this author](javascript:void(0))\n\n[New articles related to this author's research](javascript:void(0))\n\nEmail address for updates\n\nDone\n\n[My profile](https://scholar.google.co.uk/citations?hl=en) [My library](https://scholar.google.co.uk/scholar?scilib=1&hl=en) [Metrics](https://scholar.google.co.uk/citations?view_op=metrics_intro&hl=en) [Alerts](https://scholar.google.co.uk/scholar_alerts?view_op=list_alerts&hl=en)\n\n[Settings](https://scholar.google.co.uk/scholar_settings?hl=en)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.co.uk/schhp%3Fhl%3Den)\n\n[Sign in](https://accounts.google.com/Login?hl=en&continue=https://scholar.google.co.uk/schhp%3Fhl%3Den)\n\n[Get my own profile](https://scholar.google.co.uk/citations?hl=en)\n\n### Cited by\n\n| | All | Since 2020 |\n| --- | --- | --- |\n| [Citations](javascript:void(0)) | 40660 | 39873 |\n| [h-index](javascript:void(0)) | 30 | 26 |\n| [i10-index](javascript:void(0)) | 38 | 33 |\n\n0\n\n22000\n\n11000\n\n5500\n\n16500\n\n20182019202020212022202320242025 [186](javascript:void(0)) [293](javascript:void(0)) [381](javascript:void(0)) [513](javascript:void(0)) [1202](javascript:void(0)) [7168](javascript:void(0)) [21552](javascript:void(0)) [8956](javascript:void(0))\n\nPublic access\n\n[View all](https://scholar.google.co.uk/citations?view_op=list_mandates&hl=en&user=beiWcokAAAAJ)\n\nView all\n\n10 articles\n\n0 articles\n\navailable\n\nnot available\n\nBased on funding mandates\n\n### Co-authorsView all\n\n- ![Jeffrey Wu](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Jeffrey Wu](https://scholar.google.co.uk/citations?user=x4JAvwMAAAAJ&hl=en) Anthropic AI, OpenAIVerified email at anthropic.com\n\n- ![Paul Christiano](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Paul Christiano](https://scholar.google.co.uk/citations?user=B7oP0bIAAAAJ&hl=en) National Institute of Standards and TechnologyVerified email at nist.gov\n\n- ![John Schulman](https://scholar.google.co.uk/scholar/images/cleardot.gif)[John Schulman](https://scholar.google.co.uk/citations?user=itSa94cAAAAJ&hl=en) AnthropicVerified email at anthropic.com\n\n- ![Ryan Lowe](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Ryan Lowe](https://scholar.google.co.uk/citations?user=iRgYMuEAAAAJ&hl=en) OpenAIVerified email at openai.com\n\n- ![Dario Amodei](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Dario Amodei](https://scholar.google.co.uk/citations?user=6-e-ZBEAAAAJ&hl=en) CEO and Co-Founder at AnthropicVerified email at anthropic.com\n\n- ![Marcus Hutter](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Marcus Hutter](https://scholar.google.co.uk/citations?user=7hmCntEAAAAJ&hl=en) Researcher@DeepMind & Professor at ANUVerified email at anu.edu.au\n\n- ![Ilya Sutskever](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Ilya Sutskever](https://scholar.google.co.uk/citations?user=x04W_mMAAAAJ&hl=en) Co-Founder and Chief Scientist at Safe Superintelligence IncVerified email at ssi.inc\n\n- ![David Scott Krueger](https://scholar.google.co.uk/scholar/images/cleardot.gif)[David Scott Krueger](https://scholar.google.co.uk/citations?user=5Uz70IoAAAAJ&hl=en) University Assistant Professor, University of CambridgeVerified email at cam.ac.uk\n\n- ![Yuri Burda](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Yuri Burda](https://scholar.google.co.uk/citations?user=Amky96kAAAAJ&hl=en) OpenAIVerified email at openai.com\n\n- ![Matthias Heizmann](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Matthias Heizmann](https://scholar.google.co.uk/citations?user=o0k_FgQAAAAJ&hl=en) University of Stuttgart, GermanyVerified email at heizmann.name\n\n- ![Tom Everitt](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Tom Everitt](https://scholar.google.co.uk/citations?user=BdulyjIAAAAJ&hl=en) Staff Research Scientist at Google DeepMindVerified email at google.com\n\n- ![Pushmeet Kohli](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Pushmeet Kohli](https://scholar.google.co.uk/citations?user=3pyzQQ8AAAAJ&hl=en) DeepMindVerified email at google.com\n\n- ![Andreas Podelski](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Andreas Podelski](https://scholar.google.co.uk/citations?user=UAF-ud8AAAAJ&hl=en) Professor of Computer Science, Freiburg UniversityVerified email at informatik.uni-freiburg.de\n\n- ![Geoffrey Irving](https://scholar.google.co.uk/scholar/images/cleardot.gif)[Geoffrey Irving](https://scholar.google.co.uk/citations?user=Trdtzg",
+        "publishedAt": "2016-10-19T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:24.535Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwcbp01dnrmtb98vcu30c",
+          "objectLabel": "x.com/janleike/status/1890141865955278916"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwcbp01dnrmtb98vcu30c",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1890141865955278916",
+        "urlHash": "8b3cc00ecdc8849ff1a5d5f8cb12715d",
+        "contentHash": "33b217cb845d07239451e5fd35b065c3",
+        "title": "//x.com/janleike/status/1890141865955278916",
+        "text": "//x.com/janleike/status/1890141865955278916",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1890141865955278916",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:30.661Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwc0h01dhrmtbf9igwmua",
+          "objectLabel": "x.com/janleike/status/1900222411414659448"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwc0h01dhrmtbf9igwmua",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1900222411414659448",
+        "urlHash": "01f486ed9819b590f1149396df0a5746",
+        "contentHash": "5641829ed46dc4b79493adb0ccb7c8ed",
+        "title": "//x.com/janleike/status/1900222411414659448",
+        "text": "//x.com/janleike/status/1900222411414659448",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1900222411414659448",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:30.257Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwb0s01czrmtbpac1qxao",
+          "objectLabel": "x.com/janleike/status/1945218694445150602"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvwb0s01czrmtbpac1qxao",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1945218694445150602",
+        "urlHash": "8e28261f41ef8078a4b976bd99f47562",
+        "contentHash": "d212705a86227b651f17265ba8251116",
+        "title": "//x.com/janleike/status/1945218694445150602",
+        "text": "//x.com/janleike/status/1945218694445150602",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1945218694445150602",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:28.972Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw9wl01cjrmtb3mxvdex9",
+          "objectLabel": "x.com/janleike/status/1955783396426440743"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw9wl01cjrmtb3mxvdex9",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1955783396426440743",
+        "urlHash": "3a5f350c2f19c0ea53436b681ffc1a26",
+        "contentHash": "335bda3fa5b5c0ff8b3694fd311a48ce",
+        "title": "//x.com/janleike/status/1955783396426440743",
+        "text": "//x.com/janleike/status/1955783396426440743",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1955783396426440743",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:27.525Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jan Leike",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw98p01c5rmtbenbsi3h6",
+          "objectLabel": "x.com/janleike/status/1969115275837440206"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw98p01c5rmtbenbsi3h6",
+        "personId": "cmjtv2wsq000di004ow7cjz59",
+        "person": "Jan Leike",
+        "sourceType": "x",
+        "url": "https://x.com/janleike/status/1969115275837440206",
+        "urlHash": "b25741806c726eac6a9468276a02f01b",
+        "contentHash": "6abd2ef9712e8bfa3f900e14e61d3c70",
+        "title": "//x.com/janleike/status/1969115275837440206",
+        "text": "//x.com/janleike/status/1969115275837440206",
+        "publishedAt": "2025-12-31T02:36:20.068Z",
+        "metadata": {
+          "author": "janleike",
+          "postId": "1969115275837440206",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:26.666Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Hyung Won Chung",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw9jl01c9rmtbvqplcmua",
+          "objectLabel": "x.com/hwchung27/status/1956092401854111934"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw9jl01c9rmtbvqplcmua",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "x",
+        "url": "https://x.com/hwchung27/status/1956092401854111934",
+        "urlHash": "e76b056913aba2e12d51995b67542cbb",
+        "contentHash": "9b225e786f186daa5390dd9185f863d4",
+        "title": "//x.com/hwchung27/status/1956092401854111934",
+        "text": "//x.com/hwchung27/status/1956092401854111934",
+        "publishedAt": "2025-12-31T02:38:06.438Z",
+        "metadata": {
+          "author": "hwchung27",
+          "postId": "1956092401854111934",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:51.296Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Hyung Won Chung",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw97j01c3rmtb81mf0kg1",
+          "objectLabel": "x.com/hwchung27/status/1973129695437922728"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjtvw97j01c3rmtb81mf0kg1",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "x",
+        "url": "https://x.com/hwchung27/status/1973129695437922728",
+        "urlHash": "672b04c0bc4579fb2c76c8bbe9e7b6c1",
+        "contentHash": "b608b5ae90adf87cebd2639a4ede92cf",
+        "title": "//x.com/hwchung27/status/1973129695437922728",
+        "text": "//x.com/hwchung27/status/1973129695437922728",
+        "publishedAt": "2025-12-31T02:38:06.438Z",
+        "metadata": {
+          "author": "hwchung27",
+          "postId": "1973129695437922728",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:50.879Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Hyung Won Chung",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwipn01gnrmtbuv8dh289",
+          "objectLabel": "How to Get Rich in the AI Era"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Marketing-style YouTube title with no substantive source evidence."
+      },
+      "raw": {
+        "id": "cmjtvwipn01gnrmtbuv8dh289",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=umRqd3_hMzM",
+        "urlHash": "6387e43790862cbd7dcdd5f2a56ff898",
+        "contentHash": "04720528766e9a0f9cdaa7ce7c7a05fa",
+        "title": "💸 How to Get Rich in the AI Era—Hyung Won Chung’s Viral Strategy! 🧪📈",
+        "text": "How to Get Rich in the AI Economy OpenAI's Hyung Won Chung shares strategies for building leverage in the age of automation.",
+        "publishedAt": "2025-07-24T13:30:11.000Z",
+        "metadata": {
+          "tags": [
+            "大语言模型",
+            "产品",
+            "金融AI"
+          ],
+          "videoId": "umRqd3_hMzM",
+          "isOfficial": false,
+          "thumbnailUrl": "https://i.ytimg.com/vi/umRqd3_hMzM/mqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:38.939Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10kfm0a1hrmtbr3wyu3bv",
+          "objectLabel": "emailyak-ruby"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Early email API binding tool outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmju10kfm0a1hrmtbr3wyu3bv",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/emailyak-ruby",
+        "urlHash": "c3386966d082c779f9b37b9cdec43272",
+        "contentHash": "5b7a99f7edb4dfdbacfa14394ba8c7e9",
+        "title": "emailyak-ruby",
+        "text": "EmailYak Ruby bindings (3rd party)",
+        "publishedAt": "2024-11-28T05:53:56.000Z",
+        "metadata": {
+          "forks": 1,
+          "stars": 4,
+          "topics": [],
+          "language": "Ruby",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:56.181Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10gs90a0brmtbttgcvnya",
+          "objectLabel": "stellarjob"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Social-bot/token project outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmju10gs90a0brmtbttgcvnya",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/stellarjob",
+        "urlHash": "42a7a718b5773f0602cb2c2edd32ebac",
+        "contentHash": "814429c9482d23ac0042d4959507cb34",
+        "title": "stellarjob",
+        "text": "A Twitter bot that issues its own \"upvote\" currency",
+        "publishedAt": "2024-07-15T16:36:46.000Z",
+        "metadata": {
+          "forks": 1,
+          "stars": 15,
+          "topics": [],
+          "language": "Ruby",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:52.433Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjsmrd3n001jq8o9vhu0pk2s",
+          "objectLabel": "x.com/gdb/status/2001758275998785743"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjsmrd3n001jq8o9vhu0pk2s",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "x",
+        "url": "https://x.com/gdb/status/2001758275998785743",
+        "urlHash": "3905a0a597656d256ab46a3979ca585b",
+        "contentHash": "0231999e402c7e1d013621383da8a87e",
+        "title": "//x.com/gdb/status/2001758275998785743",
+        "text": "//x.com/gdb/status/2001758275998785743",
+        "publishedAt": "2025-12-30T05:35:55.667Z",
+        "metadata": null,
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-30T05:35:55.668Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjsmrch9001hq8o9gjbsjsx4",
+          "objectLabel": "x.com/gdb/status/2001794601850708437"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Captured content is only a social-media URL, with no substantive text."
+      },
+      "raw": {
+        "id": "cmjsmrch9001hq8o9gjbsjsx4",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "x",
+        "url": "https://x.com/gdb/status/2001794601850708437",
+        "urlHash": "f63643f739728404e6ee4c4f196789da",
+        "contentHash": "73d3221135adc8d2fd9d75e9be5facc4",
+        "title": "//x.com/gdb/status/2001794601850708437",
+        "text": "//x.com/gdb/status/2001794601850708437",
+        "publishedAt": "2025-12-30T05:35:54.860Z",
+        "metadata": null,
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-30T05:35:54.861Z",
+        "processed": false
+      }
+    }
+  ]
+}

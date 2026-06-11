@@ -104,6 +104,7 @@ async function loadCard(cardId: string, personId: string): Promise<CardRow | nul
     FROM "Card"
     WHERE id = ${cardId}
       AND "personId" = ${personId}
+      AND "isActive" = true
   ` as CardRow[];
 
   return rows[0] || null;

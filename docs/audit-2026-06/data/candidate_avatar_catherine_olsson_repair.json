@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-11T16:36:00+08:00",
+  "reason": "Source-backed avatar repair for Catherine Olsson after finding a public alumni profile with a named portrait and AI safety career context.",
+  "avatars": [
+    {
+      "person": "Catherine Olsson",
+      "imageUrl": "https://resources.finalsite.net/images/f_auto,q_auto/v1595447187/lakeside/qo8r2fnss2xux3b55gfm/CatherineOlsson.jpg",
+      "evidenceUrl": "https://www.lakesideschool.org/alum/alumni-lives/catherine-olsson-08",
+      "evidenceNote": "Lakeside alumni profile is titled Catherine Olsson '08 and includes a named portrait plus career context in AI safety, including OpenAI and Google Brain."
+    }
+  ]
+}

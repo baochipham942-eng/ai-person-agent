@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-06-10T06:51:44.450Z",
+  "summary": {
+    "generatedAt": "2026-06-10T06:51:44.443Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/refetch_source_followup_tavily_mimo.jsonl",
+    "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/refetch_source_followup_apply_execute_archive.json",
+    "report": "docs/audit-2026-06/REFETCH_SOURCE_FOLLOWUP_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 30,
+    "eligibleSourceRows": 29,
+    "selectedSourceRows": 29,
+    "skippedRows": 8,
+    "existingRawPoolItems": 5,
+    "rawInserted": 24,
+    "rawUpdated": 5,
+    "keepAuditsInserted": 24,
+    "keepAuditsExisting": 5,
+    "byDecision": {
+      "replace_source": 21,
+      "augment_source": 8
+    },
+    "bySourceType": {
+      "exa": 17,
+      "official": 10,
+      "paper": 1,
+      "youtube": 1
+    },
+    "topPeople": {
+      "Yoshua Bengio": 6,
+      "亚历克·拉德福德": 4,
+      "Andrej Karpathy": 3,
+      "John Schulman": 3,
+      "Mustafa Suleyman": 3,
+      "刘知远": 3,
+      "Shane Legg": 2,
+      "Wojciech Zaremba": 2,
+      "Elon Musk": 1,
+      "Ilya Sutskever": 1,
+      "丁洁": 1
+    },
+    "topHosts": {
+      "blogs.microsoft.com": 2,
+      "nature.com": 2,
+      "aiforgood.itu.int": 1,
+      "arxiv.org": 1,
+      "cdn.openai.com": 1,
+      "cdss.berkeley.edu": 1,
+      "cifar.ca": 1,
+      "cims.nyu.edu": 1,
+      "cs.stanford.edu": 1,
+      "cs.toronto.edu": 1,
+      "cs.tsinghua.edu.cn": 1,
+      "dwarkesh.com": 1,
+      "inspirehep.net": 1,
+      "karpathy.ai": 1,
+      "lexfridman.com": 1,
+      "lzy.thunlp.org": 1,
+      "mustafa-suleyman.ai": 1,
+      "news.berkeley.edu": 1,
+      "piaofang.maoyan.com": 1,
+      "singjupost.com": 1,
+      "ted.com": 1,
+      "tedai-sanfrancisco.ted.com": 1,
+      "theguardian.com": 1,
+      "ui.adsabs.harvard.edu": 1,
+      "ycombinator.com": 1,
+      "yoshuabengio.org": 1,
+      "youtube.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 6,
+      "blocked": 2
+    }
+  }
+}

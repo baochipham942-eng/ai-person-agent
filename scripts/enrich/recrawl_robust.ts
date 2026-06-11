@@ -231,7 +231,7 @@ async function main() {
     let sparse: any[] = [];
 
     for (let attempt = 1; attempt <= 3; attempt++) {
-        let listClient = getClient();
+        const listClient = getClient();
         try {
             console.log(`  Attempt ${attempt}/3...`);
             sparse = await listClient.$queryRaw<{ id: string, name: string, qid: string }[]>`

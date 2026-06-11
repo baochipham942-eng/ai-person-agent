@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-06-11T02:04:33.500Z",
+  "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/safe_rawpool_remediation_current_execute_archive.json",
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 255,
+    "rejectedSafeQueueRows": 0,
+    "uniqueTargetIds": 255,
+    "existingTargets": 16,
+    "missingTargets": 239,
+    "deleted": 16,
+    "affectedPeople": 10,
+    "bySourceType": {
+      "exa": 16
+    },
+    "byVerdict": {
+      "unsupported": 45,
+      "wrong_person": 210
+    },
+    "topPeople": {
+      "凯文·斯科特": 4,
+      "Geoffrey Hinton": 2,
+      "周明": 2,
+      "汤姆·布朗": 2,
+      "Oriol Vinyals": 1,
+      "Yoshua Bengio": 1,
+      "丁洁": 1,
+      "戴文渊": 1,
+      "李开复": 1,
+      "李莲": 1
+    }
+  }
+}

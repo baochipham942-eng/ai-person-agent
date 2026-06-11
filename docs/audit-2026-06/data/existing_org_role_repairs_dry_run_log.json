@@ -1,0 +1,111 @@
+{
+  "summary": {
+    "roles": 7,
+    "insertedRoles": 0,
+    "wouldInsertRoles": 5,
+    "existingRoles": 2,
+    "missingPeople": 0,
+    "orgsInserted": 0,
+    "orgsWouldInsert": 4
+  },
+  "log": [
+    {
+      "action": "would_insert_role",
+      "organizationAction": "would_insert_org",
+      "person": "Aravind Srinivas",
+      "personId": "8d7bc7ca-841a-4913-b15e-64165ddc5970",
+      "organization": "Perplexity",
+      "organizationId": "44759237-ac0f-46ad-a11c-7cad6d44b1de",
+      "role": "Co-founder & CEO",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "existing_org",
+      "person": "乔尔·皮诺",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "organization": "Cohere",
+      "organizationId": "cmjw5j3j5005hizl80rzmvr8e",
+      "role": "Chief AI Officer",
+      "updates": {
+        "organizationChanged": true,
+        "currentTitleChanged": true,
+        "roleCategoryChanged": true
+      }
+    },
+    {
+      "action": "existing_role",
+      "organizationAction": "existing_org",
+      "person": "Guillaume Lample",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "organization": "Mistral AI",
+      "organizationId": "cmjw5j5rq005kizl8lvd1btrf",
+      "role": "Co-founder & Chief Scientist",
+      "updates": {
+        "organizationChanged": true,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "existing_role",
+      "organizationAction": "existing_org",
+      "person": "杨植麟",
+      "personId": "cmjtwkcw00002opf3k1hdzjor",
+      "organization": "月之暗面（Moonshot AI）",
+      "organizationId": "cmjw5or6s000r36ip7c2ln2ln",
+      "role": "创始人兼首席执行官",
+      "updates": {
+        "organizationChanged": true,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": true
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "would_insert_org",
+      "person": "闫俊杰",
+      "personId": "cmjtwkkz70006opf3yblhugno",
+      "organization": "MiniMax",
+      "organizationId": "0e2345bb-6194-4b27-86d5-9f6e9ea594d1",
+      "role": "Founder & CEO",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": true,
+        "roleCategoryChanged": true
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "would_insert_org",
+      "person": "张鹏",
+      "personId": "cmjvfc7q50004lqwq80uz63rc",
+      "organization": "智谱AI",
+      "organizationId": "42936c9b-9d14-4423-9fd8-5d1d7fe55a2b",
+      "role": "CEO",
+      "updates": {
+        "organizationChanged": true,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "would_insert_org",
+      "person": "唐杰",
+      "personId": "cmjtwksri000aopf3xzym5sx8",
+      "organization": "智谱AI",
+      "organizationId": "c3fd2528-81a3-46ec-9a7d-bd12544e39b5",
+      "role": "Co-founder",
+      "updates": {
+        "organizationChanged": true,
+        "currentTitleChanged": true,
+        "roleCategoryChanged": false
+      }
+    }
+  ]
+}

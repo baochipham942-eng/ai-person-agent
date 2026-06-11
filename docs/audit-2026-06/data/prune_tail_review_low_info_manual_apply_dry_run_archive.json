@@ -1,0 +1,1905 @@
+{
+  "generatedAt": "2026-06-10T21:32:28.234Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:32:28.234Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_review_low_info_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_low_info_manual_apply_dry_run_archive.json",
+    "stage": "manual_prune_tail_review_low_info",
+    "decisions": 37,
+    "existingTargets": 37,
+    "missingTargets": 0,
+    "auditRowsInserted": 37,
+    "deleted": 37,
+    "byAction": {
+      "delete_raw_pool_item": 37
+    },
+    "byVerdict": {
+      "reject": 37
+    },
+    "byPerson": {
+      "阿希什·瓦斯瓦尼": 5,
+      "Mira Murati": 3,
+      "亚历克·拉德福德": 3,
+      "Chris Olah": 2,
+      "Dylan Field": 2,
+      "Lukasz Kaiser": 2,
+      "Yoshua Bengio": 2,
+      "唐杰": 2,
+      "埃里克·霍维茨": 2,
+      "桑达尔·皮查伊": 2,
+      "Elon Musk": 1,
+      "Emad Mostaque": 1,
+      "Guillaume Lample": 1,
+      "Ilya Sutskever": 1,
+      "Jaana Dogan": 1,
+      "Oriol Vinyals": 1,
+      "Richard Socher": 1,
+      "Sam Altman": 1,
+      "Zoubin Ghahramani": 1,
+      "布莱恩·卡坦扎罗": 1,
+      "杰夫·迪恩": 1,
+      "马克·扎克伯格": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvrysh0143rmtbuqttlj0p",
+        "personId": "cmjtv2m92000ai004uqyjwba1",
+        "person": "Dylan Field",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvrysh0143rmtbuqttlj0p",
+          "objectLabel": "20 Under 20 Thiel Fellow: Dylan Field"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：关于Thiel Fellowship的早期背景介绍，偏向个人历史而非当前科技趋势。 Refetch curation 判为 human_review，原因：维基百科页面明确、权威地记载了Dylan Field作为Thiel Fellow的身份及其与Figma创立的关系，完全满足证据要求，可替换原始YouTube视频。其他候选来源虽提及，但权威性或直接性不足。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.829Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 1,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=pCn94jiP_OA"
+        }
+      },
+      "raw": {
+        "id": "cmjtvrysh0143rmtbuqttlj0p",
+        "personId": "cmjtv2m92000ai004uqyjwba1",
+        "person": "Dylan Field",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=pCn94jiP_OA",
+        "urlHash": "04ef3f9be22b27fdf59fcdc67b66e72a",
+        "contentHash": "dade28fdc6846d3058df90be1251f80b",
+        "title": "20 Under 20 Thiel Fellow: Dylan Field",
+        "text": "Silicon Valley visionary Peter Thiel has backed many of today's hottest tech companies and now he's searching for the next ...",
+        "publishedAt": "2012-06-29T11:39:17.000Z",
+        "metadata": {
+          "tags": [
+            "产品",
+            "开源"
+          ],
+          "videoId": "pCn94jiP_OA",
+          "isOfficial": false,
+          "thumbnailUrl": "https://i.ytimg.com/vi/pCn94jiP_OA/mqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:36:06.497Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjse8gyo002dco6yygr7lbex",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse8gyo002dco6yygr7lbex",
+          "objectLabel": "埃隆·马斯克：世界上最危险的病人——朕即国家｜Elon   Musk｜川普｜特朗普｜Donald John Trump｜马斯克采访｜马斯克新冠病毒｜马斯克为什么支持特朗普｜马斯克自传｜马斯克国际开发署"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：侧重政治立场与个人评价，科技相关性较低且带有主观色彩。 Refetch curation 判为 human_review，原因：候选来源多为通用传记、冲突报道或无关采访转录，均未直接证明原始声明中“世界上最危险的病人——朕即国家”等主观评价或政治立场内容。缺乏权威来源（如官方主页、可靠媒体采访转录）直接支持该声明，需进一步人工审核以确认是否存在相关证据。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 2,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=nvgp8gIrdxo"
+        }
+      },
+      "raw": {
+        "id": "cmjse8gyo002dco6yygr7lbex",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=nvgp8gIrdxo",
+        "urlHash": "dbb717dbea78584a7b131848aa74c815",
+        "contentHash": "2373daa4dc44ece393f78dda2c00c80b",
+        "title": "埃隆·马斯克：世界上最危险的病人——朕即国家｜Elon   Musk｜川普｜特朗普｜Donald John Trump｜马斯克采访｜马斯克新冠病毒｜马斯克为什么支持特朗普｜马斯克自传｜马斯克国际开发署",
+        "text": "埃隆·马斯克并不是唯一一个受科幻小说启发、构建世界观的硅谷巨头，但他无疑是如今影响力最大的一个——而且，他正试图将这种 ...",
+        "publishedAt": "2025-03-10T03:31:32.000Z",
+        "metadata": {
+          "tags": [
+            "产品",
+            "个性化",
+            "创意生成"
+          ],
+          "videoId": "nvgp8gIrdxo",
+          "thumbnailUrl": "https://i.ytimg.com/vi/nvgp8gIrdxo/mqdefault.jpg",
+          "videoCategory": "interview",
+          "videoCategoryConfidence": 0.85
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-30T01:37:17.281Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvw8o101bvrmtb5zn1fxfu",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw8o101bvrmtb5zn1fxfu",
+          "objectLabel": "Emad Mostaque on the End of Capitalism"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题高度相关但正文仅包含网页页脚和导航链接，缺乏实质性论述。 Refetch curation 判为 human_review，原因：原来源仅含网页页脚，缺乏实质内容。候选中的Singju Post转录页面提供了Emad Mostaque在Impact Theory播客中关于AI终结资本主义的完整访谈，直接、权威地支持了该主张，是理想的替换来源。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 4,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://danielmiessler.com/blog/emad-mostaque-on-the-end-of-capitalism"
+        }
+      },
+      "raw": {
+        "id": "cmjtvw8o101bvrmtb5zn1fxfu",
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "sourceType": "exa",
+        "url": "https://danielmiessler.com/blog/emad-mostaque-on-the-end-of-capitalism",
+        "urlHash": "c104e18898c03a4a7b1853fe8575f846",
+        "contentHash": "a00597b9839f910294284b53605e450d",
+        "title": "Emad Mostaque on the End of Capitalism",
+        "text": "Emad Mostaque on the End of Capitalism | Daniel Miessler\n[Daniel Miessler](https://danielmiessler.com)\n[](https://ul.live/nlpostfooter)[](https://ul.live/ytpostfooter)[](https://ul.live/lipostfooter)[](https://ul.live/xpostfooter)[](https://github.com/danielmiessler)[](https://omny.fm/shows/unsupervised-learning)[](https://danielmiessler.com/feed.rss)\n[](https://ul.live/nlpostfooter)[](https://ul.live/ytpostfooter)[](https://ul.live/lipostfooter)[](https://ul.live/xpostfooter)[](https://github.com/danielmiessler)[](https://omny.fm/shows/unsupervised-learning)[](https://danielmiessler.com/feed.rss)\n# Emad Mostaque on the End of Capitalism\nAn extremely clear vision of how AI will completely disrupt everything within 1,000 days\nSeptember 20, 2025\n[#ai](https://danielmiessler.com/archives/?tag=ai)[#economics](https://danielmiessler.com/archives/?tag=economics)[#capitalism](https://danielmiessler.com/archives/?tag=capitalism)[#future](https://danielmiessler.com/archives/?tag=future)[#technology](https://danielmiessler.com/archives/?tag=technology)[#automation](https://danielmiessler.com/archives/?tag=automation)\n[![Embedded YouTube video](https://img.youtube.com/vi/ziLmtuLm-LU/0.jpg)](https://www.youtube.com/watch?v=ziLmtuLm-LU)\nOk all, I have a video I&#39;m going to ask**everyone**to go and watch within like 72 hours. This is from a guy named @EMostaque , who I consider to be one of the most intelligent future-thinking guys in tech.\nHe&#39;s on with @TomBilyeu here talking about how Capitalism is about to become obsolete because of AI. Throughout the discussion, he references his book**[&quot;The Last Economy&quot;]()**, which dives deep into these transformative ideas. It&#39;s the closest narrative I&#39;ve seen to what I&#39;ve been talking about, but he adds more of his own flavor and context to it as well. It&#39;s just phenomenal. And it will likely scare the living crap out of a lot of people.\nI disagree with a few minor things he talked about, specifically around timelines (I think they&#39;re a smidge too short), but overall I&#39;d say I agree with 90-95% of the video.\nIt&#39;s just a MUST-SEE. Not just for you, but I encourage to share it with your friends and loved ones as well. Please watch within 72 hours.\nHere is a summary of the content created by Kai, but I seriously recommend you watch the full video yourself.\n## Summary[​](#summary)\nEmad Mostaque, former hedge fund manager and creator of Stable Diffusion, discusses how AI will fundamentally transform the economy, replacing human workers and making traditional economic structures obsolete within 1,000 days.\n## Ideas[​](#ideas)\n* AI will make human cognitive labor negative in value, not just zero value overall.\n* GDP measures cancer as positive but curing cancer as negative for economic growth metrics.\n* The middle class hollowed out since 2008 through inflation and asset ownership dynamics fundamentally.\n* Digital assets will create the biggest bubble ever, exceeding even the AI bubble significantly.\n* China controls robot supply chains and will likely stop exporting robots within five years.\n* AI can now hack better than any human hacker according to recent competitive rankings.\n* Sleeper agents in AI can be activated with code words hidden in training data.\n* Foundation coin directs all proceeds to beneficial compute like cancer research and education initiatives.\n* Human attention becomes the scarcest resource as AI handles all cognitive labor tasks effectively.\n* Companies hitting $100 million revenue in three months versus three years previously is commonplace.\n* AI companies will never make profits, only cash flow, playing the Amazon game strategically.\n* Public sector jobs will be the last to go because they don&#39;t require efficiency.\n* The tax base will shrink as companies stop making profits and focus on compute.\n* Violence will increase as economic uncertainty grows and people lose meaning through work displacement.\n* Network capital becomes more important than skills as AI outperforms humans at everything cognitive.\n* The economy transitions from scarcity allocation to physics of information and entropy reduction fundamentally.\n* Monetary creation should shift from debt-based to human-based issuance for economic stability long-term.\n* AI models can think for 200 minutes now versus 20 minutes just recently achieved.\n* Capitalism won&#39;t survive for humans but will be perfect for AI entities accumulating capital.\n* Every head teacher questioned homework essays exactly 1,000 days ago when ChatGPT launched globally.\n* The Manhattan Project cost $40 billion while OpenAI has raised $60 billion in funding.\n* Universal Basic Income at poverty level would cost more than entire US tax base.\n* AI will attack both our social systems and technological systems through various vulnerability vectors.\n* Countries with high public sectors will see faster job losses but not more stability.\n* The oldest professions like human connection and prost",
+        "publishedAt": "2025-09-19T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:51:44.227Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0oe4a07zqrmtbhrvr6ixb",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0oe4a07zqrmtbhrvr6ixb",
+          "objectLabel": "A Comprehensive Guide To Alec Radford: The Innovator ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题为关于亚历克·拉德福德的指南，但内容为网站导航和订阅信息，缺乏实质内容需人工审核。 Refetch curation 判为 human_review，原因：原始来源缺乏实质内容。维基百科页面提供了权威的生平概述，可作为补充。Le Random文章直接以亚历克·拉德福德为主角，讲述其贡献，可作为强关联来源。两者结合可补强人物信息。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 4,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://marineagronomy.org/newserx/67942-a-comprehensive-guide-to-alec-radford-the-innovator-behind-ai-technology"
+        }
+      },
+      "raw": {
+        "id": "cmju0oe4a07zqrmtbhrvr6ixb",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "sourceType": "exa",
+        "url": "https://marineagronomy.org/newserx/67942-a-comprehensive-guide-to-alec-radford-the-innovator-behind-ai-technology",
+        "urlHash": "204f3b090983c037a953481f53d3bc87",
+        "contentHash": "ac79fbf48b9d7f78027c46aa9862fec2",
+        "title": "A Comprehensive Guide To Alec Radford: The Innovator ...",
+        "text": "A Comprehensive Guide To Alec Radford: The Innovator Behind AI Technology- ​\n[Skip to content](#main)\n[\nPEOPLE\n](https://marineagronomy.org/)\n* Search\nPlease fill out this field.\n* Magazine\n* [Subscribe](https://www.magazines.com/?containerName=ib3gdsm16&utm_source=people.com&utm_medium=owned&utm_campaign=i111ppr1w2660)\n* [Manage Your Subscription](https://w1.buysub.com/servlet/CSGateway?cds_mag_code=PPL)\n* [Give a Gift Subscription](https://www.magazines.com/people-magazine.html)\n* [Get Help](https://marineagronomy.org/about-us-page-5499056#toc-contact-us)\n* [Newsletters](#)\n* [Sweepstakes](https://marineagronomy.org/sweepstakes)\n* [Subscribe](https://www.magazines.com/?containerName=ib3gdsm16&utm_source=people.com&utm_medium=owned&utm_campaign=i111ppr1w2660)\n* [Trend](https://people.com/Trend/)\n* [Health](https://people.com/health/)\n# A Comprehensive Guide To Alec Radford: The Innovator Behind AI Technology\nAlec Radford is a name that resonates within the realms of artificial intelligence and machine learning particularly known for his groundbreaking work in developing algorithms that have revolutionized\nBy\n[Cara Lynn Shultz](https://people.com/author/cara-lynn-shultz/)\n[Cara Lynn Shultz](https://people.com/author/cara-lynn-shultz/)\n* [](https://www.instagram.com/caralynnshultz)\nCara Lynn Shultz is a writer-reporter at PEOPLE. Her work has previously appeared in*Billboard*and*Reader&#39;s Digest*.\n[People Editorial Guidelines](https://marineagronomy.org/editorial-policy-page-5499057)\nUpdated on 2025-12-31T10:52:53Z\n[Comments](#comments)\n![Alec Radford is a name that resonates within the realms of artificial intelligence and machine learning particularly known for his groundbreaking work in developing algorithms that have revolutionized](https://tse1.mm.bing.net/th?q=A%20Comprehensive%20Guide%20To%20Alec%20Radford:%20The%20Innovator%20Behind%20AI%20Technology&w=474&h=274&c=7)\nAlec Radford is a name that resonates within the realms of artificial intelligence and machine learning particularly known for his groundbreaking work in developing algorithms that have revolutionizedPhoto:\nMarly Garnreiter / SWNS\n**Alec Radford**is a name that resonates within the realms of artificial intelligence and machine learning, particularly known for his groundbreaking work in developing algorithms that have revolutionized natural language processing. As a key figure at OpenAI, Radford has played a pivotal role in shaping the future of AI applications that impact our daily lives. This article delves into the life, career, and contributions of Alec Radford, providing insights into his achievements and the significance of his work in the tech industry.\nIn this comprehensive guide, we will explore Alec Radford's background, his professional journey, and the innovative projects he has led. We will also examine the implications of his work on society and the future of AI technology. By understanding Radford’s contributions, we can appreciate the advancements in AI and how they are transforming various sectors. The information presented here is backed by credible sources to ensure reliability and trustworthiness.\nWhether you are an AI enthusiast, a tech professional, or simply curious about the driving forces behind modern technology, this article aims to provide valuable insights into the life of Alec Radford and his influence on artificial intelligence. Join us as we explore the milestones of his career and the far-reaching effects of his work.\n## Table of Contents\n* Biography of Alec Radford\n* Early Life and Education\n* Career at OpenAI\n* The Development of GPT Models\n* Impact on AI and Society\n* The Future of AI Technology\n* Contributions to the AI Community\n* Conclusion## Biography of Alec Radford\nAlec Radford is a prominent figure in the realm of artificial intelligence, best known for his work in developing advanced machine learning models. His expertise and innovative approach have garnered him recognition as a leader in AI research. Below is a brief overview of his personal data and biodata:\n|Personal Information|Details|\nName|Alec Radford|\nBirth Date|Unknown|\nNationality|American|\nOccupation|AI Researcher, Engineer|\nAffiliation|OpenAI|\n## Early Life and Education\nAlec Radford's journey into the world of technology began with a strong foundation in mathematics and computer science. He pursued his education at prestigious institutions, where he developed a keen interest in artificial intelligence. His academic background laid the groundwork for his future innovations and research in the field.\n### Academic Achievements\n* Graduated with a degree in Computer Science.\n* Participated in various AI-related research projects during his studies.\n* Published papers on machine learning techniques that garnered attention in the academic community.## Career at OpenAI\nRadford joined OpenAI, an organization dedicated to ensuring that artificial intelligence benefits all of humanity. His work at OpenAI has been instrumental in advancing ",
+        "publishedAt": "2025-12-26T04:52:52.855Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:53:17.818Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxls3s035vrmtb5jsssc72",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxls3s035vrmtb5jsssc72",
+          "objectLabel": "L11 Language Models -- guest instructor: Alec Radford ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题提到亚历克·拉德福德作为客座讲师，但内容为YouTube登录页面，信息不完整需人工判断。 Refetch curation 判为 human_review，原因：候选来源中，OpenAI官方论文PDF能直接证明Alec Radford的研究者身份，可作为补强来源。原始YouTube链接因登录墙无法访问，需替换或补充。其他候选来源要么证据不足，要么不符合权威性要求。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 4,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://www.youtube.com/watch?v=BnpB3GrpsfM"
+        }
+      },
+      "raw": {
+        "id": "cmjtxls3s035vrmtb5jsssc72",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "sourceType": "exa",
+        "url": "https://www.youtube.com/watch?v=BnpB3GrpsfM",
+        "urlHash": "575ae2c3e3013b4663524d6602d5c10b",
+        "contentHash": "8bd45bf1b063e404d2569bd0c8dd9ccd",
+        "title": "L11 Language Models -- guest instructor: Alec Radford ...",
+        "text": "[iframe](https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en)\n\n[About](https://www.youtube.com/about/) [Press](https://www.youtube.com/about/press/) [Copyright](https://www.youtube.com/about/copyright/) [Contact us](https://www.youtube.com/t/contact_us/) [Creators](https://www.youtube.com/creators/) [Advertise](https://www.youtube.com/ads/) [Developers](https://developers.google.com/youtube) [Terms](https://www.youtube.com/t/terms) [Privacy](https://www.youtube.com/t/privacy) [Policy & Safety](https://www.youtube.com/about/policies/) [How YouTube works](https://www.youtube.com/howyoutubeworks?utm_campaign=ytgen&utm_source=ythp&utm_medium=LeftNav&utm_content=txt&u=https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%3Futm_source%3Dythp%26utm_medium%3DLeftNav%26utm_campaign%3Dytgen) [Test new features](https://www.youtube.com/new) [NFL Sunday Ticket](https://tv.youtube.com/learn/nflsundayticket)\n\n© 2025 Google LLC",
+        "publishedAt": "2020-12-31T03:26:59.933Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:54:14.437Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxs53b04mermtbfcpwk9qq",
+        "personId": "cmjtxkqy9000039ylucg15kqs",
+        "person": "马克·扎克伯格",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxs53b04mermtbfcpwk9qq",
+          "objectLabel": "Meta's Mark Zuck announces new AI model Mango to ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题提及扎克伯格和AI模型，但内容被交易所广告和链接淹没，信息密度极低，需人工判断是否有效。 Refetch curation 判为 human_review，原因：原始来源信息密度低且被广告淹没。候选来源中，马凯特大学存档的扎克伯格Facebook帖子转录是直接、权威的证据，明确证明扎克伯格本人宣布了新AI模型Muse，可有效替换原始来源。其他候选来源要么未直接提及扎克伯格，要么未提供具体宣布内容的证据。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 4,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://www.mexc.co/en-PH/news/301962"
+        }
+      },
+      "raw": {
+        "id": "cmjtxs53b04mermtbfcpwk9qq",
+        "personId": "cmjtxkqy9000039ylucg15kqs",
+        "person": "马克·扎克伯格",
+        "sourceType": "exa",
+        "url": "https://www.mexc.co/en-PH/news/301962",
+        "urlHash": "9e76dc6727110448f679df4533d849bc",
+        "contentHash": "bb730d814083850f476f5fefe2881587",
+        "title": "Meta's Mark Zuck announces new AI model Mango to ...",
+        "text": "Meta&#x27;s Mark Zuck announces new AI model Mango to compete with Sundar Google, Sam OpenAI | MEXC News\n[](https://www.mexc.co/)\nExchange[DEX+](https://www.mexc.co/dex)\n[Buy Crypto](https://www.mexc.co/buy-crypto?utm_source=mexc&amp;utm_medium=webheader&amp;utm_campaign=buy_crypto)[Markets](https://www.mexc.co/markets?utm_source=mexc&amp;utm_medium=webheader&amp;utm_campaign=mexcmarket)[Spot](https://www.mexc.co/exchange/BTC_USDT)[Futures500X](https://www.mexc.co/futures/BTC_USDT?type=linear_swap&amp;lang=en-PH)[Earn](https://www.mexc.co/staking)[Events](https://www.mexc.co/event-center/regional)\nMore\n[\n2025 Recap![](http://proxy.ops/api/file/download/F20251229163919078Aq1DnYKv0DZSbM)](https://www.mexc.co/mx-activity/annual-report/2025?utm_source=mexc&amp;utm_medium=webheader&amp;utm_campaign=2025annualreport)\nMark Zuckerberg is pushing Meta straight back into the AI fight with Mango, a new image and video model that sits beside Meta’s next text model, Avocado, all builtMark Zuckerberg is pushing Meta straight back into the AI fight with Mango, a new image and video model that sits beside Meta’s next text model, Avocado, all built\n# Meta&#x27;s Mark Zuck announces new AI model Mango to compete with Sundar Google, Sam OpenAI\n[Author: Coinstats](https://www.mexc.co/en-PH/news/author/coinstats/11)\n[Source: Coinstats](https://coinstats.app/news/a505ce9a8e56076776bf9db9a98177567514f740c48e8e9df15d7e7d5f39dd61_Metas-Mark-Zuck-announces-new-AI-model-Mango-to-compete-with-Sundar-Google-Sam-OpenAI)\n2025/12/19 07:54\nShare\n[\n![Sleepless AI](https://www.mexc.co/api/file/download/F20231228161606097miLOeZbxLi3z6U)\nAI$0.03756-1.77%\n](https://www.mexc.co/en-PH/exchange/AI_USDT)[\n![Overtake](https://www.mexc.co/api/file/download/F20250824211519321o1rlL6FdlgBMqg)\nTAKE$0.09923-69.89%\n](https://www.mexc.co/en-PH/exchange/TAKE_USDT)[\n![Quack AI](https://www.mexc.co/api/file/download/F2025090116192517717ss25ptunuOlI)\nQ$0.012778+7.20%\n](https://www.mexc.co/en-PH/exchange/Q_USDT)[\n![Brainedge](https://www.mexc.co/api/file/download/F20250331185707946bcOiNFF0m0h2Io)\nLEARN$0.01159+0.87%\n](https://www.mexc.co/en-PH/exchange/LEARN_USDT)[\n![Moonveil](https://www.mexc.co/api/file/download/F202506241310287933tK2SpoVEkN0Ij)\nMORE$0.002968+7.22%\n](https://www.mexc.co/en-PH/exchange/MORE_USDT)\n**Mark Zuckerberg is pushing Meta straight back into the AI fight with Mango, a new image and video model that sits beside Meta’s next text model, Avocado, all built to take on Google’s new Gemini tools and OpenAI’s image systems.**\nMeta wants both models in the first half of 2026, according to Alexandr Wang, the company’s chief AI officer, during an internal Q&amp;A with Chris Cox.\nAlexandr also said Meta is starting work on early world models, which means AI systems that learn by taking in visual data from their environment.\nMeta changed its whole AI structure in the summer.The company hired Alexandr to run a division called Meta Superintelligence Labs. Zuck then went on a hiring spree and grabbed more than twenty researchers from OpenAI.\nHe built a group of over fifty people with deep AI skills. Meta is trying to load up on specialists because image generation is now one of the main battlegrounds between big model companies.\n### Google and OpenAI models are going to be tough to compete with\nMeta released a video generator called Vibes in September. The tool was made with Midjourney. A few days later, OpenAI rolled out its own product, Sora, to keep up. The back-and-forth showed how fast each company reacts.\nGoogle had already kicked off another wave earlier in the year with Nano Banana, which boosted monthly users of Gemini from 450 million in July to more than 650 million by late October. That jump placed even more pressure on the other players.\nThe tension rose again in November when Google launched the third version of Gemini.Right after that, people inside OpenAI said Sam Altman declared a “code red” to push the company to win back top scores on model tests.OpenAI then released a new version of ChatGPT Images.\nSam later met journalists and said image creation is now one of the biggest reasons users return to AI apps, calling it a “sticky” feature. The message was clear: the image fight is not slowing down.\nGoogle announced Gemini 3 Flash on Wednesday. The model is built to run faster and at lower cost, and it is meant for wide use. It carries many of the reasoning skills found in Gemini 3 Pro but in a smaller system.\nThe whole plan is simple. Instead of keeping the best tools locked behind enterprise plans, Google wants these models inside mass-market apps.\nAlphabet CEO Sundar Pichai said, “With this release, Gemini 3’s next-generation intelligence is now rolling out to everyone across our products including Gemini app + AI Mode in Search. Devs can build with it in the Gemini API, Google AI Studio, Gemini CLI, and Google Antigravity and enterprises can get it in Vertex AI and Gemini Enterprise.”\nGet $50 free to trade crypto when you sign up to B",
+        "publishedAt": "2025-12-17T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:32:13.896Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0u7kl08lkrmtbsdwek9ec",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0u7kl08lkrmtbsdwek9ec",
+          "objectLabel": "Mira Murati's Open Source AI Breakthrough at Thinking ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题提及Mira Murati和AI突破，但内容被截断且包含大量无关链接文本，质量存疑需人工判断。 Refetch curation 判为 human_review，原因：Expected double-quoted property name in JSON at position 1380 (line 24 column 3) 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 5,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN"
+        }
+      },
+      "raw": {
+        "id": "cmju0u7kl08lkrmtbsdwek9ec",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "sourceType": "exa",
+        "url": "https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN",
+        "urlHash": "88720ea4d3f4a9d949843f91f46cfd8c",
+        "contentHash": "e2fdc4d743f1d31831bf17fcffae0c3f",
+        "title": "Mira Murati's Open Source AI Breakthrough at Thinking ...",
+        "text": "Mira Murati&#39;s Open Source AI Breakthrough at Thinking Machines Lab | Leon Chlon, PhD posted on the topic | LinkedIn\nAgree & Join LinkedIn\nBy clicking Continue to join or sign in, you agree to LinkedIn’s[User Agreement](/legal/user-agreement?trk=linkedin-tc_auth-button_user-agreement),[Privacy Policy](/legal/privacy-policy?trk=linkedin-tc_auth-button_privacy-policy), and[Cookie Policy](/legal/cookie-policy?trk=linkedin-tc_auth-button_cookie-policy).\n``````````````[Skip to main content](#main-content)\n# Mira Murati's Open Source AI Breakthrough at Thinking Machines Lab\nThis title was summarized by AI from the post below.\n[![View profile for Leon Chlon, PhD]()](https://uk.linkedin.com/in/leochlon?trk=public_post_feed-actor-image)\n[Leon Chlon, PhD](https://uk.linkedin.com/in/leochlon?trk=public_post_feed-actor-name)\n2mo\n* [Report this post](/uas/login?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_ellipsis-menu-semaphore-sign-in-redirect&amp;guestReportContentType=POST&amp;_f=guest-reporting)\nI have over 10 years in Machine Learning research experience across Uber, Apple, TikTok and Meta and I actually got tired of this whole space, but what Mira's lab achieved last week is phenomenal and you guys aren't talking about it enough.\nMira Murati is doing the most revolutionary work in this space and she's going at it alone. Unlike other AI companies spending millions producing vacuous garbage masquerading as insight, thinking machines research is actually answering the most important questions in LLMs, and the $10bn they're worth is an UNDERvaluation once you understand what she they've done.\nShe asked a very simple question: \"why don't LLMs produce the same output when given the same input\". Then her team painstakingly and meticulously mapped out that batch effects lead to the tiny sources of stochasticity that cascade from embedding input to softmax output, autoregressively generating a slightly new variation of the output probabilities and thus completions. They did this by designing and retrofitting language models with deterministic versions of matrix operations with a batch dimension.\nAND ITS ALL OPEN SOURCE. They didn't call themselves \"Open\" Thinking Machines and then make it all proprietary and bury the code and details. Their work is amazing. I'm already using their ideas to bound the stochastic component of the Jensen gap in my hallucination calculator.\nMira is super inspiring, I can't wait to see what Thinking Machines Lab does next!\n* ![No alternative text description for this image]()````\n[![]()![]()![]()2,350](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_social-actions-reactions)``````````````[123 Comments](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_social-actions-comments)\n[Like](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_like-cta)[Comment](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_comment-cta)````\nShare\n* Copy\n* LinkedIn\n* Facebook\n* X\n[![Exalted Joseph, graphic]()](https://ng.linkedin.com/in/exalted-joseph-3102022a8?trk=public_post_comment_actor-image)\n[Exalted Joseph](https://ng.linkedin.com/in/exalted-joseph-3102022a8?trk=public_post_comment_actor-name)\n2mo\n* [Report this comment](/uas/login?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&amp;guestReportContentType=COMMENT&amp;_f=guest-reporting)\nIs non determinism a bad thing? I understand that non-determinism can be an issue for verifying scientific experiments with LLMs, but it also helps keep responses less repetitive and more unique on the users end🤷\n[\nLike\n](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_comment_like)[\nReply\n](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_comment_reply)[40Reactions](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/leochlon_i-have-over-10-years-in-machine-learning-activity-7372687567332487168-inYN&amp;trk=public_post_comment_reac",
+        "publishedAt": "2025-10-01T04:57:27.127Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:19:50.507Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0mk0y07shrmtbv2i7wfb0",
+        "personId": "cmjtsvqew00013est5j2tsqcx",
+        "person": "Yoshua Bengio",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0mk0y07shrmtbv2i7wfb0",
+          "objectLabel": "&quot;I CREATED AI AND I&#39;M HERE TO WARN YOU&quot;"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题具有强烈的标题党倾向，且正文未明确提及 Bengio 姓名，需确认是否为本人访谈。 Refetch curation 判为 human_review，原因：所有候选来源均未直接提及原标题“I CREATED AI AND I'M HERE TO WARN YOU”。虽然多个来源涉及Yoshua Bengio对AI风险的警告，但无法确认原标题是本人言论的准确表述或官方访谈。需要更直接的证据，如原始视频的官方频道、完整转录或权威媒体对同一表述的报道。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 6,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=BFy4nIqaVLQ"
+        }
+      },
+      "raw": {
+        "id": "cmju0mk0y07shrmtbv2i7wfb0",
+        "personId": "cmjtsvqew00013est5j2tsqcx",
+        "person": "Yoshua Bengio",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=BFy4nIqaVLQ",
+        "urlHash": "d773f1e57f53a74928e65e8cf8f70aa5",
+        "contentHash": "60dc408e105210bbc45cc5baf6deaf00",
+        "title": "&quot;I CREATED AI AND I&#39;M HERE TO WARN YOU&quot;",
+        "text": "AI progress is outpacing our ability to control it… because control ISN'T keeping up with capability. One of the people raising that ...",
+        "publishedAt": "2025-12-21T10:27:00.000Z",
+        "metadata": {
+          "tags": [
+            "对齐",
+            "安全",
+            "AGI"
+          ],
+          "videoId": "BFy4nIqaVLQ",
+          "isOfficial": false,
+          "thumbnailUrl": "https://i.ytimg.com/vi/BFy4nIqaVLQ/hqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:51:52.163Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1fx0n0cyrrmtblppoceai",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1fx0n0cyrrmtblppoceai",
+          "objectLabel": "谷歌CEO桑达尔.皮查伊：Gemini浪潮、全栈AI与未来十年布局"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题明确提及皮查伊和Gemini，但内容为加密乱码，无法判断实际质量，需人工审查。 Refetch curation 判为 human_review，原因：Expected double-quoted property name in JSON at position 975 (line 27 column 3) 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 7,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://xueqiu.com/4830049643/363729822"
+        }
+      },
+      "raw": {
+        "id": "cmju1fx0n0cyrrmtblppoceai",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "sourceType": "exa",
+        "url": "https://xueqiu.com/4830049643/363729822",
+        "urlHash": "8ad2567314baa04df89c077bc9a27b4f",
+        "contentHash": "5fd81fdd0499af182d3dd6f45867afcf",
+        "title": "谷歌CEO桑达尔.皮查伊：Gemini浪潮、全栈AI与未来十年布局",
+        "text": "{\"\\_waf\\_bd8ce2ce37\":\"Fg9Hzq7kFNbXAGIgDJEPt01OhuQPoKmpZ8T9y63KZu0=\"}3EJxytTQu9ag+/LdTB71he6n0K+91uLcEHEN27ue2Yfn7P3/GkBaZEmDrF8V0YUABFFbHClr4El/ZCVcVsF9EiMJ2kUBb/Wguuv89vayxd/n3fD2rt0WZ1HTgvnv9uDo8PGj7/wrSSRm3BZeVvPzo7L92kV1d/GorvHS7Njuk9fr3cH1dkxUv+7j2hERo+u+sNraRTH1076q+fTm7K6qjhARvfnzvbry+v7k3Uw819uIg9C9h/D3/4+NqNDQhoyOEBOp0/uM2hBHQdGohNraQn2t96iL3RYhWd2u6b3Y844QfWeT2buG9PbyeV0E26nS0HpQU6n647v/+doRE4PXoIbu2kUH+Z+KvNf6+vouB1fr33hcBe683XNVVdy63eaw6P95AFeE3byC+dzswjgpU1m18OC94L77c1VV9qb/5ihQUdu6fQBZuKjp5tDCLgdX39Hs3Kf8qGigKilqOIkWC1WJ9L3SqNoQQXPzkoLh3MfcQkM07uaK3BBC15OARVv4243aRQNL+4Kx3BZOuNP7jcTe5tzx966Vkej/3UwQo7/FjhZ2WZm53tuD1e7WjfytcgcD0uH32am80uJyVbsuVwKOFgZz5a/L3BBrRvr6jfEYpnNggBFnfP2u38LRvIbx9v6Wlr/w2hBLDfOGhu3djhAp17v7jShSWN7b54Dxrf5yVFT/p+rpqf16VOaARXX2167tutWoxNvm0PKqqZHL5fWOFiDNl6/i74//elYF0I3mh6H8839VBa706uD58S5V4PIsHKNoyYr2RdoRcb/hqL790OWAEUfG9bT1gL+8qvm63aZ/PTNqGGxTEd1MPLGD3qf+tcvW+/P7/bDs6tGmeH1zBolMaAqfyL3h6Orq9tuvntmH5+z93BBZg++n4vqOEClVf1UE2hB5Gd+KoPXvjhBxXX9b46Z8Urx5U+LdKV6+elC/L16zKV+2aC9c43IJ53hTs3sP6nxevnlT7HkNsF56ULUvVrkpX7R4D7wvUuWreF+3ew0CfFKweVPi9tpCbZH3uYARbQDppt+i6IkWJWGp5L3QqYbcEC2r4bnw+5Or/dpFczHjoIPcFnZUi48FAvJcWFvzFkMDVEpCRI3ajhA1//v7jcrk4vOmK3n5fZ3Mx8qJTFpG3abvq+rjiRYNkS9Y4oARVzDwoCxguhGmeH1pEY32+TTcEH8l/73m74bcQk8U5ua376Aqe+489SxxjzDaRX37/7Kg17rdgEVdatOA6YznipDT89wWdtTl84P82OSY1+eE+Yfcy91MIvOj9L3h9XZMOGEz3BYoltXbg7PyLCwBddoQYaPZvI1N3nul8iwYq2naEHG93aiC6/ry+44WfLd5D757B7DdTHTvqtxCe5DU2L3gi9wWLvjT26GE3tzq7/amKn9Hdt1MBtEvUgjaRSnBaT42eV64Yi4Fv2llZmuAESEIeQ6xg4BFbexjOGM2cwjkeVKwYC4Js1ljQHIPuihRvWN/WOJzWuvaQm2J0bqqeV653BBJoHhS7+ig5+HZ63gCu2AoXrV5Dr0uU+QoV7R+Wuw/fV29YYkWI8uF0rvQvaXs4NwWQhrv87e63ueJTGZ8877xse2ARXPoYzhjLl/uMHlSsnoA731dX3hS43AyaW1i3BB9iGJkMXgEuWt7UVQ0ZWQx2hE9iemghOLaRR2XcwjoeVxTgEVVIGM4Yy5f7jB5UrJ6Au9nZW1hjhYgy9GP8tWQ2hEPJd+ooNf+5YARJ+Z5ArrdTHavL1zvcgnleF+43BB5zmJkMXgEuWt7X7QuX7IoUr15DrEuXe4oWb5+VOgza21qgEVFKtu6r7rXqIa1+tL73UwYGy9Q5tpFMa1pPjZ5XrhiNCldv3NWtDlmMdwQd/HTp9DgjhAlS39b7zJ8Urx5U+55CbJyVLh5D7Bi3BB14XkBtHsHXVPaRXO1cwjoeVKweg7lbVljQHIPuihRvXtRW4BFceB5Dr0uU+QoV7XcFlYsf1XpOFXaRQ27aT42eV64Yi4JsWVpeFLheAi/ZXtfui5dtDB+VVqJTH5G9bbrqN1MIr+p5L3yv6Ho8twQb0P/t+D7qcXZ2kUNW2k+NmFyXrYuBbVpc1i8BWgQf1O5f1bga3oGXY4WFEXTu9zY3BZq6mVtMShQtGp5UQRjP2Br3Uw0zafcjemJTFKqaThnMX5Stn5V52htN2bdFksd04L5hokWC4OF9IPf3RYhbem61Yvo+ur/jhYs3W7aEF+j6byE2tpCL0npiorT3n5W59oRGRVRCgWOFhpfQwTcEEt1443Q0YTcQmdk4tCN09wQXZZ4VuF4DLzaRQ0X8aCK8XJSs4kWd4mh7rv8KQWx3BBRLNL6jeK+9+P6gBF/XHkAut1MBIWD7rf+qIARZXR5ALsuXe/aQktpcwTroSwtTySmKyvbbPIqKTkv/CtTDmlCTbRg9SwT+yuYVcxxpipLn3Hp5EvI8ioftzJm8WfUoCoj5iFYpeXV8ixyfeWmKmd3UqF2dP01ZfIsdFdfpipb9cKhdhTzKqB4cUYQoSxTo2+acNMKpnghA2+P/Jd2oCp9/XTJ7JCNoHhBriHCJWWZoCxU8DumeFOvXolMKEpZBlcFXFJcWkMXurXlvbq/3BBnSVL8f19cYWRt9I6hLHU9f1jodXSmeCVxcde6IV6gKlnzYpFQhEGgeH8gL8JNUbugLHr+KHwP/dimfy/df6PCJ3Shdi4/Myw3/iOAEWmG+7rxjuOovtrcQlXM+uaj2Lj/5dm/6q7j+r7diUwoOPeu2+Hc0NTm94/Q+olMQATXrver0Orc/tbcQk/05PKX1dwQSY7+5oG4oPPoiUxuqnMAW6X8/o721a3s/bv31tiN6IX0s4/0ja3ro67uh90Wfe3rrJOH/vTixIzaRX3T/6Ck4/KLgEVnFO+ux4yrqt3cEEGP+6/826zcQiXA+vKp4L7/mdXr0q7d2JHaRR2l/7y+/+r62oCh8+Hy2kUtdfO+iOny0PKgu/zcQiWY7vqJ4Kz30e/QiRYpT9vWtfq/i+zi3BZswPPzvbqW6Prv0bro3BBP8NLop+6K6+KJTHbM/7rtteby1r7vp/zpqfzdFm3P34TxjenaQl1787iw2toQX1u9iK7/8tHcQnX0+ua/sIjd5+v32rbn7Y4WKB+N29b7p/3U4In8gYaFpdbr1dnbruvaETvz9ZKq1+rY+oDd5fDcFkKUi4+pkv7c6t/zgI2J6NbU9tOF8viOFhhbtb3q+7/dmtq37oLcQnv0jIa54Kzl0ev31q/yKhNnPrXdFnGx/7rvpfbRjhBxvd3vz4LW8ty1+4L42kJX0XMGCaEsWTt+pisNZf9C3EIjDryyzNwQWxPxo9aPhfOOjK3Eg+qtpeLg3UwS79vYp/Tdp/pJ8/sBpPxeV9pCdQ1fpARbUFpUrAtEgEVTPOOu9a2AEW/895bfrqGovv3Q5dpFf3Xfiobh5PriqJDyKnO5NrRjZdygKkGml8oy8iojHyYQYX223BBN4v7SufSK5+ftf1YE3fK+/O/pNGUuXQIoXbx+VAQpXb3l8NC33qh/XVHz7Kzzegi8e1cEfQqwjhZ4W42L+v3d90Berfqt/gmvV4ARX3hVolEMUQwG+1BGa/V2LKZNqto03UwC+Y/SvNpFA7HthLzu2hENWeemtvn+3YARIczjrvWs84aFjhAlUfPvuYr85NBp0ZbTqI4QGx3Fa4uM2GL07d2+aYnQ4Pro9bvw+6rcEFMw2Ny9+L7z5/n/+9oQb6HjqIrj5v3cQkc61PKNoIr/4t1MKCer/I2qi6np2hBv192ouO3U/qKMqeyAEVt6seCx7LPu7KOqoKb8+aunmZCcw5rImZeBh4am/faq/v39tOWw77q47+bU0oCF39PV3MiXxgJXXVddWAhXQBCKe1fofQKw9SwXwZPKt6ndFn3N0ZbTqYqHjhArV9H7qajShofaETt964Kk4dDGjtvaEHf546oIjYeOEHef/fujvP7yhozdTC7jr+qj5qupjIbcECeD27fi+92KjhY01du34vuF3fLohYjaoHh59Dub2hAl6/WGvOm+5PKA5enx8toQU3nJxIrW2kIln5cA8F28/N7ECcKARVP+jYr1qIeGqOvm9vjaq1VTX1pWBViroSx1BVHeGEb1LAFd7b6BM2suV5lnHiM2/XsCbbViOpFcLFvFeKzNJWFi+Gg9kSLNeDz6aihfqhb/WHNF2VINWA6EauaCZFA0HD0JXxn9rzYpV3xSqlggGIlTCQBReSI253kiZicZQrhfkmRDt/yvNikr8GoKfEyGeI2oCsZbjCuPbChz+2dOdKV18HZYkhIFSP4orGgMlRsFW4wKxmsGGwUMlFvLKWr2C3HqWwpVC30pDJRHmycuNv1RsFWPYhJjKDRBU2b8C8iRUbAKxieWD0ceqs5bz0aUdqN6SHGjdJFmFGqob09+nDVhBm+vKSBxS29uXKpYZlyJVQMSW1WcNudVnGYvO0jEX5ItwRuZr6YLfMRvSx6rijgBMzMTX032RUdYbVMhalYvawYnP6wLK+1RAhBaWTo2s8IyX29dnhWbHqpWbVdIxnJrWHo/AXJrGazKbVMpahMtDChtU0kqRKtQW89PdSQaX3wJmXdHTfbPXZ5HmyWkpl+SPdkh932scqpiKKx8CyYIiz8BSqyrL/dbjG+LDJV7PWsG+qhsfRmBZ9wKlClSK48MxmnXcYhWlUHYd90MlRHRcYiqDEccQlYMI+MKfEyMdrV6FjEtBTuVWKpoQU1o7Cgh+F53pYlfFwVFW2rgRFAxdej6WJIQE3bSql5je1UXXEAPGUqsAwEZfVIpa6xfPy1bEgBYLypEq1Apbyl7XshffBcTDZVfJi4IRUWqQC6iNSVabZFXZlZ7b4JRM6xfc1WFEApYU1A251NQZmnTKHZffBXfeyv/AkaChQZRCV0jJ2z6RXFh",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:14:42.024Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq8nq045urmtbmnfbawu0",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq8nq045urmtbmnfbawu0",
+          "objectLabel": "Ashish Vaswani on Essential AI's Journey with MI300X ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：YouTube视频标题提及Ashish Vaswani，但内容仅为页面框架，缺乏具体信息，需人工判断。 Refetch curation 判为 human_review，原因：原始YouTube视频缺乏具体内容，需替换。候选中的Montgomery Summit页面是权威会议官网，提供了人物职位、背景及Transformer发明者身份的直接证明，符合替换要求。其他候选多为社媒或二次来源，权威性不足。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 7,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "youtube",
+          "originalUrl": "https://www.youtube.com/watch?v=_sbFi5gGdRA"
+        }
+      },
+      "raw": {
+        "id": "cmjtxq8nq045urmtbmnfbawu0",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=_sbFi5gGdRA",
+        "urlHash": "cf8b3f302c83feff4139aa40f37d1b5b",
+        "contentHash": "fc647ee24378907990553bedacbc207c",
+        "title": "Ashish Vaswani on Essential AI's Journey with MI300X ...",
+        "text": "[About](https://www.youtube.com/about/) [Press](https://www.youtube.com/about/press/) [Copyright](https://www.youtube.com/about/copyright/) [Contact us](https://www.youtube.com/t/contact_us/) [Creators](https://www.youtube.com/creators/) [Advertise](https://www.youtube.com/ads/) [Developers](https://developers.google.com/youtube) [Terms](https://www.youtube.com/t/terms) [Privacy](https://www.youtube.com/t/privacy) [Policy & Safety](https://www.youtube.com/about/policies/) [How YouTube works](https://www.youtube.com/howyoutubeworks?utm_campaign=ytgen&utm_source=ythp&utm_medium=LeftNav&utm_content=txt&u=https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%3Futm_source%3Dythp%26utm_medium%3DLeftNav%26utm_campaign%3Dytgen) [Test new features](https://www.youtube.com/new) [NFL Sunday Ticket](https://tv.youtube.com/learn/nflsundayticket)\n\n© 2025 Google LLC",
+        "publishedAt": "2025-06-30T06:01:03.000Z",
+        "metadata": {
+          "tags": [
+            "Transformer",
+            "产品",
+            "芯片"
+          ],
+          "author": "",
+          "isOfficial": false,
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:48:45.845Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0ucm108okrmtbuuvvwxlm",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0ucm108okrmtbuuvvwxlm",
+          "objectLabel": "Valuable synthesis across labs! Make sure to check out the tutorial video - https://www.youtube.com/watch?v=ruLcDtr_cGo"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：仅为推荐视频的转发语，缺乏具体的实质性内容。 Refetch curation 判为 human_review，原因：原始声明仅为推荐视频的转发语，缺乏实质性内容。候选来源中，TIME的人物简介和Chris Olah的官方博客能直接证明其身份、职位和贡献，是权威且可访问的替代来源。其他候选要么内容不相关，要么权威性不足。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 7,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ch402/status/1952787919653224694"
+        }
+      },
+      "raw": {
+        "id": "cmju0ucm108okrmtbuuvvwxlm",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "x",
+        "url": "https://x.com/ch402/status/1952787919653224694",
+        "urlHash": "cbc9640cf156c1b757da3e59688203a8",
+        "contentHash": "71aebde82b7451dd4856860ff192ace7",
+        "title": "Valuable synthesis across labs! Make sure to check out the tutorial video - https://www.youtube.com/watch?v=ruLcDtr_cGo",
+        "text": "Valuable synthesis across labs! Make sure to check out the tutorial video - https://www.youtube.com/watch?v=ruLcDtr_cGo",
+        "publishedAt": "2025-12-31T04:57:40.796Z",
+        "metadata": {
+          "author": "ch402",
+          "postId": "1952787919653224694",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:09:34.444Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwi2a2f000tbxr3s7hpt39d",
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwi2a2f000tbxr3s7hpt39d",
+          "objectLabel": "4.7 is coming, one of your best coding partners. https://z.ai/blog/glm-4.7"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方发布的模型更新预热，内容较为简短，信息量有限。 Refetch curation 判为 human_review，原因：原始来源为唐杰个人社交媒体发布的简短预告，信息量有限。候选中智源社区的文章明确关联唐杰与GLM-4模型，可作为补充来源，增强其与GLM系列模型关联的权威性。但该文章未直接提及GLM-4.7，因此作为补强而非替换。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 7,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/jietang/status/2003146118256034139"
+        }
+      },
+      "raw": {
+        "id": "cmjwi2a2f000tbxr3s7hpt39d",
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "sourceType": "x",
+        "url": "https://x.com/jietang/status/2003146118256034139",
+        "urlHash": "0f02d55c76a55469f8f0ca367b4de754",
+        "contentHash": "f272b9c42fb154bb59d946233a308ef9",
+        "title": "4.7 is coming, one of your best coding partners. https://z.ai/blog/glm-4.7",
+        "text": "4.7 is coming, one of your best coding partners. https://z.ai/blog/glm-4.7",
+        "publishedAt": "2025-12-21T16:00:00.000Z",
+        "metadata": {
+          "author": "jietang",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T22:35:31.575Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtzrxxz05zormtbnlwqzvib",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzrxxz05zormtbnlwqzvib",
+          "objectLabel": "Awesome to see this overview of work done by many, many people in @GoogleResearch over the past year.   Learn about advances in: Advances in generative models Generative user interfaces Quantum Computing AI for Scientific Discovery Biomedical & Neuroscience Research Climate & Sustainability Privacy & Security Novel Model Architectures ...and more... Read the blog post at https://t.co/Hdj73HMEkg"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：杰夫·迪恩转发Google Research年度总结，虽与AI相关但内容泛泛，信息价值较低。 Refetch curation 判为 human_review，原因：原推文是杰夫·迪恩转发谷歌研究年度总结，需证明其身份与谷歌研究的关联。谷歌官方研究页面直接确认其首席科学家职位，是权威的补强来源。维基百科等可作为背景参考，但不足以单独替换。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 7,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/jeffdean/status/2002085659339796874"
+        }
+      },
+      "raw": {
+        "id": "cmjtzrxxz05zormtbnlwqzvib",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "sourceType": "x",
+        "url": "https://x.com/jeffdean/status/2002085659339796874",
+        "urlHash": "dfb720151325ee45859a21c69749f375",
+        "contentHash": "f9bde5ad825c40fabbc761919d946a09",
+        "title": "Awesome to see this overview of work done by many, many people in @GoogleResearch over the past year.   Learn about advances in: Advances in generative models Generative user interfaces Quantum Computing AI for Scientific Discovery Biomedical & Neuroscience Research Climate & Sustainability Privacy & Security Novel Model Architectures ...and more... Read the blog post at https://t.co/Hdj73HMEkg",
+        "text": "Awesome to see this overview of work done by many, many people in @GoogleResearch over the past year.   Learn about advances in: Advances in generative models Generative user interfaces Quantum Computing AI for Scientific Discovery Biomedical & Neuroscience Research Climate & Sustainability Privacy & Security Novel Model Architectures ...and more... Read the blog post at https://t.co/Hdj73HMEkg",
+        "publishedAt": "2025-12-31T04:27:51.262Z",
+        "metadata": {
+          "author": "jeffdean",
+          "postId": "2002085659339796874",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:43.419Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjyee4vo000cot7iux88ckcp",
+        "personId": "cmjyediag0000ot7iy9zzy6ma",
+        "person": "Jaana Dogan",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjyee4vo000cot7iux88ckcp",
+          "objectLabel": "Jaana Dogan :unverified:: \"I don't know if AI is going to…\" - Mastodon"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：内容为简短引用，缺乏上下文和深度，信息密度低，需人工判断是否值得入库。 Refetch curation 判为 human_review，原因：原始来源为Mastodon帖子，缺乏上下文。新浪新闻文章提供了权威媒体对同一事件的详细报道，直接引用并解释了Jaana Dogan的观点，可作为补强来源。其官方X主页可作为身份辅助来源。其他候选多为转述或社媒页面，权威性不足。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 9,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://m.rakyll.org/@rakyll/112143239129626770"
+        }
+      },
+      "raw": {
+        "id": "cmjyee4vo000cot7iux88ckcp",
+        "personId": "cmjyediag0000ot7iy9zzy6ma",
+        "person": "Jaana Dogan",
+        "sourceType": "exa",
+        "url": "https://m.rakyll.org/@rakyll/112143239129626770",
+        "urlHash": "679cd11e3b8d0d64909a028efbd3a48f",
+        "contentHash": "afaf9009a93d5dc60af19079e33609ba",
+        "title": "Jaana Dogan :unverified:: \"I don't know if AI is going to…\" - Mastodon",
+        "text": "Jaana Dogan :unverified:: &quot;I don&#39;t know if AI is going to replace programmer…&quot; - Mastodon",
+        "publishedAt": null,
+        "metadata": {
+          "author": null
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-03T06:28:18.612Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1r9850f8nrmtb49houu1v",
+        "personId": "cmjtsvqew00013est5j2tsqcx",
+        "person": "Yoshua Bengio",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1r9850f8nrmtb49houu1v",
+          "objectLabel": "Yoshua Bengio - A Potential Path to Safer AI Development"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题高度相关，但正文内容主要为LinkedIn登录提示和网页导航，信息密度极低。 Refetch curation 判为 human_review，原因：原LinkedIn来源信息密度低，无法有效证明人物与观点。TIME作者页和TED演讲转录均为权威、可访问的来源，能直接证明Yoshua Bengio的身份、职位及其关于AI安全的观点，符合替换要求。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 9,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T"
+        }
+      },
+      "raw": {
+        "id": "cmju1r9850f8nrmtb49houu1v",
+        "personId": "cmjtsvqew00013est5j2tsqcx",
+        "person": "Yoshua Bengio",
+        "sourceType": "exa",
+        "url": "https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T",
+        "urlHash": "ee3ea82096317392be8083851302ea2d",
+        "contentHash": "658f6d82dbcd489ec76df8a70be2c146",
+        "title": "Yoshua Bengio - A Potential Path to Safer AI Development",
+        "text": "A Potential Path to Safer AI Development | Yoshua Bengio | 42 comments\nAgree & Join LinkedIn\nBy clicking Continue to join or sign in, you agree to LinkedIn’s[User Agreement](https://www.linkedin.com/legal/user-agreement?trk=linkedin-tc_auth-button_user-agreement),[Privacy Policy](https://www.linkedin.com/legal/privacy-policy?trk=linkedin-tc_auth-button_privacy-policy), and[Cookie Policy](https://www.linkedin.com/legal/cookie-policy?trk=linkedin-tc_auth-button_cookie-policy).\n``````````````[Skip to main content](#main-content)\n# Yoshua Bengio’s Post\n[![View profile for Yoshua Bengio]()](https://ca.linkedin.com/in/yoshuabengio?trk=public_post_feed-actor-image)\n[Yoshua Bengio](https://ca.linkedin.com/in/yoshuabengio?trk=public_post_feed-actor-name)\n7mo\n* [Report this post](https://www.linkedin.com/uas/login?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_ellipsis-menu-semaphore-sign-in-redirect&amp;guestReportContentType=POST&amp;_f=guest-reporting)\nTwo years ago, I've completely reoriented my scientific research to try to make AI safe by design. In this[TIME](https://www.linkedin.com/company/time?trk=public_post-text)op-ed, I present my team's new direction called \"Scientist AI\"; a practical, effective and more secure alternative to the current uncontrolled agency-driven trajectory.[https://lnkd.in/eP9t\\_532](https://www.linkedin.com/redir/redirect?url=https://lnkd.in/eP9t_532&amp;urlhash=QO_0&amp;trk=public_post-text)\n[![A Potential Path to Safer AI Development]()\nA Potential Path to Safer AI Developmenttime.com\n](https://www.linkedin.com/redir/redirect?url=https://time.com/7283507/safer-ai-development/&amp;urlhash=9YjB&amp;trk=public_post_feed-article-content)\n````\n[![]()![]()![]()1,544](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_social-actions-reactions)``````````````[42 Comments](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_social-actions-comments)\n[Like](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_like-cta)[Comment](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_comment-cta)````\nShare\n* Copy\n* LinkedIn\n* Facebook\n* X\n[![Balázs Kégl, graphic]()](https://fr.linkedin.com/in/balazskegl?trk=public_post_comment_actor-image)\n[Balázs Kégl](https://fr.linkedin.com/in/balazskegl?trk=public_post_comment_actor-name)\n7mo\n* [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&amp;guestReportContentType=COMMENT&amp;_f=guest-reporting)\nWhen we were building our AI Scientist ten years ago, it was clear how AI can do data collection, inference, and simulation. What was much more mysterious: how will it choose what to work on, and how will it generate hypotheses. It's mysterious because we don't know how \\_we\\_ human scientists do that. Thinking about these launched me on a trajectory that completely changed how I look at the world.[https://www.youtube.com/watch?v=oo5QmKKwS3U](https://www.youtube.com/watch?v=oo5QmKKwS3U&amp;trk=public_post_comment-text)\n[\nLike\n](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_comment_like)[\nReply\n](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_comment_reply)[4Reactions](https://www.linkedin.com/signup/cold-join?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_comment_reactions)5Reactions\n[![Zara K., graphic]()](https://www.linkedin.com/in/zarak0?trk=public_post_comment_actor-image)\n[Zara K.](https://www.linkedin.com/in/zarak0?trk=public_post_comment_actor-name)\n7mo\n* [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https://www.linkedin.com/posts/yoshuabengio_a-potential-path-to-safer-ai-development-activity-7326561644271067136-o_3T&amp;trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&amp;guestReportContentType=COMMENT&amp;_f=guest-repor",
+        "publishedAt": "2025-05-31T05:23:20.129Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:45:48.307Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju15rlr0b0qrmtbf5p1e91h",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15rlr0b0qrmtbf5p1e91h",
+          "objectLabel": "谷歌CEO 桑达尔·皮查伊（Sundar Pichai） 刚刚发表了一项 ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题提及皮查伊发表关于科技未来的声明，但内容仅为Facebook登录页片段，无实质信息，需人工判断。 Refetch curation 判为 human_review，原因：原始来源为Facebook登录页片段，无实质信息。候选中麻省理工科技评论的专访文章权威性高，直接证明皮查伊的谷歌CEO身份及其对AI等科技未来的观点，可作为有效替换来源。其他候选或权威性不足，或证据不直接，或为辅助来源。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 10,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://www.facebook.com/lukastan285/posts/%E8%B0%B7%E6%AD%8C-ceo-%E6%A1%91%E8%BE%BE%E5%B0%94%E7%9A%AE%E6%9F%A5%E4%BC%8Asundar-pichai-%E5%88%9A%E5%88%9A%E5%8F%91%E8%A1%A8%E4%BA%86%E4%B8%80%E9%A1%B9%E5%85%B3%E4%BA%8E%E7%A7%91%E6%8A%80%E6%9C%AA%E6%9D%A5%E7%9A%84%E9%87%8D%E5%A4%A7%E5%A3%B0%E6%98%8E%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E6%AD%A3%E5%A4%84%E5%9C%A8%E4%B8%8E%E4%BA%94%E5%B9%B4%E5%89%8D-ai-%E7%9B%B8%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8D%B3%E5%B0%86%E8%BF%8E%E6%9D%A5%E5%85%A8%E9%9D%A2%E7%88%86%E5%8F%91%E8%BF%99%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E8%BF%99%E4%BB%A3/26117183141217553/"
+        }
+      },
+      "raw": {
+        "id": "cmju15rlr0b0qrmtbf5p1e91h",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "sourceType": "exa",
+        "url": "https://www.facebook.com/lukastan285/posts/%E8%B0%B7%E6%AD%8C-ceo-%E6%A1%91%E8%BE%BE%E5%B0%94%E7%9A%AE%E6%9F%A5%E4%BC%8Asundar-pichai-%E5%88%9A%E5%88%9A%E5%8F%91%E8%A1%A8%E4%BA%86%E4%B8%80%E9%A1%B9%E5%85%B3%E4%BA%8E%E7%A7%91%E6%8A%80%E6%9C%AA%E6%9D%A5%E7%9A%84%E9%87%8D%E5%A4%A7%E5%A3%B0%E6%98%8E%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E6%AD%A3%E5%A4%84%E5%9C%A8%E4%B8%8E%E4%BA%94%E5%B9%B4%E5%89%8D-ai-%E7%9B%B8%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8D%B3%E5%B0%86%E8%BF%8E%E6%9D%A5%E5%85%A8%E9%9D%A2%E7%88%86%E5%8F%91%E8%BF%99%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E8%BF%99%E4%BB%A3/26117183141217553/",
+        "urlHash": "eb5713135e760303af6ee8043887477b",
+        "contentHash": "81a4bc49845a3a206c21ce48e2dae28a",
+        "title": "谷歌CEO 桑达尔·皮查伊（Sundar Pichai） 刚刚发表了一项 ...",
+        "text": "Lukas J. Tan - 谷歌CEO 桑达尔·皮查伊（Sundar Pichai）...\n**\nFacebook\n[\nLog In\n](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&amp;next=https://www.facebook.com/lukastan285/posts/%E8%B0%B7%E6%AD%8C-ceo-%E6%A1%91%E8%BE%BE%E5%B0%94%E7%9A%AE%E6%9F%A5%E4%BC%8Asundar-pichai-%E5%88%9A%E5%88%9A%E5%8F%91%E8%A1%A8%E4%BA%86%E4%B8%80%E9%A1%B9%E5%85%B3%E4%BA%8E%E7%A7%91%E6%8A%80%E6%9C%AA%E6%9D%A5%E7%9A%84%E9%87%8D%E5%A4%A7%E5%A3%B0%E6%98%8E%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E6%AD%A3%E5%A4%84%E5%9C%A8%E4%B8%8E%E4%BA%94%E5%B9%B4%E5%89%8D-ai-%E7%9B%B8%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8D%B3%E5%B0%86%E8%BF%8E%E6%9D%A5%E5%85%A8%E9%9D%A2%E7%88%86%E5%8F%91%E8%BF%99%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E8%BF%99%E4%BB%A3/26117183141217553/)\n## Lukas J. Tan&#x27;s Post\n[\n](https://www.facebook.com/lukastan285?__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=<<,P-R)\n### **[Lukas J. Tan](https://www.facebook.com/lukastan285?__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=-]C,P-R)**is with**[Marketing Growmatics](https://www.facebook.com/marketinggrowmatics?__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=-]C,P-R)**.\n[December 9 at 2:12 AM](https://www.facebook.com/lukastan285/posts/pfbid02oiKXHTTZJkoYZ3E9TUDpfjqbuyUrvFe6ynkK2AstFJ3XFsMXoo4TnqCjAReB17yBl?__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=,O,P-R)·Shared with Public\n谷歌CEO 桑达尔·皮查伊（Sundar Pichai） 刚刚发表了一项关于科技未来的重大声明：量子计算正处在与五年前AI 相同的位置——即将迎来全面爆发。这代表什么？这代表我们正站在下一场科技革命的边缘。五年前，AI 还只是“充满潜力”。随后ChatGPT、Midjourney、Gemini、Copilot、自主系统陆续出现——世界在一夜之间被改变。\n现在想象一下这样的飞跃……但强大一千倍。量子计算机不仅仅是“更快”。它们会让当今最快的超级计算机看起来像玩具。量子科技将能够：•在数秒内解决极其复杂的科学问题•破解现有加密系统•徹底改变药物研发•革新气候模型预测•重塑金融、物流、网络安全等所有领域皮查伊认为，突破时刻已经非常接近。当这一刻到来时——今天投资量子计算的国家与企业，将成为未来的领跑者。AI 只是开始。量子技术才是下一个时代的前沿力量。把这篇内容分享给热爱科技与未来的人吧。[#sundarpichai](https://www.facebook.com/hashtag/sundarpichai?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#googleceo](https://www.facebook.com/hashtag/googleceo?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#quantumcomputing](https://www.facebook.com/hashtag/quantumcomputing?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#futuretech](https://www.facebook.com/hashtag/futuretech?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#techrevolution](https://www.facebook.com/hashtag/techrevolution?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#aiinnovation](https://www.facebook.com/hashtag/aiinnovation?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#businessinsights](https://www.facebook.com/hashtag/businessinsights?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#technologynews](https://www.facebook.com/hashtag/technologynews?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)[#marketinggrowmatics](https://www.facebook.com/hashtag/marketinggrowmatics?__eep__=6&amp;__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx-Y2-YD8oGYotzt2xEucBGfE32j6uEdEfNIfysHBBuPJQf2Gl2ikSTGr_B9jXqZDPpdeF6qRz_INPjCiVt1TZb73aWe0mTnqLk8C-cZuU8HnNvA_n0uEo3AgkJRKHXtKCU8wC118BeDwQ&amp;__tn__=*NK-R)\n——内容来源：[Marketing Growmatics](https://www.facebook.com/marketinggrowmatics?__cft__[0]=AZajm-fYZt0S3xyjI2Wv1oD02ABENPkBDx",
+        "publishedAt": "2025-12-10T05:06:36.672Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:14:41.600Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjuuiw830go1rmtbafcwnd78",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuiw830go1rmtbafcwnd78",
+          "objectLabel": "Attention Is All You Need | Request PDF"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：内容是关于Attention论文的请求页面，虽提及Ashish Vaswani为作者，但信息密度低，仅展示元数据。 Refetch curation 判为 human_review，原因：原始来源（ResearchGate请求页面）信息密度低。候选中的中文维基百科页面提供了权威的人物背景和论文贡献描述，可作为补强来源。但维基百科属于辅助线索，建议进一步寻找官方主页或机构页面作为主要替换来源。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 10,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://www.researchgate.net/publication/317558625_Attention_Is_All_You_Need"
+        }
+      },
+      "raw": {
+        "id": "cmjuuiw830go1rmtbafcwnd78",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "sourceType": "exa",
+        "url": "https://www.researchgate.net/publication/317558625_Attention_Is_All_You_Need",
+        "urlHash": "28bdf7e8cf044e37145093cf37a3f6ee",
+        "contentHash": "adf45ff1b4a2b187b568b6773366581d",
+        "title": "Attention Is All You Need | Request PDF",
+        "text": "Article\n\n# Attention Is All You Need\n\n- June 2017\n\nDOI: [10.48550/arXiv.1706.03762](https://doi.org/10.48550/arXiv.1706.03762)\n\nAuthors:\n\n[Ashish Vaswani](https://www.researchgate.net/scientific-contributions/Ashish-Vaswani-2107454759)\n\n[Ashish Vaswani](https://www.researchgate.net/scientific-contributions/Ashish-Vaswani-2107454759)\n\n- This person is not on ResearchGate, or hasn't claimed this research yet.\n\n\n[Noam Shazeer](https://www.researchgate.net/scientific-contributions/Noam-Shazeer-2059717778)\n\n[Noam Shazeer](https://www.researchgate.net/scientific-contributions/Noam-Shazeer-2059717778)\n\n- This person is not on ResearchGate, or hasn't claimed this research yet.\n\n\n[Niki Parmar](https://www.researchgate.net/scientific-contributions/Niki-Parmar-2129043508)\n\n[Niki Parmar](https://www.researchgate.net/scientific-contributions/Niki-Parmar-2129043508)\n\n- This person is not on ResearchGate, or hasn't claimed this research yet.\n\n\n[Jakob Uszkoreit](https://www.researchgate.net/profile/Jakob-Uszkoreit)\n\n- [Google Inc.](https://www.researchgate.net/institution/Google_Inc)\n\nShow all 8 authorsHide\n\nRequest full-text\n\n[Download citation](https://www.researchgate.net/publication/317558625_Attention_Is_All_You_Need/citation/download)\n\nCopy link Link copied\n\n[Request full-text](https://www.researchgate.net/lite.research.ResearchResourcesSummary.requestFulltext.html?publicationUid=317558625&ev=su_requestFulltext) [Download citation](https://www.researchgate.net/publication/317558625_Attention_Is_All_You_Need/citation/download)\nCopy link Link copied\n\nTo read the full-text of this research, you can request a copy directly from the authors.\n\n## Abstract\n\nThe dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.0 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.\n\n**Discover the world's research**\n\n- 25+ million members\n- 160+ million publication pages\n- 2.3+ billion citations\n\n[Join for free](https://www.researchgate.net/signup.SignUp.html)\n\n## No full-text available\n\nTo read the full-text of this research, you can request a copy directly from the authors.\n\nRequest full-text PDF\n\n... Large language models (LLMs), based on feed-forward neural nets (NNs) in particular using the transformer architecture \\[1,42\\], are also based on learning and operating via predicting, and have attained substantial success, surpassing all expectations \\[42,13,2\\]. We have motivated PGs along the same lines \\[19,20\\], but as discussed above, there remain many research challenges. ...\n\n... Large language models (LLMs), based on feed-forward neural nets (NNs) in particular using the transformer architecture \\[1,42\\], are also based on learning and operating via predicting, and have attained substantial success, surpassing all expectations \\[42,13,2\\]. We have motivated PGs along the same lines \\[19,20\\], but as discussed above, there remain many research challenges. ...\n\n[Towards Understanding and Developing Open-Ended Intelligences for Infinite Worlds](https://www.researchgate.net/publication/397588700_Towards_Understanding_and_Developing_Open-Ended_Intelligences_for_Infinite_Worlds)\n\nArticle\n\nFull-text available\n\n- Nov 2025\n\n- [Omid Madani](https://www.researchgate.net/profile/Omid-Madani)\n\nWe describe the state of our work on Prediction Games for unsupervised cumulative learning of structured perceptual concepts. Here, concepts predict one another and are built from each other. Improving at prediction drives the learning, and co-occurrences drive concept construction. In each episode, through the process of interpretation, the system determines which of its many concepts are useful, i.e. form a coherent account of (low-level) buffer contents. By practicing many interpretations , prediction weights are continually updated, and from time to time new concepts are generated, leading to improved predictions and more coherent accounting. Over the past few years, our approach has become more probabilistic and information-theoretic. We repor",
+        "publishedAt": "2017-06-11T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:48:49.828Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvrt8p013frmtbutkvt6m2",
+        "personId": "cmjtv2m92000ai004uqyjwba1",
+        "person": "Dylan Field",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvrt8p013frmtbutkvt6m2",
+          "objectLabel": "Grateful to be a seed investor in Sunday! Just a few minutes into meeting @tonyzzhao and @chichengcc it was clear this would be a very special company. Their pace and progress has exceeded every expectation and they are just getting started!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：涉及个人投资动态，虽与科技行业相关但内容偏向社交礼仪。 Refetch curation 判为 human_review，原因：候选来源中，只有Tony Zhao的LinkedIn帖子明确提到Dylan Field是Sunday的天使投资人，但这是UGC内容，权威性不足。其他来源均未直接证明Dylan Field投资Sunday。需要更权威的来源，如官方新闻稿、可靠媒体报道或Dylan Field本人的官方声明。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 11,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/zoink/status/1991238214531588144"
+        }
+      },
+      "raw": {
+        "id": "cmjtvrt8p013frmtbutkvt6m2",
+        "personId": "cmjtv2m92000ai004uqyjwba1",
+        "person": "Dylan Field",
+        "sourceType": "x",
+        "url": "https://x.com/zoink/status/1991238214531588144",
+        "urlHash": "633282d69393db6af789f23f7a891958",
+        "contentHash": "31f1a7ba2a650ad1c092b5dd53f02de9",
+        "title": "Grateful to be a seed investor in Sunday! Just a few minutes into meeting @tonyzzhao and @chichengcc it was clear this would be a very special company. Their pace and progress has exceeded every expectation and they are just getting started!",
+        "text": "Grateful to be a seed investor in Sunday! Just a few minutes into meeting @tonyzzhao and @chichengcc it was clear this would be a very special company. Their pace and progress has exceeded every expectation and they are just getting started!",
+        "publishedAt": "2025-12-31T02:34:57.219Z",
+        "metadata": {
+          "author": "zoink",
+          "postId": "1991238214531588144",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:35:59.305Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju122h00aa9rmtbvmp90574",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju122h00aa9rmtbvmp90574",
+          "objectLabel": "Congratulations to @geoffreyhinton for winning the Nobel Prize in physics!!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方发布的社交祝贺动态，属于礼仪性内容，缺乏深度观点。 Refetch curation 判为 human_review，原因：候选来源均未直接证明Ilya Sutskever对Geoffrey Hinton获得诺贝尔奖的祝贺。原始来源为推特动态，属于社交礼仪内容，缺乏深度。候选来源虽涉及两人关系或Hinton获奖，但无一能替代或补强原始声明。需进一步搜索Sutskever本人的公开声明或可靠媒体转录。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 12,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ilyasut/status/1843739228758520186"
+        }
+      },
+      "raw": {
+        "id": "cmju122h00aa9rmtbvmp90574",
+        "personId": "cmjtsx87a00043estei08y4na",
+        "person": "Ilya Sutskever",
+        "sourceType": "x",
+        "url": "https://x.com/ilyasut/status/1843739228758520186",
+        "urlHash": "cd77164a30115424306b795e77163360",
+        "contentHash": "f76e0ea37f7219d2f49c99af2dabec22",
+        "title": "Congratulations to @geoffreyhinton for winning the Nobel Prize in physics!!",
+        "text": "Congratulations to @geoffreyhinton for winning the Nobel Prize in physics!!",
+        "publishedAt": null,
+        "metadata": {
+          "author": "ilyasut",
+          "postId": "1843739228758520186",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:03:55.908Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwhhav3000z56p4vlnpvsrf",
+        "personId": "cmjv6furu000pmfghv7drjtak",
+        "person": "Richard Socher",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhhav3000z56p4vlnpvsrf",
+          "objectLabel": "A new dimension of creativity unlocked by AI.  Given that the games industry is larger than movies. "
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：泛泛评论AI与游戏行业，缺乏具体观点或事实，质量偏低。 Refetch curation 判为 human_review，原因：所有候选来源均未直接提及目标声明（AI解锁创造力新维度，游戏行业比电影大）。需要更精确的搜索来找到Richard Socher本人发表此观点的权威来源（如采访、演讲或文章）。当前证据不足，无法替换或补强。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 12,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/RichardSocher/status/1973506118543675495"
+        }
+      },
+      "raw": {
+        "id": "cmjwhhav3000z56p4vlnpvsrf",
+        "personId": "cmjv6furu000pmfghv7drjtak",
+        "person": "Richard Socher",
+        "sourceType": "x",
+        "url": "https://x.com/RichardSocher/status/1973506118543675495",
+        "urlHash": "f3590f356eaf46fcf3ba246cb1db880b",
+        "contentHash": "621e4f1fdf734dd57ffad7639f2ca41a",
+        "title": "A new dimension of creativity unlocked by AI.  Given that the games industry is larger than movies. ",
+        "text": "A new dimension of creativity unlocked by AI.  Given that the games industry is larger than movies. I think this will be very exciting.",
+        "publishedAt": "2025-09-30T16:00:00.000Z",
+        "metadata": {
+          "author": "richard_socher",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T22:19:12.831Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjv37e5b000av6e84p1ou87r",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv37e5b000av6e84p1ou87r",
+          "objectLabel": "It is a very smart model, and we have come a long way since GPT-5.1:"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：对模型进步的泛泛评价，内容较为简短且缺乏具体细节。 Refetch curation 判为 human_review，原因：原始来源（推文）内容简短，缺乏上下文。候选中的播客转录和官方视频能提供更权威、更详细的背景，证明 Sam Altman 对模型进展的评价，适合作为补充来源。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 12,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/sama/status/1999185784012947900"
+        }
+      },
+      "raw": {
+        "id": "cmjv37e5b000av6e84p1ou87r",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "sourceType": "x",
+        "url": "https://x.com/sama/status/1999185784012947900",
+        "urlHash": "https://x.com/sama/status/1999185784012947900",
+        "contentHash": "",
+        "title": "It is a very smart model, and we have come a long way since GPT-5.1:",
+        "text": "It is a very smart model, and we have come a long way since GPT-5.1:",
+        "publishedAt": "2025-12-10T16:00:00.000Z",
+        "metadata": {
+          "author": "sama"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T22:51:49.716Z",
+        "processed": true
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwhjhnl001n56p4ute3d6aw",
+        "personId": "cmjv6furu0005mfghkppozqo8",
+        "person": "Zoubin Ghahramani",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhjhnl001n56p4ute3d6aw",
+          "objectLabel": "Predicting weather accurately is a fantastic use of AI that helps everyone in the world. @GoogleDeep"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：内容属于泛泛而谈的宏观愿景，信息密度较低，仅表达对 AI 气象预测的认可。 Refetch curation 判为 human_review，原因：原推文内容泛泛，缺乏具体信息。候选中的Google Research官方资料页能权威证明Zoubin Ghahramani的职位和背景，可作为身份来源补强，但无法直接证明其关于AI气象预测的具体观点。需要进一步寻找能直接关联其观点或相关工作的来源。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 12,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ZoubinGhahrama1/status/1990488622064386208"
+        }
+      },
+      "raw": {
+        "id": "cmjwhjhnl001n56p4ute3d6aw",
+        "personId": "cmjv6furu0005mfghkppozqo8",
+        "person": "Zoubin Ghahramani",
+        "sourceType": "x",
+        "url": "https://x.com/ZoubinGhahrama1/status/1990488622064386208",
+        "urlHash": "7b72b830dda5a532a58f5ba82547f96f",
+        "contentHash": "71a18f10e893f7ae4c263d0a9d1bf17d",
+        "title": "Predicting weather accurately is a fantastic use of AI that helps everyone in the world. @GoogleDeep",
+        "text": "Predicting weather accurately is a fantastic use of AI that helps everyone in the world. @GoogleDeepMind : AI to benefit humanity.",
+        "publishedAt": "2025-11-16T16:00:00.000Z",
+        "metadata": {
+          "author": "zoubin",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T22:20:54.945Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0pvie085mrmtbhq3ojjkd",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0pvie085mrmtbhq3ojjkd",
+          "objectLabel": " recentBeen AI meaning-focused to posts check as this of - late thanks December @ Thom202_W5olf. ! Alec RandomRad speculation tends: to the post bit sporad ofically weird,ness so going the on dates in span BERT several's months position. embeddings Let compared me to know GPT if is you'd due like to deeper the analysis sentence of similarity any task of. these I'd! guess a version of BERT trained without that aux loss would have pos embds similar to GPT."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：内容混乱但提及亚历克·拉德福德和BERT/GPT比较，需人工判断是否有效。 Refetch curation 判为 human_review，原因：原始来源内容混乱，但提及人物与BERT/GPT比较。候选中Dataconomy文章提供了权威的职业背景信息，可补强人物页面。其他候选要么是社媒/搜索页，要么缺乏直接证据，需人工审核视频内容。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 13,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/AlecRad/status/1064280158264152066"
+        }
+      },
+      "raw": {
+        "id": "cmju0pvie085mrmtbhq3ojjkd",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "sourceType": "x",
+        "url": "https://x.com/AlecRad/status/1064280158264152066",
+        "urlHash": "f3124a4c155486134eb788a2ab9d8616",
+        "contentHash": "af6b8a71464a45889a774563b377079f",
+        "title": " recentBeen AI meaning-focused to posts check as this of - late thanks December @ Thom202_W5olf. ! Alec RandomRad speculation tends: to the post bit sporad ofically weird,ness so going the on dates in span BERT several's months position. embeddings Let compared me to know GPT if is you'd due like to deeper the analysis sentence of similarity any task of. these I'd! guess a version of BERT trained without that aux loss would have pos embds similar to GPT.",
+        "text": " recentBeen AI meaning-focused to posts check as this of - late thanks December @ Thom202_W5olf. ! Alec RandomRad speculation tends: to the post bit sporad ofically weird,ness so going the on dates in span BERT several's months position. embeddings Let compared me to know GPT if is you'd due like to deeper the analysis sentence of similarity any task of. these I'd! guess a version of BERT trained without that aux loss would have pos embds similar to GPT.",
+        "publishedAt": null,
+        "metadata": {
+          "author": "AlecRad",
+          "postId": "1064280158264152066",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:54:27.014Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjwi2bhw000xbxr3x892gcmg",
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwi2bhw000xbxr3x892gcmg",
+          "objectLabel": "for GLM-4.6, which features do you want most? Speed up to 100t/s? Stability? Lower price?"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方账号发布的互动调研，信息密度较低，属于产品反馈收集。 Refetch curation 判为 human_review，原因：原始来源为唐杰在X平台的互动调研，信息密度低。候选来源中，智源社区文章能权威证明唐杰与GLM模型的关联，可作为补强来源。但该文章未直接提及GLM-4.6或原始推文内容，因此更适合补强而非完全替换。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 13,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/jietang/status/1988962533554991459"
+        }
+      },
+      "raw": {
+        "id": "cmjwi2bhw000xbxr3x892gcmg",
+        "personId": "cmjtwksri000aopf3xzym5sx8",
+        "person": "唐杰",
+        "sourceType": "x",
+        "url": "https://x.com/jietang/status/1988962533554991459",
+        "urlHash": "9341daa3b2cef99374a0b4419a2d3194",
+        "contentHash": "77cdcac8f578daffd03d090b8f3a4c26",
+        "title": "for GLM-4.6, which features do you want most? Speed up to 100t/s? Stability? Lower price?",
+        "text": "for GLM-4.6, which features do you want most? Speed up to 100t/s? Stability? Lower price?",
+        "publishedAt": "2025-11-12T16:00:00.000Z",
+        "metadata": {
+          "author": "jietang",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T22:35:33.428Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxpi4w0401rmtb2wbv30vu",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpi4w0401rmtb2wbv30vu",
+          "objectLabel": "When AI Meets Biology"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：标题式推文，虽然主题相关但信息密度极低，需人工确认是否保留。 Refetch curation 判为 human_review，原因：原始来源为推文，信息密度低。候选中仅微软官方页面提及埃里克·霍维茨及其观点，可作为权威补充，但未直接关联“When AI Meets Biology”主题。建议进一步搜索该主题的官方演讲或访谈记录。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 13,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/erichorvitz/status/1975282204445188360"
+        }
+      },
+      "raw": {
+        "id": "cmjtxpi4w0401rmtb2wbv30vu",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "sourceType": "x",
+        "url": "https://x.com/erichorvitz/status/1975282204445188360",
+        "urlHash": "a17233dcd9de49a8bcb4ed63eb9abdae",
+        "contentHash": "59f72ca12f6b648a5b483006093b3836",
+        "title": "When AI Meets Biology",
+        "text": "When AI Meets Biology",
+        "publishedAt": null,
+        "metadata": {
+          "author": "erichorvitz",
+          "postId": "1975282204445188360",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:04:48.527Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq6et044wrmtb01zdqycb",
+        "personId": "cmjtxe137000e5p08x4puluzz",
+        "person": "布莱恩·卡坦扎罗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq6et044wrmtb01zdqycb",
+          "objectLabel": "//x.com/ctnzr/status/1957504768156561413"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：虽为官方账号链接，但缺乏具体文本内容，需人工确认链接价值。 Refetch curation 判为 human_review，原因：原始来源为推文链接，缺乏具体内容。候选中有两个来源（yeeyi和36氪）明确提及人物姓名、职位和贡献，可作为补充证据。其他候选来源要么无关，要么证据不足或需登录墙。建议用这两个来源补强，但需注意yeeyi为转载媒体，36氪为授权发布，权威性中等。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 13,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ctnzr/status/1957504768156561413"
+        }
+      },
+      "raw": {
+        "id": "cmjtxq6et044wrmtb01zdqycb",
+        "personId": "cmjtxe137000e5p08x4puluzz",
+        "person": "布莱恩·卡坦扎罗",
+        "sourceType": "x",
+        "url": "https://x.com/ctnzr/status/1957504768156561413",
+        "urlHash": "cbf91c373f99d50368a9c01a1a363c37",
+        "contentHash": "5e35a042775ea3cd250a01ec58560246",
+        "title": "//x.com/ctnzr/status/1957504768156561413",
+        "text": "//x.com/ctnzr/status/1957504768156561413",
+        "publishedAt": "2025-12-31T03:30:27.830Z",
+        "metadata": {
+          "author": "ctnzr",
+          "postId": "1957504768156561413",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:30:42.293Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju0zueq09sbrmtbcvydtdem",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0zueq09sbrmtbcvydtdem",
+          "objectLabel": "Thank you! This work was led by @ishaankshah , @ampolloreno , Karl and Philip!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：感谢推文，提及他人工作，但内容简短，信息价值有限。 Refetch curation 判为 human_review，原因：原推文内容简短，信息价值有限。维基百科页面提供了人物权威背景和主要贡献，可作为补充来源，增强信息深度。但维基百科为二级来源，不能完全替代原推文，因此选择增强而非替换。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ashVaswani/status/1919895825473245576"
+        }
+      },
+      "raw": {
+        "id": "cmju0zueq09sbrmtbcvydtdem",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "sourceType": "x",
+        "url": "https://x.com/ashVaswani/status/1919895825473245576",
+        "urlHash": "cff03a24ea66f557ee5b7cae32e0dae2",
+        "contentHash": "5fe08150dd936ddbab5e5142403d7022",
+        "title": "Thank you! This work was led by @ishaankshah , @ampolloreno , Karl and Philip!",
+        "text": "Thank you! This work was led by @ishaankshah , @ampolloreno , Karl and Philip!",
+        "publishedAt": null,
+        "metadata": {
+          "author": "ashVaswani",
+          "postId": "1919895825473245576",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:02:12.146Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1o4v00eqbrmtb0jcnnood",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1o4v00eqbrmtb0jcnnood",
+          "objectLabel": "Thanks to @Divyasmansingka for operational support."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：仅感谢某人，与AI相关性模糊，质量低，需人工审核。 Refetch curation 判为 human_review，原因：候选来源中，维基百科页面提供了人物背景信息，但属于辅助线索，不能作为替换来源。其他页面要么与人物无关，要么权威性不足。原始来源（推文）内容过于简单，仅表达感谢，与AI相关性模糊，需要更权威的来源来证明人物身份或贡献。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ashVaswani/status/1997126537955668305"
+        }
+      },
+      "raw": {
+        "id": "cmju1o4v00eqbrmtb0jcnnood",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "sourceType": "x",
+        "url": "https://x.com/ashVaswani/status/1997126537955668305",
+        "urlHash": "3875a102cde76dbecde8845f1dc9dfac",
+        "contentHash": "4fd10890a0b3b05ea2455c0600229ddf",
+        "title": "Thanks to @Divyasmansingka for operational support.",
+        "text": "Thanks to @Divyasmansingka for operational support.",
+        "publishedAt": "2025-12-31T05:20:48.890Z",
+        "metadata": {
+          "author": "ashVaswani",
+          "postId": "1997126537955668305",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:21:05.437Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxq4gk0446rmtbviflnepn",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq4gk0446rmtbviflnepn",
+          "objectLabel": "Tremendous effort by the @essential_ai team!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：仅称赞团队努力，缺乏具体信息，AI相关性模糊，需人工判断。 Refetch curation 判为 human_review，原因：原始推文缺乏上下文，维基百科页面能补强阿希什·瓦斯瓦尼与Essential AI的创办人关系，从而解释他为何称赞该团队。但维基百科是辅助来源，不能作为唯一依据，需进一步寻找更权威的官方资料。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 14,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ashVaswani/status/1999196274155991350"
+        }
+      },
+      "raw": {
+        "id": "cmjtxq4gk0446rmtbviflnepn",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "sourceType": "x",
+        "url": "https://x.com/ashVaswani/status/1999196274155991350",
+        "urlHash": "e88d466a016e54201505084513cfedc2",
+        "contentHash": "c3037448db3d0d8d7c026f8ca3d8807c",
+        "title": "Tremendous effort by the @essential_ai team!",
+        "text": "Tremendous effort by the @essential_ai team!",
+        "publishedAt": null,
+        "metadata": {
+          "author": "ashVaswani",
+          "postId": "1999196274155991350",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:21:03.697Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxml4i03cormtbci9tjm4h",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxml4i03cormtbci9tjm4h",
+          "objectLabel": "The Anthropic Interpretability Team is planning a virtual Q&A..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：仅提及Anthropic可解释性团队活动，信息量低，需确认是否本人发布。 Refetch curation 判为 human_review，原因：原声明仅提及Anthropic可解释性团队计划虚拟Q&A，信息模糊。候选中的Anthropic官方新闻稿明确将Chris Olah与Anthropic的公开活动（教皇通谕发布）关联，提供了权威、直接的证据，可替换原来源。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 15,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ch402/status/1920160214613176555"
+        }
+      },
+      "raw": {
+        "id": "cmjtxml4i03cormtbci9tjm4h",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "x",
+        "url": "https://x.com/ch402/status/1920160214613176555",
+        "urlHash": "7cc867ca41b4ea486e34f14ae4a09547",
+        "contentHash": "07c079a8cc42e22243643d0024dc10e1",
+        "title": "The Anthropic Interpretability Team is planning a virtual Q&A...",
+        "text": "The Anthropic Interpretability Team is planning a virtual Q&A...",
+        "publishedAt": "2025-12-31T03:27:34.006Z",
+        "metadata": {
+          "author": "ch402",
+          "postId": "1920160214613176555",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:57:57.784Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvqy200106rmtbfk8f2imo",
+        "personId": "cmjtv2cix0008i004kejjlxya",
+        "person": "Guillaume Lample",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqy200106rmtbfk8f2imo",
+          "objectLabel": "Devstral 2 looking good !"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：内容过于简短，仅表达对模型的正面看法，信息密度低，需人工判断。 Refetch curation 判为 human_review，原因：候选来源中，VentureBeat和iThome的报道虽未直接提及Guillaume Lample，但作为权威科技媒体对Mistral AI官方产品Devstral 2的发布报道，可作为Devstral 2存在的权威佐证，补强原始推文的简短内容。其他来源要么权威性不足，要么未提及Devstral。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 15,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/GuillaumeLample/status/2004660947504574689"
+        }
+      },
+      "raw": {
+        "id": "cmjtvqy200106rmtbfk8f2imo",
+        "personId": "cmjtv2cix0008i004kejjlxya",
+        "person": "Guillaume Lample",
+        "sourceType": "x",
+        "url": "https://x.com/GuillaumeLample/status/2004660947504574689",
+        "urlHash": "77a0667678545e8d3e49cea504b9ae36",
+        "contentHash": "81fe3591bf3a90d28c384654a5fc7a19",
+        "title": "Devstral 2 looking good !",
+        "text": "Devstral 2 looking good !",
+        "publishedAt": "2025-12-31T02:34:25.088Z",
+        "metadata": {
+          "author": "GuillaumeLample",
+          "postId": "2004660947504574689",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:21:34.122Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxqx0e04e5rmtbwqcjq8ep",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqx0e04e5rmtbwqcjq8ep",
+          "objectLabel": "Just use o3. It's worth the wait. Try o4-mini if in a hurry."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方推文，但内容简短，仅为建议使用o3模型，信息密度低，需人工判断。 Refetch curation 判为 human_review，原因：候选来源中，没有直接证明Lukasz Kaiser发表过“Just use o3. It's worth the wait. Try o4-mini if in a hurry.”这一具体建议的权威来源。LinkedIn主页和YouTube视频虽能证明其身份和工作，但未包含该特定内容。需要进一步搜索包含该引述的采访、文章或官方声明。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 16,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/lukaszkaiser/status/1922547306454298753"
+        }
+      },
+      "raw": {
+        "id": "cmjtxqx0e04e5rmtbwqcjq8ep",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "x",
+        "url": "https://x.com/lukaszkaiser/status/1922547306454298753",
+        "urlHash": "57aa240f118ffa64c85edb4d205717e0",
+        "contentHash": "0a7fed864433aee8c544d8383e1f33c2",
+        "title": "Just use o3. It's worth the wait. Try o4-mini if in a hurry.",
+        "text": "Just use o3. It's worth the wait. Try o4-mini if in a hurry.",
+        "publishedAt": "2025-12-31T03:30:53.299Z",
+        "metadata": {
+          "author": "lukaszkaiser",
+          "postId": "1922547306454298753",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:50.723Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju14hr50av5rmtb1hapznm0",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju14hr50av5rmtb1hapznm0",
+          "objectLabel": "Please add your own work if you use GPT5 for science."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方推文，内容简短，建议使用GPT5进行科学研究，信息密度低，需人工判断。 Refetch curation 判为 human_review，原因：候选来源均未直接证明‘Please add your own work if you use GPT5 for science.’这一具体建议出自Lukasz Kaiser。多数为个人资料页、活动页面或第三方分享，缺乏直接引用或官方声明。需要更权威的来源，如本人官方博客、采访转录或机构声明。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 16,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/lukaszkaiser/status/1975618023043301746"
+        }
+      },
+      "raw": {
+        "id": "cmju14hr50av5rmtb1hapznm0",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "x",
+        "url": "https://x.com/lukaszkaiser/status/1975618023043301746",
+        "urlHash": "b15903056f5e6aa2b31fd456133c3dbf",
+        "contentHash": "505f041d704600464545ccdf21474c3c",
+        "title": "Please add your own work if you use GPT5 for science.",
+        "text": "Please add your own work if you use GPT5 for science.",
+        "publishedAt": "2025-12-31T05:05:27.668Z",
+        "metadata": {
+          "author": "lukaszkaiser",
+          "postId": "1975618023043301746",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:49.026Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxl6ub031irmtbuxlkw1vn",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxl6ub031irmtbuxlkw1vn",
+          "objectLabel": "//openai.com/index/introducing-the-model-spec/"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：仅含链接无实质内容，需人工判断是否关于Mira Murati或AI。 Refetch curation 判为 human_review，原因：候选来源均未直接证明Mira Murati与“//openai.com/index/introducing-the-model-spec/”的关联。维基百科可作为人物背景的辅助来源，但无法替代原始链接。需要更直接的官方来源或采访记录。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 16,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/miramurati/status/1788357302506139664"
+        }
+      },
+      "raw": {
+        "id": "cmjtxl6ub031irmtbuxlkw1vn",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "sourceType": "x",
+        "url": "https://x.com/miramurati/status/1788357302506139664",
+        "urlHash": "02f03d6b724cee3892d7f2f44489c7f6",
+        "contentHash": "afa73b865b5144779b920eae9414e03a",
+        "title": "//openai.com/index/introducing-the-model-spec/",
+        "text": "//openai.com/index/introducing-the-model-spec/",
+        "publishedAt": "2025-12-31T03:26:34.607Z",
+        "metadata": {
+          "author": "miramurati",
+          "postId": "1788357302506139664",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:06.245Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxl761031mrmtbl1iedufw",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxl761031mrmtbl1iedufw",
+          "objectLabel": "//openai.com/index/navigating-the-challenges-and-opportunities-of-synthetic-voices/"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：仅含链接无实质内容，需人工判断是否关于Mira Murati或AI。 Refetch curation 判为 human_review，原因：原来源仅为推文链接，缺乏实质内容。微软官方播客页面直接关联Mira Murati与OpenAI的CTO职位，权威且可访问，能有效补强人物与职位的关联。其他候选来源权威性不足或为辅助信息。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 16,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/miramurati/status/1773774791264346296"
+        }
+      },
+      "raw": {
+        "id": "cmjtxl761031mrmtbl1iedufw",
+        "personId": "cmjtsy8k300073est1f38zcel",
+        "person": "Mira Murati",
+        "sourceType": "x",
+        "url": "https://x.com/miramurati/status/1773774791264346296",
+        "urlHash": "016c31e366dbd27dc91ffc13da38bbcc",
+        "contentHash": "92f2c14ffbebf4f883a3623dab611875",
+        "title": "//openai.com/index/navigating-the-challenges-and-opportunities-of-synthetic-voices/",
+        "text": "//openai.com/index/navigating-the-challenges-and-opportunities-of-synthetic-voices/",
+        "publishedAt": "2025-12-31T03:26:34.607Z",
+        "metadata": {
+          "author": "miramurati",
+          "postId": "1773774791264346296",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:20:06.611Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju11vz70a7wrmtbabpi710w",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju11vz70a7wrmtbabpi710w",
+          "objectLabel": "I spent many (unsuccessful) hours trying this just 6 months ago. Feeling the AGY."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：内容来自官方账号，提及AGI相关尝试，但表述模糊，信息密度低，需人工判断。 Refetch curation 判为 human_review，原因：候选来源均未直接提及“尝试此方法”或“AGY”等具体表述，无法替换或补强原始推文。原始推文来自官方账号，但表述模糊，信息密度低。需要更具体的采访、播客转录或文章来证明该言论。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 17,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/OriolVinyalsML/status/2002126542873506095"
+        }
+      },
+      "raw": {
+        "id": "cmju11vz70a7wrmtbabpi710w",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "sourceType": "x",
+        "url": "https://x.com/OriolVinyalsML/status/2002126542873506095",
+        "urlHash": "518d21b01392818bed593b0cfe3a0761",
+        "contentHash": "e7048417c3e575eaeaad752c3f4570e8",
+        "title": "I spent many (unsuccessful) hours trying this just 6 months ago. Feeling the AGY.",
+        "text": "I spent many (unsuccessful) hours trying this just 6 months ago. Feeling the AGY.",
+        "publishedAt": "2025-12-31T05:03:29.945Z",
+        "metadata": {
+          "author": "OriolVinyalsML",
+          "postId": "2002126542873506095",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:51.468Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxph6w03zvrmtbbvtxvaky",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxph6w03zvrmtbbvtxvaky",
+          "objectLabel": "The 2026 Microsoft Research Fellowship program is now open for submissions. Calling for passionate collaborators on pressing technical & sociotechnical challenges @MSFTResearch"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：宣布微软研究奖学金项目，虽与AI相关但内容较官方和泛泛，信息密度低，需人工判断。 Refetch curation 判为 human_review，原因：候选来源均为奖学金项目的官方或转载页面，但均未提及埃里克·霍维茨本人。无法确认其在该项目中的具体角色（如发起人、负责人）。需要寻找能明确证明其个人与该项目关联的权威来源，如机构任命公告、本人官方声明或可靠媒体报道。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T21:32:16.830Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 17,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/erichorvitz/status/1986046398605697437"
+        }
+      },
+      "raw": {
+        "id": "cmjtxph6w03zvrmtbbvtxvaky",
+        "personId": "cmjtxdvoh000d5p08r4ygmu04",
+        "person": "埃里克·霍维茨",
+        "sourceType": "x",
+        "url": "https://x.com/erichorvitz/status/1986046398605697437",
+        "urlHash": "2aff11269696dc0116a82ae1da0fa5da",
+        "contentHash": "610f3d67e460dfd6a651e0090fa26cf2",
+        "title": "The 2026 Microsoft Research Fellowship program is now open for submissions. Calling for passionate collaborators on pressing technical & sociotechnical challenges @MSFTResearch",
+        "text": "The 2026 Microsoft Research Fellowship program is now open for submissions. Calling for passionate collaborators on pressing technical & sociotechnical challenges @MSFTResearch",
+        "publishedAt": null,
+        "metadata": {
+          "author": "erichorvitz",
+          "postId": "1986046398605697437",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:30:09.608Z",
+        "processed": false
+      }
+    }
+  ]
+}

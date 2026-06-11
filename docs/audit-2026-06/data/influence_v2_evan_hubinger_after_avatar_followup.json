@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-11T08:10:38.407Z",
+  "mode": "execute",
+  "formula": {
+    "aiOriginalContribution": 35,
+    "industryEcosystem": 25,
+    "authority": 20,
+    "learningValue": 10,
+    "recency": 10,
+    "statusMultiplier": {
+      "ready": 1,
+      "active": 1,
+      "building": 0.55,
+      "candidate": 0.35,
+      "pending": 0.35,
+      "error": 0
+    }
+  },
+  "people": [
+    {
+      "id": "9c400879-a2f7-49d1-935e-47aaa444091c",
+      "name": "Evan Hubinger",
+      "status": "ready",
+      "roleCategory": "researcher",
+      "currentTitle": "Alignment Researcher @ Anthropic",
+      "aiContributionScore": 5,
+      "githubStars": 0,
+      "citationCount": 0,
+      "hIndex": 0,
+      "counts": {
+        "cards": 5,
+        "raw": 4,
+        "keep": 4,
+        "sources": 2,
+        "courses": 0,
+        "recentKeep": 4
+      },
+      "breakdown": {
+        "aiOriginal": 16.055045871559635,
+        "industryEcosystem": 6.365,
+        "authority": 3.7,
+        "learningValue": 2.02,
+        "recency": 6.375525253240742,
+        "subtotal": 34.515571124800374,
+        "statusMultiplier": 1,
+        "finalScore": 34.52
+      }
+    }
+  ]
+}

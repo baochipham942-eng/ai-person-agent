@@ -1,0 +1,1208 @@
+{
+  "generatedAt": "2026-06-10T10:56:44.585Z",
+  "summary": {
+    "generatedAt": "2026-06-10T10:56:44.585Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_fifth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_fifth_dry_run_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 34,
+    "existingTargets": 34,
+    "missingTargets": 0,
+    "auditRowsInserted": 34,
+    "deleted": 34,
+    "byAction": {
+      "delete_raw_pool_item": 34
+    },
+    "byVerdict": {
+      "reject": 34
+    },
+    "byPerson": {
+      "Greg Brockman": 10,
+      "Chris Olah": 6,
+      "Jeremy Howard": 6,
+      "Alexandr Wang": 2,
+      "John Schulman": 2,
+      "雅各布·乌什科雷特": 2,
+      "Chamath Palihapitiya": 1,
+      "Guillaume Lample": 1,
+      "Han Xiao": 1,
+      "Marc Andreessen": 1,
+      "杰夫·迪恩": 1,
+      "阿希什·瓦斯瓦尼": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0zncs09qgrmtbh25bx4si",
+          "objectLabel": "CS25: Tranformers United!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Stanford course page about Transformers generally, not person-specific evidence for Ashish Vaswani."
+      },
+      "raw": {
+        "id": "cmju0zncs09qgrmtbh25bx4si",
+        "personId": "cmjtxe4kc000f5p08n4sq7547",
+        "person": "阿希什·瓦斯瓦尼",
+        "sourceType": "exa",
+        "url": "https://web.stanford.edu/class/cs25/prev_years/2023_fall/index.html",
+        "urlHash": "da5c9305ab231d5050c9d3364e140b3a",
+        "contentHash": "7da09ef17abd935caf982cf77d224288",
+        "title": "CS25: Tranformers United!",
+        "text": "## Content\n\nSince their introduction in 2017, Transformers have revolutionized Natural Language Processing (NLP). Now, Transformers are finding applications all over Deep Learning, be it Computer Vision (CV), Reinforcement Learning (RL), Generative Adversarial Networks (GANs), Speech, or even Biology. Among other things, Transformers have enabled the creation of powerful language models like ChatGPT and GPT-4 and significantly elevated the capabilities and impact of artificial intelligence.\n\nIn this seminar, we examine the details of how Transformers work, and dive deep into the different kinds of Transformers and how they're applied in various fields, with a focus on LLMs. We do this through a combination of instructor lectures, guest lectures, and classroom discussions. We will invite people at the forefront of Transformers research across different domains for guest lectures. Prerequisites: Basic knowledge of Deep Learning (should understand attention) or CS224N/CS231N/CS230. Please enroll for the course on Axess.\n\n## Logistics\n\n- **Lectures** are on Tuesdays from 10:30AM - 11:50AM Pacific Time in McCullough 115\n- **Zoom**: [Link](https://stanford.zoom.us/j/98247839758?pwd=UlRtNTQzc1VaVVhPWVpERG9QVW1YUT09) (Password: 252525; Note: Only works for those with Stanford email addresses)\n- **Attendance**: Following each lecture, submit a response to our [Google Form.](https://forms.gle/dph1pyUBtMJu8X3U9)\n- **Auditing**: To audit, please join lectures using the Zoom link (if you are a Stanford student/staff/faculty). No need to email or contact us beforehand.\n- **Discord**: Join the class Discord server [here](https://discord.gg/2vE7gbsjzA) for general discussion on Transformers and related topics!\n- **Contact**: If you have any questions about the course, contact us at [cs25-aut2324-staff@lists.stanford.edu](mailto:cs25-aut2324-staff@lists.stanford.edu).\n\n## Recordings\n\nTalks from previous quarters can be found [here](https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM).\n\n## Previous Iterations\n\n- **[V1 (Fall 2021)](https://web.stanford.edu/class/cs25/prev_years/2023_fall/prev_years/2021_fall/index.html)**\n- **[V2 (Winter 2023)](https://web.stanford.edu/class/cs25/prev_years/2023_fall/prev_years/2023_winter/index.html)**\n\n### Instructors\n\n[![](https://web.stanford.edu/class/cs25/prev_years/2023_fall/images/div.png)\\\n\\\nDiv Garg](https://divyanshgarg.com/)\n\n[![](https://web.stanford.edu/class/cs25/prev_years/2023_fall/images/steven_feng.jpg)\\\n\\\nSteven Feng](https://styfeng.github.io/)\n\n[![](https://web.stanford.edu/class/cs25/prev_years/2023_fall/images/karan.png)\\\n\\\nKaran Singh](https://karanps.com/)\n\n### Faculty Advisor\n\n[![](https://web.stanford.edu/class/cs25/prev_years/2023_fall/images/manning.jpg)\\\n\\\nChris Manning](https://nlp.stanford.edu/~manning/)\n\n## Schedule\n\nThe current class schedule is below (subject to change)\n\n| Date | Title | Description |\n| --- | --- | --- |\n| Sep 26 | **CANCELLED** | Seminars will begin on October 3rd! |\n| Oct 3 | Llama 2: Open Foundation and Fine-Tuned Chat Models Speaker: _Sharan Narang, Meta AI_ | Meta AI recently released Lllama 2, a collection of pretrained and fine-tuned large language models (LLMs) ranging in scale from 7 billion to 70 billion parameters. The fine-tuned LLMs, called Llama 2-Chat, are optimized for dialogue use cases. These Llama 2 models outperform open-source chat models on most benchmarks we tested and based on our human evaluations for helpfulness and safety, may be a suitable substitute for closed-source models. In this talk, Sharan will describe the process for creating the improved LLaMA-2 family of LLMs and the techniques we used to convert these to high-quality, safe dialogue agents. |\n| Oct 10 | Low-level Embodied Intelligence with Foundation Models Speaker: _Fei Xia, Google Deepmind_ | This talk introduces two novel approaches to low-level embodied intelligence through integrating large language models (LLMs) with robotics, focusing on \"Language to Reward\" and \"Robotics Transformer-2\". The former employs LLMs to generate reward code, creating a bridge between high-level language instructions and low-level robotic actions. This method allows for real-time user interaction, efficiently controlling robotic arms for various tasks and outperforming baseline methodologies. \"Robotics Transformer-2\" integrates advanced vision-language models with robotic control by co-fine-tuning on robotic trajectory data and extensive web-based vision-language tasks, resulting in the robust RT-2 model which exhibits strong generalization capabilities. This approach allows robots to execute untrained commands and efficiently perform multi-stage semantic reasoning tasks, exemplifying significant advancements in contextual understanding and response to user commands. These projects demonstrate that language models can extend beyond their conventional domain of high-level reasoning tasks, playing a crucial role not only in interpreting and generatin",
+        "publishedAt": "2020-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:02:03.004Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzrz8r060ermtb36jh5gvy",
+          "objectLabel": "Nice demo of how easy it is to create fairly complex apps with Gemini 3 Flash."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Short Gemini demo post with no substantive person-specific evidence for Jeff Dean."
+      },
+      "raw": {
+        "id": "cmjtzrz8r060ermtb36jh5gvy",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "sourceType": "x",
+        "url": "https://x.com/jeffdean/status/2001331627268739191",
+        "urlHash": "79039efd0adc5437424b3fa819b0291b",
+        "contentHash": "fbebceeab52c08a6da6a68247253e848",
+        "title": "Nice demo of how easy it is to create fairly complex apps with Gemini 3 Flash.",
+        "text": "Nice demo of how easy it is to create fairly complex apps with Gemini 3 Flash.",
+        "publishedAt": "2025-12-31T04:27:51.262Z",
+        "metadata": {
+          "author": "jeffdean",
+          "postId": "2001331627268739191",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:45.053Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "雅各布·乌什科雷特",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqgz50496rmtb7doglk6k",
+          "objectLabel": "x.com/kyosu/status/1670370419101007872"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Third-party social link only; no substantive target-person evidence."
+      },
+      "raw": {
+        "id": "cmjtxqgz50496rmtb7doglk6k",
+        "personId": "cmjtxe7r3000g5p0868zhzky2",
+        "person": "雅各布·乌什科雷特",
+        "sourceType": "x",
+        "url": "https://x.com/kyosu/status/1670370419101007872",
+        "urlHash": "cdadebb083968be8ff0aff7caf735402",
+        "contentHash": "dc06847cdd16a97dd2a4419dc8b46ebb",
+        "title": "//x.com/kyosu/status/1670370419101007872",
+        "text": "//x.com/kyosu/status/1670370419101007872",
+        "publishedAt": "2025-12-31T03:30:43.758Z",
+        "metadata": {
+          "author": "kyosu",
+          "postId": "1670370419101007872",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:47:32.300Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "雅各布·乌什科雷特",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqgoq0494rmtbjfp1qhqk",
+          "objectLabel": "x.com/kyosu/status/1775940716285284685"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Third-party social link only; no substantive target-person evidence."
+      },
+      "raw": {
+        "id": "cmjtxqgoq0494rmtbjfp1qhqk",
+        "personId": "cmjtxe7r3000g5p0868zhzky2",
+        "person": "雅各布·乌什科雷特",
+        "sourceType": "x",
+        "url": "https://x.com/kyosu/status/1775940716285284685",
+        "urlHash": "8e5ff003b3f39ff4215e5097001ce52c",
+        "contentHash": "e011c2a32b8668dc98074b05b7ebbe86",
+        "title": "//x.com/kyosu/status/1775940716285284685",
+        "text": "//x.com/kyosu/status/1775940716285284685",
+        "publishedAt": "2025-12-31T03:30:43.758Z",
+        "metadata": {
+          "author": "kyosu",
+          "postId": "1775940716285284685",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:47:31.639Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Alexandr Wang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jdbt077nrmtbp08k24ci",
+          "objectLabel": "Amazon, Meta back Scale AI in $1 billion funding deal that values firm at $14 billion"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Company funding news centered on Scale AI rather than Alexandr Wang personally."
+      },
+      "raw": {
+        "id": "cmju0jdbt077nrmtbp08k24ci",
+        "personId": "cmjtv2h8i0009i0048zkgoqwc",
+        "person": "Alexandr Wang",
+        "sourceType": "exa",
+        "url": "https://nbcsandiego.com/news/business/money-report/amazon-meta-back-scale-ai-in-1-billion-funding-deal-that-values-firm-at-14-billion/3519900",
+        "urlHash": "a26e5112dcd7890560731b72c0de1446",
+        "contentHash": "ef757e43e1dd7dee9262b624a4042034",
+        "title": "Amazon, Meta back Scale AI in $1 billion funding deal that values firm at $14 billion",
+        "text": "Amazon, Meta back Scale AI in $1 billion funding deal that values firm at $14 billion &#8211; NBC 7 San Diego\n[Skip to content](#content)\n[![NBC 7 San Diego](https://media.nbcsandiego.com/2025/10/KNSD_Rings_On_Dark@3x.png?fit=345%2C120&#038;quality=85&#038;strip=all&#038;w=115&#038;h=40)](https://www.nbcsandiego.com/)\nMain Navigation\nSearch\nSearch for:\n[Watch 24/7](https://www.nbcsandiego.com/watch/)\n[Create profile / Log in](#)\n[Dashboard](https://nbcsandiego.com/account/)\n[Email preferences](#)\n[Sign out](#)\nTrending\nExpand\n![](https://media.nbcsandiego.com/2019/09/NBCOTS_Sandiego_Greyscale-e1586553184308.png?fit=1920%2C1281&#038;quality=85&#038;strip=all&#038;w=400&#038;h=114&#038;crop=1)\n[\n# Money Report\nIn partnership with![CNBC](https://www.nbcsandiego.com/wp-content/themes/nbc-station/client/src/images/nbc-cnbc-logo.png)\n \n[News](https://www.nbcsandiego.com/tag/news/)\n# Amazon, Meta back Scale AI in $1 billion funding deal that values firm at $14 billion\n#### By Riley de León,CNBC&bull;Published May 21, 2024&bull;Updated onMay 22, 2024at9:50 am\nBOOKMARKER\n[]()[]()\n![Scale AI CEO Alex Wang, left.](https://media.nbcsandiego.com/2024/05/106803992-1606785337289-Handout_scale_team-4.jpg?quality=85&#038;strip=all&#038;resize=320%2C180)\n> Scale AI\nScale AI CEO Alex Wang, left.\n* Scale AI has raised $1 billion in a Series F funding round that values the enterprise tech company at $13.8 billion —almost double its last reported valuation.\n* Amazon and Meta are among new investors.\n* Its latest funding round was led by Accel, and includes Nvidia, Cisco, Intel, ServiceNow, and AMD, among others.\nStream San Diego News for free, 24/7, wherever you are with NBC 7.\n[\n![Watch button](https://media.nbcnewyork.com/assets/editorial/national/images/cta-eye-icon-white.png) WATCH HERE\n](https://www.nbcsandiego.com/watch/)\nArtificial intelligence startup Scale AI said Tuesday that it has raised $1 billion in a Series F funding round that values the enterprise tech company at $13.8 billion —almost double its last reported valuation. The San Francisco-based company,[ranked No. 12](https://www.cnbc.com/2024/05/14/scale-ai-cnbc-disruptor-50.html?__source=OTS|finance|inline|story|&amp;par=OTS&amp;doc=107417377)on this year's[CNBC Disruptor 50](http://cnbc.com/disruptors)list, has now raised $1.6 billion to date.\nIts latest funding round is being led by Accel, and includes Cisco Investments, DFJ Growth, Intel Capital, ServiceNow Ventures, AMD Ventures, WCM, Amazon, Elad Gil (co-founder of Color Genomics and serial tech investor), and Meta, all of which are new investors in the company.\nExisting investors including Y Combinator, Nat Friedman, Index Ventures, Founders Fund, Coatue, Thrive Capital, Spark Capital, Nvidia, Tiger Global Management, Greenoaks, and Wellington Management also participated in the round.\nScale AI is playing a key role in the rise of generative artificial intelligence and large language models, with the data —whether it is text, images, video or voice recordings —needing to be labeled correctly before it can be digested and used effectively by AI technology. Scale AI has evolved from labeling data used to train models that powered autonomous driving to now helping to improve and fine tune the underlying data for nearly any organization looking to implement AI, powering some of the most advanced models in use.\n\"Our calling is to build the data foundry for AI, and with today's funding, we're moving into the next phase of that journey –accelerating the abundance of frontier data that will pave our road to AGI,\" founder and CEO Alexandr Wang said in[a statement](https://scale.com/blog/scale-ai-series-f)announcing the news.\n* [These are the 2024 CNBC Disruptor 50 companies](https://www.cnbc.com/2024/05/14/these-are-the-2024-cnbc-disruptor-50-companies.html?__source=OTS|finance|inline|story|&amp;par=OTS&amp;doc=107417377)\n* [How we chose the 2024 CNBC Disruptor 50](https://www.cnbc.com/2024/05/14/the-2024-cnbc-disruptor-50-how-we-chose-the-companies.html?__source=OTS|finance|inline|story|&amp;par=OTS&amp;doc=107417377)\n* [Why OpenAI is the first company to top the CNBC Disruptor 50 list for two years in a row](https://www.cnbc.com/2024/05/14/openai-is-first-company-to-be-no-1-on-disruptor-50-two-years-in-a-row.html?__source=OTS|finance|inline|story|&amp;par=OTS&amp;doc=107417377)\nScale AI is also increasingly working with the public sector.\nIn August, the company was awarded a contract with the Department of Defense Chief Digital and Artificial Intelligence Office, which the company said will[help boost the DoD's efforts](https://www.cnbc.com/video/2023/07/18/scale-ai-ceo-military-implementations-of-ai-are-going-to-be-important.html?__source=OTS|finance|inline|story|&amp;par=OTS&amp;doc=107417377)to advance AI capabilities for the entire military, spanning projects across the Army, Marine Corps, Navy, Air Force, Space Force and Coast Guard.\nIn May, Scale AI launched Donovan, an AI-powered decision-making platform ",
+        "publishedAt": "2024-05-20T16:00:00.000Z",
+        "metadata": {
+          "author": "Riley de León,CNBC",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:47:08.879Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Alexandr Wang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jl3g07a6rmtbbkv7pzee",
+          "objectLabel": "ai.meta.com/blog/sam-3d"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Meta technical blog link, not person-specific evidence for Alexandr Wang."
+      },
+      "raw": {
+        "id": "cmju0jl3g07a6rmtbbkv7pzee",
+        "personId": "cmjtv2h8i0009i0048zkgoqwc",
+        "person": "Alexandr Wang",
+        "sourceType": "x",
+        "url": "https://x.com/alexandr_wang/status/1991216034666389919",
+        "urlHash": "ca1336e925f39ae8623758ac5afe7c16",
+        "contentHash": "ffa15170058eff26af06e91831242cd7",
+        "title": "//ai.meta.com/blog/sam-3d/",
+        "text": "//ai.meta.com/blog/sam-3d/",
+        "publishedAt": "2025-12-31T04:49:15.342Z",
+        "metadata": {
+          "author": "alexandr_wang",
+          "postId": "1991216034666389919",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:49:33.580Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Chamath Palihapitiya",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwh9vhs001jpq9rlclqem1y",
+          "objectLabel": "Elon doing Elon things..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Post is about Elon Musk and Grok, not profile evidence for Chamath Palihapitiya."
+      },
+      "raw": {
+        "id": "cmjwh9vhs001jpq9rlclqem1y",
+        "personId": "cmjv6furu000dmfghyv96kktn",
+        "person": "Chamath Palihapitiya",
+        "sourceType": "x",
+        "url": "https://x.com/chamath/status/1943177837956968499",
+        "urlHash": "137e81e38d938e8bfa323f3e8cfb524a",
+        "contentHash": "e66a228fa703c1d84ebd704185a8b88d",
+        "title": "Elon doing Elon things…\n\nGrok 4 is now the leading AI Model in the world. I think people may not rea",
+        "text": "Elon doing Elon things…\n\nGrok 4 is now the leading AI Model in the world. I think people may not realize how impressive this feat is…they started from scratch just a few years ago.",
+        "publishedAt": "2025-07-09T16:00:00.000Z",
+        "metadata": {
+          "author": "chamath",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T22:13:26.320Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmujc03ezrmtbt17gyx95",
+          "objectLabel": "Haskell-Re-Syntaxed"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Haskell syntax repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjtxmujc03ezrmtbt17gyx95",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "github",
+        "url": "https://github.com/colah/Haskell-Re-Syntaxed",
+        "urlHash": "d9ca18b4d18823c39f5d5b9c7f89ef3f",
+        "contentHash": "8e1f59be94f14d384aef7814bfa64f23",
+        "title": "Haskell-Re-Syntaxed",
+        "text": "Let's brainstorm about syntactic improvements for Haskell!!",
+        "publishedAt": "2019-12-22T20:58:24.000Z",
+        "metadata": {
+          "forks": 1,
+          "stars": 6,
+          "topics": [],
+          "language": "Haskell",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:09:47.570Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmtns03enrmtbxtx0t6ht",
+          "objectLabel": "ldnsx"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "DNS/networking utility repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjtxmtns03enrmtbxtx0t6ht",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "github",
+        "url": "https://github.com/colah/ldnsx",
+        "urlHash": "91833f154aa5d9138ed1e1ea8a4e0adb",
+        "contentHash": "a51551fa7a08bd7c5ac3ded94cbcbdec",
+        "title": "ldnsx",
+        "text": "A python ldns API for human beings",
+        "publishedAt": "2020-10-14T17:39:30.000Z",
+        "metadata": {
+          "forks": 4,
+          "stars": 9,
+          "topics": [],
+          "language": "Python",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:09:46.396Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmtd903elrmtbw48xjvz6",
+          "objectLabel": "ucalc"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "General calculator utility repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjtxmtd903elrmtbw48xjvz6",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "github",
+        "url": "https://github.com/colah/ucalc",
+        "urlHash": "a9c1c046fa9045be2bb6bda2b1467a91",
+        "contentHash": "6aabb9507c16e66a3e312d8fa9423b51",
+        "title": "ucalc",
+        "text": "A Unicode Calculator",
+        "publishedAt": "2025-07-24T02:21:06.000Z",
+        "metadata": {
+          "forks": 1,
+          "stars": 9,
+          "topics": [],
+          "language": "Haskell",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:09:46.019Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmssj03efrmtb6s0c8zg6",
+          "objectLabel": "surfcad"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "CAD library repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjtxmssj03efrmtb6s0c8zg6",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "github",
+        "url": "https://github.com/colah/surfcad",
+        "urlHash": "d73c330e76cfab4fa3253254ddb999b5",
+        "contentHash": "57b715e0b3be650cc3add56d87c5cc57",
+        "title": "surfcad",
+        "text": "Surface-Oriented CAD Library for Python",
+        "publishedAt": "2025-07-24T02:21:07.000Z",
+        "metadata": {
+          "forks": 3,
+          "stars": 12,
+          "topics": [],
+          "language": "Python",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:09:45.281Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmrao03dsrmtbszettnda",
+          "objectLabel": "Motivated-Topology"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Topology teaching material, not direct AI or machine-learning profile evidence."
+      },
+      "raw": {
+        "id": "cmjtxmrao03dsrmtbszettnda",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "github",
+        "url": "https://github.com/colah/Motivated-Topology",
+        "urlHash": "4bc1e29fd8827365fa7deb764d37db9e",
+        "contentHash": "3827da1364a131494b279d22f564d1ab",
+        "title": "Motivated-Topology",
+        "text": "A topology textbook with a hubristic title",
+        "publishedAt": "2025-07-02T02:58:32.000Z",
+        "metadata": {
+          "forks": 8,
+          "stars": 31,
+          "topics": [],
+          "language": "TeX",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:09:42.984Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmqc903dkrmtb9b8180vl",
+          "objectLabel": "HaskSymb"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Haskell symbolic algebra experiment with low relevance to the AI profile."
+      },
+      "raw": {
+        "id": "cmjtxmqc903dkrmtb9b8180vl",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "sourceType": "github",
+        "url": "https://github.com/colah/HaskSymb",
+        "urlHash": "2edbe98c80f86219d56ecfda08073bc7",
+        "contentHash": "9bf8a5270ff50a682a1b6d75c3b9cfb1",
+        "title": "HaskSymb",
+        "text": "An Experiment in Haskell Symbolic Algebra",
+        "publishedAt": "2025-04-12T02:01:54.000Z",
+        "metadata": {
+          "forks": 7,
+          "stars": 73,
+          "topics": [],
+          "language": "Haskell",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:09:41.783Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15mv7003oftmg0vokhtbp",
+          "objectLabel": "Content Tools"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "AI teaching-tool marketing page unrelated to Greg Brockman."
+      },
+      "raw": {
+        "id": "cmjv15mv7003oftmg0vokhtbp",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://to-teach.ai/tools/text?type=pdf&id=Mpe5S193TqAOyJu4fTFg",
+        "urlHash": "aae4ee95f13bc9a4f8c1bcd0195c9ccb",
+        "contentHash": "9924c2d15da262df970ce1f2537ae2ae",
+        "title": "Content Tools",
+        "text": "Content Tools\n[![to teach logo](https://to-teach.ai/build/_assets/logo-Z2HDV5LC.png)![to teach logo](https://to-teach.ai/build/_assets/logo-Z2HDV5LC.png)](https://to-teach.ai/)\n[Login](https://to-teach.ai/login)[Sign up](https://to-teach.ai/signup)\n# Content Tools\nEasily upload your own materials like texts, images, videos, or PDFs and create suitable exercises or supplementary content.\n### Explore our AI options\ncommon.search\n### Exercise tasks\n[\nStatements\nCreate an exercise where your students have to identify the correct statements and create a summary.\n](https://to-teach.ai/tools/text/statements)[\nBingo\nCreate an interactive word/phrase bingo to match your teaching content.\n](https://to-teach.ai/tools/text/bingo)[\nBrochure\nCreate a fun fill-in-the-blank brochure for your students on a topic of your choice or a theme related to your subject.\n](https://to-teach.ai/tools/text/brochure)[\nEssay\nCreate an essay writing task including feedback based on your content.\n](https://to-teach.ai/tools/text/essay)[\nFlashcards\nCreate flashcards for any topic with different difficulty levels. Easy=basic explanation, Normal=explanations at your students&#x27; level, Hard=formal definitions\n](https://to-teach.ai/tools/text/flashcards)[\nQuestions with sample solutions\nCreate questions with sample solutions on a topic of your choice.\n](https://to-teach.ai/tools/text/questions-with-sample-solutions)[\nImage Hotspots\nAdd interactive hotspots to your images that reveal helpful texts, making it easier for your students to understand.\n](https://to-teach.ai/tools/text/image-hotspots-2)[\nInteractive Video\nEnrich youtube videos with interactions like multiple choice, true false or gap text exercises.\n](https://to-teach.ai/tools/text/interactive-video)[\nCrossword\nCreate a crossword puzzle to match your lesson content.\n](https://to-teach.ai/tools/text/crossword)[\nFill-the-gap text\nCreate a fill-the-gap task based on your text.\n](https://to-teach.ai/tools/text/fill-the-gap-text)[\nMindmap\nCreate a mindmap as a template for your lesson or use it as a picture in a presentation or for worksheets.\n](https://to-teach.ai/tools/text/mindmap)[\nWorking with instruction verbs\nCreate questions with sample solutions using the instruction verbs of your choice.\n](https://to-teach.ai/tools/text/working-with-instruction-verbs)[\nMultiple Choice\nCreate a multiple choice quiz based on your text.\n](https://to-teach.ai/tools/text/multiple-choice)[\nSort the paragraphs\nCreate a task where your students have to put texts / events in the correct order.\n](https://to-teach.ai/tools/text/sort-the-paragraphs)[\nFact Sheet\nCreate a fact sheet based on your content\n](https://to-teach.ai/tools/text/fact-sheet)[\nTable\nCreate a table for your texts. Tip: For a better result, specify the table headers, e.g. &#x27;pro, con&#x27;.\n](https://to-teach.ai/tools/text/table)[\nTrue or False?\nCreate tasks where your students have to classify statements as true or false.\n](https://to-teach.ai/tools/text/true-or-false)[\nFind the Words\nGenerate a word puzzle with words that match the content of your text.\n](https://to-teach.ai/tools/text/find-the-words)[\nMatch Pairs\nCreate a task in which your students have to correctly assign terms, proper names etc. Decide for yourself what the focus of the task should be.\n](https://to-teach.ai/tools/text/match-pairs)[\nSummary\nCreate an assignment in which your students have to write a summary.\n](https://to-teach.ai/tools/text/summary)\n### Analyze and simplify\n[\nEmojify your text\nAdd emojis to your text to increase readability and language comprehension for your students.\n](https://to-teach.ai/tools/text/emojify-your-text)[\nGlossary\nCreate a glossary and even the most difficult terms will become understandable.\n](https://to-teach.ai/tools/text/glossary)[\nScaffolding\nCreate a scaffolding plan for your content to achieve not only subject-related but also language-learning objectives.\n](https://to-teach.ai/tools/text/scaffolding)[\nFocus on syllables\nTurn your text into syllabic script.\n](https://to-teach.ai/tools/text/focus-on-syllables)[\nSimplify texts\nAdapt your texts or online articles to the language level and skillset of your students.\n](https://to-teach.ai/tools/text/simplify-texts)[\nAdapt vocabulary\nModify the language level of any text. Depending on the length of the text, this may take a moment.\n](https://to-teach.ai/tools/text/adapt-vocabulary)[\nTransform your texts into audio content\nConvert your texts into an audio format of your choice. Create dialogues, interviews, or simply have your texts read aloud. Tip: Include in the instructions if you prefer, for example, a female voice or British English.\n](https://to-teach.ai/tools/text/transform-your-texts-into-audio-content)[\nTurn your texts into any format\nPut your texts into a new / simpler / more exciting format. For example, create scripts from fairy tales, short stories from newspaper articles or discussions from YouTube videos.\n](https://to-teach.ai/tools/text/turn-your-texts-into-any-fo",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:55:15.180Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15pvr0048ftmgpvak1yyb",
+          "objectLabel": "Google Unveils A.I. Agent That Can Use Websites on Its Own"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google AI agent news unrelated to Greg Brockman."
+      },
+      "raw": {
+        "id": "cmjv15pvr0048ftmgpvak1yyb",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://www.nytimes.com/2024/12/11/technology/google-ai-agent-gemini.html",
+        "urlHash": "fd61ab69dcd45ee7f2b5274b246dcd02",
+        "contentHash": "05b5b93802fbb3378e6393c1db026876",
+        "title": "Google Unveils A.I. Agent That Can Use Websites on Its Own",
+        "text": "Advertisement\n\n[SKIP ADVERTISEMENT](https://www.nytimes.com/2024/12/11/technology/google-ai-agent-gemini.html#after-top)\n\nToday, chatbots can [answer questions, write poems and generate images](https://www.nytimes.com/2022/12/10/technology/ai-chat-bot-chatgpt.html). In the future, they could also autonomously [perform tasks like online shopping and work with tools](https://www.nytimes.com/2023/10/16/technology/ai-agents-workers-replace.html) like spreadsheets.\n\nGoogle on Wednesday unveiled a prototype of this technology, which artificial intelligence researchers call an [A.I. agent](https://www.nytimes.com/2023/10/16/technology/ai-agents-workers-replace.html).\n\nGoogle is among the many tech companies building A.I. agents. Various A.I. start-ups, including OpenAI and Anthropic, have unveiled similar prototypes that can use software apps, websites and other online tools.\n\nGoogle’s new prototype, called Mariner, is based on Gemini 2.0, which the company also unveiled on Wednesday. Gemini is the core technology that underpins many of the company’s A.I. products and research experiments. Versions of the system will power the company’s chatbot of the same name and A.I. Overviews, a Google search tool that directly answers user questions.\n\nVideo\n\nA handout video by Google showing the company’s new prototype A.I. agent, called Mariner.CreditCredit...Google\n\n“We’re basically allowing users to type requests into their web browser and have Mariner take actions on their behalf,” Jaclyn Konzelmann, a Google project manager, said in an interview with The New York Times.\n\nGemini is what A.I researchers call a [neural network](https://www.nytimes.com/2018/03/06/technology/google-artificial-intelligence.html) — a mathematical system that can learn skills by analyzing enormous amounts of data. By recognizing patterns in articles and books culled from across the internet, for instance, a neural network can learn to generate text on its own.\n\nThe latest version of Gemini learns from a wide range of data, from text to images to sounds. That might include images showing how people use spreadsheets, shopping sites and other online services. Drawing on what Gemini has learned, Mariner can use similar services on behalf of computer users.\n\n“It can understand that it needs to press a button to make something happen,” Demis Hassabis, who oversees Google’s core A.I. lab, said in an interview with The Times. “It can take action in the world.”\n\nMariner is designed to be used “with a human in the loop,” Ms. Konzelmann said. For instance, it can fill a virtual shopping cart with groceries if a user is in an active browser tab, but it will not actually buy the groceries. The user must make the purchase.\n\nSundar Pichai, Google’s chief executive, [said in a blog post](https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024) that the developments “bring us closer to our vision of a universal assistant.”\n\nImage\n\nA handout image from the company showing the latest version of Gemini, which learns from a wide range of data, from text to images to sounds.Credit...Google\n\nThe project was developed as an extension for Google’s popular web browser, Chrome, making it an important platform for the company’s future A.I. ambitions. But those plans could face a setback. The Justice Department has asked a federal judge to force Google to sell or spin off Chrome after a landmark ruling that the company’s search engine is an illegal monopoly.\n\nThere are other challenges as well. Ms. Konzelmann acknowledged that, like other chatbots, Mariner makes mistakes. Because such systems operate according to patterns found in vast amounts of data, they sometimes go awry. The mistakes that chatbots make when generating text sometimes go unnoticed, but errors are more problematic when systems are trying to use websites and take other actions.\n\n“Is it always accurate? Not yet,” Ms. Konzelmann said. “It is still an experimental technology.”\n\nGoogle is sharing Mariner with a small number of testers outside the company but has not yet shared plans for a wider release.\n\nOn Wednesday, the company also showed off a new version of Project Astra, a smartphone digital assistant that responds to images and text as well as verbal commands. Like [technology unveiled by OpenAI earlier this year,](https://www.nytimes.com/2024/05/13/technology/openai-chatgpt-app.html) Astra is a more powerful version of a digital assistant like Apple’s Siri.\n\nIt also is not yet available to the general public.\n\n[Cade Metz](https://www.nytimes.com/by/cade-metz) writes about artificial intelligence, driverless cars, robotics, virtual reality and other emerging areas of technology.\n\n[Nico Grant](https://www.nytimes.com/by/nico-grant) reports on Alphabet’s Google and YouTube as well as the corporate culture of Silicon Valley. He is based in San Francisco.\n\nSee more on: [Alphabet Inc.](https://www.nytimes.com/topic/company/alphabet-inc)\n\nRead 38 Comments\n\n- Share full article\n\n- ",
+        "publishedAt": "2024-12-10T16:00:00.000Z",
+        "metadata": {
+          "author": "By Cade Metz and Nico GrantReporting from Mountain View. Calif.",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:55:18.383Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15n7q003qftmg82yldiuc",
+          "objectLabel": "Introducing Gemini: our largest and most capable AI model"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google Gemini product announcement unrelated to Greg Brockman."
+      },
+      "raw": {
+        "id": "cmjv15n7q003qftmg82yldiuc",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://blog.google/technology/ai/google-gemini-ai",
+        "urlHash": "cdf5c05c8491ed06da06e88acf81ad97",
+        "contentHash": "58c4a7c88dbed04083f0a6c73cbbf5a5",
+        "title": "Introducing Gemini: our largest and most capable AI model",
+        "text": "Introducing Gemini: Google’s most capable AI model yet\n[Skip to main content](#jump-content)\n[\nThe Keyword\n](https://blog.google/)\nIntroducing Gemini: our largest and most capable AI model\nShare\n[\nx.com\n]()[\nFacebook\n]()[\nLinkedIn\n]()[\nMail\n]()\nCopy link\nGlobal (English)Africa (English)Australia (English)Brasil (Português)Canada (English)Canada (Français)Česko (Čeština)Deutschland (Deutsch)España (Español)France (Français)India (English)Indonesia (Bahasa Indonesia)Italia (Italiano)日本 (日本語)대한민국 (한국어)Latinoamérica (Español)الشرق الأوسطوشمالأفريقيا(اللغة العربية)MENA (English)Nederlands (Nederland)New Zealand (English)Polska (Polski)Portugal (Português)ประเทศไทย (ไทย)Türkiye (Türkçe)台灣 (中文)\n[&quot;How does Gemini work in Google Maps?&quot;, &quot;What is quantum computing?&quot;, &quot;What are the camera features on Pixel 10?&quot;]\n[Subscribe](https://blog.google/newsletter-subscribe/)\n# Introducing Gemini: our largest and most capable AI model\nDec 06, 2023\n·Share\n[\nx.com\n]()[\nFacebook\n]()[\nLinkedIn\n]()[\nMail\n]()\nCopy link\nMaking AI more helpful for everyone\n[![SundarPichai_2x.jpg](https://storage.googleapis.com/gweb-uniblog-publish-prod/images/SundarPichai_2x.max-208x156.format-webp.webp)\nSundar Pichai\nCEO of Google and Alphabet\n](https://blog.google/authors/sundar-pichai/)[![Demis_headshot](https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Demis_headshot.max-244x184.format-webp.webp)\nDemis Hassabis\nCEO and Co-Founder, Google DeepMind\n](https://blog.google/authors/demis-hassabis/)\nShare\n[\nx.com\n]()[\nFacebook\n]()[\nLinkedIn\n]()[\nMail\n]()\nCopy link\n![The word “Gemini” above five separate threads, each a different color, converge from the left into a three-dimensional central helix before separating back out toward the right into five individual strands once more.](https://storage.googleapis.com/gweb-uniblog-publish-prod/images/final_keyword_header.width-200.format-webp.webp)\n*A note from Google and Alphabet CEO Sundar Pichai:*\nEvery technology shift is an opportunity to advance scientific discovery, accelerate human progress, and improve lives. I believe the transition we are seeing right now with AI will be the most profound in our lifetimes, far bigger than the shift to mobile or to the web before it. AI has the potential to create opportunities —from the everyday to the extraordinary —for people everywhere. It will bring new waves of innovation and economic progress and drive knowledge, learning, creativity and productivity on a scale we haven’t seen before.\nThat’s what excites me: the chance to make AI helpful for everyone, everywhere in the world.\nNearly eight years into our journey as an AI-first company, the pace of progress is only accelerating: Millions of people are now using generative AI across our products to do things they couldn’t even a year ago, from finding answers to more complex questions to using new tools to collaborate and create. At the same time, developers are using our models and infrastructure to build new generative AI applications, and startups and enterprises around the world are growing with our AI tools.\nThis is incredible momentum, and yet, we’re only beginning to scratch the surface of what’s possible.\nWe’re approaching this work boldly and responsibly. That means being ambitious in our research and pursuing the capabilities that will bring enormous benefits to people and society, while building in safeguards and working collaboratively with governments and experts to address risks as AI becomes more capable. And we continue to invest in the very best tools, foundation models and infrastructure and bring them to our products and to others, guided by our[AI Principles](https://ai.google/responsibility/principles/).\nNow, we’re taking the next step on our journey with Gemini, our most capable and general model yet, with state-of-the-art performance across many leading benchmarks. Our first version, Gemini 1.0, is optimized for different sizes: Ultra, Pro and Nano. These are the first models of the Gemini era and the first realization of the vision we had when we formed Google DeepMind earlier this year. This new era of models represents one of the biggest science and engineering efforts we’ve undertaken as a company. I’m genuinely excited for what’s ahead, and for the opportunities Gemini will unlock for people everywhere.\n–Sundar\n## Introducing Gemini\n*By Demis Hassabis, CEO and Co-Founder of Google DeepMind, on behalf of the Gemini team*\nAI has been the focus of my life&#x27;s work, as for many of my research colleagues. Ever since programming AI for computer games as a teenager, and throughout my years as a neuroscience researcher trying to understand the workings of the brain, I’ve always believed that if we could build smarter machines, we could harness them to benefit humanity in incredible ways.\nThis promise of a world responsibly empowered by AI continues to drive our work at Google DeepMind. For a long time, we’ve wanted to build a new generation of AI mod",
+        "publishedAt": "2023-12-05T16:00:00.000Z",
+        "metadata": {
+          "author": "Sundar Pichai",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:54:28.934Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15p1k0042ftmge8jolcov",
+          "objectLabel": "What is Gemini and how it works"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google Gemini overview page unrelated to Greg Brockman."
+      },
+      "raw": {
+        "id": "cmjv15p1k0042ftmge8jolcov",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://gemini.google/overview",
+        "urlHash": "44687678f0a495e88cfdf570a6cfe2b4",
+        "contentHash": "7a92155e9540979d372cb4e81b180972",
+        "title": "What is Gemini and how it works",
+        "text": "What is Gemini and how it works\n[Skip to main content](#main)\n[](https://gemini.google/about/)\n[](https://goo.gle/42kJPU9)[](https://www.tiktok.com/@googlegemini)[](https://discord.gg/gemini)[](https://goo.gle/4nuJRBb)\n* [\nTry Gemini\n](https://gemini.google.com/app/download/mobile?android-min-version=301356232&amp;ios-min-version=322.0&amp;is_sa=1&amp;campaign_id=gemini_overview_page&amp;utm_source=gemini&amp;utm_medium=web&amp;utm_campaign=gemini_overview_page&amp;pt=9008&amp;mt=8&amp;ct=gemini_overview_page)\nIntroduction\nWhat Gemini is\nHow Gemini works\nLimitations\nWhat’s next\n* [Introduction](#introduction)\n* [What Gemini is](#what-gemini-is)\n* [How Gemini works](#how-gemini-works)\n* [Limitations](#limitations)\n* [What’s next](#whats-next)\n# An**overview**of the Gemini app\nWe have long seen the potential of AI to make information and computing more accessible and useful to people. We have made pioneering advances on large language models (LLMs) and have seen great progress across Google and in this field more broadly. For several years, we have applied LLMs in the background to improve many of our products, such as[autocompleting sentences in Gmail](https://blog.google/products/gmail/subject-write-emails-faster-smart-compose-gmail/),[expanding Google Translate](https://arxiv.org/pdf/2205.03983), and helping us[better understand queries](https://blog.google/products/search/search-language-understanding-bert/)in Google Search. We continue using LLMs for many Google services, as well as to power the[Gemini app](https://gemini.google.com/app), which allows people to collaborate directly with generative AI. We want the Gemini app to be the most helpful and personal AI assistant, giving users direct access to Google’s latest AI models.\nWhile we’re at an important inflection point and encouraged by the widespread excitement around generative AI, it’s still early days for this technology. This explainer outlines how we’re approaching our work on the Gemini app (“Gemini”), including its mobile and web experiences —what it is, how it works and its current capabilities and limitations. Our approach to building Gemini will evolve as its underlying technology evolves, and as we learn from ongoing research, experience and user feedback.\n## What Gemini is\nGemini is an interface to a multimodal LLM (handling text, audio, images and more). Gemini is based on Google’s cutting-edge research in LLMs, which began with the[Word2Vec](https://arxiv.org/pdf/1301.3781v3)paper in 2013 that proposed novel model architectures that mapped words as mathematical concepts, followed by the introduction of a[neural conversational model](https://research.google/pubs/a-neural-conversational-model/)in 2015. This framework demonstrated how models could predict the next sentence in a conversation based on the previous sentence or sentences, leading to more natural conversational experiences. This was followed by our breakthrough work on[Transformer](https://research.google/blog/transformer-a-novel-neural-network-architecture-for-language-understanding/)in 2017 and[multi-turn chat capabilities](https://arxiv.org/abs/2001.09977)in 2020, which demonstrated even more compelling generative language progress.\nWe initially launched Gemini (then called Bard) as an experiment in March 2023 in accordance with our[AI Principles](https://blog.google/technology/ai/ai-principles/). Since then, users have turned to Gemini to write compelling emails, debug tricky coding problems, brainstorm ideas for upcoming events, get help learning difficult concepts, and so much more. Today, Gemini is a versatile AI tool that can help you in many ways. We already see Gemini helping people be more productive, more creative, and more curious and we add[new functionality and innovations](https://blog.google/products/gemini/google-gemini-update-may-2024/)regularly.\n## Productivity\nFor starters, Gemini can save you time. For example, say you are looking to summarize a long research document; Gemini lets you upload it and gives you a useful synthesis. Gemini can also help with coding tasks, and coding has quickly become one of its most popular applications.\n## Creativity\nGemini can also help bring your ideas to life and spark your creativity. For example, if you’re writing a blog post, Gemini can create an outline and generate images that help illustrate your post. And coming soon with[Gems](https://blog.google/products/gemini/google-gemini-update-may-2024/#personalize-gems), you will be able to customize Gemini with specific instructions and have it act as a subject matter expert to help you accomplish your personal goals.\n## Curiosity\nGemini can be a jumping off point for exploring your ideas and things you’d like to learn more about. For instance, it can explain a complex concept simply or surface relevant insights on a topic or image. And soon, it will pair these insights with recommended content from across the web to learn more about specific topics.\nGemini's capabilities ",
+        "publishedAt": "2024-07-24T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:55:16.979Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10k150a1drmtb796o6zzq",
+          "objectLabel": "chromepg"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Browser security plugin project outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmju10k150a1drmtb796o6zzq",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/chromepg",
+        "urlHash": "dd5084516a397c3298bdb3800b3d2987",
+        "contentHash": "df969f86c2c86ea0b3924f35c7661cba",
+        "title": "chromepg",
+        "text": "PGP operations in Chrome",
+        "publishedAt": "2024-11-28T05:54:17.000Z",
+        "metadata": {
+          "forks": 0,
+          "stars": 4,
+          "topics": [],
+          "language": "Emacs Lisp",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:55.836Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10i4o0a0prmtbizh5110e",
+          "objectLabel": "git"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Git fork or mirror, not substantive person or AI evidence."
+      },
+      "raw": {
+        "id": "cmju10i4o0a0prmtbizh5110e",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/git",
+        "urlHash": "8f8424e30ac44d8d8c608104afe17b7c",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "git",
+        "text": "////////////////////////////////////////////////////////////////\n\n\tGIT - the stupid content tracker\n\n////////////////////////////////////////////////////////////////\n\n\"git\" can mean anything, depending on your mood.\n\n - random three-letter combination that is pronounceable, and not\n   actually used by any common UNIX command.  The fact that it is a\n   mispronunciation of \"get\" may or may not be relevant.\n - stupid. contemptible and despicable. simple. Take your pick from the\n   dictionary of slang.\n - \"global information tracker\": you're in a good mood, and it actually\n   works for you. Angels sing, and a light suddenly fills the room.\n - \"goddamn idiotic truckload of sh*t\": when it breaks\n\nGit is a fast, scalable, distributed revision control system with an\nunusually rich command set that provides both high-level operations\nand full access to internals.\n\nGit is an Open Source project covered by the GNU General Public License.\nIt was originally written by Linus Torvalds with help of a group of\nhackers around the net. It is currently maintained by Junio C Hamano.\n\nPlease read the file INSTALL for installation instructions.\n\nSee Documentation/gittutorial.txt to get started, then see\nDocumentation/everyday.txt for a useful minimum set of commands, and\nDocumentation/git-commandname.txt for documentation of each command.\nIf git has been correctly installed, then the tutorial can also be\nread with \"man gittutorial\" or \"git help tutorial\", and the\ndocumentation of each command with \"man git-commandname\" or \"git help\ncommandname\".\n\nCVS users may also want to read Documentation/gitcvs-migration.txt\n(\"man gitcvs-migration\" or \"git help cvs-migration\" if git is\ninstalled).\n\nMany Git online resources are accessible from http://git-scm.com/\nincluding full documentation and Git related tools.\n\nThe user discussion and development of Git take place on the Git\nmailing list -- everyone is welcome to post bug reports, feature\nrequests, comments and patches to git@vger.kernel.org. To s",
+        "publishedAt": "2024-11-28T05:54:16.000Z",
+        "metadata": {
+          "forks": 11,
+          "stars": 8,
+          "topics": [],
+          "language": "C",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:53.803Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10hfj0a0jrmtbieo6stec",
+          "objectLabel": "lunchbox"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "File synchronization utility outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmju10hfj0a0jrmtbieo6stec",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/lunchbox",
+        "urlHash": "63a9a9504f1bf7b7b4530d67b04557d2",
+        "contentHash": "36cf4aa7b3c95213fd067db202cec528",
+        "title": "lunchbox",
+        "text": "Lightweight local -> remote file synchronization application",
+        "publishedAt": "2024-11-28T05:54:09.000Z",
+        "metadata": {
+          "forks": 2,
+          "stars": 14,
+          "topics": [],
+          "language": null,
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:53.118Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10j1g0a11rmtbfh1v6fgi",
+          "objectLabel": "pyconfigatron"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "General configuration utility outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmju10j1g0a11rmtbfh1v6fgi",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/pyconfigatron",
+        "urlHash": "b780f6dcf533d0ce1e3734fb2a7c9055",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "pyconfigatron",
+        "text": "# pyconfigatron\n\nA Python port of two Ruby projects:\n[configatron](https://github.com/markbates/configatron) and\n[chalk-config](https://github.com/stripe/chalk-config).\n",
+        "publishedAt": "2024-08-12T11:23:59.000Z",
+        "metadata": {
+          "forks": 22,
+          "stars": 5,
+          "topics": [],
+          "language": "Python",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:54.816Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10ifg0a0trmtbfgs5rl4t",
+          "objectLabel": "require-prof"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Ruby profiling utility outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmju10ifg0a0trmtbfgs5rl4t",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/require-prof",
+        "urlHash": "893331a3e7c3435636820f1e03828751",
+        "contentHash": "8d4417193ff6b7d7f424c884fae4590a",
+        "title": "require-prof",
+        "text": "Profile your Ruby imports",
+        "publishedAt": "2024-07-15T16:36:22.000Z",
+        "metadata": {
+          "forks": 2,
+          "stars": 8,
+          "topics": [],
+          "language": "Ruby",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:54.142Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10ehe09zprmtbxvb6encx",
+          "objectLabel": "rubysh"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Early Ruby development tool outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmju10ehe09zprmtbxvb6encx",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "github",
+        "url": "https://github.com/gdb/rubysh",
+        "urlHash": "c28af5e17fed22b1b86dd25c8ce1f6e0",
+        "contentHash": "02c4c3124349d8e803d46fa9845821eb",
+        "title": "rubysh",
+        "text": "Rubysh: Ruby subprocesses made easy",
+        "publishedAt": "2025-10-07T01:43:30.000Z",
+        "metadata": {
+          "forks": 5,
+          "stars": 153,
+          "topics": [],
+          "language": "Ruby",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:50.379Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Guillaume Lample",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvri5f012drmtbb4nw55qd",
+          "objectLabel": "Roncin, Cesar VS Lample, Guillaume"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Chess match video outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjtvri5f012drmtbb4nw55qd",
+        "personId": "cmjtv2cix0008i004kejjlxya",
+        "person": "Guillaume Lample",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=br-N2qcbM7U",
+        "urlHash": "04e87ce545d63469b3e572b79e2e7f24",
+        "contentHash": "ccfcff495a81ad7f53a274b449dd3299",
+        "title": "Roncin, Cesar VS Lample, Guillaume",
+        "text": "[Event \"FRA-chJM4\"] [Site \"Rochefort\"] [Date \"1998.??.??\"] [Round \"9\"] [White \"Roncin, Cesar\"] [Black \"Lample, Guillaume\"] [Result ...",
+        "publishedAt": "2023-06-23T11:18:02.000Z",
+        "metadata": {
+          "videoId": "br-N2qcbM7U",
+          "isOfficial": false,
+          "thumbnailUrl": "https://i.ytimg.com/vi/br-N2qcbM7U/mqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:35:44.932Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Han Xiao",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw75mn0005xyksz082sgqjm",
+          "objectLabel": "hanxiao/useful-one-liner"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "One-liner command repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw75mn0005xyksz082sgqjm",
+        "personId": "cmjv6furu0008mfghimpelg81",
+        "person": "Han Xiao",
+        "sourceType": "github",
+        "url": "https://github.com/hanxiao/useful-one-liner",
+        "urlHash": "e25dfd05f32b3a76e62e464df3bee3ef",
+        "contentHash": "c9fbf2aaa824009f4480d7463faef881",
+        "title": "hanxiao/useful-one-liner",
+        "text": "some useful one-liner",
+        "publishedAt": "2024-03-12T04:42:43.000Z",
+        "metadata": {
+          "stars": 25,
+          "language": null
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:12.059Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw767tn0083yksz22k4rvlb",
+          "objectLabel": "jph00/AmazingTodo"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Angular/WebAPI example project outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw767tn0083yksz22k4rvlb",
+        "personId": "cmjv6furu000qmfgh4ljlvuyh",
+        "person": "Jeremy Howard",
+        "sourceType": "github",
+        "url": "https://github.com/jph00/AmazingTodo",
+        "urlHash": "2af39349a69fe8301f972f1fc6f2832f",
+        "contentHash": "97d04176b753f402e5bcd8ed24f7f8d9",
+        "title": "jph00/AmazingTodo",
+        "text": "Angular and WebAPI example project",
+        "publishedAt": "2025-03-11T15:22:45.000Z",
+        "metadata": {
+          "stars": 26,
+          "language": "JavaScript"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:39.514Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw765y3007pyksz6r13qqu2",
+          "objectLabel": "jph00/BaseMath"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Swift math helper repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw765y3007pyksz6r13qqu2",
+        "personId": "cmjv6furu000qmfgh4ljlvuyh",
+        "person": "Jeremy Howard",
+        "sourceType": "github",
+        "url": "https://github.com/jph00/BaseMath",
+        "urlHash": "7633043ff58a6dfa5dbb479bc1604cc3",
+        "contentHash": "4be2dc15734c19c84788d7e1e38e1736",
+        "title": "jph00/BaseMath",
+        "text": "Basic math functions for float and double in Swift",
+        "publishedAt": "2025-12-23T07:40:53.000Z",
+        "metadata": {
+          "stars": 199,
+          "language": "Swift"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:37.082Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw7670i007xykszwuivyt6g",
+          "objectLabel": "jph00/gyb"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "gyb wrapper repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw7670i007xykszwuivyt6g",
+        "personId": "cmjv6furu000qmfgh4ljlvuyh",
+        "person": "Jeremy Howard",
+        "sourceType": "github",
+        "url": "https://github.com/jph00/gyb",
+        "urlHash": "061eb14888a7b8c13a5f76143875c595",
+        "contentHash": "769706e103fb74a954cc5846e0ce9f0f",
+        "title": "jph00/gyb",
+        "text": "A pip-installable version of Apple's gyb python-based templating tool",
+        "publishedAt": "2024-01-04T08:29:19.000Z",
+        "metadata": {
+          "stars": 46,
+          "language": "Python"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:38.465Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw7667a007rykszsu45je94",
+          "objectLabel": "jph00/latex-ppt"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "LaTeX and PowerPoint utility outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw7667a007rykszsu45je94",
+        "personId": "cmjv6furu000qmfgh4ljlvuyh",
+        "person": "Jeremy Howard",
+        "sourceType": "github",
+        "url": "https://github.com/jph00/latex-ppt",
+        "urlHash": "a8fe466efd862ff1476251efd6177a73",
+        "contentHash": "1e1da99c136136253c6778aa657d1d30",
+        "title": "jph00/latex-ppt",
+        "text": "Use LaTeX in PowerPoint",
+        "publishedAt": "2025-12-30T02:17:12.000Z",
+        "metadata": {
+          "stars": 199,
+          "language": "VBA"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:37.414Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw766r8007vykszg8nxprpf",
+          "objectLabel": "jph00/swift-apple"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Swift tooling repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw766r8007vykszg8nxprpf",
+        "personId": "cmjv6furu000qmfgh4ljlvuyh",
+        "person": "Jeremy Howard",
+        "sourceType": "github",
+        "url": "https://github.com/jph00/swift-apple",
+        "urlHash": "c04a098ddfeeebe2ed835dc7ed60c1d8",
+        "contentHash": "cdde32231c723ebee16f17aa3266634a",
+        "title": "jph00/swift-apple",
+        "text": "A copy of Apple's Swift tools for Vim, packaged as a Vim plugin",
+        "publishedAt": "2025-12-25T23:06:04.000Z",
+        "metadata": {
+          "stars": 70,
+          "language": "Vim script"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:38.131Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw767kd0081ykszgq7qrcb1",
+          "objectLabel": "jph00/SwiftyMKL"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Swift MKL wrapper repository outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw767kd0081ykszgq7qrcb1",
+        "personId": "cmjv6furu000qmfgh4ljlvuyh",
+        "person": "Jeremy Howard",
+        "sourceType": "github",
+        "url": "https://github.com/jph00/SwiftyMKL",
+        "urlHash": "0f34cbfee41d88ee0e24b9597983436e",
+        "contentHash": "5ec7305e14e961e7c0eb54b173926533",
+        "title": "jph00/SwiftyMKL",
+        "text": "A Swift wrapper for Intel Performance Libraries.",
+        "publishedAt": "2023-09-28T11:03:38.000Z",
+        "metadata": {
+          "stars": 37,
+          "language": "Swift"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:30:39.180Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "John Schulman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw76suv00a9ykszd5qs5wuo",
+          "objectLabel": "joschu/pychain"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Blockchain learning project outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw76suv00a9ykszd5qs5wuo",
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "sourceType": "github",
+        "url": "https://github.com/joschu/pychain",
+        "urlHash": "3af82a392cc6723050420fd15cde8107",
+        "contentHash": "005e0252511537fbb310ca4d18571dd6",
+        "title": "joschu/pychain",
+        "text": "a baby blockchain, for learning purposes",
+        "publishedAt": "2023-12-11T03:32:20.000Z",
+        "metadata": {
+          "stars": 10,
+          "language": "Python"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:31:06.774Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "John Schulman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw76to200afykszmaxxthp9",
+          "objectLabel": "joschu/view3d"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "3D camera-view utility outside the AI profile evidence scope."
+      },
+      "raw": {
+        "id": "cmjw76to200afykszmaxxthp9",
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "sourceType": "github",
+        "url": "https://github.com/joschu/view3d",
+        "urlHash": "0b5b7591b4721b865c2ddeb97dbc9c5d",
+        "contentHash": "8e7731670f137ae11a569dfc58b36d17",
+        "title": "joschu/view3d",
+        "text": "view ros image topics with a 3d camera",
+        "publishedAt": "2023-12-11T03:31:59.000Z",
+        "metadata": {
+          "stars": 4,
+          "language": "C++"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:31:07.826Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Marc Andreessen",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw771xp00azyksz2h9q1u83",
+          "objectLabel": "Where does consumer AI stand at the end of 2025?"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "a16z consumer-team industry video, not target-person evidence for Marc Andreessen."
+      },
+      "raw": {
+        "id": "cmjw771xp00azyksz2h9q1u83",
+        "personId": "cmjv6furu000emfgh0aoztt24",
+        "person": "Marc Andreessen",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=p4-7x6QiYr0",
+        "urlHash": "4801c7317ad8b0119f780d3abde5c2ad",
+        "contentHash": "4537a748231bc6dd48a9ea4b684513bb",
+        "title": "Where does consumer AI stand at the end of 2025?",
+        "text": "As 2025 comes to a close, consumer AI is entering a new phase. A small number of products now dominate everyday use, multimodal models have unlocked entirely new creative workflows, and the big labs have pushed aggressively into consumer experiences. At the same time, it is becoming clearer which ideas actually changed user behavior and which ones did not.\n\nIn this episode, a16z consumer investors Anish Acharya, Olivia Moore, Justine Moore, and Bryan Kim look back on the biggest product and model shifts of 2025 and ahead to what 2026 may bring. They discuss why consumer AI appears to be trending toward a winner-take-most model, how subtle product design choices can matter more than raw model quality, and why templates, multimodality, and distribution are shaping the next wave of consumer products.\n\nWhere do startups still have room to win? How will the role of the big labs continue to change? And what will it actually take for consumer AI apps to break out at scale in 2026?\n\nTimecodes:\n0:00  Introduction & Market Overview\n0:35  Who Won Consumer AI in 2025?\n1:22   Major Model and Product Launches\n2:24   Image and Video Model Innovations\n4:05   Product Sensibility and User Experience\n6:40   Advances in Image and Video Models\n9:11   Under-hyped Products and Productivity Apps\n10:21   Prosumer Tools and Power User Workflows\n12:56   Gemini vs. ChatGPT: Distribution and Brand\n14:04   Product Nuances: Onboarding and Engagement\n16:09   Social Features and Group Chat\n19:26   Sora, TikTok, and the Status Game\n21:02   Challengers: Claude, Perplexity, Grok\n23:37   Meta, Grok, and Rapid Model Progress\n26:54   Predictions for 2026: Enterprise, Apps, and Multimodality\n32:02   Startup Opportunities and App Generation\n36:27   Favorite Products and Recommendations\n42:19   Building Consumer Products in 2026\n\nResources: \nFollow Anish: https://twitter.com/illscience\nFollow Olivia: https://twitter.com/omooretweets\nFollow Bryan  https://twitter.com/kirbyman01\nFollow Justine: https://twitter.com/venturetwins\n\nStay Updated: \n\nIf you enjoyed this episode, be sure to like, subscribe, and share with your friends!\n\nFind a16z on X: https://twitter.com/a16z \n\nFind a16z on LinkedIn: https://www.linkedin.com/company/a16z\n \nListen to the a16z Podcast on Spotify: https://open.spotify.com/show/5bC65RDvs3oxnLyqqvkUYX\n\nListen to the a16z Podcast on Apple Podcasts: https://podcasts.apple.com/us/podcast/a16z-podcast/id842818711\n\nPlease note that the content here is for informational purposes only; should NOT be taken as legal, business, tax, or investment advice or be used to evaluate any investment or security; and is not directed at any investors or potential investors in any a16z fund. a16z and its affiliates may maintain investments in the companies discussed. For more details, please see a16z.com/disclosures.",
+        "publishedAt": "2025-12-29T05:58:10.000Z",
+        "metadata": {
+          "tags": [
+            "产品",
+            "多模态",
+            "Agent"
+          ],
+          "thumbnailUrl": "https://i.ytimg.com/vi/p4-7x6QiYr0/hqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T17:31:18.541Z",
+        "processed": false
+      }
+    }
+  ]
+}

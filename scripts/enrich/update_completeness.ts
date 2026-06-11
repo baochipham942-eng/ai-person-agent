@@ -132,7 +132,7 @@ async function main() {
                 select: {
                     rawPoolItems: true,
                     roles: true,
-                    cards: true,
+                    cards: { where: { isActive: true } },
                 }
             }
         }

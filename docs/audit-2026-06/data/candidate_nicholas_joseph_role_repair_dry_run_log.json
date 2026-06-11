@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "roles": 1,
+    "insertedRoles": 0,
+    "wouldInsertRoles": 1,
+    "existingRoles": 0,
+    "missingPeople": 0,
+    "orgsInserted": 0,
+    "orgsWouldInsert": 0
+  },
+  "log": [
+    {
+      "action": "would_insert_role",
+      "organizationAction": "existing_org",
+      "person": "Nicholas Joseph",
+      "personId": "dd0022ee-5895-46a9-b741-4d4d32dc70db",
+      "organization": "Anthropic",
+      "organizationId": "cmjw5iwfj0058izl8k2xxb366",
+      "role": "Head of Training",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": true,
+        "roleCategoryChanged": false
+      }
+    }
+  ]
+}

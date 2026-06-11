@@ -17,6 +17,7 @@ type ClusterSpec = {
   label: string;
   decision: string;
   patterns: string[];
+  excludePatterns?: string[];
 };
 
 type OrgCandidate = {
@@ -39,37 +40,38 @@ const clusters: ClusterSpec[] = [
   {
     key: 'stanford_suborgs',
     label: 'Stanford suborg boundary',
-    decision: 'Do not merge university, labs, departments, and centers until product display rules are decided.',
+    decision: 'Keep Stanford University, departments, labs, centers, and endowed-chair roles separate except deterministic duplicate labels already merged.',
     patterns: ['%Stanford%', '%斯坦福%'],
   },
   {
     key: 'nyu_suborgs',
     label: 'NYU suborg boundary',
-    decision: 'Review NYU, NYU Courant, and research-lab variants before merging.',
+    decision: 'Keep NYU parent university, Courant, and Tandon separate because institute and school affiliations carry different display meaning.',
     patterns: ['%New York University%', '%NYU%', '%纽约大学%'],
   },
   {
     key: 'cmu_suborgs',
     label: 'CMU suborg boundary',
-    decision: 'Review CMU, Carnegie Mellon University, and school/lab variants before merging.',
+    decision: 'Keep CMU parent university, Computer Science Department, and NeuLab @ LTI/CMU separate because school/lab affiliations are more specific than the parent university.',
     patterns: ['%Carnegie Mellon%', '%CMU%', '%卡内基梅隆%'],
   },
   {
     key: 'facebook_meta_history',
     label: 'Facebook / Meta history boundary',
-    decision: 'Needs product decision on whether historic Facebook roles display as Facebook or Meta.',
+    decision: 'Keep Facebook, Meta, FAIR, Meta AI, MetaMind, Metaweb, and Meta Superintelligence Labs separate; normalize only display labels that are clear aliases.',
     patterns: ['%Facebook%', '%Meta%', 'FAIR%', '%脸书%'],
+    excludePatterns: ['%Transmeta%'],
   },
   {
     key: 'twitter_x_history',
     label: 'Twitter / X history boundary',
-    decision: 'Needs product decision on whether historic Twitter roles display as Twitter or X.',
+    decision: 'Keep Twitter, Twitter/X transition rows, X Corp., and X.com separate because historical roles and acquisition/founding context differ.',
     patterns: ['%Twitter%', '%X Corp%', '%X.com%'],
   },
   {
     key: 'cas_ict',
     label: 'Chinese Academy of Sciences / ICT boundary',
-    decision: 'Review institute versus parent academy before picking a canonical organization.',
+    decision: 'Keep CAS parent academy, CAS ICT, graduate school, and separate institute/lab rows apart unless a row is a direct duplicate of the same institute.',
     patterns: ['%Chinese Academy of Sciences%', '%Institute of Computing Technology%', '%中国科学院%', '%计算技术研究所%'],
   },
   {
@@ -81,19 +83,19 @@ const clusters: ClusterSpec[] = [
   {
     key: 'ibm_research',
     label: 'IBM / IBM Research boundary',
-    decision: 'Review corporate IBM and IBM Research roles before merging or preserving suborgs.',
+    decision: 'Keep IBM and IBM Research separate because corporate leadership roles and research-lab affiliations are distinct.',
     patterns: ['%IBM%'],
   },
   {
     key: 'ubc',
     label: 'University of British Columbia boundary',
-    decision: 'Review UBC abbreviation and full-name variants.',
+    decision: 'Keep SBS & University of British Columbia separate from University of British Columbia until the SBS context has direct source support.',
     patterns: ['%University of British Columbia%', '%UBC%', '%英属哥伦比亚%'],
   },
   {
     key: 'kings_college',
     label: "King's College boundary",
-    decision: 'Review King’s College London spelling and short-name variants.',
+    decision: "Keep King's College, Cambridge and King's College, New Zealand separate because they are different institutions.",
     patterns: ["%King's College%", '%Kings College%', '%King’s College%', '%KCL%'],
   },
 ];
@@ -110,6 +112,10 @@ if (!process.env.DATABASE_URL) {
 }
 
 const sql = neon(process.env.DATABASE_URL);
+
+function normalizeLabel(value: string | null | undefined): string {
+  return String(value || '').trim().toLowerCase();
+}
 
 async function main() {
   const payloadClusters = [];
@@ -136,6 +142,12 @@ async function main() {
         WHERE o.name ILIKE pattern
           OR COALESCE(o."nameZh", '') ILIKE pattern
       )
+      AND NOT EXISTS (
+        SELECT 1
+        FROM UNNEST(${cluster.excludePatterns || []}::text[]) AS pattern
+        WHERE o.name ILIKE pattern
+          OR COALESCE(o."nameZh", '') ILIKE pattern
+      )
       GROUP BY o.id
       ORDER BY "roleCount" DESC, o.name ASC
     ` as OrgCandidate[];
@@ -152,19 +164,35 @@ async function main() {
         FROM UNNEST(${cluster.patterns}::text[]) AS pattern
         WHERE org_value ILIKE pattern
       )
+      AND NOT EXISTS (
+        SELECT 1
+        FROM UNNEST(${cluster.excludePatterns || []}::text[]) AS pattern
+        WHERE org_value ILIKE pattern
+      )
       GROUP BY org_value
       ORDER BY "peopleCount" DESC, org_value ASC
     ` as PeopleOrgValue[];
+
+    const peopleOrgValueSet = new Set(peopleOrgValues.map(row => normalizeLabel(row.value)));
+    const activeOrgCandidates = orgCandidates.filter(row => (
+      row.roleCount > 0
+      || peopleOrgValueSet.has(normalizeLabel(row.name))
+      || peopleOrgValueSet.has(normalizeLabel(row.nameZh))
+    ));
+
+    if (activeOrgCandidates.length <= 1 && peopleOrgValues.length === 0) {
+      continue;
+    }
 
     payloadClusters.push({
       key: cluster.key,
       label: cluster.label,
       decision: cluster.decision,
-      organizationRows: orgCandidates,
+      organizationRows: activeOrgCandidates,
       peopleOrganizationValues: peopleOrgValues,
       summary: {
-        organizationRows: orgCandidates.length,
-        personRoleRefs: orgCandidates.reduce((sum, row) => sum + row.roleCount, 0),
+        organizationRows: activeOrgCandidates.length,
+        personRoleRefs: activeOrgCandidates.reduce((sum, row) => sum + row.roleCount, 0),
         peopleOrganizationValues: peopleOrgValues.length,
         peopleOrgRefs: peopleOrgValues.reduce((sum, row) => sum + row.peopleCount, 0),
       },

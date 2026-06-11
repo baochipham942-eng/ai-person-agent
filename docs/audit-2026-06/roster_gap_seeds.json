@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "source": "ORG_ROSTER_GAP_VERIFICATION.md",
+    "note": "High-confidence newcomer seeds from organization gap verification. Existing-person repairs stay out of this file.",
+    "generatedAt": "2026-06-11T11:55:44+08:00"
+  },
+  "seeds": [
+    {
+      "name": "Nick Frosst",
+      "nameZh": "尼克·弗罗斯特",
+      "roleCategory": "founder",
+      "organization": ["Cohere"],
+      "currentTitle": "Co-founder @ Cohere",
+      "aliases": [],
+      "reason": "Cohere 联合创始人，补齐前沿模型公司创始层"
+    },
+    {
+      "name": "Ivan Zhang",
+      "nameZh": "伊万·张",
+      "roleCategory": "founder",
+      "organization": ["Cohere"],
+      "currentTitle": "Co-founder @ Cohere",
+      "aliases": [],
+      "reason": "Cohere 联合创始人，补齐前沿模型公司创始层"
+    },
+    {
+      "name": "Phil Blunsom",
+      "nameZh": "菲尔·布伦森",
+      "roleCategory": "engineer",
+      "organization": ["Cohere"],
+      "currentTitle": "Chief Technology Officer @ Cohere",
+      "aliases": [],
+      "reason": "Cohere 技术负责人，补齐企业级大模型公司技术领导层"
+    },
+    {
+      "name": "Timothee Lacroix",
+      "nameZh": "蒂莫泰·拉克鲁瓦",
+      "roleCategory": "founder",
+      "organization": ["Mistral AI"],
+      "currentTitle": "Co-founder & CTO @ Mistral AI",
+      "aliases": ["Timothée Lacroix"],
+      "reason": "Mistral AI 联合创始人兼 CTO，补齐 Mistral 创始团队"
+    },
+    {
+      "name": "Evan Hubinger",
+      "nameZh": "埃文·休宾格",
+      "roleCategory": "researcher",
+      "organization": ["Anthropic"],
+      "currentTitle": "Alignment Researcher @ Anthropic",
+      "aliases": [],
+      "reason": "Anthropic 对齐研究代表人物，Sleeper Agents 等工作影响力高"
+    },
+    {
+      "name": "Tamera Lanham",
+      "nameZh": "塔梅拉·兰汉姆",
+      "roleCategory": "researcher",
+      "organization": ["Anthropic"],
+      "currentTitle": "Alignment Researcher @ Anthropic",
+      "aliases": [],
+      "reason": "Anthropic 对齐研究者，参与 Sleeper Agents 等重要安全研究"
+    },
+    {
+      "name": "Catherine Olsson",
+      "nameZh": "凯瑟琳·奥尔森",
+      "roleCategory": "researcher",
+      "organization": ["Anthropic"],
+      "currentTitle": "Interpretability Researcher @ Anthropic",
+      "aliases": [],
+      "reason": "Anthropic 机械可解释性研究代表人物，参与 induction heads / transformer circuits 工作"
+    },
+    {
+      "name": "Nicholas Joseph",
+      "nameZh": "尼古拉斯·约瑟夫",
+      "roleCategory": "researcher",
+      "organization": ["Anthropic"],
+      "currentTitle": "Interpretability Researcher @ Anthropic",
+      "aliases": [],
+      "reason": "Anthropic 机械可解释性研究者，参与 induction heads 等重要工作"
+    },
+    {
+      "name": "Trenton Bricken",
+      "nameZh": "特伦顿·布里肯",
+      "roleCategory": "researcher",
+      "organization": ["Anthropic"],
+      "currentTitle": "Interpretability Researcher @ Anthropic",
+      "aliases": [],
+      "reason": "Anthropic 机械可解释性研究者，Towards Monosemanticity 等工作影响力高"
+    },
+    {
+      "name": "Tristan Hume",
+      "nameZh": "特里斯坦·休姆",
+      "roleCategory": "engineer",
+      "organization": ["Anthropic"],
+      "currentTitle": "Interpretability Engineer @ Anthropic",
+      "aliases": [],
+      "reason": "Anthropic 机械可解释性工程/研究人物，参与 toy models 和 monosemanticity 方向"
+    },
+    {
+      "name": "Thariq Shihipar",
+      "nameZh": "塔里克·希希帕尔",
+      "roleCategory": "engineer",
+      "organization": ["Anthropic"],
+      "currentTitle": "Member of Technical Staff, Claude Code @ Anthropic",
+      "aliases": ["Thariq", "trq212"],
+      "dedupCheck": ["@trq212"],
+      "reason": "Anthropic Claude Code 团队工程师，围绕 Claude Code、skills、dynamic workflows 和 agent 输出形态的技术写作在 X 与开发者社区影响力高"
+    }
+  ]
+}

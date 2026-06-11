@@ -1,0 +1,545 @@
+{
+  "generatedAt": "2026-06-10T18:24:02.253Z",
+  "summary": {
+    "generatedAt": "2026-06-10T18:24:02.249Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch16_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch16_curated_apply_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH16_CURATED_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 6,
+    "selectedSourceRows": 6,
+    "skippedRows": 6,
+    "existingRawPoolItems": 3,
+    "rawInserted": 3,
+    "rawUpdated": 3,
+    "keepAuditsInserted": 3,
+    "keepAuditsExisting": 3,
+    "byDecision": {
+      "replace_source": 3,
+      "augment_source": 3
+    },
+    "bySourceType": {
+      "exa": 3,
+      "official": 2,
+      "paper": 1
+    },
+    "topPeople": {
+      "Jan Leike": 3,
+      "Hyung Won Chung": 1,
+      "Jeremy Howard": 1,
+      "Oriol Vinyals": 1
+    },
+    "topHosts": {
+      "80000hours.org": 1,
+      "aclanthology.org": 1,
+      "alignment.anthropic.com": 1,
+      "hwchung2.github.io": 1,
+      "jan.leike.name": 1,
+      "research.google": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 6
+    }
+  },
+  "existing": [
+    {
+      "id": "c5577363-69a4-45ba-b756-4f0e919721c2",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "url": "https://hwchung2.github.io",
+      "urlHash": "dd4778e8ed9136cea2bde9e903b5cf491d772b378cf90a2861f584d975bad66c",
+      "sourceType": "exa",
+      "title": "Hyung Won Chung",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "aa1e508c-1eae-43d3-87f3-e681f6169ff3",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "url": "https://jan.leike.name",
+      "urlHash": "578ba304e337b81905ad5c616dc1016be42a35ddbaae631454fa08689dc01136",
+      "sourceType": "exa",
+      "title": "Jan Leike",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "6416a3cc-e53d-41d7-b18c-e840eb883aab",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "url": "https://research.google/people/oriolvinyals",
+      "urlHash": "c23fdb437bb52fd7f023c78c1712f2dd494c5879b9cc935c0edd18dd17911fd0",
+      "sourceType": "official",
+      "title": "Oriol Vinyals - Google Research",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmjtvwad101cprmtbr6t4osx2",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://hwchung2.github.io",
+      "urlHash": "dd4778e8ed9136cea2bde9e903b5cf491d772b378cf90a2861f584d975bad66c",
+      "contentHash": "08a6e971fcb2375c79738923983a8283a5236d6785f0ee99e90175aa419b5f65",
+      "sourceType": "exa",
+      "title": "Hyung Won Chung",
+      "text": "Evidence quote: I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025). Selection reason: 个人官方主页，明确列出其职位、研究贡献（如o1模型）及职业经历，权威且可访问。 Source preview: Hyung Won Chung I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025). I currently focus on coding agents and led the Codex mini model-training. Prior to OpenAI, I was at Google Brain where I worked on whatever bottleneck stood in the way of further scaling: building JAX-based large-scale training system (T5X), training large models (e.g. PaLM), instruction fine-tuning (Flan-PaLM and Flan-T5 model families) and reasoning. Prior to Google Brain, I did my PhD at MIT. I am originally from South Korea (Korean name: 정형원) and currently live in Mountain View,... MiMo rationale: 原始来源仅为推文链接，缺乏实质内容。候选中的个人官方主页（hwchung2.github.io）提供了最权威的职位、研究贡献和职业经历信息，可直接替换。另一条本人推文明确宣布加入Meta Superintelligence Labs，可作为补充。其他候选要么信息重复，要么权威性不足。 Evidence requirements: Source must name Hyung Won Chung directly. | Source must support why \"//x.com/hwchung27/status/1943395653738287429\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Hyung Won Chung official profile AI research | Hyung Won Chung //x.com/hwchung27/status/1943395653738287429 official source | Hyung Won Chung //x.com/hwchung27/status/1943395653738287429 OpenAI Meta Superintelligence Labs evidence | Hyung Won Chung //x.com/hwchung27/status/1943395653738287429 interview transcript",
+      "selectedHost": "hwchung2.github.io",
+      "reason": "个人官方主页，明确列出其职位、研究贡献（如o1模型）及职业经历，权威且可访问。",
+      "evidenceQuote": "I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025).",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvwad101cprmtbr6t4osx2",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:17:16.111Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/hwchung27/status/1943395653738287429",
+          "title": "//x.com/hwchung27/status/1943395653738287429",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容仅包含推文链接而无具体文本，无法评估其实际信息密度。.",
+          "evidenceRequirements": [
+            "Source must name Hyung Won Chung directly.",
+            "Source must support why \"//x.com/hwchung27/status/1943395653738287429\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Hyung Won Chung official profile AI research",
+            "Hyung Won Chung //x.com/hwchung27/status/1943395653738287429 official source",
+            "Hyung Won Chung //x.com/hwchung27/status/1943395653738287429 OpenAI Meta Superintelligence Labs evidence",
+            "Hyung Won Chung //x.com/hwchung27/status/1943395653738287429 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwad101cprmtbr6t4osx2",
+          "objectLabel": "//x.com/hwchung27/status/1943395653738287429"
+        },
+        "selectedReason": "个人官方主页，明确列出其职位、研究贡献（如o1模型）及职业经历，权威且可访问。",
+        "evidenceQuote": "I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025).",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": [
+          "replacement_contains_auxiliary_low_authority_source"
+        ]
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvw89c01bnrmtbkqj1bpwt",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://jan.leike.name",
+      "urlHash": "578ba304e337b81905ad5c616dc1016be42a35ddbaae631454fa08689dc01136",
+      "contentHash": "f54ca681c790ced311f2ded8ad9679d858a2b5b1a20f5b17eae987b2d67e79be",
+      "sourceType": "exa",
+      "title": "Jan Leike",
+      "text": "Evidence quote: I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI... Selection reason: Jan Leike 的官方个人主页，明确列出其职位（Anthropic 对齐科学团队负责人）及过往经历，是证明其身份和工作的权威来源。 Source preview: Jan Leike Machine learning & alignment researcher Optimizing for a post-AGI future where humanity flourishes jan@anthropic.com @janleike blog publications About me I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI, where I’ve been involved in the development of InstructGPT, ChatGPT, and the alignment of GPT-4. I developed OpenAI’s approach to alignment research and co-authored the Superalignment Team’s research roadmap. Prior to OpenAI, I was an alignment researcher at DeepMind where I prototyped reinforcement learning from human feedback. I hold a PhD in reinforcement learning theory from the Australian National University. In 2023 and 2... MiMo rationale: 原始来源（一条简短的推文）过于单薄，无法充分支撑人物页面。候选来源中，Jan Leike 的官方个人主页和 Anthropic 官方博客文章是更权威、可访问且能直接证明其职位与工作的来源，适合作为补强。 Evidence requirements: Source must name Jan Leike directly. | Source must support why \"More progress on Claude's alignment!\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Jan Leike More progress Claude alignment! official source | Jan Leike More progress Claude alignment! OpenAI 对齐 evidence | Jan Leike More progress Claude alignment! interview transcript",
+      "selectedHost": "jan.leike.name",
+      "reason": "Jan Leike 的官方个人主页，明确列出其职位（Anthropic 对齐科学团队负责人）及过往经历，是证明其身份和工作的权威来源。",
+      "evidenceQuote": "I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvw89c01bnrmtbkqj1bpwt",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:18:50.422Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/janleike/status/1993035110984376796",
+          "title": "More progress on Claude's alignment!",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然涉及 AI 对齐，但内容过于简短，更像是一句随手评论。.",
+          "evidenceRequirements": [
+            "Source must name Jan Leike directly.",
+            "Source must support why \"More progress on Claude's alignment!\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Jan Leike More progress Claude alignment! official source",
+            "Jan Leike More progress Claude alignment! OpenAI 对齐 evidence",
+            "Jan Leike More progress Claude alignment! interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw89c01bnrmtbkqj1bpwt",
+          "objectLabel": "More progress on Claude's alignment!"
+        },
+        "selectedReason": "Jan Leike 的官方个人主页，明确列出其职位（Anthropic 对齐科学团队负责人）及过往经历，是证明其身份和工作的权威来源。",
+        "evidenceQuote": "I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI...",
+        "candidateAuthorityScore": 44,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju149co0apjrmtbio4lybax",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://80000hours.org/podcast/episodes/jan-leike-superalignment",
+      "urlHash": "3aa09e7a01d49667a21cc0ff2437826cb1bf8b2a731e4e32b80aad276cc673a7",
+      "contentHash": "9964913895c45ce273da72d3e1866290bb71dd6928b097d4fbc4bc91f6479d53",
+      "sourceType": "exa",
+      "title": "Jan Leike on OpenAI's massive push to make superintelligence safe in 4 years or less | 80,000 Hours",
+      "text": "Evidence quote: If you’re thinking about how do you align the superintelligence — how do you align the system that’s vastly smarter than humans? — I don’t know. I don’t have an answer. Selection reason: 权威播客采访，直接讨论对齐挑战，可为原推文提供背景和深度。 Source preview: 80,000 Hours 80,000 Hours 159 – Jan Leike on OpenAI’s massive push to make superintelligence safe in 4 years or less By Robert Wiblin and Keiran Harris · Published August 7th, 2023 · On this page: portrait portrait portrait portrait If you’re thinking about how do you align the superintelligence — how do you align the system that’s vastly smarter than humans? — I don’t know. I don’t have an answer. I don’t think anyone really has an answer. But it’s also not the problem that we fundamentally need to solve. Maybe this problem isn’t even solvable by humans who live today. But there’s this easier problem, which is how do you align the system that is the next generation? How do you align GPT-N+... MiMo rationale: 原推文过于简短，缺乏背景。候选来源中，本人官方主页可确认其职位和研究领域，80,000 Hours播客采访直接讨论对齐挑战，可为原推文提供权威背景和深度，适合作为补强来源。 Evidence requirements: Source must name Jan Leike directly. | Source must support why \"Ha it would be easy to train a model that's misaligned and evil\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Jan Leike would easy train model that misaligned and evil official source | Jan Leike would easy train model that misaligned and evil OpenAI 对齐 evidence | Jan Leike would easy train model that misaligned and evil interview transcript",
+      "selectedHost": "80000hours.org",
+      "reason": "权威播客采访，直接讨论对齐挑战，可为原推文提供背景和深度。",
+      "evidenceQuote": "If you’re thinking about how do you align the superintelligence — how do you align the system that’s vastly smarter than humans? — I don’t know. I don’t have an answer.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju149co0apjrmtbio4lybax",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:18:28.281Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/janleike/status/1972750971303501967",
+          "title": "Ha it would be easy to train a model that's misaligned and evil",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是本人关于AI对齐的言论，但内容过于简短，缺乏具体背景或论证。.",
+          "evidenceRequirements": [
+            "Source must name Jan Leike directly.",
+            "Source must support why \"Ha it would be easy to train a model that's misaligned and evil\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Jan Leike would easy train model that misaligned and evil official source",
+            "Jan Leike would easy train model that misaligned and evil OpenAI 对齐 evidence",
+            "Jan Leike would easy train model that misaligned and evil interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju149co0apjrmtbio4lybax",
+          "objectLabel": "Ha it would be easy to train a model that's misaligned and evil"
+        },
+        "selectedReason": "权威播客采访，直接讨论对齐挑战，可为原推文提供背景和深度。",
+        "evidenceQuote": "If you’re thinking about how do you align the superintelligence — how do you align the system that’s vastly smarter than humans? — I don’t know. I don’t have an answer.",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvw89c01bnrmtbkqj1bpwt",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://alignment.anthropic.com/2026/teaching-claude-why",
+      "urlHash": "9aa8686fa688238b45123343c6754179047f88c34c8b61d13e51e4ee12e4d162",
+      "contentHash": "555b320372de552226a326527cf3578ac3b442004bdcf58839ce5f0423947655",
+      "sourceType": "official",
+      "title": "Teaching Claude Why - Alignment Science Blog - Anthropic",
+      "text": "Evidence quote: Samuel R. Bowman, Samuel Marks, Jan Leike, Amanda Askell, Chris Olah Evan Hubinger, Sara Price Selection reason: Anthropic 官方对齐科学博客文章，作者列表中包含 Jan Leike，直接证明其参与 Claude 对齐研究工作。 Source preview: Alignment Science Blog Teaching Claude Why Jonathan Kutasov\\, Adam Jermyn May 8, 2026 Julius Steen, Minh Le, Samuel R. Bowman, Samuel Marks, Jan Leike, Amanda Askell, Chris Olah Evan Hubinger, Sara Price \\Correspondence to <jonk@anthropic.com> Introduction Last year, we released a case study on agentic misalignment. This research showed that AI models across the industry sometimes took egregiously misaligned actions when placed in (fictional) ethical dilemmas—for example, blackmailing engineers to avoid being shut down. At the time of this research, Claude 4 was Anthropic's frontier model family. It was also the first model family for which we ran a live alignment assessment during training... MiMo rationale: 原始来源（一条简短的推文）过于单薄，无法充分支撑人物页面。候选来源中，Jan Leike 的官方个人主页和 Anthropic 官方博客文章是更权威、可访问且能直接证明其职位与工作的来源，适合作为补强。 Evidence requirements: Source must name Jan Leike directly. | Source must support why \"More progress on Claude's alignment!\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Jan Leike More progress Claude alignment! official source | Jan Leike More progress Claude alignment! OpenAI 对齐 evidence | Jan Leike More progress Claude alignment! interview transcript",
+      "selectedHost": "alignment.anthropic.com",
+      "reason": "Anthropic 官方对齐科学博客文章，作者列表中包含 Jan Leike，直接证明其参与 Claude 对齐研究工作。",
+      "evidenceQuote": "Samuel R. Bowman, Samuel Marks, Jan Leike, Amanda Askell, Chris Olah Evan Hubinger, Sara Price",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvw89c01bnrmtbkqj1bpwt",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:18:50.422Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/janleike/status/1993035110984376796",
+          "title": "More progress on Claude's alignment!",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然涉及 AI 对齐，但内容过于简短，更像是一句随手评论。.",
+          "evidenceRequirements": [
+            "Source must name Jan Leike directly.",
+            "Source must support why \"More progress on Claude's alignment!\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Jan Leike More progress Claude alignment! official source",
+            "Jan Leike More progress Claude alignment! OpenAI 对齐 evidence",
+            "Jan Leike More progress Claude alignment! interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw89c01bnrmtbkqj1bpwt",
+          "objectLabel": "More progress on Claude's alignment!"
+        },
+        "selectedReason": "Anthropic 官方对齐科学博客文章，作者列表中包含 Jan Leike，直接证明其参与 Claude 对齐研究工作。",
+        "evidenceQuote": "Samuel R. Bowman, Samuel Marks, Jan Leike, Amanda Askell, Chris Olah Evan Hubinger, Sara Price",
+        "candidateAuthorityScore": 39,
+        "candidateAuthoritySignals": [
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjwtufia0015y6e2k9exkg23",
+      "personId": "cmjv6furu000qmfgh4ljlvuyh",
+      "person": "Jeremy Howard",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://aclanthology.org/P18-1031",
+      "urlHash": "b68119492474b68220e0ca9bd49b86e6d477d634b36296671829ceda8b0fdf24",
+      "contentHash": "576ef1bfd67c788852706783b530e3e97fbdaba7d68ffda3b52f7045fa81ad77",
+      "sourceType": "paper",
+      "title": "Universal Language Model Fine-tuning for Text Classification",
+      "text": "Evidence quote: Universal Language Model Fine-tuning for Text Classification Jeremy Howard, Sebastian Ruder Selection reason: 权威学术论文详情页，明确列出Jeremy Howard为作者，直接证明其对ULMFiT的原创贡献。 Source preview: Universal Language Model Fine-tuning for Text Classification - ACL Anthology Image 1: ACL LogoACL Anthology News(current) FAQ(current) Corrections(current) Submissions(current) GitHub Universal Language Model Fine-tuning for Text Classification Jeremy Howard, Sebastian Ruder Correct Metadata for Use this form to create a GitHub issue with structured data describing the correction. You will need a GitHub account. Once you create that issue, the correction will be reviewed by a staff member. ⚠️ Mobile Users: Submitting this form to create a new issue will only work with github.com, not the GitHub Mobile app. Important: The Anthology treat PDFs as authoritative. Please use this form only to co... MiMo rationale: 原始来源（推文）信息密度低。候选中的ACL Anthology论文页面是ULMFiT研究的原始、权威发布渠道，明确将Jeremy Howard列为作者，能直接、有力地证明其在该领域的核心贡献，是理想的替换来源。 Evidence requirements: Source must name Jeremy Howard directly. | Source must support why \"2017 Pre-training (ULMFiT) 😊\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Jeremy Howard 2017 Pre-training ULMFiT official source | Jeremy Howard 2017 Pre-training ULMFiT fast.ai Optimal Decisions Group evidence | Jeremy Howard 2017 Pre-training ULMFiT interview transcript",
+      "selectedHost": "aclanthology.org",
+      "reason": "权威学术论文详情页，明确列出Jeremy Howard为作者，直接证明其对ULMFiT的原创贡献。",
+      "evidenceQuote": "Universal Language Model Fine-tuning for Text Classification Jeremy Howard, Sebastian Ruder",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjwtufia0015y6e2k9exkg23",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:19:12.030Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/jeremyphoward/status/2003387381517549812",
+          "title": "2017 Pre-training (ULMFiT)\n😊",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容过于简短，仅提及ULMFiT预训练，信息密度低，需人工判断是否为重要原创贡献。.",
+          "evidenceRequirements": [
+            "Source must name Jeremy Howard directly.",
+            "Source must support why \"2017 Pre-training (ULMFiT) 😊\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Jeremy Howard 2017 Pre-training ULMFiT official source",
+            "Jeremy Howard 2017 Pre-training ULMFiT fast.ai Optimal Decisions Group evidence",
+            "Jeremy Howard 2017 Pre-training ULMFiT interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwtufia0015y6e2k9exkg23",
+          "objectLabel": "2017 Pre-training (ULMFiT)\n😊"
+        },
+        "selectedReason": "权威学术论文详情页，明确列出Jeremy Howard为作者，直接证明其对ULMFiT的原创贡献。",
+        "evidenceQuote": "Universal Language Model Fine-tuning for Text Classification Jeremy Howard, Sebastian Ruder",
+        "candidateAuthorityScore": 55,
+        "candidateAuthoritySignals": [
+          "research_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxwvn01rgrmtbl365dxow",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://research.google/people/oriolvinyals",
+      "urlHash": "c23fdb437bb52fd7f023c78c1712f2dd494c5879b9cc935c0edd18dd17911fd0",
+      "contentHash": "bd804a421fe862be840895d93eea8b79f0a83ad0afa875ff4932db3edd1ea72e",
+      "sourceType": "official",
+      "title": "Oriol Vinyals - Google Research",
+      "text": "Evidence quote: Oriol Vinyals Selection reason: 谷歌官方研究者主页，权威且直接证明其职位与研究领域，是替换原始推文链接的理想来源。 Source preview: Explore our many areas of focus earth_AI_nav health_AI_nav science_AI_nav sustainability_crisis_resilience_nav algorithms_theory_nav information_retrieval_nav machine_intelligence_nav machine_perception_nav NLP_nav human_computer_interaction_nav networking_nav quantum_AI_nav responsible_AI_nav anti_abuse_nav software_engineering_nav software_systems_nav1 publications_nav projects_nav Building a collaborative ecosystem dataset_nav models_products_nav software_engineering_nav Shaping the future together faculty_programs_nav student_programs_nav locations_nav Translating discovery into real-world impact earth_AI_nav teams_nav Explore our many areas of focus earth_AI_nav health_AI_nav science_A... MiMo rationale: 原始来源仅为一个推文地址，缺乏具体内容。候选中的谷歌官方研究者页面（research.google/people/oriolvinyals）是权威的机构资料页，能直接证明Oriol Vinyals的职位和研究身份，完全符合替换要求。 Evidence requirements: Source must name Oriol Vinyals directly. | Source must support why \"//x.com/OriolVinyalsML/status/1919770619182215440\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Oriol Vinyals official profile AI research | Oriol Vinyals //x.com/OriolVinyalsML/status/1919770619182215440 official source | Oriol Vinyals //x.com/OriolVinyalsML/status/1919770619182215440 谷歌 Transformer evidence | Oriol Vinyals //x.com/OriolVinyalsML/status/1919770619182215440 interview transcript",
+      "selectedHost": "research.google",
+      "reason": "谷歌官方研究者主页，权威且直接证明其职位与研究领域，是替换原始推文链接的理想来源。",
+      "evidenceQuote": "Oriol Vinyals",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvxwvn01rgrmtbl365dxow",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:21:32.921Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/OriolVinyalsML/status/1919770619182215440",
+          "title": "//x.com/OriolVinyalsML/status/1919770619182215440",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=官方X链接但内容仅为推文地址，无法判断具体内容，需人工核实。.",
+          "evidenceRequirements": [
+            "Source must name Oriol Vinyals directly.",
+            "Source must support why \"//x.com/OriolVinyalsML/status/1919770619182215440\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Oriol Vinyals official profile AI research",
+            "Oriol Vinyals //x.com/OriolVinyalsML/status/1919770619182215440 official source",
+            "Oriol Vinyals //x.com/OriolVinyalsML/status/1919770619182215440 谷歌 Transformer evidence",
+            "Oriol Vinyals //x.com/OriolVinyalsML/status/1919770619182215440 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxwvn01rgrmtbl365dxow",
+          "objectLabel": "//x.com/OriolVinyalsML/status/1919770619182215440"
+        },
+        "selectedReason": "谷歌官方研究者主页，权威且直接证明其职位与研究领域，是替换原始推文链接的理想来源。",
+        "evidenceQuote": "Oriol Vinyals",
+        "candidateAuthorityScore": 39,
+        "candidateAuthoritySignals": [
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmjtxqvkf04dgrmtby0vbc720",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxqx0e04e5rmtbwqcjq8ep",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju14hr50av5rmtb1hapznm0",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxl6ub031irmtbuxlkw1vn",
+      "personId": "cmjtsy8k300073est1f38zcel",
+      "person": "Mira Murati",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxl761031mrmtbl1iedufw",
+      "personId": "cmjtsy8k300073est1f38zcel",
+      "person": "Mira Murati",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxsfy01p4rmtbpe17jguq",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

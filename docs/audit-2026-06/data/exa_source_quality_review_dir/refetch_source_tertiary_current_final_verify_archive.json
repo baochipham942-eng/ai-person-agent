@@ -1,0 +1,758 @@
+{
+  "generatedAt": "2026-06-11T02:24:20.937Z",
+  "summary": {
+    "generatedAt": "2026-06-11T02:24:20.935Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/refetch_source_tertiary_tavily_mimo.jsonl",
+    "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/refetch_source_tertiary_current_final_verify_archive.json",
+    "report": "docs/audit-2026-06/REFETCH_SOURCE_TERTIARY_CURRENT_FINAL_VERIFY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 27,
+    "eligibleSourceRows": 6,
+    "selectedSourceRows": 6,
+    "skippedRows": 23,
+    "existingRawPoolItems": 6,
+    "rawInserted": 0,
+    "rawUpdated": 6,
+    "keepAuditsInserted": 0,
+    "keepAuditsExisting": 6,
+    "byDecision": {
+      "replace_source": 4,
+      "augment_source": 2
+    },
+    "bySourceType": {
+      "exa": 4,
+      "podcast": 1,
+      "official": 1
+    },
+    "topPeople": {
+      "凯文·斯科特": 2,
+      "李飞飞": 2,
+      "周明": 1,
+      "李开复": 1
+    },
+    "topHosts": {
+      "amazon.com.au": 1,
+      "chuangxin.com": 1,
+      "edge.org": 1,
+      "hub.baai.ac.cn": 1,
+      "podcasts.apple.com": 1,
+      "sohu.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 21,
+      "blocked": 2
+    }
+  },
+  "existing": [
+    {
+      "id": "1dea2677-98a6-4779-82f8-847c85b9b66a",
+      "personId": "cmjtxdpzx000c5p080gws8vjg",
+      "person": "凯文·斯科特",
+      "url": "https://www.amazon.com.au/stores/author/B0812BVLMX/about",
+      "urlHash": "53b738fa9f711a36957f726574bc28a7bfd86f0c6d870a754e0602c9b269879f",
+      "sourceType": "exa",
+      "title": "Amazon.com.au: Kevin Scott: books, biography, latest update",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7b189ab2-7ec1-4c24-a312-4e3ba0f02e5e",
+      "personId": "cmjtxdpzx000c5p080gws8vjg",
+      "person": "凯文·斯科特",
+      "url": "https://podcasts.apple.com/us/podcast/behind-the-tech-with-kevin-scott/id1381008946?l=zh-Hans-CN",
+      "urlHash": "29712a39969a9d9b5623bb3905b84368410ebae586f7112f4423ea3857de1473",
+      "sourceType": "podcast",
+      "title": "Behind The Tech with Kevin Scott - 播客 - Apple 播客",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7c8e041a-cc47-43c8-830b-880faedb09a5",
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "url": "https://www.chuangxin.com/portfolio/items/zhou-ming",
+      "urlHash": "9b7c6ad4625d87cbf4d7ffd921fbb2d7be9db4dc7d5a5391181a175b5b4f7488",
+      "sourceType": "exa",
+      "title": "首席科学家 - 创新工场",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7c97fc54-75b5-4f91-b844-234ca1d5a6b4",
+      "personId": "cmjtwkgug0004opf3th1cmczu",
+      "person": "李开复",
+      "url": "https://www.edge.org/conversation/kai_fu_lee-we-are-here-to-create",
+      "urlHash": "d388cd4d70e13998d30b05dbb201f84c4011c01a2891fdf4dfc5b6d25729d808",
+      "sourceType": "exa",
+      "title": "We Are Here To Create | Edge.org",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "5c7a4f32-48ef-4b8e-a889-77c058746df4",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "url": "https://www.sohu.com/a/883988047_384789",
+      "urlHash": "e3187042307bb18d7ace8fe0c349dcb87fec5c3b0281ed75da40e5de5f032eb5",
+      "sourceType": "exa",
+      "title": "产业之声 | 斯坦福HAI《2025年人工智能指数报告》解读_模型_Qwen-VL-Max_全球",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "e4db0eea-0e4f-4585-9b9e-3d07e1e2254a",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "url": "https://hub.baai.ac.cn/view/44732",
+      "urlHash": "5e76f247ff41e0d8df45261f017d9cbb2a24d32519d261d77ebefe62f1057c7d",
+      "sourceType": "official",
+      "title": "刚刚，李飞飞团队发布《2025年人工智能指数报告》：12大趋势证明，AI不再只是关于可能性的故事 - 智源社区",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "source-quality:cmjtxot4w03ulrmtbwp9oyupp",
+      "personId": "cmjtxdpzx000c5p080gws8vjg",
+      "person": "凯文·斯科特",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.amazon.com.au/stores/author/B0812BVLMX/about",
+      "urlHash": "53b738fa9f711a36957f726574bc28a7bfd86f0c6d870a754e0602c9b269879f",
+      "contentHash": "7ec3183a291789346c8e05fe78bda67b88a52d29fbb5f80846897c63e359f86b",
+      "sourceType": "exa",
+      "title": "Amazon.com.au: Kevin Scott: books, biography, latest update",
+      "text": "Evidence quote: Kevin Scott is executive vice president and chief technology officer of Microsoft and has held executive and engineering positions at LinkedIn and Google. Selection reason: 亚马逊作者页明确说明凯文·斯科特是微软执行副总裁兼首席技术官，权威且直接证明其职位。 Source preview: Skip to Keyboard shortcuts Createspace Visit Kevin Scott Store on Amazon Visit Kevin Scott Store on Amazon Kevin Scott Kevin Scott profile image About the author Kevin Scott is executive vice president and chief technology officer of Microsoft and has held executive and engineering positions at LinkedIn and Google. He built and led the technology team of pioneering mobile advertising startup AdMob, which was acquired by Google in 2010. He has received a Google Founder’s Award, an Intel PhD Fellowship, and an ACM Recognition of Service Award. He is an adviser to several Silicon Valley start-ups, an active angel investor, the founder of the nonprofit organization Behind the Tech, the host of ... MiMo rationale: 原始Instagram来源因乱码无法验证。候选来源中，亚马逊作者页和苹果播客页面均明确、权威地证明了凯文·斯科特是微软CTO，符合替换要求。其他候选来源要么身份不匹配，要么权威性不足。 Evidence requirements: 确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。 Source queries: Kevin Scott Instagram official account | 凯文·斯科特 Kevin Scott (@kevin_scott) official source | 凯文·斯科特 Kevin Scott (@kevin_scott) author role | 凯文·斯科特 Kevin Scott (@kevin_scott) interview transcript | 凯文·斯科特 确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。",
+      "selectedHost": "amazon.com.au",
+      "reason": "亚马逊作者页明确说明凯文·斯科特是微软执行副总裁兼首席技术官，权威且直接证明其职位。",
+      "evidenceQuote": "Kevin Scott is executive vice president and chief technology officer of Microsoft and has held executive and engineering positions at LinkedIn and Google.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "source-quality:cmjtxot4w03ulrmtbwp9oyupp",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T08:05:43.794Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.instagram.com/kevin_scott/",
+          "title": "Kevin Scott (@kevin_scott)",
+          "textPreview": "(µ/ýX\u0014É\u0001º7šj0�H†Î\u000e\u0010&gt;\u001bB)Î’å\u0016³~ûë+%§„\u0003n×õcÊ7h�\u0014%¶\u001baÛ9V\u0001\u0018‰€€\u0006%\u0006¢\u0006šwX»ú³ªªR“ÎIVRÎÉ\"ðýí\u0005\u000e ,\u0002Þãý;.÷ *Àá�~Þ# vP�\u0003,U@ISJJÿÛÁ=TàÊ\u0012¸ùÃ\u001e*p€U üŽ;;wüuæ\u001c×Q6M•T\\œ~½sO”mî\u0016ý�;8Š 0 \u0007Ã¡¸:Þr§@Bq’(\u0014-iJ3JÔŒ’@ÆõkFäÎýw³°©Â(Lqý«7ÑÖ¯¶a\u000fj|\u0013u¼užU)u\u0014\u0019ØT&lt;%|µüs×...",
+          "sourceQualityFlags": [
+            "weak_context_match"
+          ],
+          "sourceQualityReasons": [
+            "person name appears without supporting org/topic/role context"
+          ]
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Second-pass refetch after first-pass decision=augment_source. Retry reasons: replacement_needs_primary_or_credible_source. Prior rationale: 原始Instagram来源因乱码无法验证。候选来源中，LinkedIn个人资料页明确显示“Kevin Scott - CTO Microsoft”，直接、权威地证明了其微软CTO的职位和身份，符合替换要求。其他候选来源要么身份不匹配，要么权威性不足。",
+          "evidenceRequirements": [
+            "确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。"
+          ],
+          "sourceQueries": [
+            "Kevin Scott Instagram official account",
+            "凯文·斯科特 Kevin Scott (@kevin_scott) official source",
+            "凯文·斯科特 Kevin Scott (@kevin_scott) author role",
+            "凯文·斯科特 Kevin Scott (@kevin_scott) interview transcript",
+            "凯文·斯科特 确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxot4w03ulrmtbwp9oyupp",
+          "fieldPath": "RawPoolItem[cmjtxot4w03ulrmtbwp9oyupp]",
+          "objectLabel": "Kevin Scott (@kevin_scott)"
+        },
+        "selectedReason": "亚马逊作者页明确说明凯文·斯科特是微软执行副总裁兼首席技术官，权威且直接证明其职位。",
+        "evidenceQuote": "Kevin Scott is executive vice president and chief technology officer of Microsoft and has held executive and engineering positions at LinkedIn and Google.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "source-quality:cmjtxot4w03ulrmtbwp9oyupp",
+      "personId": "cmjtxdpzx000c5p080gws8vjg",
+      "person": "凯文·斯科特",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://podcasts.apple.com/us/podcast/behind-the-tech-with-kevin-scott/id1381008946?l=zh-Hans-CN",
+      "urlHash": "29712a39969a9d9b5623bb3905b84368410ebae586f7112f4423ea3857de1473",
+      "contentHash": "1b5167b3667e395a7aaad0371388a3d157885c1c027f5bd244d6439c43938868",
+      "sourceType": "podcast",
+      "title": "Behind The Tech with Kevin Scott - 播客 - Apple 播客",
+      "text": "Evidence quote: Microsoft CTO Kevin Scott takes tech enthusiasts behind-the-scenes... Selection reason: 苹果播客页面明确描述凯文·斯科特是微软CTO，并主持播客，权威且直接证明其身份和角色。 Source preview: Behind The Tech with Kevin Scott Behind the Tech invites listeners to geek out with an amazing line-up of tech heroes, inventors and innovators. Microsoft CTO Kevin Scott takes tech enthusiasts behind-the-scenes to meet AI experts, computer scientists, authors, musicians, digital leaders, bioengineers and neuroscientists who have made discoveries, built tools, and literally helped make our modern world possible. 单集 2025/02/18 Ask Me Anything with Microsoft CTO, Kevin Scott In this AMA episode of \"Behind the Tech,\" Kevin Scott and Christina Warren address a variety of listener questions, ranging from the impact of AI on learning and personal projects to the future of software development and... MiMo rationale: 原始Instagram来源因乱码无法验证。候选来源中，亚马逊作者页和苹果播客页面均明确、权威地证明了凯文·斯科特是微软CTO，符合替换要求。其他候选来源要么身份不匹配，要么权威性不足。 Evidence requirements: 确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。 Source queries: Kevin Scott Instagram official account | 凯文·斯科特 Kevin Scott (@kevin_scott) official source | 凯文·斯科特 Kevin Scott (@kevin_scott) author role | 凯文·斯科特 Kevin Scott (@kevin_scott) interview transcript | 凯文·斯科特 确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。",
+      "selectedHost": "podcasts.apple.com",
+      "reason": "苹果播客页面明确描述凯文·斯科特是微软CTO，并主持播客，权威且直接证明其身份和角色。",
+      "evidenceQuote": "Microsoft CTO Kevin Scott takes tech enthusiasts behind-the-scenes...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "source-quality:cmjtxot4w03ulrmtbwp9oyupp",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T08:05:43.794Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.instagram.com/kevin_scott/",
+          "title": "Kevin Scott (@kevin_scott)",
+          "textPreview": "(µ/ýX\u0014É\u0001º7šj0�H†Î\u000e\u0010&gt;\u001bB)Î’å\u0016³~ûë+%§„\u0003n×õcÊ7h�\u0014%¶\u001baÛ9V\u0001\u0018‰€€\u0006%\u0006¢\u0006šwX»ú³ªªR“ÎIVRÎÉ\"ðýí\u0005\u000e ,\u0002Þãý;.÷ *Àá�~Þ# vP�\u0003,U@ISJJÿÛÁ=TàÊ\u0012¸ùÃ\u001e*p€U üŽ;;wüuæ\u001c×Q6M•T\\œ~½sO”mî\u0016ý�;8Š 0 \u0007Ã¡¸:Þr§@Bq’(\u0014-iJ3JÔŒ’@ÆõkFäÎýw³°©Â(Lqý«7ÑÖ¯¶a\u000fj|\u0013u¼užU)u\u0014\u0019ØT&lt;%|µüs×...",
+          "sourceQualityFlags": [
+            "weak_context_match"
+          ],
+          "sourceQualityReasons": [
+            "person name appears without supporting org/topic/role context"
+          ]
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Second-pass refetch after first-pass decision=augment_source. Retry reasons: replacement_needs_primary_or_credible_source. Prior rationale: 原始Instagram来源因乱码无法验证。候选来源中，LinkedIn个人资料页明确显示“Kevin Scott - CTO Microsoft”，直接、权威地证明了其微软CTO的职位和身份，符合替换要求。其他候选来源要么身份不匹配，要么权威性不足。",
+          "evidenceRequirements": [
+            "确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。"
+          ],
+          "sourceQueries": [
+            "Kevin Scott Instagram official account",
+            "凯文·斯科特 Kevin Scott (@kevin_scott) official source",
+            "凯文·斯科特 Kevin Scott (@kevin_scott) author role",
+            "凯文·斯科特 Kevin Scott (@kevin_scott) interview transcript",
+            "凯文·斯科特 确认该Instagram账号是否为凯文·斯科特本人所有，以及页面内容是否包含可验证的个人信息或观点。"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxot4w03ulrmtbwp9oyupp",
+          "fieldPath": "RawPoolItem[cmjtxot4w03ulrmtbwp9oyupp]",
+          "objectLabel": "Kevin Scott (@kevin_scott)"
+        },
+        "selectedReason": "苹果播客页面明确描述凯文·斯科特是微软CTO，并主持播客，权威且直接证明其身份和角色。",
+        "evidenceQuote": "Microsoft CTO Kevin Scott takes tech enthusiasts behind-the-scenes...",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "source-quality:cmju0zygf09txrmtbjgjs6urx",
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.chuangxin.com/portfolio/items/zhou-ming",
+      "urlHash": "9b7c6ad4625d87cbf4d7ffd921fbb2d7be9db4dc7d5a5391181a175b5b4f7488",
+      "contentHash": "37bdd95125a313132c76e1cda51207a1638650c410adaedd1c9bb80655a310b2",
+      "sourceType": "exa",
+      "title": "首席科学家 - 创新工场",
+      "text": "Evidence quote: 周明博士担任创新工场首席科学家。周博士是世界顶级的AI科学家，自然语言处理领域的代表性人物。曾任微软亚洲研究院副院长、国际计算语言学协会（ACL）主席。 Selection reason: 权威机构官方页面，明确列出周明博士的职位（创新工场首席科学家）、曾任职务（微软亚洲研究院副院长、ACL主席）及主要成就，直接证明其身份与贡献。 Source preview: thumbnail image + 团队介绍 + 创业服务 + 环境、社会与治理 + 联系我们 + 加入我们 … + 首页 + 投资业务 + 最新动态 + 关于我们 团队介绍 创业服务 环境、社会与治理 联系我们 加入我们 + 零一万物 EN 首页 投资业务 最新动态 关于我们 + 团队介绍 + 创业服务 + 环境、社会与治理 + 联系我们 + 加入我们 零一万物 … + 首页 + 投资业务 + 最新动态 + 关于我们 团队介绍 创业服务 环境、社会与治理 联系我们 加入我们 + 零一万物 EN 返回 首席科学家 首席科学家 周明 周明博士担任创新工场首席科学家。周博士是世界顶级的AI科学家，自然语言处理领域的代表性人物。曾任微软亚洲研究院副院长、国际计算语言学协会（ACL）主席。现任中国计算机学会副理事长、中国中文信息学会常务理事。他还担任哈尔滨工业大学、天津大学、南开大学、北京航天航空大学、中国科技大学等高校的博士导师。 周明博士是中国最早的中英机器翻译系统CEMT和日本最有名的中日机器翻译产品J-北京的研制者。1999至2020年间，周博士长期领导微软亚洲研究院的NLP研究，在计算机创作、机器翻译、搜索、推荐、预训练模型等领域获得世界领先研究成果并广泛应用于微软的各类产品中。他领导了微软中日文输入法、必应词典、中英、中日机器翻译等系统的开发，研制的微软对联是世界上第一套人工智能对联系统。在学术领域，周明博士在世界顶级的会议和期刊（如ACL, NeurIPS, AAAI, IJCAI, EMNLP, COLING, SIGKDD, SIGIR, Computational... MiMo rationale: 原始来源（Google Scholar）因系统错误无法访问。候选来源中，创新工场官方页面是权威、可访问的一手资料，明确证明了周明博士作为AI领域知名科学家的身份、职位及主要贡献，完全符合证据要求。其他候选来源要么人物不符，要么领域不符，要么权威性不足。 Evidence requirements: 可访问的Google Scholar主页或其学术成果列表 Source queries: Ming Zhou 周明 Google Scholar 学术主页 | 周明 Ming Zhou (周明) official source | 周明 Ming Zhou (周明) author role | 周明 Ming Zhou (周明) interview transcript | 周明 可访问的Google Scholar主页或其学术成果列表",
+      "selectedHost": "chuangxin.com",
+      "reason": "权威机构官方页面，明确列出周明博士的职位（创新工场首席科学家）、曾任职务（微软亚洲研究院副院长、ACL主席）及主要成就，直接证明其身份与贡献。",
+      "evidenceQuote": "周明博士担任创新工场首席科学家。周博士是世界顶级的AI科学家，自然语言处理领域的代表性人物。曾任微软亚洲研究院副院长、国际计算语言学协会（ACL）主席。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "source-quality:cmju0zygf09txrmtbjgjs6urx",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T08:09:43.782Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.co.uk/citations?user=a0w5c0gAAAAJ&hl=ja",
+          "title": "Ming Zhou (周明)",
+          "textPreview": "‪Ming Zhou (周明)‬ - ‪Google Scholar‬ 読み込んでいます... 現在システムで処理を実行できません。しばらくしてからもう一度お試しください。[](javascript:void(0))## 年間引用数[](javascript:void(0))## 重複した引用次の論文はScholar 内で結合されています。[結合された引用](javascript:void(0))は、最初の論文のみがカウントされます。 [](javascript:void(...",
+          "sourceQualityFlags": [
+            "search_or_index_page"
+          ],
+          "sourceQualityReasons": [
+            "search or index page"
+          ]
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Second-pass refetch after first-pass decision=augment_source. Retry reasons: replacement_needs_primary_or_credible_source. Prior rationale: 原始来源因系统错误无法访问。候选来源中，https://scholar.google.com/citations?user=cMbi45cAAAAJ&hl=en 是可访问的、明确匹配“周明（Ming Zhou）”的Google Scholar主页，其高h-index（59）和引用数（12632）能有效证明其作为知名学者的身份，符合证据要求。其他候选来源要么人物不符，要么领域不符，要么权威性不足。",
+          "evidenceRequirements": [
+            "可访问的Google Scholar主页或其学术成果列表"
+          ],
+          "sourceQueries": [
+            "Ming Zhou 周明 Google Scholar 学术主页",
+            "周明 Ming Zhou (周明) official source",
+            "周明 Ming Zhou (周明) author role",
+            "周明 Ming Zhou (周明) interview transcript",
+            "周明 可访问的Google Scholar主页或其学术成果列表"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0zygf09txrmtbjgjs6urx",
+          "fieldPath": "RawPoolItem[cmju0zygf09txrmtbjgjs6urx]",
+          "objectLabel": "Ming Zhou (周明)"
+        },
+        "selectedReason": "权威机构官方页面，明确列出周明博士的职位（创新工场首席科学家）、曾任职务（微软亚洲研究院副院长、ACL主席）及主要成就，直接证明其身份与贡献。",
+        "evidenceQuote": "周明博士担任创新工场首席科学家。周博士是世界顶级的AI科学家，自然语言处理领域的代表性人物。曾任微软亚洲研究院副院长、国际计算语言学协会（ACL）主席。",
+        "candidateAuthorityScore": 50,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "source-quality:cmjtxhn200294rmtbsps6j7wj",
+      "personId": "cmjtwkgug0004opf3th1cmczu",
+      "person": "李开复",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.edge.org/conversation/kai_fu_lee-we-are-here-to-create",
+      "urlHash": "d388cd4d70e13998d30b05dbb201f84c4011c01a2891fdf4dfc5b6d25729d808",
+      "contentHash": "c34ba9e794f55a52bd4e87584e7aff1cd93c22b0791b837bded413ef80f85deb",
+      "sourceType": "exa",
+      "title": "We Are Here To Create | Edge.org",
+      "text": "Evidence quote: A Conversation With Kai-Fu Lee [3.26.18] Selection reason: Edge.org官方对话页面，标题和描述明确包含李开复姓名，证明其作为对话参与者与Edge.org的关系。 Source preview: Copyright © 2026 By Edge Foundation, Inc. All Rights Reserved. To arrive at the edge of the world's knowledge, seek out the most complex and sophisticated minds, put them in a room together, and have them ask each other the questions they are asking themselves. Printed On Tue June 9th 2026 We Are Here To Create Conversation : TECHNOLOGY We Are Here To Create A Conversation With Kai-Fu Lee [3.26.18] My original dream of finding who we are and why we exist ended up in a failure. Even though we invented all these wonderful tools that will be great for our future, for our kids, for our society, we have not figured out why humans exist. What is interesting for me is that in understanding that th... MiMo rationale: 候选来源中，Edge.org的对话页面明确包含李开复的姓名和对话标题，直接证明他作为参与者与Edge.org的关联，符合权威、可访问的要求。维基百科等页面虽提及李开复，但非Edge.org官方来源，无法替代或补强原始来源中缺失的会员身份证据。 Evidence requirements: 来自Edge.org官网的会员简介页面，明确提及李开复 Source queries: site:edge.org \"Kai-Fu Lee\" member | \"Kai-Fu Lee\" \"Edge.org\" profile | 李开复 Edge.org 会员简介 官网 | 李开复 Edge.org 会员 | Kai-Fu Lee Edge.org profile | site:edge.org Kai-Fu Lee",
+      "selectedHost": "edge.org",
+      "reason": "Edge.org官方对话页面，标题和描述明确包含李开复姓名，证明其作为对话参与者与Edge.org的关系。",
+      "evidenceQuote": "A Conversation With Kai-Fu Lee [3.26.18]",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "source-quality:cmjtxhn200294rmtbsps6j7wj",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T08:10:44.561Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.edge.org/memberbio/kai_fu_lee",
+          "title": "Kai-Fu Lee | Edge.org",
+          "textPreview": "[Skip to main content](https://www.edge.org/memberbio/kai_fu_lee#main-content) Copyright © 2025 By Edge Foundation, Inc. All Rights Reserved. [![Kai-Fu Lee](https://www.edge.org/sites/default/files/styles/member-photo/public/member-picture...",
+          "sourceQualityFlags": [
+            "directory_or_profile_page",
+            "generic_company_or_product_page",
+            "missing_person_name"
+          ],
+          "sourceQualityReasons": [
+            "no target person name in title/content"
+          ]
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Second-pass refetch after first-pass decision=no_good_source. Retry reasons: no_good_source. Prior rationale: 候选来源均未提供Edge.org官网关于李开复的会员简介页面或明确提及他与该网站的关系。现有来源多为个人履历、机构介绍或社交媒体，无法替代或补强原始来源中缺失的Edge.org会员身份证据。",
+          "evidenceRequirements": [
+            "来自Edge.org官网的会员简介页面，明确提及李开复"
+          ],
+          "sourceQueries": [
+            "site:edge.org \"Kai-Fu Lee\" member",
+            "\"Kai-Fu Lee\" \"Edge.org\" profile",
+            "李开复 Edge.org 会员简介 官网",
+            "李开复 Edge.org 会员",
+            "Kai-Fu Lee Edge.org profile",
+            "site:edge.org Kai-Fu Lee"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhn200294rmtbsps6j7wj",
+          "fieldPath": "RawPoolItem[cmjtxhn200294rmtbsps6j7wj]",
+          "objectLabel": "Kai-Fu Lee | Edge.org"
+        },
+        "selectedReason": "Edge.org官方对话页面，标题和描述明确包含李开复姓名，证明其作为对话参与者与Edge.org的关系。",
+        "evidenceQuote": "A Conversation With Kai-Fu Lee [3.26.18]",
+        "candidateAuthorityScore": 15,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "source-quality:cmjtzrru405wirmtbvq24zjdf",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.sohu.com/a/883988047_384789",
+      "urlHash": "e3187042307bb18d7ace8fe0c349dcb87fec5c3b0281ed75da40e5de5f032eb5",
+      "contentHash": "f0f8c2eeb6cb4a0ac8fc1243844cf7200d9aee55d7f65ac822016ebfbd60e228",
+      "sourceType": "exa",
+      "title": "产业之声 | 斯坦福HAI《2025年人工智能指数报告》解读_模型_Qwen-VL-Max_全球",
+      "text": "Evidence quote: 由全球著名华人人工智能学者李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI），于近期发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。 Selection reason: 明确指出报告由李飞飞联合领导的斯坦福HAI发布，强化其领导角色。 Source preview: 教育 时尚 科技 财经 娱乐 产业之声 | 斯坦福HAI《2025年人工智能指数报告》解读 2025-04-14 17:25 来源: 阿里研究院 导 语 由全球著名华人人工智能学者李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI），于近期发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。自2017年首度发布以来，其多维度的评估框架和跨年度的数据追踪，已成为全球学术界和产业界观察AI技术演进的重要参照。Stanford HAI 官方介绍道，“这是我们迄今为止最全面的报告，而且是在人工智能对社会、经济和全球治理的影响全面增强的重要时刻发布的”。 本文结合阿里研究院对人工智能产业的整体进展追踪，对本报告的关键要点进行梳理分析。 一、全球企业/机构的AI贡献度排名出炉，阿里巴巴排名全球第三，中国第一 报告根据论文引用率、技术领先度、是否规模化使用，将61个模型纳入2024年度全球“重要模型”。其中美国贡献40个，中国贡献15个，美、中两国的“重要模型”占全球总数的90.2%。 从具体机构分布来看，谷歌与OpenAI各占7席并列榜首， 阿里巴巴以6个入选模型紧随其后，排名全球第三，中国第一，占全球“重要模型”总量的10%，中国“重要模型”总量的40%。阿里巴巴作为入选“重要模型”最多的中国公司，其入选的六款模型（按发布时间顺序）分别为：Qwen-VL-Max、Qwen1.5-72B、Qwen2-72B、Qwen2.5-32B、Qwen2.5 Instruct (72B)、Qwen2.5... MiMo rationale: 候选来源中，智源社区和搜狐的文章明确指出报告由李飞飞联合领导的斯坦福HAI发布，直接证明了其领导角色，可补强原来源中缺失的人物姓名和具体贡献信息。其他来源要么未提及李飞飞，要么权威性不足或与报告无直接关联。 Evidence requirements: 需要明确李飞飞在该报告中的具体角色（如主编、项目负责人）的来源 Source queries: 李飞飞 2025 AI Index Report 主编 | Fei-Fei Li AI Index Report 2025 editor | 斯坦福 HAI 2025 人工智能指数报告 李飞飞 职责 | 李飞飞 Stanford HAI AI Index Report 2025 director | Fei-Fei Li AI Index Report 2025 role | 斯坦福 HAI 人工智能指数报告 2025 李飞飞 主编",
+      "selectedHost": "sohu.com",
+      "reason": "明确指出报告由李飞飞联合领导的斯坦福HAI发布，强化其领导角色。",
+      "evidenceQuote": "由全球著名华人人工智能学者李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI），于近期发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "source-quality:cmjtzrru405wirmtbvq24zjdf",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T08:11:43.373Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf",
+          "title": "Artificial Intelligence Index Report 2025",
+          "textPreview": "Artificial Intelligence Index Report 2025 Artificial Intelligence Index Report 2025 1 Welcome to the eighth edition of the AI Index report. The 2025 Index is our most comprehensive to date and arrives at an important moment, as AI’s influe...",
+          "sourceQualityFlags": [
+            "directory_or_profile_page",
+            "generic_company_or_product_page",
+            "missing_person_name"
+          ],
+          "sourceQualityReasons": [
+            "no target person name in title/content"
+          ]
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Second-pass refetch after first-pass decision=human_review. Retry reasons: human_review. Prior rationale: 候选来源中，斯坦福个人资料页和HAI人物页能证明李飞飞是HAI联合主任，但未明确其在2025年报告中的具体角色（如主编）。其他报告相关页面均未在预览中提及李飞飞。需要更直接的来源（如报告前言、致谢或官方新闻稿）来确认其贡献。",
+          "evidenceRequirements": [
+            "需要明确李飞飞在该报告中的具体角色（如主编、项目负责人）的来源"
+          ],
+          "sourceQueries": [
+            "李飞飞 2025 AI Index Report 主编",
+            "Fei-Fei Li AI Index Report 2025 editor",
+            "斯坦福 HAI 2025 人工智能指数报告 李飞飞 职责",
+            "李飞飞 Stanford HAI AI Index Report 2025 director",
+            "Fei-Fei Li AI Index Report 2025 role",
+            "斯坦福 HAI 人工智能指数报告 2025 李飞飞 主编"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzrru405wirmtbvq24zjdf",
+          "fieldPath": "RawPoolItem[cmjtzrru405wirmtbvq24zjdf]",
+          "objectLabel": "Artificial Intelligence Index Report 2025"
+        },
+        "selectedReason": "明确指出报告由李飞飞联合领导的斯坦福HAI发布，强化其领导角色。",
+        "evidenceQuote": "由全球著名华人人工智能学者李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI），于近期发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。",
+        "candidateAuthorityScore": 53,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "source-quality:cmjtzrru405wirmtbvq24zjdf",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://hub.baai.ac.cn/view/44732",
+      "urlHash": "5e76f247ff41e0d8df45261f017d9cbb2a24d32519d261d77ebefe62f1057c7d",
+      "contentHash": "d2b5d03c7db642a89caed8d281d82f503c25af7bf062fd578f726b3d7f3a5486",
+      "sourceType": "official",
+      "title": "刚刚，李飞飞团队发布《2025年人工智能指数报告》：12大趋势证明，AI不再只是关于可能性的故事 - 智源社区",
+      "text": "Evidence quote: 刚刚，由李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI）发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。 Selection reason: 明确指出报告由李飞飞联合领导的斯坦福HAI发布，直接证明其领导角色。 Source preview: 刚刚，李飞飞团队发布《2025年人工智能指数报告》：12大趋势证明，AI不再只是关于可能性的故事 学术君 2025-04-09 12:00 分享 以下文章来源于mp.weixin.qq.com 刚刚，由李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI）发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。 这份长达 456 多页的报告是 Stanford HAI 发布的第 8 份 AI Index 研究，追踪了 2024 年全球人工智能（AI）行业的发展趋势。 今年的报告新增了对 AI 硬件发展状况的深入分析、对推理成本的新估算，以及对 AI 出版和专利申请趋势的分析。他们还引入了有关企业采用负责任的 AI 实践的最新数据，并扩大了对 AI 在科学和医学中日益重要作用的报道。 完整报告： Stanford HAI 在官方网站上写道，“AI 对社会的影响从未如此明显......2025 年指数是我们迄今为止最全面、也是在这一重要时刻发布的报告。” 他们还认为，“AI 将是 21 世纪最具变革性的技术。然而，除非我们精心引导 AI 行业的发展，否则这项技术将难以惠及普罗大众。” 这份新报告揭示了 2024 年 AI 行业的 12 大趋势： 1.AI 在苛刻基准上的表现持续提升 2023 年，研究人员引入了新的基准——MMMU、GPQA 和 SWE-bench，以测试高级 AI 系统的极限。仅仅一年后，性能大幅提升：在 MMMU、GPQA 和 SWE-bench 上的得分分别提高了 1... MiMo rationale: 候选来源中，智源社区和搜狐的文章明确指出报告由李飞飞联合领导的斯坦福HAI发布，直接证明了其领导角色，可补强原来源中缺失的人物姓名和具体贡献信息。其他来源要么未提及李飞飞，要么权威性不足或与报告无直接关联。 Evidence requirements: 需要明确李飞飞在该报告中的具体角色（如主编、项目负责人）的来源 Source queries: 李飞飞 2025 AI Index Report 主编 | Fei-Fei Li AI Index Report 2025 editor | 斯坦福 HAI 2025 人工智能指数报告 李飞飞 职责 | 李飞飞 Stanford HAI AI Index Report 2025 director | Fei-Fei Li AI Index Report 2025 role | 斯坦福 HAI 人工智能指数报告 2025 李飞飞 主编",
+      "selectedHost": "hub.baai.ac.cn",
+      "reason": "明确指出报告由李飞飞联合领导的斯坦福HAI发布，直接证明其领导角色。",
+      "evidenceQuote": "刚刚，由李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI）发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "source-quality:cmjtzrru405wirmtbvq24zjdf",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T08:11:43.373Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf",
+          "title": "Artificial Intelligence Index Report 2025",
+          "textPreview": "Artificial Intelligence Index Report 2025 Artificial Intelligence Index Report 2025 1 Welcome to the eighth edition of the AI Index report. The 2025 Index is our most comprehensive to date and arrives at an important moment, as AI’s influe...",
+          "sourceQualityFlags": [
+            "directory_or_profile_page",
+            "generic_company_or_product_page",
+            "missing_person_name"
+          ],
+          "sourceQualityReasons": [
+            "no target person name in title/content"
+          ]
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Second-pass refetch after first-pass decision=human_review. Retry reasons: human_review. Prior rationale: 候选来源中，斯坦福个人资料页和HAI人物页能证明李飞飞是HAI联合主任，但未明确其在2025年报告中的具体角色（如主编）。其他报告相关页面均未在预览中提及李飞飞。需要更直接的来源（如报告前言、致谢或官方新闻稿）来确认其贡献。",
+          "evidenceRequirements": [
+            "需要明确李飞飞在该报告中的具体角色（如主编、项目负责人）的来源"
+          ],
+          "sourceQueries": [
+            "李飞飞 2025 AI Index Report 主编",
+            "Fei-Fei Li AI Index Report 2025 editor",
+            "斯坦福 HAI 2025 人工智能指数报告 李飞飞 职责",
+            "李飞飞 Stanford HAI AI Index Report 2025 director",
+            "Fei-Fei Li AI Index Report 2025 role",
+            "斯坦福 HAI 人工智能指数报告 2025 李飞飞 主编"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzrru405wirmtbvq24zjdf",
+          "fieldPath": "RawPoolItem[cmjtzrru405wirmtbvq24zjdf]",
+          "objectLabel": "Artificial Intelligence Index Report 2025"
+        },
+        "selectedReason": "明确指出报告由李飞飞联合领导的斯坦福HAI发布，直接证明其领导角色。",
+        "evidenceQuote": "刚刚，由李飞飞联合领导的斯坦福大学以人为本人工智能研究所（Stanford HAI）发布了《2025 年人工智能指数报告》（Artificial Intelligence Index Report 2025）。",
+        "candidateAuthorityScore": 61,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "source-quality:cmju0wnca096mrmtbtm0ncvyg",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0w68l08zormtb1iyj3h0g",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjtvmdh0003prmtbxfua0p27",
+      "personId": "cmjtsvcil00003esttihbrsjm",
+      "person": "Yann LeCun",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0kcq407gfrmtbgzp4tbvf",
+      "personId": "cmjtwkqqg0009opf3c1r9t5xj",
+      "person": "刘知远",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0k7ml07fzrmtbinm71o90",
+      "personId": "cmjtwkqqg0009opf3c1r9t5xj",
+      "person": "刘知远",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjuul3t40h04rmtbjj8neewa",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju1e9f10cn4rmtbgf3tf74x",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjtvmkyh007trmtbz8dp3g1u",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "augment_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "blocked",
+      "blockers": [
+        "replacement_needs_primary_or_credible_source"
+      ]
+    },
+    {
+      "claimId": "source-quality:cmju12en30af3rmtb7waeyjgm",
+      "personId": "cmjtwkorb0008opf3p82ey7ep",
+      "person": "周伯文",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju12c6e0ae7rmtb5v1jdofl",
+      "personId": "cmjtwkorb0008opf3p82ey7ep",
+      "person": "周伯文",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju12cvs0aejrmtbdys2e5ls",
+      "personId": "cmjtwkorb0008opf3p82ey7ep",
+      "person": "周伯文",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjuuiq1q0glnrmtb41o1dp0r",
+      "personId": "cmjtwkorb0008opf3p82ey7ep",
+      "person": "周伯文",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjuuy8360icgrmtbm95xalwm",
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0zx6i09tdrmtbtf9lue0u",
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0zuw009sjrmtb34bo2rp2",
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0uznh08ttrmtb48fowl8r",
+      "personId": "cmjtwkas50001opf3j6rrzcs0",
+      "person": "季逸超",
+      "decision": "augment_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "blocked",
+      "blockers": [
+        "replacement_needs_primary_or_credible_source"
+      ]
+    },
+    {
+      "claimId": "source-quality:cmju0gcw006myrmtb2s3yldc0",
+      "personId": "cmjtwkmwg0007opf32gnh6tfk",
+      "person": "戴文渊",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjty47up04whrmtbbvczvwym",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjuuzn8h0ihermtbk8if434b",
+      "personId": "cmjtxcjfw00045p08hrhp2m4t",
+      "person": "汤姆·布朗",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmjty46sg04w9rmtbki99rcop",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0l61307lmrmtb8lo0kuqi",
+      "personId": "cmjtxcjfw00045p08hrhp2m4t",
+      "person": "汤姆·布朗",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju0l6tb07lsrmtb0fojsgmp",
+      "personId": "cmjtxcjfw00045p08hrhp2m4t",
+      "person": "汤姆·布朗",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "source-quality:cmju15tvl0b1ormtbb7db7lpi",
+      "personId": "cmjtwkyvn000dopf3z5lk40sa",
+      "person": "黄铁军",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

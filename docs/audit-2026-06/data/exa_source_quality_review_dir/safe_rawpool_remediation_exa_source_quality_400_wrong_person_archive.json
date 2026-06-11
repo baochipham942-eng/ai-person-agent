@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-06-09T23:26:24.814Z",
+  "criteria": {
+    "safeToAutoApply": true,
+    "claimType": "source_item_belongs_to_person",
+    "verdict": [
+      "wrong_person"
+    ],
+    "remediationAction": "delete_raw_pool_item",
+    "confidence": ">= 0.85",
+    "destructiveAction": "deleted RawPoolItem rows only"
+  },
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 1,
+    "rejectedSafeQueueRows": 31,
+    "uniqueTargetIds": 1,
+    "existingTargets": 1,
+    "missingTargets": 0,
+    "deleted": 0,
+    "affectedPeople": 1,
+    "bySourceType": {
+      "exa": 1
+    },
+    "byVerdict": {
+      "wrong_person": 1
+    },
+    "topPeople": {
+      "Shane Legg": 1
+    }
+  },
+  "missingIds": [],
+  "rows": [
+    {
+      "raw": {
+        "id": "cmju0iga90708rmtbwgtvtih4",
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "sourceType": "exa",
+        "url": "https://futureoflife.org/ai-open-letter",
+        "urlHash": "3fe2472444f3629d2d69785fdd6511ae",
+        "contentHash": "49d5184f3efd5aa11259aa8d7396fe84",
+        "title": "Research Priorities for Robust and Beneficial Artificial Intelligence: An Open Letter - Future of Life Institute",
+        "text": "Research Priorities for Robust and Beneficial Artificial Intelligence: An Open Letter - Future of Life Institute\n[\nSkip to content\n](#main-content)\n[![](https://futureoflife.org/wp-content/uploads/2015/10/fli_logo_white-300x204.png)](https://futureoflife.org/)\nSearch for:\n[\nAll Open Letters\n](https://futureoflife.org/?page_id=39741)# Research Priorities for Robust and Beneficial Artificial Intelligence: An Open Letter\nThere is now a broad consensus that AI research is progressing steadily, and that its impact on society is likely to increase. The potential benefits are huge, since everything that civilization has to offer is a product of human intelligence. Because of the great potential of AI, it is important to research how to reap its benefits while avoiding potential pitfalls.\nSignatures\n11251\nPublished\n28 October, 2015\nClick here to see this page in other languages:**[Chinese](https://futureoflife.org/ai-open-letter-chinese/)[![](https://futureoflife.org/wp-content/uploads/2016/06/china_flag-e1464798319604.png)](https://futureoflife.org/ai-open-letter-chinese/)[German](https://futureoflife.org/ai-open-letter-german/)[![](https://futureoflife.org/wp-content/uploads/2016/06/Germany_flag.jpg?x57718)](https://futureoflife.org/ai-open-letter-german/)[Japanese](https://futureoflife.org/ai-open-letter-japanese/)[![](https://futureoflife.org/wp-content/uploads/2016/02/red_circle-1.jpg)](https://futureoflife.org/ai-open-letter-japanese/)[Russian](https://futureoflife.org/ai-open-letter-russian/)[![](https://futureoflife.org/wp-content/uploads/2016/02/Russian_Flag.jpg?x56934)](https://futureoflife.org/ai-open-letter-russian/)**\nArtificial intelligence (AI) research has explored a variety of problems and approaches since its inception, but for the last 20 years or so has been focused on the problems surrounding the construction of intelligent agents &#8211; systems that perceive and act in some environment. In this context, &#8220;intelligence&#8221; is related to statistical and economic notions of rationality &#8211; colloquially, the ability to make good decisions, plans, or inferences. The adoption of probabilistic and decision-theoretic representations and statistical learning methods has led to a large degree of integration and cross-fertilization among AI, machine learning, statistics, control theory, neuroscience, and other fields. The establishment of shared theoretical frameworks, combined with the availability of data and processing power, has yielded remarkable successes in various component tasks such as speech recognition, image classification, autonomous vehicles, machine translation, legged locomotion, and question-answering systems.\nAs capabilities in these areas and others cross the threshold from laboratory research to economically valuable technologies, a virtuous cycle takes hold whereby even small improvements in performance are worth large sums of money, prompting greater investments in research. There is now a broad consensus that AI research is progressing steadily, and that its impact on society is likely to increase. The potential benefits are huge, since everything that civilization has to offer is a product of human intelligence; we cannot predict what we might achieve when this intelligence is magnified by the tools AI may provide, but the eradication of disease and poverty are not unfathomable. Because of the great potential of AI, it is important to research how to reap its benefits while avoiding potential pitfalls.\nThe progress in AI research makes it timely to focus research not only on making AI more capable, but also on maximizing the societal benefit of AI. Such considerations motivated the AAAI 2008-09 Presidential Panel on Long-Term AI Futures and other projects on AI impacts, and constitute a significant expansion of the field of AI itself, which up to now has focused largely on techniques that are neutral with respect to purpose. We recommend expanded research aimed at ensuring that increasingly capable AI systems are robust and beneficial: our AI systems must do what we want them to do. The attached[research priorities document](https://futureoflife.org/static/data/documents/research_priorities.pdf)gives many examples of such research directions that can help maximize the societal benefit of AI. This research is by necessity interdisciplinary, because it involves both society and AI. It ranges from economics, law and philosophy to computer security, formal methods and, of course, various branches of AI itself.\nIn summary, we believe that research on how to make AI systems robust and beneficial is both important and timely, and that there are concrete research directions that can be pursued today.\n*If you have questions about this letter, please contact[Max Tegmark](mailto:max@futureoflife.org).*\n## Signatories\n[Click here](https://futureoflife.org/open-letter/ai-open-letter-signatories/)to view the full list of signatories.\nTo date, the open letter has been signed byover",
+        "publishedAt": "2025-11-10T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:53.240Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju0iga90708rmtbwgtvtih4",
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0iga90708rmtbwgtvtih4",
+          "fieldPath": "RawPoolItem[cmju0iga90708rmtbwgtvtih4]",
+          "objectLabel": "Research Priorities for Robust and Beneficial Artificial Intelligence: An Open Letter - Future of Life Institute"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源标题和预览文本未提及Shane Legg，内容为公开信，与目标人物无直接关联，属于错误归因，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:23:09.972Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "generatedAt": "2026-06-10T08:41:02.002Z",
+  "summary": {
+    "generatedAt": "2026-06-10T08:41:02.002Z",
+    "mode": "execute",
+    "planIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json",
+    "reviewIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json",
+    "peopleConsidered": 1,
+    "peopleEligible": 1,
+    "existingCards": 18,
+    "replacementCards": 3,
+    "skippedPeople": 0
+  },
+  "people": [
+    {
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "status": "active",
+      "currentCards": [
+        {
+          "id": "cmjuvh8fe0j1brmtbxrz5sge4",
+          "type": "method",
+          "title": "周明推出MChat：强调生成可控与参数可负担",
+          "content": "周明及其团队发布的MChat模型，核心方法论是追求“生成可控”和“参数规模可负担”。这意味着模型在生成内容时具有更高的可靠性和定向性，同时模型规模经过优化，使得训练和部署成本大大降低，更适合企业级应用和快速迭代，体现了其“轻量化、场景化”的技术落地思路。",
+          "tags": [
+            "MChat",
+            "可控生成",
+            "轻量化",
+            "模型部署"
+          ],
+          "sourceUrl": "https://zhuanlan.zhihu.com/p/615472732",
+          "importance": 7,
+          "createdAt": "2026-01-01 03:15:31.946",
+          "updatedAt": "2026-01-01 03:15:31.946"
+        },
+        {
+          "id": "cmjuvh8fe0j1armtbjkecarji",
+          "type": "story",
+          "title": "从学界到工业界：周明的职业跨越与创业",
+          "content": "周明于1991年从哈工大获得博士学位后，在清华大学进行博士后研究并任教。1999年，他被微软亚洲研究院创始院长李开复“挖走”，加入微软。在微软的21年间，他从研究员成长为NLP研究组负责人，最终担任微软亚洲研究院副院长。2020年离开微软后，他先担任创新工场首席科学家，随后于2021年孵化并创立了专注于认知智能的澜舟科技，推出了轻量化预训练模型“孟子”。",
+          "tags": [
+            "职业经历",
+            "微软亚洲研究院",
+            "创业",
+            "澜舟科技"
+          ],
+          "sourceUrl": "https://blog.csdn.net/Datawhale/article/details/130376959",
+          "importance": 8,
+          "createdAt": "2026-01-01 03:15:31.946",
+          "updatedAt": "2026-01-01 03:15:31.946"
+        },
+        {
+          "id": "cmjuvh8fe0j19rmtb6b8r1q15",
+          "type": "quote",
+          "title": "周明：经师易遇，人师难遇",
+          "content": "在Datawhale的分享活动中，周明亲自阅读并分类了每一位学习者提出的问题，并逐一提供反馈。组织者用“经师易遇，人师难遇”来形容他这种悉心指导、重视人才培养的态度。这句话虽非周明原话，但精准概括了他作为行业领袖对后辈的关怀与投入。",
+          "tags": [
+            "人才培养",
+            "教育",
+            "导师精神"
+          ],
+          "sourceUrl": "https://blog.csdn.net/Datawhale/article/details/130376959",
+          "importance": 7,
+          "createdAt": "2026-01-01 03:15:31.946",
+          "updatedAt": "2026-01-01 03:15:31.946"
+        },
+        {
+          "id": "cmjuvh8fe0j18rmtb7vp1d1f0",
+          "type": "insight",
+          "title": "周明谈大模型对NLP领域的影响与个人应对",
+          "content": "周明指出，大模型浪潮确实消融了许多传统的NLP任务，但这并不意味着NLP领域进入衰退。相反，它带来了新的研究范式和就业机会。对于从业者和学生，他建议要拥抱变化，学习如何利用大模型作为工具来解决更高层次的问题，例如关注模型的可控性、可解释性、与领域知识的结合等，而不是停留在旧有任务上。",
+          "tags": [
+            "大模型",
+            "NLP",
+            "职业发展",
+            "教育"
+          ],
+          "sourceUrl": "https://blog.csdn.net/Datawhale/article/details/130376959",
+          "importance": 8,
+          "createdAt": "2026-01-01 03:15:31.946",
+          "updatedAt": "2026-01-01 03:15:31.946"
+        },
+        {
+          "id": "cmjuuz6en0ig6rmtbgo35avqc",
+          "type": "method",
+          "title": "轻量化模型路径：以“孟子模型”实现高效能",
+          "content": "周明领导的澜舟科技采取了不同于一味追求参数规模的路径，专注于开发轻量化、高效能的大模型。其推出的“孟子”系列模型，仅用10亿参数就在中文语言理解评测CLUE榜单的多项指标上登顶第一，杀入前三。这证明了通过语言学信息融入和训练加速等方法，可以在参数规模可负担的情况下，实现出色的下游任务表现，为ToB场景提供了经济可行的解决方案。",
+          "tags": [
+            "孟子模型",
+            "模型压缩",
+            "轻量化",
+            "CLUE榜单",
+            "澜舟科技"
+          ],
+          "sourceUrl": "https://www.qbitai.com/2021/10/29498.html",
+          "importance": 8,
+          "createdAt": "2026-01-01 03:01:29.158",
+          "updatedAt": "2026-01-01 03:01:29.158"
+        },
+        {
+          "id": "cmjuuz6eo0ig9rmtbhxcer9kr",
+          "type": "quote",
+          "title": "预训练模型使NLP进入可复制的大工业施展阶段",
+          "content": "“预训练模型，它使自然语言处理由原来的手工调参、依靠ML专家的阶段，进入到可以大规模、可复制的大工业施展的阶段，令我们这个领域的人感到非常振奋。”——周明总结了预训练模型对NLP领域的革命性影响，指出了该技术使得NLP任务从高度依赖专家经验的手工作坊模式，转向了标准化、规模化的工业生产力模式。",
+          "tags": [
+            "预训练模型",
+            "自然语言处理",
+            "工业革命",
+            "技术趋势",
+            "观点"
+          ],
+          "sourceUrl": "https://hub.baai.ac.cn/view/2084",
+          "importance": 7,
+          "createdAt": "2026-01-01 03:01:29.158",
+          "updatedAt": "2026-01-01 03:01:29.158"
+        },
+        {
+          "id": "cmju1h9190d75rmtba2bfxo0z",
+          "type": "story",
+          "title": "创立澜舟科技，发布孟子大模型",
+          "content": "2021年6月，周明创立澜舟科技，致力于自主研发大模型技术和行业应用。公司于2023年3月发布孟子GPT V1（MChat）大模型，2024年1月将孟子大模型GPT V2（含标准、轻量、金融、编码等版本）对公众开放。这标志着他从顶尖研究院科学家向AI创业者的身份转变，专注于大模型的商业化落地。",
+          "tags": [
+            "创业",
+            "澜舟科技",
+            "孟子大模型",
+            "MChat",
+            "大模型"
+          ],
+          "sourceUrl": "https://www.atalk-ai.com/talk/newsDetail/132",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:15:44.251",
+          "updatedAt": "2025-12-31 13:15:44.251"
+        },
+        {
+          "id": "cmju1h9190d71rmtbk19ckfmz",
+          "type": "insight",
+          "title": "大模型落地九字法则：专注、极致、口碑、快、成本",
+          "content": "周明博士结合雷军的互联网七字诀，为大模型创业在企业级客户中落地提出了“九字法则”。他强调，除了“专注、极致、口碑、快”之外，必须加上“成本”意识。大模型创业不能忽视成本，必须具备造血能力。这九字诀贯穿澜舟科技的所有行动，指导其定位为大模型技术与企业场景应用的综合公司，并着力解决成本、行业适配、幻象和数据安全四大核心问题。",
+          "tags": [
+            "大模型",
+            "创业",
+            "企业落地",
+            "方法论",
+            "澜舟科技"
+          ],
+          "sourceUrl": "https://www.atalk-ai.com/talk/newsDetail/132",
+          "importance": 9,
+          "createdAt": "2025-12-31 13:15:44.251",
+          "updatedAt": "2025-12-31 13:15:44.251"
+        },
+        {
+          "id": "cmju1h9190d72rmtbhumiyc74",
+          "type": "insight",
+          "title": "技术创新与落地应用需双轮驱动",
+          "content": "周明认为，AI公司的发展必须坚持“技术创新和落地应用”双轮驱动。在积极研究和掌握前沿技术的同时，必须致力于确保这些技术的有效应用，创造实际价值。他判断2024年是大模型落地元年，应把握“人工智能+”驱动行业转型的历史契机，通过落地创造价值来拉动持续创新。",
+          "tags": [
+            "AI发展",
+            "技术应用",
+            "商业化",
+            "创新",
+            "价值创造"
+          ],
+          "sourceUrl": "https://www.atalk-ai.com/talk/newsDetail/132",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:15:44.251",
+          "updatedAt": "2025-12-31 13:15:44.251"
+        },
+        {
+          "id": "cmju1h9190d76rmtbar337ktb",
+          "type": "method",
+          "title": "大模型行业落地的L1-L4分层服务体系",
+          "content": "针对大模型行业适配难题，周明及澜舟科技提出了L1-L2-L3-L4的层次化分级服务体系。L1是通用大模型；在L1基础上加入行业数据训练出L2行业/垂直大模型；L3是针对具体企业场景的轻量化精调模型；L4则是结合RAG、Agent等技术的最终企业级应用解决方案。该方法旨在系统化解决大模型从通用能力到具体业务场景的落地问题。",
+          "tags": [
+            "企业服务",
+            "模型部署",
+            "行业适配",
+            "解决方案",
+            "澜舟科技"
+          ],
+          "sourceUrl": "https://www.atalk-ai.com/talk/newsDetail/132",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:15:44.251",
+          "updatedAt": "2025-12-31 13:15:44.251"
+        },
+        {
+          "id": "cmju1h9190d78rmtbt0qcanw8",
+          "type": "fact",
+          "title": "深耕AI教育，担任多所高校博导",
+          "content": "周明现任中国计算机学会副理事长、中国中文信息学会常务理事。同时，他担任哈尔滨工业大学、天津大学、南开大学、北京航天航空大学、中国科技大学等多所知名高校的博士研究生导师，致力于培养AI领域的下一代人才，连接产业与学术。",
+          "tags": [
+            "教育",
+            "博士生导师",
+            "学会职务",
+            "人才培养",
+            "学术服务"
+          ],
+          "sourceUrl": "https://www.chuangxin.com/portfolio/items/zhou-ming",
+          "importance": 7,
+          "createdAt": "2025-12-31 13:15:44.251",
+          "updatedAt": "2025-12-31 13:15:44.251"
+        },
+        {
+          "id": "cmju10mfi0a27rmtbifemvx83",
+          "type": "quote",
+          "title": "周明谈大模型发展：机遇与挑战并存",
+          "content": "在对话中，周明指出大模型带来了巨大的机遇，但也面临诸多挑战，如算力成本、数据安全、模型偏见和可控性等。他强调需要平衡技术创新与产业落地，推动大模型健康、可持续发展。",
+          "tags": [
+            "大模型",
+            "机遇",
+            "挑战",
+            "产业落地"
+          ],
+          "sourceUrl": "https://www.bilibili.com/video/BV12z4y1i7p7/",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:02:48.099",
+          "updatedAt": "2025-12-31 13:02:48.099"
+        },
+        {
+          "id": "cmju10mfi0a29rmtbnb0pi9oe",
+          "type": "method",
+          "title": "轻量化“孟子模型”的开发思路",
+          "content": "周明团队推出的“孟子模型”系列，强调以相对较小的参数量（如10亿参数）实现高性能。其方法论核心在于：通过高质量数据、高效的模型架构和训练技巧，在特定任务上达到或接近超大模型的效果，从而降低部署和推理成本，更适合企业级应用。",
+          "tags": [
+            "孟子模型",
+            "轻量化",
+            "高效训练",
+            "成本控制"
+          ],
+          "sourceUrl": "https://zhuanlan.zhihu.com/p/423549403",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:02:48.099",
+          "updatedAt": "2025-12-31 13:02:48.099"
+        },
+        {
+          "id": "cmju10mfi0a28rmtbw62thvd6",
+          "type": "story",
+          "title": "从CEMT到微软对联：周明的NLP开拓之路",
+          "content": "周明是中国最早的中英机器翻译系统CEMT-I的研制者之一，也是日本知名中日机器翻译产品J-北京的开发者。在微软亚洲研究院期间，他领导开发了世界上第一套人工智能对联系统‘微软对联’，以及微软中日文输入法、必应词典等产品，将前沿NLP研究成功转化为广泛应用。",
+          "tags": [
+            "机器翻译",
+            "微软亚洲研究院",
+            "产品化",
+            "NLP先驱"
+          ],
+          "sourceUrl": "https://www.chuangxin.com/portfolio/items/zhou-ming",
+          "importance": 10,
+          "createdAt": "2025-12-31 13:02:48.099",
+          "updatedAt": "2025-12-31 13:02:48.099"
+        },
+        {
+          "id": "cmju10mfi0a26rmtbz3hrqyly",
+          "type": "insight",
+          "title": "周明：不追求AGI，专注垂直领域大模型应用",
+          "content": "周明认为通用人工智能（AGI）还很遥远，当前应专注于利用大模型技术解决垂直领域的实际问题。他创立的澜舟科技致力于开发轻量化、高效率的模型（如‘孟子模型’），强调模型的可控性、可解释性和低成本部署，而非盲目追求参数规模。这体现了他务实的技术发展观。",
+          "tags": [
+            "AGI",
+            "垂直应用",
+            "务实主义",
+            "模型部署"
+          ],
+          "sourceUrl": "https://www.jazzyear.com/article_info.html?id=1252",
+          "importance": 9,
+          "createdAt": "2025-12-31 13:02:48.099",
+          "updatedAt": "2025-12-31 13:02:48.099"
+        },
+        {
+          "id": "cmjtxl5kb0312rmtbocsqlkhu",
+          "type": "quote",
+          "title": "科学家创业需直面现实与自我拷问",
+          "content": "“年龄和资历是世界级科学家的财富。但投身创业后，就需要直面骨感的现实。能加班吗？能熬夜苦干吗？50岁了还能拼吗？小团队的成果和能力，与大公司同赛道有竞争力吗？” —— 这段话概括了周明从科学家转型企业家时面临的真实挑战与内心拷问，揭示了创业不分年龄，但需要极大的决心和适应性。",
+          "tags": [
+            "创业精神",
+            "自我挑战",
+            "转型思考",
+            "企业家"
+          ],
+          "sourceUrl": "https://capital.lenovo.com/news/detail/id/725/s/1.html",
+          "importance": 8,
+          "createdAt": "2025-12-31 11:26:47.573",
+          "updatedAt": "2025-12-31 11:26:47.573"
+        },
+        {
+          "id": "cmjtxl5kb030yrmtbz396wipp",
+          "type": "insight",
+          "title": "从顶尖科学家到成功创业者的转型之路",
+          "content": "周明博士的经历展示了顶尖科学家向企业家转型的完整路径。他在自然语言处理领域拥有深厚的学术积淀（曾任微软亚洲研究院副院长、ACL主席），在50岁后毅然投身创业，创立澜舟科技。这打破了创投市场偏爱年轻创业者的陈规，证明了科研功力和行业洞察力是技术创业的宝贵财富，关键在于能否适应创业公司的节奏和直面市场竞争。",
+          "tags": [
+            "创业转型",
+            "科学家创业",
+            "AI产业",
+            "职业发展"
+          ],
+          "sourceUrl": "https://capital.lenovo.com/news/detail/id/725/s/1.html",
+          "importance": 9,
+          "createdAt": "2025-12-31 11:26:47.573",
+          "updatedAt": "2025-12-31 11:26:47.573"
+        },
+        {
+          "id": "cmjtxl5kb0311rmtbnoe0xu8w",
+          "type": "method",
+          "title": "通过预训练模型统一理解与生成任务",
+          "content": "周明在预训练模型领域有重要贡献。他参与的研究“Unified language model pre-training for natural language understanding and generation”提出了一种统一的语言模型预训练方法，能同时处理自然语言理解和生成任务。这种方法减少了为不同任务设计特定架构的需要，提高了模型的通用性和效率，是通向通用人工智能的重要一步。",
+          "tags": [
+            "预训练模型",
+            "自然语言处理",
+            "统一架构",
+            "人工智能"
+          ],
+          "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=a0w5c0gAAAAJ&citation_for_view=a0w5c0gAAAAJ:HDshCWvjkbEC",
+          "importance": 7,
+          "createdAt": "2025-12-31 11:26:47.573",
+          "updatedAt": "2025-12-31 11:26:47.573"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "7c9e8445-a3b5-4091-8e7c-67bc01977bd2",
+          "type": "insight",
+          "title": "2024大模型落地元年的双重驱动",
+          "content": "周明指出，2024年是大模型落地元年。这一趋势由双重因素驱动：一方面，大模型技术经过快速迭代，已具备了实际落地的能力；另一方面，企业面临降本增效的迫切需求，在业务实践中积累了丰富的数据和落地场景，为大模型的商业化应用提供了土壤。",
+          "tags": [
+            "大模型落地",
+            "商业化",
+            "降本增效",
+            "澜舟科技"
+          ],
+          "sourceUrl": "https://m.21jingji.com/article/20240319/herald/8e027be1860f57b721631e21db9d60cb_zaker.html",
+          "importance": 4
+        },
+        {
+          "id": "9917648e-b068-4509-a37f-45830a65cf4b",
+          "type": "fact",
+          "title": "担任创新工场首席科学家",
+          "content": "周明博士担任创新工场首席科学家。他是世界顶级的AI科学家，自然语言处理领域的代表性人物，曾任微软亚洲研究院副院长、国际计算语言学协会（ACL）主席。",
+          "tags": [
+            "创新工场",
+            "首席科学家",
+            "学术成就",
+            "AI创业"
+          ],
+          "sourceUrl": "https://www.chuangxin.com/portfolio/items/zhou-ming",
+          "importance": 4
+        },
+        {
+          "id": "4bbec527-989e-481b-b9ab-2813e2da1f06",
+          "type": "insight",
+          "title": "NLP技术演进的三大历史阶段",
+          "content": "周明在ACL 2019大会演讲中指出，ACL的历史几乎就是NLP的历史。NLP技术的发展经历了三个主要起伏阶段：早期基于规则的方法、随后基于统计学习的方法，以及当前基于深度神经网络（DNN）的方法。经过几代人的努力，NLP已形成扎实的理论与先进技术，被公认为“人工智能的明珠”。",
+          "tags": [
+            "NLP历史",
+            "技术演进",
+            "深度学习",
+            "ACL"
+          ],
+          "sourceUrl": "https://www.sohu.com/a/332924037_473283",
+          "importance": 3
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "2024大模型落地元年的双重驱动",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本明确支持卡片核心观点：周明在发布会上称2024年是大模型落地元年，并解释了技术成熟与企业需求双重驱动。标题和正文关键事实均可从来源直接推出。"
+        },
+        {
+          "title": "出任创新工场首席科学家",
+          "decision": "rewrite",
+          "confidence": 0.9,
+          "reason": "来源支持其担任创新工场首席科学家及顶级AI科学家身份，但卡片中‘创立澜舟科技’、‘谷歌H-Index达107’、‘连接学术前沿与产业投资’等细节在来源中未提及或存在差异（来源H-Index为80），需保守处理。"
+        },
+        {
+          "title": "NLP技术演进的三大历史阶段",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本明确支持卡片核心事实：周明在ACL 2019演讲中指出ACL历史即NLP历史，并阐述了三个技术阶段（规则、统计、DNN）及NLP被誉为‘人工智能的明珠’。所有关键信息均可从来源直接推出。"
+        }
+      ],
+      "skippedReason": null
+    }
+  ]
+}

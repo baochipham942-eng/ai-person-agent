@@ -268,6 +268,7 @@ async function loadPeople(): Promise<PersonRow[]> {
     cards AS (
       SELECT "personId", COUNT(*)::int AS card_count
       FROM "Card"
+      WHERE "isActive" = true
       GROUP BY "personId"
     ),
     raw AS (

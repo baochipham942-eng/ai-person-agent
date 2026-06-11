@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-06-10T10:57:11.931Z",
+  "summary": {
+    "generatedAt": "2026-06-10T10:57:11.931Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_fifth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_fifth_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 34,
+    "existingTargets": 34,
+    "missingTargets": 0,
+    "auditRowsInserted": 34,
+    "deleted": 34,
+    "byAction": {
+      "delete_raw_pool_item": 34
+    },
+    "byVerdict": {
+      "reject": 34
+    },
+    "byPerson": {
+      "Greg Brockman": 10,
+      "Chris Olah": 6,
+      "Jeremy Howard": 6,
+      "Alexandr Wang": 2,
+      "John Schulman": 2,
+      "雅各布·乌什科雷特": 2,
+      "Chamath Palihapitiya": 1,
+      "Guillaume Lample": 1,
+      "Han Xiao": 1,
+      "Marc Andreessen": 1,
+      "杰夫·迪恩": 1,
+      "阿希什·瓦斯瓦尼": 1
+    }
+  }
+}

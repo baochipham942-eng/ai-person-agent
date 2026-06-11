@@ -1,0 +1,1290 @@
+{
+  "generatedAt": "2026-06-09T11:48:35.774Z",
+  "input": "docs/audit-2026-06/data/fact_claims.jsonl",
+  "output": "docs/audit-2026-06/data/fact_claim_reviews_why_important_mimo.jsonl",
+  "model": "mimo-v2.5-pro",
+  "filters": {
+    "person": null,
+    "personId": null,
+    "claimType": "why_important",
+    "priority": null,
+    "limit": 230,
+    "batchSize": 8,
+    "concurrency": 4
+  },
+  "totalClaims": 12376,
+  "selectedClaims": 230,
+  "reviewedClaims": 230,
+  "byVerdict": {
+    "supported": 91,
+    "needs_source": 69,
+    "over_attributed": 57,
+    "wrong_person": 4,
+    "stale": 6,
+    "unsupported": 1,
+    "unclear": 2
+  },
+  "byAction": {
+    "keep": 91,
+    "needs_source": 71,
+    "rewrite": 58,
+    "remove": 5,
+    "human_review": 5
+  },
+  "byClaimType": {
+    "why_important": 230
+  },
+  "needsAttention": [
+    {
+      "claimId": "cmk8gtwpt0006j1tnwajuv48o:People.whyImportant:b14768874292",
+      "person": "Dan Hendrycks",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Hendrycks是MMLU等基准的创建者之一，但“创建者”可能涉及团队；其CAIS总监、xAI和Scale AI顾问身份需具体来源确认。"
+    },
+    {
+      "claimId": "cmjvkslg00000ilnij9kg2zz2:People.whyImportant:3264a6baa74a",
+      "person": "Daniel Gross",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Gross共同创立Cuebric和作为早期投资者的角色需要具体来源；其推动OpenAI等公司发展的说法过于宽泛，缺乏具体贡献细节。"
+    },
+    {
+      "claimId": "cmjv6furu000lmfghb5zze4nm:People.whyImportant:271a6f78e92d",
+      "person": "David Ha",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "David Ha作为Sakana AI联合创始人和前Google Brain研究员的身份正确，但其在进化算法、神经网络架构搜索等领域的“重要贡献”需要具体来源或成果佐证。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:People.whyImportant:7294714d7038",
+      "person": "Boris Cherny",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Claude Code 是 Anthropic 的产品，将“核心创建者”归因给个人，可能过度归因了团队或机构级成果。需明确其具体角色（如项目负责人）。"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.whyImportant:5a38cac071fb",
+      "person": "Boris Power",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Codex 和 GitHub Copilot 是 OpenAI 和 GitHub 的团队/机构级产品。将“领导开发”归因给个人，可能过度归因了团队成果。需明确其具体领导角色。"
+    },
+    {
+      "claimId": "dcd29168-b633-4544-ac94-f6518fa62dc8:People.whyImportant:3a29f690da2b",
+      "person": "Brett Adcock",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“人形机器人商业化标杆”是主观评价，缺乏具体事实或来源支持。需提供其公司或产品在商业化方面的具体成就或数据。"
+    },
+    {
+      "claimId": "cmjv6furu0003mfgha0mzdgpj:People.whyImportant:ba8b31ed8369",
+      "person": "Cat Wu",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "根据上下文，Cat Wu 的职位是 Anthropic 的 Claude Code 产品负责人，与具身智能和多智能体协作的开创性研究描述不符。此描述更可能属于其他研究者。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:People.whyImportant:6a6a4091ea13",
+      "person": "Chris Olah",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "Chris Olah 不是 OpenAI 联合创始人兼首席科学家（那是 Ilya Sutskever）。他是知名研究员，但职位和贡献描述严重错误。"
+    },
+    {
+      "claimId": "8d7bc7ca-841a-4913-b15e-64165ddc5970:People.whyImportant:55b9914811fe",
+      "person": "Aravind Srinivas",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“AI 原生搜索标杆”是公司级产品定位，而非个人确定贡献。作为CEO，其贡献是领导公司，而非个人代表成果。"
+    },
+    {
+      "claimId": "cmk8gtzii0007j1tn5q2gmszd:People.whyImportant:2cf643d58463",
+      "person": "Barret Zoph",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“NAS 开创者”和“ChatGPT Post-Training 团队创建者”是重大个人贡献声明，但当前信息不足以验证其准确性。"
+    },
+    {
+      "claimId": "14e0b6d2-40c3-42fc-b0d5-49c94ae95bfe:People.whyImportant:e3a74c9fe677",
+      "person": "Bindu Reddy",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“agentic AI 平台”是公司级产品定位，而非个人确定贡献。作为CEO，其贡献是领导公司，而非个人代表成果。"
+    },
+    {
+      "claimId": "cmjv6furu0009mfghtf6a48k2:People.whyImportant:0b5a103b6c9c",
+      "person": "Bob McGrew",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "根据给定的 personContext，Bob McGrew 当前职位是 PayPal 工程师，而非 OpenAI 首席研究官。职位信息可能已过时。"
+    },
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:People.whyImportant:a5bec4c98698",
+      "person": "Aakash Gupta",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述其为产品管理专家并分享AI产品化经验，但未提供具体来源或证据来支持其Newsletter和课程的影响力。"
+    },
+    {
+      "claimId": "cmkb1l3j70004h7l9e8gy2bko:People.whyImportant:a2ed5235f8ce",
+      "person": "Alexander Amini",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述其在自主系统安全、Themis AI联合创始人及MIT课程组织者的贡献，但未提供具体来源来证实这些角色和贡献。"
+    },
+    {
+      "claimId": "cmjv6furu000smfghreks2bnf:People.whyImportant:0ff72e1cc40a",
+      "person": "Allie K. Miller",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述其为亚马逊前全球AI业务拓展负责人并推动AWS机器学习服务，但未提供具体来源来证实其职位和贡献。"
+    },
+    {
+      "claimId": "cmjv6furu000kmfgha9aias1i:People.whyImportant:8bd1c64931a1",
+      "person": "Amanda Askell",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "描述其为OpenAI早期研究员与政策负责人，并参与开发GPT系列。GPT系列是团队成果，个人参与开发的归因过于具体，可能过度归因。"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:People.whyImportant:b32164bf34d2",
+      "person": "Andrej Karpathy",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "描述其主导了自动驾驶视觉系统与大型语言模型（如GPT系列）的开发。GPT系列是OpenAI团队成果，个人主导开发的归因可能过度。"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.whyImportant:69161ab9e3f5",
+      "person": "Andy Jassy",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "描述其为AWS的缔造者并推出Bedrock等平台。AWS和Bedrock是亚马逊/AWS的机构级产品，个人缔造者和推出的归因可能过度。"
+    },
+    {
+      "claimId": "42638924-256e-435b-829f-385952889440:People.whyImportant:35ea9eb22c03",
+      "person": "Deepak Pathak",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“具身智能产业新锐”是主观评价，缺乏具体事实或来源支撑其个人贡献。"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:People.whyImportant:811d735ebd7c",
+      "person": "Dylan Field",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Figma 的实时协作和 AI 功能是公司产品特性，将“深刻影响”归因于个人 CEO 略显过度，应更强调其领导角色而非具体产品功能。"
+    },
+    {
+      "claimId": "cmjv6furu000hmfgh0d1egfwg:People.whyImportant:d6105fea80b2",
+      "person": "Eliezer Yudkowsky",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "unsupported",
+      "action": "rewrite",
+      "reason": "《奇点临近》是 Ray Kurzweil 的著作，不是 Eliezer Yudkowsky 的，存在明显事实错误。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:People.whyImportant:bc816bd8b7df",
+      "person": "Elon Musk",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Elon Musk 是 OpenAI 联合创始人，但已离开，且 Neuralink 是独立公司，将“推动 AI 安全发展”和“实现人类与 AI 共生”的宏大目标归因于个人可能过度。"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:People.whyImportant:4314da212367",
+      "person": "Emad Mostaque",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Stable Diffusion 是 Stability AI 团队的开源模型，将“开源了”这一团队成果直接归因于个人 CEO 略显过度，应强调其领导角色。"
+    },
+    {
+      "claimId": "cmjv6furu000nmfgh792b8quq:People.whyImportant:e13468ed9f44",
+      "person": "Ethan Mollick",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“推动生成式 AI 在教育与管理领域的实践应用”和“引领了 AI 协作的公众讨论”是主观评价，缺乏具体事实或来源支撑其个人贡献。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.whyImportant:90000a472db8",
+      "person": "Fidji Simo",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "将ChatGPT等消费级产品的成功归因于个人CEO角色，属于将机构级产品成果过度归因给个人。作为应用CEO，其贡献是领导和推动，而非直接“转化”技术。"
+    },
+    {
+      "claimId": "cmkb1kx3e0002h7l9phd10f4w:People.whyImportant:d2a788ae08d6",
+      "person": "Graham Neubig",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称其“领导开发的AI代理在GitHub问题上表现出色”和“维护OpenHands等开源工具”，但未提供具体来源或项目名称，证据不足。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:People.whyImportant:8a8bbe083f3f",
+      "person": "Greg Brockman",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "将ChatGPT的推出和公司转型归因于个人领导，属于将机构级成果过度归因。作为联合创始人兼总裁，其角色是领导和决策，而非直接“推出”产品。"
+    },
+    {
+      "claimId": "cmkb1leu90007h7l98w9lsqmm:People.whyImportant:7a7eac5deefa",
+      "person": "Hamel Husain",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称其“对早期用于代码理解的大语言模型研究做出了贡献，为GitHub Copilot的开发铺平了道路”，但未提供具体研究项目或论文来源，证据不足。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:People.whyImportant:dbac85ccd953",
+      "person": "Haofan Wang",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称其“作为InstantID核心开发者”并“通过该开源项目实现了...”，但未提供具体来源（如GitHub项目页面、论文或报道）来证实其核心开发者身份和项目贡献。"
+    },
+    {
+      "claimId": "cmk9vo9f90008azb9v2ielv0r:People.whyImportant:8e7e3e735625",
+      "person": "Hugo Larochelle",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Hugo Larochell 的当前职位是 Google DeepMind 研究总监，但 claim 中称其为 Google Brain 研究科学家。职位可能已过时，需要更新。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:People.whyImportant:0f8d3fae1610",
+      "person": "Ilya Sutskever",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Ilya Sutskever 是 OpenAI 联合创始人兼首席科学家，但 claim 称其“主导开发了GPT系列大语言模型”和“提出了Transformer架构”。GPT 系列是团队成果，Transformer 论文他是作者之一但非唯一提出者，归因过于个人化。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:People.whyImportant:22c495fc18ed",
+      "person": "Jaana Dogan",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Jaana Dogan 是谷歌工程师，但 claim 中称其为“Gemini API团队的核心工程师”并“推动了行业对AI辅助开发效率的讨论”。这些具体角色和影响缺乏足够来源支持。"
+    },
+    {
+      "claimId": "cmk8gtd9c0001j1tn2k0tcm42:People.whyImportant:fa1daa4ff33a",
+      "person": "Jakub Pachocki",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Jakub Pachocki 是 OpenAI 首席科学家，但 claim 称其为“GPT-4 技术负责人，o1/o3 推理模型架构师”。这些是具体产品/模型版本，归因过于个人化，应为团队成果。"
+    },
+    {
+      "claimId": "cmjv6furu0006mfghaj1b1v4a:People.whyImportant:f8de012dbca9",
+      "person": "James Manyika",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "James Manyika 是 Google 高级副总裁，但 claim 中称其“推动了AI伦理与多模态研究”并“联合领导发布《AI现状报告》”。这些具体贡献和领导角色缺乏足够来源支持。"
+    },
+    {
+      "claimId": "cmkb1lbmc0006h7l9lbbtwgf2:People.whyImportant:cc136e6587f9",
+      "person": "Jason Liu",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Instructor库是个人项目，归因正确。但Stitch Fix的系统是团队成果，且“显著商业价值”缺乏个人贡献的具体证据，属于过度归因。"
+    },
+    {
+      "claimId": "cmk8gtaq40000j1tnpj0p90jh:People.whyImportant:697550495693",
+      "person": "Jerry Tworek",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“o1/o3推理模型核心负责人”和“Codex/GitHub Copilot主要贡献者”将大型团队项目成果过度归因于个人，且“2026年1月离职”为未来信息，可能不准确。"
+    },
+    {
+      "claimId": "cmjv6furu0000mfghokgjj8y8:People.whyImportant:c47b8ad4d76e",
+      "person": "Joanne Jang",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称Joanne Jang“主导了DALL·E模型的产品化与界面设计”，但其当前背景为斯坦福学生，且未提供OpenAI官方博客或访谈的具体来源链接，证据不足。"
+    },
+    {
+      "claimId": "cmjwtn23i00056qvt25cav9oa:People.whyImportant:ec54fb9c1b95",
+      "person": "John Giannandrea",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“领导开发了Google的知识图谱”将大型团队项目过度归因于个人。John Giannandrea曾是Google AI负责人，但知识图谱是团队成果。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:People.whyImportant:c0adb96e3d3b",
+      "person": "John Schulman",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "John Schulman是OpenAI联合创始人和PPO算法的主要作者，但“领导开发了ChatGPT”将大型产品团队成果过度归因于个人。"
+    },
+    {
+      "claimId": "4fbc2ee6-3d34-4b6f-8a18-147b409e96ac:People.whyImportant:1f83c8ac1b1e",
+      "person": "Junyang Lin",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“中国开源大模型技术一号位”是高度概括的职位描述，缺乏具体来源或公开任命信息来证实其个人在该领域的领导地位。"
+    },
+    {
+      "claimId": "9ea8342a-8bf5-4a16-8b1b-a42e0ce4c4f7:People.whyImportant:893e346a54d6",
+      "person": "Liam Fedus",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“前 OpenAI 后训练 VP”是职位描述，但未提供来源证实其曾担任此职务，且未说明其具体贡献。"
+    },
+    {
+      "claimId": "cmk8gtjqg0002j1tn8c1p2bee:People.whyImportant:c99f3eb61f5e",
+      "person": "Mark Chen",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DALL-E、Codex、GPT-4 视觉是 OpenAI 的团队产品，将具体产品线负责人直接等同于个人代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "cmjwtipll0000fvaejh6rd1u4:People.whyImportant:9547c62489da",
+      "person": "Matthew Prince",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Workers AI 是 Cloudflare 公司的产品，将公司级产品推出归因给 CEO 个人作为代表成果，归因层级过高。"
+    },
+    {
+      "claimId": "0fe18002-e0d5-4299-89c5-3f4b1e6ff889:People.whyImportant:f44c4735e0e8",
+      "person": "Michael Truell",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“AI coding 一号位”表述模糊，缺乏具体贡献描述和来源支持，无法判断其准确性与归因。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:People.whyImportant:1e3fc6711ad5",
+      "person": "Mira Murati",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "DALL-E和ChatGPT是OpenAI团队的成果，作为CTO她有领导角色，但“领导了...开发与发布”的表述将团队级产品过度归因于个人。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:People.whyImportant:656820ae7a55",
+      "person": "Mustafa Suleyman",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AlphaGo是DeepMind团队的成果，作为联合创始人他有领导角色，但“领导开发了AlphaGo”的表述将团队级项目过度归因于个人。"
+    },
+    {
+      "claimId": "1295afc9-cc97-47ae-baf9-589ece0469a4:People.whyImportant:e445d697b62b",
+      "person": "Noam Brown",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "o1/o3是OpenAI的模型系列，作为推理研究负责人他有贡献，但“奠基人”的表述将机构级产品过度归因于个人。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:People.whyImportant:288b424a9aa7",
+      "person": "Oriol Vinyals",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Transformer论文和AlphaStar是团队成果，作为首席科学家他有领导角色，但“主导”的表述将团队级项目过度归因于个人。"
+    },
+    {
+      "claimId": "cmjv6furu000jmfghn1ukel4f:People.whyImportant:9f0274f8ef23",
+      "person": "Richard Ngo",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Richard Ngo 提出“对齐机器学习”框架的贡献需要具体论文或权威来源支持，当前来源描述过于笼统。"
+    },
+    {
+      "claimId": "cmjv6furu000pmfghv7drjtak:People.whyImportant:553e02eeabe2",
+      "person": "Richard Socher",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Richard Socher 创立的是 MetaMind（后被 Salesforce 收购），而非 Meta AI；将“AI社区平台Meta AI”归因给他不准确，且“递归神经网络框架”贡献需更具体来源。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:People.whyImportant:fa3f534e49eb",
+      "person": "Sam Altman",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "模型未返回该 claim 的判定"
+    },
+    {
+      "claimId": "cmk8gtnrs0003j1tnxgp9scm3:People.whyImportant:e596b722ede8",
+      "person": "Sam McCandlish",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Sam McCandlish 的贡献描述（如 Scaling Laws 合著者）需要具体论文或权威来源支持，当前信息不足。"
+    },
+    {
+      "claimId": "cmkb1li190008h7l91sx6u6mq:People.whyImportant:9ec22393fa4f",
+      "person": "Sam Witteveen",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Sam Witteveen 被描述为 Google Gemini 和 Gemma 模型的“关键贡献者之一”，但作为解决方案工程师，其个人贡献可能被过度归因，需明确具体角色。"
+    },
+    {
+      "claimId": "cmjv6furu000omfghlc37bleh:People.whyImportant:a49578b1c293",
+      "person": "Santiago Valdarrama",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称创办了广受欢迎的AI博客和课程，但未提供具体来源或证据来证实其创办者身份和影响力。"
+    },
+    {
+      "claimId": "cmjv6furu0004mfghxllk5gjq:People.whyImportant:56fec352e7ee",
+      "person": "Scott Wu",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AlphaGeometry是DeepMind团队的成果，Scott Wu是Cognition的CEO，未发现其领导开发该模型的公开证据。将团队成果归因于个人。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:People.whyImportant:29fe6ca8400f",
+      "person": "Shane Legg",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Shane Legg是DeepMind联合创始人，但AlphaGo是团队成果，'主导开发'的表述过度归因。AGI定义贡献有论文支持，但整体表述需更精确。"
+    },
+    {
+      "claimId": "05890706-c071-4c25-b406-fe2ff2c6b59d:People.whyImportant:ea93686468ca",
+      "person": "Shengjia Zhao",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "声称是'GPT-4/o1 核心'，但Shengjia Zhao是Meta Superintelligence Labs首席科学家，与OpenAI的GPT-4/o1无直接关联。将其他公司产品归因于个人。"
+    },
+    {
+      "claimId": "cmjwtis2t0003fvae8pm58dp0:People.whyImportant:328c344d469a",
+      "person": "Strive Masiyiwa",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称创立Cassava Technologies并建设非洲主权AI云，但未提供具体来源证实其个人角色和项目细节。"
+    },
+    {
+      "claimId": "0c0739ab-c1a9-47de-9f7f-229500a371ef:People.whyImportant:7373e37ba5a3",
+      "person": "Tim Brooks",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "声称是'Sora 共同负责人'，但Tim Brooks是Google DeepMind团队负责人，Sora是OpenAI产品。将其他公司产品归因于个人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:People.whyImportant:d65ef0d5dea7",
+      "person": "丁洁",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声明内容为“待补充”，并指出来源未提及具体贡献，现有资料无法确认。这表明信息不足，无法支持展示。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:People.whyImportant:fa612e0a3103",
+      "person": "乔尔·皮诺",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "AlphaFold 2是DeepMind团队的成果。声明称其“领导开发”，但根据其公开职位（McGill大学研究员），这很可能过度归因，将团队成果归于个人。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:People.whyImportant:3d99039407c2",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声明仅称“Caltech 教授，目标检测”，过于简略，未提供具体贡献或成果，无法判断其重要性及归因是否准确。"
+    },
+    {
+      "claimId": "cmk9w1o4s000glbppkvgn3ric:People.whyImportant:5251b3bf2f19",
+      "person": "于克朱",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声明仅称“UT Austin 教授，机器人学习”，过于简略，未提供具体贡献或成果，无法判断其重要性及归因是否准确。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:People.whyImportant:7ba2ddf8b9e9",
+      "person": "Wojciech Zaremba",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Wojciech Zaremba 是 OpenAI 联合创始人，但“主导开发了GPT系列模型”将团队成果过度归因于个人。GPT系列是团队工作，个人贡献应更具体。"
+    },
+    {
+      "claimId": "cmk9vzfj80003lbppenp9rfi5:People.whyImportant:a6a2f30effdc",
+      "person": "Yann Dauphin",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“Meta AI，语言模型研究”过于笼统，缺乏具体贡献描述，且未提供任何来源，无法验证其重要性。"
+    },
+    {
+      "claimId": "cmkb1lzay000ch7l9ddgrfbmn:People.whyImportant:eae98a51f550",
+      "person": "Yann Dubois",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“直接参与o1、o3和GPT-5 Thinking等前沿模型的训练和部署工作”将具体模型版本过度归因于个人。作为团队负责人，其贡献应更侧重于领导或研究方向。"
+    },
+    {
+      "claimId": "cmjv6furu0005mfghkppozqo8:People.whyImportant:f826e58306b4",
+      "person": "Zoubin Ghahramani",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“联合创立了剑桥AI公司GeoAI”这一具体事实缺乏来源支持，无法验证。其他贡献描述较笼统。"
+    },
+    {
+      "claimId": "cmk9vxob8000eklcc20ebwsyv:People.whyImportant:24e668c167a0",
+      "person": "亚林·加尔",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述过于简略，仅提及职位和领域，未说明其具体贡献或代表性成果，缺乏足够证据支撑其‘值得关注’的理由。"
+    },
+    {
+      "claimId": "cmk9w2xmo000nlbppyw59kza4:People.whyImportant:cacc4abca3b0",
+      "person": "伊恩·默里",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述过于简略，仅提及职位和领域（MCMC专家），未说明其具体贡献或代表性成果，缺乏足够证据支撑其‘值得关注’的理由。"
+    },
+    {
+      "claimId": "cmk9w35a0000olbpp4duzvuil:People.whyImportant:2512f5c19377",
+      "person": "保罗·德贝维奇",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述过于简略，仅提及职位和领域（计算摄影），未说明其具体贡献或代表性成果，缺乏足够证据支撑其‘值得关注’的理由。"
+    },
+    {
+      "claimId": "cmk9w0buy0008lbpppwgmw9oe:People.whyImportant:3effa7c66420",
+      "person": "克里斯托弗·K·I·威廉姆斯",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述过于简略，仅提及职位和领域（机器学习），未说明其具体贡献或代表性成果，缺乏足够证据支撑其‘值得关注’的理由。"
+    },
+    {
+      "claimId": "cmk9vvyoh0006klccngwh2yqa:People.whyImportant:610263c9fbad",
+      "person": "克里斯蒂娜·N·图塔诺娃",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称克里斯蒂娜·N·图塔诺娃是BERT作者之一，但未提供具体证据（如论文作者列表）来支持这一关键归因。"
+    },
+    {
+      "claimId": "cmk9w3xrw000tlbpp0ewhrm1b:People.whyImportant:c905df060d4a",
+      "person": "凯尔文·顾",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称凯尔文·顾是REALM作者，但未提供具体证据（如论文作者列表）来支持这一关键归因。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:People.whyImportant:7b89373f19da",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称凯瑟琳·A·海勒是Google/Duke教授和贝叶斯ML专家，但未提供具体证据（如官方简历或学术主页）来支持其职位和领域贡献。"
+    },
+    {
+      "claimId": "cmjvd3d5v0001kvtpdo7mjnhw:People.whyImportant:23b51ff4589e",
+      "person": "利昂·琼斯",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "Transformer架构的共同发明者是Ashish Vaswani等人，利昂·琼斯（Leon Jones）并非论文作者，此归因明显错误。"
+    },
+    {
+      "claimId": "cmk9vvgls0004klcc9as6lfyz:People.whyImportant:917a2ad08914",
+      "person": "卡尔·爱德华·拉斯穆森",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称卡尔·爱德华·拉斯穆森是剑桥教授和高斯过程先驱，但未提供具体证据（如官方简历或学术主页）来支持其职位和领域贡献。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:People.whyImportant:97c5c56d08ba",
+      "person": "吉姆·范",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物上下文显示其为斯坦福大学研究员，但claim称其为NVIDIA高级研究科学家，存在职位信息冲突。需要核实其当前或近期职位。"
+    },
+    {
+      "claimId": "cmjvfb5w00000lqwqatt1bmoy:People.whyImportant:7448fefcdcdf",
+      "person": "吉滕德拉·马利克",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Canny边缘检测算法通常归功于John F. Canny。吉滕德拉·马利克是计算机视觉领域的杰出学者，但将此算法归为他领导开发，属于错误归因。"
+    },
+    {
+      "claimId": "cmk9vm5ln0003azb9hxxnr506:People.whyImportant:acb48b6a9dd1",
+      "person": "吉米·巴",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Adam优化器的共同发明人通常被认为是Diederik P. Kingma和Jimmy Ba。需要确认“吉米·巴”是否就是Jimmy Ba，以及其具体贡献。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:People.whyImportant:24736d61ee49",
+      "person": "周伯文",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "claim中提到的“前京东AI负责人”和“创立衔远科技”是具体职位和成就，但缺少来源支持。需要核实这些信息。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:People.whyImportant:1678ef0c88db",
+      "person": "周明",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "claim中提到的“创立澜舟科技”和“创新工场AI工程院执行院长”是具体职位和成就，但缺少来源支持。需要核实这些信息。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:People.whyImportant:e422b76e6901",
+      "person": "唐杰",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "claim中提到的“领导研发GLM-130B”和“创立智谱AI”是具体成就，但缺少来源支持。需要核实这些信息。"
+    },
+    {
+      "claimId": "cmjvd3qrm0002kvtppziawz5i:People.whyImportant:e54607aa17b4",
+      "person": "塞巴斯蒂安·布贝克",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "塞巴斯蒂安·布贝克并非DeepMind联合创始人，也未领导AlphaGo或AlphaFold团队。这些是DeepMind的机构级成果，不应归因于他个人。"
+    },
+    {
+      "claimId": "cmk9w1bkq000elbppgqbjqu0h:People.whyImportant:7aa99256da04",
+      "person": "塞缪尔·瑞安·鲍曼",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称其领导Anthropic的AI对齐研究小组并开创了Inverse Scaling Prize，但未提供足够证据支持这些具体领导角色和项目归因。"
+    },
+    {
+      "claimId": "cmk9w1u9x000hlbppe38hr5gy:People.whyImportant:862650489b8c",
+      "person": "塞雷娜·杨-利维",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅说明‘Stanford 教授，医疗 AI’，过于笼统，未提供具体贡献或成就，无法判断其重要性。"
+    },
+    {
+      "claimId": "cmk9vxfyr000dklccsgy6r616:People.whyImportant:c59de6c2259f",
+      "person": "大卫·杜维诺",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅说明‘多伦多大学教授，Neural ODEs’，过于笼统，未提供具体贡献或成就，无法判断其重要性。"
+    },
+    {
+      "claimId": "cmk9w2ptg000mlbpp7qeuope0:People.whyImportant:7106620761ae",
+      "person": "大卫·洛佩兹-帕兹",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅说明‘Meta AI 研究科学家’，过于笼统，未提供具体贡献或成就，无法判断其重要性。"
+    },
+    {
+      "claimId": "cmk9w2eiw000klbpph0pfzva9:People.whyImportant:b3c4ad27eb9d",
+      "person": "奥尼·汉农",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅说明‘百度/苹果研究科学家，语音 AI’，过于笼统，未提供具体贡献或成就，无法判断其重要性。"
+    },
+    {
+      "claimId": "cmjvd32rz0000kvtppy47i5r3:People.whyImportant:b694e5e54df2",
+      "person": "妮基·帕尔玛",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称其领导开发了ML-SUPERB数据集并创建了Hugging Face DAIR，但未提供足够证据支持这些具体领导角色和项目归因。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:People.whyImportant:dbabfe37e89e",
+      "person": "季逸超",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "BMTrain和CPM系列是面壁智能的团队成果，作为联合创始人和领导，归因层级过高，应明确为领导或参与。"
+    },
+    {
+      "claimId": "cmk9vzr150005lbppwtfzs7i7:People.whyImportant:7507bece0668",
+      "person": "安德烈·姆尼赫",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅提及职位“DeepMind研究科学家”，未说明具体贡献或研究领域，信息不足，无法判断其重要性。"
+    },
+    {
+      "claimId": "cmk9w3heg000qlbppp4o9323w:People.whyImportant:bc54e7144ea9",
+      "person": "巴拉特·哈里哈兰",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅提及职位“Cornell教授”和领域“语义分割”，未说明具体贡献或代表性工作，信息不足。"
+    },
+    {
+      "claimId": "cmk9w05zq0007lbppxg66e2vo:People.whyImportant:0719206f60a6",
+      "person": "布伦丹·J·弗雷",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅提及职位“多伦多大学教授”和领域“深度基因组学”，未说明具体贡献或代表性工作，信息不足。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:People.whyImportant:a0cb74f3d0f6",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "CUDA和cuDNN是NVIDIA的机构级产品，作为副总裁领导团队开发，归因层级过高，应明确为领导或参与。"
+    },
+    {
+      "claimId": "cmk9vuvfw0001klcc8j012sq2:People.whyImportant:2df601b06465",
+      "person": "帕斯卡尔·文森特",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅提及“Denoising Autoencoders”和“Meta AI”，未明确其个人贡献角色（如是否为主要作者），信息不足。"
+    },
+    {
+      "claimId": "cmjvfc7q50004lqwq80uz63rc:People.whyImportant:f2de5a823211",
+      "person": "张鹏",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“悟道”模型是智谱AI/清华团队的成果，将“提出并推动”及“引领”归因给个人CEO，属于将团队/机构级成果过度归因。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:People.whyImportant:8400df03a42f",
+      "person": "徐立",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“领导开发”商汤的AI平台和SenseCore大装置，是将公司级产品/基础设施的成果过度归因给CEO个人。"
+    },
+    {
+      "claimId": "cmk9vuplp0000klcc5gujal3c:People.whyImportant:e8f5df467e9a",
+      "person": "德米特里·巴丹瑙",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“Attention机制先驱”是重大个人贡献声明，但未提供具体论文或成果作为来源，需要证据支持。"
+    },
+    {
+      "claimId": "cmk9vz4ie0001lbppv34y7o1k:People.whyImportant:7507bece0668",
+      "person": "恰拉尔·居尔切赫雷",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅陈述当前职位（DeepMind研究科学家），信息过于简略，不足以构成“为什么值得关注”的充分理由，需要补充其具体贡献或成就。"
+    },
+    {
+      "claimId": "cmk9vyw1e0000lbppmuunumfo:People.whyImportant:7507bece0668",
+      "person": "拉兹万·帕斯卡努",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "仅陈述当前职位（DeepMind研究科学家），信息过于简略，不足以构成“为什么值得关注”的充分理由，需要补充其具体贡献或成就。"
+    },
+    {
+      "claimId": "cmk9vza8w0002lbppxrdntroy:People.whyImportant:4b6559d6f74e",
+      "person": "杜米特鲁·埃尔汉",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "仅提及职位“Google Brain 研究科学家”，未说明具体个人贡献或成果，属于机构级身份描述，不适合作为“为什么值得关注”的核心理由。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:People.whyImportant:27d67d79ba7f",
+      "person": "杨植麟",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "杨植麟并非《Attention Is All You Need》论文的作者，将Transformer论文归因于他个人是错误的。他是Moonshot AI创始人，但前半部分归因错误。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:People.whyImportant:8a2079a67ac1",
+      "person": "桑达尔·皮查伊",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "作为CEO，其角色是领导和推动，但将“将Transformer等前沿研究转化为...核心产品”归因于个人主导，可能过度归因了团队和机构的成果。"
+    },
+    {
+      "claimId": "cmjwswgtl0000gelzb8c58cmk:People.whyImportant:1bd1f9afeec3",
+      "person": "梁文锋",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "梁文锋被描述为DeepSeek创始人，但给定信息中其职位为“Research & Development Staff @ HKBU COMP”，与创始人身份存在冲突，需要核实其确切角色。"
+    },
+    {
+      "claimId": "cmk9vw8zp0007klccju5r9ecc:People.whyImportant:ffbb9db893dd",
+      "person": "梁明涛",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "仅提及职位“Google 研究科学家”和领域“序列到序列”，未说明具体个人贡献，属于机构级身份描述，不适合作为“为什么值得关注”的核心理由。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:People.whyImportant:decf0d304cd8",
+      "person": "汤晓鸥",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "将商汤科技的‘全球领先计算机视觉技术’归因于个人，属于机构级成果过度归因。DeepID研究是团队成果，且未明确其个人具体贡献角色。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:People.whyImportant:4607920cc6c1",
+      "person": "沈向洋",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "将‘推动微软小冰等AI产品’归因于个人，属于团队/公司级产品过度归因。‘联合提出经典图像去雾算法’需确认其个人具体贡献。"
+    },
+    {
+      "claimId": "cmk9vx9kt000cklccp5q11ydf:People.whyImportant:8792db2acc2f",
+      "person": "沙基尔·穆罕默德",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容仅为‘DeepMind 研究科学家，VAE’，过于简略且未说明其个人具体贡献。VAE是团队成果，直接归因不明确。"
+    },
+    {
+      "claimId": "cmk9vzys20006lbpp7qflw4kt:People.whyImportant:7d182c18d6ef",
+      "person": "理查德·S·泽梅尔",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容仅为‘多伦多大学教授，机器学习’，过于简略，未说明其具体研究贡献或代表性工作。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:People.whyImportant:4f89ba9a0e18",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "将AlphaCode和Gemini这两个大型团队项目归因于个人‘发挥了关键作用’，属于团队级成果过度归因。需明确其具体领导或技术贡献。"
+    },
+    {
+      "claimId": "cmk9w3mjk000rlbppigj7bynk:People.whyImportant:73d7bb0aa9e6",
+      "person": "索拉布·古普塔",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容仅为‘UIUC 教授，机器人视觉’，过于简略，未说明其具体研究贡献或代表性工作。"
+    },
+    {
+      "claimId": "cmk9w0zjt000clbpps8y57jhm:People.whyImportant:fff24c1f8f61",
+      "person": "纳夫迪普·杰特利",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容仅为‘Apple 研究科学家，语音识别’，过于简略，未说明其具体研究贡献或代表性工作。"
+    },
+    {
+      "claimId": "cmjvfedau000blqwq5jiqakh8:People.whyImportant:866b6e1fe695",
+      "person": "拉里·佩奇",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "PageRank算法是拉里·佩奇与谢尔盖·布林共同发明的，将“开创性”归因于个人不准确。推动“AI优先”战略是公司行为，归因给个人过度。"
+    },
+    {
+      "claimId": "cmk9vwopr0009klccin41odka:People.whyImportant:3edbe24ff0d8",
+      "person": "普拉纳夫·拉杰普尔卡",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "wrong_person",
+      "action": "rewrite",
+      "reason": "普拉纳夫·拉杰普尔卡是斯坦福大学教授，而非哈佛大学教授。SQuAD数据集由其团队创建，但“创建者”归因个人需谨慎。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:People.whyImportant:ce8f37699e89",
+      "person": "朱军",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "needs_source",
+      "reason": "“主导开发”珠算库的表述可能过度归因。珠算库是清华大学团队的成果，朱军是核心成员，但“主导”需明确证据。"
+    },
+    {
+      "claimId": "cmk9vx3ay000bklccun8po0tb:People.whyImportant:a3eb150e600e",
+      "person": "李宏乐",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "unclear",
+      "action": "needs_source",
+      "reason": "“LG AI Research，密歇根大学教授”仅为职位罗列，未说明其具体贡献或为何值得关注，信息不足。"
+    },
+    {
+      "claimId": "cmjtwkgug0004opf3th1cmczu:People.whyImportant:4e2a554048f7",
+      "person": "李开复",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“创办零一万物推出开源大模型Yi系列”将公司团队成果过度归因于个人创始人。李开复是创始人，但模型开发是团队工作。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:People.whyImportant:607e384f1f40",
+      "person": "李莲",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "“参与GPT系列模型开发”过于宽泛，将整个系列模型的开发归因于个人。GPT系列是OpenAI大型团队的成果，个人贡献需具体说明。"
+    },
+    {
+      "claimId": "cmjvfbq760002lqwqcy5xe0w1:People.whyImportant:b85ca9172c50",
+      "person": "纳特·弗里德曼",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Copilot是GitHub团队与OpenAI合作的产品，将‘诞生与发展’归因于前CEO个人，属于将团队/机构级成果过度归因。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:People.whyImportant:3719ee11e772",
+      "person": "罗福莉",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称其为小米MiMo大模型负责人及前DeepSeek核心开发者，但未提供具体来源或证据支持这些职位和贡献。"
+    },
+    {
+      "claimId": "cmk9w1io8000flbpph1qw9gkt:People.whyImportant:3c2a62ad1be0",
+      "person": "胡安·卡洛斯·尼布勒斯",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "人物上下文显示其当前职位为普林斯顿大学教授，但‘为什么值得关注’仅提及Salesforce VP AI Research，职位信息可能过时。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:People.whyImportant:c6e9b80d7560",
+      "person": "苏姿丰",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "锐龙和霄龙系列处理器是AMD公司的产品线，将‘推出’归因于CEO个人，属于将公司级产品成果过度归因。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:People.whyImportant:8736432133b7",
+      "person": "苏浩",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "人物上下文显示其当前职位为北京航空航天大学教授，但‘为什么值得关注’仅提及UCSD教授，职位信息明显过时。"
+    },
+    {
+      "claimId": "cmk9w0gti0009lbpp2v1f3pjt:People.whyImportant:7ad30a73b5e2",
+      "person": "詹姆斯·马滕斯",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“DeepMind研究科学家”是职位，“优化理论”是研究领域，但未明确其个人在该领域的具体、可验证的代表性贡献或成果。"
+    },
+    {
+      "claimId": "cmjvfenx6000clqwquxw71e7f:People.whyImportant:c84996577de3",
+      "person": "谢尔盖·布林",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "谢尔盖·布林是谷歌联合创始人，但“领导开发谷歌大脑”和“推动Transformer架构”是团队/机构级成果，且《Attention Is All You Need》论文作者名单中并无布林，归因过度。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:People.whyImportant:325bcf0d8f6d",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "根据其当前职位（Caltech教授），其“Cornell教授”和“哥本哈根DIKU主任”的身份可能已过时，需要核实当前状态。"
+    },
+    {
+      "claimId": "cmk9vn8pg0005azb9egtb11gm:People.whyImportant:ee3ee41f39ba",
+      "person": "贾扬清",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "贾扬清是Caffe框架的主要作者，但“Princeton教授”身份存疑（其当前职位为NVIDIA VP），且“ImageNet创建者之一”是团队成果，主要归功于李飞飞等人，归因过度。"
+    },
+    {
+      "claimId": "cmk9vwfkh0008klcct5gvli32:People.whyImportant:878b93b49fe5",
+      "person": "贾斯汀·约翰逊",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "当前职位为World Labs联合创始人，但claim称其为密歇根大学教授，需确认其当前是否仍为教授或职位已过时。"
+    },
+    {
+      "claimId": "cmjtxd9gj00095p08xgbzoqfe:People.whyImportant:cbcd48e4e9ca",
+      "person": "迈克·施罗普费尔",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "Apache Cassandra是Facebook团队开发的开源项目，将领导开发归因给个人CTO可能过度，需明确其具体角色。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:People.whyImportant:a4a01da55b86",
+      "person": "郑宇怀",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "当前职位为Google研究科学家，但claim称其为DeepMind首席研究科学家，职位信息可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9vpe7i000dazb9lh8oezdi:People.whyImportant:10583a52b37c",
+      "person": "阿列克谢·A·埃夫罗斯",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "claim称其为图像合成先驱，但未提供具体贡献或论文来源，需补充证据。"
+    },
+    {
+      "claimId": "cmk9w16lz000dlbppb4j2wqpb:People.whyImportant:366fbaa3f3ba",
+      "person": "阿卜杜勒-拉赫曼·穆罕默德",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "当前职位为Google DeepMind研究科学家，但claim称其为Amazon/Meta研究科学家，职位信息明显过时。"
+    },
+    {
+      "claimId": "cmk9w26e5000jlbppfsi84dzz:People.whyImportant:b23004bb03aa",
+      "person": "阿舒托什·萨克塞纳",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称阿舒托什·萨克塞纳是Caspar AI创始人，但未提供任何来源或证据支持此身份。康奈尔教授身份与上下文一致。"
+    },
+    {
+      "claimId": "cmk8gub0i000aj1tnvryvmc0g:People.whyImportant:0bf56a8a2843",
+      "person": "陈天石",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "将公司股价涨幅（2024年寒武纪股价涨幅383%）归因于个人，这是机构级市场表现，不应作为个人代表成果展示。"
+    },
+    {
+      "claimId": "cmk9vy3py000gklccnre8tsr9:People.whyImportant:c07b9903d8e8",
+      "person": "雅各布·斯坦哈特",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称雅各布·斯坦哈特是UC Berkeley教授，专注于AI安全。上下文支持教授身份，但“AI安全”作为核心关注点需要更具体的来源或成果支撑。"
+    },
+    {
+      "claimId": "cmk9vogh20009azb988tw6aaa:People.whyImportant:2b0d27b8414f",
+      "person": "雷亚·哈德塞尔",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称雷亚·哈德塞尔是DeepMind VP Research，专注于机器人学习。上下文支持职位，但“机器人学习”作为核心关注点需要更具体的来源或成果支撑。"
+    },
+    {
+      "claimId": "cmk9vzkli0004lbppznq09yye:People.whyImportant:6d8b49cc3672",
+      "person": "马克·奥雷利奥·兰扎托",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "声称马克·奥雷利奥·兰扎托在Google DeepMind，专注于稀疏编码。上下文显示其为NYU教授，将公司/团队级研究领域（稀疏编码）作为个人代表成果，归因层级可能错误。"
+    },
+    {
+      "claimId": "cmk9vlz5k0002azb9n5j0ce0z:People.whyImportant:aed08644d55e",
+      "person": "鲁斯兰·萨拉赫丁诺夫",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述仅为职位罗列，未说明其具体贡献或为何值得关注。需要来源证明其“苹果AI研究主管”职位及具体贡献。"
+    },
+    {
+      "claimId": "cmk9vww09000aklccdkep9iq4:People.whyImportant:09a901b961a9",
+      "person": "齐科·科尔特",
+      "claimType": "why_important",
+      "objectLabel": null,
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "描述仅为职位和领域罗列，未说明其具体贡献或为何值得关注。需要来源证明其具体研究贡献。"
+    }
+  ]
+}

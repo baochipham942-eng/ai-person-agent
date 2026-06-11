@@ -1,0 +1,40 @@
+{
+  "decisions": [
+    {
+      "personId": "cmk9vlhms0000azb9q6oxhyui",
+      "person": "伊恩·J·古德费洛",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Co-founder @ Stealth Startup",
+      "organizations": ["Stealth Startup"],
+      "evidenceUrl": "https://x.com/goodfellow_ian",
+      "evidenceNote": "Ian Goodfellow's public X profile says he is co-founder of a stealth startup; Google DeepMind is prior experience in current search results."
+    },
+    {
+      "personId": "cmk9w16lz000dlbppb4j2wqpb",
+      "person": "阿卜杜勒-拉赫曼·穆罕默德",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Co-Founder / AI Advisor @ Rembrand",
+      "organizations": ["Rembrand"],
+      "evidenceUrl": "https://www.rembrand.com/about-us-v2",
+      "evidenceNote": "Rembrand's official about page lists Abdelrahman Mohamed as Co-Founder, AI Advisor; Google DeepMind is not supported by reviewed current sources."
+    },
+    {
+      "personId": "cmk9w26e5000jlbppfsi84dzz",
+      "person": "阿舒托什·萨克塞纳",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Founder and CEO @ TorqueAGI",
+      "organizations": ["TorqueAGI"],
+      "evidenceUrl": "https://www.torqueagi.com",
+      "evidenceNote": "TorqueAGI's official site describes Dr. Ashutosh Saxena as Founder and CEO of TorqueAGI; Cornell is a prior academic affiliation."
+    },
+    {
+      "personId": "cmk9vv4mz0002klccqqo4n3tp",
+      "person": "詹姆斯·伯格斯特拉",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Director of AI Platform @ Ocado Technology",
+      "organizations": ["Ocado Technology", "Creative Destruction Lab"],
+      "evidenceUrl": "https://creativedestructionlab.com/mentors/james-bergstra",
+      "evidenceNote": "Creative Destruction Lab's official mentor page lists James Bergstra as Director of AI Platform, Ocado Technology; Hyperopt is a library/project, not a CEO role."
+    }
+  ]
+}

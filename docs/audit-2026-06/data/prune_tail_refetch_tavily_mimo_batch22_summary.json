@@ -1,0 +1,390 @@
+{
+  "generatedAt": "2026-06-10T19:55:02.746Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/prune_tail_refetch_claims.jsonl",
+    "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch22.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 20,
+      "offset": 420,
+      "searchResults": 5,
+      "maxCandidates": 10,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "advanced",
+      "tavilyRawContent": "text",
+      "tavilyKeyCount": 11,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": null
+    }
+  },
+  "selectedTasks": 20,
+  "existingRows": 0,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 20,
+  "byDecision": {
+    "replace_source": 11,
+    "augment_source": 4,
+    "human_review": 1,
+    "no_good_source": 4
+  },
+  "byPerson": {
+    "Mustafa Suleyman": 2,
+    "Noam Shazeer": 2,
+    "Sam Altman": 2,
+    "Yann LeCun": 1,
+    "乔尔·皮诺": 2,
+    "科拉伊·卡武克丘奥卢": 2,
+    "阿希什·瓦斯瓦尼": 1,
+    "雅各布·乌什科雷特": 1,
+    "黄仁勋": 2,
+    "Lukasz Kaiser": 1,
+    "Andrej Karpathy": 1,
+    "Boris Cherny": 3
+  },
+  "selectedHosts": {
+    "blogs.microsoft.com": 1,
+    "mustafa-suleyman.ai": 2,
+    "noamshazeer.com": 2,
+    "nbcsandiego.com": 1,
+    "britannica.com": 2,
+    "forbes.com": 1,
+    "ai.meta.com": 1,
+    "lri.fr": 1,
+    "cs.mcgill.ca": 2,
+    "mila.quebec": 1,
+    "ted.com": 1,
+    "blog.google": 1,
+    "viterbischool.usc.edu": 1,
+    "montgomerysummit.com": 1,
+    "cnbc.com": 1,
+    "youtube.com": 1,
+    "blogs.nvidia.cn": 2,
+    "m.zhidx.com": 1,
+    "news.sina.cn": 1,
+    "themarque.com": 1,
+    "lennysnewsletter.com": 1,
+    "newsletter.pragmaticengineer.com": 1
+  },
+  "selectedSources": 27,
+  "candidateCount": 194,
+  "sample": [
+    {
+      "person": "Mustafa Suleyman",
+      "target": "Mustafa Suleyman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot",
+          "host": "blogs.microsoft.com",
+          "url": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot"
+        },
+        {
+          "title": "Mustafa Suleyman",
+          "host": "mustafa-suleyman.ai",
+          "url": "https://mustafa-suleyman.ai"
+        }
+      ],
+      "rationale": "原始来源（Greylock个人主页）内容过薄，已被拒绝。候选中有两个高质量来源：微软官方博客（权威机构来源，证明其当前职位）和个人官网（本人官方主页，信息全面）。两者均可作为替换来源，优先选择微软官方博客以体现机构权威性。"
+    },
+    {
+      "person": "Noam Shazeer",
+      "target": "Google appoints former Character. AI founder as co-lead of its AI models",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Noam Shazeer | AI Scientist, Google Gemini Co-Lead",
+          "host": "noamshazeer.com",
+          "url": "https://www.noamshazeer.com"
+        },
+        {
+          "title": "Ex-Google engineers who founded Character.AI re-join company with new AI partnership – NBC 7 San Diego",
+          "host": "nbcsandiego.com",
+          "url": "https://www.nbcsandiego.com/news/business/money-report/ex-google-engineers-who-founded-character-ai-re-join-company-with-new-ai-partnership/3585761"
+        }
+      ],
+      "rationale": "候选来源中，本人官方主页（noamshazeer.com）直接证明其职位，是最权威的替换来源。NBC的报道提供了事件背景，可作为补充。其他来源要么权威性不足，要么内容不完整，不符合替换标准。"
+    },
+    {
+      "person": "Sam Altman",
+      "target": "OpenAI",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Sam Altman | Biography, OpenAI, ChatGPT, & Microsoft - Britannica",
+          "host": "britannica.com",
+          "url": "https://www.britannica.com/money/Sam-Altman"
+        }
+      ],
+      "rationale": "原始来源仅为OpenAI产品导航页，缺乏人物信息。Britannica页面是权威百科全书，明确提供Sam Altman的传记及其作为OpenAI CEO的职位，直接满足证据要求，可作为可靠替换来源。"
+    },
+    {
+      "person": "Sam Altman",
+      "target": "Sam Altman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Sam Altman | Biography, OpenAI, ChatGPT, & Microsoft - Britannica",
+          "host": "britannica.com",
+          "url": "https://www.britannica.com/money/Sam-Altman"
+        },
+        {
+          "title": "Sam Altman - Forbes",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/sam-altman"
+        }
+      ],
+      "rationale": "原始来源（维基百科）因抓取问题无效。候选中Britannica和Forbes的资料页提供了权威、可访问、直接证明Sam Altman与OpenAI、Y Combinator等机构关系的传记信息，符合替换要求。其他候选来源权威性不足或不符合要求。"
+    },
+    {
+      "person": "Yann LeCun",
+      "target": "Index of /exdb/mnist",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Yann LeCun - AI at Meta",
+          "host": "ai.meta.com",
+          "url": "https://ai.meta.com/people/396469589677838/yann-lecun"
+        },
+        {
+          "title": "[PDF] THE MNIST DATABASE of handwritten digits",
+          "host": "lri.fr",
+          "url": "https://www.lri.fr/~marc/Master2/MNIST_doc.pdf"
+        }
+      ],
+      "rationale": "原始来源（MNIST索引页）缺乏实质内容。候选中，Meta官方页面能权威证明其职位，MNIST官方文档能直接证明其与数据集的关系。两者结合可有效补强或替换原始来源。"
+    },
+    {
+      "person": "乔尔·皮诺",
+      "target": "Joelle Pineau",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Joelle Pineau's Home",
+          "host": "cs.mcgill.ca",
+          "url": "https://www.cs.mcgill.ca/~jpineau"
+        },
+        {
+          "title": "Joelle Pineau - Mila - Quebec Artificial Intelligence Institute",
+          "host": "mila.quebec",
+          "url": "https://mila.quebec/en/directory/joelle-pineau"
+        }
+      ],
+      "rationale": "原来源（Meta AI官网）内容过薄。候选中，麦吉尔大学个人主页和Mila研究所名录页面均为权威官方来源，直接证明了乔尔·皮诺的职位、所属机构及研究领域，可有效替换原来源。"
+    },
+    {
+      "person": "乔尔·皮诺",
+      "target": "Joelle Pineau | TEDAI San Francisco - TED Talks",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Joelle Pineau: What's inside the \"black box\" of AI? | TED Talk",
+          "host": "ted.com",
+          "url": "https://www.ted.com/talks/joelle_pineau_what_s_inside_the_black_box_of_ai"
+        },
+        {
+          "title": "Joelle Pineau's Home - McGill School Of Computer Science",
+          "host": "cs.mcgill.ca",
+          "url": "https://www.cs.mcgill.ca/~jpineau"
+        }
+      ],
+      "rationale": "原始来源仅为会议导航链接，缺乏实质内容。候选中，TED官方演讲页面和麦吉尔大学个人主页均直接、权威地证明了人物身份、职位及与TEDAI演讲的关联，可有效替换或补强。"
+    },
+    {
+      "person": "科拉伊·卡武克丘奥卢",
+      "target": "koray kavukcuoglu",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Koray Kavukcuoglu",
+          "host": "blog.google",
+          "url": "https://blog.google/authors/koray-kavukcuoglu"
+        }
+      ],
+      "rationale": "原始来源（谷歌学术页面）加载错误，无实质内容。候选中的Google官方博客作者页（blog.google）是权威、可访问的官方来源，明确列出了人物姓名、职位和职责，完全符合证据要求，可直接替换原始来源。"
+    },
+    {
+      "person": "阿希什·瓦斯瓦尼",
+      "target": "Ashish Vaswani",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "USC Alumni Paved Path for ChatGPT - USC Viterbi | School of Engineering",
+          "host": "viterbischool.usc.edu",
+          "url": "https://viterbischool.usc.edu/news/2023/03/attention-is-all-you-need-usc-alumni-paved-path-for-chatgpt"
+        },
+        {
+          "title": "Ashish Vaswani - The Montgomery Summit",
+          "host": "montgomerysummit.com",
+          "url": "https://montgomerysummit.com/speakers/ashish-vaswani"
+        }
+      ],
+      "rationale": "原来源（谷歌学术页面）加载错误且信息密度低。候选来源中，USC Viterbi工程学院的新闻稿和Montgomery Summit的演讲者页面均为权威机构发布，直接、明确地证明了阿希什·瓦斯瓦尼的身份、职位及其在Transformer模型上的核心贡献，是高质量的替代来源。"
+    },
+    {
+      "person": "雅各布·乌什科雷特",
+      "target": "After leaving Google, Jakob Uszkoreit started Inceptive to apply AI to… | CNBC",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Inceptive CEO Jakob Uszkoreit says AI will transform pharmaceuticals",
+          "host": "cnbc.com",
+          "url": "https://www.cnbc.com/2024/07/12/inceptive-ceo-jakob-uszkoreit-says-ai-will-transform-pharmaceuticals.html"
+        },
+        {
+          "title": "Inceptive CEO Jakob Uszkoreit On Transformers And Using AI To Make New Drugs",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=GqWw8-TdjXU"
+        }
+      ],
+      "rationale": "原始LinkedIn来源因登录墙被拒。候选中的CNBC官方文章和YouTube视频均直接、权威地证明了人物离开谷歌后创立Inceptive并应用AI的核心事实，且标题/描述明确包含人物姓名和职位，符合替换要求。"
+    },
+    {
+      "person": "黄仁勋",
+      "target": "GPU计算时代：无尽创意、无处不在",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "NVIDIA CEO 黄仁勋与全球技术领导者在GTC 2026 大会共话AI 时代",
+          "host": "blogs.nvidia.cn",
+          "url": "https://blogs.nvidia.cn/blog/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026"
+        },
+        {
+          "title": "NVIDIA CEO：“我们创造了为生成式 AI 时代而生的处理器” | NVIDIA 英伟达博客",
+          "host": "blogs.nvidia.cn",
+          "url": "https://blogs.nvidia.cn/blog/2024-gtc-keynote"
+        }
+      ],
+      "rationale": "原来源（OpenAlex论文）未直接提及黄仁勋。候选中的NVIDIA官方博客文章明确记载了黄仁勋在GTC大会上的演讲，内容直接关联GPU计算与AI时代，能有效补强并证明其观点与领导角色。这些来源权威、可访问，且包含直接引述。"
+    },
+    {
+      "person": "黄仁勋",
+      "target": "黄仁勋最新访谈：英伟达要用AI造一台“时间机器”",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "黄仁勋访谈：英伟达要用AI造一台“时间机器”，看好人形机器人 - 智东西",
+          "host": "m.zhidx.com",
+          "url": "https://m.zhidx.com/p/525129.html"
+        },
+        {
+          "title": "黄仁勋最新访谈：英伟达要用AI造一台“时间机器”，看好人形机器人|ChatGPT|注意力机制|计算平台|主持人|电脑_手机新浪网",
+          "host": "news.sina.cn",
+          "url": "https://news.sina.cn/ai/2025-12-31/detail-inhesahs9122266.d.html?vt=4"
+        }
+      ],
+      "rationale": "原始声明因缺乏访谈细节被拒。候选中，智东西和新浪新闻的文章直接、详细地报道了黄仁勋接受Cleo Abram专访并提及“时间机器”的内容，与声明高度匹配，可作为权威补充来源。其他候选内容主题不符或证据不足。"
+    },
+    {
+      "person": "Lukasz Kaiser",
+      "target": "I'm starting to feel sacred about some of my older theory papers... Maybe time to proactively push them through myself...",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接证明或关联原始推文中关于“older theory papers”和“proactively push them through myself”的个人情绪表达。它们要么是关于AI技术的讨论，要么是标准简历，要么权威性不足。需要更直接的来源，如本人官方博客、可靠媒体对推文的引用或采访转录。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "//www.youtube.com/watch?v=XWGnWcmns_M",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman",
+          "host": "mustafa-suleyman.ai",
+          "url": "https://mustafa-suleyman.ai"
+        }
+      ],
+      "rationale": "候选来源中，本人官方主页（mustafa-suleyman.ai）最权威，直接证明其职位、作品及观点，可完美替换原无效来源。其他来源权威性不足或证据不直接。"
+    },
+    {
+      "person": "Noam Shazeer",
+      "target": "//blog.google/products/gemini/gemini-3-deep-think/",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Noam Shazeer | AI Scientist, Google Gemini Co-Lead",
+          "host": "noamshazeer.com",
+          "url": "https://www.noamshazeer.com"
+        },
+        {
+          "title": "Noam Shazeer | Gemini Co-Lead & VP Engineering, Google",
+          "host": "themarque.com",
+          "url": "https://www.themarque.com/profile/noam-shazeer"
+        }
+      ],
+      "rationale": "候选来源中，本人官方主页和权威机构资料页能直接证明Noam Shazeer作为Google Gemini Co-Lead的职位，可补强原来源缺失的实质描述。其他来源或为辅助线索，或未直接关联目标。"
+    },
+    {
+      "person": "科拉伊·卡武克丘奥卢",
+      "target": "//blog.google/technology/ai/google-gemini-ai/",
+      "decision": "no_good_source",
+      "confidence": 0.95,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未提及科拉伊·卡武克丘奥卢，无法建立其与Gemini博客文章的直接关联。需要更具体的来源，如个人官方简介、论文作者页或明确提及人物角色的采访。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "The top comment on all of these is usually “ai” with 3000 likes",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接证明或支持原始推文内容。原始推文是关于社交媒体评论现象的随感，缺乏专业技术含量，且候选来源中无权威页面（如官方主页、机构资料页、论文详情页、作者页、可靠媒体采访或有转录/描述的播客视频）能直接证明该推文与人物的关系或提供更好的权威替代。"
+    },
+    {
+      "person": "Boris Cherny",
+      "target": "Both can be invoked both by the model and by a person",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Head of Claude Code: What happens after coding is solved | Boris ...",
+          "host": "lennysnewsletter.com",
+          "url": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens"
+        },
+        {
+          "title": "Building Claude Code with Boris Cherny - by Gergely Orosz",
+          "host": "newsletter.pragmaticengineer.com",
+          "url": "https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny"
+        }
+      ],
+      "rationale": "原始来源为孤立的推文，缺乏上下文。候选中有多个权威访谈/播客转录页面，明确提及Boris Cherny是Claude Code的创造者和负责人，可补强其职位与贡献，但未直接证明原始主张中的具体句子。因此选择补强来源，而非替换。"
+    },
+    {
+      "person": "Boris Cherny",
+      "target": "No. I just keep thinking on by default",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接包含或证明目标陈述“No. I just keep thinking on by default”。它们多为播客转述、博客文章或社交媒体帖子，缺乏原始、权威的直接证据。目标陈述信息密度低，且未找到可替换的权威来源。"
+    },
+    {
+      "person": "Boris Cherny",
+      "target": "Same repo, separate git checkouts",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接证明Boris Cherny与‘Same repo, separate git checkouts’这一具体主张的关联。它们要么是社交媒体帖子，要么是讨论更广泛工作流的文章，缺乏权威、直接的证据。因此，无法替换或补强原始来源。"
+    }
+  ]
+}

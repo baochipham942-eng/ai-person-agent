@@ -24,7 +24,7 @@ export const weeklyQualityCheck = inngest.createFunction(
             return await prisma.people.findMany({
                 include: {
                     rawPoolItems: { select: { sourceType: true } },
-                    cards: { select: { id: true } }
+                    cards: { where: { isActive: true }, select: { id: true } }
                 }
             });
         });
@@ -97,7 +97,7 @@ export const manualQualityCheck = inngest.createFunction(
                     where: { id: personId },
                     include: {
                         rawPoolItems: { select: { sourceType: true } },
-                        cards: { select: { id: true } }
+                        cards: { where: { isActive: true }, select: { id: true } }
                     }
                 });
             });

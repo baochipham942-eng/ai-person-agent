@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "source": "TIME100 AI 2024 Liang Rubo profile and Chinese Wikipedia profile",
+    "generatedAt": "2026-06-11T20:06:00+08:00",
+    "note": "Minimum enrichment for Liang Rubo."
+  },
+  "people": [
+    {
+      "name": "Liang Rubo",
+      "topics": ["产品", "大语言模型", "AI 生态", "推荐系统"],
+      "officialLinks": [
+        {
+          "type": "website",
+          "url": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/",
+          "label": "TIME100 AI 2024 profile"
+        },
+        {
+          "type": "website",
+          "url": "https://zh.wikipedia.org/wiki/%E6%A2%81%E6%B1%9D%E6%B3%A2",
+          "label": "Chinese Wikipedia profile"
+        }
+      ],
+      "products": [
+        {
+          "name": "Doubao",
+          "description": "ByteDance 发布的 AI 聊天机器人，TIME100 AI 2024 文章称其在中国聊天机器人市场超过百度文心一言。",
+          "org": "ByteDance",
+          "year": 2024,
+          "url": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/",
+          "category": "AI Chatbot",
+          "type": "product"
+        },
+        {
+          "name": "ByteDance AI strategy",
+          "description": "TIME100 AI 2024 将 ByteDance 在 AI 上的推进描述为发生在 Liang Rubo 领导之下。",
+          "org": "ByteDance",
+          "year": 2024,
+          "url": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/",
+          "category": "AI Strategy",
+          "type": "company-strategy"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "AI 生态",
+          "rank": 82,
+          "reason": "TIME100 AI 2024 写到 ByteDance 在 Liang Rubo 领导下推进 AI，Doubao 成为中国最受欢迎的聊天机器人之一。"
+        }
+      ]
+    }
+  ]
+}

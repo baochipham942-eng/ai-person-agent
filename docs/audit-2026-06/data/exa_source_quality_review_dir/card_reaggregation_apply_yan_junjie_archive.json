@@ -1,0 +1,283 @@
+{
+  "generatedAt": "2026-06-10T08:41:29.830Z",
+  "summary": {
+    "generatedAt": "2026-06-10T08:41:29.830Z",
+    "mode": "execute",
+    "planIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json",
+    "reviewIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json",
+    "peopleConsidered": 1,
+    "peopleEligible": 1,
+    "existingCards": 9,
+    "replacementCards": 6,
+    "skippedPeople": 0
+  },
+  "people": [
+    {
+      "personId": "cmjtwkkz70006opf3yblhugno",
+      "person": "闫俊杰",
+      "status": "active",
+      "currentCards": [
+        {
+          "id": "cmjuvhaw20j1srmtb4x4vsf83",
+          "type": "fact",
+          "title": "MiniMax的估值与产品成就",
+          "content": "MiniMax已完成A+轮融资，最新一轮由阿里领投6亿美元，公司估值突破30亿美元。其AI社区产品Talkie月活用户数超过Character.ai，成为同类产品全球第一；中国版“星野”在用户数、使用时长和留存率上也位居第一。",
+          "tags": [
+            "公司估值",
+            "产品成绩",
+            "市场地位"
+          ],
+          "sourceUrl": "https://m.cls.cn/detail/1804715",
+          "importance": 8,
+          "createdAt": "2026-01-01 03:15:35.138",
+          "updatedAt": "2026-01-01 03:15:35.138"
+        },
+        {
+          "id": "cmjuvhaw20j1lrmtbq1qd7ayl",
+          "type": "insight",
+          "title": "AI领域将多玩家共存，而非赢家通吃",
+          "content": "闫俊杰认为AI领域一定会有多个玩家持续存在。原因有三：1）模型对齐目标不同带来价值观差异；2）未来是多Agent系统，单一模型优势减弱；3）开源模型不断逼近闭源模型。这打破了“大模型战争已结束”的论调。",
+          "tags": [
+            "行业格局",
+            "竞争战略",
+            "开源模型"
+          ],
+          "sourceUrl": "https://m.21jingji.com/article/20250726/herald/9300e99532700a453332808264e5a97c.html",
+          "importance": 8,
+          "createdAt": "2026-01-01 03:15:35.138",
+          "updatedAt": "2026-01-01 03:15:35.138"
+        },
+        {
+          "id": "cmjuun4tg0hbxrmtb3mf7q4h2",
+          "type": "quote",
+          "title": "更好的模型导向应用，而非反之",
+          "content": "闫俊杰认为，AI大模型和产品的关系是：“更好的模型可以导向更好的应用，但更好的应用和更多用户并不会导向更好的模型。” 这与移动互联网“用户越多，反馈越多，产品越聪明”的逻辑截然不同。因此，MiniMax当前最重要的目标是“加速技术迭代”，而非单纯追求用户增长或收入。",
+          "tags": [
+            "产品哲学",
+            "技术驱动",
+            "模型与应用",
+            "战略取舍"
+          ],
+          "sourceUrl": "https://podcasts.apple.com/ru/podcast/minimax-%E5%88%9B%E5%A7%8B%E4%BA%BA%E9%97%AB%E4%BF%8A%E6%9D%B0-%E5%81%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B-%E5%8D%83%E4%B8%87%E5%88%AB%E5%A5%97%E7%94%A8%E7%A7%BB%E5%8A%A8%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E9%80%BB%E8%BE%91/id1564877433?i=1000684630187&l=uk",
+          "importance": 10,
+          "createdAt": "2026-01-01 02:52:07.588",
+          "updatedAt": "2026-01-01 02:52:07.588"
+        },
+        {
+          "id": "cmjuun4tg0hbyrmtbdwu11m68",
+          "type": "story",
+          "title": "与Anthropic创始人的共同起点与分岔路",
+          "content": "十年前，闫俊杰和后来创立Anthropic的Dario Amodei都曾是百度实习生。在百度北美实验室，Dario接触并领悟了决定大模型发展的“Scaling Law”（规模定律）。这颗种子在美国开花结果，催生了GPT系列。而闫俊杰则在国内敏锐地意识到AI的巨大实用价值，并最终创立了MiniMax。这段经历是中美AI发展路径差异的一个缩影。",
+          "tags": [
+            "创业起源",
+            "百度实习",
+            "Scaling Law",
+            "中美AI"
+          ],
+          "sourceUrl": "https://www.guancha.cn/economy/2025_12_12_800214.shtml",
+          "importance": 8,
+          "createdAt": "2026-01-01 02:52:07.588",
+          "updatedAt": "2026-01-01 02:52:07.588"
+        },
+        {
+          "id": "cmju1fhij0cwgrmtbj6w8nxb9",
+          "type": "method",
+          "title": "创业公司应对巨头的“第三条路”",
+          "content": "面对国内外互联网巨头的资源碾压，闫俊杰认为创业公司不应简单复制或硬拼。他提出的“第三条路”是：重新定义AI时代的人才、组织和产品。例如，MiniMax更倾向于培养年轻、内部“长出来”的人才，而非高薪挖角；其核心目标不是短期用户增长或收入，而是“加速技术迭代”，追求模型能力的上限突破。",
+          "tags": [
+            "创业方法论",
+            "组织建设",
+            "人才战略",
+            "竞争策略"
+          ],
+          "sourceUrl": "https://m.thepaper.cn/newsDetail_forward_32148957",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:14:21.549",
+          "updatedAt": "2025-12-31 13:14:21.549"
+        },
+        {
+          "id": "cmju15dwf0ay1rmtbqn22wk5u",
+          "type": "fact",
+          "title": "MiniMax：商汤系走出的AI独角兽，即将上市",
+          "content": "闫俊杰是前商汤科技副总裁、研究院副院长。他创立的MiniMax是“商汤系”明星AI公司，与商汤总部比邻而居。公司已通过港交所聆讯，计划上市，有望成为“大模型第一股”。2025年前9个月营收达5343.7万美元，超过2024年全年，且其C端产品已接近盈亏平衡，是中国少数迈入“亿元年营收俱乐部”的AI创业公司。",
+          "tags": [
+            "商汤系",
+            "独角兽",
+            "IPO",
+            "财务数据",
+            "AI创业"
+          ],
+          "sourceUrl": "https://eu.36kr.com/zh/p/3609258452141057",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:06:30.319",
+          "updatedAt": "2025-12-31 13:06:30.319"
+        },
+        {
+          "id": "cmju15dwf0axzrmtba075eowb",
+          "type": "quote",
+          "title": "“千万别套用移动互联网的逻辑来做AI。”",
+          "content": "这是闫俊杰在访谈中反复强调的核心观点。他警示创业者，AI大模型的发展逻辑与移动互联网有本质区别。移动互联网依赖网络效应和用户反馈优化产品，而AI大模型的进步更依赖于底层技术的突破、算力投入和算法创新，用户规模本身并不直接转化为模型能力的提升。",
+          "tags": [
+            "创业警示",
+            "AI逻辑",
+            "行业反思",
+            "思维模式"
+          ],
+          "sourceUrl": "https://podcasts.apple.com/us/podcast/minimax-%E5%88%9B%E5%A7%8B%E4%BA%BA%E9%97%AB%E4%BF%8A%E6%9D%B0-%E5%81%9A%E5%4%A7%E6%A8%A1%E5%9E%8B-%E5%8D%83%E4%B8%87%E5%88%AB%E5%A5%97%E7%94%A8%E7%A7%BB%E5%8A%A8%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E9%80%BB%E8%BE%91/id1564877433?i=1000684630187&l=fr-FR",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:06:30.319",
+          "updatedAt": "2025-12-31 13:06:30.319"
+        },
+        {
+          "id": "cmjtxj0e502ksrmtbp9mby8ic",
+          "type": "insight",
+          "title": "AI不是互联网延伸，而是全新物种",
+          "content": "闫俊杰认为，AI行业不是互联网行业的延伸，传统的经验不一定有效。就像移动互联网颠覆了PC互联网，AI是一个全新的物种。AI时代需要探索全新的组织形式、产品哲学和人才定义，这正是创业公司的机会所在。他反对套用移动互联网的逻辑来做AI，强调更好的模型导向更好的应用，但反之不成立。",
+          "tags": [
+            "AI哲学",
+            "创业认知",
+            "行业本质"
+          ],
+          "sourceUrl": "https://m.thepaper.cn/newsDetail_forward_32148957",
+          "importance": 9,
+          "createdAt": "2025-12-31 11:25:07.544",
+          "updatedAt": "2025-12-31 11:25:07.544"
+        },
+        {
+          "id": "cmjtxj0e502kwrmtb757yvh6k",
+          "type": "fact",
+          "title": "MiniMax：草根团队与高估值",
+          "content": "闫俊杰创立的MiniMax是中国大模型“六小虎”之一，以其“草根”出身的年轻团队著称，人才多在公司内部“长出来”。公司已完成A+轮融资，最新一轮由阿里领投6亿美元，估值已超30亿美元（另一说法25亿）。其AI社区产品Talkie月活已超Character.ai，成为全球同类第一。",
+          "tags": [
+            "公司成就",
+            "团队文化",
+            "行业地位"
+          ],
+          "sourceUrl": "https://m.thepaper.cn/newsDetail_forward_32148957",
+          "importance": 8,
+          "createdAt": "2025-12-31 11:25:07.544",
+          "updatedAt": "2025-12-31 11:25:07.544"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "50097958-e551-454f-9d47-31e141c16ed9",
+          "type": "insight",
+          "title": "量化是模型超越人类的分水岭",
+          "content": "闫俊杰认为，只要一个领域能够被量化，AI模型就一定会强于人类，或者至少达到人类最顶尖的水平。这种认知让他对Scaling Law充满信心，同时也导致他在研发出成功模型前会产生一种对技术失控的“恐惧感”。",
+          "tags": [
+            "AGI",
+            "量化思维",
+            "Scaling Law"
+          ],
+          "sourceUrl": "https://eu.36kr.com/zh/p/3590840490688517",
+          "importance": 5
+        },
+        {
+          "id": "b80465e1-0793-4b8a-81e0-aa877271cac4",
+          "type": "insight",
+          "title": "技术是科技公司问题的“掩盖剂”",
+          "content": "闫俊杰在创业三年后意识到，技术是一家科技公司最核心的要素。他总结道：技术做不好时，所有琐碎的事情都会变成严重问题；而当技术做得足够好、足够领先时，许多管理或商业上的瑕疵似乎都会被掩盖。",
+          "tags": [
+            "技术创业",
+            "核心竞争力",
+            "创业反思"
+          ],
+          "sourceUrl": "https://www.sohu.com/a/805740896_115565",
+          "importance": 4
+        },
+        {
+          "id": "f6de9ec9-a682-4c77-b2ad-2e6ab352a0fc",
+          "type": "quote",
+          "title": "拒绝将产品失败归因于用户",
+          "content": "“当产品没人用或者不赚钱的时候，肯定不能怪用户，大部分只能怪自己的技术做得不够好，或者产品做得不够好。如果通不过这个考验，公司就应该关掉。”",
+          "tags": [
+            "产品观",
+            "创业心态",
+            "责任归因"
+          ],
+          "sourceUrl": "https://m.cls.cn/detail/1804715",
+          "importance": 4
+        },
+        {
+          "id": "640d79db-ad6f-42f0-8a3c-03225045b3c6",
+          "type": "quote",
+          "title": "创造者对技术的“敬畏与恐惧”",
+          "content": "“所有做得比较成功的模型，在做出来之前都会有点害怕。”闫俊杰坦承，当模型能力开始展现出超越人类的迹象时，作为创造者首先感受到的是不安而非单纯的兴奋。",
+          "tags": [
+            "AI伦理",
+            "技术敬畏",
+            "开发者心态"
+          ],
+          "sourceUrl": "https://eu.36kr.com/zh/p/3590840490688517",
+          "importance": 3
+        },
+        {
+          "id": "68d7b2a0-170c-4f8c-9489-88c1fb43f435",
+          "type": "fact",
+          "title": "MiniMax港股上市及认购纪录",
+          "content": "2026年1月9日，MiniMax在港交所上市，市值突破800亿港元。其公开发售部分获得1837倍超额认购，刷新了港交所近三年科技IPO的认购纪录，体现了市场对国产大模型领头羊的高度认可。",
+          "tags": [
+            "IPO",
+            "资本市场",
+            "企业成就"
+          ],
+          "sourceUrl": "https://www.cyzone.cn/article/821184.html",
+          "importance": 5
+        },
+        {
+          "id": "e992ced8-be46-47a9-96a3-f53292e65139",
+          "type": "fact",
+          "title": "闫俊杰的教育背景与职业身份",
+          "content": "闫俊杰，男，1989年出生，河南人。他于2015年博士毕业于中国科学院自动化所模式识别国家重点实验室。他是Minimax的创始人、CEO、董事会主席兼首席技术官。",
+          "tags": [
+            "个人履历",
+            "精英人才",
+            "中科院"
+          ],
+          "sourceUrl": "https://baike.baidu.com/item/%E9%97%AB%E4%BF%8A%E6%9D%B0/64788782",
+          "importance": 3
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "量化是模型超越人类的分水岭",
+          "decision": "keep",
+          "confidence": 1,
+          "reason": "来源文本中的直接引语完全支持卡片标题和正文的核心观点，包括量化与模型能力的关系、对Scaling Law的信心以及成功模型前的恐惧感。"
+        },
+        {
+          "title": "技术是科技公司问题的“掩盖剂”",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本直接包含闫俊杰的原话，其核心观点（技术是核心要素，做好能掩盖问题）与卡片内容完全一致。卡片中的“创业三年后意识到”与来源中“花了两年才意识到”在时间上近似，可接受。"
+        },
+        {
+          "title": "拒绝将产品失败归因于用户",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本中闫俊杰的原话与卡片内容高度一致，核心观点、措辞和逻辑均得到直接支持。"
+        },
+        {
+          "title": "创造者对技术的“敬畏与恐惧”",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本直接包含闫俊杰的原话，其内容与卡片标题和正文的核心观点（对技术的敬畏与恐惧）完全一致，关键事实和引语均被来源支持。"
+        },
+        {
+          "title": "MiniMax港股上市及认购纪录",
+          "decision": "keep",
+          "confidence": 1,
+          "reason": "来源文本明确支持卡片中的上市日期、市值、超额认购倍数及刷新纪录等核心事实。"
+        },
+        {
+          "title": "闫俊杰的学术背景与精英荣誉",
+          "decision": "rewrite",
+          "confidence": 0.9,
+          "reason": "来源支持其出生年份、籍贯、博士毕业院校及时间、现任职务。但未提及“2024年《财富》中国40位40岁以下的商界精英”这一荣誉，也未明确其为“学院派创业代表”，这些属于过度归因或无来源信息，需移除。"
+        }
+      ],
+      "skippedReason": null
+    }
+  ]
+}

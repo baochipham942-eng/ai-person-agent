@@ -1,0 +1,206 @@
+{
+  "generatedAt": "2026-06-09T15:32:29.611Z",
+  "input": "docs/audit-2026-06/data/fact_claims_source_items_after_fourth_safe_prune_new_high.jsonl",
+  "output": "docs/audit-2026-06/data/fact_claim_reviews_source_item_fourth_new_high_after_safe_prune_mimo.jsonl",
+  "model": "mimo-v2.5-pro",
+  "filters": {
+    "person": null,
+    "personId": null,
+    "claimType": null,
+    "priority": null,
+    "limit": 9999,
+    "batchSize": 8,
+    "concurrency": 4
+  },
+  "totalClaims": 25,
+  "selectedClaims": 25,
+  "reviewedClaims": 25,
+  "byVerdict": {
+    "wrong_person": 15,
+    "supported": 6,
+    "needs_source": 3,
+    "over_attributed": 1
+  },
+  "byAction": {
+    "remove": 15,
+    "keep": 6,
+    "needs_source": 3,
+    "rewrite": 1
+  },
+  "byClaimType": {
+    "source_item_belongs_to_person": 25
+  },
+  "needsAttention": [
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fm1006j6rmtbmwc3uz96]:7aeed9d36741",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Big Data Institute of HKUST",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是关于香港科技大学大数据研究所与小i机器人（Xiao-i）的合作新闻，其中提及的创始人兼CEO是朱频频（Dr. Pinpin ZHU），而非肖弘。内容与肖弘无直接关联。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjuugga80g94rmtbu6fqpgax]:d9b68a2cefbf",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Ziyu Liu",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“Ziyu Liu”的个人主页，其所属机构为上海人工智能实验室和上海交通大学，与目标人物刘知远（清华大学）不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg3rv01wkrmtb5rset1tm]:eb3748ed1d2f",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Shuhan YAO",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“Shuhan YAO”的Google Scholar主页，其研究领域为智能电网和随机优化，与目标人物姚顺雨（AI/LLM研究者）不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg5g501xqrmtbxr7c0arc]:e3410b81b226",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "上海交通大学生物医学工程学院",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于上海交通大学生物医学工程学院的“王耀”副研究员，与目标人物姚顺雨（OpenAI研究员）完全无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg6ir01yermtbqyo2x981]:038ef0857cf5",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Yushu Yu",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“Yushu Yu”的Google Scholar主页，其所属机构为北京理工大学，研究领域为无人机和机器人控制，与目标人物姚顺雨不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju1a2dj0c06rmtbfhg8l7m5]:ac38e1e4d624",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Yu Bao",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于“Yu Bao”的Google Scholar主页，其所属机构为字节跳动，研究领域为NLP和AI for Science，与目标人物姚顺雨不符，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju1a2nx0c0armtby721ljsz]:955846dae7b9",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "PharmAgents: Building a Virtual Pharma with Large Language Model Agents",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容是一篇关于PharmAgents的论文，作者列表中未出现姚顺雨（Shunyu Yao），无法确认其参与或贡献。需要核对完整作者列表或确认其角色。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkdsj02uvrmtbnei9ly3x]:7945051b43e6",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁- 师资队伍",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是复旦大学的丁洁，其研究方向（复杂网络、机器学习）与目标人物（AI安全、大语言模型）不符，且目标人物当前职位为明尼苏达大学副教授，两者非同一人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxke9t02v3rmtbhe0umyw5]:e3003e040594",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是南京邮电大学的丁洁，其研究方向（复杂系统辨识、电池状态估计）与目标人物（AI安全、大语言模型）不符，且目标人物当前职位为明尼苏达大学副教授，两者非同一人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkerl02virmtbacgocb3u]:f9798d9fbba3",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "专家介绍--丁洁 - 优秀成果奖",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是华中科技大学新闻学院的丁洁，其研究方向（广播电视、声音传播）与目标人物（AI安全、大语言模型）不符，且目标人物当前职位为明尼苏达大学副教授，两者非同一人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkfe402vvrmtb9kkndbqf]:87c3984763f5",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "河北工业大学丁洁",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是河北工业大学的丁洁，其研究方向（激光技术、非线性光学）与目标人物（AI安全、大语言模型）不符，且目标人物当前职位为明尼苏达大学副教授，两者非同一人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkg7302w7rmtbw9g0f6te]:fdeca3b379be",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁 - 罕见病分会- 北京医学会",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容摘要为空，无法判断该页面是否与目标人物相关。需要人工核实页面内容。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkgic02wdrmtbc7lo3tgr]:ef4b11c1ff2c",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁 (@jieding)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容摘要为空，无法判断该Instagram账号是否为目标人物本人。需要人工核实账号内容。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkgti02wjrmtbnkoqhcbq]:a818ed97ebc7",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁介绍_图片_作品",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是一位演员丁洁，其职业（演员）与目标人物（研究员、教授）不符，且目标人物当前职位为明尼苏达大学副教授，两者非同一人。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkh9a02wrrmtbd5lr698p]:7a13d4f915be",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁博士 - 分子科学公共实验平台",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是西湖大学的丁洁博士，其研究方向（微流控、体外诊断）与目标人物（AI安全、大语言模型）不符，且目标人物当前职位为明尼苏达大学副教授，两者非同一人。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjuve7390irnrmtbhb6jli94]:de1552a02ba6",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Yuanshun (Kevin) Yao",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该Google Scholar页面属于Yuanshun (Kevin) Yao，其当前机构为Meta GenAI，与人物姚顺雨（OpenAI研究员）不符。页面内容无法证明是关于姚顺雨的。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxsfpf04qzrmtb2hljsj4l]:5dd5a8231f34",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Tom Brown | Senior Vice President at Burford Capital in ...",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该页面是关于Burford Capital公司高级副总裁Tom Brown的简介，其职业背景为法律和投资，与AI人物汤姆·布朗（Anthropic联合创始人）完全不符。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fjdm06iqrmtbrbgutjcx]:9936cd474530",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "FireRed",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "该页面是小红书音频智能团队（FireRed Team）的官方介绍，属于团队成果。将团队页面归于个人（肖弘）名下，属于过度归因。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fjsw06isrmtbeewzlk6r]:483f3f03a373",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Academic",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该页面是解奉龙（Feng-Long Xie）的个人学术主页，其身份是小红书音频智能团队负责人，与人物肖弘（Manus AI创始人）不符。"
+    }
+  ]
+}

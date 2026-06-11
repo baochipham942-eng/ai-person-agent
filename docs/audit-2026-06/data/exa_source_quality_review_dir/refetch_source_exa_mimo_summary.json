@@ -1,0 +1,669 @@
+{
+  "generatedAt": "2026-06-10T04:13:10.922Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/exa_source_quality_mimo_claims.jsonl",
+    "output": "docs/audit-2026-06/data/exa_source_quality_review_dir/refetch_source_exa_mimo.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 490,
+      "offset": 0,
+      "searchResults": 5,
+      "maxCandidates": 8,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "basic",
+      "tavilyRawContent": "text"
+    }
+  },
+  "selectedTasks": 490,
+  "existingRows": 490,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 490,
+  "byDecision": {
+    "replace_source": 358,
+    "augment_source": 71,
+    "no_good_source": 39,
+    "human_review": 22
+  },
+  "byPerson": {
+    "Aidan Gomez": 5,
+    "Alexandr Wang": 2,
+    "Andrej Karpathy": 12,
+    "Arthur Mensch": 9,
+    "Chris Olah": 6,
+    "Christopher Manning": 5,
+    "Demis Hassabis": 6,
+    "Dario Amodei": 3,
+    "Daniela Amodei": 1,
+    "Dylan Field": 1,
+    "Elon Musk": 10,
+    "Emad Mostaque": 9,
+    "Geoffrey Hinton": 12,
+    "Greg Brockman": 2,
+    "Guillaume Lample": 10,
+    "Hyung Won Chung": 3,
+    "Ilya Sutskever": 6,
+    "Jan Leike": 7,
+    "Jaana Dogan": 1,
+    "Jason Wei": 5,
+    "John Schulman": 3,
+    "Lukasz Kaiser": 4,
+    "Mustafa Suleyman": 15,
+    "Noam Shazeer": 1,
+    "Oriol Vinyals": 11,
+    "Percy Liang": 9,
+    "Quoc Le": 1,
+    "Shane Legg": 12,
+    "Sam Altman": 1,
+    "Wojciech Zaremba": 5,
+    "Yann LeCun": 11,
+    "Yoshua Bengio": 13,
+    "乔尔·皮诺": 10,
+    "丁洁": 1,
+    "亚历克·拉德福德": 11,
+    "凯文·斯科特": 5,
+    "刘知远": 17,
+    "吴恩达": 7,
+    "周伯文": 20,
+    "周明": 17,
+    "唐杰": 13,
+    "埃里克·霍维茨": 1,
+    "姚顺雨": 2,
+    "季逸超": 10,
+    "布莱恩·卡坦扎罗": 4,
+    "戴文渊": 8,
+    "朱军": 9,
+    "李开复": 22,
+    "李莲": 6,
+    "李飞飞": 21,
+    "杨植麟": 20,
+    "杰夫·迪恩": 9,
+    "桑达尔·皮查伊": 6,
+    "汤姆·布朗": 10,
+    "科拉伊·卡武克丘奥卢": 9,
+    "肖弘": 2,
+    "贾里德·卡普兰": 7,
+    "闫俊杰": 8,
+    "阿希什·瓦斯瓦尼": 7,
+    "雅各布·乌什科雷特": 4,
+    "马克·扎克伯格": 1,
+    "黄仁勋": 4,
+    "黄铁军": 18
+  },
+  "selectedHosts": {
+    "aidangomez.ca": 2,
+    "arxiv.org": 20,
+    "time.com": 7,
+    "cnbc.com": 6,
+    "youtube.com": 21,
+    "theverge.com": 2,
+    "cohere.com": 1,
+    "e.vnexpress.net": 1,
+    "alexw.substack.com": 1,
+    "medium.com": 3,
+    "karpathy.ai": 1,
+    "cs.stanford.edu": 5,
+    "team.inria.fr": 3,
+    "dl.acm.org": 1,
+    "github.com": 4,
+    "gist.github.com": 2,
+    "technologyreview.com": 5,
+    "a16z.com": 3,
+    "colah.github.io": 3,
+    "politico.eu": 1,
+    "africa.businessinsider.com": 1,
+    "theses.fr": 1,
+    "podscripts.co": 2,
+    "80000hours.org": 2,
+    "research.google.com": 1,
+    "mlanthology.org": 3,
+    "research.google": 10,
+    "nlp.stanford.edu": 4,
+    "wired.com": 2,
+    "darioamodei.com": 2,
+    "cbmm.mit.edu": 1,
+    "isomorphiclabs.com": 1,
+    "achievement.org": 1,
+    "distributed.blog": 1,
+    "news.sky.com": 1,
+    "whatsuptesla.com": 1,
+    "singjupost.com": 2,
+    "web.archive.org": 1,
+    "simonandschuster.com": 1,
+    "tesla.com": 1,
+    "votetesla.com": 1,
+    "techcrunch.com": 4,
+    "futureoflife.org": 1,
+    "foreignaffairs.com": 1,
+    "npr.org": 2,
+    "digitalassets.tesla.com": 1,
+    "open.spotify.com": 1,
+    "ii.inc": 1,
+    "aiandfaith.org": 1,
+    "emad.posthaven.com": 1,
+    "downloads.bbc.co.uk": 1,
+    "fortune.com": 2,
+    "stability.ai": 2,
+    "en-wp.org": 1,
+    "cs.toronto.edu": 4,
+    "ea.greaterwrong.com": 1,
+    "aol.com": 3,
+    "nobelprize.org": 2,
+    "utoronto.ca": 2,
+    "awards.acm.org": 1,
+    "deeplearning.ai": 3,
+    "discover.research.utoronto.ca": 1,
+    "textbookofai.com": 1,
+    "nextomoro.com": 2,
+    "dblp.org": 2,
+    "openreview.net": 11,
+    "aclanthology.org": 5,
+    "hwchung2.github.io": 3,
+    "proceedings.neurips.cc": 1,
+    "oreilly.com": 1,
+    "dwarkesh.com": 2,
+    "jan.leike.name": 4,
+    "aligned.substack.com": 2,
+    "xcancel.com": 1,
+    "jasonwei.net": 7,
+    "eecs.berkeley.edu": 1,
+    "ar5iv.labs.arxiv.org": 1,
+    "picampus-school.com": 1,
+    "en.wikipedia.org": 10,
+    "ted.com": 7,
+    "econclubny.org": 1,
+    "uk.finance.yahoo.com": 1,
+    "blogs.microsoft.com": 3,
+    "podcasts.apple.com": 7,
+    "mustafa-suleyman.ai": 4,
+    "noamshazeer.com": 1,
+    "lexfridman.com": 1,
+    "twimlai.com": 2,
+    "theneuron.ai": 1,
+    "hai.stanford.edu": 7,
+    "engineering.stanford.edu": 1,
+    "sites.libsyn.com": 1,
+    "linkedin.com": 5,
+    "profiles.stanford.edu": 1,
+    "learn.deeplearning.ai": 1,
+    "blog.samaltman.com": 1,
+    "digit.in": 1,
+    "the-decoder.com": 1,
+    "moneycontrol.com": 1,
+    "podwise.ai": 3,
+    "deepmind.google": 1,
+    "genealogy.math.ndsu.nodak.edu": 1,
+    "openai.com": 1,
+    "cs.nyu.edu": 4,
+    "engineering.nyu.edu": 2,
+    "simonsfoundation.org": 1,
+    "yann.lecun.org": 1,
+    "vinfutureprize.org": 1,
+    "philpapers.org": 1,
+    "yoshuabengio.org": 3,
+    "ai.meta.com": 5,
+    "mila.quebec": 2,
+    "recherche.umontreal.ca": 1,
+    "prnewswire.com": 1,
+    "nouvelles.umontreal.ca": 1,
+    "assets.publishing.service.gov.uk": 1,
+    "cs.mcgill.ca": 5,
+    "thetwentyminutevc.com": 1,
+    "cifar.ca": 1,
+    "observer.com": 1,
+    "mastersofscale.com": 1,
+    "x.com": 1,
+    "de.wikipedia.org": 1,
+    "mcgill.ca": 1,
+    "chessprogramming.org": 1,
+    "cdn.openai.com": 2,
+    "scholar.google.com": 5,
+    "semanticscholar.org": 4,
+    "newmu.github.io": 1,
+    "news.microsoft.com": 2,
+    "possible.fm": 1,
+    "instagram.com": 1,
+    "cs.tsinghua.edu.cn": 4,
+    "hub.baai.ac.cn": 16,
+    "tsinghua.edu.cn": 8,
+    "m.bjnews.com.cn": 5,
+    "aihub.cn": 3,
+    "bianews.com": 1,
+    "zhuanlan.zhihu.com": 4,
+    "bilibili.com": 1,
+    "huxiu.com": 1,
+    "nlp.csai.tsinghua.edu.cn": 1,
+    "aiig.tsinghua.edu.cn": 2,
+    "agent.csdn.net": 1,
+    "cloud.tencent.com": 8,
+    "ft.com": 1,
+    "jiemian.com": 1,
+    "qbitai.com": 6,
+    "news.sciencenet.cn": 3,
+    "most.gov.cn": 1,
+    "shlab.org.cn": 1,
+    "jfdaily.com": 1,
+    "m.36kr.com": 7,
+    "finance.sina.cn": 4,
+    "cls.cn": 2,
+    "qimingvc.com": 1,
+    "saif.sjtu.edu.cn": 1,
+    "digichina.stanford.edu": 1,
+    "sohu.com": 2,
+    "microsoft.com": 1,
+    "icst.pku.edu.cn": 1,
+    "ee.tsinghua.edu.cn": 1,
+    "m.cyzone.cn": 1,
+    "langboat.com": 1,
+    "zhou.team": 1,
+    "china.ioppublishing.org": 1,
+    "me.tsinghua.edu.cn": 1,
+    "gwern.net": 1,
+    "keg.cs.tsinghua.edu.cn": 1,
+    "edu.cn": 1,
+    "ccf.org.cn": 2,
+    "iswc2023.semanticweb.org": 1,
+    "learn.microsoft.com": 1,
+    "mp.weixin.qq.com": 1,
+    "zh.wikipedia.org": 3,
+    "baike.baidu.com": 1,
+    "manus.im": 1,
+    "jhu.engins.org": 1,
+    "stcn.com": 2,
+    "m.21jingji.com": 2,
+    "digitalfoundry.net": 1,
+    "research.nvidia.com": 1,
+    "blogs.nvidia.com": 1,
+    "fx168news.com": 1,
+    "21jingji.com": 2,
+    "t.cj.sina.cn": 2,
+    "hkexnews.hk": 2,
+    "startup.aliyun.com": 1,
+    "sii.edu.cn": 1,
+    "ml-summit.org": 1,
+    "guandian.cn": 1,
+    "brain.tsinghua.edu.cn": 1,
+    "tsaf.ac.cn": 1,
+    "sse.cuhk.edu.cn": 1,
+    "chemsoc.org.cn": 1,
+    "knowledge.wharton.upenn.edu": 2,
+    "lingyiwanwu.com": 1,
+    "play.google.com": 1,
+    "air.tsinghua.edu.cn": 1,
+    "ithome.com.tw": 1,
+    "m.leiphone.com": 1,
+    "news.cn": 2,
+    "finance.sina.com.cn": 5,
+    "chuangxin.com": 2,
+    "cccw.hku.hk": 1,
+    "books.google.com": 1,
+    "diamandis.com": 1,
+    "app.hkong.hk": 1,
+    "betterhongkong.org": 1,
+    "lilianweng.github.io": 2,
+    "fellowsfund.substack.com": 1,
+    "m.zhidx.com": 1,
+    "geekpark.net": 1,
+    "issues.org": 2,
+    "tools-and-weapons-with-brad-smith.simplecast.com": 1,
+    "alumni.princeton.edu": 1,
+    "exchange.scale.com": 1,
+    "radical.vc": 1,
+    "computerhistory.org": 1,
+    "case.ntu.edu.tw": 1,
+    "src.stanford.edu": 1,
+    "news.pedaily.cn": 1,
+    "m.caixin.com": 2,
+    "xiaoyuzhoufm.com": 3,
+    "news.qq.com": 2,
+    "kimiyoung.github.io": 1,
+    "fortunechina.com": 1,
+    "why.com.cn": 4,
+    "m.mp.oeeee.com": 1,
+    "caifuhao.eastmoney.com": 1,
+    "news.mbalib.com": 1,
+    "sqz.ac.cn": 1,
+    "blog.google": 8,
+    "csail.mit.edu": 1,
+    "bbc.com": 2,
+    "mittrchina.com": 1,
+    "cmu.edu": 1,
+    "forbes.com": 1,
+    "salesforceventures.com": 1,
+    "digg.com": 1,
+    "usenix.org": 1,
+    "blog.southparkcommons.com": 1,
+    "raeng.org.uk": 2,
+    "snu.elsevierpure.com": 1,
+    "hertzfoundation.org": 2,
+    "physics-astronomy.jhu.edu": 1,
+    "physicsmeetsml.org": 1,
+    "inspirehep.net": 1,
+    "eu.36kr.com": 1,
+    "m.cls.cn": 1,
+    "developer.volcengine.com": 1,
+    "cyzone.cn": 2,
+    "wallstreetcn.com": 1,
+    "papers.neurips.cc": 2,
+    "isi.edu": 1,
+    "jakob.uszkoreit.net": 1,
+    "tedai-sanfrancisco.ted.com": 1,
+    "ai.ettoday.net": 1,
+    "tw.stock.yahoo.com": 1,
+    "m.thepaper.cn": 1,
+    "chaosuanwiki.com": 1,
+    "idm.pku.edu.cn": 3,
+    "news.pku.edu.cn": 2,
+    "old2022.bulletin.cas.cn": 1,
+    "igg.cas.cn": 1,
+    "globalpeople.com.cn": 1,
+    "2025.baai.ac.cn": 1,
+    "ai.pku.edu.cn": 1
+  },
+  "selectedSources": 565,
+  "candidateCount": 2799,
+  "sample": [
+    {
+      "person": "Aidan Gomez",
+      "target": "Humans behind AI: Aidan Gomez",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Aidan Gomez | Computer Science & Mathematics",
+          "host": "aidangomez.ca",
+          "url": "https://aidangomez.ca/"
+        },
+        {
+          "title": "Attention Is All You Need",
+          "host": "arxiv.org",
+          "url": "https://arxiv.org/abs/1706.03762"
+        }
+      ],
+      "rationale": "原始来源（McKinsey页面）内容泛泛，无法验证具体贡献。候选来源中，本人官方主页（aidangomez.ca）和Transformer原始论文（arXiv）是权威、可访问的一手来源，能直接、明确地证明Aidan Gomez作为Cohere联合创始人及Transformer共同发明人的关键身份与成就，完美满足证据要求。"
+    },
+    {
+      "person": "Aidan Gomez",
+      "target": "Aidan Gomez's Publishings | Computer Science & Mathematics",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Aidan Gomez: The 100 Most Influential People in AI 2023",
+          "host": "time.com",
+          "url": "https://time.com/collections/time100-ai/6310653/aidan-gomez/"
+        },
+        {
+          "title": "Cohere CEO and ex-Google researcher Aidan Gomez on how AI makes money",
+          "host": "cnbc.com",
+          "url": "https://www.cnbc.com/2024/07/06/cohere-ceo-and-ex-google-researcher-aidan-gomez-on-how-ai-makes-money.html"
+        }
+      ],
+      "rationale": "原始来源已过时且权威性弱。候选中的TIME和CNBC页面均为权威媒体，直接、明确地证明了Aidan Gomez作为Cohere CEO/联合创始人及Transformer论文共同作者的身份，满足证据要求，可完全替换原来源。"
+    },
+    {
+      "person": "Aidan Gomez",
+      "target": "Aidan Gomez",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Aidan Gomez | Computer Science & Mathematics",
+          "host": "aidangomez.ca",
+          "url": "https://aidangomez.ca/"
+        }
+      ],
+      "rationale": "原始来源（Google Scholar）因加载失败且为索引页而无效。候选中的个人主页（aidangomez.ca）是权威的官方来源，能直接证明其职位、教育背景和研究经历，可作为主要补充来源。其他Google Scholar链接因同样问题被拒绝。"
+    },
+    {
+      "person": "Aidan Gomez",
+      "target": "Inside the Paper That Changed AI Forever - Cohere CEO ...",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Synthetic Data and the Future of AI | Cohere CEO Aidan Gomez",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=SGQysDdJUHg"
+        },
+        {
+          "title": "Cohere CEO Aidan Gomez sees AI’s pathway to profitability | The Verge",
+          "host": "theverge.com",
+          "url": "https://www.theverge.com/24173858/ai-cohere-aidan-gomez-money-revenue-llm-transformers-enterprise-stochastic-parrot"
+        }
+      ],
+      "rationale": "候选来源中，两个YouTube视频和一篇The Verge文章均明确包含目标人物Aidan Gomez的姓名、职位（Cohere CEO）及相关讨论主题，内容权威且可访问。原始来源因内容过薄被替换。其他候选因访问受限被拒绝。"
+    },
+    {
+      "person": "Aidan Gomez",
+      "target": "Aidan Gomez – Medium",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "How We’re Getting AI Risk Wrong",
+          "host": "cohere.com",
+          "url": "https://cohere.com/blog/how-were-getting-ai-risk-wrong-aidan-gomez"
+        }
+      ],
+      "rationale": "原来源（Medium主页）缺乏足够上下文。候选中的Cohere官方博客文章是最佳替代，它直接来自Aidan Gomez的公司，明确标注其职位和作者身份，权威且可访问，能直接证明人物与观点的关系。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "target": "5 things to know about tech mogul Alexandr Wang, world’s youngest self-made billionaire",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "From MIT dropout to AI mogul: how the world’s youngest self-made tech billionaire Alexandr Wang builds data empire - VnExpress International",
+          "host": "e.vnexpress.net",
+          "url": "https://e.vnexpress.net/news/tech/tech-news/from-mit-dropout-to-ai-mogul-how-the-world-s-youngest-self-made-tech-billionaire-alexandr-wang-builds-data-empire-4873124.html"
+        }
+      ],
+      "rationale": "原始来源（VnExpress）内容预览不足，存在弱匹配问题。候选中的英文版VnExpress文章标题和预览直接、明确地描述了Alexandr Wang的身份（MIT辍学生、最年轻白手起家亿万富翁）及其公司（Scale AI），信息权威且相关，可有效替换原始来源。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "target": "Alexandr Wang | Substack: Rational in the Fullness of Time",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "The AI War and How to Win It - by Alexandr Wang",
+          "host": "alexw.substack.com",
+          "url": "https://alexw.substack.com/p/war"
+        }
+      ],
+      "rationale": "原始来源为Substack主页，内容不足。候选中有一篇由Alexandr Wang撰写的具体文章，标题和预览明确展示其观点，可补强来源。其他候选页面信息过于泛泛或缺乏实质内容。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "The LLM Operating System, as Elucidated by Andrej Karpathy in the Introduction to Large Language Models Presentation",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "候选来源均为LinkedIn上的第三方文章或帖子，属于社交媒体/UGC，权威性不足，且存在登录墙，无法直接验证内容。原始来源也存在同样问题。需要寻找更权威的来源，如Karpathy的官方演讲视频、转录或其个人网站/博客上的相关内容。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Andrej Karpathy: Software Is Changing (Again) Notes | by bingwu1995 | Medium",
+          "host": "medium.com",
+          "url": "https://medium.com/@bingwuthu/andrej-karpathy-software-is-changing-again-notes-5d5ffe36055c"
+        }
+      ],
+      "rationale": "原Medium来源质量弱，无法确认“AI Pioneer”是否指代Andrej Karpathy。候选来源中，一篇Medium笔记直接引用了Karpathy关于“people spirits”的原话，并提供了其职位信息，可作为补强来源。YouTube视频是权威原始来源，但需要转录来提取具体引文，建议作为进一步查询目标。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "Software in the AI Era: Andrej Karpathy’s 3 Programming Paradigms",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Andrej Karpathy: Software Is Changing (Again)",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=LCEmiRjPEtQ"
+        }
+      ],
+      "rationale": "原始来源为弱匹配的第三方博客。候选中，Y Combinator官方YouTube视频是Andrej Karpathy本人演讲的权威一手来源，标题和描述直接证明其观点，可完美替换并补强证据。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "The Wisdom Hidden in Plain Sight: What Andrej Karpathy Reveals About Our AI Future",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均为LinkedIn上的用户生成内容，权威性不足，且预览文本无法证明内容与Andrej Karpathy的直接关联或观点阐述。需要寻找更权威的官方或学术来源。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "How I use LLMs",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "How I use LLMs",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=EWvNQjAaOHw"
+        }
+      ],
+      "rationale": "原始视频页面（候选1）的作者字段和描述已明确证明Andrej Karpathy是视频创作者，满足证据要求，可直接替换原来源。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "Andrej Karpathy",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源都是Google Scholar的镜像或变体页面，且预览内容均显示加载失败，无法提供可访问的、能直接证明Andrej Karpathy学术身份或贡献的有效信息。这些页面本质上是搜索/索引页面，不符合权威、可访问的要求。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "Andrej Karpathy - Home",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "Andrej Karpathy",
+          "host": "karpathy.ai",
+          "url": "https://karpathy.ai/"
+        },
+        {
+          "title": "Andrej Karpathy Academic Website",
+          "host": "cs.stanford.edu",
+          "url": "https://cs.stanford.edu/~karpathy/"
+        }
+      ],
+      "rationale": "原来源为ACM通用目录页，无法证明人物身份。候选中 karpathy.ai 是其本人官方主页，斯坦福页面是权威学术履历页，两者均能直接、可靠地关联Andrej Karpathy本人及其工作，完全满足证据要求。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "Andrej Karpathy",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Let's build GPT: from scratch, in code, spelled out.",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY"
+        },
+        {
+          "title": "[1hr Talk] Intro to Large Language Models",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g"
+        }
+      ],
+      "rationale": "候选来源中，多个具体视频页面（如关于GPT构建和LLM入门的讲座）明确显示作者为Andrej Karpathy，并提供了详细的标题和描述，直接证明其在YouTube上发布的内容主题和成就。这些页面能有效替换原始来源中缺乏具体上下文的频道主页。"
+    },
+    {
+      "person": "Arthur Mensch",
+      "target": "Arthur Mensch - Google 学术搜索",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Arthur Mensch – Parietal",
+          "host": "team.inria.fr",
+          "url": "https://team.inria.fr/parietal/team-members/arthur-mensch/"
+        },
+        {
+          "title": "Arthur Mensch - Home",
+          "host": "dl.acm.org",
+          "url": "https://dl.acm.org/profile/99659124073"
+        }
+      ],
+      "rationale": "原始来源为Google Scholar索引页，缺乏直接描述。候选中的Inria团队页面和ACM作者主页均为权威机构提供的官方个人资料，能直接证明其学术身份和研究贡献，符合替换要求。"
+    },
+    {
+      "person": "Arthur Mensch",
+      "target": "Arthur Mensch",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Arthur Mensch – Parietal",
+          "host": "team.inria.fr",
+          "url": "https://team.inria.fr/parietal/team-members/arthur-mensch/"
+        },
+        {
+          "title": "Arthur Mensch (@arthurmensch)",
+          "host": "github.com",
+          "url": "https://github.com/arthurmensch"
+        }
+      ],
+      "rationale": "原始来源为Google Scholar索引页，无法直接证明人物身份与贡献。候选来源中，Inria团队页面提供了其早期学术背景，GitHub主页则直接证明了其作为Mistral AI联合创始人兼CEO的当前职位，两者结合能有效补强证据链。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "[1hr Talk] Intro to Large Language Models",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "[1hr Talk] Intro to Large Language Models",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g"
+        }
+      ],
+      "rationale": "原始来源缺失人物姓名，但候选中的同一YouTube视频页面元数据已明确显示作者为Andrej Karpathy，满足证据要求，可直接替换。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "LLM - Detailed dive into LLM w Andrej Karpathy",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "llm-wiki · GitHub",
+          "host": "gist.github.com",
+          "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+        }
+      ],
+      "rationale": "原始来源（Obsidian笔记）证据不足。最佳替换来源是Karpathy本人在GitHub Gist上发布的原始文档，它直接、权威地证明了其LLM Wiki方法。其他候选均为第三方解读或实现，权威性不足。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "LLM Council: Andrej Karpathy’s AI for Reliable Answers",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "karpathy/llm-council",
+          "host": "github.com",
+          "url": "https://github.com/karpathy/llm-council"
+        }
+      ],
+      "rationale": "GitHub仓库是Andrej Karpathy本人维护的官方项目页面，直接证明了他创建并贡献于LLM Council项目，权威性高且可访问。其他候选来源均为第三方报道或用户生成内容，无法作为替换原始弱匹配来源的可靠依据。"
+    }
+  ]
+}

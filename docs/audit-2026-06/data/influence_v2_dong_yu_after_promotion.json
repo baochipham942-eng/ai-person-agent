@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-11T13:13:24.213Z",
+  "mode": "execute",
+  "formula": {
+    "aiOriginalContribution": 35,
+    "industryEcosystem": 25,
+    "authority": 20,
+    "learningValue": 10,
+    "recency": 10,
+    "statusMultiplier": {
+      "ready": 1,
+      "active": 1,
+      "building": 0.55,
+      "candidate": 0.35,
+      "pending": 0.35,
+      "error": 0
+    }
+  },
+  "people": [
+    {
+      "id": "de1b6771-2cb5-4b53-9d0e-464ed96354f4",
+      "name": "Dong Yu",
+      "status": "ready",
+      "roleCategory": "researcher",
+      "currentTitle": "Distinguished Scientist, Tencent AI Lab / Chief Scientist, Tencent Cloud AI @ Tencent",
+      "aiContributionScore": 5,
+      "githubStars": 0,
+      "citationCount": 0,
+      "hIndex": 0,
+      "counts": {
+        "cards": 5,
+        "raw": 2,
+        "keep": 2,
+        "sources": 1,
+        "courses": 0,
+        "recentKeep": 2
+      },
+      "breakdown": {
+        "aiOriginal": 16.055045871559635,
+        "industryEcosystem": 9.8,
+        "authority": 3.7,
+        "learningValue": 1.8799999999999997,
+        "recency": 4.936077635609568,
+        "subtotal": 36.3711235071692,
+        "statusMultiplier": 1,
+        "finalScore": 36.37
+      }
+    }
+  ]
+}

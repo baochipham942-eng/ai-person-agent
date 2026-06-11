@@ -1,0 +1,1155 @@
+{
+  "generatedAt": "2026-06-10T19:27:16.890Z",
+  "summary": {
+    "generatedAt": "2026-06-10T19:27:16.887Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch20_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch20_curated_apply_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH20_CURATED_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 14,
+    "selectedSourceRows": 14,
+    "skippedRows": 11,
+    "existingRawPoolItems": 6,
+    "rawInserted": 8,
+    "rawUpdated": 6,
+    "keepAuditsInserted": 8,
+    "keepAuditsExisting": 6,
+    "byDecision": {
+      "replace_source": 7,
+      "augment_source": 7
+    },
+    "bySourceType": {
+      "exa": 9,
+      "official": 2,
+      "paper": 3
+    },
+    "topPeople": {
+      "吴恩达": 4,
+      "桑达尔·皮查伊": 3,
+      "李开复": 2,
+      "李莲": 2,
+      "唐杰": 1,
+      "贾里德·卡普兰": 1,
+      "阿希什·瓦斯瓦尼": 1
+    },
+    "topHosts": {
+      "coursera.org": 2,
+      "deeplearning.ai": 2,
+      "blog.google": 1,
+      "cs.tsinghua.edu.cn": 1,
+      "hkforum.com": 1,
+      "lilianweng.github.io": 1,
+      "lingyiwanwu.com": 1,
+      "mittrchina.com": 1,
+      "openreview.net": 1,
+      "papers.neurips.cc": 1,
+      "semanticscholar.org": 1,
+      "time.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 11
+    }
+  },
+  "existing": [
+    {
+      "id": "fa641acf-8ab1-49a1-9aeb-e81d584b7091",
+      "personId": "cmjtwksri000aopf3xzym5sx8",
+      "person": "唐杰",
+      "url": "https://www.cs.tsinghua.edu.cn/info/1111/3486.htm",
+      "urlHash": "07fc854d069e3f5bd617a31d77f0d6b5250384c4ae9530686ed6f029685c3f04",
+      "sourceType": "official",
+      "title": "唐杰 - 清华大学计算机科学与技术系",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "42499e5b-94f1-43ac-943f-517ebb8578ae",
+      "personId": "cmjtwkgug0004opf3th1cmczu",
+      "person": "李开复",
+      "url": "https://www.hkforum.com/cn/speaker/101-%E6%9D%8E%E5%BC%80%E5%A4%8D",
+      "urlHash": "6a77318629f42c40fac0d7451d3afc6267eb5239cdbde9deaea78d862389605f",
+      "sourceType": "exa",
+      "title": "李开复- 香港中美论坛",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "36b2a532-7c96-4088-82ec-7cd7e859ed4c",
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "url": "https://openreview.net/profile?id=~Lilian_Weng1",
+      "urlHash": "53e539d62a11d51c6ed825da164070530b3964cbca19b9493bf42378acd17c10",
+      "sourceType": "paper",
+      "title": "Lilian Weng | OpenReview",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "e63260ce-57c2-4b24-b3a6-c1de67aa1865",
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "url": "https://lilianweng.github.io/posts/2025-05-01-thinking",
+      "urlHash": "28c74de88b7b34f7a0e35e8100464c79debe2f14b01217ee580098ecdc2189af",
+      "sourceType": "exa",
+      "title": "Why We Think | Lil'Log",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "597c9d5e-a20d-4fde-9dfb-8d89a9ba922b",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "url": "https://www.mittrchina.com/news/detail/12734",
+      "urlHash": "05e72abafcd097358f12c79688a3dd159f204a418a8907437719ec7614049c96",
+      "sourceType": "exa",
+      "title": "麻省理工科技评论-独家专访谷歌CEO桑达尔·皮查伊：基于我的个人经历",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "4d9254ae-d16a-454d-9f54-6b4cc92c8b83",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "url": "https://papers.neurips.cc/paper/7181-attention-is-all-you-need.pdf",
+      "urlHash": "5a652422f33f80a7c83673fb23ad0d1fb77e6ea2e21e001c5697442bfcfe1025",
+      "sourceType": "paper",
+      "title": "[PDF] Attention is All you Need - NIPS",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmju1e3mi0ckqrmtb954qdsrj",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.deeplearning.ai/courses/generative-ai-for-everyone",
+      "urlHash": "09745a6f5b92e0e03bc3a4fbaa96524d7ae3b1b8fdff39d9d6a7ba9dc6edb99c",
+      "contentHash": "163f1cd7cf09bc3dd052b3e68494e0bbe18261ad0a5142e4ed4212612e819348",
+      "sourceType": "exa",
+      "title": "Generative AI for Everyone - DeepLearning.AI",
+      "text": "Evidence quote: Instructor: Andrew Ng Selection reason: DeepLearning.AI官方课程页面，明确显示讲师为吴恩达，是课程最权威的来源。 Source preview: DeepLearning.AI Start Learning Explore Courses AI Newsletter + The Batch + Andrew's Letter + Data Points + ML Research + Blog Community + Forum + Events + Ambassadors + Ambassador Spotlight + Resources Membership Start Learning CourseBeginner5h Generative AI for Everyoneㅤ Instructor:Andrew Ng Earna certificatewithPRO Enroll Now Also available on Coursera Beginner 5h 32 Video Lessons 2 Code Examples 6 Graded AssignmentsPRO Earn a certificate with PRO Instructor: Andrew Ng DeepLearning.AIDeepLearning.AI Learn more aboutMembership PRO Plan Start Learning Also available on Coursera What you'll learn Learn directly from Andrew Ng about the technology of generative AI, how it works, and what it c... MiMo rationale: 候选来源中，Coursera和DeepLearning.AI的官方课程页面是证明吴恩达与“Generative AI for Everyone”课程关系的最权威、最直接的来源。它们明确标注了讲师信息，符合证据要求。其他来源要么权威性不足，要么与目标课程关联不直接。 Evidence requirements: Source must name 吴恩达 directly. | Source must support why \"Generative AI for Everyone by DeepLearning.AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 吴恩达 Generative for Everyone DeepLearning.AI official source | 吴恩达 Generative for Everyone DeepLearning.AI 斯坦福大学 谷歌 evidence | 吴恩达 Generative for Everyone DeepLearning.AI interview transcript",
+      "selectedHost": "deeplearning.ai",
+      "reason": "DeepLearning.AI官方课程页面，明确显示讲师为吴恩达，是课程最权威的来源。",
+      "evidenceQuote": "Instructor: Andrew Ng",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1e3mi0ckqrmtb954qdsrj",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:16:44.113Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.coursera.org/learn/generative-ai-for-everyone",
+          "title": "Generative AI for Everyone by DeepLearning.AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容侧重于课程营销和平台优惠信息，对人物本身的刻画极少。.",
+          "evidenceRequirements": [
+            "Source must name 吴恩达 directly.",
+            "Source must support why \"Generative AI for Everyone by DeepLearning.AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "吴恩达 Generative for Everyone DeepLearning.AI official source",
+            "吴恩达 Generative for Everyone DeepLearning.AI 斯坦福大学 谷歌 evidence",
+            "吴恩达 Generative for Everyone DeepLearning.AI interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1e3mi0ckqrmtb954qdsrj",
+          "objectLabel": "Generative AI for Everyone by DeepLearning.AI"
+        },
+        "selectedReason": "DeepLearning.AI官方课程页面，明确显示讲师为吴恩达，是课程最权威的来源。",
+        "evidenceQuote": "Instructor: Andrew Ng",
+        "candidateAuthorityScore": 6,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju1e3mi0ckqrmtb954qdsrj",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.coursera.org/learn/generative-ai-for-everyone",
+      "urlHash": "83d78fb88de9bd9272e897eed85f9ffdbf9ad22c8488c7622e34f61e60bda95d",
+      "contentHash": "157651834a07112f4962c72b4d2fb8ccf38646fb11823d68fafe770e93a62664",
+      "sourceType": "exa",
+      "title": "Generative AI for Everyone | Coursera",
+      "text": "Evidence quote: Instructor: Andrew Ng Selection reason: Coursera官方课程页面，明确显示讲师为吴恩达，是课程最权威的来源。 Source preview: DeepLearning.AI Generative AI for Everyone DeepLearning.AI Generative AI for Everyone Taught in Spanish (AI Dubbing) Andrew Ng Instructor: Andrew Ng Top Instructor 801,690 already enrolled 5,068 reviews Recommended experience 5,068 reviews Recommended experience What you'll learn What generative AI is and how it works, its common use cases, and what this technology can and cannot do. How to think through the lifecycle of a generative AI project, from conception to launch, including how to build effective prompts. The potential opportunities and risks that generative AI technologies present to individuals, businesses, and society. Skills you'll gain Tools you'll learn Details to know Add to ... MiMo rationale: 候选来源中，Coursera和DeepLearning.AI的官方课程页面是证明吴恩达与“Generative AI for Everyone”课程关系的最权威、最直接的来源。它们明确标注了讲师信息，符合证据要求。其他来源要么权威性不足，要么与目标课程关联不直接。 Evidence requirements: Source must name 吴恩达 directly. | Source must support why \"Generative AI for Everyone by DeepLearning.AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 吴恩达 Generative for Everyone DeepLearning.AI official source | 吴恩达 Generative for Everyone DeepLearning.AI 斯坦福大学 谷歌 evidence | 吴恩达 Generative for Everyone DeepLearning.AI interview transcript",
+      "selectedHost": "coursera.org",
+      "reason": "Coursera官方课程页面，明确显示讲师为吴恩达，是课程最权威的来源。",
+      "evidenceQuote": "Instructor: Andrew Ng",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1e3mi0ckqrmtb954qdsrj",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:16:44.113Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.coursera.org/learn/generative-ai-for-everyone",
+          "title": "Generative AI for Everyone by DeepLearning.AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容侧重于课程营销和平台优惠信息，对人物本身的刻画极少。.",
+          "evidenceRequirements": [
+            "Source must name 吴恩达 directly.",
+            "Source must support why \"Generative AI for Everyone by DeepLearning.AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "吴恩达 Generative for Everyone DeepLearning.AI official source",
+            "吴恩达 Generative for Everyone DeepLearning.AI 斯坦福大学 谷歌 evidence",
+            "吴恩达 Generative for Everyone DeepLearning.AI interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1e3mi0ckqrmtb954qdsrj",
+          "objectLabel": "Generative AI for Everyone by DeepLearning.AI"
+        },
+        "selectedReason": "Coursera官方课程页面，明确显示讲师为吴恩达，是课程最权威的来源。",
+        "evidenceQuote": "Instructor: Andrew Ng",
+        "candidateAuthorityScore": 24,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju16yi00b7qrmtbgdxi12af",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "urlHash": "45d79dce316c5d45004721d5c762ff6a68d8ee833233ba482d36255c397062ff",
+      "contentHash": "69bc4de229189cb6b07d064267373af55ae8944ecb478813efbd742893013fdb",
+      "sourceType": "exa",
+      "title": "Machine Learning | Coursera",
+      "text": "Evidence quote: Instructors: Andrew Ng +3 more Top Instructor Selection reason: Coursera官方课程页，明确列出吴恩达为讲师，是课程权威发布平台。 Source preview: Stanford University DeepLearning.AI Machine Learning Specialization Get one of our best deals and build skills with 50% off Coursera Plus. Save now. Stanford University DeepLearning.AI Machine Learning Specialization BreakIntoAI with Machine Learning Specialization. Master fundamental AI concepts and develop practical machine learning skills in the beginner-friendly, 3-course program by AI visionary Andrew Ng Andrew Ng Geoff Ladwig Aarti Bagul Instructors: Andrew Ng +3 more Top Instructor 793,324 already enrolled from 38,767 reviews of courses in this program Recommended experience from 38,767 reviews of courses in this program Recommended experience What you'll learn Build ML models with N... MiMo rationale: 候选来源中，Coursera和DeepLearning.AI的官方课程页面是权威、可访问的一手来源，能直接证明吴恩达是该课程的讲师，符合证据要求。其他来源要么权威性不足，要么未直接提及人物姓名。 Evidence requirements: Source must name 吴恩达 directly. | Source must support why \"Machine Learning Specialization\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 吴恩达 Machine Learning Specialization official source | 吴恩达 Machine Learning Specialization 斯坦福大学 谷歌 evidence | 吴恩达 Machine Learning Specialization interview transcript",
+      "selectedHost": "coursera.org",
+      "reason": "Coursera官方课程页，明确列出吴恩达为讲师，是课程权威发布平台。",
+      "evidenceQuote": "Instructors: Andrew Ng +3 more Top Instructor",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju16yi00b7qrmtbgdxi12af",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:17:07.318Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.deeplearning.ai/courses/machine-learning-specialization/",
+          "title": "Machine Learning Specialization",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=主要是课程推广页面，虽提到吴恩达但内容空洞，营销性质强。.",
+          "evidenceRequirements": [
+            "Source must name 吴恩达 directly.",
+            "Source must support why \"Machine Learning Specialization\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "吴恩达 Machine Learning Specialization official source",
+            "吴恩达 Machine Learning Specialization 斯坦福大学 谷歌 evidence",
+            "吴恩达 Machine Learning Specialization interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju16yi00b7qrmtbgdxi12af",
+          "objectLabel": "Machine Learning Specialization"
+        },
+        "selectedReason": "Coursera官方课程页，明确列出吴恩达为讲师，是课程权威发布平台。",
+        "evidenceQuote": "Instructors: Andrew Ng +3 more Top Instructor",
+        "candidateAuthorityScore": 24,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju16yi00b7qrmtbgdxi12af",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.deeplearning.ai/specializations/machine-learning",
+      "urlHash": "49bbf20f54057933c5f2ca0fcc5ec87cc748759b21fd34591ed685fc978a82c0",
+      "contentHash": "1fb72e1ca14be56912074ec0e82bfea660e46df79e2b7a831cfae4123eac41d9",
+      "sourceType": "exa",
+      "title": "Machine Learning Specialization - DeepLearning.AI",
+      "text": "Evidence quote: Instructor: Andrew Ng Selection reason: DeepLearning.AI官网课程页，吴恩达是创始人，页面明确标注其为讲师。 Source preview: DeepLearning.AI Start Learning Explore Courses AI Newsletter + The Batch + Andrew's Letter + Data Points + ML Research + Blog Community + Forum + Events + Ambassadors + Ambassador Spotlight + Resources Membership Start Learning Professional CertificateBeginner94h47m Machine Learning Specialization Instructor:Andrew Ng DeepLearning.AI logoStanford Online logo Earna certificatewithPRO Enroll Now Also available on Coursera Beginner 94h47m 151 Video Lessons 32 Code Examples 42 Graded AssignmentsPRO Earn a certificate with PRO Instructor: Andrew Ng DeepLearning.AIDeepLearning.AIStanford OnlineStanford Online Learn more aboutMembership PRO Plan Start Learning Also available on Coursera How the Ma... MiMo rationale: 候选来源中，Coursera和DeepLearning.AI的官方课程页面是权威、可访问的一手来源，能直接证明吴恩达是该课程的讲师，符合证据要求。其他来源要么权威性不足，要么未直接提及人物姓名。 Evidence requirements: Source must name 吴恩达 directly. | Source must support why \"Machine Learning Specialization\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 吴恩达 Machine Learning Specialization official source | 吴恩达 Machine Learning Specialization 斯坦福大学 谷歌 evidence | 吴恩达 Machine Learning Specialization interview transcript",
+      "selectedHost": "deeplearning.ai",
+      "reason": "DeepLearning.AI官网课程页，吴恩达是创始人，页面明确标注其为讲师。",
+      "evidenceQuote": "Instructor: Andrew Ng",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju16yi00b7qrmtbgdxi12af",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:17:07.318Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.deeplearning.ai/courses/machine-learning-specialization/",
+          "title": "Machine Learning Specialization",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=主要是课程推广页面，虽提到吴恩达但内容空洞，营销性质强。.",
+          "evidenceRequirements": [
+            "Source must name 吴恩达 directly.",
+            "Source must support why \"Machine Learning Specialization\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "吴恩达 Machine Learning Specialization official source",
+            "吴恩达 Machine Learning Specialization 斯坦福大学 谷歌 evidence",
+            "吴恩达 Machine Learning Specialization interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju16yi00b7qrmtbgdxi12af",
+          "objectLabel": "Machine Learning Specialization"
+        },
+        "selectedReason": "DeepLearning.AI官网课程页，吴恩达是创始人，页面明确标注其为讲师。",
+        "evidenceQuote": "Instructor: Andrew Ng",
+        "candidateAuthorityScore": 6,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxj73i02n2rmtbap3a7fti",
+      "personId": "cmjtwksri000aopf3xzym5sx8",
+      "person": "唐杰",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "url": "https://www.cs.tsinghua.edu.cn/info/1111/3486.htm",
+      "urlHash": "07fc854d069e3f5bd617a31d77f0d6b5250384c4ae9530686ed6f029685c3f04",
+      "contentHash": "06f31adf46822b8fb1f6d5d768de045815555ed29b188379488c0d90b7fe9878",
+      "sourceType": "official",
+      "title": "唐杰-清华大学计算机科学与技术系",
+      "text": "Evidence quote: 姓名：唐杰 职称：教授 邮箱：jietang@tsinghua.edu.cn Selection reason: 清华大学官方师资页面，明确列出唐杰为教授，是权威的机构资料页，可直接证明其职位。 Source preview: English 首页 > 师资状况 > 教职工名录 > 计算机软件研究所 > 正高 > 正文 唐杰 | | | | | --- --- | | 职称 | 教授 | 电话 | | | 邮箱 | jietang@tsinghua.edu.cn | 姓名：唐杰 职称：教授 邮箱：jietang@tsinghua.edu.cn 主页： 教育背景 教育背景 工学博士 (计算机科学与技术), 清华大学, 中国, 2006 社会兼职 社会兼职 TKDD: 执行主编； IEEE TKDE, ACM TIST, IEEE TBD, Science China: 编委 中国计算机学会中文信息技术专业委员会：副主任 中文信息学会社会媒体处理专业委员会：副主任、秘书长 KDD 2018：大会副主席 WWW 2018, CIKM 2016, WSDM 2015, ASONAM 2015: 程序委员会主席 研究领域 研究领域 人工智能，社交网络，数据挖掘，机器学习，知识图谱 研究概况 研究概况 研究兴趣包括：社会网络分析、数据挖掘、机器学习和知识图谱。 主要创新性研究包括： 1）社会影响力分析：提出基于话题的社会网络影响力模型，针对大规模社会网络进行用户级别的微观建模，自动计算用户之间基于不同话题层次的影响力强度，为定量化、细粒度的网络影响力分析给出理论基础，部分解决了影响力最大传播模型的输入假设问题。 2）社会网络用户行为建模：将社会网络的基础理论(结构平衡理论、两阶段传播理论、结构洞理论等) 融入概率因子图模型中对社会网络关系和强度进行定量描述，实现了社会网络关系挖掘的统一学习算法。 3）网络行为建... MiMo rationale: 原始来源错误匹配了上海交通大学的唐飞龙教授。候选中清华大学官方师资页面是权威来源，明确证明唐杰是清华大学计算机系教授，可直接替换错误来源。 Evidence requirements: Source must name 唐杰 directly. | Source must support why \"SJTU Computer Science & Engineering\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 唐杰 SJTU Computer Science Engineering official source | 唐杰 SJTU Computer Science Engineering 清华大学、智谱AI 大语言模型 evidence | 唐杰 SJTU Computer Science Engineering interview transcript",
+      "selectedHost": "cs.tsinghua.edu.cn",
+      "reason": "清华大学官方师资页面，明确列出唐杰为教授，是权威的机构资料页，可直接证明其职位。",
+      "evidenceQuote": "姓名：唐杰 职称：教授 邮箱：jietang@tsinghua.edu.cn",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxj73i02n2rmtbap3a7fti",
+        "decision": "replace_source",
+        "confidence": 0.95,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:17:37.255Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://cs.sjtu.edu.cn/cse/en/PeopleDetail.aspx?id=343",
+          "title": "SJTU Computer Science & Engineering",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=介绍的是上海交通大学的唐飞龙教授，属于同姓同领域的误匹配。.",
+          "evidenceRequirements": [
+            "Source must name 唐杰 directly.",
+            "Source must support why \"SJTU Computer Science & Engineering\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "唐杰 SJTU Computer Science Engineering official source",
+            "唐杰 SJTU Computer Science Engineering 清华大学、智谱AI 大语言模型 evidence",
+            "唐杰 SJTU Computer Science Engineering interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxj73i02n2rmtbap3a7fti",
+          "objectLabel": "SJTU Computer Science & Engineering"
+        },
+        "selectedReason": "清华大学官方师资页面，明确列出唐杰为教授，是权威的机构资料页，可直接证明其职位。",
+        "evidenceQuote": "姓名：唐杰 职称：教授 邮箱：jietang@tsinghua.edu.cn",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjuvfpfd0iuormtbh1xs0dds",
+      "personId": "cmjtwkgug0004opf3th1cmczu",
+      "person": "李开复",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://www.hkforum.com/cn/speaker/101-%E6%9D%8E%E5%BC%80%E5%A4%8D",
+      "urlHash": "6a77318629f42c40fac0d7451d3afc6267eb5239cdbde9deaea78d862389605f",
+      "contentHash": "a654f87c28eee0f6e6f7ca1915b26104bc9f70bcc23839fad62733403798bc1d",
+      "sourceType": "exa",
+      "title": "李开复 - 香港中美论坛",
+      "text": "Evidence quote: 李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官 Selection reason: 权威论坛的嘉宾介绍页，明确列出李开复为零一万物首席执行官，提供官方职位信息。 Source preview: English 中文 繁体 香港中美论坛2025 日程 议题 视频 要闻 会议 报告 我们的使命 行动倡议 我们的伙伴 关于CUSEF 中文 English 中文 繁体 嘉宾 李开复 零一万物首席执行官 李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官，后者专注开发开源人工智能模型。李博士曾任谷歌大中华区总裁及微软全球副总裁。他于卡内基梅隆大学获取电脑学博士学位，随后在该校展开职业生涯，出任助理教授。 相关信息 [视频] AI主题演讲2025-11-17 分享: 我们的使命 组织结构 关于CUSEF 联系我们 ©2023 - 2026 中美交流基金会 | 版权所有 MiMo rationale: 原始来源缺失且未体现直接关联。候选中，凤凰网文章直接引用并分析了李开复的零一万物作为案例；零一万物官网和香港论坛嘉宾页提供了权威的职位和公司信息。三者结合可有效补强证据链。 Evidence requirements: Source must name 李开复 directly. | Source must support why \"AI创业公司的2025：一半是海水，一半是火焰\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 李开复 AI创业公司的2025：一半是海水，一半是火焰 official source | 李开复 AI创业公司的2025：一半是海水，一半是火焰 创新工场、零一万物 大语言模型 evidence | 李开复 AI创业公司的2025：一半是海水，一半是火焰 interview transcript",
+      "selectedHost": "hkforum.com",
+      "reason": "权威论坛的嘉宾介绍页，明确列出李开复为零一万物首席执行官，提供官方职位信息。",
+      "evidenceQuote": "李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuvfpfd0iuormtbh1xs0dds",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:18:34.818Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://tech.ifeng.com/c/8pYRFcGYw5H",
+          "title": "AI创业公司的2025：一半是海水，一半是火焰",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=泛泛而谈的行业综述标题，且正文缺失，未体现与李开复的直接关联。.",
+          "evidenceRequirements": [
+            "Source must name 李开复 directly.",
+            "Source must support why \"AI创业公司的2025：一半是海水，一半是火焰\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "李开复 AI创业公司的2025：一半是海水，一半是火焰 official source",
+            "李开复 AI创业公司的2025：一半是海水，一半是火焰 创新工场、零一万物 大语言模型 evidence",
+            "李开复 AI创业公司的2025：一半是海水，一半是火焰 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuvfpfd0iuormtbh1xs0dds",
+          "objectLabel": "AI创业公司的2025：一半是海水，一半是火焰"
+        },
+        "selectedReason": "权威论坛的嘉宾介绍页，明确列出李开复为零一万物首席执行官，提供官方职位信息。",
+        "evidenceQuote": "李开复为人工智能领域的权威专家，创办创新工场与零一万物。他目前为创新工场董事长及零一万物首席执行官",
+        "candidateAuthorityScore": 38,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjuvfpfd0iuormtbh1xs0dds",
+      "personId": "cmjtwkgug0004opf3th1cmczu",
+      "person": "李开复",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://www.lingyiwanwu.com",
+      "urlHash": "7c0549e89899a8c0c0b1f2cb927b14bb21b46ece998a1ef2c77117fd4568f1eb",
+      "contentHash": "98d83d5077a16b6f93aaa1e7672cb6160ce5a090544f33eb4d7470a9ad47e3b7",
+      "sourceType": "exa",
+      "title": "零一万物-AI2.0大模型技术和应用的全球公司",
+      "text": "Evidence quote: 2025年10月2日 托卡耶夫总统会见国际知名企业家李开复 Selection reason: 零一万物官网，是李开复创办公司的官方主页，直接证明其作为CEO的角色及公司业务。 Source preview: thumbnail image + 首页 + 新闻中心 + Yi基座模型 + 关于我们 + 加入我们 首页 新闻中心 Yi基座模型 关于我们 加入我们 … + 首页 + 新闻中心 + Yi基座模型 + 关于我们 + 加入我们 EN Section image 万智企业大模型一站式平台 企业Agent定制解决方案 了解更多 申请试用 万智企业多智能体功能演示 Section image ## 大模型 赋能千行百业 Make AI Work ## 新闻中心 Section image 2026年1月5日 零一万物发布万智2.5企业级多智能体，开启2026“硅基团队”上岗元年 了解详情 > Section image 2025年10月2日 托卡耶夫总统会见国际知名企业家李开复 了解详情 > Section image 2025年9月28日 零一万物联合创始人沈鹏飞：破局生成式AI下半场需跨越六大鸿沟 了解详情 > 2025年8月6日 李开复亲征to B战场：我自己就是最大的销售 2025年8月6日 李开复亲征to B战场：我自己就是最大的销售 了解详情 > Section image 2025年7月23日 零一万物“超级员工”登场，企业级Agent迈入“价值交付”时代 了解详情 > Section image 2025年7月16日 零一万物大模型一体机获信通院最高级别认证 了解详情 > Section image 2025年7月10日 零一万物联创马杰亚布力论坛分享：深入产业，大模型创新助力智能化变革 了解详情 > Section image 2025年7月1日 李开复博士再次入选... MiMo rationale: 原始来源缺失且未体现直接关联。候选中，凤凰网文章直接引用并分析了李开复的零一万物作为案例；零一万物官网和香港论坛嘉宾页提供了权威的职位和公司信息。三者结合可有效补强证据链。 Evidence requirements: Source must name 李开复 directly. | Source must support why \"AI创业公司的2025：一半是海水，一半是火焰\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 李开复 AI创业公司的2025：一半是海水，一半是火焰 official source | 李开复 AI创业公司的2025：一半是海水，一半是火焰 创新工场、零一万物 大语言模型 evidence | 李开复 AI创业公司的2025：一半是海水，一半是火焰 interview transcript",
+      "selectedHost": "lingyiwanwu.com",
+      "reason": "零一万物官网，是李开复创办公司的官方主页，直接证明其作为CEO的角色及公司业务。",
+      "evidenceQuote": "2025年10月2日 托卡耶夫总统会见国际知名企业家李开复",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuvfpfd0iuormtbh1xs0dds",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:18:34.818Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://tech.ifeng.com/c/8pYRFcGYw5H",
+          "title": "AI创业公司的2025：一半是海水，一半是火焰",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=泛泛而谈的行业综述标题，且正文缺失，未体现与李开复的直接关联。.",
+          "evidenceRequirements": [
+            "Source must name 李开复 directly.",
+            "Source must support why \"AI创业公司的2025：一半是海水，一半是火焰\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "李开复 AI创业公司的2025：一半是海水，一半是火焰 official source",
+            "李开复 AI创业公司的2025：一半是海水，一半是火焰 创新工场、零一万物 大语言模型 evidence",
+            "李开复 AI创业公司的2025：一半是海水，一半是火焰 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuvfpfd0iuormtbh1xs0dds",
+          "objectLabel": "AI创业公司的2025：一半是海水，一半是火焰"
+        },
+        "selectedReason": "零一万物官网，是李开复创办公司的官方主页，直接证明其作为CEO的角色及公司业务。",
+        "evidenceQuote": "2025年10月2日 托卡耶夫总统会见国际知名企业家李开复",
+        "candidateAuthorityScore": 50,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju1axmu0c25rmtbo14q07r3",
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://lilianweng.github.io/posts/2025-05-01-thinking",
+      "urlHash": "28c74de88b7b34f7a0e35e8100464c79debe2f14b01217ee580098ecdc2189af",
+      "contentHash": "a81ed907b745ebd19078ebb5e0bd608c594e8bcec734a9090123d8938c5040dd",
+      "sourceType": "exa",
+      "title": "Why We Think | Lil'Log",
+      "text": "Evidence quote: Author: Lilian Weng Selection reason: 本人官方技术博客，作者署名为Lilian Weng，是证明其技术观点和写作身份的直接、权威来源。 Source preview: Why We Think Date: May 1, 2025 | Estimated Reading Time: 40 min | Author: Lilian Weng Table of Contents Motivation + Analogy to Psychology + Computation as a Resource + Latent Variable Modeling Thinking in Tokens + Branching and Editing Parallel Sampling Sequential Revision + RL for Better Reasoning + External Tool Use + Thinking Faithfully Does the Model Tell What it Thinks Faithfully Optimization Pressure on CoT: Good or Bad? Thinking in Continuous Space + Recurrent Architecture + Thinking Tokens Thinking as Latent Variables + Expectation-Maximization + Iterative Learning Scaling Laws for Thinking Time What’s for Future Citation References Special thanks to John Schulman for a lot of supe... MiMo rationale: 原始来源（Google Scholar）因语言问题失效。候选中，OpenReview页面提供了权威的职位和学术记录，本人博客提供了直接的作者身份证明。两者结合可有效补强人物身份与贡献的证据链。 Evidence requirements: Source must name 李莲 directly. | Source must support why \"Lilian Weng\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 李莲 Lilian Weng official source | 李莲 Lilian Weng Dropbox公司 Affirm evidence | 李莲 Lilian Weng interview transcript",
+      "selectedHost": "lilianweng.github.io",
+      "reason": "本人官方技术博客，作者署名为Lilian Weng，是证明其技术观点和写作身份的直接、权威来源。",
+      "evidenceQuote": "Author: Lilian Weng",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1axmu0c25rmtbo14q07r3",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:18:57.792Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.ca/citations?user=dCa-pW8AAAAJ&hl=th",
+          "title": "Lilian Weng",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=页面内容主要为泰语的系统加载提示，未抓取到有效的学术引用信息。.",
+          "evidenceRequirements": [
+            "Source must name 李莲 directly.",
+            "Source must support why \"Lilian Weng\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "李莲 Lilian Weng official source",
+            "李莲 Lilian Weng Dropbox公司 Affirm evidence",
+            "李莲 Lilian Weng interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1axmu0c25rmtbo14q07r3",
+          "objectLabel": "Lilian Weng"
+        },
+        "selectedReason": "本人官方技术博客，作者署名为Lilian Weng，是证明其技术观点和写作身份的直接、权威来源。",
+        "evidenceQuote": "Author: Lilian Weng",
+        "candidateAuthorityScore": 12,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju1axmu0c25rmtbo14q07r3",
+      "personId": "cmjtxcatd00025p08uv2ks3h0",
+      "person": "李莲",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://openreview.net/profile?id=~Lilian_Weng1",
+      "urlHash": "53e539d62a11d51c6ed825da164070530b3964cbca19b9493bf42378acd17c10",
+      "contentHash": "531a8b3af58710580896c1c4a387766f05bd89d35d929c9bd6476618ab02a4df",
+      "sourceType": "paper",
+      "title": "Lilian Weng | OpenReview",
+      "text": "Evidence quote: Research Scientist, OpenAI July 2019 Selection reason: 权威学术平台，明确列出其职位为OpenAI研究科学家，并包含其发表的论文列表，直接证明其身份与贡献。 Source preview: Lilian Weng Research Scientist, OpenAI July 2019 Names Lilian Weng Emails \\\\\\\\@openai.com (Confirmed) , \\\\\\\\@gmail.com (Confirmed) Personal Links Homepage Google Scholar DBLP Career & Education History Research Scientist OpenAI (openai.com) 2018 – Present Advisors, Relations & Conflicts No relations added Expertise No areas of expertise listed Publications #### The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions) Eric Wallace, Kai Yuanqing Xiao, Reimar Heinrich Leike, Lilian Weng, Johannes Heidecke, Alex Beutel + Submitted to ICLR 2025 + Readers: Everyone #### First-Person Fairness in Chatbots) Tyna Eloundou, Alex Beutel, David G. Robinson, Keren Gu, Anna-Luisa Br... MiMo rationale: 原始来源（Google Scholar）因语言问题失效。候选中，OpenReview页面提供了权威的职位和学术记录，本人博客提供了直接的作者身份证明。两者结合可有效补强人物身份与贡献的证据链。 Evidence requirements: Source must name 李莲 directly. | Source must support why \"Lilian Weng\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 李莲 Lilian Weng official source | 李莲 Lilian Weng Dropbox公司 Affirm evidence | 李莲 Lilian Weng interview transcript",
+      "selectedHost": "openreview.net",
+      "reason": "权威学术平台，明确列出其职位为OpenAI研究科学家，并包含其发表的论文列表，直接证明其身份与贡献。",
+      "evidenceQuote": "Research Scientist, OpenAI July 2019",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1axmu0c25rmtbo14q07r3",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:18:57.792Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.ca/citations?user=dCa-pW8AAAAJ&hl=th",
+          "title": "Lilian Weng",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=页面内容主要为泰语的系统加载提示，未抓取到有效的学术引用信息。.",
+          "evidenceRequirements": [
+            "Source must name 李莲 directly.",
+            "Source must support why \"Lilian Weng\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "李莲 Lilian Weng official source",
+            "李莲 Lilian Weng Dropbox公司 Affirm evidence",
+            "李莲 Lilian Weng interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1axmu0c25rmtbo14q07r3",
+          "objectLabel": "Lilian Weng"
+        },
+        "selectedReason": "权威学术平台，明确列出其职位为OpenAI研究科学家，并包含其发表的论文列表，直接证明其身份与贡献。",
+        "evidenceQuote": "Research Scientist, OpenAI July 2019",
+        "candidateAuthorityScore": 6,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju15wp90b2srmtbeglp776q",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://time.com/collection/time100-most-influential-companies/2026/alphabet",
+      "urlHash": "af375d3bdff74ae7bf10a9fb8899da6dfffef9820216f69f820918c450086e11",
+      "contentHash": "26f810722c1dd1e1ef86e411bba0ffb373ee7a905bd5e210bb35e04015303b2e",
+      "sourceType": "exa",
+      "title": "How Sundar Pichai Pushed Google To the Front of the AI Race - TIME",
+      "text": "Evidence quote: How Sundar Pichai Pushed Google To the Front of the AI Race Selection reason: 权威媒体文章，标题和内容直接描述皮查伊推动谷歌在AI竞赛中的领导作用，与AI主题高度相关。 Source preview: How Sundar Pichai Pushed Google To the Front of the AI Race Correspondent Many years ago, Sundar Pichai was scuba diving with his family in Hawaii when the weather turned unexpectedly rough. As Pichai entered the water, waves pummeled his lanky frame. He wondered if he should return to safety. Eventually, he kicked downward. Just a few feet below, Pichai found “the calmest place in the world,” he says, and became possessed by a meditative stillness. “I feel that in any situation, there is a layer which is super calm—in which, if you can get there, you can observe what’s going on,” he says. “And your mind’s energy is focused on what you need to do.” This anecdote, which Pichai relays in Goog... MiMo rationale: 原始来源（ai.google）为通用营销页面，未具体涉及皮查伊。候选中的MIT科技评论专访和TIME文章均权威、可访问，且直接证明皮查伊作为谷歌CEO推动AI（如Gemini）的角色，能有效补强证据。其他候选要么无关，要么证据不足。 Evidence requirements: Source must name 桑达尔·皮查伊 directly. | Source must support why \"How we're making AI helpful for everyone\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 桑达尔·皮查伊 How making helpful for everyone official source | 桑达尔·皮查伊 How making helpful for everyone 谷歌 Alphabet公司 evidence | 桑达尔·皮查伊 How making helpful for everyone interview transcript",
+      "selectedHost": "time.com",
+      "reason": "权威媒体文章，标题和内容直接描述皮查伊推动谷歌在AI竞赛中的领导作用，与AI主题高度相关。",
+      "evidenceQuote": "How Sundar Pichai Pushed Google To the Front of the AI Race",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju15wp90b2srmtbeglp776q",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:22:24.404Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://ai.google/",
+          "title": "How we're making AI helpful for everyone",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为 Google AI 的通用营销页面，未具体涉及桑达尔·皮查伊本人。.",
+          "evidenceRequirements": [
+            "Source must name 桑达尔·皮查伊 directly.",
+            "Source must support why \"How we're making AI helpful for everyone\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "桑达尔·皮查伊 How making helpful for everyone official source",
+            "桑达尔·皮查伊 How making helpful for everyone 谷歌 Alphabet公司 evidence",
+            "桑达尔·皮查伊 How making helpful for everyone interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15wp90b2srmtbeglp776q",
+          "objectLabel": "How we're making AI helpful for everyone"
+        },
+        "selectedReason": "权威媒体文章，标题和内容直接描述皮查伊推动谷歌在AI竞赛中的领导作用，与AI主题高度相关。",
+        "evidenceQuote": "How Sundar Pichai Pushed Google To the Front of the AI Race",
+        "candidateAuthorityScore": 18,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju15wp90b2srmtbeglp776q",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.mittrchina.com/news/detail/12734",
+      "urlHash": "05e72abafcd097358f12c79688a3dd159f204a418a8907437719ec7614049c96",
+      "contentHash": "1fdc9394ae758a9ab2154eabc1229895250f04c7b409cfbb3afa6c373c61fb47",
+      "sourceType": "exa",
+      "title": "麻省理工科技评论-独家专访谷歌CEO桑达尔·皮查伊：基于我的个人经历",
+      "text": "Evidence quote: Gemini 是谷歌在 CEO 桑达尔·皮查伊（Sundar Pichai）多年的监督和推动下诞生的产物。 Selection reason: 权威媒体专访，明确提及皮查伊作为谷歌CEO推动AI（如Gemini）的角色，直接关联其职位与AI战略。 Source preview: 麻省理工科技评论-独家专访谷歌CEO桑达尔·皮查伊：基于我的个人经历，我一直相信人和人性 Image 1 资讯 快讯 视频 评选 TR35 Asia Pacific TR35 China TR50 活动 EmTech China 2021 EmTech China 2020 EmTech China 2019 EmTech China 2018 EmTech China 2017 Image 2 登录 AI 独家专访谷歌CEO桑达尔·皮查伊：基于我的个人经历，我一直相信人和人性 谷歌今天发布了其下一代人工智能模型 Gemini 1.0 版本。Gemini 是谷歌在 CEO 桑达尔·皮查伊（Sundar Pichai）多年的监督和推动下诞生的产物。 Image 3 谷歌今天发布了其下一代人工智能模型 Gemini 1.0 版本。Gemini 是谷歌在 CEO 桑达尔·皮查伊（Sundar Pichai）多年的监督和推动下诞生的产物。 Image 4图 | 桑达尔·皮查伊（Sundar Pichai）（来源：ANDREAS PEIN/LAIF/REDUX） 皮查伊之前曾负责 Chrome 和安卓，以痴迷于产品而闻名。在 2016 年他以 CEO 身份发布的第一封致股东信中，他预测“我们将从移动优先走向人工智能优先的世界。”自那以后的几年里，皮查伊将人工智能深深融入了谷歌的所有产品中，从安卓设备到云服务。 尽管如此，2022 年在很大程度上是由另一家公司 OpenAI 发布的人工智能所主导的。2022 年推出的 DALL-E 和 GPT-3.5 模型，以及 2023 年推出的 GP... MiMo rationale: 原始来源（ai.google）为通用营销页面，未具体涉及皮查伊。候选中的MIT科技评论专访和TIME文章均权威、可访问，且直接证明皮查伊作为谷歌CEO推动AI（如Gemini）的角色，能有效补强证据。其他候选要么无关，要么证据不足。 Evidence requirements: Source must name 桑达尔·皮查伊 directly. | Source must support why \"How we're making AI helpful for everyone\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 桑达尔·皮查伊 How making helpful for everyone official source | 桑达尔·皮查伊 How making helpful for everyone 谷歌 Alphabet公司 evidence | 桑达尔·皮查伊 How making helpful for everyone interview transcript",
+      "selectedHost": "mittrchina.com",
+      "reason": "权威媒体专访，明确提及皮查伊作为谷歌CEO推动AI（如Gemini）的角色，直接关联其职位与AI战略。",
+      "evidenceQuote": "Gemini 是谷歌在 CEO 桑达尔·皮查伊（Sundar Pichai）多年的监督和推动下诞生的产物。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju15wp90b2srmtbeglp776q",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:22:24.404Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://ai.google/",
+          "title": "How we're making AI helpful for everyone",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为 Google AI 的通用营销页面，未具体涉及桑达尔·皮查伊本人。.",
+          "evidenceRequirements": [
+            "Source must name 桑达尔·皮查伊 directly.",
+            "Source must support why \"How we're making AI helpful for everyone\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "桑达尔·皮查伊 How making helpful for everyone official source",
+            "桑达尔·皮查伊 How making helpful for everyone 谷歌 Alphabet公司 evidence",
+            "桑达尔·皮查伊 How making helpful for everyone interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15wp90b2srmtbeglp776q",
+          "objectLabel": "How we're making AI helpful for everyone"
+        },
+        "selectedReason": "权威媒体专访，明确提及皮查伊作为谷歌CEO推动AI（如Gemini）的角色，直接关联其职位与AI战略。",
+        "evidenceQuote": "Gemini 是谷歌在 CEO 桑达尔·皮查伊（Sundar Pichai）多年的监督和推动下诞生的产物。",
+        "candidateAuthorityScore": 44,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxos6s03ubrmtbt2elu1co",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://blog.google/authors/sundar-pichai",
+      "urlHash": "9996b3879a6078e690d11e4b08249685e393f89ae11a0708887d897f1e4c7600",
+      "contentHash": "0035d6e2dfd9e0ac7fdc0432316c4317504e6b97c68c6be8b0e7846280057bfe",
+      "sourceType": "official",
+      "title": "Sundar Pichai | Google Blog",
+      "text": "Evidence quote: Sundar Pichai CEO of Google and Alphabet Sundar is the CEO of Google and Alphabet and serves on Alphabet’s Board of Directors. Selection reason: 谷歌官方博客作者页，明确标注其为Google和Alphabet的CEO，是权威的一手来源。 Source preview: The Keyword Sundar Pichai Facebook LinkedIn Mail [\"What is the Fitbit Air?\", \"How can I learn new AI skills?\", \"What's the latest Android news?\"] Subscribe Sundar Pichai CEO of Google and Alphabet Sundar is the CEO of Google and Alphabet and serves on Alphabet’s Board of Directors. Under his leadership, Google has been focused on developing products and services, powered by the latest advances in AI, that offer help in moments big and small. Featured story AI ### I/O 2026: Welcome to the agentic Gemini era The latest from Google I/O: See how we’re helping you get more done with Gemini. Read article All the latest Let’s stay in touch. Get the latest news from Google in your inbox. Subscribe MiMo rationale: 原始来源（fintool.com）为薪酬档案，信息密度低。候选中，谷歌官方博客作者页（blog.google）是最佳替代，它直接、权威地证明了桑达尔·皮查伊作为Google和Alphabet CEO的身份，符合证据要求。其他候选来源要么权威性不足，要么无法直接访问内容。 Evidence requirements: Source must name 桑达尔·皮查伊 directly. | Source must support why \"Sundar Pichai - CEO of Alphabet and Google at Alphabet (GOOGL)\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 桑达尔·皮查伊 Sundar Pichai CEO Alphabet and Google Alphabet GOOGL official source | 桑达尔·皮查伊 Sundar Pichai CEO Alphabet and Google Alphabet GOOGL 谷歌 Alphabet公司 evidence | 桑达尔·皮查伊 Sundar Pichai CEO Alphabet and Google Alphabet GOOGL interview transcript",
+      "selectedHost": "blog.google",
+      "reason": "谷歌官方博客作者页，明确标注其为Google和Alphabet的CEO，是权威的一手来源。",
+      "evidenceQuote": "Sundar Pichai CEO of Google and Alphabet Sundar is the CEO of Google and Alphabet and serves on Alphabet’s Board of Directors.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxos6s03ubrmtbt2elu1co",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:22:42.203Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://fintool.com/app/research/companies/GOOGL/people/sundar-pichai",
+          "title": "Sundar Pichai - CEO of Alphabet and Google at Alphabet (GOOGL)",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=页面为高管薪酬档案，仅含基本数据，无信息密度和原创观点。.",
+          "evidenceRequirements": [
+            "Source must name 桑达尔·皮查伊 directly.",
+            "Source must support why \"Sundar Pichai - CEO of Alphabet and Google at Alphabet (GOOGL)\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "桑达尔·皮查伊 Sundar Pichai CEO Alphabet and Google Alphabet GOOGL official source",
+            "桑达尔·皮查伊 Sundar Pichai CEO Alphabet and Google Alphabet GOOGL 谷歌 Alphabet公司 evidence",
+            "桑达尔·皮查伊 Sundar Pichai CEO Alphabet and Google Alphabet GOOGL interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxos6s03ubrmtbt2elu1co",
+          "objectLabel": "Sundar Pichai - CEO of Alphabet and Google at Alphabet (GOOGL)"
+        },
+        "selectedReason": "谷歌官方博客作者页，明确标注其为Google和Alphabet的CEO，是权威的一手来源。",
+        "evidenceQuote": "Sundar Pichai CEO of Google and Alphabet Sundar is the CEO of Google and Alphabet and serves on Alphabet’s Board of Directors.",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxmvxh03fdrmtbnnb6r5zy",
+      "personId": "cmjtxcp4w00055p0854gyxgh2",
+      "person": "贾里德·卡普兰",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://www.semanticscholar.org/paper/Scaling-Laws-for-Autoregressive-Generative-Modeling-Henighan-Kaplan/3efbcfeeb0ea1051a71101d3318da4411081f0b8",
+      "urlHash": "661e559e4ec3de595a1f53605bc4d4d91b41fdd77dd494881b4c9b7b3d0f900c",
+      "contentHash": "1744e06727703194cb5a4a2f79dfd474bff8fa4248a5f2473a9fc5111e04d98b",
+      "sourceType": "paper",
+      "title": "[PDF] Scaling Laws for Autoregressive Generative Modeling | Semantic Scholar",
+      "text": "Evidence quote: author={Thomas Henighan and Jared Kaplan and Mor Katz and Mark Chen...} Selection reason: 该页面明确列出贾里德·卡普兰（Jared Kaplan）为论文作者之一，是权威的学术论文详情页，可直接证明其贡献。 Source preview: Corpus ID: 225094178 Scaling Laws for Autoregressive Generative Modeling @article{Henighan2020ScalingLF, title={Scaling Laws for Autoregressive Generative Modeling}, author={Thomas Henighan and Jared Kaplan and Mor Katz and Mark Chen and Christopher Hesse and Jacob Jackson and Heewoo Jun and Tom B. Brown and Prafulla Dhariwal and Scott Gray and Chris Hallacy and Benjamin Mann and Alec Radford and Aditya Ramesh and Nick Ryder and Daniel M. Ziegler and John Schulman and Dario Amodei and Sam McCandlish}, journal={ArXiv}, year={2020}, volume={abs/2010.14701}, url={ } T. Henighan, J. Kaplan, Sam McCandlish Published in arXiv.org 28 October 2020 Computer Science, Mathematics The case that scaling... MiMo rationale: 候选来源中，Semantic Scholar页面明确将贾里德·卡普兰列为论文作者，是权威的学术索引，能直接证明其与作品的关系，适合作为补强来源。原arXiv页面因缺乏人物核心信息被拒，此页面可提供明确作者归属。 Evidence requirements: Source must name 贾里德·卡普兰 directly. | Source must support why \"Scaling Laws for Autoregressive Generative Modeling\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 贾里德·卡普兰 Scaling Laws for Autoregressive Generative Modeling official source | 贾里德·卡普兰 Scaling Laws for Autoregressive Generative Modeling 约翰斯·霍普金斯大学 Anthropic evidence | 贾里德·卡普兰 Scaling Laws for Autoregressive Generative Modeling interview transcript",
+      "selectedHost": "semanticscholar.org",
+      "reason": "该页面明确列出贾里德·卡普兰（Jared Kaplan）为论文作者之一，是权威的学术论文详情页，可直接证明其贡献。",
+      "evidenceQuote": "author={Thomas Henighan and Jared Kaplan and Mor Katz and Mark Chen...}",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxmvxh03fdrmtbnnb6r5zy",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:24:28.067Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://arxiv.org/abs/2010.14701",
+          "title": "Scaling Laws for Autoregressive Generative Modeling",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=Arxiv论文页面的系统样板文字，缺乏人物核心信息。.",
+          "evidenceRequirements": [
+            "Source must name 贾里德·卡普兰 directly.",
+            "Source must support why \"Scaling Laws for Autoregressive Generative Modeling\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "贾里德·卡普兰 Scaling Laws for Autoregressive Generative Modeling official source",
+            "贾里德·卡普兰 Scaling Laws for Autoregressive Generative Modeling 约翰斯·霍普金斯大学 Anthropic evidence",
+            "贾里德·卡普兰 Scaling Laws for Autoregressive Generative Modeling interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmvxh03fdrmtbnnb6r5zy",
+          "objectLabel": "Scaling Laws for Autoregressive Generative Modeling"
+        },
+        "selectedReason": "该页面明确列出贾里德·卡普兰（Jared Kaplan）为论文作者之一，是权威的学术论文详情页，可直接证明其贡献。",
+        "evidenceQuote": "author={Thomas Henighan and Jared Kaplan and Mor Katz and Mark Chen...}",
+        "candidateAuthorityScore": 23,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "research_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxpy950424rmtb6fucjm3a",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://papers.neurips.cc/paper/7181-attention-is-all-you-need.pdf",
+      "urlHash": "5a652422f33f80a7c83673fb23ad0d1fb77e6ea2e21e001c5697442bfcfe1025",
+      "contentHash": "25ec038ac266a5606aa2caca521de838a8fbbdc84be3000c2e776a115f08631d",
+      "sourceType": "paper",
+      "title": "[PDF] Attention is All you Need - NIPS",
+      "text": "Evidence quote: Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com Noam Shazeer∗ Google Brain noam@google.com Niki Parmar∗ Google Research nikip@google.com Jakob Uszkoreit∗ Google Research usz@google.com Llion Jones∗ Google Research llion@google.com Aidan N. Gomez∗† University of Toronto aidan@cs.toronto.edu Łukasz Kaiser∗ Google Brain lukaszkaiser@google.com Illia Polosukhin∗‡ illia.polosukhin@gmail.com Selection reason: NeurIPS官方论文PDF，明确列出阿希什·瓦斯瓦尼为第一作者，是论文的权威原始来源。 Source preview: Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com Noam Shazeer∗ Google Brain noam@google.com Niki Parmar∗ Google Research nikip@google.com Jakob Uszkoreit∗ Google Research usz@google.com Llion Jones∗ Google Research llion@google.com Aidan N. Gomez∗† University of Toronto aidan@cs.toronto.edu Łukasz Kaiser∗ Google Brain lukaszkaiser@google.com Illia Polosukhin∗‡ illia.polosukhin@gmail.com Abstract The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network a... MiMo rationale: NeurIPS官方PDF是论文的权威原始来源，明确列出阿希什·瓦斯瓦尼为第一作者，直接证明其与《Attention Is All You Need》的作者关系，符合证据要求。其他候选来源要么权威性不足，要么属于二级参考或社交媒体。 Evidence requirements: Source must name 阿希什·瓦斯瓦尼 directly. | Source must support why \"Attention Is All You Need\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 阿希什·瓦斯瓦尼 Attention All You Need official source | 阿希什·瓦斯瓦尼 Attention All You Need 谷歌 Transformer evidence | 阿希什·瓦斯瓦尼 Attention All You Need interview transcript",
+      "selectedHost": "papers.neurips.cc",
+      "reason": "NeurIPS官方论文PDF，明确列出阿希什·瓦斯瓦尼为第一作者，是论文的权威原始来源。",
+      "evidenceQuote": "Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com Noam Shazeer∗ Google Brain noam@google.com Niki Parmar∗ Google Research nikip@google.com Jakob Uszkoreit∗ Google Research usz@google.com Llion Jones∗ Google Research llion@google.com Aidan N. Gomez∗† University of Toronto aidan@cs.toronto.edu Łukasz Kaiser∗ Google Brain lukaszkaiser@google.com Illia Polosukhin∗‡ illia.polosukhin@gmail.com",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxpy950424rmtb6fucjm3a",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T19:24:51.598Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://arxiv.org/html/1706.03762v7",
+          "title": "Attention Is All You Need",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=仅显示论文标题和arXiv页面，未明确提及阿希什·瓦斯瓦尼，信息不完整。.",
+          "evidenceRequirements": [
+            "Source must name 阿希什·瓦斯瓦尼 directly.",
+            "Source must support why \"Attention Is All You Need\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "阿希什·瓦斯瓦尼 Attention All You Need official source",
+            "阿希什·瓦斯瓦尼 Attention All You Need 谷歌 Transformer evidence",
+            "阿希什·瓦斯瓦尼 Attention All You Need interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpy950424rmtb6fucjm3a",
+          "objectLabel": "Attention Is All You Need"
+        },
+        "selectedReason": "NeurIPS官方论文PDF，明确列出阿希什·瓦斯瓦尼为第一作者，是论文的权威原始来源。",
+        "evidenceQuote": "Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com Noam Shazeer∗ Google Brain noam@google.com Niki Parmar∗ Google Research nikip@google.com Jakob Uszkoreit∗ Google Research usz@google.com Llion Jones∗ Google Research llion@google.com Aidan N. Gomez∗† University of Toronto aidan@cs.toronto.edu Łukasz Kaiser∗ Google Brain lukaszkaiser@google.com Illia Polosukhin∗‡ illia.polosukhin@gmail.com",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmjtxpy8f0422rmtb239gk6om",
+      "personId": "cmjtxe137000e5p08x4puluzz",
+      "person": "布莱恩·卡坦扎罗",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtzrru405wirmtbvq24zjdf",
+      "personId": "cmjtsxhyo00053est14oy641y",
+      "person": "李飞飞",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju15rzl0b0yrmtb7llz7r25",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju15qyv0b0krmtbf6gtp1ux",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju15oyo0azwrmtb5ciejjjn",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju15wcj0b2mrmtbzgbz4yic",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxosmm03uhrmtbptw4j63m",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxotve03uvrmtbrdzdlo48",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0r58008cormtbmlf8wujv",
+      "personId": "cmjtxcx2r00075p08egm5tuq9",
+      "person": "科拉伊·卡武克丘奥卢",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0rfn208eermtbtyoti95t",
+      "personId": "cmjtxcx2r00075p08egm5tuq9",
+      "person": "科拉伊·卡武克丘奥卢",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxq2ci043grmtbrehk21v8",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

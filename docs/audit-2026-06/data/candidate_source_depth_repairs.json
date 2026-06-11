@@ -1,0 +1,434 @@
+{
+  "deleteSources": [
+    {
+      "person": "Catherine Olsson",
+      "url": "https://arxiv.org/abs/2209.07858",
+      "reason": "This arXiv page is Red Teaming Language Models, not In-context Learning and Induction Heads."
+    },
+    {
+      "person": "Nicholas Joseph",
+      "url": "https://arxiv.org/abs/2209.07858",
+      "reason": "This arXiv page is Red Teaming Language Models, not In-context Learning and Induction Heads."
+    },
+    {
+      "person": "Trenton Bricken",
+      "url": "https://arxiv.org/abs/2309.08600",
+      "reason": "This arXiv page is Sparse Autoencoders Find Highly Interpretable Features in Language Models by a different author group."
+    }
+  ],
+  "sources": [
+    {
+      "person": "Catherine Olsson",
+      "url": "https://arxiv.org/abs/2209.11895",
+      "sourceType": "paper",
+      "title": "In-context Learning and Induction Heads",
+      "requiredTerms": ["Catherine Olsson", "Nicholas Joseph", "In-context Learning"],
+      "reason": "Correct arXiv record for In-context Learning and Induction Heads."
+    },
+    {
+      "person": "Catherine Olsson",
+      "url": "https://arxiv.org/abs/2209.10652",
+      "sourceType": "paper",
+      "title": "Toy Models of Superposition",
+      "requiredTerms": ["Catherine Olsson", "Tristan Hume", "Toy Models of Superposition"],
+      "reason": "Additional source-backed Anthropic interpretability publication."
+    },
+    {
+      "person": "Nicholas Joseph",
+      "url": "https://arxiv.org/abs/2209.11895",
+      "sourceType": "paper",
+      "title": "In-context Learning and Induction Heads",
+      "requiredTerms": ["Nicholas Joseph", "Catherine Olsson", "In-context Learning"],
+      "reason": "Correct arXiv record for In-context Learning and Induction Heads."
+    },
+    {
+      "person": "Nicholas Joseph",
+      "url": "https://arxiv.org/abs/2306.16388",
+      "sourceType": "paper",
+      "title": "Towards Measuring the Representation of Subjective Global Opinions in Language Models",
+      "requiredTerms": ["Nicholas Joseph", "Subjective Global Opinions"],
+      "reason": "Additional source-backed Anthropic language-model evaluation publication."
+    },
+    {
+      "person": "Tamera Lanham",
+      "url": "https://arxiv.org/abs/2307.13702",
+      "sourceType": "paper",
+      "title": "Measuring Faithfulness in Chain-of-Thought Reasoning",
+      "requiredTerms": ["Tamera Lanham", "Measuring Faithfulness"],
+      "reason": "Source-backed safety/evaluation publication."
+    },
+    {
+      "person": "Tamera Lanham",
+      "url": "https://arxiv.org/abs/2302.07459",
+      "sourceType": "paper",
+      "title": "The Capacity for Moral Self-Correction in Large Language Models",
+      "requiredTerms": ["Tamera Lanham", "Moral Self-Correction"],
+      "reason": "Additional source-backed Anthropic language-model safety publication."
+    },
+    {
+      "person": "Evan Hubinger",
+      "url": "https://evhub.github.io/",
+      "sourceType": "official",
+      "title": "Evan Hubinger personal site",
+      "requiredTerms": ["Evan Hubinger", "AI safety"],
+      "reason": "Personal site linking Evan Hubinger to AI safety work."
+    },
+    {
+      "person": "Evan Hubinger",
+      "url": "https://alignment.anthropic.com/2025/automated-auditing/",
+      "sourceType": "official",
+      "title": "Building and evaluating alignment auditing agents",
+      "requiredTerms": ["Evan Hubinger", "Trenton Bricken", "alignment auditing"],
+      "reason": "Anthropic Alignment Science source listing Evan Hubinger as a coauthor."
+    },
+    {
+      "person": "Trenton Bricken",
+      "url": "https://trentonbricken.com/",
+      "sourceType": "official",
+      "title": "Trenton Bricken personal site",
+      "requiredTerms": ["Trenton Bricken", "Anthropic", "Alignment Science"],
+      "reason": "Personal site with current Anthropic Alignment Science role and publication list."
+    },
+    {
+      "person": "Trenton Bricken",
+      "url": "https://alignment.anthropic.com/2025/automated-auditing/",
+      "sourceType": "official",
+      "title": "Building and evaluating alignment auditing agents",
+      "requiredTerms": ["Trenton Bricken", "alignment auditing", "Anthropic"],
+      "reason": "Anthropic Alignment Science source listing Trenton Bricken as a lead author."
+    },
+    {
+      "person": "Tristan Hume",
+      "url": "https://thume.ca/",
+      "sourceType": "official",
+      "title": "Tristan Hume personal site",
+      "requiredTerms": ["Tristan Hume", "Anthropic", "performance optimization"],
+      "reason": "Personal site with current Anthropic performance optimization role."
+    },
+    {
+      "person": "Tristan Hume",
+      "url": "https://arxiv.org/abs/2209.10652",
+      "sourceType": "paper",
+      "title": "Toy Models of Superposition",
+      "requiredTerms": ["Tristan Hume", "Catherine Olsson", "Toy Models of Superposition"],
+      "reason": "Correct arXiv record for Toy Models of Superposition."
+    },
+    {
+      "person": "Nick Frosst",
+      "url": "https://arxiv.org/abs/2412.04261",
+      "sourceType": "paper",
+      "title": "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier",
+      "requiredTerms": ["Nick Frosst", "Ivan Zhang", "Phil Blunsom", "Aya Expanse"],
+      "reason": "Cohere technical report listing Nick Frosst among the authors."
+    },
+    {
+      "person": "Ivan Zhang",
+      "url": "https://arxiv.org/abs/2412.04261",
+      "sourceType": "paper",
+      "title": "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier",
+      "requiredTerms": ["Ivan Zhang", "Nick Frosst", "Phil Blunsom", "Aya Expanse"],
+      "reason": "Cohere technical report listing Ivan Zhang among the authors."
+    },
+    {
+      "person": "Phil Blunsom",
+      "url": "https://arxiv.org/abs/2412.04261",
+      "sourceType": "paper",
+      "title": "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier",
+      "requiredTerms": ["Phil Blunsom", "Ivan Zhang", "Nick Frosst", "Aya Expanse"],
+      "reason": "Cohere technical report listing Phil Blunsom among the authors."
+    },
+    {
+      "person": "Timothee Lacroix",
+      "url": "https://arxiv.org/abs/2401.04088",
+      "sourceType": "paper",
+      "title": "Mixtral of Experts",
+      "requiredTerms": ["Timothée Lacroix", "Mixtral of Experts"],
+      "reason": "Mistral technical report listing Timothee Lacroix among the authors."
+    }
+  ],
+  "cards": [
+    {
+      "person": "Catherine Olsson",
+      "title": "In-context learning 论文的正确 arXiv 记录",
+      "content": "arXiv 2209.11895 将 Catherine Olsson 列为 In-context Learning and Induction Heads 作者之一，可作为她在 transformer circuits 方向的核心来源。",
+      "tags": ["可解释性", "Transformer", "Paper"],
+      "sourceUrl": "https://arxiv.org/abs/2209.11895",
+      "importance": 4
+    },
+    {
+      "person": "Catherine Olsson",
+      "title": "Toy Models of Superposition 作者线索",
+      "content": "Toy Models of Superposition 的 arXiv 记录列出 Catherine Olsson 和 Tristan Hume 等作者，补强她在 Anthropic 早期机械可解释性路线中的位置。",
+      "tags": ["可解释性", "Superposition", "Anthropic"],
+      "sourceUrl": "https://arxiv.org/abs/2209.10652",
+      "importance": 4
+    },
+    {
+      "person": "Catherine Olsson",
+      "title": "模型行为评测方向的共同作者记录",
+      "content": "Discovering Language Model Behaviors with Model-Written Evaluations 将 Catherine Olsson 列为作者之一，说明她的公开研究不只覆盖 circuits，也延伸到模型行为评测。",
+      "tags": ["安全", "评测", "大语言模型"],
+      "sourceUrl": "https://arxiv.org/abs/2212.09251",
+      "importance": 3
+    },
+    {
+      "person": "Nicholas Joseph",
+      "title": "Induction heads 论文的正确 arXiv 记录",
+      "content": "arXiv 2209.11895 将 Nicholas Joseph 列为 In-context Learning and Induction Heads 作者之一，修正此前误指向的 arXiv 链接。",
+      "tags": ["Transformer", "可解释性", "Paper"],
+      "sourceUrl": "https://arxiv.org/abs/2209.11895",
+      "importance": 4
+    },
+    {
+      "person": "Nicholas Joseph",
+      "title": "主观全球观点评测研究",
+      "content": "arXiv 2306.16388 将 Nicholas Joseph 列为作者之一，补强他在语言模型观点表征与评测方向的公开来源。",
+      "tags": ["评测", "大语言模型", "安全"],
+      "sourceUrl": "https://arxiv.org/abs/2306.16388",
+      "importance": 3
+    },
+    {
+      "person": "Nicholas Joseph",
+      "title": "模型决策歧视评测研究",
+      "content": "Evaluating and Mitigating Discrimination in Language Model Decisions 将 Nicholas Joseph 列为作者之一，可作为他参与语言模型安全评测工作的补充来源。",
+      "tags": ["安全", "评测", "大语言模型"],
+      "sourceUrl": "https://arxiv.org/abs/2312.03689",
+      "importance": 3
+    },
+    {
+      "person": "Tamera Lanham",
+      "title": "Chain-of-thought faithfulness 研究",
+      "content": "Measuring Faithfulness in Chain-of-Thought Reasoning 将 Tamera Lanham 列为第一作者，说明她在推理过程可信度评测方向有高相关公开成果。",
+      "tags": ["对齐", "评测", "Chain-of-thought"],
+      "sourceUrl": "https://arxiv.org/abs/2307.13702",
+      "importance": 4
+    },
+    {
+      "person": "Tamera Lanham",
+      "title": "LLM moral self-correction 研究",
+      "content": "The Capacity for Moral Self-Correction in Large Language Models 将 Tamera Lanham 列为作者之一，可作为她参与安全与行为修正研究的来源。",
+      "tags": ["安全", "对齐", "大语言模型"],
+      "sourceUrl": "https://arxiv.org/abs/2302.07459",
+      "importance": 3
+    },
+    {
+      "person": "Tamera Lanham",
+      "title": "模型行为发现与评测线索",
+      "content": "Discovering Language Model Behaviors with Model-Written Evaluations 将 Tamera Lanham 列为作者之一，补强她在模型行为评测方向的资料厚度。",
+      "tags": ["评测", "安全", "大语言模型"],
+      "sourceUrl": "https://arxiv.org/abs/2212.09251",
+      "importance": 3
+    },
+    {
+      "person": "Evan Hubinger",
+      "title": "个人 AI safety 工作入口",
+      "content": "Evan Hubinger 的个人站点集中指向他的 AI safety 工作、论文和简历，是比社交媒体更适合作为人物事实底座的本人来源。",
+      "tags": ["AI 安全", "对齐", "个人主页"],
+      "sourceUrl": "https://evhub.github.io/",
+      "importance": 4
+    },
+    {
+      "person": "Evan Hubinger",
+      "title": "Alignment auditing agents 共同作者",
+      "content": "Anthropic Alignment Science 的 automated auditing 文章将 Evan Hubinger 列为作者之一，补充他在自动化对齐审计方向的公开来源。",
+      "tags": ["对齐", "自动化审计", "Anthropic"],
+      "sourceUrl": "https://alignment.anthropic.com/2025/automated-auditing/",
+      "importance": 4
+    },
+    {
+      "person": "Evan Hubinger",
+      "title": "Sleeper Agents 与欺骗行为研究",
+      "content": "Sleeper Agents 研究记录了 Evan Hubinger 参与对安全训练后欺骗行为持续性的分析，是他在 Anthropic 对齐研究中的代表线索。",
+      "tags": ["对齐", "安全", "大语言模型"],
+      "sourceUrl": "https://arxiv.org/abs/2401.05566",
+      "importance": 4
+    },
+    {
+      "person": "Trenton Bricken",
+      "title": "Anthropic Alignment Science 当前角色",
+      "content": "Trenton Bricken 的个人站点说明他在 Anthropic Alignment Science 团队工作，并聚焦自动化审计和 misalignment 检测。",
+      "tags": ["对齐", "Anthropic", "个人主页"],
+      "sourceUrl": "https://trentonbricken.com/",
+      "importance": 4
+    },
+    {
+      "person": "Trenton Bricken",
+      "title": "自动化对齐审计文章主作者",
+      "content": "Building and evaluating alignment auditing agents 将 Trenton Bricken 列为作者，并介绍用 agent 辅助 frontier model alignment audit 的工作。",
+      "tags": ["对齐", "Agent", "评测"],
+      "sourceUrl": "https://alignment.anthropic.com/2025/automated-auditing/",
+      "importance": 4
+    },
+    {
+      "person": "Trenton Bricken",
+      "title": "Towards Monosemanticity 的正确来源",
+      "content": "Transformer Circuits 的 Towards Monosemanticity 页面列出 Trenton Bricken 为作者之一，比此前错误的 arXiv 链接更适合作为这条成果来源。",
+      "tags": ["可解释性", "Dictionary Learning", "Anthropic"],
+      "sourceUrl": "https://transformer-circuits.pub/2023/monosemantic-features/index.html",
+      "importance": 4
+    },
+    {
+      "person": "Tristan Hume",
+      "title": "Anthropic 性能优化方向来源",
+      "content": "Tristan Hume 的个人站点说明他在 Anthropic 负责 performance optimization team，可作为他当前工作方向的本人来源。",
+      "tags": ["Anthropic", "工程", "性能优化"],
+      "sourceUrl": "https://thume.ca/",
+      "importance": 4
+    },
+    {
+      "person": "Tristan Hume",
+      "title": "Toy Models of Superposition 作者",
+      "content": "Toy Models of Superposition 的 arXiv 记录将 Tristan Hume 列为作者之一，补强他在 Anthropic 机械可解释性早期工作中的位置。",
+      "tags": ["可解释性", "Superposition", "Paper"],
+      "sourceUrl": "https://arxiv.org/abs/2209.10652",
+      "importance": 4
+    },
+    {
+      "person": "Tristan Hume",
+      "title": "Towards Monosemanticity 作者记录",
+      "content": "Transformer Circuits 的 Towards Monosemanticity 页面将 Tristan Hume 列为作者之一，可作为他参与 dictionary learning / monosemanticity 工作的来源。",
+      "tags": ["可解释性", "Dictionary Learning", "Anthropic"],
+      "sourceUrl": "https://transformer-circuits.pub/2023/monosemantic-features/index.html",
+      "importance": 4
+    },
+    {
+      "person": "Nick Frosst",
+      "title": "Aya Expanse 技术报告作者",
+      "content": "Aya Expanse 技术报告将 Nick Frosst 列为作者之一，补强他在 Cohere 多语言模型路线中的公开研究来源。",
+      "tags": ["大语言模型", "多语言", "Cohere"],
+      "sourceUrl": "https://arxiv.org/abs/2412.04261",
+      "importance": 3
+    },
+    {
+      "person": "Nick Frosst",
+      "title": "企业 AI 平台建设线索",
+      "content": "Cohere 官方 About 页把公司定位为让自然语言理解技术更广泛可用，Nick Frosst 的 co-founder 身份与这条企业 AI 平台路线直接相关。",
+      "tags": ["企业 AI", "Cohere", "产品"],
+      "sourceUrl": "https://cohere.com/about",
+      "importance": 3
+    },
+    {
+      "person": "Nick Frosst",
+      "title": "Cohere 创始团队成员",
+      "content": "Cohere 官方 About 页将 Nick Frosst 列为 Co-founder，可作为其当前机构和创始身份的主来源。",
+      "tags": ["Cohere", "创始人", "企业 AI"],
+      "sourceUrl": "https://cohere.com/about",
+      "importance": 4
+    },
+    {
+      "person": "Ivan Zhang",
+      "title": "Aya Expanse 技术报告作者",
+      "content": "Aya Expanse 技术报告将 Ivan Zhang 列为作者之一，补强他在 Cohere 模型研究和多语言模型路线中的公开来源。",
+      "tags": ["大语言模型", "多语言", "Cohere"],
+      "sourceUrl": "https://arxiv.org/abs/2412.04261",
+      "importance": 3
+    },
+    {
+      "person": "Ivan Zhang",
+      "title": "Cohere 官方创始人身份",
+      "content": "Cohere 官方 About 页将 Ivan Zhang 列为 Co-founder，可作为他在 Cohere 创始团队中的主来源。",
+      "tags": ["Cohere", "创始人", "企业 AI"],
+      "sourceUrl": "https://cohere.com/about",
+      "importance": 4
+    },
+    {
+      "person": "Ivan Zhang",
+      "title": "企业 AI 平台建设线索",
+      "content": "Cohere 官方 About 页把公司定位为面向企业的自然语言理解与 AI 平台，Ivan Zhang 的创始人身份与这条企业 AI 路线直接相关。",
+      "tags": ["企业 AI", "大语言模型", "平台"],
+      "sourceUrl": "https://cohere.com/about",
+      "importance": 3
+    },
+    {
+      "person": "Phil Blunsom",
+      "title": "Cohere CTO 官方来源",
+      "content": "Cohere 官方 About 页将 Phil Blunsom 列为 Chief Technology Officer，可作为其当前职位的主来源。",
+      "tags": ["Cohere", "CTO", "企业 AI"],
+      "sourceUrl": "https://cohere.com/about",
+      "importance": 4
+    },
+    {
+      "person": "Phil Blunsom",
+      "title": "Aya Expanse 技术报告作者",
+      "content": "Aya Expanse 技术报告将 Phil Blunsom 列为作者之一，补强他在 Cohere 多语言模型研究中的公开来源。",
+      "tags": ["大语言模型", "多语言", "Cohere"],
+      "sourceUrl": "https://arxiv.org/abs/2412.04261",
+      "importance": 3
+    },
+    {
+      "person": "Phil Blunsom",
+      "title": "NLP 与企业模型技术方向",
+      "content": "Cohere 官方 About 页把 Phil Blunsom 放在 executive team 的 CTO 位置，适合支撑他在企业级语言模型技术方向的卡片展示。",
+      "tags": ["NLP", "企业 AI", "技术领导"],
+      "sourceUrl": "https://cohere.com/about",
+      "importance": 3
+    },
+    {
+      "person": "Timothee Lacroix",
+      "title": "Mistral 官方 CTO 来源",
+      "content": "Mistral AI 官方 company 页将 Timothee Lacroix 列为 Co-founder and CTO，可作为其创始人和当前职位的主来源。",
+      "tags": ["Mistral", "CTO", "大语言模型"],
+      "sourceUrl": "https://mistral.ai/company",
+      "importance": 4
+    },
+    {
+      "person": "Timothee Lacroix",
+      "title": "Mixtral of Experts 技术报告作者",
+      "content": "Mixtral of Experts 技术报告将 Timothée Lacroix 列为作者之一，补强他在 Mistral 开源 MoE 模型路线中的公开来源。",
+      "tags": ["MoE", "开源模型", "Mistral"],
+      "sourceUrl": "https://arxiv.org/abs/2401.04088",
+      "importance": 4
+    },
+    {
+      "person": "Timothee Lacroix",
+      "title": "欧洲前沿模型实验室路线",
+      "content": "Mistral 官方 company 页介绍公司时间线和创始团队，Timothee Lacroix 的 CTO 身份支撑其在欧洲前沿模型实验室路线中的位置。",
+      "tags": ["大语言模型", "开源", "Mistral"],
+      "sourceUrl": "https://mistral.ai/company",
+      "importance": 3
+    },
+    {
+      "person": "Thariq Shihipar",
+      "title": "Claude Code dynamic workflows 技术写作",
+      "content": "Claude 官方博客 A harness for every task 将 Thariq Shihipar 列为作者，并介绍 Claude Code 的 dynamic workflows 和多 agent harness 实践。",
+      "tags": ["Claude Code", "Agent", "开发者工具"],
+      "sourceUrl": "https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code",
+      "importance": 4
+    },
+    {
+      "person": "Thariq Shihipar",
+      "title": "本人站点与开发者工具线索",
+      "content": "Thariq Shihipar 的个人站点可作为本人来源，结合 Claude 官方博客，支撑他在 Claude Code 和 agent 工程实践中的资料展示。",
+      "tags": ["Claude Code", "AI 工程", "个人主页"],
+      "sourceUrl": "https://www.thariq.io",
+      "importance": 3
+    }
+  ],
+  "avatars": [
+    {
+      "person": "Nick Frosst",
+      "imageUrl": "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/a0d98f1a3b1c8704db13130d69fe2a7cbd04faf7-648x720.jpg?auto=format&fit=max&q=90&w=648",
+      "evidenceUrl": "https://cohere.com/about",
+      "evidenceNote": "Cohere official About page image alt text identifies Nick Frosst."
+    },
+    {
+      "person": "Ivan Zhang",
+      "imageUrl": "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/d5b6d7fe4eaba90c000327c3b9bce67b1d82eb3c-648x720.png?auto=format&fit=max&q=90&w=648",
+      "evidenceUrl": "https://cohere.com/about",
+      "evidenceNote": "Cohere official About page image alt text identifies Ivan Zhang."
+    },
+    {
+      "person": "Timothee Lacroix",
+      "imageUrl": "https://mistral.ai/_astro/timothee-lacroix_1JAtuG.webp?dpl=6a29ec46f50cbb00089ee1b7",
+      "evidenceUrl": "https://mistral.ai/company",
+      "evidenceNote": "Mistral official company page image appears in the founder card for Timothee Lacroix."
+    },
+    {
+      "person": "Thariq Shihipar",
+      "imageUrl": "https://www.thariq.io/social-card.png",
+      "evidenceUrl": "https://www.thariq.io",
+      "evidenceNote": "Thariq Shihipar personal site Open Graph image.",
+      "overwriteExisting": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-06-10T18:08:55.978Z",
+  "summary": {
+    "generatedAt": "2026-06-10T18:08:55.975Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch15_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch15_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH15_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 13,
+    "selectedSourceRows": 13,
+    "skippedRows": 10,
+    "existingRawPoolItems": 3,
+    "rawInserted": 10,
+    "rawUpdated": 3,
+    "keepAuditsInserted": 10,
+    "keepAuditsExisting": 3,
+    "byDecision": {
+      "augment_source": 8,
+      "replace_source": 5
+    },
+    "bySourceType": {
+      "exa": 11,
+      "podcast": 1,
+      "official": 1
+    },
+    "topPeople": {
+      "Jeremy Howard": 4,
+      "Sam Altman": 3,
+      "Guillaume Lample": 1,
+      "Marc Andreessen": 1,
+      "Oriol Vinyals": 1,
+      "李莲": 1,
+      "桑达尔·皮查伊": 1,
+      "黄仁勋": 1
+    },
+    "topHosts": {
+      "answer.ai": 2,
+      "abcnews.com": 1,
+      "americanbazaaronline.com": 1,
+      "blog.samaltman.com": 1,
+      "fast.ai": 1,
+      "forbes.com": 1,
+      "latent.space": 1,
+      "lilianweng.github.io": 1,
+      "nvidianews.nvidia.com": 1,
+      "podcasts.apple.com": 1,
+      "technologyreview.com": 1,
+      "ycombinator.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 10
+    }
+  }
+}

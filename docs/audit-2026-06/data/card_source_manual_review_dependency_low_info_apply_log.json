@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-06-10T21:37:21.123Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:37:21.123Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/card_source_manual_decisions_review_dependency_low_info.json",
+    "archive": "docs/audit-2026-06/data/card_source_manual_review_dependency_low_info_apply_archive.json",
+    "stage": "manual_prune_tail_review_dependency_low_info",
+    "decisions": 2,
+    "applicable": 2,
+    "applied": 2,
+    "skipped": 0,
+    "byAction": {
+      "archive_card": 1,
+      "delete_raw_pool_item": 1
+    }
+  }
+}

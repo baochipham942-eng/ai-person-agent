@@ -14,6 +14,38 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
       },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'abacus.ai',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'nextomoro.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'noambrown.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.timothybrooks.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+      },
     ],
   },
 };

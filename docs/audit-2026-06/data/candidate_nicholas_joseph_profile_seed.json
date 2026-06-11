@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "source": "80,000 Hours episode page",
+    "generatedAt": "2026-06-11T17:12:00+08:00",
+    "note": "Alias and current title repair for existing Nicholas Joseph candidate."
+  },
+  "seeds": [
+    {
+      "name": "Nicholas Joseph",
+      "roleCategory": "researcher",
+      "organization": ["Anthropic"],
+      "currentTitle": "Head of Training @ Anthropic",
+      "aliases": ["Nick Joseph"],
+      "reason": "Anthropic founding team member and current head of training, with public 80,000 Hours interview discussing Anthropic safety and responsible scaling."
+    }
+  ]
+}

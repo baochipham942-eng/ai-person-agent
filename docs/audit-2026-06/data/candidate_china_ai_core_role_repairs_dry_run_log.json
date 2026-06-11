@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "roles": 3,
+    "insertedRoles": 0,
+    "wouldInsertRoles": 3,
+    "existingRoles": 0,
+    "missingPeople": 0,
+    "orgsInserted": 0,
+    "orgsWouldInsert": 1
+  },
+  "log": [
+    {
+      "action": "would_insert_role",
+      "organizationAction": "existing_org",
+      "person": "Robin Li",
+      "personId": "628adb9b-6ffc-465e-b038-d900b0f7272c",
+      "organization": "Baidu",
+      "organizationId": "cmjw5k5260079izl8rltrm3bs",
+      "role": "Co-founder & CEO",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "would_insert_org",
+      "person": "Jingren Zhou",
+      "personId": "d7bb513f-fcbf-4768-94b2-63e906bb846c",
+      "organization": "阿里巴巴",
+      "organizationId": "0c5668ca-7a83-4adb-87e7-d94d5d10480e",
+      "role": "Alibaba Cloud CTO / Qwen business lead",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "would_insert_role",
+      "organizationAction": "existing_org",
+      "person": "Dong Yu",
+      "personId": "de1b6771-2cb5-4b53-9d0e-464ed96354f4",
+      "organization": "腾讯",
+      "organizationId": "cmk8fk3be0000lqc57vuxtmxj",
+      "role": "Distinguished Scientist / Chief Scientist",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "generatedAt": "2026-06-09T15:47:13.794Z",
+  "criteria": {
+    "safeToAutoApply": true,
+    "claimType": "source_item_belongs_to_person",
+    "verdict": [
+      "wrong_person",
+      "unsupported"
+    ],
+    "remediationAction": "delete_raw_pool_item",
+    "confidence": ">= 0.85",
+    "destructiveAction": "deleted RawPoolItem rows only"
+  },
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_seventh_new_high_after_safe_prune_mimo_summary.json",
+    "safeDecisions": 4,
+    "rejectedSafeQueueRows": 0,
+    "uniqueTargetIds": 4,
+    "existingTargets": 4,
+    "missingTargets": 0,
+    "deleted": 0,
+    "affectedPeople": 1,
+    "bySourceType": {
+      "exa": 4
+    },
+    "byVerdict": {
+      "wrong_person": 4
+    },
+    "topPeople": {
+      "姚顺雨": 4
+    }
+  },
+  "missingIds": [],
+  "rows": [
+    {
+      "raw": {
+        "id": "cmjtxg2x501vwrmtbylsmx0zw",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://music.apple.com/us/artist/%E5%A7%9A%E8%88%9C%E7%A6%B9/1669929461?l=zh-Hant-TW",
+        "urlHash": "9deeb3720a2c3ce020907ed3d2d26eff",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "姚舜禹",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:51.209Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg2x501vwrmtbylsmx0zw]:edada67ee1e7",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg2x501vwrmtbylsmx0zw",
+          "fieldPath": "RawPoolItem[cmjtxg2x501vwrmtbylsmx0zw]",
+          "objectLabel": "姚舜禹"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容指向音乐人姚舜禹，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:46:41.953Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxg3h701wcrmtbm4slyrvo",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://www.instagram.com/ashunyeshunye/",
+        "urlHash": "b4f5b20cdf7e2badc55c02f457ecfda0",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "姚舜禹(@ashunyeshunye) • Instagram photos and videos",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:51.932Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg3h701wcrmtbm4slyrvo]:796fef3a28e2",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg3h701wcrmtbm4slyrvo",
+          "fieldPath": "RawPoolItem[cmjtxg3h701wcrmtbm4slyrvo]",
+          "objectLabel": "姚舜禹(@ashunyeshunye) • Instagram photos and videos"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容指向艺术家姚舜禹的Instagram账号，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:46:41.953Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxg2a701vkrmtblbtrcm52",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://www.ccartd.com/artistData/detail/Y/16066.html",
+        "urlHash": "08409ef4880ee0c0125764dd4cd10ef9",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "姚舜禹中国当代前瞻型艺术家",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:50.384Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg2a701vkrmtblbtrcm52]:ff64c7e7ef97",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg2a701vkrmtblbtrcm52",
+          "fieldPath": "RawPoolItem[cmjtxg2a701vkrmtblbtrcm52]",
+          "objectLabel": "姚舜禹中国当代前瞻型艺术家"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容明确指向艺术家姚舜禹，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:46:41.950Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxg37501w6rmtbmnn677rs",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://www.artsy.net/artist/lin-jia-xian-ma-xiao-qing-yao-shun-yu-lin-chia-hsien-ma-xiao-qing-yao-shun-yu",
+        "urlHash": "1b7237c351f8ce02c2bbe5a0a33f2477",
+        "contentHash": "f543528f1c515ed298e1b19ee7ef5db9",
+        "title": "林家賢,馬曉晴,姚舜禹Lin Chia-Hsien , Ma Xiao-Qing, Yao ...",
+        "text": "Skip to Main Content Get the app, get the art. Buy Artsy for Galleries Price Database Editorial Auctions Viewing Rooms Galleries Fairs &amp; Events Shows Museums Collecting 101 See all past shows and fair booths Artworks Auction Results About Discover and Buy Art that Moves You Get the app. Get the art.",
+        "publishedAt": null,
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:51.570Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg37501w6rmtbmnn677rs]:691b0cb34310",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg37501w6rmtbmnn677rs",
+          "fieldPath": "RawPoolItem[cmjtxg37501w6rmtbmnn677rs]",
+          "objectLabel": "林家賢,馬曉晴,姚舜禹Lin Chia-Hsien , Ma Xiao-Qing, Yao ..."
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容指向艺术组合，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:46:41.953Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    }
+  ]
+}

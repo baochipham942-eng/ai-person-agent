@@ -1,0 +1,407 @@
+{
+  "generatedAt": "2026-06-11T06:55:19.567Z",
+  "mode": "dry-run",
+  "input": "docs/audit-2026-06/data/candidate_source_depth_repairs.json",
+  "summary": {
+    "missingPeople": 0,
+    "sourceDeletes": 3,
+    "sources": 16,
+    "cards": 32,
+    "avatars": 4,
+    "errors": 0
+  },
+  "missingPeople": [],
+  "deletedSources": [
+    {
+      "person": "Catherine Olsson",
+      "url": "https://arxiv.org/abs/2209.07858",
+      "status": "would_delete",
+      "rawRows": 1,
+      "auditRows": 1,
+      "reason": "This arXiv page is Red Teaming Language Models, not In-context Learning and Induction Heads."
+    },
+    {
+      "person": "Nicholas Joseph",
+      "url": "https://arxiv.org/abs/2209.07858",
+      "status": "would_delete",
+      "rawRows": 1,
+      "auditRows": 1,
+      "reason": "This arXiv page is Red Teaming Language Models, not In-context Learning and Induction Heads."
+    },
+    {
+      "person": "Trenton Bricken",
+      "url": "https://arxiv.org/abs/2309.08600",
+      "status": "would_delete",
+      "rawRows": 1,
+      "auditRows": 1,
+      "reason": "This arXiv page is Sparse Autoencoders Find Highly Interpretable Features in Language Models by a different author group."
+    }
+  ],
+  "sources": [
+    {
+      "person": "Catherine Olsson",
+      "url": "https://arxiv.org/abs/2209.11895",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 4918,
+      "title": "In-context Learning and Induction Heads"
+    },
+    {
+      "person": "Catherine Olsson",
+      "url": "https://arxiv.org/abs/2209.10652",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 4565,
+      "title": "Toy Models of Superposition"
+    },
+    {
+      "person": "Nicholas Joseph",
+      "url": "https://arxiv.org/abs/2209.11895",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 4918,
+      "title": "In-context Learning and Induction Heads"
+    },
+    {
+      "person": "Nicholas Joseph",
+      "url": "https://arxiv.org/abs/2306.16388",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 5653,
+      "title": "Towards Measuring the Representation of Subjective Global Opinions in Language Models"
+    },
+    {
+      "person": "Tamera Lanham",
+      "url": "https://arxiv.org/abs/2307.13702",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 5253,
+      "title": "Measuring Faithfulness in Chain-of-Thought Reasoning"
+    },
+    {
+      "person": "Tamera Lanham",
+      "url": "https://arxiv.org/abs/2302.07459",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 5718,
+      "title": "The Capacity for Moral Self-Correction in Large Language Models"
+    },
+    {
+      "person": "Evan Hubinger",
+      "url": "https://evhub.github.io/",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 587,
+      "title": "Evan Hubinger personal site"
+    },
+    {
+      "person": "Evan Hubinger",
+      "url": "https://alignment.anthropic.com/2025/automated-auditing/",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 8089,
+      "title": "Building and evaluating alignment auditing agents"
+    },
+    {
+      "person": "Trenton Bricken",
+      "url": "https://trentonbricken.com/",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 7399,
+      "title": "Trenton Bricken personal site"
+    },
+    {
+      "person": "Trenton Bricken",
+      "url": "https://alignment.anthropic.com/2025/automated-auditing/",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 8094,
+      "title": "Building and evaluating alignment auditing agents"
+    },
+    {
+      "person": "Tristan Hume",
+      "url": "https://thume.ca/",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 8085,
+      "title": "Tristan Hume personal site"
+    },
+    {
+      "person": "Tristan Hume",
+      "url": "https://arxiv.org/abs/2209.10652",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 4554,
+      "title": "Toy Models of Superposition"
+    },
+    {
+      "person": "Nick Frosst",
+      "url": "https://arxiv.org/abs/2412.04261",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 5578,
+      "title": "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier"
+    },
+    {
+      "person": "Ivan Zhang",
+      "url": "https://arxiv.org/abs/2412.04261",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 5577,
+      "title": "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier"
+    },
+    {
+      "person": "Phil Blunsom",
+      "url": "https://arxiv.org/abs/2412.04261",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 5579,
+      "title": "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier"
+    },
+    {
+      "person": "Timothee Lacroix",
+      "url": "https://arxiv.org/abs/2401.04088",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 5219,
+      "title": "Mixtral of Experts"
+    }
+  ],
+  "cards": [
+    {
+      "person": "Catherine Olsson",
+      "title": "In-context learning 论文的正确 arXiv 记录",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2209.11895"
+    },
+    {
+      "person": "Catherine Olsson",
+      "title": "Toy Models of Superposition 作者线索",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2209.10652"
+    },
+    {
+      "person": "Catherine Olsson",
+      "title": "模型行为评测方向的共同作者记录",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2212.09251"
+    },
+    {
+      "person": "Nicholas Joseph",
+      "title": "Induction heads 论文的正确 arXiv 记录",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2209.11895"
+    },
+    {
+      "person": "Nicholas Joseph",
+      "title": "主观全球观点评测研究",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2306.16388"
+    },
+    {
+      "person": "Nicholas Joseph",
+      "title": "模型决策歧视评测研究",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2312.03689"
+    },
+    {
+      "person": "Tamera Lanham",
+      "title": "Chain-of-thought faithfulness 研究",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2307.13702"
+    },
+    {
+      "person": "Tamera Lanham",
+      "title": "LLM moral self-correction 研究",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2302.07459"
+    },
+    {
+      "person": "Tamera Lanham",
+      "title": "模型行为发现与评测线索",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2212.09251"
+    },
+    {
+      "person": "Evan Hubinger",
+      "title": "个人 AI safety 工作入口",
+      "status": "would_insert",
+      "sourceUrl": "https://evhub.github.io/"
+    },
+    {
+      "person": "Evan Hubinger",
+      "title": "Alignment auditing agents 共同作者",
+      "status": "would_insert",
+      "sourceUrl": "https://alignment.anthropic.com/2025/automated-auditing/"
+    },
+    {
+      "person": "Evan Hubinger",
+      "title": "Sleeper Agents 与欺骗行为研究",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2401.05566"
+    },
+    {
+      "person": "Trenton Bricken",
+      "title": "Anthropic Alignment Science 当前角色",
+      "status": "would_insert",
+      "sourceUrl": "https://trentonbricken.com/"
+    },
+    {
+      "person": "Trenton Bricken",
+      "title": "自动化对齐审计文章主作者",
+      "status": "would_insert",
+      "sourceUrl": "https://alignment.anthropic.com/2025/automated-auditing/"
+    },
+    {
+      "person": "Trenton Bricken",
+      "title": "Towards Monosemanticity 的正确来源",
+      "status": "would_insert",
+      "sourceUrl": "https://transformer-circuits.pub/2023/monosemantic-features/index.html"
+    },
+    {
+      "person": "Tristan Hume",
+      "title": "Anthropic 性能优化方向来源",
+      "status": "would_insert",
+      "sourceUrl": "https://thume.ca/"
+    },
+    {
+      "person": "Tristan Hume",
+      "title": "Toy Models of Superposition 作者",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2209.10652"
+    },
+    {
+      "person": "Tristan Hume",
+      "title": "Towards Monosemanticity 作者记录",
+      "status": "would_insert",
+      "sourceUrl": "https://transformer-circuits.pub/2023/monosemantic-features/index.html"
+    },
+    {
+      "person": "Nick Frosst",
+      "title": "Aya Expanse 技术报告作者",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2412.04261"
+    },
+    {
+      "person": "Nick Frosst",
+      "title": "企业 AI 平台建设线索",
+      "status": "would_insert",
+      "sourceUrl": "https://cohere.com/about"
+    },
+    {
+      "person": "Nick Frosst",
+      "title": "Cohere 创始团队成员",
+      "status": "would_insert",
+      "sourceUrl": "https://cohere.com/about"
+    },
+    {
+      "person": "Ivan Zhang",
+      "title": "Aya Expanse 技术报告作者",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2412.04261"
+    },
+    {
+      "person": "Ivan Zhang",
+      "title": "Cohere 官方创始人身份",
+      "status": "would_insert",
+      "sourceUrl": "https://cohere.com/about"
+    },
+    {
+      "person": "Ivan Zhang",
+      "title": "企业 AI 平台建设线索",
+      "status": "would_insert",
+      "sourceUrl": "https://cohere.com/about"
+    },
+    {
+      "person": "Phil Blunsom",
+      "title": "Cohere CTO 官方来源",
+      "status": "would_insert",
+      "sourceUrl": "https://cohere.com/about"
+    },
+    {
+      "person": "Phil Blunsom",
+      "title": "Aya Expanse 技术报告作者",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2412.04261"
+    },
+    {
+      "person": "Phil Blunsom",
+      "title": "NLP 与企业模型技术方向",
+      "status": "would_insert",
+      "sourceUrl": "https://cohere.com/about"
+    },
+    {
+      "person": "Timothee Lacroix",
+      "title": "Mistral 官方 CTO 来源",
+      "status": "would_insert",
+      "sourceUrl": "https://mistral.ai/company"
+    },
+    {
+      "person": "Timothee Lacroix",
+      "title": "Mixtral of Experts 技术报告作者",
+      "status": "would_insert",
+      "sourceUrl": "https://arxiv.org/abs/2401.04088"
+    },
+    {
+      "person": "Timothee Lacroix",
+      "title": "欧洲前沿模型实验室路线",
+      "status": "would_insert",
+      "sourceUrl": "https://mistral.ai/company"
+    },
+    {
+      "person": "Thariq Shihipar",
+      "title": "Claude Code dynamic workflows 技术写作",
+      "status": "would_insert",
+      "sourceUrl": "https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code"
+    },
+    {
+      "person": "Thariq Shihipar",
+      "title": "本人站点与开发者工具线索",
+      "status": "would_insert",
+      "sourceUrl": "https://www.thariq.io"
+    }
+  ],
+  "avatars": [
+    {
+      "person": "Nick Frosst",
+      "status": "would_update",
+      "previousAvatarUrl": null,
+      "nextAvatarUrl": "/avatars/nick-frosst-d4f12822.webp",
+      "inputBytes": 70745,
+      "outputPath": null,
+      "evidenceUrl": "https://cohere.com/about",
+      "evidenceNote": "Cohere official About page image alt text identifies Nick Frosst."
+    },
+    {
+      "person": "Ivan Zhang",
+      "status": "would_update",
+      "previousAvatarUrl": null,
+      "nextAvatarUrl": "/avatars/ivan-zhang-70289bb2.webp",
+      "inputBytes": 588933,
+      "outputPath": null,
+      "evidenceUrl": "https://cohere.com/about",
+      "evidenceNote": "Cohere official About page image alt text identifies Ivan Zhang."
+    },
+    {
+      "person": "Timothee Lacroix",
+      "status": "would_update",
+      "previousAvatarUrl": null,
+      "nextAvatarUrl": "/avatars/timothee-lacroix-2e81ad2f.webp",
+      "inputBytes": 192202,
+      "outputPath": null,
+      "evidenceUrl": "https://mistral.ai/company",
+      "evidenceNote": "Mistral official company page image appears in the founder card for Timothee Lacroix."
+    },
+    {
+      "person": "Thariq Shihipar",
+      "status": "would_update",
+      "previousAvatarUrl": "https://www.thariq.io/social-card.png",
+      "nextAvatarUrl": "/avatars/thariq-shihipar-8383cb09.webp",
+      "inputBytes": 157761,
+      "outputPath": null,
+      "evidenceUrl": "https://www.thariq.io",
+      "evidenceNote": "Thariq Shihipar personal site Open Graph image."
+    }
+  ],
+  "errors": []
+}

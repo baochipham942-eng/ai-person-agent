@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-06-10T19:56:52.921Z",
+  "summary": {
+    "generatedAt": "2026-06-10T19:56:52.918Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch22_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch22_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH22_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 20,
+    "selectedSourceRows": 20,
+    "skippedRows": 8,
+    "existingRawPoolItems": 10,
+    "rawInserted": 10,
+    "rawUpdated": 10,
+    "keepAuditsInserted": 10,
+    "keepAuditsExisting": 10,
+    "byDecision": {
+      "augment_source": 4,
+      "replace_source": 16
+    },
+    "bySourceType": {
+      "exa": 14,
+      "official": 5,
+      "youtube": 1
+    },
+    "topPeople": {
+      "乔尔·皮诺": 3,
+      "Boris Cherny": 2,
+      "Mustafa Suleyman": 2,
+      "Noam Shazeer": 2,
+      "Sam Altman": 2,
+      "Yann LeCun": 2,
+      "阿希什·瓦斯瓦尼": 2,
+      "雅各布·乌什科雷特": 2,
+      "黄仁勋": 2,
+      "科拉伊·卡武克丘奥卢": 1
+    },
+    "topHosts": {
+      "blogs.nvidia.cn": 2,
+      "ai.meta.com": 1,
+      "blog.google": 1,
+      "blogs.microsoft.com": 1,
+      "britannica.com": 1,
+      "cnbc.com": 1,
+      "cs.mcgill.ca": 1,
+      "forbes.com": 1,
+      "lennysnewsletter.com": 1,
+      "lri.fr": 1,
+      "mila.quebec": 1,
+      "montgomerysummit.com": 1,
+      "mustafa-suleyman.ai": 1,
+      "nbcsandiego.com": 1,
+      "newsletter.pragmaticengineer.com": 1,
+      "noamshazeer.com": 1,
+      "ted.com": 1,
+      "viterbischool.usc.edu": 1,
+      "youtube.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 7,
+      "low_authority_source": 1
+    }
+  }
+}

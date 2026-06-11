@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-06-10T18:08:20.029Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch15.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch15_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH15_CURATED.md",
+  "inputRows": 20,
+  "outputRows": 20,
+  "inputSelectedSources": 21,
+  "outputSelectedSources": 14,
+  "removedSelectedSources": 7,
+  "rowsChanged": 6,
+  "rowsDeferredToHumanReview": 4,
+  "byDecision": {
+    "replace_source": 4,
+    "augment_source": 6,
+    "human_review": 4,
+    "no_good_source": 6
+  },
+  "removedHosts": {
+    "anthropic.com": 1,
+    "fr.linkedin.com": 1,
+    "ithome.com.tw": 1,
+    "scholar.google.com": 1,
+    "venturebeat.com": 1,
+    "x.com": 1,
+    "zh.wikipedia.org": 1
+  },
+  "keptHosts": {
+    "answer.ai": 2,
+    "forbes.com": 2,
+    "abcnews.com": 1,
+    "americanbazaaronline.com": 1,
+    "blog.samaltman.com": 1,
+    "fast.ai": 1,
+    "latent.space": 1,
+    "lilianweng.github.io": 1,
+    "nvidianews.nvidia.com": 1,
+    "podcasts.apple.com": 1,
+    "technologyreview.com": 1,
+    "ycombinator.com": 1
+  }
+}

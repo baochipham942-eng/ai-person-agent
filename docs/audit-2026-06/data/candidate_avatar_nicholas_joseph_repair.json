@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-11T17:12:00+08:00",
+  "reason": "Source-backed avatar repair for Nicholas Joseph using the 80,000 Hours podcast guest page, which names Nick Joseph and Anthropic and includes a guest portrait.",
+  "avatars": [
+    {
+      "person": "Nicholas Joseph",
+      "imageUrl": "https://80000hours.org/wp-content/uploads/2025/04/nick-joseph-300x300.webp",
+      "evidenceUrl": "https://80000hours.org/podcast/episodes/nick-joseph-anthropic-safety-approach-responsible-scaling/",
+      "evidenceNote": "80,000 Hours episode page names Nick Joseph, describes him as one of the people who left OpenAI to launch Anthropic and its current head of training, and embeds a named guest portrait."
+    }
+  ]
+}

@@ -48,6 +48,7 @@ async function main() {
     FROM "Card" c
     JOIN "People" p ON p.id = c."personId"
     WHERE p.status <> 'candidate'
+      AND c."isActive" = true
       AND (c.title LIKE ${'%代表线索%'} OR c.content LIKE ${'%candidate 状态%'})
     ORDER BY p.name, c.title
   ` as CardRow[];

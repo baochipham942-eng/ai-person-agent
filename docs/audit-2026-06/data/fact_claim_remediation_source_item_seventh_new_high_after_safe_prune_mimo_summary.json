@@ -1,0 +1,161 @@
+{
+  "generatedAt": "2026-06-09T15:46:41.954Z",
+  "input": {
+    "claimsFile": "docs/audit-2026-06/data/fact_claims_source_items_after_seventh_safe_prune_new_high.jsonl",
+    "reviewDir": "docs/audit-2026-06/data/post_seventh_prune_new_high_review_dir",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "claimType": null,
+      "verdict": null,
+      "action": null,
+      "person": null,
+      "limit": 0,
+      "batchSize": 8,
+      "concurrency": 4,
+      "resume": false,
+      "maxRetries": 3
+    }
+  },
+  "totalProblemIssues": 4,
+  "selectedIssues": 4,
+  "remediations": 4,
+  "byAction": {
+    "delete_raw_pool_item": 4
+  },
+  "bySafe": {
+    "safe_auto_apply": 4
+  },
+  "byClaimType": {
+    "source_item_belongs_to_person": 4
+  },
+  "topPeople": [
+    {
+      "person": "姚顺雨",
+      "total": 4,
+      "safe": 4,
+      "actions": {
+        "delete_raw_pool_item": 4
+      },
+      "samples": [
+        "source_item_belongs_to_person/delete_raw_pool_item: 内容明确指向艺术家姚舜禹，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+        "source_item_belongs_to_person/delete_raw_pool_item: 内容指向音乐人姚舜禹，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+        "source_item_belongs_to_person/delete_raw_pool_item: 内容指向艺术组合，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。"
+      ]
+    }
+  ],
+  "safeAutoApplyQueue": [
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg2a701vkrmtblbtrcm52]:ff64c7e7ef97",
+      "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "verdict": "wrong_person",
+      "reviewAction": "remove",
+      "remediationAction": "delete_raw_pool_item",
+      "safeToAutoApply": true,
+      "confidence": 0.95,
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxg2a701vkrmtblbtrcm52",
+        "fieldPath": "RawPoolItem[cmjtxg2a701vkrmtblbtrcm52]",
+        "objectLabel": "姚舜禹中国当代前瞻型艺术家"
+      },
+      "proposedValue": null,
+      "proposedText": null,
+      "sourceQueries": [],
+      "evidenceRequirements": [],
+      "rationale": "内容明确指向艺术家姚舜禹，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+      "blockers": [],
+      "reviewedAt": "2026-06-09T15:46:41.950Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      }
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg2x501vwrmtbylsmx0zw]:edada67ee1e7",
+      "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "verdict": "wrong_person",
+      "reviewAction": "remove",
+      "remediationAction": "delete_raw_pool_item",
+      "safeToAutoApply": true,
+      "confidence": 0.95,
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxg2x501vwrmtbylsmx0zw",
+        "fieldPath": "RawPoolItem[cmjtxg2x501vwrmtbylsmx0zw]",
+        "objectLabel": "姚舜禹"
+      },
+      "proposedValue": null,
+      "proposedText": null,
+      "sourceQueries": [],
+      "evidenceRequirements": [],
+      "rationale": "内容指向音乐人姚舜禹，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+      "blockers": [],
+      "reviewedAt": "2026-06-09T15:46:41.953Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      }
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg37501w6rmtbmnn677rs]:691b0cb34310",
+      "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "verdict": "wrong_person",
+      "reviewAction": "remove",
+      "remediationAction": "delete_raw_pool_item",
+      "safeToAutoApply": true,
+      "confidence": 0.9,
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxg37501w6rmtbmnn677rs",
+        "fieldPath": "RawPoolItem[cmjtxg37501w6rmtbmnn677rs]",
+        "objectLabel": "林家賢,馬曉晴,姚舜禹Lin Chia-Hsien , Ma Xiao-Qing, Yao ..."
+      },
+      "proposedValue": null,
+      "proposedText": null,
+      "sourceQueries": [],
+      "evidenceRequirements": [],
+      "rationale": "内容指向艺术组合，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+      "blockers": [],
+      "reviewedAt": "2026-06-09T15:46:41.953Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      }
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg3h701wcrmtbm4slyrvo]:796fef3a28e2",
+      "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "verdict": "wrong_person",
+      "reviewAction": "remove",
+      "remediationAction": "delete_raw_pool_item",
+      "safeToAutoApply": true,
+      "confidence": 0.9,
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxg3h701wcrmtbm4slyrvo",
+        "fieldPath": "RawPoolItem[cmjtxg3h701wcrmtbm4slyrvo]",
+        "objectLabel": "姚舜禹(@ashunyeshunye) • Instagram photos and videos"
+      },
+      "proposedValue": null,
+      "proposedText": null,
+      "sourceQueries": [],
+      "evidenceRequirements": [],
+      "rationale": "内容指向艺术家姚舜禹的Instagram账号，与AI研究员姚顺雨姓名相似但领域完全不同，属于高置信人名错配，应直接删除。",
+      "blockers": [],
+      "reviewedAt": "2026-06-09T15:46:41.953Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      }
+    }
+  ],
+  "manualReviewQueue": []
+}

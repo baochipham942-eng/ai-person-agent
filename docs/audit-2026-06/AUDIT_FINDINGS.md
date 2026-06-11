@@ -326,4 +326,3 @@ UPDATE people SET score_status='pending' WHERE influenceScore = 0;  -- 命中 86
 
 ---
 ## STATS
-

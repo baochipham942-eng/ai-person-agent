@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-06-10T18:55:32.772Z",
+  "summary": {
+    "generatedAt": "2026-06-10T18:55:32.770Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch18_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch18_curated_apply_post_verify_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH18_CURATED_APPLY_POST_VERIFY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 18,
+    "selectedSourceRows": 18,
+    "skippedRows": 4,
+    "existingRawPoolItems": 18,
+    "rawInserted": 0,
+    "rawUpdated": 18,
+    "keepAuditsInserted": 0,
+    "keepAuditsExisting": 18,
+    "byDecision": {
+      "replace_source": 17,
+      "augment_source": 1
+    },
+    "bySourceType": {
+      "exa": 16,
+      "official": 1,
+      "paper": 1
+    },
+    "topPeople": {
+      "Elon Musk": 6,
+      "李莲": 3,
+      "Jason Wei": 2,
+      "Aidan Gomez": 1,
+      "Daniela Amodei": 1,
+      "Dario Amodei": 1,
+      "Demis Hassabis": 1,
+      "Emad Mostaque": 1,
+      "Geoffrey Hinton": 1,
+      "Greg Brockman": 1
+    },
+    "topHosts": {
+      "forbes.com": 3,
+      "jasonwei.net": 2,
+      "lilianweng.github.io": 2,
+      "bbc.com": 1,
+      "bloomberg.com": 1,
+      "britannica.com": 1,
+      "cbsnews.com": 1,
+      "cifar.ca": 1,
+      "fortune.com": 1,
+      "montgomerysummit.com": 1,
+      "openai.com": 1,
+      "openreview.net": 1,
+      "possible.fm": 1,
+      "stability.ai": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 4
+    }
+  }
+}

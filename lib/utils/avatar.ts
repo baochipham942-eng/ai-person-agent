@@ -8,6 +8,7 @@
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
+import type { PrismaClient } from '@prisma/client';
 import { normalizeOfficialLinks } from '@/lib/utils/person-json';
 
 const GITHUB_API_URL = 'https://api.github.com';
@@ -127,7 +128,7 @@ export async function fetchAvatar(params: {
  * 批量更新没有头像的人物
  */
 export async function updateMissingAvatars(
-    prisma: any,
+    prisma: Pick<PrismaClient, 'people'>,
     limit: number = 10
 ): Promise<{ updated: number; failed: number }> {
     let updated = 0;

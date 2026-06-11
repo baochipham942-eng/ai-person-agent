@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-06-10T21:10:00.000Z",
+  "stage": "manual_card_source_after_refetch",
+  "scope": "Active card source dependencies skipped by prune-tail remaining manual apply, plus two GitHub profile RawPoolItem repairs verified through GitHub Users API.",
+  "decisions": [
+    {
+      "action": "update_card_source",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "cardId": "cmjtvout000o2rmtbr8of4q58",
+      "fromSourceUrl": "https://news.greylock.com/privacy-and-scalability-for-web3-fcb3dca3478d",
+      "toSourceUrl": "https://voicebot.ai/2022/03/11/deepmind-and-linkedin-co-founders-unveil-new-conversational-ai-startup-inflection-ai",
+      "reason": "原卡片来源是 Greylock Web3 投资文章，与 Mustafa Suleyman 和 Inflection AI 无关；库内已有 keep 来源明确说明 Suleyman 与 Reid Hoffman 启动 conversational AI startup Inflection AI。"
+    },
+    {
+      "action": "archive_card",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "cardId": "cmju174oe0b9urmtbmqvsa9ad",
+      "reason": "卡片来源标题和正文聚焦 DeepMind CEO Demis Hassabis，不支持桑达尔·皮查伊个人卡片；本库没有可直接支持该智能眼镜卡片全部表述的同人 keep 来源。"
+    },
+    {
+      "action": "archive_card",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "cardId": "cmjsms79l001uq8o9hehqlpv2",
+      "reason": "来源是过短 X 动态，latest QA verdict 为 reject，无法支撑“方法论/工作范式转变”级别卡片。"
+    },
+    {
+      "action": "archive_card",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "cardId": "cmjsms79l001xq8o9jk1bn8kd",
+      "reason": "来源偏生活化调侃，latest QA verdict 为 reject，信息密度不足，不适合作为活跃人物卡。"
+    },
+    {
+      "action": "archive_card",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "cardId": "cmjsms79l001wq8o9d0njfcjr",
+      "reason": "来源是过短 X 动态，latest QA verdict 为 reject，无法支撑自动编译报告方法卡片。"
+    },
+    {
+      "action": "update_raw_item",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "rawId": "cmjtxm6sz03airmtbsk44flid",
+      "sourceType": "github",
+      "title": "Christopher Olah GitHub profile",
+      "text": "GitHub profile for Christopher Olah. Bio: I want to understand things clearly and explain them well. Interpretability at Anthropic. Formerly OpenAI, Google Brain. Company: Anthropic. Blog: colah.github.io. Login: colah. Followers: 9854. Public repositories: 52. Verified through GitHub Users API for https://github.com/colah on 2026-06-10.",
+      "evidenceUrl": "https://api.github.com/users/colah",
+      "reason": "GitHub Users API 直接确认 Christopher Olah 的 bio 包含卡片引用的 quote，并提供 Anthropic/OpenAI/Google Brain 背景；原 RawPoolItem 只是网页抓取失败导致内容薄。"
+    },
+    {
+      "action": "update_raw_item",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "rawId": "cmjtxlms20355rmtbyh7sed51",
+      "sourceType": "github",
+      "title": "Alec Radford GitHub profile",
+      "text": "GitHub profile for Alec Radford. Login: Newmu. Name: Alec Radford. Company: @openai. Blog: http://newmu.github.io/. Location: San Francisco, CA. Followers: 4220. Public repositories: 22. Verified through GitHub Users API for https://github.com/Newmu on 2026-06-10.",
+      "evidenceUrl": "https://api.github.com/users/Newmu",
+      "reason": "GitHub Users API 确认 Newmu 账号为 Alec Radford 且 company 为 OpenAI；原 RawPoolItem 是 GitHub 网页抓取失败，不应继续保留 reject 状态。"
+    },
+    {
+      "action": "delete_raw_pool_item",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "rawId": "cmjtvnprh00eprmtbgebxvoda",
+      "reason": "卡片已改挂到 Inflection AI 相关 keep 来源；原 RawPoolItem 为 Greylock Web3 投资文章，与人物和 AI 主题无关。"
+    },
+    {
+      "action": "delete_raw_pool_item",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "rawId": "cmju15oyo0azwrmtb5ciejjjn",
+      "reason": "关联卡片已归档；原 RawPoolItem 聚焦 DeepMind CEO Demis Hassabis，与桑达尔·皮查伊错挂。"
+    },
+    {
+      "action": "delete_raw_pool_item",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "rawId": "cmjsmr98s0011q8o9nlqgkcjb",
+      "reason": "关联卡片已归档；来源为过短 X 动态，latest QA reject，信息密度不足。"
+    },
+    {
+      "action": "delete_raw_pool_item",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "rawId": "cmjsmray6001bq8o9zexw1brj",
+      "reason": "关联卡片已归档；来源偏生活化调侃，latest QA reject，缺乏行业参考价值。"
+    },
+    {
+      "action": "delete_raw_pool_item",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "rawId": "cmjsmr9so0015q8o9vbaj3slp",
+      "reason": "关联卡片已归档；来源为过短 X 动态，latest QA reject，无法支撑方法卡片。"
+    }
+  ]
+}

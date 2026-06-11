@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-06-10T09:25:07.628Z",
+  "summary": {
+    "generatedAt": "2026-06-10T09:25:07.628Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 2,
+    "existingTargets": 2,
+    "missingTargets": 0,
+    "auditRowsInserted": 2,
+    "deleted": 2,
+    "byAction": {
+      "delete_raw_pool_item": 2
+    },
+    "byVerdict": {
+      "reject": 2
+    },
+    "byPerson": {
+      "Lukasz Kaiser": 1,
+      "Quoc Le": 1
+    }
+  }
+}

@@ -1,0 +1,1502 @@
+{
+  "generatedAt": "2026-06-10T16:19:54.100Z",
+  "summary": {
+    "generatedAt": "2026-06-10T16:19:54.099Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch9_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch9_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH9_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 20,
+    "selectedSourceRows": 20,
+    "skippedRows": 3,
+    "existingRawPoolItems": 8,
+    "rawInserted": 12,
+    "rawUpdated": 8,
+    "keepAuditsInserted": 12,
+    "keepAuditsExisting": 8,
+    "byDecision": {
+      "replace_source": 14,
+      "augment_source": 6
+    },
+    "bySourceType": {
+      "exa": 16,
+      "paper": 1,
+      "official": 2,
+      "youtube": 1
+    },
+    "topPeople": {
+      "Yoshua Bengio": 5,
+      "Mustafa Suleyman": 3,
+      "Guillaume Lample": 2,
+      "Lukasz Kaiser": 2,
+      "Quoc Le": 2,
+      "Greg Brockman": 1,
+      "Hyung Won Chung": 1,
+      "Jan Leike": 1,
+      "Percy Liang": 1,
+      "Sam Altman": 1,
+      "Shane Legg": 1
+    },
+    "topHosts": {
+      "aiforvietnam.org": 1,
+      "arxiv.org": 1,
+      "blog.samaltman.com": 1,
+      "blogs.microsoft.com": 1,
+      "cifar.ca": 1,
+      "dwarkesh.com": 1,
+      "forbes.com": 1,
+      "fortune.com": 1,
+      "forum.openai.com": 1,
+      "fulbright.edu.vn": 1,
+      "hwchung2.github.io": 1,
+      "jan.leike.name": 1,
+      "madrona.com": 1,
+      "mila.quebec": 1,
+      "ted.com": 1,
+      "tedai-sanfrancisco.ted.com": 1,
+      "thebulletin.org": 1,
+      "theverge.com": 1,
+      "time.com": 1,
+      "youtube.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 3
+    }
+  },
+  "existing": [
+    {
+      "id": "ee9be68b-c15e-4b9a-9581-d037572bd1b5",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "url": "https://www.forbes.com/profile/guillaume-lample",
+      "urlHash": "b81e3014eff9c6f09d18dcacc27aca8df51b8afac738d3ec828dd9fbe06134dc",
+      "sourceType": "exa",
+      "title": "Guillaume Lample",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "5c2460c0-372e-44b4-8be5-ec2ca04b27d0",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "url": "https://arxiv.org/pdf/1901.07291",
+      "urlHash": "96d7ffcba9bcc4de706704216030d5476d54f0b19fc4a0946c979e075ae24469",
+      "sourceType": "paper",
+      "title": "[PDF] arXiv:1901.07291v1 [cs.CL] 22 Jan 2019",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "c5577363-69a4-45ba-b756-4f0e919721c2",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "url": "https://hwchung2.github.io",
+      "urlHash": "dd4778e8ed9136cea2bde9e903b5cf491d772b378cf90a2861f584d975bad66c",
+      "sourceType": "exa",
+      "title": "Hyung Won Chung",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "87354afc-dc89-44dd-8ff5-8845c3e68a7b",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "url": "https://www.ted.com/talks/lukasz_kaiser_what_if_ai_stops_guessing_and_starts_reasoning",
+      "urlHash": "7e87bc84115d08419005773553e0e214f15ab952240a7c3b1b87711d2285b24f",
+      "sourceType": "exa",
+      "title": "Lukasz Kaiser: What if AI stops guessing and starts reasoning?",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7767169e-7d89-4831-a1c6-043e80d0e565",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "url": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot",
+      "urlHash": "3f5698df2d0f464758ede6534222b4f9cbac9b438f6cb68f72de24cf45dcb70f",
+      "sourceType": "official",
+      "title": "Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "3be95b39-d9a5-49c1-a3df-b2f778fc5537",
+      "personId": "cmjrz11xi0002b28tg14eugjo",
+      "person": "Sam Altman",
+      "url": "https://blog.samaltman.com/the-gentle-singularity",
+      "urlHash": "7e513dee2f7b3e5dd7583149f971ec76745d28696a566076e655b29500fd294c",
+      "sourceType": "exa",
+      "title": "The Gentle Singularity - Sam Altman",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "70cccec0-d863-470e-948b-a5b1567de8ad",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "url": "https://mila.quebec/en/directory/yoshua-bengio",
+      "urlHash": "18b18d688ea1c4c078f532d974035e000d2c06f0a26a4e66ee3dd6e22d8e7b10",
+      "sourceType": "exa",
+      "title": "Yoshua Bengio | Mila",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "c37ea031-8c8d-4448-be63-c5c3bfe25a83",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "url": "https://cifar.ca/bios/yoshua-bengio",
+      "urlHash": "d2bfa05096384336a77ddbde83c075342b3218e6d8d815a20ac50bab9ad55865",
+      "sourceType": "exa",
+      "title": "Yoshua Bengio – CIFAR",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmju0zysr09u1rmtbyf1c0gyl",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://fortune.com/2025/11/05/openai-greg-brockman-ai-infrastructure-data-center-master-builder",
+      "urlHash": "8e5ca47f9f23c451ea74325d5acdab4499bdb67eb1ba8ecee277e71200345f49",
+      "contentHash": "0174757bcc402d64bca903beac2507fbe29003b9adbfc39c3f5a92f3414058e5",
+      "sourceType": "exa",
+      "title": "Meet the power broker of the AI age: OpenAI's 'builder-in-chief' helping to turn Sam Altman's trillion-dollar data center dreams into reality | Fortune",
+      "text": "Evidence quote: Greg Brockman, cofounder and president of OpenAI In early October, OpenAI president Greg Brockman and AMD CEO Lisa Su made the rounds of TV news shows... Selection reason: 权威媒体《财富》的深度人物专访，标题与原始来源完全匹配，且文本预览明确提及Greg Brockman的职位和角色，直接支持原始声明。 Source preview: Trendingnow 1 2 3 1 2 3 Meet the power broker of the AI age: OpenAI’s ‘builder-in-chief’ helping to turn Sam Altman’s trillion-dollar data center dreams into reality Sharon Goldman Sharon Goldman Greg Brockman, cofounder and president of OpenAI In early October, OpenAI president Greg Brockman and AMD CEO Lisa Su made the rounds of TV news shows, smiling ear to ear as they announced a multiyear partnership worth tens of billions of dollars—one that will see OpenAI deploy hundreds of thousands of AMD chips across its Stargate Project data center mega-campuses. The deal represents roughly six gigawatts of computing power, or about three times the amount of electricity the Hoover Dam can genera... MiMo rationale: 候选来源中的Fortune文章与原始来源标题完全一致，且文本预览提供了具体的人物、职位和事件描述，能够直接证明Greg Brockman作为OpenAI总裁和'builder-in-chief'的角色，符合替换要求。其他来源要么权威性不足，要么内容匹配度较低。 Evidence requirements: Source must name Greg Brockman directly. | Source must support why \"Meet the power broker of the AI age: OpenAI's 'builder-in- ...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Greg Brockman Meet the power broker the age: OpenAI builder-in- ... official source | Greg Brockman Meet the power broker the age: OpenAI builder-in- ... OpenAI Stripe evidence | Greg Brockman Meet the power broker the age: OpenAI builder-in- ... interview transcript",
+      "selectedHost": "fortune.com",
+      "reason": "权威媒体《财富》的深度人物专访，标题与原始来源完全匹配，且文本预览明确提及Greg Brockman的职位和角色，直接支持原始声明。",
+      "evidenceQuote": "Greg Brockman, cofounder and president of OpenAI In early October, OpenAI president Greg Brockman and AMD CEO Lisa Su made the rounds of TV news shows...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0zysr09u1rmtbyf1c0gyl",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:09:44.869Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://fortune.com/2025/11/05/openai-greg-brockman-ai-infrastructure-data-center-master-builder/",
+          "title": "Meet the power broker of the AI age: OpenAI's 'builder-in- ...",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题显示是 Greg 的深度人物专访，但正文片段目前全是网页导航信息。.",
+          "evidenceRequirements": [
+            "Source must name Greg Brockman directly.",
+            "Source must support why \"Meet the power broker of the AI age: OpenAI's 'builder-in- ...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Greg Brockman Meet the power broker the age: OpenAI builder-in- ... official source",
+            "Greg Brockman Meet the power broker the age: OpenAI builder-in- ... OpenAI Stripe evidence",
+            "Greg Brockman Meet the power broker the age: OpenAI builder-in- ... interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0zysr09u1rmtbyf1c0gyl",
+          "objectLabel": "Meet the power broker of the AI age: OpenAI's 'builder-in- ..."
+        },
+        "selectedReason": "权威媒体《财富》的深度人物专访，标题与原始来源完全匹配，且文本预览明确提及Greg Brockman的职位和角色，直接支持原始声明。",
+        "evidenceQuote": "Greg Brockman, cofounder and president of OpenAI In early October, OpenAI president Greg Brockman and AMD CEO Lisa Su made the rounds of TV news shows...",
+        "candidateAuthorityScore": 65,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvpta900r6rmtb3h86anw8",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.forbes.com/profile/guillaume-lample",
+      "urlHash": "b81e3014eff9c6f09d18dcacc27aca8df51b8afac738d3ec828dd9fbe06134dc",
+      "contentHash": "4dc65965989ae58d94fc75533706aa463c0ac35ae4dc6fb032bc8e502b16de82",
+      "sourceType": "exa",
+      "title": "Guillaume Lample - Forbes",
+      "text": "Evidence quote: Guillaume Lample cofounded Mistral AI in 2023... The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique. Selection reason: 权威商业媒体个人资料页，明确其为Mistral AI联合创始人及背景，可补强原来源缺失的实质信息。 Source preview: PROFILE Guillaume Lample $1.8B Real Time Net Worth as of 6/9/26 Reflects change since 5 pm ET of prior trading day. #2275 in the world today From the Editor Last Updated Mar 10, 2026, 1:01am EDT Guillaume Lample cofounded Mistral AI in 2023 raising $113 million from investors in what was then Europe's largest ever seed round. ​​The Paris-based company builds open-weight large language models that compete with U.S. rivals like OpenAI, and raised $2 billion on a $14 billion valuation in September 2025. The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique. Lample would later complete a master's degree in artificial intellige... MiMo rationale: 原Google Scholar来源加载失败，缺乏实质信息。Forbes个人资料页权威性高，明确其为Mistral AI联合创始人及教育背景，可有效补强人物身份与职位关系。其他候选来源权威性不足或不直接相关。 Evidence requirements: Source must name Guillaume Lample directly. | Source must support why \"Guillaume Lample\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Guillaume Lample Guillaume Lample official source | Guillaume Lample Guillaume Lample Facebook 大语言模型 evidence | Guillaume Lample Guillaume Lample interview transcript",
+      "selectedHost": "forbes.com",
+      "reason": "权威商业媒体个人资料页，明确其为Mistral AI联合创始人及背景，可补强原来源缺失的实质信息。",
+      "evidenceQuote": "Guillaume Lample cofounded Mistral AI in 2023... The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvpta900r6rmtb3h86anw8",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:10:31.493Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.com/citations?user=H7sVDmIAAAAJ&hl=en",
+          "title": "Guillaume Lample",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=确为本人的学术档案，但内容加载失败，缺乏实质信息。.",
+          "evidenceRequirements": [
+            "Source must name Guillaume Lample directly.",
+            "Source must support why \"Guillaume Lample\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Guillaume Lample Guillaume Lample official source",
+            "Guillaume Lample Guillaume Lample Facebook 大语言模型 evidence",
+            "Guillaume Lample Guillaume Lample interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvpta900r6rmtb3h86anw8",
+          "objectLabel": "Guillaume Lample"
+        },
+        "selectedReason": "权威商业媒体个人资料页，明确其为Mistral AI联合创始人及背景，可补强原来源缺失的实质信息。",
+        "evidenceQuote": "Guillaume Lample cofounded Mistral AI in 2023... The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique.",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvpvpa00rirmtbtsu9ked5",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://arxiv.org/pdf/1901.07291",
+      "urlHash": "96d7ffcba9bcc4de706704216030d5476d54f0b19fc4a0946c979e075ae24469",
+      "contentHash": "aba7f55e043b89606a4c443ca179048c3c2b4b5e33c29cd14f8f8ed87c7c9536",
+      "sourceType": "paper",
+      "title": "[PDF] arXiv:1901.07291v1 [cs.CL] 22 Jan 2019",
+      "text": "Evidence quote: Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com Selection reason: 权威论文详情页，明确标注作者Guillaume Lample及其所属机构Facebook AI Research，直接证明其学术贡献。 Source preview: Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com Alexis Conneau∗ Facebook AI Research Universit´ e Le Mans aconneau@fb.com Abstract Recent studies have demonstrated the ef-ﬁciency of generative pretraining for En-glish natural language understanding. In this work, we extend this approach to mul-tiple languages and show the effectiveness of cross-lingual pretraining. We propose two methods to learn cross-lingual lan-guage models (XLMs): one unsupervised that only relies on monolingual data, and one supervised that leverages parallel data with a new cross-lingual language model objective. We obtain state-of-the-art re-sults ... MiMo rationale: 原始来源（Google Scholar）内容加载失败，缺乏实质信息。候选中的arXiv论文页面是权威的学术来源，明确标注了Guillaume Lample的姓名、所属机构（Facebook AI Research）及其作为论文作者的角色，能有效补强或替换原始来源。其他候选来源权威性不足或内容加载失败。 Evidence requirements: Source must name Guillaume Lample directly. | Source must support why \"Guillaume Lample - Google Scholar\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Guillaume Lample Guillaume Lample Google Scholar official source | Guillaume Lample Guillaume Lample Google Scholar Facebook 大语言模型 evidence | Guillaume Lample Guillaume Lample Google Scholar interview transcript",
+      "selectedHost": "arxiv.org",
+      "reason": "权威论文详情页，明确标注作者Guillaume Lample及其所属机构Facebook AI Research，直接证明其学术贡献。",
+      "evidenceQuote": "Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvpvpa00rirmtbtsu9ked5",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:10:55.801Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.fr/citations?user=H7sVDmIAAAAJ&hl=zh-CN",
+          "title": "Guillaume Lample - Google Scholar",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=确为本人的学术档案，但内容加载失败，缺乏实质信息。.",
+          "evidenceRequirements": [
+            "Source must name Guillaume Lample directly.",
+            "Source must support why \"Guillaume Lample - Google Scholar\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Guillaume Lample Guillaume Lample Google Scholar official source",
+            "Guillaume Lample Guillaume Lample Google Scholar Facebook 大语言模型 evidence",
+            "Guillaume Lample Guillaume Lample Google Scholar interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvpvpa00rirmtbtsu9ked5",
+          "objectLabel": "Guillaume Lample - Google Scholar"
+        },
+        "selectedReason": "权威论文详情页，明确标注作者Guillaume Lample及其所属机构Facebook AI Research，直接证明其学术贡献。",
+        "evidenceQuote": "Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com",
+        "candidateAuthorityScore": 49,
+        "candidateAuthoritySignals": [
+          "research_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvvfoc017trmtbplj34oxd",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://hwchung2.github.io",
+      "urlHash": "dd4778e8ed9136cea2bde9e903b5cf491d772b378cf90a2861f584d975bad66c",
+      "contentHash": "dbf3763e12511f067cdc8112f21168afbf084b8aba35669dc7b3c55b1dc7297c",
+      "sourceType": "exa",
+      "title": "Hyung Won Chung",
+      "text": "Evidence quote: I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025). Selection reason: 本人官方主页，明确列出其职位、研究贡献（如o1模型）和职业经历，权威且可访问。 Source preview: Hyung Won Chung I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025). I currently focus on coding agents and led the Codex mini model-training. Prior to OpenAI, I was at Google Brain where I worked on whatever bottleneck stood in the way of further scaling: building JAX-based large-scale training system (T5X), training large models (e.g. PaLM), instruction fine-tuning (Flan-PaLM and Flan-T5 model families) and reasoning. Prior to Google Brain, I did my PhD at MIT. I am originally from South Korea (Korean name: 정형원) and currently live in Mountain View,... MiMo rationale: 原来源（Google Scholar）缺乏实质内容。候选中的个人官方主页（hwchung2.github.io）是最佳替代，它直接、权威地证明了Hyung Won Chung的职位、研究重点和关键贡献（如o1模型），完全符合证据要求。 Evidence requirements: Source must name Hyung Won Chung directly. | Source must support why \"Hyung Won Chung\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Hyung Won Chung Hyung Won Chung official source | Hyung Won Chung Hyung Won Chung OpenAI Meta Superintelligence Labs evidence | Hyung Won Chung Hyung Won Chung interview transcript",
+      "selectedHost": "hwchung2.github.io",
+      "reason": "本人官方主页，明确列出其职位、研究贡献（如o1模型）和职业经历，权威且可访问。",
+      "evidenceQuote": "I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025).",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvvfoc017trmtbplj34oxd",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:11:18.707Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scholar.google.com/citations?user=1CAlXvYAAAAJ&hl=en",
+          "title": "Hyung Won Chung",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=Google Scholar页面，仅显示引用统计，无实质内容，需人工评估价值。.",
+          "evidenceRequirements": [
+            "Source must name Hyung Won Chung directly.",
+            "Source must support why \"Hyung Won Chung\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Hyung Won Chung Hyung Won Chung official source",
+            "Hyung Won Chung Hyung Won Chung OpenAI Meta Superintelligence Labs evidence",
+            "Hyung Won Chung Hyung Won Chung interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvvfoc017trmtbplj34oxd",
+          "objectLabel": "Hyung Won Chung"
+        },
+        "selectedReason": "本人官方主页，明确列出其职位、研究贡献（如o1模型）和职业经历，权威且可访问。",
+        "evidenceQuote": "I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025).",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvw5oo01avrmtbe4wj54s5",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://jan.leike.name/publications.html",
+      "urlHash": "a80dffa3f06aaaa2b4daed3ac3d2919142618b9e84bbcbbeebd292683a462e6d",
+      "contentHash": "cc755e974dc86ce602c300c987119edca05249aaaeaf97df2fa2898284c89a9e",
+      "sourceType": "exa",
+      "title": "Jan Leike",
+      "text": "Evidence quote: Deep reinforcement learning from human preferences Paul Christiano, Jan Leike, Tom B. Brown, Miljan Martic, Shane Legg, Dario Amodei. 2017. Selection reason: Jan Leike的个人官方主页，明确列出其发表作品，包括该论文，直接证明其作者身份。 Source preview: Jan Leike Machine learning & alignment researcher Optimizing for a post-AGI future where humanity flourishes jan@anthropic.com @janleike blog publications Publications My publication list on Google Scholar Alignment of large language models Since joining OpenAI in January 2021, my focus has been on training large language models to follow human intend. Prover-Verifier Games improve legibility of LLM outputs Jan Hendrik Kirchner, Yining Chen, Harri Edwards, Jan Leike, Nat McAleese, Yuri Burda. 2024. LLM Critics Help Catch LLM Bugs Nat McAleese, Rai Michael Pokorny, Juan Felipe Cerón Uribe, Evgenia Nitishinskaya, Maja Trebacz, Jan Leike. 2024. Scaling and evaluating sparse autoencoders Leo Ga... MiMo rationale: 候选来源中，Jan Leike的个人官方出版物页面（jan.leike.name/publications.html）是最佳选择。它直接、权威地列出了该论文作为其作品，完美满足证据要求，可替换原始抓取内容不足的来源。 Evidence requirements: Source must name Jan Leike directly. | Source must support why \"Deep reinforcement learning from human preferences\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Jan Leike Deep reinforcement learning from human preferences official source | Jan Leike Deep reinforcement learning from human preferences OpenAI 对齐 evidence | Jan Leike Deep reinforcement learning from human preferences interview transcript",
+      "selectedHost": "jan.leike.name",
+      "reason": "Jan Leike的个人官方主页，明确列出其发表作品，包括该论文，直接证明其作者身份。",
+      "evidenceQuote": "Deep reinforcement learning from human preferences Paul Christiano, Jan Leike, Tom B. Brown, Miljan Martic, Shane Legg, Dario Amodei. 2017.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvw5oo01avrmtbe4wj54s5",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:12:14.141Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://arxiv.org/abs/1706.03741",
+          "title": "Deep reinforcement learning from human preferences",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽为其代表作论文页面，但抓取内容多为网页导航文字，缺乏有效信息。.",
+          "evidenceRequirements": [
+            "Source must name Jan Leike directly.",
+            "Source must support why \"Deep reinforcement learning from human preferences\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Jan Leike Deep reinforcement learning from human preferences official source",
+            "Jan Leike Deep reinforcement learning from human preferences OpenAI 对齐 evidence",
+            "Jan Leike Deep reinforcement learning from human preferences interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw5oo01avrmtbe4wj54s5",
+          "objectLabel": "Deep reinforcement learning from human preferences"
+        },
+        "selectedReason": "Jan Leike的个人官方主页，明确列出其发表作品，包括该论文，直接证明其作者身份。",
+        "evidenceQuote": "Deep reinforcement learning from human preferences Paul Christiano, Jan Leike, Tom B. Brown, Miljan Martic, Shane Legg, Dario Amodei. 2017.",
+        "candidateAuthorityScore": 44,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxqtsk04curmtbenxjb6h8",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.ted.com/talks/lukasz_kaiser_what_if_ai_stops_guessing_and_starts_reasoning",
+      "urlHash": "7e87bc84115d08419005773553e0e214f15ab952240a7c3b1b87711d2285b24f",
+      "contentHash": "2a123d3689673bfa8bbdf462831266ec6c3b2d8c1a608ecac7dcd310931c921f",
+      "sourceType": "exa",
+      "title": "Lukasz Kaiser: What if AI stops guessing and starts reasoning?",
+      "text": "Evidence quote: Machine learning researcher Lukasz Kaiser unpacks a quiet revolution in AI: models that don't just spit out the most likely next word but internally \"think,\" calculate and use tools. Selection reason: TED官方演讲页面，明确标注Lukasz Kaiser为机器学习研究员，内容直接关联其专业领域，权威且可访问。 Source preview: Ideas change everything poster placeholder What if AI stops guessing and starts reasoning? Lukasz Kaiser | TEDAI Vienna • September 2025 Machine learning researcher Lukasz Kaiser unpacks a quiet revolution in AI: models that don't just spit out the most likely next word but internally \"think,\" calculate and use tools. The result? AI that relies less on memorization and more on genuine reasoning, bringing us closer to systems that can help humanity by solving complex problems. TED is supported by ads and partners MiMo rationale: 原始来源为存档页面，信息密度低。候选中OpenAI官方活动页和TED演讲页能直接证明Lukasz Kaiser作为研究科学家及其Transformer贡献，权威性高，可补强原始来源。其他候选或权威性不足，或信息不明确。 Evidence requirements: Source must name Lukasz Kaiser directly. | Source must support why \"lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity official source | Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity 谷歌 巴黎中心代表团（DR2） evidence | Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity interview transcript",
+      "selectedHost": "ted.com",
+      "reason": "TED官方演讲页面，明确标注Lukasz Kaiser为机器学习研究员，内容直接关联其专业领域，权威且可访问。",
+      "evidenceQuote": "Machine learning researcher Lukasz Kaiser unpacks a quiet revolution in AI: models that don't just spit out the most likely next word but internally \"think,\" calculate and use tools.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxqtsk04curmtbenxjb6h8",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:12:43.476Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://picampus-school.com/tag/lukasz-kaiser/",
+          "title": "lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题提及Lukasz Kaiser但内容仅为存档页面，需人工确认具体信息密度。.",
+          "evidenceRequirements": [
+            "Source must name Lukasz Kaiser directly.",
+            "Source must support why \"lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity official source",
+            "Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity 谷歌 巴黎中心代表团（DR2） evidence",
+            "Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqtsk04curmtbenxjb6h8",
+          "objectLabel": "lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity"
+        },
+        "selectedReason": "TED官方演讲页面，明确标注Lukasz Kaiser为机器学习研究员，内容直接关联其专业领域，权威且可访问。",
+        "evidenceQuote": "Machine learning researcher Lukasz Kaiser unpacks a quiet revolution in AI: models that don't just spit out the most likely next word but internally \"think,\" calculate and use tools.",
+        "candidateAuthorityScore": 17,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxqtsk04curmtbenxjb6h8",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://forum.openai.com/public/events/virtual-event-learning-powerful-models-from-transformers-to-reasoners-and-beyond-dxm2qrm1au?agenda_day=68c09918a72ea3786e76b540&agenda_filter_view=stage&agenda_stage=68c09918a72ea3786e76b546&agenda_track=68c09918a72ea3786e76b555&agenda_view=list",
+      "urlHash": "67df963ccd8597315029a61650f74a456a9aef45f80a33902faad8ea0aeea062",
+      "contentHash": "b70dca75306d31d866f3ea8ff362ce0cef557e281ff7b92577e35ce512f65966",
+      "sourceType": "official",
+      "title": "Virtual Event: Learning Powerful Models: From Transformers to Reasoners and Beyond - Event | OpenAI Forum",
+      "text": "Evidence quote: In this talk, OpenAI Research Scientist Łukasz Kaiser presents a simple model for thinking about progress... Łukasz from co-authoring the Transformer archite... Selection reason: OpenAI官方活动页面，明确提及Lukasz Kaiser作为研究科学家及其Transformer论文贡献，权威性高。 Source preview: OpenAI Forum OpenAI Forum Logo Virtual Event: Learning Powerful Models: From Transformers to Reasoners and Beyond Virtual Event: Learning Powerful Models: From Transformers to Reasoners and Beyond About the Talk: Many exciting and wonderful things are happening in AI all the time — but how can we understand the bigger picture? Why are these breakthroughs happening now, and what core research is driving them? In this talk, OpenAI Research Scientist Łukasz Kaiser presents a simple model for thinking about progress: how we are making increasingly computationally powerful systems more learnable. Like any model, it has its flaws, but it has guided Łukasz from co-authoring the Transformer archite... MiMo rationale: 原始来源为存档页面，信息密度低。候选中OpenAI官方活动页和TED演讲页能直接证明Lukasz Kaiser作为研究科学家及其Transformer贡献，权威性高，可补强原始来源。其他候选或权威性不足，或信息不明确。 Evidence requirements: Source must name Lukasz Kaiser directly. | Source must support why \"lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity official source | Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity 谷歌 巴黎中心代表团（DR2） evidence | Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity interview transcript",
+      "selectedHost": "forum.openai.com",
+      "reason": "OpenAI官方活动页面，明确提及Lukasz Kaiser作为研究科学家及其Transformer论文贡献，权威性高。",
+      "evidenceQuote": "In this talk, OpenAI Research Scientist Łukasz Kaiser presents a simple model for thinking about progress... Łukasz from co-authoring the Transformer archite...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxqtsk04curmtbenxjb6h8",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:12:43.476Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://picampus-school.com/tag/lukasz-kaiser/",
+          "title": "lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题提及Lukasz Kaiser但内容仅为存档页面，需人工确认具体信息密度。.",
+          "evidenceRequirements": [
+            "Source must name Lukasz Kaiser directly.",
+            "Source must support why \"lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity official source",
+            "Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity 谷歌 巴黎中心代表团（DR2） evidence",
+            "Lukasz Kaiser lukasz kaiser Archives School Machine Intelligence meets Human Creativity interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqtsk04curmtbenxjb6h8",
+          "objectLabel": "lukasz kaiser Archives - Pi School - Machine Intelligence meets Human Creativity"
+        },
+        "selectedReason": "OpenAI官方活动页面，明确提及Lukasz Kaiser作为研究科学家及其Transformer论文贡献，权威性高。",
+        "evidenceQuote": "In this talk, OpenAI Research Scientist Łukasz Kaiser presents a simple model for thinking about progress... Łukasz from co-authoring the Transformer archite...",
+        "candidateAuthorityScore": 19,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnqun00evrmtb9ddz5za1",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents",
+      "urlHash": "457632a713c313794383826eb56d74ede2f2125258650a0f222791d354253ce8",
+      "contentHash": "3bef90b990ce163c92df39f3a93695edddd47e393dacf7d5103605d475274ba5",
+      "sourceType": "exa",
+      "title": "IA Summit 2024: From SaaS to Agents With Mustafa Suleyman",
+      "text": "Evidence quote: A Conversation between Mustafa Suleyman, Microsoft AI CEO, and Soma Somasegar, Madrona Managing Director Selection reason: 权威投资机构主办的峰会记录，明确包含Mustafa Suleyman关于AI代理的讨论，可补强原来源。 Source preview: Skip to content Madrona News October 9, 2024 IA Summit 2024 Fireside Chat: From SaaS to Agents With Mustafa Suleyman A Conversation between Mustafa Suleyman, Microsoft AI CEO, and Soma Somasegar, Madrona Managing Director It was a pleasure hosting the third annual IA Summit in person on October 2, 2024. Nearly 300 founders, builders, investors, and thought leaders across the AI community and over 30 speakers dove into everything from foundational AI models to real-world applications in enterprise and productivity. The day featured a series of fireside chats with industry leaders, panels with key AI and tech innovators, and interactive discussion groups. We’re excited to share the recording ... MiMo rationale: 原来源质量中等，但标题明确。候选中有两个权威来源（Madrona峰会记录、The Verge报道）可直接补强，证明Suleyman关于AI代理与工作的观点。Wikipedia等仅作辅助。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not official source | Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not Inflection AI Greylock Partners evidence | Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not interview transcript",
+      "selectedHost": "madrona.com",
+      "reason": "权威投资机构主办的峰会记录，明确包含Mustafa Suleyman关于AI代理的讨论，可补强原来源。",
+      "evidenceQuote": "A Conversation between Mustafa Suleyman, Microsoft AI CEO, and Soma Somasegar, Madrona Managing Director",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvnqun00evrmtb9ddz5za1",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:13:12.428Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.moneycontrol.com/technology/microsoft-s-mustafa-suleyman-says-the-future-of-work-will-involve-managing-ai-agents-not-just-using-them-article-12993458.html",
+          "title": "Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题明确且相关，但内容被导航和搜索框占据，实质信息有限，质量中等偏低。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not official source",
+            "Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnqun00evrmtb9ddz5za1",
+          "objectLabel": "Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them"
+        },
+        "selectedReason": "权威投资机构主办的峰会记录，明确包含Mustafa Suleyman关于AI代理的讨论，可补强原来源。",
+        "evidenceQuote": "A Conversation between Mustafa Suleyman, Microsoft AI CEO, and Soma Somasegar, Madrona Managing Director",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnqun00evrmtb9ddz5za1",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.theverge.com/tech/946879/microsoft-mustafa-suleyman-ai-white-collar-jobs",
+      "urlHash": "8c245ca0fa14dca1b9840f04fb1a1588ea9bdc4f61f6ab113e98aba5b621c874",
+      "contentHash": "20ed066e09e62c84c2857ea88b287a698dd55198944504f9c4864e88d6b58bd5",
+      "sourceType": "exa",
+      "title": "Microsoft AI chief walks back comments about AI taking over white-collar work | The Verge",
+      "text": "Evidence quote: Mustafa Suleyman says AI will help these workers complete tasks, rather than do their jobs. Selection reason: 权威科技媒体，直接报道Mustafa Suleyman关于AI代理与工作的观点，可作为可靠补充。 Source preview: Posts from this topic will be added to your daily email digest and your homepage feed. See All Tech Posts from this topic will be added to your daily email digest and your homepage feed. See All AI Posts from this topic will be added to your daily email digest and your homepage feed. See All News Microsoft AI chief walks back comments about AI taking over white-collar work Mustafa Suleyman says AI will help these workers complete tasks, rather than do their jobs. Mustafa Suleyman says AI will help these workers complete tasks, rather than do their jobs. Emma Roth Posts from this author will be added to your daily email digest and your homepage feed. See All by Emma Roth Microsoft Celebrates... MiMo rationale: 原来源质量中等，但标题明确。候选中有两个权威来源（Madrona峰会记录、The Verge报道）可直接补强，证明Suleyman关于AI代理与工作的观点。Wikipedia等仅作辅助。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not official source | Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not Inflection AI Greylock Partners evidence | Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not interview transcript",
+      "selectedHost": "theverge.com",
+      "reason": "权威科技媒体，直接报道Mustafa Suleyman关于AI代理与工作的观点，可作为可靠补充。",
+      "evidenceQuote": "Mustafa Suleyman says AI will help these workers complete tasks, rather than do their jobs.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvnqun00evrmtb9ddz5za1",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:13:12.428Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.moneycontrol.com/technology/microsoft-s-mustafa-suleyman-says-the-future-of-work-will-involve-managing-ai-agents-not-just-using-them-article-12993458.html",
+          "title": "Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题明确且相关，但内容被导航和搜索框占据，实质信息有限，质量中等偏低。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not official source",
+            "Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman Microsoft Mustafa Suleyman says the future work will involve managing agents, not interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnqun00evrmtb9ddz5za1",
+          "objectLabel": "Microsoft’s Mustafa Suleyman says the future of work will involve managing AI agents, not just using them"
+        },
+        "selectedReason": "权威科技媒体，直接报道Mustafa Suleyman关于AI代理与工作的观点，可作为可靠补充。",
+        "evidenceQuote": "Mustafa Suleyman says AI will help these workers complete tasks, rather than do their jobs.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnyz000fzrmtbxqxassuh",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "url": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot",
+      "urlHash": "3f5698df2d0f464758ede6534222b4f9cbac9b438f6cb68f72de24cf45dcb70f",
+      "contentHash": "a70c5696df3f773daf1b44e7f8f565161eea90c44ccaf069dec876daf7997b7d",
+      "sourceType": "official",
+      "title": "Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot",
+      "text": "Evidence quote: Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot Selection reason: 微软官方博客，直接宣布Mustafa Suleyman加入微软领导Copilot，是权威的一手来源。 Source preview: Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot - The Official Microsoft Blog Skip to contentSkip to main content Image 1: Microsoft Official Microsoft Blog Our Company Signal blogOfficial Microsoft BlogMicrosoft On The IssuesAsiaCanadaEurope, Middle East and AfricaLatin AmericaThe Code of UsConexiones What's new todayAIInnovationDigital TransformationSustainabilitySecurityWork & LifeDiversity & InclusionUnlocked More SustainabilitySecurityWork & LifeDiversity & InclusionUnlocked All Microsoft Microsoft 365 Azure Copilot Windows Surface XBOX Deals Small Business Support Software Windows Apps Outlook OneDrive Microsoft Teams OneNote Microsoft Edge Moving... MiMo rationale: 微软官方博客是宣布Mustafa Suleyman加入微软并领导新AI部门（Copilot）的最权威、最直接来源，完全符合证据要求，可替换原抓取不完整的新闻页面。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"Mustafa Suleyman to lead Microsoft's new AI division\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman Mustafa Suleyman lead Microsoft new division official source | Mustafa Suleyman Mustafa Suleyman lead Microsoft new division Inflection AI Greylock Partners evidence | Mustafa Suleyman Mustafa Suleyman lead Microsoft new division interview transcript",
+      "selectedHost": "blogs.microsoft.com",
+      "reason": "微软官方博客，直接宣布Mustafa Suleyman加入微软领导Copilot，是权威的一手来源。",
+      "evidenceQuote": "Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvnyz000fzrmtbxqxassuh",
+        "decision": "replace_source",
+        "confidence": 0.95,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:13:33.764Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.turkiyetoday.com/business/mustafa-suleyman-to-lead-microsofts-new-ai-division-6877/",
+          "title": "Mustafa Suleyman to lead Microsoft's new AI division",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题具有新闻价值，但正文部分抓取内容多为网页导航链接。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"Mustafa Suleyman to lead Microsoft's new AI division\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman Mustafa Suleyman lead Microsoft new division official source",
+            "Mustafa Suleyman Mustafa Suleyman lead Microsoft new division Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman Mustafa Suleyman lead Microsoft new division interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnyz000fzrmtbxqxassuh",
+          "objectLabel": "Mustafa Suleyman to lead Microsoft's new AI division"
+        },
+        "selectedReason": "微软官方博客，直接宣布Mustafa Suleyman加入微软领导Copilot，是权威的一手来源。",
+        "evidenceQuote": "Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot",
+        "candidateAuthorityScore": 57,
+        "candidateAuthoritySignals": [
+          "official_or_primary_org_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju1e37l0ckkrmtbkdag01ds",
+      "personId": "cmjtv3hfy000ii0041pbzgdg1",
+      "person": "Percy Liang",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://tedai-sanfrancisco.ted.com/speakers/percy-liang",
+      "urlHash": "1e89a9ac3e6162a12fa40697c5a4e5ae8a35e51c6de42bb82aa622d3879772ae",
+      "contentHash": "58ab7f8b22f0ea99ce9b05a604e6aac5fb300d0663cbec18931ef9965e6f903b",
+      "sourceType": "exa",
+      "title": "Percy Liang | TEDAI San Francisco",
+      "text": "Evidence quote: Percy Liang A New Way to Build AI, Openly Percy Liang is an Associate Professor of Computer Science at Stanford University and the director of the Center for Research on Foundation Models (CRFM), where he focuses on making foundation models more open, transparent, interpretable, efficient, and robust. Selection reason: TED官方活动页面，明确列出Percy Liang的演讲标题、身份（斯坦福大学副教授、CRFM主任）及演讲主题，权威且直接相关。 Source preview: TEDAI 2025 - Home Page - AI Conference at San Francisco TEDAI Talks - Featured Speakers and Presentations TEDAI Panels - Expert Discussions and Industry Insights TEDAI Hackathon - Innovation Competition TEDAI TEDAI Percy Liang A New Way to Build AI, Openly Percy Liang is an Associate Professor of Computer Science at Stanford University and the director of the Center for Research on Foundation Models (CRFM), where he focuses on making foundation models more open, transparent, interpretable, efficient, and robust. He is also a co-founder of Together AI, a platform for open foundation models. He's known as a strong proponent of reproducibility through the creation of CodaLab Worksheets. His aw... MiMo rationale: 原来源（TED演讲页）内容空泛，仅含广告。候选中的TEDAI官方活动页提供了人物身份、职位及演讲主题的权威证明，符合替换要求。其他LinkedIn来源权威性不足，转录页内容不实质。 Evidence requirements: Source must name Percy Liang directly. | Source must support why \"Percy Liang: A new way to build AI, openly | TED Talk\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Percy Liang Percy Liang: new way build AI, openly TED Talk official source | Percy Liang Percy Liang: new way build AI, openly TED Talk 斯坦福大学 大语言模型 evidence | Percy Liang Percy Liang: new way build AI, openly TED Talk interview transcript",
+      "selectedHost": "tedai-sanfrancisco.ted.com",
+      "reason": "TED官方活动页面，明确列出Percy Liang的演讲标题、身份（斯坦福大学副教授、CRFM主任）及演讲主题，权威且直接相关。",
+      "evidenceQuote": "Percy Liang A New Way to Build AI, Openly Percy Liang is an Associate Professor of Computer Science at Stanford University and the director of the Center for Research on Foundation Models (CRFM), where he focuses on making foundation models more open, transparent, interpretable, efficient, and robust.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1e37l0ckkrmtbkdag01ds",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:13:56.067Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.ted.com/talks/percy_liang_a_new_way_to_build_ai_openly",
+          "title": "Percy Liang: A new way to build AI, openly | TED Talk",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题显示为重要的 TED 演讲，但正文内容仅为广告声明，缺乏实质描述。.",
+          "evidenceRequirements": [
+            "Source must name Percy Liang directly.",
+            "Source must support why \"Percy Liang: A new way to build AI, openly | TED Talk\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Percy Liang Percy Liang: new way build AI, openly TED Talk official source",
+            "Percy Liang Percy Liang: new way build AI, openly TED Talk 斯坦福大学 大语言模型 evidence",
+            "Percy Liang Percy Liang: new way build AI, openly TED Talk interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1e37l0ckkrmtbkdag01ds",
+          "objectLabel": "Percy Liang: A new way to build AI, openly | TED Talk"
+        },
+        "selectedReason": "TED官方活动页面，明确列出Percy Liang的演讲标题、身份（斯坦福大学副教授、CRFM主任）及演讲主题，权威且直接相关。",
+        "evidenceQuote": "Percy Liang A New Way to Build AI, Openly Percy Liang is an Associate Professor of Computer Science at Stanford University and the director of the Center for Research on Foundation Models (CRFM), where he focuses on making foundation models more open, transparent, interpretable, efficient, and robust.",
+        "candidateAuthorityScore": 29,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxs3xe04lurmtboobjce24",
+      "personId": "cmjtv37mu000gi004uo73uum0",
+      "person": "Quoc Le",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://fulbright.edu.vn/dr-quoc-le-and-ben-wilkinson-join-fulbright-university-vietnam-board",
+      "urlHash": "988d900372c7ab6dea1a9c60aab6ac6d2af0b5ec0e1cea10b8b1a96f272dba12",
+      "contentHash": "fea789d63c5d7781222801f79a09ae3aeb4e763ca090b5cf4b0d10ed34fe9f1c",
+      "sourceType": "exa",
+      "title": "Dr. Quoc Le and Ben Wilkinson join Fulbright University Vietnam Board",
+      "text": "Evidence quote: Fulbright University Vietnam announced the expansion of its Board of Trustee with the addition of Dr. Quoc Le (Le Viet Quoc) and Mr. Ben Wilkinson. Selection reason: 官方新闻稿，明确说明Quoc Le (Le Viet Quoc)加入Fulbright大学董事会，直接证明人物与机构的关系。 Source preview: Thank you! We’re processing your information... image About us Why choose Fulbright? How to apply us Overview Communities image image image About us Why choose Fulbright? How to apply us Overview Communities News Dr. Quoc Le and Ben Wilkinson Join Fulbright University Vietnam Board March 4, 2018 image image Dr. Le Viet Quoc and Mr. Ben Wilkinson bring experience and personal backgrounds that aid their passion in helping found Vietnam’s first undergraduate liberal arts university. Fulbright University Vietnam announced the expansion of its Board of Trustee with the addition of Dr. Quoc Le (Le Viet Quoc) and Mr. Ben Wilkinson. As a boy growing up in rural Central Vietnam, Quoc Le (Le Viet Quo... MiMo rationale: 候选来源中，Fulbright官方新闻稿和AI for Vietnam组织页面均明确提及Quoc Le (Le Viet Quoc)及其在Fulbright的职务，信息权威、可访问且直接支持人物与机构的关系。其他来源要么信息不足，要么不相关。 Evidence requirements: Source must name Quoc Le directly. | Source must support why \"Le Viet Quoc - Fulbright\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Quoc Le Viet Quoc Fulbright official source | Quoc Le Viet Quoc Fulbright 谷歌 大语言模型 evidence | Quoc Le Viet Quoc Fulbright interview transcript",
+      "selectedHost": "fulbright.edu.vn",
+      "reason": "官方新闻稿，明确说明Quoc Le (Le Viet Quoc)加入Fulbright大学董事会，直接证明人物与机构的关系。",
+      "evidenceQuote": "Fulbright University Vietnam announced the expansion of its Board of Trustee with the addition of Dr. Quoc Le (Le Viet Quoc) and Mr. Ben Wilkinson.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxs3xe04lurmtboobjce24",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:14:31.487Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://fulbright.edu.vn/our-team/le-viet-quoc/",
+          "title": "Le Viet Quoc - Fulbright",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是本人在 Fulbright 的页面，但抓取内容多为网页导航，信息密度低。.",
+          "evidenceRequirements": [
+            "Source must name Quoc Le directly.",
+            "Source must support why \"Le Viet Quoc - Fulbright\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Quoc Le Viet Quoc Fulbright official source",
+            "Quoc Le Viet Quoc Fulbright 谷歌 大语言模型 evidence",
+            "Quoc Le Viet Quoc Fulbright interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxs3xe04lurmtboobjce24",
+          "objectLabel": "Le Viet Quoc - Fulbright"
+        },
+        "selectedReason": "官方新闻稿，明确说明Quoc Le (Le Viet Quoc)加入Fulbright大学董事会，直接证明人物与机构的关系。",
+        "evidenceQuote": "Fulbright University Vietnam announced the expansion of its Board of Trustee with the addition of Dr. Quoc Le (Le Viet Quoc) and Mr. Ben Wilkinson.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxs3xe04lurmtboobjce24",
+      "personId": "cmjtv37mu000gi004uo73uum0",
+      "person": "Quoc Le",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://aiforvietnam.org/dr-quoc-le-senior-advisor",
+      "urlHash": "3424e1e72ff50a8cd218679776a4116140887bee31631256e4bcb792bc07f2f6",
+      "contentHash": "d45d98b3c860c30d175a58725a77f914f20f91bcc31da4aacf542b12c9d98fdb",
+      "sourceType": "exa",
+      "title": "Dr. Quoc V. Le – Senior Advisor | AI for Vietnam",
+      "text": "Evidence quote: Dr. Quoc V. Le (Le Viet Quoc) is a pioneering AI and machine learning expert... He is currently a Distinguished Scientist at Google Brain, and a Founding Engineer at Google DeepMind. Selection reason: 官方组织页面，明确列出Quoc Le (Le Viet Quoc)的职位和背景，信息权威且详细。 Source preview: Skip to footer Our initiatives | AI for Vietnam Donation Dr. Quoc V. Le – Senior Advisor Published in Team Member · read · February 13, 2025 Dr. Quoc V. Le (Le Viet Quoc) is a pioneering AI and machine learning expert who carries a mission to unite global innovation with Vietnam’s AI development. Born and raised in Huong Thuy, Thua Thien Hue, he found early inspiration in mathematics and machinery – a passion that eventually took him to Silicon Valley. Today, he leads cutting-edge AI projects at Google Brain, advancing speech recognition, natural language processing, and neural networks. He is currently a Distinguished Scientist at Google Brain, and a Founding Engineer at Google DeepMind. A... MiMo rationale: 候选来源中，Fulbright官方新闻稿和AI for Vietnam组织页面均明确提及Quoc Le (Le Viet Quoc)及其在Fulbright的职务，信息权威、可访问且直接支持人物与机构的关系。其他来源要么信息不足，要么不相关。 Evidence requirements: Source must name Quoc Le directly. | Source must support why \"Le Viet Quoc - Fulbright\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Quoc Le Viet Quoc Fulbright official source | Quoc Le Viet Quoc Fulbright 谷歌 大语言模型 evidence | Quoc Le Viet Quoc Fulbright interview transcript",
+      "selectedHost": "aiforvietnam.org",
+      "reason": "官方组织页面，明确列出Quoc Le (Le Viet Quoc)的职位和背景，信息权威且详细。",
+      "evidenceQuote": "Dr. Quoc V. Le (Le Viet Quoc) is a pioneering AI and machine learning expert... He is currently a Distinguished Scientist at Google Brain, and a Founding Engineer at Google DeepMind.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxs3xe04lurmtboobjce24",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:14:31.487Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://fulbright.edu.vn/our-team/le-viet-quoc/",
+          "title": "Le Viet Quoc - Fulbright",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是本人在 Fulbright 的页面，但抓取内容多为网页导航，信息密度低。.",
+          "evidenceRequirements": [
+            "Source must name Quoc Le directly.",
+            "Source must support why \"Le Viet Quoc - Fulbright\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Quoc Le Viet Quoc Fulbright official source",
+            "Quoc Le Viet Quoc Fulbright 谷歌 大语言模型 evidence",
+            "Quoc Le Viet Quoc Fulbright interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxs3xe04lurmtboobjce24",
+          "objectLabel": "Le Viet Quoc - Fulbright"
+        },
+        "selectedReason": "官方组织页面，明确列出Quoc Le (Le Viet Quoc)的职位和背景，信息权威且详细。",
+        "evidenceQuote": "Dr. Quoc V. Le (Le Viet Quoc) is a pioneering AI and machine learning expert... He is currently a Distinguished Scientist at Google Brain, and a Founding Engineer at Google DeepMind.",
+        "candidateAuthorityScore": 12,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjv37koy000nv6e8vgi9hxs5",
+      "personId": "cmjrz11xi0002b28tg14eugjo",
+      "person": "Sam Altman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://blog.samaltman.com/the-gentle-singularity",
+      "urlHash": "7e513dee2f7b3e5dd7583149f971ec76745d28696a566076e655b29500fd294c",
+      "contentHash": "c81fb5cca933f3228b9b2de36d9e8dcbb51d24e685b6f368ea6317adc150e704",
+      "sourceType": "exa",
+      "title": "The Gentle Singularity - Sam Altman",
+      "text": "Evidence quote: Sam Altman « Back to blog The Gentle Singularity We are past the event horizon; the takeoff has started. Selection reason: Sam Altman 个人博客上的原文，是《The Gentle Singularity》文章的最权威、最直接来源，能完美证明该文章与作者的关系。 Source preview: Sam Altman « Back to blog The Gentle Singularity We are past the event horizon; the takeoff has started. Humanity is close to building digital superintelligence, and at least so far it’s much less weird than it seems like it should be. Robots are not yet walking the streets, nor are most of us talking to AI all day. People still die of disease, we still can’t easily go to space, and there is a lot about the universe we don’t understand. And yet, we have recently built systems that are smarter than people in many ways, and are able to significantly amplify the output of people using them. The least-likely part of the work is behind us; the scientific insights that got us to systems like GPT-... MiMo rationale: 原始来源（mropengate.com）是第三方博客，包含噪音且非权威。候选中，Sam Altman的个人博客（blog.samaltman.com）是《The Gentle Singularity》文章的官方原文发布地，是最直接、最权威的来源，能完美支持该文章与作者的关系，应替换原始来源。 Evidence requirements: Source must name Sam Altman directly. | Source must support why \"[中英對照] 溫和的奇點〈The Gentle Singularity〉- OpenAI ...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Sam Altman 中英對照 溫和的奇點〈The Gentle Singularity〉- OpenAI ... official source | Sam Altman 中英對照 溫和的奇點〈The Gentle Singularity〉- OpenAI ... Y Combinator Reddit公司 evidence | Sam Altman 中英對照 溫和的奇點〈The Gentle Singularity〉- OpenAI ... interview transcript",
+      "selectedHost": "blog.samaltman.com",
+      "reason": "Sam Altman 个人博客上的原文，是《The Gentle Singularity》文章的最权威、最直接来源，能完美证明该文章与作者的关系。",
+      "evidenceQuote": "Sam Altman « Back to blog The Gentle Singularity We are past the event horizon; the takeoff has started.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjv37koy000nv6e8vgi9hxs5",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:15:00.432Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.mropengate.com/2025/06/gentle-singularity-openai-ceo-sam-altman.html",
+          "title": "[中英對照] 溫和的奇點〈The Gentle Singularity〉- OpenAI ...",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=涉及人物特定文章的翻译，但抓取内容包含过多博客侧边栏噪音。.",
+          "evidenceRequirements": [
+            "Source must name Sam Altman directly.",
+            "Source must support why \"[中英對照] 溫和的奇點〈The Gentle Singularity〉- OpenAI ...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Sam Altman 中英對照 溫和的奇點〈The Gentle Singularity〉- OpenAI ... official source",
+            "Sam Altman 中英對照 溫和的奇點〈The Gentle Singularity〉- OpenAI ... Y Combinator Reddit公司 evidence",
+            "Sam Altman 中英對照 溫和的奇點〈The Gentle Singularity〉- OpenAI ... interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv37koy000nv6e8vgi9hxs5",
+          "objectLabel": "[中英對照] 溫和的奇點〈The Gentle Singularity〉- OpenAI ..."
+        },
+        "selectedReason": "Sam Altman 个人博客上的原文，是《The Gentle Singularity》文章的最权威、最直接来源，能完美证明该文章与作者的关系。",
+        "evidenceQuote": "Sam Altman « Back to blog The Gentle Singularity We are past the event horizon; the takeoff has started.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0icrb06yxrmtbixmd5up8",
+      "personId": "cmjtszhu8000b3estb17k2kqb",
+      "person": "Shane Legg",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.dwarkesh.com/p/shane-legg",
+      "urlHash": "6bd858371e9ef3de0f3d21646b3fd9dfb2397d367b3579ad59d08059ef204bf8",
+      "contentHash": "83a17fc4b9adff2ba26cc144fa052b66005ef4d8b82420bdedc80d289d0f3948",
+      "sourceType": "exa",
+      "title": "Shane Legg (DeepMind Founder) — 2028 AGI, superhuman ...",
+      "text": "Evidence quote: I had a lot of fun chatting with Shane Legg - Founder and Chief AGI Scientist, Google DeepMind! We discuss: Why he expects AGI around 2028... Selection reason: 这是Dwarkesh Patel播客的官方页面，明确包含对Shane Legg的访谈，讨论AGI预测，是权威的原始来源。 Source preview: Dwarkesh Podcast Dwarkesh Podcast Dwarkesh Podcast Shane Legg (DeepMind Founder) — 2028 AGI, superhuman alignment, new architectures Dwarkesh Patel's avatar I had a lot of fun chatting with Shane Legg - Founder and Chief AGI Scientist, Google DeepMind! We discuss: Why he expects AGI around 2028 How to align superhuman models What new architectures needed for AGI Has Deepmind sped up capabilities or safety more? Why multimodality will be next big landmark and much more Watch full episode on YouTube, Apple Podcasts, Spotify, or any other podcast platform. Read full transcript here. Timestamps (0:00:00) - Measuring AGI (0:11:41) - Do we need new architectures? (0:16:26) - Is search needed for ... MiMo rationale: 原始LinkedIn来源信息密度低。候选中有两个权威的播客访谈页面（Google DeepMind官方播客和Dwarkesh Patel播客），它们直接包含Shane Legg本人关于AGI的讨论，是原始、可访问的来源，能有效补强和替换原有弱来源。 Evidence requirements: Source must name Shane Legg directly. | Source must support why \"Shane Legg on AI's Future: AGI Implications for Boards and ...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Shane Legg Shane Legg Future: AGI Implications for Boards and ... official source | Shane Legg Shane Legg Future: AGI Implications for Boards and ... 谷歌DeepMind AGI evidence | Shane Legg Shane Legg Future: AGI Implications for Boards and ... interview transcript",
+      "selectedHost": "dwarkesh.com",
+      "reason": "这是Dwarkesh Patel播客的官方页面，明确包含对Shane Legg的访谈，讨论AGI预测，是权威的原始来源。",
+      "evidenceQuote": "I had a lot of fun chatting with Shane Legg - Founder and Chief AGI Scientist, Google DeepMind! We discuss: Why he expects AGI around 2028...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0icrb06yxrmtbixmd5up8",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:15:31.176Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.linkedin.com/posts/jomikleus_the-arrival-of-agi-shane-legg-co-founder-activity-7406611405400965123-EFo0",
+          "title": "Shane Legg on AI's Future: AGI Implications for Boards and ...",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=涉及人物对 AGI 的观点，但内容片段包含大量 LinkedIn 登录信息，有效信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Shane Legg directly.",
+            "Source must support why \"Shane Legg on AI's Future: AGI Implications for Boards and ...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Shane Legg Shane Legg Future: AGI Implications for Boards and ... official source",
+            "Shane Legg Shane Legg Future: AGI Implications for Boards and ... 谷歌DeepMind AGI evidence",
+            "Shane Legg Shane Legg Future: AGI Implications for Boards and ... interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0icrb06yxrmtbixmd5up8",
+          "objectLabel": "Shane Legg on AI's Future: AGI Implications for Boards and ..."
+        },
+        "selectedReason": "这是Dwarkesh Patel播客的官方页面，明确包含对Shane Legg的访谈，讨论AGI预测，是权威的原始来源。",
+        "evidenceQuote": "I had a lot of fun chatting with Shane Legg - Founder and Chief AGI Scientist, Google DeepMind! We discuss: Why he expects AGI around 2028...",
+        "candidateAuthorityScore": 32,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvm8p5001zrmtbo3oe6c4z",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://thebulletin.org/2023/10/ai-godfather-yoshua-bengio-we-need-a-humanity-defense-organization",
+      "urlHash": "c65517df4f8a8b9e2ea9b868c30ce98c7da0988ab0b4699d8a586692c21b6431",
+      "contentHash": "463189e15fc43c2a376b1f5e138a3d5b4a00cf1b21f237759ac6c8d867c48e64",
+      "sourceType": "exa",
+      "title": "‘AI Godfather’ Yoshua Bengio: We need a humanity defense organization - Bulletin of the Atomic Scientists",
+      "text": "Evidence quote: Yoshua Bengio, founder and scientific director of Mila at the Quebec AI Institute Selection reason: 权威媒体采访，明确提及Yoshua Bengio是Mila的创始人和科学主任，直接证明其与Mila的关系。 Source preview: logo footer logo footer Follow our Iran coverage ‘AI Godfather’ Yoshua Bengio: We need a humanity defense organization By Susan D’Agostino | Interview | October 17, 2023 Yoshua Bengio, founder and scientific director of Mila at the Quebec AI Institute, during a Senate Judiciary Subcommittee on Privacy, Technology and the Law hearing in July. The hearing was titled \"Oversight of A.I.: Principles for Regulation.\" Photo credit: Valerie Plesch/Bloomberg via Getty ImagesYoshua Bengio, founder and scientific director of Mila at the Quebec AI Institute, during a Senate Judiciary Subcommittee on Privacy, Technology and the Law hearing in July. The hearing was titled \"Oversight of A.I.: Principles f... MiMo rationale: 原始来源（Mila官方个人主页）抓取失败，缺乏实质内容。候选来源中，权威媒体采访和官方YouTube采访均能直接、明确地证明Yoshua Bengio是Mila的创始人和科学主任，符合证据要求，可替换原始来源。 Evidence requirements: Source must name Yoshua Bengio directly. | Source must support why \"Mila | Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Yoshua Bengio Mila Yoshua Bengio official source | Yoshua Bengio Mila Yoshua Bengio 蒙特利尔大学 Mila evidence | Yoshua Bengio Mila Yoshua Bengio interview transcript",
+      "selectedHost": "thebulletin.org",
+      "reason": "权威媒体采访，明确提及Yoshua Bengio是Mila的创始人和科学主任，直接证明其与Mila的关系。",
+      "evidenceQuote": "Yoshua Bengio, founder and scientific director of Mila at the Quebec AI Institute",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvm8p5001zrmtbo3oe6c4z",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:16:17.285Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://mila.quebec/en/yoshua-bengio",
+          "title": "Mila | Yoshua Bengio",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是官方个人主页，但抓取内容仅包含导航和 Cookie 提示，缺乏实质性信息。.",
+          "evidenceRequirements": [
+            "Source must name Yoshua Bengio directly.",
+            "Source must support why \"Mila | Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Yoshua Bengio Mila Yoshua Bengio official source",
+            "Yoshua Bengio Mila Yoshua Bengio 蒙特利尔大学 Mila evidence",
+            "Yoshua Bengio Mila Yoshua Bengio interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvm8p5001zrmtbo3oe6c4z",
+          "objectLabel": "Mila | Yoshua Bengio"
+        },
+        "selectedReason": "权威媒体采访，明确提及Yoshua Bengio是Mila的创始人和科学主任，直接证明其与Mila的关系。",
+        "evidenceQuote": "Yoshua Bengio, founder and scientific director of Mila at the Quebec AI Institute",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvm828001rrmtb8hcycqwo",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://mila.quebec/en/directory/yoshua-bengio",
+      "urlHash": "18b18d688ea1c4c078f532d974035e000d2c06f0a26a4e66ee3dd6e22d8e7b10",
+      "contentHash": "7878a21d4ea7540faa022aea0d0da8feb45a5c36fb9907529a330660f1da284c",
+      "sourceType": "exa",
+      "title": "Yoshua Bengio - Mila - Quebec Artificial Intelligence Institute",
+      "text": "Evidence quote: Yoshua Bengio | Mila Selection reason: Mila官方目录页，直接证明Yoshua Bengio作为研究员/创始人的身份，权威且相关。 Source preview: Yoshua Bengio | Mila Skip to main content Top menu Directory Insights News Careers Français Image 1: Site logo Learning Image 2: young people interacting in a library Mila on Udemy Gain foundational responsible artificial intelligence (AI) skills through self-paced courses from Mila’s global experts. Learn more Events Image 3: a women with her cellphone in front of her face Disinformation 2.0: When AI Blurs the Lines Join us on June 10 for the \"After Mila\" event, a series of community meetups pairing AI researchers with field experts to discuss the tangible impact of AI on our daily lives. Register here Publications Image 4: picture of a bridge from above AI Policy Fellowship Publications T... MiMo rationale: 原始来源（蒙特利尔大学教授目录页）内容过薄。Mila官方目录页是权威机构页面，直接列出Yoshua Bengio的职位和关联，能有效补强证据。其他候选要么权威性不足，要么内容不直接相关。 Evidence requirements: Source must name Yoshua Bengio directly. | Source must support why \"Researcher\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Yoshua Bengio Researcher official source | Yoshua Bengio Researcher 蒙特利尔大学 Mila evidence | Yoshua Bengio Researcher interview transcript",
+      "selectedHost": "mila.quebec",
+      "reason": "Mila官方目录页，直接证明Yoshua Bengio作为研究员/创始人的身份，权威且相关。",
+      "evidenceQuote": "Yoshua Bengio | Mila",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvm828001rrmtb8hcycqwo",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:16:41.505Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://recherche.umontreal.ca/english/our-researchers/professors-directory/researcher/is/in13599/",
+          "title": "Researcher",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=蒙特利尔大学的官方教授目录页，但抓取内容多为导航链接，实质信息较少。.",
+          "evidenceRequirements": [
+            "Source must name Yoshua Bengio directly.",
+            "Source must support why \"Researcher\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Yoshua Bengio Researcher official source",
+            "Yoshua Bengio Researcher 蒙特利尔大学 Mila evidence",
+            "Yoshua Bengio Researcher interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvm828001rrmtb8hcycqwo",
+          "objectLabel": "Researcher"
+        },
+        "selectedReason": "Mila官方目录页，直接证明Yoshua Bengio作为研究员/创始人的身份，权威且相关。",
+        "evidenceQuote": "Yoshua Bengio | Mila",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvm7ib001lrmtbs2tuo1t2",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://cifar.ca/bios/yoshua-bengio",
+      "urlHash": "d2bfa05096384336a77ddbde83c075342b3218e6d8d815a20ac50bab9ad55865",
+      "contentHash": "3e240de4d004f078724623722f1849bfab08146ea3a9ebdd06d0b0fb79b9b7be",
+      "sourceType": "exa",
+      "title": "Yoshua Bengio – CIFAR",
+      "text": "Evidence quote: Recognized worldwide as one of the leading experts in artificial intelligence, Yoshua Bengio is most known for his pioneering work in deep learning, earning him the 2018 A.M. Turing Award... He is a Full Professor at Université de Montréal, and the Founder and Scientific Director of Mila – Quebec AI Institute. Selection reason: 权威机构官方简介，明确列出其职位、奖项和贡献，直接证明人物身份与成就。 Source preview: CIFAR header logo menu_mobile_logo_alt Follow Us Yoshua Yoshua Bengio Appointment Advisory Committee Chair Canada CIFAR AI Chair Learning in Machines & Brains Pan-Canadian AI Strategy Connect Blog About Appointed Canada CIFAR AI Chair – 2018 Renewed Canada CIFAR AI Chair – 2023 Recognized worldwide as one of the leading experts in artificial intelligence, Yoshua Bengio is most known for his pioneering work in deep learning, earning him the 2018 A.M. Turing Award, “the Nobel Prize of Computing,” with Geoffrey Hinton and Yann LeCun. He is a Full Professor at Université de Montréal, and the Founder and Scientific Director of Mila – Quebec AI Institute. He co-directs the CIFAR Learning in Machi... MiMo rationale: 原来源（维基百科）内容缺失，需替换。候选中的CIFAR和TIME页面均为权威来源，直接、清晰地证明了Yoshua Bengio的职位、奖项和贡献，符合证据要求。其他候选来源因权威性不足、内容不明确或非官方而被拒绝。 Evidence requirements: Source must name Yoshua Bengio directly. | Source must support why \"Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Yoshua Bengio Yoshua Bengio official source | Yoshua Bengio Yoshua Bengio 蒙特利尔大学 Mila evidence | Yoshua Bengio Yoshua Bengio interview transcript",
+      "selectedHost": "cifar.ca",
+      "reason": "权威机构官方简介，明确列出其职位、奖项和贡献，直接证明人物身份与成就。",
+      "evidenceQuote": "Recognized worldwide as one of the leading experts in artificial intelligence, Yoshua Bengio is most known for his pioneering work in deep learning, earning him the 2018 A.M. Turing Award... He is a Full Professor at Université de Montréal, and the Founder and Scientific Director of Mila – Quebec AI Institute.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvm7ib001lrmtbs2tuo1t2",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:17:06.682Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Yoshua_Bengio",
+          "title": "Yoshua Bengio",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容仅为维基百科的页面导航和语言选项，缺乏实质性的人物介绍。.",
+          "evidenceRequirements": [
+            "Source must name Yoshua Bengio directly.",
+            "Source must support why \"Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Yoshua Bengio Yoshua Bengio official source",
+            "Yoshua Bengio Yoshua Bengio 蒙特利尔大学 Mila evidence",
+            "Yoshua Bengio Yoshua Bengio interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvm7ib001lrmtbs2tuo1t2",
+          "objectLabel": "Yoshua Bengio"
+        },
+        "selectedReason": "权威机构官方简介，明确列出其职位、奖项和贡献，直接证明人物身份与成就。",
+        "evidenceQuote": "Recognized worldwide as one of the leading experts in artificial intelligence, Yoshua Bengio is most known for his pioneering work in deep learning, earning him the 2018 A.M. Turing Award... He is a Full Professor at Université de Montréal, and the Founder and Scientific Director of Mila – Quebec AI Institute.",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvm7ib001lrmtbs2tuo1t2",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://time.com/author/yoshua-bengio",
+      "urlHash": "522f26aff65657607924da156ac4d2e99f298f7546b16fe95c00665b08e6fce2",
+      "contentHash": "21a8909b6243fb1a189ecaabf305b4270cf9c5a8ca49277e0cab775949c0755c",
+      "sourceType": "exa",
+      "title": "Yoshua Bengio | TIME",
+      "text": "Evidence quote: Yoshua Bengio is the Full Professor of Computer Science at Université de Montreal, Co-President and Scientific Director of LawZero, as well as the Founder and Scientific Advisor of Mila. Considered one of the world’s leaders in artificial intelligence and deep learning, he is the recipient of the 2018 A.M. Turing Award... Selection reason: 权威媒体作者页，提供其职位、奖项和贡献的权威概述，可作为补充来源。 Source preview: Introducing TIME Games: Play NowView More Yoshua Bengio Yoshua Bengio is the Full Professor of Computer Science at Université de Montreal, Co-President and Scientific Director of LawZero, as well as the Founder and Scientific Advisor of Mila. Considered one of the world’s leaders in artificial intelligence and deep learning, he is the recipient of the 2018 A.M. Turing Award, considered to be the \"Nobel Prize of computing.\" He is the most cited computer scientist worldwide. ### We're Not Ready for AI's Risks It’s possible that we’re nearing the limits of our current approach to frontier AI, says Yoshua Beng... ### When it Comes to AI, What We Don't Know Can Hurt Us Yoshua Bengio and Charlott... MiMo rationale: 原来源（维基百科）内容缺失，需替换。候选中的CIFAR和TIME页面均为权威来源，直接、清晰地证明了Yoshua Bengio的职位、奖项和贡献，符合证据要求。其他候选来源因权威性不足、内容不明确或非官方而被拒绝。 Evidence requirements: Source must name Yoshua Bengio directly. | Source must support why \"Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Yoshua Bengio Yoshua Bengio official source | Yoshua Bengio Yoshua Bengio 蒙特利尔大学 Mila evidence | Yoshua Bengio Yoshua Bengio interview transcript",
+      "selectedHost": "time.com",
+      "reason": "权威媒体作者页，提供其职位、奖项和贡献的权威概述，可作为补充来源。",
+      "evidenceQuote": "Yoshua Bengio is the Full Professor of Computer Science at Université de Montreal, Co-President and Scientific Director of LawZero, as well as the Founder and Scientific Advisor of Mila. Considered one of the world’s leaders in artificial intelligence and deep learning, he is the recipient of the 2018 A.M. Turing Award...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvm7ib001lrmtbs2tuo1t2",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:17:06.682Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Yoshua_Bengio",
+          "title": "Yoshua Bengio",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容仅为维基百科的页面导航和语言选项，缺乏实质性的人物介绍。.",
+          "evidenceRequirements": [
+            "Source must name Yoshua Bengio directly.",
+            "Source must support why \"Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Yoshua Bengio Yoshua Bengio official source",
+            "Yoshua Bengio Yoshua Bengio 蒙特利尔大学 Mila evidence",
+            "Yoshua Bengio Yoshua Bengio interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvm7ib001lrmtbs2tuo1t2",
+          "objectLabel": "Yoshua Bengio"
+        },
+        "selectedReason": "权威媒体作者页，提供其职位、奖项和贡献的权威概述，可作为补充来源。",
+        "evidenceQuote": "Yoshua Bengio is the Full Professor of Computer Science at Université de Montreal, Co-President and Scientific Director of LawZero, as well as the Founder and Scientific Advisor of Mila. Considered one of the world’s leaders in artificial intelligence and deep learning, he is the recipient of the 2018 A.M. Turing Award...",
+        "candidateAuthorityScore": 65,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvm8p5001zrmtbo3oe6c4z",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.youtube.com/watch?v=pf2XM_oeJww",
+      "urlHash": "5ad9558af2264cfaf6d1fc41bfc6b69d08092edf4cbf2c4fe53efbc4b0b5135a",
+      "contentHash": "a0e8a02754e4c95ebe8db66cae9d59d6bb695591c223809f97629e238a71e22c",
+      "sourceType": "youtube",
+      "title": "Interview with Yoshua Bengio on Mila's Major Scientific and Social Impact",
+      "text": "Evidence quote: My name is Yoshua Bengio. I am a professor at University of Montréal, and the Scientific Director and Founder of Mila. Selection reason: Mila官方YouTube频道发布的采访，Bengio本人明确说明其身份和与Mila的关系，证据直接。 Source preview: Interview with Yoshua Bengio on Mila’s Major Scientific and Social Impact Mila - Institut québécois d'IA 4870 subscribers 85 likes Description 4195 views Posted: 17 Nov 2021 Mila brings together a bustling community of nearly 1000 professors, researchers, employees and partners and is now one of the world’s cornerstones of deep learning research. See how Mila is contributing to the development of responsible AI for the benefit of all. Transcript: My name is Yoshua Bengio. I am a professor at University of Montréal, and the Scientific Director and Founder of Mila. I had this crazy dream that we could turn the small critical mass of the time of researchers in deep-learning and reinforcement l... MiMo rationale: 原始来源（Mila官方个人主页）抓取失败，缺乏实质内容。候选来源中，权威媒体采访和官方YouTube采访均能直接、明确地证明Yoshua Bengio是Mila的创始人和科学主任，符合证据要求，可替换原始来源。 Evidence requirements: Source must name Yoshua Bengio directly. | Source must support why \"Mila | Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Yoshua Bengio Mila Yoshua Bengio official source | Yoshua Bengio Mila Yoshua Bengio 蒙特利尔大学 Mila evidence | Yoshua Bengio Mila Yoshua Bengio interview transcript",
+      "selectedHost": "youtube.com",
+      "reason": "Mila官方YouTube频道发布的采访，Bengio本人明确说明其身份和与Mila的关系，证据直接。",
+      "evidenceQuote": "My name is Yoshua Bengio. I am a professor at University of Montréal, and the Scientific Director and Founder of Mila.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvm8p5001zrmtbo3oe6c4z",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:16:17.285Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://mila.quebec/en/yoshua-bengio",
+          "title": "Mila | Yoshua Bengio",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是官方个人主页，但抓取内容仅包含导航和 Cookie 提示，缺乏实质性信息。.",
+          "evidenceRequirements": [
+            "Source must name Yoshua Bengio directly.",
+            "Source must support why \"Mila | Yoshua Bengio\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Yoshua Bengio Mila Yoshua Bengio official source",
+            "Yoshua Bengio Mila Yoshua Bengio 蒙特利尔大学 Mila evidence",
+            "Yoshua Bengio Mila Yoshua Bengio interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvm8p5001zrmtbo3oe6c4z",
+          "objectLabel": "Mila | Yoshua Bengio"
+        },
+        "selectedReason": "Mila官方YouTube频道发布的采访，Bengio本人明确说明其身份和与Mila的关系，证据直接。",
+        "evidenceQuote": "My name is Yoshua Bengio. I am a professor at University of Montréal, and the Scientific Director and Founder of Mila.",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page",
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmjyee4vo000cot7iux88ckcp",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvm7bt001jrmtbgwk42e92",
+      "personId": "cmjtsvcil00003esttihbrsjm",
+      "person": "Yann LeCun",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju1r9850f8nrmtb49houu1v",
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

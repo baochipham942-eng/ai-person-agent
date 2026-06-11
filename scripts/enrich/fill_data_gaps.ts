@@ -10,7 +10,7 @@ async function main() {
     const people = await prisma.people.findMany({
         include: {
             _count: {
-                select: { rawPoolItems: true, cards: true }
+                select: { rawPoolItems: true, cards: { where: { isActive: true } } }
             }
         }
     });

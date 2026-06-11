@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-06-10T20:28:38.426Z",
+  "summary": {
+    "generatedAt": "2026-06-10T20:28:38.423Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch24_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch24_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH24_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 9,
+    "selectedSourceRows": 9,
+    "skippedRows": 12,
+    "existingRawPoolItems": 5,
+    "rawInserted": 4,
+    "rawUpdated": 5,
+    "keepAuditsInserted": 4,
+    "keepAuditsExisting": 5,
+    "byDecision": {
+      "replace_source": 5,
+      "augment_source": 4
+    },
+    "bySourceType": {
+      "exa": 3,
+      "official": 3,
+      "podcast": 1,
+      "youtube": 2
+    },
+    "topPeople": {
+      "Oriol Vinyals": 4,
+      "Noam Shazeer": 2,
+      "杰夫·迪恩": 2,
+      "Percy Liang": 1
+    },
+    "topHosts": {
+      "research.google": 2,
+      "youtube.com": 2,
+      "engineering.stanford.edu": 1,
+      "innovatorsunder35.com": 1,
+      "noamshazeer.com": 1,
+      "podcasts.apple.com": 1,
+      "technologyreview.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 12
+    }
+  }
+}

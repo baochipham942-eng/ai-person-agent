@@ -259,7 +259,6 @@ async function main() {
   console.log(`Options: limit=${limit}, force=${force}, quiet=${quiet}, person=${personName || 'all'}`);
 
   // 构建查询条件
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const whereClause: any = {};
 
   if (personName) {

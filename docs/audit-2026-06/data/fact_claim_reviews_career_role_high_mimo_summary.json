@@ -1,0 +1,3756 @@
+{
+  "generatedAt": "2026-06-09T12:21:04.445Z",
+  "input": "docs/audit-2026-06/data/fact_claims.jsonl",
+  "output": "docs/audit-2026-06/data/fact_claim_reviews_career_role_high_mimo.jsonl",
+  "model": "mimo-v2.5-pro",
+  "filters": {
+    "person": null,
+    "personId": null,
+    "claimType": "career_role",
+    "priority": "high",
+    "limit": 571,
+    "batchSize": 8,
+    "concurrency": 4
+  },
+  "totalClaims": 12376,
+  "selectedClaims": 571,
+  "reviewedClaims": 571,
+  "byVerdict": {
+    "stale": 223,
+    "needs_source": 152,
+    "supported": 158,
+    "over_attributed": 9,
+    "wrong_person": 18,
+    "unclear": 10,
+    "unsupported": 1
+  },
+  "byAction": {
+    "rewrite": 165,
+    "needs_source": 173,
+    "keep": 158,
+    "human_review": 37,
+    "remove": 38
+  },
+  "byClaimType": {
+    "career_role": 571
+  },
+  "needsAttention": [
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:PersonRole[cmjv5i852006xp9gn5ozxt46h]:da85df2f1b56",
+      "person": "Aidan Gomez",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ Cohere",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Aidan Gomez 当前职位是 CEO & Co-founder，但此条履历显示其仍为研究科学家，且结束时间为 now，与当前状态不符，信息可能过时。"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:PersonRole[cmjy0x6fw003zxccmkhrjbj56]:2114a0732c84",
+      "person": "Aidan Gomez",
+      "claimType": "career_role",
+      "objectLabel": "Undergraduate Student @ 多伦多大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Aidan Gomez 已从多伦多大学毕业并创业，此条履历显示其仍为本科生且结束时间为 now，与当前状态不符，信息过时。"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:PersonRole[cmjy0ywfy0048xccm98l1told]:2dc6931a022e",
+      "person": "Aidan Gomez",
+      "claimType": "career_role",
+      "objectLabel": "Research Group Lead @ For.ai",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Aidan Gomez 在 For.ai 担任 Research Group Lead 的履历缺乏足够来源支持，且其当前主要身份为 Cohere CEO，此条信息需要核实。"
+    },
+    {
+      "claimId": "cmkb1l3j70004h7l9e8gy2bko:PersonRole[cmkb2dbn7000ho21qotu1ych5]:25cdb6b9fefd",
+      "person": "Alexander Amini",
+      "claimType": "career_role",
+      "objectLabel": "AI/tech professional @ Efficient AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Alexander Amini 当前主要身份是 Liquid AI 的联合创始人兼首席科学家，此条在 Efficient AI 的履历缺乏足够来源支持，且职位描述模糊。"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:PersonRole[cmjy1kzsa00jaxccmz6yb3cdp]:1bdbbba60b19",
+      "person": "Arthur Mensch",
+      "claimType": "career_role",
+      "objectLabel": "Staff Research Scientist @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Arthur Mensch已离开谷歌DeepMind并创立Mistral AI，该职位不应标记为当前（至今），状态过时。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:PersonRole[cmjy12uvi006pxccmlc75vuwu]:da8282552fcb",
+      "person": "Arvind Krishna",
+      "claimType": "career_role",
+      "objectLabel": "Joined Company @ IBM",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Arvind Krishna于1990年加入IBM，但该职位不应标记为当前（至今），状态过时，且描述过于模糊。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:PersonRole[cmjy12vrx006rxccmegj8pj6h]:d9ee42c55d45",
+      "person": "Arvind Krishna",
+      "claimType": "career_role",
+      "objectLabel": "General Manager, Systems and Technology Group's Development and Manufacturing Organization @ IBM",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该职位是Arvind Krishna在IBM的早期职位，不应标记为当前（至今），状态过时。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:PersonRole[cmjy12ylo006vxccmi7xnxxwy]:19faf873dd47",
+      "person": "Arvind Krishna",
+      "claimType": "career_role",
+      "objectLabel": "Senior Vice President, Cloud and Cognitive Software @ IBM",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该职位是Arvind Krishna在IBM的早期职位，不应标记为当前（至今），状态过时。"
+    },
+    {
+      "claimId": "cmjv6furu0009mfghtf6a48k2:PersonRole[cmjv7itjp0014sz2ttka62mm2]:ccb0fe9bd690",
+      "person": "Bob McGrew",
+      "claimType": "career_role",
+      "objectLabel": "Engineer @ PayPal",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源仅为LLM提取，缺乏可靠证据支持其当前在PayPal担任工程师。人物上下文显示其当前头衔为Engineer @ PayPal，但无具体时间或来源佐证。"
+    },
+    {
+      "claimId": "cmjv6furu0009mfghtf6a48k2:PersonRole[cmjw6mpxn000u13kloyxplu3h]:8a4fa968a159",
+      "person": "Bob McGrew",
+      "claimType": "career_role",
+      "objectLabel": "Chief Research Officer (CRO) @ OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位显示为当前（now），但Bob McGrew已离开OpenAI。根据公开信息，他已于2024年离职，此履历信息过时。"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:PersonRole[cmjy8bmy50001cxvmoc0gv09d]:30da217fb206",
+      "person": "Boris Cherny",
+      "claimType": "career_role",
+      "objectLabel": "Member of Technical Staff @ Anthropic",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位显示为当前（now），但Boris Cherny的当前头衔显示他已离开Anthropic，现任Anysphere (Cursor)的职位。此履历可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:PersonRole[cmjv6swah0009riygv8m8q7rl]:3bcbffaf8686",
+      "person": "Boris Power",
+      "claimType": "career_role",
+      "objectLabel": "专家/研究员 @ OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位显示为当前（now），但Boris Power的当前头衔为Head of Applied Research @ OpenAI，表明其职位已变更。此履历可能过时或不准确。"
+    },
+    {
+      "claimId": "cmjv6furu000dmfghyv96kktn:PersonRole[cmjy1ddyv00eaxccmzi5mtz9y]:f0fd6435f698",
+      "person": "Chamath Palihapitiya",
+      "claimType": "career_role",
+      "objectLabel": "Founder and CEO @ 社会资本",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位显示为当前（now），但Chamath Palihapitiya的当前头衔显示他现任8090的CEO，表明其已离开Social Capital的CEO职位。此履历可能过时。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:PersonRole[cmjy132hz0074xccmofkf4s97]:49b238345af0",
+      "person": "Arvind Krishna",
+      "claimType": "career_role",
+      "objectLabel": "Director @ Federal Reserve Bank of New York",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Arvind Krishna 担任纽约联邦储备银行董事的履历需要更权威的来源（如官方公告或权威媒体报道）来确认其当前状态和起始时间。"
+    },
+    {
+      "claimId": "cmjwtn0an00026qvtxgesov51:PersonRole[cmjy134130077xccm9h3bnnl7]:22b0b528038e",
+      "person": "Arvind Krishna",
+      "claimType": "career_role",
+      "objectLabel": "Director @ Northrop Grumman Corporation",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Arvind Krishna 担任诺斯罗普·格鲁曼公司董事的履历需要更权威的来源（如公司官网或权威商业数据库）来确认其当前状态和起始时间。"
+    },
+    {
+      "claimId": "cmjwtn2pr00066qvtrraqb618:PersonRole[cmjy13jzw007exccm1a07ni7s]:807d714f06f5",
+      "person": "Ashok Elluswamy",
+      "claimType": "career_role",
+      "objectLabel": "Director of Autopilot Software @ 特斯拉",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该履历显示其职位为“Autopilot软件总监”且状态为当前，但根据其当前职位（AI副总裁），此职位可能已过时或为历史职位。"
+    },
+    {
+      "claimId": "cmjv6furu0009mfghtf6a48k2:PersonRole[cmjv7in0p0010sz2t0sijg6e0]:8d3f274719fb",
+      "person": "Bob McGrew",
+      "claimType": "career_role",
+      "objectLabel": "Lieutenant Colonel @ Detachment 201 (Executive Innovation Corps)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Bob McGrew 担任“Detachment 201 (Executive Innovation Corps)”中校的履历缺乏权威来源确认，且其当前职业背景（PayPal工程师）与此军事职位关联性不明确。"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:PersonRole[cmjv59l6p002xp9gngntsfusc]:a22bc5000900",
+      "person": "Christopher Manning",
+      "claimType": "career_role",
+      "objectLabel": "Student @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Christopher Manning 当前是斯坦福大学教授，其学生身份已过时，应标记为历史角色。"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:PersonRole[cmjy11y9v005xxccmm57lmiof]:015140d8bdac",
+      "person": "Cristiano Amon",
+      "claimType": "career_role",
+      "objectLabel": "Leadership Position @ Velocom",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Cristiano Amon 在 Velocom 的领导职位信息来源不足，无法确认其准确性。"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:PersonRole[cmjy11zhd0060xccmk4aeupt3]:ea231914708e",
+      "person": "Cristiano Amon",
+      "claimType": "career_role",
+      "objectLabel": "Engineer @ Qualcomm",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Cristiano Amon 当前是高通公司总裁兼首席执行官，工程师职位已过时，应标记为历史角色。"
+    },
+    {
+      "claimId": "cmjtsw84q00023esto9f6h0w6:PersonRole[cmjw5kbmm007oizl8gypm31u4]:a3e014d230f3",
+      "person": "Demis Hassabis",
+      "claimType": "career_role",
+      "objectLabel": "副总裁 @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Demis Hassabis 的当前职位是联合创始人兼CEO，而非副总裁。此职位可能已过时。"
+    },
+    {
+      "claimId": "cmjtsw84q00023esto9f6h0w6:PersonRole[cmk8g0ap6004lb64i3sp0x4tb]:83fd9f3430ab",
+      "person": "Demis Hassabis",
+      "claimType": "career_role",
+      "objectLabel": "Postdoctoral researcher @ 哈佛大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Demis Hassabis 在哈佛大学的博士后研究是过去经历，不应标记为“至今”。"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:PersonRole[cmjy0w8b0003qxccmeq85ug9s]:104ca4fed5c2",
+      "person": "Dylan Field",
+      "claimType": "career_role",
+      "objectLabel": "Fellow @ Thiel Fellowship",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Thiel Fellowship 是一个为期两年的项目，Dylan Field 的参与是过去经历，不应标记为“至今”。"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:PersonRole[cmjy0wo2n003xxccm6e9cp4bm]:b2afb146a494",
+      "person": "Dylan Field",
+      "claimType": "career_role",
+      "objectLabel": "President/CEO/Co-Founder @ Figma Inc",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "职位描述“President/CEO/Co-Founder”过于冗长且不精确，将多个头衔合并为一个条目，可能造成混淆。"
+    },
+    {
+      "claimId": "cmjv6furu000dmfghyv96kktn:PersonRole[cmjy1df6000edxccmjbceedpt]:d28e2b01d000",
+      "person": "Chamath Palihapitiya",
+      "claimType": "career_role",
+      "objectLabel": "Co-founder and CEO @ 8090",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。"
+    },
+    {
+      "claimId": "cmjv6furu000tmfghcd5hz9kr:PersonRole[cmjy198kh00b4xccmmlqp1mrk]:86b1776093cc",
+      "person": "Chip Huyen",
+      "claimType": "career_role",
+      "objectLabel": "ML Tooling @ Snorkel AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。"
+    },
+    {
+      "claimId": "cmjv6furu000tmfghcd5hz9kr:PersonRole[cmjy19a8s00b7xccmhb1oxy1v]:78f925ed25b0",
+      "person": "Chip Huyen",
+      "claimType": "career_role",
+      "objectLabel": "ML Tooling @ Netflix",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位开始日期为2021年12月31日，但当前人物上下文显示其当前职位为Snorkel AI的ML Tooling。该Netflix职位可能已结束，但未提供结束日期，导致状态过时。"
+    },
+    {
+      "claimId": "cmjv6furu000tmfghcd5hz9kr:PersonRole[cmjy19bm300baxccmucr9z65e]:4b3880e21487",
+      "person": "Chip Huyen",
+      "claimType": "career_role",
+      "objectLabel": "Founder @ AI infrastructure startup",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:PersonRole[cmjy1iot600hkxccm74e0g37z]:6f283fa8a173",
+      "person": "Chris Olah",
+      "claimType": "career_role",
+      "objectLabel": "Co-founder @ Anthropic",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:PersonRole[cmjy1ipxq00hmxccm8lv6autd]:5290fd8b0e1f",
+      "person": "Chris Olah",
+      "claimType": "career_role",
+      "objectLabel": "Interpretability @ Anthropic",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:PersonRole[cmjy1itgd00htxccmnpo4f3fg]:44c6912f23ac",
+      "person": "Chris Olah",
+      "claimType": "career_role",
+      "objectLabel": "Co-founder @ Distill",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。"
+    },
+    {
+      "claimId": "cmjvkslg00000ilnij9kg2zz2:PersonRole[cmjy0ivp90001vmk077cwp6x4]:27c22e85c858",
+      "person": "Daniel Gross",
+      "claimType": "career_role",
+      "objectLabel": "AI Product Development @ Meta",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Daniel Gross 的当前职位是 AI Product Development @ Meta，但其个人上下文显示他主要关联 Cue 公司，且该履历开始日期（2024-12-31）异常，可能信息过时或错误。"
+    },
+    {
+      "claimId": "cmjvkslg00000ilnij9kg2zz2:PersonRole[cmjy0l1ug000lxccmwjutvorm]:b3814f8d64c3",
+      "person": "Daniel Gross",
+      "claimType": "career_role",
+      "objectLabel": "Partner @ Y Combinator公司",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Daniel Gross 的履历显示他自 2016 年起担任 Y Combinator 合伙人，但其当前职位是 Meta 的 AI 产品开发，且个人上下文未提及 Y Combinator，该职位可能已离任。"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:PersonRole[cmjy1bwxy00dexccm912ckvhp]:0cba595226ad",
+      "person": "Daniela Amodei",
+      "claimType": "career_role",
+      "objectLabel": "Vice President of Safety and Policy @ OpenAI",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Daniela Amodei 的当前职位是 Anthropic 的总裁兼联合创始人，该履历显示她自 2017 年起担任 OpenAI 安全与政策副总裁，但未标注结束日期，可能已离任。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:PersonRole[cmjv5bp1v003rp9gncmvluygn]:60118fdd195f",
+      "person": "Elon Musk",
+      "claimType": "career_role",
+      "objectLabel": "首席执行官 @ 特斯拉",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Elon Musk 已于2023年卸任特斯拉首席执行官，职位状态应为过去式，而非当前。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:PersonRole[cmjv5bs09003tp9gnv5e59dwf]:2ec0cc4e159c",
+      "person": "Elon Musk",
+      "claimType": "career_role",
+      "objectLabel": "联合创始人兼首席执行官 @ PayPal",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Elon Musk 在 PayPal 的联合创始人兼首席执行官职位是历史角色，早已离任，不应标记为当前。"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:PersonRole[cmjv5448m0004p9gnekw2h4tm]:291cc62d8292",
+      "person": "Greg Brockman",
+      "claimType": "career_role",
+      "objectLabel": "高中期间大学课程学习 @ 北达科他大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该履历描述的是 Greg Brockman 高中期间在北达科他大学学习的经历，但结束时间显示为“now”，这显然已过时。"
+    },
+    {
+      "claimId": "cmkb1leu90007h7l98w9lsqmm:PersonRole[cmkb2neii0022o21qatv1z9ea]:c919e7dfccef",
+      "person": "Hamel Husain",
+      "claimType": "career_role",
+      "objectLabel": "Staff Machine Learning Engineer @ GitHub",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Hamel Husain 的当前职位是独立 AI 顾问，但此履历显示他仍是 GitHub 的员工，信息可能已过时。"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:PersonRole[cmk8fvt11000mb64ipkh2miwv]:de566a8c166c",
+      "person": "Elon Musk",
+      "claimType": "career_role",
+      "objectLabel": "Owner & CEO @ Twitter, Inc. / X Corp.",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Elon Musk 已于2023年卸任Twitter/X Corp.的CEO职位，该履历显示为当前状态，信息过时。"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:PersonRole[cmkaenmdu0083imyj0io5dj4f]:1b3ee270b71e",
+      "person": "Emad Mostaque",
+      "claimType": "career_role",
+      "objectLabel": "CEO of Stability AI @ Stability AI 首席执行官",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Emad Mostaque 已于2024年3月辞去Stability AI的CEO职位，该履历显示为当前状态，信息过时。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:PersonRole[cmjy10la90054xccmmwwifhdj]:0e93fdc74bd9",
+      "person": "Fidji Simo",
+      "claimType": "career_role",
+      "objectLabel": "Chief Executive Officer and Chair @ Instacart",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Fidji Simo 已于2023年离开Instacart，该履历显示为当前状态，信息过时。"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:PersonRole[cmjy10mus0057xccm2q7tqyo8]:6925f8ff127e",
+      "person": "Fidji Simo",
+      "claimType": "career_role",
+      "objectLabel": "Founder @ Metrodora Institute",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Fidji Simo 是Metrodora Institute的创始人，但该履历的开始时间（2020年）和当前状态需要更可靠的来源确认。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1b0yi00c9xccmvmbgtfvs]:03d9cf523c7f",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "Researcher @ InstantX Team",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示为当前职位，但人物当前主要身份是InstantID的联合创始人兼CEO，且InstantX Team与InstantID的关系不明确，缺乏来源确认此职位的当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1b3t000cfxccm580peubd]:2655e9c6cc88",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ Kuaishou (MMU, Kolors Team)",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前主要身份是InstantID的联合创始人兼CEO，且快手（Kuaishou）的职位可能已离任，缺乏来源确认其当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1b6fs00ckxccmjzm4d65k]:8aad99e537e7",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "Visiting Researcher @ KAUST, Image and Video Understanding Laboratory (IVUL)",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但开始日期为2020年，且人物当前主要身份是InstantID的联合创始人兼CEO，此访问职位可能已结束，缺乏来源确认其当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1b7ra00cnxccmchy2pc5b]:d07d26f53a41",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "Visiting Researcher @ Texas A&M University, DATA Lab",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但开始日期为2019年，且人物当前主要身份是InstantID的联合创始人兼CEO，此访问职位可能已结束，缺乏来源确认其当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1b9f600cqxccm74kqu98u]:06441551297e",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "Visiting Student @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但开始日期为2017年，且人物当前主要身份是InstantID的联合创始人兼CEO，此访问学生身份可能已结束，缺乏来源确认其当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1bd9r00cwxccmkp3lbd5x]:0f322a041c29",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ OpenMined",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前主要身份是InstantID的联合创始人兼CEO，且OpenMined的CTO职位可能已离任，缺乏来源确认其当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1bekt00czxccm3udvtf3b]:14de0ddfed0d",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ RealAI",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前主要身份是InstantID的联合创始人兼CEO，且RealAI的CTO职位可能已离任，缺乏来源确认其当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1bgre00d2xccmxvh21k71]:a3d3031fa580",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ Everspry",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前主要身份是InstantID的联合创始人兼CEO，且Everspry的CTO职位可能已离任，缺乏来源确认其当前状态。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1bi8c00d5xccmjxba2yoy]:282a7a263b93",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ Horizon Robotics",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示为当前职位，但人物当前上下文显示其为InstantID联合创始人兼CEO，且无Horizon Robotics相关背景。信息冲突，需要可靠来源确认其是否曾担任该职位。"
+    },
+    {
+      "claimId": "cmjwtmzop00016qvt8260yrem:PersonRole[cmjy1bk8a00d8xccmzkyaxa64]:a1396e0293c1",
+      "person": "Haofan Wang",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ Institute of Software, Chinese Academy of Sciences",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示为当前职位，但人物当前上下文显示其为InstantID联合创始人兼CEO，且无中科院软件所相关背景。信息冲突，需要可靠来源确认其是否曾担任该职位。"
+    },
+    {
+      "claimId": "cmk8gu3w60008j1tn7qe1m7yt:PersonRole[cmk8hx1xi001ta1k3n15djno4]:da550ed27675",
+      "person": "Harrison Chase",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Databricks",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前上下文显示其为LangChain的CEO，且无Databricks相关背景。该职位可能已过时或信息有误。"
+    },
+    {
+      "claimId": "cmk8gu3w60008j1tn7qe1m7yt:PersonRole[cmk8hx357001va1k3uvj3u93k]:0ea380e7f8e8",
+      "person": "Harrison Chase",
+      "claimType": "career_role",
+      "objectLabel": "Instructor @ Coursera",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前上下文显示其为LangChain的CEO，且无Coursera讲师相关背景。该职位可能已过时或信息有误。"
+    },
+    {
+      "claimId": "cmk9vo9f90008azb9v2ielv0r:PersonRole[cmkaemjmy007jimyjffi6yyq5]:f70395707e8e",
+      "person": "Hugo Larochelle",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前上下文显示其为Google DeepMind研究总监，且蒙特利尔大学的“Member”角色模糊，可能指学生或研究员，但非当前主要职位。"
+    },
+    {
+      "claimId": "cmk9vo9f90008azb9v2ielv0r:PersonRole[cmkaemkna007limyjdshpzykc]:04685892489d",
+      "person": "Hugo Larochelle",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Google Brain",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为当前职位，但人物当前上下文显示其为Google DeepMind研究总监。Google Brain已并入DeepMind，该职位可能已过时。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:PersonRole[cmjv5kl7q0084p9gnrwjq2bdb]:34d76a15204f",
+      "person": "Ilya Sutskever",
+      "claimType": "career_role",
+      "objectLabel": "首席科学家 @ OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "根据人物上下文，Ilya Sutskever 已离开 OpenAI，现任 Safe Superintelligence Inc. 职位。此履历显示为当前状态，信息过时。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:PersonRole[cmk8g187t004xb64imbc61grn]:6794dad8dd88",
+      "person": "Ilya Sutskever",
+      "claimType": "career_role",
+      "objectLabel": "mathematician @ Safe Superintelligence Inc.",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "人物上下文显示其当前头衔为 Co-founder & Chief Scientist。将职位描述为 'mathematician' 未能准确反映其领导角色，属于归因层级错误。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:PersonRole[cmk8g1962004zb64ivupaszli]:c9f84a7032a9",
+      "person": "Ilya Sutskever",
+      "claimType": "career_role",
+      "objectLabel": "computer scientist @ Safe Superintelligence Inc.",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "人物上下文显示其当前头衔为 Co-founder & Chief Scientist。将职位描述为 'computer scientist' 未能准确反映其领导角色，属于归因层级错误。"
+    },
+    {
+      "claimId": "cmjtsx87a00043estei08y4na:PersonRole[cmk8g19r30051b64iddconh4i]:e0024d12fcf9",
+      "person": "Ilya Sutskever",
+      "claimType": "career_role",
+      "objectLabel": "artificial intelligence researcher @ Safe Superintelligence Inc.",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "人物上下文显示其当前头衔为 Co-founder & Chief Scientist。将职位描述为 'artificial intelligence researcher' 未能准确反映其领导角色，属于归因层级错误。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:PersonRole[cmk8id0lp000jt2pk65o1qvax]:3c5c1249a297",
+      "person": "Jaana Dogan",
+      "claimType": "career_role",
+      "objectLabel": "Software Engineer @ Tikle",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前职位为 Google 的 Principal Engineer。此履历显示为 'Software Engineer @ Tikle' 且状态为 'now'，信息过时或冲突。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:PersonRole[cmk8id1fz000lt2pkddkyy4kb]:2635433b0c81",
+      "person": "Jaana Dogan",
+      "claimType": "career_role",
+      "objectLabel": "Software Engineer @ 微软",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前职位为 Google 的 Principal Engineer。此履历显示为 'Software Engineer @ 微软' 且状态为 'now'，信息过时或冲突。"
+    },
+    {
+      "claimId": "cmk8gtd9c0001j1tn2k0tcm42:PersonRole[cmk9cibb70002hckyv5599qfn]:f8a3ffc70f88",
+      "person": "Jakub Pachocki",
+      "claimType": "career_role",
+      "objectLabel": "Advisor @ deepsense.ai",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源显示Jakub Pachocki是deepsense.ai的顾问，但未提供开始日期，且其当前主要职位是OpenAI首席科学家，此顾问职位是否为当前状态存疑。"
+    },
+    {
+      "claimId": "cmjv6furu0006mfghaj1b1v4a:PersonRole[cmjv6huhz000865zw4nn4srh7]:44b3ee36a457",
+      "person": "James Manyika",
+      "claimType": "career_role",
+      "objectLabel": "高级合伙人 @ 麦肯锡公司",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "James Manyika自2021年起已加入谷歌担任高级副总裁，其麦肯锡高级合伙人的职位很可能已结束，但来源未提供结束日期。"
+    },
+    {
+      "claimId": "cmjv6furu0006mfghaj1b1v4a:PersonRole[cmjw5g1zx000mizl82wtk5fc4]:dbca84f5c03b",
+      "person": "James Manyika",
+      "claimType": "career_role",
+      "objectLabel": "商业伙伴 @ 麦肯锡公司",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "James Manyika自2021年起已加入谷歌，其麦肯锡商业伙伴的职位很可能已结束，但来源未提供结束日期。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:PersonRole[cmjy0ucyh003axccmmqtj92xf]:9124a71cadd6",
+      "person": "Jan Leike",
+      "claimType": "career_role",
+      "objectLabel": "Undergraduate Degree @ University of Freiburg",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Jan Leike的履历显示其当前主要职位是OpenAI研究员，其弗莱堡大学的本科学位早已完成，不应标记为‘now’。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:PersonRole[cmjy0undu003hxccmubrnh7fh]:1a8924287382",
+      "person": "Jan Leike",
+      "claimType": "career_role",
+      "objectLabel": "Research Scientist @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Jan Leike于2024年5月已加入Anthropic，其谷歌DeepMind研究员的职位已结束，但来源未提供结束日期。"
+    },
+    {
+      "claimId": "cmkb1lbmc0006h7l9lbbtwgf2:PersonRole[cmkb2mb3f001qo21qqhnwz23z]:464822ec7ec2",
+      "person": "Jason Liu",
+      "claimType": "career_role",
+      "objectLabel": "Software Engineer @ Bloomberg",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息（职位、公司）可能正确，但缺少具体的时间段（开始/结束日期）和来源佐证，无法确认其准确性或当前状态。"
+    },
+    {
+      "claimId": "cmkb1lbmc0006h7l9lbbtwgf2:PersonRole[cmkb2md8i001so21q1eextbve]:d56c326a34f0",
+      "person": "Jason Liu",
+      "claimType": "career_role",
+      "objectLabel": "AI Consultant @ Independent",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为“AI Consultant @ Independent”且状态为“now”，但人物当前上下文显示其为“创始人 @ 567 Studios”，表明该独立顾问职位可能已过时。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:PersonRole[cmjy1eqik00ezxccmtz78lfu5]:bc6677244bf0",
+      "person": "Jason Wei",
+      "claimType": "career_role",
+      "objectLabel": "Research Scientist @ OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为“Research Scientist @ OpenAI”且状态为“now”，但人物当前上下文显示其组织为“Google DeepMind”，表明该OpenAI职位可能已过时。"
+    },
+    {
+      "claimId": "cmkb1ll880009h7l92oakzlul:PersonRole[cmkb2eekq000lo21qqonmtygj]:61ba6db3a360",
+      "person": "Jay Alammar",
+      "claimType": "career_role",
+      "objectLabel": "Investor / Team Member (funding and accelerating tech companies) @ STV",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息（职位、公司）可能正确，但缺少具体的时间段（开始/结束日期）和来源佐证，无法确认其准确性或当前状态。"
+    },
+    {
+      "claimId": "cmkb1ll880009h7l92oakzlul:PersonRole[cmkb2egze000oo21qlhvatc7c]:80f66999044e",
+      "person": "Jay Alammar",
+      "claimType": "career_role",
+      "objectLabel": "Founder @ Unnamed Startup",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息（职位、公司）可能正确，但缺少具体的时间段（开始/结束日期）和来源佐证，无法确认其准确性或当前状态。"
+    },
+    {
+      "claimId": "cmkb1ll880009h7l92oakzlul:PersonRole[cmkb2ti2p000511t9nvksdtsb]:44033d7ac9e6",
+      "person": "Jay Alammar",
+      "claimType": "career_role",
+      "objectLabel": "Founder @ Tech Startup (Unnamed)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息（职位、公司）可能正确，但缺少具体的时间段（开始/结束日期）和来源佐证，无法确认其准确性或当前状态。"
+    },
+    {
+      "claimId": "cmkb1ll880009h7l92oakzlul:PersonRole[cmkb2tjwi000711t97b3a6kk4]:ac487c5cc403",
+      "person": "Jay Alammar",
+      "claimType": "career_role",
+      "objectLabel": "Machine Learning Visualizer/Educator @ Udacity",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为“Machine Learning Visualizer/Educator @ Udacity”且状态为“now”，但人物当前上下文显示其为“Director & Engineering Fellow @ Cohere”，表明该Udacity职位可能已过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:PersonRole[cmjy1jd0500hwxccm724jz81j]:efed0badeebb",
+      "person": "Jeremy Howard",
+      "claimType": "career_role",
+      "objectLabel": "Alumnus @ University of Melbourne",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位标注为“Alumnus @ University of Melbourne”且状态为“now”，但“Alumnus”（校友）通常指已毕业离校，不应作为当前职位展示，信息可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:PersonRole[cmjy1jekj00hzxccmbj7go1zx]:041742119af3",
+      "person": "Jeremy Howard",
+      "claimType": "career_role",
+      "objectLabel": "Distinguished Research Scientist @ University of San Francisco",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位标注为“Distinguished Research Scientist @ University of San Francisco”且状态为“now”，但根据公开信息，Jeremy Howard 已离开该职位，信息可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:PersonRole[cmjy1jhkm00i4xccmkuup0acs]:46f29ca9e89f",
+      "person": "Jeremy Howard",
+      "claimType": "career_role",
+      "objectLabel": "Honorary Professor @ University of Queensland",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "职位标注为“Honorary Professor @ University of Queensland”且状态为“now”，但该荣誉职位可能已结束或非当前主要身份，信息可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:PersonRole[cmjy1jqp100igxccm07xioh3j]:b1ec3dbbffbc",
+      "person": "Jeremy Howard",
+      "claimType": "career_role",
+      "objectLabel": "Founding CEO @ Optimal Decisions Group",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位标注为“Founding CEO @ Optimal Decisions Group”且状态为“now”，但根据公开信息，Jeremy Howard 已不再担任该公司的CEO，信息可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:PersonRole[cmjy1jt8t00ijxccmx7xv5tvx]:52fa5165d14d",
+      "person": "Jeremy Howard",
+      "claimType": "career_role",
+      "objectLabel": "Management Consultant @ McKinsey & Co",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位标注为“Management Consultant @ McKinsey & Co”且状态为“now”，但该职位是其早期职业生涯，早已离任，信息明显过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:PersonRole[cmjy1jwl200imxccmpjqg576m]:49f1615ef28f",
+      "person": "Jeremy Howard",
+      "claimType": "career_role",
+      "objectLabel": "Management Consultant @ AT Kearney",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位标注为“Management Consultant @ AT Kearney”且状态为“now”，但该职位是其早期职业生涯，早已离任，信息明显过时。"
+    },
+    {
+      "claimId": "cmjv6furu000qmfgh4ljlvuyh:PersonRole[cmjy1jyw400ipxccmxi6fn5ds]:cc05620402b3",
+      "person": "Jeremy Howard",
+      "claimType": "career_role",
+      "objectLabel": "Digital Fellow @ Stanford Digital Economy Lab",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "职位标注为“Digital Fellow @ Stanford Digital Economy Lab”且状态为“now”，但该职位可能已结束或非当前主要身份，信息可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu0000mfghokgjj8y8:PersonRole[cmjv6s02k0000riygbzwab3fk]:09ce56210d0a",
+      "person": "Joanne Jang",
+      "claimType": "career_role",
+      "objectLabel": "总经理，OpenAI Labs @ OpenAI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“总经理，OpenAI Labs”和起始时间“2021-11-30”需要可靠来源验证，当前仅基于LLM提取，信息不足。"
+    },
+    {
+      "claimId": "cmjv6furu0000mfghokgjj8y8:PersonRole[cmjv6s44e0001riygox7nii7d]:d8c00cfb4124",
+      "person": "Joanne Jang",
+      "claimType": "career_role",
+      "objectLabel": "模型行为负责人 @ OpenAI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“模型行为负责人”和起始时间“2021-11-30”需要可靠来源验证，当前仅基于LLM提取，信息不足。"
+    },
+    {
+      "claimId": "cmjv6furu0000mfghokgjj8y8:PersonRole[cmjv6sdcc0005riygmv8b973p]:ed321c09922a",
+      "person": "Joanne Jang",
+      "claimType": "career_role",
+      "objectLabel": "计算机科学硕士 @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "当前状态“计算机科学硕士 @ 斯坦福大学”与人物上下文一致，但缺少具体入学/毕业时间等细节，且来源仅为LLM提取。"
+    },
+    {
+      "claimId": "cmjv6furu0000mfghokgjj8y8:PersonRole[cmjv6sghe0006riygmheaq85a]:f17b3cb065bb",
+      "person": "Joanne Jang",
+      "claimType": "career_role",
+      "objectLabel": "理学学士，数学与计算科学 @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "学历“理学学士，数学与计算科学 @ 斯坦福大学”需要可靠来源验证，当前仅基于LLM提取，信息不足。"
+    },
+    {
+      "claimId": "cmjv6furu0000mfghokgjj8y8:PersonRole[cmjw6ncby001b13kl1cq2u3if]:7f3aa273af5e",
+      "person": "Joanne Jang",
+      "claimType": "career_role",
+      "objectLabel": "Product Lead for DALL·E, Model Behavior @ OpenAI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Product Lead for DALL·E, Model Behavior”和起始时间“2018-01-01”需要可靠来源验证，当前来源为“ai-knowledge”，具体性不足。"
+    },
+    {
+      "claimId": "cmjwtn23i00056qvt25cav9oa:PersonRole[cmjy15ov4008vxccmxsx566yu]:e9d3c3b55a06",
+      "person": "John Giannandrea",
+      "claimType": "career_role",
+      "objectLabel": "Co-founder @ Metaweb",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Metaweb已被Google收购，John Giannandrea的联合创始人角色已结束，但结束时间未标注，当前状态“now”不准确。"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:PersonRole[cmjv5jp1i007np9gn94qz4znw]:0307be9b6ec4",
+      "person": "John Schulman",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ 思维机器实验室",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "John Schulman已离开OpenAI并加入Anthropic，但“研究科学家 @ 思维机器实验室”的当前状态“now”可能不准确，需要核实其最新职位。"
+    },
+    {
+      "claimId": "cmjv6furu0002mfghwo1rtgy3:PersonRole[cmjv7fzot0000sz2twd1jxagp]:3c2002567a30",
+      "person": "Kevin Weil",
+      "claimType": "career_role",
+      "objectLabel": "VP, OpenAI for Science @ OpenAI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“VP, OpenAI for Science”和起始时间“2025-10-01”需要可靠来源验证，当前仅基于LLM提取，信息不足。"
+    },
+    {
+      "claimId": "cmjv6furu0002mfghwo1rtgy3:PersonRole[cmjv7g3io0002sz2t60j5f0ce]:399e7020f016",
+      "person": "Kevin Weil",
+      "claimType": "career_role",
+      "objectLabel": "Board Member @ Cisco",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历声称Kevin Weil自2025年5月起担任Cisco董事会成员，但当前人物上下文显示其现任职位为OpenAI副总裁，且来源仅为LLM提取，缺乏权威公开信息佐证。"
+    },
+    {
+      "claimId": "cmjv6furu0002mfghwo1rtgy3:PersonRole[cmjv7g5za0004sz2to1ptirex]:1b5f77c0e1db",
+      "person": "Kevin Weil",
+      "claimType": "career_role",
+      "objectLabel": "Board Member @ The Nature Conservancy",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历声称Kevin Weil自2019年6月起担任The Nature Conservancy董事会成员，但当前人物上下文未提及此信息，且来源仅为LLM提取，缺乏权威公开信息佐证。"
+    },
+    {
+      "claimId": "cmjv6furu0002mfghwo1rtgy3:PersonRole[cmjv7g8ge0006sz2tanss8t45]:fa52b322a49a",
+      "person": "Kevin Weil",
+      "claimType": "career_role",
+      "objectLabel": "Lieutenant Colonel, Army Cyber Corps @ United States Army Reserve",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历声称Kevin Weil自2025年6月起担任美国陆军预备役网络兵团中校，此信息与当前人物上下文（科技公司高管）差异较大，且来源仅为LLM提取，缺乏权威公开信息佐证。"
+    },
+    {
+      "claimId": "cmjv6furu0002mfghwo1rtgy3:PersonRole[cmjv7gb2s0008sz2t0exky4wd]:d9c931cb8ef9",
+      "person": "Kevin Weil",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Council on Foreign Relations",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历声称Kevin Weil自2024年6月起担任美国外交关系委员会成员，但当前人物上下文未提及此信息，且来源仅为LLM提取，缺乏权威公开信息佐证。"
+    },
+    {
+      "claimId": "cmjv6furu0002mfghwo1rtgy3:PersonRole[cmjw5o2zt000236ipvcn6dqtm]:0a206a44d559",
+      "person": "Kevin Weil",
+      "claimType": "career_role",
+      "objectLabel": "首席产品官 @ OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该履历声称Kevin Weil自2024年6月起担任OpenAI首席产品官，但当前人物上下文显示其现任职位为“VP, OpenAI for Science”，表明职位可能已变更，信息过时。"
+    },
+    {
+      "claimId": "cmjv6furu0002mfghwo1rtgy3:PersonRole[cmjw6m5k2000k13kll5op4eij]:3a5ffd8e41a2",
+      "person": "Kevin Weil",
+      "claimType": "career_role",
+      "objectLabel": "Chief Product Officer @ OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该履历声称Kevin Weil自2024年1月起担任OpenAI首席产品官，但当前人物上下文显示其现任职位为“VP, OpenAI for Science”，表明职位可能已变更，信息过时。"
+    },
+    {
+      "claimId": "cmjwtn4ju00096qvt9ywin462:PersonRole[cmjy152if008exccmepoon3mz]:3c50dc02c6a0",
+      "person": "Lina Khan",
+      "claimType": "career_role",
+      "objectLabel": "Associate Professor of Law @ Columbia Law School",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该履历声称Lina Khan自2018年1月起担任哥伦比亚大学法学院法学副教授，但当前人物上下文显示其现任职位为FTC主席，表明职位可能已变更，信息过时。"
+    },
+    {
+      "claimId": "cmkb1lswc000ah7l9krrnshmc:PersonRole[cmkb2lk1c001io21qcufw7gz4]:c22ccd93ee01",
+      "person": "Louis-François Bouchard",
+      "claimType": "career_role",
+      "objectLabel": "Founder @ What's AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息（Founder @ What's AI）来源为ROBUST_RECRAWL，但缺少具体时间范围（startDate和endDate均为null），无法判断是否为当前职位或已离任，可能过时。"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:PersonRole[cmjv561p20013p9gn9sl34zb1]:b1ae0584553b",
+      "person": "Lukasz Kaiser",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ Délégation Paris-Centre (DR2)",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "职位信息（研究科学家 @ Délégation Paris-Centre (DR2)）来源为wikidata，但开始日期（2010-09-30）较早，且当前状态（endDate为null）可能不准确，因为人物上下文显示其当前在OpenAI任职。"
+    },
+    {
+      "claimId": "cmjv6furu000fmfgh7ck5ol2j:PersonRole[cmjy6wzkp00214anvmqerwx8j]:f07dbf77ac20",
+      "person": "Matthew Berman",
+      "claimType": "career_role",
+      "objectLabel": "Director Of AI @ Zapier",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位信息（Director Of AI @ Zapier）来源为EXA_RECRAWL_DIRECT，但缺少具体时间范围（startDate和endDate均为null），无法判断是否为当前职位或已离任，可能过时。"
+    },
+    {
+      "claimId": "cmjwtn3xt00086qvtc8r110pn:PersonRole[cmjy14f8h007nxccmbiyqxxty]:270c39af7b00",
+      "person": "Meredith Whittaker",
+      "claimType": "career_role",
+      "objectLabel": "Alumnus @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "“Alumnus”是永久身份，但“now”暗示当前状态，这容易误导。应明确为历史教育经历。"
+    },
+    {
+      "claimId": "cmjwtn3xt00086qvtc8r110pn:PersonRole[cmjy14i20007sxccmioaukht0]:d481ca185908",
+      "person": "Meredith Whittaker",
+      "claimType": "career_role",
+      "objectLabel": "Co-founder, Co-director @ AI Now Institute",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Meredith Whittaker已离开AI Now Institute，担任Signal Foundation主席。此职位信息已过时。"
+    },
+    {
+      "claimId": "cmjwtn3xt00086qvtc8r110pn:PersonRole[cmjy14jnk007uxccm6woihcj2]:a12aaff2b4dd",
+      "person": "Meredith Whittaker",
+      "claimType": "career_role",
+      "objectLabel": "Distinguished Research Scientist @ 纽约大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "“Distinguished Research Scientist @ 纽约大学”是其历史职位，但“now”暗示当前，这不准确。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:PersonRole[cmjv5gqnw0065p9gn0yam4io8]:c533540975be",
+      "person": "Mira Murati",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ 思维机器实验室",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Mira Murati已离开OpenAI，创立并领导Thinking Machines Lab。此职位信息已过时。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:PersonRole[cmjw5ipry004sizl8dhytz1wf]:d4d1eea2834d",
+      "person": "Mira Murati",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ OpenAI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "根据上下文，Mira Murati 的当前职位是思维机器实验室的创始人兼CEO，暗示她已离开OpenAI。该条目显示其为OpenAI的首席技术官且结束日期为“now”，这与当前状态不符，信息可能过时。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:PersonRole[cmjw5iql1004vizl8xxih315v]:6020f8c5b017",
+      "person": "Mira Murati",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ Leap Motion",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "根据上下文，Mira Murati 的当前职位是思维机器实验室的创始人兼CEO。该条目显示其为Leap Motion的首席技术官且结束日期为“now”，这与当前状态不符，信息可能过时。"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:PersonRole[cmjw5ire6004yizl8kmyay8sy]:0d15df61e1c4",
+      "person": "Mira Murati",
+      "claimType": "career_role",
+      "objectLabel": "首席技术官 @ 特斯拉",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "根据上下文，Mira Murati 的当前职位是思维机器实验室的创始人兼CEO。该条目显示其为特斯拉的首席技术官且结束日期为“now”，这与当前状态不符，信息可能过时。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4eb1007lb64ia4zzrnam]:5c94029ff982",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "writer @ Greylock Partners",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该条目将 Mustafa Suleyman 标记为 Greylock Partners 的“writer”。这可能是一个团队或机构级角色，而非其个人代表成果或主要职位。根据上下文，其主要身份是企业家和创始人，此归因可能不准确。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4euz007nb64igd5icx55]:143649b57b34",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "founder @ Greylock Partners",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "该条目将 Mustafa Suleyman 标记为 Greylock Partners 的“founder”。根据公开信息，Greylock Partners 是一家风险投资公司，并非由 Mustafa Suleyman 创立。这可能是错误归因或信息混淆。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4ibn007pb64iqgozzyuy]:5bc8f5003816",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "researcher @ Greylock Partners",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Mustafa Suleyman 于2022年离开Greylock Partners，加入Inflection AI，后于2024年加入微软。该职位已非当前状态。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4j8u007rb64iodpmlmnv]:a6f0a6384e0f",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "academic @ Greylock Partners",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "同上，该职位已非当前状态。且‘academic’头衔与Greylock Partners（风投公司）的性质不符，可能为数据错误。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4jtq007tb64ia0y8v1ma]:c6b47f49ca77",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "entrepreneur @ Greylock Partners",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "同上，该职位已非当前状态。且‘entrepreneur’作为Greylock Partners的职位头衔不准确，他当时是顾问。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4l2e007vb64izrrowi9x]:596807e8c205",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "university teacher @ Greylock Partners",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "同上，该职位已非当前状态。且‘university teacher’头衔与Greylock Partners的性质不符，可能为数据错误。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4lyh007xb64iuamumsu3]:ab950811f534",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "artificial intelligence researcher @ Greylock Partners",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "同上，该职位已非当前状态。且‘artificial intelligence researcher’作为Greylock Partners的职位头衔不准确，他当时是顾问。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4n6s007zb64ikp12alvc]:c5fce7a3826d",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "business executive @ Greylock Partners",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "同上，该职位已非当前状态。且‘business executive’作为Greylock Partners的职位头衔不准确，他当时是顾问。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g4o2r0081b64i93rpeiob]:36ccf459108b",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "AI ethicist @ Greylock Partners",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "同上，该职位已非当前状态。且‘AI ethicist’作为Greylock Partners的职位头衔不准确，他当时是顾问。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g51l8008zb64ihzk0dm1t]:14b188214088",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "Non-executive Director (Board Member) @ The Economist",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该职位声称始于2019年1月1日，但缺乏可靠来源证实。Mustafa Suleyman 的公开履历中未广泛提及此职位。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g52ts0091b64io4ftjeza]:fd01ffe187f0",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "Venture Partner @ Greylock Partners",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Mustafa Suleyman 已于2024年3月加入微软并担任微软AI的CEO，其在Greylock Partners的职位很可能已结束。当前履历显示为“now”可能过时。"
+    },
+    {
+      "claimId": "cmjtsz3vd000a3est4svv1iy9:PersonRole[cmk8g54yj0096b64iz59zdcvi]:d082393e32ec",
+      "person": "Mustafa Suleyman",
+      "claimType": "career_role",
+      "objectLabel": "Senior Fellow @ Harvard Kennedy School Belfer Center for Science and International Affairs",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示其为哈佛肯尼迪学院贝尔弗中心的高级研究员，且状态为“now”。但根据其当前全职担任微软AI CEO的公开信息，此职位可能已非当前状态，需要确认。"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:PersonRole[cmjv5agkq0038p9gnz8brs288]:bc8c172a3129",
+      "person": "Noam Shazeer",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ 谷歌",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Noam Shazeer 已于2024年8月加入谷歌，但此前他共同创立了Character.ai并担任CEO。履历显示其自2023年底起为谷歌研究科学家，且状态为“now”，这与他近期重返谷歌的公开信息一致，但“研究科学家”头衔可能未准确反映其当前高级职位。"
+    },
+    {
+      "claimId": "cmjv6furu000cmfghk9hx1jql:PersonRole[cmjy1i7sd00haxccmdb5p74w3]:b1db0d664cdb",
+      "person": "Paul Graham",
+      "claimType": "career_role",
+      "objectLabel": "Studied painting @ RISD",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Paul Graham 在罗德岛设计学院学习绘画是其早年经历，并非当前状态。履历显示为“now”明显过时。"
+    },
+    {
+      "claimId": "cmjv6furu000cmfghk9hx1jql:PersonRole[cmjy1i93j00hdxccmdbuuzwb7]:0ea8bd487d74",
+      "person": "Paul Graham",
+      "claimType": "career_role",
+      "objectLabel": "Studied painting @ Accademia di Belle Arti di Firenze",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Paul Graham 在佛罗伦萨美术学院学习绘画是其早年经历，并非当前状态。履历显示为“now”明显过时。"
+    },
+    {
+      "claimId": "cmjv6furu000cmfghk9hx1jql:PersonRole[cmjy1icar00hixccmcnt07nlh]:1aaef99a7b74",
+      "person": "Paul Graham",
+      "claimType": "career_role",
+      "objectLabel": "Co-founder @ Y Combinator公司",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Paul Graham 是Y Combinator的联合创始人，但他已不再担任日常运营角色。履历显示其职位为“Co-founder”且状态为“now”，这可能误导用户认为他仍在积极管理。"
+    },
+    {
+      "claimId": "cmjv6furu000rmfghqtakiwi7:PersonRole[cmjv7o2l4002nsz2t5xsflq98]:871124c346d1",
+      "person": "Rachel Thomas",
+      "claimType": "career_role",
+      "objectLabel": "研究员 @ Answer.AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构可能正确，但来源为LLM提取，缺乏权威佐证，需人工核实。"
+    },
+    {
+      "claimId": "cmjv6furu000rmfghqtakiwi7:PersonRole[cmjv7o7d6002rsz2t6xg45czf]:b6b27fa701c1",
+      "person": "Rachel Thomas",
+      "claimType": "career_role",
+      "objectLabel": "首席执行官 @ Canberra Symphony Orchestra",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该职位（交响乐团CEO）与Rachel Thomas（AI教育者、fast.ai联合创始人）的公开背景严重不符，极可能是同名他人。"
+    },
+    {
+      "claimId": "cmjv6furu000rmfghqtakiwi7:PersonRole[cmjv7o9qk002tsz2t6uie32m5]:e89799a3e53f",
+      "person": "Rachel Thomas",
+      "claimType": "career_role",
+      "objectLabel": "城市记录员 @ City of Newberg",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该职位（城市记录员）与Rachel Thomas（AI教育者、fast.ai联合创始人）的公开背景严重不符，极可能是同名他人。"
+    },
+    {
+      "claimId": "cmjv6furu000jmfghn1ukel4f:PersonRole[cmjv7kux9001lsz2tu6j0xr8y]:cd59b128c916",
+      "person": "Richard Ngo",
+      "claimType": "career_role",
+      "objectLabel": "AI Safety Researcher @ Independent",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Richard Ngo 的职位信息来自 LLM 提取，但缺少更权威的来源（如个人主页、官方公告）来确认其当前状态。"
+    },
+    {
+      "claimId": "cmjv6furu000pmfghv7drjtak:PersonRole[cmjy0kkpj0007xccm4u1boc1h]:cfcf91e60261",
+      "person": "Richard Socher",
+      "claimType": "career_role",
+      "objectLabel": "Chief Scientist @ Salesforce",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Richard Socher 已于 2020 年离开 Salesforce，但此条履历仍显示为当前职位，信息过时。"
+    },
+    {
+      "claimId": "cmjv6furu000imfghhcj4mp17:PersonRole[cmjv7js42001csz2t4zjx47wb]:d67088dd084d",
+      "person": "Rob Bensinger",
+      "claimType": "career_role",
+      "objectLabel": "Author @ Machine Intelligence Research Institute (MIRI)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Rob Bensinger 的职位信息来自 LLM 提取，但缺少更权威的来源（如 MIRI 官网）来确认其当前状态和具体角色。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:PersonRole[cmjv3ecfj0009m207f3keaax6]:49e67ae8c327",
+      "person": "Sam Altman",
+      "claimType": "career_role",
+      "objectLabel": "CEO @ OpenAI",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "Sam Altman在2023年11月曾被OpenAI董事会短暂解雇，后复职。当前状态显示为“now”，但此事件可能影响职位状态的准确性，需要核实最新情况。"
+    },
+    {
+      "claimId": "cmjrz11xi0002b28tg14eugjo:PersonRole[cmk8fuyux0004b64i8jmknw5r]:57d93607c0d7",
+      "person": "Sam Altman",
+      "claimType": "career_role",
+      "objectLabel": "Co-Founder & CEO @ AltC Acquisition Corp.",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源为AI自动丰富，置信度0.8。Sam Altman确实参与了AltC Acquisition Corp.，但需要更权威的公开信息（如公司官网、SEC文件）来确认其Co-Founder & CEO的职位及起始时间。"
+    },
+    {
+      "claimId": "cmk8gtnrs0003j1tnxgp9scm3:PersonRole[cmk8hyjzn002ca1k3hr9pz66n]:42b54314d355",
+      "person": "Sam McCandlish",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ 微软",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "Sam McCandlish的公开履历主要与Anthropic和OpenAI相关，其当前职位为“Research Scientist @ Microsoft”缺乏足够来源支持，需要核实。"
+    },
+    {
+      "claimId": "cmkb1li190008h7l91sx6u6mq:PersonRole[cmkb35k4k001s11t9zmnjlhxl]:1626c67a38fa",
+      "person": "Sam Witteveen",
+      "claimType": "career_role",
+      "objectLabel": "Gemini @ 谷歌",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "职位标签“Gemini”是谷歌的一个AI模型/产品系列，而非一个具体的职位头衔。这属于将团队/产品成果过度归因给个人。"
+    },
+    {
+      "claimId": "cmjv6furu0004mfghxllk5gjq:PersonRole[cmjv7nflw002gsz2tjhgnwuw2]:c0182fb40549",
+      "person": "Scott Wu",
+      "claimType": "career_role",
+      "objectLabel": "联合创始人兼首席执行官 @ Cognition",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和公司信息可能正确，但来源仅为LLM提取，缺乏权威公开来源（如公司官网、领英）的直接证据支持其当前状态和起始时间。"
+    },
+    {
+      "claimId": "cmkb1kqmm0000h7l9aopl15vr:PersonRole[cmkb2b9dp0003o21q6tcjb0sv]:8641449f8082",
+      "person": "Sergey Levine",
+      "claimType": "career_role",
+      "objectLabel": "Affiliation @ Stanford HAI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“Affiliation @ Stanford HAI”表述模糊，未明确具体角色（如研究员、顾问）。需要来源确认其具体关联性质和当前状态。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:PersonRole[cmjy1a7p600btxccm04u5j0kj]:f154fbb95eae",
+      "person": "Shane Legg",
+      "claimType": "career_role",
+      "objectLabel": "PhD @ Dalle Molle Institute for Artificial Intelligence Research (IDSIA)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "Shane Legg的博士学位早已完成，将“PhD”列为当前职位（now）是过时的。应标记为历史履历。"
+    },
+    {
+      "claimId": "cmjtszhu8000b3estb17k2kqb:PersonRole[cmjy1aa7g00byxccm1jsbfvqc]:8a1c72c8cb34",
+      "person": "Shane Legg",
+      "claimType": "career_role",
+      "objectLabel": "Research Role @ Swiss Finance Institute",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“Research Role @ Swiss Finance Institute”信息模糊，且与Shane Legg主要的AI/DeepMind背景关联度不高。需要来源确认此关联的真实性和具体角色。"
+    },
+    {
+      "claimId": "cmkb1m43s000dh7l9umnfwgco:PersonRole[cmkb2bm730005o21qjzc1h0mx]:aee2d17f1609",
+      "person": "Tianqi Chen",
+      "claimType": "career_role",
+      "objectLabel": "PhD Student @ University of Washington",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该履历显示为当前（now），但根据人物背景，其当前职位为卡内基梅隆大学助理教授和NVIDIA杰出工程师，博士生身份应已结束。"
+    },
+    {
+      "claimId": "cmkb1m43s000dh7l9umnfwgco:PersonRole[cmkb2bnzy0007o21q0fwuoxno]:9d8037438f2c",
+      "person": "Tianqi Chen",
+      "claimType": "career_role",
+      "objectLabel": "Postdoctoral Fellow @ 卡内基梅隆大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "该履历显示为当前（now），但根据人物背景，其当前职位为卡内基梅隆大学助理教授和NVIDIA杰出工程师，博士后身份应已结束。"
+    },
+    {
+      "claimId": "cmk8gtqyf0004j1tnp0m2lx54:PersonRole[cmk8hy4pt0028a1k3gb8kcbdf]:b21536bdcc67",
+      "person": "Tri Dao",
+      "claimType": "career_role",
+      "objectLabel": "Affiliated Researcher @ Stanford HAI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历信息（Affiliated Researcher @ Stanford HAI）在给定的人物背景中未明确提及，需要额外来源验证其当前状态和准确性。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:PersonRole[cmjy0pthh002cxccmq2moimof]:484e7ae3d5ee",
+      "person": "Wojciech Zaremba",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ 英伟达",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "该履历声称人物当前（now）是英伟达的研究科学家，但人物当前状态是OpenAI的联合创始人。这表明该职位信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:PersonRole[cmjy0q4qq002exccmvun9svf1]:90e7d4bf72a3",
+      "person": "Wojciech Zaremba",
+      "claimType": "career_role",
+      "objectLabel": "Research Scientist @ Google Brain",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "该履历声称人物当前（now）是Google Brain的研究科学家，但人物当前状态是OpenAI的联合创始人。这表明该职位信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmjtxc0fm00005p08usgwkddl:PersonRole[cmjy0r7b6002lxccm3vh5v6yc]:145a5237c63c",
+      "person": "Wojciech Zaremba",
+      "claimType": "career_role",
+      "objectLabel": "Lead Researcher (Robotics/LLMs) @ OpenAI",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "该履历声称人物当前（now）是OpenAI的Lead Researcher (Robotics/LLMs)，但人物当前状态是Co-founder。这表明该职位信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmk9vzfj80003lbppenp9rfi5:PersonRole[cmkaejrjf0060imyj7zhhy4ko]:7366bd4724d9",
+      "person": "Yann Dauphin",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "该履历声称人物当前（now）是蒙特利尔大学的Member，但人物当前状态是Anthropic的研究科学家。这表明该职位信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmkb1lzay000ch7l9ddgrfbmn:PersonRole[cmkb2hwj2000qo21qnjabgb35]:41c16a376fc6",
+      "person": "Yann Dubois",
+      "claimType": "career_role",
+      "objectLabel": "PhD Computer Science (AI) @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "该履历声称人物当前（now）是斯坦福大学的博士生，但人物当前状态是OpenAI的研究科学家。这表明该职位信息可能已过时或不准确。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:PersonRole[cmk8fymv2002mb64ieipotrgi]:83b6028880ab",
+      "person": "Yann LeCun",
+      "claimType": "career_role",
+      "objectLabel": "Student @ ESIEE Paris",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为‘Student @ ESIEE Paris’且时间为‘now’，但Yann LeCun已毕业多年，此职位状态明显过时。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:PersonRole[cmk8fynul002ob64igkcn68u2]:ec2214e2c3d8",
+      "person": "Yann LeCun",
+      "claimType": "career_role",
+      "objectLabel": "Student @ Sorbonne University",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为‘Student @ Sorbonne University’且时间为‘now’，但Yann LeCun已毕业多年，此职位状态明显过时。"
+    },
+    {
+      "claimId": "cmjtsvcil00003esttihbrsjm:PersonRole[cmk8fz0nh0039b64iy38obfkg]:42df2b283232",
+      "person": "Yann LeCun",
+      "claimType": "career_role",
+      "objectLabel": "Founder & CEO @ Yann LeCun's AI Startup (world-model / superintelligence-focused company)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称Yann LeCun是‘Yann LeCun's AI Startup’的创始人兼CEO，但来源为‘perplexity_enrich’，缺乏权威公开信息支持。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmjv54z8u000lp9gnin1zzmp0]:4d37679456dd",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Student @ Massachusetts Institute of Technology (MIT)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为‘Student @ MIT’且时间为‘now’，但Yoshua Bengio已毕业多年，此职位状态明显过时。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzi3i003gb64i7eg52iim]:9e9b9e8e277e",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Founder and Scientific Advisor @ Mila – Quebec AI Institute (Montreal Institute for Learning Algorithms)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "声称Yoshua Bengio是Mila的创始人兼科学顾问，但来源为‘perplexity_enrich’，缺乏权威公开信息支持。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzkpo003jb64i7udot9ut]:d175e1fbe88a",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Senior Fellow and Co-Director, Learning in Machines & Brains program @ Canadian Institute for Advanced Research (CIFAR)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但提供的来源仅为内部标签，缺乏可公开验证的外部证据，无法确认当前状态。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzm8r003mb64iyobivqbe]:07df7dbd2088",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Special Advisor and Founding / Former Scientific Director @ IVADO (Institute for Data Valorization)",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但提供的来源仅为内部标签，缺乏可公开验证的外部证据，无法确认当前状态。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzn3a003pb64irxflr6e7]:75c43cab189b",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Co-President and Scientific Director @ LawZero",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但提供的来源仅为内部标签，缺乏可公开验证的外部证据，无法确认当前状态。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzp5j003vb64ie5j3d6v8]:e4839b01e72f",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Advisor (following acquisition of Element AI) @ ServiceNow",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但提供的来源仅为内部标签，缺乏可公开验证的外部证据，无法确认当前状态。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzq03003yb64il6rh5xrn]:3c18c7cee2af",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Scientific and Technical Advisor @ Recursion Pharmaceuticals",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但提供的来源仅为内部标签，缺乏可公开验证的外部证据，无法确认当前状态。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzr6g0041b64i90suefe5]:1f2b9863ba62",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Scientific Advisor @ Valence Discovery",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但提供的来源仅为内部标签，缺乏可公开验证的外部证据，无法确认当前状态。"
+    },
+    {
+      "claimId": "cmjtsvqew00013est5j2tsqcx:PersonRole[cmk8fzs0z0044b64i707ith0f]:e6966659a667",
+      "person": "Yoshua Bengio",
+      "claimType": "career_role",
+      "objectLabel": "Canada CIFAR AI Chair @ Canada CIFAR AI Chairs Program",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但提供的来源仅为内部标签，缺乏可公开验证的外部证据，无法确认当前状态。"
+    },
+    {
+      "claimId": "cmjv6furu0005mfghkppozqo8:PersonRole[cmjy0lvef000yxccmmqu1jo7q]:f527c8fc4594",
+      "person": "Zoubin Ghahramani",
+      "claimType": "career_role",
+      "objectLabel": "Professor of Information Engineering @ University of Cambridge",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "根据人物上下文，Zoubin Ghahramani当前职位是Google Brain VP，而剑桥大学教授职位可能已离任，但履历显示为当前，信息可能过时。"
+    },
+    {
+      "claimId": "cmjv6furu0005mfghkppozqo8:PersonRole[cmjy0m3cx001dxccmlk741911]:90d1003bfea6",
+      "person": "Zoubin Ghahramani",
+      "claimType": "career_role",
+      "objectLabel": "Chief Scientist @ Uber",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "根据公开信息，Zoubin Ghahramani 已于2020年离开Uber，加入Google。该履历显示为“至今”，状态可能过时。"
+    },
+    {
+      "claimId": "cmk9voz1p000bazb98cg49jhu:PersonRole[cmkb2cg6d0009o21qa8qgxzle]:08eb74493c38",
+      "person": "丹·克莱因",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "“Member”作为职位头衔过于模糊，无法确认其具体含义（如教职、研究员、学生等）。需要更明确的职位描述或来源。"
+    },
+    {
+      "claimId": "cmk9voz1p000bazb98cg49jhu:PersonRole[cmkb2ciny000co21qp42u5tz1]:fffc8aefc34c",
+      "person": "丹·克莱因",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Mt. Lebanon High School",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "丹·克莱因（Dan Klein）是知名计算机科学家，与 Mt. Lebanon High School（一所高中）的关联极不可能，更可能属于同名的其他人。"
+    },
+    {
+      "claimId": "cmk9voz1p000bazb98cg49jhu:PersonRole[cmkb2cl7a000eo21qd76hhg2o]:6751558e4f63",
+      "person": "丹·克莱因",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "“Member”作为职位头衔过于模糊，无法确认其具体含义（如教职、研究员、学生等）。需要更明确的职位描述或来源。"
+    },
+    {
+      "claimId": "cmjvfbygb0003lqwq52xfghrn:PersonRole[cmjy6vu8p001a4anvqarzajua]:5834ee2da749",
+      "person": "丹尼尔·格罗斯",
+      "claimType": "career_role",
+      "objectLabel": "Partner @ Y Combinator公司",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位是Pioneer联合创始人，履历显示其Y Combinator合伙人职位为‘now’，但根据公开信息，他已于2018年离开该职位，信息过时。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:PersonRole[cmjv5dhz9004pp9gn33maaslh]:18fd89557dc2",
+      "person": "乔尔·皮诺",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ Facebook AI Research (FAIR)",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "履历显示其FAIR职位为‘now’，但根据公开信息，他已于2023年离开Meta/FAIR，信息可能过时。"
+    },
+    {
+      "claimId": "cmjtxd3ym00085p08timmi73e:PersonRole[cmjv5dl26004qp9gn5ob0j0tx]:579082b7a49a",
+      "person": "乔尔·皮诺",
+      "claimType": "career_role",
+      "objectLabel": "Student @ 卡内基梅隆大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示其卡内基梅隆大学学生身份为‘now’，但根据其博士学位时间（2012年），该状态明显过时。"
+    },
+    {
+      "claimId": "cmk9vntqv0006azb957fpcc3f:PersonRole[cmkaefp0i0030imyjsyvaoz0f]:96e83deb6215",
+      "person": "乔恩·巴伦",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示其为加州大学伯克利分校‘Member’且状态为‘now’，但缺乏具体角色和时间段信息，无法验证其当前状态。"
+    },
+    {
+      "claimId": "cmk9vntqv0006azb957fpcc3f:PersonRole[cmkaefq280032imyjfa3m39cj]:b0483a2db645",
+      "person": "乔恩·巴伦",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示其为多伦多大学‘Member’且状态为‘now’，但缺乏具体角色和时间段信息，无法验证其当前状态。"
+    },
+    {
+      "claimId": "cmk9vntqv0006azb957fpcc3f:PersonRole[cmkaefr1h0034imyjrvr4ys8t]:e6b00f19cb49",
+      "person": "乔恩·巴伦",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示其为谷歌‘Member’且状态为‘now’，但缺乏具体角色和时间段信息，无法验证其当前状态。"
+    },
+    {
+      "claimId": "cmk9w0r08000blbpp7rmz9ovg:PersonRole[cmkaeefye002bimyjw343lqpk]:33654e91b18e",
+      "person": "乔治·爱德华·达尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示为当前职位，但缺少开始/结束时间，且人物当前职位为Google DeepMind研究员，无法确认其是否仍为多伦多大学成员。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:PersonRole[cmkaeb6d10001imyj6y78w789]:1b854ea9a804",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "career_role",
+      "objectLabel": "Member @ California Institute of Technology",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Google DeepMind研究员，履历显示其仍为加州理工学院成员，但缺少时间信息，很可能已离任。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:PersonRole[cmkaeb7fl0003imyj0x2fgn45]:25f8e17e07ca",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Google DeepMind研究员，履历显示其仍为加州大学伯克利分校成员，但缺少时间信息，很可能已离任。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:PersonRole[cmkaeb8v60006imyjrjwamh00]:0de3302037a6",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "career_role",
+      "objectLabel": "Member @ National Technical University of Athens",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Google DeepMind研究员，履历显示其仍为雅典国立技术大学成员，但缺少时间信息，很可能已离任。"
+    },
+    {
+      "claimId": "cmk9w3b88000plbppxmpwibfp:PersonRole[cmkaeb9yc0008imyj4kpw3iwu]:729ce492d64b",
+      "person": "乔治亚·吉奥克萨里",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Facebook AI Research (FAIR)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Google DeepMind研究员，履历显示其仍为Facebook AI Research成员，但缺少时间信息，很可能已离任。"
+    },
+    {
+      "claimId": "cmk9w1o4s000glbppkvgn3ric:PersonRole[cmkaeg81k003himyjaxzh254s]:c2170926251c",
+      "person": "于克朱",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为德克萨斯大学奥斯汀分校副教授和NVIDIA研究总监，履历显示其仍为斯坦福大学成员，但缺少时间信息，很可能已离任。"
+    },
+    {
+      "claimId": "cmjtxc4op00015p081bdqzfmb:PersonRole[cmjy6pg60000o4anv1quhd0g8]:42a75d238788",
+      "person": "亚历克·拉德福德",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ Indico Data Solutions",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "人物当前职位为Indico Data Solutions研究科学家，但履历显示其自2012年12月31日起任职至今，时间跨度异常，且人物更知名的履历在OpenAI，此条信息可能过时或不准确。"
+    },
+    {
+      "claimId": "cmjvfbf9f0001lqwqebtiu8qm:PersonRole[cmjy6waix001n4anvxe9d509z]:4ccc9d48d7d9",
+      "person": "亚历克斯·克里泽夫斯基",
+      "claimType": "career_role",
+      "objectLabel": "研究员 @ PKU CoRe Lab",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物当前职位为谷歌前研究员，履历显示其当前为PKU CoRe Lab研究员，但缺少时间信息，且与已知履历（谷歌研究员）冲突，需要核实。"
+    },
+    {
+      "claimId": "cmk9w2xmo000nlbppyw59kza4:PersonRole[cmkael5zx006ximyjjtpt43sq]:563e3279e4e1",
+      "person": "伊恩·默里",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 伦敦大学学院",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示伊恩·默里当前为伦敦大学学院成员，但其公开资料主要关联爱丁堡大学。缺少来源证明此职位的准确性及当前状态。"
+    },
+    {
+      "claimId": "cmjvfch1g0005lqwqcosahs9s:PersonRole[cmjy0s7yd002xxccmru8ekz9o]:fb759ece27c2",
+      "person": "何凯明",
+      "claimType": "career_role",
+      "objectLabel": "Associate Professor with tenure, Department of EECS @ Massachusetts Institute of Technology (MIT)",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "何凯明于2023年12月加入MIT，但其公开资料（如Meta AI页面）仍显示为Research Scientist。此履历可能过时或信息冲突。"
+    },
+    {
+      "claimId": "cmjvfch1g0005lqwqcosahs9s:PersonRole[cmjy0t3vj002zxccmf2v4rvgr]:3089975c5982",
+      "person": "何凯明",
+      "claimType": "career_role",
+      "objectLabel": "Distinguished Scientist (part-time) @ 谷歌DeepMind",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "何凯明被列为谷歌DeepMind兼职杰出科学家，但其主要身份为Meta AI研究员。缺少来源证明此兼职职位的真实性。"
+    },
+    {
+      "claimId": "cmk9w35a0000olbpp4duzvuil:PersonRole[cmkaee7fh0020imyj602a2kjr]:06bee0291e30",
+      "person": "保罗·德贝维奇",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "保罗·德贝维奇被列为加州大学伯克利分校成员，但其公开资料主要关联Google和南加州大学。缺少来源证明此职位的准确性。"
+    },
+    {
+      "claimId": "cmk9w35a0000olbpp4duzvuil:PersonRole[cmkaee8dz0022imyjtmblp0mm]:ad20a988ed3e",
+      "person": "保罗·德贝维奇",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 密歇根大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "保罗·德贝维奇被列为密歇根大学成员，但其公开资料未提及此关联。缺少来源证明此职位的准确性。"
+    },
+    {
+      "claimId": "cmk9w35a0000olbpp4duzvuil:PersonRole[cmkaee9bs0024imyjswb285co]:51275c2763b1",
+      "person": "保罗·德贝维奇",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Netflix",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "保罗·德贝维奇被列为Netflix成员，但其公开资料主要关联Google和南加州大学。缺少来源证明此职位的准确性。"
+    },
+    {
+      "claimId": "cmk9w35a0000olbpp4duzvuil:PersonRole[cmkaeeakq0027imyj52q03yu7]:519f78680a76",
+      "person": "保罗·德贝维奇",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University Laboratory High School",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "保罗·德贝维奇被列为University Laboratory High School成员，但此机构与其公开背景不符。缺少来源证明此职位的准确性。"
+    },
+    {
+      "claimId": "cmk9w35a0000olbpp4duzvuil:PersonRole[cmkaeebis0029imyjthhu4p2h]:6948fa8ea4a7",
+      "person": "保罗·德贝维奇",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Southern California",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "保罗·德贝维奇被列为南加州大学成员，但其公开资料主要关联Google。缺少来源证明此职位的准确性及当前状态。"
+    },
+    {
+      "claimId": "cmk9vxob8000eklcc20ebwsyv:PersonRole[cmkaeiybv0057imyjcy9dsicl]:9b75ea4b9c8d",
+      "person": "亚林·加尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Open University of Israel",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示亚林·加尔为以色列开放大学成员，但其当前职位为牛津大学教授，且无其他信息佐证此段经历。来源仅为ROBUST_RECRAWL，缺乏具体时间或上下文。"
+    },
+    {
+      "claimId": "cmk9vxob8000eklcc20ebwsyv:PersonRole[cmkaeizbo0059imyjoyccn8iq]:293fa6db0861",
+      "person": "亚林·加尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 牛津大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示亚林·加尔为牛津大学成员，但其当前职位已是牛津大学教授。'Member'职位可能过时或不准确，应更新为当前教授职位。"
+    },
+    {
+      "claimId": "cmk9vxob8000eklcc20ebwsyv:PersonRole[cmkaej0d1005bimyj9pyhgyd1]:af0950107ca1",
+      "person": "亚林·加尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Cambridge",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示亚林·加尔为剑桥大学成员，但其当前职位为牛津大学教授，且无其他信息佐证此段经历。来源仅为ROBUST_RECRAWL，缺乏具体时间或上下文。"
+    },
+    {
+      "claimId": "cmk9vlhms0000azb9q6oxhyui:PersonRole[cmkaegck1003jimyjoktw1a9j]:1d898e9805d3",
+      "person": "伊恩·J·古德费洛",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示伊恩·J·古德费洛为蒙特利尔大学成员，但其当前职位为谷歌DeepMind研究主任，且无其他信息佐证此段经历。来源仅为ROBUST_RECRAWL，缺乏具体时间或上下文。"
+    },
+    {
+      "claimId": "cmk9vlhms0000azb9q6oxhyui:PersonRole[cmkaege02003mimyj36f26huq]:2b209e9820a5",
+      "person": "伊恩·J·古德费洛",
+      "claimType": "career_role",
+      "objectLabel": "Member @ San Dieguito High School Academy",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "履历显示伊恩·J·古德费洛为San Dieguito高中学院成员，这与他作为谷歌DeepMind研究主任和AI研究员的身份严重不符，极可能是同名或数据错误。"
+    },
+    {
+      "claimId": "cmk9vlhms0000azb9q6oxhyui:PersonRole[cmkaegf3e003oimyjd82yd4zq]:40cacdc512dd",
+      "person": "伊恩·J·古德费洛",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示伊恩·J·古德费洛为谷歌成员，但其当前职位已是谷歌DeepMind研究主任。'Member'职位可能过时或不准确，应更新为当前职位。"
+    },
+    {
+      "claimId": "cmk9vlhms0000azb9q6oxhyui:PersonRole[cmkaegg55003qimyjzdgd4xhw]:9a61e38acdcf",
+      "person": "伊恩·J·古德费洛",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示伊恩·J·古德费洛为斯坦福大学成员，但其当前职位为谷歌DeepMind研究主任，且无其他信息佐证此段经历。来源仅为ROBUST_RECRAWL，缺乏具体时间或上下文。"
+    },
+    {
+      "claimId": "cmk9w2xmo000nlbppyw59kza4:PersonRole[cmkael4yv006vimyjl4i6qbvw]:dce10f5816ca",
+      "person": "伊恩·默里",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Edinburgh",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示伊恩·默里为爱丁堡大学成员，但其当前职位已是爱丁堡大学教授。'Member'职位可能过时或不准确，应更新为当前教授职位。"
+    },
+    {
+      "claimId": "cmk9w0buy0008lbpppwgmw9oe:PersonRole[cmkaee23g001wimyj9wqzpylk]:8fbb763073ac",
+      "person": "克里斯托弗·K·I·威廉姆斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Edinburgh",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色（如研究员、学生、教职）。当前信息显示其为爱丁堡大学教授，但此条履历未提供时间范围，无法判断是否过时或准确。"
+    },
+    {
+      "claimId": "cmk9w0buy0008lbpppwgmw9oe:PersonRole[cmkaee381001yimyj9lrvnhey]:94a0fb1d0856",
+      "person": "克里斯托弗·K·I·威廉姆斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色。当前信息显示其为爱丁堡大学教授，但此条履历声称其在多伦多大学，且未提供时间范围，无法判断是否准确或过时。"
+    },
+    {
+      "claimId": "cmk9vvyoh0006klccngwh2yqa:PersonRole[cmkaef91h002oimyju8ie1am2]:71503d9cb561",
+      "person": "克里斯蒂娜·N·图塔诺娃",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Sofia University",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色（如学生、研究员）。当前信息显示其为Google DeepMind研究科学家，但此条履历声称其在索非亚大学，且未提供时间范围，无法判断是否准确或过时。"
+    },
+    {
+      "claimId": "cmk9vvyoh0006klccngwh2yqa:PersonRole[cmkaefa0q002qimyj8c4qukvy]:a468752c8c47",
+      "person": "克里斯蒂娜·N·图塔诺娃",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 微软研究院",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色（如研究员、实习生）。当前信息显示其为Google DeepMind研究科学家，但此条履历声称其在微软研究院，且未提供时间范围，无法判断是否准确或过时。"
+    },
+    {
+      "claimId": "cmk9vvyoh0006klccngwh2yqa:PersonRole[cmkaefb0g002simyj758d0gfs]:ea3c40fd8de3",
+      "person": "克里斯蒂娜·N·图塔诺娃",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Google Research",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色（如研究员、实习生）。当前信息显示其为Google DeepMind研究科学家，但此条履历声称其在谷歌研究院，且未提供时间范围，无法判断是否准确或过时。"
+    },
+    {
+      "claimId": "cmk9vvyoh0006klccngwh2yqa:PersonRole[cmkaefbz4002uimyjm8jr1aiu]:85d4320da83e",
+      "person": "克里斯蒂娜·N·图塔诺娃",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色（如学生、研究员）。当前信息显示其为Google DeepMind研究科学家，但此条履历声称其在斯坦福大学，且未提供时间范围，无法判断是否准确或过时。"
+    },
+    {
+      "claimId": "cmk9w3xrw000tlbpp0ewhrm1b:PersonRole[cmkaeke180068imyjh0ztgt0b]:47acf07e3729",
+      "person": "凯尔文·顾",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Duke University",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色（如学生、研究员）。当前信息显示其为Google DeepMind首席研究科学家/总监，但此条履历声称其在杜克大学，且未提供时间范围，无法判断是否准确或过时。"
+    },
+    {
+      "claimId": "cmk9w3xrw000tlbpp0ewhrm1b:PersonRole[cmkaekf0q006aimyjm9nzgj3k]:db05e01c75fd",
+      "person": "凯尔文·顾",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位“Member”过于模糊，无法确认具体角色（如学生、研究员）。当前信息显示其为Google DeepMind首席研究科学家/总监，但此条履历声称其在斯坦福大学，且未提供时间范围，无法判断是否准确或过时。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:PersonRole[cmjv7uq5g004wsz2taix6eoxm]:8eca883384ca",
+      "person": "凯文·斯科特",
+      "claimType": "career_role",
+      "objectLabel": "计算机科学硕士学位 @ 维克森林大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "硕士学位是已完成的教育经历，不应标记为“now”（当前）。这属于状态过时。"
+    },
+    {
+      "claimId": "cmjtxdpzx000c5p080gws8vjg:PersonRole[cmjv7usl4004ysz2tdhhov7ht]:44e91bf06e58",
+      "person": "凯文·斯科特",
+      "claimType": "career_role",
+      "objectLabel": "计算机科学学士学位（主修），英语（辅修） @ 林奇堡学院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "学士学位是已完成的教育经历，不应标记为“now”（当前）。这属于状态过时。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:PersonRole[cmkaehnhb004eimyjru64mqxz]:f2b96c2bb54c",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Duke University",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“Member”头衔过于模糊，无法确认其具体角色（如研究员、教职等）。需要更具体的职位描述或来源。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:PersonRole[cmkaehoh8004gimyj1k3js8lk]:b29541556260",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 伦敦大学学院",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“Member”头衔过于模糊，无法确认其具体角色（如研究员、教职等）。需要更具体的职位描述或来源。"
+    },
+    {
+      "claimId": "cmk9w2ke3000llbpp1qq1laah:PersonRole[cmkaehphe004iimyjk5v2esi5]:75a0987cd4f0",
+      "person": "凯瑟琳·A·海勒",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "“Member”头衔过于模糊，无法确认其具体角色（如研究员、工程师等）。需要更具体的职位描述或来源。"
+    },
+    {
+      "claimId": "cmjvd3d5v0001kvtpdo7mjnhw:PersonRole[cmjy176bu009vxccm54w569eb]:bb5baac04a22",
+      "person": "利昂·琼斯",
+      "claimType": "career_role",
+      "objectLabel": "Co-founder @ Sakana AI",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "Sakana AI的联合创始人是David Ha和Llion Jones。Llion Jones是知名AI研究员，而“利昂·琼斯”是音乐家，两者并非同一人。"
+    },
+    {
+      "claimId": "cmjvd3d5v0001kvtpdo7mjnhw:PersonRole[cmjy177zy009yxccmnxu3gigp]:b9b181e25bdb",
+      "person": "利昂·琼斯",
+      "claimType": "career_role",
+      "objectLabel": "AI Research Scientist @ Stealth Startup",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息来自AI_RECRAWL，但缺少具体来源文本验证。职位、机构和时间（2023年8月至今）可能正确，但无法确认当前状态是否仍为在职。"
+    },
+    {
+      "claimId": "cmjvd3d5v0001kvtpdo7mjnhw:PersonRole[cmjy1797w00a0xccmni2q7n9y]:e871919f01b1",
+      "person": "利昂·琼斯",
+      "claimType": "career_role",
+      "objectLabel": "Ph.D. in Computer Science @ University of Edinburgh",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息来自AI_RECRAWL，但缺少具体来源文本验证。职位、机构和当前状态（now）可能正确，但无法确认是否仍在读。"
+    },
+    {
+      "claimId": "cmjvd3d5v0001kvtpdo7mjnhw:PersonRole[cmjy17afr00a3xccmtpkeowxd]:565492bc42ab",
+      "person": "利昂·琼斯",
+      "claimType": "career_role",
+      "objectLabel": "Master's degree in Advanced Computer Science @ The University of Birmingham",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为‘now’，但根据上下文，该人物当前身份是爱丁堡大学博士生，伯明翰大学的硕士学位应已结束。状态可能过时。"
+    },
+    {
+      "claimId": "cmjvd3d5v0001kvtpdo7mjnhw:PersonRole[cmjy17c1v00a5xccmmthafrh3]:0ce9ed238175",
+      "person": "利昂·琼斯",
+      "claimType": "career_role",
+      "objectLabel": "Bachelor's degree in Computer Science and Artificial Intelligence @ The University of Birmingham",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为‘now’，但根据上下文，该人物当前身份是爱丁堡大学博士生，伯明翰大学的学士学位应已结束。状态可能过时。"
+    },
+    {
+      "claimId": "cmk9vvgls0004klcc9as6lfyz:PersonRole[cmkaed5av0018imyji1r0wjpb]:9124e472a664",
+      "person": "卡尔·爱德华·拉斯穆森",
+      "claimType": "career_role",
+      "objectLabel": "professor @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息来自ROBUST_RECRAWL，但缺少具体来源文本验证。职位、机构和当前状态（now）可能正确，但无法确认是否仍在职。"
+    },
+    {
+      "claimId": "cmk9vvgls0004klcc9as6lfyz:PersonRole[cmkaed6mg001bimyj3mkblo5b]:fc102e33720e",
+      "person": "卡尔·爱德华·拉斯穆森",
+      "claimType": "career_role",
+      "objectLabel": "professor @ Technical University of Denmark",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息来自ROBUST_RECRAWL，但缺少具体来源文本验证。职位、机构和当前状态（now）可能正确，但无法确认是否仍在职。"
+    },
+    {
+      "claimId": "cmk9vvgls0004klcc9as6lfyz:PersonRole[cmkaed7mk001dimyjwj43dmom]:1e72f5ec5692",
+      "person": "卡尔·爱德华·拉斯穆森",
+      "claimType": "career_role",
+      "objectLabel": "professor @ University of Cambridge",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息来自ROBUST_RECRAWL，但缺少具体来源文本验证。职位、机构和当前状态（now）可能正确，但无法确认是否仍在职。"
+    },
+    {
+      "claimId": "cmjvd5h5e0008kvtpx9afvlid:PersonRole[cmjw6a881001ddtlk9zlcv8qh]:47b86550e7cd",
+      "person": "印奇",
+      "claimType": "career_role",
+      "objectLabel": "计算机科学学士 @ 清华大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示为‘now’，但根据上下文，该人物当前身份是旷视科技CEO，清华大学的学士学位应已结束。状态可能过时。"
+    },
+    {
+      "claimId": "cmjvd5h5e0008kvtpx9afvlid:PersonRole[cmjw6bfrd000ugwos8lfaoduf]:36f059f5ce57",
+      "person": "印奇",
+      "claimType": "career_role",
+      "objectLabel": "董事长、法定代表人 @ 千里科技（原力帆科技）",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "印奇担任千里科技（原力帆科技）董事长、法定代表人的信息需要更权威的来源确认，以避免职位过时或错误。"
+    },
+    {
+      "claimId": "cmjvd5h5e0008kvtpx9afvlid:PersonRole[cmjw6bhxo000xgwos6f0uq8qe]:346d71d3e1a9",
+      "person": "印奇",
+      "claimType": "career_role",
+      "objectLabel": "兼职副主席 @ 北京市工商联",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "印奇担任北京市工商联兼职副主席的信息需要更权威的来源确认，以避免职位过时或错误。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:PersonRole[cmkaem928007fimyjas0974ps]:9de2c2ec786e",
+      "person": "吉姆·范",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "吉姆·范在斯坦福大学的“Member”角色描述模糊，无法判断具体职位（如研究员、学生等），需要人工确认。"
+    },
+    {
+      "claimId": "cmk9vo1750007azb9zharg4db:PersonRole[cmkaema2n007himyj8xkm1scy]:755ce558897d",
+      "person": "吉姆·范",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Columbia University",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "吉姆·范在哥伦比亚大学的“Member”角色描述模糊，无法判断具体职位（如研究员、学生等），需要人工确认。"
+    },
+    {
+      "claimId": "cmjvfb5w00000lqwqatt1bmoy:PersonRole[cmjy6v18d000z4anvsizjv5hv]:dfff8978fbe0",
+      "person": "吉滕德拉·马利克",
+      "claimType": "career_role",
+      "objectLabel": "Data & AI Cloud Solution Architect @ 微软",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "吉滕德拉·马利克是UC Berkeley教授，其履历中出现微软Data & AI Cloud Solution Architect职位，极可能属于同名他人，存在人名错配。"
+    },
+    {
+      "claimId": "cmjvfb5w00000lqwqatt1bmoy:PersonRole[cmjy7ifsc000ri855a99fpzpm]:98651ccc8562",
+      "person": "吉滕德拉·马利克",
+      "claimType": "career_role",
+      "objectLabel": "Member @ St. Aloysius Senior Secondary School",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历声称吉滕德拉·马利克当前是St. Aloysius Senior Secondary School的成员，但缺乏具体职位、时间及与该人物关联的可靠来源。"
+    },
+    {
+      "claimId": "cmk9vm5ln0003azb9hxxnr506:PersonRole[cmkaeljfk0071imyjiimez2k6]:5cca1d84d881",
+      "person": "吉米·巴",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历声称吉米·巴当前是多伦多大学的成员，但缺乏具体职位、时间及与该人物关联的可靠来源。"
+    },
+    {
+      "claimId": "cmk9vm5ln0003azb9hxxnr506:PersonRole[cmkaelkek0073imyjxt6n5hlu]:93e73028af2f",
+      "person": "吉米·巴",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Vector Institute",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该履历声称吉米·巴当前是Vector Institute的成员，但缺乏具体职位、时间及与该人物关联的可靠来源。"
+    },
+    {
+      "claimId": "cmjtsxyrk00063esttwxwxw14:PersonRole[cmjv5fs7w005tp9gnrkmq7lbs]:83c792706e9b",
+      "person": "吴恩达",
+      "claimType": "career_role",
+      "objectLabel": "教授 @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "吴恩达自2001年起在斯坦福大学任教，但当前主要身份为DeepLearning.AI和Coursera创始人，该履历显示为当前状态可能过时。"
+    },
+    {
+      "claimId": "cmjtsxyrk00063esttwxwxw14:PersonRole[cmjv5fx5l005wp9gnqryl3g34]:286b7a68bb87",
+      "person": "吴恩达",
+      "claimType": "career_role",
+      "objectLabel": "Student @ Massachusetts Institute of Technology (MIT)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "吴恩达在MIT的学生身份始于2011年，但当前主要身份为企业家和创始人，该履历显示为当前状态可能过时。"
+    },
+    {
+      "claimId": "cmjtsxyrk00063esttwxwxw14:PersonRole[cmk8g32jm006sb64i4y3r3crs]:75e0efff4df5",
+      "person": "吴恩达",
+      "claimType": "career_role",
+      "objectLabel": "中学教育 @ Raffles Institution",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "吴恩达在Raffles Institution的中学教育经历是历史事件，该履历显示为当前状态明显过时。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:PersonRole[cmjv7vry70053sz2tech0kubs]:26b396b89820",
+      "person": "周伯文",
+      "claimType": "career_role",
+      "objectLabel": "电子工程系长聘教授、惠妍讲席教授 @ 清华大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "周伯文已离开清华大学，现任上海人工智能实验室主任。该履历显示为当前状态，可能过时。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:PersonRole[cmjv7rl7a003usz2tfzt48591]:d83ad5e28768",
+      "person": "周明",
+      "claimType": "career_role",
+      "objectLabel": "Executive Trainee (JETS Program) @ Jardine Matheson",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "周明是澜舟科技创始人、创新工场合伙人，与怡和集团（Jardine Matheson）的管培生项目无关，疑似人名错配。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:PersonRole[cmjv7rpug003xsz2t1kv64f0a]:240f6cea246f",
+      "person": "周明",
+      "claimType": "career_role",
+      "objectLabel": "Researcher/Developer @ 清华大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "周明在清华大学的早期研究经历（1991年）是历史履历，但显示为“now”当前状态，明显过时。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:PersonRole[cmjv5wlmh000hwyx6pd5r1jjo]:de693e2ffdd6",
+      "person": "唐杰",
+      "claimType": "career_role",
+      "objectLabel": "教授 @ 南方医科大学",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "唐杰是清华大学教授、智谱AI联合创始人，与南方医科大学无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:PersonRole[cmjv5wo3p000jwyx64f59i83r]:65d65bd1fc3d",
+      "person": "唐杰",
+      "claimType": "career_role",
+      "objectLabel": "Student @ Central China Normal University",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "唐杰在华中师范大学的学生经历是历史履历，但显示为“now”当前状态，明显过时。"
+    },
+    {
+      "claimId": "cmk9vxfyr000dklccsgy6r616:PersonRole[cmkaedgpy001oimyje8k64bax]:9cebc65a3d63",
+      "person": "大卫·杜维诺",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Cambridge",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "给定信息显示人物当前职位为多伦多大学教授，履历中出现剑桥大学成员职位，但缺乏来源文本证明该履历属于该人物，且未提供时间信息。"
+    },
+    {
+      "claimId": "cmk9w2ptg000mlbpp7qeuope0:PersonRole[cmkaejwo30062imyjc9weu5ao]:edc5acdf85a1",
+      "person": "大卫·洛佩兹-帕兹",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Facebook AI Research (FAIR)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Meta AI研究科学家，履历显示为Facebook AI Research (FAIR)成员且标注为‘now’，但FAIR已更名为Meta AI，职位状态可能过时。"
+    },
+    {
+      "claimId": "cmk9w2eiw000klbpph0pfzva9:PersonRole[cmkaefve70036imyj1a5s1s28]:8ffd7861a906",
+      "person": "奥尼·汉农",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Facebook AI Research (FAIR)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Meta AI研究科学家，履历显示为Facebook AI Research (FAIR)成员且标注为‘now’，但FAIR已更名为Meta AI，职位状态可能过时。"
+    },
+    {
+      "claimId": "cmk9w2eiw000klbpph0pfzva9:PersonRole[cmkaefwdc0038imyjqf4afewf]:6b1e9474620b",
+      "person": "奥尼·汉农",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "给定信息显示人物当前职位为Meta AI研究科学家，履历中出现斯坦福大学成员职位，但缺乏来源文本证明该履历属于该人物，且未提供时间信息。"
+    },
+    {
+      "claimId": "cmjvd32rz0000kvtppy47i5r3:PersonRole[cmjy16fca009axccmu5nqodbd]:e27ac46f403c",
+      "person": "妮基·帕尔玛",
+      "claimType": "career_role",
+      "objectLabel": "Bachelor of Engineering @ Pune Institute of Computer Technology",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Pune Institute of Computer Technology工程学士，但履历标注为‘now’，通常工程学位有结束时间，状态可能过时。"
+    },
+    {
+      "claimId": "cmjvd32rz0000kvtppy47i5r3:PersonRole[cmjy16gld009cxccmeyxia6np]:f5a5ef5fc60b",
+      "person": "妮基·帕尔玛",
+      "claimType": "career_role",
+      "objectLabel": "Master’s Degree in Computer Science @ University of Southern California",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Pune Institute of Computer Technology工程学士，履历显示为南加州大学计算机科学硕士且标注为‘now’，但硕士学位通常有结束时间，状态可能过时。"
+    },
+    {
+      "claimId": "cmjvd32rz0000kvtppy47i5r3:PersonRole[cmjy16j0f009hxccmdsgfkszr]:87d3aeb780b1",
+      "person": "妮基·帕尔玛",
+      "claimType": "career_role",
+      "objectLabel": "Research Software Engineer @ Google Brain",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Pune Institute of Computer Technology工程学士，履历显示为Google Brain研究软件工程师且标注为‘now’，但Google Brain已并入Google DeepMind，职位状态可能过时。"
+    },
+    {
+      "claimId": "cmjvd32rz0000kvtppy47i5r3:PersonRole[cmjy16k8s009jxccmx8yf35v9]:405870f2731d",
+      "person": "妮基·帕尔玛",
+      "claimType": "career_role",
+      "objectLabel": "Senior Research Scientist @ Google Brain",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Pune Institute of Computer Technology工程学士，履历显示为Google Brain高级研究科学家且标注为‘now’，但Google Brain已并入Google DeepMind，职位状态可能过时。"
+    },
+    {
+      "claimId": "cmjtxdvoh000d5p08r4ygmu04:PersonRole[cmjw5ibpn0044izl8ohypqtj2]:a08d1367ee90",
+      "person": "埃里克·霍维茨",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ 微软研究院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "根据人物上下文，埃里克·霍维茨的当前职位是微软首席科学官，而此条履历显示其为微软研究院的研究科学家且状态为‘now’，这与其当前职位不符，信息可能过时。"
+    },
+    {
+      "claimId": "cmjvd3qrm0002kvtppziawz5i:PersonRole[cmjy18k8q00arxccmgixaamu9]:8bd93bde7c63",
+      "person": "塞巴斯蒂安·布贝克",
+      "claimType": "career_role",
+      "objectLabel": "Alumni (Empirical Inference) @ Max Planck Institute for Intelligent Systems",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "职位标签为‘Alumni’，通常指已离任，但结束日期为空且状态为‘now’，这与‘Alumni’的含义冲突，信息可能不准确或过时。"
+    },
+    {
+      "claimId": "cmjvd3qrm0002kvtppziawz5i:PersonRole[cmjy18mqi00avxccmt6bp1cgi]:a6388e143566",
+      "person": "塞巴斯蒂安·布贝克",
+      "claimType": "career_role",
+      "objectLabel": "AI Researcher @ OpenAI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "根据人物上下文，塞巴斯蒂安·布贝克的当前机构是微软研究院和普林斯顿大学，此条履历显示其当前为OpenAI研究员，但缺乏足够证据支持这一最新职位变动。"
+    },
+    {
+      "claimId": "cmk9w1bkq000elbppgqbjqu0h:PersonRole[cmkaecru10011imyjrn0nktnh]:27d1ece34291",
+      "person": "塞缪尔·瑞安·鲍曼",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位标签‘Member’过于模糊，无法确认具体角色（如学生、研究员、教职等），且与人物当前‘纽约大学副教授’的职位关联性不明确，需要更具体的来源。"
+    },
+    {
+      "claimId": "cmk9w1u9x000hlbppe38hr5gy:PersonRole[cmkaeeyy7002himyjo6gmg0s4]:d1377b0535c4",
+      "person": "塞雷娜·杨-利维",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位标签‘Member’过于模糊，无法确认具体角色，且与人物当前‘斯坦福大学助理教授’的职位可能重叠或冲突，需要更具体的来源来明确此条履历的含义。"
+    },
+    {
+      "claimId": "cmk9vxfyr000dklccsgy6r616:PersonRole[cmkaedcek001fimyjikt04wxa]:a68739bf38dd",
+      "person": "大卫·杜维诺",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位标签‘Member’过于模糊，无法确认具体角色，且与人物当前‘多伦多大学教授’的职位可能重叠或冲突，需要更具体的来源来明确此条履历的含义。"
+    },
+    {
+      "claimId": "cmk9vxfyr000dklccsgy6r616:PersonRole[cmkaeddem001himyjgd9bil95]:8372b74f3e6e",
+      "person": "大卫·杜维诺",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of British Columbia",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位标签‘Member’过于模糊，无法确认具体角色，且与人物当前‘多伦多大学教授’的职位关联性不明确，需要更具体的来源来明确此条履历的含义。"
+    },
+    {
+      "claimId": "cmk9vxfyr000dklccsgy6r616:PersonRole[cmkaedeqd001kimyjyfsvzg0c]:199ddabc4df8",
+      "person": "大卫·杜维诺",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Manitoba",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位标签‘Member’过于模糊，无法确认具体角色，且与人物当前‘多伦多大学教授’的职位关联性不明确，需要更具体的来源来明确此条履历的含义。"
+    },
+    {
+      "claimId": "cmjvd32rz0000kvtppy47i5r3:PersonRole[cmjy16l49009lxccmwgu0zt11]:c2d87fa7907d",
+      "person": "妮基·帕尔玛",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ Anthropic",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历信息（研究科学家 @ Anthropic）与人物上下文（谷歌大脑、Anthropic）部分吻合，但缺少具体来源文本（如领英、官方公告）来证实其当前职位和起始时间。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:PersonRole[cmk8gkjvz00079h36zij7jl0u]:e42cffde154a",
+      "person": "姚顺雨",
+      "claimType": "career_role",
+      "objectLabel": "首席AI科学家 @ 腾讯",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前职位为 Researcher @ OpenAI，但此条履历声称其为“首席AI科学家 @ 腾讯”且状态为“now”，两者冲突，表明该履历信息可能已过时。"
+    },
+    {
+      "claimId": "cmjtwkas50001opf3j6rrzcs0:PersonRole[cmjv7i2u5000vsz2tnkms66u7]:22614ee976a8",
+      "person": "季逸超",
+      "claimType": "career_role",
+      "objectLabel": "创始人兼CEO @ Peak Labs",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前头衔为“Co-founder & Chief Scientist @ Peak Labs”，但此条履历声称其为“创始人兼CEO @ Peak Labs”且状态为“now”，职位描述不一致，可能已过时。"
+    },
+    {
+      "claimId": "cmk9vzr150005lbppwtfzs7i7:PersonRole[cmkaelxvt0079imyjcg2eahqz]:e9c791b02105",
+      "person": "安德烈·姆尼赫",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前职位为“Professor @ Princeton University”，但此条履历声称其为“Member @ 多伦多大学”且状态为“now”，两者冲突，表明该履历信息可能已过时。"
+    },
+    {
+      "claimId": "cmk9vzr150005lbppwtfzs7i7:PersonRole[cmkaelyv9007bimyj3ct9mmt1]:ca7e53534643",
+      "person": "安德烈·姆尼赫",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前职位为“Professor @ Princeton University”，但此条履历声称其为“Member @ 谷歌DeepMind”且状态为“now”，两者冲突，表明该履历信息可能已过时。"
+    },
+    {
+      "claimId": "cmk9w0m8n000albpp352iimlg:PersonRole[cmkaei2i9004timyjbt6xna4p]:9bda26c60f39",
+      "person": "尼蒂什·斯里瓦斯塔瓦",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前职位为“Research Scientist @ Apple”，但此条履历声称其为“Member @ 多伦多大学”且状态为“now”，两者冲突，表明该履历信息可能已过时。"
+    },
+    {
+      "claimId": "cmk9w0m8n000albpp352iimlg:PersonRole[cmkaei3q1004vimyjeaajnlns]:c66abc7174df",
+      "person": "尼蒂什·斯里瓦斯塔瓦",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Indian Institute of Technology Kanpur",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "人物上下文显示其当前职位为“Research Scientist @ Apple”，但此条履历声称其为“Member @ Indian Institute of Technology Kanpur”且状态为“now”，两者冲突，表明该履历信息可能已过时。"
+    },
+    {
+      "claimId": "cmk9w0m8n000albpp352iimlg:PersonRole[cmkaei4rz004ximyj37sanyxk]:706fad85d62b",
+      "person": "尼蒂什·斯里瓦斯塔瓦",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 苹果公司",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Research Scientist @ Apple，但履历显示为Member @ 苹果公司且标记为now，职位描述不一致且可能过时。"
+    },
+    {
+      "claimId": "cmk9w3heg000qlbppp4o9323w:PersonRole[cmkaegyk4003simyj41rrwn5k]:cca00cfe6166",
+      "person": "巴拉特·哈里哈兰",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Assistant Professor @ Cornell University，但履历显示为Member @ 加州大学伯克利分校且标记为now，职位和机构均不匹配当前状态。"
+    },
+    {
+      "claimId": "cmk9w3heg000qlbppp4o9323w:PersonRole[cmkaegzm4003uimyjsn13e2a0]:6668ecc694f7",
+      "person": "巴拉特·哈里哈兰",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Cornell University",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Assistant Professor @ Cornell University，但履历显示为Member @ Cornell University且标记为now，职位描述不准确且可能过时。"
+    },
+    {
+      "claimId": "cmk9w05zq0007lbppxg66e2vo:PersonRole[cmkaelg0o006zimyjblt3jq7v]:321496577874",
+      "person": "布伦丹·J·弗雷",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Professor @ University of Toronto，但履历显示为Member @ 多伦多大学且标记为now，职位描述不准确且可能过时。"
+    },
+    {
+      "claimId": "cmk9vuvfw0001klcc8j012sq2:PersonRole[cmkaejlk4005vimyjurtu0xo3]:020456e91aac",
+      "person": "帕斯卡尔·文森特",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Research Director @ Meta AI，但履历显示为Member @ 蒙特利尔大学且标记为now，职位和机构均不匹配当前状态。"
+    },
+    {
+      "claimId": "cmk9vuvfw0001klcc8j012sq2:PersonRole[cmkaejn0n005yimyj0bo2gtwg]:de742fc3316b",
+      "person": "帕斯卡尔·文森特",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Meta AI",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Research Director @ Meta AI，但履历显示为Member @ Meta AI且标记为now，职位描述不准确且可能过时。"
+    },
+    {
+      "claimId": "cmk9vlq8z0001azb9ofl9zy7v:PersonRole[cmkaejdcf005mimyjo3z5slpl]:cc39c001f45d",
+      "person": "彼得·阿比尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "彼得·阿比尔是加州大学伯克利分校的教授，职位应为教授而非成员。履历显示为当前成员，但实际职位已过时。"
+    },
+    {
+      "claimId": "cmk9vlq8z0001azb9ofl9zy7v:PersonRole[cmkaejerv005pimyjltcm5si2]:6699be046db7",
+      "person": "彼得·阿比尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Katholieke Universiteit Leuven",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "彼得·阿比尔与比利时鲁汶天主教大学（Katholieke Universiteit Leuven）的关联缺乏足够证据，且机构类型被标记为公司，可能不准确。"
+    },
+    {
+      "claimId": "cmk9vlq8z0001azb9ofl9zy7v:PersonRole[cmkaejgxe005timyjfgihty49]:46dfc2dfe296",
+      "person": "彼得·阿比尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "彼得·阿比尔与斯坦福大学的关联缺乏足够证据，且机构类型被标记为公司，可能不准确。"
+    },
+    {
+      "claimId": "cmk9vp7jo000cazb9n1nhsd2b:PersonRole[cmkaec0xk000mimyjfe9js27c]:1904c6001969",
+      "person": "彼得罗·佩罗纳",
+      "claimType": "career_role",
+      "objectLabel": "Member @ California Institute of Technology",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "彼得罗·佩罗纳是加州理工学院的教授，职位应为教授而非成员。履历显示为当前成员，但实际职位已过时。"
+    },
+    {
+      "claimId": "cmk9vp7jo000cazb9n1nhsd2b:PersonRole[cmkaec1yz000oimyj1w72xyb5]:965588dbab7d",
+      "person": "彼得罗·佩罗纳",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "彼得罗·佩罗纳与加州大学伯克利分校的关联缺乏足够证据，且其当前职位为加州理工学院教授，此履历可能不准确或过时。"
+    },
+    {
+      "claimId": "cmk9vp7jo000cazb9n1nhsd2b:PersonRole[cmkaec3bx000rimyjksuv1r3p]:e28629e8d2d6",
+      "person": "彼得罗·佩罗纳",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Padua",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "彼得罗·佩罗纳与帕多瓦大学（University of Padua）的关联缺乏足够证据，且机构类型被标记为公司，可能不准确。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6anbb001gdtlkir5j5b06]:4d3d31586bda",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "毕业 @ 中央戏剧学院表演系",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "徐立（计算机视觉领域）的履历显示其毕业于中央戏剧学院表演系，这与人物背景（计算机视觉、产品、基础设施、开源）严重不符，疑似人名错配。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6ap7p001jdtlkb649jv5y]:8dd44a3fda35",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "成员 @ 爱乐团",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "徐立（计算机视觉领域）的履历显示其为爱乐团成员，这与人物背景（计算机视觉、产品、基础设施、开源）严重不符，疑似人名错配。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6ar3g001mdtlkjq9azjg1]:f31f7c48a3ee",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "创始人 @ 丽泽影业",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'baike-fix'，但未提供具体证据。人物上下文显示其当前头衔为影视制片人，但主题却包含'计算机视觉'等不相关领域，存在信息冲突，需核实。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6asz7001pdtlk5ck319vd]:8940971a6ded",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "创始人 @ 北京天浩丽泽影视文化传媒有限公司",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'baike-fix'，但未提供具体证据。人物上下文显示其当前头衔为影视制片人，但主题却包含'计算机视觉'等不相关领域，存在信息冲突，需核实。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6auvo001sdtlkq2j2wb53]:8547f2cd20bc",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "制片人 @ 《幸福，触手可及！》",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'baike-fix'，但未提供具体证据。人物上下文显示其当前头衔为影视制片人，但主题却包含'计算机视觉'等不相关领域，存在信息冲突，需核实。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6awrd001vdtlkooezrmf8]:984790f9d70a",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "演员、制片人 @ 《青春创世纪》",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'baike-fix'，但未提供具体证据。人物上下文显示其当前头衔为影视制片人，但主题却包含'计算机视觉'等不相关领域，存在信息冲突，需核实。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6ayxa001ydtlkxfrlwwcd]:b5ea7b783236",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "总制片人、出品人 @ 《女士的法则》",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'baike-fix'，但未提供具体证据。人物上下文显示其当前头衔为影视制片人，但主题却包含'计算机视觉'等不相关领域，存在信息冲突，需核实。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6b0t00021dtlkrxc50v21]:500b3fb697cf",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "总出品人、总制片人 @ 《女士的品格》",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'baike-fix'，但未提供具体证据。人物上下文显示其当前头衔为影视制片人，但主题却包含'计算机视觉'等不相关领域，存在信息冲突，需核实。"
+    },
+    {
+      "claimId": "cmjvd5pu90009kvtp9ovyg3hv:PersonRole[cmjw6b2om0024dtlkfrkri0gn]:cd832f8676e7",
+      "person": "徐立",
+      "claimType": "career_role",
+      "objectLabel": "出品人、总制片人 @ 《仁心俱乐部》",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'baike-fix'，但未提供具体证据。人物上下文显示其当前头衔为影视制片人，但主题却包含'计算机视觉'等不相关领域，存在信息冲突，需核实。"
+    },
+    {
+      "claimId": "cmk9vuplp0000klcc5gujal3c:PersonRole[cmkaebj72000aimyjcddajc54]:f0d7ed16a5cb",
+      "person": "德米特里·巴丹瑙",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "来源标注为'ROBUST_RECRAWL'，但未提供具体证据。'Member'职位描述过于模糊，无法确认其具体角色（如学生、研究员、教授），且未提供时间信息。"
+    },
+    {
+      "claimId": "cmk9vz4ie0001lbppv34y7o1k:PersonRole[cmkaekk30006cimyjsilzrdn8]:04be6708b609",
+      "person": "恰拉尔·居尔切赫雷",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为谷歌DeepMind研究科学家，履历中蒙特利尔大学的‘Member’职位未标注结束时间，可能已离任，信息可能过时。"
+    },
+    {
+      "claimId": "cmk9vz4ie0001lbppv34y7o1k:PersonRole[cmkaekll0006eimyjyz3bjccb]:7ba0d465cbe4",
+      "person": "恰拉尔·居尔切赫雷",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为谷歌DeepMind研究科学家，履历中‘Member’职位未标注开始/结束时间，且与当前职位描述不一致，信息可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9vyw1e0000lbppmuunumfo:PersonRole[cmkaeg0qr003aimyj5meql50v]:e0e6f68f962b",
+      "person": "拉兹万·帕斯卡努",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为谷歌DeepMind高级研究科学家，履历中蒙特利尔大学的‘Member’职位未标注结束时间，可能已离任，信息可能过时。"
+    },
+    {
+      "claimId": "cmk9vyw1e0000lbppmuunumfo:PersonRole[cmkaeg1rm003cimyjiptnrluj]:9790da578e74",
+      "person": "拉兹万·帕斯卡努",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为谷歌DeepMind高级研究科学家，履历中‘Member’职位未标注开始/结束时间，且与当前职位描述不一致，信息可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9vyw1e0000lbppmuunumfo:PersonRole[cmkaeg34e003fimyj1sn12sjm]:35b5d25e25a4",
+      "person": "拉兹万·帕斯卡努",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Jacobs University Bremen",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为谷歌DeepMind高级研究科学家，履历中Jacobs University Bremen的‘Member’职位未标注结束时间，可能已离任，信息可能过时。"
+    },
+    {
+      "claimId": "cmk9vvaht0003klcccvu7z1xi:PersonRole[cmkaebuwl000himyjc9mc8yoa]:2b25c5d4c021",
+      "person": "拉德福德·M·尼尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为多伦多大学教授，履历中‘Member’职位未标注开始/结束时间，且与当前职位描述不一致，信息可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9vvaht0003klcccvu7z1xi:PersonRole[cmkaebwdk000kimyjxr7gp2w1]:1ce0517ca105",
+      "person": "拉德福德·M·尼尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Calgary",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "拉德福德·M·尼尔（Radford M. Neal）是多伦多大学教授，但其履历中出现‘Member @ University of Calgary’，缺乏足够来源证明此职位属于他，且‘Member’头衔模糊，可能指代其他身份。"
+    },
+    {
+      "claimId": "cmjvfedau000blqwq5jiqakh8:PersonRole[cmjw6c3wt004jdtlkudmze62a]:8de8eb8d6836",
+      "person": "拉里·佩奇",
+      "claimType": "career_role",
+      "objectLabel": "理学学士 @ 密歇根大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "拉里·佩奇于1995年获得密歇根大学理学学士学位，但该条目显示开始日期为2019年，且‘now’暗示当前状态，这与事实严重不符，信息明显过时或错误。"
+    },
+    {
+      "claimId": "cmjvfedau000blqwq5jiqakh8:PersonRole[cmjw6chxx004vdtlk17qchknj]:49bf3bb7baee",
+      "person": "拉里·佩奇",
+      "claimType": "career_role",
+      "objectLabel": "CEO @ 谷歌",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "拉里·佩奇于2011年至2015年担任谷歌CEO，之后转任Alphabet CEO。该条目显示开始日期为2011年但‘now’暗示当前状态，这与事实不符，职位已过时。"
+    },
+    {
+      "claimId": "cmjvfedau000blqwq5jiqakh8:PersonRole[cmjw6cjto004ydtlkq1f9uzwj]:25512c1beaa8",
+      "person": "拉里·佩奇",
+      "claimType": "career_role",
+      "objectLabel": "CEO和总裁 @ 字母表公司",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "拉里·佩奇于2015年至2019年担任Alphabet CEO，之后卸任。该条目显示开始日期为2019年但‘now’暗示当前状态，这与事实不符，职位已过时。"
+    },
+    {
+      "claimId": "cmjvd42bl0003kvtpyayxr48b:PersonRole[cmjy1e22y00elxccm88ml7vce]:9e8c48cd1a9b",
+      "person": "斯图尔特·罗素",
+      "claimType": "career_role",
+      "objectLabel": "Chair of Electrical Engineering and Computer Sciences @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "斯图尔特·罗素曾担任加州大学伯克利分校电气工程与计算机科学系主任，但该条目显示开始日期为1985年且‘now’暗示当前状态，这可能不准确，职位任期通常有限。"
+    },
+    {
+      "claimId": "cmjvd42bl0003kvtpyayxr48b:PersonRole[cmjy1e77m00euxccmawpqdqrv]:8576067f1b65",
+      "person": "斯图尔特·罗素",
+      "claimType": "career_role",
+      "objectLabel": "Director of the Kavli Center for Ethics, Science, and the Public @ 加州大学伯克利分校",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "职位和机构信息可能正确，但开始时间（1985年）与当前状态（now）存在矛盾，且缺乏足够来源验证其当前任职状态。"
+    },
+    {
+      "claimId": "cmk9vwopr0009klccin41odka:PersonRole[cmkaem4jl007dimyj4zna4yr8]:3c4aa676bc9b",
+      "person": "普拉纳夫·拉杰普尔卡",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "职位“Member”过于模糊，无法判断具体角色（如学生、研究员、教职等），且与人物上下文中的“Professor”头衔可能存在冲突或不明确。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:PersonRole[cmjv5vnao0004wyx67mdoubza]:3739fd37980e",
+      "person": "朱军",
+      "claimType": "career_role",
+      "objectLabel": "Student @ Peking University",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "开始时间为1997年，且结束日期为null（now），但人物当前状态为“ready”，且上下文显示其为清华大学教授，表明该学生履历可能已过时。"
+    },
+    {
+      "claimId": "cmk9vx3ay000bklccun8po0tb:PersonRole[cmkaeiip60053imyjssg8k2y8]:3450745124a7",
+      "person": "李宏乐",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 密歇根大学",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "职位“Member”过于模糊，无法判断具体角色，且与人物上下文中的“Professor”头衔可能存在冲突或不明确。"
+    },
+    {
+      "claimId": "cmk9vx3ay000bklccun8po0tb:PersonRole[cmkaeik2m0055imyj5sequb22]:5c7f1bd1bfca",
+      "person": "李宏乐",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物当前任职于密歇根大学，但此履历显示其为斯坦福大学“Member”，缺乏来源证明其当前或历史在斯坦福大学的任职。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:PersonRole[cmjv5f2i5005ip9gn3ybpotwg]:ba2bd60c224d",
+      "person": "李莲",
+      "claimType": "career_role",
+      "objectLabel": "Student @ Peking University",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "开始时间为null，结束时间为null（now），但人物当前状态为“ready”，且上下文显示其为公司联合创始人，表明该学生履历可能已过时。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmjv54d4u0008p9gnqzt8rl0f]:ec535fdf74d5",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "教授 @ 伊利诺伊大学厄巴纳-香槟分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已于2024年离开斯坦福大学，加入World Labs。该履历显示其为伊利诺伊大学厄巴纳-香槟分校教授，但结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmjw5fpcy0002izl8489d0i5n]:7ba2fde45ba0",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "合伙人 @ Radical Ventures",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已创立World Labs并担任联合创始人，该履历显示其为Radical Ventures合伙人且结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g1ujj0059b64iswa2wjad]:74a0fd49f293",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "scientist @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已离开斯坦福大学，该履历显示其为斯坦福大学科学家且结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g1vzj005bb64ihw8yyxjo]:7f8b58813a3e",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "university teacher @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已离开斯坦福大学，该履历显示其为斯坦福大学大学教师且结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g1yb3005fb64i0urdstsr]:580460e66527",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "scientist @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已离开斯坦福大学，该履历显示其为斯坦福大学科学家且结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g1z3p005hb64ivq5ww8zs]:031495680390",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "university teacher @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已离开斯坦福大学，该履历显示其为斯坦福大学大学教师且结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g22mm005jb64ix9i3sgxz]:9b0e9d8735e7",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "computer scientist @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已离开斯坦福大学，该履历显示其为斯坦福大学计算机科学家且结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g23wj005lb64ib7bj99b4]:a0981dbd13fd",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "computer scientist @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已离开斯坦福大学，该履历显示其为斯坦福大学计算机科学家且结束时间为'now'，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g29ok005xb64i0msls247]:f4b14c3225b3",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "Professor (tenured) @ Stanford University, Computer Science Department",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已于2024年离开斯坦福大学全职教职，加入World Labs。该履历显示职位为“now”，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g2apk0060b64insa6fbco]:f54816610c55",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "Inaugural Sequoia Professor (endowed chair) @ Stanford University, Sequoia Professor",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已离开斯坦福大学全职教职。该履历显示职位为“now”，与当前状态不符。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g2eng0066b64iqnjjtjf0]:034f2bf1c78e",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "Director @ Stanford Vision Lab",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "李飞飞已离开斯坦福大学全职教职，其斯坦福视觉实验室主任职位可能已变更。该履历显示职位为“now”，状态可能过时。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g2i4e006db64irypcvtqm]:5728b6310237",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "Co-Director / Founding Director @ Stanford Institute for Human-Centered Artificial Intelligence (HAI)",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "李飞飞已离开斯坦福大学全职教职，其斯坦福HAI研究所联合主任/创始主任职位可能已变更。该履历显示职位为“now”，状态可能过时。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g2j5c006gb64itmvt6h5j]:3c7f01a86154",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "Chief Scientist and Principal Investigator @ ImageNet",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "ImageNet是一个大型数据集项目，由团队创建。将“首席科学家和首席研究员”作为个人履历职位，可能过度归因了团队成果。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g2km3006jb64ic4qhabku]:07abea999c23",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "Co‑founder and Board Chair @ AI4ALL",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "李飞飞是AI4ALL的联合创始人，但其“董事会主席”职位可能已变更。该履历显示职位为“now”，状态可能过时。"
+    },
+    {
+      "claimId": "cmjtsxhyo00053est14oy641y:PersonRole[cmk8g2lzz006mb64izhrj3910]:c561bee3c267",
+      "person": "李飞飞",
+      "claimType": "career_role",
+      "objectLabel": "Independent Board Director @ Twitter (now X Corp.)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "李飞飞已于2022年辞去Twitter（现X Corp.）独立董事职务。该履历显示职位为“now”，与事实不符。"
+    },
+    {
+      "claimId": "cmk9vza8w0002lbppxrdntroy:PersonRole[cmkaeekb9002dimyjk8ct2yrn]:9f8e29a9b2c6",
+      "person": "杜米特鲁·埃尔汉",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "该人物当前职位为Google DeepMind的Staff Research Scientist，履历显示其为蒙特利尔大学的Member且标注为‘now’，这很可能已过时。"
+    },
+    {
+      "claimId": "cmk9vza8w0002lbppxrdntroy:PersonRole[cmkaeelb4002fimyjq6t12epo]:3038c5c16632",
+      "person": "杜米特鲁·埃尔汉",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Google Research",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "该人物当前职位为Google DeepMind的Staff Research Scientist，履历显示其为Google Research的Member且标注为‘now’，这很可能已过时。"
+    },
+    {
+      "claimId": "cmjtwkcw00002opf3k1hdzjor:PersonRole[cmjw5olld000h36ip2u2ylhf9]:5f0d1fd65ad8",
+      "person": "杨植麟",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ Facebook AI Research (FAIR)",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "该人物当前为月之暗面创始人兼CEO，履历显示其为Facebook AI Research的研究科学家且标注为‘now’，这很可能已过时。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:PersonRole[cmjv5dr5u004tp9gnfyz7i3jf]:e24c1578f828",
+      "person": "杰夫·迪恩",
+      "claimType": "career_role",
+      "objectLabel": "资深研究员兼谷歌研究与健康高级副总裁 @ 谷歌",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "该人物当前标题为Google DeepMind首席科学家，履历显示其为谷歌资深研究员兼研究与健康高级副总裁且标注为‘now’，这很可能已过时。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:PersonRole[cmjv5e00r004zp9gnl0towbv8]:1b181a68f610",
+      "person": "杰夫·迪恩",
+      "claimType": "career_role",
+      "objectLabel": "Student @ University of Washington",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "该人物为资深计算机科学家，履历显示其为华盛顿大学学生且标注为‘now’，这明显已过时。"
+    },
+    {
+      "claimId": "cmjtxdlcn000b5p08yoct3be8:PersonRole[cmjw5jt0l006qizl8to3gs2cd]:7a58fe05963d",
+      "person": "桑达尔·皮查伊",
+      "claimType": "career_role",
+      "objectLabel": "首席执行官 @ 谷歌",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "皮查伊自2019年起担任Alphabet CEO，谷歌CEO职位已由他人接任，此履历信息过时。"
+    },
+    {
+      "claimId": "cmjwswgtl0000gelzb8c58cmk:PersonRole[cmjy6w4un001k4anvxbuwqew6]:335e7822b073",
+      "person": "梁文锋",
+      "claimType": "career_role",
+      "objectLabel": "Research & Development Staff @ HKBU COMP",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "梁文锋在HKBU COMP的职位信息来源单一，缺乏其他佐证，无法确认其准确性。"
+    },
+    {
+      "claimId": "cmjwswgtl0000gelzb8c58cmk:PersonRole[cmjy86xdg000o10ws0dhx3lh3]:965c672015df",
+      "person": "梁文锋",
+      "claimType": "career_role",
+      "objectLabel": "Student @ Foshan University",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "梁文锋在佛山大学的学生身份信息来源单一，且与其当前研发人员身份可能存在冲突，需进一步核实。"
+    },
+    {
+      "claimId": "cmk9vw8zp0007klccju5r9ecc:PersonRole[cmkaeclh9000vimyj1dxexuck]:e7d5dd0b962c",
+      "person": "梁明涛",
+      "claimType": "career_role",
+      "objectLabel": "Member @ National University of Singapore",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "“Member”职位描述过于模糊，无法判断具体指代（如研究员、学生、教职等），需人工确认。"
+    },
+    {
+      "claimId": "cmk9vw8zp0007klccju5r9ecc:PersonRole[cmkaecmiu000ximyjsbcdx4su]:961848523031",
+      "person": "梁明涛",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "“Member”职位描述过于模糊，无法判断具体指代（如研究员、学生、教职等），需人工确认。"
+    },
+    {
+      "claimId": "cmk9vw8zp0007klccju5r9ecc:PersonRole[cmkaecnjy000zimyjamskdgnd]:ec461581d696",
+      "person": "梁明涛",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "“Member”职位描述过于模糊，无法判断具体指代（如研究员、学生、教职等），需人工确认。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:PersonRole[cmjy7j39z000zi855sn4ot5qs]:a8d4cebd6dff",
+      "person": "汤姆·布朗",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Nufarm",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "给定信息中未提及汤姆·布朗在Nufarm的职位，且Nufarm与AI领域关联不明，需要额外来源验证。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:PersonRole[cmjw6b9ys002mdtlktx2ek34f]:be45098195c6",
+      "person": "汤晓鸥",
+      "claimType": "career_role",
+      "objectLabel": "研究教授 @ 深圳先进技术研究院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "汤晓鸥先生已于2023年12月逝世，其职位状态不应为‘now’，信息已过时。"
+    },
+    {
+      "claimId": "cmjvd4xy80006kvtpy8bk3cwm:PersonRole[cmjy1d02q00e4xccma9f0evft]:c80dc9d6deff",
+      "person": "汤晓鸥",
+      "claimType": "career_role",
+      "objectLabel": "Founder @ Multimedia Laboratory (MMLab)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "汤晓鸥先生已于2023年12月逝世，其职位状态不应为‘now’，信息已过时。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw696gf000cdtlk9b3ow914]:7a8905d8f206",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "全球资深副总裁 @ 微软",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "沈向洋已于2019年11月从微软离职，其职位状态不应为‘now’，信息已过时。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw69meq000gdtlktm2d9v2p]:b62fdfd44b0e",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "学士 @ 南京工学院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "学历是已完成的事件，结束时间不应为‘now’，应标注为历史记录。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw69o9e000jdtlk3lmfo9kp]:e12827f1fa13",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "哲学硕士学位 @ 香港大学电机电子工程系",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "学历是已完成的事件，结束时间不应为‘now’，应标注为历史记录。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw69s1i000pdtlkzkw0f87x]:03bf16b2e7d1",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "全球资深副总裁 @ 微软美国研究院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "沈向洋已于2019年11月从微软离职，其职位状态不应为‘now’，信息已过时。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw69tx8000sdtlka9ti7keu]:0c8ad489370d",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "计算组主任研究员，高级研究员 @ 微软中国研究院（微软亚洲研究院）",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "沈向洋已于2019年离开微软亚洲研究院，该职位并非当前状态，但履历显示为“至今”，信息过时。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw69vta000vdtlklhqkhae1]:2348ebf3862f",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "全球资深副总裁 @ 微软",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "沈向洋已于2019年11月从微软离职，该职位并非当前状态，但履历显示为“至今”，信息过时。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw69zuh0011dtlkvd74h4wk]:f99174d9be22",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "校董会主席 @ 香港科技大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "沈向洋于2023年2月当选香港科技大学校董会主席，但履历起始时间显示为1996年，与事实不符，信息过时或错误。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw6a1rh0014dtlk8clr84p7]:5542f994be64",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "校长讲座教授 @ 香港中文大学（深圳）",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "沈向洋担任香港中文大学（深圳）校长讲座教授的起始时间（1996年）与该校成立时间（2014年）严重不符，需要可靠来源核实。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw6a3ms0017dtlkv4iviweo]:28c25d64a6bd",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "双聘教授 @ 清华大学高等研究院",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "沈向洋担任清华大学高等研究院双聘教授的起始时间（1996年）需要可靠来源核实，该时间点可能不准确。"
+    },
+    {
+      "claimId": "cmjvd4npl0005kvtp6nhbtxpn:PersonRole[cmjw6a5ii001adtlk5szse5x0]:e6035f516e7e",
+      "person": "沈向洋",
+      "claimType": "career_role",
+      "objectLabel": "创院理事长 @ 粤港澳大湾区数字经济研究院（福田）",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "沈向洋担任粤港澳大湾区数字经济研究院（福田）创院理事长的起始时间（1996年）与该院成立时间（2021年）严重不符，需要可靠来源核实。"
+    },
+    {
+      "claimId": "cmk9vx9kt000cklccp5q11ydf:PersonRole[cmkaecgxv000timyjwfa9ou9u]:c46bb1b98a6b",
+      "person": "沙基尔·穆罕默德",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Cambridge",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "沙基尔·穆罕默德在剑桥大学的“Member”角色过于模糊，且缺少起止时间，无法判断其当前状态和具体身份（如研究员、学生等）。"
+    },
+    {
+      "claimId": "cmk8gu8570009j1tnfxx0l6gw:PersonRole[cmk8hxchx001ya1k37l8hm5ha]:56e68fc44ce9",
+      "person": "王小川",
+      "claimType": "career_role",
+      "objectLabel": "CEO @ Sogou",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "王小川已于2021年10月卸任搜狗CEO，该职位并非当前状态，但履历显示为“至今”，信息过时。"
+    },
+    {
+      "claimId": "cmk9vzys20006lbpp7qflw4kt:PersonRole[cmkaehu08004kimyja5pfp2v2]:4728c10a6471",
+      "person": "理查德·S·泽梅尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "理查德·S·泽梅尔是多伦多大学教授，但“Member”职位描述模糊，且缺少开始/结束时间，无法确认其当前状态和具体角色。"
+    },
+    {
+      "claimId": "cmk9vzys20006lbpp7qflw4kt:PersonRole[cmkaehwgg004pimyjk8m70a7s]:a0ff14edc3d8",
+      "person": "理查德·S·泽梅尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Vector Institute",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "理查德·S·泽梅尔与向量研究所有关联，但“Member”职位描述模糊，且缺少开始/结束时间，无法确认其当前状态和具体角色。"
+    },
+    {
+      "claimId": "cmk9vzys20006lbpp7qflw4kt:PersonRole[cmkaehxi7004rimyjx1skf64o]:a2e7bc8b36d9",
+      "person": "理查德·S·泽梅尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 哈佛大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "理查德·S·泽梅尔与哈佛大学的关联（如访问学者）可能存在，但“Member”职位描述模糊，且缺少开始/结束时间，无法确认其当前状态和具体角色。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:PersonRole[cmjv5gkcc0064p9gn8s278xx2]:8a6bf82b1543",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "科拉伊·卡武克丘奥卢的当前职位是谷歌的首席AI架构师兼高级副总裁，而“研究科学家”是其早期职位，该履历显示为当前状态，信息过时。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:PersonRole[cmjy1hme600gzxccm8o6dp322]:c9a76599c4fd",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "career_role",
+      "objectLabel": "Chief Technology Officer @ 谷歌DeepMind",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "科拉伊·卡武克丘奥卢的当前职位是谷歌的首席AI架构师兼高级副总裁，而非谷歌DeepMind的首席技术官。该履历信息与已知事实冲突。"
+    },
+    {
+      "claimId": "cmjtxcx2r00075p08egm5tuq9:PersonRole[cmjy1ho9b00h3xccmqqeomk5j]:c189d1168b44",
+      "person": "科拉伊·卡武克丘奥卢",
+      "claimType": "career_role",
+      "objectLabel": "VP of Research & Technology @ 谷歌DeepMind",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "科拉伊·卡武克丘奥卢的当前职位是谷歌的首席AI架构师兼高级副总裁，而“研究与技术副总裁”是其早期职位，该履历显示为当前状态，信息过时。"
+    },
+    {
+      "claimId": "cmk9w3mjk000rlbppigj7bynk:PersonRole[cmkaenyln008bimyjd99tcnhj]:bc1b968fc122",
+      "person": "索拉布·古普塔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示为当前职位，但人物当前身份为Meta AI研究科学家，与伯克利分校的关联性及当前状态缺乏足够证据。"
+    },
+    {
+      "claimId": "cmk9w0zjt000clbpps8y57jhm:PersonRole[cmkaek19y0064imyjbtei38yz]:bdb8fc7fe301",
+      "person": "纳夫迪普·杰特利",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前头衔为多伦多大学教授，但履历显示为‘Member’且标记为‘now’，职位描述可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9w0zjt000clbpps8y57jhm:PersonRole[cmkaek2bc0066imyjtraeeyuw]:565068305096",
+      "person": "纳夫迪普·杰特利",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 苹果公司",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物组织信息包含苹果公司，但履历显示为当前‘Member’，缺乏其当前在苹果公司任职的具体证据。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:PersonRole[cmjy6xlq4002b4anvbl4e30y3]:247b51de449e",
+      "person": "罗福莉",
+      "claimType": "career_role",
+      "objectLabel": "China Editor @ Lab of Robotics Oriented Intelligence",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物当前头衔与小米相关，但履历显示为‘China Editor’且标记为‘now’，职位与已知背景不符，缺乏证据。"
+    },
+    {
+      "claimId": "cmjvmtm8d0000diinatn54gfd:PersonRole[cmk8i1ah8003ia1k3sq0y4gxx]:77b48eb26051",
+      "person": "罗福莉",
+      "claimType": "career_role",
+      "objectLabel": "Senior AI Leader / Chief Architect for MIMO-v2-Flash (inferred from reports) @ Xiaomi (Large Model / AI Team)",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "reason": "职位描述‘Chief Architect for MIMO-v2-Flash’将具体产品型号归因于个人，属于过度归因。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:PersonRole[cmjv7m0yt0023sz2t6dvy1o2v]:7b1337b5039d",
+      "person": "肖弘",
+      "claimType": "career_role",
+      "objectLabel": "创始人 @ 武汉夜莺科技",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "信息来源仅为LLM提取，缺乏公开可验证的权威资料（如公司官网、新闻报道）来确认肖弘是武汉夜莺科技的创始人。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:PersonRole[cmjv7m73q0027sz2t20iwne07]:72687bbbe719",
+      "person": "肖弘",
+      "claimType": "career_role",
+      "objectLabel": "联创团队副队长 @ 华中科技大学启明学院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "职位“联创团队副队长”通常为学生时期职务，结束时间应早于毕业年份。当前状态显示“now”，与人物当前职业身份（创始人兼CEO）不符，信息明显过时。"
+    },
+    {
+      "claimId": "cmk9w1io8000flbpph1qw9gkt:PersonRole[cmkaefjjk002wimyjxf044rj2]:bb3d38846b2b",
+      "person": "胡安·卡洛斯·尼布勒斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Princeton University",
+      "verdict": "unclear",
+      "action": "human_review",
+      "reason": "职位“Member”过于模糊，无法判断具体指代（如实验室成员、委员会成员等）。人物当前头衔为教授，此履历可能过时或指代不明，需人工核实。"
+    },
+    {
+      "claimId": "cmk9w1io8000flbpph1qw9gkt:PersonRole[cmkaefkk7002yimyjcpzntyym]:076f8c5c8d1e",
+      "person": "胡安·卡洛斯·尼布勒斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前头衔为普林斯顿大学教授，履历显示其为斯坦福大学“Member”且状态为“now”，这很可能指代过去的访问或学生身份，信息过时。"
+    },
+    {
+      "claimId": "cmk9w3so5000slbppavi0in49:PersonRole[cmkaemq00007nimyj166ltl92]:b900ca491787",
+      "person": "舒布汉·图尔西亚尼",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前头衔为卡内基梅隆大学助理教授，履历显示其为加州大学伯克利分校“Member”且状态为“now”，这很可能指代过去的博士后或学生身份，信息过时。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:PersonRole[cmjw6dl1m0077dtlkga2bdlb6]:0c4ee69607cc",
+      "person": "苏姿丰",
+      "claimType": "career_role",
+      "objectLabel": "首席执行官 @ 飞思卡尔半导体",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "苏姿丰已于2012年离开飞思卡尔半导体加入AMD。此履历显示其为飞思卡尔“首席执行官”且状态为“now”，信息严重过时。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:PersonRole[cmjw6dlug007adtlkdkelbysq]:85670b702347",
+      "person": "苏姿丰",
+      "claimType": "career_role",
+      "objectLabel": "研究科学家 @ IBM研究院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "苏姿丰于1995年加入IBM研究院，但早已离职。此履历显示其为“研究科学家”且状态为“now”，信息严重过时。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:PersonRole[cmjw6dmno007ddtlkgwfszmev]:5b22613b1b82",
+      "person": "苏姿丰",
+      "claimType": "career_role",
+      "objectLabel": "电气工程师 @ 德州仪器",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示苏姿丰在德州仪器的职位为“电气工程师”，开始于1994年，结束时间标记为“now”。但根据公开信息，她早已离开德州仪器，目前担任AMD董事长兼CEO。该条目将已离任的职位标记为当前，属于过时信息。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:PersonRole[cmjw6fad9003ygwospxddxzcp]:c366da914bc1",
+      "person": "苏姿丰",
+      "claimType": "career_role",
+      "objectLabel": "电机工程学士 @ 麻省理工学院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示苏姿丰在麻省理工学院的“电机工程学士”学位，开始于1986年，结束时间标记为“now”。学位是已完成的教育经历，不应标记为当前状态。这属于过时或错误的状态标记。"
+    },
+    {
+      "claimId": "cmjvfeze2000dlqwqj9m3tchp:PersonRole[cmjw6fcaf0041gwosh0yspmjq]:78e502c32dd0",
+      "person": "苏姿丰",
+      "claimType": "career_role",
+      "objectLabel": "电机工程硕士 @ 麻省理工学院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示苏姿丰在麻省理工学院的“电机工程硕士”学位，开始于2014年，结束时间标记为“now”。学位是已完成的教育经历，不应标记为当前状态。这属于过时或错误的状态标记。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:PersonRole[cmkaebped000dimyjz4pncu9v]:f9e6ec2abf22",
+      "person": "苏浩",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Beihang University",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示苏浩在“Beihang University”担任“Member”，但未提供具体职位（如教授、研究员）、起止时间或贡献细节。仅凭“Member”一词过于模糊，无法确认其准确性或相关性。"
+    },
+    {
+      "claimId": "cmk9w1zyu000ilbpp380aokka:PersonRole[cmkaebqi0000fimyj4rk0b1rv]:246389a107b7",
+      "person": "苏浩",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示苏浩在“Stanford University”担任“Member”，但未提供具体职位（如访问学者、研究员）、起止时间或贡献细节。仅凭“Member”一词过于模糊，无法确认其准确性或相关性。"
+    },
+    {
+      "claimId": "cmjvfe2l0000alqwqnhk4p1am:PersonRole[cmjw6d2os005vdtlkszrczkk9]:42963996b545",
+      "person": "萨提亚·纳德拉",
+      "claimType": "career_role",
+      "objectLabel": "首席执行官 @ 微软",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示萨提亚·纳德拉自1992年起担任微软首席执行官，但根据公开信息，他于2014年才正式就任该职位。此条目的开始时间严重错误，属于过时或错误信息。"
+    },
+    {
+      "claimId": "cmjvfe2l0000alqwqnhk4p1am:PersonRole[cmjw6d3i0005ydtlkxh46o7qi]:478f36902728",
+      "person": "萨提亚·纳德拉",
+      "claimType": "career_role",
+      "objectLabel": "软件工程师 @ 太阳微系统公司",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "萨提亚·纳德拉自1992年加入微软，已离开太阳微系统公司多年。该履历条目显示结束时间为'now'，与事实不符，属于过时信息。"
+    },
+    {
+      "claimId": "cmjvfe2l0000alqwqnhk4p1am:PersonRole[cmjw6d54a0064dtlk3jap993o]:c2bc6463afd6",
+      "person": "萨提亚·纳德拉",
+      "claimType": "career_role",
+      "objectLabel": "电气工程学士 @ 芒格洛尔大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "萨提亚·纳德拉于1988年获得电气工程学士学位，该教育经历早已完成。条目显示时间为'now'，与事实不符，属于过时信息。"
+    },
+    {
+      "claimId": "cmk9vn1800004azb9vtrfj590:PersonRole[cmkaenrtn0085imyj1ed5fxw6]:e450d9cfd0b4",
+      "person": "蒂姆尼特·格布鲁",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 微软研究院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "蒂姆尼特·格布鲁已于2020年12月离开谷歌，并于2021年创立DAIR Institute。该履历条目显示其仍为谷歌成员，与当前状态不符。"
+    },
+    {
+      "claimId": "cmk9vn1800004azb9vtrfj590:PersonRole[cmkaenssy0087imyjy5mcrsbc]:6be32b47197a",
+      "person": "蒂姆尼特·格布鲁",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "蒂姆尼特·格布鲁已于2020年12月离开谷歌，并于2021年创立DAIR Institute。该履历条目显示其仍为谷歌成员，与当前状态不符。"
+    },
+    {
+      "claimId": "cmk9vn1800004azb9vtrfj590:PersonRole[cmkaentsy0089imyji9e2v9ah]:b9a338bf4038",
+      "person": "蒂姆尼特·格布鲁",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "蒂姆尼特·格布鲁在斯坦福大学的博士后研究已于多年前结束。该履历条目显示时间为'now'，与事实不符，属于过时信息。"
+    },
+    {
+      "claimId": "cmk9vvpw60005klcc7ebvjll2:PersonRole[cmkaedx97001uimyj4tu4qxgq]:1ac2f251d40f",
+      "person": "蒂门·蒂勒曼",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "蒂门·蒂勒曼目前是Google DeepMind的高级研究员，其在多伦多大学的职位（如博士后或研究员）可能已结束。条目显示时间为'now'，但缺乏当前在职证据。"
+    },
+    {
+      "claimId": "cmk9vv4mz0002klccqqo4n3tp:PersonRole[cmkaecwby0013imyj9kp3qarn]:d4b6d7ce0810",
+      "person": "詹姆斯·伯格斯特拉",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 蒙特利尔大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "詹姆斯·伯格斯特拉目前是Hyperopt的CEO，其在蒙特利尔大学的职位（如研究员或教授）可能已结束。条目显示时间为'now'，但缺乏当前在职证据。"
+    },
+    {
+      "claimId": "cmk9w0gti0009lbpp2v1f3pjt:PersonRole[cmkaeidpg0051imyj1bz9kya2]:9b573c81815b",
+      "person": "詹姆斯·马滕斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "詹姆斯·马滕斯目前是Google DeepMind的研究科学家，其在多伦多大学的职位（如博士后或研究员）可能已结束。条目显示时间为'now'，但缺乏当前在职证据。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:PersonRole[cmkaej562005dimyjiv2cr5zm]:0b0cae309989",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "career_role",
+      "objectLabel": "Member @ California Institute of Technology",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物当前标题为加州理工学院教授，但该履历显示为加州理工学院的‘Member’，职位描述模糊且与已知信息不完全匹配，缺乏具体来源和时间细节。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:PersonRole[cmkaej686005fimyjols51141]:f958c2d867fb",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物背景未提及加州大学伯克利分校的关联，且职位‘Member’过于宽泛，缺乏具体来源和时间信息，无法确认其准确性。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:PersonRole[cmkaej7o0005iimyjcdlrsdrp]:459a61eb945b",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Copenhagen",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物背景未提及哥本哈根大学的关联，且职位‘Member’描述不明确，缺乏具体来源和时间信息，无法验证。"
+    },
+    {
+      "claimId": "cmk9vxwga000fklcc1ojsv3mz:PersonRole[cmkaej8qj005kimyj3lkceu2b]:bfda49929fa9",
+      "person": "谢尔盖·贝隆吉",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Cornell University",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物背景提及康奈尔大学，但职位‘Member’过于宽泛，且缺乏具体来源和时间信息，无法确认其当前状态或准确性。"
+    },
+    {
+      "claimId": "cmjvg0fes0001tu91i6wz8zno:PersonRole[cmjy6pozj000q4anvhdbo2k1g]:ada07087d589",
+      "person": "贾佳亚",
+      "claimType": "career_role",
+      "objectLabel": "Professor @ 香港中文大学",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "人物当前标题为腾讯杰出科学家，但该履历显示香港中文大学教授职位仍为‘now’，可能已离任或职位过时，需核实当前状态。"
+    },
+    {
+      "claimId": "cmk9vn8pg0005azb9egtb11gm:PersonRole[cmkaekz78006rimyjrgmsn1dl]:05db19566677",
+      "person": "贾扬清",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 清华大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物背景未提及清华大学的关联，且职位‘Member’描述不明确，缺乏具体来源和时间信息，无法验证其准确性。"
+    },
+    {
+      "claimId": "cmk9vn8pg0005azb9egtb11gm:PersonRole[cmkael094006timyj60q33le4]:da8b40cd63cb",
+      "person": "贾扬清",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Princeton University",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "贾扬清当前主要职务为NVIDIA副总裁及Lepton AI创始人兼CEO，普林斯顿大学成员身份可能已过时，且无明确结束时间。"
+    },
+    {
+      "claimId": "cmk9vwfkh0008klcct5gvli32:PersonRole[cmkaeltjm0077imyjiegszooq]:f0fda7d39f30",
+      "person": "贾斯汀·约翰逊",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "贾斯汀·约翰逊当前主要职务为World Labs联合创始人，斯坦福大学成员身份可能已过时，且无明确结束时间。"
+    },
+    {
+      "claimId": "cmjtxd9gj00095p08xgbzoqfe:PersonRole[cmjv5d0q8004gp9gnuw1tjjpe]:89d116054582",
+      "person": "迈克·施罗普费尔",
+      "claimType": "career_role",
+      "objectLabel": "Student @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "remove",
+      "reason": "迈克·施罗普费尔当前主要职务为Meta高级研究员，斯坦福大学学生身份明显过时，且无结束时间。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:PersonRole[cmkaehdmr0042imyjlevj08eu]:0ce954f4f089",
+      "person": "郑宇怀",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示郑宇怀当前为多伦多大学Member，但其公开履历（如谷歌研究员）未提及此职位，且无时间信息，无法确认是否为当前或过时职位。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:PersonRole[cmkaehgqp0048imyjgoh9nlxw]:d997d97ba9e5",
+      "person": "郑宇怀",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Waterloo",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示郑宇怀当前为滑铁卢大学Member，但其公开履历（如谷歌研究员）未提及此职位，且无时间信息，无法确认是否为当前或过时职位。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:PersonRole[cmkaehht3004aimyj7p2wei5n]:866fc3e8903f",
+      "person": "郑宇怀",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 谷歌",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示郑宇怀当前为谷歌Member，但其公开头衔为Research Scientist @ Google，职位描述不一致，且无时间信息，可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9voqrn000aazb9q3yfhtfc:PersonRole[cmkaehiub004cimyjt1ozd2lu]:cb99258fd28d",
+      "person": "郑宇怀",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 牛津大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示郑宇怀当前为牛津大学Member，但其公开履历（如谷歌研究员）未提及此职位，且无时间信息，无法确认是否为当前或过时职位。"
+    },
+    {
+      "claimId": "cmjtwkkz70006opf3yblhugno:PersonRole[cmjv7sbyv0047sz2tfjjoio9t]:365808e2ca94",
+      "person": "闫俊杰",
+      "claimType": "career_role",
+      "objectLabel": "本科 @ 东南大学数学学院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示闫俊杰当前为东南大学数学学院本科，但本科教育通常已结束，且无结束时间，可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9vpe7i000dazb9lh8oezdi:PersonRole[cmkaemusy007qimyjxmwclbf5]:c903317c1584",
+      "person": "阿列克谢·A·埃夫罗斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ University of Utah",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示阿列克谢·A·埃夫罗斯当前为犹他大学Member，但其公开头衔为UC Berkeley教授，未提及此职位，且无时间信息，无法确认。"
+    },
+    {
+      "claimId": "cmk9vpe7i000dazb9lh8oezdi:PersonRole[cmkaemvt1007simyjxjhoya2n]:fc520ce2f192",
+      "person": "阿列克谢·A·埃夫罗斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示阿列克谢·A·埃夫罗斯当前为加州大学伯克利分校Member，但其公开头衔为Professor，职位描述不一致，且无时间信息，可能过时或不准确。"
+    },
+    {
+      "claimId": "cmk9vpe7i000dazb9lh8oezdi:PersonRole[cmkaemwsv007uimyjkmeb5pkk]:49f443e5904a",
+      "person": "阿列克谢·A·埃夫罗斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 卡内基梅隆大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为加州大学伯克利分校教授，履历显示其为卡内基梅隆大学成员且标注为‘now’，这很可能已过时。"
+    },
+    {
+      "claimId": "cmk9vpe7i000dazb9lh8oezdi:PersonRole[cmkaemy48007ximyjt3k1ce50]:77ca371a32d6",
+      "person": "阿列克谢·A·埃夫罗斯",
+      "claimType": "career_role",
+      "objectLabel": "Member @ East High School",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "阿列克谢·A·埃夫罗斯是知名计算机科学家，履历显示其为East High School成员且标注为‘now’，这极有可能是同名实体或数据错误。"
+    },
+    {
+      "claimId": "cmk9w16lz000dlbppb4j2wqpb:PersonRole[cmkaen34t007zimyjo0dd438t]:f49643609497",
+      "person": "阿卜杜勒-拉赫曼·穆罕默德",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 多伦多大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Google DeepMind研究科学家，履历显示其为多伦多大学成员且标注为‘now’，这很可能已过时。"
+    },
+    {
+      "claimId": "cmk9w16lz000dlbppb4j2wqpb:PersonRole[cmkaen4ng0081imyj6or77s77]:aa1b1b6d79a6",
+      "person": "阿卜杜勒-拉赫曼·穆罕默德",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Facebook AI Research (FAIR)",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前职位为Google DeepMind研究科学家，履历显示其为Facebook AI Research成员且标注为‘now’，这很可能已过时。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:PersonRole[cmjy1cpof00drxccmzq5vvr9q]:1516d5db5fd8",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "career_role",
+      "objectLabel": "B.Tech. @ Birla Institute of Technology, Mesra",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示其为B.Tech.学位，标注为‘now’，但学位通常已完成，不应标注为当前状态。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:PersonRole[cmjy1ctd200dyxccm7idmcvoe]:5dc3b4a84b43",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "career_role",
+      "objectLabel": "Co-Founder and Chief Scientist @ Adept AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示其为Adept AI联合创始人兼首席科学家，但当前标题为谷歌研究科学家，需要确认此职位是否仍为当前状态。"
+    },
+    {
+      "claimId": "cmjtxe4kc000f5p08n4sq7547:PersonRole[cmjy1cujw00e1xccmquytjjdv]:78d341d2aaac",
+      "person": "阿希什·瓦斯瓦尼",
+      "claimType": "career_role",
+      "objectLabel": "CEO & Co-Founder @ Essential AI",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示其为Essential AI首席执行官兼联合创始人，但当前标题为谷歌研究科学家，需要确认此职位是否仍为当前状态。"
+    },
+    {
+      "claimId": "cmk9w26e5000jlbppfsi84dzz:PersonRole[cmkaeh70e003wimyjvz8sxct3]:77607f732885",
+      "person": "阿舒托什·萨克塞纳",
+      "claimType": "career_role",
+      "objectLabel": "Member @ Indian Institute of Technology Kanpur",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "履历显示为印度理工学院坎普尔分校的成员，但缺少开始/结束时间，无法确认是否为当前职位或已离任。需要更具体的来源验证。"
+    },
+    {
+      "claimId": "cmk9w26e5000jlbppfsi84dzz:PersonRole[cmkaeh7zt003yimyjpb4vexix]:fe32c1b0a141",
+      "person": "阿舒托什·萨克塞纳",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "履历显示为斯坦福大学的成员，但人物当前职位是康奈尔大学副教授，且上下文显示其组织为斯坦福大学。职位可能已过时，需要确认当前状态。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb326x5000g11t9gvywc383]:3bcafd0e5377",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "Regents' Professor and Thomas R. Brown Chair of Management and Technology @ University of Arizona",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "履历显示为亚利桑那大学的Regents'教授，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb32gik000p11t9rwduzhp9]:abed14cfe243",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "B.S. degree @ National Chiao Tung University",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "履历显示为国立交通大学的学士学位，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb32jsf000s11t9yiouuo4t]:4cdee5b27f44",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "MBA @ SUNY Buffalo",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "履历显示为纽约州立大学布法罗分校的MBA，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb32nkg000u11t997gnax3v]:fc53301d14c3",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "M.S. and Ph.D. in Information Systems @ 纽约大学",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "履历显示为纽约大学的信息系统硕士和博士，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb32q3x000x11t94fkli7e2]:73b779d96712",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "Key Founder and Chief Architect @ AITech International",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "履历显示为AITech International的创始人兼首席架构师，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb32tw4001011t9t66gpe9s]:5a1466bd0387",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "Key technical and management position @ Artificial Intelligence Center of FMC Corporation",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "履历显示为FMC公司人工智能中心的关键技术和管理职位，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb32x2g001311t9087jhklm]:cd09a5b409ab",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "Key technical and management position @ KLA Instruments, Inc.",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物背景为北京大学学生及Lovart AI创始人/CEO，与KLA Instruments的技术管理职位关联性弱，且无具体时间或来源佐证，无法确认是否属于同一人。"
+    },
+    {
+      "claimId": "cmjwtmysd00006qvt0tru95pv:PersonRole[cmkb32zm6001611t9fsx4bvuo]:1b0c30d24191",
+      "person": "陈冕",
+      "claimType": "career_role",
+      "objectLabel": "Key technical and management position @ Machine Intelligence Corporation",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物背景为北京大学学生及Lovart AI创始人/CEO，与Machine Intelligence Corporation的技术管理职位关联性弱，且无具体时间或来源佐证，无法确认是否属于同一人。"
+    },
+    {
+      "claimId": "cmk9vy3py000gklccnre8tsr9:PersonRole[cmkaef388002jimyj8wirc4bi]:37cc2f7b66b7",
+      "person": "雅各布·斯坦哈特",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 加州大学伯克利分校",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "人物当前头衔为加州大学伯克利分校助理教授，但履历显示为“Member”，职位描述模糊且可能过时，未明确是否为当前职位。"
+    },
+    {
+      "claimId": "cmk9vy3py000gklccnre8tsr9:PersonRole[cmkaef47t002limyjg69lix6p]:a8082d123b61",
+      "person": "雅各布·斯坦哈特",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "人物当前主要机构为加州大学伯克利分校，履历显示为斯坦福大学“Member”，但无具体时间或来源佐证，无法确认是否为当前或历史职位。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:PersonRole[cmjv7tfj6004gsz2th5kerzzx]:a4297cb9e9c7",
+      "person": "黄铁军",
+      "claimType": "career_role",
+      "objectLabel": "数字视频编解码技术国家工程实验室副主任 @ 北京大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "该职位信息（数字视频编解码技术国家工程实验室副主任 @ 北京大学）来源为LLM提取，缺乏权威公开资料佐证，无法确认其准确性及当前状态。"
+    },
+    {
+      "claimId": "cmk9vww09000aklccdkep9iq4:PersonRole[cmkaedrje001qimyj7pgoprja]:49b864e8c216",
+      "person": "齐科·科尔特",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 卡内基梅隆大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "齐科·科尔特的公开履历显示其为卡内基梅隆大学教授，而非“Member”。该职位描述过于模糊且可能过时，与当前已知的“教授”头衔不符。"
+    },
+    {
+      "claimId": "cmk9vww09000aklccdkep9iq4:PersonRole[cmkaedsjd001simyj65r9g3zm]:035dd928cb97",
+      "person": "齐科·科尔特",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 斯坦福大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "齐科·科尔特的公开履历显示其为斯坦福大学兼职教授，而非“Member”。该职位描述不准确且可能过时，与当前已知的“兼职教授”头衔不符。"
+    },
+    {
+      "claimId": "cmk9vogh20009azb988tw6aaa:PersonRole[cmkaelp5c0075imyjf1dbho9o]:471fc7ff2f76",
+      "person": "雷亚·哈德塞尔",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 纽约大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为Google DeepMind VP Research，履历显示其为纽约大学Member且无结束时间，可能已离任，状态过时。"
+    },
+    {
+      "claimId": "cmk9vzkli0004lbppznq09yye:PersonRole[cmkaei98b004zimyjv6zpjqjj]:2659521cfb68",
+      "person": "马克·奥雷利奥·兰扎托",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 纽约大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为NYU教授，履历显示其为纽约大学Member且无结束时间，可能已离任或职位变更，状态过时。"
+    },
+    {
+      "claimId": "cmjtxkqy9000039ylucg15kqs:PersonRole[cmjv5jumw007pp9gnbde211bd]:3ed2b8a145b8",
+      "person": "马克·扎克伯格",
+      "claimType": "career_role",
+      "objectLabel": "本科阶段学习 @ 哈佛大学",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "履历显示其在哈佛大学本科阶段学习，结束时间为now，但人物早已毕业，状态过时。"
+    },
+    {
+      "claimId": "cmk9vlz5k0002azb9n5j0ce0z:PersonRole[cmkaekr8c006iimyje1qy596x]:77ddb9bf9da6",
+      "person": "鲁斯兰·萨拉赫丁诺夫",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 卡内基梅隆大学",
+      "verdict": "stale",
+      "action": "needs_source",
+      "reason": "人物当前职位为卡内基梅隆大学教授，履历显示其为Member且无结束时间，可能已离任或职位变更，状态过时。"
+    },
+    {
+      "claimId": "cmk9vlz5k0002azb9n5j0ce0z:PersonRole[cmkaeksl8006limyj3bs8spns]:2666054c7ad0",
+      "person": "鲁斯兰·萨拉赫丁诺夫",
+      "claimType": "career_role",
+      "objectLabel": "Member @ High Point University",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "人物履历中无High Point University相关记录，且其主要任职机构为卡内基梅隆大学等，此条目可能属于同名人物或错误归因。"
+    },
+    {
+      "claimId": "cmk9vlz5k0002azb9n5j0ce0z:PersonRole[cmkaektmq006nimyjlt1obexw]:0ac9b0637f90",
+      "person": "鲁斯兰·萨拉赫丁诺夫",
+      "claimType": "career_role",
+      "objectLabel": "Member @ 苹果公司",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "信息显示鲁斯兰·萨拉赫丁诺夫在苹果公司担任Member，但未提供具体职位、部门或时间范围，且其当前主要身份为CMU教授，此条履历可能过时或不完整。"
+    },
+    {
+      "claimId": "cmjs1by3o002wb28tsdopns4d:PersonRole[cmk8fw682000rb64ix03k1g3k]:493cb173f749",
+      "person": "黄仁勋",
+      "claimType": "career_role",
+      "objectLabel": "中学教育 @ 奥奈达浸会学院",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "黄仁勋的中学教育经历是历史事件，不应标记为当前状态（now），这会导致信息过时。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:PersonRole[cmjv7szrj0049sz2ttewmw8iv]:0b5c2c28cff2",
+      "person": "黄铁军",
+      "claimType": "career_role",
+      "objectLabel": "计算机学院视频与视觉研究所所长 @ 北京大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "黄铁军在北京大学的多个研究所所长职位可能同时存在，但未提供足够证据证明其当前状态，且其当前主要身份为智源研究院院长。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:PersonRole[cmjv7t819004dsz2t38ufttmj]:8d91edbb9c60",
+      "person": "黄铁军",
+      "claimType": "career_role",
+      "objectLabel": "计算机科学技术系系主任 @ 北京大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "黄铁军在北京大学计算机科学技术系系主任的职位可能已变更，未提供足够证据证明其当前状态。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:PersonRole[cmjv7tb4p004esz2ts2hf8vty]:dc6cfac5d48c",
+      "person": "黄铁军",
+      "claimType": "career_role",
+      "objectLabel": "信息科学技术学院教授 @ 北京大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "黄铁军在北京大学信息科学技术学院教授的职位可能已变更，未提供足够证据证明其当前状态。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:PersonRole[cmjv7tdf4004fsz2thvp4btng]:d2470514e430",
+      "person": "黄铁军",
+      "claimType": "career_role",
+      "objectLabel": "数字媒体研究所所长 @ 北京大学",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "黄铁军在北京大学数字媒体研究所所长的职位可能已变更，未提供足够证据证明其当前状态。"
+    }
+  ]
+}

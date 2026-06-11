@@ -1,6 +1,22 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
+
+type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
+
+interface RawPoolMetadata {
+  videoId?: string;
+  thumbnailUrl?: string;
+  videoCategory?: VideoCategory | string;
+  stars?: number;
+  language?: string;
+  forks?: number;
+  citedByCount?: number;
+  venue?: string;
+  domain?: string;
+  [key: string]: unknown;
+}
 
 interface RawPoolItem {
   id: string;
@@ -9,7 +25,7 @@ interface RawPoolItem {
   title: string;
   text: string;
   publishedAt: string | null;
-  metadata: any;
+  metadata: RawPoolMetadata | null;
 }
 
 interface Card {
@@ -25,10 +41,8 @@ interface ContentTabsProps {
   personId: string;
   cards: Card[];
   sourceTypeCounts: Record<string, number>;
-  officialLinks: any[];
+  officialLinks: Array<Record<string, unknown>>;
 }
-
-type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
 
 // Tab 配置 - 只保留播客，学习卡片已移动到代表作品模块
 const TAB_CONFIG: Record<string, { icon: string; label: string }> = {
@@ -131,9 +145,11 @@ const VideoItem = ({ item }: { item: RawPoolItem }) => {
           <span className="text-xs font-medium line-clamp-2">{item.title || '视频内容'}</span>
         </div>
         {thumbnailUrl && (
-          <img
+          <Image
             src={thumbnailUrl}
             alt={item.title}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).style.display = 'none';
@@ -282,7 +298,7 @@ const ArticleItem = ({ item }: { item: RawPoolItem }) => {
   );
 };
 
-export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }: ContentTabsProps) {
+export function ContentTabs({ personId, cards, sourceTypeCounts }: ContentTabsProps) {
   const [activeTab, setActiveTab] = useState('podcast');
   const [loadedItems, setLoadedItems] = useState<Record<string, RawPoolItem[]>>({});
   const [loadingTab, setLoadingTab] = useState<string | null>(null);
@@ -292,7 +308,7 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
   // 确定要显示的 tabs - 只显示播客
   const availableTabs = [
     ...Object.entries(sourceTypeCounts || {})
-      .filter(([_, count]) => count > 0)
+      .filter(([, count]) => count > 0)
       .map(([key, count]) => ({ key, count }))
   ].filter(tab => TAB_CONFIG[tab.key]);
 

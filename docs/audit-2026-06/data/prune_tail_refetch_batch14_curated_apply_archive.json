@@ -1,0 +1,1367 @@
+{
+  "generatedAt": "2026-06-10T17:52:23.347Z",
+  "summary": {
+    "generatedAt": "2026-06-10T17:52:23.344Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch14_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch14_curated_apply_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH14_CURATED_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 17,
+    "selectedSourceRows": 17,
+    "skippedRows": 10,
+    "existingRawPoolItems": 7,
+    "rawInserted": 10,
+    "rawUpdated": 7,
+    "keepAuditsInserted": 10,
+    "keepAuditsExisting": 7,
+    "byDecision": {
+      "replace_source": 11,
+      "augment_source": 6
+    },
+    "bySourceType": {
+      "exa": 11,
+      "official": 4,
+      "paper": 1,
+      "podcast": 1
+    },
+    "topPeople": {
+      "Mustafa Suleyman": 4,
+      "桑达尔·皮查伊": 3,
+      "Christopher Manning": 2,
+      "乔尔·皮诺": 2,
+      "雅各布·乌什科雷特": 2,
+      "Chris Olah": 1,
+      "Demis Hassabis": 1,
+      "Emad Mostaque": 1,
+      "阿希什·瓦斯瓦尼": 1
+    },
+    "topHosts": {
+      "fortune.com": 2,
+      "nlp.stanford.edu": 2,
+      "ainext.tw": 1,
+      "cloudwars.com": 1,
+      "cs.mcgill.ca": 1,
+      "deepmind.google": 1,
+      "entrepreneur.com": 1,
+      "forbes.com": 1,
+      "greylock.com": 1,
+      "mila.quebec": 1,
+      "papers.nips.cc": 1,
+      "podcasts.apple.com": 1,
+      "stability.ai": 1,
+      "time.com": 1,
+      "voicebot.ai": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 10
+    }
+  },
+  "existing": [
+    {
+      "id": "38ddad0f-2cc4-4734-976f-fc8203845d10",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "url": "https://time.com/collections/time100-ai-2024/7012873/chris-olah",
+      "urlHash": "a9e6f21f679886c86264a8cb10b90a3adb55c67e7fe3aab7f9127a406beeeb56",
+      "sourceType": "exa",
+      "title": "Chris Olah: The 100 Most Influential People in AI 2024 - TIME",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "8d8f0ac3-8b53-4968-94a1-c89391a56173",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "url": "https://nlp.stanford.edu/~manning",
+      "urlHash": "bb082b8971e875fe06d2f4710182b3e575e33b224e31403fb5616422a6fdb230",
+      "sourceType": "official",
+      "title": "Christopher Manning, Stanford NLP",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "20942bb4-fcc3-4430-bd83-a5921a850a94",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "url": "https://stability.ai/news-updates/stabilityai-announcement",
+      "urlHash": "0c862a3074166b2d74c883bb598665d2b69e5da65f6a70ad740bba06059c46c5",
+      "sourceType": "exa",
+      "title": "Stability AI Announcement",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "5c0d5269-2081-447e-bbf4-5a58ccea6502",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "person": "乔尔·皮诺",
+      "url": "https://www.cs.mcgill.ca/~jpineau",
+      "urlHash": "8bf1cac4972048623ee049f3e493841e9c0a8090c40bcd34f3f7a2ee7d28a98c",
+      "sourceType": "official",
+      "title": "Joelle Pineau's Home",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "25e7270c-b422-4755-aaa5-7c1e0f2360f2",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "url": "https://www.forbes.com/profile/sundar-pichai",
+      "urlHash": "64fac358d91bdcde2f3763e72b278e1dac8ab24fab8924228ee98ffe6158c660",
+      "sourceType": "exa",
+      "title": "Sundar Pichai - Forbes",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "a6f117fa-6ddc-4959-9408-57b3f407b1c7",
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "url": "https://podcasts.apple.com/us/podcast/the-ai-pioneer-developing-new-kinds-of-medicine/id1602541473?i=1000716524176",
+      "urlHash": "0b6902878d740b1d2137a256f344cb229eafbfa5e4817e3bc5703cfe0fc5d5a6",
+      "sourceType": "podcast",
+      "title": "The AI Pioneer Developing New … - What's Your Problem? - Apple Podcasts",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "712b3621-1e34-4d97-b6b1-0b02a7860b4d",
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "url": "https://ainext.tw/people/jakob-uszkoreit",
+      "urlHash": "d9add01188941c91f5816ba3c0b6af7930ef7ee290a0988f0a8206febfae3d80",
+      "sourceType": "exa",
+      "title": "雅各布・烏茲科雷特 Jakob Uszkoreit | AINEXT",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmju0u83k08lqrmtbz3gt4we7",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://time.com/collections/time100-ai-2024/7012873/chris-olah",
+      "urlHash": "a9e6f21f679886c86264a8cb10b90a3adb55c67e7fe3aab7f9127a406beeeb56",
+      "contentHash": "affa6ece2d2cc568439c1fb528c98c6b6946a2618cb180066c2c29e8a5a06ccf",
+      "sourceType": "exa",
+      "title": "Chris Olah: The 100 Most Influential People in AI 2024 - TIME",
+      "text": "Evidence quote: Chris Olah Correspondent Until very recently, it was a truism that nobody really understood the inner workings of neural networks... That is miraculous, but it also poses challenges for safety. Selection reason: 权威媒体人物简介，明确提及Chris Olah在Anthropic的工作及AI安全贡献，可直接证明其身份与观点。 Source preview: Chris Olah Correspondent Until very recently, it was a truism that nobody really understood the inner workings of neural networks. Sure, scientists could tell you that the algorithms learn to spot patterns in massive amounts of data. But look inside a neural network trained to recognize cats, say, and all you’d see would be lots of very complicated numbers being multiplied together. There is no section of code–at least, not in any language humans can understand–for distinguishing a whisker from a tail. And yet somehow, with enough data and computing power, AI can do just that. That is miraculous, but it also poses challenges for safety. If you don’t know how a very powerful new system works... MiMo rationale: 原来源GPT-4技术报告无法直接证明Chris Olah的个人贡献。候选中的TIME人物简介和Anthropic官方新闻页均能权威、直接地证明其身份、职位及在AI安全/伦理领域的观点，适合作为替换来源。 Evidence requirements: Source must name Chris Olah directly. | Source must support why \"https://cdn.openai.com/papers/gpt-4.pdf\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Chris Olah official profile AI research | Chris Olah AI official source | Chris Olah AI 谷歌 OpenAI evidence | Chris Olah exa interview transcript",
+      "selectedHost": "time.com",
+      "reason": "权威媒体人物简介，明确提及Chris Olah在Anthropic的工作及AI安全贡献，可直接证明其身份与观点。",
+      "evidenceQuote": "Chris Olah Correspondent Until very recently, it was a truism that nobody really understood the inner workings of neural networks... That is miraculous, but it also poses challenges for safety.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0u83k08lqrmtbz3gt4we7",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:43:49.300Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://cdn.openai.com/papers/gpt-4.pdf",
+          "title": "https://cdn.openai.com/papers/gpt-4.pdf",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=GPT-4 技术报告摘要，虽然人物可能参与但内容并非关于其个人。.",
+          "evidenceRequirements": [
+            "Source must name Chris Olah directly.",
+            "Source must support why \"https://cdn.openai.com/papers/gpt-4.pdf\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Chris Olah official profile AI research",
+            "Chris Olah AI official source",
+            "Chris Olah AI 谷歌 OpenAI evidence",
+            "Chris Olah exa interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0u83k08lqrmtbz3gt4we7",
+          "objectLabel": "https://cdn.openai.com/papers/gpt-4.pdf"
+        },
+        "selectedReason": "权威媒体人物简介，明确提及Chris Olah在Anthropic的工作及AI安全贡献，可直接证明其身份与观点。",
+        "evidenceQuote": "Chris Olah Correspondent Until very recently, it was a truism that nobody really understood the inner workings of neural networks... That is miraculous, but it also poses challenges for safety.",
+        "candidateAuthorityScore": 65,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0w3p408yqrmtbyoxsy47n",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://nlp.stanford.edu/~manning",
+      "urlHash": "bb082b8971e875fe06d2f4710182b3e575e33b224e31403fb5616422a6fdb230",
+      "contentHash": "bed6efeef64fe24cb9d3460a4812ed7cefe8a74efeaf3c537810ffacfca83654",
+      "sourceType": "official",
+      "title": "Christopher Manning, Stanford NLP",
+      "text": "Evidence quote: Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University Selection reason: 这是Christopher Manning在斯坦福NLP组的官方主页，包含其职位、研究方向和最新动态，是权威的个人资料来源。 Source preview: Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University What's New? Bio Christopher Manning is the inaugural Thomas M. Siebel Professor in Machine Learning in the Departments of Linguistics and Computer Science at Stanford University and a co-founder and Senior Fellow of the Stanford Institute for Human-Centered Artificial Intelligence (HAI). From 2010, Manning pioneered Natural Language Understanding and Inference using Neural Networks/Deep Learn... MiMo rationale: 原始来源（SAIL博客）未直接关联Christopher Manning个人，仅列出实验室整体论文。候选来源中，Manning的官方论文列表和个人主页是权威的个人资料来源，能直接证明其学术身份和产出，适合作为替代来源。其他候选来源虽提及Manning，但未直接关联EMNLP 2024，不能有效补强原声明。 Evidence requirements: Source must name Christopher Manning directly. | Source must support why \"Stanford AI Lab Papers and Talks at EMNLP 2024\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 paper authors | Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 official source | Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 斯坦福大学 悉尼大学 evidence | Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 interview transcript",
+      "selectedHost": "nlp.stanford.edu",
+      "reason": "这是Christopher Manning在斯坦福NLP组的官方主页，包含其职位、研究方向和最新动态，是权威的个人资料来源。",
+      "evidenceQuote": "Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0w3p408yqrmtbyoxsy47n",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:44:18.995Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://ai.stanford.edu/blog/emnlp-2024/",
+          "title": "Stanford AI Lab Papers and Talks at EMNLP 2024",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为斯坦福AI实验室整体的论文列表，并非专门针对曼宁个人的报道或观点。.",
+          "evidenceRequirements": [
+            "Source must name Christopher Manning directly.",
+            "Source must support why \"Stanford AI Lab Papers and Talks at EMNLP 2024\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 paper authors",
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 official source",
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 斯坦福大学 悉尼大学 evidence",
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0w3p408yqrmtbyoxsy47n",
+          "objectLabel": "Stanford AI Lab Papers and Talks at EMNLP 2024"
+        },
+        "selectedReason": "这是Christopher Manning在斯坦福NLP组的官方主页，包含其职位、研究方向和最新动态，是权威的个人资料来源。",
+        "evidenceQuote": "Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University",
+        "candidateAuthorityScore": 40,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0w3p408yqrmtbyoxsy47n",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://nlp.stanford.edu/~manning/papers",
+      "urlHash": "7d69e6fb81f5e820c960ad863dbddbebf84f0e3707d8e253b62f1ae259605112",
+      "contentHash": "eed2dbdd65b232bda3bfefad666a88e796fd57cf33a103e982cbd84e8a9c5659",
+      "sourceType": "official",
+      "title": "Christopher Manning: Papers and publications",
+      "text": "Evidence quote: Christopher Manning: Papers and publications Papers from 2007 on: I haven't been good at keeping this page up to date, and only a few papers have been added here. But you can almost certainly find what you need on Google Scholar, Semantic Scholar, or on the Stanford NLP Group publications page. Selection reason: 这是Christopher Manning的官方论文列表页面，直接证明其学术产出，是权威的个人资料来源。 Source preview: Christopher Manning: Papers and publications Papers from 2007 on: I haven't been good at keeping this page up to date, and only a few papers have been added here. But you can almost certainly find what you need on Google Scholar, Semantic Scholar, or on the Stanford NLP Group publications page. They're almost always up to date! Papers up till 2006: almost every paper of mine up till 2006 is available here, usually as a PDF file. Sometime when I have extra time, I'll stick up the rest…. 2025 | | | --- | | Weixin Liang, Yaohui Zhang, Zhengxuan Wu, Haley Lepp, Wenlong Ji, Xuandong Zhao, Hancheng Cao, Sheng Liu, Siyu He, Zhi Huang, Diyi Yang, Christopher Potts, Christopher D. Manning, and James... MiMo rationale: 原始来源（SAIL博客）未直接关联Christopher Manning个人，仅列出实验室整体论文。候选来源中，Manning的官方论文列表和个人主页是权威的个人资料来源，能直接证明其学术身份和产出，适合作为替代来源。其他候选来源虽提及Manning，但未直接关联EMNLP 2024，不能有效补强原声明。 Evidence requirements: Source must name Christopher Manning directly. | Source must support why \"Stanford AI Lab Papers and Talks at EMNLP 2024\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 paper authors | Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 official source | Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 斯坦福大学 悉尼大学 evidence | Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 interview transcript",
+      "selectedHost": "nlp.stanford.edu",
+      "reason": "这是Christopher Manning的官方论文列表页面，直接证明其学术产出，是权威的个人资料来源。",
+      "evidenceQuote": "Christopher Manning: Papers and publications Papers from 2007 on: I haven't been good at keeping this page up to date, and only a few papers have been added here. But you can almost certainly find what you need on Google Scholar, Semantic Scholar, or on the Stanford NLP Group publications page.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0w3p408yqrmtbyoxsy47n",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:44:18.995Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://ai.stanford.edu/blog/emnlp-2024/",
+          "title": "Stanford AI Lab Papers and Talks at EMNLP 2024",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为斯坦福AI实验室整体的论文列表，并非专门针对曼宁个人的报道或观点。.",
+          "evidenceRequirements": [
+            "Source must name Christopher Manning directly.",
+            "Source must support why \"Stanford AI Lab Papers and Talks at EMNLP 2024\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 paper authors",
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 official source",
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 斯坦福大学 悉尼大学 evidence",
+            "Christopher Manning Stanford Lab Papers and Talks EMNLP 2024 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0w3p408yqrmtbyoxsy47n",
+          "objectLabel": "Stanford AI Lab Papers and Talks at EMNLP 2024"
+        },
+        "selectedReason": "这是Christopher Manning的官方论文列表页面，直接证明其学术产出，是权威的个人资料来源。",
+        "evidenceQuote": "Christopher Manning: Papers and publications Papers from 2007 on: I haven't been good at keeping this page up to date, and only a few papers have been added here. But you can almost certainly find what you need on Google Scholar, Semantic Scholar, or on the Stanford NLP Group publications page.",
+        "candidateAuthorityScore": 58,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvmdxn003xrmtbjgqp9yxt",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://deepmind.google/blog/alphafold-reveals-the-structure-of-the-protein-universe",
+      "urlHash": "4be9e9d4cc3403fdc6fe73b7691a7104c1fc85b483f9d26140862f55be2f726e",
+      "contentHash": "b29d53455bc1967d096a27e7f63061895a2aacd20347afca03d07fa33eff3dc2",
+      "sourceType": "official",
+      "title": "AlphaFold reveals the structure of the protein universe — Google DeepMind",
+      "text": "Evidence quote: AlphaFold reveals the structure of the protein universe Demis Hassabis It’s been one year since we released and open sourced AlphaFold... Selection reason: 官方博客，作者为Demis Hassabis，直接阐述AlphaFold揭示蛋白质宇宙结构的工作，是原始来源的权威替代。 Source preview: Google DeepMind DeepMind Build with Gemini Try Gemini July 28, 2022 Science AlphaFold reveals the structure of the protein universe Demis Hassabis It’s been one year since we released and open sourced AlphaFold, our AI system to predict the 3D structure of a protein just from its 1D amino acid sequence, and created the AlphaFold Protein Structure Database (AlphaFold DB) to freely share this scientific knowledge with the world. Proteins are the building blocks of life, they underpin every biological process in every living thing. And, because a protein’s shape is closely linked with its function, knowing a protein’s structure unlocks a greater understanding of what it does and how it works. ... MiMo rationale: 原始来源被拒是因为内容聚焦技术而非人物。候选中的官方博客（deepmind.google/blog/alphafold-reveals-the-structure-of-the-protein-universe）由Hassabis本人撰写，直接阐述了AlphaFold揭示蛋白质宇宙结构的工作，完美匹配声明，是权威且可访问的替代来源。 Evidence requirements: Source must name Demis Hassabis directly. | Source must support why \"AlphaFold reveals the structure of the protein universe\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Demis Hassabis AlphaFold reveals the structure the protein universe official source | Demis Hassabis AlphaFold reveals the structure the protein universe 伦敦大学学院 谷歌DeepMind evidence | Demis Hassabis AlphaFold reveals the structure the protein universe interview transcript",
+      "selectedHost": "deepmind.google",
+      "reason": "官方博客，作者为Demis Hassabis，直接阐述AlphaFold揭示蛋白质宇宙结构的工作，是原始来源的权威替代。",
+      "evidenceQuote": "AlphaFold reveals the structure of the protein universe Demis Hassabis It’s been one year since we released and open sourced AlphaFold...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvmdxn003xrmtbjgqp9yxt",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:45:06.785Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.deepmind.com/blog/alphafold-reveals-the-structure-of-the-protein-universe",
+          "title": "AlphaFold reveals the structure of the protein universe",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容聚焦于AlphaFold的技术突破和科学意义，而非人物本身。.",
+          "evidenceRequirements": [
+            "Source must name Demis Hassabis directly.",
+            "Source must support why \"AlphaFold reveals the structure of the protein universe\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Demis Hassabis AlphaFold reveals the structure the protein universe official source",
+            "Demis Hassabis AlphaFold reveals the structure the protein universe 伦敦大学学院 谷歌DeepMind evidence",
+            "Demis Hassabis AlphaFold reveals the structure the protein universe interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmdxn003xrmtbjgqp9yxt",
+          "objectLabel": "AlphaFold reveals the structure of the protein universe"
+        },
+        "selectedReason": "官方博客，作者为Demis Hassabis，直接阐述AlphaFold揭示蛋白质宇宙结构的工作，是原始来源的权威替代。",
+        "evidenceQuote": "AlphaFold reveals the structure of the protein universe Demis Hassabis It’s been one year since we released and open sourced AlphaFold...",
+        "candidateAuthorityScore": 39,
+        "candidateAuthoritySignals": [
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvs350014vrmtbxlh93nj0",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://stability.ai/news-updates/stabilityai-announcement",
+      "urlHash": "0c862a3074166b2d74c883bb598665d2b69e5da65f6a70ad740bba06059c46c5",
+      "contentHash": "3b55b7e1b08a26ee6b111dcce9ab6707d2dafdf2195d7b56fbfe7f29508c2ac4",
+      "sourceType": "exa",
+      "title": "Stability AI Announcement — Stability AI",
+      "text": "Evidence quote: Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI. Selection reason: 官方公告，明确提及Emad Mostaque辞去CEO职务，证明其领导角色。 Source preview: Stability AI Stability AI Stability AI Stability AI Stability AI Announcement Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI. The Board of Directors has appointed Shan Shan Wong, our Chief Operating Officer, and Christian Laforte, our Chief Technology Officer, as the interim co-CEOs of Stability AI. We are actively conducting a search for a permanent CEO to build upon Stability AI’s foundation and lead the company into its next phase of growth. “On behalf of the Board of Directors, I want to thank Emad for his leadership and relentless commitment to Stability AI and the open... MiMo rationale: 原始来源未聚焦Emad Mostaque本人，但候选中有官方公告和权威媒体报道可补强其领导角色。Forbes文章虽涉及争议，但直接关联其职位；官方公告明确其辞职信息。两者结合可增强证据链。 Evidence requirements: Source must name Emad Mostaque directly. | Source must support why \"Expanding Our Leadership Team: Meet Some Of Our New Team Members — Stability AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Emad Mostaque Expanding Our Leadership Team: Meet Some Our New Team Members Stability official source | Emad Mostaque Expanding Our Leadership Team: Meet Some Our New Team Members Stability Stability AI 开源 evidence | Emad Mostaque Expanding Our Leadership Team: Meet Some Our New Team Members Stability interview transcript",
+      "selectedHost": "stability.ai",
+      "reason": "官方公告，明确提及Emad Mostaque辞去CEO职务，证明其领导角色。",
+      "evidenceQuote": "Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvs350014vrmtbxlh93nj0",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:45:56.248Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://stability.ai/news/expanding-leadership-meet-our-new-team",
+          "title": "Expanding Our Leadership Team: Meet Some Of Our New Team Members  — Stability AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=关于Stability AI团队扩展，未聚焦Emad Mostaque本人。.",
+          "evidenceRequirements": [
+            "Source must name Emad Mostaque directly.",
+            "Source must support why \"Expanding Our Leadership Team: Meet Some Of Our New Team Members — Stability AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Emad Mostaque Expanding Our Leadership Team: Meet Some Our New Team Members Stability official source",
+            "Emad Mostaque Expanding Our Leadership Team: Meet Some Our New Team Members Stability Stability AI 开源 evidence",
+            "Emad Mostaque Expanding Our Leadership Team: Meet Some Our New Team Members Stability interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvs350014vrmtbxlh93nj0",
+          "objectLabel": "Expanding Our Leadership Team: Meet Some Of Our New Team Members  — Stability AI"
+        },
+        "selectedReason": "官方公告，明确提及Emad Mostaque辞去CEO职务，证明其领导角色。",
+        "evidenceQuote": "Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI.",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnosx00efrmtbvesdazp0",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://voicebot.ai/2022/03/11/deepmind-and-linkedin-co-founders-unveil-new-conversational-ai-startup-inflection-ai",
+      "urlHash": "52ca63b0961e23e53d0941ba7ac2b393d9a074e69ec4e6307b62eb0d324e03d7",
+      "contentHash": "7af6ce09c1b30f9e6150ded1996f1e2cdc4ef2e621b52495ad9030a01a04c7ff",
+      "sourceType": "exa",
+      "title": "DeepMind and LinkedIn Co-Founders Unveil New Conversational AI Startup Inflection AI - Voicebot.ai",
+      "text": "Evidence quote: DeepMind co-founder Mustafa Suleyman and LinkedIn co-founder Reid Hoffman are partnering to launch conversational AI startup Inflection AI. The new company hasn’t revealed many details but stated it will focus on boosting human-machine communication. Selection reason: 权威科技媒体，明确报道Mustafa Suleyman联合创立Inflection AI，聚焦人机交互新范式，直接关联人物与作品。 Source preview: Primary Mobile Navigation Secondary Navigation Voicebot.ai # Primary Navigation Inflection AI DeepMind and LinkedIn Co-Founders Unveil New Conversational AI Startup Inflection AI DeepMind co-founder Mustafa Suleyman and LinkedIn co-founder Reid Hoffman are partnering to launch conversational AI startup Inflection AI. The new company hasn’t revealed many details but stated it will focus on boosting human-machine communication. Inflection AI Inflection’s long-term goal is smoothing conversations between humans and computers to where any machine will understand and respond to natural language like voice assistants. That may take several years, however. Suleyman will serve as Inflection CEO, jo... MiMo rationale: 原来源仅为机构通用页面，未涉及人物具体信息。候选来源中，Voicebot.ai文章和Greylock官方资料页均直接、权威地证明了Mustafa Suleyman作为Inflection AI联合创始人兼CEO的角色，且Inflection AI专注于人机交互新范式，符合证据要求。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"A New Paradigm in Human-Machine Interaction\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman New Paradigm Human-Machine Interaction official source | Mustafa Suleyman New Paradigm Human-Machine Interaction Inflection AI Greylock Partners evidence | Mustafa Suleyman New Paradigm Human-Machine Interaction interview transcript",
+      "selectedHost": "voicebot.ai",
+      "reason": "权威科技媒体，明确报道Mustafa Suleyman联合创立Inflection AI，聚焦人机交互新范式，直接关联人物与作品。",
+      "evidenceQuote": "DeepMind co-founder Mustafa Suleyman and LinkedIn co-founder Reid Hoffman are partnering to launch conversational AI startup Inflection AI. The new company hasn’t revealed many details but stated it will focus on boosting human-machine communication.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvnosx00efrmtbvesdazp0",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:47:19.605Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://greylock.com/portfolio-news/a-new-paradigm-in-human-machine-interaction/",
+          "title": "A New Paradigm in Human-Machine Interaction",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=仅为机构通用页面，未涉及目标人物具体信息。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"A New Paradigm in Human-Machine Interaction\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman New Paradigm Human-Machine Interaction official source",
+            "Mustafa Suleyman New Paradigm Human-Machine Interaction Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman New Paradigm Human-Machine Interaction interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnosx00efrmtbvesdazp0",
+          "objectLabel": "A New Paradigm in Human-Machine Interaction"
+        },
+        "selectedReason": "权威科技媒体，明确报道Mustafa Suleyman联合创立Inflection AI，聚焦人机交互新范式，直接关联人物与作品。",
+        "evidenceQuote": "DeepMind co-founder Mustafa Suleyman and LinkedIn co-founder Reid Hoffman are partnering to launch conversational AI startup Inflection AI. The new company hasn’t revealed many details but stated it will focus on boosting human-machine communication.",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnzni00g3rmtbao3x3340",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://fortune.com/2025/11/06/microsoft-launches-new-ai-humanist-superinteligence-team-mustafa-suleyman-openai",
+      "urlHash": "d83d0648916086d03417c9dfa061adecc21358cc8cae40c7ec771fef6a9b0ff6",
+      "contentHash": "219d7d588e25ca6004120befb23cf93e01bff06231c07d194e70eeb020ce5bed",
+      "sourceType": "exa",
+      "title": "Microsoft, freed from reliance on OpenAI, joins the race for ‘superintelligence’—and AI chief Mustafa Suleyman wants to ensure it serves humanity | Fortune",
+      "text": "Evidence quote: Microsoft AI CEO Mustafa Suleyman... When Mustafa Suleyman joined Microsoft in March 2024 to lead the company’s new consumer AI unit... Selection reason: 权威媒体报道，明确将Suleyman定位为微软AI负责人，并详细阐述其推动“人类主义超级智能”的背景和动机，提供了可靠的第三方佐证。 Source preview: Trendingnow 1 2 3 1 2 3 Microsoft, freed from relying on OpenAI, joins the race for ‘superintelligence’—and AI chief Mustafa Suleyman wants to ensure it serves humanity Microsoft AI CEO Mustafa Suleyman When Mustafa Suleyman joined Microsoft in March 2024 to lead the company’s new consumer AI unit—home to products like Copilot—there were clear limits to what he could do. Because of Microsoft’s landmark deal with OpenAI, the company was barred from pursuing its own AGI research. The agreement even capped how large a model Microsoft could train, restricting the company from building systems beyond a certain computing threshold. (This limit was measured in FLOPS, or the number of mathematical ... MiMo rationale: 原始来源（微软AI博客）未明确提及Suleyman本人，导致人物关联弱。候选来源中，Cloud Wars文章直接引用并阐述了Suleyman的观点，Fortune文章提供了权威的第三方报道，两者均能有效补强人物与作品/观点的关系，适合作为替换或补充来源。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"Towards Humanist Superintelligence - Microsoft AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman Towards Humanist Superintelligence Microsoft official source | Mustafa Suleyman Towards Humanist Superintelligence Microsoft Inflection AI Greylock Partners evidence | Mustafa Suleyman Towards Humanist Superintelligence Microsoft interview transcript",
+      "selectedHost": "fortune.com",
+      "reason": "权威媒体报道，明确将Suleyman定位为微软AI负责人，并详细阐述其推动“人类主义超级智能”的背景和动机，提供了可靠的第三方佐证。",
+      "evidenceQuote": "Microsoft AI CEO Mustafa Suleyman... When Mustafa Suleyman joined Microsoft in March 2024 to lead the company’s new consumer AI unit...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvnzni00g3rmtbao3x3340",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:48:31.377Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://microsoft.ai/news/towards-humanist-superintelligence/",
+          "title": "Towards Humanist Superintelligence - Microsoft AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为微软AI博客，未明确提及Mustafa Suleyman本人，仅关于机构。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"Towards Humanist Superintelligence - Microsoft AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman Towards Humanist Superintelligence Microsoft official source",
+            "Mustafa Suleyman Towards Humanist Superintelligence Microsoft Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman Towards Humanist Superintelligence Microsoft interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnzni00g3rmtbao3x3340",
+          "objectLabel": "Towards Humanist Superintelligence - Microsoft AI"
+        },
+        "selectedReason": "权威媒体报道，明确将Suleyman定位为微软AI负责人，并详细阐述其推动“人类主义超级智能”的背景和动机，提供了可靠的第三方佐证。",
+        "evidenceQuote": "Microsoft AI CEO Mustafa Suleyman... When Mustafa Suleyman joined Microsoft in March 2024 to lead the company’s new consumer AI unit...",
+        "candidateAuthorityScore": 35,
+        "candidateAuthoritySignals": [
+          "credible_media_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnosx00efrmtbvesdazp0",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://greylock.com/team/mustafa-suleyman",
+      "urlHash": "a14f67abb4de5c0071861114e146295e6fc2026324e862070dc05da25f6b3413",
+      "contentHash": "35c2f7aaec9f0f76d85afd98903f7ec646727e2a1e3a7e6b8fc5f852e4e504ff",
+      "sourceType": "exa",
+      "title": "Mustafa Suleyman - Greylock Partners",
+      "text": "Evidence quote: Mustafa Suleyman is the co-founder and CEO of Inflection, and a venture partner at Greylock. Selection reason: 官方机构资料页，明确列出Mustafa Suleyman为Inflection AI联合创始人兼CEO，权威性高。 Source preview: Greylock Logo Reverse icon hamburger icon close Mustafa Suleyman Venture Partner Mustafa Suleyman is the co-founder and CEO of Inflection, and a venture partner at Greylock. He spends his time advising early-stage companies and investing where he is enthusiastic about a team and project. Most recently Mustafa was Vice President of AI Product Management and AI Policy at Google and before that he co-founded DeepMind, the world’s leading AI company which was sold to Google for $650m. He was at DeepMind for over a decade, during which time the company achieved multiple grounding breaking contributions to the field of AI research and applications. Most notably DeepMind developed AlphaGo, an AI s... MiMo rationale: 原来源仅为机构通用页面，未涉及人物具体信息。候选来源中，Voicebot.ai文章和Greylock官方资料页均直接、权威地证明了Mustafa Suleyman作为Inflection AI联合创始人兼CEO的角色，且Inflection AI专注于人机交互新范式，符合证据要求。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"A New Paradigm in Human-Machine Interaction\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman New Paradigm Human-Machine Interaction official source | Mustafa Suleyman New Paradigm Human-Machine Interaction Inflection AI Greylock Partners evidence | Mustafa Suleyman New Paradigm Human-Machine Interaction interview transcript",
+      "selectedHost": "greylock.com",
+      "reason": "官方机构资料页，明确列出Mustafa Suleyman为Inflection AI联合创始人兼CEO，权威性高。",
+      "evidenceQuote": "Mustafa Suleyman is the co-founder and CEO of Inflection, and a venture partner at Greylock.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvnosx00efrmtbvesdazp0",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:47:19.605Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://greylock.com/portfolio-news/a-new-paradigm-in-human-machine-interaction/",
+          "title": "A New Paradigm in Human-Machine Interaction",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=仅为机构通用页面，未涉及目标人物具体信息。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"A New Paradigm in Human-Machine Interaction\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman New Paradigm Human-Machine Interaction official source",
+            "Mustafa Suleyman New Paradigm Human-Machine Interaction Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman New Paradigm Human-Machine Interaction interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnosx00efrmtbvesdazp0",
+          "objectLabel": "A New Paradigm in Human-Machine Interaction"
+        },
+        "selectedReason": "官方机构资料页，明确列出Mustafa Suleyman为Inflection AI联合创始人兼CEO，权威性高。",
+        "evidenceQuote": "Mustafa Suleyman is the co-founder and CEO of Inflection, and a venture partner at Greylock.",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnzni00g3rmtbao3x3340",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://cloudwars.com/ai/mustafa-suleyman-outlines-microsofts-vision-for-human-centered-superintelligence",
+      "urlHash": "2b38afb1d35bc4f13fd407547f23f81a99e7b2146e7f23fe6a35398947fff92a",
+      "contentHash": "3d8119e4d79156237773f62fefbd15ee580b5f3308819203293cb21683c977f4",
+      "sourceType": "exa",
+      "title": "Mustafa Suleyman Outlines Microsoft’s Vision for Human-Centered Superintelligence - Cloud Wars",
+      "text": "Evidence quote: That is how Mustafa Suleyman, CEO of Microsoft AI, begins a comprehensive blog post titled “Towards Humanist Superintelligence.” Selection reason: 文章明确引用Suleyman的博客内容，直接证明他作为微软AI CEO阐述了“人类主义超级智能”的愿景，与原始来源主题高度相关且人物关系清晰。 Source preview: Cloud Wars Cloud Wars Cloud Wars Mustafa Suleyman Outlines Microsoft’s Vision for Human-Centered Superintelligence Kieron Allen “Here’s a question that’s not getting the attention it deserves: what kind of AI does the world really want? I think it’s probably the most important question of our time.” That is how Mustafa Suleyman, CEO of Microsoft AI, begins a comprehensive blog post titled “Towards Humanist Superintelligence.” In the blog, Suleyman details the formation of the MAI Superintelligence Team and its mission to deliver AI “in a way that is carefully calibrated, contextualized, within limits.” Human-First Approach Suleyman, a prominent figure in the AI field, has a well-publicized ... MiMo rationale: 原始来源（微软AI博客）未明确提及Suleyman本人，导致人物关联弱。候选来源中，Cloud Wars文章直接引用并阐述了Suleyman的观点，Fortune文章提供了权威的第三方报道，两者均能有效补强人物与作品/观点的关系，适合作为替换或补充来源。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"Towards Humanist Superintelligence - Microsoft AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman Towards Humanist Superintelligence Microsoft official source | Mustafa Suleyman Towards Humanist Superintelligence Microsoft Inflection AI Greylock Partners evidence | Mustafa Suleyman Towards Humanist Superintelligence Microsoft interview transcript",
+      "selectedHost": "cloudwars.com",
+      "reason": "文章明确引用Suleyman的博客内容，直接证明他作为微软AI CEO阐述了“人类主义超级智能”的愿景，与原始来源主题高度相关且人物关系清晰。",
+      "evidenceQuote": "That is how Mustafa Suleyman, CEO of Microsoft AI, begins a comprehensive blog post titled “Towards Humanist Superintelligence.”",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvnzni00g3rmtbao3x3340",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:48:31.377Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://microsoft.ai/news/towards-humanist-superintelligence/",
+          "title": "Towards Humanist Superintelligence - Microsoft AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为微软AI博客，未明确提及Mustafa Suleyman本人，仅关于机构。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"Towards Humanist Superintelligence - Microsoft AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman Towards Humanist Superintelligence Microsoft official source",
+            "Mustafa Suleyman Towards Humanist Superintelligence Microsoft Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman Towards Humanist Superintelligence Microsoft interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvnzni00g3rmtbao3x3340",
+          "objectLabel": "Towards Humanist Superintelligence - Microsoft AI"
+        },
+        "selectedReason": "文章明确引用Suleyman的博客内容，直接证明他作为微软AI CEO阐述了“人类主义超级智能”的愿景，与原始来源主题高度相关且人物关系清晰。",
+        "evidenceQuote": "That is how Mustafa Suleyman, CEO of Microsoft AI, begins a comprehensive blog post titled “Towards Humanist Superintelligence.”",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjuuf37v0fwgrmtbg4fjk3tb",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "person": "乔尔·皮诺",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://mila.quebec/en/directory/joelle-pineau",
+      "urlHash": "ad9b3390fa66f61225145f67650697ac65ffc4df7cf4a9e5cd3f3af824efe060",
+      "contentHash": "be9201085d71b7671c8cbd963d5e6d2ab28a1a6a281c2de5017c9bd95253900c",
+      "sourceType": "exa",
+      "title": "Joelle Pineau | Mila",
+      "text": "Evidence quote: Joelle Pineau | Mila Selection reason: Mila（蒙特利尔学习算法研究所）官方目录页，确认其作为核心成员的身份，是权威的学术机构资料。 Source preview: Joelle Pineau | Mila Skip to main content Top menu Directory Insights News Careers Français Image 1: Site logo Learning Image 2: young people interacting in a library Mila on Udemy Gain foundational responsible artificial intelligence (AI) skills through self-paced courses from Mila’s global experts. Learn more Events Image 3: a women with her cellphone in front of her face Disinformation 2.0: When AI Blurs the Lines Join us on June 10 for the \"After Mila\" event, a series of community meetups pairing AI researchers with field experts to discuss the tangible impact of AI on our daily lives. Register here Publications Image 4: picture of a bridge from above AI Policy Fellowship Publications T... MiMo rationale: 原始来源（Meta高管页面）正文缺乏对目标人物的介绍。候选来源中，麦吉尔大学个人主页和Mila目录页均为权威机构官方资料，明确列出了其职位、研究领域及与Meta的关联，可直接证明人物身份与职位关系，是理想的替换来源。 Evidence requirements: Source must name 乔尔·皮诺 directly. | Source must support why \"Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta official source | 乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta Facebook AI Research (FAIR) 麦吉尔大学 evidence | 乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta interview transcript",
+      "selectedHost": "mila.quebec",
+      "reason": "Mila（蒙特利尔学习算法研究所）官方目录页，确认其作为核心成员的身份，是权威的学术机构资料。",
+      "evidenceQuote": "Joelle Pineau | Mila",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuuf37v0fwgrmtbg4fjk3tb",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:48:56.601Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://about.meta.com/media-gallery/executives/joelle-pineau/",
+          "title": "Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=虽然标题相关，但正文内容仅列出了其他高管名单，缺乏对目标人物的介绍。.",
+          "evidenceRequirements": [
+            "Source must name 乔尔·皮诺 directly.",
+            "Source must support why \"Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta official source",
+            "乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta Facebook AI Research (FAIR) 麦吉尔大学 evidence",
+            "乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuf37v0fwgrmtbg4fjk3tb",
+          "objectLabel": "Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta"
+        },
+        "selectedReason": "Mila（蒙特利尔学习算法研究所）官方目录页，确认其作为核心成员的身份，是权威的学术机构资料。",
+        "evidenceQuote": "Joelle Pineau | Mila",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjuuf37v0fwgrmtbg4fjk3tb",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "person": "乔尔·皮诺",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.cs.mcgill.ca/~jpineau",
+      "urlHash": "8bf1cac4972048623ee049f3e493841e9c0a8090c40bcd34f3f7a2ee7d28a98c",
+      "contentHash": "ccb1d67cb11e2da3eddd0744c4dd3ea360d544d9675e124045690b74185f9902",
+      "sourceType": "official",
+      "title": "Joelle Pineau's Home",
+      "text": "Evidence quote: Short bio: Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ... Selection reason: 麦吉尔大学官方个人主页，明确列出其职位、研究领域及与Meta的关联，权威且可访问。 Source preview: Joelle Pineau's webpage at McGill Research Publications Students Teaching (previous years, not current) + COMP-102 + COMP-424 + COMP-551 Contact News: Looking for the Machine Learning Reproducibility Checklist? Use this before your next paper submission to ensure you don't miss important details! Current status: I am currently on (part-time) leave from McGill. I am not taking new graduate students and am not able to host international visitors or interns. I receive a very high volume of email, and an unable to respond to all requests and messages. Short bio: Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ... MiMo rationale: 原始来源（Meta高管页面）正文缺乏对目标人物的介绍。候选来源中，麦吉尔大学个人主页和Mila目录页均为权威机构官方资料，明确列出了其职位、研究领域及与Meta的关联，可直接证明人物身份与职位关系，是理想的替换来源。 Evidence requirements: Source must name 乔尔·皮诺 directly. | Source must support why \"Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta official source | 乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta Facebook AI Research (FAIR) 麦吉尔大学 evidence | 乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta interview transcript",
+      "selectedHost": "cs.mcgill.ca",
+      "reason": "麦吉尔大学官方个人主页，明确列出其职位、研究领域及与Meta的关联，权威且可访问。",
+      "evidenceQuote": "Short bio: Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuuf37v0fwgrmtbg4fjk3tb",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:48:56.601Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://about.meta.com/media-gallery/executives/joelle-pineau/",
+          "title": "Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=虽然标题相关，但正文内容仅列出了其他高管名单，缺乏对目标人物的介绍。.",
+          "evidenceRequirements": [
+            "Source must name 乔尔·皮诺 directly.",
+            "Source must support why \"Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta official source",
+            "乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta Facebook AI Research (FAIR) 麦吉尔大学 evidence",
+            "乔尔·皮诺 Joelle Pineau, Vice President Research and Head FAIR Meta Meta interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuf37v0fwgrmtbg4fjk3tb",
+          "objectLabel": "Joelle Pineau, Vice President of AI Research and Head of FAIR at Meta | Meta"
+        },
+        "selectedReason": "麦吉尔大学官方个人主页，明确列出其职位、研究领域及与Meta的关联，权威且可访问。",
+        "evidenceQuote": "Short bio: Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ...",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxorp803u9rmtb60qfjfce",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.entrepreneur.com/business-news/google-ceo-sundar-pichai-is-a-billionaire-for-the-first-time/495064",
+      "urlHash": "9514fca6db351a8d9ce658908e917c71cff09c7050c80346998ad5592002fd98",
+      "contentHash": "f243fe04456a4ccf07751f1b3d4523a2cb16ef3c6cb373cc027dd2a3e715c644",
+      "sourceType": "exa",
+      "title": "Google CEO Sundar Pichai Is a Billionaire for the First Time",
+      "text": "Evidence quote: Google CEO Sundar Pichai has officially hit billionaire status, a rare achievement for a non-founding CEO. Selection reason: 知名商业媒体，明确报道皮查伊首次成为亿万富翁，直接支持其财富增长的叙述。 Source preview: You're viewing the US website. Looking for the Site edition? This Big Tech CEO Just Became a Billionaire for the First Time Google CEO Sundar Pichai has officially hit billionaire status, a rare achievement for a non-founding CEO. Copied to clipboard Key Takeaways Google CEO Sundar Pichai, 53, who has been at the helm of the tech giant for nearly a decade, is now officially a billionaire. According to the Bloomberg Billionaires Index, Pichai is now worth $1.1 billion, a rare achievement for a non-founding CEO. Pichai’s rise in net worth is due to the growth of Google’s parent company, Alphabet, which has added more than $1 trillion in market value and returned 120% to investors since the be... MiMo rationale: 原始来源质量低且主题偏离。候选中Fortune、Entrepreneur、Forbes和播客转录提供了关于皮查伊薪酬、财富和职位的权威、直接证据，可有效补强其职业成就和财富故事的叙述。 Evidence requirements: Source must name 桑达尔·皮查伊 directly. | Source must support why \"Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status official source | 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status 谷歌 Alphabet公司 evidence | 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status interview transcript",
+      "selectedHost": "entrepreneur.com",
+      "reason": "知名商业媒体，明确报道皮查伊首次成为亿万富翁，直接支持其财富增长的叙述。",
+      "evidenceQuote": "Google CEO Sundar Pichai has officially hit billionaire status, a rare achievement for a non-founding CEO.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxorp803u9rmtb60qfjfce",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:49:23.731Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.indiatimes.com/worth/news/sundar-pichais-success-story-from-highest-paid-ceo-to-rare-billionaire-status-633584.html",
+          "title": "Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为皮查伊成功故事，但未涉及AI或科技行业，且质量较低。.",
+          "evidenceRequirements": [
+            "Source must name 桑达尔·皮查伊 directly.",
+            "Source must support why \"Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status official source",
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status 谷歌 Alphabet公司 evidence",
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxorp803u9rmtb60qfjfce",
+          "objectLabel": "Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status"
+        },
+        "selectedReason": "知名商业媒体，明确报道皮查伊首次成为亿万富翁，直接支持其财富增长的叙述。",
+        "evidenceQuote": "Google CEO Sundar Pichai has officially hit billionaire status, a rare achievement for a non-founding CEO.",
+        "candidateAuthorityScore": 12,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxorp803u9rmtb60qfjfce",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://fortune.com/2026/03/10/google-ceo-sundar-pichai-692-million-compensation-waymo-wing-success",
+      "urlHash": "dd45ecc18865601f8534bfea41b0a00648daedc1913a6e71bcc8754142e4455f",
+      "contentHash": "835fe820ad1f6034ce1356151632f383bdf23d788da73d1a434f2d8d0242c197",
+      "sourceType": "exa",
+      "title": "Google CEO Sundar Pichai's $692M pay package hinges on two Google moonshots | Fortune",
+      "text": "Evidence quote: Google and Alphabet CEO Sundar Pichai could be getting a $692 million payday in the next three years, but that depends on the success of two moonshot companies... Selection reason: 权威财经媒体，详细报道皮查伊的薪酬方案，直接关联其作为CEO的薪酬与公司业绩，可补强其职业成就。 Source preview: Trendingnow 1 2 3 1 2 3 Alphabet CEO Sundar Pichai’s new $692 million compensation package hinges on the success of two Google moonshots that aren’t making any money A potrait of Pichai. Google and Alphabet CEO Sundar Pichai could be getting a $692 million payday in the next three years, but that depends on the success of two moonshot companies that are operating at a loss. On March 4, Alphabet awarded Pichai a prospective $692 million compensation package over the next three years, potentially making him one of the most highly-paid tech leaders in the industry. However, according to an SEC filing posted on March 6, about half of Pichai’s compensation is tied to the success of Alphabet’s ro... MiMo rationale: 原始来源质量低且主题偏离。候选中Fortune、Entrepreneur、Forbes和播客转录提供了关于皮查伊薪酬、财富和职位的权威、直接证据，可有效补强其职业成就和财富故事的叙述。 Evidence requirements: Source must name 桑达尔·皮查伊 directly. | Source must support why \"Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status official source | 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status 谷歌 Alphabet公司 evidence | 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status interview transcript",
+      "selectedHost": "fortune.com",
+      "reason": "权威财经媒体，详细报道皮查伊的薪酬方案，直接关联其作为CEO的薪酬与公司业绩，可补强其职业成就。",
+      "evidenceQuote": "Google and Alphabet CEO Sundar Pichai could be getting a $692 million payday in the next three years, but that depends on the success of two moonshot companies...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxorp803u9rmtb60qfjfce",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:49:23.731Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.indiatimes.com/worth/news/sundar-pichais-success-story-from-highest-paid-ceo-to-rare-billionaire-status-633584.html",
+          "title": "Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为皮查伊成功故事，但未涉及AI或科技行业，且质量较低。.",
+          "evidenceRequirements": [
+            "Source must name 桑达尔·皮查伊 directly.",
+            "Source must support why \"Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status official source",
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status 谷歌 Alphabet公司 evidence",
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxorp803u9rmtb60qfjfce",
+          "objectLabel": "Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status"
+        },
+        "selectedReason": "权威财经媒体，详细报道皮查伊的薪酬方案，直接关联其作为CEO的薪酬与公司业绩，可补强其职业成就。",
+        "evidenceQuote": "Google and Alphabet CEO Sundar Pichai could be getting a $692 million payday in the next three years, but that depends on the success of two moonshot companies...",
+        "candidateAuthorityScore": 18,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxorp803u9rmtb60qfjfce",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.forbes.com/profile/sundar-pichai",
+      "urlHash": "64fac358d91bdcde2f3763e72b278e1dac8ab24fab8924228ee98ffe6158c660",
+      "contentHash": "f0cc81f1b9e9962c5d2dce2841a05310137e37e2bc5baccc0a28499fdb07b237",
+      "sourceType": "exa",
+      "title": "Sundar Pichai",
+      "text": "Evidence quote: Sundar Pichai is CEO of Google parent Alphabet... Pichai has worked at Google since 2004... He holds around 0.02% of Alphabet... Selection reason: 福布斯官方人物资料页，提供权威的净资产、职位和职业背景信息，是可靠的个人资料来源。 Source preview: PROFILE Sundar Pichai $1.7B $9M (0.51%) Real Time Net Worth as of 6/1/26 Reflects change since 5 pm ET of prior trading day. #2404 in the world today Photo by Klaudia Radecka/NurPhoto/Getty Images profile image for Sundar Pichai From the Editor Last Updated Mar 10, 2026, 1:01am EDT Sundar Pichai is CEO of Google parent Alphabet, a position he has held since 2019, when he was tapped to replace Google cofounder Larry Page. Pichai has worked at Google since 2004, reportedly interviewing for the job the same day Google launched Gmail. He became Google's CEO in 2015. He holds around 0.02% of Alphabet and has sold more than $500 million worth of shares, before taxes. Born in Chennai, India, Picha... MiMo rationale: 原始来源质量低且主题偏离。候选中Fortune、Entrepreneur、Forbes和播客转录提供了关于皮查伊薪酬、财富和职位的权威、直接证据，可有效补强其职业成就和财富故事的叙述。 Evidence requirements: Source must name 桑达尔·皮查伊 directly. | Source must support why \"Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status official source | 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status 谷歌 Alphabet公司 evidence | 桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status interview transcript",
+      "selectedHost": "forbes.com",
+      "reason": "福布斯官方人物资料页，提供权威的净资产、职位和职业背景信息，是可靠的个人资料来源。",
+      "evidenceQuote": "Sundar Pichai is CEO of Google parent Alphabet... Pichai has worked at Google since 2004... He holds around 0.02% of Alphabet...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxorp803u9rmtb60qfjfce",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:49:23.731Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.indiatimes.com/worth/news/sundar-pichais-success-story-from-highest-paid-ceo-to-rare-billionaire-status-633584.html",
+          "title": "Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容为皮查伊成功故事，但未涉及AI或科技行业，且质量较低。.",
+          "evidenceRequirements": [
+            "Source must name 桑达尔·皮查伊 directly.",
+            "Source must support why \"Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status official source",
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status 谷歌 Alphabet公司 evidence",
+            "桑达尔·皮查伊 Sundar Pichai Success Story: From Highest Paid CEO Rare Billionaire Status interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxorp803u9rmtb60qfjfce",
+          "objectLabel": "Sundar Pichai’s Success Story: From Highest Paid CEO To ‘Rare’ Billionaire Status"
+        },
+        "selectedReason": "福布斯官方人物资料页，提供权威的净资产、职位和职业背景信息，是可靠的个人资料来源。",
+        "evidenceQuote": "Sundar Pichai is CEO of Google parent Alphabet... Pichai has worked at Google since 2004... He holds around 0.02% of Alphabet...",
+        "candidateAuthorityScore": 12,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxq1s10438rmtbn7wftyny",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://papers.nips.cc/paper/7181-attention-is-all-you-need",
+      "urlHash": "0210d0cc989f8e01a7b6a4aa0e9765eb482d8245ea0cc30d812bc21f7cfc7244",
+      "contentHash": "899781cd51102f15662af6086bb1a6385d7a75c8dcaa42f0905819bd570b06b6",
+      "sourceType": "paper",
+      "title": "Attention is All you Need",
+      "text": "Evidence quote: Attention is All you Need Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, Illia Polosukhin Selection reason: NeurIPS官方论文详情页，明确列出阿希什·瓦斯瓦尼为第一作者，直接证明其与Transformer论文的关系。 Source preview: Attention is All you Need Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, Illia Polosukhin Advances in Neural Information Processing Systems 30 (NIPS 2017) Bibtex Metadata Paper Reviews Abstract The dominant sequence transduction models are based on complex recurrent orconvolutional neural networks in an encoder and decoder configuration. The best performing such models also connect the encoder and decoder through an attentionm echanisms. We propose a novel, simple network architecture based solely onan attention mechanism, dispensing with recurrence and convolutions entirely.Experiments on two machine translation tasks show these model... MiMo rationale: 原始来源为Papers with Code的搜索结果页，未聚焦人物本人。候选中的NeurIPS论文详情页是权威的官方学术来源，直接证明阿希什·瓦斯瓦尼作为Transformer论文第一作者的身份，符合替换要求。 Evidence requirements: Source must name 阿希什·瓦斯瓦尼 directly. | Source must support why \"Papers with Code - Ashish Vaswani\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani paper authors | 阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani official source | 阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani 谷歌 Transformer evidence | 阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani interview transcript",
+      "selectedHost": "papers.nips.cc",
+      "reason": "NeurIPS官方论文详情页，明确列出阿希什·瓦斯瓦尼为第一作者，直接证明其与Transformer论文的关系。",
+      "evidenceQuote": "Attention is All you Need Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, Illia Polosukhin",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxq1s10438rmtbn7wftyny",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:49:44.081Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://paperswithcode.com/search?q=author%3AAshish+Vaswani&order_by=stars",
+          "title": "Papers with Code - Ashish Vaswani",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=页面为Papers with Code的热门论文列表，未聚焦阿希什·瓦斯瓦尼本人。.",
+          "evidenceRequirements": [
+            "Source must name 阿希什·瓦斯瓦尼 directly.",
+            "Source must support why \"Papers with Code - Ashish Vaswani\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani paper authors",
+            "阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani official source",
+            "阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani 谷歌 Transformer evidence",
+            "阿希什·瓦斯瓦尼 Papers with Code Ashish Vaswani interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq1s10438rmtbn7wftyny",
+          "objectLabel": "Papers with Code - Ashish Vaswani"
+        },
+        "selectedReason": "NeurIPS官方论文详情页，明确列出阿希什·瓦斯瓦尼为第一作者，直接证明其与Transformer论文的关系。",
+        "evidenceQuote": "Attention is All you Need Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, Illia Polosukhin",
+        "candidateAuthorityScore": 12,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxqj25049krmtbmjpj9fdy",
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://ainext.tw/people/jakob-uszkoreit",
+      "urlHash": "d9add01188941c91f5816ba3c0b6af7930ef7ee290a0988f0a8206febfae3d80",
+      "contentHash": "1b72a832fe12b21d86149b07499f8a9a210c8e6af2c52ab5afd988ef3819206e",
+      "sourceType": "exa",
+      "title": "雅各布・烏茲科雷特Jakob Uszkoreit - AINEXT",
+      "text": "Evidence quote: Jakob Uszkoreit 是「Attention Is All You Need」論文的共同作者，曾在 Google Brain 工作超過 13 年，參與開發早期的 Google 翻譯。2021 年，受到 AlphaFold 和 mRNA 疫苗成功的啟發，他創立了 Inceptive——一家用 AI 設計 RNA 藥物的生物科技公司。 Selection reason: 人物资料页，详细列出其职业经历、教育背景及关键论文，可作为权威的个人简介来源。 Source preview: 3:34 PM 週三 6月10日 2026 AI 新商業情報觀察站 紐約 鳳凰城 舊金山 雅各布・烏茲科雷特 Jakob Uszkoreit Inceptive 雅各布・烏茲科雷特 Jakob Uszkoreit 雅各布・烏茲科雷特 Transformer 論文共同作者，Inceptive 創辦人 共同創辦人與執行長 @ Inceptive 德國 1983 年生 個人網站 科學家 創辦人 CEO 關於 雅各布・烏茲科雷特 Jakob Uszkoreit Jakob Uszkoreit 是「Attention Is All You Need」論文的共同作者，曾在 Google Brain 工作超過 13 年，參與開發早期的 Google 翻譯。2021 年，受到 AlphaFold 和 mRNA 疫苗成功的啟發，他創立了 Inceptive——一家用 AI 設計 RNA 藥物的生物科技公司。他是「Transformer 八人幫」中唯一將 AI 應用於生物技術的創業者。 職涯經歷 2021-現在 共同創辦人與執行長 Inceptive 2008-2021 研究科學家 Google Brain 學歷 柏林工業大學 電腦科學與數學碩士 2007 創業經歷 Inceptive 2021 年創立 AI 生物科技公司，總部在柏林和矽谷 重要論文 Attention Is All You Need NeurIPS 2017 An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale ICLR 2020 ... MiMo rationale: 原始来源（X推文）缺乏具体内容，无法验证。候选中，Apple Podcasts和AINEXT资料页均明确提及人物身份、Transformer论文贡献及当前职位，可有效补强人物背景信息，替代或补充原始来源。 Evidence requirements: Source must name 雅各布·乌什科雷特 directly. | Source must support why \"//x.com/kyosu/status/1409163620550860800\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 雅各布·乌什科雷特 official profile AI research | 雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 official source | 雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 谷歌 Transformer evidence | 雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 interview transcript",
+      "selectedHost": "ainext.tw",
+      "reason": "人物资料页，详细列出其职业经历、教育背景及关键论文，可作为权威的个人简介来源。",
+      "evidenceQuote": "Jakob Uszkoreit 是「Attention Is All You Need」論文的共同作者，曾在 Google Brain 工作超過 13 年，參與開發早期的 Google 翻譯。2021 年，受到 AlphaFold 和 mRNA 疫苗成功的啟發，他創立了 Inceptive——一家用 AI 設計 RNA 藥物的生物科技公司。",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxqj25049krmtbmjpj9fdy",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:42:59.060Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/kyosu/status/1409163620550860800",
+          "title": "//x.com/kyosu/status/1409163620550860800",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然是官方账号链接，但缺乏具体文本内容，需人工确认推文价值。.",
+          "evidenceRequirements": [
+            "Source must name 雅各布·乌什科雷特 directly.",
+            "Source must support why \"//x.com/kyosu/status/1409163620550860800\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "雅各布·乌什科雷特 official profile AI research",
+            "雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 official source",
+            "雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 谷歌 Transformer evidence",
+            "雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqj25049krmtbmjpj9fdy",
+          "objectLabel": "//x.com/kyosu/status/1409163620550860800"
+        },
+        "selectedReason": "人物资料页，详细列出其职业经历、教育背景及关键论文，可作为权威的个人简介来源。",
+        "evidenceQuote": "Jakob Uszkoreit 是「Attention Is All You Need」論文的共同作者，曾在 Google Brain 工作超過 13 年，參與開發早期的 Google 翻譯。2021 年，受到 AlphaFold 和 mRNA 疫苗成功的啟發，他創立了 Inceptive——一家用 AI 設計 RNA 藥物的生物科技公司。",
+        "candidateAuthorityScore": 3,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxqj25049krmtbmjpj9fdy",
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://podcasts.apple.com/us/podcast/the-ai-pioneer-developing-new-kinds-of-medicine/id1602541473?i=1000716524176",
+      "urlHash": "0b6902878d740b1d2137a256f344cb229eafbfa5e4817e3bc5703cfe0fc5d5a6",
+      "contentHash": "ebab3fa1a31f834f85f5ffb4157fdbb873f71d2a29652fb06966799492a63e3c",
+      "sourceType": "podcast",
+      "title": "The AI Pioneer Developing New Kinds of Medicine - Apple Podcasts",
+      "text": "Evidence quote: Jakob Uszkoreit is the CEO and co-founder of Inceptive, a biotech start-up. He’s also a co-author of “Attention is All You Need,” the paper that created transformer models. Selection reason: 权威媒体播客，明确提及雅各布·乌什科雷特（Jakob Uszkoreit）是Transformer论文共同作者及Inceptive CEO，可作为人物背景的补充来源。 Source preview: What's Your Problem? The AI Pioneer Developing New Kinds of Medicine Jakob Uszkoreit is the CEO and co-founder of Inceptive, a biotech start-up. He’s also a co-author of “Attention is All You Need,” the paper that created transformer models. Today, transformers power chatbots like ChatGPT and Claude. They’ve also led to breakthroughs in everything from generating images to predicting the structure of proteins. On today’s show, Jakob talks about the invention of transformer models. And he discusses how he’s using those models to try to invent new kinds of medicine, with a particular focus on RNA. See omnystudio.com/listener for privacy information. Hosts & Guests Jacob Goldstein Jacob Goldst... MiMo rationale: 原始来源（X推文）缺乏具体内容，无法验证。候选中，Apple Podcasts和AINEXT资料页均明确提及人物身份、Transformer论文贡献及当前职位，可有效补强人物背景信息，替代或补充原始来源。 Evidence requirements: Source must name 雅各布·乌什科雷特 directly. | Source must support why \"//x.com/kyosu/status/1409163620550860800\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 雅各布·乌什科雷特 official profile AI research | 雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 official source | 雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 谷歌 Transformer evidence | 雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 interview transcript",
+      "selectedHost": "podcasts.apple.com",
+      "reason": "权威媒体播客，明确提及雅各布·乌什科雷特（Jakob Uszkoreit）是Transformer论文共同作者及Inceptive CEO，可作为人物背景的补充来源。",
+      "evidenceQuote": "Jakob Uszkoreit is the CEO and co-founder of Inceptive, a biotech start-up. He’s also a co-author of “Attention is All You Need,” the paper that created transformer models.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxqj25049krmtbmjpj9fdy",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T17:42:59.060Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/kyosu/status/1409163620550860800",
+          "title": "//x.com/kyosu/status/1409163620550860800",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然是官方账号链接，但缺乏具体文本内容，需人工确认推文价值。.",
+          "evidenceRequirements": [
+            "Source must name 雅各布·乌什科雷特 directly.",
+            "Source must support why \"//x.com/kyosu/status/1409163620550860800\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "雅各布·乌什科雷特 official profile AI research",
+            "雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 official source",
+            "雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 谷歌 Transformer evidence",
+            "雅各布·乌什科雷特 //x.com/kyosu/status/1409163620550860800 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqj25049krmtbmjpj9fdy",
+          "objectLabel": "//x.com/kyosu/status/1409163620550860800"
+        },
+        "selectedReason": "权威媒体播客，明确提及雅各布·乌什科雷特（Jakob Uszkoreit）是Transformer论文共同作者及Inceptive CEO，可作为人物背景的补充来源。",
+        "evidenceQuote": "Jakob Uszkoreit is the CEO and co-founder of Inceptive, a biotech start-up. He’s also a co-author of “Attention is All You Need,” the paper that created transformer models.",
+        "candidateAuthorityScore": 15,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmju0zueq09sbrmtbcvydtdem",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju1o4v00eqbrmtb0jcnnood",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxq4gk0446rmtbviflnepn",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju1cyw40cfzrmtbvmecbmm1",
+      "personId": "cmjtxe7r3000g5p0868zhzky2",
+      "person": "雅各布·乌什科雷特",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0wlfi095yrmtb9zzhv5w6",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0o0ds07yqrmtbm1clbgh3",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjs97tsd0013p5lfg0lqdcmo",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjv19wie008cftmg9zokn9tx",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjv16rg60068ftmgp1i0yigh",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvnprh00eprmtbgebxvoda",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

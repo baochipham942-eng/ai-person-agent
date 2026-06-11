@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-06-10T18:54:21.630Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch18.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch18_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH18_CURATED.md",
+  "inputRows": 20,
+  "outputRows": 20,
+  "inputSelectedSources": 24,
+  "outputSelectedSources": 20,
+  "removedSelectedSources": 4,
+  "rowsChanged": 4,
+  "rowsDeferredToHumanReview": 2,
+  "byDecision": {
+    "replace_source": 15,
+    "augment_source": 1,
+    "no_good_source": 1,
+    "human_review": 3
+  },
+  "removedHosts": {
+    "achievement.org": 1,
+    "inabr.com": 1,
+    "nobelprize.org": 1,
+    "y2doc.com": 1
+  },
+  "keptHosts": {
+    "forbes.com": 3,
+    "jasonwei.net": 3,
+    "bbc.com": 2,
+    "lilianweng.github.io": 2,
+    "bloomberg.com": 1,
+    "britannica.com": 1,
+    "cbsnews.com": 1,
+    "cifar.ca": 1,
+    "fortune.com": 1,
+    "montgomerysummit.com": 1,
+    "openai.com": 1,
+    "openreview.net": 1,
+    "possible.fm": 1,
+    "stability.ai": 1
+  }
+}

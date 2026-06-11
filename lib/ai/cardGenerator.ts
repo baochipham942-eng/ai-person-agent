@@ -27,6 +27,10 @@ export interface TopicWeight {
     weight: number;
 }
 
+export interface SaveCardsOptions {
+    generationId?: string;
+}
+
 const CardSchema = z.object({
     type: z.enum(['insight', 'quote', 'story', 'method', 'fact']),
     title: z.string(),
@@ -82,7 +86,7 @@ export async function generateCardsForPerson(
 
     // 取最近 20 张已有卡片作为去重上下文
     const existingCards = options.existingCards ?? await (await loadPrisma()).card.findMany({
-        where: { personId },
+        where: { personId, isActive: true },
         select: { title: true, content: true },
         orderBy: { createdAt: 'desc' },
         take: 20,
@@ -145,12 +149,13 @@ export async function extractTopicsForPerson(
 /**
  * 保存卡片到数据库 (A2: 归一化标题 + SimHash 内容近似去重)
  */
-export async function saveCardsToDatabase(personId: string, cards: Card[]): Promise<void> {
+export async function saveCardsToDatabase(personId: string, cards: Card[], options: SaveCardsOptions = {}): Promise<void> {
     if (cards.length === 0) return;
 
     const prisma = await loadPrisma();
+    const generationId = options.generationId ?? `cardgen:${new Date().toISOString()}`;
     const existingCards = await prisma.card.findMany({
-        where: { personId },
+        where: { personId, isActive: true },
         select: { title: true, content: true },
     });
 
@@ -186,6 +191,8 @@ export async function saveCardsToDatabase(personId: string, cards: Card[]): Prom
             tags: card.tags,
             sourceUrl: card.sourceUrl,
             importance: card.importance,
+            generationId,
+            isActive: true,
         })),
         skipDuplicates: true,
     });

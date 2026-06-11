@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-06-10T21:15:33.439Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:15:33.439Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/card_source_manual_decisions_after_refetch.json",
+    "archive": "docs/audit-2026-06/data/card_source_manual_apply_dry_run_archive.json",
+    "stage": "manual_card_source_after_refetch",
+    "decisions": 12,
+    "applicable": 12,
+    "applied": 0,
+    "skipped": 0,
+    "byAction": {
+      "delete_raw_pool_item": 5,
+      "archive_card": 4,
+      "update_raw_item": 2,
+      "update_card_source": 1
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-06-10T00:39:36.904Z",
+  "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/safe_rawpool_remediation_exa_source_quality_700_wrong_person_post_verify_archive.json",
+  "summary": {
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 96,
+    "rejectedSafeQueueRows": 38,
+    "uniqueTargetIds": 96,
+    "existingTargets": 0,
+    "missingTargets": 96,
+    "deleted": 0,
+    "affectedPeople": 0,
+    "bySourceType": {},
+    "byVerdict": {
+      "wrong_person": 96
+    },
+    "topPeople": {}
+  }
+}

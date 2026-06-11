@@ -1,0 +1,1790 @@
+{
+  "generatedAt": "2026-06-10T16:04:46.356Z",
+  "summary": {
+    "generatedAt": "2026-06-10T16:04:46.355Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch8_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch8_curated_apply_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH8_CURATED_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 24,
+    "selectedSourceRows": 24,
+    "skippedRows": 3,
+    "existingRawPoolItems": 11,
+    "rawInserted": 13,
+    "rawUpdated": 11,
+    "keepAuditsInserted": 13,
+    "keepAuditsExisting": 11,
+    "byDecision": {
+      "replace_source": 19,
+      "augment_source": 5
+    },
+    "bySourceType": {
+      "exa": 19,
+      "youtube": 1,
+      "official": 3,
+      "podcast": 1
+    },
+    "topPeople": {
+      "Emad Mostaque": 5,
+      "Demis Hassabis": 4,
+      "Andrej Karpathy": 3,
+      "Geoffrey Hinton": 3,
+      "Aidan Gomez": 2,
+      "Chris Olah": 2,
+      "Christopher Manning": 2,
+      "Alexandr Wang": 1,
+      "Arthur Mensch": 1,
+      "Dario Amodei": 1
+    },
+    "topHosts": {
+      "forbes.com": 3,
+      "nobelprize.org": 3,
+      "time.com": 2,
+      "achievement.org": 1,
+      "aidangomez.ca": 1,
+      "colah.github.io": 1,
+      "corporate-awards.ieee.org": 1,
+      "cs.toronto.edu": 1,
+      "darioamodei.com": 1,
+      "discover.research.utoronto.ca": 1,
+      "docs.getunbound.ai": 1,
+      "dwarkesh.com": 1,
+      "isomorphiclabs.com": 1,
+      "mastersofscale.com": 1,
+      "nlp.stanford.edu": 1,
+      "podcasts.apple.com": 1,
+      "polytechnique.edu": 1,
+      "stability.ai": 1,
+      "youtube.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 3
+    }
+  },
+  "existing": [
+    {
+      "id": "316d9f5e-a90b-4a92-9447-465fe5fa4452",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "url": "https://aidangomez.ca",
+      "urlHash": "ff47cd2a16ebe37af944ce397d043116bd7388a6b182891ca03e24bc1b9957d2",
+      "sourceType": "exa",
+      "title": "Aidan Gomez | Computer Science & Mathematics",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7bc9d2ec-41d5-4126-9335-ac6bcd0fb24d",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "url": "https://time.com/collections/time100-ai/6310653/aidan-gomez",
+      "urlHash": "e2f6a37faf2f30a9f764fd60cc6e76f0983e307a160e9f332f7fa1a5d59a8a1a",
+      "sourceType": "exa",
+      "title": "Aidan Gomez: The 100 Most Influential People in AI 2023",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "c70ccae9-93e6-46ea-8fc4-472dbdd29137",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "url": "https://colah.github.io/about.html",
+      "urlHash": "2cc98b285c2146435d0c5fab46025423346a9415cbe7b9fa88c6a7a7ac64121c",
+      "sourceType": "exa",
+      "title": "About Me - colah's blog",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "8d8f0ac3-8b53-4968-94a1-c89391a56173",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "url": "https://nlp.stanford.edu/~manning",
+      "urlHash": "bb082b8971e875fe06d2f4710182b3e575e33b224e31403fb5616422a6fdb230",
+      "sourceType": "official",
+      "title": "Christopher Manning, Stanford NLP",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "6e661017-11fe-42e5-8486-5e249160236c",
+      "personId": "cmjtswmqg00033est2ofuqdw0",
+      "person": "Dario Amodei",
+      "url": "https://www.darioamodei.com",
+      "urlHash": "b09d9b09ba5a0f714e1ed18780936695a7bbe5ac83c4b59b9c4adb642e5728f7",
+      "sourceType": "exa",
+      "title": "Dario Amodei",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "5c22f1f0-1446-445f-8d50-7fd9ea043795",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "url": "https://achievement.org/achiever/demis-hassabis-ph-d",
+      "urlHash": "35f3cefa6ab52db057fce86335431e6b1e1613aa355e8774a8f3916b9a24e850",
+      "sourceType": "exa",
+      "title": "Sir Demis Hassabis | Academy of Achievement",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "a8a44e42-165a-4da6-88ae-bdca6988e361",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "url": "https://www.isomorphiclabs.com/people/sir-demis-hassabis-phd",
+      "urlHash": "7c10d994367580f1dbb9d1b8f7201b53c3513ebe94787dc8a358b081ad2d6646",
+      "sourceType": "exa",
+      "title": "Sir Demis Hassabis, PhD - Isomorphic Labs",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "20942bb4-fcc3-4430-bd83-a5921a850a94",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "url": "https://stability.ai/news-updates/stabilityai-announcement",
+      "urlHash": "0c862a3074166b2d74c883bb598665d2b69e5da65f6a70ad740bba06059c46c5",
+      "sourceType": "exa",
+      "title": "Stability AI Announcement — Stability AI",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7fb0d976-7156-4610-9d87-223001399310",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "url": "https://www.forbes.com/sites/kenrickcai/2024/03/29/how-stability-ais-founder-tanked-his-billion-dollar-startup",
+      "urlHash": "9e5873782b1ae3e11be79a4331bc447d62b792eace6cdcabd2174606d4714d36",
+      "sourceType": "exa",
+      "title": "Stability AI Founder Emad Mostaque Tanked His Billion-Dollar Startup",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "e28b2fdf-e50b-4696-8e2e-2714fb10e587",
+      "personId": "cmjs1jjy0005tb28te81500go",
+      "person": "Geoffrey Hinton",
+      "url": "https://discover.research.utoronto.ca/26059-geoffrey-e-hinton",
+      "urlHash": "0a119f99e27aa0d9d688a6418e535eca05edbb3804c0a8cdd089b9d2753f655b",
+      "sourceType": "exa",
+      "title": "Geoffrey E Hinton | About | University of Toronto",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "17f3b87d-62f2-4973-9129-ffe68fbd5028",
+      "personId": "cmjs1jjy0005tb28te81500go",
+      "person": "Geoffrey Hinton",
+      "url": "https://www.nobelprize.org/prizes/physics/2024/hinton/1925103-interview-transcript",
+      "urlHash": "e15ef1c9f7f03af26dbc90a7404ced363fcfb2df8a98a1234e5f6466fc9e7280",
+      "sourceType": "exa",
+      "title": "Transcript from an interview with Geoffrey Hinton - NobelPrize.org",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmjtvp76f00p4rmtb8u7m0u47",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://aidangomez.ca",
+      "urlHash": "ff47cd2a16ebe37af944ce397d043116bd7388a6b182891ca03e24bc1b9957d2",
+      "contentHash": "3cdc3ed2126cd1986a078ad815a435b32cb68b88b75e2ad117d97bb2fcad82cd",
+      "sourceType": "exa",
+      "title": "Aidan Gomez | Computer Science & Mathematics",
+      "text": "Evidence quote: I develop artificial intelligence. I cofounded Cohere to give language to technology. Prior to that I led a group of researchers at For.ai. I was a doctoral student of Yarin Gal and Yee Whye Teh at the University of Oxford. I was a student researcher at Google Brain, working with Jakob Uszkoreit and Jeff Dean). I was an undergraduate student of Roger Grosse at the University of Toronto. Selection reason: 这是Aidan Gomez的个人官方网站，直接证明其身份、教育背景和职业经历，信息权威且完整。 Source preview: Publishings. Playlists. Twitter. GitHub. I develop artificial intelligence. I cofounded Cohere to give language to technology. Prior to that I led a group of researchers at For.ai. I was a doctoral student of Yarin Gal and Yee Whye Teh at the University of Oxford. I was a student researcher at Google Brain, working with Jakob Uszkoreit and Jeff Dean). I was an undergraduate student of Roger Grosse at the University of Toronto. I was an intern of Łukasz Kaiser and Geoffrey Hinton at Google Brain. MiMo rationale: 原始来源仅包含联系方式，信息密度低。候选来源中，个人官方网站（aidangomez.ca）提供了最权威、完整的个人背景信息，直接证明其身份和职业。TIME的报道作为权威媒体补充，进一步确认其Transformer论文作者身份。两者结合可有效替换原始来源。 Evidence requirements: Source must name Aidan Gomez directly. | Source must support why \"Contact Aidan Gomez | Computer Science & Mathematics\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Aidan Gomez Contact Aidan Gomez Computer Science Mathematics official source | Aidan Gomez Contact Aidan Gomez Computer Science Mathematics Cohere Transformer evidence | Aidan Gomez Contact Aidan Gomez Computer Science Mathematics interview transcript",
+      "selectedHost": "aidangomez.ca",
+      "reason": "这是Aidan Gomez的个人官方网站，直接证明其身份、教育背景和职业经历，信息权威且完整。",
+      "evidenceQuote": "I develop artificial intelligence. I cofounded Cohere to give language to technology. Prior to that I led a group of researchers at For.ai. I was a doctoral student of Yarin Gal and Yee Whye Teh at the University of Oxford. I was a student researcher at Google Brain, working with Jakob Uszkoreit and Jeff Dean). I was an undergraduate student of Roger Grosse at the University of Toronto.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvp76f00p4rmtb8u7m0u47",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:50:23.273Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://aidangomez.ca/contact.html",
+          "title": "Contact Aidan Gomez | Computer Science & Mathematics",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=仅包含人物的地理位置和联系方式，信息密度较低，可作为辅助背景资料。.",
+          "evidenceRequirements": [
+            "Source must name Aidan Gomez directly.",
+            "Source must support why \"Contact Aidan Gomez | Computer Science & Mathematics\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Aidan Gomez Contact Aidan Gomez Computer Science Mathematics official source",
+            "Aidan Gomez Contact Aidan Gomez Computer Science Mathematics Cohere Transformer evidence",
+            "Aidan Gomez Contact Aidan Gomez Computer Science Mathematics interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvp76f00p4rmtb8u7m0u47",
+          "objectLabel": "Contact Aidan Gomez | Computer Science & Mathematics"
+        },
+        "selectedReason": "这是Aidan Gomez的个人官方网站，直接证明其身份、教育背景和职业经历，信息权威且完整。",
+        "evidenceQuote": "I develop artificial intelligence. I cofounded Cohere to give language to technology. Prior to that I led a group of researchers at For.ai. I was a doctoral student of Yarin Gal and Yee Whye Teh at the University of Oxford. I was a student researcher at Google Brain, working with Jakob Uszkoreit and Jeff Dean). I was an undergraduate student of Roger Grosse at the University of Toronto.",
+        "candidateAuthorityScore": 29,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvp76f00p4rmtb8u7m0u47",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://time.com/collections/time100-ai/6310653/aidan-gomez",
+      "urlHash": "e2f6a37faf2f30a9f764fd60cc6e76f0983e307a160e9f332f7fa1a5d59a8a1a",
+      "contentHash": "b7e297129c036b1cc86db07d0bbb30ab0d56f424be1144fc3fc13b16577709f7",
+      "sourceType": "exa",
+      "title": "Aidan Gomez: The 100 Most Influential People in AI 2023 - TIME",
+      "text": "Evidence quote: Aidan Gomez was just 20 years old when he co-authored a research paper that would change the entire AI industry. It was 2017 and Gomez, then a Google intern, joined a team of researchers writing “Attention Is All You Need”; it proposed a novel neural network technique called the transformer... Selection reason: 权威媒体TIME的专题报道，明确提及Aidan Gomez是Transformer论文的共同作者，并描述了其贡献，信息可靠。 Source preview: Aidan Gomez Correspondent Aidan Gomez was just 20 years old when he co-authored a research paper that would change the entire AI industry. It was 2017 and Gomez, then a Google intern, joined a team of researchers writing “Attention Is All You Need”; it proposed a novel neural network technique called the transformer that would learn relationships between long strings of data. Gomez and his seven colleagues raced to finish the paper for inclusion at a major AI conference, even sleeping in the office to make the deadline. The paper would eventually underpin the current generative AI craze headlined by ChatGPT. But that took some time. More from TIME “I would be lying if I said I had any appre... MiMo rationale: 原始来源仅包含联系方式，信息密度低。候选来源中，个人官方网站（aidangomez.ca）提供了最权威、完整的个人背景信息，直接证明其身份和职业。TIME的报道作为权威媒体补充，进一步确认其Transformer论文作者身份。两者结合可有效替换原始来源。 Evidence requirements: Source must name Aidan Gomez directly. | Source must support why \"Contact Aidan Gomez | Computer Science & Mathematics\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Aidan Gomez Contact Aidan Gomez Computer Science Mathematics official source | Aidan Gomez Contact Aidan Gomez Computer Science Mathematics Cohere Transformer evidence | Aidan Gomez Contact Aidan Gomez Computer Science Mathematics interview transcript",
+      "selectedHost": "time.com",
+      "reason": "权威媒体TIME的专题报道，明确提及Aidan Gomez是Transformer论文的共同作者，并描述了其贡献，信息可靠。",
+      "evidenceQuote": "Aidan Gomez was just 20 years old when he co-authored a research paper that would change the entire AI industry. It was 2017 and Gomez, then a Google intern, joined a team of researchers writing “Attention Is All You Need”; it proposed a novel neural network technique called the transformer...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvp76f00p4rmtb8u7m0u47",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:50:23.273Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://aidangomez.ca/contact.html",
+          "title": "Contact Aidan Gomez | Computer Science & Mathematics",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=仅包含人物的地理位置和联系方式，信息密度较低，可作为辅助背景资料。.",
+          "evidenceRequirements": [
+            "Source must name Aidan Gomez directly.",
+            "Source must support why \"Contact Aidan Gomez | Computer Science & Mathematics\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Aidan Gomez Contact Aidan Gomez Computer Science Mathematics official source",
+            "Aidan Gomez Contact Aidan Gomez Computer Science Mathematics Cohere Transformer evidence",
+            "Aidan Gomez Contact Aidan Gomez Computer Science Mathematics interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvp76f00p4rmtb8u7m0u47",
+          "objectLabel": "Contact Aidan Gomez | Computer Science & Mathematics"
+        },
+        "selectedReason": "权威媒体TIME的专题报道，明确提及Aidan Gomez是Transformer论文的共同作者，并描述了其贡献，信息可靠。",
+        "evidenceQuote": "Aidan Gomez was just 20 years old when he co-authored a research paper that would change the entire AI industry. It was 2017 and Gomez, then a Google intern, joined a team of researchers writing “Attention Is All You Need”; it proposed a novel neural network technique called the transformer...",
+        "candidateAuthorityScore": 38,
+        "candidateAuthoritySignals": [
+          "credible_media_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvqi3i00x0rmtbwbbspk85",
+      "personId": "cmjtv2h8i0009i0048zkgoqwc",
+      "person": "Alexandr Wang",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://mastersofscale.com/people/alexandr-wang",
+      "urlHash": "bcd7a0588a64ad774acd10a4f920263a01249f23c1c9e81b8846e6506f244235",
+      "contentHash": "c711fde1f7c31680201575a486ac29ac22020cb13ce196612de074714fbaf5e6",
+      "sourceType": "exa",
+      "title": "Alexandr Wang on Masters of Scale",
+      "text": "Evidence quote: Alexandr Wang Founder and CEO Scale AI After dropping out of MIT and co-founding Scale AI in 2016, Alexandr Wang became the world’s youngest self-made billionaire at 24. ... Featured in these episodes and videos Selection reason: 官方人物页面，明确包含姓名、职位、公司及节目关联，可直接证明人物与作品关系。 Source preview: Skip to Content Search Search Masters of Scale Masters of Scale Alexandr Wang Founder and CEO Scale AI After dropping out of MIT and co-founding Scale AI in 2016, Alexandr Wang became the world’s youngest self-made billionaire at 24. The San Francisco–based company has become a $7 billion behemoth, with a client roster that includes the giants of the field, such as Meta, Microsoft, OpenAI, and a partnership with the U.S. government. Chosen as one of Time’s most influential people in AI, he and his AI-unicorn, are scale leaders in one the world’s newest and most important technologies. MoS_AlexandrWang_colorcutout Featured in these episodes and videos See All Episodes chevron-right mos-fallb... MiMo rationale: 原始来源页面因cookie提示和导航导致内容未加载，无法验证。候选中的mastersofscale.com官方人物页面内容完整，明确显示Alexandr Wang的职位、公司及与Masters of Scale节目的关联，符合权威、可访问、直接证明关系的要求，可作为替换来源。 Evidence requirements: Source must name Alexandr Wang directly. | Source must support why \"Alexandr Wang on Masters of Scale\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Alexandr Wang Alexandr Wang Masters Scale official source | Alexandr Wang Alexandr Wang Masters Scale Scale AI 基础设施 evidence | Alexandr Wang Alexandr Wang Masters Scale interview transcript",
+      "selectedHost": "mastersofscale.com",
+      "reason": "官方人物页面，明确包含姓名、职位、公司及节目关联，可直接证明人物与作品关系。",
+      "evidenceQuote": "Alexandr Wang Founder and CEO Scale AI After dropping out of MIT and co-founding Scale AI in 2016, Alexandr Wang became the world’s youngest self-made billionaire at 24. ... Featured in these episodes and videos",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvqi3i00x0rmtbwbbspk85",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:51:32.592Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://mastersofscale.com/people/alexandr-wang/",
+          "title": "Alexandr Wang on Masters of Scale",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=页面仅显示cookie提示和导航，核心内容未加载，无法判断质量。.",
+          "evidenceRequirements": [
+            "Source must name Alexandr Wang directly.",
+            "Source must support why \"Alexandr Wang on Masters of Scale\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Alexandr Wang Alexandr Wang Masters Scale official source",
+            "Alexandr Wang Alexandr Wang Masters Scale Scale AI 基础设施 evidence",
+            "Alexandr Wang Alexandr Wang Masters Scale interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqi3i00x0rmtbwbbspk85",
+          "objectLabel": "Alexandr Wang on Masters of Scale"
+        },
+        "selectedReason": "官方人物页面，明确包含姓名、职位、公司及节目关联，可直接证明人物与作品关系。",
+        "evidenceQuote": "Alexandr Wang Founder and CEO Scale AI After dropping out of MIT and co-founding Scale AI in 2016, Alexandr Wang became the world’s youngest self-made billionaire at 24. ... Featured in these episodes and videos",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0wmy2096grmtbe0328ktr",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.dwarkesh.com/p/andrej-karpathy",
+      "urlHash": "cc36869c1cdff1c5ed75e5d7aaa24d38cb22a9cb3461e2c22d2057dccec70bef",
+      "contentHash": "6187769ce227974aa59f1f78284d28bbc201611746b463e9efb202df0870659d",
+      "sourceType": "exa",
+      "title": "Andrej Karpathy — AGI is still a decade away - Dwarkesh Podcast",
+      "text": "Evidence quote: The Andrej Karpathy episode. Andrej explains why reinforcement learning is terrible (but everything else is much worse), why model collapse prevents LLMs from learning the way humans do, why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education. Selection reason: Dwarkesh Podcast的官方页面，标题直接包含Andrej Karpathy姓名，描述中明确其参与并概述了讨论内容，是可靠的采访来源。 Source preview: Dwarkesh Podcast Dwarkesh Podcast Andrej Karpathy — AGI is still a decade away Dwarkesh Patel's avatar The Andrej Karpathy episode. Andrej explains why reinforcement learning is terrible (but everything else is much worse), why model collapse prevents LLMs from learning the way humans do, why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education. Watch on YouTube; listen on Apple Podcasts or Spotify. Sponsors Labelbox helps you get data that is more detailed, more accurate, and higher signal than you could get by default, no matter your domain or training paradigm. Reach out today at labelbo... MiMo rationale: 原始来源为Medium文章，权威性不足。候选中Dwarkesh Podcast的官方页面和YouTube视频（标题和描述明确）可作为权威补充，证明Andrej Karpathy本人参与并讨论相关观点。其他候选多为社媒、博客或第三方转录，权威性不足。 Evidence requirements: Source must name Andrej Karpathy directly. | Source must support why \"Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer official source | Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer OpenAI 特斯拉 evidence | Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer interview transcript",
+      "selectedHost": "dwarkesh.com",
+      "reason": "Dwarkesh Podcast的官方页面，标题直接包含Andrej Karpathy姓名，描述中明确其参与并概述了讨论内容，是可靠的采访来源。",
+      "evidenceQuote": "The Andrej Karpathy episode. Andrej explains why reinforcement learning is terrible (but everything else is much worse), why model collapse prevents LLMs from learning the way humans do, why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0wmy2096grmtbe0328ktr",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:52:43.744Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://rizpabani.medium.com/why-ai-pioneer-says-llms-are-like-people-spirits-trapped-in-your-computer-361b4e5c28d4",
+          "title": "Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然是关于他的观点报道，但抓取片段包含过多网页导航信息，需核实正文。.",
+          "evidenceRequirements": [
+            "Source must name Andrej Karpathy directly.",
+            "Source must support why \"Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer official source",
+            "Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer OpenAI 特斯拉 evidence",
+            "Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wmy2096grmtbe0328ktr",
+          "objectLabel": "Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer"
+        },
+        "selectedReason": "Dwarkesh Podcast的官方页面，标题直接包含Andrej Karpathy姓名，描述中明确其参与并概述了讨论内容，是可靠的采访来源。",
+        "evidenceQuote": "The Andrej Karpathy episode. Andrej explains why reinforcement learning is terrible (but everything else is much worse), why model collapse prevents LLMs from learning the way humans do, why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0wlpv0962rmtbsegiuoo4",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://docs.getunbound.ai/integrations/llm-council-integration",
+      "urlHash": "eca237ecc011665805da0db3ccc0de65a81b4f581f089dc1869d9942deca3397",
+      "contentHash": "819b1eb369278f61e59ef1dacbf83b35b89627f27fe95fb0980658115a3363d6",
+      "sourceType": "exa",
+      "title": "Andrej Karpathy's LLM Council - Unbound Security",
+      "text": "Evidence quote: LLM Council is a 3-stage deliberation system created by Andrej Karpathy where multiple LLMs collaboratively answer your questions. Selection reason: 官方文档页面，明确将LLM Council归功于Andrej Karpathy，并解释其作为多模型协作系统的概念，可作为权威补充来源。 Source preview: Unbound Security home pagelight logodark logo Andrej Karpathy's LLM Council Learn how to set up LLM Council with Unbound for multi-model AI deliberation > ## Documentation Index > > Fetch the complete documentation index at: > > Use this file to discover all available pages before exploring further. LLM Council is a 3-stage deliberation system created by Andrej Karpathy where multiple LLMs collaboratively answer your questions. Instead of relying on a single AI model, you can assemble a “council” of top LLMs that discuss, peer-review, and synthesize the best possible answer. The key innovation is anonymized peer review - in Stage 2, models evaluate each other’s responses without knowing whi... MiMo rationale: 原始来源是第三方解读文章，权威性不足。候选中，Unbound Security的官方文档页面明确将LLM Council归功于Karpathy，是权威补充。LinkedIn帖子也提供了直接归因，可作为辅助。其他候选与LLM Council主题不匹配。 Evidence requirements: Source must name Andrej Karpathy directly. | Source must support why \"Andrej Karpathy's LLM COUNCIL | Fully Explained | by NSAI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Andrej Karpathy Andrej Karpathy LLM COUNCIL Fully Explained NSAI official source | Andrej Karpathy Andrej Karpathy LLM COUNCIL Fully Explained NSAI OpenAI 特斯拉 evidence | Andrej Karpathy Andrej Karpathy LLM COUNCIL Fully Explained NSAI interview transcript",
+      "selectedHost": "docs.getunbound.ai",
+      "reason": "官方文档页面，明确将LLM Council归功于Andrej Karpathy，并解释其作为多模型协作系统的概念，可作为权威补充来源。",
+      "evidenceQuote": "LLM Council is a 3-stage deliberation system created by Andrej Karpathy where multiple LLMs collaboratively answer your questions.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0wlpv0962rmtbsegiuoo4",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:52:05.515Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://medium.com/@nisarg.nargund/andrej-karpathys-llm-council-fully-explained-5251bdc9a95f",
+          "title": "Andrej Karpathy's LLM COUNCIL | Fully Explained | by NSAI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=第三方对Karpathy观点的解读文章，片段多为网页导航，需人工确认正文是否有深度价值。.",
+          "evidenceRequirements": [
+            "Source must name Andrej Karpathy directly.",
+            "Source must support why \"Andrej Karpathy's LLM COUNCIL | Fully Explained | by NSAI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Andrej Karpathy Andrej Karpathy LLM COUNCIL Fully Explained NSAI official source",
+            "Andrej Karpathy Andrej Karpathy LLM COUNCIL Fully Explained NSAI OpenAI 特斯拉 evidence",
+            "Andrej Karpathy Andrej Karpathy LLM COUNCIL Fully Explained NSAI interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wlpv0962rmtbsegiuoo4",
+          "objectLabel": "Andrej Karpathy's LLM COUNCIL | Fully Explained | by NSAI"
+        },
+        "selectedReason": "官方文档页面，明确将LLM Council归功于Andrej Karpathy，并解释其作为多模型协作系统的概念，可作为权威补充来源。",
+        "evidenceQuote": "LLM Council is a 3-stage deliberation system created by Andrej Karpathy where multiple LLMs collaboratively answer your questions.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0wmy2096grmtbe0328ktr",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.youtube.com/watch?v=lXUZvyajciY",
+      "urlHash": "981cc7040a20a83f55f297f5bab8e9d26afda2b0c31cd1af91ed11346242d043",
+      "contentHash": "81746c39ff196db379ac7f3f755e034fd5dcc19fb2bfb6a8a7ddc8727b7aed44",
+      "sourceType": "youtube",
+      "title": "Andrej Karpathy — “We're summoning ghosts, not building animals”",
+      "text": "Evidence quote: The Andrej Karpathy episode. During this interview, Andrej explains why reinforcement learning is terrible (but everything else is much worse), why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education. Selection reason: Dwarkesh Patel播客的官方YouTube页面，标题和描述明确提及Andrej Karpathy本人参与，且描述中包含其观点摘要，可作为权威补充来源。 Source preview: Andrej Karpathy — “We’re summoning ghosts, not building animals” Dwarkesh Patel 1330000 subscribers 27871 likes Description 1311529 views Posted: 17 Oct 2025 The Andrej Karpathy episode. During this interview, Andrej explains why reinforcement learning is terrible (but everything else is much worse), why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education. It was a pleasure chatting with him. 𝐄𝐏𝐈𝐒𝐎𝐃𝐄 𝐋𝐈𝐍𝐊𝐒 Transcript: Apple Podcasts: Spotify: 𝐒𝐏𝐎𝐍𝐒𝐎𝐑𝐒 Labelbox helps you get data that is more detailed, more accurate, and higher signal than you could get by default, no ma... MiMo rationale: 原始来源为Medium文章，权威性不足。候选中Dwarkesh Podcast的官方页面和YouTube视频（标题和描述明确）可作为权威补充，证明Andrej Karpathy本人参与并讨论相关观点。其他候选多为社媒、博客或第三方转录，权威性不足。 Evidence requirements: Source must name Andrej Karpathy directly. | Source must support why \"Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer official source | Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer OpenAI 特斯拉 evidence | Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer interview transcript",
+      "selectedHost": "youtube.com",
+      "reason": "Dwarkesh Patel播客的官方YouTube页面，标题和描述明确提及Andrej Karpathy本人参与，且描述中包含其观点摘要，可作为权威补充来源。",
+      "evidenceQuote": "The Andrej Karpathy episode. During this interview, Andrej explains why reinforcement learning is terrible (but everything else is much worse), why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0wmy2096grmtbe0328ktr",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:52:43.744Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://rizpabani.medium.com/why-ai-pioneer-says-llms-are-like-people-spirits-trapped-in-your-computer-361b4e5c28d4",
+          "title": "Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然是关于他的观点报道，但抓取片段包含过多网页导航信息，需核实正文。.",
+          "evidenceRequirements": [
+            "Source must name Andrej Karpathy directly.",
+            "Source must support why \"Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer official source",
+            "Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer OpenAI 特斯拉 evidence",
+            "Andrej Karpathy Why Pioneer Says LLMs Are Like People Spirits Trapped Your Computer interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wmy2096grmtbe0328ktr",
+          "objectLabel": "Why an AI Pioneer Says LLMs Are Like ‘People Spirits’ Trapped in Your Computer"
+        },
+        "selectedReason": "Dwarkesh Patel播客的官方YouTube页面，标题和描述明确提及Andrej Karpathy本人参与，且描述中包含其观点摘要，可作为权威补充来源。",
+        "evidenceQuote": "The Andrej Karpathy episode. During this interview, Andrej explains why reinforcement learning is terrible (but everything else is much worse), why AGI will just blend into the previous ~2.5 centuries of 2% GDP growth, why self driving took so long to crack, and what he sees as the future of education.",
+        "candidateAuthorityScore": 29,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page",
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0qqc8089mrmtbbneyl1qb",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.polytechnique.edu/en/news/arthur-mensch-ceo-mistral-acting-big-brother-ecole-polytechnique-ai-and-entrepreneurship",
+      "urlHash": "1383051b09f490ff38769bea9486dc091084ee7af598ae846b20a6369b0f87d6",
+      "contentHash": "feb6b64e1a977a08a1edcd71d1996a82cab96309200d1e089cffee265613d50a",
+      "sourceType": "official",
+      "title": "Arthur Mensch, CEO of Mistral, acting as a big brother at École ...",
+      "text": "Evidence quote: Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students... Selection reason: 法国顶尖理工学院官方新闻页面，确认Arthur Mensch为Mistral AI联合创始人兼CEO，并关联其校友身份，权威性高。 Source preview: Search by profile Student / Candidate Faculty member Entrepreneur Executive / Manager Company Alumni News Press room Support l'X Student Login en MENU Home News Arthur Mensch, CEO of Mistral, Acting As a Big Brother At École Polytechnique, On AI and Entrepreneurship Share Arthur Mensch, CEO of Mistral, acting as a big brother at École Polytechnique, on AI and entrepreneurship Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students for a talk on entrepreneurship and the implications of AI, two topics which he addressed by echoing his School's motto: “For the Nation, for Sciences, and for Glory.” 19 Jan. 2026 Institution “Artificial i... MiMo rationale: 候选来源中，All American Speakers页面和École Polytechnique官方新闻页面均直接、权威地证明了Arthur Mensch作为Mistral AI联合创始人兼CEO的身份，信息完整且可访问，适合作为替换来源。其他来源或权威性不足，或内容不直接，需进一步验证。 Evidence requirements: Source must name Arthur Mensch directly. | Source must support why \"Arthur Mensch |\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Arthur Mensch Arthur Mensch official source | Arthur Mensch Arthur Mensch Mistral AI 谷歌 evidence | Arthur Mensch Arthur Mensch interview transcript",
+      "selectedHost": "polytechnique.edu",
+      "reason": "法国顶尖理工学院官方新闻页面，确认Arthur Mensch为Mistral AI联合创始人兼CEO，并关联其校友身份，权威性高。",
+      "evidenceQuote": "Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0qqc8089mrmtbbneyl1qb",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:53:37.650Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://app.coinpedia.org/arthurmensch/",
+          "title": "Arthur Mensch |",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=简介过于简短，信息量低，但关于人物且与AI相关，需人工判断是否值得入库。.",
+          "evidenceRequirements": [
+            "Source must name Arthur Mensch directly.",
+            "Source must support why \"Arthur Mensch |\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Arthur Mensch Arthur Mensch official source",
+            "Arthur Mensch Arthur Mensch Mistral AI 谷歌 evidence",
+            "Arthur Mensch Arthur Mensch interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0qqc8089mrmtbbneyl1qb",
+          "objectLabel": "Arthur Mensch |"
+        },
+        "selectedReason": "法国顶尖理工学院官方新闻页面，确认Arthur Mensch为Mistral AI联合创始人兼CEO，并关联其校友身份，权威性高。",
+        "evidenceQuote": "Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students...",
+        "candidateAuthorityScore": 37,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxm63r03a8rmtbqwwevk5n",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://time.com/collections/time100-ai-2024/7012873/chris-olah",
+      "urlHash": "a9e6f21f679886c86264a8cb10b90a3adb55c67e7fe3aab7f9127a406beeeb56",
+      "contentHash": "7d2cbb47b1e6ef0e188648a4f6337fe32c36804e5529575c21f9b9e83e21a641",
+      "sourceType": "exa",
+      "title": "Chris Olah: The 100 Most Influential People in AI 2024 - TIME",
+      "text": "Evidence quote: Chris Olah... Anthropic co-founder... Selection reason: 权威媒体TIME的专题报道，确认其身份及在AI领域的影响力，可作为补充来源。 Source preview: Chris Olah Correspondent Until very recently, it was a truism that nobody really understood the inner workings of neural networks. Sure, scientists could tell you that the algorithms learn to spot patterns in massive amounts of data. But look inside a neural network trained to recognize cats, say, and all you’d see would be lots of very complicated numbers being multiplied together. There is no section of code–at least, not in any language humans can understand–for distinguishing a whisker from a tail. And yet somehow, with enough data and computing power, AI can do just that. That is miraculous, but it also poses challenges for safety. If you don’t know how a very powerful new system works... MiMo rationale: 原LinkedIn来源信息薄弱。候选中，本人官方博客（colah.github.io）是最佳替代，直接证明其Anthropic联合创始人身份。TIME文章作为权威媒体补充，增强可信度。其他来源或因权威性不足，或因证据不直接而被拒绝。 Evidence requirements: Source must name Chris Olah directly. | Source must support why \"Christopher Olah - Member Of Technical Staff at Anthropic\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Chris Olah Christopher Olah Member Technical Staff Anthropic official source | Chris Olah Christopher Olah Member Technical Staff Anthropic 谷歌 OpenAI evidence | Chris Olah Christopher Olah Member Technical Staff Anthropic interview transcript",
+      "selectedHost": "time.com",
+      "reason": "权威媒体TIME的专题报道，确认其身份及在AI领域的影响力，可作为补充来源。",
+      "evidenceQuote": "Chris Olah... Anthropic co-founder...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxm63r03a8rmtbqwwevk5n",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:56:32.532Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.linkedin.com/in/christopher-olah-b574414a",
+          "title": "Christopher Olah - Member Of Technical Staff at Anthropic",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=LinkedIn个人资料页，信息量低，但确认是本人且与AI相关.",
+          "evidenceRequirements": [
+            "Source must name Chris Olah directly.",
+            "Source must support why \"Christopher Olah - Member Of Technical Staff at Anthropic\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Chris Olah Christopher Olah Member Technical Staff Anthropic official source",
+            "Chris Olah Christopher Olah Member Technical Staff Anthropic 谷歌 OpenAI evidence",
+            "Chris Olah Christopher Olah Member Technical Staff Anthropic interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxm63r03a8rmtbqwwevk5n",
+          "objectLabel": "Christopher Olah - Member Of Technical Staff at Anthropic"
+        },
+        "selectedReason": "权威媒体TIME的专题报道，确认其身份及在AI领域的影响力，可作为补充来源。",
+        "evidenceQuote": "Chris Olah... Anthropic co-founder...",
+        "candidateAuthorityScore": 65,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxm63r03a8rmtbqwwevk5n",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://colah.github.io/about.html",
+      "urlHash": "2cc98b285c2146435d0c5fab46025423346a9415cbe7b9fa88c6a7a7ac64121c",
+      "contentHash": "bf1aff460002edb3564fdc5f8c8346eef673b269fb7d6ff3af1b18de2ffce36e",
+      "sourceType": "exa",
+      "title": "Christopher Olah - colah's blog",
+      "text": "Evidence quote: I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models. Selection reason: 本人官方主页，明确说明其是Anthropic联合创始人及工作内容，权威且直接。 Source preview: Christopher Olah I work on reverse engineering artificial neural networks into human understandable algorithms. I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models. Previously, I led interpretability research at OpenAI, worked at Google Brain, and co-founded Distill, a scientific journal focused on outstanding communication. My blog should not be taken to reflect the views of any organization I'm affiliated with. Twitter - Google Scholar MiMo rationale: 原LinkedIn来源信息薄弱。候选中，本人官方博客（colah.github.io）是最佳替代，直接证明其Anthropic联合创始人身份。TIME文章作为权威媒体补充，增强可信度。其他来源或因权威性不足，或因证据不直接而被拒绝。 Evidence requirements: Source must name Chris Olah directly. | Source must support why \"Christopher Olah - Member Of Technical Staff at Anthropic\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Chris Olah Christopher Olah Member Technical Staff Anthropic official source | Chris Olah Christopher Olah Member Technical Staff Anthropic 谷歌 OpenAI evidence | Chris Olah Christopher Olah Member Technical Staff Anthropic interview transcript",
+      "selectedHost": "colah.github.io",
+      "reason": "本人官方主页，明确说明其是Anthropic联合创始人及工作内容，权威且直接。",
+      "evidenceQuote": "I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxm63r03a8rmtbqwwevk5n",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:56:32.532Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.linkedin.com/in/christopher-olah-b574414a",
+          "title": "Christopher Olah - Member Of Technical Staff at Anthropic",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=LinkedIn个人资料页，信息量低，但确认是本人且与AI相关.",
+          "evidenceRequirements": [
+            "Source must name Chris Olah directly.",
+            "Source must support why \"Christopher Olah - Member Of Technical Staff at Anthropic\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Chris Olah Christopher Olah Member Technical Staff Anthropic official source",
+            "Chris Olah Christopher Olah Member Technical Staff Anthropic 谷歌 OpenAI evidence",
+            "Chris Olah Christopher Olah Member Technical Staff Anthropic interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxm63r03a8rmtbqwwevk5n",
+          "objectLabel": "Christopher Olah - Member Of Technical Staff at Anthropic"
+        },
+        "selectedReason": "本人官方主页，明确说明其是Anthropic联合创始人及工作内容，权威且直接。",
+        "evidenceQuote": "I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models.",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxki601lsrmtbl2o8hmr1",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "url": "https://corporate-awards.ieee.org/speaker/christopher-manning",
+      "urlHash": "fd095be386861345979b6bcb4474cf56ffbf8e6921b391ecd8119df6606de22e",
+      "contentHash": "9df19e18d2a354cdc8d5f4f88462596cc6f5e3aa1027693a23cd28683f9e8f57",
+      "sourceType": "exa",
+      "title": "Christopher Manning | IEEE Awards",
+      "text": "Evidence quote: Christopher Manning is the inaugural Thomas M. Siebel Professor in Machine Learning in the Departments of Linguistics and Computer Science at Stanford University, Director of the Stanford Artificial Intelligence Laboratory (SAIL), and an Associate Director of the Stanford Institute for Human-Centered Artificial Intelligence (HAI). Selection reason: IEEE官方奖项页面，权威性高，明确说明其斯坦福人工智能实验室（SAIL）主任身份及研究领域，可作为强证据。 Source preview: Skip to content IEEE.org IEEE Xplore Digital Library IEEE Standards IEEE Spectrum More Sites IEEE Awards InstagramLinkedInFacebookTwitter IEEE logo Christopher Manning ← Back to all speakers 2024 IEEE John von Neumann Medal Recipient and Panelist for Panel on AI Christopher Manning is the inaugural Thomas M. Siebel Professor in Machine Learning in the Departments of Linguistics and Computer Science at Stanford University, Director of the Stanford Artificial Intelligence Laboratory (SAIL), and an Associate Director of the Stanford Institute for Human-Centered Artificial Intelligence (HAI). His research goal is computers that can intelligently process, understand, and generate human languages... MiMo rationale: 原始来源（斯坦福AI实验室主页）抓取内容信息密度低。候选中的NLP官方个人主页和IEEE奖项页面均为权威机构来源，能直接、清晰地证明Christopher Manning与斯坦福人工智能实验室（SAIL）的职位关系，是理想的替换来源。 Evidence requirements: Source must name Christopher Manning directly. | Source must support why \"Chris Manning – Stanford Artificial Intelligence Laboratory\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory official source | Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory 斯坦福大学 悉尼大学 evidence | Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory interview transcript",
+      "selectedHost": "corporate-awards.ieee.org",
+      "reason": "IEEE官方奖项页面，权威性高，明确说明其斯坦福人工智能实验室（SAIL）主任身份及研究领域，可作为强证据。",
+      "evidenceQuote": "Christopher Manning is the inaugural Thomas M. Siebel Professor in Machine Learning in the Departments of Linguistics and Computer Science at Stanford University, Director of the Stanford Artificial Intelligence Laboratory (SAIL), and an Associate Director of the Stanford Institute for Human-Centered Artificial Intelligence (HAI).",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvxki601lsrmtbl2o8hmr1",
+        "decision": "replace_source",
+        "confidence": 0.95,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:57:01.081Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://ai.stanford.edu/?faculty=chris-manning",
+          "title": "Chris Manning – Stanford Artificial Intelligence Laboratory",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是其个人主页，但抓取内容多为导航信息和其他教授的新闻，有效信息密度低。.",
+          "evidenceRequirements": [
+            "Source must name Christopher Manning directly.",
+            "Source must support why \"Chris Manning – Stanford Artificial Intelligence Laboratory\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory official source",
+            "Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory 斯坦福大学 悉尼大学 evidence",
+            "Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxki601lsrmtbl2o8hmr1",
+          "objectLabel": "Chris Manning – Stanford Artificial Intelligence Laboratory"
+        },
+        "selectedReason": "IEEE官方奖项页面，权威性高，明确说明其斯坦福人工智能实验室（SAIL）主任身份及研究领域，可作为强证据。",
+        "evidenceQuote": "Christopher Manning is the inaugural Thomas M. Siebel Professor in Machine Learning in the Departments of Linguistics and Computer Science at Stanford University, Director of the Stanford Artificial Intelligence Laboratory (SAIL), and an Associate Director of the Stanford Institute for Human-Centered Artificial Intelligence (HAI).",
+        "candidateAuthorityScore": 32,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxki601lsrmtbl2o8hmr1",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "url": "https://nlp.stanford.edu/~manning",
+      "urlHash": "bb082b8971e875fe06d2f4710182b3e575e33b224e31403fb5616422a6fdb230",
+      "contentHash": "bfc9355d2134566e1e45079a2fb10bd10cd55c8d125f2f88caf11348d3914658",
+      "sourceType": "official",
+      "title": "Christopher Manning, Stanford NLP",
+      "text": "Evidence quote: Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University Selection reason: 斯坦福NLP官方个人主页，权威性高，明确列出其职位、所属实验室及最新学术活动，信息密度高且直接相关。 Source preview: Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University What's New? Jasper Jian and I received the Best Paper Award at EACL 2026 for our paper Humans and transformer LMs: Abstraction drives language learning (March 2026). We held a 25th Anniversary Stanford NLP Reunion (October 2025). Effective Approaches to Attention-based Neural Machine Translation by Thang Luong, Hieu Pham, and Christopher D. Manning won the 10-year Test of Time Award at ACL 20... MiMo rationale: 原始来源（斯坦福AI实验室主页）抓取内容信息密度低。候选中的NLP官方个人主页和IEEE奖项页面均为权威机构来源，能直接、清晰地证明Christopher Manning与斯坦福人工智能实验室（SAIL）的职位关系，是理想的替换来源。 Evidence requirements: Source must name Christopher Manning directly. | Source must support why \"Chris Manning – Stanford Artificial Intelligence Laboratory\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory official source | Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory 斯坦福大学 悉尼大学 evidence | Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory interview transcript",
+      "selectedHost": "nlp.stanford.edu",
+      "reason": "斯坦福NLP官方个人主页，权威性高，明确列出其职位、所属实验室及最新学术活动，信息密度高且直接相关。",
+      "evidenceQuote": "Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvxki601lsrmtbl2o8hmr1",
+        "decision": "replace_source",
+        "confidence": 0.95,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:57:01.081Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://ai.stanford.edu/?faculty=chris-manning",
+          "title": "Chris Manning – Stanford Artificial Intelligence Laboratory",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是其个人主页，但抓取内容多为导航信息和其他教授的新闻，有效信息密度低。.",
+          "evidenceRequirements": [
+            "Source must name Christopher Manning directly.",
+            "Source must support why \"Chris Manning – Stanford Artificial Intelligence Laboratory\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory official source",
+            "Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory 斯坦福大学 悉尼大学 evidence",
+            "Christopher Manning Chris Manning Stanford Artificial Intelligence Laboratory interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxki601lsrmtbl2o8hmr1",
+          "objectLabel": "Chris Manning – Stanford Artificial Intelligence Laboratory"
+        },
+        "selectedReason": "斯坦福NLP官方个人主页，权威性高，明确列出其职位、所属实验室及最新学术活动，信息密度高且直接相关。",
+        "evidenceQuote": "Christopher Manning Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science Senior Fellow, Stanford Institute for Human-Centered Artificial Intelligence (HAI) Stanford NLP Group, Stanford AI Lab, HAI, RegLab, Linguistics and Computer Science, Stanford University",
+        "candidateAuthorityScore": 61,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0l6y507lurmtbb7yho10y",
+      "personId": "cmjtswmqg00033est2ofuqdw0",
+      "person": "Dario Amodei",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.darioamodei.com",
+      "urlHash": "b09d9b09ba5a0f714e1ed18780936695a7bbe5ac83c4b59b9c4adb642e5728f7",
+      "contentHash": "7545c319313ac2955d9fb4e37b0746e32289ad592c15b959de8f67e35a79f85f",
+      "sourceType": "exa",
+      "title": "Dario Amodei",
+      "text": "Evidence quote: Dario Amodei is the CEO of Anthropic... Previously, Dario served as Vice President of Research at OpenAI... Dario earned his doctorate degree in biophysics from Princeton University... Selection reason: 本人官方主页，明确列出其职位、教育背景和职业经历，是权威且直接的一手来源。 Source preview: Dario Amodei Dario AmodeiArchive [x] Dario Amodei is the CEO of Anthropic, a public benefit corporation dedicated to building AI systems that are steerable, interpretable and safe.... More Previously, Dario served as Vice President of Research at OpenAI, where he led the development of large language models like GPT-2 and GPT-3. He is also the co-inventor of reinforcement learning from human feedback. Before joining OpenAI, he worked at Google Brain as a Senior Research Scientist. Dario earned his doctorate degree in biophysics from Princeton University as a Hertz Fellow, and was a postdoctoral scholar at the Stanford University School of Medicine. Essays The Adolescence of Technology Machi... MiMo rationale: 候选来源中，darioamodei.com 是本人官方主页，提供了最权威、直接的生平、教育和职业信息，完全符合证据要求，可完美替换原GM-RKB页面。其他来源要么权威性不足，要么信息不够核心。 Evidence requirements: Source must name Dario Amodei directly. | Source must support why \"Dario Amodei (1983-) - GM-RKB\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Dario Amodei Dario Amodei 1983- GM-RKB official source | Dario Amodei Dario Amodei 1983- GM-RKB Anthropic OpenAI evidence | Dario Amodei Dario Amodei 1983- GM-RKB interview transcript",
+      "selectedHost": "darioamodei.com",
+      "reason": "本人官方主页，明确列出其职位、教育背景和职业经历，是权威且直接的一手来源。",
+      "evidenceQuote": "Dario Amodei is the CEO of Anthropic... Previously, Dario served as Vice President of Research at OpenAI... Dario earned his doctorate degree in biophysics from Princeton University...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0l6y507lurmtbb7yho10y",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:57:37.765Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.gabormelli.com/RKB/Dario_Amodei_(1983-)",
+          "title": "Dario Amodei (1983-) - GM-RKB",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=仅包含基础生平元数据和学历信息，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Dario Amodei directly.",
+            "Source must support why \"Dario Amodei (1983-) - GM-RKB\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Dario Amodei Dario Amodei 1983- GM-RKB official source",
+            "Dario Amodei Dario Amodei 1983- GM-RKB Anthropic OpenAI evidence",
+            "Dario Amodei Dario Amodei 1983- GM-RKB interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0l6y507lurmtbb7yho10y",
+          "objectLabel": "Dario Amodei (1983-) - GM-RKB"
+        },
+        "selectedReason": "本人官方主页，明确列出其职位、教育背景和职业经历，是权威且直接的一手来源。",
+        "evidenceQuote": "Dario Amodei is the CEO of Anthropic... Previously, Dario served as Vice President of Research at OpenAI... Dario earned his doctorate degree in biophysics from Princeton University...",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0nzg607ymrmtbu1bmkcfe",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/interview",
+      "urlHash": "17010599f3d8a902689d353484326852591abd970b3be33d3c6313aeacd9683c",
+      "contentHash": "e6265403a173963cd6ea26a623892b8444882ce634a9fa8e8dcbc90ce0e67dd9",
+      "sourceType": "exa",
+      "title": "Demis Hassabis – Interview - NobelPrize.org",
+      "text": "Evidence quote: Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden. Selection reason: 诺贝尔奖官方网站的采访页面，权威性高，直接证明人物身份与成就。 Source preview: Nobel Prize Enhanced Page Navigation Nobel Prize in Chemistry 2024 Share this Demis Hassabis Interview Interview, December 2024 Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden. Read the interview Demis Hassabis answers the following questions (the links below lead to a clip on YouTube): 0:08 – What sparked your interest in science and AI? 1:31 – What inspired you to move into biology 2:39 – How has your interest in gaming shaped your career? 3:40 – Did your game Theme Park influence your career in AI? 4:19 – Do you still play games 4:45 – How important is it to use science to help solve challenges? 5:21 – How does... MiMo rationale: 原始维基百科来源抓取失败，仅含导航栏。候选中诺贝尔奖官网和成就学院页面权威性高，能直接证明人物身份（诺贝尔奖得主、DeepMind联合创始人兼CEO），适合作为替换来源。其他候选要么权威性不足，要么抓取内容不完整。 Evidence requirements: Source must name Demis Hassabis directly. | Source must support why \"Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Demis Hassabis Demis Hassabis official source | Demis Hassabis Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence | Demis Hassabis Demis Hassabis interview transcript",
+      "selectedHost": "nobelprize.org",
+      "reason": "诺贝尔奖官方网站的采访页面，权威性高，直接证明人物身份与成就。",
+      "evidenceQuote": "Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0nzg607ymrmtbu1bmkcfe",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:58:08.578Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Demis_Hassabis",
+          "title": "Demis Hassabis",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是维基百科词条，但抓取内容仅包含导航栏，缺乏正文描述。.",
+          "evidenceRequirements": [
+            "Source must name Demis Hassabis directly.",
+            "Source must support why \"Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Demis Hassabis Demis Hassabis official source",
+            "Demis Hassabis Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence",
+            "Demis Hassabis Demis Hassabis interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0nzg607ymrmtbu1bmkcfe",
+          "objectLabel": "Demis Hassabis"
+        },
+        "selectedReason": "诺贝尔奖官方网站的采访页面，权威性高，直接证明人物身份与成就。",
+        "evidenceQuote": "Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0nzg607ymrmtbu1bmkcfe",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://achievement.org/achiever/demis-hassabis-ph-d",
+      "urlHash": "35f3cefa6ab52db057fce86335431e6b1e1613aa355e8774a8f3916b9a24e850",
+      "contentHash": "e8c011af3fed9010653addfc855593455a182a779e04eea7867f8d851d32d6a2",
+      "sourceType": "exa",
+      "title": "Sir Demis Hassabis | Academy of Achievement",
+      "text": "Evidence quote: Academy of Achievement All achievers Sir Demis Hassabis Nobel Prize in Chemistry Selection reason: 成就学院官方资料页，权威机构，明确介绍人物身份与贡献。 Source preview: Academy of Achievement All achievers Sir Demis Hassabis Nobel Prize in Chemistry Listen to this achiever on What It Takes What It Takes is an audio podcast produced by the American Academy of Achievement featuring intimate, revealing conversations with influential leaders in the diverse fields of endeavor: public service, science and exploration, sports, technology, business, arts and humanities, and justice. The big breakthroughs and new companies that are going to be created in the future are interdisciplinary ones, where you make connections between two disparate subjects, and that’s going to happen again and again in the next 20 years. It’s going to be where a lot of the big breakthroug... MiMo rationale: 原始维基百科来源抓取失败，仅含导航栏。候选中诺贝尔奖官网和成就学院页面权威性高，能直接证明人物身份（诺贝尔奖得主、DeepMind联合创始人兼CEO），适合作为替换来源。其他候选要么权威性不足，要么抓取内容不完整。 Evidence requirements: Source must name Demis Hassabis directly. | Source must support why \"Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Demis Hassabis Demis Hassabis official source | Demis Hassabis Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence | Demis Hassabis Demis Hassabis interview transcript",
+      "selectedHost": "achievement.org",
+      "reason": "成就学院官方资料页，权威机构，明确介绍人物身份与贡献。",
+      "evidenceQuote": "Academy of Achievement All achievers Sir Demis Hassabis Nobel Prize in Chemistry",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0nzg607ymrmtbu1bmkcfe",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:58:08.578Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Demis_Hassabis",
+          "title": "Demis Hassabis",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是维基百科词条，但抓取内容仅包含导航栏，缺乏正文描述。.",
+          "evidenceRequirements": [
+            "Source must name Demis Hassabis directly.",
+            "Source must support why \"Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Demis Hassabis Demis Hassabis official source",
+            "Demis Hassabis Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence",
+            "Demis Hassabis Demis Hassabis interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0nzg607ymrmtbu1bmkcfe",
+          "objectLabel": "Demis Hassabis"
+        },
+        "selectedReason": "成就学院官方资料页，权威机构，明确介绍人物身份与贡献。",
+        "evidenceQuote": "Academy of Achievement All achievers Sir Demis Hassabis Nobel Prize in Chemistry",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvmftr004prmtb3dbz8t40",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.isomorphiclabs.com/people/sir-demis-hassabis-phd",
+      "urlHash": "7c10d994367580f1dbb9d1b8f7201b53c3513ebe94787dc8a358b081ad2d6646",
+      "contentHash": "1e12f0e0a09005b487e5b557a0ed7edacf0cfd039c01a84b73abc79edafbf29a",
+      "sourceType": "exa",
+      "title": "Sir Demis Hassabis, PhD - Isomorphic Labs",
+      "text": "Evidence quote: Name Sir Demis Hassabis, PhD Title Founder and CEO Demis is our founder and CEO. He is also the founder and CEO of Google DeepMind and 2024 Nobel Laureate in Chemistry for his pioneering work on AlphaFold 2. Selection reason: 其创立公司的官方人物页面，明确列出其头衔、职位及诺贝尔奖成就，直接支持“Sir Demis Hassabis”称谓。 Source preview: Our TeamOur TechNews Our TeamOur TechPartnerships Careers Life at IsoWork with UsJob Openings News Back to Our Team Prev Next Prev Next Prev Next Prev Next Prev Next Prev Next Prev Next Prev Next Prev Next Prev Next Prev Next Prev Next Name Sir Demis Hassabis, PhD Title Founder and CEO Demis is our founder and CEO. He is also the founder and CEO of Google DeepMind and 2024 Nobel Laureate in Chemistry for his pioneering work on AlphaFold 2. A chess and programming prodigy, Demis is a computer scientist, neuroscientist and videogame designer. He founded the pioneering AI research company DeepMind in 2010, now part of Alphabet, which continues to produce landmark breakthroughs like AlphaFold i... MiMo rationale: 候选来源中，诺贝尔奖官方采访转录和其创立公司的官方人物页面是权威、可访问且能直接证明人物身份与成就（包括“Sir”头衔和诺贝尔奖）的最佳来源。其他来源或权威性不足，或存在访问障碍，或内容不直接相关。 Evidence requirements: Source must name Demis Hassabis directly. | Source must support why \"Sir Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Demis Hassabis Sir Demis Hassabis official source | Demis Hassabis Sir Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence | Demis Hassabis Sir Demis Hassabis interview transcript",
+      "selectedHost": "isomorphiclabs.com",
+      "reason": "其创立公司的官方人物页面，明确列出其头衔、职位及诺贝尔奖成就，直接支持“Sir Demis Hassabis”称谓。",
+      "evidenceQuote": "Name Sir Demis Hassabis, PhD Title Founder and CEO Demis is our founder and CEO. He is also the founder and CEO of Google DeepMind and 2024 Nobel Laureate in Chemistry for his pioneering work on AlphaFold 2.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvmftr004prmtb3dbz8t40",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:58:37.361Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://achievement.org/achiever/demis-hassabis-ph-d/",
+          "title": "Sir Demis Hassabis",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽指向人物成就页面，但抓取到的文本多为导航信息，需人工确认正文价值。.",
+          "evidenceRequirements": [
+            "Source must name Demis Hassabis directly.",
+            "Source must support why \"Sir Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Demis Hassabis Sir Demis Hassabis official source",
+            "Demis Hassabis Sir Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence",
+            "Demis Hassabis Sir Demis Hassabis interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmftr004prmtb3dbz8t40",
+          "objectLabel": "Sir Demis Hassabis"
+        },
+        "selectedReason": "其创立公司的官方人物页面，明确列出其头衔、职位及诺贝尔奖成就，直接支持“Sir Demis Hassabis”称谓。",
+        "evidenceQuote": "Name Sir Demis Hassabis, PhD Title Founder and CEO Demis is our founder and CEO. He is also the founder and CEO of Google DeepMind and 2024 Nobel Laureate in Chemistry for his pioneering work on AlphaFold 2.",
+        "candidateAuthorityScore": 29,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvmftr004prmtb3dbz8t40",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/1924974-transcript-from-an-interview-with-demis-hassabis",
+      "urlHash": "f15a5590a8c6ac2596b6897980b71d69606e08afdc41800fa65cd14bc8314331",
+      "contentHash": "283b894000c37fb101c125d2a17e2a4e986e7ae9d83b697db62a6b95f787078a",
+      "sourceType": "exa",
+      "title": "Transcript from an interview with Demis Hassabis",
+      "text": "Evidence quote: Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden. Selection reason: 诺贝尔奖官方采访转录，权威性高，直接证明其2024年诺贝尔化学奖得主身份。 Source preview: Nobel Prize Enhanced Page Navigation Nobel Prize in Chemistry 2024 Share this Transcript from an interview with Demis Hassabis Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden. What sparked your interest in science and AI? Demis Hassabis: My interest in science and AI started with games. I started to play chess from a very young age. I was actually four years old when I learned, and I took it very seriously. I was captaining all the England chess junior teams as I was growing up. That’s how I actually came across computers for the first time because on some of the chess training camps you would use chess computers,... MiMo rationale: 候选来源中，诺贝尔奖官方采访转录和其创立公司的官方人物页面是权威、可访问且能直接证明人物身份与成就（包括“Sir”头衔和诺贝尔奖）的最佳来源。其他来源或权威性不足，或存在访问障碍，或内容不直接相关。 Evidence requirements: Source must name Demis Hassabis directly. | Source must support why \"Sir Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Demis Hassabis Sir Demis Hassabis official source | Demis Hassabis Sir Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence | Demis Hassabis Sir Demis Hassabis interview transcript",
+      "selectedHost": "nobelprize.org",
+      "reason": "诺贝尔奖官方采访转录，权威性高，直接证明其2024年诺贝尔化学奖得主身份。",
+      "evidenceQuote": "Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvmftr004prmtb3dbz8t40",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:58:37.361Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://achievement.org/achiever/demis-hassabis-ph-d/",
+          "title": "Sir Demis Hassabis",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽指向人物成就页面，但抓取到的文本多为导航信息，需人工确认正文价值。.",
+          "evidenceRequirements": [
+            "Source must name Demis Hassabis directly.",
+            "Source must support why \"Sir Demis Hassabis\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Demis Hassabis Sir Demis Hassabis official source",
+            "Demis Hassabis Sir Demis Hassabis 伦敦大学学院 谷歌DeepMind evidence",
+            "Demis Hassabis Sir Demis Hassabis interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmftr004prmtb3dbz8t40",
+          "objectLabel": "Sir Demis Hassabis"
+        },
+        "selectedReason": "诺贝尔奖官方采访转录，权威性高，直接证明其2024年诺贝尔化学奖得主身份。",
+        "evidenceQuote": "Interview with the 2024 chemistry laureate Demis Hassabis, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvs0on014hrmtbzoyesrmw",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://stability.ai/news-updates/stabilityai-announcement",
+      "urlHash": "0c862a3074166b2d74c883bb598665d2b69e5da65f6a70ad740bba06059c46c5",
+      "contentHash": "580a833f9f4756739dacbfd704f0528292bece4dc615069cb7098ef42f9c8b9f",
+      "sourceType": "exa",
+      "title": "Stability AI Announcement",
+      "text": "Evidence quote: Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI. Selection reason: Stability AI官方公告，明确提及Emad Mostaque辞去CEO职务，是证明其创始人及CEO身份的权威来源。 Source preview: Stability AI Stability AI Stability AI Stability AI Stability AI Announcement Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI. The Board of Directors has appointed Shan Shan Wong, our Chief Operating Officer, and Christian Laforte, our Chief Technology Officer, as the interim co-CEOs of Stability AI. We are actively conducting a search for a permanent CEO to build upon Stability AI’s foundation and lead the company into its next phase of growth. “On behalf of the Board of Directors, I want to thank Emad for his leadership and relentless commitment to Stability AI and the open... MiMo rationale: 原始Medium来源质量低，缺乏实质内容。候选中，Stability AI官方公告和福布斯报道均权威、可访问，且直接证明Emad Mostaque作为Stability AI创始人及CEO的身份，适合作为替换来源。 Evidence requirements: Source must name Emad Mostaque directly. | Source must support why \"Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium official source | Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium Stability AI 开源 evidence | Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium interview transcript",
+      "selectedHost": "stability.ai",
+      "reason": "Stability AI官方公告，明确提及Emad Mostaque辞去CEO职务，是证明其创始人及CEO身份的权威来源。",
+      "evidenceQuote": "Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvs0on014hrmtbzoyesrmw",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:00:11.117Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://medium.com/@jobwanderer/emad-mostaque-stability-ai-founder-a419045db47e",
+          "title": "Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题提及Emad Mostaque是Stability AI创始人，但内容仅为Medium页面框架，无实质信息，质量低。.",
+          "evidenceRequirements": [
+            "Source must name Emad Mostaque directly.",
+            "Source must support why \"Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium official source",
+            "Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium Stability AI 开源 evidence",
+            "Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvs0on014hrmtbzoyesrmw",
+          "objectLabel": "Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium"
+        },
+        "selectedReason": "Stability AI官方公告，明确提及Emad Mostaque辞去CEO职务，是证明其创始人及CEO身份的权威来源。",
+        "evidenceQuote": "Earlier today, Emad Mostaque resigned from his role as CEO of Stability AI and from his position on the Board of Directors of the company to pursue decentralized AI.",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvrxne013vrmtbibd5nefe",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "url": "https://www.forbes.com/sites/kenrickcai/2024/03/22/stability-ai-founder-emad-mostaque-plans-to-resign-as-ceo-sources-say",
+      "urlHash": "4ab4a09958a7a1edcbd5b12fee04d6b2f3309ae43e88a0adfde4f85540a909fe",
+      "contentHash": "0fc3b374f89bda27f576556e626e77cf1636cd0e66112c8a3a5bafd31c084485",
+      "sourceType": "exa",
+      "title": "Stability AI Founder Emad Mostaque Plans To Resign As CEO, Sources Say",
+      "text": "Evidence quote: Stability AI founder Emad Mostaque plans to step down as CEO of the generative AI startup, Forbes has learned. Mostaque disclosed his plans in private to industry peers earlier this week at the Abundance360 conference in Los Angeles... Selection reason: Forbes文章由原作者Kenrick Cai撰写，直接报道Emad Mostaque计划辞去CEO职务，内容权威且可访问，是原始LinkedIn帖子的权威替代。 Source preview: InnovationVenture Capital Editors' Pick Stability AI Founder Emad Mostaque Plans To Resign As CEO, Sources Say Mostaque has told a number of people close to him that he plans to step down as chief executive of the once buzzy generative AI startup known for Stable Diffusion. ByKenrick Cai, Former Staff andIain Martin, Forbes Staff. Updated Jun 11, 2024, 03:53pm EDT Emad Mostaque, founder and chief executive officer of Stability AI © 2022 Bloomberg Finance LP Stability AI founder Emad Mostaque plans to step down as CEO of the generative AI startup, Forbes has learned. Mostaque disclosed his plans in private to industry peers earlier this week at the Abundance360 conference in Los Angeles, whe... MiMo rationale: 原始来源为LinkedIn登录墙页面，质量低。候选中的Forbes文章由原作者Kenrick Cai撰写，权威报道了Emad Mostaque计划辞职的消息，内容完整可访问，是理想的替换来源。 Evidence requirements: Source must name Emad Mostaque directly. | Source must support why \"Kenrick Cai on LinkedIn: Stability AI Founder Emad Mostaque Plans To Resign As CEO, Sources Say\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Emad Mostaque Kenrick Cai LinkedIn: Stability Founder Emad Mostaque Plans Resign CEO, Sources Say official source | Emad Mostaque Kenrick Cai LinkedIn: Stability Founder Emad Mostaque Plans Resign CEO, Sources Say Stability AI 开源 evidence | Emad Mostaque Kenrick Cai LinkedIn: Stability Founder Emad Mostaque Plans Resign CEO, Sources Say interview transcript",
+      "selectedHost": "forbes.com",
+      "reason": "Forbes文章由原作者Kenrick Cai撰写，直接报道Emad Mostaque计划辞去CEO职务，内容权威且可访问，是原始LinkedIn帖子的权威替代。",
+      "evidenceQuote": "Stability AI founder Emad Mostaque plans to step down as CEO of the generative AI startup, Forbes has learned. Mostaque disclosed his plans in private to industry peers earlier this week at the Abundance360 conference in Los Angeles...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvrxne013vrmtbibd5nefe",
+        "decision": "replace_source",
+        "confidence": 0.95,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:00:40.161Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.linkedin.com/posts/kenrickcai_stability-ai-founder-emad-mostaque-plans-activity-7177111540527951872-tkSK",
+          "title": "Kenrick Cai on LinkedIn: Stability AI Founder Emad Mostaque Plans To Resign As CEO, Sources Say",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=LinkedIn帖子标题提及Emad Mostaque辞职，但内容仅为登录页面，无实质信息，质量低。.",
+          "evidenceRequirements": [
+            "Source must name Emad Mostaque directly.",
+            "Source must support why \"Kenrick Cai on LinkedIn: Stability AI Founder Emad Mostaque Plans To Resign As CEO, Sources Say\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Emad Mostaque Kenrick Cai LinkedIn: Stability Founder Emad Mostaque Plans Resign CEO, Sources Say official source",
+            "Emad Mostaque Kenrick Cai LinkedIn: Stability Founder Emad Mostaque Plans Resign CEO, Sources Say Stability AI 开源 evidence",
+            "Emad Mostaque Kenrick Cai LinkedIn: Stability Founder Emad Mostaque Plans Resign CEO, Sources Say interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvrxne013vrmtbibd5nefe",
+          "objectLabel": "Kenrick Cai on LinkedIn: Stability AI Founder Emad Mostaque Plans To Resign As CEO, Sources Say"
+        },
+        "selectedReason": "Forbes文章由原作者Kenrick Cai撰写，直接报道Emad Mostaque计划辞去CEO职务，内容权威且可访问，是原始LinkedIn帖子的权威替代。",
+        "evidenceQuote": "Stability AI founder Emad Mostaque plans to step down as CEO of the generative AI startup, Forbes has learned. Mostaque disclosed his plans in private to industry peers earlier this week at the Abundance360 conference in Los Angeles...",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvs0on014hrmtbzoyesrmw",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.forbes.com/sites/kenrickcai/2024/03/29/how-stability-ais-founder-tanked-his-billion-dollar-startup",
+      "urlHash": "9e5873782b1ae3e11be79a4331bc447d62b792eace6cdcabd2174606d4714d36",
+      "contentHash": "bc0407b75c45211e1d2b84233a5617f4b2847c9c42e0993cde09f8c777e78c6a",
+      "sourceType": "exa",
+      "title": "Stability AI Founder Emad Mostaque Tanked His Billion-Dollar Startup",
+      "text": "Evidence quote: Stability AI founder Emad Mostaque took the stage last week at the Terranea Resort in Palos Verdes, California... Selection reason: 福布斯权威报道，标题和内容明确将Emad Mostaque与Stability AI创始人身份关联，提供详细背景。 Source preview: InnovationVenture Capital Daily Cover How Stability AI’s Founder Tanked His Billion-Dollar Startup Updated Dec 14, 2025, 01:27pm EST Unpaid bills, bungled contracts and a disastrous meeting with Nvidia's kingmaker CEO. Inside the stunning downfall of Emad Mostaque. By Kenrick Cai and Iain Martin, Forbes Staff Stability AI founder Emad Mostaque took the stage last week at the Terranea Resort in Palos Verdes, California to roaring applause and an introduction from an AI-generated Aristotle who announced him as “a modern Prometheus” with “the astuteness of Athena and the vision of Daedalus.” “Under his stewardship, AI becomes the Herculean force poised to vanquish the twin serpents of illness ... MiMo rationale: 原始Medium来源质量低，缺乏实质内容。候选中，Stability AI官方公告和福布斯报道均权威、可访问，且直接证明Emad Mostaque作为Stability AI创始人及CEO的身份，适合作为替换来源。 Evidence requirements: Source must name Emad Mostaque directly. | Source must support why \"Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium official source | Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium Stability AI 开源 evidence | Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium interview transcript",
+      "selectedHost": "forbes.com",
+      "reason": "福布斯权威报道，标题和内容明确将Emad Mostaque与Stability AI创始人身份关联，提供详细背景。",
+      "evidenceQuote": "Stability AI founder Emad Mostaque took the stage last week at the Terranea Resort in Palos Verdes, California...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvs0on014hrmtbzoyesrmw",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:00:11.117Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://medium.com/@jobwanderer/emad-mostaque-stability-ai-founder-a419045db47e",
+          "title": "Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题提及Emad Mostaque是Stability AI创始人，但内容仅为Medium页面框架，无实质信息，质量低。.",
+          "evidenceRequirements": [
+            "Source must name Emad Mostaque directly.",
+            "Source must support why \"Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium official source",
+            "Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium Stability AI 开源 evidence",
+            "Emad Mostaque Emad Mostaque Stability Founder Gabriel Varela Medium interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvs0on014hrmtbzoyesrmw",
+          "objectLabel": "Emad Mostaque — Stability AI Founder - Gabriel Varela - Medium"
+        },
+        "selectedReason": "福布斯权威报道，标题和内容明确将Emad Mostaque与Stability AI创始人身份关联，提供详细背景。",
+        "evidenceQuote": "Stability AI founder Emad Mostaque took the stage last week at the Terranea Resort in Palos Verdes, California...",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju158ch0awwrmtbrjsh54eg",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.forbes.com/sites/kenrickcai/2023/06/04/stable-diffusion-emad-mostaque-stability-ai-exaggeration",
+      "urlHash": "b3ae1afc749e76c990d815252782e9a85099bbfeae54bd4b8b371e8842032663",
+      "contentHash": "533dd8ae9b3ecdbc4a402194d4b0c1932678cb35aed8e10b356947826d1f6281",
+      "sourceType": "exa",
+      "title": "Stable Diffusion's AI Benefactor Has A History Of Exaggeration",
+      "text": "Evidence quote: Emad Mostaque, CEO of Stability AI... Stability AI became a $1 billion company with the help of a viral AI text-to-image generator... Selection reason: 权威媒体调查报道，详细描述Emad Mostaque作为Stability AI CEO的角色及其对Stable Diffusion的贡献。 Source preview: InnovationVenture Capital 16x9-Name-Credit-copy Daily Cover The AI Founder Taking Credit For Stable Diffusion’s Success Has A History Of Exaggeration Emad Mostaque, CEO of Stability AI. LEVON BISS FOR FORBES Updated Mar 31, 2025, 11:32am EDT Stability AI became a $1 billion company with the help of a viral AI text-to-image generator and — per interviews with more than 30 people — some misleading claims from founder Emad Mostaque. By Kenrick Cai & Iain Martin, Forbes Staff Emad Mostaque is the modern-day Renaissance man who kicked off the AI gold rush. The Oxford master’s degree holder is an award-winning hedge fund manager, a trusted confidant to the United Nations and the tech founder behi... MiMo rationale: 候选来源中，Forbes的两篇深度报道和Apple Podcasts的播客页面能有效补强原维基百科来源信息密度低的问题。这些来源权威性高，明确提及人物身份、职位和贡献，符合证据要求。其他来源权威性不足或信息有限，予以拒绝。 Evidence requirements: Source must name Emad Mostaque directly. | Source must support why \"Emad Mostaque\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Emad Mostaque Emad Mostaque official source | Emad Mostaque Emad Mostaque Stability AI 开源 evidence | Emad Mostaque Emad Mostaque interview transcript",
+      "selectedHost": "forbes.com",
+      "reason": "权威媒体调查报道，详细描述Emad Mostaque作为Stability AI CEO的角色及其对Stable Diffusion的贡献。",
+      "evidenceQuote": "Emad Mostaque, CEO of Stability AI... Stability AI became a $1 billion company with the help of a viral AI text-to-image generator...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju158ch0awwrmtbrjsh54eg",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:59:40.389Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Emad_Mostaque",
+          "title": "Emad Mostaque",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽为维基百科词条，但抓取的内容多为页面导航，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Emad Mostaque directly.",
+            "Source must support why \"Emad Mostaque\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Emad Mostaque Emad Mostaque official source",
+            "Emad Mostaque Emad Mostaque Stability AI 开源 evidence",
+            "Emad Mostaque Emad Mostaque interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju158ch0awwrmtbrjsh54eg",
+          "objectLabel": "Emad Mostaque"
+        },
+        "selectedReason": "权威媒体调查报道，详细描述Emad Mostaque作为Stability AI CEO的角色及其对Stable Diffusion的贡献。",
+        "evidenceQuote": "Emad Mostaque, CEO of Stability AI... Stability AI became a $1 billion company with the help of a viral AI text-to-image generator...",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju158ch0awwrmtbrjsh54eg",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://podcasts.apple.com/sk/podcast/ep-46-emad-mostaque-founder-ceo-stability-ai-on-the/id1606770839?i=1000592918805&l=sk",
+      "urlHash": "306be062c435ab88bb3a8c4d261489ad59c8d520350c9310aff5c60f688040a4",
+      "contentHash": "5d17ba804186e63fa59d47b7c21b5f7b128ea160dcf832dc00968cbf0d4f72f0",
+      "sourceType": "podcast",
+      "title": "EP 46: Emad Mostaque (Founder/… – The Logan Bartlett Show – Apple Podcasts",
+      "text": "Evidence quote: Stability AI CEO Emad Mostaque discusses the future of AI... From being only years out from generating entire movies in real-time... Selection reason: 播客页面标题和描述明确证明Emad Mostaque作为Stability AI创始人/CEO的参与，可作为人物观点来源。 Source preview: The Logan Bartlett Show EP 46: Emad Mostaque (Founder/CEO Stability.ai) - On The Future of Generative AI, Creating Real-Time Movies, Societal Impact of AI In the 46th episode, Stability AI CEO Emad Mostaque discusses the future of AI. From being only years out from generating entire movies in real-time to how it’s revolutionizing the healthcare industry and could help identify cancer. Plus its benefits in education, charities, the potential regulations, and societal impact, and Stable Diffusion becoming the most popular open-source software in the world. (0:00) Intro (1:03) Introducing Emad Mostaque (1:27) Generative AI (9:52) Computing power and AI (12:23) How Emad got into AI (14:49) Open... MiMo rationale: 候选来源中，Forbes的两篇深度报道和Apple Podcasts的播客页面能有效补强原维基百科来源信息密度低的问题。这些来源权威性高，明确提及人物身份、职位和贡献，符合证据要求。其他来源权威性不足或信息有限，予以拒绝。 Evidence requirements: Source must name Emad Mostaque directly. | Source must support why \"Emad Mostaque\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Emad Mostaque Emad Mostaque official source | Emad Mostaque Emad Mostaque Stability AI 开源 evidence | Emad Mostaque Emad Mostaque interview transcript",
+      "selectedHost": "podcasts.apple.com",
+      "reason": "播客页面标题和描述明确证明Emad Mostaque作为Stability AI创始人/CEO的参与，可作为人物观点来源。",
+      "evidenceQuote": "Stability AI CEO Emad Mostaque discusses the future of AI... From being only years out from generating entire movies in real-time...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju158ch0awwrmtbrjsh54eg",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T15:59:40.389Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Emad_Mostaque",
+          "title": "Emad Mostaque",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽为维基百科词条，但抓取的内容多为页面导航，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Emad Mostaque directly.",
+            "Source must support why \"Emad Mostaque\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Emad Mostaque Emad Mostaque official source",
+            "Emad Mostaque Emad Mostaque Stability AI 开源 evidence",
+            "Emad Mostaque Emad Mostaque interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju158ch0awwrmtbrjsh54eg",
+          "objectLabel": "Emad Mostaque"
+        },
+        "selectedReason": "播客页面标题和描述明确证明Emad Mostaque作为Stability AI创始人/CEO的参与，可作为人物观点来源。",
+        "evidenceQuote": "Stability AI CEO Emad Mostaque discusses the future of AI... From being only years out from generating entire movies in real-time...",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjs7hbxf00178028y198enjm",
+      "personId": "cmjs1jjy0005tb28te81500go",
+      "person": "Geoffrey Hinton",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://discover.research.utoronto.ca/26059-geoffrey-e-hinton",
+      "urlHash": "0a119f99e27aa0d9d688a6418e535eca05edbb3804c0a8cdd089b9d2753f655b",
+      "contentHash": "d48f2ef5892cc2ced76ca5b1400c16d63bfd9c6c5fd7b9cc9227075599eed4e6",
+      "sourceType": "exa",
+      "title": "Geoffrey E Hinton | About | University of Toronto",
+      "text": "Evidence quote: Professor Emeritus/Emerita Faculty of Arts and Science, Department of Computer Science Selection reason: 多伦多大学官方研究资料页，提供其教授职位、学术背景和所属机构的权威信息。 Source preview: University of Toronto homepage All experts All experts Geoffrey E HintonProfile page Professor Emeritus/Emerita Faculty of Arts and Science, Department of Computer Science Professor Emeritus/Emerita Faculty of Arts and Science, Department of Computer Science 416-978-0100 media.relations@utoronto.ca (Other) Department Website⁠ Google Scholar⁠ X (Twitter)⁠ Are you Geoffrey E Hinton? Edit your profile BIO Geoffrey Hinton received his PhD in Artificial Intelligence from Edinburgh in 1978. He did postdoctoral work at the University of California, San Diego and spent five years as a faculty member in the Computer Science department at Carnegie-Mellon University. He then moved to the Department of... MiMo rationale: 原始维基百科来源内容不足。候选来源中，诺贝尔奖官网的采访转录和多伦多大学官方研究资料页是权威、可访问且直接证明人物身份与成就的优质来源，可有效替换或补强。 Evidence requirements: Source must name Geoffrey Hinton directly. | Source must support why \"Geoffrey Hinton\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Geoffrey Hinton Geoffrey Hinton official source | Geoffrey Hinton Geoffrey Hinton 多伦多大学 谷歌 evidence | Geoffrey Hinton Geoffrey Hinton interview transcript",
+      "selectedHost": "discover.research.utoronto.ca",
+      "reason": "多伦多大学官方研究资料页，提供其教授职位、学术背景和所属机构的权威信息。",
+      "evidenceQuote": "Professor Emeritus/Emerita Faculty of Arts and Science, Department of Computer Science",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjs7hbxf00178028y198enjm",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:01:40.146Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Geoffrey_Hinton",
+          "title": "Geoffrey Hinton",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽为维基百科条目，但抓取内容仅为导航信息，缺乏实质描述。.",
+          "evidenceRequirements": [
+            "Source must name Geoffrey Hinton directly.",
+            "Source must support why \"Geoffrey Hinton\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Geoffrey Hinton Geoffrey Hinton official source",
+            "Geoffrey Hinton Geoffrey Hinton 多伦多大学 谷歌 evidence",
+            "Geoffrey Hinton Geoffrey Hinton interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjs7hbxf00178028y198enjm",
+          "objectLabel": "Geoffrey Hinton"
+        },
+        "selectedReason": "多伦多大学官方研究资料页，提供其教授职位、学术背景和所属机构的权威信息。",
+        "evidenceQuote": "Professor Emeritus/Emerita Faculty of Arts and Science, Department of Computer Science",
+        "candidateAuthorityScore": 29,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjs7hbxf00178028y198enjm",
+      "personId": "cmjs1jjy0005tb28te81500go",
+      "person": "Geoffrey Hinton",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.nobelprize.org/prizes/physics/2024/hinton/1925103-interview-transcript",
+      "urlHash": "e15ef1c9f7f03af26dbc90a7404ced363fcfb2df8a98a1234e5f6466fc9e7280",
+      "contentHash": "37fa4e8b57f333cea02adce8edd3b0a920b2588c6451141aff45b025041e5b78",
+      "sourceType": "exa",
+      "title": "Transcript from an interview with Geoffrey Hinton - NobelPrize.org",
+      "text": "Evidence quote: Interview with the 2024 physics laureate Geoffrey Hinton, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden. Selection reason: 诺贝尔奖官方网站的采访转录，权威性高，直接证明Geoffrey Hinton作为2024年物理学奖得主的身份和观点。 Source preview: Nobel Prize Enhanced Page Navigation Nobel Prize in Physics 2024 Share this Transcript from an interview with Geoffrey Hinton Interview with the 2024 physics laureate Geoffrey Hinton, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden. How did you first learn about your Nobel Prize? Geoffrey Hinton: I was more or less asleep in a hotel room in California, and I had by phone upside down on the bedside table with the sound turned off. I just happened to be sleeping on my side when the phone was in my line of sight and it got bright. I saw this little slit of brightness and it started vibrating. I was in California and almost everybody I know is on the East Coast. I wondered wh... MiMo rationale: 原始维基百科来源内容不足。候选来源中，诺贝尔奖官网的采访转录和多伦多大学官方研究资料页是权威、可访问且直接证明人物身份与成就的优质来源，可有效替换或补强。 Evidence requirements: Source must name Geoffrey Hinton directly. | Source must support why \"Geoffrey Hinton\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Geoffrey Hinton Geoffrey Hinton official source | Geoffrey Hinton Geoffrey Hinton 多伦多大学 谷歌 evidence | Geoffrey Hinton Geoffrey Hinton interview transcript",
+      "selectedHost": "nobelprize.org",
+      "reason": "诺贝尔奖官方网站的采访转录，权威性高，直接证明Geoffrey Hinton作为2024年物理学奖得主的身份和观点。",
+      "evidenceQuote": "Interview with the 2024 physics laureate Geoffrey Hinton, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjs7hbxf00178028y198enjm",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:01:40.146Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://en.wikipedia.org/wiki/Geoffrey_Hinton",
+          "title": "Geoffrey Hinton",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽为维基百科条目，但抓取内容仅为导航信息，缺乏实质描述。.",
+          "evidenceRequirements": [
+            "Source must name Geoffrey Hinton directly.",
+            "Source must support why \"Geoffrey Hinton\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Geoffrey Hinton Geoffrey Hinton official source",
+            "Geoffrey Hinton Geoffrey Hinton 多伦多大学 谷歌 evidence",
+            "Geoffrey Hinton Geoffrey Hinton interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjs7hbxf00178028y198enjm",
+          "objectLabel": "Geoffrey Hinton"
+        },
+        "selectedReason": "诺贝尔奖官方网站的采访转录，权威性高，直接证明Geoffrey Hinton作为2024年物理学奖得主的身份和观点。",
+        "evidenceQuote": "Interview with the 2024 physics laureate Geoffrey Hinton, recorded on 6 December 2024 during Nobel Week in Stockholm, Sweden.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjs7twq4006f8028ey3gy0br",
+      "personId": "cmjs1jjy0005tb28te81500go",
+      "person": "Geoffrey Hinton",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.cs.toronto.edu/~fritz/absps/reluICML.pdf",
+      "urlHash": "f3eb73f12233091ee843112fb90884b91cbfc37a1b4ef87ca63b401bd63fbc67",
+      "contentHash": "166e49e6e53a06a5f0be7021c674aa1c8f23f14af62302b954c33cefbece3a8a",
+      "sourceType": "official",
+      "title": "[PDF] Rectified Linear Units Improve Restricted Boltzmann Machines",
+      "text": "Evidence quote: Vinod Nair vnair@cs.toronto.edu Geoﬀrey E. Hinton hinton@cs.toronto.edu Department of Computer Science, University of Toronto, Toronto, ON M5S 2G4, Canada Selection reason: 多伦多大学官方托管的论文PDF，作者列表明确包含Geoffrey E. Hinton，是证明其为该论文作者的权威一手来源。 Source preview: Rectiﬁed Linear Units Improve Restricted Boltzmann Machines Vinod Nair vnair@cs.toronto.edu Geoﬀrey E. Hinton hinton@cs.toronto.edu Department of Computer Science, University of Toronto, Toronto, ON M5S 2G4, Canada Abstract Restricted Boltzmann machines were devel-oped using binary stochastic hidden units. These can be generalized by replacing each binary unit by an inﬁnite number of copies that all have the same weights but have pro-gressively more negative biases. The learning and inference rules for these “Stepped Sig-moid Units” are unchanged. They can be ap-proximated eﬃciently by noisy, rectiﬁed lin-ear units. Compared with binary units, these units learn features that are better for ... MiMo rationale: 原始来源（OpenAlex）未直接提及作者姓名。候选中，多伦多大学官方托管的论文PDF明确列出了Geoffrey Hinton作为作者，是证明其与该论文关系的权威、可访问的一手来源，可直接替换原始来源。 Evidence requirements: Source must name Geoffrey Hinton directly. | Source must support why \"Rectified Linear Units Improve Restricted Boltzmann Machines\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines paper authors | Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines official source | Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines 多伦多大学 谷歌 evidence | Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines interview transcript",
+      "selectedHost": "cs.toronto.edu",
+      "reason": "多伦多大学官方托管的论文PDF，作者列表明确包含Geoffrey E. Hinton，是证明其为该论文作者的权威一手来源。",
+      "evidenceQuote": "Vinod Nair vnair@cs.toronto.edu Geoﬀrey E. Hinton hinton@cs.toronto.edu Department of Computer Science, University of Toronto, Toronto, ON M5S 2G4, Canada",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjs7twq4006f8028ey3gy0br",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:02:15.519Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://openalex.org/W1665214252",
+          "title": "Rectified Linear Units Improve Restricted Boltzmann Machines",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容为辛顿核心学术论文的摘要，虽是其本人成果但文本未直接提及姓名，需确认是否入库作品集。.",
+          "evidenceRequirements": [
+            "Source must name Geoffrey Hinton directly.",
+            "Source must support why \"Rectified Linear Units Improve Restricted Boltzmann Machines\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines paper authors",
+            "Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines official source",
+            "Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines 多伦多大学 谷歌 evidence",
+            "Geoffrey Hinton Rectified Linear Units Improve Restricted Boltzmann Machines interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjs7twq4006f8028ey3gy0br",
+          "objectLabel": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        "selectedReason": "多伦多大学官方托管的论文PDF，作者列表明确包含Geoffrey E. Hinton，是证明其为该论文作者的权威一手来源。",
+        "evidenceQuote": "Vinod Nair vnair@cs.toronto.edu Geoﬀrey E. Hinton hinton@cs.toronto.edu Department of Computer Science, University of Toronto, Toronto, ON M5S 2G4, Canada",
+        "candidateAuthorityScore": 20,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "academic_or_institutional_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmjtvqbia00vcrmtbs0m4ey4w",
+      "personId": "cmjtv2h8i0009i0048zkgoqwc",
+      "person": "Alexandr Wang",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxmc0703bgrmtbcgjsy7fj",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjs97tve001xp5lfsaoj6oog",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

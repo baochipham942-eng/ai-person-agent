@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-06-10T21:33:07.539Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:33:07.539Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_review_low_info_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_low_info_manual_apply_post_verify_archive.json",
+    "stage": "manual_prune_tail_review_low_info",
+    "decisions": 37,
+    "existingTargets": 0,
+    "missingTargets": 37,
+    "auditRowsInserted": 0,
+    "deleted": 0,
+    "byAction": {
+      "delete_raw_pool_item": 37
+    },
+    "byVerdict": {
+      "reject": 37
+    },
+    "byPerson": {
+      "阿希什·瓦斯瓦尼": 5,
+      "Mira Murati": 3,
+      "亚历克·拉德福德": 3,
+      "Chris Olah": 2,
+      "Dylan Field": 2,
+      "Lukasz Kaiser": 2,
+      "Yoshua Bengio": 2,
+      "唐杰": 2,
+      "埃里克·霍维茨": 2,
+      "桑达尔·皮查伊": 2,
+      "Elon Musk": 1,
+      "Emad Mostaque": 1,
+      "Guillaume Lample": 1,
+      "Ilya Sutskever": 1,
+      "Jaana Dogan": 1,
+      "Oriol Vinyals": 1,
+      "Richard Socher": 1,
+      "Sam Altman": 1,
+      "Zoubin Ghahramani": 1,
+      "布莱恩·卡坦扎罗": 1,
+      "杰夫·迪恩": 1,
+      "马克·扎克伯格": 1
+    }
+  }
+}

@@ -1,0 +1,513 @@
+{
+  "generatedAt": "2026-06-10T10:57:35.344Z",
+  "summary": {
+    "generatedAt": "2026-06-10T10:57:35.344Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_fifth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_fifth_post_verify_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 34,
+    "existingTargets": 0,
+    "missingTargets": 34,
+    "auditRowsInserted": 0,
+    "deleted": 0,
+    "byAction": {
+      "delete_raw_pool_item": 34
+    },
+    "byVerdict": {
+      "reject": 34
+    },
+    "byPerson": {
+      "Greg Brockman": 10,
+      "Chris Olah": 6,
+      "Jeremy Howard": 6,
+      "Alexandr Wang": 2,
+      "John Schulman": 2,
+      "雅各布·乌什科雷特": 2,
+      "Chamath Palihapitiya": 1,
+      "Guillaume Lample": 1,
+      "Han Xiao": 1,
+      "Marc Andreessen": 1,
+      "杰夫·迪恩": 1,
+      "阿希什·瓦斯瓦尼": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0zncs09qgrmtbh25bx4si",
+          "objectLabel": "CS25: Tranformers United!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Stanford course page about Transformers generally, not person-specific evidence for Ashish Vaswani."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzrz8r060ermtb36jh5gvy",
+          "objectLabel": "Nice demo of how easy it is to create fairly complex apps with Gemini 3 Flash."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Short Gemini demo post with no substantive person-specific evidence for Jeff Dean."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "雅各布·乌什科雷特",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqgz50496rmtb7doglk6k",
+          "objectLabel": "x.com/kyosu/status/1670370419101007872"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Third-party social link only; no substantive target-person evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "雅各布·乌什科雷特",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqgoq0494rmtbjfp1qhqk",
+          "objectLabel": "x.com/kyosu/status/1775940716285284685"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Third-party social link only; no substantive target-person evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Alexandr Wang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jdbt077nrmtbp08k24ci",
+          "objectLabel": "Amazon, Meta back Scale AI in $1 billion funding deal that values firm at $14 billion"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Company funding news centered on Scale AI rather than Alexandr Wang personally."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Alexandr Wang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jl3g07a6rmtbbkv7pzee",
+          "objectLabel": "ai.meta.com/blog/sam-3d"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Meta technical blog link, not person-specific evidence for Alexandr Wang."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chamath Palihapitiya",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwh9vhs001jpq9rlclqem1y",
+          "objectLabel": "Elon doing Elon things..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Post is about Elon Musk and Grok, not profile evidence for Chamath Palihapitiya."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmujc03ezrmtbt17gyx95",
+          "objectLabel": "Haskell-Re-Syntaxed"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Haskell syntax repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmtns03enrmtbxtx0t6ht",
+          "objectLabel": "ldnsx"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "DNS/networking utility repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmtd903elrmtbw48xjvz6",
+          "objectLabel": "ucalc"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "General calculator utility repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmssj03efrmtb6s0c8zg6",
+          "objectLabel": "surfcad"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "CAD library repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmrao03dsrmtbszettnda",
+          "objectLabel": "Motivated-Topology"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Topology teaching material, not direct AI or machine-learning profile evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmqc903dkrmtb9b8180vl",
+          "objectLabel": "HaskSymb"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Haskell symbolic algebra experiment with low relevance to the AI profile."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15mv7003oftmg0vokhtbp",
+          "objectLabel": "Content Tools"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "AI teaching-tool marketing page unrelated to Greg Brockman."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15pvr0048ftmgpvak1yyb",
+          "objectLabel": "Google Unveils A.I. Agent That Can Use Websites on Its Own"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google AI agent news unrelated to Greg Brockman."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15n7q003qftmg82yldiuc",
+          "objectLabel": "Introducing Gemini: our largest and most capable AI model"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google Gemini product announcement unrelated to Greg Brockman."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15p1k0042ftmge8jolcov",
+          "objectLabel": "What is Gemini and how it works"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google Gemini overview page unrelated to Greg Brockman."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10k150a1drmtb796o6zzq",
+          "objectLabel": "chromepg"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Browser security plugin project outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10i4o0a0prmtbizh5110e",
+          "objectLabel": "git"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Git fork or mirror, not substantive person or AI evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10hfj0a0jrmtbieo6stec",
+          "objectLabel": "lunchbox"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "File synchronization utility outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10j1g0a11rmtbfh1v6fgi",
+          "objectLabel": "pyconfigatron"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "General configuration utility outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10ifg0a0trmtbfgs5rl4t",
+          "objectLabel": "require-prof"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Ruby profiling utility outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju10ehe09zprmtbxvb6encx",
+          "objectLabel": "rubysh"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Early Ruby development tool outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Guillaume Lample",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvri5f012drmtbb4nw55qd",
+          "objectLabel": "Roncin, Cesar VS Lample, Guillaume"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Chess match video outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Han Xiao",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw75mn0005xyksz082sgqjm",
+          "objectLabel": "hanxiao/useful-one-liner"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "One-liner command repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw767tn0083yksz22k4rvlb",
+          "objectLabel": "jph00/AmazingTodo"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Angular/WebAPI example project outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw765y3007pyksz6r13qqu2",
+          "objectLabel": "jph00/BaseMath"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Swift math helper repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw7670i007xykszwuivyt6g",
+          "objectLabel": "jph00/gyb"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "gyb wrapper repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw7667a007rykszsu45je94",
+          "objectLabel": "jph00/latex-ppt"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "LaTeX and PowerPoint utility outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw766r8007vykszg8nxprpf",
+          "objectLabel": "jph00/swift-apple"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Swift tooling repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Jeremy Howard",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw767kd0081ykszgq7qrcb1",
+          "objectLabel": "jph00/SwiftyMKL"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Swift MKL wrapper repository outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "John Schulman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw76suv00a9ykszd5qs5wuo",
+          "objectLabel": "joschu/pychain"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Blockchain learning project outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "John Schulman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw76to200afykszmaxxthp9",
+          "objectLabel": "joschu/view3d"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "3D camera-view utility outside the AI profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Marc Andreessen",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw771xp00azyksz2h9q1u83",
+          "objectLabel": "Where does consumer AI stand at the end of 2025?"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "a16z consumer-team industry video, not target-person evidence for Marc Andreessen."
+      },
+      "raw": null
+    }
+  ]
+}

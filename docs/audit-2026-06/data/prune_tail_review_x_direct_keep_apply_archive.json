@@ -1,0 +1,374 @@
+{
+  "generatedAt": "2026-06-10T22:05:14.040Z",
+  "summary": {
+    "generatedAt": "2026-06-10T22:05:14.040Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_review_x_direct_keep_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_x_direct_keep_apply_archive.json",
+    "stage": "manual_prune_tail_review_x_direct_keep",
+    "decisions": 10,
+    "existingTargets": 10,
+    "missingTargets": 0,
+    "auditRowsInserted": 10,
+    "deleted": 0,
+    "byAction": {
+      "keep_raw_pool_item": 10
+    },
+    "byVerdict": {
+      "keep": 10
+    },
+    "byPerson": {
+      "Boris Cherny": 3,
+      "Arthur Mensch": 2,
+      "Lukasz Kaiser": 2,
+      "Oriol Vinyals": 1,
+      "Richard Socher": 1,
+      "杰夫·迪恩": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtv28ik0007i004hn1xz67d",
+        "person": "Arthur Mensch",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1ivb20dj8rmtbzquiy55u",
+          "objectLabel": "The team is fast! It's been super exciting to see le Chat more and more widely adopted."
+        },
+        "reason": "Direct post from Arthur Mensch's X source about Mistral's Le Chat adoption and roadmap; short but person-authored and product-specific."
+      },
+      "raw": {
+        "id": "cmju1ivb20dj8rmtbzquiy55u",
+        "personId": "cmjtv28ik0007i004hn1xz67d",
+        "person": "Arthur Mensch",
+        "sourceType": "x",
+        "url": "https://x.com/arthurmensch/status/1887550740270358820",
+        "urlHash": "a42231473fdf30b117082ba62c6514f9",
+        "contentHash": "20eadfb84892dcb4496884385e72dabe",
+        "title": "The team is fast! It's been super exciting to see le Chat more and more widely adopted. It's an early product, and we can't wait to show you what's coming next. https://mistral.ai/news/all-new-le-chat",
+        "text": "The team is fast! It's been super exciting to see le Chat more and more widely adopted. It's an early product, and we can't wait to show you what's coming next. https://mistral.ai/news/all-new-le-chat",
+        "publishedAt": "2025-12-31T05:16:41.622Z",
+        "metadata": {
+          "author": "arthurmensch",
+          "postId": "1887550740270358820",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:16:59.774Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtv28ik0007i004hn1xz67d",
+        "person": "Arthur Mensch",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0qxs708birmtbwnzijgxe",
+          "objectLabel": "Mistral Medium 2 was Miqu by the way"
+        },
+        "reason": "Direct post from Arthur Mensch's X source tying Mistral Medium 2 to Miqu; concise but model-specific and directly attributable."
+      },
+      "raw": {
+        "id": "cmju0qxs708birmtbwnzijgxe",
+        "personId": "cmjtv28ik0007i004hn1xz67d",
+        "person": "Arthur Mensch",
+        "sourceType": "x",
+        "url": "https://x.com/arthurmensch/status/1920136871461433620",
+        "urlHash": "624943f1e504d89ebf7f9c364e5cf2a6",
+        "contentHash": "eb4fa720ebb87657adf1c6d1727df752",
+        "title": "Mistral Medium 2 was Miqu by the way",
+        "text": "Mistral Medium 2 was Miqu by the way",
+        "publishedAt": "2025-12-31T04:54:00.545Z",
+        "metadata": {
+          "author": "arthurmensch",
+          "postId": "1920136871461433620",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:55:16.615Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjxnm7cn0000msdyikzcmmx7",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnlqax000na6eldcwxc7xo",
+          "objectLabel": "Each tab has its own git checkout; Claude manages context"
+        },
+        "reason": "Direct post from Boris Cherny's X source describing a specific Claude Code workflow detail; self-contained enough to keep as product/workflow evidence."
+      },
+      "raw": {
+        "id": "cmjxnlqax000na6eldcwxc7xo",
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "sourceType": "x",
+        "url": "https://x.com/bcherny/status/2007199050978976195",
+        "urlHash": "3cb03cc21596ae8a95cb7becfcf325dd",
+        "contentHash": "eded7796d80a22656551b1f3031168a4",
+        "title": "- Each tab has its own git checkout\n- Claude manages context, I don’t do anything special there",
+        "text": "- Each tab has its own git checkout\n- Claude manages context, I don’t do anything special there",
+        "publishedAt": "2026-01-01T16:00:00.000Z",
+        "metadata": {
+          "author": "bcherny"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-02T17:58:23.338Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjxnm7cn0000msdyikzcmmx7",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnlsgo0011a6elum6o9oi4",
+          "objectLabel": "It really depends on the language, and each model gets better and better at it."
+        },
+        "reason": "Direct post from Boris Cherny's X source with a concrete observation about model behavior across programming languages; keep as product/engineering viewpoint evidence."
+      },
+      "raw": {
+        "id": "cmjxnlsgo0011a6elum6o9oi4",
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "sourceType": "x",
+        "url": "https://x.com/bcherny/status/2007181327557399007",
+        "urlHash": "fd9154267868dfa1cf823818e9798e2b",
+        "contentHash": "2acdb9ab3b05ed0e547139296649c5cc",
+        "title": "It really depends on the language, and each model gets better and better at it. Usually it's things ",
+        "text": "It really depends on the language, and each model gets better and better at it. Usually it's things like spacing, whether function params belong on the same line or should be moved to the next line, things like that",
+        "publishedAt": "2026-01-01T16:00:00.000Z",
+        "metadata": {
+          "author": "bcherny"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-02T17:58:26.137Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjxnm7cn0000msdyikzcmmx7",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnlr7w000ta6elyolsa1ah",
+          "objectLabel": "That is well supported, added many months back."
+        },
+        "reason": "Direct post from Boris Cherny's X source confirming a specific Claude product behavior: sending a message while Claude is running; keep as product fact evidence."
+      },
+      "raw": {
+        "id": "cmjxnlr7w000ta6elyolsa1ah",
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "sourceType": "x",
+        "url": "https://x.com/bcherny/status/2007188094509101442",
+        "urlHash": "8c68aa58dc3325eed7002d9b297e7050",
+        "contentHash": "c9afd89427dc122d29306e2bdec24a30",
+        "title": "That is well supported, added many months back. Just send a message while Claude is running, and it ",
+        "text": "That is well supported, added many months back. Just send a message while Claude is running, and it will process it as soon as it can",
+        "publishedAt": "2026-01-01T16:00:00.000Z",
+        "metadata": {
+          "author": "bcherny"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-02T17:58:24.524Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju14i2x0av9rmtb57rahszg",
+          "objectLabel": "Real world agents will need to have a way to pay."
+        },
+        "reason": "Direct post from Lukasz Kaiser's X source about AI agents needing payment rails; concise but specific to agent product infrastructure."
+      },
+      "raw": {
+        "id": "cmju14i2x0av9rmtb57rahszg",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "x",
+        "url": "https://x.com/lukaszkaiser/status/1968129986336002167",
+        "urlHash": "2060907f925549c9a05033a911977cd5",
+        "contentHash": "7ba9fec339f20c993f3f60f53d99bbe2",
+        "title": "Real world agents will need to have a way to pay. Looks like good steps are being taken even if my favorite is still @NEARProtocol",
+        "text": "Real world agents will need to have a way to pay. Looks like good steps are being taken even if my favorite is still @NEARProtocol",
+        "publishedAt": "2025-12-31T05:05:27.668Z",
+        "metadata": {
+          "author": "lukaszkaiser",
+          "postId": "1968129986336002167",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:49.449Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqwpo04e1rmtb8fe5ay04",
+          "objectLabel": "This is the power of codex."
+        },
+        "reason": "Direct post from Lukasz Kaiser's X source about Codex usage for parallel small repo tasks; keep as direct product-workflow viewpoint evidence."
+      },
+      "raw": {
+        "id": "cmjtxqwpo04e1rmtb8fe5ay04",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "x",
+        "url": "https://x.com/lukaszkaiser/status/1923586418284298577",
+        "urlHash": "ca4b0cc294ff773ac94fc935da126896",
+        "contentHash": "2f0add51887e37e7eddf47fc685044ce",
+        "title": "This is the power of codex. Start with all the small stuff you always wanted to do in your repo but never had time. And do it all at once. Feel the magic.",
+        "text": "This is the power of codex. Start with all the small stuff you always wanted to do in your repo but never had time. And do it all at once. Feel the magic.",
+        "publishedAt": "2025-12-31T03:30:53.299Z",
+        "metadata": {
+          "author": "lukaszkaiser",
+          "postId": "1923586418284298577",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:05:50.326Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxe684000f5p08jljrk67q",
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxolzc03szrmtbb60yf8xt",
+          "objectLabel": "Gemini Robotics On-Device system"
+        },
+        "reason": "Direct post from Jeff Dean's X source announcing Gemini Robotics On-Device work with Google DeepMind/Research/AI; product-specific and AI-relevant."
+      },
+      "raw": {
+        "id": "cmjtxolzc03szrmtbb60yf8xt",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "sourceType": "x",
+        "url": "https://x.com/JeffDean/status/1937702631142752437",
+        "urlHash": "2e5f92072fe1f249db775af767a2647d",
+        "contentHash": "ba704552b1b02e85246ead15e36f0478",
+        "title": "Building on more than 10 years of robotics research and engineering at @GoogleDeepMind, @GoogleResearch and @GoogleAI, we're delighted to announce our Gemini Robotics On-Device system. A really capable vision-language-action model that can  run entirely without network access. ⬇️",
+        "text": "Building on more than 10 years of robotics research and engineering at @GoogleDeepMind, @GoogleResearch and @GoogleAI, we're delighted to announce our Gemini Robotics On-Device system. A really capable vision-language-action model that can  run entirely without network access. ⬇️",
+        "publishedAt": "2025-12-31T03:29:15.351Z",
+        "metadata": {
+          "author": "JeffDean",
+          "postId": "1937702631142752437",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:41:35.981Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjtxd61q00095p08dy5hc363",
+        "person": "Oriol Vinyals",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxsfy01p4rmtbpe17jguq",
+          "objectLabel": "Gemini 3 Flash: smart vs fast"
+        },
+        "reason": "Direct post from Oriol Vinyals's X source about Gemini 3 Flash and the smart-vs-fast tradeoff; concise but product-specific."
+      },
+      "raw": {
+        "id": "cmjtvxsfy01p4rmtbpe17jguq",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "sourceType": "x",
+        "url": "https://x.com/OriolVinyalsML/status/2001325389306872134",
+        "urlHash": "dbfb94bcaf33843a2c66fa8ee5139cd2",
+        "contentHash": "f724f3e787e62def3618dba1357b52b1",
+        "title": "Classic LLM dilemma: smart vs fast. The new reality with Gemini 3 Flash: Why not both? That trade-off has never felt smaller. Congrats to the team! ⚡️",
+        "text": "Classic LLM dilemma: smart vs fast. The new reality with Gemini 3 Flash: Why not both? That trade-off has never felt smaller. Congrats to the team! ⚡️",
+        "publishedAt": "2025-12-31T02:38:08.759Z",
+        "metadata": {
+          "author": "OriolVinyalsML",
+          "postId": "2001325389306872134",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:52.203Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "action": "keep_raw_pool_item",
+        "verdict": "keep",
+        "personId": "cmjwhi3gb000956p4a2s8f29v",
+        "person": "Richard Socher",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhhbfd001156p4u0iz26lz",
+          "objectLabel": "What calculus was for physics, AI is for biology."
+        },
+        "reason": "Direct post from Richard Socher's X source containing a concise AI-biology analogy; keep as directly attributable viewpoint evidence."
+      },
+      "raw": {
+        "id": "cmjwhhbfd001156p4u0iz26lz",
+        "personId": "cmjv6furu000pmfghv7drjtak",
+        "person": "Richard Socher",
+        "sourceType": "x",
+        "url": "https://x.com/RichardSocher/status/1965631811037634837",
+        "urlHash": "881f098952cd71d4113e6137641f0bb7",
+        "contentHash": "6a623bf2d629bf882f7b01fe7bb6ce2c",
+        "title": "What calculus was for physics, AI is for biology.",
+        "text": "What calculus was for physics, AI is for biology.",
+        "publishedAt": "2025-09-09T16:00:00.000Z",
+        "metadata": {
+          "author": "richard_socher",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2026-01-01T22:19:13.561Z",
+        "processed": false
+      }
+    }
+  ]
+}

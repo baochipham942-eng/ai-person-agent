@@ -16,6 +16,11 @@ import 'dotenv/config';
 import path from 'path';
 import { mkdir, writeFile } from 'fs/promises';
 import { neon } from '@neondatabase/serverless';
+import {
+  candidateReadinessCriteria,
+  collectCandidateReadinessBlockers,
+  loadContentReviewPolicy,
+} from '../audit/content_review_policy.mjs';
 
 type CandidateRow = {
   id: string;
@@ -41,18 +46,7 @@ const OUT = args.find(arg => arg.startsWith('--out='))?.slice('--out='.length)
 
 if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL');
 const sql = neon(process.env.DATABASE_URL);
-
-function collectBlockers(row: CandidateRow): string[] {
-  const blockers: string[] = [];
-  if (row.status !== 'candidate') blockers.push(`status_${row.status}`);
-  if (row.completeness < 45) blockers.push('completeness_below_45');
-  if (!row.avatarUrl) blockers.push('avatar_missing');
-  if (row.rawCount < 2) blockers.push('raw_count_below_2');
-  if (row.keepCount < 2) blockers.push('qa_keep_below_2');
-  if (row.liveCount < 1) blockers.push('live_source_missing');
-  if (row.cardCount < 5) blockers.push('card_count_below_5');
-  return blockers;
-}
+const policy = loadContentReviewPolicy();
 
 async function loadCandidates(): Promise<PromotionRow[]> {
   const person = PERSON ?? null;
@@ -78,7 +72,12 @@ async function loadCandidates(): Promise<PromotionRow[]> {
         WHERE qa."personId" = p.id
           AND qa.verdict = ${'keep'}
       ) AS "keepCount",
-      (SELECT COUNT(*)::int FROM "Card" c WHERE c."personId" = p.id) AS "cardCount"
+      (
+        SELECT COUNT(*)::int
+        FROM "Card" c
+        WHERE c."personId" = p.id
+          AND c."isActive" = true
+      ) AS "cardCount"
     FROM "People" p
     WHERE p.status = ${'candidate'}
       AND (${person}::text IS NULL OR p.name ILIKE ${personLike}::text)
@@ -87,7 +86,7 @@ async function loadCandidates(): Promise<PromotionRow[]> {
 
   return rows.map(row => ({
     ...row,
-    blockers: collectBlockers(row),
+    blockers: collectCandidateReadinessBlockers(row, policy, { includeAvatarBlocker: true }),
   }));
 }
 
@@ -117,15 +116,8 @@ async function main() {
   const payload = {
     generatedAt: new Date().toISOString(),
     mode: EXECUTE ? 'execute' : 'dry-run',
-    criteria: {
-      status: 'candidate',
-      completeness: '>= 45',
-      rawCount: '>= 2',
-      keepCount: '>= 2',
-      liveCount: '>= 1',
-      cardCount: '>= 5',
-      avatarUrl: 'required',
-    },
+    policyVersion: policy.version,
+    criteria: candidateReadinessCriteria(policy),
     summary: {
       candidates: candidates.length,
       promotable: promotable.length,

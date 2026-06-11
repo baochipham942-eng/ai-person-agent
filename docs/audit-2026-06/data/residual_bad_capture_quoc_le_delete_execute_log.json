@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-06-11T02:18:37.884Z",
+  "summary": {
+    "generatedAt": "2026-06-11T02:18:37.884Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/residual_bad_capture_quoc_le_delete_decision_2026_06_11.json",
+    "archive": "docs/audit-2026-06/data/residual_bad_capture_quoc_le_delete_execute_archive.json",
+    "stage": "manual_residual_bad_capture_delete",
+    "decisions": 1,
+    "existingTargets": 1,
+    "missingTargets": 0,
+    "auditRowsInserted": 1,
+    "deleted": 1,
+    "byAction": {
+      "delete_raw_pool_item": 1
+    },
+    "byVerdict": {
+      "reject": 1
+    },
+    "byPerson": {
+      "Quoc Le": 1
+    }
+  }
+}

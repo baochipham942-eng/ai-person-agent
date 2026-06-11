@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-06-11T11:55:44+08:00",
+  "productionBaseUrl": "https://people.llmxy.xyz",
+  "scope": {
+    "businessDataMutation": false,
+    "source": "production directory API + read-only DB duplicate check + public source review"
+  },
+  "preflight": {
+    "command": "node scripts/audit/preflight_newcomer_intake.mjs --seeds=docs/audit-2026-06/roster_gap_seeds.json --enrichment=docs/audit-2026-06/roster_gap_enrichment.json --verbose",
+    "passed": true,
+    "candidateDryRun": { "inserted": 4, "updated": 0, "ambiguous": 0 },
+    "enrichmentDryRun": { "matched": 0, "missing": 4, "updated": 0, "missingIsExpectedForDryRunInsertedCandidates": true },
+    "promotionDryRun": { "candidates": 0, "promotable": 0, "held": 0 },
+    "contentGuard": "passed"
+  },
+  "coverage": [
+    { "group": "前沿模型实验室", "organization": "OpenAI", "total": 37, "statusCounts": { "past": 17, "role": 6, "current": 13, "profile": 1 } },
+    { "group": "前沿模型实验室", "organization": "Anthropic", "total": 14, "statusCounts": { "current": 8, "role": 3, "profile": 3 } },
+    { "group": "前沿模型实验室", "organization": "DeepMind", "total": 25, "statusCounts": { "past": 3, "current": 7, "role": 4, "profile": 11 } },
+    { "group": "前沿模型实验室", "organization": "xAI", "total": 2, "statusCounts": { "current": 1, "profile": 1 } },
+    { "group": "前沿模型实验室", "organization": "Mistral", "total": 2, "statusCounts": { "current": 2 } },
+    { "group": "前沿模型实验室", "organization": "Cohere", "total": 2, "statusCounts": { "current": 2 } },
+    { "group": "前沿模型实验室", "organization": "Perplexity", "total": 1, "statusCounts": { "profile": 1 } },
+    { "group": "前沿模型实验室", "organization": "Hugging Face", "total": 1, "statusCounts": { "current": 1 } },
+    { "group": "中国模型公司", "organization": "DeepSeek", "total": 2, "statusCounts": { "past": 1, "role": 1 } },
+    { "group": "中国模型公司", "organization": "Kimi", "total": 1, "statusCounts": { "profile": 1 } },
+    { "group": "中国模型公司", "organization": "智谱AI", "total": 2, "statusCounts": { "profile": 2 } },
+    { "group": "中国模型公司", "organization": "百川智能", "total": 1, "statusCounts": { "current": 1 } },
+    { "group": "中国模型公司", "organization": "MiniMax", "total": 1, "statusCounts": { "profile": 1 } },
+    { "group": "中国模型公司", "organization": "阿里巴巴", "total": 1, "statusCounts": { "profile": 1 } },
+    { "group": "中国模型公司", "organization": "腾讯", "total": 2, "statusCounts": { "role": 1, "current": 1 } },
+    { "group": "中国模型公司", "organization": "字节跳动", "total": 0, "statusCounts": {} },
+    { "group": "中国模型公司", "organization": "百度", "total": 2, "statusCounts": { "past": 2 } },
+    { "group": "大厂与平台", "organization": "Google", "total": 71, "statusCounts": { "past": 27, "current": 21, "role": 13, "profile": 10 } },
+    { "group": "大厂与平台", "organization": "Microsoft", "total": 14, "statusCounts": { "profile": 1, "past": 3, "current": 5, "role": 5 } },
+    { "group": "大厂与平台", "organization": "Meta", "total": 16, "statusCounts": { "current": 6, "past": 8, "profile": 2 } },
+    { "group": "大厂与平台", "organization": "Apple", "total": 1, "statusCounts": { "profile": 1 } },
+    { "group": "高校与研究机构", "organization": "Stanford", "total": 48, "statusCounts": { "past": 20, "role": 21, "current": 7 } },
+    { "group": "高校与研究机构", "organization": "MIT", "total": 9, "statusCounts": { "role": 5, "profile": 4 } },
+    { "group": "高校与研究机构", "organization": "Berkeley", "total": 28, "statusCounts": { "past": 10, "profile": 1, "current": 6, "role": 11 } },
+    { "group": "高校与研究机构", "organization": "CMU", "total": 16, "statusCounts": { "past": 8, "profile": 3, "current": 3, "role": 2 } },
+    { "group": "高校与研究机构", "organization": "清华大学", "total": 11, "statusCounts": { "role": 4, "profile": 3, "past": 3, "current": 1 } },
+    { "group": "高校与研究机构", "organization": "北京大学", "total": 2, "statusCounts": { "current": 1, "role": 1 } },
+    { "group": "硬件与机器人", "organization": "Nvidia", "total": 6, "statusCounts": { "current": 2, "role": 1, "profile": 2, "past": 1 } },
+    { "group": "硬件与机器人", "organization": "Tesla", "total": 4, "statusCounts": { "past": 1, "role": 2, "current": 1 } }
+  ],
+  "actionableNewcomerSeeds": [
+    {
+      "name": "Nick Frosst",
+      "organization": "Cohere",
+      "roleCategory": "founder",
+      "currentTitle": "Co-founder @ Cohere",
+      "sourceUrls": ["https://cohere.com/about"],
+      "targetSeedFile": "docs/audit-2026-06/roster_gap_seeds.json"
+    },
+    {
+      "name": "Ivan Zhang",
+      "organization": "Cohere",
+      "roleCategory": "founder",
+      "currentTitle": "Co-founder @ Cohere",
+      "sourceUrls": ["https://cohere.com/about"],
+      "targetSeedFile": "docs/audit-2026-06/roster_gap_seeds.json"
+    },
+    {
+      "name": "Phil Blunsom",
+      "organization": "Cohere",
+      "roleCategory": "engineer",
+      "currentTitle": "Chief Technology Officer @ Cohere",
+      "sourceUrls": ["https://cohere.com/about"],
+      "targetSeedFile": "docs/audit-2026-06/roster_gap_seeds.json"
+    },
+    {
+      "name": "Timothee Lacroix",
+      "organization": "Mistral AI",
+      "roleCategory": "founder",
+      "currentTitle": "Co-founder & CTO @ Mistral AI",
+      "sourceUrls": ["https://mistral.ai/company"],
+      "targetSeedFile": "docs/audit-2026-06/roster_gap_seeds.json"
+    }
+  ],
+  "existingRecordRepairs": [
+    { "name": "Aravind Srinivas", "issue": "Perplexity filter only matches profile, not PersonRole", "action": "add current Perplexity role source" },
+    { "name": "Joelle Pineau", "issue": "existing record has old title/org while Cohere official page lists Chief AI Officer", "action": "update current role and preserve old career history" },
+    { "name": "Guillaume Lample", "issue": "currentTitle is Mistral but profile organization still points to Facebook", "action": "normalize profile organization or add explicit current role" },
+    { "name": "Yang Zhilin", "issue": "Kimi filter only matches profile", "action": "add Moonshot/Kimi current role source" },
+    { "name": "闫俊杰", "issue": "MiniMax filter only matches profile", "action": "add MiniMax current role source" }
+  ],
+  "needsSourceCandidates": [
+    { "organization": "Perplexity", "names": ["Denis Yarats", "Johnny Ho", "Andy Konwinski"], "reason": "likely important founders, but official source capture was not stable enough for executable seed" },
+    { "organization": "Hugging Face", "names": ["Thomas Wolf", "Julien Chaumond", "Omar Sanseviero", "Philipp Schmid"], "reason": "official profiles help identity, but role/current-title evidence needs stronger support" },
+    { "organization": "xAI", "names": ["Igor Babuschkin", "Jimmy Ba", "Christian Szegedy", "Ross Nordeen"], "reason": "public team evidence is fragmented; Jimmy Ba already exists and should be relationship repair if sourced" },
+    { "organization": "Anthropic", "names": ["Jack Clark", "Evan Hubinger", "Tamera Lanham", "Catherine Olsson", "Nicholas Joseph"], "reason": "second-batch candidates; verify status/source before seed" },
+    { "organization": "字节跳动", "names": ["Seed/豆包核心技术负责人"], "reason": "production filter returns zero; use official Seed pages, technical reports, or release notes before adding people" }
+  ]
+}

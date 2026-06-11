@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-06-10T22:30:00.000Z",
+  "stage": "manual_people_official_link_prune_tail_review",
+  "scope": "Remove empty/placeholder official link that blocks deletion of a weak RawPoolItem after a stronger GitHub profile source has already been repaired and kept.",
+  "decisions": [
+    {
+      "action": "remove_official_link",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "url": "https://newmu.github.io/",
+      "reason": "该 website 官方链接抓取结果几乎为空，仅有 Latest Posts 占位；人物已保留 GitHub 与 X 官方链接，且 GitHub profile RawPoolItem 已通过 GitHub API 修复为 keep，移除此空主页引用后可删除对应弱 RawPoolItem。"
+    }
+  ]
+}

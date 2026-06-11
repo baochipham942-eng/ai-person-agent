@@ -7,6 +7,7 @@ import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
 import { neon } from '@neondatabase/serverless';
+import { loadContentReviewPolicy } from '../audit/content_review_policy.mjs';
 
 type OfficialLink = {
   type: string;
@@ -64,6 +65,7 @@ const SEEDS_PATH = args.find(arg => arg.startsWith('--seeds='))?.slice('--seeds=
 
 if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL');
 const sql = neon(process.env.DATABASE_URL);
+const policy = loadContentReviewPolicy();
 
 function asArray<T>(value: unknown): T[] {
   return Array.isArray(value) ? value as T[] : [];
@@ -108,6 +110,15 @@ function mergeByKey<T>(existing: T[], incoming: T[], getKey: (item: T) => string
   return merged;
 }
 
+function hasChanges(patch: ReturnType<typeof buildPatch>, person: ExistingPerson): boolean {
+  return patch.deltas.links !== 0
+    || patch.deltas.products !== 0
+    || patch.deltas.topics !== 0
+    || patch.deltas.topicDetails !== 0
+    || patch.deltas.sourceWhitelist !== 0
+    || patch.completeness !== (person.completeness || 0);
+}
+
 async function findPerson(seed: EnrichmentSeed): Promise<ExistingPerson | null> {
   const name = seed.name;
   const rows = await sql`
@@ -139,7 +150,12 @@ function buildPatch(seed: EnrichmentSeed, person: ExistingPerson) {
     ...products.map(product => product.url),
   ]);
   const sourceWhitelist = unique([...(person.sourceWhitelist || []), ...(seed.sourceWhitelist || []), ...derivedDomains]);
-  const completeness = Math.max(person.completeness || 0, person.status === 'candidate' ? 25 : person.completeness || 0);
+  const completeness = Math.max(
+    person.completeness || 0,
+    person.status === policy.candidateIntake.defaultStatus
+      ? policy.candidateCompletenessFloors.minimalProfile
+      : person.completeness || 0,
+  );
 
   return {
     officialLinks,
@@ -176,6 +192,11 @@ async function main() {
 
     matched += 1;
     const patch = buildPatch(seed, person);
+    if (!hasChanges(patch, person)) {
+      console.log(`already up to date: ${person.name} (${person.status})`);
+      continue;
+    }
+
     console.log(`${EXECUTE ? 'update' : 'would update'} ${person.name} (${person.status})`);
     console.log(`  +links=${patch.deltas.links} +products=${patch.deltas.products} +topics=${patch.deltas.topics} +topicDetails=${patch.deltas.topicDetails} +domains=${patch.deltas.sourceWhitelist}`);
 

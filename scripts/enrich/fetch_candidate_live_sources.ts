@@ -8,6 +8,7 @@ import 'dotenv/config';
 import crypto from 'crypto';
 import * as cheerio from 'cheerio';
 import { neon } from '@neondatabase/serverless';
+import { loadContentReviewPolicy } from '../audit/content_review_policy.mjs';
 
 type OfficialLink = {
   type: string;
@@ -43,6 +44,7 @@ const LIMIT = limitArg ? Number(limitArg) : undefined;
 
 if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL');
 const sql = neon(process.env.DATABASE_URL);
+const policy = loadContentReviewPolicy();
 
 function sha256(value: string): string {
   return crypto.createHash('sha256').update(value).digest('hex');
@@ -240,7 +242,12 @@ async function updatePersonAfterFetch(person: CandidatePerson, imageUrl: string 
           WHEN COALESCE("avatarUrl", '') = '' THEN ${imageUrl}
           ELSE "avatarUrl"
         END,
-        completeness = GREATEST(COALESCE(completeness, 0), ${fetchedCount > 0 ? 45 : 35}),
+        completeness = GREATEST(
+          COALESCE(completeness, 0),
+          ${fetchedCount > 0
+            ? policy.candidateCompletenessFloors.liveSource
+            : policy.candidateCompletenessFloors.deepEnrichment}
+        ),
         "updatedAt" = NOW()
       WHERE id = ${person.id}
     `;

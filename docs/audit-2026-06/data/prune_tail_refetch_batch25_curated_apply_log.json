@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-06-10T20:41:31.899Z",
+  "summary": {
+    "generatedAt": "2026-06-10T20:41:31.894Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch25_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch25_curated_apply_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH25_CURATED_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 4,
+    "selectedSourceRows": 4,
+    "skippedRows": 16,
+    "existingRawPoolItems": 2,
+    "rawInserted": 2,
+    "rawUpdated": 2,
+    "keepAuditsInserted": 2,
+    "keepAuditsExisting": 2,
+    "byDecision": {
+      "augment_source": 2,
+      "replace_source": 2
+    },
+    "bySourceType": {
+      "exa": 3,
+      "official": 1
+    },
+    "topPeople": {
+      "Boris Cherny": 1,
+      "Ilya Sutskever": 1,
+      "阿希什·瓦斯瓦尼": 1,
+      "黄仁勋": 1
+    },
+    "topHosts": {
+      "cnbc.com": 1,
+      "cs.toronto.edu": 1,
+      "essential.ai": 1,
+      "every.to": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 15,
+      "blocked": 1
+    }
+  }
+}

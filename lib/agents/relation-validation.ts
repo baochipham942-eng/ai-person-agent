@@ -1,3 +1,5 @@
+import type { PrismaClient } from '@prisma/client';
+
 const RELATION_TYPES = ['advisor', 'advisee', 'cofounder', 'colleague', 'collaborator', 'successor'] as const;
 const SYMMETRIC_RELATION_TYPES = new Set(['cofounder', 'colleague', 'collaborator']);
 const TRUSTED_SOURCES = new Set(['wikidata']);
@@ -5,10 +7,7 @@ const EXTERNAL_SOURCES = new Set(['exa', 'perplexity']);
 
 export type RelationType = typeof RELATION_TYPES[number];
 
-type PersonRow = {
-  id: string;
-  name: string;
-};
+type RelationValidationDb = Pick<PrismaClient, 'people' | 'personRelation' | 'personRole'>;
 
 type RoleRow = {
   personId: string;
@@ -72,7 +71,7 @@ type SharedRoleEvidence = {
 };
 
 export async function validateRelationCandidate(
-  db: any,
+  db: RelationValidationDb,
   input: RelationValidationInput
 ): Promise<RelationValidationResult> {
   const relationType = normalizeRelationType(input.relationType);
@@ -137,7 +136,7 @@ export function normalizeRelationType(value: string): RelationType | null {
 }
 
 async function findDuplicateRelation(
-  db: any,
+  db: RelationValidationDb,
   personId: string,
   relatedPersonId: string,
   relationType: RelationType
@@ -164,7 +163,7 @@ async function findDuplicateRelation(
 }
 
 async function getSharedRoleEvidence(
-  db: any,
+  db: RelationValidationDb,
   personId: string,
   relatedPersonId: string
 ): Promise<SharedRoleEvidence[]> {

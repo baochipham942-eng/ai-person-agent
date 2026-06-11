@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-06-11T11:28:31.529Z",
+  "mode": "execute",
+  "policyVersion": "2026-06-11",
+  "criteria": {
+    "status": "candidate",
+    "completeness": ">= 45",
+    "rawCount": ">= 2",
+    "keepCount": ">= 2",
+    "liveCount": ">= 1",
+    "cardCount": ">= 5",
+    "avatarUrl": "required for promotion"
+  },
+  "summary": {
+    "candidates": 1,
+    "promotable": 1,
+    "held": 0,
+    "updated": 1
+  },
+  "promotable": [
+    {
+      "id": "5082f9f8-b36a-40f6-8d34-116b361a003e",
+      "name": "Igor Babuschkin",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": "/avatars/igor-babuschkin-97d2ad9c.webp",
+      "rawCount": 2,
+      "liveCount": 2,
+      "keepCount": 2,
+      "cardCount": 5,
+      "blockers": []
+    }
+  ],
+  "held": []
+}

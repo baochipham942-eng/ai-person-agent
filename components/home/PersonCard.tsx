@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { MouseEvent } from 'react';
 import { getBestOccupation } from '@/lib/constants/occupationMap';
 
 interface Person {
@@ -19,6 +20,10 @@ function getAvatarColor(name: string): string {
     ];
     const charCode = name.charCodeAt(0) + (name.charCodeAt(1) || 0);
     return colors[charCode % colors.length];
+}
+
+function preventMouseFocus(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
 }
 
 export function PersonCard({ person }: { person: Person }) {
@@ -43,7 +48,8 @@ export function PersonCard({ person }: { person: Person }) {
     return (
         <Link
             href={`/person/${person.id}`}
-            className="block group"
+            onMouseDown={preventMouseFocus}
+            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl"
         >
             <div className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col items-center text-center group-hover:-translate-y-1 min-h-[200px]">
                 {/* Avatar - 使用 object-top 保留头部 */}
@@ -55,7 +61,6 @@ export function PersonCard({ person }: { person: Person }) {
                             fill
                             className="object-cover object-top"
                             sizes="64px"
-                            unoptimized
                         />
                     ) : (
                         <div

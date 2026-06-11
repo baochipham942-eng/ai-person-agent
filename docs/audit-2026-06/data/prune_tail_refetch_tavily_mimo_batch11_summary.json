@@ -1,0 +1,297 @@
+{
+  "generatedAt": "2026-06-10T16:56:17.854Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/prune_tail_refetch_claims.jsonl",
+    "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch11.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 20,
+      "offset": 200,
+      "searchResults": 5,
+      "maxCandidates": 10,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "advanced",
+      "tavilyRawContent": "text",
+      "tavilyKeyCount": 11,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": null
+    }
+  },
+  "selectedTasks": 20,
+  "existingRows": 0,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 20,
+  "byDecision": {
+    "human_review": 4,
+    "no_good_source": 8,
+    "augment_source": 3,
+    "replace_source": 5
+  },
+  "byPerson": {
+    "Chris Olah": 3,
+    "Christopher Manning": 1,
+    "Daniela Amodei": 3,
+    "Demis Hassabis": 1,
+    "Dylan Field": 2,
+    "Elon Musk": 5,
+    "Emad Mostaque": 1,
+    "Greg Brockman": 1,
+    "Hyung Won Chung": 3
+  },
+  "selectedHosts": {
+    "anthropic.com": 1,
+    "forbes.com": 2,
+    "fortune.com": 1,
+    "stvp.stanford.edu": 1,
+    "youtube.com": 1,
+    "wired.com": 2,
+    "nbcnews.com": 1,
+    "hwchung2.github.io": 3,
+    "x.com": 1
+  },
+  "selectedSources": 13,
+  "candidateCount": 198,
+  "sample": [
+    {
+      "person": "Chris Olah",
+      "target": "Looking at loss as a function of token index (as seen here) was very much influenced",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "候选来源均未直接支持“损失函数受启发”的具体说法。TIME和Transformer Circuits页面权威但内容不匹配；播客链接缺乏转录证据。需要更具体的采访、论文或官方声明来证明该技术观点与Chris Olah的关联。"
+    },
+    {
+      "person": "Chris Olah",
+      "target": "Our interpretability team is planning to mentor more fellows this cycle!",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接支持“Chris Olah的团队计划在本周期指导更多研究员”这一具体声明。需要更直接的官方公告、博客文章或可靠媒体报道来证明该计划的存在及其与Chris Olah的关联。"
+    },
+    {
+      "person": "Chris Olah",
+      "target": "Really exciting to see this hypothesis being explored more! I confess, I've become more and more persuaded of this in my personal thinking over time... Great to see a more serious investigation!",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "候选来源均无法直接证明原始推文中的具体表述。虽然多个来源（如80000小时播客、Lex Fridman访谈）可以证明Chris Olah的身份和观点，但缺乏对原始言论的直接引用或支持。需要更具体的来源来替换或补强。"
+    },
+    {
+      "person": "Christopher Manning",
+      "target": "//en.wikipedia.org/wiki/The_Innovator%27s_Dilemma – and @Google is in the lucky position of having the industry-best economics for enabling low prices.",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "候选来源均为Christopher Manning的官方或权威个人资料页，但均未包含与原始推文内容（关于《创新者的窘境》和谷歌经济优势）相关的任何信息。因此，无法用这些来源替换或补强原始来源。需要寻找能直接证明他发表过此观点的来源，如该推文的存档、转录或可靠报道。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "target": "Excited to announce our latest fundraising round! We’re genuinely honored to be entrusted with the r",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Anthropic raises $124 million to build more reliable, general AI systems \\ Anthropic",
+          "host": "anthropic.com",
+          "url": "https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems"
+        },
+        {
+          "title": "Daniela Amodei",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/daniela-amodei"
+        }
+      ],
+      "rationale": "原始来源为本人推文，内容简短。候选中Anthropic官方新闻稿和Forbes个人资料页能直接、权威地证明其职位及与公司融资的关联，可补强信息密度。其他来源或需登录，或权威性不足，或未明确提及本人。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "target": "I’m looking forward to what’s to come. And we’re hiring! https://www.anthropic.com/#careers",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Anthropic cofounder says studying the humanities will be 'more important than ever' in the age of AI | Fortune",
+          "host": "fortune.com",
+          "url": "https://fortune.com/2026/02/07/anthropic-cofounder-daniela-amodei-humanities-majors-soft-skills-hiring-ai-stem"
+        },
+        {
+          "title": "Daniela Amodei",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/daniela-amodei"
+        }
+      ],
+      "rationale": "原推文内容空洞，仅为招聘宣传。Fortune文章提供了Daniela Amodei关于AI时代招聘和人文素养的权威观点，可有效补强。Forbes资料页确认其身份，提供权威背景。两者结合可增强该人物页面的深度和可信度。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "target": "I’m so proud of the amazing team we’ve assembled at Anthropic and the research we’ve done to date.",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Daniela Amodei (Anthropic) – ‘Helpful, Honest, Harmless’ AI | Stanford Technology Ventures Program",
+          "host": "stvp.stanford.edu",
+          "url": "https://stvp.stanford.edu/av/daniela-amodei-anthropic-helpful-honest-harmless-ai"
+        },
+        {
+          "title": "Interview with Daniela Amodei, Co-Founder & President of Anthropic",
+          "host": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=8cJAXfbuzx0"
+        }
+      ],
+      "rationale": "原始来源为官方推文，内容空洞。候选来源中，斯坦福大学页面和YouTube采访视频均能直接证明Daniela Amodei的身份、职位及其与Anthropic的关系，可作为权威补充来源，增强其人物页面的可信度。"
+    },
+    {
+      "person": "Demis Hassabis",
+      "target": "announcing Gemini 3 speed/performance advancements)",
+      "decision": "replace_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Google DeepMind's Demis Hassabis Says Gemini Is a New Breed of AI | WIRED",
+          "host": "wired.com",
+          "url": "https://www.wired.com/story/google-deepmind-demis-hassabis-gemini-ai"
+        }
+      ],
+      "rationale": "原始来源为推文，信息密度低。Wired文章是权威媒体对Demis Hassabis宣布Gemini模型的直接报道，明确关联人物与产品发布，可作为高质量替代来源。"
+    },
+    {
+      "person": "Dylan Field",
+      "target": "Alt framing: Cluely isn't just good marketing. Roy hacked the algo feed with an antifragile memetic virus. And the more energy you throw at it, the stronger it gets.",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未提供Dylan Field与'Cluely'营销策略或'antifragile memetic virus'观点的直接关联证据。原始来源为推文，但内容偏向营销讨论，AI相关性模糊，且无权威来源佐证该观点属于Dylan Field。因此无法替换或补强。"
+    },
+    {
+      "person": "Dylan Field",
+      "target": "Grateful to be a seed investor in Sunday! Just a few minutes into meeting @tonyzzhao and @chichengcc it was clear this would be a very special company. Their pace and progress has exceeded every expectation and they are just getting started!",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "候选来源中，只有Tony Zhao的LinkedIn帖子明确提到Dylan Field是Sunday的天使投资人，但这是UGC内容，权威性不足。其他来源均未直接证明Dylan Field投资Sunday。需要更权威的来源，如官方新闻稿、可靠媒体报道或Dylan Field本人的官方声明。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "//x.com/elonmusk/status/1988662682241618367",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "候选来源均未能直接证明目标推文（ID: 1988662682241618367）的具体内容、背景或重要性。权威媒体文章与推文无关，官方主页未提供具体内容，其他页面权威性不足或存在访问障碍。无法找到能替换或补强该来源的权威证据。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "//x.com/elonmusk/status/1989785746480202135",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接提及或证明目标推文链接（//x.com/elonmusk/status/1989785746480202135）的内容或相关性。它们要么是通用传记，要么是无关的新闻报道，无法作为该特定推文的权威替代或补充来源。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Grok now #1 in Korea 🇰🇷",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接支持“Grok now #1 in Korea”这一具体声明。它们要么是无关的新闻（如投资、IPO），要么是播客/转录的通用页面，缺乏关于 Grok 在韩国排名第一的明确证据或直接引述。原始来源（X 帖子）虽简短，但已是官方发布，候选来源未能提供更权威或信息更丰富的替代。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "https://grokipedia.com/ is growing",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Elon Musk's Grokipedia Pushes Far-Right Talking Points | WIRED",
+          "host": "wired.com",
+          "url": "https://www.wired.com/story/elon-musk-launches-grokipedia-wikipedia-competitor"
+        },
+        {
+          "title": "Elon Musk launches Grokipedia as an alternative to 'woke' Wikipedia",
+          "host": "nbcnews.com",
+          "url": "https://www.nbcnews.com/tech/tech-news/elon-musk-launches-grokipedia-alternative-woke-wikipedia-rcna240171"
+        }
+      ],
+      "rationale": "原始来源（推文）过于简略，缺乏上下文。候选来源中，Wired和NBC News的报道直接、权威地证实了马斯克推出Grokipedia作为维基百科替代品的事实，能有效替换原始来源。其他来源要么不相关，要么权威性不足。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Tesla is the leader in real-world AI",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "候选来源均为学术论文、媒体概述或领导力分析，未直接支持‘特斯拉是现实世界AI领导者’这一具体主张。缺乏官方声明、权威技术报告或直接引述马斯克相关言论的可靠来源。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "target": "Doing some spectral analysis in @GoogleColab and what do I see 👀",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "候选来源均为关于Emad Mostaque的访谈、报道或博客，但无一提及他在Google Colab中进行光谱分析的具体推文或行为。这些来源无法直接支持该推文内容属于其人物页面，也无法提供更权威的替代。原始来源（推文）虽简略，但候选中缺乏能替换或补强的直接证据。"
+    },
+    {
+      "person": "Greg Brockman",
+      "target": "As a thank you to all our Codex users, we’re increasing Codex usage limits until Jan 1st:",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接支持原始声明（感谢Codex用户并增加使用限额至1月1日）。它们讨论的是Codex的限制、战略、组织架构或模型更新，而非具体的运营通知。原始来源（推文）可能是最直接的证据，但候选中没有更好的权威替代。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "target": "//x.com/hwchung27/status/1866589418485846104",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Hyung Won Chung",
+          "host": "hwchung2.github.io",
+          "url": "https://hwchung2.github.io"
+        }
+      ],
+      "rationale": "原始来源为X帖子，内容不明确。候选中的hwchung2.github.io是本人官方主页，直接证明其职位、研究贡献（如o1模型）和职业经历，权威性高，可完全替代原始来源。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "target": "//x.com/hwchung27/status/1937964766678683700",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Hyung Won Chung",
+          "host": "hwchung2.github.io",
+          "url": "https://hwchung2.github.io"
+        }
+      ],
+      "rationale": "原始来源为一条X链接，内容未知，无法验证。候选中的个人官方主页（hwchung2.github.io）是权威、可访问的一手来源，直接证明了Hyung Won Chung在OpenAI的职位和关键贡献，完美满足证据要求，可作为替换。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "target": "//x.com/hwchung27/status/1940554328647049683",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Hyung Won Chung",
+          "host": "hwchung2.github.io",
+          "url": "https://hwchung2.github.io"
+        },
+        {
+          "title": "Superintelligence Labs. - Hyung Won Chung",
+          "host": "x.com",
+          "url": "https://x.com/hwchung27/status/1956092401854111934"
+        }
+      ],
+      "rationale": "原来源为一条内容缺失的X链接。候选中，本人官方主页（hwchung2.github.io）提供了最全面、权威的个人信息和贡献证明。其最新宣布加入Meta Superintelligence Labs的X帖子是职位变动的直接证据。两者结合可有效替换原弱来源。"
+    }
+  ]
+}

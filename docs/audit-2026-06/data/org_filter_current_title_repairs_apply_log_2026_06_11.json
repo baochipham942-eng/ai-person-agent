@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "mode": "execute",
+    "decisions": 6,
+    "updated": 6,
+    "wouldUpdate": 0,
+    "alreadyApplied": 0,
+    "missing": 0,
+    "mismatched": 0
+  },
+  "log": [
+    {
+      "action": "update_person_title",
+      "person": "Jan Leike",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "previousCurrentTitle": "Undergraduate Degree @ University of Freiburg",
+      "nextCurrentTitle": "AI Researcher @ Anthropic",
+      "previousOrganization": [
+        "OpenAI"
+      ],
+      "nextOrganization": [
+        "OpenAI",
+        "Anthropic",
+        "Google DeepMind"
+      ],
+      "evidenceUrl": "https://x.com/janleike",
+      "evidenceNote": "X profile bio on 2026-06-11: AI research @AnthropicAI. Previously OpenAI & DeepMind."
+    },
+    {
+      "action": "update_person_title",
+      "person": "Boris Cherny",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "previousCurrentTitle": "Head of Claude Code Integration / Senior Engineering Leader @ Anysphere (Cursor)",
+      "nextCurrentTitle": "Claude Code @ Anthropic",
+      "previousOrganization": [
+        "Anthropic",
+        "Meta"
+      ],
+      "nextOrganization": [
+        "Anthropic",
+        "Meta"
+      ],
+      "evidenceUrl": "https://x.com/bcherny",
+      "evidenceNote": "X profile bio on 2026-06-11: Claude Code @anthropicai."
+    },
+    {
+      "action": "update_person_title",
+      "person": "妮基·帕尔玛",
+      "personId": "cmjvd32rz0000kvtppy47i5r3",
+      "previousCurrentTitle": "Bachelor of Engineering @ Pune Institute of Computer Technology",
+      "nextCurrentTitle": "Research Scientist @ Anthropic",
+      "previousOrganization": [
+        "谷歌大脑",
+        "Anthropic"
+      ],
+      "nextOrganization": [
+        "谷歌大脑",
+        "Anthropic",
+        "Google Brain",
+        "Google Research"
+      ],
+      "evidenceUrl": "https://x.com/nikiparmar09",
+      "evidenceNote": "X profile bio on 2026-06-11: Working @Anthropic."
+    },
+    {
+      "action": "update_person_title",
+      "person": "Joanne Jang",
+      "personId": "cmjv6furu0000mfghokgjj8y8",
+      "previousCurrentTitle": "计算机科学硕士 @ Stanford University",
+      "nextCurrentTitle": "Builder @ CoreAutoAI / former Model Behavior & Labs @ OpenAI",
+      "previousOrganization": null,
+      "nextOrganization": [
+        "CoreAutoAI",
+        "OpenAI",
+        "Stanford University"
+      ],
+      "evidenceUrl": "https://x.com/joannejang",
+      "evidenceNote": "X profile bio on 2026-06-11: trying to automate my work @coreautoai // prev: model behavior & labs @openai."
+    },
+    {
+      "action": "update_person_title",
+      "person": "塞巴斯蒂安·布贝克",
+      "personId": "cmjvd3qrm0002kvtppziawz5i",
+      "previousCurrentTitle": "Alumni (Empirical Inference) @ Max Planck Institute for Intelligent Systems",
+      "nextCurrentTitle": "AI Researcher @ OpenAI",
+      "previousOrganization": [
+        "微软研究院",
+        "普林斯顿大学"
+      ],
+      "nextOrganization": [
+        "微软研究院",
+        "普林斯顿大学",
+        "OpenAI",
+        "Microsoft"
+      ],
+      "evidenceUrl": "https://x.com/SebastienBubeck",
+      "evidenceNote": "X profile bio on 2026-06-11: I work on AI at OpenAI. Former VP AI and Distinguished Scientist at Microsoft."
+    },
+    {
+      "action": "update_person_title",
+      "person": "Bob McGrew",
+      "personId": "cmjv6furu0009mfghtf6a48k2",
+      "previousCurrentTitle": "Engineer @ PayPal",
+      "nextCurrentTitle": "Former Chief Research Officer, OpenAI",
+      "previousOrganization": null,
+      "nextOrganization": [
+        "OpenAI",
+        "Palantir",
+        "PayPal"
+      ],
+      "evidenceUrl": "https://x.com/bobmcgrewai",
+      "evidenceNote": "X profile bio in DB: Former Chief Research Officer at OpenAI, early exec at Palantir, early employee at Paypal."
+    }
+  ]
+}

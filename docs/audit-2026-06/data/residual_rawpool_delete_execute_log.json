@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-06-11T02:09:55.593Z",
+  "summary": {
+    "generatedAt": "2026-06-11T02:09:55.593Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/residual_rawpool_delete_decisions_2026_06_11.json",
+    "archive": "docs/audit-2026-06/data/residual_rawpool_delete_execute_archive.json",
+    "stage": "manual_residual_rawpool_delete",
+    "decisions": 12,
+    "existingTargets": 12,
+    "missingTargets": 0,
+    "auditRowsInserted": 12,
+    "deleted": 12,
+    "byAction": {
+      "delete_raw_pool_item": 12
+    },
+    "byVerdict": {
+      "reject": 12
+    },
+    "byPerson": {
+      "汤姆·布朗": 4,
+      "Jason Wei": 1,
+      "Marc Andreessen": 1,
+      "Wojciech Zaremba": 1,
+      "刘知远": 1,
+      "周明": 1,
+      "唐杰": 1,
+      "李莲": 1,
+      "阿希什·瓦斯瓦尼": 1
+    }
+  }
+}

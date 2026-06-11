@@ -1,0 +1,229 @@
+{
+  "generatedAt": "2026-06-09T15:31:18.400Z",
+  "claimsIn": "docs/audit-2026-06/data/fact_claims_source_items_after_fourth_safe_prune.jsonl",
+  "reviewsIn": [
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_second_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_third_new_high_after_safe_prune_mimo.jsonl"
+  ],
+  "out": "docs/audit-2026-06/data/fact_claims_source_items_after_fourth_safe_prune_new_high.jsonl",
+  "postPruneHighSourceClaims": 1439,
+  "previouslyReviewedHighSourceClaims": 1414,
+  "newHighSourceClaims": 25,
+  "previousReviewClaims": 2003,
+  "bySurface": {
+    "featured.blogs": 25
+  },
+  "bySourceType": {
+    "exa": 25
+  },
+  "topPeople": [
+    {
+      "key": "丁洁",
+      "count": 8
+    },
+    {
+      "key": "姚顺雨",
+      "count": 7
+    },
+    {
+      "key": "朱军",
+      "count": 4
+    },
+    {
+      "key": "肖弘",
+      "count": 3
+    },
+    {
+      "key": "刘知远",
+      "count": 2
+    },
+    {
+      "key": "汤姆·布朗",
+      "count": 1
+    }
+  ],
+  "examples": [
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkdsj02uvrmtbnei9ly3x]:7945051b43e6",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 9,
+      "objectLabel": "丁洁- 师资队伍",
+      "url": "http://www.it.fudan.edu.cn/En/Data/View/3325"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxke9t02v3rmtbhe0umyw5]:e3003e040594",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 8,
+      "objectLabel": "丁洁",
+      "url": "https://yjs.njupt.edu.cn/dsgl/nocontrol/college/dsfcxq.htm?dsJbxxId=9B9D05C52CAE2DCFE050007F01006EFE"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkerl02virmtbacgocb3u]:f9798d9fbba3",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 7,
+      "objectLabel": "专家介绍--丁洁 - 优秀成果奖",
+      "url": "http://db.hbskw.com/pcms/index.php?m=content&c=index&a=show&catid=6&id=8160"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkfe402vvrmtb9kkndbqf]:87c3984763f5",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 6,
+      "objectLabel": "河北工业大学丁洁",
+      "url": "https://teacher.hebut.edu.cn/publish/201914748364fb8c11edab95286ed488d6f1095/"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkg7302w7rmtbw9g0f6te]:fdeca3b379be",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 5,
+      "objectLabel": "丁洁 - 罕见病分会- 北京医学会",
+      "url": "https://hjb.bjyxh.org.cn/News/Detail/121"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkgic02wdrmtbc7lo3tgr]:ef4b11c1ff2c",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 4,
+      "objectLabel": "丁洁 (@jieding)",
+      "url": "https://www.instagram.com/jieding/"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkgti02wjrmtbnkoqhcbq]:a818ed97ebc7",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 3,
+      "objectLabel": "丁洁介绍_图片_作品",
+      "url": "https://m.maoyan.com/asgard/celebrity/2904683"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkh9a02wrrmtbd5lr698p]:7a13d4f915be",
+      "person": "丁洁",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 2,
+      "objectLabel": "丁洁博士 - 分子科学公共实验平台",
+      "url": "https://iscms.westlake.edu.cn/info/1020/1526.htm"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju1b71w0c7trmtbppeatcel]:92331937c1be",
+      "person": "刘知远",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 10,
+      "objectLabel": "LLM最大能力密度100天翻一倍！清华刘知远团队提出 ...",
+      "url": "https://www.linkresearcher.com/theses/7f852fb0-fefa-44bf-b20c-f7743edfc155"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjuugga80g94rmtbu6fqpgax]:d9b68a2cefbf",
+      "person": "刘知远",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 9,
+      "objectLabel": "Ziyu Liu",
+      "url": "https://liuziyu77.github.io/"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg3rv01wkrmtb5rset1tm]:eb3748ed1d2f",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 10,
+      "objectLabel": "Shuhan YAO",
+      "url": "https://scholar.google.com.sg/citations?user=SR1tb-sAAAAJ&hl=en"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg5g501xqrmtbxr7c0arc]:e3410b81b226",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 5,
+      "objectLabel": "上海交通大学生物医学工程学院",
+      "url": "https://bme.sjtu.edu.cn/Web/FacultyDetail/82"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg6ir01yermtbqyo2x981]:038ef0857cf5",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 9,
+      "objectLabel": "Yushu Yu",
+      "url": "https://scholar.google.com.sg/citations?user=mwggKXIAAAAJ&hl=en"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i4n806y1rmtbsfmp84yd]:666d00dc61c8",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 4,
+      "objectLabel": "About",
+      "url": "https://ysymyth.github.io/"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju1a2dj0c06rmtbfhg8l7m5]:ac38e1e4d624",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 8,
+      "objectLabel": "Yu Bao",
+      "url": "https://scholar.google.com/citations?user=TqMb6nMAAAAJ&hl=en"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju1a2nx0c0armtby721ljsz]:955846dae7b9",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 6,
+      "objectLabel": "PharmAgents: Building a Virtual Pharma with Large Language Model Agents",
+      "url": "https://arxiv.org/html/2503.22164v1"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjuve7390irnrmtbhb6jli94]:de1552a02ba6",
+      "person": "姚顺雨",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 7,
+      "objectLabel": "Yuanshun (Kevin) Yao",
+      "url": "https://scholar.google.com/citations?user=AG51Bv4AAAAJ&hl=en"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjfqd02qkrmtb86txdpil]:79dd04c1cbe6",
+      "person": "朱军",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 10,
+      "objectLabel": "朱军：从不会开机的少年到计算机科学家",
+      "url": "https://www.tsinghua.org.cn/__local/0/42/19/503FC198EA6ACE45DDBC2EE74E9_132F0208_1DC097.pdf"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju0jvy007dkrmtb5zcls364]:4fbb2ee19f9e",
+      "person": "朱军",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 9,
+      "objectLabel": "贝叶斯深度学习前沿进展(朱军教授)",
+      "url": "https://iphysresearch.github.io/blog/post/ml_notes/junzhu_bayesian_deep_learning/"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju0jwv507dqrmtb1mwslvit]:3ea44cd16975",
+      "person": "朱军",
+      "surface": "featured.blogs",
+      "sourceType": "exa",
+      "sourceRank": 7,
+      "objectLabel": "生数科技朱军：视频模型更期待“ChatGPT时刻”",
+      "url": "https://www.yicai.com/news/102541352.html"
+    }
+  ]
+}

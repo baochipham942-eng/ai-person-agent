@@ -1,0 +1,430 @@
+{
+  "generatedAt": "2026-06-10T15:00:18.422Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/prune_tail_refetch_claims.jsonl",
+    "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch5.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 20,
+      "offset": 80,
+      "searchResults": 5,
+      "maxCandidates": 10,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "advanced",
+      "tavilyRawContent": "text",
+      "tavilyKeyCount": 11,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": null
+    }
+  },
+  "selectedTasks": 20,
+  "existingRows": 0,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 20,
+  "byDecision": {
+    "augment_source": 11,
+    "replace_source": 8,
+    "human_review": 1
+  },
+  "byPerson": {
+    "Daniela Amodei": 3,
+    "Elon Musk": 5,
+    "Emad Mostaque": 2,
+    "Geoffrey Hinton": 3,
+    "Hyung Won Chung": 2,
+    "Jaana Dogan": 1,
+    "Lukasz Kaiser": 1,
+    "Mira Murati": 2,
+    "Mustafa Suleyman": 1
+  },
+  "selectedHosts": {
+    "en.wikipedia.org": 3,
+    "stvp.stanford.edu": 2,
+    "time.com": 3,
+    "podcasts.happyscribe.com": 1,
+    "britannica.com": 1,
+    "npr.org": 1,
+    "forbes.com": 2,
+    "theguardian.com": 1,
+    "space50.caltech.edu": 1,
+    "bbc.com": 1,
+    "podcasts.apple.com": 1,
+    "openuk.uk": 1,
+    "stability.ai": 1,
+    "nature.com": 1,
+    "technologyreview.com": 1,
+    "wbur.org": 1,
+    "nobelprize.org": 1,
+    "hwchung2.github.io": 2,
+    "wired.com": 1,
+    "linkedin.com": 1,
+    "jbd.dev": 1,
+    "spanner.fyi": 1,
+    "tedai-vienna.ted.com": 1,
+    "ted.com": 1,
+    "cnbc.com": 1,
+    "blogs.microsoft.com": 1,
+    "mustafa-suleyman.ai": 1
+  },
+  "selectedSources": 34,
+  "candidateCount": 184,
+  "sample": [
+    {
+      "person": "Daniela Amodei",
+      "target": "Daniela Amodei - President And Co-founder at Anthropic | The Org",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Daniela Amodei - Wikipedia",
+          "host": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Daniela_Amodei"
+        }
+      ],
+      "rationale": "原始来源The Org页面信息基础，质量一般。维基百科页面作为权威的二级来源，明确确认了Daniela Amodei作为Anthropic总裁兼联合创始人的身份，符合证据要求，可作为可靠替换。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "target": "Daniela Amodei - President at Anthropic",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Daniela Amodei - Wikipedia",
+          "host": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Daniela_Amodei"
+        },
+        {
+          "title": "Daniela Amodei (Anthropic) – 'Helpful, Honest, Harmless' AI",
+          "host": "stvp.stanford.edu",
+          "url": "https://stvp.stanford.edu/av/daniela-amodei-anthropic-helpful-honest-harmless-ai"
+        }
+      ],
+      "rationale": "候选来源中，维基百科和斯坦福大学页面能直接、权威地证明Daniela Amodei作为Anthropic总裁的身份，符合证据要求。其他来源要么权威性不足，要么为社交媒体/UGC，或文本预览未提供关键信息。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "target": "Daniela Amodei (Anthropic) - ‘Helpful, Honest, Harmless’ AI",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Daniela Amodei (Anthropic) – 'Helpful, Honest, Harmless' AI",
+          "host": "stvp.stanford.edu",
+          "url": "https://stvp.stanford.edu/av/daniela-amodei-anthropic-helpful-honest-harmless-ai"
+        },
+        {
+          "title": "Daniela Amodei - Wikipedia",
+          "host": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Daniela_Amodei"
+        }
+      ],
+      "rationale": "斯坦福官方页面直接匹配主题且权威，可作为主要补充来源；维基百科提供人物背景和职位信息，增强来源多样性。其他候选因缺乏可访问内容或权威性不足被拒绝。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk (Isaacson book)",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Walter Isaacson On Musk's Legacy and His Biography",
+          "host": "time.com",
+          "url": "https://time.com/6458925/walter-isaacson-elon-musks-legacy-biography"
+        },
+        {
+          "title": "Introducing: On Musk with Walter Isaacson — On Musk with Walter Isaacson Transcript",
+          "host": "podcasts.happyscribe.com",
+          "url": "https://podcasts.happyscribe.com/on-musk-with-walter-isaacson/introducing-on-musk-with-walter-isaacson"
+        }
+      ],
+      "rationale": "原Wikipedia来源权威性不足。候选中，《时代》采访和播客转录均直接涉及传记作者艾萨克森及其关于马斯克的著作，可作为书籍存在的可靠旁证，补强原来源。但两者均非书籍官方主页或出版商页面，故作为补强而非替换。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk runs X, Tesla, SpaceX, and DOGE, and has become one of DC's most powerful players — here's how he got here",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Elon Musk | SpaceX, Tesla, xAI, X, & PayPal | Britannica Money",
+          "host": "britannica.com",
+          "url": "https://www.britannica.com/money/Elon-Musk"
+        },
+        {
+          "title": "Who is part of Elon Musk’s DOGE, and what are they doing? : NPR",
+          "host": "npr.org",
+          "url": "https://www.npr.org/2025/02/07/nx-s1-5288988/doge-elon-musk-staff-trump"
+        }
+      ],
+      "rationale": "候选来源中，Britannica和NPR能有效补强原始来源。Britannica作为权威百科，明确列出马斯克在多家公司的领导角色；NPR作为可靠媒体，直接报道其与DOGE的关联。两者结合可全面支持原始主张，且符合证据要求。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk Tops Forbes’ 39th Annual Billionaires List",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Elon Musk",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/elon-musk"
+        }
+      ],
+      "rationale": "原始来源链接失效，需替换。福布斯官方个人资料页（forbes.com/profile/elon-musk）是权威来源，能直接证明Elon Musk与福布斯富豪榜的关系，符合证据要求。其他候选来源要么权威性不足，要么内容不直接相关。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk, AI and the antichrist: the biggest tech stories of ...",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Elon Musk, AI and the antichrist: the biggest tech stories of 2025 | Technology | The Guardian",
+          "host": "theguardian.com",
+          "url": "https://www.theguardian.com/technology/2025/dec/22/biggest-tech-stories-2025"
+        },
+        {
+          "title": "50 Years in Space - Elon Musk",
+          "host": "space50.caltech.edu",
+          "url": "https://space50.caltech.edu/program/speakers/MuskE.html"
+        }
+      ],
+      "rationale": "原始卫报文章标题直接关联Elon Musk和AI，可作为主要来源。加州理工页面提供了权威的机构背景，证明其职位和公司。其他候选来源要么是社媒，要么权威性不足或内容不直接相关。建议用这两个来源补强，以支持Elon Musk与AI及科技故事的关系。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Open letter on artificial intelligence",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Elon Musk Signs Open Letter Urging AI Labs to Pump the Brakes",
+          "host": "time.com",
+          "url": "https://time.com/6266679/musk-ai-open-letter"
+        },
+        {
+          "title": "Elon Musk among experts urging a halt to AI training",
+          "host": "bbc.com",
+          "url": "https://www.bbc.com/news/technology-65110030"
+        }
+      ],
+      "rationale": "原始来源（维基百科）内容薄弱，未直接证明马斯克与公开信的关系。候选中的Time和BBC报道标题明确，权威性高，能直接替换原始来源，证明马斯克是签署者。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "target": "The Future of Work in 2025 | Emad Mostaque",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "AI Will End Human Jobs: Emad M…–Digital Disruption with Geoff Nielson – Apple Podcasts",
+          "host": "podcasts.apple.com",
+          "url": "https://podcasts.apple.com/ca/podcast/ai-will-end-human-jobs-emad-mostaque-on-the-future/id1798209377?i=1000743809537"
+        },
+        {
+          "title": "Stability AI Founder Emad Mostaque Tanked His Billion-Dollar Startup",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/sites/kenrickcai/2024/03/29/how-stability-ais-founder-tanked-his-billion-dollar-startup"
+        }
+      ],
+      "rationale": "原始YouTube来源信息密度低，需补充权威来源。Forbes报道和Apple Podcasts描述均直接关联Emad Mostaque本人及其观点，可补强人物与未来工作主题的关联。LinkedIn等社交媒体来源仅作辅助。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "target": "The UK organisation for the business of Open Technology",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Emad Mostaque, Founder, Stability AI from State of Open: The UK in 2024 Phase One - OpenUK",
+          "host": "openuk.uk",
+          "url": "https://openuk.uk/thought-leadership/fireside-chat-emad-mostaque-2024-phase-one"
+        },
+        {
+          "title": "Stability AI Announcement — Stability AI",
+          "host": "stability.ai",
+          "url": "https://stability.ai/news-updates/stabilityai-announcement"
+        }
+      ],
+      "rationale": "原始来源（OpenUK页面）质量偏低，但候选中OpenUK官方活动页面和Stability AI官方公告可补强。前者直接证明人物参与OpenUK活动，后者权威证明其CEO职位。两者结合可增强人物与组织/职位关联的证据链。"
+    },
+    {
+      "person": "Geoffrey Hinton",
+      "target": "Deep learning for AI",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Deep learning | Nature",
+          "host": "nature.com",
+          "url": "https://www.nature.com/articles/nature14539"
+        },
+        {
+          "title": "AI pioneer Geoff Hinton: “Deep learning is going to be able to do ...",
+          "host": "technologyreview.com",
+          "url": "https://www.technologyreview.com/2020/11/03/1011616/ai-godfather-geoffrey-hinton-deep-learning-will-do-everything"
+        }
+      ],
+      "rationale": "原始来源未明确提及Hinton本人。候选中，MIT Technology Review的专访直接引用Hinton关于深度学习的观点，是强匹配来源。Nature综述虽未提Hinton，但作为深度学习领域的权威背景，可作为技术补充。两者结合可补强证据链。"
+    },
+    {
+      "person": "Geoffrey Hinton",
+      "target": "Geoffrey Hinton: AI Is the Next Industrial Revolution",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Geoffrey Hinton: AI Is the Next Industrial Revolution",
+          "host": "time.com",
+          "url": "https://time.com/7339628/geoffrey-hinton-ai"
+        }
+      ],
+      "rationale": "原始来源time.com文章标题与claim完全一致，且明确标注作者为Geoffrey Hinton本人，内容直接阐述其观点，是权威、可访问的首选替换来源。其他候选来源要么观点不完全匹配，要么权威性不足。"
+    },
+    {
+      "person": "Geoffrey Hinton",
+      "target": "The ‘Godfather of AI’ says we can’t afford to get it wrong",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "The ‘Godfather of AI’ says we can’t afford to get it wrong | On Point with Meghna Chakrabarti",
+          "host": "wbur.org",
+          "url": "https://www.wbur.org/onpoint/2025/12/29/godfather-of-ai-geoffrey-hinton"
+        },
+        {
+          "title": "Transcript from an interview with Geoffrey Hinton - NobelPrize.org",
+          "host": "nobelprize.org",
+          "url": "https://www.nobelprize.org/prizes/physics/2024/hinton/1925103-interview-transcript"
+        }
+      ],
+      "rationale": "原始来源为播客页面，缺乏实质内容。候选中WBUR页面标题完全匹配且为权威媒体，诺贝尔奖官方转录权威性最高，两者均可补强来源。其他候选要么权威性不足，要么内容不直接匹配。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "target": "Hyung Won Chung - AI research at Meta Superintelligence ...",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Hyung Won Chung",
+          "host": "hwchung2.github.io",
+          "url": "https://hwchung2.github.io"
+        },
+        {
+          "title": "Another High-Profile OpenAI Researcher Departs for Meta | WIRED",
+          "host": "wired.com",
+          "url": "https://www.wired.com/story/jason-wei-open-ai-meta"
+        }
+      ],
+      "rationale": "原LinkedIn来源信息简略。个人主页（hwchung2.github.io）是权威官方来源，详细列出其职位、研究贡献和经历。Wired报道直接证实其从OpenAI加入Meta的关键变动。两者结合可有效补强和替换原来源。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "target": "突发｜思维链开山作者Jason Wei被曝加入Meta，机器之心独家证实",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "Hyung Won Chung's Post - LinkedIn",
+          "host": "linkedin.com",
+          "url": "https://www.linkedin.com/posts/hyung-won-chung-5801b9a4_after-a-great-time-at-openai-we-zhiqing-activity-7361874648453566464-dyPF"
+        },
+        {
+          "title": "Hyung Won Chung",
+          "host": "hwchung2.github.io",
+          "url": "https://hwchung2.github.io"
+        }
+      ],
+      "rationale": "候选来源中，Hyung Won Chung的LinkedIn帖子是本人官方声明，直接证实其与Jason Wei一同加入Meta超级智能实验室，是替换原始弱匹配来源的最佳选择。其GitHub主页可作为补充权威背景信息。"
+    },
+    {
+      "person": "Jaana Dogan",
+      "target": "Bio - jbd.dev",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "About · jbd.dev",
+          "host": "jbd.dev",
+          "url": "https://jbd.dev/about"
+        },
+        {
+          "title": "About · spanner.fyi",
+          "host": "spanner.fyi",
+          "url": "https://spanner.fyi/about"
+        }
+      ],
+      "rationale": "原来源jbd.dev/bio页面缺少明确人物姓名和贡献描述，证据不足。候选中有两个官方“关于”页面（jbd.dev/about和spanner.fyi/about）明确作者为Jaana Dogan并介绍其背景，可作为权威补充来源，增强人物与作品/职位的关联性。"
+    },
+    {
+      "person": "Lukasz Kaiser",
+      "target": "Lukasz Kaiser - TEDAI 2025",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "TEDAI 2026",
+          "host": "tedai-vienna.ted.com",
+          "url": "https://tedai-vienna.ted.com/panelists-2025/lukasz-kaiser"
+        },
+        {
+          "title": "Lukasz Kaiser: What if AI stops guessing and starts reasoning?",
+          "host": "ted.com",
+          "url": "https://www.ted.com/talks/lukasz_kaiser_what_if_ai_stops_guessing_and_starts_reasoning"
+        }
+      ],
+      "rationale": "原始来源（TEDAI 2025演讲者页面）信息较泛，但候选中提供了更权威的官方页面（TEDAI 2025小组成员页面和TED演讲页面），能直接证明Lukasz Kaiser与TEDAI 2025的关联及其角色，适合作为替换来源。其他候选来源存在事实错误、权威性不足或不直接相关的问题。"
+    },
+    {
+      "person": "Mira Murati",
+      "target": "Former OpenAI technology chief Mira Murati launches rival start-up",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Ex-OpenAI CTO Mira Murati raises $2 billion for new AI startup - CNBC",
+          "host": "cnbc.com",
+          "url": "https://www.cnbc.com/2025/07/15/openai-mira-murati-thinking-machines-lab.html"
+        }
+      ],
+      "rationale": "原始来源因付费墙无法验证。CNBC文章标题直接、权威，明确支持Mira Murati创办竞争对手公司的核心主张，符合证据要求，可作为可靠替换。"
+    },
+    {
+      "person": "Mira Murati",
+      "target": "Mira Murati's Open Source AI Breakthrough at Thinking ...",
+      "decision": "human_review",
+      "confidence": 0,
+      "selectedSources": [],
+      "rationale": "Expected double-quoted property name in JSON at position 1380 (line 24 column 3)"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "Microsoft AI CEO, Mustafa Suleyman, On the Most Powerful, Exponential Technology in Human History: Can We Harness its Revolutionary Potential for Medicine and Energy Without Triggering Social Upheaval, Job Displacement, and Autonomous Global Control?",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman, DeepMind and Inflection Co-founder, joins Microsoft to lead Copilot",
+          "host": "blogs.microsoft.com",
+          "url": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot"
+        },
+        {
+          "title": "Mustafa Suleyman",
+          "host": "mustafa-suleyman.ai",
+          "url": "https://mustafa-suleyman.ai"
+        }
+      ],
+      "rationale": "原始来源仅为播客标题，缺乏实质内容。候选中，微软官方博客和本人官方网站均直接、权威地证明了Mustafa Suleyman现任微软AI CEO的职位，符合证据要求，可有效替换或补强原始来源。"
+    }
+  ]
+}

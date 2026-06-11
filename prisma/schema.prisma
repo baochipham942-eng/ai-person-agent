@@ -137,19 +137,24 @@ model PersonRole {
 }
 
 model Card {
-  id         String   @id @default(cuid())
-  personId   String
-  type       String
-  title      String
-  content    String
-  tags       String[]
-  sourceUrl  String?
-  importance Int      @default(5)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  person     People   @relation(fields: [personId], references: [id], onDelete: Cascade)
+  id           String    @id @default(cuid())
+  personId     String
+  type         String
+  title        String
+  content      String
+  tags         String[]
+  sourceUrl    String?
+  importance   Int       @default(5)
+  generationId String?
+  isActive     Boolean   @default(true)
+  archivedAt   DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  person       People    @relation(fields: [personId], references: [id], onDelete: Cascade)
 
   @@index([personId])
+  @@index([personId, isActive])
+  @@index([generationId])
   @@index([type])
 }
 

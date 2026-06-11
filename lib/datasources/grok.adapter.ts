@@ -26,12 +26,6 @@ interface XPost {
     author?: string;
 }
 
-interface GrokResponse {
-    summary: string;
-    sources: string[];
-    posts: XPost[];
-}
-
 // ============== 配置 ==============
 
 const XAI_API_URL = process.env.XAI_BASE_URL || 'https://api.x.ai/v1';

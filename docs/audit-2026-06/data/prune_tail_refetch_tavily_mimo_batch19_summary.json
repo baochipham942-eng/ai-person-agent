@@ -1,0 +1,372 @@
+{
+  "generatedAt": "2026-06-10T19:08:54.198Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/prune_tail_refetch_claims.jsonl",
+    "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch19.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 20,
+      "offset": 360,
+      "searchResults": 5,
+      "maxCandidates": 10,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "advanced",
+      "tavilyRawContent": "text",
+      "tavilyKeyCount": 11,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": null
+    }
+  },
+  "selectedTasks": 20,
+  "existingRows": 0,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 20,
+  "byDecision": {
+    "augment_source": 3,
+    "replace_source": 14,
+    "no_good_source": 1,
+    "human_review": 2
+  },
+  "byPerson": {
+    "Mustafa Suleyman": 1,
+    "Noam Shazeer": 1,
+    "Oriol Vinyals": 1,
+    "Percy Liang": 2,
+    "Quoc Le": 2,
+    "Sam Altman": 4,
+    "Wojciech Zaremba": 2,
+    "Yann LeCun": 4,
+    "Yoshua Bengio": 2,
+    "乔尔·皮诺": 1
+  },
+  "selectedHosts": {
+    "en.wikipedia.org": 1,
+    "erictopol.substack.com": 1,
+    "time.com": 2,
+    "research.google": 1,
+    "profiles.stanford.edu": 2,
+    "forbes.com": 1,
+    "britannica.com": 1,
+    "theatlantic.com": 1,
+    "lexfridman.com": 1,
+    "cims.nyu.edu": 2,
+    "deepai.org": 1,
+    "gspeakers.com": 1,
+    "ai.meta.com": 2,
+    "yann.lecun.com": 2,
+    "engineering.nyu.edu": 1,
+    "pdfs.semanticscholar.org": 1,
+    "cis.upenn.edu": 1,
+    "simons.berkeley.edu": 1,
+    "businessinsider.com": 1
+  },
+  "selectedSources": 24,
+  "candidateCount": 194,
+  "sample": [
+    {
+      "person": "Mustafa Suleyman",
+      "target": "The Coming Wave Book",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Mustafa Suleyman - Wikipedia",
+          "host": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Mustafa_Suleyman"
+        },
+        {
+          "title": "My review of THE COMING WAVE - by Eric Topol",
+          "host": "erictopol.substack.com",
+          "url": "https://erictopol.substack.com/p/my-review-of-the-coming-age"
+        }
+      ],
+      "rationale": "原始来源（the-coming-wave.com）内容过于推广，缺乏直接证明作者身份的权威信息。维基百科页面提供了关键证据，明确将该网站列为Mustafa Suleyman的官方网站。Eric Topol的评论文章作为可靠媒体来源，进一步确认了作者身份。两者结合可有效补强证据链。"
+    },
+    {
+      "person": "Noam Shazeer",
+      "target": "Character.ai",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Noam Shazeer - TIME",
+          "host": "time.com",
+          "url": "https://time.com/collections/time100-ai/6310599/noam-shazeer"
+        }
+      ],
+      "rationale": "原来源（Character.ai维基百科页面）是公司页面，未直接关联人物。候选中的TIME报道是权威媒体，明确说明Noam Shazeer是Character.AI的联合创始人兼CEO，满足证据要求，可作为替换来源。"
+    },
+    {
+      "person": "Oriol Vinyals",
+      "target": "Natural Language Understanding",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Oriol Vinyals - Google Research",
+          "host": "research.google",
+          "url": "https://research.google/people/oriolvinyals"
+        }
+      ],
+      "rationale": "原始来源未提及个人，候选中谷歌官方个人资料页最权威，能直接证明其职位与研究领域，适合作为替换来源。其他候选要么内容不足，要么非官方或需额外验证。"
+    },
+    {
+      "person": "Percy Liang",
+      "target": "Faculty by Research Focus | Computer Science - CS Stanford",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "Percy Liang's Profile | Stanford Profiles",
+          "host": "profiles.stanford.edu",
+          "url": "https://profiles.stanford.edu/percy-liang"
+        }
+      ],
+      "rationale": "原始来源是斯坦福教职列表片段，未直接包含Percy Liang的具体信息。候选中的斯坦福官方个人资料页（profiles.stanford.edu）直接、权威地证明了其职位和研究焦点，是理想的替换来源。其他候选要么非官方，要么证据不完整。"
+    },
+    {
+      "person": "Percy Liang",
+      "target": "Percy Liang",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "Percy Liang - Stanford Profiles",
+          "host": "profiles.stanford.edu",
+          "url": "https://profiles.stanford.edu/percy-liang"
+        }
+      ],
+      "rationale": "原始来源（DBLP）内容为空，无法提供有效信息。候选来源中，斯坦福大学官方个人资料页（profiles.stanford.edu）是权威、可访问且直接证明Percy Liang职位、研究方向和所属机构的最佳来源，完全符合证据要求，可直接替换。"
+    },
+    {
+      "person": "Quoc Le",
+      "target": "Sang Michael Xie - Stanford Computer Science",
+      "decision": "no_good_source",
+      "confidence": 0.95,
+      "selectedSources": [],
+      "rationale": "候选来源均为Sang Michael Xie的个人资料、论文列表或社交媒体，未提及Quoc Le。无法证明Quoc Le与Sang Michael Xie的关联，因此无法替换或补强原始来源。"
+    },
+    {
+      "person": "Quoc Le",
+      "target": "Transformer (deep learning architecture)",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "候选来源中，YouTube视频提及Quoc Le但主题不直接相关；论文详情页未显示作者信息或作者列表不含Quoc Le。缺乏权威来源直接证明Quoc Le对Transformer架构的贡献。需要更明确的官方资料或可靠采访。"
+    },
+    {
+      "person": "Sam Altman",
+      "target": "https://www.cnn.com/2023/05/16/tech/sam-altman-openai-congress",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Sam Altman - Forbes",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/sam-altman"
+        },
+        {
+          "title": "Sam Altman | Biography, OpenAI, ChatGPT, & Microsoft | Britannica Money",
+          "host": "britannica.com",
+          "url": "https://www.britannica.com/money/Sam-Altman"
+        }
+      ],
+      "rationale": "原来源CNN文章经QA判定不涉及Sam Altman，需替换。候选中Forbes和Britannica的官方资料页权威性高，直接证明其职位和与OpenAI、Y Combinator的关系，符合证据要求。其他候选多为事件报道、转录或社交媒体，权威性不足。"
+    },
+    {
+      "person": "Sam Altman",
+      "target": "How We Chose the TIME100 Most Influential People in AI",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Sam Altman: The 100 Most Influential People in AI 2025 - TIME",
+          "host": "time.com",
+          "url": "https://time.com/collections/time100-ai-2025/7305828/sam-altman-ai"
+        }
+      ],
+      "rationale": "原始来源内容与Sam Altman无关，需替换。候选中的TIME官方页面直接列出Sam Altman为2025年TIME100 AI影响力人物，权威且相关，可作为替换来源。"
+    },
+    {
+      "person": "Sam Altman",
+      "target": "Research",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Does Sam Altman Know What He's Creating? - The Atlantic",
+          "host": "theatlantic.com",
+          "url": "https://www.theatlantic.com/magazine/archive/2023/09/sam-altman-openai-chatgpt-gpt-4/674764"
+        },
+        {
+          "title": "Transcript for Sam Altman: OpenAI, GPT-5, Sora, Board Saga, Elon ...",
+          "host": "lexfridman.com",
+          "url": "https://lexfridman.com/sam-altman-2-transcript"
+        }
+      ],
+      "rationale": "原来源（OpenAI研究页面）未聚焦Sam Altman个人。候选中，《大西洋月刊》深度报道和Lex Fridman播客转录均直接、权威地证明了Sam Altman作为OpenAI CEO在AI研究领域的核心角色与观点，符合证据要求，可有效替换。"
+    },
+    {
+      "person": "Sam Altman",
+      "target": "The Case That A.I. Is Thinking",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接提及或关联目标作品《The Case That A.I. Is Thinking》。它们主要是Sam Altman的其他访谈、报道或社交媒体内容，无法证明该作品与他的关系。需要进一步搜索以确认该作品是否确实与Sam Altman相关，或寻找更直接的证据。"
+    },
+    {
+      "person": "Wojciech Zaremba",
+      "target": "https://arxiv.org/pdf/2310.01405",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Alumni Q&A with Wojciech Zaremba, Co-Founder of OpenAI",
+          "host": "cims.nyu.edu",
+          "url": "https://cims.nyu.edu/dynamic/news/1428"
+        },
+        {
+          "title": "Wojciech Zaremba | DeepAI",
+          "host": "deepai.org",
+          "url": "https://deepai.org/profile/wojciech-zaremba"
+        }
+      ],
+      "rationale": "原来源为arXiv拦截页面，完全无效。候选中NYU校友访谈和DeepAI资料页能直接证明其教育背景、OpenAI联合创始人及机器人团队负责人身份，可作为权威补充来源。其他候选因权威性不足或证据不直接而被拒绝。"
+    },
+    {
+      "person": "Wojciech Zaremba",
+      "target": "GPT-4 contributions",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Alumni Q&A with Wojciech Zaremba, Co-Founder of OpenAI",
+          "host": "cims.nyu.edu",
+          "url": "https://cims.nyu.edu/dynamic/news/1428"
+        },
+        {
+          "title": "Wojciech Zaremba - keynote speaker",
+          "host": "gspeakers.com",
+          "url": "https://www.gspeakers.com/our-speakers/wojciech-zaremba"
+        }
+      ],
+      "rationale": "原始来源（GPT-4贡献者名单）未在文本中提及目标人物，无法直接证明其贡献。候选来源中，NYU校友访谈和演讲者资料页均权威且明确提及Zaremba作为OpenAI联合创始人的身份，可补强其与OpenAI及核心项目的关联，但未直接证明其对GPT-4的具体贡献。建议保留原始来源并补充这些权威资料作为背景佐证。"
+    },
+    {
+      "person": "Yann LeCun",
+      "target": "Convolutional networks for images, speech, and time series",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Yann LeCun - AI at Meta",
+          "host": "ai.meta.com",
+          "url": "https://ai.meta.com/people/396469589677838/yann-lecun"
+        },
+        {
+          "title": "[bib2web] Yann LeCun's Publications",
+          "host": "yann.lecun.com",
+          "url": "http://yann.lecun.com/exdb/publis"
+        }
+      ],
+      "rationale": "原始来源（HAL存档）缺乏具体人物信息。候选中的Meta官方页面和个人出版物页面能权威证明Yann LeCun的身份及其与卷积网络研究的关联，可有效替换或补强。"
+    },
+    {
+      "person": "Yann LeCun",
+      "target": "Deep learning",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Yann LeCun - AI at Meta",
+          "host": "ai.meta.com",
+          "url": "https://ai.meta.com/people/396469589677838/yann-lecun"
+        },
+        {
+          "title": "Yann LeCun | NYU Tandon School of Engineering",
+          "host": "engineering.nyu.edu",
+          "url": "https://engineering.nyu.edu/faculty/yann-lecun"
+        }
+      ],
+      "rationale": "原来源为一般性深度学习文章，未专门关联Yann LeCun。候选中Meta官方页面和NYU教员页面均直接证明其职位与AI研究角色，权威且可访问，适合作为替换来源以支持人物与深度学习的关联。"
+    },
+    {
+      "person": "Yann LeCun",
+      "target": "Gradient-based learning applied to document recognition",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "[PDF] Gradient-based Learning Applied to Document Recognition",
+          "host": "pdfs.semanticscholar.org",
+          "url": "https://pdfs.semanticscholar.org/2af2/2f144da59836946a58fe6ff993be59bccd24.pdf"
+        }
+      ],
+      "rationale": "原始来源因内容乱码被拒绝。候选中，Semantic Scholar的PDF是权威学术来源，标题和作者列表明确包含Yann LeCun，可直接证明其是论文作者，满足证据要求。其他候选要么内容不可读，要么权威性不足。"
+    },
+    {
+      "person": "Yann LeCun",
+      "target": "Yann LeCun's Music Page",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Yann LeCun's Home Page",
+          "host": "yann.lecun.com",
+          "url": "http://yann.lecun.com"
+        }
+      ],
+      "rationale": "原始音乐页面是Yann LeCun个人网站的一部分，其官方主页（yann.lecun.com）的导航栏明确包含“MUSIC”链接，这直接证明了该音乐页面是其个人兴趣的官方展示，符合权威、可访问的要求。"
+    },
+    {
+      "person": "Yoshua Bengio",
+      "target": "Markovian Models for Sequential Data Yoshua Bengio > ...",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "[PDF] Markovian Models for Sequential Data - UPenn CIS",
+          "host": "cis.upenn.edu",
+          "url": "https://www.cis.upenn.edu/~danroth/Teaching/CS598-05/Papers/Bengio-hmms.pdf"
+        }
+      ],
+      "rationale": "原始来源为乱码PDF，无法使用。候选中UPenn的PDF是同一论文的清晰版本，直接证明Yoshua Bengio是作者，且内容可读，符合权威、可访问、直接证明的要求。"
+    },
+    {
+      "person": "Yoshua Bengio",
+      "target": "Superintelligent Agents Pose Catastrophic Risks: Can Scientist AI Offer a Safer Path?",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Superintelligent Agents Pose Catastrophic Risks — Can Scientist AI Offer a Safer Path? | Richard M. Karp Distinguished Lecture",
+          "host": "simons.berkeley.edu",
+          "url": "https://simons.berkeley.edu/events/superintelligent-agents-pose-catastrophic-risks-can-scientist-ai-offer-safer-path-richard-m"
+        }
+      ],
+      "rationale": "候选来源中，伯克利西蒙斯研究所的官方活动页是最佳选择。它直接、权威地证明了Yoshua Bengio就该主题进行了演讲，完全符合证据要求，可替换原始的arXiv占位符页面。"
+    },
+    {
+      "person": "乔尔·皮诺",
+      "target": "Meta AI Research Head Joelle Pineau resigns amid AI race",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Meta AI Research Head Leaves As AI Investment Soars Into the Billions - Business Insider",
+          "host": "businessinsider.com",
+          "url": "https://www.businessinsider.com/meta-ai-research-head-leaves-billions-investmented-2025-4"
+        }
+      ],
+      "rationale": "候选来源中，Business Insider的文本预览明确包含乔尔·皮诺的职位、离职原因及LinkedIn声明，是权威媒体且证据充分，可直接替换原失效来源。其他候选来源的文本预览多为网站导航或登录墙，无法确认内容。"
+    }
+  ]
+}

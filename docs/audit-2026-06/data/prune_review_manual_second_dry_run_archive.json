@@ -1,0 +1,449 @@
+{
+  "generatedAt": "2026-06-10T10:27:54.851Z",
+  "summary": {
+    "generatedAt": "2026-06-10T10:27:54.851Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_second_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_second_dry_run_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 12,
+    "existingTargets": 12,
+    "missingTargets": 0,
+    "auditRowsInserted": 12,
+    "deleted": 12,
+    "byAction": {
+      "delete_raw_pool_item": 12
+    },
+    "byVerdict": {
+      "reject": 12
+    },
+    "byPerson": {
+      "Aidan Gomez": 5,
+      "Greg Brockman": 2,
+      "Alexandr Wang": 1,
+      "Daniela Amodei": 1,
+      "Demis Hassabis": 1,
+      "Elon Musk": 1,
+      "Hyung Won Chung": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvp8ax00pgrmtbsl7ktfrl",
+          "objectLabel": "Aidan Gomez's Playlists | Computer Science & Mathematics"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Personal music playlist page; not AI, career, research, or product evidence for Aidan Gomez."
+      },
+      "raw": {
+        "id": "cmjtvp8ax00pgrmtbsl7ktfrl",
+        "personId": "cmjtv233j0006i004uet1cwt0",
+        "person": "Aidan Gomez",
+        "sourceType": "exa",
+        "url": "https://aidangomez.ca/playlists.html",
+        "urlHash": "6ab7e14f688575ef537a2c01875eaeed",
+        "contentHash": "ba08ff639047f825d9ba037c607496cc",
+        "title": "Aidan Gomez's Playlists | Computer Science & Mathematics",
+        "text": "[home.](https://gom.ai)\n\n## Playlists:\n\n- **Du (Jan22):**\n1 hour 4 minutes\n\\[ [Apple Music](https://music.apple.com/us/playlist/du/pl.u-b6D9F0e5oBP)\\] \\[ [Spotify](https://open.spotify.com/playlist/79F0OyBPl3CS7HOb4Oak6U?si=2d8be02da7684906)\\]\n- **bbo (Mar21):**\n48 minutes\n\\[ [Apple Music](https://music.apple.com/us/playlist/bbo/pl.u-PPNBFJWPapZ)\\] \\[ [Spotify](https://open.spotify.com/playlist/35KPiODwqTnoJ7XKeufBXi?si=XnWSNgPURPGUCiXF3cYGlg)\\]\n- **FTP (Jun20):**\n55 minutes\n\\[ [Apple Music](https://music.apple.com/us/playlist/ftp/pl.u-AZP9CDBW6qj)\\] \\[ [Spotify](https://open.spotify.com/playlist/7a1Upmf8ApYjw0wr7RK9lf?si=vb9QeckyRuypq_2_KhWa0g)\\]\n- **Oct19:**\n1 hour 10 minutes\n\\[ [Apple Music](https://itunes.apple.com/us/playlist/oct19/pl.u-PPZZCJWPapZ)\\] \\[ [Spotify](https://open.spotify.com/user/tmcyybhsyp7s54mfqk5a2xo07/playlist/6I3OcBZnB4q2O2FwfIsFp1)\\]\n- **Ak (Aug19):**\n1 hour 21 minutes\n\\[ [Apple Music](https://itunes.apple.com/us/playlist/vo/pl.u-PDeVCJWPapZ)\\] \\[ [Spotify](https://open.spotify.com/user/tmcyybhsyp7s54mfqk5a2xo07/playlist/2ZARIvFUN3c9k5622uTvRa)\\]\n- **Feb19:**\n1 hour 29 minutes\n\\[ [Apple Music](https://itunes.apple.com/us/playlist/vo/pl.u-Ld1BC5DjJva)\\] \\[ [Spotify](https://open.spotify.com/user/tmcyybhsyp7s54mfqk5a2xo07/playlist/7LhwC3L2FmurflWbfjuXM0)\\]\n- **Vo (Jan19):**\n1 hour 17 minutes\n\\[ [Apple Music](https://itunes.apple.com/us/playlist/vo/pl.u-6m24S43lrXR)\\] \\[ [Spotify](https://open.spotify.com/user/tmcyybhsyp7s54mfqk5a2xo07/playlist/11J1xjO0t1BKCqBoCdUaef)\\]\n- **Oct18:**\n1 hour 28 minutes\n\\[ [Apple Music](https://itunes.apple.com/us/playlist/oct18/pl.u-Ld55t5DjJva)\\] \\[ [Spotify](https://open.spotify.com/playlist/1k1iX7RuE0Mbqwz0xcSEyo)\\]",
+        "publishedAt": null,
+        "metadata": {
+          "author": "",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:34.212Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqjbq00xcrmtbi23ux984",
+          "objectLabel": "Cpp-AES"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Generic AES implementation; not useful AI/person evidence for the profile."
+      },
+      "raw": {
+        "id": "cmjtvqjbq00xcrmtbi23ux984",
+        "personId": "cmjtv233j0006i004uet1cwt0",
+        "person": "Aidan Gomez",
+        "sourceType": "github",
+        "url": "https://github.com/aidangomez/Cpp-AES",
+        "urlHash": "eaece7c10cb66cb6dbc706330748dcf8",
+        "contentHash": "954ae5dd8a7d40889997a75277eb666b",
+        "title": "Cpp-AES",
+        "text": "Just another implementation of AES; An excuse to intimately learn the algorithm.",
+        "publishedAt": "2024-11-28T05:44:00.000Z",
+        "metadata": {
+          "forks": 0,
+          "stars": 2,
+          "topics": [],
+          "language": null,
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:52.875Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqfg200wcrmtbl7uuicp5",
+          "objectLabel": "pygorithmic"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "QuestTrade/API trading utility; non-core and not AI evidence for Aidan Gomez."
+      },
+      "raw": {
+        "id": "cmjtvqfg200wcrmtbl7uuicp5",
+        "personId": "cmjtv233j0006i004uet1cwt0",
+        "person": "Aidan Gomez",
+        "sourceType": "github",
+        "url": "https://github.com/aidangomez/pygorithmic",
+        "urlHash": "f4e73158a985f752d0e4652a53118948",
+        "contentHash": "565f28657af1d94761a76d5b02c1960c",
+        "title": "pygorithmic",
+        "text": "A QuestTrade API wrapper designed to streamline the development of investment algorithms.",
+        "publishedAt": "2024-11-28T05:44:01.000Z",
+        "metadata": {
+          "forks": 0,
+          "stars": 8,
+          "topics": [],
+          "language": "Python",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:51.197Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqh7u00wurmtbr9ngcbjr",
+          "objectLabel": "RandKit"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Generic random-number Swift utility; non-core and not AI evidence for the profile."
+      },
+      "raw": {
+        "id": "cmjtvqh7u00wurmtbr9ngcbjr",
+        "personId": "cmjtv233j0006i004uet1cwt0",
+        "person": "Aidan Gomez",
+        "sourceType": "github",
+        "url": "https://github.com/aidangomez/RandKit",
+        "urlHash": "3029d269ca9d2e6d3ac942d55d2314a8",
+        "contentHash": "7a235acd8de661731f91cd2291132a0a",
+        "title": "RandKit",
+        "text": "Swift framework for random numbers & distributions.",
+        "publishedAt": "2024-11-28T05:43:55.000Z",
+        "metadata": {
+          "forks": 1,
+          "stars": 5,
+          "topics": [],
+          "language": "Swift",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:52.040Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqewf00w6rmtbybvd3sm2",
+          "objectLabel": "welcome"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Generic welcome-message project; low-information and not AI/person evidence."
+      },
+      "raw": {
+        "id": "cmjtvqewf00w6rmtbybvd3sm2",
+        "personId": "cmjtv233j0006i004uet1cwt0",
+        "person": "Aidan Gomez",
+        "sourceType": "github",
+        "url": "https://github.com/aidangomez/welcome",
+        "urlHash": "466161fb84e5a8590df0131ad74ede45",
+        "contentHash": "7628fa0980cd94dc704fd6aabda7b0e2",
+        "title": "welcome",
+        "text": "Generate a cute welcome message for yourself each day",
+        "publishedAt": "2025-02-16T15:39:03.000Z",
+        "metadata": {
+          "forks": 4,
+          "stars": 22,
+          "topics": [],
+          "language": "Shell",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:50.768Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Alexandr Wang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jq8507bwrmtbnls47gbu",
+          "objectLabel": "Alexandr Wang Says He's Waiting to have a Kid, Until Tech Like Neuralink is Ready"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Personal-life video headline; low-value for AI profile evidence and not a representative professional source."
+      },
+      "raw": {
+        "id": "cmju0jq8507bwrmtbnls47gbu",
+        "personId": "cmjtv2h8i0009i0048zkgoqwc",
+        "person": "Alexandr Wang",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=S9ozof2-EA0",
+        "urlHash": "6379a4a3967d8e0c01055025cf23ed7b",
+        "contentHash": "23520c354ea56aebc96e9baae6a1c6c5",
+        "title": "Alexandr Wang Says He&#39;s Waiting to have a Kid, Until Tech Like Neuralink is Ready",
+        "text": "Scale AI CEO Alexandr Wang reveals he's holding off on having kids not because of career pressure, but because he's waiting for ...",
+        "publishedAt": "2025-06-24T14:00:34.000Z",
+        "metadata": {
+          "tags": [
+            "医疗AI",
+            "产品",
+            "AGI"
+          ],
+          "videoId": "S9ozof2-EA0",
+          "isOfficial": false,
+          "thumbnailUrl": "https://i.ytimg.com/vi/S9ozof2-EA0/hqdefault.jpg",
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:49:40.230Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Demis Hassabis",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0nz0807ykrmtbr5gtmm81",
+          "objectLabel": "About Google DeepMind"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Generic organization about page; not a person-specific Hassabis source."
+      },
+      "raw": {
+        "id": "cmju0nz0807ykrmtbr5gtmm81",
+        "personId": "cmjtsw84q00023esto9f6h0w6",
+        "person": "Demis Hassabis",
+        "sourceType": "exa",
+        "url": "https://deepmind.google/about/",
+        "urlHash": "d14dfbb3faff5f73628326807536cb19",
+        "contentHash": "9976a9cf4fdbf38cbcc2ff7b3757d37c",
+        "title": "About Google DeepMind",
+        "text": "About Google DeepMind - Google DeepMind\n[Skip to main content](#page-content)\nmenuclose\n[Google DeepMindDeepMind](https://deepmind.google/)\nkeyboard\\_arrow\\_downkeyboard\\_arrow\\_up\n[\ncode\nBuild with Gemini](https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=)[\nspark\nChat with Gemini](https://gemini.google.com/?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=)\nAbout Google DeepMind# Our mission is to build AI responsibly to benefit humanity\nchevron\\_left\n* [Our vision](#our-vision)\n* [Our journey](#our-journey)\nchevron\\_right\n## Our vision\nWe live in an exciting time when AI research and technology are delivering extraordinary advances.\nIn the coming years, AI —and ultimately artificial general intelligence (AGI) —has the potential to drive one of the greatest transformations in history.\nWe’re a team of scientists, engineers, ethicists and more, working to build the next generation of AI systems safely and responsibly.\nBy solving some of the hardest scientific and engineering challenges of our time, we’re working to create breakthrough technologies that could advance science, transform work, serve diverse communities —and improve billions of people’s lives.\n> > AI has the potential to be one of the most important and beneficial technologies ever invented.\n> Demis Hassabis\nCo-founder and CEO, Google DeepMind\n## Our journey\nGoogle DeepMind brings together two of the world’s leading AI labs —Google Brain and DeepMind —into a single, focused team led by our CEO Demis Hassabis. Over the last decade, the two teams were responsible for some of the biggest research breakthroughs in AI, many of which underpin the flourishing AI industry we see today.\nDeepMind started in 2010, with an interdisciplinary approach to building general AI systems. The research lab brought together new ideas and advances in machine learning, neuroscience, engineering, mathematics, simulation and computing infrastructure, along with new ways of organizing scientific endeavors.\nThe lab achieved early success by pioneering the field of deep reinforcement learning - a combination of deep learning and reinforcement learning - and using games to test its systems. One of its early breakthroughs was a program called[DQN](https://deepmind.google/discover/blog/deep-reinforcement-learning/?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=), which learned to play 49 different Atari games from scratch just by observing the raw pixels on the screen and being told to maximize the score.\nIn 2015, DeepMind unveiled[AlphaGo](https://deepmind.google/research/alphago/), the first computer program to defeat a Go world champion. Go was a long-standing grand challenge in AI and AlphaGo’s landmark achievement was considered a decade ahead of its time. AlphaGo inspired a new era of AI systems and its successors,[AlphaZero](https://deepmind.google/blog/alphazero-shedding-new-light-on-chess-shogi-and-go/)and[MuZero](https://deepmind.google/blog/muzero-mastering-go-chess-shogi-and-atari-without-rules/), are increasingly general and able to solve many different games as well as complex real-world problems, from compressing[YouTube videos](https://deepmind.google/blog/muzeros-first-step-from-research-into-the-real-world/)to discovering[new more efficient computer algorithms](https://deepmind.google/blog/alphadev-discovers-faster-sorting-algorithms/).\nAfter the success of AlphaGo, the DeepMind team sought out increasingly complex games that capture different elements of intelligence. In 2019 we demonstrated[AlphaStar](https://deepmind.google/blog/alphastar-mastering-the-real-time-strategy-game-starcraft-ii/), the first AI system to defeat a top professional player at StarCraft II, considered to be one of the most challenging Real-Time Strategy (RTS) games and one of the longest-played e-sports of all time.\nThe team also invented[WaveNet](https://deepmind.google/research/wavenet/), a realistic text-to-speech model that was used as the voice of the Google Assistant and introduced a lot of the technology used in Generative AI systems today.\nThen in 2020, DeepMind launched[AlphaFold](https://deepmind.google/science/alphafold/), an AI system that accurately predicts 3D models of protein structures —catalyzing a new wave of progress in biology. Other breakthroughs include writing computer programs at a competitive level with[AlphaCode](https://deepmind.google/blog/competitive-programming-with-alphacode/), discovering faster sorting algorithms with[AlphaDev](https://deepmind.google/blog/alphadev-discovers-faster-sorting-algorithms/), advancing[weather predictions](https://deepmind.google/blog/nowcasting-the-next-hour-of-rain/)with unparalleled accuracy, and[controlling plasma](https://deepmind.google/blog/accelerating-fusion-science-through-learned-plasma-control/)in nuclear fusion reactors.\nGoogle Brain started in 2011",
+        "publishedAt": "2025-05-13T16:00:00.000Z",
+        "metadata": {
+          "author": "Demis HassabisCo-founder and CEO, Google DeepMind",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:22:49.240Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv19u73007wftmgteagqcrn",
+          "objectLabel": "OpenAI API"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "OpenAI product announcement page; not person-specific evidence for Greg Brockman."
+      },
+      "raw": {
+        "id": "cmjv19u73007wftmgteagqcrn",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://openai.com/blog/openai-api/",
+        "urlHash": "7cbfa891ea212d1291308cddf7c70c55",
+        "contentHash": "9f1c830c353d129b095af0dac2a56aad",
+        "title": "OpenAI API",
+        "text": "OpenAI API | OpenAI\n[Skip to main content](#main)\nLog in\n[\n](https://openai.com/)\nSwitch to\n* [ChatGPT(opens in a new window)](https://chatgpt.com/?openaicom-did=cc277b67-486a-484a-9889-4d03b1f865db&amp;openaicom_referred=true)\n* [Sora(opens in a new window)](https://sora.com/)\n* [API Platform(opens in a new window)](https://platform.openai.com/)\nOpenAI\nJune 11, 2020\n[Product](https://openai.com/news/product-releases/)\n# OpenAI API\nWe’re releasing an API for accessing new AI models developed by OpenAI.\n[Sign up(opens in a new window)](https://platform.openai.com/signup)[Explore the API](https://openai.com/api/)\n![Openai Api](https://images.ctfassets.net/kftzwdyauwt9/dc934ef7-f0cb-4f5f-c0cf6c342e85/a3f2f3cf338befa003536167cc3a492d/OpenAI_APIOpenAI_API.png?w=3840&amp;q=90&amp;fm=webp)\nLoading…\nShare\nWe’re releasing an API for accessing new AI models developed by OpenAI. Unlike most AI systems which are designed for one use-case, the API today provides a general-purpose “text in, text out” interface, allowing users to try it on virtually any English language task. You can now request access in order to integrate the API into your product, develop an entirely new application, or help us explore the strengths and limits of this technology.\nLoading...\nGiven any text prompt, the API will return a text completion, attempting to match the pattern you gave it. You can “program” it by showing it just a few examples of what you’d like it to do; its success generally varies depending on how complex the task is. The API also allows you to hone performance on specific tasks by training on a dataset (small or large) of examples you provide, or by learning from human feedback provided by users orlabelers.\nWe’ve designed the API to be both simple for anyone to use but also flexible enough to make machine learning teams more productive. In fact, many of our teams are now using the API so that they can focus on machine learning research rather than distributed systems problems. Today the API runs models with weights from the[GPT‑3⁠(opens in a new window)](https://arxiv.org/abs/2005.14165)family with many speed and throughput improvements. Machine learning is moving very fast, and we’re constantly upgrading our technology so that our users stay up todate.\nLoading...\nThe field’s pace of progress means that there are frequently surprising new applications of AI, both positive and negative. We will terminate API access for obviously harmful use-cases, such as harassment, spam, radicalization, or astroturfing. But we also know we can’t anticipate all of the possible consequences of this technology, so we are launching today in a private beta rather than general availability, building tools to help users better control the content our API returns, and researching safety-relevant aspects of language technology (such as analyzing, mitigating, and intervening on harmful bias). We’ll share what we learn so that our users and the broader community can build more human-positive AIsystems.\nLoading...\nIn addition to being a revenue source to help us[cover costs⁠](https://openai.com/index/openai-lp/)in pursuit of[our mission⁠](https://openai.com/charter/), the API has pushed us to sharpen our focus on general-purpose AI technology—advancing the technology, making it usable, and considering its impacts in the real world. We hope that the API will greatly lower the[barrier⁠(opens in a new window)](https://medium.com/@aidungeon/how-we-scaled-ai-dungeon-2-to-support-over-1-000-000-users-d207d5623de9)to producing beneficial AI-powered products, resulting in tools and services that are hard to imaginetoday.\nInterested in exploring the API? Join companies like[Algolia⁠(opens in a new window)](https://www.algolia.com/),[Quizlet⁠(opens in a new window)](https://quizlet.com/), and[Reddit⁠(opens in a new window)](https://www.reddit.com/), and researchers at institutions like the[Middlebury Institute⁠(opens in a new window)](https://www.middlebury.edu/institute/academics/centers-initiatives/ctec)in our[privatebeta⁠(opens in a new window)](https://platform.openai.com/signup).\nLoading...\n* [Join our Applied AI team(opens in a new window)](https://openai.com/careers)\n## Frequently asked questions\n#### Why did OpenAI decide to release a commercial product?\nUltimately, what we[care about most⁠](https://openai.com/charter/)is ensuring artificial general intelligence benefits everyone. We see developing commercial products as one of the ways to make sure we have enough funding tosucceed.\nWe also believe that safely deploying powerful AI systems in the world will be hard to get right. In releasing the API, we are working closely with our partners to see what challenges arise when AI systems are used in the real world. This will help guide our efforts to understand how deploying future AI systems will go, and what we need to do to make sure they are safe and beneficial foreveryone.\n#### Why did OpenAI choose to release an API instead of open-sourcing the models?",
+        "publishedAt": "2020-06-10T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T21:57:44.607Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0zygf09tvrmtb71ibei3n",
+          "objectLabel": "Introducing GPT-4.5"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "OpenAI product release; not person-specific evidence for Greg Brockman and already handled by conservative attribution."
+      },
+      "raw": {
+        "id": "cmju0zygf09tvrmtb71ibei3n",
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "sourceType": "exa",
+        "url": "https://openai.com/index/introducing-gpt-4-5/",
+        "urlHash": "a077a73d71bc764b98a22f746fd2f61d",
+        "contentHash": "c452e3f6a608a1198e2a2bd3694da99e",
+        "title": "Introducing GPT-4.5",
+        "text": "Introducing GPT-4.5 | OpenAI\n[Skip to main content](#main)\nLog in\n[\n](https://openai.com/)\nSwitch to\n* [ChatGPT(opens in a new window)](https://chatgpt.com/?openaicom-did=5aa01d1b-fb1f-4edd-88f0-5fdd9bfdce3d&amp;openaicom_referred=true)\n* [Sora(opens in a new window)](https://sora.com/)\n* [API Platform(opens in a new window)](https://platform.openai.com/)\nOpenAI\nFebruary 27, 2025\n[Release](https://openai.com/research/index/release/)[Product](https://openai.com/news/product-releases/)\n# Introducing GPT-4.5\nA research preview of our strongest GPT model. Available to Pro users and developers worldwide.\n[Try in ChatGPT(opens in a new window)](https://chatgpt.com/?openaicom-did=5aa01d1b-fb1f-4edd-88f0-5fdd9bfdce3d&amp;openaicom_referred=true)\nLoading…\nShare\nWe’re releasing a research preview of GPT‑4.5—our largest and best model for chat yet. GPT‑4.5 is a step forward in scaling up pre-training and post-training. By scaling unsupervised learning, GPT‑4.5 improves its ability to recognize patterns, draw connections, and generate creative insights without reasoning.\nEarly testing shows that interacting with GPT‑4.5 feels more natural. Its broader knowledge base, improved ability to follow user intent, and greater “EQ” make it useful for tasks like improving writing, programming, and solving practical problems. We also expect it to hallucinate less.\nWe’re sharing GPT‑4.5 as a research preview to better understand its strengths and limitations. We’re still exploring what it’s capable of and are eager to see how people use it in ways we might not have expected.\n## Scaling unsupervised learning\nWe advance AI capabilities by scaling two complementary paradigms: unsupervised learning and reasoning. These represent two axes of intelligence.\n1. Unsupervised learning increases world model accuracy and intuition. Models like GPT‑3.5, GPT‑4, and GPT‑4.5 advance this paradigm.\n2. [Scaling reasoning⁠](https://openai.com/index/learning-to-reason-with-llms/), on the other hand, teaches models to think and produce a chain of thought before they respond, allowing them to tackle complex STEM or logic problems. Models like OpenAI o1 and OpenAI o3‑mini advance this paradigm.\nGPT‑4.5 is an example of scaling unsupervised learning by scaling up compute and data, along with architecture and optimization innovations. GPT‑4.5 was trained on Microsoft Azure AI supercomputers. The result is a model that has broader knowledge and a deeper understanding of the world, leading to reduced hallucinations and more reliability across a wide range of topics.\n#### Scaling the GPT paradigm\n## GPT-4.5 (2025)\nWhat was the first language?\nWe don't know exactly what the first language was, and scientists believe we'll probably never know for sure because spoken languages appeared long before written records existed.\nHere's what we do know:\n* **No single \"first language\":**Languages likely developed gradually in different groups of humans around the same time, tens or even hundreds of thousands of years ago.\n* **Origin in Africa:**Most scientists agree that spoken language probably first emerged among humans in Africa, perhaps over 100,000 years ago.\n* **Proto-languages:**Rather than a single language, humans likely started with simple communication that evolved into more complex languages. The earliest forms of language probably included gestures, sounds, and signals to express basic ideas and emotions.\n* **Lost to history:**Because speech leaves no direct fossil record, and writing emerged relatively recently (around 5,000 years ago), we have no way to know exactly how the earliest languages sounded.\nToday, linguists study existing languages to understand how they evolved over thousands of years, but the exact identity of humanity’s very first language remains—and will likely always remain—a mystery.\n#### Deeper world knowledge\n##### SimpleQA Accuracy (higher is better)\n62.5%38.2%47%15%Accuracy\n##### SimpleQA Hallucination Rate (lower is better)\n37.1%61.8%44%80.3%Hallucination rate\n*SimpleQA measures LLM (large language model) factuality on straightforward but challenging knowledge questions.*\n## Training for human collaboration\nAs we scale our models and they solve more complex problems, it becomes increasingly important to teach them a greater understanding of human needs and intent. For GPT‑4.5, we developed new, scalable techniques that enable training larger and more powerful models with data derived from smaller models. These techniques improve GPT‑4.5’s steerability, understanding of nuance, and natural conversation.\n##### Comparative evaluations with human testers\n56.8%63.2%57.0%GPT-4.5 win-rate vs GPT-4o\n*Human preference measures the percentage of queries where testers preferred GPT‑4.5 over GPT‑4o.*\nCombining deep understanding of the world with improvedcollaborationresults in a model that integrates ideas naturally in warm and intuitive conversations that are more attuned to human collaboration. GPT‑4.5 has a better understanding of what huma",
+        "publishedAt": "2025-02-26T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:24:59.934Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0w7b10908rmtbkmcdsf99",
+          "objectLabel": "xAI throws great parties"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Casual company-party post; no substantive AI, product, or career evidence."
+      },
+      "raw": {
+        "id": "cmju0w7b10908rmtbkmcdsf99",
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "sourceType": "x",
+        "url": "https://x.com/elonmusk/status/2002615469237547295",
+        "urlHash": "d24ae849deff351ccd6ec0880336af04",
+        "contentHash": "25897b26750b9539e7c088d5dbdcfe46",
+        "title": "xAI throws great parties",
+        "text": "xAI throws great parties",
+        "publishedAt": "2025-12-31T04:59:08.815Z",
+        "metadata": {
+          "author": "elonmusk",
+          "postId": "2002615469237547295",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:59:22.237Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Daniela Amodei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0h35g06trrmtbyurfpkf9",
+          "objectLabel": "Inside Anthropic, the AI Company Betting That Safety Can Be a Winning Strategy"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Company-level Anthropic article; not person-specific evidence for Daniela Amodei."
+      },
+      "raw": {
+        "id": "cmju0h35g06trrmtbyurfpkf9",
+        "personId": "cmjtsyroa00093estgaoeadqk",
+        "person": "Daniela Amodei",
+        "sourceType": "exa",
+        "url": "https://time.com/6980000/anthropic/",
+        "urlHash": "72038fac4910cde9ac914fd6b167b54c",
+        "contentHash": "42c98c28d45228998ebf6fce3b5d961d",
+        "title": "Inside Anthropic, the AI Company Betting That Safety Can Be a Winning Strategy",
+        "text": "Inside Anthropic, the AI Company Betting That Safety Can Be a Winning Strategy | TIME\n![](https://api.time.com/wp-content/uploads/2024/05/time-most-influential-companies-anthropic-dario-amodei.jpg?quality=85&amp;w=1200&amp;h=1500&amp;crop=1)\n# Inside Anthropic, the AI Company Betting That Safety Can Be a Winning Strategy\n14minute read\nBy[Billy Perrigo/San Francisco](https://time.com/author/billy-perrigo/)\nPresented By\nPhotograph by Ian Allen for TIME\n[\nTIME100 Most Influential Companies 2024\n](https://time.com/collection/time100-companies-2024/)\n14minute read\nMay 30, 2024 7:33 AM EDT\nIn the summer of 2022,[Dario Amodei](https://time.com/6317366/amazon-anthropic-ai-deal/)had a difficult decision to make. Anthropic, the AI company where he is co-founder and CEO, had just finished training a new chatbot that was far more powerful than anything he had seen before. The team working on it at Anthropic’s San Francisco headquarters were in awe of their creation, which they christened Claude.\nReleasing Claude, Amodei knew, could earn fame and fortune for Anthropic, a roughly 50-person startup that had only launched the previous year. But he was worried about the potential consequences of unleashing the AI upon the world—so worried, in fact, that he ultimately decided not to, opting instead to continue internal safety testing. Some three months later, a rival lab, OpenAI, launched a similar product called[ChatGPT](https://time.com/6263022/what-to-know-about-chatgpt-4/). It set off a frenzy of hype and investment that has reshaped the entire tech industry.\nMany[Silicon Valley](https://time.com/6692111/silicon-valley-palantir-alexander-karp/)entrepreneurs would see that kind of missed opportunity as the regret of a lifetime. But for Amodei, it was about more than business: he wanted to avoid triggering a race to build bigger, and perhaps more dangerous, AI systems. “I suspect it was the right thing to do,” says Amodei, 41, twirling a lock of curly dark hair between his fingers during a two-hour interview in May. “But it’s not totally clear-cut.”\n![](https://api.time.com/wp-content/uploads/2024/05/TIM240610-100Companies_Amodei_final.jpg?quality=85&amp;w=1800 \"Dario Amodei 100 Most Influential Companies Time magazine cover 240610\")Photograph by Ian Allen for TIME\nHis uncertainty is understandable, given that a race began anyway and that his decision likely cost Anthropic billions of dollars. But[ChatGPT](https://time.com/6695917/chatgpt-ai-scientific-study/)woke regulators up to something Amodei had been worrying about for years: that advanced AI could, if handled poorly, be catastrophically risky. Last July, Amodei testified in front of Senators in Washington, D.C.—arguing that systems powerful enough to “create large-scale destruction” and change the balance of power between nations could exist as soon as 2025.\nOthers, including OpenAI CEO[Sam Altman](https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/), had made similar warnings. But many in the AI-safety community felt Amodei had greater credibility, viewing Anthropic’s decision to withhold Claude as a signal of its commitment to prioritizing safety over money and acclaim. The lab was an underdog: the smallest of all the companies building “frontier” AI systems, the youngest, the least well-financed, and the most expressly committed to safety. This reputation has mostly endured, even as Anthropic has raised more than $7 billion from[investors](https://time.com/6977424/ai-competition-openai-anthropic-microsoft-amazon/)including Amazon and Google, expanded to around 500 employees, and launched three generations of its Claude chatbot. (Salesforce, where TIME co-chair and owner Marc Benioff is CEO, has also invested.)\nClaude 3, which Anthropic released in March, was by some measures the most capable publicly available AI system at the time, outperforming OpenAI’s GPT-4 and Google’s[Gemini](https://time.com/6836153/ethical-ai-google-gemini-debacle/). That put Anthropic in the curious position of having a reputation as the most cautious AI company, while also owning—and selling access to—one of today’s most advanced versions of the technology. Three days spent at Anthropic’s headquarters, and interviews with Amodei and nine senior employees, made it clear they don’t see that as a contradiction. “We’re not a company that believes a certain set of things about the dangers that AI systems are going to have,” Amodei says. Figuring out what those dangers really are is “an empirical question”—one he sees as Anthropic’s mission to answer with evidence. That, he says, requires building and studying powerful systems.\nAmodei makes the case that the way Anthropic competes in the market can spark what it sees as an essential “race to the top” on safety. To this end, the company has voluntarily constrained itself: pledging not to release AIs above certain capability levels until it can develop sufficiently robust safety measures. Amodei hopes this approach—known as the Re",
+        "publishedAt": "2024-05-29T16:00:00.000Z",
+        "metadata": {
+          "author": "Billy Perrigo/San Francisco",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:54:03.056Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Hyung Won Chung",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvw4mb01anrmtbikmo9nmu",
+          "objectLabel": "People"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "POSTECH lab people page with no substantive person-specific evidence for Hyung Won Chung."
+      },
+      "raw": {
+        "id": "cmjtvw4mb01anrmtbikmo9nmu",
+        "personId": "cmjtv3tsv000li004co65fad9",
+        "person": "Hyung Won Chung",
+        "sourceType": "exa",
+        "url": "https://chunglab.postech.ac.kr/people/",
+        "urlHash": "05f360c9e98e6988f1a7f52967ce7dae",
+        "contentHash": "47ef434bbb4f3d72cb3d2925ca2205c8",
+        "title": "People",
+        "text": "- [Home](https://chunglab.postech.ac.kr/)\n- Team\n\n# Team\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2024_summer.jpg)\n\n2024 Summer\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2023_spring_3.jpg)\n\n2023 Spring\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2023_spring_2.jpg)\n\n2023 Spring\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2023_spring.jpg)\n\n2023 Spring\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2022_fall.jpg)\n\n2022 Fall\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2022_summer_2.jpg)\n\n2022 Summer\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2022_summer.jpg)\n\n2022 Summer\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2021_summer.jpg)\n\n2021 Summer\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2018_winter.jpg)\n\n2018 Winter\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2018_summer.jpg)\n\n2018 Summer\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2017_summer.jpg)\n\n2017 Summer\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2017_spring.jpg)\n\n2017 Spring\n\n![](https://chunglab.postech.ac.kr/assets/images/team/group/2016_spring.jpg)\n\n2016 Spring\n\n### CAPTAIN\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/yoonyoung.jpg)\n\n### **Yoonyoung Chung** Professor\n\n\n\nPh.D., Electrical Engineering, Stanford University (2012)\n\n\n### LEADER\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/jinpyeo.jpg)\n\n### **Jinpyeo Jeung**\n\n\n\nPh.D. Electrical Engineering, POSTECH (2025)\n\n\n\nResearch interest: Surface electrode, Wearable helathcare\n\n\n### CREW (GRADUATE)\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/junpyo.jpg)\n\n### **Junpyo Lee**\n\n\n\nB.S., Electrical Materials Engineering, Kwangwoon University (2025)\n\nResearch interest:\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/wontae.jpg)\n\n### **Wontae Jeong**\n\n\n\nB.S., Electrical Engineering, Kyungpook National University (2025)\n\nResearch interest:\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/seongminbae.jpg)\n\n### **Seongmin Bae**\n\n\n\nB.S., Electrical Engineering, Kyungpook National University (2025)\n\nResearch interest:\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/sunwoong.jpg)\n\n### **Sunwoong Ham**\n\n\n\nB.S., Electrical Engineering, Kyungpook National University (2023)\n\nResearch interest:\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/sangwook.jpg)\n\n### **Sangwook Jung**\n\n\n\nB.S., Electrical Engineering, Kyungpook National University (2024)\n\nResearch interest:\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/dowan.jpg)\n\n### **Dowan Kang**\n\n\n\nB.S., Electrical Engineering, Kyungpook National University (2024)\n\nResearch interest: Thin film transistor\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/yeeun.png)\n\n### **Yeeun Kim**\n\n\n\nB.S., Electronics Engineering, Sookmyung Women's University (2024)\n\nResearch interest: IoT, Flexible sensor\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/chanyeong.jpg)\n\n### **Chanyeong Go**\n\n\n\nB.S., Electrical Engineering, POSTECH (2024)\n\nResearch interest: Memory\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/yeongmin.jpg)\n\n### **Yeongmin Kim**\n\n\n\nB.S., School of Undergraduate Studies, DGIST (2023)\n\nResearch interest: Sensor, Healthcare\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/taejun.jpg)\n\n### **Taejun Ha**\n\n\n\nB.S., School of Undergraduate Studies, DGIST (2023)\n\nResearch interest: Thin film transistor\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/hyunyoung.jpg)\n\n### **Hyunyoung Cho**\n\n\n\nB.S., Electrical Engineering, POSTECH (2022)\n\nResearch interest: Memory, Ferroelectric\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/yonghun.jpg)\n\n### **Yonghun Song**\n\n\n\nB.S., Electrical Engineering, Kyunghee University (2020)\n\nResearch interest: Flexible sensor, Healthcare, IoT\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/yunsik.jpg)\n\n### **Yunsik Kim**\n\n\n\nB.S., Electrical Engineering, POSTECH (2019)\n\nResearch interest: Healthcare, Flexible circuit\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/juyoung.jpg)\n\n### **Juyoung Yun**\n\n\n\nB.S., Electrical Engineering, Kyungpook National University (2019)\n\nResearch interest: Thin film transistor, Contact resistance\n\n- ![](https://chunglab.postech.ac.kr/assets/images/people/suwon.jpg)\n\n### **Suwon Seong**\n\n\n\nB.S., Electrical Engineering, University of Seoul (2018)\n\nResearch interest: Thin film transistor, 3D IC\n\n\n### ALUMNI\n\n- ### **Changeon Jin**\n\n\n\nM.S., Electrical Engineering (2025)\n\n\n\n→ Samsung Electronics\n\n- ### **Jinpyeo Jeung**\n\n\n\nPh.D. Electrical Engineering (2025)\n\n\n\n→ Postdoc. at POSTECH\n\n- ### **Taewon Seo**\n\n\n\nPh.D. Electrical Engineering (2025)\n\n\n\n→ Samsung Electronics\n\n- ### **Seongmin Park**\n\n\n\nPh.D. Electrical Engineering (2024)\n\n\n\n→ Samsung Electronics\n\n- ### **Hyuk Park**\n\n\n\nPh.D. Electrical Engineering (2023)\n\n\n\n→ Samsung Electronics\n\n- ### **G",
+        "publishedAt": "2019-01-31T16:00:00.000Z",
+        "metadata": {
+          "author": "{{ title }}",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:20.250Z",
+        "processed": false
+      }
+    }
+  ]
+}

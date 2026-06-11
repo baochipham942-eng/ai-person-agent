@@ -1,0 +1,26 @@
+{
+  "decisions": [
+    {
+      "person": "Lukasz Kaiser",
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmju14dgy0asprmtbbeorl167",
+        "objectLabel": "Papers with Code - Łukasz Kaiser"
+      },
+      "reason": "Manual prune: Papers with Code search result page is not a source about the target person and has same-name/collision noise; it should not remain as a person evidence item."
+    },
+    {
+      "person": "Quoc Le",
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmju1074e09wfrmtb3yoo0h2y",
+        "objectLabel": "Kevin Clark - CS Stanford"
+      },
+      "reason": "Manual prune: the source is Kevin Clark's CV; Quoc Le is only mentioned as another person's advisor/collaborator, so the item is not about Quoc Le."
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import Image from 'next/image';
 import { Input, Button, List, Avatar, Tag, Message, Spin, Empty } from '@arco-design/web-react';
 import { IconSearch, IconPlus } from '@arco-design/web-react/icon';
 
@@ -57,7 +58,7 @@ export function SearchBox({ onPersonSelected }: SearchBoxProps) {
                 // 如果只有一个本地结果，直接跳转
                 onPersonSelected?.(data.results[0].id);
             }
-        } catch (error) {
+        } catch {
             Message.error('搜索失败，请稍后重试');
         } finally {
             setLoading(false);
@@ -86,7 +87,7 @@ export function SearchBox({ onPersonSelected }: SearchBoxProps) {
             const data = await response.json();
             Message.success(data.isNew ? '人物已添加！' : '已找到现有记录');
             onPersonSelected?.(data.personId);
-        } catch (error) {
+        } catch {
             Message.error('创建失败，请稍后重试');
         } finally {
             setConfirmingQid(null);
@@ -154,7 +155,12 @@ export function SearchBox({ onPersonSelected }: SearchBoxProps) {
                                 avatar={
                                     <Avatar size={48} className="bg-blue-100 text-blue-600">
                                         {item.avatarUrl ? (
-                                            <img src={item.avatarUrl} alt={item.name || item.label} />
+                                            <Image
+                                                src={item.avatarUrl}
+                                                alt={item.name || item.label || 'avatar'}
+                                                width={48}
+                                                height={48}
+                                            />
                                         ) : (
                                             (item.name || item.label || '?')[0]
                                         )}

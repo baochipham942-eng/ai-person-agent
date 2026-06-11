@@ -1,0 +1,110 @@
+{
+  "generatedAt": "2026-06-11T10:11:37.740Z",
+  "mode": "execute",
+  "input": "docs/audit-2026-06/data/external_avatar_localization_repairs.json",
+  "summary": {
+    "missingPeople": 0,
+    "sourceDeletes": 0,
+    "sources": 0,
+    "cards": 0,
+    "avatars": 9,
+    "errors": 0
+  },
+  "missingPeople": [],
+  "deletedSources": [],
+  "sources": [],
+  "cards": [],
+  "avatars": [
+    {
+      "person": "Shengjia Zhao",
+      "status": "updated",
+      "previousAvatarUrl": "https://avatars.githubusercontent.com/u/13686847?v=4?s=400",
+      "nextAvatarUrl": "/avatars/shengjia-zhao-664c38f4.webp",
+      "inputBytes": 27215,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/shengjia-zhao-664c38f4.webp",
+      "evidenceUrl": "https://github.com/ShengjiaZhao",
+      "evidenceNote": "GitHub profile is linked from officialLinks and displays Shengjia Zhao identity."
+    },
+    {
+      "person": "Noam Brown",
+      "status": "updated",
+      "previousAvatarUrl": "https://noambrown.com/assets/img/profile-poker.jpg",
+      "nextAvatarUrl": "/avatars/noam-brown-abe0a94c.webp",
+      "inputBytes": 34680,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/noam-brown-abe0a94c.webp",
+      "evidenceUrl": "https://noambrown.github.io/",
+      "evidenceNote": "Personal site profile photo is served from Noam Brown's own site."
+    },
+    {
+      "person": "Ben Mildenhall",
+      "status": "updated",
+      "previousAvatarUrl": "https://github.com/bmild.png",
+      "nextAvatarUrl": "/avatars/ben-mildenhall-32a1b62f.webp",
+      "inputBytes": 1578,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/ben-mildenhall-32a1b62f.webp",
+      "evidenceUrl": "https://github.com/bmild",
+      "evidenceNote": "GitHub profile is linked from officialLinks and corresponds to Ben Mildenhall."
+    },
+    {
+      "person": "Tim Brooks",
+      "status": "updated",
+      "previousAvatarUrl": "https://www.timothybrooks.com/about/portrait.jpg",
+      "nextAvatarUrl": "/avatars/tim-brooks-29bae0cb.webp",
+      "inputBytes": 37058,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/tim-brooks-29bae0cb.webp",
+      "evidenceUrl": "https://huggingface.co/timbrooks",
+      "evidenceNote": "Official Hugging Face profile og:title is timbrooks (Tim Brooks) and og:image points to this profile thumbnail."
+    },
+    {
+      "person": "Deepak Pathak",
+      "status": "updated",
+      "previousAvatarUrl": "https://github.com/pathak22.png",
+      "nextAvatarUrl": "/avatars/deepak-pathak-b156bf06.webp",
+      "inputBytes": 15506,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/deepak-pathak-b156bf06.webp",
+      "evidenceUrl": "https://github.com/pathak22",
+      "evidenceNote": "GitHub profile is linked from officialLinks and corresponds to Deepak Pathak."
+    },
+    {
+      "person": "Aravind Srinivas",
+      "status": "updated",
+      "previousAvatarUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Aravind_Srinivas_2024.jpg",
+      "nextAvatarUrl": "/avatars/aravind-srinivas-93f28fdf.webp",
+      "inputBytes": 624379,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/aravind-srinivas-93f28fdf.webp",
+      "evidenceUrl": "https://en.wikipedia.org/wiki/Aravind_Srinivas",
+      "evidenceNote": "Wikimedia portrait is used by the Aravind Srinivas profile page."
+    },
+    {
+      "person": "Michael Truell",
+      "status": "updated",
+      "previousAvatarUrl": "https://github.com/truell20.png",
+      "nextAvatarUrl": "/avatars/michael-truell-34f760da.webp",
+      "inputBytes": 20051,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/michael-truell-34f760da.webp",
+      "evidenceUrl": "https://github.com/truell20",
+      "evidenceNote": "GitHub profile is linked from officialLinks and corresponds to Michael Truell."
+    },
+    {
+      "person": "Brett Adcock",
+      "status": "updated",
+      "previousAvatarUrl": "https://images.ctfassets.net/3drndowvgqds/3hjg3ub4qIVBri0HqS5Wc2/dcf1779e1c49607bc709552ac3393424/Vettery_Img_Bio.png?fm=webp&q=75&w=800",
+      "nextAvatarUrl": "/avatars/brett-adcock-c9d386c0.webp",
+      "inputBytes": 45462,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/brett-adcock-c9d386c0.webp",
+      "evidenceUrl": "https://brettadcock.com/",
+      "evidenceNote": "Image URL is the existing person portrait source and personal site is linked from officialLinks."
+    },
+    {
+      "person": "Junyang Lin",
+      "status": "updated",
+      "previousAvatarUrl": "https://nextomoro.com/content/images/2026/05/lin-junyang.png",
+      "nextAvatarUrl": "/avatars/junyang-lin-144225fe.webp",
+      "inputBytes": 642856,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/junyang-lin-144225fe.webp",
+      "evidenceUrl": "https://nextomoro.com/content/images/2026/05/lin-junyang.png",
+      "evidenceNote": "Existing avatar URL is a portrait image for Junyang Lin and was visually checked before localization."
+    }
+  ],
+  "errors": []
+}

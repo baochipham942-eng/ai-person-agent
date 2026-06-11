@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-06-09T14:46:50.646Z",
+  "archive": "docs/audit-2026-06/data/safe_rawpool_remediation_archive.json",
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/fact_claim_remediation_mimo_summary.json",
+    "safeDecisions": 210,
+    "rejectedSafeQueueRows": 0,
+    "uniqueTargetIds": 210,
+    "existingTargets": 210,
+    "missingTargets": 0,
+    "deleted": 210,
+    "affectedPeople": 57,
+    "bySourceType": {
+      "youtube": 11,
+      "podcast": 60,
+      "openalex": 10,
+      "exa": 123,
+      "github": 6
+    },
+    "byVerdict": {
+      "wrong_person": 194,
+      "unsupported": 16
+    },
+    "topPeople": {
+      "丁洁": 15,
+      "周明": 12,
+      "Boris Cherny": 10,
+      "Elon Musk": 9,
+      "布莱恩·卡坦扎罗": 9,
+      "朱军": 9,
+      "刘知远": 8,
+      "汤姆·布朗": 8,
+      "肖弘": 7,
+      "Greg Brockman": 6,
+      "Jaana Dogan": 6,
+      "Rob Bensinger": 6,
+      "唐杰": 6,
+      "姚顺雨": 6,
+      "Guillaume Lample": 4,
+      "Hyung Won Chung": 4,
+      "Jason Wei": 4,
+      "Santiago Valdarrama": 4,
+      "季逸超": 4,
+      "杰夫·迪恩": 4,
+      "贾里德·卡普兰": 4,
+      "Chris Olah": 3,
+      "Christopher Manning": 3,
+      "Jan Leike": 3,
+      "John Schulman": 3
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-06-10T17:13:37.219Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch12.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch12_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH12_CURATED.md",
+  "inputRows": 20,
+  "outputRows": 20,
+  "inputSelectedSources": 19,
+  "outputSelectedSources": 10,
+  "removedSelectedSources": 9,
+  "rowsChanged": 7,
+  "rowsDeferredToHumanReview": 4,
+  "byDecision": {
+    "no_good_source": 6,
+    "human_review": 7,
+    "augment_source": 4,
+    "replace_source": 3
+  },
+  "removedHosts": {
+    "en.wikipedia.org": 2,
+    "dwarkesh.com": 1,
+    "ml-summit.org": 1,
+    "research.google": 1,
+    "singjupost.com": 1,
+    "techcrunch.com": 1,
+    "time.com": 1,
+    "youtube.com": 1
+  },
+  "keptHosts": {
+    "ai.meta.com": 2,
+    "engineering.nyu.edu": 2,
+    "arxiv.org": 1,
+    "businessinsider.com": 1,
+    "digg.com": 1,
+    "lexfridman.com": 1,
+    "research.google": 1,
+    "research.google.com": 1
+  }
+}

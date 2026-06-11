@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-06-10T13:29:43.537Z",
+  "summary": {
+    "generatedAt": "2026-06-10T13:29:43.531Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_curated_apply_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_CURATED_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 19,
+    "selectedSourceRows": 19,
+    "skippedRows": 4,
+    "existingRawPoolItems": 5,
+    "rawInserted": 14,
+    "rawUpdated": 5,
+    "keepAuditsInserted": 14,
+    "keepAuditsExisting": 5,
+    "byDecision": {
+      "replace_source": 13,
+      "augment_source": 6
+    },
+    "bySourceType": {
+      "exa": 15,
+      "official": 4
+    },
+    "topPeople": {
+      "Andrej Karpathy": 2,
+      "Daniela Amodei": 2,
+      "Dylan Field": 2,
+      "Elon Musk": 2,
+      "李莲": 2,
+      "Demis Hassabis": 1,
+      "Jaana Dogan": 1,
+      "Mira Murati": 1,
+      "Mustafa Suleyman": 1,
+      "Noam Shazeer": 1,
+      "Shane Legg": 1,
+      "李飞飞": 1,
+      "桑达尔·皮查伊": 1,
+      "黄仁勋": 1
+    },
+    "topHosts": {
+      "time.com": 3,
+      "bloomberg.com": 2,
+      "forbes.com": 2,
+      "apnews.com": 1,
+      "blogs.microsoft.com": 1,
+      "corpgov.law.harvard.edu": 1,
+      "cs.stanford.edu": 1,
+      "figma.com": 1,
+      "finance.sina.com.cn": 1,
+      "freshdialogues.com": 1,
+      "jbd.dev": 1,
+      "lilianweng.github.io": 1,
+      "noamshazeer.com": 1,
+      "profiles.stanford.edu": 1,
+      "wired.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 4
+    }
+  }
+}

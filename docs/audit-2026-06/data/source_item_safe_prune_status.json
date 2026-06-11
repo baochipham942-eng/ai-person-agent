@@ -1,0 +1,1278 @@
+{
+  "generatedAt": "2026-06-09T15:54:20.650Z",
+  "finalClaims": "docs/audit-2026-06/data/fact_claims_source_items_after_ninth_safe_prune.jsonl",
+  "finalSourceClaims": 4266,
+  "finalHighSourceClaims": 1428,
+  "finalLowSourceClaims": 2838,
+  "finalReviewedHighSourceClaims": 1428,
+  "finalUnreviewedHighSourceClaims": 0,
+  "finalHighVerdicts": {
+    "needs_source": 102,
+    "supported": 1185,
+    "over_attributed": 103,
+    "stale": 35,
+    "wrong_person": 1,
+    "unclear": 2
+  },
+  "finalHighActions": {
+    "needs_source": 109,
+    "keep": 1185,
+    "rewrite": 60,
+    "human_review": 25,
+    "remove": 49
+  },
+  "finalProblemHighSourceClaims": 243,
+  "finalProblemByPerson": [
+    {
+      "key": "Alexandr Wang",
+      "count": 10
+    },
+    {
+      "key": "乔尔·皮诺",
+      "count": 10
+    },
+    {
+      "key": "刘知远",
+      "count": 7
+    },
+    {
+      "key": "黄铁军",
+      "count": 7
+    },
+    {
+      "key": "亚历克·拉德福德",
+      "count": 6
+    },
+    {
+      "key": "周伯文",
+      "count": 6
+    },
+    {
+      "key": "李莲",
+      "count": 6
+    },
+    {
+      "key": "杨植麟",
+      "count": 6
+    },
+    {
+      "key": "科拉伊·卡武克丘奥卢",
+      "count": 6
+    },
+    {
+      "key": "阿希什·瓦斯瓦尼",
+      "count": 6
+    },
+    {
+      "key": "Greg Brockman",
+      "count": 5
+    },
+    {
+      "key": "Guillaume Lample",
+      "count": 5
+    },
+    {
+      "key": "Yann LeCun",
+      "count": 5
+    },
+    {
+      "key": "周明",
+      "count": 5
+    },
+    {
+      "key": "唐杰",
+      "count": 5
+    },
+    {
+      "key": "戴文渊",
+      "count": 5
+    },
+    {
+      "key": "桑达尔·皮查伊",
+      "count": 5
+    },
+    {
+      "key": "汤晓鸥",
+      "count": 5
+    },
+    {
+      "key": "闫俊杰",
+      "count": 5
+    },
+    {
+      "key": "Aakash Gupta",
+      "count": 4
+    },
+    {
+      "key": "Jeremy Howard",
+      "count": 4
+    },
+    {
+      "key": "John Schulman",
+      "count": 4
+    },
+    {
+      "key": "Percy Liang",
+      "count": 4
+    },
+    {
+      "key": "Wojciech Zaremba",
+      "count": 4
+    },
+    {
+      "key": "布莱恩·卡坦扎罗",
+      "count": 4
+    },
+    {
+      "key": "李开复",
+      "count": 4
+    },
+    {
+      "key": "肖弘",
+      "count": 4
+    },
+    {
+      "key": "雅各布·乌什科雷特",
+      "count": 4
+    },
+    {
+      "key": "马克·扎克伯格",
+      "count": 4
+    },
+    {
+      "key": "Christopher Manning",
+      "count": 3
+    }
+  ],
+  "finalProblemSamples": [
+    {
+      "person": "Aakash Gupta",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Acash512/GoogleLensClone",
+      "sourceType": "github",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据（如个人资料链接、社交媒体关联）来确认归属。"
+    },
+    {
+      "person": "Aakash Gupta",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Acash512/COVID-19_Tracker_India",
+      "sourceType": "github",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据来确认归属。"
+    },
+    {
+      "person": "Aakash Gupta",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Acash512/TicTacToe_DesktopApp",
+      "sourceType": "github",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据来确认归属。"
+    },
+    {
+      "person": "Aakash Gupta",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Acash512/Aris",
+      "sourceType": "github",
+      "reason": "GitHub 仓库用户名为 'Acash512'，与人物 'Aakash Gupta' 存在关联可能性，但无法从给定信息中确认该账户是否确实属于该人物。需要额外证据来确认归属。"
+    },
+    {
+      "person": "Aidan Gomez",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Cohere is hiring for folks interested in building omnimodal models fusing vision, audio, and text.",
+      "sourceType": "exa",
+      "reason": "LinkedIn帖子是Aidan Gomez以CEO身份发布的公司招聘信息，属于公司业务宣传，而非个人代表成果或贡献。将公司招聘入口归因给个人属于过度归因。"
+    },
+    {
+      "person": "Aidan Gomez",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Today Cohere is very excited to introduce Command A, the first in a series… | Aidan Gomez | 28 comments",
+      "sourceType": "exa",
+      "reason": "LinkedIn帖子是Aidan Gomez以CEO身份宣布公司新模型（Command A）的发布，属于公司产品发布，而非个人技术贡献。将具体模型版本作为个人成果属于过度归因。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "Who is Alexandr Wang, AI pioneer, world's youngest self-made billionaire?",
+      "sourceType": "exa",
+      "reason": "文章称Alexandr Wang是Meta的首席AI官，这与当前人物上下文（Scale AI的CEO）不符，信息可能过时或错误。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "5 things to know about tech mogul Alexandr Wang, world’s youngest self-made billionaire",
+      "sourceType": "exa",
+      "reason": "提供的摘要主要是网站导航和无关内容，未包含足够信息来验证文章是否确实关于Alexandr Wang。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "Scale AI Announces Next Phase of Company's Evolution",
+      "sourceType": "exa",
+      "reason": "Scale AI官方博客宣布Alexandr Wang加入Meta，这与当前人物上下文（Scale AI的CEO）冲突，表明职位已过时。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "Inside the rise of Alexandr Wang and Meta’s $14 billion bet that the MIT dropout will help bring AI supremacy | Fortune",
+      "sourceType": "exa",
+      "reason": "Fortune文章详细描述Alexandr Wang加入Meta，这与当前人物上下文（Scale AI的CEO）不符，信息可能过时。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "From Scale AI to Meta’s AI boss: Who is Alexandr Wang, the 28-year-old MIT dropout gunning for OpenAI?",
+      "sourceType": "exa",
+      "reason": "文章标题和内容称Alexandr Wang是Meta的AI负责人，这与当前人物上下文（Scale AI的CEO）冲突，表明职位信息过时。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "Alexandr Wang is now leading Meta's AI dream team. Will ...",
+      "sourceType": "exa",
+      "reason": "Fortune文章称Alexandr Wang领导Meta的AI团队，这与当前人物上下文（Scale AI的CEO）不符，信息可能过时。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "stale",
+      "action": "remove",
+      "objectLabel": "Meet 29-year-old Alexandr Wang: MIT dropout and Scale AI founder hired by Mark Zuckerberg to head Meta’s superintelligence labs",
+      "sourceType": "exa",
+      "reason": "文章标题称其被Meta聘用领导超级智能实验室，但其当前职位仍是Scale AI的CEO。此信息可能过时或错误，与已知事实冲突。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "alexandr/6882demos",
+      "sourceType": "github",
+      "reason": "GitHub仓库名为'alexandr'，但无法仅凭此确认所有者是Scale AI的Alexandr Wang。需要更多证据证明归属。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "alexandr/simpletextserver",
+      "sourceType": "github",
+      "reason": "GitHub仓库名为'alexandr'，但无法仅凭此确认所有者是Scale AI的Alexandr Wang。需要更多证据证明归属。"
+    },
+    {
+      "person": "Alexandr Wang",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "alexandr/layer-identity-token-nodejs",
+      "sourceType": "github",
+      "reason": "GitHub仓库名为'alexandr'，但无法仅凭此确认所有者是Scale AI的Alexandr Wang。需要更多证据证明归属。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "LLM Council: Andrej Karpathy’s AI for Reliable Answers",
+      "sourceType": "exa",
+      "reason": "该内容是第三方网站（Analytics Vidhya）的文章，标题虽提及Andrej Karpathy，但作者为Harsh Mishra，且内容包含大量无关的课程推广链接。这属于对个人成果的过度归因，将第三方分析/营销内容等同于个人作品。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "Andrej Karpathy's LLM COUNCIL | Fully Explained | by NSAI",
+      "sourceType": "exa",
+      "reason": "该内容是第三方作者（NSAI）在Medium上对Andrej Karpathy项目的解释性文章，并非Karpathy本人发布或署名的原创内容。将其作为个人代表成果展示属于过度归因。"
+    },
+    {
+      "person": "Arthur Mensch",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Jensen Huang & Arthur Mensch: Why Every Nation Needs Its ...",
+      "sourceType": "exa",
+      "reason": "视频标题包含 Arthur Mensch，但摘要内容仅为 YouTube 页面框架，无法确认视频具体内容是否涉及本人或其观点。"
+    },
+    {
+      "person": "Bob McGrew",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "bmcgrew/baxter_interface",
+      "sourceType": "github",
+      "reason": "GitHub仓库baxter_interface属于用户bmcgrew，但无法从给定信息确认该用户就是Bob McGrew本人，且人物上下文信息不足。"
+    },
+    {
+      "person": "Chris Olah",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "Language model",
+      "sourceType": "exa",
+      "reason": "内容为维基百科关于语言模型的通用词条，并非Chris Olah的个人作品或贡献，将其挂在个人名下属于过度归因。"
+    },
+    {
+      "person": "Christopher Manning",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Stanford AI Lab Papers and Talks at EMNLP 2024",
+      "sourceType": "exa",
+      "reason": "该内容为斯坦福AI实验室（SAIL）的博客文章，汇总了EMNLP 2024的论文，但未明确提及Christopher Manning的个人贡献或角色。将整个实验室的成果归因给个人不合适。"
+    },
+    {
+      "person": "Christopher Manning",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Toward expert-level medical question answering with large language models",
+      "sourceType": "exa",
+      "reason": "该内容为Nature Medicine论文，作者列表中未显示Christopher Manning的名字。虽然可能有关联，但缺乏直接证据证明其贡献。"
+    },
+    {
+      "person": "Christopher Manning",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Industrial applications of large language models",
+      "sourceType": "exa",
+      "reason": "该内容为Scientific Reports论文，作者列表中未显示Christopher Manning的名字。缺乏直接证据证明其参与或贡献。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Claude for Education is here! We believe AI will have a profound impact on… | Daniela Amodei | 12 comments",
+      "sourceType": "exa",
+      "reason": "提供的文本仅为LinkedIn登录页面和通用条款，未包含帖子实际内容，无法确认其与人物的相关性。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "Tag: Daniela Amodei",
+      "sourceType": "exa",
+      "reason": "内容为新闻网站关于Daniela Amodei的标签页，聚合了多篇相关报道，并非其个人原创内容，不适合作为个人代表成果展示。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Daniela Amodei: The Biography of Anthropic's Co-Founder Shaping Safe AI",
+      "sourceType": "exa",
+      "reason": "文章标题和内容关于Daniela Amodei，但来源网站（bestreborns.com）权威性不足，需核实信息准确性。"
+    },
+    {
+      "person": "Dario Amodei",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "damodei/gym",
+      "sourceType": "github",
+      "reason": "GitHub仓库'damodei/gym'是OpenAI Gym的个人复刻或分支，并非Dario Amodei的原创或主要代表成果。将其作为个人开源项目展示，归因层级过高。"
+    },
+    {
+      "person": "Dario Amodei",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "damodei/neural-turing-machines",
+      "sourceType": "github",
+      "reason": "GitHub仓库'damodei/neural-turing-machines'是对他人论文的实现尝试，并非Dario Amodei的原创研究或主要贡献。将其作为个人开源项目展示，归因层级过高。"
+    },
+    {
+      "person": "Dario Amodei",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "damodei/caffe",
+      "sourceType": "github",
+      "reason": "GitHub仓库'damodei/caffe'是Caffe深度学习框架的个人复刻或分支，并非Dario Amodei的原创或主要代表成果。将其作为个人开源项目展示，归因层级过高。"
+    },
+    {
+      "person": "Demis Hassabis",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "A new era of intelligence with Gemini 3",
+      "sourceType": "exa",
+      "reason": "文章是关于Gemini 3模型的发布，虽然作者署名包含Demis Hassabis，但核心内容是公司产品发布，将具体模型版本作为个人代表成果归因层级过高。"
+    },
+    {
+      "person": "Demis Hassabis",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Google’s top AI scientist says ‘learning how to learn’ will be next generation’s most needed skill",
+      "sourceType": "podcast",
+      "reason": "播客标题提及“Google’s top AI scientist”，可能指Demis Hassabis，但摘要未提供足够信息确认其本人参与或内容直接相关，需要更多证据。"
+    },
+    {
+      "person": "Elon Musk",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "The Year Ahead: AI",
+      "sourceType": "exa",
+      "reason": "内容是一篇关于2026年AI趋势的综合性文章，其中一小节提及Elon Musk的Grok项目，但文章主体并非关于他个人，将其作为该人物页面的代表内容不合适。"
+    },
+    {
+      "person": "Elon Musk",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "Adapting Disease Prevention Protocols for Human Spaceflight During COVID-19",
+      "sourceType": "openalex",
+      "reason": "论文作者列表中无Elon Musk，内容为SpaceX团队项目成果，不应归因于个人。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Emad Mostaque: The Visionary Behind Stable Diffusion and the Future of Decentralized AI (Biography)",
+      "sourceType": "exa",
+      "reason": "文章标题称其为‘Stable Diffusion背后的远见者’，但Stable Diffusion是团队和学术合作成果，过度归因给个人CEO。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Expanding Our Leadership Team: Meet Some Of Our New Team Members  — Stability AI",
+      "sourceType": "exa",
+      "reason": "该内容是Stability AI公司的官方博客，介绍新领导团队，虽然提及Emad Mostaque是CEO，但内容主体是公司动态，非个人代表成果。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "20VC: Who Wins the AI Race; Startups or Incumbents & Does Having Proprietary Data Really Matter For Startups Today?",
+      "sourceType": "podcast",
+      "reason": "提供的摘要信息不足，无法确认该播客是否包含Emad Mostaque的访谈或相关内容，需要进一步核实。"
+    },
+    {
+      "person": "Geoffrey Hinton",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "可怕！AI教父诺贝尔奖得主杰弗里辛顿：人工智能已具备意识，未来将接管世界 | DeepSeek | OpenAI |  AI Agent | 智能革命 | 失业 | 智商碾压",
+      "sourceType": "youtube",
+      "reason": "视频标题和摘要提及辛顿，但未明确说明是本人出镜、访谈还是第三方分析。需核实视频内容是否包含辛顿本人的直接言论或参与。"
+    },
+    {
+      "person": "Geoffrey Hinton",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "人工智能教父杰弗里·辛顿 Geoffrey Hinton",
+      "sourceType": "youtube",
+      "reason": "视频标题和摘要为人物介绍，但未明确是本人参与的访谈、演讲还是第三方制作的传记分析。需核实视频性质。"
+    },
+    {
+      "person": "Greg Brockman",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Introducing GPT-4.5",
+      "sourceType": "exa",
+      "reason": "内容是OpenAI官方发布的GPT-4.5模型介绍，属于公司产品发布，未提及Greg Brockman的个人贡献或角色，将其作为个人代表成果归因不当。"
+    },
+    {
+      "person": "Greg Brockman",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "OpenAI Model Spec",
+      "sourceType": "exa",
+      "reason": "内容是OpenAI的官方Model Spec文档，属于公司级技术规范，不应归因给个人作为代表成果。"
+    },
+    {
+      "person": "Greg Brockman",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "OpenAI Finally Launched GPT-5. Here's Everything You Need to Know",
+      "sourceType": "exa",
+      "reason": "文章是关于OpenAI发布GPT-5的新闻报道，作者是Kylie Robison，并非Greg Brockman撰写或发布。将公司产品发布新闻归因给个人属于过度归因。"
+    },
+    {
+      "person": "Greg Brockman",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "What is AI, how do apps like ChatGPT work and why are there concerns?",
+      "sourceType": "exa",
+      "reason": "文章是BBC关于AI的通用科普报道，作者是BBC News，并非Greg Brockman撰写或发布。将通用行业报道归因给个人属于过度归因。"
+    },
+    {
+      "person": "Greg Brockman",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+      "sourceType": "exa",
+      "reason": "文章是TechCrunch关于ChatGPT的通用介绍，作者是Kyle Wiggers等人，并非Greg Brockman撰写或发布。将公司产品介绍归因给个人属于过度归因。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Llama (language model)",
+      "sourceType": "exa",
+      "reason": "内容是关于LLaMA模型的维基百科页面，属于Meta AI的团队成果，未提及Guillaume Lample的个人贡献，将其作为个人代表成果归因不当。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "[PDF] LLaMA: Open and Efficient Foundation Language Models | Semantic Scholar",
+      "sourceType": "exa",
+      "reason": "LLaMA 是 Meta 的团队成果，Guillaume Lample 是论文作者之一，但将整个模型作为其个人代表成果属于过度归因。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "LLaMA: Open and Efficient Foundation Language Models | Research",
+      "sourceType": "exa",
+      "reason": "LLaMA 是 Meta 的团队成果，Guillaume Lample 是论文作者之一，但将整个模型作为其个人代表成果属于过度归因。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "objectLabel": "Roncin, Cesar VS Lample, Guillaume",
+      "sourceType": "youtube",
+      "reason": "视频内容为国际象棋比赛记录，与Guillaume Lample作为AI研究员和企业家的身份及专业领域无关。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "X-IA #14: Generative AI",
+      "sourceType": "youtube",
+      "reason": "视频标题和摘要未明确提及Guillaume Lample，无法确认其是否参与或内容是否与其相关。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Search | arXiv e-print repository",
+      "sourceType": "exa",
+      "reason": "arXiv 搜索结果页面包含多个作者，其中一位是 Hyung Won Chung，但页面本身是搜索结果，不是其个人成果页面，需要进一步核实具体论文归属。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "💸 How to Get Rich in the AI Era—Hyung Won Chung’s Viral Strategy! 🧪📈",
+      "sourceType": "youtube",
+      "reason": "视频标题和摘要将Hyung Won Chung描述为分享“致富策略”，这更像是营销或个人发展内容，而非其作为AI研究员的专业代表成果，归因层级不当。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Korean Cipher with OpenAI o1",
+      "sourceType": "youtube",
+      "reason": "视频标题《Korean Cipher with OpenAI o1》和摘要将OpenAI o1模型的发布与Hyung Won Chung个人挂钩，但o1是OpenAI的团队产品，未明确其个人贡献角色，属于过度归因。"
+    },
+    {
+      "person": "Ilya Sutskever",
+      "verdict": "stale",
+      "action": "rewrite",
+      "objectLabel": "Fellow Detail Page | Royal Society",
+      "sourceType": "exa",
+      "reason": "页面内容将Ilya Sutskever描述为OpenAI的首席科学家，但根据人物上下文，他已离开OpenAI并创立新公司，职位信息过时。"
+    },
+    {
+      "person": "Jaana Dogan",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "10610 followers - Jaana Dogan - Medium",
+      "sourceType": "exa",
+      "reason": "内容为Jaana Dogan的Medium主页（rakyll.medium.com）的粉丝列表页面，虽能证明其账号存在，但作为“代表成果”展示价值较低，且未提供具体文章内容。"
+    },
+    {
+      "person": "Jan Leike",
+      "verdict": "stale",
+      "action": "rewrite",
+      "objectLabel": "Jan Leike - H+Pedia",
+      "sourceType": "exa",
+      "reason": "内容显示Jan Leike是Google DeepMind的研究员，但根据最新信息，他已加入Anthropic，职位信息过时。"
+    },
+    {
+      "person": "Jan Leike",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "OpenAI&#39;s Safety vs. Innovation: A Bold Critique by Jan Leike!",
+      "sourceType": "youtube",
+      "reason": "视频标题暗示是关于Jan Leike对OpenAI的评论，但摘要未明确显示其本人是否出镜或参与，需要核实视频内容是否包含其直接观点。"
+    },
+    {
+      "person": "Jason Wei",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "Stanford AI Club: Jason Wei on 3 Key Ideas in AI in 2025",
+      "sourceType": "exa",
+      "reason": "内容摘要显示Jason Wei目前在Meta工作，但人物上下文仍标注其为OpenAI研究员，职位信息可能已过时。"
+    },
+    {
+      "person": "Jason Wei",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "Another High-Profile OpenAI Researcher Departs for Meta",
+      "sourceType": "exa",
+      "reason": "文章明确报道Jason Wei已从OpenAI离职加入Meta，但人物上下文仍标注其为OpenAI研究员，职位信息过时。"
+    },
+    {
+      "person": "Jeremy Howard",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "jph00/AmazingTodo",
+      "sourceType": "github",
+      "reason": "GitHub 仓库 'jph00/AmazingTodo' 的所有者用户名 'jph00' 与 Jeremy Howard 的常用用户名一致，但仓库内容（Angular 示例项目）与其主要领域（AI、教育）关联较弱，且无直接证据证明其个人贡献或领导角色。"
+    },
+    {
+      "person": "Jeremy Howard",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "What is Solveit? Showing some recent use cases",
+      "sourceType": "youtube",
+      "reason": "视频标题和摘要未明确显示 Jeremy Howard 的参与角色（如主讲、嘉宾），仅提及课程和平台链接。需要证据证明其个人贡献或领导角色。"
+    },
+    {
+      "person": "Jeremy Howard",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "MonsterUI: Beautiful Python Web Apps in Minutes",
+      "sourceType": "youtube",
+      "reason": "视频介绍 MonsterUI 库，但未明确说明 Jeremy Howard 的个人角色（如创建者、核心开发者）。该库可能属于团队或公司（answer.ai）成果，直接归因给个人可能过度。"
+    },
+    {
+      "person": "Jeremy Howard",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Intro to FastHTML",
+      "sourceType": "youtube",
+      "reason": "视频介绍 FastHTML 框架，但未明确说明 Jeremy Howard 的个人角色（如创建者、核心开发者）。该框架可能属于团队或公司（fast.ai/Answer.ai）成果，直接归因给个人可能过度。"
+    },
+    {
+      "person": "John Schulman",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "John Schulman , a prominent AI researcher and co-founder ...",
+      "sourceType": "exa",
+      "reason": "LinkedIn 帖子内容提到 John Schulman 已从 Anthropic 离职，但人物上下文显示其当前职位为 'Co-founder @ Anthropic'，信息可能过时。"
+    },
+    {
+      "person": "John Schulman",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "dblp: John Schulman",
+      "sourceType": "exa",
+      "reason": "内容为dblp数据库页面，但摘要仅显示通用调查信息，未提供John Schulman的具体出版物列表或贡献细节，证据不足。"
+    },
+    {
+      "person": "John Schulman",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "OpenAI cofounder John Schulman leaves Anthropic months after joining",
+      "sourceType": "exa",
+      "reason": "内容为Yahoo新闻，标题称John Schulman离开Anthropic，但人物上下文显示其当前职位为Anthropic联合创始人，信息可能过时或冲突。"
+    },
+    {
+      "person": "John Schulman",
+      "verdict": "stale",
+      "action": "human_review",
+      "objectLabel": "OpenAI Co-founder John Schulman leaves rival AI firm Anthropic | Medial",
+      "sourceType": "exa",
+      "reason": "内容为Medial新闻，标题称John Schulman离开Anthropic，但人物上下文显示其当前职位为Anthropic联合创始人，信息可能过时或冲突。"
+    },
+    {
+      "person": "Junyang Lin",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "GitHub - QwenLM/Qwen: The official repo of Qwen (通义千问) chat & pretrained large language model proposed by Alibaba Cloud.",
+      "sourceType": "github",
+      "reason": "GitHub仓库是阿里云通义千问团队的官方项目，Junyang Lin是前技术负责人，但将整个团队项目归为其个人代表成果不合适。"
+    },
+    {
+      "person": "Lukasz Kaiser",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "From Transformer to GPT-5: Hear \"First-Principles Thinking ...",
+      "sourceType": "exa",
+      "reason": "文章将GPT-4、GPT-5、o1、o3等具体模型版本的开发归因于Lukasz Kaiser个人，这属于团队成果的过度归因。"
+    },
+    {
+      "person": "Lukasz Kaiser",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "\"First Principles Thinking of Large Models\": A Record of the Conversation between LI Jianzhong, GPT-5, and Lukasz Kaiser, the Inventor of Transformer",
+      "sourceType": "exa",
+      "reason": "文章标题称Lukasz Kaiser为“Transformer的发明者”，这过度归因了。Transformer是团队成果，他是论文作者之一，但并非唯一发明者。这种表述可能误导。"
+    },
+    {
+      "person": "Lukasz Kaiser",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Perceiver AR: general-purpose, long-context autoregressive generation",
+      "sourceType": "exa",
+      "reason": "该页面是关于Perceiver AR模型的博客，但提供的文本摘要中未提及Lukasz Kaiser。需要进一步核实他是否是该论文的作者或贡献者。"
+    },
+    {
+      "person": "Marc Andreessen",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "AI in 2026: 3 Predictions For What’s To Come (a16z Big Ideas)",
+      "sourceType": "youtube",
+      "reason": "视频内容为a16z机构发布的行业预测，由多位分析师讲解，Marc Andreessen未直接出镜或参与，不应归为个人代表成果。"
+    },
+    {
+      "person": "Marc Andreessen",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "Where does consumer AI stand at the end of 2025?",
+      "sourceType": "youtube",
+      "reason": "视频内容为a16z机构发布的消费者AI分析，由多位投资者讨论，Marc Andreessen未直接出镜或参与，不应归为个人代表成果。"
+    },
+    {
+      "person": "Marc Andreessen",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "objectLabel": "AI Is Coming For These 3 Industries In 2026 (a16z Big Ideas)",
+      "sourceType": "youtube",
+      "reason": "视频内容为a16z机构发布的行业预测，由多位分析师讲解，Marc Andreessen未直接出镜或参与，不应归为个人代表成果。"
+    },
+    {
+      "person": "Mira Murati",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Mira Murati's Open Source AI Breakthrough at Thinking ...",
+      "sourceType": "exa",
+      "reason": "LinkedIn帖子将团队在LLM确定性方面的突破性工作归功于Mira Murati个人，但这是团队成果，且帖子作者非官方，归因层级可能过高。"
+    },
+    {
+      "person": "Mira Murati",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Mira Murati's Thinking Machines Solves the Mystery of LLM ...",
+      "sourceType": "exa",
+      "reason": "YouTube视频标题将公司（Thinking Machines）解决LLM‘重掷诅咒’的成果直接归因于Mira Murati个人，这是团队成果，归因层级可能不当。"
+    },
+    {
+      "person": "Mira Murati",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Mira Murati's Thinking Machines Study: Your LLM Isn't ...",
+      "sourceType": "exa",
+      "reason": "文章标题提及Mira Murati及其公司，但作者为Rohit Kumar Thakur，且内容为付费墙后的摘要，无法确认文章是否由她本人撰写或代表其官方观点。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "Conversations in Review: AI, Geopolitics, and Lifestyle Revelations",
+      "sourceType": "podcast",
+      "reason": "播客标题未明确提及Mustafa Suleyman，仅从摘要无法确认其是否为嘉宾或内容是否相关。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Mustafa Suleyman et al: Key challenges for delivering clinical impact with artificial intelligence.",
+      "sourceType": "youtube",
+      "reason": "视频标题为'Mustafa Suleyman et al'，但内容摘要指向一篇学术文章，可能并非其个人主导或代表成果，存在团队成果过度归因风险。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "verdict": "over_attributed",
+      "action": "rewrite",
+      "objectLabel": "Mustafa Suleyman et al Teaching Machines to Read and Comprehend",
+      "sourceType": "youtube",
+      "reason": "视频标题为'Mustafa Suleyman et al'，但内容摘要指向一篇关于机器阅读的论文，可能并非其个人主导或代表成果，存在团队成果过度归因风险。"
+    },
+    {
+      "person": "Noam Shazeer",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "objectLabel": "20VC: The Biggest AI Leaders on What Matters More; Model Size or Data Size & Where Does The Value in AI Accrue; to Startups or to Incumbents",
+      "sourceType": "podcast",
+      "reason": "播客标题提及AI领导者，但摘要未明确显示Noam Shazeer是否为嘉宾或主题，需要进一步核实。"
+    }
+  ],
+  "safeDeletedRawPoolItems": 364,
+  "deletedBySourceType": {
+    "youtube": 14,
+    "podcast": 63,
+    "openalex": 12,
+    "exa": 267,
+    "github": 8
+  },
+  "topDeletedPeople": [
+    {
+      "key": "丁洁",
+      "count": 45
+    },
+    {
+      "key": "姚顺雨",
+      "count": 41
+    },
+    {
+      "key": "肖弘",
+      "count": 21
+    },
+    {
+      "key": "周明",
+      "count": 20
+    },
+    {
+      "key": "朱军",
+      "count": 18
+    },
+    {
+      "key": "布莱恩·卡坦扎罗",
+      "count": 16
+    },
+    {
+      "key": "刘知远",
+      "count": 15
+    },
+    {
+      "key": "汤姆·布朗",
+      "count": 13
+    },
+    {
+      "key": "Boris Cherny",
+      "count": 12
+    },
+    {
+      "key": "Elon Musk",
+      "count": 11
+    },
+    {
+      "key": "Jaana Dogan",
+      "count": 11
+    },
+    {
+      "key": "唐杰",
+      "count": 9
+    },
+    {
+      "key": "Rob Bensinger",
+      "count": 8
+    },
+    {
+      "key": "杰夫·迪恩",
+      "count": 8
+    },
+    {
+      "key": "季逸超",
+      "count": 7
+    },
+    {
+      "key": "Greg Brockman",
+      "count": 6
+    },
+    {
+      "key": "Jason Wei",
+      "count": 6
+    },
+    {
+      "key": "Jan Leike",
+      "count": 5
+    },
+    {
+      "key": "李莲",
+      "count": 5
+    },
+    {
+      "key": "Guillaume Lample",
+      "count": 4
+    },
+    {
+      "key": "Hyung Won Chung",
+      "count": 4
+    },
+    {
+      "key": "Santiago Valdarrama",
+      "count": 4
+    },
+    {
+      "key": "贾里德·卡普兰",
+      "count": 4
+    },
+    {
+      "key": "Chris Olah",
+      "count": 3
+    },
+    {
+      "key": "Christopher Manning",
+      "count": 3
+    },
+    {
+      "key": "John Schulman",
+      "count": 3
+    },
+    {
+      "key": "戴文渊",
+      "count": 3
+    },
+    {
+      "key": "桑达尔·皮查伊",
+      "count": 2
+    },
+    {
+      "key": "Marc Andreessen",
+      "count": 1
+    },
+    {
+      "key": "Oriol Vinyals",
+      "count": 1
+    }
+  ],
+  "applyRuns": [
+    {
+      "wave": 1,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_mimo_summary.json",
+      "safeDecisions": 210,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 210,
+      "existingTargets": 210,
+      "missingTargets": 0,
+      "deleted": 210,
+      "affectedPeople": 57,
+      "bySourceType": {
+        "youtube": 11,
+        "podcast": 60,
+        "openalex": 10,
+        "exa": 123,
+        "github": 6
+      },
+      "byVerdict": {
+        "wrong_person": 194,
+        "unsupported": 16
+      },
+      "topPeople": {
+        "丁洁": 15,
+        "周明": 12,
+        "Boris Cherny": 10,
+        "Elon Musk": 9,
+        "布莱恩·卡坦扎罗": 9,
+        "朱军": 9,
+        "刘知远": 8,
+        "汤姆·布朗": 8,
+        "肖弘": 7,
+        "Greg Brockman": 6,
+        "Jaana Dogan": 6,
+        "Rob Bensinger": 6,
+        "唐杰": 6,
+        "姚顺雨": 6,
+        "Guillaume Lample": 4,
+        "Hyung Won Chung": 4,
+        "Jason Wei": 4,
+        "Santiago Valdarrama": 4,
+        "季逸超": 4,
+        "杰夫·迪恩": 4,
+        "贾里德·卡普兰": 4,
+        "Chris Olah": 3,
+        "Christopher Manning": 3,
+        "Jan Leike": 3,
+        "John Schulman": 3
+      }
+    },
+    {
+      "wave": 2,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 68,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 68,
+      "existingTargets": 68,
+      "missingTargets": 0,
+      "deleted": 68,
+      "affectedPeople": 24,
+      "bySourceType": {
+        "exa": 58,
+        "openalex": 2,
+        "youtube": 3,
+        "github": 2,
+        "podcast": 3
+      },
+      "byVerdict": {
+        "wrong_person": 65,
+        "unsupported": 3
+      },
+      "topPeople": {
+        "丁洁": 9,
+        "周明": 6,
+        "姚顺雨": 5,
+        "Jaana Dogan": 4,
+        "布莱恩·卡坦扎罗": 4,
+        "朱军": 4,
+        "李莲": 4,
+        "季逸超": 3,
+        "杰夫·迪恩": 3,
+        "肖弘": 3,
+        "Boris Cherny": 2,
+        "Elon Musk": 2,
+        "Jan Leike": 2,
+        "Rob Bensinger": 2,
+        "刘知远": 2,
+        "唐杰": 2,
+        "戴文渊": 2,
+        "桑达尔·皮查伊": 2,
+        "汤姆·布朗": 2,
+        "Jason Wei": 1,
+        "Marc Andreessen": 1,
+        "Oriol Vinyals": 1,
+        "周伯文": 1,
+        "黄铁军": 1
+      }
+    },
+    {
+      "wave": 3,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_second_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_second_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 31,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 31,
+      "existingTargets": 31,
+      "missingTargets": 0,
+      "deleted": 31,
+      "affectedPeople": 14,
+      "bySourceType": {
+        "exa": 31
+      },
+      "byVerdict": {
+        "wrong_person": 27,
+        "unsupported": 4
+      },
+      "topPeople": {
+        "丁洁": 5,
+        "姚顺雨": 5,
+        "朱军": 4,
+        "布莱恩·卡坦扎罗": 3,
+        "肖弘": 3,
+        "刘知远": 2,
+        "周明": 2,
+        "Jaana Dogan": 1,
+        "Jason Wei": 1,
+        "唐杰": 1,
+        "戴文渊": 1,
+        "李莲": 1,
+        "杰夫·迪恩": 1,
+        "汤姆·布朗": 1
+      }
+    },
+    {
+      "wave": 4,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_third_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_third_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 22,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 22,
+      "existingTargets": 22,
+      "missingTargets": 0,
+      "deleted": 22,
+      "affectedPeople": 6,
+      "bySourceType": {
+        "exa": 22
+      },
+      "byVerdict": {
+        "wrong_person": 22
+      },
+      "topPeople": {
+        "丁洁": 9,
+        "姚顺雨": 6,
+        "肖弘": 3,
+        "刘知远": 2,
+        "朱军": 1,
+        "汤姆·布朗": 1
+      }
+    },
+    {
+      "wave": 5,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_fourth_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_fourth_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 15,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 15,
+      "existingTargets": 15,
+      "missingTargets": 0,
+      "deleted": 15,
+      "affectedPeople": 5,
+      "bySourceType": {
+        "exa": 15
+      },
+      "byVerdict": {
+        "wrong_person": 15
+      },
+      "topPeople": {
+        "丁洁": 6,
+        "姚顺雨": 5,
+        "肖弘": 2,
+        "刘知远": 1,
+        "汤姆·布朗": 1
+      }
+    },
+    {
+      "wave": 6,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_fifth_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_fifth_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 7,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 7,
+      "existingTargets": 7,
+      "missingTargets": 0,
+      "deleted": 7,
+      "affectedPeople": 3,
+      "bySourceType": {
+        "exa": 7
+      },
+      "byVerdict": {
+        "wrong_person": 7
+      },
+      "topPeople": {
+        "姚顺雨": 4,
+        "肖弘": 2,
+        "丁洁": 1
+      }
+    },
+    {
+      "wave": 7,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_sixth_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_sixth_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 5,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 5,
+      "existingTargets": 5,
+      "missingTargets": 0,
+      "deleted": 5,
+      "affectedPeople": 2,
+      "bySourceType": {
+        "exa": 5
+      },
+      "byVerdict": {
+        "wrong_person": 5
+      },
+      "topPeople": {
+        "姚顺雨": 4,
+        "肖弘": 1
+      }
+    },
+    {
+      "wave": 8,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_seventh_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_seventh_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 4,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 4,
+      "existingTargets": 4,
+      "missingTargets": 0,
+      "deleted": 4,
+      "affectedPeople": 1,
+      "bySourceType": {
+        "exa": 4
+      },
+      "byVerdict": {
+        "wrong_person": 4
+      },
+      "topPeople": {
+        "姚顺雨": 4
+      }
+    },
+    {
+      "wave": 9,
+      "filePath": "docs/audit-2026-06/data/safe_rawpool_remediation_eighth_new_high_after_safe_prune_apply_log.json",
+      "mode": "execute",
+      "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_eighth_new_high_after_safe_prune_mimo_summary.json",
+      "safeDecisions": 2,
+      "rejectedSafeQueueRows": 0,
+      "uniqueTargetIds": 2,
+      "existingTargets": 2,
+      "missingTargets": 0,
+      "deleted": 2,
+      "affectedPeople": 1,
+      "bySourceType": {
+        "exa": 2
+      },
+      "byVerdict": {
+        "wrong_person": 2
+      },
+      "topPeople": {
+        "姚顺雨": 2
+      }
+    }
+  ],
+  "exportRuns": [
+    {
+      "wave": 1,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_safe_prune_summary.json",
+      "claims": 4420,
+      "high": 1454,
+      "low": 2966
+    },
+    {
+      "wave": 2,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_second_safe_prune_summary.json",
+      "claims": 4352,
+      "high": 1441,
+      "low": 2911
+    },
+    {
+      "wave": 3,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_third_safe_prune_summary.json",
+      "claims": 4321,
+      "high": 1440,
+      "low": 2881
+    },
+    {
+      "wave": 4,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_fourth_safe_prune_summary.json",
+      "claims": 4299,
+      "high": 1439,
+      "low": 2860
+    },
+    {
+      "wave": 5,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_fifth_safe_prune_summary.json",
+      "claims": 4284,
+      "high": 1433,
+      "low": 2851
+    },
+    {
+      "wave": 6,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_sixth_safe_prune_summary.json",
+      "claims": 4277,
+      "high": 1432,
+      "low": 2845
+    },
+    {
+      "wave": 7,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_seventh_safe_prune_summary.json",
+      "claims": 4272,
+      "high": 1432,
+      "low": 2840
+    },
+    {
+      "wave": 8,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_eighth_safe_prune_summary.json",
+      "claims": 4268,
+      "high": 1430,
+      "low": 2838
+    },
+    {
+      "wave": 9,
+      "filePath": "docs/audit-2026-06/data/fact_claims_source_items_after_ninth_safe_prune_summary.json",
+      "claims": 4266,
+      "high": 1428,
+      "low": 2838
+    }
+  ],
+  "reviewFiles": [
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_second_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_third_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_fourth_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_fifth_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_sixth_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_seventh_new_high_after_safe_prune_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_eighth_new_high_after_safe_prune_mimo.jsonl"
+  ]
+}

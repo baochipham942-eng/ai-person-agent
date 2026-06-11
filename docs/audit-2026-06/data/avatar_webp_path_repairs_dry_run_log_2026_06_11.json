@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "mode": "dry-run",
+    "avatars": 2,
+    "updated": 0,
+    "wouldUpdate": 2,
+    "alreadyApplied": 0,
+    "missing": 0,
+    "mismatched": 0
+  },
+  "log": [
+    {
+      "action": "would_update_avatar_path",
+      "person": "马克·扎克伯格",
+      "personId": "cmjtxkqy9000039ylucg15kqs",
+      "previousAvatarUrl": "/avatars/manual/mark_zuckerberg.png",
+      "nextAvatarUrl": "/avatars/manual/mark_zuckerberg.webp"
+    },
+    {
+      "action": "would_update_avatar_path",
+      "person": "闫俊杰",
+      "personId": "cmjtwkkz70006opf3yblhugno",
+      "previousAvatarUrl": "/avatars/manual/yan_junjie.png",
+      "nextAvatarUrl": "/avatars/manual/yan_junjie.webp"
+    }
+  ]
+}

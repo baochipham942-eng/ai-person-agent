@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-09T11:08:12.015Z",
+  "mode": "dry-run",
+  "reviewGeneratedAt": "2026-06-09T11:06:02.480Z",
+  "summary": {
+    "candidates": 0,
+    "updated": 0,
+    "wouldUpdate": 0,
+    "skipped": 0
+  },
+  "actions": []
+}

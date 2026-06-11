@@ -1,0 +1,359 @@
+{
+  "generatedAt": "2026-06-10T18:07:11.298Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/prune_tail_refetch_claims.jsonl",
+    "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch15.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 20,
+      "offset": 280,
+      "searchResults": 5,
+      "maxCandidates": 10,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "advanced",
+      "tavilyRawContent": "text",
+      "tavilyKeyCount": 11,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": null
+    }
+  },
+  "selectedTasks": 20,
+  "existingRows": 0,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 20,
+  "byDecision": {
+    "replace_source": 5,
+    "augment_source": 9,
+    "no_good_source": 6
+  },
+  "byPerson": {
+    "黄仁勋": 1,
+    "Sam Altman": 1,
+    "Hyung Won Chung": 1,
+    "Jeremy Howard": 2,
+    "Marc Andreessen": 1,
+    "Oriol Vinyals": 1,
+    "李开复": 2,
+    "李莲": 1,
+    "桑达尔·皮查伊": 1,
+    "科拉伊·卡武克丘奥卢": 1,
+    "阿希什·瓦斯瓦尼": 1,
+    "Andrej Karpathy": 1,
+    "Chris Olah": 1,
+    "Elon Musk": 1,
+    "Emad Mostaque": 1,
+    "Guillaume Lample": 3
+  },
+  "selectedHosts": {
+    "nvidianews.nvidia.com": 1,
+    "blog.samaltman.com": 1,
+    "ycombinator.com": 1,
+    "abcnews.com": 1,
+    "x.com": 1,
+    "fast.ai": 1,
+    "answer.ai": 2,
+    "latent.space": 1,
+    "podcasts.apple.com": 1,
+    "technologyreview.com": 1,
+    "lilianweng.github.io": 1,
+    "americanbazaaronline.com": 1,
+    "zh.wikipedia.org": 1,
+    "anthropic.com": 1,
+    "forbes.com": 2,
+    "fr.linkedin.com": 1,
+    "scholar.google.com": 1,
+    "venturebeat.com": 1,
+    "ithome.com.tw": 1
+  },
+  "selectedSources": 21,
+  "candidateCount": 195,
+  "sample": [
+    {
+      "person": "黄仁勋",
+      "target": "Jensen Huang Gets What He Wants",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Jensen Huang | NVIDIA Newsroom",
+          "host": "nvidianews.nvidia.com",
+          "url": "http://nvidianews.nvidia.com/bios/jensen-huang"
+        }
+      ],
+      "rationale": "原始来源（TIME采访）因抓取内容缺失核心信息被拒绝。候选中的英伟达官方新闻室页面是权威、可访问的一手来源，直接证明黄仁勋作为NVIDIA创始人兼CEO的身份和贡献，完美满足证据要求，是理想的替换来源。"
+    },
+    {
+      "person": "Sam Altman",
+      "target": "ChatGPT之父「Sam Altman」引爆AI巨浪，一文回顧他與 ...",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Reflections - Sam Altman",
+          "host": "blog.samaltman.com",
+          "url": "https://blog.samaltman.com/reflections"
+        },
+        {
+          "title": "Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building ...",
+          "host": "ycombinator.com",
+          "url": "https://www.ycombinator.com/library/MY-sam-altman-the-future-of-openai-chatgpt-s-origins-and-building-ai-hardware"
+        },
+        {
+          "title": "OpenAI CEO Sam Altman says AI will reshape society ... - ABC News",
+          "host": "abcnews.com",
+          "url": "https://abcnews.com/Technology/openai-ceo-sam-altman-ai-reshape-society-acknowledges/story?id=97897122"
+        }
+      ],
+      "rationale": "原来源（verse.com.tw）正文混杂，需替换或补强。候选中，Sam Altman个人博客、Y Combinator官方资料页和ABC News采访均直接证明其身份与贡献，权威性高，可补强原来源。其他候选或权威性不足，或为转载/社区内容，不作为主要替换来源。"
+    },
+    {
+      "person": "Hyung Won Chung",
+      "target": "Cornell AI history lecture",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Hyung Won Chung",
+          "host": "x.com",
+          "url": "https://x.com/hwchung27/status/1945355238187393257"
+        }
+      ],
+      "rationale": "候选来源中，X帖子是本人官方账号发布，明确声明“这是我在康奈尔的讲座”，直接证明了人物与原始条目中“Cornell AI history lecture”的关联，是权威且可访问的替换来源。"
+    },
+    {
+      "person": "Jeremy Howard",
+      "target": "How To Solve It With Code — Overview",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "fast.ai - How to Solve it With Code course now available",
+          "host": "fast.ai",
+          "url": "https://www.fast.ai/posts/2025-10-15-solveit2.html"
+        },
+        {
+          "title": "A New Chapter for fast.ai: How To Solve It With Code – Answer.AI",
+          "host": "answer.ai",
+          "url": "https://www.answer.ai/posts/2024-11-07-solveit.html"
+        }
+      ],
+      "rationale": "原始来源被拒绝，因其内容空洞且营销性质强。候选来源中，fast.ai和Answer.AI的官方博客文章由Jeremy Howard本人撰写，直接宣布课程上线，是权威、可访问的一手来源，能有效替换原始来源。"
+    },
+    {
+      "person": "Jeremy Howard",
+      "target": "Intro to FastHTML",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "FastHTML: Modern web applications in pure Python – Answer.AI",
+          "host": "answer.ai",
+          "url": "https://www.answer.ai/posts/2024-08-03-fasthtml.html"
+        },
+        {
+          "title": "AI Magic: Shipping 1000s of successful products with no managers ...",
+          "host": "latent.space",
+          "url": "https://www.latent.space/p/answerai"
+        }
+      ],
+      "rationale": "候选来源中，Answer.AI官方博客文章由Jeremy Howard撰写，直接证明其与FastHTML作品的关系，可作为权威补充来源。Latent.Space采访也提供可靠背景。其他来源要么未明确提及FastHTML，要么权威性不足。"
+    },
+    {
+      "person": "Marc Andreessen",
+      "target": "AI in 2026: 3 Predictions For What’s To Come (a16z Big Ideas)",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Marc Andreessen's 2026 Outlook… - The a16z Show - Apple Podcasts",
+          "host": "podcasts.apple.com",
+          "url": "https://podcasts.apple.com/us/podcast/marc-andreessens-2026-outlook-ai-timelines-us-vs-china/id842818711?i=1000744113588"
+        }
+      ],
+      "rationale": "候选来源中，Apple Podcasts页面直接证明Marc Andreessen参与了关于2026年AI展望的播客讨论，可作为原始YouTube视频的补充或替代，以强化人物与预测内容的关联。其他来源要么缺乏直接关联，要么权威性不足。"
+    },
+    {
+      "person": "Oriol Vinyals",
+      "target": "Life is like a game",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Oriol Vinyals | MIT Technology Review",
+          "host": "technologyreview.com",
+          "url": "https://www.technologyreview.com/innovator/oriol-vinyals"
+        }
+      ],
+      "rationale": "MIT Technology Review的页面提供了权威、可访问的来源，直接证明了Oriol Vinyals与游戏（StarCraft）的个人经历和关联，这为“Life is like a game”这一主题提供了强有力的背景支持，符合替换原始弱匹配来源的要求。"
+    },
+    {
+      "person": "李开复",
+      "target": "2015.03.16中天青年論壇完整版【李開復－人生變奏曲】",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均无法直接证明原始声明（2015年中天青年论坛）的存在或内容。它们要么时间不符，要么主题不相关，要么缺乏具体证据。原始来源（YouTube视频）因缺乏转录或明确描述已被标记为弱匹配，而候选来源未能提供更权威的替代或补强。因此，无法替换或增强该来源。"
+    },
+    {
+      "person": "李开复",
+      "target": "曾向得罪过的人道歉！李开复：患病后整个价值观改变了[大咖一日行第7期精彩看点]",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接、明确地支持原始声明中‘曾向得罪过的人道歉’及‘患病后整个价值观改变’这一具体个人经历。部分来源（如环球人物、草根影响力新视野）涉及患病后的反思，但未提及道歉行为，且权威性不足。原始声明内容高度个人化，需要更直接的访谈或自述来源。"
+    },
+    {
+      "person": "李莲",
+      "target": "10 minutes paper (episode 27): LLM powered autonomous agents",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "LLM Powered Autonomous Agents | Lil'Log",
+          "host": "lilianweng.github.io",
+          "url": "https://lilianweng.github.io/posts/2023-06-23-agent"
+        }
+      ],
+      "rationale": "原始来源为YouTube视频，标题指向李莲的博客文章。候选中其官方博客页面（lilianweng.github.io）是直接、权威的替代来源，明确证明了李莲与该主题文章的作者关系，符合证据要求。"
+    },
+    {
+      "person": "桑达尔·皮查伊",
+      "target": "Google CEO Sundar Pichai, Tesla CEO Elon Musk engage in light-hearted convo",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Sundar Pichai on Elon Musk: Google CEO shares high praise",
+          "host": "americanbazaaronline.com",
+          "url": "https://americanbazaaronline.com/2026/04/08/sundar-pichai-on-elon-musk-google-ceo-shares-high-praise-478521"
+        }
+      ],
+      "rationale": "原来源为YouTube视频，缺乏实质内容。候选中American Bazaar文章提供了皮查伊在播客中评价马斯克的具体内容，可补强原声明的薄弱证据。其他候选要么不直接相关，要么权威性不足。"
+    },
+    {
+      "person": "科拉伊·卡武克丘奥卢",
+      "target": "Under the hood with Google AI",
+      "decision": "no_good_source",
+      "confidence": 0.95,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未提及科拉伊·卡武克丘奥卢，也未提供与'Under the hood with Google AI'相关的直接证据。需要更精确的搜索，如官方简介、采访转录或机构页面，以确认人物与内容的关联。"
+    },
+    {
+      "person": "阿希什·瓦斯瓦尼",
+      "target": "Lessons Learned From the Early Innings of AI",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "阿西什·瓦斯瓦尼 - 维基百科，自由的百科全书",
+          "host": "zh.wikipedia.org",
+          "url": "https://zh.wikipedia.org/zh-hans/阿西什·瓦斯瓦尼"
+        }
+      ],
+      "rationale": "候选来源中，维基百科页面能直接证明阿希什·瓦斯瓦尼的身份及其与Transformer模型的关联，可作为人物背景的权威辅助来源。但原始YouTube视频内容缺失，无法直接证明其与“Lessons Learned From the Early Innings of AI”的关联，因此需要补充更直接的来源。"
+    },
+    {
+      "person": "Andrej Karpathy",
+      "target": "from bits to intelligence",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接提及或证明‘from bits to intelligence’这一具体表述与Andrej Karpathy的关联。原始来源为一条推文，候选来源中无权威页面（如官方演讲转录、文章详情页）能替代或补强该证据。需要更精确的搜索来定位原始上下文。"
+    },
+    {
+      "person": "Chris Olah",
+      "target": "The Anthropic Interpretability Team is planning a virtual Q&A...",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Anthropic co-founder Chris Olah's remarks on Pope Leo XIV's encyclical \"Magnifica humanitas\"",
+          "host": "anthropic.com",
+          "url": "https://www.anthropic.com/news/chris-olah-pope-leo-encyclical"
+        }
+      ],
+      "rationale": "原声明仅提及Anthropic可解释性团队计划虚拟Q&A，信息模糊。候选中的Anthropic官方新闻稿明确将Chris Olah与Anthropic的公开活动（教皇通谕发布）关联，提供了权威、直接的证据，可替换原来源。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "//x.com/elonmusk/status/1989811787047244258",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接提及或证明目标推文（ID: 1989811787047244258）的具体内容或存在。它们要么是通用人物介绍，要么是无关的采访或新闻，无法作为该推文的权威替代或补强来源。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "target": "Why do you think @AnthropicAI & @OpenAI are doing real workloads with @tempo?\n\nAgents 🤝 stable coin",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接提及或支持推文中关于Anthropic、OpenAI、Tempo、Agents与stable coin关联的具体观点。它们主要涉及Emad Mostaque的背景、Stability AI或通用AI话题，无法作为该推文内容的权威替代或补强来源。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "target": "//x.com/GuillaumeLample/status/1820833645009277388",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Guillaume Lample",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/guillaume-lample"
+        },
+        {
+          "title": "Guillaume Lample - Mistral AI",
+          "host": "fr.linkedin.com",
+          "url": "https://fr.linkedin.com/in/guillaume-lample-7821095b"
+        }
+      ],
+      "rationale": "原始来源（X帖子）内容缺失，需替换或补强。候选中Forbes资料页和LinkedIn主页能权威证明Guillaume Lample作为Mistral AI联合创始人的身份与职位，符合证据要求。其他候选来源权威性不足或缺乏直接证据。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "target": "//x.com/GuillaumeLample/status/1864251684852998621",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Guillaume Lample",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/guillaume-lample"
+        },
+        {
+          "title": "‪Guillaume Lample‬ - ‪Google Scholar‬",
+          "host": "scholar.google.com",
+          "url": "https://scholar.google.com/citations?user=H7sVDmIAAAAJ&hl=en"
+        }
+      ],
+      "rationale": "原始来源仅为一个X帖子URL，缺乏具体信息。候选中Forbes资料页和Google Scholar主页是权威来源，能直接证明Guillaume Lample作为Mistral AI联合创始人及AI研究者的身份，可补强原始来源的薄弱信息。其他候选来源权威性不足或与本人关联不直接。"
+    },
+    {
+      "person": "Guillaume Lample",
+      "target": "Devstral 2 looking good !",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "selectedSources": [
+        {
+          "title": "Mistral launches powerful Devstral 2 coding model including open source, laptop-friendly version | VentureBeat",
+          "host": "venturebeat.com",
+          "url": "https://venturebeat.com/ai/mistral-launches-powerful-devstral-2-coding-model-including-open-source"
+        },
+        {
+          "title": "Mistral公布240億參數程式設計代理人模型Devstral　可單機本地部署 | iThome",
+          "host": "ithome.com.tw",
+          "url": "https://www.ithome.com.tw/news/169127"
+        }
+      ],
+      "rationale": "候选来源中，VentureBeat和iThome的报道虽未直接提及Guillaume Lample，但作为权威科技媒体对Mistral AI官方产品Devstral 2的发布报道，可作为Devstral 2存在的权威佐证，补强原始推文的简短内容。其他来源要么权威性不足，要么未提及Devstral。"
+    }
+  ]
+}

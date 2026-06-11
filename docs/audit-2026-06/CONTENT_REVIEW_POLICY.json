@@ -1,0 +1,51 @@
+{
+  "version": "2026-06-11",
+  "candidateIntake": {
+    "defaultStatus": "candidate",
+    "requiredSeedFields": ["name", "roleCategory", "organization", "currentTitle", "reason"],
+    "requiredEnrichmentFields": ["topics", "officialLinks", "products", "topicDetails"],
+    "minimumStrongSourceLinks": 1,
+    "weakStandaloneLinkTypes": ["x", "twitter", "linkedin"],
+    "weakStandaloneDomains": ["x.com", "twitter.com", "linkedin.com"],
+    "notes": [
+      "New people enter as status=candidate and do not become ready during roster import.",
+      "X, Twitter, LinkedIn, search pages, empty homepages, and pure profile shells cannot alone support promotion.",
+      "A GitHub user profile can support identity or avatar review, but promotion still needs source depth, keep audits, live sources, cards, and avatar."
+    ]
+  },
+  "candidateReadiness": {
+    "completenessMin": 45,
+    "rawCountMin": 2,
+    "keepCountMin": 2,
+    "liveCountMin": 1,
+    "cardCountMin": 5,
+    "avatarRequiredForPromotion": true
+  },
+  "candidateCompletenessFloors": {
+    "minimalProfile": 25,
+    "deepEnrichment": 35,
+    "liveSource": 45
+  },
+  "preflight": {
+    "failOnAmbiguousSeeds": true,
+    "failOnMissingEnrichmentForExistingPeople": true,
+    "failOnHeldCandidates": true,
+    "runContentGuard": true
+  },
+  "postIngestGuard": {
+    "command": "npm run audit:post-ingest-guard",
+    "refreshes": [
+      "prune_tail_review_unresolved_rows",
+      "career_normalization_audit",
+      "career_review_buckets",
+      "relation_review",
+      "relation_review_buckets",
+      "card_reaggregation_current_verify"
+    ],
+    "dryRuns": [
+      "conservative_rewrite_decisions_draft",
+      "content_review_guardrails"
+    ],
+    "businessDataMutation": false
+  }
+}

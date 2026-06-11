@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-06-10T15:44:07.027Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch7.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch7_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH7_CURATED.md",
+  "inputRows": 20,
+  "outputRows": 20,
+  "inputSelectedSources": 25,
+  "outputSelectedSources": 12,
+  "removedSelectedSources": 13,
+  "rowsChanged": 9,
+  "rowsDeferredToHumanReview": 7,
+  "byDecision": {
+    "replace_source": 5,
+    "human_review": 8,
+    "no_good_source": 3,
+    "augment_source": 4
+  },
+  "removedHosts": {
+    "time.com": 2,
+    "artefact.com": 1,
+    "cnbc.com": 1,
+    "colah.github.io": 1,
+    "en.wikipedia.org": 1,
+    "github.com": 1,
+    "hanxiao.io": 1,
+    "hub.baai.ac.cn": 1,
+    "learn.microsoft.com": 1,
+    "montgomerysummit.com": 1,
+    "research.google": 1,
+    "tedai-sanfrancisco.ted.com": 1
+  },
+  "keptHosts": {
+    "bbc.com": 1,
+    "blog.google": 1,
+    "congress.gov": 1,
+    "csis.org": 1,
+    "learn.hms.harvard.edu": 1,
+    "live.worldbank.org": 1,
+    "podcasts.apple.com": 1,
+    "proceedings.neurips.cc": 1,
+    "ted.com": 1,
+    "tedai-sanfrancisco.ted.com": 1,
+    "viterbischool.usc.edu": 1,
+    "youtube.com": 1
+  }
+}

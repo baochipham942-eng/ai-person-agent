@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-06-11T16:05:00+08:00",
+  "reason": "Follow-up avatar repairs for source-ready candidates that remained blocked only by avatar_missing.",
+  "avatars": [
+    {
+      "person": "Evan Hubinger",
+      "imageUrl": "https://avatars.githubusercontent.com/u/1337598?v=4",
+      "evidenceUrl": "https://github.com/evhub",
+      "evidenceNote": "GitHub profile name is Evan Hubinger, bio references Anthropic alignment work and links to Alignment Forum profile."
+    },
+    {
+      "person": "Trenton Bricken",
+      "imageUrl": "https://avatars.githubusercontent.com/u/12433427?v=4",
+      "evidenceUrl": "https://github.com/TrentBrick",
+      "evidenceNote": "GitHub profile name is Trenton Bricken, bio says Member of Technical Staff at Anthropic and links to trentbrick.github.io."
+    },
+    {
+      "person": "Tristan Hume",
+      "imageUrl": "https://avatars.githubusercontent.com/u/887610?v=4",
+      "evidenceUrl": "https://github.com/trishume",
+      "evidenceNote": "GitHub profile name is Tristan Hume and links to thume.ca, whose homepage links back to the same GitHub account and says he runs a performance optimization team at Anthropic."
+    }
+  ]
+}

@@ -1,0 +1,559 @@
+{
+  "generatedAt": "2026-06-10T16:58:42.226Z",
+  "summary": {
+    "generatedAt": "2026-06-10T16:58:42.224Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch11_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch11_curated_apply_post_verify_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH11_CURATED_APPLY_POST_VERIFY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 5,
+    "selectedSourceRows": 5,
+    "skippedRows": 13,
+    "existingRawPoolItems": 5,
+    "rawInserted": 0,
+    "rawUpdated": 5,
+    "keepAuditsInserted": 0,
+    "keepAuditsExisting": 5,
+    "byDecision": {
+      "augment_source": 3,
+      "replace_source": 2
+    },
+    "bySourceType": {
+      "exa": 3,
+      "official": 2
+    },
+    "topPeople": {
+      "Daniela Amodei": 3,
+      "Elon Musk": 1,
+      "Hyung Won Chung": 1
+    },
+    "topHosts": {
+      "anthropic.com": 1,
+      "fortune.com": 1,
+      "hwchung2.github.io": 1,
+      "nbcnews.com": 1,
+      "stvp.stanford.edu": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 13
+    }
+  },
+  "existing": [
+    {
+      "id": "d4c623fb-ae38-4d09-aab2-15c56ee546cb",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "url": "https://fortune.com/2026/02/07/anthropic-cofounder-daniela-amodei-humanities-majors-soft-skills-hiring-ai-stem",
+      "urlHash": "a86a782810635d368d0781a5cc0f1b16ec939e722b026586c70b3778c36f6624",
+      "sourceType": "exa",
+      "title": "Anthropic cofounder says studying the humanities will be 'more important than ever' in the age of AI | Fortune",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "82933fe9-9a49-41f9-8024-22cc1238736e",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "url": "https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems",
+      "urlHash": "ef4ea6a5c91f63179286c1dc9aafba9618476f27ecd554da840990e12b1c6fe3",
+      "sourceType": "official",
+      "title": "Anthropic raises $124 million to build more reliable, general AI systems \\ Anthropic",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "34abbcf5-d373-429f-9100-5bafda6baafd",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "url": "https://stvp.stanford.edu/av/daniela-amodei-anthropic-helpful-honest-harmless-ai",
+      "urlHash": "c3a72c50bd8191390d2abca239ab7a59ff2f4beeb0bd2d519c231f5c55ce387a",
+      "sourceType": "official",
+      "title": "Daniela Amodei (Anthropic) – ‘Helpful, Honest, Harmless’ AI | Stanford Technology Ventures Program",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "70203559-36d0-48f7-b153-e54dc02e858f",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "url": "https://www.nbcnews.com/tech/tech-news/elon-musk-launches-grokipedia-alternative-woke-wikipedia-rcna240171",
+      "urlHash": "7ff5db001da41f1da0b57808398cb4065f6bba3a14c9d8a1d3f65cde68e9b4de",
+      "sourceType": "exa",
+      "title": "Elon Musk launches Grokipedia as an alternative to 'woke' Wikipedia",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "c5577363-69a4-45ba-b756-4f0e919721c2",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "url": "https://hwchung2.github.io",
+      "urlHash": "dd4778e8ed9136cea2bde9e903b5cf491d772b378cf90a2861f584d975bad66c",
+      "sourceType": "exa",
+      "title": "Hyung Won Chung",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmjwujkml002ny6e2npnwc338",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://fortune.com/2026/02/07/anthropic-cofounder-daniela-amodei-humanities-majors-soft-skills-hiring-ai-stem",
+      "urlHash": "a86a782810635d368d0781a5cc0f1b16ec939e722b026586c70b3778c36f6624",
+      "contentHash": "66267f303ae4b4efb7acee12a319c3e48d19e7d1d877cfec1764e358e9803210",
+      "sourceType": "exa",
+      "title": "Anthropic cofounder says studying the humanities will be 'more important than ever' in the age of AI | Fortune",
+      "text": "Evidence quote: Daniela Amodei, who cofounded Anthropic with her brother Dario, said uniquely human qualities will actually be more critical in the age of AI, not less. In an interview with ABC News that aired on Saturday, she said the number of jobs that AI could do without help from people is “vanishingly small.” Selection reason: 权威媒体报道，直接引用Daniela Amodei关于AI时代招聘和人文素养重要性的观点，可补强原推文的招聘背景。 Source preview: Trendingnow 1 2 3 1 2 3 Anthropic cofounder says studying the humanities will be ‘more important than ever’ and reveals what the AI company looks for when hiring Jason Ma Jason Ma Daniela Amodei, co-founder and president of Anthropic, during the 2025 CES event in Las Vegas, Nevada, US, on Tuesday, Jan. 7, 2025. Daniela Amodei, who cofounded Anthropic with her brother Dario, said uniquely human qualities will actually be more critical in the age of AI, not less. In an interview with ABC News that aired on Saturday, she said the number of jobs that AI could do without help from people is “vanishingly small.” At the same time, even the most cognitively challenging tasks that humans excel at ca... MiMo rationale: 原推文内容空洞，仅为招聘宣传。Fortune文章提供了Daniela Amodei关于AI时代招聘和人文素养的权威观点，可有效补强。Forbes资料页确认其身份，提供权威背景。两者结合可增强该人物页面的深度和可信度。 Evidence requirements: Source must name Daniela Amodei directly. | Source must support why \"I’m looking forward to what’s to come. And we’re hiring! https://www.anthropic.com/#careers\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Daniela Amodei looking forward what come. And hiring! https://www.anthropic.com/#careers official source | Daniela Amodei looking forward what come. And hiring! https://www.anthropic.com/#careers Anthropic OpenAI evidence | Daniela Amodei looking forward what come. And hiring! https://www.anthropic.com/#careers interview transcript",
+      "selectedHost": "fortune.com",
+      "reason": "权威媒体报道，直接引用Daniela Amodei关于AI时代招聘和人文素养重要性的观点，可补强原推文的招聘背景。",
+      "evidenceQuote": "Daniela Amodei, who cofounded Anthropic with her brother Dario, said uniquely human qualities will actually be more critical in the age of AI, not less. In an interview with ABC News that aired on Saturday, she said the number of jobs that AI could do without help from people is “vanishingly small.”",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjwujkml002ny6e2npnwc338",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:49:49.904Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/DanielaAmodei/status/1520075694063063040",
+          "title": "I’m looking forward to what’s to come. And we’re hiring! https://www.anthropic.com/#careers",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=官方推文表达期待并招聘，关于本人但内容空洞，需人工判断。.",
+          "evidenceRequirements": [
+            "Source must name Daniela Amodei directly.",
+            "Source must support why \"I’m looking forward to what’s to come. And we’re hiring! https://www.anthropic.com/#careers\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Daniela Amodei looking forward what come. And hiring! https://www.anthropic.com/#careers official source",
+            "Daniela Amodei looking forward what come. And hiring! https://www.anthropic.com/#careers Anthropic OpenAI evidence",
+            "Daniela Amodei looking forward what come. And hiring! https://www.anthropic.com/#careers interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwujkml002ny6e2npnwc338",
+          "objectLabel": "I’m looking forward to what’s to come. And we’re hiring! https://www.anthropic.com/#careers"
+        },
+        "selectedReason": "权威媒体报道，直接引用Daniela Amodei关于AI时代招聘和人文素养重要性的观点，可补强原推文的招聘背景。",
+        "evidenceQuote": "Daniela Amodei, who cofounded Anthropic with her brother Dario, said uniquely human qualities will actually be more critical in the age of AI, not less. In an interview with ABC News that aired on Saturday, she said the number of jobs that AI could do without help from people is “vanishingly small.”",
+        "candidateAuthorityScore": 65,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjwujo1v002vy6e2mvnsx4eo",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems",
+      "urlHash": "ef4ea6a5c91f63179286c1dc9aafba9618476f27ecd554da840990e12b1c6fe3",
+      "contentHash": "e9657c24dce3923ec22b19193b6caeed882dfafe38210ebab7ad56192976a858",
+      "sourceType": "official",
+      "title": "Anthropic raises $124 million to build more reliable, general AI systems \\ Anthropic",
+      "text": "Evidence quote: The company is led by siblings Dario Amodei (CEO) and Daniela Amodei (President). Selection reason: 官方新闻稿，明确提及Daniela Amodei为总裁，直接关联公司融资事件，权威性高。 Source preview: Skip to footer Try Claude Announcements Anthropic raises $124 million to build more reliable, general AI systems May 28, 2021 Anthropic, an AI safety and research company, has raised $124 million in a Series A. The financing round will support Anthropic in executing against its research roadmap and building prototypes of reliable and steerable AI systems. The company is led by siblings Dario Amodei (CEO) and Daniela Amodei (President). The Anthropic team has previously conducted research into GPT-3, Circuit-Based Interpretability, Multimodal Neurons, Scaling Laws, AI & Compute, Concrete Problems in AI Safety, and Learning from Human Preferences. Anthropic will use the funding for computatio... MiMo rationale: 原始来源为本人推文，内容简短。候选中Anthropic官方新闻稿和Forbes个人资料页能直接、权威地证明其职位及与公司融资的关联，可补强信息密度。其他来源或需登录，或权威性不足，或未明确提及本人。 Evidence requirements: Source must name Daniela Amodei directly. | Source must support why \"Excited to announce our latest fundraising round! We’re genuinely honored to be entrusted with the r\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Daniela Amodei Excited announce our latest fundraising round! genuinely honored entrusted with the official source | Daniela Amodei Excited announce our latest fundraising round! genuinely honored entrusted with the Anthropic OpenAI evidence | Daniela Amodei Excited announce our latest fundraising round! genuinely honored entrusted with the interview transcript",
+      "selectedHost": "anthropic.com",
+      "reason": "官方新闻稿，明确提及Daniela Amodei为总裁，直接关联公司融资事件，权威性高。",
+      "evidenceQuote": "The company is led by siblings Dario Amodei (CEO) and Daniela Amodei (President).",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjwujo1v002vy6e2mvnsx4eo",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:49:24.114Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/DanielaAmodei/status/1520075689747116033",
+          "title": "Excited to announce our latest fundraising round! We’re genuinely honored to be entrusted with the r",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=官方推文宣布融资，关于本人但内容较简短，信息密度一般，需人工判断是否值得入库。.",
+          "evidenceRequirements": [
+            "Source must name Daniela Amodei directly.",
+            "Source must support why \"Excited to announce our latest fundraising round! We’re genuinely honored to be entrusted with the r\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Daniela Amodei Excited announce our latest fundraising round! genuinely honored entrusted with the official source",
+            "Daniela Amodei Excited announce our latest fundraising round! genuinely honored entrusted with the Anthropic OpenAI evidence",
+            "Daniela Amodei Excited announce our latest fundraising round! genuinely honored entrusted with the interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwujo1v002vy6e2mvnsx4eo",
+          "objectLabel": "Excited to announce our latest fundraising round! We’re genuinely honored to be entrusted with the r"
+        },
+        "selectedReason": "官方新闻稿，明确提及Daniela Amodei为总裁，直接关联公司融资事件，权威性高。",
+        "evidenceQuote": "The company is led by siblings Dario Amodei (CEO) and Daniela Amodei (President).",
+        "candidateAuthorityScore": 51,
+        "candidateAuthoritySignals": [
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjwujngp002ty6e2gtn0fekn",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://stvp.stanford.edu/av/daniela-amodei-anthropic-helpful-honest-harmless-ai",
+      "urlHash": "c3a72c50bd8191390d2abca239ab7a59ff2f4beeb0bd2d519c231f5c55ce387a",
+      "contentHash": "c8cf0faab2e05b95fa0806c7c75c4836cdc11e65f941545aa2550463485923a9",
+      "sourceType": "official",
+      "title": "Daniela Amodei (Anthropic) – ‘Helpful, Honest, Harmless’ AI | Stanford Technology Ventures Program",
+      "text": "Evidence quote: Daniela Amodei (Anthropic) – ‘Helpful, Honest, Harmless’ AI Selection reason: 斯坦福大学官方页面，标题明确包含Daniela Amodei及其职位，是权威的机构资料页，可作为其身份和观点的补充来源。 Source preview: Daniela Amodei (Anthropic) – ‘Helpful, Honest, Harmless’ AI | Stanford Technology Ventures Program Skip to main contentSkip to secondary navigation Stanford University (link is external) Image 1: Stanford Technology Ventures Program Search this site Submit Search Menu About People Annual Report Ethics Stanford Initiative for Entrepreneurs’ Resilience & Well-Being (SIER) Research Students Learning Paths Courses Fellows Programs Accel Leadership Program Emerson Consequential Scholars Program Mayfield Fellows Program Threshold Venture Fellows Xfund Ethics Fellows Program Doctoral Program eCorner Videos Podcasts Articles Series Crisis Innovation Crowdsourcing Entrepreneurial Thought Leaders FRI... MiMo rationale: 原始来源为官方推文，内容空洞。候选来源中，斯坦福大学页面和YouTube采访视频均能直接证明Daniela Amodei的身份、职位及其与Anthropic的关系，可作为权威补充来源，增强其人物页面的可信度。 Evidence requirements: Source must name Daniela Amodei directly. | Source must support why \"I’m so proud of the amazing team we’ve assembled at Anthropic and the research we’ve done to date.\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Daniela Amodei proud the amazing team assembled Anthropic and the research done date. official source | Daniela Amodei proud the amazing team assembled Anthropic and the research done date. Anthropic OpenAI evidence | Daniela Amodei proud the amazing team assembled Anthropic and the research done date. interview transcript",
+      "selectedHost": "stvp.stanford.edu",
+      "reason": "斯坦福大学官方页面，标题明确包含Daniela Amodei及其职位，是权威的机构资料页，可作为其身份和观点的补充来源。",
+      "evidenceQuote": "Daniela Amodei (Anthropic) – ‘Helpful, Honest, Harmless’ AI",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjwujngp002ty6e2gtn0fekn",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:50:15.524Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/DanielaAmodei/status/1520075691034775552",
+          "title": "I’m so proud of the amazing team we’ve assembled at Anthropic and the research we’ve done to date.",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=官方推文表达自豪，关于本人但内容空洞，缺乏具体信息，需人工判断。.",
+          "evidenceRequirements": [
+            "Source must name Daniela Amodei directly.",
+            "Source must support why \"I’m so proud of the amazing team we’ve assembled at Anthropic and the research we’ve done to date.\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Daniela Amodei proud the amazing team assembled Anthropic and the research done date. official source",
+            "Daniela Amodei proud the amazing team assembled Anthropic and the research done date. Anthropic OpenAI evidence",
+            "Daniela Amodei proud the amazing team assembled Anthropic and the research done date. interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwujngp002ty6e2gtn0fekn",
+          "objectLabel": "I’m so proud of the amazing team we’ve assembled at Anthropic and the research we’ve done to date."
+        },
+        "selectedReason": "斯坦福大学官方页面，标题明确包含Daniela Amodei及其职位，是权威的机构资料页，可作为其身份和观点的补充来源。",
+        "evidenceQuote": "Daniela Amodei (Anthropic) – ‘Helpful, Honest, Harmless’ AI",
+        "candidateAuthorityScore": 49,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjse4zbp0037c6jt69f4sba4",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.nbcnews.com/tech/tech-news/elon-musk-launches-grokipedia-alternative-woke-wikipedia-rcna240171",
+      "urlHash": "7ff5db001da41f1da0b57808398cb4065f6bba3a14c9d8a1d3f65cde68e9b4de",
+      "contentHash": "63fdef54e05dc7d630cb9f2cbbc79b0b041e2692a69b52efbe59a4f397ea0f79",
+      "sourceType": "exa",
+      "title": "Elon Musk launches Grokipedia as an alternative to 'woke' Wikipedia",
+      "text": "Evidence quote: Elon Musk on Monday launched an online encyclopedia, named Grokipedia, that he said was fueled by artificial intelligence and designed to be closer to his conservative political views than the leading alternative, Wikipedia. Selection reason: 权威媒体报道，明确说明马斯克推出Grokipedia作为维基百科的替代品，直接支持‘https://grokipedia.com/ is growing’这一说法。 Source preview: IE 11 is not supported. For an optimal experience visit our site on another browser. Elon Musk launches Grokipedia as an alternative to 'woke' Wikipedia Grokipedia is a creation of Musk’s AI chatbot, Grok. Human volunteers write and edit articles for Wikipedia. Add NBC News to Google Musk launches AI-powered site 'Grokipedia' to counter Wikipedia 04:19 Get more newson Add NBC News to Google By David Ingram Tech billionaire Elon Musk on Monday launched an online encyclopedia, named Grokipedia, that he said was fueled by artificial intelligence and designed to be closer to his conservative political views than the leading alternative, Wikipedia. Musk announced last month that he was working o... MiMo rationale: 原始来源（推文）过于简略，缺乏上下文。候选来源中，Wired和NBC News的报道直接、权威地证实了马斯克推出Grokipedia作为维基百科替代品的事实，能有效替换原始来源。其他来源要么不相关，要么权威性不足。 Evidence requirements: Source must name Elon Musk directly. | Source must support why \"https://grokipedia.com/ is growing\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Elon Musk official profile AI research | Elon Musk https://grokipedia.com/ growing official source | Elon Musk https://grokipedia.com/ growing 贝宝 太空探索技术公司 evidence | Elon Musk https://grokipedia.com/ growing interview transcript",
+      "selectedHost": "nbcnews.com",
+      "reason": "权威媒体报道，明确说明马斯克推出Grokipedia作为维基百科的替代品，直接支持‘https://grokipedia.com/ is growing’这一说法。",
+      "evidenceQuote": "Elon Musk on Monday launched an online encyclopedia, named Grokipedia, that he said was fueled by artificial intelligence and designed to be closer to his conservative political views than the leading alternative, Wikipedia.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjse4zbp0037c6jt69f4sba4",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:53:50.453Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/elonmusk/status/2005874536181301527",
+          "title": "https://grokipedia.com/ is growing",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=提及与其AI项目Grok相关的链接，但内容过于简略，需确认价值。.",
+          "evidenceRequirements": [
+            "Source must name Elon Musk directly.",
+            "Source must support why \"https://grokipedia.com/ is growing\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Elon Musk official profile AI research",
+            "Elon Musk https://grokipedia.com/ growing official source",
+            "Elon Musk https://grokipedia.com/ growing 贝宝 太空探索技术公司 evidence",
+            "Elon Musk https://grokipedia.com/ growing interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zbp0037c6jt69f4sba4",
+          "objectLabel": "https://grokipedia.com/ is growing"
+        },
+        "selectedReason": "权威媒体报道，明确说明马斯克推出Grokipedia作为维基百科的替代品，直接支持‘https://grokipedia.com/ is growing’这一说法。",
+        "evidenceQuote": "Elon Musk on Monday launched an online encyclopedia, named Grokipedia, that he said was fueled by artificial intelligence and designed to be closer to his conservative political views than the leading alternative, Wikipedia.",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvwawh01cvrmtbwddfjtrc",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://hwchung2.github.io",
+      "urlHash": "dd4778e8ed9136cea2bde9e903b5cf491d772b378cf90a2861f584d975bad66c",
+      "contentHash": "173676694dfcfbdd819c18a87e37d5bc42a99e5354b5d69d43cc4e635dc03ae2",
+      "sourceType": "exa",
+      "title": "Hyung Won Chung",
+      "text": "Evidence quote: I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025). Selection reason: 本人官方主页，明确列出其职位、研究贡献（如o1）及职业经历，是权威的个人信息来源。 Source preview: Hyung Won Chung I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025). I currently focus on coding agents and led the Codex mini model-training. Prior to OpenAI, I was at Google Brain where I worked on whatever bottleneck stood in the way of further scaling: building JAX-based large-scale training system (T5X), training large models (e.g. PaLM), instruction fine-tuning (Flan-PaLM and Flan-T5 model families) and reasoning. Prior to Google Brain, I did my PhD at MIT. I am originally from South Korea (Korean name: 정형원) and currently live in Mountain View,... MiMo rationale: 原来源为一条内容缺失的X链接。候选中，本人官方主页（hwchung2.github.io）提供了最全面、权威的个人信息和贡献证明。其最新宣布加入Meta Superintelligence Labs的X帖子是职位变动的直接证据。两者结合可有效替换原弱来源。 Evidence requirements: Source must name Hyung Won Chung directly. | Source must support why \"//x.com/hwchung27/status/1940554328647049683\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Hyung Won Chung official profile AI research | Hyung Won Chung //x.com/hwchung27/status/1940554328647049683 official source | Hyung Won Chung //x.com/hwchung27/status/1940554328647049683 OpenAI Meta Superintelligence Labs evidence | Hyung Won Chung //x.com/hwchung27/status/1940554328647049683 interview transcript",
+      "selectedHost": "hwchung2.github.io",
+      "reason": "本人官方主页，明确列出其职位、研究贡献（如o1）及职业经历，是权威的个人信息来源。",
+      "evidenceQuote": "I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025).",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvwawh01cvrmtbwddfjtrc",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T16:56:17.853Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/hwchung27/status/1940554328647049683",
+          "title": "//x.com/hwchung27/status/1940554328647049683",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=官方X链接，但内容仅URL，无法判断具体信息密度，需人工查看。.",
+          "evidenceRequirements": [
+            "Source must name Hyung Won Chung directly.",
+            "Source must support why \"//x.com/hwchung27/status/1940554328647049683\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Hyung Won Chung official profile AI research",
+            "Hyung Won Chung //x.com/hwchung27/status/1940554328647049683 official source",
+            "Hyung Won Chung //x.com/hwchung27/status/1940554328647049683 OpenAI Meta Superintelligence Labs evidence",
+            "Hyung Won Chung //x.com/hwchung27/status/1940554328647049683 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwawh01cvrmtbwddfjtrc",
+          "objectLabel": "//x.com/hwchung27/status/1940554328647049683"
+        },
+        "selectedReason": "本人官方主页，明确列出其职位、研究贡献（如o1）及职业经历，是权威的个人信息来源。",
+        "evidenceQuote": "I am a Research Scientist at OpenAI. At OpenAI, my research focuses on reasoning and agents. I was a Foundational Contributor of o1-preview (Sep. 2024), o1 (Dec. 2024), Deep Research (Feb. 2025).",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": [
+          "replacement_contains_auxiliary_low_authority_source"
+        ]
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmjtxmhqa03c4rmtbtnbw4qww",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxmj0r03ccrmtbjqcrulo3",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxmiq503carmtb51zur7en",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvxo7x01narmtbbe6vqmnb",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvmit1006hrmtb0gau9zv5",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju108pr09x9rmtbdcyvkses",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtvrt8p013frmtbutkvt6m2",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0wa0h091grmtb5t0qp68y",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0w9pg0918rmtbtpiwu9pg",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju1noh70ek7rmtbvqu68nn0",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju1nnn80ejxrmtbzx4anzge",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju1mvjk0eeqrmtbupenlph2",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjsmrbta001fq8o9qr7zhhul",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

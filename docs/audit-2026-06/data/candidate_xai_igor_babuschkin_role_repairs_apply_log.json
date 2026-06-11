@@ -1,0 +1,41 @@
+{
+  "summary": {
+    "roles": 2,
+    "insertedRoles": 2,
+    "wouldInsertRoles": 0,
+    "existingRoles": 0,
+    "missingPeople": 0,
+    "orgsInserted": 1,
+    "orgsWouldInsert": 0
+  },
+  "log": [
+    {
+      "action": "insert_role",
+      "organizationAction": "existing_org",
+      "person": "Igor Babuschkin",
+      "personId": "5082f9f8-b36a-40f6-8d34-116b361a003e",
+      "organization": "xAI",
+      "organizationId": "cmk8fvtlh000nb64i1x6hko5w",
+      "role": "Co-founder",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    },
+    {
+      "action": "insert_role",
+      "organizationAction": "insert_org",
+      "person": "Igor Babuschkin",
+      "personId": "5082f9f8-b36a-40f6-8d34-116b361a003e",
+      "organization": "Babuschkin Ventures",
+      "organizationId": "8eb571fa-1ab0-4317-87dc-8544c11918fb",
+      "role": "Founder",
+      "updates": {
+        "organizationChanged": false,
+        "currentTitleChanged": false,
+        "roleCategoryChanged": false
+      }
+    }
+  ]
+}

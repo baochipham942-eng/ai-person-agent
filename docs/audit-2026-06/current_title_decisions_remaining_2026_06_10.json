@@ -1,0 +1,172 @@
+{
+  "decisions": [
+    {
+      "personId": "cmjv6furu000gmfgh2tkuh8xm",
+      "person": "Aakash Gupta",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Creator @ Product Growth",
+      "organizations": ["Product Growth"],
+      "evidenceUrl": "https://www.aakashg.com",
+      "evidenceNote": "Aakash Gupta's own Product Growth site describes his current work as writing the AI PM newsletter/podcast and frames Apollo.io VP as prior experience."
+    },
+    {
+      "personId": "cmjwtmzop00016qvt8260yrem",
+      "person": "Haofan Wang",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Member of Technical Staff @ Lovart AI",
+      "organizations": ["Lovart AI"],
+      "evidenceUrl": "https://haofanwang.github.io",
+      "evidenceNote": "Haofan Wang's personal homepage lists him as Member of Technical Staff at Lovart AI and describes InstantX/InstantID as prior/open-source work."
+    },
+    {
+      "personId": "cmk9vo9f90008azb9v2ielv0r",
+      "person": "Hugo Larochelle",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Scientific Director @ Mila",
+      "organizations": ["Mila"],
+      "evidenceUrl": "https://mila.quebec/en/directory/hugo-larochelle",
+      "evidenceNote": "Mila's directory and public announcement identify Hugo Larochelle as Scientific Director at Mila; Google DeepMind is a prior affiliation."
+    },
+    {
+      "personId": "cmjwtis2t0003fvae8pm58dp0",
+      "person": "Strive Masiyiwa",
+      "action": "add_organizations",
+      "organizations": ["Netflix Inc."],
+      "evidenceUrl": "https://ir.netflix.net/governance/Leadership-and-directors/person-details/default.aspx?ItemId=46ed8bc0-a6ba-4416-96de-614667d3b283",
+      "evidenceNote": "Netflix investor relations has an official board profile for Strive Masiyiwa, supporting the currentTitle organization."
+    },
+    {
+      "personId": "cmk9vntqv0006azb957fpcc3f",
+      "person": "乔恩·巴伦",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Principal Research Scientist @ Google DeepMind",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://jonbarron.info/data/JonBarron-bio.txt",
+      "evidenceNote": "Jon Barron's own bio says he is a principal research scientist at Google DeepMind."
+    },
+    {
+      "personId": "cmk9w3b88000plbppxmpwibfp",
+      "person": "乔治亚·吉奥克萨里",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Assistant Professor @ Caltech",
+      "organizations": ["Caltech"],
+      "evidenceUrl": "https://georgiagkioxari.com",
+      "evidenceNote": "Georgia Gkioxari's homepage says she is an assistant professor in Computing and Mathematical Sciences at Caltech; FAIR/Google are prior affiliations."
+    },
+    {
+      "personId": "cmjvfch1g0005lqwqcosahs9s",
+      "person": "何凯明",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Associate Professor @ MIT; Distinguished Scientist @ Google DeepMind",
+      "organizations": ["MIT", "Google DeepMind"],
+      "evidenceUrl": "https://people.csail.mit.edu/kaiming",
+      "evidenceNote": "Kaiming He's personal MIT page says he is an associate professor with tenure at MIT and works part-time as a Distinguished Scientist at Google DeepMind; Meta AI is stale."
+    },
+    {
+      "personId": "cmk9w35a0000olbpp4duzvuil",
+      "person": "保罗·德贝维奇",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Content Production Research @ Netflix; Scientific Advisor @ Eyeline Studios",
+      "organizations": ["Netflix", "Eyeline Studios"],
+      "evidenceUrl": "https://www.pauldebevec.com",
+      "evidenceNote": "Paul Debevec's own homepage lists Content Production Research at Netflix and Scientific Advisor at Eyeline Studios; Google is stale."
+    },
+    {
+      "personId": "cmk9vvyoh0006klccngwh2yqa",
+      "person": "克里斯蒂娜·N·图塔诺娃",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Research Scientist @ Google",
+      "organizations": ["Google"],
+      "evidenceUrl": "https://www.kristinatoutanova.com",
+      "evidenceNote": "Kristina Toutanova's homepage says she is a research scientist at Google in Seattle; Google DeepMind is not supported by the reviewed source."
+    },
+    {
+      "personId": "cmk9vvgls0004klcc9as6lfyz",
+      "person": "卡尔·爱德华·拉斯穆森",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Professor of Machine Learning @ University of Cambridge",
+      "organizations": ["University of Cambridge"],
+      "evidenceUrl": "https://mlg.eng.cam.ac.uk/carl",
+      "evidenceNote": "Carl Edward Rasmussen's University of Cambridge page lists him as Professor of Machine Learning; the existing professor @ professor value is malformed."
+    },
+    {
+      "personId": "cmk9w2ptg000mlbpp7qeuope0",
+      "person": "大卫·洛佩兹-帕兹",
+      "action": "add_organizations",
+      "organizations": ["Meta AI"],
+      "evidenceUrl": "https://ai.meta.com/people/1565619390678045/david-lopez-paz",
+      "evidenceNote": "Meta AI's official people page identifies David Lopez-Paz as a research scientist at Facebook AI Research/Meta AI."
+    },
+    {
+      "personId": "cmk9w2eiw000klbpph0pfzva9",
+      "person": "奥尼·汉农",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Member of Technical Staff @ Anthropic",
+      "organizations": ["Anthropic"],
+      "evidenceUrl": "https://awnihannun.com",
+      "evidenceNote": "Awni Hannun's personal homepage says he is currently a Member of Technical Staff at Anthropic; Meta AI is stale."
+    },
+    {
+      "personId": "cmk9vzr150005lbppwtfzs7i7",
+      "person": "安德烈·姆尼赫",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Research Scientist @ Google DeepMind",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://scholar.google.com/citations?user=mxiO4IkAAAAJ&hl=en",
+      "evidenceNote": "Andriy Mnih's verified Google Scholar profile lists Research Scientist at Google DeepMind; no reliable Princeton professor source was found."
+    },
+    {
+      "personId": "cmk9vuplp0000klcc5gujal3c",
+      "person": "德米特里·巴丹瑙",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "AI Research Scientist @ Periodic Labs; Adjunct Professor @ McGill University; Core Industry Member @ Mila",
+      "organizations": ["Periodic Labs", "McGill University", "Mila"],
+      "evidenceUrl": "https://mila.quebec/en/directory/dzmitry-bahdanau",
+      "evidenceNote": "Mila's directory lists Dzmitry Bahdanau as Core Industry Member, Canada CIFAR AI Chair, Adjunct Professor at McGill, and AI Research Scientist at Periodic; Apple is stale."
+    },
+    {
+      "personId": "cmk9vza8w0002lbppxrdntroy",
+      "person": "杜米特鲁·埃尔汉",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Senior Director of Research @ Google DeepMind",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://scholar.google.com/citations?user=wfGiqXEAAAAJ&hl=en",
+      "evidenceNote": "Dumitru Erhan's verified Google Scholar profile lists Senior Director of Research at Google DeepMind."
+    },
+    {
+      "personId": "cmk9vzfj80003lbppenp9rfi5",
+      "person": "Yann Dauphin",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Research Scientist @ Google DeepMind",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://www.dauphin.io",
+      "evidenceNote": "Yann Dauphin's personal homepage says he is a Research Scientist at Google DeepMind; Anthropic is stale."
+    },
+    {
+      "personId": "cmk9w3mjk000rlbppigj7bynk",
+      "person": "索拉布·古普塔",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Associate Professor @ UIUC",
+      "organizations": ["UIUC"],
+      "evidenceUrl": "https://ece.illinois.edu/about/directory/faculty/saurabhg",
+      "evidenceNote": "University of Illinois ECE lists Saurabh Gupta as Associate Professor; his personal page says Facebook AI Research was prior."
+    },
+    {
+      "personId": "cmk9vvpw60005klcc7ebvjll2",
+      "person": "蒂门·蒂勒曼",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Co-Founder / Chief Scientist @ minds.ai",
+      "organizations": ["minds.ai"],
+      "evidenceUrl": "https://minds.ai/about",
+      "evidenceNote": "minds.ai's official about page lists Tijmen Tieleman as Co-Founder / CS; Google DeepMind is unsupported."
+    },
+    {
+      "personId": "cmk9w0gti0009lbpp2v1f3pjt",
+      "person": "詹姆斯·马滕斯",
+      "action": "add_organizations",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://openreview.net/profile?id=~James_Martens1",
+      "evidenceNote": "James Martens' OpenReview profile lists Research Scientist at DeepMind from 2016 to present, supporting the currentTitle organization."
+    }
+  ]
+}

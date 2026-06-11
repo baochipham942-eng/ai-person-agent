@@ -1,0 +1,1248 @@
+{
+  "generatedAt": "2026-06-10T18:40:43.083Z",
+  "summary": {
+    "generatedAt": "2026-06-10T18:40:43.082Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch17_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch17_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH17_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 15,
+    "selectedSourceRows": 15,
+    "skippedRows": 8,
+    "existingRawPoolItems": 10,
+    "rawInserted": 5,
+    "rawUpdated": 10,
+    "keepAuditsInserted": 5,
+    "keepAuditsExisting": 10,
+    "byDecision": {
+      "replace_source": 10,
+      "augment_source": 5
+    },
+    "bySourceType": {
+      "official": 7,
+      "exa": 7,
+      "paper": 1
+    },
+    "topPeople": {
+      "Arthur Mensch": 2,
+      "John Schulman": 2,
+      "Yann LeCun": 2,
+      "乔尔·皮诺": 2,
+      "阿希什·瓦斯瓦尼": 2,
+      "Andrej Karpathy": 1,
+      "Chris Olah": 1,
+      "Wojciech Zaremba": 1,
+      "亚历克·拉德福德": 1,
+      "吴恩达": 1
+    },
+    "topHosts": {
+      "ai.meta.com": 1,
+      "atcold.github.io": 1,
+      "cdn.openai.com": 1,
+      "cnbc.com": 1,
+      "colah.github.io": 1,
+      "cs.mcgill.ca": 1,
+      "cs.stanford.edu": 1,
+      "essential.ai": 1,
+      "hai.stanford.edu": 1,
+      "jyothirsv.github.io": 1,
+      "lexfridman.com": 1,
+      "news.berkeley.edu": 1,
+      "papers.neurips.cc": 1,
+      "polytechnique.edu": 1,
+      "time.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 8
+    }
+  },
+  "existing": [
+    {
+      "id": "e9cf8012-1e07-4191-ab2c-8f2ea65f160f",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "url": "https://cs.stanford.edu/people/karpathy",
+      "urlHash": "4a80768684dad0706e315ff35bd45d5be478423272905f46ba9aec0ba90a9d9b",
+      "sourceType": "official",
+      "title": "Andrej Karpathy Academic Website - Stanford Computer Science",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "ae5eb1ea-219d-4026-8044-3605d0d74265",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "url": "https://www.polytechnique.edu/en/news/arthur-mensch-ceo-mistral-acting-big-brother-ecole-polytechnique-ai-and-entrepreneurship",
+      "urlHash": "1383051b09f490ff38769bea9486dc091084ee7af598ae846b20a6369b0f87d6",
+      "sourceType": "official",
+      "title": "Arthur Mensch, CEO of Mistral, acting as a big brother at École ...",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "c70ccae9-93e6-46ea-8fc4-472dbdd29137",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "url": "https://colah.github.io/about.html",
+      "urlHash": "2cc98b285c2146435d0c5fab46025423346a9415cbe7b9fa88c6a7a7ac64121c",
+      "sourceType": "exa",
+      "title": "Christopher Olah - colah's blog",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "6d7d679f-e2a4-4f28-8e93-6d99a9a84b7b",
+      "personId": "cmjtv30df000ei004hqk0pamw",
+      "person": "John Schulman",
+      "url": "https://news.berkeley.edu/2023/04/20/chatgpt-architect-berkeley-alum-john-schulman-on-his-journey-with-ai",
+      "urlHash": "234132f51e61a029ca880206e4d6e15bc4e12f19cff5721e40a96603baeef198",
+      "sourceType": "official",
+      "title": "ChatGPT architect, Berkeley alum John Schulman on his journey with AI - Berkeley News",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "d9b36fe8-9e81-4981-a273-b88446074336",
+      "personId": "cmjtxc0fm00005p08usgwkddl",
+      "person": "Wojciech Zaremba",
+      "url": "https://lexfridman.com/wojciech-zaremba",
+      "urlHash": "7a2c9d69e08f5ca4fc24abc2710e37ccdb92619ce3303af85d8a3af37b09cf11",
+      "sourceType": "exa",
+      "title": "#215 - Wojciech Zaremba: OpenAI Codex, GPT-3, Robotics, and the Future of AI",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "46daf284-ec39-4045-a2dc-e552468feaa6",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "person": "乔尔·皮诺",
+      "url": "https://ai.meta.com/people/1914216782353556/joelle-pineau",
+      "urlHash": "e9437619c098350a28cac5b950a44672946ea697301f4606c42a740fcf43fc5a",
+      "sourceType": "official",
+      "title": "Joelle Pineau - AI at Meta",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "5c0d5269-2081-447e-bbf4-5a58ccea6502",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "person": "乔尔·皮诺",
+      "url": "https://www.cs.mcgill.ca/~jpineau",
+      "urlHash": "8bf1cac4972048623ee049f3e493841e9c0a8090c40bcd34f3f7a2ee7d28a98c",
+      "sourceType": "official",
+      "title": "Joelle Pineau's Home",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "ac6aa336-0468-44d5-a1cc-7a1fb4ec1f93",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "urlHash": "7d5aeba0ca8b2dfbdd41307eadb60732927d4a53e5791ff1fce894c7551cacac",
+      "sourceType": "official",
+      "title": "[PDF] Language Models are Unsupervised Multitask Learners | OpenAI",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "7b94110b-76a5-4855-a000-43a6b01aa3e3",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "url": "https://essential.ai/research/rnj-1",
+      "urlHash": "b45acad27afb3a4fbd92698729c12fc2e4fcb4c30366416d7748bff0b64eaf8f",
+      "sourceType": "exa",
+      "title": "Essential AI",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "4d9254ae-d16a-454d-9f54-6b4cc92c8b83",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "url": "https://papers.neurips.cc/paper/7181-attention-is-all-you-need.pdf",
+      "urlHash": "5a652422f33f80a7c83673fb23ad0d1fb77e6ea2e21e001c5697442bfcfe1025",
+      "sourceType": "paper",
+      "title": "[PDF] Attention is All you Need - NIPS",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmjtlbe47001tefnhy3ohqmt4",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://cs.stanford.edu/people/karpathy",
+      "urlHash": "4a80768684dad0706e315ff35bd45d5be478423272905f46ba9aec0ba90a9d9b",
+      "contentHash": "cf229709d5140f09e0f862de85c677162423529e0b6dabdbb63d1acabe590aa2",
+      "sourceType": "official",
+      "title": "Andrej Karpathy Academic Website - Stanford Computer Science",
+      "text": "Evidence quote: I am the Sr. Director of AI at Tesla, where I lead the team responsible for all neural networks on the Autopilot. Previously, I was a Research Scientist at OpenAI working on Deep Learning in Computer Vision, Generative Modeling and Reinforcement Learning. Selection reason: 斯坦福大学官方学术页面，明确列出其职位、研究领域和工作经历，权威且信息直接。 Source preview: Andrej Karpathy Stanford Computer Science Ph.D. student karpathy \\_at\\_ cs.stanford.edu Deprecated. It's been a while since I graduated from Stanford. My main webpage has moved to karpathy.ai Bio. I am the Sr. Director of AI at Tesla, where I lead the team responsible for all neural networks on the Autopilot. Previously, I was a Research Scientist at OpenAI working on Deep Learning in Computer Vision, Generative Modeling and Reinforcement Learning. I received my PhD from Stanford, where I worked with Fei-Fei Li on Convolutional/Recurrent Neural Network architectures and their applications in Computer Vision, Natural Language Processing and their intersection. Over the course of my PhD I squ... MiMo rationale: 原始来源仅为GitHub主页，缺乏实质信息。候选中的斯坦福学术页面和个人官网是权威、可访问的直接来源，能明确证明其职位和贡献，适合替换。 Evidence requirements: Source must name Andrej Karpathy directly. | Source must support why \"Andrej Karpathy\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Andrej Karpathy Andrej Karpathy official source | Andrej Karpathy Andrej Karpathy OpenAI 特斯拉 evidence | Andrej Karpathy Andrej Karpathy interview transcript",
+      "selectedHost": "cs.stanford.edu",
+      "reason": "斯坦福大学官方学术页面，明确列出其职位、研究领域和工作经历，权威且信息直接。",
+      "evidenceQuote": "I am the Sr. Director of AI at Tesla, where I lead the team responsible for all neural networks on the Autopilot. Previously, I was a Research Scientist at OpenAI working on Deep Learning in Computer Vision, Generative Modeling and Reinforcement Learning.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtlbe47001tefnhy3ohqmt4",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:32:45.984Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://github.com/karpathy",
+          "title": "Andrej Karpathy",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=仅为 GitHub 个人主页的导航栏和界面 UI 文本，无实质信息。.",
+          "evidenceRequirements": [
+            "Source must name Andrej Karpathy directly.",
+            "Source must support why \"Andrej Karpathy\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Andrej Karpathy Andrej Karpathy official source",
+            "Andrej Karpathy Andrej Karpathy OpenAI 特斯拉 evidence",
+            "Andrej Karpathy Andrej Karpathy interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtlbe47001tefnhy3ohqmt4",
+          "objectLabel": "Andrej Karpathy"
+        },
+        "selectedReason": "斯坦福大学官方学术页面，明确列出其职位、研究领域和工作经历，权威且信息直接。",
+        "evidenceQuote": "I am the Sr. Director of AI at Tesla, where I lead the team responsible for all neural networks on the Autopilot. Previously, I was a Research Scientist at OpenAI working on Deep Learning in Computer Vision, Generative Modeling and Reinforcement Learning.",
+        "candidateAuthorityScore": 49,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvpkrv00qirmtb5l92onhn",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://time.com/collections/time100-ai-2024/7012696/arthur-mensch",
+      "urlHash": "668c90e9b8d29747ebe43783d1b079a868767a0eb610ccf087cc046c81fba4a3",
+      "contentHash": "591551a35a29e1def19ebac90314608454235692bfb5ff94c5d0493ffe4b8205",
+      "sourceType": "exa",
+      "title": "Arthur Mensch: The 100 Most Influential People in AI 2024",
+      "text": "Evidence quote: The CEO and co-founder of French unicorn Mistral AI, Arthur Mensch, says he can build cutting-edge models while spending less money and being more open than his Silicon Valley counterparts. Selection reason: 权威媒体专题报道，明确介绍Arthur Mensch为Mistral AI的CEO兼联合创始人，并详述其成就与公司地位。 Source preview: Arthur Mensch Booth is a reporter at TIME. The CEO and co-founder of French unicorn Mistral AI, Arthur Mensch, says he can build cutting-edge models while spending less money and being more open than his Silicon Valley counterparts. His company, named after the Mediterranean wind known for its speed and persistence, has quickly become Europe’s leading AI contender. Since its launch in 2023, Mistral has crossed a reported $6 billion valuation, struck a $16 million deal that gives a minority stake in the company to Microsoft, and partnered with French bank BNP Paribas. The Microsoft deal—which involves Mistral making its models available to Microsoft’s customers in exchange for access to the ... MiMo rationale: 原始来源（GitHub页面）缺乏实质内容。候选来源中，TIME的专题报道和巴黎综合理工学院的官方新闻页面均能权威、直接地证明Arthur Mensch作为Mistral AI CEO兼联合创始人的身份，且内容可访问、信息明确，适合作为替换来源。 Evidence requirements: Source must name Arthur Mensch directly. | Source must support why \"Arthur Mensch arthurmensch\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Arthur Mensch Arthur Mensch arthurmensch official source | Arthur Mensch Arthur Mensch arthurmensch Mistral AI 谷歌 evidence | Arthur Mensch Arthur Mensch arthurmensch interview transcript",
+      "selectedHost": "time.com",
+      "reason": "权威媒体专题报道，明确介绍Arthur Mensch为Mistral AI的CEO兼联合创始人，并详述其成就与公司地位。",
+      "evidenceQuote": "The CEO and co-founder of French unicorn Mistral AI, Arthur Mensch, says he can build cutting-edge models while spending less money and being more open than his Silicon Valley counterparts.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvpkrv00qirmtb5l92onhn",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:33:13.421Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://github.com/arthurmensch",
+          "title": "Arthur Mensch arthurmensch",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容仅为 GitHub 的登录和跳转提示，缺乏实质性的人物或技术信息。.",
+          "evidenceRequirements": [
+            "Source must name Arthur Mensch directly.",
+            "Source must support why \"Arthur Mensch arthurmensch\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Arthur Mensch Arthur Mensch arthurmensch official source",
+            "Arthur Mensch Arthur Mensch arthurmensch Mistral AI 谷歌 evidence",
+            "Arthur Mensch Arthur Mensch arthurmensch interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvpkrv00qirmtb5l92onhn",
+          "objectLabel": "Arthur Mensch arthurmensch"
+        },
+        "selectedReason": "权威媒体专题报道，明确介绍Arthur Mensch为Mistral AI的CEO兼联合创始人，并详述其成就与公司地位。",
+        "evidenceQuote": "The CEO and co-founder of French unicorn Mistral AI, Arthur Mensch, says he can build cutting-edge models while spending less money and being more open than his Silicon Valley counterparts.",
+        "candidateAuthorityScore": 65,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvpkrv00qirmtb5l92onhn",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.polytechnique.edu/en/news/arthur-mensch-ceo-mistral-acting-big-brother-ecole-polytechnique-ai-and-entrepreneurship",
+      "urlHash": "1383051b09f490ff38769bea9486dc091084ee7af598ae846b20a6369b0f87d6",
+      "contentHash": "bf032fda8264596b57ce17518cf21805972dfb00a4f414ae42fae7a9b493f673",
+      "sourceType": "official",
+      "title": "Arthur Mensch, CEO of Mistral, acting as a big brother at École Polytechnique, on AI and entrepreneurship - École polytechnique",
+      "text": "Evidence quote: Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students for a talk on entrepreneurship and the implications of AI... Selection reason: 来自其母校的官方新闻页面，明确确认其身份为Mistral的CEO，并提及校友背景，权威性高。 Source preview: Search by profile Student / Candidate Faculty member Entrepreneur Executive / Manager Company Alumni News Press room Support l'X Student Login en MENU Home News Arthur Mensch, CEO of Mistral, Acting As a Big Brother At École Polytechnique, On AI and Entrepreneurship Share Arthur Mensch, CEO of Mistral, acting as a big brother at École Polytechnique, on AI and entrepreneurship Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students for a talk on entrepreneurship and the implications of AI, two topics which he addressed by echoing his School's motto: “For the Nation, for Sciences, and for Glory.” 19 Jan. 2026 Institution “Artificial i... MiMo rationale: 原始来源（GitHub页面）缺乏实质内容。候选来源中，TIME的专题报道和巴黎综合理工学院的官方新闻页面均能权威、直接地证明Arthur Mensch作为Mistral AI CEO兼联合创始人的身份，且内容可访问、信息明确，适合作为替换来源。 Evidence requirements: Source must name Arthur Mensch directly. | Source must support why \"Arthur Mensch arthurmensch\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Arthur Mensch Arthur Mensch arthurmensch official source | Arthur Mensch Arthur Mensch arthurmensch Mistral AI 谷歌 evidence | Arthur Mensch Arthur Mensch arthurmensch interview transcript",
+      "selectedHost": "polytechnique.edu",
+      "reason": "来自其母校的官方新闻页面，明确确认其身份为Mistral的CEO，并提及校友背景，权威性高。",
+      "evidenceQuote": "Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students for a talk on entrepreneurship and the implications of AI...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvpkrv00qirmtb5l92onhn",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:33:13.421Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://github.com/arthurmensch",
+          "title": "Arthur Mensch arthurmensch",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容仅为 GitHub 的登录和跳转提示，缺乏实质性的人物或技术信息。.",
+          "evidenceRequirements": [
+            "Source must name Arthur Mensch directly.",
+            "Source must support why \"Arthur Mensch arthurmensch\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Arthur Mensch Arthur Mensch arthurmensch official source",
+            "Arthur Mensch Arthur Mensch arthurmensch Mistral AI 谷歌 evidence",
+            "Arthur Mensch Arthur Mensch arthurmensch interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvpkrv00qirmtb5l92onhn",
+          "objectLabel": "Arthur Mensch arthurmensch"
+        },
+        "selectedReason": "来自其母校的官方新闻页面，明确确认其身份为Mistral的CEO，并提及校友背景，权威性高。",
+        "evidenceQuote": "Arthur Mensch (X2011), co-founder and CEO of Mistral, the French AI gem, came to meet École Polytechnique students for a talk on entrepreneurship and the implications of AI...",
+        "candidateAuthorityScore": 37,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxm7e003aqrmtbs57ft1sh",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://colah.github.io/about.html",
+      "urlHash": "2cc98b285c2146435d0c5fab46025423346a9415cbe7b9fa88c6a7a7ac64121c",
+      "contentHash": "c22503041e0f65c508b9a97b72e90dbccabdbe6aaa215089ee862c199a5d296d",
+      "sourceType": "exa",
+      "title": "Christopher Olah - colah's blog",
+      "text": "Evidence quote: I work on reverse engineering artificial neural networks into human understandable algorithms. I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models. Previously, I led interpretability research at OpenAI, worked at Google Brain, and co-founded Distill, a scientific journal focused on outstanding communication. Selection reason: 这是Chris Olah的官方个人主页，明确列出其职位、研究方向和所属机构，是权威的替代来源。 Source preview: Christopher Olah I work on reverse engineering artificial neural networks into human understandable algorithms. I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models. Previously, I led interpretability research at OpenAI, worked at Google Brain, and co-founded Distill, a scientific journal focused on outstanding communication. My blog should not be taken to reflect the views of any organization I'm affiliated with. Twitter - Google Scholar MiMo rationale: 原始来源（WordPress博客的“关于我”页面）内容过时且与AI/ML关联弱。colah.github.io/about.html是Chris Olah的官方个人主页，清晰阐述其当前职位、研究领域和职业经历，是权威且直接的替代来源。 Evidence requirements: Source must name Chris Olah directly. | Source must support why \"About Me | Christopher Olah's Blog - WordPress.com\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Chris Olah About Christopher Olah Blog WordPress.com official source | Chris Olah About Christopher Olah Blog WordPress.com 谷歌 OpenAI evidence | Chris Olah About Christopher Olah Blog WordPress.com interview transcript",
+      "selectedHost": "colah.github.io",
+      "reason": "这是Chris Olah的官方个人主页，明确列出其职位、研究方向和所属机构，是权威的替代来源。",
+      "evidenceQuote": "I work on reverse engineering artificial neural networks into human understandable algorithms. I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models. Previously, I led interpretability research at OpenAI, worked at Google Brain, and co-founded Distill, a scientific journal focused on outstanding communication.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxm7e003aqrmtbs57ft1sh",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:33:35.679Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://christopherolah.wordpress.com/about-me/",
+          "title": "About Me | Christopher Olah's Blog - WordPress.com",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=这是Chris Olah的个人博客介绍页面，内容主要关于数学和编程兴趣，与AI/机器学习不直接相关，且信息密度低。.",
+          "evidenceRequirements": [
+            "Source must name Chris Olah directly.",
+            "Source must support why \"About Me | Christopher Olah's Blog - WordPress.com\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Chris Olah About Christopher Olah Blog WordPress.com official source",
+            "Chris Olah About Christopher Olah Blog WordPress.com 谷歌 OpenAI evidence",
+            "Chris Olah About Christopher Olah Blog WordPress.com interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxm7e003aqrmtbs57ft1sh",
+          "objectLabel": "About Me | Christopher Olah's Blog - WordPress.com"
+        },
+        "selectedReason": "这是Chris Olah的官方个人主页，明确列出其职位、研究方向和所属机构，是权威的替代来源。",
+        "evidenceQuote": "I work on reverse engineering artificial neural networks into human understandable algorithms. I'm one of the co-founders of Anthropic, an AI lab focused on the safety of large models. Previously, I led interpretability research at OpenAI, worked at Google Brain, and co-founded Distill, a scientific journal focused on outstanding communication.",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvuxri016prmtbfkyp9diu",
+      "personId": "cmjtv30df000ei004hqk0pamw",
+      "person": "John Schulman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.cnbc.com/2024/08/06/openai-co-founder-john-schulman-says-he-will-join-rival-anthropic.html",
+      "urlHash": "0bb8ab29b60a84dbb87fc20dfe4525395312637121dc7773421e4d1802db9f39",
+      "contentHash": "865fdbb05c14e70c585ce0510e55130fb866640f364abf070435b62c574715fc",
+      "sourceType": "exa",
+      "title": "OpenAI co-founder John Schulman says he will join rival Anthropic",
+      "text": "Evidence quote: OpenAI co-founder John Schulman says he will join rival Anthropic Selection reason: 权威财经媒体CNBC的报道，直接确认John Schulman是OpenAI联合创始人，并报道了其加入竞争对手Anthropic的最新动态，提供了关键的职业变动信息。 Source preview: Skip Navigation CNBC Markets Pre-Markets U.S. Markets Europe Markets China Markets Asia Markets World Markets Currencies Prediction Markets Cryptocurrency Futures & Commodities Bonds Funds & ETFs Business Economy Finance Health & Science Media Real Estate Energy Climate Transportation Investigations Industrials Retail Wealth Sports Life Small Business Investing Personal Finance Fintech Financial Advisors Options Action ETF Street Buffett Archive Earnings Trader Talk Tech Cybersecurity AI Enterprise Internet Media Mobile Social Media CNBC Disruptor 50 Tech Guide Politics White House Policy Defense Congress Expanding Opportunity Europe Politics China Politics Asia Politics World Politics Vide... MiMo rationale: 原始来源（GitHub页面）仅显示登录状态，无实质内容。候选来源中，伯克利大学官方新闻和CNBC报道均权威、可访问，且直接确认了John Schulman作为OpenAI联合创始人的身份和最新职业动向，能有效替换原始来源。其他来源要么权威性不足，要么存在错误匹配或信息不准确的问题。 Evidence requirements: Source must name John Schulman directly. | Source must support why \"John Schulman joschu\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: John Schulman John Schulman joschu official source | John Schulman John Schulman joschu OpenAI Anthropic evidence | John Schulman John Schulman joschu interview transcript",
+      "selectedHost": "cnbc.com",
+      "reason": "权威财经媒体CNBC的报道，直接确认John Schulman是OpenAI联合创始人，并报道了其加入竞争对手Anthropic的最新动态，提供了关键的职业变动信息。",
+      "evidenceQuote": "OpenAI co-founder John Schulman says he will join rival Anthropic",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvuxri016prmtbfkyp9diu",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:34:37.758Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://github.com/joschu",
+          "title": "John Schulman joschu",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容仅为 GitHub 登录状态和 UI 提示，无实质性个人信息。.",
+          "evidenceRequirements": [
+            "Source must name John Schulman directly.",
+            "Source must support why \"John Schulman joschu\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "John Schulman John Schulman joschu official source",
+            "John Schulman John Schulman joschu OpenAI Anthropic evidence",
+            "John Schulman John Schulman joschu interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvuxri016prmtbfkyp9diu",
+          "objectLabel": "John Schulman joschu"
+        },
+        "selectedReason": "权威财经媒体CNBC的报道，直接确认John Schulman是OpenAI联合创始人，并报道了其加入竞争对手Anthropic的最新动态，提供了关键的职业变动信息。",
+        "evidenceQuote": "OpenAI co-founder John Schulman says he will join rival Anthropic",
+        "candidateAuthorityScore": 65,
+        "candidateAuthoritySignals": [
+          "credible_media_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvuxri016prmtbfkyp9diu",
+      "personId": "cmjtv30df000ei004hqk0pamw",
+      "person": "John Schulman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://news.berkeley.edu/2023/04/20/chatgpt-architect-berkeley-alum-john-schulman-on-his-journey-with-ai",
+      "urlHash": "234132f51e61a029ca880206e4d6e15bc4e12f19cff5721e40a96603baeef198",
+      "contentHash": "b6f2b258cb3c50bd6d654cd4a96697ead60ad1510b7a1ae4a662cb815446cea3",
+      "sourceType": "official",
+      "title": "ChatGPT architect, Berkeley alum John Schulman on his journey with AI - Berkeley News",
+      "text": "Evidence quote: John Schulman cofounded the ambitious software company OpenAI in December 2015, shortly before finishing his Ph.D. in electrical engineering and computer sciences at UC Berkeley. Selection reason: 权威机构（加州大学伯克利分校）的官方新闻页面，直接确认John Schulman是OpenAI联合创始人及ChatGPT架构师，提供了其教育背景和职业角色的可靠信息。 Source preview: Skip to Content Campus & community, Events at Berkeley, Research, Technology & engineering ChatGPT architect, Berkeley alum John Schulman on his journey with AI In an interview, Schulman discussed his time at Berkeley, why he cofounded OpenAI and the future of artificial general intelligence By Kara Manke April 20, 2023 John Schulman discussed recent advances in reinforcement learning and truthfulness during the EECS Colloquium Distinguished Lecture Series on Wednesday, April 19. (UC Berkeley photo by Jim Block) John Schulman cofounded the ambitious software company OpenAI in December 2015, shortly before finishing his Ph.D. in electrical engineering and computer sciences at UC Berkeley. At... MiMo rationale: 原始来源（GitHub页面）仅显示登录状态，无实质内容。候选来源中，伯克利大学官方新闻和CNBC报道均权威、可访问，且直接确认了John Schulman作为OpenAI联合创始人的身份和最新职业动向，能有效替换原始来源。其他来源要么权威性不足，要么存在错误匹配或信息不准确的问题。 Evidence requirements: Source must name John Schulman directly. | Source must support why \"John Schulman joschu\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: John Schulman John Schulman joschu official source | John Schulman John Schulman joschu OpenAI Anthropic evidence | John Schulman John Schulman joschu interview transcript",
+      "selectedHost": "news.berkeley.edu",
+      "reason": "权威机构（加州大学伯克利分校）的官方新闻页面，直接确认John Schulman是OpenAI联合创始人及ChatGPT架构师，提供了其教育背景和职业角色的可靠信息。",
+      "evidenceQuote": "John Schulman cofounded the ambitious software company OpenAI in December 2015, shortly before finishing his Ph.D. in electrical engineering and computer sciences at UC Berkeley.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvuxri016prmtbfkyp9diu",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:34:37.758Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://github.com/joschu",
+          "title": "John Schulman joschu",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容仅为 GitHub 登录状态和 UI 提示，无实质性个人信息。.",
+          "evidenceRequirements": [
+            "Source must name John Schulman directly.",
+            "Source must support why \"John Schulman joschu\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "John Schulman John Schulman joschu official source",
+            "John Schulman John Schulman joschu OpenAI Anthropic evidence",
+            "John Schulman John Schulman joschu interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvuxri016prmtbfkyp9diu",
+          "objectLabel": "John Schulman joschu"
+        },
+        "selectedReason": "权威机构（加州大学伯克利分校）的官方新闻页面，直接确认John Schulman是OpenAI联合创始人及ChatGPT架构师，提供了其教育背景和职业角色的可靠信息。",
+        "evidenceQuote": "John Schulman cofounded the ambitious software company OpenAI in December 2015, shortly before finishing his Ph.D. in electrical engineering and computer sciences at UC Berkeley.",
+        "candidateAuthorityScore": 49,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxl6ln031grmtbtsalc0sr",
+      "personId": "cmjtxc0fm00005p08usgwkddl",
+      "person": "Wojciech Zaremba",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://lexfridman.com/wojciech-zaremba",
+      "urlHash": "7a2c9d69e08f5ca4fc24abc2710e37ccdb92619ce3303af85d8a3af37b09cf11",
+      "contentHash": "c74065b8433bbfb6d5871c507f8c4aea230b7446e1304cc7f1f8dd8e4126c861",
+      "sourceType": "exa",
+      "title": "#215 - Wojciech Zaremba: OpenAI Codex, GPT-3, Robotics, and the Future of AI",
+      "text": "Evidence quote: Wojciech Zaremba is a co-founder of OpenAI. Selection reason: Lex Fridman播客页面，标题和描述明确证明Wojciech Zaremba作为OpenAI联合创始人的身份，并讨论其工作，是权威的访谈来源。 Source preview: Skip to content Lex Fridman Research Scientist at MIT. Host of Lex Fridman Podcast. 215 – Wojciech Zaremba: OpenAI Codex, GPT-3, Robotics, and the Future of AI Podcast: Play in new window | Download Subscribe: Spotify | TuneIn | RSS Wojciech Zaremba is a co-founder of OpenAI. Please support this podcast by checking out our sponsors: – Paperspace: to get $15 credit – Indeed: to get $75 credit – Blinkist: and use code LEX to get 25% off premium – Grammarly: to get 20% off premium – Eight Sleep: and use code LEX to get special savings EPISODE LINKS: Wojciech’s Twitter: Wojciech’s Website: OpenAI’s Website: PODCAST INFO: Podcast website: Apple Podcasts: Spotify: RSS: YouTube Full Episodes: YouT... MiMo rationale: 原来源仅为GitHub个人主页，缺乏实质性信息。候选中Lex Fridman播客页面是权威访谈来源，标题和描述明确证明Wojciech Zaremba作为OpenAI联合创始人的身份，符合证据要求。其他候选或权威性不足，或证据不够直接。 Evidence requirements: Source must name Wojciech Zaremba directly. | Source must support why \"wojzaremba - Overview\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Wojciech Zaremba wojzaremba Overview official source | Wojciech Zaremba wojzaremba Overview OpenAI 大语言模型 evidence | Wojciech Zaremba wojzaremba Overview interview transcript",
+      "selectedHost": "lexfridman.com",
+      "reason": "Lex Fridman播客页面，标题和描述明确证明Wojciech Zaremba作为OpenAI联合创始人的身份，并讨论其工作，是权威的访谈来源。",
+      "evidenceQuote": "Wojciech Zaremba is a co-founder of OpenAI.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxl6ln031grmtbtsalc0sr",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:35:04.160Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://github.com/wojzaremba",
+          "title": "wojzaremba - Overview",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=内容仅为 GitHub 个人主页的 UI 提示文本，缺乏实质性信息。.",
+          "evidenceRequirements": [
+            "Source must name Wojciech Zaremba directly.",
+            "Source must support why \"wojzaremba - Overview\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Wojciech Zaremba wojzaremba Overview official source",
+            "Wojciech Zaremba wojzaremba Overview OpenAI 大语言模型 evidence",
+            "Wojciech Zaremba wojzaremba Overview interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxl6ln031grmtbtsalc0sr",
+          "objectLabel": "wojzaremba - Overview"
+        },
+        "selectedReason": "Lex Fridman播客页面，标题和描述明确证明Wojciech Zaremba作为OpenAI联合创始人的身份，并讨论其工作，是权威的访谈来源。",
+        "evidenceQuote": "Wojciech Zaremba is a co-founder of OpenAI.",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0qrr508aarmtb1sgy3qpb",
+      "personId": "cmjtsvcil00003esttihbrsjm",
+      "person": "Yann LeCun",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://jyothirsv.github.io/pdfs/Gradient_based_Planning.pdf",
+      "urlHash": "7ce4ce2e6abc9c951865bc5f184b7472ab4db536006e8298b72ec7501f4637a3",
+      "contentHash": "448365c51c6e5b4ea741b05690973eaf76539e44807b89cfee2ab9e48604cf12",
+      "sourceType": "exa",
+      "title": "[PDF] Gradient-based Planning with World Models - Jyothir S V",
+      "text": "Evidence quote: Gradient-based Planning with World Models Jyothir S V1∗ Siddhartha Jalagam1∗ Yann LeCun 1, 2 Vlad Sobal1, 2 1New York University 2Meta AI Selection reason: 论文PDF直接包含Yann LeCun作为作者，标题和摘要明确支持其关于梯度规划的观点，是权威的学术来源。 Source preview: Gradient-based Planning with World Models Jyothir S V1∗ Siddhartha Jalagam1∗ Yann LeCun 1, 2 Vlad Sobal1, 2 1New York University 2Meta AI {jyothir, scj9994, us441}@nyu.edu yann@cs.nyu.edu Abstract The enduring challenge in the field of artificial intelligence has been the control of systems to achieve desired behaviors. While for systems governed by straightfor-ward dynamics equations, methods like Linear Quadratic Regulation (LQR) have historically proven highly effective, most real-world tasks, which require a general problem-solver, demand world models with dynamics that cannot be easily de-scribed by simple equations. Consequently, these models must be learned from data using neural net... MiMo rationale: 候选来源中，一篇关于梯度规划的论文PDF直接包含Yann LeCun作为作者，能权威地支持其观点。其他来源要么内容不直接相关，要么未明确提及目标陈述。建议用此论文来源补强原推文。 Evidence requirements: Source must name Yann LeCun directly. | Source must support why \"Gradient-based planning works if you do it right 😁\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Yann LeCun Gradient-based planning works you right official source | Yann LeCun Gradient-based planning works you right Meta 纽约大学 evidence | Yann LeCun Gradient-based planning works you right interview transcript",
+      "selectedHost": "jyothirsv.github.io",
+      "reason": "论文PDF直接包含Yann LeCun作为作者，标题和摘要明确支持其关于梯度规划的观点，是权威的学术来源。",
+      "evidenceQuote": "Gradient-based Planning with World Models Jyothir S V1∗ Siddhartha Jalagam1∗ Yann LeCun 1, 2 Vlad Sobal1, 2 1New York University 2Meta AI",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0qrr508aarmtb1sgy3qpb",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:29:26.005Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/ylecun/status/1999161752802509096",
+          "title": "Gradient-based planning works if you do it right 😁",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=LeCun本人推文，涉及AI技术但内容简短，信息密度低，需人工判断价值。.",
+          "evidenceRequirements": [
+            "Source must name Yann LeCun directly.",
+            "Source must support why \"Gradient-based planning works if you do it right 😁\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Yann LeCun Gradient-based planning works you right official source",
+            "Yann LeCun Gradient-based planning works you right Meta 纽约大学 evidence",
+            "Yann LeCun Gradient-based planning works you right interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0qrr508aarmtb1sgy3qpb",
+          "objectLabel": "Gradient-based planning works if you do it right 😁"
+        },
+        "selectedReason": "论文PDF直接包含Yann LeCun作为作者，标题和摘要明确支持其关于梯度规划的观点，是权威的学术来源。",
+        "evidenceQuote": "Gradient-based Planning with World Models Jyothir S V1∗ Siddhartha Jalagam1∗ Yann LeCun 1, 2 Vlad Sobal1, 2 1New York University 2Meta AI",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0qrhr08a4rmtbj6qbahpv",
+      "personId": "cmjtsvcil00003esttihbrsjm",
+      "person": "Yann LeCun",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://atcold.github.io/NYU-DLSP21",
+      "urlHash": "1422200a692741b0ba3fcc64e766206bb895cf9b02455c7252dc2fb6e5615346",
+      "contentHash": "c8cd5fa9be7bd7086a1f655c7418529629365db3cf5fa87a4cbb34ed7b692f26",
+      "sourceType": "exa",
+      "title": "DEEP LEARNING · Deep Learning",
+      "text": "Evidence quote: INSTRUCTORS | Yann LeCun & Alfredo Canziani Selection reason: NYU深度学习课程官方页面，明确列出Yann LeCun和Alfredo Canziani为讲师，直接证明合教关系。 Source preview: Deep Learning DEEP LEARNING DS-GA 1008 · SPRING 2021 · NYU CENTER FOR DATA SCIENCE | | | --- | | INSTRUCTORS | Yann LeCun & Alfredo Canziani | | LECTURES | Wednesday 9:30 – 11:30, Zoom | | PRACTICA | Tuesdays 9:30 – 10:30, Zoom | | FORUM | r/NYU\\_DeepLearning | | DISCORD | NYU DL | | MATERIAL | 2021 repo | 2021 edition disclaimer Check the repo’s README.md and learn about: Content new organisation The semester’s second half intellectual dilemma This semester repository Previous releases Lectures Most of the lectures, labs, and notebooks are similar to the previous edition, nevertheless, some are brand new. I will try to make clear which is which. Legend: 🖥 slides, 📝 notes, 📓 Jupyter note... MiMo rationale: 原来源为推文，信息简短。候选中NYU课程官方页面直接证明合教关系，Meta官方页面提供职位背景，两者结合可有效补强证据链，提升信息权威性与完整性。 Evidence requirements: Source must name Yann LeCun directly. | Source must support why \"True story. I've been co-teaching the graduate-level Deep Learning class with Alfredo every semester.\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Yann LeCun True story. been co-teaching the graduate-level Deep Learning class with Alfredo every official source | Yann LeCun True story. been co-teaching the graduate-level Deep Learning class with Alfredo every Meta 纽约大学 evidence | Yann LeCun True story. been co-teaching the graduate-level Deep Learning class with Alfredo every interview transcript",
+      "selectedHost": "atcold.github.io",
+      "reason": "NYU深度学习课程官方页面，明确列出Yann LeCun和Alfredo Canziani为讲师，直接证明合教关系。",
+      "evidenceQuote": "INSTRUCTORS | Yann LeCun & Alfredo Canziani",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0qrhr08a4rmtbj6qbahpv",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:29:48.795Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/ylecun/status/1999162188410347532",
+          "title": "True story. I've been co-teaching the graduate-level Deep Learning class with Alfredo every semester.",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容过于简短，仅提及合教深度学习课程，信息价值有限。.",
+          "evidenceRequirements": [
+            "Source must name Yann LeCun directly.",
+            "Source must support why \"True story. I've been co-teaching the graduate-level Deep Learning class with Alfredo every semester.\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Yann LeCun True story. been co-teaching the graduate-level Deep Learning class with Alfredo every official source",
+            "Yann LeCun True story. been co-teaching the graduate-level Deep Learning class with Alfredo every Meta 纽约大学 evidence",
+            "Yann LeCun True story. been co-teaching the graduate-level Deep Learning class with Alfredo every interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0qrhr08a4rmtbj6qbahpv",
+          "objectLabel": "True story. I've been co-teaching the graduate-level Deep Learning class with Alfredo every semester."
+        },
+        "selectedReason": "NYU深度学习课程官方页面，明确列出Yann LeCun和Alfredo Canziani为讲师，直接证明合教关系。",
+        "evidenceQuote": "INSTRUCTORS | Yann LeCun & Alfredo Canziani",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0jrh607ccrmtbae9urg8o",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "person": "乔尔·皮诺",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://ai.meta.com/people/1914216782353556/joelle-pineau",
+      "urlHash": "e9437619c098350a28cac5b950a44672946ea697301f4606c42a740fcf43fc5a",
+      "contentHash": "99abfebb9e2794a486520f838c519d1523811924970b04df6d81f94552a473b6",
+      "sourceType": "official",
+      "title": "Joelle Pineau - AI at Meta",
+      "text": "Evidence quote: Joelle is Vice President, AI Research at Meta and a Professor at McGill University. Her research focuses primarily on developing new models and algorithms for planning and learning in complex, partially observable domains. Selection reason: Meta官方人物页，明确列出职位、研究领域，是权威的机构来源。 Source preview: Products AI Research Resources About Get Llama Try Meta AI Joelle Pineau CO-MANAGING DIRECTOR | MONTREAL, CANADA Joelle is Vice President, AI Research at Meta and a Professor at McGill University. Her research focuses primarily on developing new models and algorithms for planning and learning in complex, partially observable domains. Joelle also applies these algorithms to robotics, health care, games, and conversational agents. She serves on the board of the Journal of Artificial Intelligence Research and the Journal of Machine Learning Research. Joelle holds a BASc in Engineering from the University of Waterloo and an MSc and Ph.D. in Robotics from Carnegie Mellon University. #### Google ... MiMo rationale: 原始来源（YouTube视频）缺乏实质内容。候选中，Meta官方主页和麦吉尔大学个人主页是权威、可访问的来源，能直接证明乔尔·皮诺的职位、机构及研究领域（包括自然语言处理相关方向），适合作为替换来源。其他候选或主题不匹配，或信息不足。 Evidence requirements: Source must name 乔尔·皮诺 directly. | Source must support why \"Joelle Pineau - Deep learning models for natural language ...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... official source | 乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... Facebook AI Research (FAIR) 麦吉尔大学 evidence | 乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... interview transcript",
+      "selectedHost": "ai.meta.com",
+      "reason": "Meta官方人物页，明确列出职位、研究领域，是权威的机构来源。",
+      "evidenceQuote": "Joelle is Vice President, AI Research at Meta and a Professor at McGill University. Her research focuses primarily on developing new models and algorithms for planning and learning in complex, partially observable domains.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0jrh607ccrmtbae9urg8o",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:35:52.899Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.youtube.com/watch?v=vTgwWobuoFw",
+          "title": "Joelle Pineau - Deep learning models for natural language ...",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=仅包含视频播放量等元数据，缺乏实际的观点或事实内容。.",
+          "evidenceRequirements": [
+            "Source must name 乔尔·皮诺 directly.",
+            "Source must support why \"Joelle Pineau - Deep learning models for natural language ...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... official source",
+            "乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... Facebook AI Research (FAIR) 麦吉尔大学 evidence",
+            "乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jrh607ccrmtbae9urg8o",
+          "objectLabel": "Joelle Pineau - Deep learning models for natural language ..."
+        },
+        "selectedReason": "Meta官方人物页，明确列出职位、研究领域，是权威的机构来源。",
+        "evidenceQuote": "Joelle is Vice President, AI Research at Meta and a Professor at McGill University. Her research focuses primarily on developing new models and algorithms for planning and learning in complex, partially observable domains.",
+        "candidateAuthorityScore": 4,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0jrh607ccrmtbae9urg8o",
+      "personId": "cmjtxd3ym00085p08timmi73e",
+      "person": "乔尔·皮诺",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.cs.mcgill.ca/~jpineau",
+      "urlHash": "8bf1cac4972048623ee049f3e493841e9c0a8090c40bcd34f3f7a2ee7d28a98c",
+      "contentHash": "127f2e9fddb8600b9b32c20154845dfffbbe70ca9950d156fb326000d6030fdc",
+      "sourceType": "official",
+      "title": "Joelle Pineau's Home - McGill School Of Computer Science",
+      "text": "Evidence quote: Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ... Selection reason: 麦吉尔大学官方个人主页，提供职位、研究方向和背景信息，是权威的学术来源。 Source preview: Joelle Pineau's webpage at McGill Research Publications Students Teaching (previous years, not current) + COMP-102 + COMP-424 + COMP-551 Contact News: Looking for the Machine Learning Reproducibility Checklist? Use this before your next paper submission to ensure you don't miss important details! Current status: I am currently on (part-time) leave from McGill. I am not taking new graduate students and am not able to host international visitors or interns. I receive a very high volume of email, and an unable to respond to all requests and messages. Short bio: Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ... MiMo rationale: 原始来源（YouTube视频）缺乏实质内容。候选中，Meta官方主页和麦吉尔大学个人主页是权威、可访问的来源，能直接证明乔尔·皮诺的职位、机构及研究领域（包括自然语言处理相关方向），适合作为替换来源。其他候选或主题不匹配，或信息不足。 Evidence requirements: Source must name 乔尔·皮诺 directly. | Source must support why \"Joelle Pineau - Deep learning models for natural language ...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... official source | 乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... Facebook AI Research (FAIR) 麦吉尔大学 evidence | 乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... interview transcript",
+      "selectedHost": "cs.mcgill.ca",
+      "reason": "麦吉尔大学官方个人主页，提供职位、研究方向和背景信息，是权威的学术来源。",
+      "evidenceQuote": "Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0jrh607ccrmtbae9urg8o",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:35:52.899Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.youtube.com/watch?v=vTgwWobuoFw",
+          "title": "Joelle Pineau - Deep learning models for natural language ...",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=仅包含视频播放量等元数据，缺乏实际的观点或事实内容。.",
+          "evidenceRequirements": [
+            "Source must name 乔尔·皮诺 directly.",
+            "Source must support why \"Joelle Pineau - Deep learning models for natural language ...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... official source",
+            "乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... Facebook AI Research (FAIR) 麦吉尔大学 evidence",
+            "乔尔·皮诺 Joelle Pineau Deep learning models for natural language ... interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jrh607ccrmtbae9urg8o",
+          "objectLabel": "Joelle Pineau - Deep learning models for natural language ..."
+        },
+        "selectedReason": "麦吉尔大学官方个人主页，提供职位、研究方向和背景信息，是权威的学术来源。",
+        "evidenceQuote": "Joelle Pineau is a Professor at the School of Computer Science at McGill University and core member of Mila. She was previously VP AI ...",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxluxe0369rmtbfyssf62z",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "urlHash": "7d5aeba0ca8b2dfbdd41307eadb60732927d4a53e5791ff1fce894c7551cacac",
+      "contentHash": "5cf3647ef73f964ea26b8bd4980152fe0457cda147188df9507cf8ce27009595",
+      "sourceType": "official",
+      "title": "[PDF] Language Models are Unsupervised Multitask Learners | OpenAI",
+      "text": "Evidence quote: Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1 Selection reason: OpenAI官方论文，作者列表包含亚历克·拉德福德，是GPT-2技术背景的权威来源，可补强其技术贡献的上下文。 Source preview: Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1 Abstract Natural language processing tasks, such as ques-tion answering, machine translation, reading com-prehension, and summarization, are typically approached with supervised learning on task-speciﬁc datasets. We demonstrate that language models begin to learn these tasks without any ex-plicit supervision when trained on a new dataset of millions of webpages called WebText. When conditioned on a document plus questions, the an-swers generated by the language model reach 55 F1 on the CoQA dataset - matching or exceeding the performance of 3 out of 4 ba... MiMo rationale: 原始来源为本人推文，内容碎片化。候选中OpenAI官方论文是权威来源，明确列出亚历克·拉德福德为作者，可补强其与GPT-2及BPE技术关联的上下文，提升来源质量。 Evidence requirements: Source must name 亚历克·拉德福德 directly. | Source must support why \"These are 8-grams of the byte-level bpe tokens and are probably closer to 5-6 grams 'normally'.\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 亚历克·拉德福德 These are 8-grams the byte-level bpe tokens and are probably closer 5-6 official source | 亚历克·拉德福德 These are 8-grams the byte-level bpe tokens and are probably closer 5-6 OpenAI 大语言模型 evidence | 亚历克·拉德福德 These are 8-grams the byte-level bpe tokens and are probably closer 5-6 interview transcript",
+      "selectedHost": "cdn.openai.com",
+      "reason": "OpenAI官方论文，作者列表包含亚历克·拉德福德，是GPT-2技术背景的权威来源，可补强其技术贡献的上下文。",
+      "evidenceQuote": "Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxluxe0369rmtbfyssf62z",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:30:13.121Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/AlecRad/status/1097087462592004097",
+          "title": "These are 8-grams of the byte-level bpe tokens and are probably closer to 5-6 grams 'normally'.",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽然是本人发布的技术讨论，但内容过于碎片化，缺乏上下文。.",
+          "evidenceRequirements": [
+            "Source must name 亚历克·拉德福德 directly.",
+            "Source must support why \"These are 8-grams of the byte-level bpe tokens and are probably closer to 5-6 grams 'normally'.\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "亚历克·拉德福德 These are 8-grams the byte-level bpe tokens and are probably closer 5-6 official source",
+            "亚历克·拉德福德 These are 8-grams the byte-level bpe tokens and are probably closer 5-6 OpenAI 大语言模型 evidence",
+            "亚历克·拉德福德 These are 8-grams the byte-level bpe tokens and are probably closer 5-6 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxluxe0369rmtbfyssf62z",
+          "objectLabel": "These are 8-grams of the byte-level bpe tokens and are probably closer to 5-6 grams 'normally'."
+        },
+        "selectedReason": "OpenAI官方论文，作者列表包含亚历克·拉德福德，是GPT-2技术背景的权威来源，可补强其技术贡献的上下文。",
+        "evidenceQuote": "Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1",
+        "candidateAuthorityScore": 34,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtvmlhl0087rmtbxzzwkss2",
+      "personId": "cmjtsxyrk00063esttwxwxw14",
+      "person": "吴恩达",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://hai.stanford.edu/people/andrew-ng",
+      "urlHash": "4a97219ef105c75f12be2cf4254a509b4f230086bb2440e3c6f2c1020f2e260f",
+      "contentHash": "6a39b87e306ce4043b23e0a504b462fcc8debb049a9d41be5cfc44ae2c203fcb",
+      "sourceType": "official",
+      "title": "Andrew Ng | Stanford HAI",
+      "text": "Evidence quote: Andrew Ng is Founder & CEO of Landing AI, Founder of deeplearning.ai, Co-Chairman and Co-Founder of Coursera, and is currently an Adjunct Professor at Stanford University. Selection reason: 斯坦福大学官方资料页，明确列出吴恩达的职位、成就及与Coursera的关系，权威性高。 Source preview: Navigate Participate Stay Up To Date Get the latest news, advances in research, policy work, and education program updates from HAI in your inbox weekly. Sign Up For Latest News Andrew Ng Founder of DeepLearning.AI and Adjunct Professor at Stanford University Andrew Ng is Founder & CEO of Landing AI, Founder of deeplearning.ai, Co-Chairman and Co-Founder of Coursera, and is currently an Adjunct Professor at Stanford University. He was also Chief Scientist at Baidu Inc., and Founder & Lead for the Google Brain Project. In 2011 he led the development of Stanford University’s main MOOC (Massive Open Online Courses) platform and also taught an online Machine Learning class to over 100,000 stude... MiMo rationale: 原始来源抓取失败，无正文内容。候选中，斯坦福HAI页面和火山引擎人物传记均能权威证明吴恩达与Coursera的关联及个人背景，可补强证据。其他候选或权威性不足，或内容不相关。 Evidence requirements: Source must name 吴恩达 directly. | Source must support why \"A personal message from Co-founder Andrew Ng\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 吴恩达 personal message from Co-founder Andrew official source | 吴恩达 personal message from Co-founder Andrew 斯坦福大学 谷歌 evidence | 吴恩达 personal message from Co-founder Andrew interview transcript",
+      "selectedHost": "hai.stanford.edu",
+      "reason": "斯坦福大学官方资料页，明确列出吴恩达的职位、成就及与Coursera的关系，权威性高。",
+      "evidenceQuote": "Andrew Ng is Founder & CEO of Landing AI, Founder of deeplearning.ai, Co-Chairman and Co-Founder of Coursera, and is currently an Adjunct Professor at Stanford University.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvmlhl0087rmtbxzzwkss2",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:36:46.735Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://blog.coursera.org/a-personal-message-from-co-founder-andrew-ng/",
+          "title": "A personal message from Co-founder Andrew Ng",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=reject; reason=抓取内容仅包含社交媒体分享链接，无实际正文内容。.",
+          "evidenceRequirements": [
+            "Source must name 吴恩达 directly.",
+            "Source must support why \"A personal message from Co-founder Andrew Ng\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "吴恩达 personal message from Co-founder Andrew official source",
+            "吴恩达 personal message from Co-founder Andrew 斯坦福大学 谷歌 evidence",
+            "吴恩达 personal message from Co-founder Andrew interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmlhl0087rmtbxzzwkss2",
+          "objectLabel": "A personal message from Co-founder Andrew Ng"
+        },
+        "selectedReason": "斯坦福大学官方资料页，明确列出吴恩达的职位、成就及与Coursera的关系，权威性高。",
+        "evidenceQuote": "Andrew Ng is Founder & CEO of Landing AI, Founder of deeplearning.ai, Co-Chairman and Co-Founder of Coursera, and is currently an Adjunct Professor at Stanford University.",
+        "candidateAuthorityScore": 14,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_insert_raw",
+      "auditAction": "would_insert_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju1o54v0eqfrmtbbojqd2z9",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://essential.ai/research/rnj-1",
+      "urlHash": "b45acad27afb3a4fbd92698729c12fc2e4fcb4c30366416d7748bff0b64eaf8f",
+      "contentHash": "0baaab8e544af540ce57fe66f98b0fecf39d17531f72c8c5a10bacd59a1e260f",
+      "sourceType": "exa",
+      "title": "Announcing Rnj-1: Building Instruments of Intelligence",
+      "text": "Evidence quote: Announcing Rnj-1: Building Instruments of Intelligence Ashish Vaswani December 5th, 2025 Selection reason: Essential AI 官方博客，由阿希什·瓦斯瓦尼署名发布，直接证明其与 Rnj-1 模型的关系。 Source preview: Essential AI Logo Essential animation Announcing Rnj-1: Building Instruments of Intelligence Ashish Vaswani December 5th, 2025 The long-term advancement and equitable diffusion of AI technologies crucially depend on their development in the Open. In the US, a few stalwarts of open-source AI are protecting its future. Today, we are proud to make our first model contribution to the open-source canon with Rnj-1 (an homage to Ramanujan, pronounced “range-1”), a world-class pair of base and instruction-tuned large language models. In this blog, we will summarize the key capabilities of the models, briefly cover the background behind their development, and share our vision for what lies ahead. Ca... MiMo rationale: 候选来源中，essential.ai/research/rnj-1 是官方博客，由阿希什·瓦斯瓦尼本人署名，直接证明其与 Rnj-1 模型的关系，符合权威、可访问、直接证明的要求。其他来源如 Wikipedia 或新闻文章可作为辅助，但不应作为主要替换来源。 Evidence requirements: Source must name 阿希什·瓦斯瓦尼 directly. | Source must support why \"//www.essential.ai/research/rnj-1\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 阿希什·瓦斯瓦尼 official profile AI research | 阿希什·瓦斯瓦尼 //www.essential.ai/research/rnj-1 official source | 阿希什·瓦斯瓦尼 //www.essential.ai/research/rnj-1 谷歌 Transformer evidence | 阿希什·瓦斯瓦尼 //www.essential.ai/research/rnj-1 interview transcript",
+      "selectedHost": "essential.ai",
+      "reason": "Essential AI 官方博客，由阿希什·瓦斯瓦尼署名发布，直接证明其与 Rnj-1 模型的关系。",
+      "evidenceQuote": "Announcing Rnj-1: Building Instruments of Intelligence Ashish Vaswani December 5th, 2025",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1o54v0eqfrmtbbojqd2z9",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:31:52.845Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/ashVaswani/status/1997126539188883494",
+          "title": "//www.essential.ai/research/rnj-1",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=仅包含一个链接，无实质内容，信息密度极低，需人工判断是否保留。.",
+          "evidenceRequirements": [
+            "Source must name 阿希什·瓦斯瓦尼 directly.",
+            "Source must support why \"//www.essential.ai/research/rnj-1\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "阿希什·瓦斯瓦尼 official profile AI research",
+            "阿希什·瓦斯瓦尼 //www.essential.ai/research/rnj-1 official source",
+            "阿希什·瓦斯瓦尼 //www.essential.ai/research/rnj-1 谷歌 Transformer evidence",
+            "阿希什·瓦斯瓦尼 //www.essential.ai/research/rnj-1 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1o54v0eqfrmtbbojqd2z9",
+          "objectLabel": "//www.essential.ai/research/rnj-1"
+        },
+        "selectedReason": "Essential AI 官方博客，由阿希什·瓦斯瓦尼署名发布，直接证明其与 Rnj-1 模型的关系。",
+        "evidenceQuote": "Announcing Rnj-1: Building Instruments of Intelligence Ashish Vaswani December 5th, 2025",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju0ztv609s3rmtbrdybpf1z",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "augment_source",
+      "confidence": 0.9,
+      "url": "https://papers.neurips.cc/paper/7181-attention-is-all-you-need.pdf",
+      "urlHash": "5a652422f33f80a7c83673fb23ad0d1fb77e6ea2e21e001c5697442bfcfe1025",
+      "contentHash": "dc8961a6eb38de73bf42d6a1de1f4c14a7ba8e9d275bd2f94aadd02252efe63c",
+      "sourceType": "paper",
+      "title": "[PDF] Attention is All you Need - NIPS",
+      "text": "Evidence quote: Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com Selection reason: 这是Transformer原始论文的官方PDF，直接证明了阿希什·瓦斯瓦尼作为该开创性论文合著者的身份，是权威的学术来源。 Source preview: Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com Noam Shazeer∗ Google Brain noam@google.com Niki Parmar∗ Google Research nikip@google.com Jakob Uszkoreit∗ Google Research usz@google.com Llion Jones∗ Google Research llion@google.com Aidan N. Gomez∗† University of Toronto aidan@cs.toronto.edu Łukasz Kaiser∗ Google Brain lukaszkaiser@google.com Illia Polosukhin∗‡ illia.polosukhin@gmail.com Abstract The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network a... MiMo rationale: 原始来源仅为一个X/Twitter链接，缺乏实质内容。候选来源中，维基百科和原始论文PDF能有效补强人物背景和核心贡献。维基百科作为辅助背景信息，论文PDF作为直接证据。其他候选来源权威性不足或内容不完整。 Evidence requirements: Source must name 阿希什·瓦斯瓦尼 directly. | Source must support why \"//x.com/ashVaswani/status/1935136323565928967\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 阿希什·瓦斯瓦尼 official profile AI research | 阿希什·瓦斯瓦尼 //x.com/ashVaswani/status/1935136323565928967 official source | 阿希什·瓦斯瓦尼 //x.com/ashVaswani/status/1935136323565928967 谷歌 Transformer evidence | 阿希什·瓦斯瓦尼 //x.com/ashVaswani/status/1935136323565928967 interview transcript",
+      "selectedHost": "papers.neurips.cc",
+      "reason": "这是Transformer原始论文的官方PDF，直接证明了阿希什·瓦斯瓦尼作为该开创性论文合著者的身份，是权威的学术来源。",
+      "evidenceQuote": "Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0ztv609s3rmtbrdybpf1z",
+        "decision": "augment_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T18:32:22.246Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://x.com/ashVaswani/status/1935136323565928967",
+          "title": "//x.com/ashVaswani/status/1935136323565928967",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=仅为一个链接，无实质内容，需人工判断是否可展开。.",
+          "evidenceRequirements": [
+            "Source must name 阿希什·瓦斯瓦尼 directly.",
+            "Source must support why \"//x.com/ashVaswani/status/1935136323565928967\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "阿希什·瓦斯瓦尼 official profile AI research",
+            "阿希什·瓦斯瓦尼 //x.com/ashVaswani/status/1935136323565928967 official source",
+            "阿希什·瓦斯瓦尼 //x.com/ashVaswani/status/1935136323565928967 谷歌 Transformer evidence",
+            "阿希什·瓦斯瓦尼 //x.com/ashVaswani/status/1935136323565928967 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0ztv609s3rmtbrdybpf1z",
+          "objectLabel": "//x.com/ashVaswani/status/1935136323565928967"
+        },
+        "selectedReason": "这是Transformer原始论文的官方PDF，直接证明了阿希什·瓦斯瓦尼作为该开创性论文合著者的身份，是权威的学术来源。",
+        "evidenceQuote": "Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "would_update_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmju11vz70a7wrmtbabpi710w",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxs8zm04o0rmtbbwptju3h",
+      "personId": "cmjtv37mu000gi004uo73uum0",
+      "person": "Quoc Le",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjwhhbfd001156p4u0iz26lz",
+      "personId": "cmjv6furu000pmfghv7drjtak",
+      "person": "Richard Socher",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0qt7f08aurmtb9mviuquf",
+      "personId": "cmjtsvcil00003esttihbrsjm",
+      "person": "Yann LeCun",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxph6w03zvrmtbbvtxvaky",
+      "personId": "cmjtxdvoh000d5p08r4ygmu04",
+      "person": "埃里克·霍维茨",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju1616u0b4grmtbbg18hcui",
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "decision": "no_good_source",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxm6sz03airmtbsk44flid",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxlms20355rmtbyh7sed51",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

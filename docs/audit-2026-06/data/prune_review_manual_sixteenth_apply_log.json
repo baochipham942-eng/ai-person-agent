@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-06-10T12:20:56.565Z",
+  "summary": {
+    "generatedAt": "2026-06-10T12:20:56.565Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_sixteenth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_sixteenth_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 5,
+    "existingTargets": 5,
+    "missingTargets": 0,
+    "auditRowsInserted": 5,
+    "deleted": 5,
+    "byAction": {
+      "delete_raw_pool_item": 5
+    },
+    "byVerdict": {
+      "reject": 5
+    },
+    "byPerson": {
+      "桑达尔·皮查伊": 3,
+      "雅各布·乌什科雷特": 2
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-06-10T19:27:28.296Z",
+  "summary": {
+    "generatedAt": "2026-06-10T19:27:28.293Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch20_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch20_curated_apply_post_verify_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH20_CURATED_APPLY_POST_VERIFY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 14,
+    "selectedSourceRows": 14,
+    "skippedRows": 11,
+    "existingRawPoolItems": 14,
+    "rawInserted": 0,
+    "rawUpdated": 14,
+    "keepAuditsInserted": 0,
+    "keepAuditsExisting": 14,
+    "byDecision": {
+      "replace_source": 7,
+      "augment_source": 7
+    },
+    "bySourceType": {
+      "exa": 9,
+      "official": 2,
+      "paper": 3
+    },
+    "topPeople": {
+      "吴恩达": 4,
+      "桑达尔·皮查伊": 3,
+      "李开复": 2,
+      "李莲": 2,
+      "唐杰": 1,
+      "贾里德·卡普兰": 1,
+      "阿希什·瓦斯瓦尼": 1
+    },
+    "topHosts": {
+      "coursera.org": 2,
+      "deeplearning.ai": 2,
+      "blog.google": 1,
+      "cs.tsinghua.edu.cn": 1,
+      "hkforum.com": 1,
+      "lilianweng.github.io": 1,
+      "lingyiwanwu.com": 1,
+      "mittrchina.com": 1,
+      "openreview.net": 1,
+      "papers.neurips.cc": 1,
+      "semanticscholar.org": 1,
+      "time.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 11
+    }
+  }
+}

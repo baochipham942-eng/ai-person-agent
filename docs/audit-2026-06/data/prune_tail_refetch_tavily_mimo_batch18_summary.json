@@ -1,0 +1,373 @@
+{
+  "generatedAt": "2026-06-10T18:53:16.318Z",
+  "input": {
+    "remediationIn": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+    "claimsIn": "docs/audit-2026-06/data/prune_tail_refetch_claims.jsonl",
+    "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch18.jsonl",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "person": null,
+      "limit": 20,
+      "offset": 340,
+      "searchResults": 5,
+      "maxCandidates": 10,
+      "concurrency": 1,
+      "resume": true,
+      "fetchOnly": false,
+      "provider": "tavily",
+      "tavilySearchDepth": "advanced",
+      "tavilyRawContent": "text",
+      "tavilyKeyCount": 11,
+      "anysearchContentTypes": null,
+      "anysearchFreshness": null,
+      "anysearchZone": null,
+      "anysearchHasApiKey": null
+    }
+  },
+  "selectedTasks": 20,
+  "existingRows": 0,
+  "pendingTasks": 0,
+  "stoppedEarly": null,
+  "refetchResults": 20,
+  "byDecision": {
+    "replace_source": 16,
+    "augment_source": 2,
+    "no_good_source": 1,
+    "human_review": 1
+  },
+  "byPerson": {
+    "李莲": 2,
+    "Aidan Gomez": 1,
+    "Daniela Amodei": 1,
+    "Dario Amodei": 1,
+    "Demis Hassabis": 1,
+    "Elon Musk": 7,
+    "Emad Mostaque": 1,
+    "Geoffrey Hinton": 1,
+    "Greg Brockman": 2,
+    "Jason Wei": 2,
+    "Mustafa Suleyman": 1
+  },
+  "selectedHosts": {
+    "lilianweng.github.io": 2,
+    "openreview.net": 1,
+    "montgomerysummit.com": 1,
+    "forbes.com": 3,
+    "cbsnews.com": 1,
+    "possible.fm": 1,
+    "achievement.org": 1,
+    "bbc.com": 2,
+    "fortune.com": 1,
+    "britannica.com": 1,
+    "bloomberg.com": 1,
+    "inabr.com": 1,
+    "stability.ai": 1,
+    "cifar.ca": 1,
+    "nobelprize.org": 1,
+    "openai.com": 1,
+    "y2doc.com": 1,
+    "jasonwei.net": 3
+  },
+  "selectedSources": 24,
+  "candidateCount": 192,
+  "sample": [
+    {
+      "person": "李莲",
+      "target": "【学习笔记】博客Lilian Weng - LLM Powered Autonomous ...",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "LLM Powered Autonomous Agents | Lil'Log",
+          "host": "lilianweng.github.io",
+          "url": "https://lilianweng.github.io/posts/2023-06-23-agent"
+        }
+      ],
+      "rationale": "原始声明是关于Lilian Weng的博客文章。候选中找到了其官方博客上的原始文章，标题完全匹配，作者明确，是最佳权威替代来源。其他候选要么不相关，要么权威性不足。"
+    },
+    {
+      "person": "李莲",
+      "target": "lilianweng - Overview",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Lilian Weng | OpenReview",
+          "host": "openreview.net",
+          "url": "https://openreview.net/profile?id=~Lilian_Weng1"
+        },
+        {
+          "title": "An Overview of Deep Learning for Curious People | Lil'Log",
+          "host": "lilianweng.github.io",
+          "url": "https://lilianweng.github.io/posts/2017-06-21-overview"
+        }
+      ],
+      "rationale": "原始来源仅为GitHub导航栏碎片，缺乏实质内容。候选中OpenReview个人资料页权威且直接证明其职位，个人博客可证明作者身份与专业贡献，两者结合可有效替换并补强来源。"
+    },
+    {
+      "person": "Aidan Gomez",
+      "target": "Humans behind AI: Aidan Gomez",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Aidan Gomez - The Montgomery Summit",
+          "host": "montgomerysummit.com",
+          "url": "https://montgomerysummit.com/speakers/aidan-gomez"
+        }
+      ],
+      "rationale": "原来源（McKinsey）正文缺乏关于Aidan Gomez的实质内容。候选中montgomerysummit.com页面是权威会议官网，直接、清晰地证明了人物身份、职位及核心贡献（Transformer论文），符合替换要求。其他候选或权威性稍弱，或缺乏直接证据。"
+    },
+    {
+      "person": "Daniela Amodei",
+      "target": "Artificial Intelligence: A Year in Review",
+      "decision": "replace_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Daniela Amodei - Forbes",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/daniela-amodei"
+        }
+      ],
+      "rationale": "原始来源不相关，仅标题提及但未聚焦Daniela Amodei本人。Forbes个人资料页权威、可访问，直接证明其作为Anthropic联合创始人兼总裁的身份，能有效替换原始来源。其他候选来源要么权威性不足，要么证据不直接，无法作为可靠替换。"
+    },
+    {
+      "person": "Dario Amodei",
+      "target": "Why this leading AI CEO is warning the tech could cause mass unemployment | CNN Business",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Why Anthropic CEO Dario Amodei spends so much time warning of ...",
+          "host": "cbsnews.com",
+          "url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript"
+        }
+      ],
+      "rationale": "原始CNN来源被QA拒绝，因正文内容无关。CBS新闻的60分钟节目转录直接包含Dario Amodei关于AI危险的警告，权威性高，内容明确，可作为可靠替换来源。"
+    },
+    {
+      "person": "Demis Hassabis",
+      "target": "Demis Hassabis: ‘AI will affect the whole world … It’s going to change everything’",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Demis Hassabis on AI, game theory, multimodality, and the nature of ...",
+          "host": "possible.fm",
+          "url": "https://possible.fm/podcasts/demis"
+        },
+        {
+          "title": "Sir Demis Hassabis | Academy of Achievement",
+          "host": "achievement.org",
+          "url": "https://achievement.org/achiever/demis-hassabis-ph-d"
+        }
+      ],
+      "rationale": "原始来源因付费墙无法访问。候选中，possible.fm的播客转录页面提供了与声明高度匹配的直接引语，是权威的访谈来源。achievement.org的资料页可作为人物背景的权威补充。其他候选或因内容不明确、或因权威性不足而被拒绝。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk is worth a record $648 billion — and his wealth gain this year exceeds Bernard Arnault's entire fortune",
+      "decision": "replace_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Who is Elon Musk and what is his net worth? - BBC",
+          "host": "bbc.com",
+          "url": "https://www.bbc.com/news/articles/c0r1975ded7o"
+        }
+      ],
+      "rationale": "原始来源（Business Insider）为付费墙内容，权威性不足。BBC的专题页面提供了权威、可访问的替代来源，直接支持马斯克作为世界首富的身份和财富状况，符合证据要求。其他候选来源要么权威性较低，要么内容不直接匹配，要么为辅助性来源。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk Just Became The First Person Ever Worth $600 Billion",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Elon Musk's wealth has soared past $600 billion—he's now worth double the next richest person alive, Google's cofounder Larry Page | Fortune",
+          "host": "fortune.com",
+          "url": "https://fortune.com/2025/12/16/elon-musk-wealth-soared-past-600-billion-now-worth-double-next-richest-person-alive-larry-page-spacex-valuation"
+        },
+        {
+          "title": "Who is Elon Musk and what is his net worth? - BBC",
+          "host": "bbc.com",
+          "url": "https://www.bbc.com/news/articles/c0r1975ded7o"
+        }
+      ],
+      "rationale": "原始来源因与AI/科技关联度低被拒。候选中Fortune和BBC的报道直接、权威地支持了“马斯克成为首位净资产超6000亿美元的人”这一声明，可作为替换或补强来源。其他候选来源权威性不足或为社交媒体内容，予以拒绝。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk: Businessman, Tesla, SpaceX, X, Wealthiest Person",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Elon Musk | SpaceX, Tesla, xAI, X, & PayPal | Britannica Money",
+          "host": "britannica.com",
+          "url": "https://www.britannica.com/money/Elon-Musk"
+        }
+      ],
+      "rationale": "原始来源为Facebook帖子，质量低。Britannica是权威百科，直接、全面地证明了马斯克作为商人及其在特斯拉、SpaceX、X、PayPal等公司的角色，以及其财富地位，完全符合证据要求，是理想的替换来源。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Elon Musk’s wealth has soared past $600 billion—he’s now worth double the next richest person alive, Google’s cofounder Larry Page",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "SpaceX Tender Offer Pushes Musk’s Net Worth To Record $677 Billion",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/sites/mattdurot/2025/12/15/elon-musk-just-became-the-first-person-ever-worth-600-billion"
+        }
+      ],
+      "rationale": "原始来源因缺乏AI/科技深度被拒，但候选中的福布斯文章提供了权威、可访问的直接证据，明确支持马斯克财富突破6000亿美元的声明，适合作为替换来源。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "Four takeaways from Walter Isaacson’s biography of Elon Musk | CNN Business",
+      "decision": "no_good_source",
+      "confidence": 0.9,
+      "selectedSources": [],
+      "rationale": "所有候选来源均为对沃尔特·艾萨克森所著马斯克传记的报道、评论或转录，属于二次内容。它们未能提供直接、权威的证据来证明马斯克本人的职位、作品或观点，无法替换或补强原始来源中与AI/科技主题关联性弱的问题。需要寻找马斯克本人或其公司的官方资料页。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "The Richest Person In America 2025",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Elon Musk",
+          "host": "forbes.com",
+          "url": "https://www.forbes.com/profile/elon-musk"
+        },
+        {
+          "title": "The Bloomberg Billionaires Index is a daily ranking of the world’s richest people. Details about the net worth calculations are provided for transparency in the net worth analysis on each billionaire’s individual profile page. The figures are updated at the close of every trading day in New York.",
+          "host": "bloomberg.com",
+          "url": "https://www.bloomberg.com/billionaires/profiles/elon-r-musk"
+        }
+      ],
+      "rationale": "原来源被判定为不相关综述。候选中福布斯和彭博的官方个人资料页是权威来源，能直接证明埃隆·马斯克在2025年财富排名中的地位，符合替换要求。"
+    },
+    {
+      "person": "Elon Musk",
+      "target": "美国国家工程院新增院士名单出炉，马斯克入选，张宏江、方岱宁等入选外籍院士！",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "马斯克当选美国国家工程院院士",
+          "host": "inabr.com",
+          "url": "https://inabr.com/news/13938"
+        }
+      ],
+      "rationale": "原始来源权威性不足。候选来源中，inabr.com的文章提供了详细、权威的报道，直接引用了美国国家工程院的官方信息，明确支持马斯克入选院士的事实，符合替换要求。其他候选来源或权威性不足，或存在访问限制，或未直接提及人物姓名。"
+    },
+    {
+      "person": "Emad Mostaque",
+      "target": "Founder Emad Mostaque exits AI picture start-up StabilityAI",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Stability AI Announcement",
+          "host": "stability.ai",
+          "url": "https://stability.ai/news-updates/stabilityai-announcement"
+        }
+      ],
+      "rationale": "官方公告直接、权威地证明了Emad Mostaque辞去Stability AI CEO及董事会职务的事实，符合证据要求，可替换原付费墙来源。"
+    },
+    {
+      "person": "Geoffrey Hinton",
+      "target": "Geoffrey Hinton - CIFAR",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Reach 2025: Geoffrey Hinton – CIFAR",
+          "host": "cifar.ca",
+          "url": "https://cifar.ca/publications-reports/reach/geoffrey-hinton"
+        },
+        {
+          "title": "Geoffrey Hinton – Podcast - NobelPrize.org",
+          "host": "nobelprize.org",
+          "url": "https://www.nobelprize.org/prizes/physics/2024/hinton/podcast"
+        }
+      ],
+      "rationale": "原始来源（CIFAR个人简介页）抓取失败，内容空洞。候选来源中，CIFAR官方出版物（Reach 2025）直接、权威地阐述了Hinton与CIFAR的长期关系和贡献，是理想的替换来源。诺贝尔奖官网播客页面可作为补充，提供权威背景信息。其他候选来源要么权威性不足，要么与CIFAR关联不直接。"
+    },
+    {
+      "person": "Greg Brockman",
+      "target": "GPT-4",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "GPT-4 contributions - OpenAI",
+          "host": "openai.com",
+          "url": "https://openai.com/contributions/gpt-4"
+        }
+      ],
+      "rationale": "OpenAI官方贡献页面是权威来源，直接证明Greg Brockman在GPT-4项目中的基础设施负责人角色，符合证据要求。其他候选来源虽提及人物，但缺乏官方直接证明或具体贡献描述。"
+    },
+    {
+      "person": "Greg Brockman",
+      "target": "GPT-4o System Card",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "selectedSources": [
+        {
+          "title": "Transcript & Notes: Greg Brockman on OpenAI's Road to AGI | Y2Doc",
+          "host": "y2doc.com",
+          "url": "https://y2doc.com/examples/1957759827378851840"
+        }
+      ],
+      "rationale": "原始来源（GPT-4o System Card PDF）未提及Greg Brockman，无法建立人物与作品的关联。候选中，播客转录页面明确显示Greg Brockman本人参与讨论OpenAI技术进展，可作为其技术领导角色的补充证据，但需与其他来源结合使用。"
+    },
+    {
+      "person": "Jason Wei",
+      "target": "Jason Wei",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "selectedSources": [
+        {
+          "title": "Jason Wei",
+          "host": "jasonwei.net",
+          "url": "https://www.jasonwei.net"
+        },
+        {
+          "title": "Papers - Jason Wei",
+          "host": "jasonwei.net",
+          "url": "https://www.jasonwei.net/papers"
+        }
+      ],
+      "rationale": "原始来源因乱码无法使用。候选中的个人官方主页（jasonwei.net）及其论文页是最佳替代，它们直接、权威地证明了Jason Wei的身份、当前职位、过往经历及核心研究贡献，完全满足证据要求。"
+    },
+    {
+      "person": "Jason Wei",
+      "target": "WeiLab",
+      "decision": "replace_source",
+      "confidence": 0.95,
+      "selectedSources": [
+        {
+          "title": "Jason Wei",
+          "host": "jasonwei.net",
+          "url": "https://www.jasonwei.net"
+        }
+      ],
+      "rationale": "候选来源中，jasonwei.net是Jason Wei的个人官方网站，明确、权威地证明了其身份、当前职位（Meta Superintelligence Labs）及过往工作（OpenAI, Google Brain）和核心研究贡献（chain-of-thought等），完全符合证据要求，可直接替换原无效来源。"
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "target": "The AI Friend Zone",
+      "decision": "human_review",
+      "confidence": 0.6,
+      "selectedSources": [],
+      "rationale": "所有候选来源均未直接提及或证明“The AI Friend Zone”这一具体概念与Mustafa Suleyman的关联。虽然多个来源确认了他的身份和职位，但缺乏将“The AI Friend Zone”这一特定表述归因于他的直接证据。需要更精确的搜索来找到包含该短语的原始采访或文章。"
+    }
+  ]
+}

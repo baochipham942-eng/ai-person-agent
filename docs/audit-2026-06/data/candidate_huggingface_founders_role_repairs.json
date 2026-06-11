@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "source": "Hugging Face company page and official profiles",
+    "generatedAt": "2026-06-11T17:24:00+08:00",
+    "note": "Current organization roles for Hugging Face founder-layer candidates."
+  },
+  "roles": [
+    {
+      "personName": "Thomas Wolf",
+      "aliases": ["thomwolf"],
+      "organizationName": "Hugging Face",
+      "organizationType": "company",
+      "role": "Co-founder & Chief Science Officer",
+      "roleZh": "联合创始人兼首席科学官",
+      "currentTitle": "Co-founder & Chief Science Officer @ Hugging Face",
+      "roleCategory": "founder",
+      "source": "https://en.wikipedia.org/wiki/Hugging_Face",
+      "confidence": 0.86
+    },
+    {
+      "personName": "Julien Chaumond",
+      "aliases": ["julien-c"],
+      "organizationName": "Hugging Face",
+      "organizationType": "company",
+      "role": "Co-founder & Chief Technology Officer",
+      "roleZh": "联合创始人兼首席技术官",
+      "currentTitle": "Co-founder & Chief Technology Officer @ Hugging Face",
+      "roleCategory": "founder",
+      "source": "https://en.wikipedia.org/wiki/Hugging_Face",
+      "confidence": 0.86
+    }
+  ]
+}

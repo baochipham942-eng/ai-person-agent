@@ -13,7 +13,20 @@ const RegisterSchema = z.object({
     inviteCode: z.string().min(6, '请输入6-8位邀请码').max(8, '请输入6-8位邀请码'),
 });
 
-export async function registerUser(prevState: string | undefined, formData: FormData) {
+export type RegisterUserResult =
+    | {
+        success: true;
+        user: {
+            id: string;
+            username: string;
+            nickname: string | null;
+            avatar: string | null;
+            quickLoginToken: string | null;
+        };
+    }
+    | { success: false; error: string };
+
+export async function registerUser(prevState: string | undefined, formData: FormData): Promise<RegisterUserResult> {
     // 1. Parse Input
     const phone = formData.get('phone') as string;
     const password = formData.get('password') as string;
@@ -22,7 +35,7 @@ export async function registerUser(prevState: string | undefined, formData: Form
     const validatedFields = RegisterSchema.safeParse({ phone, password, inviteCode });
 
     if (!validatedFields.success) {
-        return { success: false, error: validatedFields.error.issues[0].message };
+        return { success: false as const, error: validatedFields.error.issues[0].message };
     }
 
     try {
@@ -37,7 +50,7 @@ export async function registerUser(prevState: string | undefined, formData: Form
         });
 
         if (existingUser) {
-            return { success: false, error: '该手机号已注册' };
+            return { success: false as const, error: '该手机号已注册' };
         }
 
         // 3. Verify Invitation Code
@@ -87,7 +100,7 @@ export async function registerUser(prevState: string | undefined, formData: Form
             });
 
             return {
-                success: true,
+                success: true as const,
                 user: {
                     id: newUser.id,
                     username: newUser.username,
@@ -100,9 +113,9 @@ export async function registerUser(prevState: string | undefined, formData: Form
 
         return result;
 
-    } catch (error: any) {
+    } catch (error) {
         console.error('Registration error:', error);
-        if (error.message) return { success: false, error: error.message };
-        return { success: false, error: '注册失败，请稍后重试' };
+        if (error instanceof Error && error.message) return { success: false as const, error: error.message };
+        return { success: false as const, error: '注册失败，请稍后重试' };
     }
 }

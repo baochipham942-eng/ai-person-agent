@@ -1,0 +1,238 @@
+{
+  "generatedAt": "2026-06-10T12:20:56.565Z",
+  "summary": {
+    "generatedAt": "2026-06-10T12:20:56.565Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_sixteenth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_sixteenth_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 5,
+    "existingTargets": 5,
+    "missingTargets": 0,
+    "auditRowsInserted": 5,
+    "deleted": 5,
+    "byAction": {
+      "delete_raw_pool_item": 5
+    },
+    "byVerdict": {
+      "reject": 5
+    },
+    "byPerson": {
+      "桑达尔·皮查伊": 3,
+      "雅各布·乌什科雷特": 2
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxowx003vvrmtbg6sju818",
+          "objectLabel": "//x.com/sundarpichai/status/1993509460577583300"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:20:17.571Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxowx003vvrmtbg6sju818",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "sourceType": "x",
+        "url": "https://x.com/sundarpichai/status/1993509460577583300",
+        "urlHash": "1b234195ece26e3bed4b207136cee22a",
+        "contentHash": "21724e878f56e078ca5e5c7d92e96fa1",
+        "title": "//x.com/sundarpichai/status/1993509460577583300",
+        "text": "//x.com/sundarpichai/status/1993509460577583300",
+        "publishedAt": "2025-12-31T03:29:31.828Z",
+        "metadata": {
+          "author": "sundarpichai",
+          "postId": "1993509460577583300",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:14:50.329Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxow1503vjrmtbm7ivjibf",
+          "objectLabel": "//x.com/sundarpichai/status/2001326061787942957"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:20:17.571Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxow1503vjrmtbm7ivjibf",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "sourceType": "x",
+        "url": "https://x.com/sundarpichai/status/2001326061787942957",
+        "urlHash": "8c51c9342a0f3f6e05987bde195bc90b",
+        "contentHash": "26edf4544f6f6441cd59d3f50f308abe",
+        "title": "//x.com/sundarpichai/status/2001326061787942957",
+        "text": "//x.com/sundarpichai/status/2001326061787942957",
+        "publishedAt": "2025-12-31T03:29:31.828Z",
+        "metadata": {
+          "author": "sundarpichai",
+          "postId": "2001326061787942957",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:14:49.498Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxovqd03vfrmtb2z1gc0iu",
+          "objectLabel": "//x.com/sundarpichai/status/2001360295726584072"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅包含社交媒体链接，缺乏实质性文本信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:20:17.571Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxovqd03vfrmtb2z1gc0iu",
+        "personId": "cmjtxdlcn000b5p08yoct3be8",
+        "person": "桑达尔·皮查伊",
+        "sourceType": "x",
+        "url": "https://x.com/sundarpichai/status/2001360295726584072",
+        "urlHash": "01010795e718242391772a487e67e71b",
+        "contentHash": "c6ac942159323052e4268c7e85af1606",
+        "title": "//x.com/sundarpichai/status/2001360295726584072",
+        "text": "//x.com/sundarpichai/status/2001360295726584072",
+        "publishedAt": "2025-12-31T03:29:31.828Z",
+        "metadata": {
+          "author": "sundarpichai",
+          "postId": "2001360295726584072",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:14:49.143Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtxe7r3000g5p0868zhzky2",
+        "person": "雅各布·乌什科雷特",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqhau0498rmtb3yx2rvc3",
+          "objectLabel": "//x.com/kyosu/status/1664546855013736449"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅包含社交媒体链接，无实质性文本内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:20:17.571Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxqhau0498rmtb3yx2rvc3",
+        "personId": "cmjtxe7r3000g5p0868zhzky2",
+        "person": "雅各布·乌什科雷特",
+        "sourceType": "x",
+        "url": "https://x.com/kyosu/status/1664546855013736449",
+        "urlHash": "efecce6a4e60e3858e72b7c86c7410dd",
+        "contentHash": "1bf208bf27a765928c9e7cdf4884c420",
+        "title": "//x.com/kyosu/status/1664546855013736449",
+        "text": "//x.com/kyosu/status/1664546855013736449",
+        "publishedAt": "2025-12-31T03:30:43.758Z",
+        "metadata": {
+          "author": "kyosu",
+          "postId": "1664546855013736449",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T04:47:32.636Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "personId": "cmjtxe7r3000g5p0868zhzky2",
+        "person": "雅各布·乌什科雷特",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxqjxz049qrmtb9uy1jg4d",
+          "objectLabel": "Inceptive CEO Jakob Uszkoreit On Transformers And Using AI ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容仅为YouTube页面页脚法律信息，无实质人物内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T12:20:17.571Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": {
+        "id": "cmjtxqjxz049qrmtb9uy1jg4d",
+        "personId": "cmjtxe7r3000g5p0868zhzky2",
+        "person": "雅各布·乌什科雷特",
+        "sourceType": "youtube",
+        "url": "https://www.youtube.com/watch?v=GqWw8-TdjXU",
+        "urlHash": "5b9b84b96967a49d1f6899069f86371f",
+        "contentHash": "5532cf5506c737f642839742ba93cb1e",
+        "title": "Inceptive CEO Jakob Uszkoreit On Transformers And Using AI ...",
+        "text": "[iframe](https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en)\n\n[About](https://www.youtube.com/about/) [Press](https://www.youtube.com/about/press/) [Copyright](https://www.youtube.com/about/copyright/) [Contact us](https://www.youtube.com/t/contact_us/) [Creators](https://www.youtube.com/creators/) [Advertise](https://www.youtube.com/ads/) [Developers](https://developers.google.com/youtube) [Terms](https://www.youtube.com/t/terms) [Privacy](https://www.youtube.com/t/privacy) [Policy & Safety](https://www.youtube.com/about/policies/) [How YouTube works](https://www.youtube.com/howyoutubeworks?utm_campaign=ytgen&utm_source=ythp&utm_medium=LeftNav&utm_content=txt&u=https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%3Futm_source%3Dythp%26utm_medium%3DLeftNav%26utm_campaign%3Dytgen) [Test new features](https://www.youtube.com/new)\n\n© 2025 Google LLC",
+        "publishedAt": "2024-07-12T08:00:17.000Z",
+        "metadata": {
+          "tags": [
+            "Transformer",
+            "大语言模型",
+            "产品"
+          ],
+          "author": "",
+          "isOfficial": false,
+          "videoCategory": "analysis",
+          "videoCategoryConfidence": 0.5
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:12:16.205Z",
+        "processed": false
+      }
+    }
+  ]
+}

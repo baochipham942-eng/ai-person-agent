@@ -1,0 +1,851 @@
+{
+  "generatedAt": "2026-06-10T11:26:06.338Z",
+  "summary": {
+    "clusters": 10,
+    "organizationRows": 42,
+    "personRoleRefs": 169,
+    "peopleOrganizationValues": 17,
+    "peopleOrgRefs": 45
+  },
+  "clusters": [
+    {
+      "key": "stanford_suborgs",
+      "label": "Stanford suborg boundary",
+      "decision": "Do not merge university, labs, departments, and centers until product display rules are decided.",
+      "organizationRows": [
+        {
+          "id": "cmjuv5yb00009u3ouiduyyg1l",
+          "name": "Stanford University",
+          "nameZh": "斯坦福大学",
+          "type": "company",
+          "wikidataQid": "Q41506",
+          "roleCount": 63,
+          "people": [
+            "Andrej Karpathy",
+            "Bob McGrew",
+            "Cat Wu",
+            "Chelsea Finn",
+            "Chip Huyen",
+            "Christopher Manning",
+            "Elon Musk",
+            "Ilya Sutskever",
+            "Joanne Jang",
+            "Kevin Weil",
+            "Leslie Kaelbling",
+            "Percy Liang",
+            "Quoc Le",
+            "Richard Socher",
+            "Sam Altman",
+            "Tri Dao",
+            "Yann Dubois",
+            "丹·克莱因",
+            "于克朱",
+            "伊恩·J·古德费洛",
+            "克里斯蒂娜·N·图塔诺娃",
+            "凯尔文·顾",
+            "吉姆·范",
+            "吉滕德拉·马利克",
+            "吴恩达",
+            "埃里克·霍维茨",
+            "塞缪尔·瑞安·鲍曼",
+            "塞雷娜·杨-利维",
+            "奥尼·汉农",
+            "彼得·阿比尔",
+            "拉里·佩奇",
+            "斯图尔特·罗素",
+            "普拉纳夫·拉杰普尔卡",
+            "李宏乐",
+            "李飞飞",
+            "梁明涛",
+            "胡安·卡洛斯·尼布勒斯",
+            "苏浩",
+            "蒂姆尼特·格布鲁",
+            "谢尔盖·布林",
+            "贾斯汀·约翰逊",
+            "贾里德·卡普兰",
+            "迈克·施罗普费尔",
+            "阿舒托什·萨克塞纳",
+            "雅各布·斯坦哈特",
+            "黄仁勋",
+            "黄铁军",
+            "齐科·科尔特"
+          ]
+        },
+        {
+          "id": "cmk8g27af005rb64i73keru32",
+          "name": "Stanford University, Computer Science Department",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 3,
+          "people": [
+            "李飞飞"
+          ]
+        },
+        {
+          "id": "cmk8hy41i0026a1k3f5eooqxq",
+          "name": "Stanford HAI",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 2,
+          "people": [
+            "Sergey Levine",
+            "Tri Dao"
+          ]
+        },
+        {
+          "id": "cmk8g2bm40061b64iro1jikzm",
+          "name": "Stanford Artificial Intelligence Lab (SAIL)",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "李飞飞"
+          ]
+        },
+        {
+          "id": "cmjy1jxkj00inxccm4974gm2v",
+          "name": "Stanford Digital Economy Lab",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Jeremy Howard"
+          ]
+        },
+        {
+          "id": "cmk8g2hu6006bb64i1im4vk4e",
+          "name": "Stanford Institute for Human-Centered Artificial Intelligence (HAI)",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "李飞飞"
+          ]
+        },
+        {
+          "id": "cmjy186uk00amxccmgysfmhoi",
+          "name": "Stanford University Center for Research on Foundation Models (CRFM)",
+          "nameZh": null,
+          "type": "school",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Percy Liang"
+          ]
+        },
+        {
+          "id": "cmk8g2afb005yb64iwblxqqdh",
+          "name": "Stanford University, Sequoia Professor",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "李飞飞"
+          ]
+        },
+        {
+          "id": "cmk8g2ed70064b64i1yp2vefz",
+          "name": "Stanford Vision Lab",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "李飞飞"
+          ]
+        }
+      ],
+      "peopleOrganizationValues": [
+        {
+          "value": "斯坦福大学",
+          "peopleCount": 10,
+          "people": [
+            "Chelsea Finn",
+            "Christopher Manning",
+            "Percy Liang",
+            "Richard Socher",
+            "Tri Dao",
+            "吴恩达",
+            "塞雷娜·杨-利维",
+            "李飞飞",
+            "胡安·卡洛斯·尼布勒斯",
+            "阿舒托什·萨克塞纳"
+          ]
+        }
+      ],
+      "summary": {
+        "organizationRows": 9,
+        "personRoleRefs": 74,
+        "peopleOrganizationValues": 1,
+        "peopleOrgRefs": 10
+      }
+    },
+    {
+      "key": "nyu_suborgs",
+      "label": "NYU suborg boundary",
+      "decision": "Review NYU, NYU Courant, and research-lab variants before merging.",
+      "organizationRows": [
+        {
+          "id": "cmjw5jgz60062izl8qp8yx5r2",
+          "name": "New York University",
+          "nameZh": "纽约大学",
+          "type": "company",
+          "wikidataQid": "Q49210",
+          "roleCount": 11,
+          "people": [
+            "Amanda Askell",
+            "Meredith Whittaker",
+            "Wojciech Zaremba",
+            "Yann LeCun",
+            "科拉伊·卡武克丘奥卢",
+            "陈冕",
+            "雷亚·哈德塞尔",
+            "马克·奥雷利奥·兰扎托"
+          ]
+        },
+        {
+          "id": "cmjy1kusc00j2xccmxovvrtto",
+          "name": "NYU Courant Institute of Mathematical Sciences",
+          "nameZh": null,
+          "type": "school",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Arthur Mensch"
+          ]
+        },
+        {
+          "id": "cmjw5jjej006bizl8a41ciznb",
+          "name": "New York University Tandon School of Engineering",
+          "nameZh": "纽约大学坦登工程学院",
+          "type": "company",
+          "wikidataQid": "Q75478",
+          "roleCount": 0,
+          "people": []
+        }
+      ],
+      "peopleOrganizationValues": [
+        {
+          "value": "纽约大学",
+          "peopleCount": 2,
+          "people": [
+            "Amanda Askell",
+            "Yann LeCun"
+          ]
+        },
+        {
+          "value": "New York University",
+          "peopleCount": 1,
+          "people": [
+            "塞缪尔·瑞安·鲍曼"
+          ]
+        },
+        {
+          "value": "纽约大学坦登工程学院",
+          "peopleCount": 1,
+          "people": [
+            "Yann LeCun"
+          ]
+        }
+      ],
+      "summary": {
+        "organizationRows": 3,
+        "personRoleRefs": 12,
+        "peopleOrganizationValues": 3,
+        "peopleOrgRefs": 4
+      }
+    },
+    {
+      "key": "cmu_suborgs",
+      "label": "CMU suborg boundary",
+      "decision": "Review CMU, Carnegie Mellon University, and school/lab variants before merging.",
+      "organizationRows": [
+        {
+          "id": "cmjw5gx36001xizl8fzkbs9t8",
+          "name": "Carnegie Mellon University",
+          "nameZh": "卡内基梅隆大学",
+          "type": "company",
+          "wikidataQid": "Q190080",
+          "roleCount": 20,
+          "people": [
+            "Christopher Manning",
+            "Geoffrey Hinton",
+            "Haofan Wang",
+            "Tianqi Chen",
+            "Zoubin Ghahramani",
+            "乔尔·皮诺",
+            "吴恩达",
+            "李开复",
+            "杨植麟",
+            "理查德·S·泽梅尔",
+            "阿列克谢·A·埃夫罗斯",
+            "鲁斯兰·萨拉赫丁诺夫",
+            "齐科·科尔特"
+          ]
+        },
+        {
+          "id": "cmkb2jrmh001ao21qqrw7ofin",
+          "name": "Carnegie Mellon University Computer Science Department",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Graham Neubig"
+          ]
+        },
+        {
+          "id": "cmkb2jumq001do21qtfu6yehh",
+          "name": "NeuLab @ LTI/CMU",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Graham Neubig"
+          ]
+        },
+        {
+          "id": "cmjw5ohyw000c36ipb8ve09gp",
+          "name": "卡内基梅隆大学计算机学院",
+          "nameZh": "卡内基梅隆大学计算机学院",
+          "type": "university",
+          "wikidataQid": "baike-卡内基梅隆大学计算机学院",
+          "roleCount": 0,
+          "people": []
+        }
+      ],
+      "peopleOrganizationValues": [
+        {
+          "value": "卡内基梅隆大学",
+          "peopleCount": 10,
+          "people": [
+            "Christopher Manning",
+            "Geoffrey Hinton",
+            "Graham Neubig",
+            "Tianqi Chen",
+            "Tom Mitchell",
+            "理查德·S·泽梅尔",
+            "舒布汉·图尔西亚尼",
+            "阿列克谢·A·埃夫罗斯",
+            "鲁斯兰·萨拉赫丁诺夫",
+            "齐科·科尔特"
+          ]
+        }
+      ],
+      "summary": {
+        "organizationRows": 4,
+        "personRoleRefs": 22,
+        "peopleOrganizationValues": 1,
+        "peopleOrgRefs": 10
+      }
+    },
+    {
+      "key": "facebook_meta_history",
+      "label": "Facebook / Meta history boundary",
+      "decision": "Needs product decision on whether historic Facebook roles display as Facebook or Meta.",
+      "organizationRows": [
+        {
+          "id": "cmjw6o4i3001t13klohtursqb",
+          "name": "Facebook AI Research (FAIR)",
+          "nameZh": "Facebook AI Research (FAIR)",
+          "type": "company",
+          "wikidataQid": "ai-gen-facebook-ai-research-(fair)",
+          "roleCount": 11,
+          "people": [
+            "Boris Power",
+            "Guillaume Lample",
+            "Wojciech Zaremba",
+            "Yann Dubois",
+            "乔尔·皮诺",
+            "乔治亚·吉奥克萨里",
+            "何凯明",
+            "大卫·洛佩兹-帕兹",
+            "奥尼·汉农",
+            "杨植麟",
+            "阿卜杜勒-拉赫曼·穆罕默德"
+          ]
+        },
+        {
+          "id": "cmjw5fvya000bizl8cw4o8ipk",
+          "name": "Facebook",
+          "nameZh": "Facebook",
+          "type": "company",
+          "wikidataQid": "Q355",
+          "roleCount": 8,
+          "people": [
+            "Chamath Palihapitiya",
+            "Fidji Simo",
+            "Guillaume Lample",
+            "Joanne Jang",
+            "Kevin Weil",
+            "Santiago Valdarrama",
+            "迈克·施罗普费尔"
+          ]
+        },
+        {
+          "id": "cmjw5jg66005zizl8hj5qnmo0",
+          "name": "Meta",
+          "nameZh": "Meta",
+          "type": "company",
+          "wikidataQid": "Q380",
+          "roleCount": 7,
+          "people": [
+            "Boris Cherny",
+            "Daniel Gross",
+            "Hyung Won Chung",
+            "Jason Liu",
+            "Yann LeCun",
+            "迈克·施罗普费尔",
+            "马克·扎克伯格"
+          ]
+        },
+        {
+          "id": "cmkaejmae005wimyjdms8kvmz",
+          "name": "Meta AI",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "帕斯卡尔·文森特"
+          ]
+        },
+        {
+          "id": "cmjy0kioe0002xccmlqpkluth",
+          "name": "MetaMind",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Richard Socher"
+          ]
+        },
+        {
+          "id": "cmjy15o92008txccm3movpluv",
+          "name": "Metaweb",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "John Giannandrea"
+          ]
+        },
+        {
+          "id": "cmjv58pot002ip9gnvhqnemlz",
+          "name": "Meta Superintelligence Labs",
+          "nameZh": null,
+          "type": "Company",
+          "wikidataQid": null,
+          "roleCount": 0,
+          "people": []
+        },
+        {
+          "id": "cmjw6dyj70082dtlky58bycle",
+          "name": "Transmeta Corporation",
+          "nameZh": "全美达公司",
+          "type": "company",
+          "wikidataQid": "Q836542",
+          "roleCount": 0,
+          "people": []
+        }
+      ],
+      "peopleOrganizationValues": [
+        {
+          "value": "Facebook人工智能研究院",
+          "peopleCount": 4,
+          "people": [
+            "乔治亚·吉奥克萨里",
+            "大卫·洛佩兹-帕兹",
+            "奥尼·汉农",
+            "阿卜杜勒-拉赫曼·穆罕默德"
+          ]
+        },
+        {
+          "value": "Meta",
+          "peopleCount": 4,
+          "people": [
+            "Boris Cherny",
+            "Yann LeCun",
+            "肖弘",
+            "马克·扎克伯格"
+          ]
+        },
+        {
+          "value": "Facebook",
+          "peopleCount": 2,
+          "people": [
+            "Chamath Palihapitiya",
+            "迈克·施罗普费尔"
+          ]
+        },
+        {
+          "value": "Meta AI",
+          "peopleCount": 2,
+          "people": [
+            "大卫·洛佩兹-帕兹",
+            "帕斯卡尔·文森特"
+          ]
+        },
+        {
+          "value": "Facebook AI Research (FAIR)",
+          "peopleCount": 1,
+          "people": [
+            "乔尔·皮诺"
+          ]
+        },
+        {
+          "value": "Meta Superintelligence Labs",
+          "peopleCount": 1,
+          "people": [
+            "Shengjia Zhao"
+          ]
+        },
+        {
+          "value": "MetaMind",
+          "peopleCount": 1,
+          "people": [
+            "Richard Socher"
+          ]
+        },
+        {
+          "value": "Meta超级智能实验室",
+          "peopleCount": 1,
+          "people": [
+            "Hyung Won Chung"
+          ]
+        },
+        {
+          "value": "脸书",
+          "peopleCount": 1,
+          "people": [
+            "Guillaume Lample"
+          ]
+        }
+      ],
+      "summary": {
+        "organizationRows": 8,
+        "personRoleRefs": 29,
+        "peopleOrganizationValues": 9,
+        "peopleOrgRefs": 17
+      }
+    },
+    {
+      "key": "twitter_x_history",
+      "label": "Twitter / X history boundary",
+      "decision": "Needs product decision on whether historic Twitter roles display as Twitter or X.",
+      "organizationRows": [
+        {
+          "id": "cmjw5o5ew000636ipqzfw56yk",
+          "name": "Twitter",
+          "nameZh": "Twitter",
+          "type": "company",
+          "wikidataQid": "baike-Twitter",
+          "roleCount": 2,
+          "people": [
+            "Kevin Weil"
+          ]
+        },
+        {
+          "id": "cmk8g2lpg006kb64ixhgsj8kl",
+          "name": "Twitter (now X Corp.)",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "李飞飞"
+          ]
+        },
+        {
+          "id": "cmk8fvsqw000kb64iwgtzf687",
+          "name": "Twitter, Inc. / X Corp.",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Elon Musk"
+          ]
+        },
+        {
+          "id": "cmk8fvojh000eb64iuxrqco6u",
+          "name": "X.com",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Elon Musk"
+          ]
+        }
+      ],
+      "peopleOrganizationValues": [],
+      "summary": {
+        "organizationRows": 4,
+        "personRoleRefs": 5,
+        "peopleOrganizationValues": 0,
+        "peopleOrgRefs": 0
+      }
+    },
+    {
+      "key": "cas_ict",
+      "label": "Chinese Academy of Sciences / ICT boundary",
+      "decision": "Review institute versus parent academy before picking a canonical organization.",
+      "organizationRows": [
+        {
+          "id": "cmk8ibdhb0006t2pkcvdhh8v1",
+          "name": "Institute of Computing Technology, Chinese Academy of Sciences (CAS ICT)",
+          "nameZh": "中国科学院计算技术研究所",
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 2,
+          "people": [
+            "陈天石"
+          ]
+        },
+        {
+          "id": "cmjv7tk1p004jsz2t8uo3up0e",
+          "name": "中国科学院研究生院",
+          "nameZh": null,
+          "type": "Company",
+          "wikidataQid": null,
+          "roleCount": 2,
+          "people": [
+            "黄铁军"
+          ]
+        },
+        {
+          "id": "cmjv5wq95000kwyx6phmdo4pm",
+          "name": "Institute of Biophysics, Chinese Academy of Sciences",
+          "nameZh": null,
+          "type": "Company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "唐杰"
+          ]
+        },
+        {
+          "id": "cmjy1bj8900d6xccmjtj2fenn",
+          "name": "Institute of Software, Chinese Academy of Sciences",
+          "nameZh": null,
+          "type": "school",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Haofan Wang"
+          ]
+        },
+        {
+          "id": "cmjv7w5cp005bsz2t8h2buebc",
+          "name": "中国科学院",
+          "nameZh": null,
+          "type": "Company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "周伯文"
+          ]
+        },
+        {
+          "id": "cmjv7s8zm0044sz2tv4yrhbw7",
+          "name": "中国科学院自动化所模式识别国家重点实验室",
+          "nameZh": null,
+          "type": "Company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "闫俊杰"
+          ]
+        },
+        {
+          "id": "cmjy7g1l60006i85561p4yqpj",
+          "name": "South China Botanical Garden, Chinese Academy of Sciences",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 0,
+          "people": []
+        }
+      ],
+      "peopleOrganizationValues": [
+        {
+          "value": "中国科学院计算技术研究所",
+          "peopleCount": 1,
+          "people": [
+            "陈天石"
+          ]
+        }
+      ],
+      "summary": {
+        "organizationRows": 7,
+        "personRoleRefs": 8,
+        "peopleOrganizationValues": 1,
+        "peopleOrgRefs": 1
+      }
+    },
+    {
+      "key": "idsia_dalle_molle",
+      "label": "IDSIA / Dalle Molle boundary",
+      "decision": "Review English and Italian naming variants before merging.",
+      "organizationRows": [
+        {
+          "id": "cmjw6bdcw002qdtlkkn5khj34",
+          "name": "Dalle Molle Institute for Artificial Intelligence Research",
+          "nameZh": "达勒莫勒人工智能研究所",
+          "type": "university",
+          "wikidataQid": "Q5211467",
+          "roleCount": 2,
+          "people": [
+            "Shane Legg"
+          ]
+        }
+      ],
+      "peopleOrganizationValues": [],
+      "summary": {
+        "organizationRows": 1,
+        "personRoleRefs": 2,
+        "peopleOrganizationValues": 0,
+        "peopleOrgRefs": 0
+      }
+    },
+    {
+      "key": "ibm_research",
+      "label": "IBM / IBM Research boundary",
+      "decision": "Review corporate IBM and IBM Research roles before merging or preserving suborgs.",
+      "organizationRows": [
+        {
+          "id": "cmjv7vylt0057sz2tgt913bk2",
+          "name": "IBM",
+          "nameZh": "IBM",
+          "type": "Company",
+          "wikidataQid": null,
+          "roleCount": 9,
+          "people": [
+            "Allie K. Miller",
+            "Arvind Krishna",
+            "周伯文",
+            "苏姿丰"
+          ]
+        },
+        {
+          "id": "cmjw6dlb40078dtlk2h2pn9hq",
+          "name": "IBM Research",
+          "nameZh": "IBM研究院",
+          "type": "company",
+          "wikidataQid": "Q3146518",
+          "roleCount": 2,
+          "people": [
+            "Arvind Krishna",
+            "苏姿丰"
+          ]
+        }
+      ],
+      "peopleOrganizationValues": [
+        {
+          "value": "IBM",
+          "peopleCount": 2,
+          "people": [
+            "Allie K. Miller",
+            "Arvind Krishna"
+          ]
+        },
+        {
+          "value": "IBM研究院",
+          "peopleCount": 1,
+          "people": [
+            "苏姿丰"
+          ]
+        }
+      ],
+      "summary": {
+        "organizationRows": 2,
+        "personRoleRefs": 11,
+        "peopleOrganizationValues": 2,
+        "peopleOrgRefs": 3
+      }
+    },
+    {
+      "key": "ubc",
+      "label": "University of British Columbia boundary",
+      "decision": "Review UBC abbreviation and full-name variants.",
+      "organizationRows": [
+        {
+          "id": "cmk8fxp3s0027b64i2fb3gi20",
+          "name": "University of British Columbia",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 2,
+          "people": [
+            "Andrej Karpathy",
+            "大卫·杜维诺"
+          ]
+        },
+        {
+          "id": "cmkb2i90f0012o21qjg1tsl0o",
+          "name": "SBS & University of British Columbia",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Yann Dubois"
+          ]
+        }
+      ],
+      "peopleOrganizationValues": [],
+      "summary": {
+        "organizationRows": 2,
+        "personRoleRefs": 3,
+        "peopleOrganizationValues": 0,
+        "peopleOrgRefs": 0
+      }
+    },
+    {
+      "key": "kings_college",
+      "label": "King's College boundary",
+      "decision": "Review King’s College London spelling and short-name variants.",
+      "organizationRows": [
+        {
+          "id": "cmk8fwy5u001gb64isu842141",
+          "name": "King's College, Cambridge",
+          "nameZh": null,
+          "type": "university",
+          "wikidataQid": null,
+          "roleCount": 2,
+          "people": [
+            "Geoffrey Hinton"
+          ]
+        },
+        {
+          "id": "cmjv7lct0001wsz2txk6to6pp",
+          "name": "King's College, New Zealand",
+          "nameZh": null,
+          "type": "Company",
+          "wikidataQid": null,
+          "roleCount": 1,
+          "people": [
+            "Richard Ngo"
+          ]
+        }
+      ],
+      "peopleOrganizationValues": [],
+      "summary": {
+        "organizationRows": 2,
+        "personRoleRefs": 3,
+        "peopleOrganizationValues": 0,
+        "peopleOrgRefs": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-06-10T21:58:58.106Z",
+  "summary": {
+    "generatedAt": "2026-06-10T21:58:58.106Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_review_github_repo_repairs.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_github_repo_repairs_apply_archive.json",
+    "stage": "manual_prune_tail_review_github_repo_repair",
+    "decisions": 7,
+    "applicable": 7,
+    "applied": 7,
+    "skipped": 0,
+    "byAction": {
+      "update_raw_item": 7
+    }
+  }
+}

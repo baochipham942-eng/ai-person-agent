@@ -1,0 +1,354 @@
+{
+  "generatedAt": "2026-06-10T08:41:45.056Z",
+  "summary": {
+    "generatedAt": "2026-06-10T08:41:45.056Z",
+    "mode": "execute",
+    "planIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json",
+    "reviewIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json",
+    "peopleConsidered": 1,
+    "peopleEligible": 1,
+    "existingCards": 14,
+    "replacementCards": 5,
+    "skippedPeople": 0
+  },
+  "people": [
+    {
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "status": "ready",
+      "currentCards": [
+        {
+          "id": "9db8352c-51f4-4494-be14-afc1d8d54d68",
+          "type": "fact",
+          "title": "GPT-3：开启“少样本学习”新范式",
+          "content": "拉德福德作为核心作者参与的 GPT-3 研究，标志着 AI 从“微调范式”向“提示范式”的转变。该研究证明，当模型规模达到 1750 亿参数时，无需任何梯度更新或针对特定任务的微调，仅通过少量的示例（Few-shot）或简单的指令，模型就能在多种任务上达到甚至超过当时的 SOTA 水平。这一发现彻底改变了人类与 AI 交互的方式，并推动了提示工程（Prompt Engineering）的兴起。",
+          "tags": [
+            "GPT-3",
+            "少样本学习",
+            "参数规模",
+            "提示工程"
+          ],
+          "sourceUrl": "https://arxiv.org/abs/2005.14165",
+          "importance": 5,
+          "createdAt": "2026-06-08 05:44:36.989",
+          "updatedAt": "2026-06-08 05:44:36.989"
+        },
+        {
+          "id": "4a095854-c676-40c6-beda-2c5eefd428fa",
+          "type": "method",
+          "title": "稀疏自编码器（SAE）：探索大模型的可解释性",
+          "content": "拉德福德在 OpenAI 的近期研究专注于通过稀疏自编码器（SAE）提取语言模型内部的特征。他提出使用 k-sparse 结构来直接控制特征稀疏度，从而在重建精度和可解释性之间取得更好平衡。他的研究揭示了自编码器规模与特征质量之间的“缩放定律”（Scaling Laws），这被认为是破解神经网络“黑盒”难题、实现安全 AI 的重要技术路径。",
+          "tags": [
+            "可解释性",
+            "稀疏自编码器",
+            "缩放定律",
+            "AI安全"
+          ],
+          "sourceUrl": "https://www.researchgate.net/scientific-contributions/Alec-Radford-2125302025",
+          "importance": 5,
+          "createdAt": "2026-06-08 05:44:36.51",
+          "updatedAt": "2026-06-08 05:44:36.51"
+        },
+        {
+          "id": "bf21984f-c164-40bd-b921-54fd34e0d3e4",
+          "type": "fact",
+          "title": "深度卷积生成对抗网络（DCGAN）的开创者",
+          "content": "在 GPT 诞生之前，拉德福德在 2015 年共同提出了 DCGAN。这是生成对抗网络（GAN）发展史上的关键突破，通过引入特定的卷积拓扑结构，解决了 GAN 训练不稳定的难题。这一工作不仅让计算机能够生成高质量、高分辨率的图像，还展示了模型内部向量空间的算术特性（如“男人-女人+女人=男人”的图像流形运算），为后来的生成式 AI 浪潮埋下了伏笔。",
+          "tags": [
+            "DCGAN",
+            "图像生成",
+            "计算机视觉",
+            "早期成就"
+          ],
+          "sourceUrl": "https://www.wikibiostar.com/profile/alec-radford/",
+          "importance": 5,
+          "createdAt": "2026-06-08 05:44:35.995",
+          "updatedAt": "2026-06-08 05:44:35.995"
+        },
+        {
+          "id": "cmjuuuo5d0i4mrmtbio3v8nlg",
+          "type": "method",
+          "title": "生成式预训练（GPT）核心方法论",
+          "content": "拉德福德在开创性论文《通过生成式预训练提升语言理解》中提出的方法论：首先在大量无标签文本语料库上对语言模型进行生成式预训练，然后在每个特定任务上进行判别式微调。该方法利用任务感知的输入转换实现有效迁移，同时只需对模型架构进行最小改动。这种“预训练+微调”范式成为现代大语言模型的基石。",
+          "tags": [
+            "GPT",
+            "预训练",
+            "微调",
+            "迁移学习",
+            "方法论"
+          ],
+          "sourceUrl": "https://www.youtube.com/watch?v=kAlD1Wx8lzw",
+          "importance": 9,
+          "createdAt": "2026-01-01 02:57:59.234",
+          "updatedAt": "2026-01-01 02:57:59.234"
+        },
+        {
+          "id": "cmjuuuo5d0i4prmtb4gqa8f8p",
+          "type": "fact",
+          "title": "高产研究者：41篇论文，超1.5万次引用",
+          "content": "亚历克·拉德福德是一位高产的AI研究者。根据学术资料，他发表了41篇论文，获得了超过15,000次引用，h指数为24。他的研究成果发表在NeurIPS、ICLR、ICML和《自然》等顶级会议和期刊上，涉及语言模型、稀疏自编码器等多个前沿方向。",
+          "tags": [
+            "学术成就",
+            "论文",
+            "引用",
+            "h指数"
+          ],
+          "sourceUrl": "https://scispace.com/authors/alec-radford-c36h9lasld",
+          "importance": 6,
+          "createdAt": "2026-01-01 02:57:59.234",
+          "updatedAt": "2026-01-01 02:57:59.234"
+        },
+        {
+          "id": "cmju1hwwx0dbmrmtb8lcgcvj8",
+          "type": "method",
+          "title": "CLIP：从自然语言监督中学习可迁移视觉模型",
+          "content": "拉德福德是论文《Learning Transferable Visual Models From Natural Language Supervision》（CLIP模型）的第一作者。该方法通过预测图像与文本描述的匹配关系，从4亿个（图像，文本）对中学习图像表示。这种利用原始文本作为监督信号的方法，使得模型能够进行零样本迁移，在30多个计算机视觉数据集上取得优异性能。",
+          "tags": [
+            "CLIP",
+            "多模态学习",
+            "零样本学习",
+            "计算机视觉"
+          ],
+          "sourceUrl": "https://proceedings.mlr.press/v139/radford21a.html",
+          "importance": 9,
+          "createdAt": "2025-12-31 13:16:15.201",
+          "updatedAt": "2025-12-31 13:16:15.201"
+        },
+        {
+          "id": "cmju1hwwx0dbormtbft8uovpz",
+          "type": "quote",
+          "title": "“无博士学位，只有改变一切的开创性工作”",
+          "content": "这是外界对拉德福德的评价：“他是你可能从未听说过的最有影响力的AI头脑之一。没有博士学位，只有改变一切的开创性工作。”这句话概括了他非传统的成功路径和对AI领域的巨大影响。",
+          "tags": [
+            "影响力",
+            "非传统路径",
+            "评价",
+            "AI先驱"
+          ],
+          "sourceUrl": "https://www.linkedin.com/posts/linasbeliunas_this-is-alec-radford-hes-one-of-themost-activity-7321188758819627008-iSF1",
+          "importance": 8,
+          "createdAt": "2025-12-31 13:16:15.201",
+          "updatedAt": "2025-12-31 13:16:15.201"
+        },
+        {
+          "id": "cmju1hwwx0dbnrmtbz6w7qr0t",
+          "type": "story",
+          "title": "离开OpenAI追求独立研究的谜团",
+          "content": "2024年底，有消息称亚历克·拉德福德告知同事他将离开OpenAI，以独立研究员的身份继续工作，并计划与OpenAI及其他AI开发者合作。此后他的状态成谜，删除了2019年4月后的X推文，其个人资料与外界猜测存在矛盾，引发外界对其去向的持续关注。",
+          "tags": [
+            "职业变动",
+            "独立研究",
+            "OpenAI",
+            "行业动态"
+          ],
+          "sourceUrl": "https://www.artificial-intelligence.blog/people-in-ai/alec-radford",
+          "importance": 7,
+          "createdAt": "2025-12-31 13:16:15.201",
+          "updatedAt": "2025-12-31 13:16:15.201"
+        },
+        {
+          "id": "cmju0rifr08fmrmtb6amteokr",
+          "type": "insight",
+          "title": "语言模型是无监督的多任务学习者",
+          "content": "在GPT-2的工作中，拉德福德等人提出了一个核心洞见：当语言模型的规模足够大、训练数据足够丰富时，它能够在没有任何明确监督的情况下，通过预测下一个词，隐式地学习到多种下游任务。这意味着单一的、经过无监督预训练的模型，可以在零样本（zero-shot）设置下执行问答、翻译、摘要等任务，展示了大规模预训练的涌现能力。",
+          "tags": [
+            "GPT-2",
+            "无监督学习",
+            "多任务学习",
+            "零样本学习",
+            "涌现能力"
+          ],
+          "sourceUrl": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+          "importance": 9,
+          "createdAt": "2025-12-31 12:55:43.384",
+          "updatedAt": "2025-12-31 12:55:43.384"
+        },
+        {
+          "id": "cmju0rifr08flrmtbeq33pocw",
+          "type": "insight",
+          "title": "GPT系列论文的核心思想：生成式预训练与判别式微调",
+          "content": "亚历克·拉德福德在2018年的开创性论文中提出了“生成式预训练+判别式微调”的范式。该范式首先在大量无标签文本上训练一个通用语言模型（生成式预训练），学习语言的通用表示；然后针对特定下游任务，使用少量标签数据进行微调（判别式微调）。这种方法解决了NLP任务中标签数据稀缺的问题，使单一模型能在多种任务上取得优异表现，为后续GPT系列模型的发展奠定了基础。",
+          "tags": [
+            "GPT",
+            "预训练",
+            "微调",
+            "自然语言处理",
+            "范式"
+          ],
+          "sourceUrl": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+          "importance": 10,
+          "createdAt": "2025-12-31 12:55:43.384",
+          "updatedAt": "2025-12-31 12:55:43.384"
+        },
+        {
+          "id": "cmju0rifr08fqrmtb7h8dgt7y",
+          "type": "story",
+          "title": "从初创公司Indico到OpenAI的革新之路",
+          "content": "亚历克·拉德福德在从奥林学院毕业后，并未直接进入学术界或大厂，而是与Slater Victoroff等人共同创立了机器学习初创公司Indico。这段早期创业经历让他深入实践AI技术的应用。随后，他加入OpenAI，将他的工程实践与前沿研究结合，最终作为第一作者领导了GPT系列模型的研发，彻底改变了自然语言处理领域的发展轨迹。",
+          "tags": [
+            "Indico",
+            "创业经历",
+            "职业轨迹",
+            "OpenAI",
+            "实践与研究"
+          ],
+          "sourceUrl": "https://indicodata.ai/blog/member/alec-radford-2/",
+          "importance": 8,
+          "createdAt": "2025-12-31 12:55:43.384",
+          "updatedAt": "2025-12-31 12:55:43.384"
+        },
+        {
+          "id": "cmjtxmsmz03e7rmtbh58ug4rh",
+          "type": "insight",
+          "title": "现代生成式AI的奠基者与坚持者",
+          "content": "亚历克·拉德福德被前OpenAI研究负责人Jeff Clune评价为‘影响力最大但知名度最低的AI科学家之一’，甚至应被视为‘现代生成式人工智能之父’。他从2016年加入OpenAI起，就坚持大语言模型的研究路线，几乎参与了OpenAI所有重大突破，包括从初代GPT到GPT-4o的所有版本，以及CLIP、Whisper等关键模型。他的坚持最终改变了OpenAI乃至整个AI领域的发展方向。",
+          "tags": [
+            "生成式AI",
+            "大语言模型",
+            "OpenAI",
+            "研究路线"
+          ],
+          "sourceUrl": "https://www.qbitai.com/2024/12/235312.html",
+          "importance": 10,
+          "createdAt": "2025-12-31 11:28:04.094",
+          "updatedAt": "2025-12-31 11:28:04.094"
+        },
+        {
+          "id": "cmjtxmsmz03ebrmtbdyqh0uxr",
+          "type": "quote",
+          "title": "萨姆·奥特曼对其招聘的间接评价",
+          "content": "OpenAI CEO萨姆·奥特曼曾半调侃半认真地说：‘招聘时，记得关注那些“看起来不会加入公司”的人。’ 这被引述为对拉德福德这类人才的评价。奥特曼指出，OpenAI最初并未确定大模型研究方向，但仍然招募了像拉德福德这样的AI研究员，并在取得突破后让更多人加入，最终成就了ChatGPT。",
+          "tags": [
+            "人才招聘",
+            "OpenAI",
+            "萨姆·奥特曼",
+            "突破性研究"
+          ],
+          "sourceUrl": "https://www.qbitai.com/2024/12/235312.html",
+          "importance": 6,
+          "createdAt": "2025-12-31 11:28:04.094",
+          "updatedAt": "2025-12-31 11:28:04.094"
+        },
+        {
+          "id": "cmjtxmsmz03earmtbw8hr9cce",
+          "type": "method",
+          "title": "坚持核心方向，推动技术从研究到应用",
+          "content": "拉德福德的职业经历体现了一种方法论：长期专注于一个核心研究方向（大语言模型），并致力于将前沿的机器学习技术从研究阶段推向开发者和更广泛的产业应用。在OpenAI，他坚持大模型路线；此前在Indico Data Solutions担任研究负责人时，其工作也是‘识别/开发/改进有前景的图像和文本ML技术，并将其从研究推向开发者和更广泛的行业使用’。",
+          "tags": [
+            "研究方向",
+            "技术转化",
+            "专注",
+            "产业化"
+          ],
+          "sourceUrl": "https://www.linkedin.com/in/alecradford",
+          "importance": 8,
+          "createdAt": "2025-12-31 11:28:04.094",
+          "updatedAt": "2025-12-31 11:28:04.094"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "b83082d5-0063-4ce5-93a3-b78b03b75728",
+          "type": "method",
+          "title": "k-稀疏自编码器（k-SAE）方法论",
+          "content": "拉德福德在探索模型可解释性时，提出使用 k-稀疏自编码器来直接控制稀疏性。这种方法通过固定激活神经元的数量（k），简化了超参数调优过程，并显著改善了重建质量与稀疏性之间的平衡边界（Frontier）。此外，他通过改进技术解决了“死神经元”问题，使得在极大规模下提取模型内部特征变得更加高效和稳定。",
+          "tags": [
+            "可解释性",
+            "SAE",
+            "特征提取",
+            "模型架构"
+          ],
+          "sourceUrl": "https://www.researchgate.net/scientific-contributions/Alec-Radford-2125302025",
+          "importance": 5
+        },
+        {
+          "id": "4896187a-746f-4cf3-8d84-391f0ae479a4",
+          "type": "insight",
+          "title": "可解释性工具也遵循“规模法则”",
+          "content": "拉德福德的研究指出，不仅语言模型本身遵循规模法则，用于理解它们的工具（如 SAE）也存在清晰的 Scaling Laws。实验表明，特征质量（如解释性指标和下游效应稀疏度）会随着自编码器规模的扩大而持续提升。这意味着要彻底破解复杂模型的“黑盒”，必须投入相应规模的计算资源来构建观测工具。",
+          "tags": [
+            "Scaling Laws",
+            "可解释性",
+            "AI研究范式"
+          ],
+          "sourceUrl": "https://www.researchgate.net/scientific-contributions/Alec-Radford-2125302025",
+          "importance": 5
+        },
+        {
+          "id": "99b5e089-9939-41a0-a82c-000b18ef28d7",
+          "type": "fact",
+          "title": "CLIP：利用4亿对互联网数据重塑视觉监督",
+          "content": "在 CLIP 的研究中，拉德福德证明了通过预测 4 亿对来自互联网的（图像，文本）组合，可以从零开始学习到最先进的视觉表示。这种方法彻底摆脱了传统计算机视觉对人工标注固定类别的依赖，通过自然语言的广泛监督，实现了视觉模型在 30 多个不同数据集上的零样本迁移能力。",
+          "tags": [
+            "CLIP",
+            "多模态",
+            "计算机视觉",
+            "大数据集"
+          ],
+          "sourceUrl": "https://proceedings.mlr.press/v139/radford21a.html",
+          "importance": 5
+        },
+        {
+          "id": "ff565f2c-dfc8-4712-a443-9f632d22d297",
+          "type": "insight",
+          "title": "GPT-2论文揭示语言模型的零样本任务迁移能力",
+          "content": "在GPT-2论文中，拉德福德等人展示了语言模型在WebText数据集上训练后，无需显式监督即可开始执行问答、翻译等任务。论文指出，随着模型规模增大，其在多个任务上的零样本性能得到提升，这为后续更大规模模型的研发提供了方向。",
+          "tags": [
+            "GPT-2",
+            "零样本学习",
+            "模型规模",
+            "通用人工智能"
+          ],
+          "sourceUrl": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+          "importance": 5
+        },
+        {
+          "id": "f573eccb-30d3-4042-8b81-5093c4615d77",
+          "type": "fact",
+          "title": "教育背景：MIT 计算机科学与工程学士",
+          "content": "尽管拉德福德常被视为“无博士学位”改变 AI 界的典范，但他拥有麻省理工学院（MIT）计算机科学与工程专业的学士学位。他在 1989 年出生于波士顿，在加入 OpenAI 之前，曾作为联合创始人兼首席研究员创办了 Indico。他的职业生涯证明了在 AI 领域，前沿的工程实践与深刻的直觉往往比传统的学术头衔更具破坏力。",
+          "tags": [
+            "个人背景",
+            "MIT",
+            "职业生涯"
+          ],
+          "sourceUrl": "https://www.wikibiostar.com/profile/alec-radford/",
+          "importance": 5
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "k-稀疏自编码器（k-SAE）方法论",
+          "decision": "keep",
+          "confidence": 0.9,
+          "reason": "来源文本明确支持卡片中关于使用k-稀疏自编码器控制稀疏性、简化调优、改善重建-稀疏边界以及解决死神经元问题的核心事实。"
+        },
+        {
+          "title": "可解释性工具也遵循“规模法则”",
+          "decision": "keep",
+          "confidence": 0.9,
+          "reason": "来源文本明确指出，在稀疏自编码器（SAE）的规模和稀疏性方面发现了清晰的规模法则，并且特征质量指标随自编码器规模扩大而提升。这直接支持了卡片的核心主张。"
+        },
+        {
+          "title": "CLIP：利用4亿对互联网数据重塑视觉监督",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "卡片标题和正文的关键事实（4亿对数据、零样本迁移、30多个数据集）均能从来源摘要中直接推出，且未发现夸张或过度归因。"
+        },
+        {
+          "title": "零样本迁移能力的对数线性增长规律",
+          "decision": "rewrite",
+          "confidence": 0.8,
+          "reason": "来源支持拉德福德是论文作者及零样本迁移能力的发现，但未明确提及“对数线性增长规律”或“为GPT-3提供关键信心支撑”，这些属于过度推断或归因。"
+        },
+        {
+          "title": "教育背景：MIT 计算机科学与工程学士",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源明确支持其拥有MIT计算机科学与工程学士学位。卡片中关于出生地、年份、Indico联合创始人身份等关键事实也得到来源支持。关于“无博士学位”改变AI界的评论属于观点性描述，但核心事实无误。"
+        }
+      ],
+      "skippedReason": null
+    }
+  ]
+}

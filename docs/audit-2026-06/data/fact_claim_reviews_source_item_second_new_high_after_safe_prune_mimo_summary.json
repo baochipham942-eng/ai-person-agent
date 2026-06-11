@@ -1,0 +1,425 @@
+{
+  "generatedAt": "2026-06-09T15:17:13.024Z",
+  "input": "docs/audit-2026-06/data/fact_claims_source_items_after_second_safe_prune_new_high.jsonl",
+  "output": "docs/audit-2026-06/data/fact_claim_reviews_source_item_second_new_high_after_safe_prune_mimo.jsonl",
+  "model": "mimo-v2.5-pro",
+  "filters": {
+    "person": null,
+    "personId": null,
+    "claimType": null,
+    "priority": null,
+    "limit": 9999,
+    "batchSize": 8,
+    "concurrency": 4
+  },
+  "totalClaims": 90,
+  "selectedClaims": 90,
+  "reviewedClaims": 90,
+  "byVerdict": {
+    "supported": 47,
+    "wrong_person": 27,
+    "needs_source": 7,
+    "over_attributed": 3,
+    "stale": 2,
+    "unsupported": 4
+  },
+  "byAction": {
+    "keep": 47,
+    "remove": 34,
+    "needs_source": 7,
+    "rewrite": 1,
+    "human_review": 1
+  },
+  "byClaimType": {
+    "source_item_belongs_to_person": 90
+  },
+  "needsAttention": [
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkjyi02xtrmtb0cfq26to]:9c0b2b51986a",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "南京工程学院主页平台管理系统 chenjie--Home--Home",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向南京工程学院的陈洁（商学院教授），与目标人物丁洁（明尼苏达大学副教授）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkko302y1rmtbkuw3yvic]:46f3c4ffc9a0",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "JIN Jing",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向大连化学物理研究所的JIN Jing（分析化学教授），与目标人物丁洁（明尼苏达大学副教授）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xasb09csrmtbqhxascui]:a50873160f2f",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "我用AI“复活”了爷爷",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容摘要为空，无法判断是否与目标人物丁洁相关，也无证据表明其贡献或角色。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xb2w09cwrmtb9reljuo3]:1795a735e7d0",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "喜报！华筑科技总经理丁洁获评2025年度上海市劳动模范！",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向华筑科技总经理丁洁（同济大学博士在读），与目标人物丁洁（明尼苏达大学副教授）在职业、机构和研究领域上均不匹配。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xf4g09dkrmtbr8jxnsw3]:29051300a1f5",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "5下《5 草船借箭》-第1课时-丁洁-有PPT 51备课部编版小学语文",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容摘要为空，无法判断是否与目标人物丁洁相关，也无证据表明其贡献或角色。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xfvk09dormtbkyf7r84y]:5646e0a590ff",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "SJTU Computer Science & Engineering",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容为上海交通大学计算机学院主页，未提及目标人物丁洁，无法确认关联性。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjuuyrhu0ifermtb1js5i3lh]:c36be232dcb2",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "丁洁- 88查",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "内容为1688企业查询页面，摘要为空，无法判断是否与目标人物丁洁相关。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjuvgqhz0izormtb586qcyi5]:0901c958ebcd",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": null,
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向西交利物浦大学的Dr. Lifeng Ding（材料科学副教授），与目标人物丁洁（明尼苏达大学副教授）在姓名、机构和研究领域上均不匹配。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyee5yl000eot7iulisajta]:423ada7ba6af",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "10610 followers - Jaana Dogan - Medium",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是Medium平台的粉丝数页面，属于平台数据而非个人创作或贡献，不适合作为代表成果展示。"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeeaeq000iot7i4bbfws0z]:0d77f3450f6c",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "priorities",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容来自jaan.info，作者是Jaan Tallinn，与Jaana Dogan是不同的人，属于人名错配。"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmjtvvq0u019drmtb4ywxf66v]:a9bf0555f347",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jan Leike - H+Pedia",
+      "verdict": "stale",
+      "action": "rewrite",
+      "reason": "内容显示Jan Leike是Google DeepMind的研究员，但根据最新信息，他已加入Anthropic，职位信息过时。"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvwhv301g9rmtb8i48nbee]:ef2a2e656c27",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "WEI LAB",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为“WEI LAB”网站，研究方向为生物医学工程（BioMEMS、单细胞生物学），与Jason Wei（AI研究员）的研究领域不符，属于同名实体。"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:RawPoolItem[cmju11v810a7qrmtbrzpk3o60]:a55a5a02b7fd",
+      "person": "Oriol Vinyals",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Best Practices and Lessons Learned on Synthetic Data for Language Models",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "论文作者列表中未包含Oriol Vinyals，将其作为个人代表成果展示属于过度归因。"
+    },
+    {
+      "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjtxkhjp02wxrmtb744vy4p3]:01ff6d6f2801",
+      "person": "丁洁",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Jingjie Ding - 上海交通大学BBLAB课题组",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为上海交通大学BBLAB课题组的硕士生“Jinjie Ding”，研究方向为光交换网络，与人物库中的“丁洁”（AI安全研究员）不符，属于同名实体。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zv5o09sprmtbd3lu6cky]:2187077bc948",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Offline Training of Language Model Agents with Functions as Learnable Weights",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中未包含周明，该内容与周明无关。"
+    },
+    {
+      "claimId": "cmjtwksri000aopf3xzym5sx8:RawPoolItem[cmjty4df604yvrmtbf92ovm8b]:745ce4abf98f",
+      "person": "唐杰",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Beijing Tangta-technology Co.,Ltd",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容为北京糖塔科技有限公司官网，与唐杰教授无关。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0kc2g07gdrmtbuyrx8lgm]:b9d627e14854",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Applications of natural language processing and large language models in materials discovery",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中未出现刘知远，内容与刘知远无直接关联。"
+    },
+    {
+      "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju1b9pa0c8prmtbwyws6xzf]:4cce57de4690",
+      "person": "刘知远",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Computer Science > Computation and Language",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中未出现刘知远，内容与刘知远无直接关联。"
+    },
+    {
+      "claimId": "cmjtwkorb0008opf3p82ey7ep:RawPoolItem[cmju12due0aexrmtbwz12li3k]:d401cb078bef",
+      "person": "周伯文",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "WenyanGPT: A Large Language Model for Classical Chinese Tasks",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要文本不完整，无法确认论文作者是否包含周伯文。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0zsr409rprmtb55751fun]:10aa3e01a0cd",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "对话AI顶尖大牛周明老师：GPT时代，感觉自己跟不上了",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的摘要文本为空，无法确认文章内容是否确实关于周明。"
+    },
+    {
+      "claimId": "cmjtwkwvi000copf3rlb2nlrz:RawPoolItem[cmju0ztdb09rxrmtb1sf64pay]:5d3f8886181c",
+      "person": "周明",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Ming Zhang - ACL Anthology",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "ACL Anthology页面显示作者为Ming Zhang，而非周明（Zhou Ming），存在人名错配。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg12u01uwrmtbyuyz798i]:ecfe1c048bb1",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Dr. Shunyu Yao",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容明确描述的是另一位名为 Shunyu Yao 的研究者，其履历（Google DeepMind、Anthropic、理论物理背景）与目标人物姚顺雨（OpenAI、普林斯顿大学）不符。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg42a01wqrmtbyhpfk8hq]:357e31ae5c14",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "YAO Shuang",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容描述的是中国人民大学的助理教授 YAO Shuang，研究藏学，与目标人物姚顺雨（AI研究者）完全不同。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i11v06xhrmtb4wemo96r]:fa63f1e44005",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "OpenAI expert Yao Shunyu appointed as Chief AI Scientist at Tencent",
+      "verdict": "stale",
+      "action": "human_review",
+      "reason": "该新闻声称姚顺雨已加入腾讯担任首席AI科学家，但其当前公开职位仍为OpenAI研究员。此信息可能过时或未经证实，与已知状态冲突。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i5fs06y7rmtbbez0hezg]:f36f84c18482",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Bridging AI and Science: Implications from a Large-Scale Literature Analysis of AI4Science",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "该论文作者列表中未出现姚顺雨（Shunyu Yao），内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i68w06ybrmtbl6088s26]:28ba8f19c00f",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "RuAG: Learned-rule-augmented Generation for Large Language Models",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "该论文作者列表中未出现姚顺雨（Shunyu Yao），内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i72s06yhrmtbiiw2ipt4]:2c2f15768415",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Exploring the Role of Large Language Models in Cybersecurity: A Systematic Survey",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "该论文作者列表中未出现姚顺雨（Shunyu Yao），内容与目标人物无关。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxpzhc042irmtbfxi9ku5b]:6b5da6742575",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Browse Stanford University | Stanford Profiles",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容描述的是斯坦福大学研究生Bryan J. Cannon，研究免疫学，与英伟达副总裁布莱恩·卡坦扎罗（Bryan Catanzaro）不是同一人。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmjtxq1zx043armtbb9irdzsg]:ef5421315ed6",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Honour Roll 2022 | University of Canterbury",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是坎特伯雷大学2022年荣誉名册，未提及布莱恩·卡坦扎罗，且其研究领域（深度学习、芯片）与名册中列出的访问学者领域不符。"
+    },
+    {
+      "claimId": "cmjtxe137000e5p08x4puluzz:RawPoolItem[cmju0yd4n09i1rmtbkopq9jfg]:9cc23a92884b",
+      "person": "布莱恩·卡坦扎罗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Survey of Computerized Adaptive Testing: A Machine Learning Perspective",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "论文作者列表中未包含布莱恩·卡坦扎罗（Bryan Catanzaro），且论文主题（计算机自适应测试）与其职位和研究领域（深度学习、芯片）不匹配。"
+    },
+    {
+      "claimId": "cmjtwkmwg0007opf32gnh6tfk:RawPoolItem[cmju0gdtg06ncrmtbn60ifk76]:aa0f69de21ad",
+      "person": "戴文渊",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "A mystery fit for a DetectAIve: Classifying machine involvement in writing",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是MBZUAI关于检测AI写作的新闻，未提及戴文渊，且其职位（第四范式CEO）与该学术机构的研究内容无直接关联。"
+    },
+    {
+      "claimId": "cmjtwkyvn000dopf3z5lk40sa:RawPoolItem[cmju1t8es0fn9rmtbybexprgc]:d3c774094ca1",
+      "person": "黄铁军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "黄铁军对大模型的四个预判：洗牌、安全核爆、GPT-5与再造 ...",
+      "verdict": "needs_source",
+      "action": "needs_source",
+      "reason": "提供的URL无法访问，无法确认内容是否确实关于黄铁军或来自其本人。仅凭标题无法判断归属。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjhpj02r8rmtbwooksixw]:2e49b7f741cb",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "贾惠柱-北京大学计算机学院",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是北京大学计算机学院贾惠柱的个人主页，与朱军无关。属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjjcf02rkrmtbk66m710x]:65de11a420a4",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "新华社刊发刘云山系列照片（图）--新闻报道-人民网",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是关于刘云山的新闻报道，与朱军完全无关。属于严重人名错配。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjl3d02rqrmtbud0zy3ci]:4c4d498e22de",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Lu, Junlin-北京大学计算机学院",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "该内容是北京大学计算机学院Lu, Junlin的个人主页，与朱军无关。属于人名错配。"
+    },
+    {
+      "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmju1fkzn0cxlrmtb1j13msg1]:696533102a90",
+      "person": "朱军",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "CUDRT: Benchmarking the Detection of Human vs. Large Language Models Generated Texts",
+      "verdict": "unsupported",
+      "action": "remove",
+      "reason": "该论文作者列表中未出现朱军（Jun Zhu），内容与朱军无关。属于错误归因。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmjtxm1eb038grmtbjk91x8ji]:d6b6a94c1f62",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Wenli Li 李文莉（Associate Professor）-武汉纺织大学-管理学院",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容明确指向武汉纺织大学管理学院的副教授李文莉（Wenli Li），与人物李莲（Lilian Weng）的姓名、机构、研究领域均不匹配。"
+    },
+    {
+      "claimId": "cmjtxcatd00025p08uv2ks3h0:RawPoolItem[cmju1avpw0c1nrmtbbrqutid4]:dc9e46aa3d64",
+      "person": "李莲",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "【学习笔记】博客Lilian Weng - LLM Powered Autonomous ...",
+      "verdict": "over_attributed",
+      "action": "remove",
+      "reason": "内容是第三方博主对Lilian Weng博客的学习笔记，而非Lilian Weng本人的原创内容。将他人笔记归于原作者名下属于过度归因。"
+    },
+    {
+      "claimId": "cmjtxdf96000a5p08z94252m2:RawPoolItem[cmjtzuyp2064rrmtb2kioio4j]:cfbc7e94b2dd",
+      "person": "杰夫·迪恩",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "The Thin Line Between Comprehension and Persuasion in LLMs",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是一篇关于LLM辩论能力的学术论文，作者为Adrian de Wynter和Tangming Yuan，与杰夫·迪恩无关。"
+    },
+    {
+      "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjuvk2aw0j82rmtb02y0ogfd]:e1c7413bf4eb",
+      "person": "汤姆·布朗",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Q&A with Steven Brown | Office of Academic Affairs",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于俄亥俄州立大学哲学系副教授Steven Brown的访谈，与汤姆·布朗（Tom B Brown）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fk4v06iurmtbpwqqxwyu]:dc11403f5ae3",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Xiao-i | LinkedIn",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容为Xiao-i公司的LinkedIn页面，与肖弘（Manus创始人兼CEO）无关，属于公司实体错配。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fkf106iwrmtbfbbvtcox]:bad0b32dc67f",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Changrong Xiao",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是关于清华大学博士生Changrong Xiao的个人主页，与肖弘（Manus创始人兼CEO）无关，属于人名错配。"
+    },
+    {
+      "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fmvb06jarmtbe8j9uoli]:6d77689b3b7c",
+      "person": "肖弘",
+      "claimType": "source_item_belongs_to_person",
+      "objectLabel": "Cross-Scenario Unified Modeling of User Interests at Billion Scale",
+      "verdict": "wrong_person",
+      "action": "remove",
+      "reason": "内容是一篇关于推荐系统的论文，作者列表中无肖弘，且涉及小红书公司，与肖弘（Manus创始人兼CEO）无关。"
+    }
+  ]
+}

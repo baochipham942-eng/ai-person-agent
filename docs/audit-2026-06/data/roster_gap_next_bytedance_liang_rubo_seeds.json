@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "source": "TIME100 AI 2024 Liang Rubo profile and Chinese Wikipedia profile",
+    "generatedAt": "2026-06-11T20:06:00+08:00",
+    "note": "Add Liang Rubo to make ByteDance/Doubao visible with source-backed AI context."
+  },
+  "seeds": [
+    {
+      "name": "Liang Rubo",
+      "nameZh": "梁汝波",
+      "roleCategory": "founder",
+      "organization": ["ByteDance", "字节跳动", "Doubao"],
+      "currentTitle": "CEO @ ByteDance",
+      "aliases": ["梁汝波"],
+      "reason": "字节跳动联合创始人兼 CEO。TIME100 AI 2024 将其列入 AI 影响力人物，并将 ByteDance 的 Doubao 与 AI 推进直接绑定到其领导下。"
+    }
+  ]
+}

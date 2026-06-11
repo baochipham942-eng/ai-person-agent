@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-06-09T11:06:02.000Z",
+  "mode": "apply",
+  "summary": {
+    "candidates": 2,
+    "updated": 2,
+    "wouldUpdate": 0,
+    "skipped": 0
+  },
+  "actions": [
+    {
+      "personId": "cmjtswmqg00033est2ofuqdw0",
+      "person": "Dario Amodei",
+      "code": "topic_rank_not_in_topics",
+      "action": "updated",
+      "removedTopicRank": "开源"
+    },
+    {
+      "personId": "cmjtwl0va000eopf34mek0zrk",
+      "person": "丁洁",
+      "code": "topic_detail_alias_mismatch",
+      "action": "updated",
+      "fromTopic": "安全",
+      "toTopic": "AI安全"
+    }
+  ]
+}

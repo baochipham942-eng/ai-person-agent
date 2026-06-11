@@ -1,0 +1,882 @@
+{
+  "generatedAt": "2026-06-10T11:50:55.417Z",
+  "summary": {
+    "generatedAt": "2026-06-10T11:50:55.417Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_eighth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_eighth_post_verify_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 40,
+    "existingTargets": 0,
+    "missingTargets": 40,
+    "auditRowsInserted": 0,
+    "deleted": 0,
+    "byAction": {
+      "delete_raw_pool_item": 40
+    },
+    "byVerdict": {
+      "reject": 40
+    },
+    "byPerson": {
+      "Andrej Karpathy": 3,
+      "Boris Cherny": 3,
+      "Christopher Manning": 3,
+      "Daniela Amodei": 3,
+      "Dario Amodei": 3,
+      "Dylan Field": 3,
+      "Elon Musk": 3,
+      "Geoffrey Hinton": 3,
+      "Greg Brockman": 3,
+      "Guillaume Lample": 3,
+      "Aidan Gomez": 2,
+      "Arthur Mensch": 2,
+      "Emad Mostaque": 2,
+      "Allie K. Miller": 1,
+      "Chris Olah": 1,
+      "Demis Hassabis": 1,
+      "Eliezer Yudkowsky": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "personId": "cmjtv233j0006i004uet1cwt0",
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvp6us00p2rmtbxcurewqm",
+          "objectLabel": "About - Aidan Gomez"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容极度空泛，仅为个人博客的自我介绍占位符，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.582Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv233j0006i004uet1cwt0",
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvpfqb00q4rmtbczxq11sb",
+          "objectLabel": "Aidan Gomez"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容几乎全是网页无障碍工具栏和导航占位符，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjv6furu000smfghreks2bnf",
+        "person": "Allie K. Miller",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwt97d0000hy6e2ffdotbjo",
+          "objectLabel": "Congratulations to @AnthropicAI and @OpenAI for the free ad from @andersoncooper and @bjnovak 🌟 \n\n“"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅是对媒体提及 AI 公司的简单转发评论，缺乏实质性信息价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtlb76l001pefnh6xdbsmmv",
+          "objectLabel": "Andrej Karpathy"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取失败的Google Scholar页面，仅含系统占位符。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtlbw350025efnhoe2njp1d",
+          "objectLabel": "Andrej Karpathy – Medium"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为 Medium 个人主页的导航与登录界面，缺乏实质性内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wl10095srmtb0pe7phlm",
+          "objectLabel": "HN Time Capsule - 2015-12-11"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "虽为官方页面，但仅为历史网页标题的列表汇总，缺乏实质性的个人观点或深度信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv28ik0007i004hn1xz67d",
+        "person": "Arthur Mensch",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0q2e7086armtbphjgj26d",
+          "objectLabel": "Arthur Mensch - Mistral AI | ATxSummit Speaker"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为会议演讲者介绍页面，无实质内容，信息密度低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv28ik0007i004hn1xz67d",
+        "person": "Arthur Mensch",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvprz700r0rmtbunrix2uf",
+          "objectLabel": "Arthur Mensch posted on LinkedIn"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "页面内容为领英登录墙，未抓取到实际的动态内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnlmwk0003a6el7gltpbje",
+          "objectLabel": "Around 50-100, depending on the week"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "缺乏上下文的数字回复，无实质性信息价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnloxp000fa6elshy4y152",
+          "objectLabel": "I don't do anything special, just let Claude manage it for me"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容过于简短，缺乏实质性的技术细节或观点。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjxmgs83000011y3v2qj1z51",
+        "person": "Boris Cherny",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjxnls5g000za6elwcce88sg",
+          "objectLabel": "Start with the Claude Desktop App! https://code.claude.com/docs/en/desktop"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "产品推广链接及引导，无实质性技术见解。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmtzr03etrmtbpzco77qb",
+          "objectLabel": "NN-Group-1-Code"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "官方代码库，虽涉及神经网络讨论组，但描述过于空洞，缺乏实质内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3m76000ji0044zdmrneg",
+        "person": "Christopher Manning",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxjnz01lermtbzaae2tll",
+          "objectLabel": "Christopher D. Manning (0000-0001-6155-649X)"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为ORCID标识符页面的框架信息，缺乏具体的个人研究数据。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3m76000ji0044zdmrneg",
+        "person": "Christopher Manning",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0wawz091wrmtb51pniria",
+          "objectLabel": "Big congrats to former students @sharonal_lee and @sunfanyun!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "虽然是本人发布的动态，但仅为简短的祝贺，缺乏实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv3m76000ji0044zdmrneg",
+        "person": "Christopher Manning",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxp6t01nqrmtbn4uaokam",
+          "objectLabel": "I’m now in San Diego for NeurIPS too! 😆"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为参加 NeurIPS 会议的行程动态，缺乏实质性观点或事实内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsyroa00093estgaoeadqk",
+        "person": "Daniela Amodei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0h1jr06t9rmtb1lukqal9",
+          "objectLabel": "https://www.fastcompany.com/90948058/how-anthropics-daniela-amodei-is-keeping-ai-grounded-in-safety"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为Fast Company网站的导航菜单和登录界面，无实际人物或AI相关信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsyroa00093estgaoeadqk",
+        "person": "Daniela Amodei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1q1v20eywrmtbf68iaf67",
+          "objectLabel": "Daniela Amodei - Forbes Founder"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为福布斯40 under 40的分享按钮和标题，无实质信息，质量极低且不涉及AI。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsyroa00093estgaoeadqk",
+        "person": "Daniela Amodei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1pysu0eyormtba9frqpge",
+          "objectLabel": "Daniela Amodei - President & Co-Founder @ Anthropic - Crunchbase Person Profile"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "Crunchbase页面仅显示基本职位信息，无AI相关内容，信息密度低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtswmqg00033est2ofuqdw0",
+        "person": "Dario Amodei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0l1hk07kqrmtbzevv4yoi",
+          "objectLabel": "Anthropic CEO Dario Amodei on AI Safety and Growth"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容仅包含LinkedIn登录协议和标题，无实质正文。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtswmqg00033est2ofuqdw0",
+        "person": "Dario Amodei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0l58207lgrmtb2rkmsgv8",
+          "objectLabel": "Founder Story: Dario Amodei of Anthropic"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容仅为网页框架和图片链接，无实质性的人物故事描述。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtswmqg00033est2ofuqdw0",
+        "person": "Dario Amodei",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuhbkw0gedrmtb1bduhnhw",
+          "objectLabel": "Measuring Progress on Scalable Oversight for Large Language Models"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "论文页面抓取内容仅为arXiv通用模板，未体现与目标人物的直接关联。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtsw84q00023esto9f6h0w6",
+        "person": "Demis Hassabis",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmh2v005drmtb4jlnsrnc",
+          "objectLabel": "Nice progress!📈 Great work from the @GeminiApp team 💪"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "虽为本人发布的官方动态，但内容仅为简单的团队鼓励，缺乏实质性信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2m92000ai004uqyjwba1",
+        "person": "Dylan Field",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvr137010grmtb0lrft5nw",
+          "objectLabel": "Dylan Field - CEO & Co-Founder at Figma | The Org"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容是关于Dylan Field在Figma的职位简介，但未涉及AI/机器学习/科技行业相关话题，且信息密度低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2m92000ai004uqyjwba1",
+        "person": "Dylan Field",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvrbkx011ormtblj8uywsg",
+          "objectLabel": "Dylan Field (Dylan Field ) / VC Breakdown & Contact"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为投资人数据库的导航页面，缺乏具体的个人事实或观点。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2m92000ai004uqyjwba1",
+        "person": "Dylan Field",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvrygk013zrmtbdh9qix7b",
+          "objectLabel": "When 24 y/o Dylan Field started Figma, Adobe had been around for 30 years and was worth $18b+"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为标题和标签，缺乏实质性的事实或观点描述。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjv6furu000hmfgh0d1egfwg",
+        "person": "Eliezer Yudkowsky",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwishfr0019l6wwg65ovlvf",
+          "objectLabel": "There comes a day in every man's life when he asks an Artificial Intelligence how he can prove that "
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容属于个人幽默或随感，缺乏实质性的技术见解或信息价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1neas0eh7rmtb3mhnhwt3",
+          "objectLabel": "Elon Musk Gives Huge AI Updates"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "抓取内容仅为YouTube页脚法律条款等无关信息，缺乏实质内容。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1njb20eifrmtbjm3wzvb9",
+          "objectLabel": "How Elon Musk’s xAI is quietly taking over X"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容充斥着网页UI元素和导航链接，有效信息密度极低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjrzl1b0001hb28tvtm3unfg",
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjrzl7k1001rb28t5ce2flsa",
+          "objectLabel": "Seven ways of looking at Elon Musk"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "标题看似关于马斯克，但内容仅截取导航栏和搜索框，无实质信息，属于低质抓取片段。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwbkt01d9rmtbqy6en7eq",
+          "objectLabel": "@genspark_ai should be leader now, @ii_posts II agent is the top open source stack version"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容为简短推文，信息密度极低，缺乏实质性观点。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2pq7000bi0044hykxl36",
+        "person": "Emad Mostaque",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwam901crrmtbawy0phhj",
+          "objectLabel": "Can have big breakthroughs without agi"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为一句泛泛而谈的短语，缺乏信息价值。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjs7twlu00518028ylp4bmi4",
+          "objectLabel": "Geoffrey Hinton"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为Vector Institute的导航页面，无实质信息，质量极低。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0j226075hrmtbqyrwpr0u",
+          "objectLabel": "Geoffrey Hinton on the Past, Present, and Future of AI"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅包含论坛的登录注册等UI元素，未抓取到实际的讨论正文。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjs1jjy0005tb28te81500go",
+        "person": "Geoffrey Hinton",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjs7twly0053802898lrnmis",
+          "objectLabel": "Geoffrey Hinton: AI will even better in 2026 and gain the ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容主要为媒体网站的导航栏和搜索片段，缺乏实质性的报道正文。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju105pc09vrrmtb16o0xu0r",
+          "objectLabel": "Artificial Intelligence Nonprofit OpenAI Launches With Backing From Elon Musk And Sam Altman"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容侧重于机构和其他创始人，且抓取片段缺乏实质性描述。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjv15cki001wftmgz6uhgsm2",
+          "objectLabel": "greg brockman | TechCrunch"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为 TechCrunch 的标签聚合页，缺乏实质性信息密度。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjsmop1e00017wc35sdo9tff",
+        "person": "Greg Brockman",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju100c009urrmtbqni0i2r5",
+          "objectLabel": "Greg Brockman: The inside story of ChatGPT's astonishing ..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为订阅提示和隐私政策，缺乏关于人物的实质性信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2cix0008i004kejjlxya",
+        "person": "Guillaume Lample",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqump0102rmtbmdl34c24",
+          "objectLabel": "Guillaume Lample"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容为 Facebook 登录或报错页面，无实质性人物信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2cix0008i004kejjlxya",
+        "person": "Guillaume Lample",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqjw400xkrmtbrwil9u1g",
+          "objectLabel": "Papers with Code - LLaMA: Open and Efficient Foundation Language Models"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "仅为通用的论文趋势列表页面，缺乏关于目标人物的具体信息。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "personId": "cmjtv2cix0008i004kejjlxya",
+        "person": "Guillaume Lample",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvripg012frmtbw0s77ey2",
+          "objectLabel": "tagger"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.9,
+        "reason": "内容仅为命名实体识别工具，未明确指向Guillaume Lample，可能为通用项目。 No active Card.sourceUrl or People display/source JSON dependency was found.",
+        "reviewedAt": "2026-06-10T11:49:26.583Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "manual_prune_low_information_capture"
+        }
+      },
+      "raw": null
+    }
+  ]
+}

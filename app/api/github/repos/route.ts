@@ -1,5 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+interface GithubRepoSearchItem {
+    id: number;
+    name: string;
+    full_name: string;
+    description: string | null;
+    html_url: string;
+    stargazers_count: number;
+    forks_count: number;
+    language: string | null;
+    updated_at: string;
+    topics?: string[];
+}
+
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const username = searchParams.get('username');
@@ -38,10 +51,10 @@ export async function GET(request: NextRequest) {
             throw new Error(error.message || searchRes.statusText);
         }
 
-        const data = await searchRes.json();
+        const data = await searchRes.json() as { items?: GithubRepoSearchItem[] };
 
         // Return refined structure
-        const repos = data.items.map((repo: any) => ({
+        const repos = (data.items || []).map((repo) => ({
             id: repo.id,
             name: repo.name,
             full_name: repo.full_name,

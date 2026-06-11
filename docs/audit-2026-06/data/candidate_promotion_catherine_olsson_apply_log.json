@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-06-11T08:38:00.281Z",
+  "mode": "execute",
+  "policyVersion": "2026-06-11",
+  "criteria": {
+    "status": "candidate",
+    "completeness": ">= 45",
+    "rawCount": ">= 2",
+    "keepCount": ">= 2",
+    "liveCount": ">= 1",
+    "cardCount": ">= 5",
+    "avatarUrl": "required for promotion"
+  },
+  "summary": {
+    "candidates": 1,
+    "promotable": 1,
+    "held": 0,
+    "updated": 1
+  },
+  "promotable": [
+    {
+      "id": "4b23782c-4ce8-4ed7-bfdd-8bc0f79343a7",
+      "name": "Catherine Olsson",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": "/avatars/catherine-olsson-f6f6568d.webp",
+      "rawCount": 3,
+      "liveCount": 2,
+      "keepCount": 3,
+      "cardCount": 5,
+      "blockers": []
+    }
+  ],
+  "held": []
+}

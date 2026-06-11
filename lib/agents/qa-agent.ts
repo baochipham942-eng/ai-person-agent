@@ -195,7 +195,7 @@ export class QAAgent {
     private tryAutoFix(item: NormalizedItem): FixedItem | null {
         const issues: FixableIssue[] = [];
         const fixes: string[] = [];
-        let fixedItem = { ...item };
+        const fixedItem = { ...item };
 
         // 1. 修复缺失的 urlHash
         if (!item.urlHash && item.url) {

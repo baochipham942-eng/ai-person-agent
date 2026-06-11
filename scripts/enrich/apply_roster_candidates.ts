@@ -9,6 +9,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { neon } from '@neondatabase/serverless';
+import { loadContentReviewPolicy } from '../audit/content_review_policy.mjs';
 
 type RosterSeed = {
   name: string;
@@ -38,6 +39,7 @@ const SEEDS_PATH = process.argv.find(arg => arg.startsWith('--seeds='))?.slice('
 
 if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL');
 const sql = neon(process.env.DATABASE_URL);
+const policy = loadContentReviewPolicy();
 
 function unique(values: Array<string | undefined | null>): string[] {
   return [...new Set(values.filter((value): value is string => Boolean(value && value.trim())).map(value => value.trim()))];
@@ -70,6 +72,14 @@ function nextOrganizations(seed: RosterSeed, existing?: ExistingPerson): string[
   return unique([...(existing?.organization || []), ...(seed.organization || [])]);
 }
 
+function normalize(value: unknown): string {
+  return JSON.stringify(value ?? null);
+}
+
+function equalValue(left: unknown, right: unknown): boolean {
+  return normalize(left) === normalize(right);
+}
+
 async function findMatches(seed: RosterSeed): Promise<ExistingPerson[]> {
   const terms = seedTerms(seed);
   const patterns = terms.map(term => `%${term}%`);
@@ -92,18 +102,27 @@ function chooseMatch(seed: RosterSeed, matches: ExistingPerson[]): ExistingPerso
   return exact || matches[0];
 }
 
-async function updateExisting(seed: RosterSeed, existing: ExistingPerson): Promise<void> {
+async function updateExisting(seed: RosterSeed, existing: ExistingPerson): Promise<boolean> {
   const aliases = nextAliases(seed, existing);
   const organization = nextOrganizations(seed, existing);
   const currentTitle = seed.currentTitle || existing.currentTitle;
   const roleCategory = seed.roleCategory || existing.roleCategory;
+  const changed = !equalValue(existing.aliases, aliases)
+    || !equalValue(existing.organization, organization)
+    || existing.currentTitle !== (currentTitle || null)
+    || existing.roleCategory !== (roleCategory || null);
+
+  if (!changed) {
+    console.log(`already up to date: ${seed.name} -> ${existing.name} (${existing.id})`);
+    return false;
+  }
 
   console.log(`${EXECUTE ? 'update' : 'would update'} existing: ${seed.name} -> ${existing.name} (${existing.id})`);
   console.log(`  aliases: ${JSON.stringify(existing.aliases)} -> ${JSON.stringify(aliases)}`);
   console.log(`  orgs: ${JSON.stringify(existing.organization)} -> ${JSON.stringify(organization)}`);
   console.log(`  title: ${existing.currentTitle || '(empty)'} -> ${currentTitle || '(empty)'}`);
 
-  if (!EXECUTE) return;
+  if (!EXECUTE) return true;
   await sql`
     UPDATE "People"
     SET
@@ -114,6 +133,7 @@ async function updateExisting(seed: RosterSeed, existing: ExistingPerson): Promi
       "updatedAt" = NOW()
     WHERE id = ${existing.id}
   `;
+  return true;
 }
 
 async function insertCandidate(seed: RosterSeed): Promise<void> {
@@ -124,7 +144,8 @@ async function insertCandidate(seed: RosterSeed): Promise<void> {
   const qid = `CANDIDATE-${slug(seed.name) || crypto.randomUUID()}`;
   const occupation = unique([seed.roleCategory]);
 
-  console.log(`${EXECUTE ? 'insert' : 'would insert'} candidate: ${seed.name} (${qid})`);
+  const status = policy.candidateIntake.defaultStatus;
+  console.log(`${EXECUTE ? 'insert' : 'would insert'} ${status}: ${seed.name} (${qid})`);
   console.log(`  title=${seed.currentTitle || '(empty)'} orgs=${organization.join(', ') || '(empty)'}`);
 
   if (!EXECUTE) return;
@@ -146,7 +167,7 @@ async function insertCandidate(seed: RosterSeed): Promise<void> {
       ${organization},
       ${JSON.stringify([])}::jsonb,
       ${[] as string[]},
-      ${'candidate'},
+      ${status},
       ${0},
       ${[] as string[]},
       ${seed.roleCategory || null},
@@ -175,8 +196,7 @@ async function main() {
     }
 
     if (chosen) {
-      await updateExisting(seed, chosen);
-      updated += 1;
+      if (await updateExisting(seed, chosen)) updated += 1;
     } else {
       await insertCandidate(seed);
       inserted += 1;

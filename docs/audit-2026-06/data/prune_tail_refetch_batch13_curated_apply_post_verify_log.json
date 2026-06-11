@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-10T17:34:56.467Z",
+  "summary": {
+    "generatedAt": "2026-06-10T17:34:56.465Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch13_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch13_curated_apply_post_verify_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH13_CURATED_APPLY_POST_VERIFY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 4,
+    "selectedSourceRows": 4,
+    "skippedRows": 13,
+    "existingRawPoolItems": 4,
+    "rawInserted": 0,
+    "rawUpdated": 4,
+    "keepAuditsInserted": 0,
+    "keepAuditsExisting": 4,
+    "byDecision": {
+      "augment_source": 4
+    },
+    "bySourceType": {
+      "official": 2,
+      "exa": 2
+    },
+    "topPeople": {
+      "杰夫·迪恩": 2,
+      "布莱恩·卡坦扎罗": 1,
+      "阿希什·瓦斯瓦尼": 1
+    },
+    "topHosts": {
+      "essential.ai": 1,
+      "nvidia.com": 1,
+      "research.google": 1,
+      "wewic.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 13
+    }
+  }
+}

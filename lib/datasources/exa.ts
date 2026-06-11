@@ -152,10 +152,24 @@ export async function searchPersonContent(
     const aiKeywords = '(AI OR "artificial intelligence" OR LLM OR "large language model" OR "machine learning" OR "deep learning" OR GPT)';
     const query = `(${nameQuery}) AND ${aiKeywords}`;
 
+    const generalExcludeDomains = [
+        'wikipedia.org',
+        'baike.baidu.com',
+        'youtube.com',
+        'youtu.be',
+        'github.com',
+        'gist.github.com',
+        'scholar.google.com',
+        'scholar.google.ca',
+        'scholar.google.com.sg',
+        'docs.google.com',
+        'forms.gle',
+    ];
+
     const generalResults = await searchExa({
         query,
         numResults: 20,
-        excludeDomains: ['wikipedia.org', 'baike.baidu.com'], // 排除百科类
+        excludeDomains: generalExcludeDomains,
         type: 'auto',
         startPublishedDate,
     });
@@ -224,4 +238,3 @@ export async function searchBiographyContent(
         return true;
     });
 }
-

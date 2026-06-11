@@ -1,0 +1,21 @@
+{
+  "_meta": {
+    "source": "80,000 Hours episode page",
+    "generatedAt": "2026-06-11T17:12:00+08:00",
+    "note": "Current role repair for Nicholas Joseph after finding a public interview source."
+  },
+  "roles": [
+    {
+      "personName": "Nicholas Joseph",
+      "aliases": ["Nick Joseph"],
+      "organizationName": "Anthropic",
+      "organizationType": "company",
+      "role": "Head of Training",
+      "roleZh": "训练负责人",
+      "currentTitle": "Head of Training @ Anthropic",
+      "roleCategory": "researcher",
+      "source": "https://80000hours.org/podcast/episodes/nick-joseph-anthropic-safety-approach-responsible-scaling/",
+      "confidence": 0.9
+    }
+  ]
+}

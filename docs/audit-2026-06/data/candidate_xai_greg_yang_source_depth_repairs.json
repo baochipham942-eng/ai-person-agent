@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-06-11T19:44:00+08:00",
+  "reason": "Source-depth and avatar repairs for Greg Yang.",
+  "sources": [
+    {
+      "person": "Greg Yang",
+      "url": "https://thegregyang.com/",
+      "sourceType": "official",
+      "title": "Greg Yang personal site",
+      "requiredTerms": ["Greg Yang", "xAI", "Tensor Programs"],
+      "reason": "Personal site identifies Greg Yang as a mathematician at xAI and describes Tensor Programs."
+    },
+    {
+      "person": "Greg Yang",
+      "url": "https://github.com/thegregyang",
+      "sourceType": "official",
+      "title": "Greg Yang GitHub profile",
+      "requiredTerms": ["Greg Yang", "xAI"],
+      "reason": "GitHub profile displays Greg Yang identity, xAI affiliation, and account avatar."
+    }
+  ],
+  "cards": [
+    {
+      "person": "Greg Yang",
+      "title": "xAI 当前研究人物",
+      "content": "Greg Yang 的个人网站称他是 xAI 的 mathematician，GitHub profile 也写明 AI researcher @ xAI。",
+      "tags": ["xAI", "研究", "理论"],
+      "sourceUrl": "https://thegregyang.com/",
+      "importance": 4
+    },
+    {
+      "person": "Greg Yang",
+      "title": "Tensor Programs 理论框架",
+      "content": "Greg Yang 的个人网站介绍 Tensor Programs 是他用于理解大型神经网络的理论框架。",
+      "tags": ["Tensor Programs", "理论", "大语言模型"],
+      "sourceUrl": "https://thegregyang.com/",
+      "importance": 4
+    },
+    {
+      "person": "Greg Yang",
+      "title": "μTransfer 与超参数迁移",
+      "content": "个人网站称 Tensor Programs 是 hyperparameter transfer 范式的理论基础，可用于调参 GPT-3 这类大型神经网络。",
+      "tags": ["Scaling", "μTransfer", "调参"],
+      "sourceUrl": "https://thegregyang.com/",
+      "importance": 4
+    },
+    {
+      "person": "Greg Yang",
+      "title": "Microsoft Research 背景",
+      "content": "Greg Yang 个人网站记录他此前是 Microsoft Research 的研究员，为其大模型理论研究提供机构背景。",
+      "tags": ["Microsoft Research", "履历", "理论"],
+      "sourceUrl": "https://thegregyang.com/",
+      "importance": 3
+    },
+    {
+      "person": "Greg Yang",
+      "title": "GitHub 身份与头像来源",
+      "content": "GitHub profile `thegregyang` 显示 Greg Yang 的公开代码身份，并写明 Mathematician and AI researcher @ xAI。",
+      "tags": ["GitHub", "头像来源", "工程"],
+      "sourceUrl": "https://github.com/thegregyang",
+      "importance": 3
+    }
+  ],
+  "avatars": [
+    {
+      "person": "Greg Yang",
+      "imageUrl": "https://avatars.githubusercontent.com/u/53244851?v=4",
+      "evidenceUrl": "https://github.com/thegregyang",
+      "evidenceNote": "GitHub profile title is thegregyang (Greg Yang) and its description says Mathematician and AI researcher @ xAI."
+    }
+  ]
+}

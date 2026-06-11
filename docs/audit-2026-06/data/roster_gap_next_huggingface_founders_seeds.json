@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "source": "ORG_ROSTER_GAP_VERIFICATION.md follow-up",
+    "generatedAt": "2026-06-11T17:24:00+08:00",
+    "note": "High-confidence Hugging Face founder-layer additions. Kept separate from the already executed first roster gap batch."
+  },
+  "seeds": [
+    {
+      "name": "Thomas Wolf",
+      "nameZh": "托马斯·沃尔夫",
+      "roleCategory": "founder",
+      "organization": ["Hugging Face"],
+      "currentTitle": "Co-founder & Chief Science Officer @ Hugging Face",
+      "aliases": ["thomwolf"],
+      "reason": "Hugging Face 联合创始人兼 CSO，Transformers 开源库代表作者之一，补齐开源 AI 基础设施公司的核心技术/科学负责人。"
+    },
+    {
+      "name": "Julien Chaumond",
+      "nameZh": "朱利安·肖蒙",
+      "roleCategory": "founder",
+      "organization": ["Hugging Face"],
+      "currentTitle": "Co-founder & Chief Technology Officer @ Hugging Face",
+      "aliases": ["julien-c"],
+      "reason": "Hugging Face 联合创始人兼 CTO，参与 Transformers 与 Hugging Face Hub 早期技术建设，补齐开源 AI 基础设施公司的创始技术层。"
+    }
+  ]
+}

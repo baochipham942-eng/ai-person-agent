@@ -83,6 +83,7 @@ export async function GET(
         learningOrder: course.learningOrder,
         topics: course.topics,
         verified: course.verified,
+        confidence: course.confidence,
         publishedAt: course.publishedAt?.toISOString(),
       })),
       pagination: {

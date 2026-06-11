@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-06-10T14:39:29.574Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch4.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch4_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH4_CURATED.md",
+  "inputRows": 20,
+  "outputRows": 20,
+  "inputSelectedSources": 30,
+  "outputSelectedSources": 19,
+  "removedSelectedSources": 11,
+  "rowsChanged": 9,
+  "rowsDeferredToHumanReview": 6,
+  "byDecision": {
+    "replace_source": 12,
+    "human_review": 6,
+    "augment_source": 2
+  },
+  "removedHosts": {
+    "en.wikipedia.org": 2,
+    "singjupost.com": 2,
+    "cdn.openai.com": 1,
+    "epublications.marquette.edu": 1,
+    "fr.linkedin.com": 1,
+    "lerandom.art": 1,
+    "linkedin.com": 1,
+    "ml-summit.org": 1,
+    "semanticscholar.org": 1
+  },
+  "keptHosts": {
+    "arxiv.org": 2,
+    "noamshazeer.com": 2,
+    "a16z.com": 1,
+    "ai.meta.com": 1,
+    "cbsnews.com": 1,
+    "cdn.openai.com": 1,
+    "darioamodei.com": 1,
+    "digitaleconomy.stanford.edu": 1,
+    "forbes.com": 1,
+    "jan.leike.name": 1,
+    "montgomerysummit.com": 1,
+    "papers.neurips.cc": 1,
+    "podcasts.apple.com": 1,
+    "research.google": 1,
+    "ted.com": 1,
+    "transformer-circuits.pub": 1,
+    "ycombinator.com": 1
+  }
+}

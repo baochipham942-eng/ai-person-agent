@@ -24,7 +24,7 @@ async function main() {
     const people = await prisma.people.findMany({
         include: {
             rawPoolItems: { select: { sourceType: true } },
-            cards: { select: { id: true } }
+            cards: { where: { isActive: true }, select: { id: true } }
         }
     });
 

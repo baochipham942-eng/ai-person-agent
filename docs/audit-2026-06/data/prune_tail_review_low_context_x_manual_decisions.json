@@ -1,0 +1,157 @@
+{
+  "generatedAt": "2026-06-10T22:07:11.351Z",
+  "input": "docs/audit-2026-06/data/prune_tail_review_unresolved_rows.json",
+  "limit": 0,
+  "summary": {
+    "inputRows": 4,
+    "dependencySkipped": 0,
+    "missingExplicitIds": 0,
+    "decisionRows": 3
+  },
+  "byPerson": {
+    "Chris Olah": 2,
+    "Yann LeCun": 1
+  },
+  "bySourceType": {
+    "x": 3
+  },
+  "selectedRows": [
+    {
+      "claimId": "prune-tail:cmjtxmhqa03c4rmtbtnbw4qww",
+      "batch": 11,
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "rawId": "cmjtxmhqa03c4rmtbtnbw4qww",
+      "curatedDecision": "human_review",
+      "curatedReason": "候选来源均未直接支持“损失函数受启发”的具体说法。TIME和Transformer Circuits页面权威但内容不匹配；播客链接缺乏转录证据。需要更具体的采访、论文或官方声明来证明该技术观点与Chris Olah的关联。",
+      "originalLatestVerdict": "review",
+      "priority": "medium",
+      "originalUrl": "https://x.com/ch402/status/1987731386611167327",
+      "originalTitle": "Looking at loss as a function of token index (as seen here) was very much influenced",
+      "originalReason": "内容不完整，仅提及损失函数受启发，信息量不足，需人工判断。",
+      "sourceType": "x",
+      "latestDbVerdict": "review",
+      "latestStage": "L1",
+      "dependency": null
+    },
+    {
+      "claimId": "prune-tail:cmjtxmiq503carmtb51zur7en",
+      "batch": 11,
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "rawId": "cmjtxmiq503carmtb51zur7en",
+      "curatedDecision": "human_review",
+      "curatedReason": "候选来源均无法直接证明原始推文中的具体表述。虽然多个来源（如80000小时播客、Lex Fridman访谈）可以证明Chris Olah的身份和观点，但缺乏对原始言论的直接引用或支持。需要更具体的来源来替换或补强。",
+      "originalLatestVerdict": "review",
+      "priority": "medium",
+      "originalUrl": "https://x.com/ch402/status/1960396195156926736",
+      "originalTitle": "Really exciting to see this hypothesis being explored more! I confess, I've become more and more persuaded of this in my personal thinking over time... Great to see a more serious investigation!",
+      "originalReason": "表达了个人观点的转变，但未明确说明具体的假设内容，较为模糊。",
+      "sourceType": "x",
+      "latestDbVerdict": "review",
+      "latestStage": "L1",
+      "dependency": null
+    },
+    {
+      "claimId": "prune-tail:cmju0qt7f08aurmtb9mviuquf",
+      "batch": 17,
+      "personId": "cmjtsvcil00003esttihbrsjm",
+      "person": "Yann LeCun",
+      "rawId": "cmju0qt7f08aurmtb9mviuquf",
+      "curatedDecision": "human_review",
+      "curatedReason": "候选来源均为 LeCun 的权威资料或相关主题文章，但无一能直接证明目标推文中描述的具体架构（log(n)/2层、两个复杂特征图、核大小2、变量重排）属于 LeCun 的工作或观点。需要更精确的匹配来源或人工评估推文内容是否值得入库。",
+      "originalLatestVerdict": "review",
+      "priority": "medium",
+      "originalUrl": "https://x.com/ylecun/status/1996110880711250305",
+      "originalTitle": "A stack of log(n)/2 layers convolutions with two complex features maps with kernel size 2 (all identical) and a weird shuffling of the variables between each layer.",
+      "originalReason": "技术性推文，内容专业但过于简短，缺乏上下文，需人工评估是否值得入库。",
+      "sourceType": "x",
+      "latestDbVerdict": "review",
+      "latestStage": "L1",
+      "dependency": null
+    }
+  ],
+  "decisions": [
+    {
+      "claimId": "prune-tail:cmjtxmhqa03c4rmtbtnbw4qww",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxmhqa03c4rmtbtnbw4qww",
+        "objectLabel": "Looking at loss as a function of token index (as seen here) was very much influenced"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.82,
+      "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：内容不完整，仅提及损失函数受启发，信息量不足，需人工判断。 Refetch curation 判为 human_review，原因：候选来源均未直接支持“损失函数受启发”的具体说法。TIME和Transformer Circuits页面权威但内容不匹配；播客链接缺乏转录证据。需要更具体的采访、论文或官方声明来证明该技术观点与Chris Olah的关联。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+      "reviewedAt": "2026-06-10T22:07:11.350Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "prune_tail_review_manual_adjudication"
+      },
+      "evidence": {
+        "batch": 11,
+        "refetchDecision": "human_review",
+        "latestVerdict": "review",
+        "priority": "medium",
+        "sourceType": "x",
+        "originalUrl": "https://x.com/ch402/status/1987731386611167327"
+      }
+    },
+    {
+      "claimId": "prune-tail:cmjtxmiq503carmtb51zur7en",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxmiq503carmtb51zur7en",
+        "objectLabel": "Really exciting to see this hypothesis being explored more! I confess, I've become more and more persuaded of this in my personal thinking over time... Great to see a more serious investigation!"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.82,
+      "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：表达了个人观点的转变，但未明确说明具体的假设内容，较为模糊。 Refetch curation 判为 human_review，原因：候选来源均无法直接证明原始推文中的具体表述。虽然多个来源（如80000小时播客、Lex Fridman访谈）可以证明Chris Olah的身份和观点，但缺乏对原始言论的直接引用或支持。需要更具体的来源来替换或补强。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+      "reviewedAt": "2026-06-10T22:07:11.351Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "prune_tail_review_manual_adjudication"
+      },
+      "evidence": {
+        "batch": 11,
+        "refetchDecision": "human_review",
+        "latestVerdict": "review",
+        "priority": "medium",
+        "sourceType": "x",
+        "originalUrl": "https://x.com/ch402/status/1960396195156926736"
+      }
+    },
+    {
+      "claimId": "prune-tail:cmju0qt7f08aurmtb9mviuquf",
+      "personId": "cmjtsvcil00003esttihbrsjm",
+      "person": "Yann LeCun",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmju0qt7f08aurmtb9mviuquf",
+        "objectLabel": "A stack of log(n)/2 layers convolutions with two complex features maps with kernel size 2 (all identical) and a weird shuffling of the variables between each layer."
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.82,
+      "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：技术性推文，内容专业但过于简短，缺乏上下文，需人工评估是否值得入库。 Refetch curation 判为 human_review，原因：候选来源均为 LeCun 的权威资料或相关主题文章，但无一能直接证明目标推文中描述的具体架构（log(n)/2层、两个复杂特征图、核大小2、变量重排）属于 LeCun 的工作或观点。需要更精确的匹配来源或人工评估推文内容是否值得入库。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+      "reviewedAt": "2026-06-10T22:07:11.351Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "prune_tail_review_manual_adjudication"
+      },
+      "evidence": {
+        "batch": 17,
+        "refetchDecision": "human_review",
+        "latestVerdict": "review",
+        "priority": "medium",
+        "sourceType": "x",
+        "originalUrl": "https://x.com/ylecun/status/1996110880711250305"
+      }
+    }
+  ]
+}

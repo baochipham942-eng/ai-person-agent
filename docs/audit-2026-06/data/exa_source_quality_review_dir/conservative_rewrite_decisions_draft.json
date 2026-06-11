@@ -1,0 +1,515 @@
+{
+  "decisions": [
+    {
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "action": "replace_products_and_topics",
+      "products": [
+        {
+          "org": "Stability AI",
+          "url": "https://stability.ai/stable-diffusion",
+          "name": "Stable Diffusion",
+          "role": "co-founder/CEO",
+          "year": 2022,
+          "category": "AI Model",
+          "description": "Emad Mostaque 是 Stability AI 的联合创始人兼首席执行官，该公司开发了 Stable Diffusion 等开源 AI 模型。"
+        },
+        {
+          "org": "Stability AI",
+          "url": "https://stability.ai",
+          "name": "Stability AI Platform",
+          "role": "founder",
+          "year": 2019,
+          "category": "Platform",
+          "description": "Independent multi-modal generative AI platform developing open foundational models for images, video, audio, 3D, and text, with commercial offerings for enterprises alongside open access."
+        },
+        {
+          "org": "Stability AI",
+          "url": "https://stability.ai/stable-audio",
+          "name": "Stable Audio Open",
+          "role": "founder",
+          "year": 2023,
+          "category": "AI Model",
+          "description": "Open-source text-to-audio model optimized for mobile devices through partnership with Arm, enabling audio generation from text."
+        }
+      ],
+      "topics": [
+        "开源",
+        "多模态",
+        "创意生成",
+        "产品"
+      ],
+      "topicDetails": [
+        {
+          "rank": 24,
+          "topic": "开源",
+          "reason": "领导 Stability AI 开源文生图基础模型 Stable Diffusion，推动生成式AI民主化。"
+        },
+        {
+          "rank": 4,
+          "topic": "多模态",
+          "reason": "推动 Stability AI 平台发展，涵盖图像、音频等多模态生成模型。"
+        },
+        {
+          "rank": 1,
+          "topic": "创意生成",
+          "reason": "通过 Stable Diffusion 和 Stable Audio Open 等工具，赋能全球创意工作者。"
+        },
+        {
+          "rank": 16,
+          "topic": "产品",
+          "reason": "作为 Stability AI 创始人，主导开发了 Stable Diffusion 系列核心产品。"
+        }
+      ],
+      "cardUpdates": [],
+      "removeProductNames": [],
+      "removeTopicNames": [],
+      "evidenceUrls": [
+        "https://www.youtube.com/watch?v=o1TcHAafUMs"
+      ],
+      "evidenceNote": "source-quality:cmjuumw1k0h9wrmtb7etg1n65: 来源将Stable Diffusion创造者直接归因于个人，但这是团队成果。应保守改写以反映其领导角色而非个人创造。 (products=Stable Diffusion)",
+      "review": {
+        "generatedFrom": "conservative_rewrite_queue",
+        "safeToAutoApply": false,
+        "requiresHumanConfirmation": true,
+        "productEdits": [
+          {
+            "index": 0,
+            "name": "Stable Diffusion",
+            "matchConfidence": "medium",
+            "matchReasons": [
+              "product_name_in_raw_title"
+            ],
+            "proposedText": "Emad Mostaque 是 Stability AI 的联合创始人兼首席执行官，该公司开发了 Stable Diffusion 等开源 AI 模型。"
+          }
+        ],
+        "excludedLowConfidenceCards": []
+      }
+    },
+    {
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "action": "replace_products_and_topics",
+      "products": [
+        {
+          "org": "OpenAI",
+          "url": "https://chat.openai.com",
+          "icon": "💬",
+          "name": "ChatGPT",
+          "role": "co-creator",
+          "year": 2022,
+          "stats": {
+            "users": "200M+ weekly"
+          },
+          "category": "Platform",
+          "description": "革命性的对话 AI，开启大语言模型消费级应用时代"
+        },
+        {
+          "org": "OpenAI",
+          "url": "https://openai.com/gpt-4",
+          "icon": "🧠",
+          "name": "GPT-4",
+          "role": "co-founder/president",
+          "year": 2023,
+          "category": "AI Model",
+          "description": "作为 OpenAI 联合创始人兼总裁，Greg Brockman 参与领导了包括 GPT-4 在内的公司核心 AI 项目。"
+        },
+        {
+          "org": "OpenAI",
+          "url": "https://openai.com/blog/openai-codex",
+          "icon": "💻",
+          "name": "Codex",
+          "role": "lead",
+          "year": 2021,
+          "category": "AI Model",
+          "description": "AI 编程助手，驱动 GitHub Copilot"
+        },
+        {
+          "org": "OpenAI",
+          "url": "https://platform.openai.com",
+          "icon": "🔌",
+          "name": "OpenAI API",
+          "role": "co-creator",
+          "year": 2020,
+          "category": "Platform",
+          "description": "面向开发者的 AI API 平台"
+        }
+      ],
+      "topics": [
+        "大语言模型",
+        "产品",
+        "开源",
+        "AGI"
+      ],
+      "topicDetails": [
+        {
+          "rank": 5,
+          "topic": "大语言模型",
+          "reason": "作为OpenAI联合创始人，领导了GPT-4和ChatGPT等核心大语言模型的开发与产品化。"
+        },
+        {
+          "rank": 1,
+          "topic": "产品",
+          "reason": "主导推出ChatGPT，并推动OpenAI API和Codex等产品的发布，将研究转化为全球性服务。"
+        },
+        {
+          "rank": 4,
+          "topic": "开源",
+          "reason": "早期推动OpenAI Gym等项目开源，后战略转向闭源以支持ChatGPT等产品的规模化。"
+        },
+        {
+          "rank": 1,
+          "topic": "AGI",
+          "reason": "作为OpenAI联合创始人兼前总裁，其核心使命是安全地创建和部署造福人类的通用人工智能。"
+        }
+      ],
+      "cardUpdates": [
+        {
+          "cardId": "cmjv16cdf004wftmgop2av7n3",
+          "title": "保守归因：GPT-4 项目角色",
+          "content": "作为 OpenAI 联合创始人兼总裁，Greg Brockman 参与领导了包括 GPT-4 在内的公司核心 AI 项目。",
+          "metadata": {
+            "claimId": "source-quality:cmjv15o73003wftmgxiy3v3p5",
+            "previousTitle": "GPT-4在安全性和事实性上大幅改进",
+            "previousContentPreview": "OpenAI的GPT-4相比GPT-3.5，在安全性上取得了显著进步。内部评估显示，GPT-4响应违禁内容请求的可能性降低了82%，产生事实性回答的可能性提高了40%。这得益于更多人类反馈的融入和持续的安全研究。",
+            "matchConfidence": "high",
+            "matchReasons": [
+              "exact_source_url"
+            ]
+          }
+        }
+      ],
+      "removeProductNames": [],
+      "removeTopicNames": [],
+      "evidenceUrls": [
+        "https://openai.com/product/gpt-4"
+      ],
+      "evidenceNote": "source-quality:cmjv15o73003wftmgxiy3v3p5: 来源是公司产品页面，未提及个人贡献，属于过度归因。建议保守改写，强调其领导角色而非直接归因。 (products=GPT-4, cards=GPT-4在安全性和事实性上大幅改进)",
+      "review": {
+        "generatedFrom": "conservative_rewrite_queue",
+        "safeToAutoApply": false,
+        "requiresHumanConfirmation": true,
+        "productEdits": [
+          {
+            "index": 1,
+            "name": "GPT-4",
+            "matchConfidence": "medium",
+            "matchReasons": [
+              "product_name_in_raw_title"
+            ],
+            "proposedText": "作为 OpenAI 联合创始人兼总裁，Greg Brockman 参与领导了包括 GPT-4 在内的公司核心 AI 项目。"
+          }
+        ],
+        "excludedLowConfidenceCards": []
+      }
+    },
+    {
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "action": "replace_products_and_topics",
+      "products": [
+        {
+          "org": "Mistral AI",
+          "url": "https://mistral.ai/news/announcing-mistral-7b/",
+          "icon": "🌀",
+          "name": "Mistral 7B",
+          "role": "co-creator",
+          "year": 2023,
+          "category": "AI Model",
+          "description": "高效开源模型，性能超越更大规模模型"
+        },
+        {
+          "org": "Mistral AI",
+          "url": "https://mistral.ai/news/mixtral-of-experts/",
+          "icon": "🔀",
+          "name": "Mixtral 8x7B",
+          "role": "co-creator",
+          "year": 2023,
+          "category": "AI Model",
+          "description": "MoE 架构开源模型"
+        },
+        {
+          "org": "Mistral AI",
+          "url": "https://mistral.ai/news/codestral/",
+          "icon": "💻",
+          "name": "Codestral",
+          "role": "lead",
+          "year": 2024,
+          "category": "AI Model",
+          "description": "专注代码生成的开源模型"
+        },
+        {
+          "org": "Meta AI",
+          "url": "https://github.com/facebookresearch/XLM",
+          "icon": "🌐",
+          "name": "XLM",
+          "role": "lead",
+          "year": 2019,
+          "category": "AI Model",
+          "description": "跨语言预训练模型"
+        }
+      ],
+      "topics": [
+        "大语言模型",
+        "开源",
+        "高效训练",
+        "Scaling"
+      ],
+      "topicDetails": [
+        {
+          "rank": 8,
+          "topic": "大语言模型",
+          "reason": "共同领导开发了开源大语言模型 LLaMA 系列，推动前沿模型普及。"
+        },
+        {
+          "rank": 7,
+          "topic": "开源",
+          "reason": "作为 Mistral AI 联合创始人，发布 Mistral 7B、Mixtral 8x7B 等开源模型。"
+        },
+        {
+          "rank": 1,
+          "topic": "高效训练",
+          "reason": "LLaMA 论文提出高效训练方法，以更少算力达到顶尖性能。"
+        },
+        {
+          "rank": 1,
+          "topic": "Scaling",
+          "reason": "Mixtral 8x7B 采用混合专家架构，是高效扩展模型规模的典范。"
+        }
+      ],
+      "cardUpdates": [
+        {
+          "cardId": "5f792436-90d4-4bb5-b6ad-b4c6f8210fdc",
+          "title": "保守归因：LLaMA 研究参与",
+          "content": "Guillaume Lample参与了LLaMA基础语言模型的研究工作。",
+          "metadata": {
+            "claimId": "source-quality:cmjtvqe2900w0rmtb4dt5xe7o",
+            "previousTitle": "LLaMA 核心贡献者",
+            "previousContentPreview": "在加入 Mistral AI 之前，Lample 是 Meta AI (FAIR) 的核心研究员，也是 LLaMA 系列论文的主要作者之一。LLaMA 证明了在更大规模的数据上训练更小的模型可以达到超越巨型模型的性能，这一研究直接引发了 2023 年全球开源大模型的爆发。",
+            "matchConfidence": "high",
+            "matchReasons": [
+              "exact_source_url"
+            ]
+          }
+        }
+      ],
+      "removeProductNames": [],
+      "removeTopicNames": [],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2302.13971"
+      ],
+      "evidenceNote": "source-quality:cmjtvqe2900w0rmtb4dt5xe7o: 当前来源未明确显示作者，直接归因于个人属于过度归因。应保守改写为参与研究，同时重抓作者列表以确认。 (cards=LLaMA 核心贡献者)",
+      "review": {
+        "generatedFrom": "conservative_rewrite_queue",
+        "safeToAutoApply": false,
+        "requiresHumanConfirmation": true,
+        "productEdits": [],
+        "excludedLowConfidenceCards": []
+      }
+    },
+    {
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "action": "replace_products_and_topics",
+      "products": [
+        {
+          "org": "Character.AI",
+          "url": "https://character.ai",
+          "name": "Character.AI",
+          "role": "co-creator",
+          "year": 2022,
+          "category": "Platform",
+          "description": "An AI chatbot platform that allows users to interact with virtual versions of fictional characters, celebrities, historical figures, and create custom AI-powered chatbots and assistants."
+        },
+        {
+          "org": "Google",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "name": "Transformer",
+          "role": "co-author",
+          "year": 2017,
+          "category": "Framework",
+          "description": "Noam Shazeer是论文《Attention Is All You Need》的共同作者之一。"
+        }
+      ],
+      "topics": [
+        "Transformer",
+        "大语言模型",
+        "自监督学习"
+      ],
+      "topicDetails": [
+        {
+          "rank": 8,
+          "topic": "Transformer",
+          "reason": "《Attention Is All You Need》论文合著者，共同提出Transformer核心架构。"
+        },
+        {
+          "rank": 15,
+          "topic": "大语言模型",
+          "reason": "谷歌BERT模型的关键开发者，推动大规模预训练语言模型发展。"
+        },
+        {
+          "rank": 3,
+          "topic": "自监督学习",
+          "reason": "通过BERT的掩码语言建模任务，革新了自监督学习在NLP中的应用范式。"
+        }
+      ],
+      "cardUpdates": [],
+      "removeProductNames": [],
+      "removeTopicNames": [],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "evidenceNote": "source-quality:cmjtxhrij02b8rmtb9u4altty: 论文是团队成果，Noam Shazeer是作者之一，但将整个论文作为其个人代表成果属于过度归因。保守改写以明确其贡献性质。 (products=Transformer)",
+      "review": {
+        "generatedFrom": "conservative_rewrite_queue",
+        "safeToAutoApply": false,
+        "requiresHumanConfirmation": true,
+        "productEdits": [
+          {
+            "index": 1,
+            "name": "Transformer",
+            "matchConfidence": "high",
+            "matchReasons": [
+              "exact_url"
+            ],
+            "proposedText": "Noam Shazeer是论文《Attention Is All You Need》的共同作者之一。"
+          }
+        ],
+        "excludedLowConfidenceCards": [
+          {
+            "claimId": "source-quality:cmjtxhrij02b8rmtb9u4altty",
+            "cardId": "057f6d29-d40b-43a2-82fb-ac78bdc5aa2f",
+            "title": "Transformer 核心组件的亲手设计者",
+            "matchConfidence": "low",
+            "matchReasons": [
+              "raw_title_in_card_content"
+            ]
+          },
+          {
+            "claimId": "source-quality:cmjtxhrij02b8rmtb9u4altty",
+            "cardId": "cmju0xz3m09e5rmtbot2o81tr",
+            "title": "Transformer架构的核心设计者之一",
+            "matchConfidence": "low",
+            "matchReasons": [
+              "raw_title_in_card_content"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "personId": "cmjtxdlcn000b5p08yoct3be8",
+      "person": "桑达尔·皮查伊",
+      "action": "replace_products_and_topics",
+      "products": [
+        {
+          "org": "Google",
+          "url": "https://en.wikipedia.org/wiki/Sundar_Pichai",
+          "name": "Google Chrome",
+          "role": "lead",
+          "year": 2008,
+          "category": "Platform",
+          "description": "Led product management and innovation for Google Chrome browser, a major commercial web browser."
+        },
+        {
+          "org": "Google",
+          "url": "https://en.wikipedia.org/wiki/Sundar_Pichai",
+          "name": "ChromeOS",
+          "role": "lead",
+          "year": 2009,
+          "category": "Platform",
+          "description": "Oversaw development and demonstration of ChromeOS, the operating system for Chromebooks released commercially in 2012."
+        },
+        {
+          "org": "Google",
+          "url": "https://en.wikipedia.org/wiki/Sundar_Pichai",
+          "name": "Google Drive",
+          "role": "lead",
+          "year": 2012,
+          "category": "Service",
+          "description": "Largely responsible for the development of Google Drive, a cloud storage and collaboration service."
+        },
+        {
+          "org": "Google",
+          "url": "https://en.wikipedia.org/wiki/Sundar_Pichai",
+          "name": "Android",
+          "role": "lead",
+          "year": 2013,
+          "category": "Platform",
+          "description": "Oversaw Android after taking responsibility from Andy Rubin, leading its product management as a major mobile OS platform."
+        },
+        {
+          "org": "Google",
+          "url": "https://fortune.com/2024/10/30/googles-code-ai-sundar-pichai/",
+          "name": "Gemini",
+          "role": "CEO",
+          "year": 2023,
+          "category": "AI Model",
+          "description": "作为谷歌CEO，桑达尔·皮查伊领导公司发布了Gemini AI模型。"
+        }
+      ],
+      "topics": [
+        "大语言模型",
+        "Transformer",
+        "产品",
+        "基础设施"
+      ],
+      "topicDetails": [
+        {
+          "rank": 39,
+          "topic": "大语言模型",
+          "reason": "作为CEO推动Gemini系列大模型的研发与发布，重塑谷歌AI产品矩阵。"
+        },
+        {
+          "rank": 16,
+          "topic": "Transformer",
+          "reason": "主导将Transformer架构从研究转化为搜索、助手等核心产品的底层技术。"
+        },
+        {
+          "rank": 24,
+          "topic": "产品",
+          "reason": "领导Google Chrome、Android、Google Drive及Bard等AI产品的整合与商业化。"
+        },
+        {
+          "rank": 9,
+          "topic": "基础设施",
+          "reason": "推动TPU等AI专用硬件及云基础设施的部署，支撑谷歌AI规模化应用。"
+        }
+      ],
+      "cardUpdates": [],
+      "removeProductNames": [],
+      "removeTopicNames": [],
+      "evidenceUrls": [
+        "https://www.theverge.com/2023/12/6/23990466/google-gemini-llm-ai-model"
+      ],
+      "evidenceNote": "source-quality:cmju15wcj0b2mrmtbzgbz4yic: 来源是公司级产品新闻，未提及个人，直接归因过度。采用审核建议的保守改写，将个人角色限定为领导公司发布。 (products=Gemini)",
+      "review": {
+        "generatedFrom": "conservative_rewrite_queue",
+        "safeToAutoApply": false,
+        "requiresHumanConfirmation": true,
+        "productEdits": [
+          {
+            "index": 4,
+            "name": "Gemini",
+            "matchConfidence": "medium",
+            "matchReasons": [
+              "product_name_in_raw_title"
+            ],
+            "proposedText": "作为谷歌CEO，桑达尔·皮查伊领导公司发布了Gemini AI模型。"
+          }
+        ],
+        "excludedLowConfidenceCards": []
+      }
+    }
+  ],
+  "skipped": [],
+  "summary": {
+    "generatedAt": "2026-06-10T07:20:17.571Z",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/conservative_rewrite_queue.json",
+    "decisions": 5,
+    "productEdits": 4,
+    "cardUpdates": 2,
+    "skipped": 0,
+    "includeLowConfidenceCards": false
+  }
+}

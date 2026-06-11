@@ -1,0 +1,1138 @@
+{
+  "generatedAt": "2026-06-09T15:28:51.732Z",
+  "criteria": {
+    "safeToAutoApply": true,
+    "claimType": "source_item_belongs_to_person",
+    "verdict": [
+      "wrong_person",
+      "unsupported"
+    ],
+    "remediationAction": "delete_raw_pool_item",
+    "confidence": ">= 0.85",
+    "destructiveAction": "deleted RawPoolItem rows only"
+  },
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/fact_claim_remediation_source_item_third_new_high_after_safe_prune_mimo_summary.json",
+    "safeDecisions": 22,
+    "rejectedSafeQueueRows": 0,
+    "uniqueTargetIds": 22,
+    "existingTargets": 22,
+    "missingTargets": 0,
+    "deleted": 0,
+    "affectedPeople": 6,
+    "bySourceType": {
+      "exa": 22
+    },
+    "byVerdict": {
+      "wrong_person": 22
+    },
+    "topPeople": {
+      "丁洁": 9,
+      "姚顺雨": 6,
+      "肖弘": 3,
+      "刘知远": 2,
+      "朱军": 1,
+      "汤姆·布朗": 1
+    }
+  },
+  "missingIds": [],
+  "rows": [
+    {
+      "raw": {
+        "id": "cmju0xf4g09dkrmtbr8jxnsw3",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://www.bilibili.com/video/BV1XS4y1F7TG/",
+        "urlHash": "c18da08a5987306cb5a54e3ff519edb5",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "5下《5 草船借箭》-第1课时-丁洁-有PPT 51备课部编版小学语文",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:15:04.248Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xf4g09dkrmtbr8jxnsw3]:7b2c0b99b187",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0xf4g09dkrmtbr8jxnsw3",
+          "fieldPath": "RawPoolItem[cmju0xf4g09dkrmtbr8jxnsw3]",
+          "objectLabel": "5下《5 草船借箭》-第1课时-丁洁-有PPT 51备课部编版小学语文"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认B站视频为小学语文备课内容，与人物丁洁（AI安全研究者）的专业领域和身份不符，属于同名的其他人。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:17.565Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0x9kz09cbrmtbk5tldjbu",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://cdn.sciengine.com/doi/articleIndex/10.13865/j.cnki.cjbmb.2025.06.1272",
+        "urlHash": "842705a5c86e24dd1be850b4f4444bcd",
+        "contentHash": "a5beb265a91dba945628c3d89505b9f9",
+        "title": "Expert Consensus on the Ethical Requirements for ...",
+        "text": "Expert Consensus on the Ethical Requirements for Generative AI-Assisted Academic Writing-SciEngine\n![](https://files.sciengine.com/template/platform/img/SciEngine-logo.png)\n×![](https://files.sciengine.com/template/img/sciengine/ai2.png)SciEngine AI×\n# ![](https://files.sciengine.com/template/platform/img/SciEngine-logo.png)SciEngine\n![](https://files.sciengine.com/template/img/sciengine/ai.png)\nAI\n![](https://files.sciengine.com/template/platform/custom-2024.png)\nCustomer Service\n![](https://files.sciengine.com/template/img/sciengine/wxCode2.png)\n![](https://files.sciengine.com/template/platform/earth-2024.png)\n中文![](https://files.sciengine.com/template/platform/person-2024.png)\nLOGIN\n****\n**\n![](https://files.sciengine.com/template/img/sciengine/ai3.png)AI\n![](https://files.sciengine.com/webapp/static/upgrade/Common/img/journals.svg)JOURNALS\n![](https://files.sciengine.com/webapp/static/upgrade/Common/img/books.svg)BOOKS\n![](https://files.sciengine.com/webapp/static/upgrade/Common/img/cart.svg)CART\n![](https://files.sciengine.com/template/img/sciengine/customer.svg)Customer Service\n![](https://files.sciengine.com/template/img/sciengine/wxCode2.png)\n![](https://files.sciengine.com/webapp/static/upgrade/Common/img/language.svg)中文\n![](https://files.sciengine.com/template/platform/header/person.svg)LOGIN\nJournals\nSearch\nAI Search\nAdvanced Search\nJournals\nSearch\nAI Search\nAdvanced Search\n![](https://files.sciengine.com/template/platform/img/close.svg)#### ![](https://files.sciengine.com/template/platform/img/loginLogo.png)\nLOG IN TO SciEngine\nAccount Login\n![](https://files.sciengine.com/template/platform/img/eye.png)**\nGet verification code\nForget the password\nGet code\nSign in\nRegister\nRead and accept\n《Privacy policys》and《Terms and conditions》\nOther Login methods\n![](https://files.sciengine.com/template/platform/img/weixin.png)\nWeChat\n![](https://files.sciengine.com/template/icon-cstr.png)\nCSTR\n![](https://files.sciengine.com/template/platform/img/close.svg)#### ![](https://files.sciengine.com/template/platform/img/loginLogo.png)\nreset password\nOK\n![](https://files.sciengine.com/template/platform/img/close.svg)#### ![](https://files.sciengine.com/template/platform/img/loginLogo.png)\nReset password link has been sent to your mailbox. Please check it\nin the mailbox.\n#### ![](https://files.sciengine.com/template/platform/img/loginLogo.png)\nClose\n×#### Submission and review\nJournal\nCloseOK\n×#### Journal Author Center\nJournal\nCloseOK\n[HOME](https://cdn.sciengine.com/CJBMB/home)\n[ARCHIVE**](#)\n* [LATEST ISSUE](https://cdn.sciengine.com/CJBMB/issue)\n* [ALL ISSUES](https://cdn.sciengine.com/CJBMB/listPage)\n* [COVER STORIES](https://cdn.sciengine.com/CJBMB/coverStories)\n* [ARTICLE COLLECTION](https://cdn.sciengine.com/CJBMB/collections)\n[AUTHOR CENTER](https://cdn.sciengine.com/CJBMB/authorCenter)\n[EDITORIAL](https://cdn.sciengine.com/CJBMB/editorial)\n[ABOUT US](https://cdn.sciengine.com/CJBMB/aboutus)\n**\nAdvancedSearch\n**Menus\n![](https://files.sciengine.com/template/journal-logo/search.svg)\n[HOME](https://cdn.sciengine.com/CJBMB/home)\n[ARCHIVE](#)**\n[LATEST ISSUE](https://cdn.sciengine.com/CJBMB/issue)\n[ALL ISSUES](https://cdn.sciengine.com/CJBMB/listPage)\n[COVER STORIES](https://cdn.sciengine.com/CJBMB/coverStories)\n[ARTICLE COLLECTION](https://cdn.sciengine.com/CJBMB/collections)\n[AUTHOR CENTER](https://cdn.sciengine.com/CJBMB/authorCenter)\n[EDITORIAL](https://cdn.sciengine.com/CJBMB/editorial)\n[ABOUT US](https://cdn.sciengine.com/CJBMB/aboutus)\n×#### Add new\n### Menu Name\nEnglish\nChinese\n### URL\n### Sort\n### Jump Way\n\\_self\\_blank\nCreate\n×#### Update\n### Menu Name\nEnglish\nChinese\n### URL\n### Sort\n### Jump Way\n\\_self\\_blank\nUpdate\nArticle metrics\n![]()\nRead More\n**Previous**[**Previous**]()Articles in issue[Articles in issue]()Next****[Next****]()\n[**\nSubmit\n](http://cjbmb.bjmu.edu.cn/CN/home)\n**\nAlert\n×#### Cover Image\n![](https://cdn.sciengine.com/img/issue/)\nCover imageClick here to download the HD cover imageClose\n**BACK TO TOP返回顶部TOP顶部\n![](https://files.sciengine.com/template/platform/logoFooter.png)SciEngine\n{{lang == 'en\\_US' ? 'CHINA SCIENCE PUBLISHING & MEDIA& MEDIA LTD' : '版权所有 ©中国科技出版传媒股份有限公司'}}\n{{lang == 'en\\_US' ? 'No. 16 Donghuang Chenggen North Street, Dongcheng District, Beijing 100717' : '北京市 东城区东黄城根北街16号 邮编：100717'}}\n[京ICP备14028887号-24](https://beian.miit.gov.cn/)![](https://files.sciengine.com/template/platform/police.png)[京公网安备11010102004460号](http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102004460)\nICP经营许可证：京B2-20254671\n新出发京批字第版0196号\nJOURNALS\n****\nVIEW ALL JOURNALS\n****\nSUBJECTS\n****\n* [Chemistry](https://cdn.sciengine.com/standard/publications?themeFilter=Chemistry)[化学](https://cdn.sciengine.com/standard/publications?themeFilter=%E5%8C%96%E5%AD%A6)\n* [Computer Science](https://cdn.sciengine.com/standard/publications?themeFilter=Computer%20Science)[计算机科学](https://cdn.sciengine.com/standard/publications?themeFilter=%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)\n* [Earth and ",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:14:59.649Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0x9kz09cbrmtbk5tldjbu]:e061ce5f7adf",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0x9kz09cbrmtbk5tldjbu",
+          "fieldPath": "RawPoolItem[cmju0x9kz09cbrmtbk5tldjbu]",
+          "objectLabel": "Expert Consensus on the Ethical Requirements for ..."
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核判定为错误人物。文章讨论AI辅助学术写作的伦理，与人物丁洁（AI安全研究者）的专业领域不符，且未在摘要中找到其作为作者的证据。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.098Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0xfvk09dormtbkyf7r84y",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://www.cs.sjtu.edu.cn/en/PeopleDetail.aspx?id=262",
+        "urlHash": "7b3b8880e447616047de052995d4775e",
+        "contentHash": "0198a51846669d54ea504723255058c8",
+        "title": "SJTU Computer Science & Engineering",
+        "text": "上海交通大学计算机学院（网络空间安全学院、密码学院）\n[](https://www.cs.sjtu.edu.cn/)\n**\n[使用jAccount登录](https://www.cs.sjtu.edu.cn/user/jaccount_login.html)\n[*![](https://www.cs.sjtu.edu.cn/img/lang.gif)English*](javascript:;)\n[](javascript:;)\n* [*学院概况*](https://www.cs.sjtu.edu.cn/xygk.html)\n[学院简介](https://www.cs.sjtu.edu.cn/xyjj.html)[历史沿革](https://www.cs.sjtu.edu.cn/lsyg.html)[学院领导](https://www.cs.sjtu.edu.cn/xyld.html)[组织架构](https://www.cs.sjtu.edu.cn/zzjg.html)\n* [*党建工作*](https://www.cs.sjtu.edu.cn/djgz.html)\n[党委概况](https://www.cs.sjtu.edu.cn/dwgk.html)[支部风采](https://www.cs.sjtu.edu.cn/zbfc.html)[工会组织](https://www.cs.sjtu.edu.cn/ghzz.html)[理论学习](https://www.cs.sjtu.edu.cn/llxx.html)\n* [*师资队伍*](https://www.cs.sjtu.edu.cn/szdw.html)\n[教师名录](https://www.cs.sjtu.edu.cn/jiaoshiml.html)[院士学者](https://www.cs.sjtu.edu.cn/lyys.html)[国家级人才](https://www.cs.sjtu.edu.cn/gjjrc.html)[退休教师](https://www.cs.sjtu.edu.cn/txjiaoshi.html)[人才招聘](https://www.cs.sjtu.edu.cn/rczp.html)\n* [*科学研究*](https://www.cs.sjtu.edu.cn/kxyj.html)\n[科研概况](https://www.cs.sjtu.edu.cn/kygk.html)[研究机构](https://www.cs.sjtu.edu.cn/yjjg.html)[平台基地](https://www.cs.sjtu.edu.cn/ptjd.html)[科研合作](https://www.cs.sjtu.edu.cn/kyhz.html)\n* [*人才培养*](https://www.cs.sjtu.edu.cn/rcpy.html)\n[本科生培养](https://www.cs.sjtu.edu.cn/bks.html)[研究生培养](https://www.cs.sjtu.edu.cn/bsyjs.html)[教学成果](https://www.cs.sjtu.edu.cn/jxcg.html)[教学实践](https://www.cs.sjtu.edu.cn/jxsj.html)[学生工作](https://www.cs.sjtu.edu.cn/xsgz.html)\n* [*校友天地*](https://www.cs.sjtu.edu.cn/xytd.html)\n[知名校友](https://www.cs.sjtu.edu.cn/zmxy.html)[校友风采](https://www.cs.sjtu.edu.cn/xyfc.html)[季度简报](https://www.cs.sjtu.edu.cn/jdjb.html)[校友基金](https://www.cs.sjtu.edu.cn/xyjji.html)\n* [*新闻动态*](https://www.cs.sjtu.edu.cn/xwdt.html)\n[学院新闻](https://www.cs.sjtu.edu.cn/news.html)[学术活动](https://www.cs.sjtu.edu.cn/xshd.html)[学院视频](https://www.cs.sjtu.edu.cn/ztsp.html)\n* [*办事指南*](https://www.cs.sjtu.edu.cn/bszn.html)\n[通知公告](https://www.cs.sjtu.edu.cn/notice.html)[规章制度](https://www.cs.sjtu.edu.cn/gzzd.html)[下载专区](https://www.cs.sjtu.edu.cn/xzzq.html)[投票系统](https://www.cs.sjtu.edu.cn/tpxy.html)\n**\n* ## [学院概况](https://www.cs.sjtu.edu.cn/xygk.html)\n### [学院简介](https://www.cs.sjtu.edu.cn/xyjj.html)\n### [历史沿革](https://www.cs.sjtu.edu.cn/lsyg.html)\n### [学院领导](https://www.cs.sjtu.edu.cn/xyld.html)\n### [组织架构](https://www.cs.sjtu.edu.cn/zzjg.html)\n* ## [党建工作](https://www.cs.sjtu.edu.cn/djgz.html)\n### [党委概况](https://www.cs.sjtu.edu.cn/dwgk.html)\n### [支部风采](https://www.cs.sjtu.edu.cn/zbfc.html)\n### [工会组织](https://www.cs.sjtu.edu.cn/ghzz.html)\n### [理论学习](https://www.cs.sjtu.edu.cn/llxx.html)\n* ## [师资队伍](https://www.cs.sjtu.edu.cn/szdw.html)\n### [教师名录](https://www.cs.sjtu.edu.cn/jiaoshiml.html)\n### [院士学者](https://www.cs.sjtu.edu.cn/lyys.html)\n### [国家级人才](https://www.cs.sjtu.edu.cn/gjjrc.html)\n### [退休教师](https://www.cs.sjtu.edu.cn/txjiaoshi.html)\n### [人才招聘](https://www.cs.sjtu.edu.cn/rczp.html)\n* ## [科学研究](https://www.cs.sjtu.edu.cn/kxyj.html)\n### [科研概况](https://www.cs.sjtu.edu.cn/kygk.html)\n### [研究机构](https://www.cs.sjtu.edu.cn/yjjg.html)\n### [平台基地](https://www.cs.sjtu.edu.cn/ptjd.html)\n### [科研合作](https://www.cs.sjtu.edu.cn/kyhz.html)\n* ## [人才培养](https://www.cs.sjtu.edu.cn/rcpy.html)\n### [本科生培养](https://www.cs.sjtu.edu.cn/bks.html)\n### [研究生培养](https://www.cs.sjtu.edu.cn/bsyjs.html)\n### [教学成果](https://www.cs.sjtu.edu.cn/jxcg.html)\n### [教学实践](https://www.cs.sjtu.edu.cn/jxsj.html)\n### [学生工作](https://www.cs.sjtu.edu.cn/xsgz.html)\n* ## [校友天地](https://www.cs.sjtu.edu.cn/xytd.html)\n### [知名校友](https://www.cs.sjtu.edu.cn/zmxy.html)\n### [校友风采](https://www.cs.sjtu.edu.cn/xyfc.html)\n### [季度简报](https://www.cs.sjtu.edu.cn/jdjb.html)\n### [校友基金](https://www.cs.sjtu.edu.cn/xyjji.html)\n* ## [新闻动态](https://www.cs.sjtu.edu.cn/xwdt.html)\n### [学院新闻](https://www.cs.sjtu.edu.cn/news.html)\n### [学术活动](https://www.cs.sjtu.edu.cn/xshd.html)\n### [学院视频](https://www.cs.sjtu.edu.cn/ztsp.html)\n* ## [办事指南](https://www.cs.sjtu.edu.cn/bszn.html)\n### [通知公告](https://www.cs.sjtu.edu.cn/notice.html)\n### [规章制度](https://www.cs.sjtu.edu.cn/gzzd.html)\n### [下载专区](https://www.cs.sjtu.edu.cn/xzzq.html)\n### [投票系统](https://www.cs.sjtu.edu.cn/tpxy.html)\n[![](https://www.cs.sjtu.edu.cn/upload/image/20250603/20250603191206.jpg)](https://www.cs.sjtu.edu.cn/banner/733.html)\n[![](https://www.cs.sjtu.edu.cn/upload/image/20250905/20250905110818.jpg)](https://www.cs.sjtu.edu.cn/banner/921.html)\n[![](https://www.cs.sjtu.edu.cn/upload/image/20250911/20250911092052.jpg)](javascript:void(0))\n[![](https://www.cs.sjtu.edu.cn/upload/image/20250910/20250910170755.jpg)](https://www.cs.sjtu.edu.cn/banner/945.html)\n[![](https://www.cs.sjtu.edu.cn/upload/image/20250910/20250910170835.jpg)](https://www.cs.sjtu.edu.cn/banner/946.html)\n[![](https://www.cs.sjtu.edu.cn/upload/image/20250905/20250905113124.jpg)](https://www.cs.sjtu.edu.cn/banner/926.html)\n![](https://www.cs.sjtu.edu.cn/img/mouse.png)\n学院动态News![](https://www.cs.sjtu.edu.cn/img/tit5.png)\n[查看更多](https://www.cs.sjtu.edu.cn/news.html)\n[\n19\n2025-12\n![](https://www.cs.sjtu.edu.cn",
+        "publishedAt": "2012-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:15:06.629Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xfvk09dormtbkyf7r84y]:e7ee849e88ce",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0xfvk09dormtbkyf7r84y",
+          "fieldPath": "RawPoolItem[cmju0xfvk09dormtbkyf7r84y]",
+          "objectLabel": "SJTU Computer Science & Engineering"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核判定为错误人物。链接指向上海交通大学计算机学院人员详情页，与人物丁洁（明尼苏达大学副教授）的当前职位和背景不符，极可能是同名的其他人。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.098Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjuuyrhu0ifermtb1js5i3lh",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://www.1688.com/enterprise/207XulQCgRAliuO5RIad6Ok14ovfLmMaY.html",
+        "urlHash": "6051e1f9ac92d6153796d365ae8b0a23",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "丁洁- 88查",
+        "text": "[](https://bixi.alicdn.com/punish/punish:resource:template:baba:eykbxbamgu_36509306.html?qrcode=91NBw5FKULbMv4udLexCzg|aVXmrg|evJ-Ng_0|cloud_ip_bl&uuid=f75341c3914a50b6ccbf8b9d2dec42ce&action=deny&origin=https://pages-fast.1688.com:443/wow/cbu/88cha/SEO/h8n7y3kZYzwfnjGwECxe/index.html)",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:15:04.725Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmjuuyrhu0ifermtb1js5i3lh]:4ae60cbe9019",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuuyrhu0ifermtb1js5i3lh",
+          "fieldPath": "RawPoolItem[cmjuuyrhu0ifermtb1js5i3lh]",
+          "objectLabel": "丁洁- 88查"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核判定为错误人物。链接指向1688企业查询页面，与人物丁洁（AI安全研究者）的专业领域和身份不符，极可能是同名的其他人。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.098Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0xek709dgrmtb0qsum3nu",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://www.linkedin.com/in/%E6%B4%81-%E4%B8%81-949562132",
+        "urlHash": "e4dc2e22fe2030b0d9a65f80bfb43230",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "丁洁- 佰仟金融- 催收员",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:15:03.160Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xek709dgrmtb0qsum3nu]:9c1f598c4b3f",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0xek709dgrmtb0qsum3nu",
+          "fieldPath": "RawPoolItem[cmju0xek709dgrmtb0qsum3nu]",
+          "objectLabel": "丁洁- 佰仟金融- 催收员"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认LinkedIn档案显示为金融催收员，与人物丁洁（AI安全研究者）的专业领域和身份不符，属于同名的其他人。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:17.565Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0xa7309cmrmtbiax4ck2j",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://www.ijo.cn/gjykcn/article/abstract/202104017?st=search",
+        "urlHash": "c73099892b7cc1f09ccef47c6cf04969",
+        "contentHash": "6067a709ca9c695c3448d5a147bf1750",
+        "title": "家族性渗出性玻璃体视网膜病变的筛查与诊断",
+        "text": "家族性渗出性玻璃体视网膜病变的筛查与诊断\n![](https://www.ijo.cn/uploadfile/gjykcn/pc_banner.png)\nEnglish\nIJO\n* ### [首页](https://www.ijo.cn/gjykcn/home)\n* ### [投稿指南](gjykcn/site/menu/20120104163914001)\n* ### [约稿启事](gjykcn/site/menu/20120104164239001)\n* ### [期刊概况](javascript:void(0);)\n* [期刊简介](gjykcn/site/menus/20220928104059001)\n* [编委会名单](gjykcn/site/menus/20220928104222001)\n* [收录与荣誉](https://www.ijo.cn/gjykcn/news/list?category_id=slry)\n* ### [文章检索](javascript:void(0);)\n* [最新一期](http://gjyk.ijournals.cn/gjykcn/issue/current)\n* [过刊检索](http://gjyk.ijournals.cn/gjykcn/issue/browser)\n* ### [联系我们](gjykcn/site/menu/20120104164315001)\n* ### [Email订阅](http://ies.ijo.cn/gjykcn/action/toc_alert)\n* ### [RSS订阅](http://ies.ijo.cn/gjykcn/article/rss)\n[首页](gjykcn/home)&gt;[过刊浏览](gjykcn/issue/browser)&gt;[2021年第21卷第4期](gjykcn/article/issue/2021_21_4)&gt;2021,21(4):652-655. DOI:10.3980/j.issn.1672-5123.2021.4.17[优先出版\n**上一篇|下一篇**\n# 家族性渗出性玻璃体视网膜病变的筛查与诊断# Screening and diagnosis of familial exudative vitreoretinopathy\n发布日期：2021-03-25\n* 摘要* 图/表\n* 访问统计* PDF预览\n* 参考文献* 相似文献* 引证文献* 附件[关键词]\n[摘要]\n家族性渗出性玻璃体视网膜病变(FEVR)是一种遗传性玻璃体视网膜疾病，主要临床特点为周边视网膜血管发育异常，眼底检查的特征性改变包括周边视网膜无血管区、血管分支增多以及异常吻合等。其临床表型多样，可无明显症状，易被漏诊，也可表现为视网膜脱离、视网膜皱褶、玻璃体积血等，给患者的视力造成严重影响。以往多认为 FEVR是一种罕见病，但近来在新生儿眼底筛查中发现FEVR的发病率可达1%。目前FEVR的诊断主要通过其临床特点、眼底荧光素造影、致病基因检测等途径。广角眼底照相技术具有无创、快速便捷等特点，可应用于FEVR患者的快速筛检和诊断。本文总结了FEVR的临床特点和诊断方法及广角眼底照相在FEVR筛查中的应用价值。\n[Key word]\n[Abstract]\nFamilial exudative vitreoretinopathy(FEVR)is an inherited vitreoretinopathy characterized by vascular dysplasia of periphery retina. Typical fundus findings consist of avascular periphery retina, increasing branching and abnormal anastomosis of retinal vessels. Having diversified clinical phenotypes, FEVR patients can be asymptomatic, which can often be missed, or with severe complications including retinal detachment, retinal folds, vitreous hemorrhage, causing vision loss. While FEVR had been thought to be rare in previous studies, the incidence was found to reach up to 1% in recent studies of fundus screening in the newborn. Diagnosis is usually based on clinical features, fundus fluorescein angiography, and detection of pathogenic genes. Ultra-wide-field imaging is a noninvasive and convenient way for the screening and diagnosis of FEVR. In this review,clinical features and diagnostic approaches of FEVR are concluded, and application value of ultra-wide-field imaging in its screening is discussed.\n[中图分类号]\n[基金项目]\n![](uploadfile/two_dimensional_code_img/gjykcn/2021/4/202104017_qr.png)\n![](gjykcn/article/preview_pdf/202104017)\n[更多...](javascript:MoreReference();)\n[更多...](javascript:MoreWasReferenced();)\n[**PDF(442.14 K)](gjykcn/article/pdf/202104017)\n[XML下载](gjykcn/article/export/202104017?action_type=export&export_type=xml&include_content=2)\n[HTML阅读](gjykcn/article/html/202104017)\n[导出引用](gjykcn/article/export/202104017)\n引用本文/ Get Citation\n丁洁,龚健杨.家族性渗出性玻璃体视网膜病变的筛查与诊断.国际眼科杂志, 2021,21(4):652-655.\n分享/ Share\n* [![](template/common/images/share_twitter.png)](javascript:ArticleShare('twitter');)\n* [![](template/common/images/share_facebook.png)](javascript:ArticleShare('facebook');)\n* [![](template/common/images/share_linkedin.png)](javascript:ArticleShare('linkedin');)\n* [![](template/common/images/share_google.png)](javascript:ArticleShare('google');)\n* [![](template/common/images/share_weixin.png)](javascript:ArticleShare('weixin');)\n* [![](template/common/images/share_sina.png)](javascript:ArticleShare('sina');)\n* [![](template/common/images/share_qq.png)](javascript:ArticleShare('qq');)\n* [![](template/common/images/share_email.png)](javascript:ArticleShare('email');)\n文章指标/ Article Metrics\n点击次数:\n下载次数:\nHtml阅读次数:\n引用次数:\n历史/ History\n收稿日期:2020-06-16\n最后修改日期:2021-03-02\n录用日期:\n在线发布日期:2021-03-25\n出版日期:\n \n您是第位访问者主管单位：陕西省卫生健康委员会主办单位：中华医学会西安分会地址：陕西省西安市碑林区雁塔路北段8号万达广场2栋1单元11707室\n传真：029-82245172电话：029-85205906/82245172\nEmail：ijo.2000@163.com,ijo2000@126.com\n国际眼科杂志&reg;&reg; 2025 版权所有CC BY-NC-ND 4.0 适用于所有开放获取内",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:15:00.191Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xa7309cmrmtbiax4ck2j]:6a4c2cc61d9b",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0xa7309cmrmtbiax4ck2j",
+          "fieldPath": "RawPoolItem[cmju0xa7309cmrmtbiax4ck2j]",
+          "objectLabel": "家族性渗出性玻璃体视网膜病变的筛查与诊断"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核判定为错误人物。文章属于眼科医学领域，与人物丁洁（计算机科学/AI研究者）的专业领域完全不符，且文末引用显示作者为“丁洁, 龚健杨”，但此“丁洁”极大概率是同名的眼科医生。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.098Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0xasb09csrmtbqhxascui",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://m.cyzone.cn/article/721012",
+        "urlHash": "d8e6fa294ba405a301681fd382311a5c",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "我用AI“复活”了爷爷",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:15:05.432Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xasb09csrmtbqhxascui]:8b667a9f61c3",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0xasb09csrmtbqhxascui",
+          "fieldPath": "RawPoolItem[cmju0xasb09csrmtbqhxascui]",
+          "objectLabel": "我用AI“复活”了爷爷"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认内容与人物丁洁（AI安全研究者）的专业领域和身份不符，极可能是同名的其他人，属于高置信度错误归属。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:17.565Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0xbdx09d0rmtb95ueb51o",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://chinese.ccnu.edu.cn/info/1037/15837.htm",
+        "urlHash": "a7db1e680c67de8b82a2a0a86a9f9e1b",
+        "contentHash": "9cfb97f1e0739049401665fc84b33ea4",
+        "title": "文学院卓越班赴武汉市光谷实验中学金融港校区观摩丁洁 ...",
+        "text": "文学院卓越班赴武汉市光谷实验中学金融港校区观摩丁洁语文名师工作室第八次研修活动-华中师范大学文学院\n[![](../../images/778c71320251010.png)](../../index.htm)\n[![](../../images/link-icon.png)会议室预约](http://wxyhy.ccnu.edu.cn)[![](../../images/link-icon.png)在线投稿](../../zxtg.htm)\n* [首页](../../index.htm)\n* [学院概况](../../xygk/xyjj.htm)\n* [学院简介](../../xygk/xyjj.htm)\n* [机构设置](../../xygk/jgsz.htm)\n* [现任领导](../../xygk/xrld.htm)\n* [师资队伍](../../szdw/zzls.htm)\n* [在职老师](../../szdw/zzls.htm)\n* [离退休教师](../../szdw/ltxjs.htm)\n* [党建工作](../../djdt/djgz.htm)\n* [党建工作](../../djdt/djgz.htm)\n* [人才培养](../../rcpy/yjs.htm)\n* [本科生](../../rcpy/bks.htm)\n* [研究生](../../rcpy/yjs.htm)\n* [学术研究](../../xkjs/zyxm.htm)\n* [学术成果](../../xkjs/xscg.htm)\n* [主要项目](../../xkjs/zyxm.htm)\n* [学术活动](../../xkjs/xshd.htm)\n* [对外交流](../../dwjl/jsjl.htm)\n* [教师交流](../../dwjl/jsjl.htm)\n* [学生交流](../../dwjl/xsjl.htm)\n* [校友联线](../../xylx/xydt.htm)\n* [校友动态](../../xylx/xydt.htm)\n* [校友风采](../../xylx/xyfc.htm)\n* [华大中文期刊联盟](../../hdzwqklm.htm)\n* [联盟成员](../../hdzwqklm/lmcy/wgwxyj.htm)\n* [联盟新闻](../../hdzwqklm/lmxw.htm)\n* [建设资料](../../hdzwqklm/jszl.htm)\n* [书记院长信箱](../../sjyzxx.htm)\n \n![](../../images/menu.png)![](../../images/close.png)\n[![](../../images/logo.png)](../../index.htm)\n[设为首页](javascript:setHomepagea1077008a())[加入收藏](#)\n* [首页](../../index.htm)\n* [学院概况](../../xygk/xyjj.htm)\n* [学院简介](../../xygk/xyjj.htm)\n* [机构设置](../../xygk/jgsz.htm)\n* [现任领导](../../xygk/xrld.htm)\n* [师资队伍](../../szdw/zzls.htm)\n* [在职老师](../../szdw/zzls.htm)\n* [离退休教师](../../szdw/ltxjs.htm)\n* [党建工作](../../djdt/djgz.htm)\n* [党建工作](../../djdt/djgz.htm)\n* [人才培养](../../rcpy/yjs.htm)\n* [本科生](../../rcpy/bks.htm)\n* [研究生](../../rcpy/yjs.htm)\n* [学术研究](../../xkjs/zyxm.htm)\n* [学术成果](../../xkjs/xscg.htm)\n* [主要项目](../../xkjs/zyxm.htm)\n* [学术活动](../../xkjs/xshd.htm)\n* [对外交流](../../dwjl/jsjl.htm)\n* [教师交流](../../dwjl/jsjl.htm)\n* [学生交流](../../dwjl/xsjl.htm)\n* [校友联线](../../xylx/xydt.htm)\n* [校友动态](../../xylx/xydt.htm)\n* [校友风采](../../xylx/xyfc.htm)\n* [华大中文期刊联盟](../../hdzwqklm.htm)\n* [联盟成员](../../hdzwqklm/lmcy/wgwxyj.htm)\n* [联盟新闻](../../hdzwqklm/lmxw.htm)\n* [建设资料](../../hdzwqklm/jszl.htm)\n* [书记院长信箱](../../sjyzxx.htm)\n![](../../images/3.png)\n学生园地* [学生园地](../../xsyd/xsyd.htm)\n### 学生园地当前位置：[首页](../../index.htm)-\\>[学生园地](../../xsyd/xsyd.htm)-\\>[学生园地](../../xsyd/xsyd.htm)-\\>正文\n### 文学院卓越班赴武汉市光谷实验中学金融港校区观摩丁洁语文名师工作室第八次研修活动作者：邹晨远栗宇凡杨蕾邢鈺婷来源：文学院阅读次数：次日期：2025年11月09日\n**文学院讯（通讯员 邹晨远栗宇凡杨蕾****邢鈺婷****）**11月5日，文学院2023级、2024级卓越班学生及学科语文专业研究生代表，在江雪老师带领下前往武汉市光谷实验中学金融港校区，观摩丁洁名师工作室的第八次研修活动。\n活动伊始，李晨媛老师带来了一堂《色彩、神秘与谐趣——&lt;朝花夕拾&gt;整本书阅读》研讨课。她以“一朵（ ）的花”为主线，引导学生从色彩、神秘、谐趣等多个角度走进文本：借“碧绿的菜畦”“紫红的桑椹”等细节感知鲁迅笔下的多彩童年;以“美女蛇的故事”等带有神秘色彩的事件来激发学生阅读兴趣;通过研读对长妈妈“吐槽”的情节，引导学生体会鲁迅对长妈妈的真挚情感，逐步构建出一个“有童心、有好奇心、有真心”的鲁迅形象。最后，李晨媛老师以“失与拾”为核心为课堂作结，并借此升华了《朝花夕拾》整本书阅读的课堂主题。\n![](https://chinese.ccnu.edu.cn/virtual_attach_file.vsb?afc=ZLNQbVM4vZnlW2UE4G4Lm98LNLDoRNeDMlQ7oRVRnl-PU4C0gihFp2hmCIa0USh7L1yPMYy4U4V7U4ffUmvbMzUPU4C4oRvaMmUbnlrfMmWFUNCsMlLsMNrFLNlaUllJqjfjo4Oeos6Z_IbT6YhXptQ0g47aL4v0LzlZL4vJqdynx&oid=1920438193&tid=1037&nid=15837&e=.jpg)\n展示课结束后，授课教师李晨媛老师、光谷实验中学滕斌杰校长及丁洁名师工作室丁洁、方芳、何紫宸、刘婉四位老师，相继对展示课进行点评。滕斌杰指出，本节课抓住了《朝花夕拾》“温暖的回忆”的一面，还原了一个亲切的鲁迅形象。方芳从活动设计角度点评，认为本课以“花”为线索，阶梯式推进，实现了文本深度与课堂温度的融合。刘婉肯定了课堂在打破鲁迅刻板印象上的努力，通过细节引导学生体察文本中的人情与哲思。何紫宸用“找对路子、用对法子、触到根子”概括本课的教学成效，认为这是一次对“降温不减效”阅读理念的成功实践。丁洁在课例探讨的总结中提出三个核心问题：如何平衡整本书阅读的广度与深度？如何实现差异化教学？如何借助AI等技术赋能阅读教学？这些问题引发了在座教师的进一步思考。\n![](https://chinese.ccnu.edu.cn/virtual_attach_file.vsb?afc=ZLRQbRnmAVL4-YoEzNbLRlYLNnVUmQe2MRfVL4W2UmG4nzN0gihFp2hmCIa0n1yPLYyaL1yPMR7DnzMkUNW7oz74UzQ2LmMRnR74o7QknzTFoR7snzWRo7QFMRGbL8-Jv2bjo4Oeos6Z_IbT6YhXptQ0g47aL4v0LzlZL4vJqdynx&oid=1920438193&tid=1037&nid=15837&e=.png)\n活动尾声，武汉市教育科学研究院黄群芳主任以《关于整本书阅读的思考》为题作专题报告。她从“为何读”“问题何在”“如何读”三个层面系统阐述整本书阅读教学。她指出，整本书阅读应让学生产生“心动的感觉”，并提出四条路径：关注情感共鸣、鼓励自主探索、推动全员参与和营造阅读氛围。黄群芳强调，教师应是“点火人”而非“牵线人”，要尊重学生的阅读主体地位。![](https://chinese.ccnu.edu.cn/virtual_attach_file.vsb?afc=ZnNQb7UmnkM4fVUEznVM4-Zol-iL7-esU8UiLNW7MNQ7Um90gihFp2hmCIa0MSyaUShfM1hfUmCYUNliUNM7UzT7UmU4M4AfMzMfMlVVLzMFUzN8nz78UzWFLmLsL87Jqjfjo4Oeos6Z_IbT6YhXptQ0g47aL4v0LzlZL4vJqdynx&oid=1920438193&tid=1037&nid=15837&e=.jpg)\n此次活动由丁洁名师工作室牵头，联合黄群芳名师工作室、陈小林名师工作室、滕斌杰生活语文工作室、华中师范大学文学院2023级、2024级卓越班共同举办，武汉市光谷实验中学金融港校区承办。本次研修活动以鲜活的课堂实例和专业的理论讲解，为文学院学子搭建了理论与实践对接的平台，提供了观摩中学语文一线教学、提升专业素养的宝贵契机。\n![](https://chinese.ccnu.edu.cn/virtual_attach_file.vsb?afc=ZnR7b8M4rRUzCsMEmCPMNMRL4UPMRCeYLm78nmARL4VRM4l0gihFp2hmCIa0UYyPU1yZL1y8U8nkL4Q7Lzl4nlV7MRlDL4V2M8LboRN4UznFMmv8Lm9DL4TFMmLinRCJv2bjo4Oeos6Z_IbT6YhXptQ0g47aL4v0LzlZL4vJqdynx&oid=1920438193&tid=1037&nid=15837&e=.png)\n审读人：桂文亮李哲立上一条：[行而不辍，履践致远——文学院领导赴华一初实习交流](15947.htm)\n下一条：[以科技为舟，载文化远航：文学院“‘绘’意解字”项目成功晋级“挑战杯”大学生创业计划校级选拔赛](15807.htm)\n校内链接：[云上中文](http://chineseonline.ccnu.edu.cn)[华中师范大学](http://www.ccnu.edu.cn/)[华中师大在线](http://online.ccnu.com.cn/)[华中师大图书馆](http://lib.ccnu.edu.cn/)\n地址：武汉市洪山区珞喻路152号华中师范大学邮政编码:430079\n华中师范大学文学院2013ALLRIGHTSRESERWED.[鄂ICP备05003325号-9](https://beian.miit.gov.cn/)\n",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:18:27.333Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xbdx09d0rmtb95ueb51o]:f1545aaa29d7",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0xbdx09d0rmtb95ueb51o",
+          "fieldPath": "RawPoolItem[cmju0xbdx09d0rmtb95ueb51o]",
+          "objectLabel": "文学院卓越班赴武汉市光谷实验中学金融港校区观摩丁洁 ..."
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认内容描述的是语文名师工作室活动，与人物丁洁（AI安全研究者）的专业领域和身份不符，属于同名的其他人。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:17.565Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0xetz09dirmtbz8cqv148",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "sourceType": "exa",
+        "url": "https://www.pkulaw.com/journal/articlebyauthor?author=%E4%B8%81%E6%B4%81&way=subHead",
+        "urlHash": "6601df4637548785ecd59744f210d04f",
+        "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "title": "法学期刊文章-中国法学期刊大全-北大法宝V6官网",
+        "text": "",
+        "publishedAt": null,
+        "metadata": {
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:15:03.519Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwl0va000eopf34mek0zrk:RawPoolItem[cmju0xetz09dirmtbz8cqv148]:ab5f2eb850ea",
+        "personId": "cmjtwl0va000eopf34mek0zrk",
+        "person": "丁洁",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0xetz09dirmtbz8cqv148",
+          "fieldPath": "RawPoolItem[cmju0xetz09dirmtbz8cqv148]",
+          "objectLabel": "法学期刊文章-中国法学期刊大全-北大法宝V6官网"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认链接指向法学期刊作者页面，与人物丁洁（AI安全研究者）的专业领域不符，极可能是同名的法学研究者。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:17.565Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxj78902n4rmtbzndi6ez7",
+        "personId": "cmjtwkqqg0009opf3c1r9t5xj",
+        "person": "刘知远",
+        "sourceType": "exa",
+        "url": "https://en.wikipedia.org/wiki/Liu_Zhiyuan",
+        "urlHash": "ff9cf5df6326bcc12c5f3a31d32fefa6",
+        "contentHash": "3a591a7a08ed18a1611f3b9875d3bdb6",
+        "title": "Liu Zhiyuan",
+        "text": "[Jump to content](https://en.wikipedia.org/wiki/Liu_Zhiyuan#bodyContent)\n\nFrom Wikipedia, the free encyclopedia\n\nLater Han emperor from 947 to 948\n\n| Emperor Gaozu of Later Han 後漢高祖 |\n| --- |\n| [![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Liu_Zhiyuan_%28Han_Gaozu%29.jpg/500px-Liu_Zhiyuan_%28Han_Gaozu%29.jpg)](https://en.wikipedia.org/wiki/File:Liu_Zhiyuan_(Han_Gaozu).jpg) |\n| Emperor of the Later Han dynasty |\n| Reign | March 10, 947[\\[1\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-AS-1)[\\[2\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-ZZTJ286-2) – March 10, 948 |\n| Successor | [Liu Chengyou](https://en.wikipedia.org/wiki/Liu_Chengyou) |\n| |\n| Born | March 4, 895[\\[3\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-HFD99-3)[\\[1\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-AS-1) |\n| Died | March 10, 948 (aged 53)[\\[1\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-AS-1)[\\[4\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-ZZTJ287-4) |\n| Burial | Rui Mausoleum (睿陵; in modern [Yuzhou, Henan](https://en.wikipedia.org/wiki/Yuzhou,_Henan)) |\n| | Full name |\n| --- |\n| - [Family name](https://en.wikipedia.org/wiki/Chinese_surname): [Liú](https://en.wikipedia.org/wiki/Liu) (劉) - [Given name](https://en.wikipedia.org/wiki/Chinese_given_name): Initially Zhīyuǎn (知遠), later Gǎo (暠) (changed 948) |\n| Era dates |\n| Tiānfú (天福) (adopted from [Shi Jingtang](https://en.wikipedia.org/wiki/Shi_Jingtang) (Emperor Gaozu of [Later Jin](https://en.wikipedia.org/wiki/Later_Jin_(Five_Dynasties))): 947[\\[5\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-5) Qiányòu (乾祐): 948 |\n| [Posthumous name](https://en.wikipedia.org/wiki/Posthumous_name) |\n| Emperor Ruìwén Shèngwǔ Zhāosù Xiào (睿文聖武昭肅孝皇帝) |\n| [Temple name](https://en.wikipedia.org/wiki/Temple_name) |\n| Gāozǔ (高祖) | |\n| [House](https://en.wikipedia.org/wiki/Dynasty) | Liu |\n| [Dynasty](https://en.wikipedia.org/wiki/Dynasty) | [Later Han](https://en.wikipedia.org/wiki/Later_Han_(Five_Dynasties)) |\n\n**Liu Zhiyuan** ( [Chinese](https://en.wikipedia.org/wiki/Traditional_Chinese_characters): 劉知遠) (March 4, 895 – March 10, 948), later changed to **Liu Gao** (劉暠), also known by his [temple name](https://en.wikipedia.org/wiki/Temple_name) as the **Emperor Gaozu of Later Han** (後漢高祖), was the founding [emperor](https://en.wikipedia.org/wiki/Emperor_of_China) of the [Shatuo](https://en.wikipedia.org/wiki/Shatuo)-led Chinese [Later Han dynasty](https://en.wikipedia.org/wiki/Later_Han_(Five_Dynasties)), the fourth of the Five Dynasties during the [Five Dynasties and Ten Kingdoms period](https://en.wikipedia.org/wiki/Five_Dynasties_and_Ten_Kingdoms_period). He was the older brother of the [Northern Han](https://en.wikipedia.org/wiki/Northern_Han) founder [Liu Min](https://en.wikipedia.org/wiki/Liu_Chong) (Emperor Shizu).\n\n## Background\n\n\\[ [edit](https://en.wikipedia.org/w/index.php?title=Liu_Zhiyuan&action=edit&section=1)\\]\n\nLiu Zhiyuan was born in 895, during the reign of [Emperor Zhaozong of Tang](https://en.wikipedia.org/wiki/Emperor_Zhaozong_of_Tang), at [Taiyuan](https://en.wikipedia.org/wiki/Taiyuan). His ancestors were of [Shatuo](https://en.wikipedia.org/wiki/Shatuo) extraction. His father Liu Dian (劉琠) served as an officer under the major late- [Tang](https://en.wikipedia.org/wiki/Tang_dynasty) warlord [Li Keyong](https://en.wikipedia.org/wiki/Li_Keyong) the military governor of Hedong Circuit (河東, headquartered at Taiyuan). His mother was a Lady An, likely Liu Dian's wife.[\\[3\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-HFD99-3) He had at least one other brother of the same father (and possibly of the same mother), [Liu Chong](https://en.wikipedia.org/wiki/Liu_Chong).[\\[6\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-NHFD18-6) Lady An — likely after Liu Dian's death — bore a son to a man with the surname of Murong. This half-brother of Liu Zhiyuan's was named [Murong Yanchao](https://en.wikipedia.org/wiki/Murong_Yanchao).[\\[7\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-HFD130-7) Liu Zhiyuan was said to be serious in his disposition as a young man. He became a guard soldier for Li Keyong's adoptive son [Li Siyuan](https://en.wikipedia.org/wiki/Li_Siyuan).[\\[3\\]](https://en.wikipedia.org/wiki/Liu_Zhiyuan#cite_note-HFD99-3)\n\n## During Jin and Later Tang\n\n\\[ [edit](https://en.wikipedia.org/w/index.php?title=Liu_Zhiyuan&action=edit&section=2)\\]\n\nIn 907, Li Keyong's archrival [Zhu Quanzhong](https://en.wikipedia.org/wiki/Zhu_Quanzhong) the military governor of Xuanwu Circuit (宣武, headquartered in modern [Kaifeng](https://en.wikipedia.org/wiki/Kaifeng), [Henan](https://en.wikipedia.org/wiki/Henan)), who then had the Tang imperial court under his control, seized the throne from Emperor Zhaozong's son and successor [Emperor Ai](https://en.wikipedia.org/wiki/Emperor_Ai_of_Tang), ending Tang and starting a new dynasty known as [Later Liang](https://en.wikipedia.org/wiki/Later_Liang_(Five_Dy",
+        "publishedAt": "2025-03-09T16:00:00.000Z",
+        "metadata": {
+          "author": "Contributors to Wikimedia projects",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:25:16.762Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmjtxj78902n4rmtbzndi6ez7]:3e425e4c7995",
+        "personId": "cmjtwkqqg0009opf3c1r9t5xj",
+        "person": "刘知远",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.99,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxj78902n4rmtbzndi6ez7",
+          "fieldPath": "RawPoolItem[cmjtxj78902n4rmtbzndi6ez7]",
+          "objectLabel": "Liu Zhiyuan"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核判定为错误人物。维基百科页面描述的是五代十国时期的后汉开国皇帝刘知远，与人物刘知远（清华大学副教授）完全不符，属于同名的历史人物。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.098Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0k9jl07g5rmtbvz6uydwo",
+        "personId": "cmjtwkqqg0009opf3c1r9t5xj",
+        "person": "刘知远",
+        "sourceType": "exa",
+        "url": "https://www.nature.com/articles/s42256-025-00985-0?error=cookies_not_supported&code=0810ad2c-f010-4c5f-9626-69e920173517",
+        "urlHash": "1ff4962d97a8db12a4f41f6759c1273c",
+        "contentHash": "c1e50bb604f78383e0084c43759ef3af",
+        "title": "Rethinking machine unlearning for large language models",
+        "text": "Rethinking machine unlearning for large language models | Nature Machine Intelligence\n[Skip to main content](#content)\nThank you for visiting nature.com. You are using a browser version with limited support for CSS. To obtain\nthe best experience, we recommend you use a more up to date browser (or turn off compatibility mode in\nInternet Explorer). In the meantime, to ensure continued support, we are displaying the site without styles\nand JavaScript.\nAdvertisement\n[![Nature Machine Intelligence](https://media.springernature.com/full/nature-cms/uploads/product/natmachintell/header-3a46d3127519f23b44cac085d4e82c58.svg)](https://www.nature.com/natmachintell)\n* [View all journals](https://www.nature.com/siteindex)\n* [Search](#search-menu)\n* [Log in](https://idp.nature.com/auth/personal/springernature?redirect_uri=https://www.nature.com/articles/s42256-025-00985-0?error=cookies_not_supported&code=132cb33a-44f4-4afc-88d7-0ab49d3bd95d)\n* [ContentExplore content](#explore)\n* [Aboutthe journal](#about-the-journal)\n* [Publishwith us](#publish-with-us)\n* [Subscribe](https://www.nature.com/natmachintell/subscribe)\n* [Sign up for alerts](https://journal-alerts.springernature.com/subscribe?journal_id&#x3D;42256)\n* [RSS feed](https://www.nature.com/natmachintell.rss)\n* Review Article\n* Published:17 February 2025# Rethinking machine unlearning for large language models\n* [Sijia Liu](#auth-Sijia-Liu-Aff1-Aff2)[ORCID:orcid.org/0000-0003-2817-6991](https://orcid.org/0000-0003-2817-6991)[1](#Aff1),[2](#Aff2),\n* [Yuanshun Yao](#auth-Yuanshun-Yao-Aff3)[3](#Aff3)[na1](#na1),\n* [Jinghan Jia](#auth-Jinghan-Jia-Aff1)[1](#Aff1)[na1](#na1),\n* [Stephen Casper](#auth-Stephen-Casper-Aff4)[4](#Aff4),\n* [Nathalie Baracaldo](#auth-Nathalie-Baracaldo-Aff2-Aff5)[2](#Aff2),[5](#Aff5),\n* [Peter Hase](#auth-Peter-Hase-Aff6)[6](#Aff6),\n* [Yuguang Yao](#auth-Yuguang-Yao-Aff1)[1](#Aff1),\n* [Chris Yuhao Liu](#auth-Chris_Yuhao-Liu-Aff7)[ORCID:orcid.org/0000-0001-8544-6789](https://orcid.org/0000-0001-8544-6789)[7](#Aff7),\n* [Xiaojun Xu](#auth-Xiaojun-Xu-Aff8)[8](#Aff8),\n* [Hang Li](#auth-Hang-Li-Aff8)[8](#Aff8),\n* [Kush R. Varshney](#auth-Kush_R_-Varshney-Aff9)[ORCID:orcid.org/0000-0002-7376-5536](https://orcid.org/0000-0002-7376-5536)[9](#Aff9),\n* [Mohit Bansal](#auth-Mohit-Bansal-Aff6)[6](#Aff6),\n* [Sanmi Koyejo](#auth-Sanmi-Koyejo-Aff10)[ORCID:orcid.org/0000-0002-4023-419X](https://orcid.org/0000-0002-4023-419X)[10](#Aff10)&amp;\n* …* [Yang Liu](#auth-Yang-Liu-Aff7)[ORCID:orcid.org/0000-0001-8420-6011](https://orcid.org/0000-0001-8420-6011)[7](#Aff7)Show authors\n[*Nature Machine Intelligence*](https://www.nature.com/natmachintell)**volume7**,pages181–194 (2025)[Cite this article](#citeas)\n* 7921Accesses\n* 59Citations\n* 14Altmetric\n* [Metricsdetails](https://www.nature.com/articles/s42256-025-00985-0/metrics)\n### Subjects\n* [Computer science](https://www.nature.com/subjects/computer-science)\n* [Electrical and electronic engineering](https://www.nature.com/subjects/electrical-and-electronic-engineering)\n* [Information technology](https://www.nature.com/subjects/information-technology)\n## Abstract\nWe explore machine unlearning in the domain of large language models (LLMs), referred to as LLM unlearning. This initiative aims to eliminate undesirable data influence (for example, sensitive or illegal information) and the associated model capabilities, while maintaining the integrity of essential knowledge generation and not affecting causally unrelated information. We envision LLM unlearning becoming a pivotal element in the life-cycle management of LLMs, potentially standing as an essential foundation for developing generative artificial intelligence that is not only safe, secure and trustworthy but also resource-efficient without the need for full retraining. We navigate the unlearning landscape in LLMs from conceptual formulation, methodologies, metrics and applications. In particular, we highlight the often-overlooked aspects of existing LLM unlearning research, for example, unlearning scope, data–model interaction and multifaceted efficacy assessment. We also draw connections between LLM unlearning and related areas such as model editing, influence functions, model explanation, adversarial training and reinforcement learning. Furthermore, we outline an effective assessment framework for LLM unlearning and explore its applications in copyright and privacy safeguards and sociotechnical harm reduction.\n[Access through your institution](https://wayf.springernature.com?redirect_uri&#x3D;https://www.nature.com/articles/s42256-025-00985-0)\n[Buy or subscribe](#access-options)\nThis is a preview of subscription content,[access via your institution](https://wayf.springernature.com?redirect_uri&#x3D;https://www.nature.com/articles/s42256-025-00985-0)\n## Access options\n[Access through your institution](https://wayf.springernature.com?redirect_uri&#x3D;https://www.nature.com/articles/s42256-025-00985-0)\nAccess Nature and 54 other Nature Portfolio journals\nGet Natur",
+        "publishedAt": "2025-02-16T16:00:00.000Z",
+        "metadata": {
+          "author": "Liu, Yang",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:12:25.507Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwkqqg0009opf3c1r9t5xj:RawPoolItem[cmju0k9jl07g5rmtbvz6uydwo]:fe5752ba8205",
+        "personId": "cmjtwkqqg0009opf3c1r9t5xj",
+        "person": "刘知远",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0k9jl07g5rmtbvz6uydwo",
+          "fieldPath": "RawPoolItem[cmju0k9jl07g5rmtbvz6uydwo]",
+          "objectLabel": "Rethinking machine unlearning for large language models"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核确认论文作者列表中无刘知远，内容与人物不匹配，属于高置信度的错误归属，应直接删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:17.565Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0i6ic06ydrmtbn8n1vx0k",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/html/2405.01745v1",
+        "urlHash": "c4a3583545aa272f1bc88600e63f4eee",
+        "contentHash": "75ae0a4497813dd37d445f909e72cf15",
+        "title": "Large Language Models for UAVs: Current State and Pathways to the Future",
+        "text": "Large Language Models for UAVs: Current State and Pathways to the Future\n# Large Language Models for UAVs: Current State and Pathways to the Future\nShumaila Javaid , Nasir Saeed , Bin HeS. Javaid and B. He are with the Department of Control Science and Engineering, College of Electronics and Information Engineering, Tongji University, Shanghai 201804, China, and also with Frontiers Science Center for Intelligent Autonomous Systems, Shanghai 201210. Email: {shumaila, hebin}@tongji.edu.cn.\nN. Saeed is with the Department of Electrical and Communication Engineering, United Arab Emirates University (UAEU), Al Ain, 15551, UAE. Email: mr.nasir.saeed@ieee.org.\n###### Abstract\nUnmanned Aerial Vehicles (UAVs) have emerged as a transformative technology across diverse sectors, offering adaptable solutions to complex challenges in both military and civilian domains. Their expanding capabilities present a platform for further advancement by integrating cutting-edge computational tools like Artificial Intelligence (AI) and Machine Learning (ML) algorithms. These advancements have significantly impacted various facets of human life, fostering an era of unparalleled efficiency and convenience. Large Language Models (LLMs), a key component of AI, exhibit remarkable learning and adaptation capabilities within deployed environments, demonstrating an evolving form of intelligence with the potential to approach human-level proficiency. This work explores the significant potential of integrating UAVs and LLMs to propel the development of autonomous systems. We comprehensively review LLM architectures, evaluating their suitability for UAV integration. Additionally, we summarize the state-of-the-art LLM-based UAV architectures and identify novel opportunities for LLM embedding within UAV frameworks. Notably, we focus on leveraging LLMs to refine data analysis and decision-making processes, specifically for enhanced spectral sensing and sharing in UAV applications. Furthermore, we investigate how LLM integration expands the scope of existing UAV applications, enabling autonomous data processing, improved decision-making, and faster response times in emergency scenarios like disaster response and network restoration. Finally, we highlight crucial areas for future research that are critical for facilitating the effective integration of LLMs and UAVs.\n###### Index Terms:\nUAVs, Large Language Models, spectral sensing, autonomous systems, decision-making\n## IIntroduction\nUnmanned Aerial Vehicles (UAVs) have been a focus of attention for over fifty years due to their remarkable autonomy, mobility, and adaptability, enhancing a wide array of applications, including surveillance> [\n[> 1\n](https://arxiv.org/html/2405.01745v1#bib.bib1)> , [> 2\n](https://arxiv.org/html/2405.01745v1#bib.bib2)> ]\n, monitoring> [\n[> 3\n](https://arxiv.org/html/2405.01745v1#bib.bib3)> , [> 4\n](https://arxiv.org/html/2405.01745v1#bib.bib4)> ]\n, search and rescue> [\n[> 5\n](https://arxiv.org/html/2405.01745v1#bib.bib5)> ]\n, healthcare> [\n[> 6\n](https://arxiv.org/html/2405.01745v1#bib.bib6)> ]\n, maritime communications> [\n[> 7\n](https://arxiv.org/html/2405.01745v1#bib.bib7)> ]\n, and wireless network provisioning> [\n[> 8\n](https://arxiv.org/html/2405.01745v1#bib.bib8)> ]\n. These foundational achievements prompted the integration of Artificial Intelligence (AI) with UAVs. Particularly in the 2010s, advances in both UAV technology and AI reached a critical juncture, leading to substantial benefits across various applications. For example, AI-enabled UAVs employ facial recognition and real-time video analysis techniques to enhance security and monitoring of remote areas> [\n[> 9\n](https://arxiv.org/html/2405.01745v1#bib.bib9)> , [> 10\n](https://arxiv.org/html/2405.01745v1#bib.bib10)> , [> 11\n](https://arxiv.org/html/2405.01745v1#bib.bib11)> ]\n. In agriculture, UAVs with AI models analyze crop health for precise farming, improving resource efficiency and yields> [\n[> 12\n](https://arxiv.org/html/2405.01745v1#bib.bib12)> , [> 13\n](https://arxiv.org/html/2405.01745v1#bib.bib13)> ]\n. Meanwhile, AI-driven UAVs optimize logistics route planning and inventory management, streamlining warehouse operations and improving delivery efficiency> [\n[> 14\n](https://arxiv.org/html/2405.01745v1#bib.bib14)> , [> 15\n](https://arxiv.org/html/2405.01745v1#bib.bib15)> , [> 16\n](https://arxiv.org/html/2405.01745v1#bib.bib16)> ]\n.\nAmong these advancements, Large Language Models (LLMs) have recently gained significant attention as they enable systems to learn from application behavior and optimize existing systems> [\n[> 17\n](https://arxiv.org/html/2405.01745v1#bib.bib17)> , [> 18\n](https://arxiv.org/html/2405.01745v1#bib.bib18)> ]\n. Various LLMs employing transformer architectures, such as the Generative Pre-trained Transformer (GPT) series> [\n[> 19\n](https://arxiv.org/html/2405.01745v1#bib.bib19)> ]\n, Bidirectional Encoder Representations from Transformers (BERT)> [\n[> 20\n](https://arxiv.org/html/",
+        "publishedAt": "2022-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:13:07.843Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmju0i6ic06ydrmtbn8n1vx0k]:3117565933aa",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0i6ic06ydrmtbn8n1vx0k",
+          "fieldPath": "RawPoolItem[cmju0i6ic06ydrmtbn8n1vx0k]",
+          "objectLabel": "Large Language Models for UAVs: Current State and Pathways to the Future"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "论文作者为Shumaila Javaid, Nasir Saeed, Bin He，与姚顺雨无关，内容被错误归因，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxg5wh01y0rmtbjcnqwcrr",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://www.shsmu.edu.cn/english/info/1299/2228.htm",
+        "urlHash": "1940c4741e05e2f9261ac7924d4e7bd8",
+        "contentHash": "b0fa54966b656649e216bd35b32f2ae7",
+        "title": "YAO Xiaoying-Shanghai Jiao Tong University School of Medicine",
+        "text": "- [Working Opportunities](https://www.shsmu.edu.cn/english/Working_Opportunities.htm)\n- [Resources](http://xuebao.shsmu.edu.cn/CN/1674-8115/home.shtml)\n- [Library](https://www.shsmu.edu.cn/lib/)\n- [Email](https://mail.shsmu.edu.cn/)\n- [Services](https://www.shsmu.edu.cn/net/)\n\n[Chinese](https://www.shsmu.edu.cn/)\n\n[![](https://www.shsmu.edu.cn/english/images/logo.png)](https://www.shsmu.edu.cn/english/index.htm)\n\n- [Index](https://www.shsmu.edu.cn/english/index.htm)\n- [About](https://www.shsmu.edu.cn/english/info/1174/1443.htm)\n\n\n- [About SJTUSM](https://www.shsmu.edu.cn/english/About/About_SJTUSM.htm)\n- [Leadership](https://www.shsmu.edu.cn/english/About/Leadership.htm)\n- [History & Mission](https://www.shsmu.edu.cn/english/About/History___Mission.htm)\n- [Visual SJTUSM](https://www.shsmu.edu.cn/english/About/Visual_SJTUSM1/Photo.htm)\n- [Facts and Figures](https://www.shsmu.edu.cn/english/About/Facts_and_Figures.htm)\n\n- [Schools & Hospitals](https://www.shsmu.edu.cn/english/Schools___Hospitals/Schools___Departments.htm)\n\n\n- [Schools & Departments](https://www.shsmu.edu.cn/english/Schools___Hospitals/Schools___Departments.htm)\n- [Hospitals](https://www.shsmu.edu.cn/english/Schools___Hospitals/Hospitals.htm)\n\n- [Academics](https://www.shsmu.edu.cn/english/info/1414/4626.htm)\n\n\n- [Undergraduate Studies](https://www.shsmu.edu.cn/english/Academics/Undergraduate_Studies2.htm)\n- [Graduate Studies](https://www.shsmu.edu.cn/english/Academics/Graduate_Studies2.htm)\n- [Continuing Medical Education](https://www.shsmu.edu.cn/english/Academics/Continuing_Medical_Education2.htm)\n- [International Students](https://www.shsmu.edu.cn/english/Academics/International_Students1.htm)\n- [Academic Calendars](https://www.shsmu.edu.cn/english/Academics/Academic_Calendars.htm)\n\n- [Research & Faculty](https://www.shsmu.edu.cn/english/Research___Faculty/Key_Labs.htm)\n\n\n- [Key Labs](https://www.shsmu.edu.cn/english/Research___Faculty/Key_Labs.htm)\n- [Institutes and Centers](https://www.shsmu.edu.cn/english/Research___Faculty/Institutes_and_Centers.htm)\n- [Achievements](https://www.shsmu.edu.cn/english/Research___Faculty/Achievements1/National_Science_and_Technology_Award.htm)\n- [Faculty](https://www.shsmu.edu.cn/english/Research___Faculty/Faculty1/Faculty.htm)\n\n- [Global Engagement](https://www.shsmu.edu.cn/english/Global_Engagement/Global_Vision.htm)\n\n\n- [Global Vision](https://www.shsmu.edu.cn/english/Global_Engagement/Global_Vision.htm)\n- [Global Partners](https://www.shsmu.edu.cn/english/Global_Engagement/Global_Partners.htm)\n- [Belt and Road Initiative](https://www.shsmu.edu.cn/english/Global_Engagement/Belt_and_Road_Initiativ/Alliance.htm)\n- [Overseas Study](https://www.shsmu.edu.cn/english/Global_Engagement/Overseas_Stud.htm)\n- [SJTUSM Summer Program](https://www.shsmu.edu.cn/english/Global_Engagement/SJTUSM_Summer_Program.htm)\n- [International Clinical Placement](https://www.shsmu.edu.cn/english/Global_Engagement/International_Clinical_Placement.htm)\n\n- [Students](https://www.shsmu.edu.cn/english/Students.htm)\n- [News](https://www.shsmu.edu.cn/english/News.htm)\n\n\n- [RESEARCH](https://www.shsmu.edu.cn/english/News/RESEARCH.htm)\n- [CAMPUS](https://www.shsmu.edu.cn/english/News/CAMPUS.htm)\n- [HEALTH](https://www.shsmu.edu.cn/english/News/HEALTH.htm)\n\n- [Lecture](https://www.shsmu.edu.cn/english/Lecture.htm)\n- [Campus story](https://www.shsmu.edu.cn/english/Campus_story.htm)\n\n\n- [People](https://www.shsmu.edu.cn/english/Campus_story/People.htm)\n- [Life](https://www.shsmu.edu.cn/english/Campus_story/Life.htm)\n- [Architecture](https://www.shsmu.edu.cn/english/Campus_story/Architecture.htm)\n\n- [At SJTUSM](https://www.shsmu.edu.cn/english/At_SJTUSM.htm)\n- [Scientific research breakthroughs](https://www.shsmu.edu.cn/english/Scientific_research_breakthroughs.htm)\n- [time txt](https://www.shsmu.edu.cn/english/time_txt.htm)\n- [Historical development](https://www.shsmu.edu.cn/english/Historical_development.htm)\n- [Artwork](https://www.shsmu.edu.cn/english/Artwork.htm)\n\n\n- [Painting](https://www.shsmu.edu.cn/english/Artwork/Painting.htm)\n- [Handwriting](https://www.shsmu.edu.cn/english/Artwork/Handwriting.htm)\n\n![](https://www.shsmu.edu.cn/english/images/Research.JPG)\n\nResearch & Faculty\n\n[Index](https://www.shsmu.edu.cn/english/index.htm)\n/\n[Research & Faculty](https://www.shsmu.edu.cn/english/Research___Faculty/Key_Labs.htm)\n/\n[Faculty](https://www.shsmu.edu.cn/english/Research___Faculty/Faculty1/Faculty.htm)\n/\n[Faculty](https://www.shsmu.edu.cn/english/Research___Faculty/Faculty1/Faculty.htm)\n/\n[Ottawa-Shanghai Joint School of Medicine](https://www.shsmu.edu.cn/english/Research___Faculty/Faculty1/Faculty/Ottawa_Shanghai_Joint_School_of_Medicine.htm)\n/\nContent\n\nOttawa-Shanghai Joint School of Medicine![](https://www.shsmu.edu.cn/english/images/menu-dot-w.png)\n\n- [Key Labs](https://www.shsmu.edu.cn/english/Research___Faculty/Key_Labs.htm)\n- [Institutes and Centers](https://www.shsmu.edu.cn/english/Research___Faculty/Institutes_and_Centers.htm",
+        "publishedAt": "2022-09-28T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:55.073Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg5wh01y0rmtbjcnqwcrr]:599508b6a98b",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg5wh01y0rmtbjcnqwcrr",
+          "fieldPath": "RawPoolItem[cmjtxg5wh01y0rmtbjcnqwcrr]",
+          "objectLabel": "YAO Xiaoying-Shanghai Jiao Tong University School of Medicine"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容是上海交通大学医学院教师YAO Xiaoying的页面，与目标人物姚顺雨（AI领域）在姓名、专业领域、机构上均不匹配，属于错误归因，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxg4u901x8rmtbij4lbwc0",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://www.shsmu.edu.cn/english//info/1337/2905.htm",
+        "urlHash": "a558b6a08e097e38ab31179ab197a79c",
+        "contentHash": "43a1cfaf8487c7c06483f20b966f5b24",
+        "title": "YE Bo-Shanghai Jiao Tong University School of Medicine",
+        "text": "﻿\n\n- [Featured Graduate: Shao Yanfai: A Surgeon in the Making](https://www.shsmu.edu.cn/1036/5187.htm)\n- [Working Opportunities](https://www.shsmu.edu.cn/Working_Opportunities.htm)\n- [Resources](http://xuebao.shsmu.edu.cn/CN/1674-8115/home.shtml)\n- [Library](https://www.shsmu.edu.cn/lib/)\n- [Email](https://mail.shsmu.edu.cn/)\n\n[Chinese](https://www.shsmu.edu.cn/)\n\n- [Index](https://www.shsmu.edu.cn/index.htm)\n- [About](https://www.shsmu.edu.cn/1174/1443.htm)\n\n\n- [About SJTUSM](https://www.shsmu.edu.cn/About/About_SJTUSM.htm)\n- [Leadership](https://www.shsmu.edu.cn/About/Leadership.htm)\n- [History & Mission](https://www.shsmu.edu.cn/About/History___Mission.htm)\n- [Visual SJTUSM](https://www.shsmu.edu.cn/About/Visual_SJTUSM1/Photo.htm)\n- [Facts and Figures](https://www.shsmu.edu.cn/About/Facts_and_Figures.htm)\n\n- [Schools & Hospitals](https://www.shsmu.edu.cn/Schools___Hospitals/Schools___Departments.htm)\n\n\n- [Schools & Departments](https://www.shsmu.edu.cn/Schools___Hospitals/Schools___Departments.htm)\n- [Hospitals](https://www.shsmu.edu.cn/Schools___Hospitals/Hospitals.htm)\n\n- [Academics](https://www.shsmu.edu.cn/1414/4626.htm)\n\n\n- [Undergraduate Studies](https://www.shsmu.edu.cn/Academics/Undergraduate_Studies2.htm)\n- [Graduate Studies](https://www.shsmu.edu.cn/Academics/Graduate_Studies2.htm)\n- [Continuing Medical Education](https://www.shsmu.edu.cn/Academics/Continuing_Medical_Education2.htm)\n- [International Students](https://www.shsmu.edu.cn/Academics/International_Students1.htm)\n- [Academic Calendars](https://www.shsmu.edu.cn/Academics/Academic_Calendars.htm)\n\n- [Research & Faculty](https://www.shsmu.edu.cn/Research___Faculty/Key_Labs.htm)\n\n\n- [Key Labs](https://www.shsmu.edu.cn/Research___Faculty/Key_Labs.htm)\n- [Institutes and Centers](https://www.shsmu.edu.cn/Research___Faculty/Institutes_and_Centers.htm)\n- [Achievements](https://www.shsmu.edu.cn/Research___Faculty/Achievements1/National_Science_and_Technology_Award.htm)\n- [Faculty](https://www.shsmu.edu.cn/Research___Faculty/Faculty1/Faculty.htm)\n\n- [Global Engagement](https://www.shsmu.edu.cn/Global_Engagement/Global_Vision.htm)\n\n\n- [Global Vision](https://www.shsmu.edu.cn/Global_Engagement/Global_Vision.htm)\n- [Global Partners](https://www.shsmu.edu.cn/Global_Engagement/Global_Partners.htm)\n- [Belt and Road Initiative](https://www.shsmu.edu.cn/Global_Engagement/Belt_and_Road_Initiativ/Alliance.htm)\n- [Overseas Study](https://www.shsmu.edu.cn/Global_Engagement/Overseas_Stud.htm)\n- [SJTUSM Summer Program](https://www.shsmu.edu.cn/Global_Engagement/SJTUSM_Summer_Program.htm)\n- [International Clinical Placement](https://www.shsmu.edu.cn/Global_Engagement/International_Clinical_Placement.htm)\n\n- [Students](https://www.shsmu.edu.cn/Students.htm)\n- [News](https://www.shsmu.edu.cn/News.htm)\n\n\n- [RESEARCH](https://www.shsmu.edu.cn/News/RESEARCH.htm)\n- [CAMPUS](https://www.shsmu.edu.cn/News/CAMPUS.htm)\n- [HEALTH](https://www.shsmu.edu.cn/News/HEALTH.htm)\n\n- [Lecture](https://www.shsmu.edu.cn/Lecture.htm)\n- [Campus story](https://www.shsmu.edu.cn/Campus_story.htm)\n\n\n- [People](https://www.shsmu.edu.cn/Campus_story/People.htm)\n- [Life](https://www.shsmu.edu.cn/Campus_story/Life.htm)\n- [Architecture](https://www.shsmu.edu.cn/Campus_story/Architecture.htm)\n\n- [At SJTUSM](https://www.shsmu.edu.cn/At_SJTUSM.htm)\n- [Scientific research breakthroughs](https://www.shsmu.edu.cn/Scientific_research_breakthroughs.htm)\n- [time txt](https://www.shsmu.edu.cn/time_txt.htm)\n- [Historical development](https://www.shsmu.edu.cn/Historical_development.htm)\n- [Artwork](https://www.shsmu.edu.cn/Artwork.htm)\n\n\n- [Painting](https://www.shsmu.edu.cn/Artwork/Painting.htm)\n- [Handwriting](https://www.shsmu.edu.cn/Artwork/Handwriting.htm)\n\nResearch & Faculty\n\n[Index](https://www.shsmu.edu.cn/index.htm)\n/\n[Research & Faculty](https://www.shsmu.edu.cn/Research___Faculty/Key_Labs.htm)\n/\n[Faculty](https://www.shsmu.edu.cn/Research___Faculty/Faculty1/Faculty.htm)\n/\n[Faculty](https://www.shsmu.edu.cn/Research___Faculty/Faculty1/Faculty.htm)\n/\n[Shanghai Chest Hospital](https://www.shsmu.edu.cn/Research___Faculty/Faculty1/Faculty/Shanghai_Chest_Hospital.htm)\n/\nContent\n\nShanghai Chest Hospital\n\n- [Key Labs](https://www.shsmu.edu.cn/Research___Faculty/Key_Labs.htm)\n- [Institutes and Centers](https://www.shsmu.edu.cn/Research___Faculty/Institutes_and_Centers.htm)\n- [Achievements](https://www.shsmu.edu.cn/Research___Faculty/Achievements1/National_Science_and_Technology_Award.htm)\n - [National Science and Technology Award](https://www.shsmu.edu.cn/Research___Faculty/Achievements1/National_Science_and_Technology_Award.htm)\n- [Faculty](https://www.shsmu.edu.cn/Research___Faculty/Faculty1/Faculty.htm)\n - [Academicians](https://www.shsmu.edu.cn/Research___Faculty/Faculty1/Academicians.htm)\n\n##### YE Bo\n\nYE BoGraduate SupervisorShanghai Chest HospitalResearch area: Clinical Medicine /  SurgeryEmail: yebo0430@sjtu.edu.cn;  839974703@qq.comTel: 021-Clinical ResearchPredictive factors for lymph node meta",
+        "publishedAt": "2022-09-28T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:53.697Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg4u901x8rmtbij4lbwc0]:4f8336199f05",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg4u901x8rmtbij4lbwc0",
+          "fieldPath": "RawPoolItem[cmjtxg4u901x8rmtbij4lbwc0]",
+          "objectLabel": "YE Bo-Shanghai Jiao Tong University School of Medicine"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容是上海交通大学医学院胸外科医生YE Bo的页面，与目标人物姚顺雨（AI领域）在姓名、专业领域、机构上均不匹配，属于错误归因，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxg4cy01x0rmtb13633kyh",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://seu.teacher.360eol.com/moblic/share?teacherId=10209",
+        "urlHash": "a85d16ab7a43b7bcf83ac8055146ee5b",
+        "contentHash": "a9df035ae18e3b616251fb9c1f28dcb3",
+        "title": "东南大学姚玉宇导师主页",
+        "text": "东南大学姚玉宇导师主页\n# 【姚玉宇导师】招生“医学院”研究生介绍更新于2021-11-23[导师主页](https://seu.teacher.360eol.com/teacherBasic/preview?teacherId=10209)\n![](http://kyimg.360eol.com/kaoyan/yzteacher/abdab542fe67436794d9965b34368bb1.jpg?imageView2/1/w/224/h/332)\n姚玉宇研究员硕，博士生导师性别：女所属院系：医学院教授专业：内科学研究方向：动脉粥样硬化,代谢性疾病\n电子邮箱：# 招生政策![](https://seu.teacher.360eol.com/inc/mobile/images/fx_grjj_m.png)\n姚玉宇，女，研究员，博士生导师。南京医科大学博士毕业，2007年至东南大学心血管病研究所从事教学科研工作。\n2003\n年至2006 年作为访问学者在美国南卡罗莱纳州立医科大学生物化学与分子生物学系工作。2012年7月至2013年8月，在斯坦福大学分子影像中心研修。\n目前从事组织激肽释放酶缓激肽系统对心血管疾病功能及糖脂代谢的调节及动脉粥样硬化易损斑块的分子病理及分子影像研究。展开更多# 科研项目# 研究成果1.\nQian, L. L.; Ji, J. J.; Guo, J. Q.; Wu, Y. P.; Ma, G. S.; Yao, Y. Y\\*.,\nProtective Role of Serpina3c as a Novel Thrombin Inhibitor Against\nAtherosclerosis in Mice. Clinical science (London, England : 1979) 2021. Feb\n12;135(3):447-463\n2. Wu Y, Fu C, Li B, Liu C, He Z, Li XE, Wang A, Ma G, Yao, Y. Y\\* Bradykinin Protects Human\nEndothelial Progenitor Cells from High Glucose InducedSenescencethroughB2Receptor-Mediated\nActivation of the Akt/eNOS Signalling Pathway. .J Diabetes Res. 2021 Sep\n11;2021:6626627.\n2. Ji, J. J.; Qian, L. L.; Zhu, Y.; Wu, Y. P.; Guo, J. Q.;\nMa, G. S.; Yao, Y. Y.\\*, Serpina3c protects against high-fat diet-induced pancreatic\ndysfunction through the JNK-related pathway. Cellular signalling 2020,\n75, 109745.\n3. Li, B.; Sheng, Z.; Liu, C.; Qian, L.; Wu, Y.; Wu, Y.; Ma,\nG.; Yao, Y\\*., Kallistatin Inhibits Atherosclerotic Inflammation by\nRegulating Macrophage Polarization. Human\ngene therapy 2019, 30 (3), 339-351.\n4. Yao, Y\\*.; Li, B.;\nLiu, C.; Fu, C.; Li, P.; Guo, Y.; Ma, G.; Liu, N.; Chao, L.; Chao, J., Reduced\nPlasma Kallistatin Is Associated With the Severity of Coronary Artery Disease,\nand Kallistatin Treatment Attenuates Atherosclerotic Plaque Formation in Mice. Journal of the American Heart Association 2018, 7 (21), e009562.\n5.Yuyu Yao\\*,Kai\nCheng,Zhen ChengEvaluation of a Smart Activatable MRI Nanoprobe to\nTarget Matrix Metalloproteinases in the Early-Stages of Abdominal Aortic\nAneurysms. Nanomedicine 2020 Jun;26:102177.\n6. Wu Y , Wang C , Guo J , Carvalho A , Yao Y\\* , Sun P , Fan Q\nAnRGDmodified water-soluble fluorophore probe for in\nvivoNIR-IIimaging of thrombosis. Biomater Sci. 2020 Aug\n21;8(16):4438-4446.\n7. Yuan C, Yao Y\\*, Fu C, Rong T, Li B,\nCarvalho A, Liu C. Plasma concentrations of tissue kallikrein in normal and\npreeclamptic pregnancies. Hypertension inPregnancy. 2020 Feb;39(1):64-69.\n8. Fu C, Cao Y, Li B, Xu R, Sun Y, Yao Y\\*. Bradykinin\nprotects cardiac c-kit positive cells from high-glucose-induced senescence\nthrough B2 receptor signaling pathway. J Cell Biochem.\n2019 Oct;120(10):17731-17743.\n9. Ji J, Lu W, Zhu Y, Jin H, Yao Y\\*, Zhang H\\*, Zhao Y\\*.\nPorous Hydrogel-Encapsulated Photonic Barcodes for Multiplex Detection of\nCardiovascular Biomarkers. ACS Sens. 2019 May 24;4(5):1384-1390.\n10 Yao Y\\*, Li B, Fu C, Teng G, Ma G, Liu N.Anti-connective\ntissue growth factor detects and reduces plaque inflammation in early-stage\ncarotid atherosclerotic lesions. Nanomedicine. 2017 Nov;13(8):2385-2394.\n11. Yao Y, Li B, Yin C, Cong F, Ma GS,[Liu NF](),[Fan QL](),\nTeng GJ. A Folate-Conjugated Dual-Modal Fluorescent Magnetic Resonance Imaging\nContrast Agent that Targets Activated Macrophages In Vitro and In Vivo. J\nBiomed Nanotechnol. 2016 Dec;12(12):2161-71\n12. Yao Y\\*, Sheng Z, Li Y, Fu C, Ma\nG, Liu N, Chao J, Chao L. Tissue kallikrein -modified human endothelial\nprogenitor cell implantation improves cardiac function via enhanced activation\nof akt and increased angiogenesis. Lab Invest. 2013 May; 93(5):577-91.\n13. Sun Z, Cheng K, Yao Y, Wu F, Fung J, Chen H, Ma X, Tu Y, Xing L, Xia L,\nCheng Z.[Controlled\nNano-Bio Interface of Functional Nanoprobes for in Vivo Monitoring Enzyme\nActivity in Tumors.](https://www.ncbi.nlm.nih.gov/pubmed/30673268)ACS Nano. 2019 Jan 28. doi:\n10.1021/acsnano.8b05825.\n14.Qian L, Zhu K, Lin Y, An L, Huang F, Yao Y\\*, Ren L\\*.\nInsulin secretion impairment induced by rosuvastatin partly though autophagy in\nINS-1E cells. Cell Biol Int. 2019 Jul 24.\n15. Li B, Fu C, Ma G, Fan Q, Yao Y.\n\\*\nPhotoacoustic Imaging: A Novel Tool for Detecting Carotid Artery Thrombosis in\nMice. J Vasc Res. 2017;54(4):217-225\n16. Li B, Jiao Y, Fu C, Xie B, Ma G, Teng G, Yao Y\\*.Contralateral\nartery enlargement predicts carotid plaque progression based on machine\nlearning algorithm models in apoE-/- mice.Biomed Eng Online. 2016 Dec\n28;15(Suppl 2):146.\n17.\nFu C,\nLi B, Sun Y, Ma G, Yao Y\\*，Bradykinin inhibits\noxidative stress-induced senescence of endothelialprogenitor cells through the\nB2R/AKT/RB and B2R/EGFR/RB signal pathways. ，Oncotarget,\n6(28):24675-(28), pp24675-24689, 2015/09/28\n18．姚玉宇 张宇赵瑞傅聪文颂李冰邓刚马根山刘乃丰滕皋军，靶向氧化低密度脂蛋白纳米探针活体检测小鼠腹主动脉粥样斑块的MRI研究 ，中华核医学与分子影像杂志, 2(2), pp\n120-124, 2015/04/18 ，19、Yin C、Hong B、Gong Z,、Zhao H、Hu W、Lu X、Li J、Li X、Yang Z、\\*Fan Q、\\*Yao Y、\\*Huang W ，Fluorescent oligo(p-phenyleneethynylene) contained\namphiphiles-encapsulated magnetic nanoparticles for targeted magnetic resonance\nand two-photon optical imagi",
+        "publishedAt": "2021-11-22T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:53.075Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg4cy01x0rmtb13633kyh]:bba0445c0429",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg4cy01x0rmtb13633kyh",
+          "fieldPath": "RawPoolItem[cmjtxg4cy01x0rmtb13633kyh]",
+          "objectLabel": "东南大学姚玉宇导师主页"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容明确属于东南大学医学院研究员姚玉宇，与目标人物姚顺雨（AI领域）在姓名、机构、研究领域上均不匹配，属于错误归因，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxfyxa01uarmtbc8vpqrey",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://blog.csdn.net/xx_nm98/article/details/143694638",
+        "urlHash": "69af42529ae95f1b7faa051679e859d5",
+        "contentHash": "465ac8bc71d4ddd5ebf26a6c7bff7d4e",
+        "title": "两位清华天才Yao Shunyu投身大模型，跨学科人才或将成为 ...",
+        "text": "\n 最新推荐文章于 2025-08-27 20:59:43 发布 \n \n \n Python编程杰哥 \n 最新推荐文章于 2025-08-27 20:59:43 发布 \n \n \n \n \n版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。\n \n \n \n \n 近日，清华两位不同专业的Yao Shunyu，都选择了大模型领域。一名出身物理系，一名出身计算机系，看似八竿子打不着，却都能在同一个领域大显身手。之前我们有一期文章，以全球知名的协作平台Notion为例，探讨了“通才”的重要性，如今Claude团队对物理系学霸姚顺宇伸出橄榄枝，似乎又一次向我们展现了跨学科人才的重要性。 \n 01.两位清华天才Yao Shunyu \n 姚顺宇，清华物理系的传奇特奖得主，以其在凝聚态物理领域的突破性贡献而名声大噪 。他首次在国际上给出了关于非厄米系统的拓扑能带理论，并准确预测了相关现象。他的 研究成果发表在世界物理顶级期刊Phys. Rev. Lett.上，含金量之高，让一位211大学的副教授都不禁感叹：我们这边即使是教授，也没有能超过姚顺宇同学目前本科期间的物理水平的。 \n 从清华本科毕业后，姚顺宇前往斯坦福攻读博士。今年毕业后，他先是到加州伯克利做了几个月博士后，随后便正式加入了Anthropic的Claude团队，从物理的世界踏入了人工智能的奇妙殿堂。 \n \n 姚顺宇（物理） \n 姚顺雨，同样是清华出身，姚班学霸+联席会主席，计算机专业，还是个Rapper 。他在科研上的成就同样具备不小的影响力：思维树（Tree of Thoughts）让LLM反复思考，大幅提高推理能力；SWE-bench，一个大模型能力评估数据集；SWE-agent，一个开源AI程序员。他在毕业后加入了OpenAI团队 \n 两位Yao Shunyu，同名同校、同在自己专业领域取得了令人瞩目的成就，并最终都投身于人工智能大模型的领域，成为了跨学科合作的典范。 \n \n 姚顺雨（计算机） \n 02.Claude团队：不拘一格降人才 \n Claude团队属于Anthropic，一家专注于人工智能研究和开发的公司。Claude团队以其在大模型领域的工作成果而闻名，特别是在自然语言处理（NLP）和机器学习领域。 \n \n Claude团队一直以来都对物理背景的人才有着特殊的偏好 。其创始人Dario Amodei自己就是物理学家，他深知物理学家的思维方式和学习能力对于人工智能的发展有着重要的意义。所以物理学霸姚顺宇加入Claude团队，似乎也是一种必然。 \n 无独有偶， 隔壁的OpenAI，也不乏物理专业出身的人才 。比如Sora团队中就有北大物理系校友靖礼。Sora这类视频生成模型，被定义为“物理世界的模拟器”，其背后的扩散模型，灵感更是从物理中的热力学借鉴而来。这似乎也在告诉我们，学科之间的界限正在逐渐模糊，跨学科的合作将成为未来科技发展的趋势。 \n \n 03.跨学科：职场人的求职新路？ \n 姚顺宇的跨学科的职业发展之路，展示了在当今职场中，不同专业背景的人才如何通过跨学科的方式拓宽自己的职业道路。 \n 物理系姚顺宇的加入将为Claude团队带来了新的思维方式和解决问题的方法，这对于团队在人工智能领域的创新和研究路径探索具有重要意义。 这种跨学科的合作不仅可以增强团队的创新能力，也使团队能够更好地适应技术的快速发展和变化，以及市场需求的增长。同时，也为我们展示了个人如何利用自己的专业优势在新的领域中找到立足点。 \n 对于Claude团队而言，招聘像姚顺宇这样的跨学科人才，为其带来了显著的优势。 不同背景的成员能够促进更广泛的思维碰撞，激发新的创意 。跨学科团队的成员能够从多个角度分析问题，这有助于找到更全面、更有效的解决方案，特别是在理解复杂系统和实现技术突破方面。此外，跨学科团队的多样性也增强了团队的适应性和灵活性，使其能够更快地适应新趋势和技术。 \n 跨学科合作的趋势将继续增长，它将重塑我们的工作方式和思考模式。企业和组织需要认识到这种合作模式的价值，并积极培养和吸引跨学科人才。同时，个人也应该拥抱终身学习的理念，不断拓展自己的知识和技能边界，以适应这个快速变化的世界。在未来，我们期待看到更多像Yao Shunyu这样的跨学科人才，他们将成为推动科技进步和社会发展的关键力量。 \n 如何学习大模型 AI ？ \n 由于新岗位的生产效率，要优于被取代岗位的生产效率，所以实际上整个社会的生产效率是提升的。 \n 但是具体到个人，只能说是： \n “最先掌握AI的人，将会比较晚掌握AI的人有竞争优势”。 \n 这句话，放在计算机、互联网、移动互联网的开局时期，都是一样的道理。 \n 我在一线互联网企业工作十余年里，指导过不少同行后辈。帮助很多人得到了学习和成长。 \n 我意识到有很多经验和知识值得分享给大家，也可以通过我们的能力和经验解答大家在人工智能学习中的很多困惑，所以在工作繁忙的情况下还是坚持各种整理和分享。但苦于知识传播途径有限，很多互联网行业朋友无法获得正确的资料得到学习提升，故此将并将重要的AI大模型资料包括AI大模型入门学习思维导图、精品AI大模型学习书籍手册、视频教程、实战学习等录播视频免费分享出来。 \n \n 第一阶段（10天）：初阶应用 \n 该阶段让大家对大模型 AI有一个最前沿的认识，对大模型 AI 的理解超过 95% 的人，可以在相关讨论时发表高级、不跟风、又接地气的见解，别人只会和 AI 聊天，而你能调教 AI，并能用代码将大模型和业务衔接。 \n 大模型 AI 能干什么？ 大模型是怎样获得「智能」的？ 用好 AI 的核心心法 大模型应用业务架构 大模型应用技术架构 代码示例：向 GPT-3.5 灌入新知识 提示工程的意义和核心思想 Prompt 典型构成 指令调优方法论 思维链和思维树 Prompt 攻击和防范 … \n 第二阶段（30天）：高阶应用 \n 该阶段我们正式进入大模型 AI 进阶实战学习，学会构造私有知识库，扩展 AI 的能力。快速开发一个完整的基于 agent 对话机器人。掌握功能最强的大模型开发框架，抓住最新的技术进展，适合 Python 和 JavaScript 程序员。 \n 为什么要做 RAG 搭建一个简单的 ChatPDF 检索的基础概念 什么是向量表示（Embeddings） 向量数据库与向量检索 基于向量检索的 RAG 搭建 RAG 系统的扩展知识 混合检索与 RAG-Fusion 简介 向量模型本地部署 … \n 第三阶段（30天）：模型训练 \n 恭喜你，如果学到这里，你基本可以找到一份大模型 AI相关的工作，自己也能训练 GPT 了！通过微调，训练自己的垂直大模型，能独立训练开源多模态大模型，掌握更多技术方案。 \n 到此为止，大概2个月的时间。你已经成为了一名“AI小子”。那么你还想往下探索吗？ \n 为什么要做 RAG 什么是模型 什么是模型训练 求解器 &amp; 损失函数简介 小实验2：手写一个简单的神经网络并训练它 什么是训练/预训练/微调/轻量化微调 Transformer结构简介 轻量化微调 实验数据集的构建 … \n 第四阶段（20天）：商业闭环 \n 对全球大模型从性能、吞吐量、成本等方面有一定的认知，可以在云端和本地等多种环境下部署大模型，找到适合自己的项目/创业方向，做一名被 AI 武装的产品经理。 \n 硬件选型 带你了解全球大模型 使用国产大模型服务 搭建 OpenAI 代理 热身：基于阿里云 PAI 部署 Stable Diffusion 在本地计算机运行大模型 大模型的私有化部署 基于 vLLM 部署大模型 案例：如何优雅地在阿里云私有部署开源大模型 部署一套开源 LLM 项目 内容安全 互联网信息服务算法备案 … \n 学习是一个过程，只要学习就会有挑战。天道酬勤，你越努力，就会成为越优秀的自己。 \n 如果你能在15天内完成所有的任务，那你堪称天才。然而，如果你能完成 60-70% 的内容，你就已经开始具备成为一名大模型 AI 的正确特征了。 \n 这份完整版的大模型 AI 学习资料已经上传CSDN，朋友们如果需要可以微信扫描下方CSDN官方认证二维码免费领取【 保证100%免费 】 \n \n \n",
+        "publishedAt": "2024-11-10T16:00:00.000Z",
+        "metadata": {
+          "author": "xx_nm98",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:13:01.581Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxfyxa01uarmtbc8vpqrey]:eea0134a329c",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxfyxa01uarmtbc8vpqrey",
+          "fieldPath": "RawPoolItem[cmjtxfyxa01uarmtbc8vpqrey]",
+          "objectLabel": "两位清华天才Yao Shunyu投身大模型，跨学科人才或将成为 ..."
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核判定为错误人物。文章主要讨论物理系的姚顺宇（加入Anthropic），与目标人物姚顺雨（计算机系，OpenAI研究员）不符。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.098Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxg2lg01vqrmtbucct2fu2",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "sourceType": "exa",
+        "url": "https://fst.uic.edu.cn/cst/info/1109/1615.htm",
+        "urlHash": "1bc8e055fa5e92f3e614a11d4031aad5",
+        "contentHash": "07edc6ce079a0ec100d6738d6ed6170a",
+        "title": "姚舜禹-计算机科学与技术",
+        "text": "姚舜禹-计算机科学与技术\n校友风采![](../../images/7.jpg)\n* [校友分享](../../alumni/alumni_testimonials.htm)\n* [首页](../../index.htm)\\>\n* [校友风采](../../alumni/alumni_testimonials.htm)\\>\n* [校友分享](../../alumni/alumni_testimonials.htm)\\>\n* [Y2018](../../alumni/alumni_testimonials/Career_Developmentcareer_development/Y20181.htm)\\>\n姚舜禹大家好，我是姚舜禹，14级计算机系毕业生，现在在美国弗吉尼亚理工大学攻读计算机博士学位。我当时在系里并不是最优秀的，但是还是得到学校和系内博学的老师的悉心培养。我也会跟学校的外教打好关系，和他们成为朋友，得到了不仅仅是语言上的收获。拜这些各种不可多得的资源优势，我在学术上才能有长足的发展，并在后来申请到了弗吉尼亚大学计算机硕士项目。现在回想起来，在UIC的时光是我现在最美好的一段回忆，春天早上起来窗外漫山的云雾和鸟鸣；每天在广场的树坛前冥想；课余时间参加校飞盘队和爱秀剧社；当然也少不了在自习室挑灯夜战，和跟朋友游弋在珠海星光点点的海岸线上。现在我还时常怀念在唐家湾被氤氲缭绕的群山环绕的日子，怀念那些人和事。\n**Last Updated：Mar 24, 2022\n快速链接[北师港浸大](https://www.uic.edu.cn)[理工科技学院](http://fst.bnbu.edu.cn)[教务处](https://ar.uic.edu.cn/index.htm)[职业发展处](https://career.uic.edu.cn)\n[\n**\n联系我们](../../about/contact_us.htm)\n**\n关注我们![](../../images/BNBU%20FST%20WeChat.jpg)\n©2020-2021 United International College(UIC). All Rights Reserved.[粤ICP备07509519号](https://beian.miit.gov.cn/)粤公网安备44049102496044.",
+        "publishedAt": "2022-03-23T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:22:50.789Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg2lg01vqrmtbucct2fu2]:e0830e3fe231",
+        "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+        "person": "姚顺雨",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxg2lg01vqrmtbucct2fu2",
+          "fieldPath": "RawPoolItem[cmjtxg2lg01vqrmtbucct2fu2]",
+          "objectLabel": "姚舜禹-计算机科学与技术"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "审核判定为错误人物。内容是关于北师港浸大校友姚舜禹，其姓名、毕业院校和当前就读学校均与目标人物姚顺雨（清华毕业，OpenAI研究员）不符。属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.098Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxjism02rirmtbbjdeterm",
+        "personId": "cmjtwkuo5000bopf37qiylene",
+        "person": "朱军",
+        "sourceType": "exa",
+        "url": "https://www.gov.cn/english/leaders/huangju.htm",
+        "urlHash": "aa6db2cabf615d9c221bc44d3a5e120d",
+        "contentHash": "7467e3a112ec5b109c8e9517c5675149",
+        "title": "The Chinese Central Government's Official Web Portal",
+        "text": "| |\n| --- |\n| |\n\n| | | | | | | | | |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| | | | |\n| --- | --- | --- |\n| | |\n| --- |\n| ![](https://www.gov.cn/english/imgs/state.gif) |\n\n| | | |\n| --- | --- | --- |\n| | | |\n| --- |\n| |\n| [National People's Congress](https://www.gov.cn/english/links/npc.htm) |\n| [Presidency](https://www.gov.cn/english/links/presidency.htm) |\n| [State Council](https://www.gov.cn/english/links/statecouncil.htm) |\n| [Central Military Commission](https://www.gov.cn/english/links/cmc.htm) |\n| [Supreme People's Court](https://www.gov.cn/english/links/supremecourt.htm) |\n| [Supreme People's Procuratorate](https://www.gov.cn/english/links/supremeprocuratorate.htm) |\n\n| |\n| --- |\n| |\n| ![](https://www.gov.cn/english/imgs/govt.gif) |\n| |\n\n| |\n| --- |\n| |\n| [Central Leadership](https://www.gov.cn/english/links/centralleadership20050926.htm) |\n| [Local Leadership](https://www.gov.cn/english/links/localleadership.htm) |\n\n| |\n| --- |\n| |\n| ![](https://www.gov.cn/english/imgs/gov_sites.gif) |\n| |\n\n| |\n| --- |\n| [iframe](http://https:%2F%2Fwww.gov.cn%2Fenglish%2Fleaders%2Fhuangju.htm/../iframe/bwlj.htm) | | |\n\n| |\n| --- |\n| ![](https://www.gov.cn/english/imgs/left_di.gif) |\n\n| |\n| --- |\n| ![](https://www.gov.cn/english/imgs/search2.gif) |\n| | |\n| --- |\n| [iframe](http://https:%2F%2Fwww.gov.cn%2Fenglish%2Fleaders%2Fhuangju.htm/../iframe/jiansuo02.htm) | |\n| |\n\n| |\n| --- |\n| |\n| ![](https://www.gov.cn/english/imgs/leaders01.gif) |\n| |\n\n| |\n| --- |\n| |\n| ![](https://www.gov.cn/english/imgs/l_archives.gif) |\n| |\n\n| |\n| --- |\n| [iframe](http://https:%2F%2Fwww.gov.cn%2Fenglish%2Fleaders%2Fhuangju.htm/../iframe/rl_hj.htm) | | | ![](https://www.gov.cn/english/imgs/jiao.gif) | | | | | | | | | | |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| | |\n| --- |\n| | | [![](https://www.gov.cn/english/imgs/button_about4.gif)](https://www.gov.cn/english/about.htm) | | |\n| --- |\n| | | [![](https://www.gov.cn/english/imgs/button_services3.gif)](https://www.gov.cn/english/services.htm) | | |\n| --- |\n| | | [![](https://www.gov.cn/english/imgs/button_busieness3.gif)](https://www.gov.cn/english/business.htm) | | |\n| --- |\n| | | [![](https://www.gov.cn/english/imgs/button_today4.gif)](https://www.gov.cn/english/chinatoday.htm) | | |\n| --- |\n| | |\n\n| | | |\n| --- | --- | --- |\n| | | |\n| --- | --- |\n| ![](https://www.gov.cn/english/imgs/chinatoday01.gif) | |\n\n| | |\n| --- | --- |\n| ![](https://www.gov.cn/english/imgs/chinatoday02.gif) | ![](https://www.gov.cn/english/imgs/cw08.gif) |\n\n| | | |\n| --- | --- | --- |\n| | | | |\n| --- | --- | --- |\n| ![](https://www.gov.cn/english/imgs/leaders13.gif)\n\n| |\n| --- |\n| ![](https://www.gov.cn/english/imgs/leaders05.gif) |\n\n| |\n| --- |\n| |\n\n| | |\n| --- | --- |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice Premier Huang Ju's remains cremated](https://www.gov.cn/english/2007-06/05/content_637236.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Chinese Vice-Premier Huang Ju dies in Beijing](https://www.gov.cn/english/2007-06/02/content_633884.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice Premier Huang Ju stresses development of Shanghai in panel discussion](https://www.gov.cn/english/2007-03/07/content_545168.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [China takes stride in postal system reform](https://www.gov.cn/english/2007-01/30/content_513145.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [China's electricity regulators urged to further reforms of power system](https://www.gov.cn/english/2007-01/27/content_509982.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Coordination stressed in developing Yangtze River](https://www.gov.cn/english/2006-11/23/content_451030.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice Premier Huang Ju meets HK bankers](https://www.gov.cn/english/2006-11/15/content_443722.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice Premier Huang stresses opening-up of financial sectors](https://www.gov.cn/english/2006-10/19/content_418661.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice premier calls for improvement of social security system](https://www.gov.cn/english/2006-09/23/content_396992.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice-premier Huang Ju stresses innovation in telecom sector](https://www.gov.cn/english/2006-08/30/content_373284.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice Premier Huang asks PBOC to improve service quality](https://www.gov.cn/english/2006-07/25/content_345437.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [\"Blue territory\" celebrated on Maritime Day](https://www.gov.cn/english/2006-07/11/content_333288.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Vice premier vows to deepen financial reform](https://www.gov.cn/english/2006-06/19/content_314628.htm) |\n| |\n| ![](https://www.gov.cn/english/imgs/list.gif) | [Wen,",
+        "publishedAt": "2007-06-04T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:25:31.751Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtwkuo5000bopf37qiylene:RawPoolItem[cmjtxjism02rirmtbbjdeterm]:4b8e3c9248f0",
+        "personId": "cmjtwkuo5000bopf37qiylene",
+        "person": "朱军",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.99,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxjism02rirmtbbjdeterm",
+          "fieldPath": "RawPoolItem[cmjtxjism02rirmtbbjdeterm]",
+          "objectLabel": "The Chinese Central Government's Official Web Portal"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "内容为中国政府门户网站关于黄菊副总理的页面，与朱军教授无关，属于错误挂载，高置信删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:27:43.311Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxsg0104r3rmtbxt26mmy3",
+        "personId": "cmjtxcjfw00045p08hrhp2m4t",
+        "person": "汤姆·布朗",
+        "sourceType": "exa",
+        "url": "https://clay.earth/profile/tom-brown-faa02639",
+        "urlHash": "85ac5790734b0b330c7f8589e026c0ea",
+        "contentHash": "533fa73804ad2c87246f4afca07c2b8b",
+        "title": "Tom Brown - LinkedIn",
+        "text": "[Sign In](https://web.clay.earth/login?signin)\n\nGet Clay Free →\n\n#### Suggestions\n\n# Tom Brown\n\n## Engineering Consultant at Qoppa Capital\n\nAboutRelated\n\n### Professional Background\n\nTom Brown is an accomplished professional in the semiconductor industry, bringing nearly 20 years of rich experience in process development and integration technology. Over his extensive career, he has developed a specialization in Chemical-Mechanical Planarization (CMP) and has honed his skills in wet clean and etch process development tailored for enhanced efficiency in logic, memory, and novel semiconductor applications.\n\nHis experience is further enriched by a solid foundation in designing experiments (DOE) and performing statistical analysis utilizing advanced tools including JMP, Excel, Minitab, and Spotfire. Tom's proficiency extends to important areas of semiconductor manufacturing such as failure analysis, metrology, and statistical process control (SPC). His dual capability as a technical expert and an effective communicator allows him to bridge the gap between internal teams and external customers seamlessly.\n\nTom has played a key role in various yield ramp acceleration projects across multiple technology nodes, specifically focusing on 32nm, 22nm, and 14nm SOI integration schemes. His thorough understanding of semiconductor processes coupled with his ability to solve complex problems creatively has made him an invaluable asset at each organization he has been associated with.\n\n### Education and Achievements\n\nTom pursued a Master of Science degree in Materials Science and Engineering from the prestigious University of Illinois Urbana-Champaign, which laid a robust academic foundation for his career in semiconductor technology. Prior to this, he earned his Bachelor of Science degree in Ceramic Engineering from the same university, underscoring his strong technical background in materials, an essential component of his work in semiconductor applications.\n\n### Career Journey\n\nThroughout his career, Tom has held numerous notable positions that showcase his expertise and commitment to excellence in the tech field:\n\n- **Engineering Consultant at Qoppa Capital** – He brings fresh perspectives and innovative ideas to the consultancy landscape, helping businesses navigate complex processes and enhance their semiconductor technology initiatives.\n\n- **Sr. Semiconductor Yield Enhancement Consulting Engineer at PDF Solutions** – In this role, Tom led significant projects that contributed to yield improvements, showcasing his capability to enhance efficiency and performance in semiconductor manufacturing.\n\n- **Contract Engineer at Intel** – His tenure here allowed him to be involved in leading-edge projects that shape the future of microelectronics.\n\n- **Senior Process Engineer at Contour Semiconductor** – Where he bolstered his process engineering expertise, applying his knowledge to practical applications in the semiconductor industry.\n\n- **Senior Process Development Engineer at Novellus** and **Motorola Semiconductor** – Tom played a pivotal role in the development of new processes essential for advancing semiconductor technologies, effectively integrating these innovations into production workflows.\n\n- **Process Development Engineer at AMD** and **Senior CMP Process Engineer at Advanced Micro Devices** – His contributions here were crucial in advancing CMP processes, optimizing techniques that directly impacted product performance and yield.\n\n\n### Notable Skills and Specialties\n\nTom's professional journey has equipped him with a diverse skill set that enhances his role as a leader in the semiconductor sector. Some of his predominant specialties include:\n\n- **Chemical-Mechanical Planarization (CMP)** – This expertise is crucial for the semiconductor manufacturing processes where surface polishing plays a vital role in achieving optimal device performance.\n- **Wet Clean and Etch Process Development** – His experience in this area ensures that contaminants are effectively removed, leading to higher quality in semiconductor fabrication.\n- **Statistical Analysis and Process Control** – Utilizing tools like JMP and Minitab, he leads systematic approaches to maximize yields and optimize processes, reflecting a commitment to quality and performance.\n- **Design of Experiments (DOE)** – Tom’s analytical skills allow him to meticulously plan experiments that yield meaningful insights into process functionalities and improvements.\n\n### Personal Attributes\n\nAside from his technical skills, Tom is recognized for his effective communication abilities. He excels in articulating complex technical information clearly to both internal teams and external customers. His capacity to collaborate with cross-functional teams has been a hallmark of his professional success, enabling him to gather diverse insights and engineer innovative solutions.\n\n### Conclusion\n\nIn summary, Tom Brown is a highly skilled semiconductor process development expert with n",
+        "publishedAt": "2024-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:32:28.034Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmjtxcjfw00045p08hrhp2m4t:RawPoolItem[cmjtxsg0104r3rmtbxt26mmy3]:5a1b4c7f2ea3",
+        "personId": "cmjtxcjfw00045p08hrhp2m4t",
+        "person": "汤姆·布朗",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxsg0104r3rmtbxt26mmy3",
+          "fieldPath": "RawPoolItem[cmjtxsg0104r3rmtbxt26mmy3]",
+          "objectLabel": "Tom Brown - LinkedIn"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "LinkedIn资料描述的是半导体行业的Tom Brown，与页面人物（Anthropic联合创始人）在职业领域、公司和经历上完全不符，属于同名不同人，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0flem06j2rmtb190ibw7y",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "sourceType": "exa",
+        "url": "https://cn.xiaoi.com/en",
+        "urlHash": "32a0a1be52da20ca92777db62afa3676",
+        "contentHash": "c6f194a0ee0b042d8fd887c00a52aa56",
+        "title": "Cognitive Intelligence AI Solution Provider",
+        "text": "Cognitive Intelligence AI Solution Provider | Xiao-i\nE-mail: marketing@xiaoi.net\n![](https://cn.xiaoi.com/_nuxt/img/rebot-wu-kong-img.ae933e3.png)\n[\n](https://cn.xiaoi.com/en)\n* [Home](https://cn.xiaoi.com/en)\n* [HUA ZANG](https://cn.xiaoi.com/en/huazang)\n* [Hua Zang LLM Open Platform](https://cn.xiaoi.com/en/huazang/openPlatform)\n* [Partner Support](https://cn.xiaoi.com/en/huazang/cooperation)\n* [Core Products](https://cn.xiaoi.com/en/coreProduct)\n* [AI Chatbot](https://cn.xiaoi.com/en/coreProduction/DialogueRobot)\n* [Live Chat](https://cn.xiaoi.com/en/coreProduction/LiveChat)\n* [Smart Agent Assistant](https://cn.xiaoi.com/en/coreProduction/SeatHelper)\n* [Smart Coach](https://cn.xiaoi.com/en/coreProduction/CoachPlatform)\n* [Intelligent Knowledge Management](https://cn.xiaoi.com/en/coreProduction/IKBase)\n* [Smart IVR](https://cn.xiaoi.com/en/coreProduction/AudioGuide)\n* [Smart Outbound Call](https://cn.xiaoi.com/en/coreProduction/VoiceOutCall)\n* [RPA](https://cn.xiaoi.com/en/coreProduction/DIstaff)\n* [Smart Drawing Review](https://cn.xiaoi.com/en/coreProduction/DrawingReview)\n* [Intelligent Cloth Inspection System](https://cn.xiaoi.com/en/coreProduction/ClothInspect)\n* [Ruilan-LLM Research Assistant](https://cn.xiaoi.com/en/coreProduction/ruilan)\n* [Solutions](https://cn.xiaoi.com/en/casePage/connect)\n* [Hua Zang+Customer Service Center](https://cn.xiaoi.com/en/casePage/connect)\n* [Hua Zang+Finance](https://cn.xiaoi.com/en/casePage/finance)\n* [Hua Zang+Urban Public Service](https://cn.xiaoi.com/en/casePage/city)\n* [Hua Zang+Enterprise](https://cn.xiaoi.com/en/casePage/enterprise)\n* [Hua Zang+Architecture](https://cn.xiaoi.com/en/casePage/architecture)\n* [Hua Zang+Healthcare](https://cn.xiaoi.com/en/casePage/medical)\n* [Hua Zang+Manufacturing](https://cn.xiaoi.com/en/casePage/manufacture)\n* [Hua Zang+Metaverse](https://cn.xiaoi.com/en/casePage/metagalaxy)\n* [Service Delivery Capability](https://cn.xiaoi.com/en/casePage/service)\n* [Investor Relations](https://ir.xiaoi.com)\n* [About Us](https://cn.xiaoi.com/en/aboutPage/companyProfile)\n* [Our Company](https://cn.xiaoi.com/en/aboutPage/companyProfile)\n* [Join Us](https://cn.xiaoi.com/en/aboutPage/joinUs)\n* [Contact Us](https://cn.xiaoi.com/en/aboutPage/contactInfo)\n* [Xiao-i News](https://cn.xiaoi.com/en/aboutPage/newsInfo)\n* Choose your Region\n**\n* Global\n* Americas\n* Middle East\n* Asia Pacific**\n* English\n* 简体中文![](https://cn.xiaoi.com/_nuxt/img/index-top-swiper-2.b03acc9.png)\n![](https://cn.xiaoi.com/_nuxt/img/xiaoi-text.536b7d3.png)\nXiao-I is a global pioneer company in the field of Cognitive Intelligence\n[\nLearn More\n](https://cn.xiaoi.com/en/aboutPage/companyProfile)\n![](https://cn.xiaoi.com/_nuxt/img/symbiosis-banner.8facb47.png)\n![](https://cn.xiaoi.com/_nuxt/img/symbiosis-banner.8facb47.png)\n![](https://cn.xiaoi.com/_nuxt/img/row-banner-slogan-en.c5fe0f9.png)\n![](https://cn.xiaoi.com/_nuxt/img/banner-title-en.440de96.png)\nLearn More\n![](https://cn.xiaoi.com/_nuxt/img/banner-model-en.6a5089d.png)\n[\nLearn More\n](https://cn.xiaoi.com/en/huazang)\n![](https://cn.xiaoi.com/_nuxt/img/banner-nasdaq-en.1483fb1.jpg)\n[Learn More](https://mp.weixin.qq.com/s?__biz=MzUzNTgzNDU1OQ==&amp;mid=2247492092&amp;idx=1&amp;sn=7ed0a4dff4ba9c9c0a53eb1247849fe7)\nXiao-I has been focusing on the continuous innovation and breakthroughs in its core technologies related to cognitive intelligence based on natural language processing. Aiming for the large-scale implementation and commercialization of original patents and achievements as our development goal.\nOur Value\nBe individual altruism, be customer-centered\n![](https://cn.xiaoi.com/_nuxt/img/hxjs-tip-5.9af8ce3.png)Our mission\nServe and benefit more people with our AI technology\n![](https://cn.xiaoi.com/_nuxt/img/patent-logo1.ae8dcd5.png)\n20\nYears of Technology Accumulation\n323\nPieces of Authorized Patents\n137\nPieces of Software Copyrights\n1000\nApplication Scenarios and Customer Use Cases\n![](https://cn.xiaoi.com/_nuxt/img/patent-logo.be4d42f.png)（As of Jan.10, 2024）\nMilestones\n* 2001\nXiao-I was established in Shanghai, China\nLeading the core track in Cognitive Intelligence\n* 2004\nXiao-I took the lead in launching a chatbot globally）\nChinese invention patent “A Chatbot System” （ZL200410053749.9）\nPioneering the forefront of chatbot technology\n* 2006-2011\nXiao-I is the first to apply chatbot technology to intelligent customer service\nSuccessfully implemented dozens of typical cases for government and enterprise customers\nPioneer in the commercialization of Artificial Intelligence\n* 2011-2022\nXiao-I accelerates benchmark replication, upgrading the full chain of intelligent customer service products and diverse solutions\nSuccessfully implemented AI+ Architecture solutions, and took the lead in creating industry-standard benchmark use cases for applications\nServing thousands of large and medium-sized enterprises, accumulating thousands of application scenarios\nPossesses outstanding commercialization ability\nEstablished APAC headquarter",
+        "publishedAt": "2024-06-25T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:18:24.945Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0flem06j2rmtb190ibw7y]:10947843f016",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0flem06j2rmtb190ibw7y",
+          "fieldPath": "RawPoolItem[cmju0flem06j2rmtb190ibw7y]",
+          "objectLabel": "Cognitive Intelligence AI Solution Provider"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "网站是‘Xiao-i’公司的官方页面，与页面人物肖弘（Manus AI创始人）在姓名拼写、公司和业务领域上均不匹配，属于不同实体，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0fktt06iyrmtbq79mrig1",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "sourceType": "exa",
+        "url": "https://github.com/charliezcr/Xiaohao",
+        "urlHash": "33cca2581abc05f55628f540319075ba",
+        "contentHash": "93b6689b3d7d81829cb0371883d6c6d6",
+        "title": "GitHub - charliezcr/Xiaohao: The embodied intelligence of Shenhao's humanoid robot Xiaohao",
+        "text": "GitHub - charliezcr/Xiaohao: The embodied intelligence of Shenhao&#39;s humanoid robot Xiaohao\n[Skip to content](#start-of-content)\n## Navigation Menu\nToggle navigation\n[](https://github.com/)\n[Sign in](https://github.com/login?return_to=https://github.com/charliezcr/Xiaohao)\nAppearance settings\nSearch or jump to...\n# Search code, repositories, users, issues, pull requests...\n \nSearch\nClear\n[Search syntax tips](https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax)\n# Provide feedback\n \nWe read every piece of feedback, and take your input very seriously.\nInclude my email address so I can be contacted\nCancelSubmit feedback\n# Saved searches\n## Use saved searches to filter your results more quickly\n \nName\nQuery\nTo see all available qualifiers, see our[documentation](https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax).\nCancelCreate saved search\n[Sign in](https://github.com/login?return_to=https://github.com/charliezcr/Xiaohao)\n[Sign up](https://github.com/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=/%3Cuser-name%3E/%3Crepo-name%3E&amp;source=header-repo&amp;source_repo=charliezcr/Xiaohao)\nAppearance settings\nResetting focus\nYou signed in with another tab or window.[Reload]()to refresh your session.You signed out in another tab or window.[Reload]()to refresh your session.You switched accounts on another tab or window.[Reload]()to refresh your session.Dismiss alert\n{{ message }}\n[charliezcr](https://github.com/charliezcr)/**[Xiaohao](https://github.com/charliezcr/Xiaohao)**Public\n* [Notifications](https://github.com/login?return_to=/charliezcr/Xiaohao)You must be signed in to change notification settings\n* [Fork1](https://github.com/login?return_to=/charliezcr/Xiaohao)\n* [Star4](https://github.com/login?return_to=/charliezcr/Xiaohao)\nThe embodied intelligence of Shenhao's humanoid robot Xiaohao\n[4stars](https://github.com/charliezcr/Xiaohao/stargazers)[1fork](https://github.com/charliezcr/Xiaohao/forks)[Branches](https://github.com/charliezcr/Xiaohao/branches)[Tags](https://github.com/charliezcr/Xiaohao/tags)[Activity](https://github.com/charliezcr/Xiaohao/activity)\n[Star](https://github.com/login?return_to=/charliezcr/Xiaohao)\n[Notifications](https://github.com/login?return_to=/charliezcr/Xiaohao)You must be signed in to change notification settings\n# charliezcr/Xiaohao\nmain\n[Branches](https://github.com/charliezcr/Xiaohao/branches)[Tags](https://github.com/charliezcr/Xiaohao/tags)\n[](https://github.com/charliezcr/Xiaohao/branches)[](https://github.com/charliezcr/Xiaohao/tags)\nGo to file\nCode\nOpen more actions menu\n## Folders and files\n|Name|Name|\nLast commit message\n|\nLast commit date\n|\n## Latest commit\n## History\n[60 Commits](https://github.com/charliezcr/Xiaohao/commits/main/)\n[](https://github.com/charliezcr/Xiaohao/commits/main/)\n|\n[README.md](https://github.com/charliezcr/Xiaohao/blob/main/README.md)\n|\n[README.md](https://github.com/charliezcr/Xiaohao/blob/main/README.md)\n|\n|\n|\n[cozy\\_chat.py](https://github.com/charliezcr/Xiaohao/blob/main/cozy_chat.py)\n|\n[cozy\\_chat.py](https://github.com/charliezcr/Xiaohao/blob/main/cozy_chat.py)\n|\n|\n|\n[cozy\\_tts.py](https://github.com/charliezcr/Xiaohao/blob/main/cozy_tts.py)\n|\n[cozy\\_tts.py](https://github.com/charliezcr/Xiaohao/blob/main/cozy_tts.py)\n|\n|\n|\n[llm\\_prompt.md](https://github.com/charliezcr/Xiaohao/blob/main/llm_prompt.md)\n|\n[llm\\_prompt.md](https://github.com/charliezcr/Xiaohao/blob/main/llm_prompt.md)\n|\n|\n|\n[rs\\_cam.py](https://github.com/charliezcr/Xiaohao/blob/main/rs_cam.py)\n|\n[rs\\_cam.py](https://github.com/charliezcr/Xiaohao/blob/main/rs_cam.py)\n|\n|\n|\n[silero\\_vad.onnx](https://github.com/charliezcr/Xiaohao/blob/main/silero_vad.onnx)\n|\n[silero\\_vad.onnx](https://github.com/charliezcr/Xiaohao/blob/main/silero_vad.onnx)\n|\n|\n|\n[vad.py](https://github.com/charliezcr/Xiaohao/blob/main/vad.py)\n|\n[vad.py](https://github.com/charliezcr/Xiaohao/blob/main/vad.py)\n|\n|\n|\n[vl\\_prompt.md](https://github.com/charliezcr/Xiaohao/blob/main/vl_prompt.md)\n|\n[vl\\_prompt.md](https://github.com/charliezcr/Xiaohao/blob/main/vl_prompt.md)\n|\n|\n|\nView all files\n|\n## Repository files navigation\n# Xiaohao: Humanoid Robot's Embodied Intelligence\n[](#xiaohao-humanoid-robots-embodied-intelligence)\n## Project Overview\n[](#project-overview)\nWelcome to the GitHub repository of Xiaohao's embodied intelligence system. Xiaohao is a humanoid robot designed by Hangzhou Shenhao Technology, serving as a guide in the exhibition hall. This is multi-agent system integrating a large language model and a vision language model at its core, supported by robotic arms, mobility wheels, and a camera. These agents communicate via ROS messages, allowing Xiaohao to respond to user prompts, make decisions, and interact with its environment.\nIn this repository, you will find the open-sourced code for the large language model and the camera, as well as the ROS publisher nodes responsible for orche",
+        "publishedAt": "2024-03-27T16:00:00.000Z",
+        "metadata": {
+          "author": "charliezcr",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T19:12:19.178Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju0fktt06iyrmtbq79mrig1]:fdd832e856ad",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0fktt06iyrmtbq79mrig1",
+          "fieldPath": "RawPoolItem[cmju0fktt06iyrmtbq79mrig1]",
+          "objectLabel": "GitHub - charliezcr/Xiaohao: The embodied intelligence of Shenhao's humanoid robot Xiaohao"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "GitHub仓库属于用户‘charliezcr’，项目描述为‘Shenhao's humanoid robot Xiaohao’，与页面人物肖弘（Manus AI创始人）无直接关联，属于不同实体，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju1b1ww0c4nrmtb5fnow57g",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "sourceType": "exa",
+        "url": "https://www.prnewswire.com/news-releases/xiao-i-corporation-reports-unaudited-full-year-2023-financial-results-302131629.html",
+        "urlHash": "f983063fd9a661f8933a2e48bac56c3b",
+        "contentHash": "16acba902cafde8c2d7ae743c12b517e",
+        "title": "Xiao-I Corporation Reports Unaudited Full Year 2023 Financial Results",
+        "text": "Xiao-I Corporation Reports Unaudited Full Year 2023 Financial Results[Accessibility Statement](https://www.cision.com/about/accessibility/)[Skip Navigation](#main)\n# Xiao-I Corporation Reports Unaudited Full Year 2023 Financial Results\n## News provided by\n[**Xiao-I Corporation**](https://www.prnewswire.com/news/xiao__i-corporation/)\nApr 30, 2024, 08:37 ET\n## Share this article\n[\n* **](javascript:;)[\n* **](javascript:;)[\n* **](javascript:;)[\n* **](javascript:;)[\n* **](javascript:;)\nShare toX\n**\n**\nShare this article\n[\n* **](javascript:;)[\n* **](javascript:;)[\n* **](javascript:;)[\n* **](javascript:;)\nShare toX\n* Net revenues grew 22.8% year over year to a record high ofUS$59.2 million\n* MaaS business grew 48.5% year over year toUS$19.2 million, and accounted for over 30% of total revenue\n* Gross margin rose 270 basis points year over year to 66.6%\nSHANGHAI,April 30, 2024/PRNewswire/ -- Xiao-I Corporation (\"Xiao-I\" or the \"Company\"), a leading cognitive artificial intelligence (\"AI\") enterprise, today announced its unaudited financial results for the full year endedDecember 31, 2023.\n**2023 Financial Highlights**\n* Net revenues increased 22.8% year over year to a record high ofUS$59.2 million.\n* Sale of cloud platform products increased 82.6% year over year toUS$47.0 million.\n* Net revenue of MaaS business increased 48.5% year over year toUS$19.2 million, and MaaS business accounted for over 30% of the total net revenue for the first time.\n* Gross profit increased 28.0% year over year toUS$39.4 million.\n* Gross margin was 66.6%, up 270 basis points year over year.\nMr.Hui Yuan, Chairman and Chief Executive Officer of Xiao-I, commented, \"Our achievements are a testament to our commitment. In 2023, we achieved a significant 22.8% increase in net revenues, reaching an all-time high of$59.2 million. These results demonstrate our ability to succeed in a competitive landscape, highlighting our achievement in generating substantial revenue growth and solidifying our position in the market. \"\nSpeaking about the recent advancements, Mr.Hui Yuanstated, \"The year 2023 marked a significant milestone for us with the introduction of the 'Hua Zang Universal Large Language Model'. This groundbreaking model addresses prevalent challenges within the global AI landscape with innovative solutions. Leveraging the robust framework of the Model, we further expanded our reach with the unveiling of the transformative Hua Zang Ecosystem inOctober 2023. The ecosystem is a comprehensive suite of services, including development support, market outreach, and financial investment, and emphasized its role in fostering a dynamic network that connects global partners, customers, and developers.\" He also emphasized the successful commercialization of Hua Zang LLM, \"our MaaS business grew 48.5% to$19.2 million, which is primarily attributed to Hua Zang LLM, and it's really encouraging to see the business accounted for over 30% of the total net revenue for the first time.\"\nFurthermore, Mr.Hui Yuanshared the progress in global expansion, stating, \"We have also expanded our presence internationally. This includes the establishment of U.S. andUnited Arab Emiratessubsidiaries, demonstrating our commitment to reaching new markets globally and connecting with a broader audience.\"\nIn terms of Xiao-I's significant growth in both MaaS and non-Maas business during 2023, Mr.Hui Yuanrevealed, \"Our MaaS business experienced a signficant growth rate of 48.5%, reachingUS$19.2 million, and the advancement is attributable to the success of the Hua Zang LLM. Additionally, within the year, revenue from our non-MaaS segment grew by 13.4%, amounting toUS$40.0 million. This growth signifies the effectiveness of Xiao-I's diversified business approach and its ability to capture opportunities beyond the MaaS sector.\"\nIn addition, Mr.Hui Yuananticipates that Hua Zang LLM is poised to enhance its commercialization efforts even further. \"With a wealth of experience in commercialization and a proven track record of completing over 1,000 projects, we expect our B2B operations will continue to exhibit a robust and consistent growth trajectory, with around 20% of growth rate on a yearly basis. Meanwhile, we firmly believe that the integration of AI models and consumer applications has become increasingly seamless and influential, fostering innovation and meeting consumer demand with greater effectiveness. As a result, we have expanded our business into the B2C market to capitalize on this opportunity.\"\n**Recent Developments and Strategic Highlights:**\n* **Introduction of the Hua Zang Universal Large Language Model Ecosystem:**InOctober 2023, Xiao-I introduced the Hua Zang Universal Large Language Model Ecosystem (the \"Hua Zang Ecosystem\"), marking a significant milestone in its journey. This groundbreaking ecosystem is crafted to streamline the development, application, and operational aspects of cognitive intelligence solutions, fostering a synergy that enhances speed, cost-eff",
+        "publishedAt": "2024-04-29T16:00:00.000Z",
+        "metadata": {
+          "author": "Xiao-I Corporation",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:10:55.088Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "cmju0f9ip0000f8yv7tv455kv:RawPoolItem[cmju1b1ww0c4nrmtb5fnow57g]:20a2f4b38e2f",
+        "personId": "cmju0f9ip0000f8yv7tv455kv",
+        "person": "肖弘",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1b1ww0c4nrmtb5fnow57g",
+          "fieldPath": "RawPoolItem[cmju1b1ww0c4nrmtb5fnow57g]",
+          "objectLabel": "Xiao-I Corporation Reports Unaudited Full Year 2023 Financial Results"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "新闻稿是关于‘Xiao-I Corporation’的财务业绩，其CEO为‘Hui Yuan’，与页面人物肖弘（Manus AI创始人）在姓名、公司和职位上均不匹配，属于不同实体，可安全删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T15:28:16.096Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-06-11T08:44:30.689Z",
+  "mode": "execute",
+  "policyVersion": "2026-06-11",
+  "criteria": {
+    "status": "candidate",
+    "completeness": ">= 45",
+    "rawCount": ">= 2",
+    "keepCount": ">= 2",
+    "liveCount": ">= 1",
+    "cardCount": ">= 5",
+    "avatarUrl": "required for promotion"
+  },
+  "summary": {
+    "candidates": 1,
+    "promotable": 1,
+    "held": 0,
+    "updated": 1
+  },
+  "promotable": [
+    {
+      "id": "127ecbaa-aa90-412f-8c99-951d431a7688",
+      "name": "Phil Blunsom",
+      "status": "candidate",
+      "completeness": 45,
+      "avatarUrl": "/avatars/phil-blunsom-7c8b2b3d.webp",
+      "rawCount": 2,
+      "liveCount": 2,
+      "keepCount": 2,
+      "cardCount": 5,
+      "blockers": []
+    }
+  ],
+  "held": []
+}

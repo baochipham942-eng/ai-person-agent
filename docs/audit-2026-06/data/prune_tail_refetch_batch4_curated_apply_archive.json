@@ -1,0 +1,1406 @@
+{
+  "generatedAt": "2026-06-10T14:41:06.748Z",
+  "summary": {
+    "generatedAt": "2026-06-10T14:41:06.746Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch4_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch4_curated_apply_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH4_CURATED_APPLY.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 18,
+    "selectedSourceRows": 18,
+    "skippedRows": 6,
+    "existingRawPoolItems": 8,
+    "rawInserted": 10,
+    "rawUpdated": 8,
+    "keepAuditsInserted": 10,
+    "keepAuditsExisting": 8,
+    "byDecision": {
+      "replace_source": 15,
+      "augment_source": 3
+    },
+    "bySourceType": {
+      "exa": 10,
+      "official": 4,
+      "paper": 3,
+      "podcast": 1
+    },
+    "topPeople": {
+      "Dario Amodei": 3,
+      "Guillaume Lample": 3,
+      "阿希什·瓦斯瓦尼": 3,
+      "Noam Shazeer": 2,
+      "Sam Altman": 2,
+      "Chris Olah": 1,
+      "Jan Leike": 1,
+      "Mustafa Suleyman": 1,
+      "亚历克·拉德福德": 1,
+      "杰夫·迪恩": 1
+    },
+    "topHosts": {
+      "arxiv.org": 2,
+      "a16z.com": 1,
+      "ai.meta.com": 1,
+      "cbsnews.com": 1,
+      "cdn.openai.com": 1,
+      "darioamodei.com": 1,
+      "digitaleconomy.stanford.edu": 1,
+      "forbes.com": 1,
+      "jan.leike.name": 1,
+      "montgomerysummit.com": 1,
+      "noamshazeer.com": 1,
+      "papers.neurips.cc": 1,
+      "podcasts.apple.com": 1,
+      "research.google": 1,
+      "ted.com": 1,
+      "transformer-circuits.pub": 1,
+      "ycombinator.com": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 6
+    }
+  },
+  "existing": [
+    {
+      "id": "6e661017-11fe-42e5-8486-5e249160236c",
+      "personId": "cmjtswmqg00033est2ofuqdw0",
+      "person": "Dario Amodei",
+      "url": "https://www.darioamodei.com",
+      "urlHash": "b09d9b09ba5a0f714e1ed18780936695a7bbe5ac83c4b59b9c4adb642e5728f7",
+      "sourceType": "exa",
+      "title": "Dario Amodei",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "aa1e508c-1eae-43d3-87f3-e681f6169ff3",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "url": "https://jan.leike.name",
+      "urlHash": "578ba304e337b81905ad5c616dc1016be42a35ddbaae631454fa08689dc01136",
+      "sourceType": "exa",
+      "title": "Jan Leike",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "06551a7b-d57b-41bc-97dd-f97566e59d52",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "url": "https://www.ted.com/speakers/mustafa_suleyman",
+      "urlHash": "c1da0312be5ebf07385f45f9e1c3216092e62b8a0a01b5da62e7938b17d73872",
+      "sourceType": "exa",
+      "title": "Mustafa Suleyman | Speaker | TED",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "a84ac284-3127-4461-b919-5fd284835dad",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "url": "https://www.noamshazeer.com",
+      "urlHash": "6c3082c129f5cf91e6cebf183ab3e57ee382c0402a8f2788a06846114a9c5a42",
+      "sourceType": "exa",
+      "title": "Noam Shazeer | AI Scientist, Google Gemini Co-Lead",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "ac6aa336-0468-44d5-a1cc-7a1fb4ec1f93",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "urlHash": "7d5aeba0ca8b2dfbdd41307eadb60732927d4a53e5791ff1fce894c7551cacac",
+      "sourceType": "official",
+      "title": "[PDF] Language Models are Unsupervised Multitask Learners | OpenAI",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "6d16e3ef-15ba-42ed-af29-682475e8ecb6",
+      "personId": "cmjtxdf96000a5p08z94252m2",
+      "person": "杰夫·迪恩",
+      "url": "https://research.google/people/jeff",
+      "urlHash": "46eaf75b4d9abf9f6ace0a454dd87a9e1c98a401938277d6859fc8cbd2db24f5",
+      "sourceType": "official",
+      "title": "Jeffrey Dean",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "a337d3b8-1674-4b68-b361-41d51a18b742",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "urlHash": "061f7ac9a28bcb3d9c6cb25ea2a7c35d6a00de0da4161749792ddefc00cdf1ee",
+      "sourceType": "paper",
+      "title": "1706.03762 Attention Is All You Need - arXiv",
+      "hasKeepAudit": true
+    },
+    {
+      "id": "4d9254ae-d16a-454d-9f54-6b4cc92c8b83",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "url": "https://papers.neurips.cc/paper/7181-attention-is-all-you-need.pdf",
+      "urlHash": "5a652422f33f80a7c83673fb23ad0d1fb77e6ea2e21e001c5697442bfcfe1025",
+      "sourceType": "paper",
+      "title": "[PDF] Attention is All you Need - NIPS",
+      "hasKeepAudit": true
+    }
+  ],
+  "appliedRows": [
+    {
+      "claimId": "prune-tail:cmjtxmfht03bsrmtbs2ygc6kq",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://transformer-circuits.pub/2021/framework/index.html",
+      "urlHash": "20ca4ff8e129daf4d1b022447419caf02810211c7b034fdff42aa6b2541d2b9b",
+      "contentHash": "b93136d54e06622b369b35ee7fc4a5a200e007da1daeae8400fa66ec2db10176",
+      "sourceType": "exa",
+      "title": "A Mathematical Framework for Transformer Circuits",
+      "text": "Evidence quote: Authors Nelson Elhage∗†, Neel Nanda∗, Catherine Olsson∗, Tom Henighan†, Nicholas Joseph†, Ben Mann†, Amanda Askell, Yuntao Bai, Anna Chen, Tom Conerly, Nova DasSarma, Dawn Drain, Deep Ganguli, Zac Hatfield-Dodds, Danny Hernandez, Andy Jones, Jackson Kernion, Liane Lovitt, Kamal Ndousse, Dario Amodei, Tom Brown, Jack Clark, Jared Kaplan, Sam McCandlish, Chris Olah‡ Selection reason: 论文官方页面，作者列表明确包含Chris Olah，且标注其为通讯作者，直接证明其贡献。 Source preview: Transformer Circuits Thread A Mathematical Framework for Transformer Circuits Authors Nelson Elhage∗†, Neel Nanda∗, Catherine Olsson∗, Tom Henighan†, Nicholas Joseph†, Ben Mann†, Amanda Askell, Yuntao Bai, Anna Chen, Tom Conerly, Nova DasSarma, Dawn Drain, Deep Ganguli, Zac Hatfield-Dodds, Danny Hernandez, Andy Jones, Jackson Kernion, Liane Lovitt, Kamal Ndousse, Dario Amodei, Tom Brown, Jack Clark, Jared Kaplan, Sam McCandlish, Chris Olah‡ Affiliation Published Dec 22, 2021 \\ Core Research Contributor; † Core Infrastructure Contributor; ‡ Correspondence to <colah@anthropic.com>; Author contributions statement below. Transformerlanguage models are an emerging technology that is gaining incr... MiMo rationale: 原始来源（transformer-circuits.pub）的论文作者列表明确包含Chris Olah，并标注其为通讯作者，直接证明其参与和贡献。此来源权威、可访问，且直接满足证据要求，可替换原弱匹配来源。 Evidence requirements: Source must name Chris Olah directly. | Source must support why \"A Mathematical Framework for Transformer Circuits\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Chris Olah Mathematical Framework for Transformer Circuits official source | Chris Olah Mathematical Framework for Transformer Circuits 谷歌 OpenAI evidence | Chris Olah Mathematical Framework for Transformer Circuits interview transcript",
+      "selectedHost": "transformer-circuits.pub",
+      "reason": "论文官方页面，作者列表明确包含Chris Olah，且标注其为通讯作者，直接证明其贡献。",
+      "evidenceQuote": "Authors Nelson Elhage∗†, Neel Nanda∗, Catherine Olsson∗, Tom Henighan†, Nicholas Joseph†, Ben Mann†, Amanda Askell, Yuntao Bai, Anna Chen, Tom Conerly, Nova DasSarma, Dawn Drain, Deep Ganguli, Zac Hatfield-Dodds, Danny Hernandez, Andy Jones, Jackson Kernion, Liane Lovitt, Kamal Ndousse, Dario Amodei, Tom Brown, Jack Clark, Jared Kaplan, Sam McCandlish, Chris Olah‡",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxmfht03bsrmtbs2ygc6kq",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:37:07.772Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://transformer-circuits.pub/2021/framework/index.html",
+          "title": "A Mathematical Framework for Transformer Circuits",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=论文作者为Nelson Elhage等，无Chris Olah，但内容与AI相关，需人工判断是否误抓.",
+          "evidenceRequirements": [
+            "Source must name Chris Olah directly.",
+            "Source must support why \"A Mathematical Framework for Transformer Circuits\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Chris Olah Mathematical Framework for Transformer Circuits official source",
+            "Chris Olah Mathematical Framework for Transformer Circuits 谷歌 OpenAI evidence",
+            "Chris Olah Mathematical Framework for Transformer Circuits interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmfht03bsrmtbs2ygc6kq",
+          "objectLabel": "A Mathematical Framework for Transformer Circuits"
+        },
+        "selectedReason": "论文官方页面，作者列表明确包含Chris Olah，且标注其为通讯作者，直接证明其贡献。",
+        "evidenceQuote": "Authors Nelson Elhage∗†, Neel Nanda∗, Catherine Olsson∗, Tom Henighan†, Nicholas Joseph†, Ben Mann†, Amanda Askell, Yuntao Bai, Anna Chen, Tom Conerly, Nova DasSarma, Dawn Drain, Deep Ganguli, Zac Hatfield-Dodds, Danny Hernandez, Andy Jones, Jackson Kernion, Liane Lovitt, Kamal Ndousse, Dario Amodei, Tom Brown, Jack Clark, Jared Kaplan, Sam McCandlish, Chris Olah‡",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxh8vn026crmtba2yvbtzo",
+      "personId": "cmjtswmqg00033est2ofuqdw0",
+      "person": "Dario Amodei",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.darioamodei.com",
+      "urlHash": "b09d9b09ba5a0f714e1ed18780936695a7bbe5ac83c4b59b9c4adb642e5728f7",
+      "contentHash": "65fc4a6e246ecf03ffdc083ebf85c9ea3ec94613a35bc388fb7e85a1912db0b1",
+      "sourceType": "exa",
+      "title": "Dario Amodei",
+      "text": "Evidence quote: Dario Amodei is the CEO of Anthropic... Previously, Dario served as Vice President of Research at OpenAI... Selection reason: 本人官方主页，直接证明其身份、职位及背景，是最高级别的权威来源。 Source preview: Dario Amodei Dario AmodeiArchive [x] Dario Amodei is the CEO of Anthropic, a public benefit corporation dedicated to building AI systems that are steerable, interpretable and safe.... More Previously, Dario served as Vice President of Research at OpenAI, where he led the development of large language models like GPT-2 and GPT-3. He is also the co-inventor of reinforcement learning from human feedback. Before joining OpenAI, he worked at Google Brain as a Senior Research Scientist. Dario earned his doctorate degree in biophysics from Princeton University as a Hertz Fellow, and was a postdoctoral scholar at the Stanford University School of Medicine. Essays The Adolescence of Technology Machi... MiMo rationale: 原来源为电商书籍页面，信息密度低。候选来源中，CBS News采访转录、斯坦福大学资料页及本人官方主页均能直接、权威地证明Dario Amodei作为Anthropic CEO的身份及背景，符合替换要求。 Evidence requirements: Source must name Dario Amodei directly. | Source must support why \"DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About Thi...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You official source | Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You Anthropic OpenAI evidence | Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You interview transcript",
+      "selectedHost": "darioamodei.com",
+      "reason": "本人官方主页，直接证明其身份、职位及背景，是最高级别的权威来源。",
+      "evidenceQuote": "Dario Amodei is the CEO of Anthropic... Previously, Dario served as Vice President of Research at OpenAI...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxh8vn026crmtba2yvbtzo",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:27:45.522Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.amazon.com/DARIO-AMODEI-LIFE-Comprehensive-co-founder/dp/B0CJXG9RJQ",
+          "title": "DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About This Leading AI Company: Wallis, Susan D.: 9798862631647: Amazon.com: Books",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是人物传记书籍页面，但内容仅为电商列表，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Dario Amodei directly.",
+            "Source must support why \"DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About Thi...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You official source",
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You Anthropic OpenAI evidence",
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxh8vn026crmtba2yvbtzo",
+          "objectLabel": "DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About This Leading AI Company: Wallis, Susan D.: 9798862631647: Amazon.com: Books"
+        },
+        "selectedReason": "本人官方主页，直接证明其身份、职位及背景，是最高级别的权威来源。",
+        "evidenceQuote": "Dario Amodei is the CEO of Anthropic... Previously, Dario served as Vice President of Research at OpenAI...",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxh8vn026crmtba2yvbtzo",
+      "personId": "cmjtswmqg00033est2ofuqdw0",
+      "person": "Dario Amodei",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-full-transcript",
+      "urlHash": "e82c24afef05f0f93e12045461ed3fc91ff23b4cc76adf2f7a6fd12a48de6d40",
+      "contentHash": "aa89b335e7f9d25bb42f00f267d56cf949f0565383eca569e5f50e93517b96fb",
+      "sourceType": "exa",
+      "title": "Read the full transcript of our interview with Anthropic CEO Dario Amodei - CBS News",
+      "text": "Evidence quote: JO LING KENT: You are Dario Amodei, the CEO of Anthropic. Is that right? DARIO AMODEI: That's correct, yes. Selection reason: 权威媒体CBS News的完整采访转录，明确证明Dario Amodei是Anthropic的CEO，信息密度高且可访问。 Source preview: Watch CBS News Read the full transcript of our interview with Anthropic CEO Dario Amodei February 28, 2026 / 6:36 AM EST / CBS News Anthropic CEO Dario Amodei sat down with CBS News for an exclusive interview Friday, hours after Defense Secretary Pete Hegseth declared the company a supply chain risk to national security, which restricts military contractors from doing business with the AI giant. See below for the full transcript: JO LING KENT: All right. Thank you for doing this with us today. DARIO AMODEI: Thank-- thanks for having me. JO LING KENT: We appreciate you taking the time. You are Dario Amodei, the CEO of Anthropic. Is that right? DARIO AMODEI: That's correct, yes. JO LING KENT:... MiMo rationale: 原来源为电商书籍页面，信息密度低。候选来源中，CBS News采访转录、斯坦福大学资料页及本人官方主页均能直接、权威地证明Dario Amodei作为Anthropic CEO的身份及背景，符合替换要求。 Evidence requirements: Source must name Dario Amodei directly. | Source must support why \"DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About Thi...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You official source | Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You Anthropic OpenAI evidence | Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You interview transcript",
+      "selectedHost": "cbsnews.com",
+      "reason": "权威媒体CBS News的完整采访转录，明确证明Dario Amodei是Anthropic的CEO，信息密度高且可访问。",
+      "evidenceQuote": "JO LING KENT: You are Dario Amodei, the CEO of Anthropic. Is that right? DARIO AMODEI: That's correct, yes.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxh8vn026crmtba2yvbtzo",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:27:45.522Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.amazon.com/DARIO-AMODEI-LIFE-Comprehensive-co-founder/dp/B0CJXG9RJQ",
+          "title": "DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About This Leading AI Company: Wallis, Susan D.: 9798862631647: Amazon.com: Books",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是人物传记书籍页面，但内容仅为电商列表，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Dario Amodei directly.",
+            "Source must support why \"DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About Thi...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You official source",
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You Anthropic OpenAI evidence",
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxh8vn026crmtba2yvbtzo",
+          "objectLabel": "DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About This Leading AI Company: Wallis, Susan D.: 9798862631647: Amazon.com: Books"
+        },
+        "selectedReason": "权威媒体CBS News的完整采访转录，明确证明Dario Amodei是Anthropic的CEO，信息密度高且可访问。",
+        "evidenceQuote": "JO LING KENT: You are Dario Amodei, the CEO of Anthropic. Is that right? DARIO AMODEI: That's correct, yes.",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtxh8vn026crmtba2yvbtzo",
+      "personId": "cmjtswmqg00033est2ofuqdw0",
+      "person": "Dario Amodei",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://digitaleconomy.stanford.edu/person/dario-amodei",
+      "urlHash": "43dcb4d999f021d9589ffc25f9dfb90bdbd82dd80fc433a1fbafc9030fdafb40",
+      "contentHash": "85ef404415113aa0c0e677df7e27fdad80b5679a845e75e22c39551f1c06803c",
+      "sourceType": "official",
+      "title": "Dario Amodei - Stanford Digital Economy Lab",
+      "text": "Evidence quote: Dario Amodei is chief executive officer and co-founder of Anthropic... Previously Dario was vice president of research at OpenAI... Selection reason: 斯坦福大学官方机构资料页，权威性高，明确列出其职位及在OpenAI的过往经历。 Source preview: Economics of Transformative AI New Measures of the Economy Digital Platforms and Society AI Agents Dario Amodei CEO and Co-Founder, Anthropic Dario Amodei is chief executive officer and co-founder of Anthropic, an artificial intelligence (AI) safety and research company working to build reliable, interpretable and steerable AI systems. Previously Dario was vice president of research at OpenAI, during which he set the overall research direction at the organization, led the efforts to build GPT-2 and GPT-3, and led several teams focused on long-term safety research, including how to make AI systems more interpretable and how to embed human preferences and values in future powerful AI systems.... MiMo rationale: 原来源为电商书籍页面，信息密度低。候选来源中，CBS News采访转录、斯坦福大学资料页及本人官方主页均能直接、权威地证明Dario Amodei作为Anthropic CEO的身份及背景，符合替换要求。 Evidence requirements: Source must name Dario Amodei directly. | Source must support why \"DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About Thi...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You official source | Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You Anthropic OpenAI evidence | Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You interview transcript",
+      "selectedHost": "digitaleconomy.stanford.edu",
+      "reason": "斯坦福大学官方机构资料页，权威性高，明确列出其职位及在OpenAI的过往经历。",
+      "evidenceQuote": "Dario Amodei is chief executive officer and co-founder of Anthropic... Previously Dario was vice president of research at OpenAI...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxh8vn026crmtba2yvbtzo",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:27:45.522Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.amazon.com/DARIO-AMODEI-LIFE-Comprehensive-co-founder/dp/B0CJXG9RJQ",
+          "title": "DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About This Leading AI Company: Wallis, Susan D.: 9798862631647: Amazon.com: Books",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是人物传记书籍页面，但内容仅为电商列表，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Dario Amodei directly.",
+            "Source must support why \"DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About Thi...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You official source",
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You Anthropic OpenAI evidence",
+            "Dario Amodei DARIO AMODEI LIFE: Comprehensive Biography the co-founder and CEO Anthropic All You interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxh8vn026crmtba2yvbtzo",
+          "objectLabel": "DARIO AMODEI LIFE: A Comprehensive Biography Of the co-founder and CEO of Anthropic AI & All You Need To Know About This Leading AI Company: Wallis, Susan D.: 9798862631647: Amazon.com: Books"
+        },
+        "selectedReason": "斯坦福大学官方机构资料页，权威性高，明确列出其职位及在OpenAI的过往经历。",
+        "evidenceQuote": "Dario Amodei is chief executive officer and co-founder of Anthropic... Previously Dario was vice president of research at OpenAI...",
+        "candidateAuthorityScore": 49,
+        "candidateAuthoritySignals": [
+          "academic_or_institutional_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvpx0i00rwrmtblqm6kdf0",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "decision": "augment_source",
+      "confidence": 0.8,
+      "url": "https://www.forbes.com/profile/guillaume-lample",
+      "urlHash": "b81e3014eff9c6f09d18dcacc27aca8df51b8afac738d3ec828dd9fbe06134dc",
+      "contentHash": "8a5f113bbb835a96b4a8b97e48401321531593f7b8704578779f87fbf73df8d9",
+      "sourceType": "exa",
+      "title": "Guillaume Lample",
+      "text": "Evidence quote: Guillaume Lample cofounded Mistral AI in 2023... The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique. Selection reason: 福布斯权威资料页，明确说明其为Mistral AI联合创始人及背景，可补强原来源。 Source preview: PROFILE Guillaume Lample $1.8B Real Time Net Worth as of 6/9/26 Reflects change since 5 pm ET of prior trading day. #2275 in the world today From the Editor Last Updated Mar 10, 2026, 1:01am EDT Guillaume Lample cofounded Mistral AI in 2023 raising $113 million from investors in what was then Europe's largest ever seed round. ​​The Paris-based company builds open-weight large language models that compete with U.S. rivals like OpenAI, and raised $2 billion on a $14 billion valuation in September 2025. The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique. Lample would later complete a master's degree in artificial intellige... MiMo rationale: 原来源内容缺失，需替换或补强。福布斯资料页权威且直接证明其联合创始人身份，LinkedIn主页可作为辅助。两者均符合要求，可共同补强证据。 Evidence requirements: Source must name Guillaume Lample directly. | Source must support why \"Guillaume Lample - Co-founder Chief Scientist | Prog. ...\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Guillaume Lample Guillaume Lample Co-founder Chief Scientist Prog. ... official source | Guillaume Lample Guillaume Lample Co-founder Chief Scientist Prog. ... Facebook 大语言模型 evidence | Guillaume Lample Guillaume Lample Co-founder Chief Scientist Prog. ... interview transcript",
+      "selectedHost": "forbes.com",
+      "reason": "福布斯权威资料页，明确说明其为Mistral AI联合创始人及背景，可补强原来源。",
+      "evidenceQuote": "Guillaume Lample cofounded Mistral AI in 2023... The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvpx0i00rwrmtblqm6kdf0",
+        "decision": "augment_source",
+        "confidence": 0.8,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:29:02.150Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.getprog.ai/profile/8885556",
+          "title": "Guillaume Lample - Co-founder Chief Scientist | Prog. ...",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=确为本人的职业档案，但抓取内容仅为网页菜单。.",
+          "evidenceRequirements": [
+            "Source must name Guillaume Lample directly.",
+            "Source must support why \"Guillaume Lample - Co-founder Chief Scientist | Prog. ...\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Guillaume Lample Guillaume Lample Co-founder Chief Scientist Prog. ... official source",
+            "Guillaume Lample Guillaume Lample Co-founder Chief Scientist Prog. ... Facebook 大语言模型 evidence",
+            "Guillaume Lample Guillaume Lample Co-founder Chief Scientist Prog. ... interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvpx0i00rwrmtblqm6kdf0",
+          "objectLabel": "Guillaume Lample - Co-founder Chief Scientist | Prog. ..."
+        },
+        "selectedReason": "福布斯权威资料页，明确说明其为Mistral AI联合创始人及背景，可补强原来源。",
+        "evidenceQuote": "Guillaume Lample cofounded Mistral AI in 2023... The French AI researcher met his future cofounder Arthur Mensch while studying at Paris' elite college École Polytechnique.",
+        "candidateAuthorityScore": 41,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvqmf500ygrmtbss70za04",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://ai.meta.com/research/publications/llama-open-and-efficient-foundation-language-models",
+      "urlHash": "4139c92bde46c28fae461241129e813bc048eb85bf1db4c2a0dcbfce1fe8c688",
+      "contentHash": "84fd1af5c6fcd876a589ecad8a6c7291edf95d9a08961e9f7e55d0b9376b2005",
+      "sourceType": "official",
+      "title": "LLaMA: Open and Efficient Foundation Language Models - Meta AI",
+      "text": "Evidence quote: AUTHORS Written by... Selection reason: Meta AI官方论文页面，明确列出Guillaume Lample为作者，权威且直接证明其贡献。 Source preview: Meta Products AI Research Resources About Get Llama Try Meta AI LLaMA: Open and Efficient Foundation Language Models February 24, 2023 Abstract We introduce LLaMA, a collection of founda- tion language models ranging from 7B to 65B parameters. We train our models on trillions of tokens, and show that it is possible to train state-of-the-art models using publicly available datasets exclusively, without resorting to proprietary and inaccessible datasets. In particular, LLaMA-13B outperforms GPT-3 (175B) on most benchmarks, and LLaMA-65B is competitive with the best models, Chinchilla- 70B and PaLM-540B. We release all our models to the research community. Download the Paper AUTHORS Written by... MiMo rationale: Meta AI官方论文页面是LLaMA论文的权威发布源，明确列出Guillaume Lample为作者，直接证明其与论文的关系，符合证据要求。其他候选来源要么权威性不足，要么无法直接证明作者身份。 Evidence requirements: Source must name Guillaume Lample directly. | Source must support why \"Paper page - LLaMA: Open and Efficient Foundation Language Models\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models paper authors | Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models official source | Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models Facebook 大语言模型 evidence | Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models interview transcript",
+      "selectedHost": "ai.meta.com",
+      "reason": "Meta AI官方论文页面，明确列出Guillaume Lample为作者，权威且直接证明其贡献。",
+      "evidenceQuote": "AUTHORS Written by...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvqmf500ygrmtbss70za04",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:29:57.330Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://huggingface.co/papers/2302.13971",
+          "title": "Paper page - LLaMA: Open and Efficient Foundation Language Models",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容为LLaMA论文页面，Guillaume Lample是作者之一，但信息密度低，仅列出作者和摘要，需人工判断是否值得入库。.",
+          "evidenceRequirements": [
+            "Source must name Guillaume Lample directly.",
+            "Source must support why \"Paper page - LLaMA: Open and Efficient Foundation Language Models\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models paper authors",
+            "Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models official source",
+            "Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models Facebook 大语言模型 evidence",
+            "Guillaume Lample Paper page LLaMA: Open and Efficient Foundation Language Models interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqmf500ygrmtbss70za04",
+          "objectLabel": "Paper page - LLaMA: Open and Efficient Foundation Language Models"
+        },
+        "selectedReason": "Meta AI官方论文页面，明确列出Guillaume Lample为作者，权威且直接证明其贡献。",
+        "evidenceQuote": "AUTHORS Written by...",
+        "candidateAuthorityScore": 39,
+        "candidateAuthoritySignals": [
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjtvpykt00scrmtbe5x7xupb",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://arxiv.org/pdf/1901.07291",
+      "urlHash": "96d7ffcba9bcc4de706704216030d5476d54f0b19fc4a0946c979e075ae24469",
+      "contentHash": "5456cf45da6d472e4eeaf36b5494866a1d3a534a662ed05c8383fd3affb154fd",
+      "sourceType": "paper",
+      "title": "[PDF] arXiv:1901.07291v1 [cs.CL] 22 Jan 2019",
+      "text": "Evidence quote: Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com Selection reason: 权威论文详情页，明确列出作者Guillaume Lample及其所属机构Facebook AI Research，直接证明其研究身份。 Source preview: Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com Alexis Conneau∗ Facebook AI Research Universit´ e Le Mans aconneau@fb.com Abstract Recent studies have demonstrated the ef-ﬁciency of generative pretraining for En-glish natural language understanding. In this work, we extend this approach to mul-tiple languages and show the effectiveness of cross-lingual pretraining. We propose two methods to learn cross-lingual lan-guage models (XLMs): one unsupervised that only relies on monolingual data, and one supervised that leverages parallel data with a new cross-lingual language model objective. We obtain state-of-the-art re-sults ... MiMo rationale: 原始来源GitHub主页抓取内容不足。候选中的arXiv论文页面是权威的学术来源，明确列出了Guillaume Lample作为作者及其所属机构，能有效证明其研究身份，适合作为替换来源。其他候选来源权威性不足或属于受限页面。 Evidence requirements: Source must name Guillaume Lample directly. | Source must support why \"Guillaume Lample glample\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Guillaume Lample Guillaume Lample glample official source | Guillaume Lample Guillaume Lample glample Facebook 大语言模型 evidence | Guillaume Lample Guillaume Lample glample interview transcript",
+      "selectedHost": "arxiv.org",
+      "reason": "权威论文详情页，明确列出作者Guillaume Lample及其所属机构Facebook AI Research，直接证明其研究身份。",
+      "evidenceQuote": "Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtvpykt00scrmtbe5x7xupb",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:29:33.049Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://github.com/glample",
+          "title": "Guillaume Lample glample",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=确为本人的GitHub主页，但抓取内容仅为系统导航。.",
+          "evidenceRequirements": [
+            "Source must name Guillaume Lample directly.",
+            "Source must support why \"Guillaume Lample glample\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Guillaume Lample Guillaume Lample glample official source",
+            "Guillaume Lample Guillaume Lample glample Facebook 大语言模型 evidence",
+            "Guillaume Lample Guillaume Lample glample interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvpykt00scrmtbe5x7xupb",
+          "objectLabel": "Guillaume Lample glample"
+        },
+        "selectedReason": "权威论文详情页，明确列出作者Guillaume Lample及其所属机构Facebook AI Research，直接证明其研究身份。",
+        "evidenceQuote": "Cross-lingual Language Model Pretraining Guillaume Lample∗ Facebook AI Research Sorbonne Universit´ es glample@fb.com",
+        "candidateAuthorityScore": 49,
+        "candidateAuthoritySignals": [
+          "research_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju13z8c0akyrmtbs32rpm55",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://jan.leike.name",
+      "urlHash": "578ba304e337b81905ad5c616dc1016be42a35ddbaae631454fa08689dc01136",
+      "contentHash": "9125f08147baa1101fd607215a925de6fe0fb0605c382d168abcd5607371cfec",
+      "sourceType": "exa",
+      "title": "Jan Leike",
+      "text": "Evidence quote: I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI, where I’ve been involved in the development of InstructGPT, ChatGPT, and the alignment of GPT-4. Selection reason: 本人官方主页，明确列出其职位、研究领域及在OpenAI和Anthropic的贡献，权威且直接。 Source preview: Jan Leike Machine learning & alignment researcher Optimizing for a post-AGI future where humanity flourishes jan@anthropic.com @janleike blog publications About me I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI, where I’ve been involved in the development of InstructGPT, ChatGPT, and the alignment of GPT-4. I developed OpenAI’s approach to alignment research and co-authored the Superalignment Team’s research roadmap. Prior to OpenAI, I was an alignment researcher at DeepMind where I prototyped reinforcement learning from human feedback. I hold a PhD in reinforcement learning theory from the Australian National University. In 2023 and 2... MiMo rationale: 候选来源中，jan.leike.name是本人官方主页，明确证明其职位和贡献，权威性高，可直接替换原低质量来源。其他来源多为新闻或社区讨论，权威性不足。 Evidence requirements: Source must name Jan Leike directly. | Source must support why \"Jan Leike - OpenAI | 人才画像\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Jan Leike Jan Leike OpenAI 人才画像 official source | Jan Leike Jan Leike OpenAI 人才画像 OpenAI 对齐 evidence | Jan Leike Jan Leike OpenAI 人才画像 interview transcript",
+      "selectedHost": "jan.leike.name",
+      "reason": "本人官方主页，明确列出其职位、研究领域及在OpenAI和Anthropic的贡献，权威且直接。",
+      "evidenceQuote": "I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI, where I’ve been involved in the development of InstructGPT, ChatGPT, and the alignment of GPT-4.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju13z8c0akyrmtbs32rpm55",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:30:34.205Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.aminer.cn/profile/jan-leike/53f359efdabfae4b3496b361",
+          "title": "Jan Leike - OpenAI | 人才画像",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是Jan Leike的人才画像页面，但抓取内容多为导航信息，有效价值较低。.",
+          "evidenceRequirements": [
+            "Source must name Jan Leike directly.",
+            "Source must support why \"Jan Leike - OpenAI | 人才画像\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Jan Leike Jan Leike OpenAI 人才画像 official source",
+            "Jan Leike Jan Leike OpenAI 人才画像 OpenAI 对齐 evidence",
+            "Jan Leike Jan Leike OpenAI 人才画像 interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju13z8c0akyrmtbs32rpm55",
+          "objectLabel": "Jan Leike - OpenAI | 人才画像"
+        },
+        "selectedReason": "本人官方主页，明确列出其职位、研究领域及在OpenAI和Anthropic的贡献，权威且直接。",
+        "evidenceQuote": "I lead the Alignment Science team at Anthropic. Previously, I co-led the Superalignment Team at OpenAI, where I’ve been involved in the development of InstructGPT, ChatGPT, and the alignment of GPT-4.",
+        "candidateAuthorityScore": 44,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmju13yxd0akurmtblmcny611",
+      "personId": "cmjtsz3vd000a3est4svv1iy9",
+      "person": "Mustafa Suleyman",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.ted.com/speakers/mustafa_suleyman",
+      "urlHash": "c1da0312be5ebf07385f45f9e1c3216092e62b8a0a01b5da62e7938b17d73872",
+      "contentHash": "29a26cbf6d3a4b12e6c2399cdf87c36fcc125e15de39d071f431e66939b13ec5",
+      "sourceType": "exa",
+      "title": "Mustafa Suleyman",
+      "text": "Evidence quote: Mustafa Suleyman | Speaker | TED Selection reason: TED官方演讲者页面，直接证明Mustafa Suleyman是TED演讲者，权威且可访问。 Source preview: Mustafa Suleyman | Speaker | TED Opens in a new window Opens an external website Opens an external website in a new window This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. To learn more, view the following link: Privacy Policy Manage Preferences Menu Ideas change everything Watch TED Talks Browse the library of TED talks and speakers Playlists 100+ collections of TED Talks, for curious minds TED Series Go deeper into fascinating topics with original video series from TED. TED-Ed videos Watch, share and create lessons with TED-Ed TEDx Talks Talks from independently organized local e... MiMo rationale: 原始来源为YouTube登录页面，无法访问。候选来源中，TED官方演讲者页面直接证明人物身份，演讲转录页面提供完整内容证据，两者结合可有效替换原始来源。 Evidence requirements: Source must name Mustafa Suleyman directly. | Source must support why \"What Is an AI Anyway? | Mustafa Suleyman | TED\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Mustafa Suleyman What Anyway? Mustafa Suleyman TED official source | Mustafa Suleyman What Anyway? Mustafa Suleyman TED Inflection AI Greylock Partners evidence | Mustafa Suleyman What Anyway? Mustafa Suleyman TED interview transcript",
+      "selectedHost": "ted.com",
+      "reason": "TED官方演讲者页面，直接证明Mustafa Suleyman是TED演讲者，权威且可访问。",
+      "evidenceQuote": "Mustafa Suleyman | Speaker | TED",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju13yxd0akurmtblmcny611",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:31:34.980Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.youtube.com/watch?v=KKNCiRWd_j0",
+          "title": "What Is an AI Anyway? | Mustafa Suleyman | TED",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容为TED演讲标题，但实际抓取到的是YouTube登录页面，无法判断具体内容质量。.",
+          "evidenceRequirements": [
+            "Source must name Mustafa Suleyman directly.",
+            "Source must support why \"What Is an AI Anyway? | Mustafa Suleyman | TED\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Mustafa Suleyman What Anyway? Mustafa Suleyman TED official source",
+            "Mustafa Suleyman What Anyway? Mustafa Suleyman TED Inflection AI Greylock Partners evidence",
+            "Mustafa Suleyman What Anyway? Mustafa Suleyman TED interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju13yxd0akurmtblmcny611",
+          "objectLabel": "What Is an AI Anyway? | Mustafa Suleyman | TED"
+        },
+        "selectedReason": "TED官方演讲者页面，直接证明Mustafa Suleyman是TED演讲者，权威且可访问。",
+        "evidenceQuote": "Mustafa Suleyman | Speaker | TED",
+        "candidateAuthorityScore": 47,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjuur1ib0hqermtbk7i8itu7",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://www.noamshazeer.com",
+      "urlHash": "6c3082c129f5cf91e6cebf183ab3e57ee382c0402a8f2788a06846114a9c5a42",
+      "contentHash": "f8d5da7c1ae76bb878f80758c30886ff6cd39c3030b35e43db8570c44f9ec1e9",
+      "sourceType": "exa",
+      "title": "Noam Shazeer | AI Scientist, Google Gemini Co-Lead",
+      "text": "Evidence quote: Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation Selection reason: 本人官方主页，明确列出其职位、发明和贡献，直接证明人物身份与成就。 Source preview: top of page Noam Shazeer Noam Shazeer Noam Shazeer About Noam Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation Sparsely-gated Mixture of Experts (2016) Mesh-Tensorflow (2018) - first practical system for training giant Transformers on supercomputers T5 (2019) Major contributor to Google’s LaMDA dialog system, a project led by Daniel De Freitas Shazeer started at Google in 2000, where he improved the search engine's spelling corrector. ... MiMo rationale: 原来源（ListenNotes播客页面）信息密度低，主要为导航链接。候选中的官方主页（noamshazeer.com）和a16z访谈页面均直接、权威地证明了Noam Shazeer的身份、职位和贡献，符合证据要求，可有效替换原弱来源。 Evidence requirements: Source must name Noam Shazeer directly. | Source must support why \"EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Noam Shazeer Noam Shazeer Google veteran and inventor future official source | Noam Shazeer Noam Shazeer Google veteran and inventor future 谷歌 Character.ai evidence | Noam Shazeer Noam Shazeer Google veteran and inventor future interview transcript",
+      "selectedHost": "noamshazeer.com",
+      "reason": "本人官方主页，明确列出其职位、发明和贡献，直接证明人物身份与成就。",
+      "evidenceQuote": "Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuur1ib0hqermtbk7i8itu7",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:32:11.413Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.listennotes.com/podcasts/the-aarthi-and/ep-31-noam-shazeer-google-MUDnK6eLGiy/",
+          "title": "EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题明确指向人物，但正文内容多为网页导航链接，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Noam Shazeer directly.",
+            "Source must support why \"EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Noam Shazeer Noam Shazeer Google veteran and inventor future official source",
+            "Noam Shazeer Noam Shazeer Google veteran and inventor future 谷歌 Character.ai evidence",
+            "Noam Shazeer Noam Shazeer Google veteran and inventor future interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuur1ib0hqermtbk7i8itu7",
+          "objectLabel": "EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI"
+        },
+        "selectedReason": "本人官方主页，明确列出其职位、发明和贡献，直接证明人物身份与成就。",
+        "evidenceQuote": "Noam Shazeer is a computer scientist and entrepreneur. Noam co-leads Google Gemini and is a VP Engineering at Google. ​ Some of his inventions include: Transformer (2017) - personally designed the multi-head attention, the residual architecture, and coded up the first better-than-SOTA working implementation",
+        "candidateAuthorityScore": 44,
+        "candidateAuthoritySignals": [
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjuur1ib0hqermtbk7i8itu7",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://a16z.com/universally-accessible-intelligence",
+      "urlHash": "36b4174b1c121d0c5a978a875506512ed47e40ce0ebd86d30e53860ca65b78c8",
+      "contentHash": "0c72a260f67da674be6a3c0b59e3c6f66ac8794cf889bad969b647fae6b00d7a",
+      "sourceType": "exa",
+      "title": "Universally Accessible Intelligence | Andreessen Horowitz",
+      "text": "Evidence quote: Noam Shazeer, Character.ai CEO and cofounder, talks to a16z’s Sarah Wang about the dawn of universally accessible intelligence, the compute ... Selection reason: 权威风投机构a16z的访谈，明确介绍Noam Shazeer为Character.ai CEO，讨论AI未来，信息密度高。 Source preview: The Latest new There are only two paths left for software new Monopolies vs Oligopolies in AI new How AI Is Unbundling the $300 Billion BPO Industry new Investing in Deeptune Universally Accessible Intelligence Universally Accessible Intelligence Table of Contents This conversation is part of our AI Revolution series, which features some of the most impactful builders in the field of AI discussing and debating where we are, where we’re going, and the big open questions in AI. Find more content from our AI Revolution series on www.a16z.com/AIRevolution. Noam Shazeer, Character.ai CEO and cofounder, talks to a16z’s Sarah Wang about the dawn of universally accessible intelligence, the compute ... MiMo rationale: 原来源（ListenNotes播客页面）信息密度低，主要为导航链接。候选中的官方主页（noamshazeer.com）和a16z访谈页面均直接、权威地证明了Noam Shazeer的身份、职位和贡献，符合证据要求，可有效替换原弱来源。 Evidence requirements: Source must name Noam Shazeer directly. | Source must support why \"EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Noam Shazeer Noam Shazeer Google veteran and inventor future official source | Noam Shazeer Noam Shazeer Google veteran and inventor future 谷歌 Character.ai evidence | Noam Shazeer Noam Shazeer Google veteran and inventor future interview transcript",
+      "selectedHost": "a16z.com",
+      "reason": "权威风投机构a16z的访谈，明确介绍Noam Shazeer为Character.ai CEO，讨论AI未来，信息密度高。",
+      "evidenceQuote": "Noam Shazeer, Character.ai CEO and cofounder, talks to a16z’s Sarah Wang about the dawn of universally accessible intelligence, the compute ...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjuur1ib0hqermtbk7i8itu7",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:32:11.413Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.listennotes.com/podcasts/the-aarthi-and/ep-31-noam-shazeer-google-MUDnK6eLGiy/",
+          "title": "EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题明确指向人物，但正文内容多为网页导航链接，信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name Noam Shazeer directly.",
+            "Source must support why \"EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Noam Shazeer Noam Shazeer Google veteran and inventor future official source",
+            "Noam Shazeer Noam Shazeer Google veteran and inventor future 谷歌 Character.ai evidence",
+            "Noam Shazeer Noam Shazeer Google veteran and inventor future interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjuur1ib0hqermtbk7i8itu7",
+          "objectLabel": "EP 31 Noam Shazeer - Google veteran and AI inventor on future of AI"
+        },
+        "selectedReason": "权威风投机构a16z的访谈，明确介绍Noam Shazeer为Character.ai CEO，讨论AI未来，信息密度高。",
+        "evidenceQuote": "Noam Shazeer, Character.ai CEO and cofounder, talks to a16z’s Sarah Wang about the dawn of universally accessible intelligence, the compute ...",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjty4qda053trmtb21idfhqy",
+      "personId": "cmjrz11xi0002b28tg14eugjo",
+      "person": "Sam Altman",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://www.ycombinator.com/library/MY-sam-altman-the-future-of-openai-chatgpt-s-origins-and-building-ai-hardware",
+      "urlHash": "4b53c343e1f9b91362c6d9c4058ec3563bb2119d23684349af0244f4d4f5ba40",
+      "contentHash": "e2b64f60b391377353f3f9c5d46323f78b26415ac905cce0ebfe8865cfa9ea9e",
+      "sourceType": "exa",
+      "title": "Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware : YC Startup Library | Y Combinator",
+      "text": "Evidence quote: Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware Selection reason: Y Combinator官方资料库页面，标题直接关联Sam Altman，是权威的机构来源，可补强其观点与背景。 Source preview: Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware : YC Startup Library | Y Combinator Image 1: Y CombinatorOpen menu About What Happens at YC?ApplyYC Interview GuideFAQPeopleYC Blog Companies Startup DirectoryFounder DirectoryLaunch YC Library Image 2: Y Combinator Partners Resources Startup SchoolNewsletterRequests for StartupsFor InvestorsVerify FoundersHacker NewsBookfaceSafeFind a Co-Founder Startup Jobs Log inApply Home› AI Startup School› Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware AI Startup School Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware by Y Combinator 480K views 11 months ago Chapter... MiMo rationale: 原始YouTube视频抓取失败，但候选中有两个Y Combinator官方来源（播客和资料库）能直接证明Sam Altman与Vinod Khosla的对话关系，权威且可访问。可作为补强来源，但无法完全替代原始视频。 Evidence requirements: Source must name Sam Altman directly. | Source must support why \"Where is AI Taking Us? | Sam Altman & Vinod Khosla\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Sam Altman Where Taking Us? Sam Altman Vinod Khosla official source | Sam Altman Where Taking Us? Sam Altman Vinod Khosla Y Combinator Reddit公司 evidence | Sam Altman Where Taking Us? Sam Altman Vinod Khosla interview transcript",
+      "selectedHost": "ycombinator.com",
+      "reason": "Y Combinator官方资料库页面，标题直接关联Sam Altman，是权威的机构来源，可补强其观点与背景。",
+      "evidenceQuote": "Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjty4qda053trmtb21idfhqy",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:33:15.236Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.youtube.com/watch?v=6NwK-uq16U8",
+          "title": "Where is AI Taking Us? | Sam Altman & Vinod Khosla",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题高度相关，但正文内容仅抓取到YouTube页脚法律条款，需人工确认正文。.",
+          "evidenceRequirements": [
+            "Source must name Sam Altman directly.",
+            "Source must support why \"Where is AI Taking Us? | Sam Altman & Vinod Khosla\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Sam Altman Where Taking Us? Sam Altman Vinod Khosla official source",
+            "Sam Altman Where Taking Us? Sam Altman Vinod Khosla Y Combinator Reddit公司 evidence",
+            "Sam Altman Where Taking Us? Sam Altman Vinod Khosla interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjty4qda053trmtb21idfhqy",
+          "objectLabel": "Where is AI Taking Us? | Sam Altman & Vinod Khosla"
+        },
+        "selectedReason": "Y Combinator官方资料库页面，标题直接关联Sam Altman，是权威的机构来源，可补强其观点与背景。",
+        "evidenceQuote": "Sam Altman: The Future of OpenAI, ChatGPT's Origins, and Building AI Hardware",
+        "candidateAuthorityScore": 62,
+        "candidateAuthoritySignals": [],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmjty4qda053trmtb21idfhqy",
+      "personId": "cmjrz11xi0002b28tg14eugjo",
+      "person": "Sam Altman",
+      "decision": "augment_source",
+      "confidence": 0.85,
+      "url": "https://podcasts.apple.com/ca/podcast/107-vinod-khosla-and-sam-altman/id1236907421?i=1000427309122&l=fr",
+      "urlHash": "c97f5d092b18ab535c0c7dced15fe19316f9bcd94c52b78f018e444e243f3041",
+      "contentHash": "aeb15e6a516577dee3c9220c04640ac6cce84bf9d749601e276bb649e04fb69d",
+      "sourceType": "podcast",
+      "title": "#107 - Vinod Khosla and Sam Al… – Y Combinator Startup Podcast – Apple Podcasts",
+      "text": "Evidence quote: Y Combinator Startup Podcast 107 - Vinod Khosla and Sam Altman Selection reason: Y Combinator官方播客，标题和描述明确包含Sam Altman与Vinod Khosla的对话，是原始YouTube视频的权威音频来源。 Source preview: Y Combinator Startup Podcast 107 - Vinod Khosla and Sam Altman Vinod Khosla is the founder of Khosla Ventures, a firm focused on assisting entrepreneurs to build impactful new energy and technology companies. Previously he was the founding CEO of Sun Microsystems, where he pioneered open systems and commercial RISC processors. How to Build the Future is hosted by Sam Altman. \\\\\\ Topics 00:30 - Vinod’s intro 01:20 - A zero-million-dollar company vs a zero-billion-dollar company 4:20 - What percentage of investors in Silicon Valley are good long-term company builders? 4:50 - Who has earned the right to advise an entrepreneur? 6:50 - Which risk to take when 7:20 - Helpful board members 8:15 - ... MiMo rationale: 原始YouTube视频抓取失败，但候选中有两个Y Combinator官方来源（播客和资料库）能直接证明Sam Altman与Vinod Khosla的对话关系，权威且可访问。可作为补强来源，但无法完全替代原始视频。 Evidence requirements: Source must name Sam Altman directly. | Source must support why \"Where is AI Taking Us? | Sam Altman & Vinod Khosla\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: Sam Altman Where Taking Us? Sam Altman Vinod Khosla official source | Sam Altman Where Taking Us? Sam Altman Vinod Khosla Y Combinator Reddit公司 evidence | Sam Altman Where Taking Us? Sam Altman Vinod Khosla interview transcript",
+      "selectedHost": "podcasts.apple.com",
+      "reason": "Y Combinator官方播客，标题和描述明确包含Sam Altman与Vinod Khosla的对话，是原始YouTube视频的权威音频来源。",
+      "evidenceQuote": "Y Combinator Startup Podcast 107 - Vinod Khosla and Sam Altman",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjty4qda053trmtb21idfhqy",
+        "decision": "augment_source",
+        "confidence": 0.85,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:33:15.236Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.youtube.com/watch?v=6NwK-uq16U8",
+          "title": "Where is AI Taking Us? | Sam Altman & Vinod Khosla",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=标题高度相关，但正文内容仅抓取到YouTube页脚法律条款，需人工确认正文。.",
+          "evidenceRequirements": [
+            "Source must name Sam Altman directly.",
+            "Source must support why \"Where is AI Taking Us? | Sam Altman & Vinod Khosla\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "Sam Altman Where Taking Us? Sam Altman Vinod Khosla official source",
+            "Sam Altman Where Taking Us? Sam Altman Vinod Khosla Y Combinator Reddit公司 evidence",
+            "Sam Altman Where Taking Us? Sam Altman Vinod Khosla interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjty4qda053trmtb21idfhqy",
+          "objectLabel": "Where is AI Taking Us? | Sam Altman & Vinod Khosla"
+        },
+        "selectedReason": "Y Combinator官方播客，标题和描述明确包含Sam Altman与Vinod Khosla的对话，是原始YouTube视频的权威音频来源。",
+        "evidenceQuote": "Y Combinator Startup Podcast 107 - Vinod Khosla and Sam Altman",
+        "candidateAuthorityScore": 59,
+        "candidateAuthoritySignals": [
+          "media_source_needs_transcript_or_description"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju0ole5080wrmtbuq3tp6vd",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "urlHash": "7d5aeba0ca8b2dfbdd41307eadb60732927d4a53e5791ff1fce894c7551cacac",
+      "contentHash": "711e142ff7bda8219a2f537ee2d733b5b3030db14db56273f8ff41831490c128",
+      "sourceType": "official",
+      "title": "[PDF] Language Models are Unsupervised Multitask Learners | OpenAI",
+      "text": "Evidence quote: Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1 Selection reason: OpenAI官方PDF，明确列出Alec Radford为第一作者，直接证明其在OpenAI的核心研究贡献。 Source preview: Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1 Abstract Natural language processing tasks, such as ques-tion answering, machine translation, reading com-prehension, and summarization, are typically approached with supervised learning on task-speciﬁc datasets. We demonstrate that language models begin to learn these tasks without any ex-plicit supervision when trained on a new dataset of millions of webpages called WebText. When conditioned on a document plus questions, the an-swers generated by the language model reach 55 F1 on the CoQA dataset - matching or exceeding the performance of 3 out of 4 ba... MiMo rationale: 原始来源（SciSpace）信息密度低。OpenAI官方PDF直接证明其作者身份，是权威的一手来源。维基百科提供补充背景。两者结合可有效替换并补强原来源。 Evidence requirements: Source must name 亚历克·拉德福德 directly. | Source must support why \"Alec Radford | OpenAI | 41 Publications | 15057 Citations | Related Authors\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 亚历克·拉德福德 Alec Radford OpenAI Publications 15057 Citations Related Authors official source | 亚历克·拉德福德 Alec Radford OpenAI Publications 15057 Citations Related Authors OpenAI 大语言模型 evidence | 亚历克·拉德福德 Alec Radford OpenAI Publications 15057 Citations Related Authors interview transcript",
+      "selectedHost": "cdn.openai.com",
+      "reason": "OpenAI官方PDF，明确列出Alec Radford为第一作者，直接证明其在OpenAI的核心研究贡献。",
+      "evidenceQuote": "Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju0ole5080wrmtbuq3tp6vd",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:34:09.441Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://scispace.com/authors/alec-radford-c36h9lasld",
+          "title": "Alec Radford | OpenAI | 41 Publications | 15057 Citations | Related Authors",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=虽是人物学术主页，但抓取内容多为网页导航标签，有效信息密度较低。.",
+          "evidenceRequirements": [
+            "Source must name 亚历克·拉德福德 directly.",
+            "Source must support why \"Alec Radford | OpenAI | 41 Publications | 15057 Citations | Related Authors\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "亚历克·拉德福德 Alec Radford OpenAI Publications 15057 Citations Related Authors official source",
+            "亚历克·拉德福德 Alec Radford OpenAI Publications 15057 Citations Related Authors OpenAI 大语言模型 evidence",
+            "亚历克·拉德福德 Alec Radford OpenAI Publications 15057 Citations Related Authors interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0ole5080wrmtbuq3tp6vd",
+          "objectLabel": "Alec Radford | OpenAI | 41 Publications | 15057 Citations | Related Authors"
+        },
+        "selectedReason": "OpenAI官方PDF，明确列出Alec Radford为第一作者，直接证明其在OpenAI的核心研究贡献。",
+        "evidenceQuote": "Language Models are Unsupervised Multitask Learners Alec Radford 1 Jeffrey Wu 1 Rewon Child 1 David Luan 1 Dario Amodei 1 Ilya Sutskever 1",
+        "candidateAuthorityScore": 34,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": [
+          "replacement_contains_auxiliary_low_authority_source"
+        ]
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjty4b4w04xtrmtbmkfdrad8",
+      "personId": "cmjtxdf96000a5p08z94252m2",
+      "person": "杰夫·迪恩",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://research.google/people/jeff",
+      "urlHash": "46eaf75b4d9abf9f6ace0a454dd87a9e1c98a401938277d6859fc8cbd2db24f5",
+      "contentHash": "5d6146130a2fc7ed69bdc93b7b6643f53aa64c76651fec69d13fe543628b0275",
+      "sourceType": "official",
+      "title": "Jeffrey Dean - Google Research",
+      "text": "Evidence quote: I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research. Selection reason: 谷歌官方研究页面，明确列出杰夫·迪恩的职位（首席科学家）和研究领域，是权威的一手来源。 Source preview: Google Research Jeffrey Dean I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research. My areas of focus include machine learning and AI and applications of AI to problems that help billions of people in societally beneficial ways. I have a broad variety of interests, including machine learning, large-scale distributed systems, computer systems performance, compression techniques, information retrieval, application of machine learning to search and other related problems, microprocessor architecture, compiler optimizations, and the development of new products that organize information in new and interesting ways... MiMo rationale: 原始来源（Google博客作者页）内容缺失。候选中的Google Research官方页面直接、权威地证明了杰夫·迪恩在谷歌的职位和角色，符合证据要求，可作为高质量替换来源。 Evidence requirements: Source must name 杰夫·迪恩 directly. | Source must support why \"Jeff Dean\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 杰夫·迪恩 Jeff Dean official source | 杰夫·迪恩 Jeff Dean 谷歌 数字设备公司 evidence | 杰夫·迪恩 Jeff Dean interview transcript",
+      "selectedHost": "research.google",
+      "reason": "谷歌官方研究页面，明确列出杰夫·迪恩的职位（首席科学家）和研究领域，是权威的一手来源。",
+      "evidenceQuote": "I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjty4b4w04xtrmtbmkfdrad8",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:35:03.152Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://blog.google/authors/jeff-dean",
+          "title": "Jeff Dean",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=确实是杰夫·迪恩在 Google 博客的个人主页，但抓取内容仅为导航菜单，缺乏实质性信息。.",
+          "evidenceRequirements": [
+            "Source must name 杰夫·迪恩 directly.",
+            "Source must support why \"Jeff Dean\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "杰夫·迪恩 Jeff Dean official source",
+            "杰夫·迪恩 Jeff Dean 谷歌 数字设备公司 evidence",
+            "杰夫·迪恩 Jeff Dean interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjty4b4w04xtrmtbmkfdrad8",
+          "objectLabel": "Jeff Dean"
+        },
+        "selectedReason": "谷歌官方研究页面，明确列出杰夫·迪恩的职位（首席科学家）和研究领域，是权威的一手来源。",
+        "evidenceQuote": "I joined Google in mid-1999, and I'm currently Google's Chief Scientist, focusing on AI advances for Google DeepMind and Google Research.",
+        "candidateAuthorityScore": 16,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "official_or_primary_org_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxpz3s042ermtbi02mp2ai",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://montgomerysummit.com/speakers/ashish-vaswani",
+      "urlHash": "06743d018a232cc0d784700685f7d4ea4e2798e2ac0872c54080b55ec1e887f6",
+      "contentHash": "76288464f5cbfbb07ee6a56c1e83e45d97a105e7d5f37b00cd839b510a04da8d",
+      "sourceType": "exa",
+      "title": "Ashish Vaswani - The Montgomery Summit",
+      "text": "Evidence quote: Ashish Vaswani is the Co-Founder and CEO of Essential AI. ... He is one of the main inventors of the Transformer, the model that underpins Generative AI. Selection reason: 权威会议官网，明确列出其职位（Essential AI联合创始人兼CEO）及作为Transformer主要发明者的贡献，信息直接且可访问。 Source preview: Skip to content < Return to previous page Ashish Vaswani Essential AI Co-Founder & CEO Ashish Vaswani is the Co-Founder and CEO of Essential AI. A leading computer scientist, Vaswani previously worked for Google Brain and interned at IBM. He is one of the main inventors of the Transformer, the model that underpins Generative AI. Ashish co-authored the paper presenting the Transformer, which has been cited more than 50,000 times, leading to the capabilities of models such as GPT, Google’s BERT, Microsoft’s MT-DNN. His work has also advanced state-of-the-art in computer vision, DNA sequence correction, image and music generation, and has enabled the unification of machine learning with the Tr... MiMo rationale: 原来源为AI生成的简介，信息密度低。候选中，蒙哥马利峰会官网提供了权威的职位和贡献描述，原始论文PDF直接证明其学术身份，两者结合可有效替换并补强原来源。 Evidence requirements: Source must name 阿希什·瓦斯瓦尼 directly. | Source must support why \"Ashish Vaswani - People in AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 阿希什·瓦斯瓦尼 Ashish Vaswani People official source | 阿希什·瓦斯瓦尼 Ashish Vaswani People 谷歌 Transformer evidence | 阿希什·瓦斯瓦尼 Ashish Vaswani People interview transcript",
+      "selectedHost": "montgomerysummit.com",
+      "reason": "权威会议官网，明确列出其职位（Essential AI联合创始人兼CEO）及作为Transformer主要发明者的贡献，信息直接且可访问。",
+      "evidenceQuote": "Ashish Vaswani is the Co-Founder and CEO of Essential AI. ... He is one of the main inventors of the Transformer, the model that underpins Generative AI.",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxpz3s042ermtbi02mp2ai",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:35:32.004Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.artificial-intelligence.blog/people-in-ai/ashish-vaswani",
+          "title": "Ashish Vaswani - People in AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容简短且为AI生成的简介，信息密度低，但明确关于此人且相关AI。.",
+          "evidenceRequirements": [
+            "Source must name 阿希什·瓦斯瓦尼 directly.",
+            "Source must support why \"Ashish Vaswani - People in AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "阿希什·瓦斯瓦尼 Ashish Vaswani People official source",
+            "阿希什·瓦斯瓦尼 Ashish Vaswani People 谷歌 Transformer evidence",
+            "阿希什·瓦斯瓦尼 Ashish Vaswani People interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpz3s042ermtbi02mp2ai",
+          "objectLabel": "Ashish Vaswani - People in AI"
+        },
+        "selectedReason": "权威会议官网，明确列出其职位（Essential AI联合创始人兼CEO）及作为Transformer主要发明者的贡献，信息直接且可访问。",
+        "evidenceQuote": "Ashish Vaswani is the Co-Founder and CEO of Essential AI. ... He is one of the main inventors of the Transformer, the model that underpins Generative AI.",
+        "candidateAuthorityScore": 15,
+        "candidateAuthoritySignals": [
+          "missing_person_name"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "inserted_raw",
+      "auditAction": "inserted_keep_audit"
+    },
+    {
+      "claimId": "prune-tail:cmju1o1830ep9rmtb682rrj6x",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://arxiv.org/abs/1706.03762",
+      "urlHash": "061f7ac9a28bcb3d9c6cb25ea2a7c35d6a00de0da4161749792ddefc00cdf1ee",
+      "contentHash": "2227f88fe8d2fced34cfbbcac0bfc0c4228a2236252bab333bd5347d00dd33f6",
+      "sourceType": "paper",
+      "title": "[1706.03762] Attention Is All You Need - arXiv",
+      "text": "Evidence quote: Authors: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Ka... Selection reason: arXiv是论文的权威预印本平台，页面明确列出作者Ashish Vaswani，直接证明其与论文的关系。 Source preview: [1706.03762] Attention Is All You Need Skip to main content Image 1: Cornell University Logo Learn about arXiv becoming an independent nonprofit. We gratefully acknowledge support from the Simons Foundation, member institutions, and all contributors.Donate Image 2: arxiv logo>cs> arXiv:1706.03762 Help | Advanced Search Search Image 3: arXiv logo Image 4: Cornell University Logo GO quick links Login Help Pages About Computer Science > Computation and Language arXiv:1706.03762 (cs) Submitted on 12 Jun 2017 ([v1), last revised 2 Aug 2023 (this version, v7)] Title:Attention Is All You Need Authors:Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Ka... MiMo rationale: 原始来源（Hugging Face论文页面）内容薄弱。arXiv页面是论文的权威预印本，明确列出作者Ashish Vaswani，直接证明其贡献，是理想的替换来源。 Evidence requirements: Source must name 阿希什·瓦斯瓦尼 directly. | Source must support why \"Paper page - Attention Is All You Need\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 阿希什·瓦斯瓦尼 Paper page Attention All You Need paper authors | 阿希什·瓦斯瓦尼 Paper page Attention All You Need official source | 阿希什·瓦斯瓦尼 Paper page Attention All You Need 谷歌 Transformer evidence | 阿希什·瓦斯瓦尼 Paper page Attention All You Need interview transcript",
+      "selectedHost": "arxiv.org",
+      "reason": "arXiv是论文的权威预印本平台，页面明确列出作者Ashish Vaswani，直接证明其与论文的关系。",
+      "evidenceQuote": "Authors: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Ka...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmju1o1830ep9rmtb682rrj6x",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:36:02.367Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://huggingface.co/papers/1706.03762",
+          "title": "Paper page - Attention Is All You Need",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=Hugging Face论文页面，提及Ashish Vaswani为作者，但内容主要为页面框架，缺乏实质性信息。.",
+          "evidenceRequirements": [
+            "Source must name 阿希什·瓦斯瓦尼 directly.",
+            "Source must support why \"Paper page - Attention Is All You Need\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "阿希什·瓦斯瓦尼 Paper page Attention All You Need paper authors",
+            "阿希什·瓦斯瓦尼 Paper page Attention All You Need official source",
+            "阿希什·瓦斯瓦尼 Paper page Attention All You Need 谷歌 Transformer evidence",
+            "阿希什·瓦斯瓦尼 Paper page Attention All You Need interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1o1830ep9rmtb682rrj6x",
+          "objectLabel": "Paper page - Attention Is All You Need"
+        },
+        "selectedReason": "arXiv是论文的权威预印本平台，页面明确列出作者Ashish Vaswani，直接证明其与论文的关系。",
+        "evidenceQuote": "Authors: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Ka...",
+        "candidateAuthorityScore": 2,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "research_source",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    },
+    {
+      "claimId": "prune-tail:cmjtxpz3s042ermtbi02mp2ai",
+      "personId": "cmjtxe4kc000f5p08n4sq7547",
+      "person": "阿希什·瓦斯瓦尼",
+      "decision": "replace_source",
+      "confidence": 0.9,
+      "url": "https://papers.neurips.cc/paper/7181-attention-is-all-you-need.pdf",
+      "urlHash": "5a652422f33f80a7c83673fb23ad0d1fb77e6ea2e21e001c5697442bfcfe1025",
+      "contentHash": "5e4cd96b6eb2ab3d14a4b2a3219a2934d27c9a825646bcfaa246a0db66d6184f",
+      "sourceType": "paper",
+      "title": "[PDF] Attention is All you Need - NIPS",
+      "text": "Evidence quote: Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com ... Selection reason: 原始论文详情页，直接证明其作为Transformer论文共同作者的身份，是权威的学术来源。 Source preview: Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com Noam Shazeer∗ Google Brain noam@google.com Niki Parmar∗ Google Research nikip@google.com Jakob Uszkoreit∗ Google Research usz@google.com Llion Jones∗ Google Research llion@google.com Aidan N. Gomez∗† University of Toronto aidan@cs.toronto.edu Łukasz Kaiser∗ Google Brain lukaszkaiser@google.com Illia Polosukhin∗‡ illia.polosukhin@gmail.com Abstract The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network a... MiMo rationale: 原来源为AI生成的简介，信息密度低。候选中，蒙哥马利峰会官网提供了权威的职位和贡献描述，原始论文PDF直接证明其学术身份，两者结合可有效替换并补强原来源。 Evidence requirements: Source must name 阿希什·瓦斯瓦尼 directly. | Source must support why \"Ashish Vaswani - People in AI\" belongs on this person's page, or provide a better authoritative replacement. | Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution. | Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source. Source queries: 阿希什·瓦斯瓦尼 Ashish Vaswani People official source | 阿希什·瓦斯瓦尼 Ashish Vaswani People 谷歌 Transformer evidence | 阿希什·瓦斯瓦尼 Ashish Vaswani People interview transcript",
+      "selectedHost": "papers.neurips.cc",
+      "reason": "原始论文详情页，直接证明其作为Transformer论文共同作者的身份，是权威的学术来源。",
+      "evidenceQuote": "Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com ...",
+      "metadata": {
+        "appliedFrom": "refetch_source_remediation",
+        "claimId": "prune-tail:cmjtxpz3s042ermtbi02mp2ai",
+        "decision": "replace_source",
+        "confidence": 0.9,
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        },
+        "reviewedAt": "2026-06-10T14:35:32.004Z",
+        "searchProvider": "tavily",
+        "originalSource": {
+          "url": "https://www.artificial-intelligence.blog/people-in-ai/ashish-vaswani",
+          "title": "Ashish Vaswani - People in AI",
+          "textPreview": "",
+          "sourceQualityFlags": [],
+          "sourceQualityReasons": []
+        },
+        "remediation": {
+          "action": "refetch_source",
+          "rationale": "Remaining prune tail row after conservative delete pass. Latest QA verdict=review; reason=内容简短且为AI生成的简介，信息密度低，但明确关于此人且相关AI。.",
+          "evidenceRequirements": [
+            "Source must name 阿希什·瓦斯瓦尼 directly.",
+            "Source must support why \"Ashish Vaswani - People in AI\" belongs on this person's page, or provide a better authoritative replacement.",
+            "Prefer official profile, institution/company page, paper detail page, author page, interview transcript, or reliable media with clear attribution.",
+            "Do not use search pages, login walls, empty captures, generic product pages without person role, or social snippets without context as replace_source."
+          ],
+          "sourceQueries": [
+            "阿希什·瓦斯瓦尼 Ashish Vaswani People official source",
+            "阿希什·瓦斯瓦尼 Ashish Vaswani People 谷歌 Transformer evidence",
+            "阿希什·瓦斯瓦尼 Ashish Vaswani People interview transcript"
+          ]
+        },
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxpz3s042ermtbi02mp2ai",
+          "objectLabel": "Ashish Vaswani - People in AI"
+        },
+        "selectedReason": "原始论文详情页，直接证明其作为Transformer论文共同作者的身份，是权威的学术来源。",
+        "evidenceQuote": "Attention Is All You Need Ashish Vaswani∗ Google Brain avaswani@google.com ...",
+        "candidateAuthorityScore": 0,
+        "candidateAuthoritySignals": [
+          "missing_person_name",
+          "search_or_access_limited_page"
+        ],
+        "candidatePublishedDate": null,
+        "candidateAuthor": null,
+        "blockers": []
+      },
+      "rawAction": "updated_raw",
+      "auditAction": "keep_audit_exists"
+    }
+  ],
+  "skippedRows": [
+    {
+      "claimId": "prune-tail:cmjtvw8o101bvrmtb5zn1fxfu",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxqpyn04bqrmtbkskudnf1",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmju0oe4a07zqrmtbhrvr6ixb",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxls3s035vrmtb5jsssc72",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxs53b04mermtbfcpwk9qq",
+      "personId": "cmjtxkqy9000039ylucg15kqs",
+      "person": "马克·扎克伯格",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    },
+    {
+      "claimId": "prune-tail:cmjtxmg9p03bwrmtbe515a3n7",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "decision": "human_review",
+      "sourceUrl": null,
+      "sourceHost": null,
+      "reason": "decision_not_selected"
+    }
+  ]
+}

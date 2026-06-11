@@ -1,0 +1,142 @@
+{
+  "generatedAt": "2026-06-11T17:46:00+08:00",
+  "reason": "Source-depth and avatar repairs for Perplexity core candidates.",
+  "sources": [
+    {
+      "person": "Denis Yarats",
+      "url": "https://en.wikipedia.org/wiki/Denis_Yarats",
+      "sourceType": "profile",
+      "title": "Denis Yarats profile",
+      "requiredTerms": ["Denis Yarats", "Perplexity AI", "CTO"],
+      "reason": "Person profile identifies Denis Yarats as Perplexity co-founder and CTO."
+    },
+    {
+      "person": "Denis Yarats",
+      "url": "https://en.wikipedia.org/wiki/Perplexity_AI",
+      "sourceType": "profile",
+      "title": "Perplexity AI company page",
+      "requiredTerms": ["Denis Yarats", "Andy Konwinski", "Johnny Ho"],
+      "reason": "Company page lists Denis Yarats among Perplexity founders."
+    },
+    {
+      "person": "Denis Yarats",
+      "url": "https://github.com/denisyarats",
+      "sourceType": "official",
+      "title": "Denis Yarats GitHub profile",
+      "requiredTerms": ["Denis Yarats", "AI"],
+      "reason": "GitHub profile supports identity and avatar review."
+    },
+    {
+      "person": "Andy Konwinski",
+      "url": "https://en.wikipedia.org/wiki/Andy_Konwinski",
+      "sourceType": "profile",
+      "title": "Andy Konwinski profile",
+      "requiredTerms": ["Andy Konwinski", "Perplexity", "Databricks"],
+      "reason": "Person profile identifies Andy Konwinski as Perplexity and Databricks co-founder."
+    },
+    {
+      "person": "Andy Konwinski",
+      "url": "https://en.wikipedia.org/wiki/Perplexity_AI",
+      "sourceType": "profile",
+      "title": "Perplexity AI company page",
+      "requiredTerms": ["Andy Konwinski", "Denis Yarats", "Johnny Ho"],
+      "reason": "Company page lists Andy Konwinski among Perplexity founders."
+    }
+  ],
+  "cards": [
+    {
+      "person": "Denis Yarats",
+      "title": "Perplexity 联合创始人与 CTO",
+      "content": "Denis Yarats 个人资料页将他描述为 Perplexity AI 联合创始人兼 CTO，补齐 Perplexity 的核心技术负责人。",
+      "tags": ["Perplexity", "搜索", "CTO"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Denis_Yarats",
+      "importance": 4
+    },
+    {
+      "person": "Denis Yarats",
+      "title": "Perplexity 创始团队来源",
+      "content": "Perplexity AI 公司页列出 Aravind Srinivas、Denis Yarats、Johnny Ho 和 Andy Konwinski 为 2022 年创始人。",
+      "tags": ["Perplexity", "创始人", "AI 搜索"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Perplexity_AI",
+      "importance": 4
+    },
+    {
+      "person": "Denis Yarats",
+      "title": "GitHub 身份与头像来源",
+      "content": "Denis Yarats 的 GitHub profile 使用 denisyarats 账号并展示本人姓名，可作为头像和代码身份线索。",
+      "tags": ["GitHub", "头像来源", "工程"],
+      "sourceUrl": "https://github.com/denisyarats",
+      "importance": 3
+    },
+    {
+      "person": "Denis Yarats",
+      "title": "强化学习研究背景",
+      "content": "Denis Yarats 资料页记录其早期强化学习研究经历，为其在 Perplexity 技术路线中的角色提供技术背景。",
+      "tags": ["强化学习", "Meta AI", "研究"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Denis_Yarats",
+      "importance": 3
+    },
+    {
+      "person": "Denis Yarats",
+      "title": "AI 搜索产品技术线索",
+      "content": "Perplexity AI 公司页将产品描述为 AI 搜索引擎，Denis Yarats 作为 CTO 与该产品的检索和回答系统建设直接相关。",
+      "tags": ["搜索", "大语言模型", "产品"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Perplexity_AI",
+      "importance": 3
+    },
+    {
+      "person": "Andy Konwinski",
+      "title": "Perplexity 与 Databricks 联合创始人",
+      "content": "Andy Konwinski 个人资料页记录他共同创办 Databricks，也共同创办 Perplexity AI。",
+      "tags": ["Perplexity", "Databricks", "创始人"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Andy_Konwinski",
+      "importance": 4
+    },
+    {
+      "person": "Andy Konwinski",
+      "title": "Perplexity 创始团队来源",
+      "content": "Perplexity AI 公司页列出 Aravind Srinivas、Denis Yarats、Johnny Ho 和 Andy Konwinski 为 2022 年创始人。",
+      "tags": ["Perplexity", "创始人", "AI 搜索"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Perplexity_AI",
+      "importance": 4
+    },
+    {
+      "person": "Andy Konwinski",
+      "title": "Laude Institute 研究生态",
+      "content": "Andy Konwinski 资料页记录其发起 Laude Institute，面向计算机科学研究者和 AI 影响力方向建设研究生态。",
+      "tags": ["AI 生态", "研究机构", "Laude Institute"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Andy_Konwinski",
+      "importance": 3
+    },
+    {
+      "person": "Andy Konwinski",
+      "title": "Apache Spark 与数据基础设施背景",
+      "content": "Andy Konwinski 因参与 Apache Spark 与共同创办 Databricks 闻名，这条基础设施背景解释了他在 AI 搜索和平台生态中的影响。",
+      "tags": ["基础设施", "开源", "Databricks"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Andy_Konwinski",
+      "importance": 3
+    },
+    {
+      "person": "Andy Konwinski",
+      "title": "AI 搜索与研究资助生态",
+      "content": "Andy Konwinski 资料页同时记录 Perplexity 和 Laude Institute，说明他的公开工作已从数据基础设施延伸到 AI 搜索和研究资助生态。",
+      "tags": ["AI 生态", "搜索", "研究资助"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Andy_Konwinski",
+      "importance": 3
+    }
+  ],
+  "avatars": [
+    {
+      "person": "Denis Yarats",
+      "imageUrl": "https://avatars.githubusercontent.com/u/15959920?v=4",
+      "evidenceUrl": "https://github.com/denisyarats",
+      "evidenceNote": "GitHub profile page includes the denisyarats account, the displayed name Denis Yarats, and the avatar URL."
+    },
+    {
+      "person": "Andy Konwinski",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Andy_Konwinski.jpg/1280px-Andy_Konwinski.jpg",
+      "evidenceUrl": "https://en.wikipedia.org/wiki/Andy_Konwinski",
+      "evidenceNote": "Andy Konwinski profile page is titled Andy Konwinski and includes the portrait file Andy_Konwinski.jpg."
+    }
+  ]
+}

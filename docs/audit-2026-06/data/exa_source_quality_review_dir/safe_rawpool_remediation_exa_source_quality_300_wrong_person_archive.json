@@ -1,0 +1,641 @@
+{
+  "generatedAt": "2026-06-09T23:19:03.663Z",
+  "criteria": {
+    "safeToAutoApply": true,
+    "claimType": "source_item_belongs_to_person",
+    "verdict": [
+      "wrong_person"
+    ],
+    "remediationAction": "delete_raw_pool_item",
+    "confidence": ">= 0.85",
+    "destructiveAction": "deleted RawPoolItem rows only"
+  },
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 12,
+    "rejectedSafeQueueRows": 22,
+    "uniqueTargetIds": 12,
+    "existingTargets": 12,
+    "missingTargets": 0,
+    "deleted": 0,
+    "affectedPeople": 8,
+    "bySourceType": {
+      "exa": 12
+    },
+    "byVerdict": {
+      "wrong_person": 12
+    },
+    "topPeople": {
+      "Jason Wei": 2,
+      "John Schulman": 2,
+      "Noam Shazeer": 2,
+      "Sam Altman": 2,
+      "Lukasz Kaiser": 1,
+      "Oriol Vinyals": 1,
+      "Percy Liang": 1,
+      "Shane Legg": 1
+    }
+  },
+  "missingIds": [],
+  "rows": [
+    {
+      "raw": {
+        "id": "cmju1puo70exyrmtbwrgn8ynm",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/html/2502.16290v1",
+        "urlHash": "2a5978861bf15b0c3bf46734c2034eab",
+        "contentHash": "9427b0066c6597fe3f0bf18b2df6d9b0",
+        "title": "Interrogating LLM design under a fair learning doctrine",
+        "text": "Interrogating LLM design under a fair learning doctrine\n# Interrogating LLM design under a fair learning doctrine\nJohnny Tian-Zheng WeiUniversity of Southern CaliforniaLos Angeles, CAUSA[jtwei@usc.edu](mailto:jtwei@usc.edu),Maggie WangPrinceton UniversityPrinceton, NJUSA[maggiewang@princeton.edu](mailto:maggiewang@princeton.edu),Ameya GodboleUniversity of Southern CaliforniaLos Angeles, CAUSA[ameyagod@usc.edu](mailto:ameyagod@usc.edu),Jonathan H. ChoiUniversity of Southern CaliforniaLos Angeles, CAUSA[jonchoi@law.usc.edu](mailto:jonchoi@law.usc.edu)andRobin JiaUniversity of Southern CaliforniaLos Angeles, CAUSA[robinjia@usc.edu](mailto:robinjia@usc.edu)\n(2025; 20 February 2007; 12 March 2009; 5 June 2009)\n###### Abstract.\nThe current discourse on large language models (LLMs) and copyright largely takes a “behavioral” perspective, focusing on model outputs and evaluating whether they are substantially similar to training data. However, substantial similarity is difficult to define algorithmically and a narrow focus on model outputs is insufficient to address all copyright risks. In this interdisciplinary work, we take a complementary “structural” perspective and shift our focus to how LLMs are trained. We operationalize a notion of “fair learning” by measuring whether any training decision substantially affected the model’s memorization. As a case study, we deconstruct Pythia, an open-source LLM, and demonstrate the use of causal and correlational analyses to make factual determinations about Pythia’s training decisions. By proposing a legal standard for fair learning and connecting memorization analyses to this standard, we identify how judges may advance the goals of copyright law through adjudication. Finally, we discuss how a fair learning standard might evolve to enhance its clarity by becoming more rule-like and incorporating external technical guidelines.\nCopyright, LLMs, regression\n††copyright:acmlicensed††journalyear:2025††doi:XXXXXXX.XXXXXXX††conference:; June 03–05,\n2025; Woodstock, NY††isbn:978-1-4503-XXXX-X/18/06††ccs:Mathematics of computing Regression analysis††ccs:Applied computing Law\n## 1.Introduction\nLarge language models (LLMs) present new challenges to copyright law> (Franceschelli and Musolesi, [> 2022\n](https://arxiv.org/html/2502.16290v1#bib.bib24)> ; Henderson et al\n> .\n> , [> 2023\n](https://arxiv.org/html/2502.16290v1#bib.bib35)> )\n. While LLMs hold transformative potential in many domains> (Bommasani et al\n> .\n> , [> 2021\n](https://arxiv.org/html/2502.16290v1#bib.bib7)> ; Franceschelli and Musolesi, [> 2024\n](https://arxiv.org/html/2502.16290v1#bib.bib25)> )\n, these models are trained on vast amounts of textual data which often includes copyrighted material> (Chang et al\n> .\n> , [> 2023\n](https://arxiv.org/html/2502.16290v1#bib.bib14)> )\n. Technical studies have shown that LLMs can reproduce parts of their training data> (Carlini et al\n> .\n> , [> 2020\n](https://arxiv.org/html/2502.16290v1#bib.bib12)> )\n, although under normal use, their outputs are typically novel> (Merrill et al\n> .\n> , [> 2024\n](https://arxiv.org/html/2502.16290v1#bib.bib56)> )\n. In the U.S., it is unclear whether training these models on copyrighted material violates the authors’ exclusive copyright of that material. As LLM outputs fall in between creativity and copying, existing legal categories break> (Lee et al\n> .\n> , [> 2024\n](https://arxiv.org/html/2502.16290v1#bib.bib45)> )\n.\nThe current discourse on LLMs and copyright largely takes a “behavioral” perspective, focusing on model outputs and evaluating whether they are substantially similar to training data> (Sobel, [> 2017\n](https://arxiv.org/html/2502.16290v1#bib.bib68)> ; Somepalli et al\n> .\n> , [> 2023\n](https://arxiv.org/html/2502.16290v1#bib.bib69)> ; Ippolito et al\n> .\n> , [> 2023\n](https://arxiv.org/html/2502.16290v1#bib.bib37)> ; Scheffler et al\n> .\n> , [> 2022\n](https://arxiv.org/html/2502.16290v1#bib.bib61)> , inter alia)\n. However, substantial similarity is difficult to define algorithmically, and similarity alone is a narrow view of copyright. Complementary to the behavioral perspective, a “structural” perspective would focus on how the model was trained.Our work explores a structural perspective and theorizes a fair learning doctrine to clarify acceptable LLM design.To this end, we conduct an interdisciplinary exploration of judicial decision-making for LLMs.\nOur work consists of three parts:\n* •In §[2](https://arxiv.org/html/2502.16290v1#S2), we review U.S. copyright law and emphasize that the legal determination of fair use can turn on technological design decisions. Here, a “behavioral” perspective alone is an incomplete view of copyright, and this work takes a complementary “structural” perspective by evaluating LLM design decisions, which presents an opportunity to develop a notion of “fair learning.”\n* •In §[3](https://arxiv.org/html/2502.16290v1#S3), we operationalize a notion of “fair learning” by measuring whether a model’s training d",
+        "publishedAt": "2007-02-19T16:00:00.000Z",
+        "metadata": {
+          "author": "Johnny Tian-Zheng Wei University of Southern CaliforniaLos Angeles, CAUSA jtwei@usc.edu",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:22:25.544Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju1puo70exyrmtbwrgn8ynm",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1puo70exyrmtbwrgn8ynm",
+          "fieldPath": "RawPoolItem[cmju1puo70exyrmtbwrgn8ynm]",
+          "objectLabel": "Interrogating LLM design under a fair learning doctrine"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源论文作者为Johnny Tian-Zheng Wei，与目标人物Jason Wei不符，属于明确的人名错配。高置信度删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:15:28.212Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvwgvp01fvrmtbpazyz79s",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "sourceType": "exa",
+        "url": "https://jasonweiyi.medium.com/",
+        "urlHash": "84f7809bc6f796a012a5ac0575d1de74",
+        "contentHash": "281bea34e3b1586aa1358ae1696e030d",
+        "title": "Wei Yi – Medium",
+        "text": "[Sitemap](https://jasonweiyi.medium.com/sitemap/sitemap.xml)\n\n[Open in app](https://rsci.app.link/?%24canonical_url=https%3A%2F%2Fmedium.com%2F&%7Efeature=LoOpenInAppButton&%7Echannel=ShowUser&%7Estage=mobileNavBar&source=---two_column_layout_nav-----------------------------------------)\n\nSign up\n\n[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fjasonweiyi.medium.com%2F&source=user_profile_page---two_column_layout_nav-----------------------global_nav------------------)\n\n[Medium Logo](https://medium.com/?source=---two_column_layout_nav-----------------------------------------)\n\n[Write](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---two_column_layout_nav-----------------------new_post_topnav------------------)\n\n[Search](https://medium.com/search?source=---two_column_layout_nav-----------------------------------------)\n\nSign up\n\n[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fjasonweiyi.medium.com%2F&source=user_profile_page---two_column_layout_nav-----------------------global_nav------------------)\n\nWei Yi\n\n[1.2K followers](https://jasonweiyi.medium.com/followers?source=user_profile_page----------------------1b4bd5317a6e----------------------)\n\nFollow\n\nPinned\n\nPublished in\n\n[Data Science Collective](https://medium.com/data-science-collective?source=user_profile_page---------0-------------1b4bd5317a6e----------------------)\n\n[**Neural network gradients, chain rule and PyTorch forward/backward** \\\n**This article explains how to use the chain rule to compute neural network gradients and how to implement forward and backward in PyTorch**](https://jasonweiyi.medium.com/neural-network-gradients-chain-rule-and-pytorch-forward-backward-9fddbdc1c0f9?source=user_profile_page---------0-------------1b4bd5317a6e----------------------)\n\n4d ago\n\n[A response icon1](https://jasonweiyi.medium.com/neural-network-gradients-chain-rule-and-pytorch-forward-backward-9fddbdc1c0f9?source=user_profile_page---------0-------------1b4bd5317a6e----------------------)\n\n4d ago\n\n[A response icon1](https://jasonweiyi.medium.com/neural-network-gradients-chain-rule-and-pytorch-forward-backward-9fddbdc1c0f9?source=user_profile_page---------0-------------1b4bd5317a6e----------------------)\n\nPinned\n\nPublished in\n\n[Data Science Collective](https://medium.com/data-science-collective?source=user_profile_page---------1-------------1b4bd5317a6e----------------------)\n\n[**Reinforcement Learning from Human Feedback (RLHF) — Models, Losses and their explanations** \\\n**This article introduces the four models used in RLHF, how they are setup, their loss and gradient derivations, and their intuitions**](https://jasonweiyi.medium.com/reinforcement-learning-from-human-feedback-rlhf-models-losses-and-their-explanations-b366f557d9d7?source=user_profile_page---------1-------------1b4bd5317a6e----------------------)\n\nMay 26\n\n[A response icon2](https://jasonweiyi.medium.com/reinforcement-learning-from-human-feedback-rlhf-models-losses-and-their-explanations-b366f557d9d7?source=user_profile_page---------1-------------1b4bd5317a6e----------------------)\n\nMay 26\n\n[A response icon2](https://jasonweiyi.medium.com/reinforcement-learning-from-human-feedback-rlhf-models-losses-and-their-explanations-b366f557d9d7?source=user_profile_page---------1-------------1b4bd5317a6e----------------------)\n\n## Get an email whenever Wei Yi publishes.\n\nI write stories about deep learning as well as traditional machine learning, computer vision, optimization and math. The stories usually come from problems I face at work where I could not find satisfactory answers easily after reading Google's resulting pages.\n\nSubscribe\n\nBy signing up, you will create a Medium account if you don’t already have one. Review our [Privacy Policy](https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=newsletter_v3_promo--------------------------newsletter_v3_promo------------------) for more information about our privacy practices.\n\nMedium sent you an email at to complete your subscription.\n\nPinned\n\nPublished in\n\n[TDS Archive](https://medium.com/data-science?source=user_profile_page---------2-------------1b4bd5317a6e----------------------)\n\n[**How Does an Image-Text Multimodal Foundation Model Work** \\\n**Learn how an image-text multi-modality model can perform image classification, image retrieval, and image captioning**](https://jasonweiyi.medium.com/how-does-an-image-text-foundation-model-work-05bc7598e3f2?source=user_profile_page---------2-------------1b4bd5317a6e----------------------)\n\nJun 1, 2024\n\n[A response icon4](https://jasonweiyi.medium.com/how-does-an-image-text-foundation-model-work-05bc7598e3f2?source=user_profile_page---------2-------------1b4bd5317a6e----------------------)\n\nJun 1, 2024\n\n[A response icon4](https://jasonweiyi.medium.com/how-does-an-image-text-foundation-model-work-05bc7598e3f2?source=user_profile_page---------2-------------1b4bd5317a6e-------------------",
+        "publishedAt": "2023-06-03T16:00:00.000Z",
+        "metadata": {
+          "author": "Wei Yi",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T02:39:36.566Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvwgvp01fvrmtbpazyz79s",
+        "personId": "cmjtv3pwq000ki004fsebecez",
+        "person": "Jason Wei",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvwgvp01fvrmtbpazyz79s",
+          "fieldPath": "RawPoolItem[cmjtvwgvp01fvrmtbpazyz79s]",
+          "objectLabel": "Wei Yi – Medium"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "页面标题为'Wei Yi – Medium'，URL包含'jasonweiyi'，与目标人物Jason Wei姓名不匹配，属于错误人物，高置信删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:15:43.678Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju117av0a43rmtbvqriam8b",
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/pdf/2406.04268",
+        "urlHash": "a714d40d5d080c0ac0f0fe0d73f509b9",
+        "contentHash": "bc44d3a9090581053e4098983346c470",
+        "title": "Open-Endedness is Essential for Artificial Superhuman Intelligence",
+        "text": "Open-Endedness is Essential for Artificial Superhuman Intelligence\nEdward Hughes * 1 Michael Dennis * 1 Jack Parker-Holder 1 Feryal Behbahani 1 Aditi Mavalankar 1 Yuge Shi 1\nTom Schaul 1 Tim Rocktaschel ¨\n1\nAbstract\nIn recent years there has been a tremendous surge\nin the general capabilities of AI systems, mainly\nfuelled by training foundation models on internet\u0002scale data. Nevertheless, the creation of open\u0002ended, ever self-improving AI remains elusive.\nIn this position paper, we argue that the in\u0002gredients are now in place to achieve open\u0002endedness in AI systems with respect to a hu\u0002man observer. Furthermore, we claim that\nsuch open-endedness is an essential property\nof any artificial superhuman intelligence (ASI).\nWe begin by providing a concrete formal defini\u0002tion of open-endedness through the lens of novelty\nand learnability. We then illustrate a path towards\nASI via open-ended systems built on top of foun\u0002dation models, capable of making novel, human\u0002relevant discoveries. We conclude by examining\nthe safety implications of generally-capable open\u0002ended AI. We expect that open-ended foundation\nmodels will prove to be an increasingly fertile and\nsafety-critical area of research in the near future.\n1. Introduction\nRecent years have seen impressive progress in AI, mainly\ndriven by foundation models (Bommasani et al., 2021).\nThese models are increasingly used as agents in various\napplications (e.g., Wang et al., 2023a; Wu et al., 2023;\nLifshitz et al., 2023; Wang et al., 2023c; Liu et al., 2023b;\nZheng et al., 2024; Ahn et al., 2022). This represents signif\u0002icant progress towards artificial general intelligence (AGI),\nin the sense of reaching human-level performance on a wide\nrange of tasks (Legg and Hutter, 2007). However, we are\nstill missing a formal description of what it would take for\nan autonomous system to self-improve towards increasingly\ncreative and diverse discoveries without end—a Cambrian\n*Equal contribution 1Google DeepMind, London, UK. Corre\u0002spondence to: Edward Hughes,\nMichael Dennis.\nProceedings of the 41 st International Conference on Machine\nLearning, Vienna, Austria. PMLR 235, 2024. Copyright 2024 by\nthe author(s).\nexplosion of emergent capabilities, behaviors, and artifacts.\nThis kind of open-ended invention is the mechanism by\nwhich human individuals and society at large accumulates\nnew knowledge and technology. Therefore, open-endedness\nmust be a property of an artificial superhuman intelligence\n(ASI, Morris et al., 2023) that can, by definition, accomplish\na wide range of tasks at a level which no human can match.\nBy the very nature of superhuman intelligence, open-ended\ndiscovery of innovative solutions is essential to empower hu\u0002manity to manage its risks, just as society evolves norms and\ninstitutions to govern increasingly capable humans across\ngenerations (Richerson et al., 2001).\nFoundation models such as large language models (LLMs)\nhave scaled learning to large, static datasets scraped from\nthe internet. Extrapolating, we may soon be running out\nof high-quality textual and visual data for training such\nmodels (Villalobos et al., 2022). Thus, open-endedness is\nunlikely to arise for free by training on ever-larger datasets.\nRather, a system endowed with the open-endedness neces\u0002sary for ASI will eventually have to create, refute and refine\nits own explanatory knowledge, in interaction with a source\nof evidence (Deutsch, 2011), as well as learning what data to\nlearn from (Jiang et al., 2022). Moreover, for ASI to be use\u0002ful and safe, it is important that open-endedness be guided\ntowards knowledge that is understandable by and beneficial\nfor humanity. Foundation models and open-endedness are\northogonal dimensions, whose combination is particularly\npowerful (cf. Lehman et al., 2022; Huang et al., 2022; Chen\net al., 2023a; Meyerson et al., 2023; Zhang et al., 2023; Wu\net al., 2023; Wang et al., 2023a). Open-ended algorithms\nendow foundation models with the ability to uncover new\nknowledge, while foundation models guide the search space\nfor open-ended AI towards discovering human-relevant arti\u0002facts efficiently (Liu et al., 2023a; Ma et al., 2023; Romera\u0002Paredes et al., 2024). A formal definition of open-endedness\ncan catalyze progress in this direction, offering clarity and\nfocus to galvanize the research community.\nWe provide a new and precise definition of open-endedness\nin Section 2, inspired by the open-ended systems in nature\nthat have created life, the human brain, culture, and tech\u0002nology, as well as open-ended systems in silico that, for\ninstance, have achieved superhuman level at the game of\nGo (Silver et al., 2016), generated human-level adaptation\n1\narXiv:2406.04268v1 [cs.LG] 6 Jun 2024\nOpen-Endedness is Essential for Artificial Superhuman Intelligence\nto novel 3D tasks (Bauer et al., 2023), self-improved lan\u0002guage models (Fernando et al., 2023; Yang et al., 2023a),\nunlocked the tech tree in Minecraft (Wang et al., 2023a),\nand discovered new results in pure mathematics",
+        "publishedAt": "2024-06-06T16:00:00.000Z",
+        "metadata": {
+          "author": "Edward Hughes, Michael Dennis, Jack Parker-Holder, Feryal Behbahani, Aditi Mavalankar, Yuge Shi, Tom Schaul, Tim Rocktäschel",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:52:38.018Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju117av0a43rmtbvqriam8b",
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju117av0a43rmtbvqriam8b",
+          "fieldPath": "RawPoolItem[cmju117av0a43rmtbvqriam8b]",
+          "objectLabel": "Open-Endedness is Essential for Artificial Superhuman Intelligence"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源为一篇arXiv论文，作者列表中未包含John Schulman，与目标人物无关，属于错误人物，高置信删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:15:43.678Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju118cs0a45rmtbms1qke9u",
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/html/2404.12253v1",
+        "urlHash": "30d57d1e660f1f2e647cce23ca9b3623",
+        "contentHash": "c18ab468e418ab42ad760248901c9a19",
+        "title": "Toward Self-Improvement of LLMs via Imagination, Searching, and Criticizing",
+        "text": "Toward Self-Improvement of LLMs via Imagination, Searching, and Criticizing\n# Toward Self-Improvement of LLMs via Imagination, Searching, and Criticizing\nYe Tian, Baolin Peng∗\\*, Linfeng Song∗\\*, Lifeng Jin, Dian Yu, Haitao Mi†, Dong Yu\nTencent AI Lab, Bellevue, WA\n{yaptian,baolinpeng,lfsong,lifengjin,yudian,haitaomi}@global.tencent.com\nEqual Contribution; †Corresponding Author\n###### Abstract\nDespite the impressive capabilities of Large Language Models (LLMs) on various tasks, they still struggle with scenarios that involves complex reasoning and planning. Recent work proposed advanced prompting techniques and the necessity of fine-tuning with high-quality data to augment LLMs’ reasoning abilities. However, these approaches are inherently constrained by data availability and quality. In light of this, self-correction and self-learning emerge as viable solutions, employing strategies that allow LLMs to refine their outputs and learn from self-assessed rewards. Yet, the efficacy of LLMs in self-refining its response, particularly in complex reasoning and planning task, remains dubious. In this paper, we introduceAlphaLLMfor the self-improvements of LLMs, which integrates Monte Carlo Tree Search (MCTS) with LLMs to establish a self-improving loop, thereby enhancing the capabilities of LLMs without additional annotations. Drawing inspiration from the success of AlphaGo,AlphaLLMaddresses the unique challenges of combining MCTS with LLM for self-improvement, including data scarcity, the vastness search spaces of language tasks, and the subjective nature of feedback in language tasks.AlphaLLMis comprised of prompt synthesis component, an efficient MCTS approach tailored for language tasks, and a trio of critic models for precise feedback. Our experimental results in mathematical reasoning tasks demonstrate thatAlphaLLMsignificantly enhances the performance of LLMs without additional annotations, showing the potential for self-improvement in LLMs.\n## 1Introduction\nLLMs, trained on trillions of tokens with billions of parameters have shown unparalleled capabilities in a wide range of natural language processing tasks> (Touvron et al., [> 2023b\n](https://arxiv.org/html/2404.12253v1#bib.bib50)> ; Team et al., [> 2023\n](https://arxiv.org/html/2404.12253v1#bib.bib48)> ; OpenAI, [> 2023\n](https://arxiv.org/html/2404.12253v1#bib.bib32)> )\n. Nevertheless, they continue to face challenges in scenarios requiring complex reasoning and strategic planning> (Valmeekam et al., [> 2022\n](https://arxiv.org/html/2404.12253v1#bib.bib51)> ; Stechly et al., [> 2024\n](https://arxiv.org/html/2404.12253v1#bib.bib41)> )\n. While advanced prompting approaches such as Chain, Tree, Graph-of-Thought> (Wei et al., [> 2022\n](https://arxiv.org/html/2404.12253v1#bib.bib56)> ; Yao et al., [> 2024\n](https://arxiv.org/html/2404.12253v1#bib.bib59)> ; Besta et al., [> 2024\n](https://arxiv.org/html/2404.12253v1#bib.bib3)> ; Ding et al., [> 2023\n](https://arxiv.org/html/2404.12253v1#bib.bib13)> )\n, which generate intermediate steps in the reasoning process demonstrate large improvements on reasoning capability of LLMs, it remains essential to fine-tune LLMs using a substantial volume of high-quality, supervised data to fundamentally improve the model performance> (Nye et al., [> 2021\n](https://arxiv.org/html/2404.12253v1#bib.bib31)> ; Lewkowycz et al., [> 2022\n](https://arxiv.org/html/2404.12253v1#bib.bib23)> ; Chung et al., [> 2022\n](https://arxiv.org/html/2404.12253v1#bib.bib8)> )\n. This methodology is inherently limited by the scope and quality of data that humans can provide.\nConsidering existing challenges, the concept of self-correction and self-learning have been proposed as promising solutions> (Madaan et al., [> 2024\n](https://arxiv.org/html/2404.12253v1#bib.bib30)> ; Saunders et al., [> 2022\n](https://arxiv.org/html/2404.12253v1#bib.bib37)> ; Chen et al., [> 2024\n](https://arxiv.org/html/2404.12253v1#bib.bib5)> )\n. Within these framework, LLMs typically operate by employing two main strategies: 1) they continuously refine their responses based on the feedback of their past responses, and 2) they extensively sample responses then learn from preferences judged by itself as reward models with PPO or DPO> (Yuan et al., [> 2024a\n](https://arxiv.org/html/2404.12253v1#bib.bib61)> , [> b\n](https://arxiv.org/html/2404.12253v1#bib.bib62)> ; Chen et al., [> 2024\n](https://arxiv.org/html/2404.12253v1#bib.bib5)> )\n. However, it remains a matter of ongoing research whether LLMs can effectively critique their own outputs to either enhance response quality or apply a scalar reward to indicate the quality of responses, especially in contexts demanding intricate planning and reasoning> (Valmeekam et al., [> 2022\n](https://arxiv.org/html/2404.12253v1#bib.bib51)> ; Stechly et al., [> 2024\n](https://arxiv.org/html/2404.12253v1#bib.bib41)> ; Huang et al., [> 2023\n](https://arxiv.org/html/2404.12253v1#bib.bib22)> ; Hong et al., [> 2023\n](https://arxiv.org/html/2404.1",
+        "publishedAt": "2019-03-25T16:00:00.000Z",
+        "metadata": {
+          "author": "Equal Contribution; †Corresponding Author",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:49:25.184Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju118cs0a45rmtbms1qke9u",
+        "personId": "cmjtv30df000ei004hqk0pamw",
+        "person": "John Schulman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju118cs0a45rmtbms1qke9u",
+          "fieldPath": "RawPoolItem[cmju118cs0a45rmtbms1qke9u]",
+          "objectLabel": "Toward Self-Improvement of LLMs via Imagination, Searching, and Criticizing"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "论文作者列表中未出现John Schulman，属于错误归因，高置信删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:15:46.728Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju17o3i0bdhrmtbsqcl4qop",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "exa",
+        "url": "https://arxiv.org/abs/2202.07765",
+        "urlHash": "898254fc22fedb8d736d517ad0d12f11",
+        "contentHash": "28081aa10ec670ed0fb4ebc60b6fa65b",
+        "title": "General-purpose, long-context autoregressive modeling with Perceiver AR",
+        "text": "[2202.07765] General-purpose, long-context autoregressive modeling with Perceiver AR\n[Skip to main content](#content)\n[![Cornell University](https://arxiv.org/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\nWe gratefully acknowledge support from the Simons Foundation,[member institutions](https://info.arxiv.org/about/ourmembers.html), and all contributors.[Donate](https://info.arxiv.org/about/donate.html)\n[](https://arxiv.org/IgnoreMe)\n[![arxiv logo](https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg)](https://arxiv.org/)&gt;[cs](https://arxiv.org/list/cs/recent)&gt;arXiv:2202.07765\n[Help](https://info.arxiv.org/help)|[Advanced Search](https://arxiv.org/search/advanced)\nAll fieldsTitleAuthorAbstractCommentsJournal referenceACM classificationMSC classificationReport numberarXiv identifierDOIORCIDarXiv author IDHelp pagesFull text\nSearch\n[![arXiv logo](https://arxiv.org/static/browse/0.3.4/images/arxiv-logomark-small-white.svg)](https://arxiv.org/)\n[![Cornell University Logo](https://arxiv.org/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)\nopen search\nGO\nopen navigation menu\n# Computer Science \\> Machine Learning\n**arXiv:2202.07765**(cs)\n[Submitted on 15 Feb 2022 ([v1](https://arxiv.org/abs/2202.07765v1)), last revised 14 Jun 2022 (this version, v2)]\n# Title:General-purpose, long-context autoregressive modeling with Perceiver AR\nAuthors:[Curtis Hawthorne](https://arxiv.org/search/cs?searchtype=author&amp;query=Hawthorne,+C),[Andrew Jaegle](https://arxiv.org/search/cs?searchtype=author&amp;query=Jaegle,+A),[Cătălina Cangea](https://arxiv.org/search/cs?searchtype=author&amp;query=Cangea,+C),[Sebastian Borgeaud](https://arxiv.org/search/cs?searchtype=author&amp;query=Borgeaud,+S),[Charlie Nash](https://arxiv.org/search/cs?searchtype=author&amp;query=Nash,+C),[Mateusz Malinowski](https://arxiv.org/search/cs?searchtype=author&amp;query=Malinowski,+M),[Sander Dieleman](https://arxiv.org/search/cs?searchtype=author&amp;query=Dieleman,+S),[Oriol Vinyals](https://arxiv.org/search/cs?searchtype=author&amp;query=Vinyals,+O),[Matthew Botvinick](https://arxiv.org/search/cs?searchtype=author&amp;query=Botvinick,+M),[Ian Simon](https://arxiv.org/search/cs?searchtype=author&amp;query=Simon,+I),[Hannah Sheahan](https://arxiv.org/search/cs?searchtype=author&amp;query=Sheahan,+H),[Neil Zeghidour](https://arxiv.org/search/cs?searchtype=author&amp;query=Zeghidour,+N),[Jean-Baptiste Alayrac](https://arxiv.org/search/cs?searchtype=author&amp;query=Alayrac,+J),[João Carreira](https://arxiv.org/search/cs?searchtype=author&amp;query=Carreira,+J),[Jesse Engel](https://arxiv.org/search/cs?searchtype=author&amp;query=Engel,+J)\nView a PDF of the paper titled General-purpose, long-context autoregressive modeling with Perceiver AR, by Curtis Hawthorne and 14 other authors\n[View PDF](https://arxiv.org/pdf/2202.07765)> > Abstract:\n> Real-world data is high-dimensional: a book, image, or musical performance can easily contain hundreds of thousands of elements even after compression. However, the most commonly used autoregressive models, Transformers, are prohibitively expensive to scale to the number of inputs and layers needed to capture this long-range structure. We develop Perceiver AR, an autoregressive, modality-agnostic architecture which uses cross-attention to map long-range inputs to a small number of latents while also maintaining end-to-end causal masking. Perceiver AR can directly attend to over a hundred thousand tokens, enabling practical long-context density estimation without the need for hand-crafted sparsity patterns or memory mechanisms. When trained on images or music, Perceiver AR generates outputs with clear long-term coherence and structure. Our architecture also obtains state-of-the-art likelihood on long-sequence benchmarks, including 64 x 64 ImageNet images and PG-19 books. Comments:|ICML 2022|\nSubjects:|Machine Learning (cs.LG); Artificial Intelligence (cs.AI); Computer Vision and Pattern Recognition (cs.CV); Sound (cs.SD); Audio and Speech Processing (eess.AS)|\nCite as:|[arXiv:2202.07765](https://arxiv.org/abs/2202.07765)[cs.LG]|\n|(or[arXiv:2202.07765v2](https://arxiv.org/abs/2202.07765v2)[cs.LG]for this version)|\n|[https://doi.org/10.48550/arXiv.2202.07765](https://doi.org/10.48550/arXiv.2202.07765)\nFocus to learn more\narXiv-issued DOI via DataCite\n|\n## Submission history\nFrom: Andrew Jaegle [[view email](https://arxiv.org/show-email/c549ec67/2202.07765)]\n**[[v1]](https://arxiv.org/abs/2202.07765v1)**Tue, 15 Feb 2022 22:31:42 UTC (3,495 KB)\n**[v2]**Tue, 14 Jun 2022 16:55:16 UTC (3,496 KB)\nFull-text links:## Access Paper:\nView a PDF of the paper titled General-purpose, long-context autoregressive modeling with Perceiver AR, by Curtis Hawthorne and 14 other authors\n* [View PDF](https://arxiv.org/pdf/2202.07765)\n* [TeX Source](https://arxiv.org/src/2202.07765)\n[view license](http://arxiv.org/licens",
+        "publishedAt": "2022-02-14T16:00:00.000Z",
+        "metadata": {
+          "author": "[Submitted on 15 Feb 2022 (v1), last revised 14 Jun 2022 (this version, v2)]",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:17.214Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju17o3i0bdhrmtbsqcl4qop",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju17o3i0bdhrmtbsqcl4qop",
+          "fieldPath": "RawPoolItem[cmju17o3i0bdhrmtbsqcl4qop]",
+          "objectLabel": "General-purpose, long-context autoregressive modeling with Perceiver AR"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "论文标题和摘要预览中未出现Lukasz Kaiser，属于错误归因，高置信删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:15:46.728Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxhstw02bsrmtbfl9nr9rs",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "sourceType": "exa",
+        "url": "https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/about-the-team/",
+        "urlHash": "bd31ba14134f668dee9218c95eb527ad",
+        "contentHash": "4586c56752c3fdf4ce0e6156892c20e1",
+        "title": "BBC - Radio 2 - Shows - Terry Wogan",
+        "text": "[British Broadcasting Corporation![BBC](https://www.bbc.co.uk/staticarchive/2e00d1d53e9c3bd91993196aa19a1d88589969f0.png)Home](https://www.bbc.co.uk/)\n\n**Accessibility links**\n\n- [Skip to content](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/about-the-team/#blq-content)\n- [Skip to local navigation](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/about-the-team/#blq-local-nav)\n- [Skip to bbc.co.uk navigation](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/about-the-team/#blq-nav-main)\n- [Skip to bbc.co.uk search](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/about-the-team/#blq-search)\n- [Accessibility Help](https://www.bbc.co.uk/accessibility/)\n\n[This page has been archived and is no longer updated.\\\nFind out more about page archiving.](https://www.bbc.co.uk/globalresources/mothballing)\n\n# [![BBC Radio 2](https://www.bbc.co.uk/staticarchive/5fb6042f09fffe31bbb2ecb326cb56c6da781afb.gif)](http://www.bbc.co.uk/radio2/)\n\n- [Home](https://www.bbc.co.uk/radio2/)\n- [Shows](https://www.bbc.co.uk/radio2/programmes/a-z)\n- [Schedule](https://www.bbc.co.uk/radio2/programmes/schedules)\n- [Downloads](https://www.bbc.co.uk/podcasts/radio2)\n- [Playlist](https://www.bbc.co.uk/radio2/playlist/)\n\n- [Home](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/)\n\n- [Shows](https://www.bbc.co.uk/programmes/b006z6tc/episodes/2009/)\n\n- [Au Revoir Wogan](http://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/au-revoir-wogan/)\n\n- [About Terry](https://www.bbc.co.uk/radio2/presenters/terry-wogan/)\n\n- [The Team](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/about-the-team/)\n\n- [Weekend Wogan](http://www.bbc.co.uk/programmes/b00qgw59)\n\n\n- Wake Up To Wogan\n\n\n[![](https://www.bbc.co.uk/staticarchive/6b2b4de2c781321cd8e910986adb0701eaecfa7f.jpg)Terry Wogan](https://www.bbc.co.uk/radio2/presenters/terry-wogan/)\n\n> After leaving college Terry went into banking where his innate ability to separate half crowns from two bob bits soon marked him down for greater things.\n\n[Read Terry Wogan's full biography](https://www.bbc.co.uk/radio2/presenters/terry-wogan/)\n\n[![](https://www.bbc.co.uk/staticarchive/39523f0129d2d9d43801a8ffd95a71f6eb536c65.jpg)Alan Dedicoat](https://www.bbc.co.uk/radio2/presenters/alan-dedicoat/)\n\n> Deadly Alancoat - The Voice of the Balls\n\n[Read Alan Dedicoat's full biography](https://www.bbc.co.uk/radio2/presenters/alan-dedicoat/)\n\n[![](https://www.bbc.co.uk/staticarchive/e15ab3ed1b53246f0004c0f4cddcd5c1b73595b1.jpg)John Marsh](https://www.bbc.co.uk/radio2/presenters/john-marsh/)\n\n> How he ended up reading the news on Radio 2 is, he says, a long story. \"Let's just say that TV had a narrow escape!\".\n\n[Read John Marsh's full biography](https://www.bbc.co.uk/radio2/presenters/john-marsh/)\n\n[![](https://www.bbc.co.uk/staticarchive/2b9dba2434a27bf453ff0e08f785b95bb9ec6aa7.jpg)Lynn Bowles](https://www.bbc.co.uk/radio2/presenters/lynn-bowles/)\n\n> Notably she spent her early years at a high security boarding school for 'Daughters of the Gentry'.\n\n[Read Lynn Bowles' full biography](https://www.bbc.co.uk/radio2/presenters/lynn-bowles/)\n\n[![](https://www.bbc.co.uk/staticarchive/5d9055ca901e88c9662f4d4e93a0f11017cde675.jpg)Charles Nove](https://www.bbc.co.uk/radio2/presenters/charles-nove/)\n\n> Charles spent 12 years as the voice – and occasional face – of BBC TV’s Come Dancing, and his tones have also been heard on many TV trailers and game shows.\n\n[Read Charles Nove's full biography](https://www.bbc.co.uk/radio2/presenters/charles-nove/)\n\n[![Thank Terry For 'Wake Up To Wogan'](https://www.bbc.co.uk/staticarchive/2c8467c68c919f13f47c9c5ee1e7c7f7c248a3d8.jpg)](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/card/)\n\nSee comments from fellow 'Wake Up To Wogan' listeners saying thank you for the programme, which ended in December 2009.\n\n- [Read the thank you messages](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/card/)\n\n[![Watch Chris Evans and a host of Breakfast Show presenters say Au Revoir Wogan](https://www.bbc.co.uk/staticarchive/327f60f48d368fe1dfffe46a84771e635a0bd63b.jpg)](https://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/au-revoir-wogan/)\n\nWatch Breakfast Show hosts, past and present, reveal what Terry and the show has meant to them in our special video.\n\n- [See Au Revoir Wogan here](http://www.bbc.co.uk/radio2/shows/wake-up-to-wogan/au-revoir-wogan/)\n\n[![Watch Terry's 'Silver Bells' Video](https://www.bbc.co.uk/staticarchive/a89c3cb14a6a280212b09cb6a8809f9ede439004.jpg)](http://www.youtube.com/watch?v=Psuc1B2cPfc)\n\nWatch the video for 'Silver Bells', Terry's Christmas single, in aid of Children In Need, which also features Aled Jones and Chris Evans.\n\n- [Watch the video of 'Silver Bells' on YouTube](http://www.youtube.com/watch?v=Psuc1B2cPfc)\n\n- [More Children in Need on Radio 2](http://www.bbc.co.uk/radio2/events/children-in-need/2009/)\n\n[![Chris Evans and Terry Wogan](https://www.bbc.co.uk/staticarchive/5f69e4aa485e9881a7ae72c6e886ada1e62be7da.jpg)](https://www.bbc.co.uk/radio2/shows/chris-eva",
+        "publishedAt": "2009-04-05T16:00:00.000Z",
+        "metadata": {
+          "author": "BBC",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:24:11.444Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtxhstw02bsrmtbfl9nr9rs",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhstw02bsrmtbfl9nr9rs",
+          "fieldPath": "RawPoolItem[cmjtxhstw02bsrmtbfl9nr9rs]",
+          "objectLabel": "BBC - Radio 2 - Shows - Terry Wogan"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "该来源是BBC电台节目页面，与Noam Shazeer（AI研究员）无关，属于人名错配。高置信删除候选，可安全自动应用。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:16:39.766Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtxhs4w02bgrmtb31uoytl0",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "sourceType": "exa",
+        "url": "https://en.wikipedia.org/wiki/List_of_BBC_newsreaders_and_reporters",
+        "urlHash": "90572796e9e94aa6db9123d7a5da4068",
+        "contentHash": "455acd6c00af3aaae41aa02ed5f43461",
+        "title": "List of current BBC newsreaders and reporters",
+        "text": "[Jump to content](https://en.wikipedia.org/wiki/List_of_BBC_newsreaders_and_reporters#bodyContent)\n\n[![Page protected with pending changes](https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Pending-protection-shackle.svg/40px-Pending-protection-shackle.svg.png)](https://en.wikipedia.org/wiki/Wikipedia:Protection_policy#pending)\n\nFrom Wikipedia, the free encyclopedia\n\n(Redirected from [List of BBC newsreaders and reporters](https://en.wikipedia.org/w/index.php?title=List_of_BBC_newsreaders_and_reporters&redirect=no))\n\nThis is the [latest accepted revision](https://en.wikipedia.org/wiki/Wikipedia:Pending_changes), [reviewed](https://en.wikipedia.org/w/index.php?title=Special:Log&type=review&page=List_of_BBC_newsreaders_and_reporters) on _12 June 2024_.\n\n\"List of BBC newsreaders and reporters\" redirects here. For former staff, see [List of former BBC newsreaders and journalists](https://en.wikipedia.org/wiki/List_of_former_BBC_newsreaders_and_journalists).\n\n| | |\n| --- | --- |\n| [![](https://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/100px-Question_book-new.svg.png)](https://en.wikipedia.org/wiki/File:Question_book-new.svg) | This article **needs additional citations for [verification](https://en.wikipedia.org/wiki/Wikipedia:Verifiability)**. Please help [improve this article](https://en.wikipedia.org/wiki/Special:EditPage/List_of_current_BBC_newsreaders_and_reporters) by [adding citations to reliable sources](https://en.wikipedia.org/wiki/Help:Referencing_for_beginners). Unsourced material may be challenged and removed. _Find sources:_ [\"List of current BBC newsreaders and reporters\"](https://www.google.com/search?as_eq=wikipedia&q=%22List+of+current+BBC+newsreaders+and+reporters%22) – [news](https://www.google.com/search?tbm=nws&q=%22List+of+current+BBC+newsreaders+and+reporters%22+-wikipedia&tbs=ar:1) **·** [newspapers](https://www.google.com/search?&q=%22List+of+current+BBC+newsreaders+and+reporters%22&tbs=bkt:s&tbm=bks) **·** [books](https://www.google.com/search?tbs=bks:1&q=%22List+of+current+BBC+newsreaders+and+reporters%22+-wikipedia) **·** [scholar](https://scholar.google.com/scholar?q=%22List+of+current+BBC+newsreaders+and+reporters%22) **·** [JSTOR](https://www.jstor.org/action/doBasicSearch?Query=%22List+of+current+BBC+newsreaders+and+reporters%22&acc=on&wc=on)_(October 2023)__([Learn how and when to remove this message](https://en.wikipedia.org/wiki/Help:Maintenance_template_removal))_ |\n\nThis is a list of newsreaders and journalists currently employed by [BBC Television](https://en.wikipedia.org/wiki/BBC_Television) and [BBC Radio](https://en.wikipedia.org/wiki/BBC_Radio).\n\n[Presenters](https://en.wikipedia.org/wiki/News_presenter) and [journalists](https://en.wikipedia.org/wiki/Journalist) appear across BBC television, radio but also contribute to [BBC Online](https://en.wikipedia.org/wiki/BBC_Online).\n\nBBC News provides television journalism to BBC network bulletins (on [BBC One](https://en.wikipedia.org/wiki/BBC_One) and [BBC Two](https://en.wikipedia.org/wiki/BBC_Two)) and programmes as well as the [BBC News Channel](https://en.wikipedia.org/wiki/BBC_News_Channel) available around the world and in the [United Kingdom](https://en.wikipedia.org/wiki/United_Kingdom). BBC News runs [BBC Radio 5 Live](https://en.wikipedia.org/wiki/BBC_Radio_5_Live) and [BBC World Service](https://en.wikipedia.org/wiki/BBC_World_Service) as part of its rolling news coverage, journalists and presenters also contribute to podcasts produced by BBC News for [BBC Radio 4](https://en.wikipedia.org/wiki/BBC_Radio_4), as well as solely for [BBC Sounds](https://en.wikipedia.org/wiki/BBC_Sounds).\n\nThe BBC has over 5,500 journalists[\\[1\\]](https://en.wikipedia.org/wiki/List_of_BBC_newsreaders_and_reporters#cite_note-1) based both in the United Kingdom and abroad. BBC appointments can be short- or long-term; for example, reporter Peter Bowes revealed on BBC News (broadcast live on 8 September 2020) that [Los Angeles](https://en.wikipedia.org/wiki/Los_Angeles) has been his home for 25 years.\n\n## Television news presenters\\[ [edit](https://en.wikipedia.org/w/index.php?title=List_of_current_BBC_newsreaders_and_reporters&action=edit&section=1)\\]\n\n### BBC One and BBC Two\\[ [edit](https://en.wikipedia.org/w/index.php?title=List_of_current_BBC_newsreaders_and_reporters&action=edit&section=2)\\]\n\nMany presenters listed here contribute to various [BBC News](https://en.wikipedia.org/wiki/BBC_News) programmes, and some are involved in other BBC projects. Additionally, certain BBC News presenters offer relief presentation for programmes airing on these channels. It's important to note that this list excludes presenters of broadcasts simulcast from the BBC News channel on [BBC One](https://en.wikipedia.org/wiki/BBC_One) overnight or during weekday mornings on [BBC Two](https://en.wikipedia.org/wiki/BBC_Two).\n\n| Presenter | Programme(s) | Notes |\n| --- | --- | --- |\n| [Clive Myrie](https://en.wikipedia.org/wiki/Cli",
+        "publishedAt": "2024-03-09T16:00:00.000Z",
+        "metadata": {
+          "author": "Contributors to Wikimedia projects",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:24:10.544Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtxhs4w02bgrmtb31uoytl0",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxhs4w02bgrmtb31uoytl0",
+          "fieldPath": "RawPoolItem[cmjtxhs4w02bgrmtb31uoytl0]",
+          "objectLabel": "List of current BBC newsreaders and reporters"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "该来源（BBC新闻主播名单）与Noam Shazeer（AI研究员）完全无关，属于人名错配，高置信删除。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:16:43.980Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjtvxoza01normtbuqdvpobz",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "sourceType": "exa",
+        "url": "https://sparks.web.cern.ch/index.php/node/557",
+        "urlHash": "b824f1efc3591ed90e649fa25d8439c9",
+        "contentHash": "5c9cfe66c5f7d52b7195f23ddf1ad1d8",
+        "title": "Vinyals, Oriol | sparks.web.cern.ch",
+        "text": "[Skip to main content](https://sparks.web.cern.ch/index.php/node/557#main-content)\n# [CERN\\ Accelerating science](https://home.cern)\n- - [Sign in](https://sparks.web.cern.ch/index.php/user/login?destination=index.php/node/557)\n- [Directory](https://cern.ch/directory)\n## Vinyals, Oriol\n![OV](https://sparks.web.cern.ch/sites/default/files/2021-05/OriolVinyals371x210.png)\nOriol is a Principal Scientist at Google DeepMind, and a team lead of the Deep Learning group. His work focuses on Deep Learning and Artificial Intelligence. Prior to joining DeepMind, Oriol was part of the Google Brain team. He holds a Ph.D. in EECS from the University of California, Berkeley and is a recipient of the 2016 MIT TR35 innovator award.\nHis research has been featured multiple times at the New York Times, Financial Times, WIRED, BBC, etc., and his articles have been cited over 100,000 times. Some of his contributions such as seq2seq, knowledge distillation, or TensorFlow are used in Google Translate, Text-To-Speech, and Speech recognition, serving billions of queries every day, and he was the lead researcher of the AlphaStar project, creating an agent that defeated a top professional at the game of StarCraft, achieving Grandmaster level, also featured as the cover of Nature.\nAt DeepMind, he continues working on his areas of interest, which include artificial intelligence, with particular emphasis on machine learning, deep learning and reinforcement learning.",
+        "publishedAt": "2024-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:46.587Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjtvxoza01normtbuqdvpobz",
+        "personId": "cmjtv341v000fi004vikj06xr",
+        "person": "Oriol Vinyals",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxoza01normtbuqdvpobz",
+          "fieldPath": "RawPoolItem[cmjtvxoza01normtbuqdvpobz]",
+          "objectLabel": "Vinyals, Oriol | sparks.web.cern.ch"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源页面为CERN目录，标题和内容中未提及目标人物Oriol Vinyals，属于错误关联。高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:17:02.412Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju1e6wl0clwrmtb5od06hzn",
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "sourceType": "exa",
+        "url": "https://browse.arxiv.org/html/2312.14226v1",
+        "urlHash": "f53c465191761b51f3467c145e432ef4",
+        "contentHash": "ed328ce986402b876e9c836de64070c5",
+        "title": "Recovering Topic Distributions from Large Language Models",
+        "text": "License: arXiv.org perpetual non-exclusive license\n\narXiv:2312.14226v1 \\[cs.CL\\] 21 Dec 2023\n\n# Deep de Finetti: Recovering Topic Distributions from Large Language Models\n\nLiyi Zhang  R. Thomas McCoy  Theodore R. Sumers  Jian-Qiao Zhu  Thomas L. Griffiths\n\n(Princeton University\n\n{zhang.liyi, tom.mccoy, sumers, jz5204, tomg}@princeton.edu)\n\n###### \\\\centeringAbstract\n\nLarge language models (LLMs) can produce long, coherent passages of text, suggesting that LLMs, although trained on next-word prediction, must represent the latent structure that characterizes a document. Prior work has found that internal representations of LLMs encode one aspect of latent structure, namely syntax; here we investigate a complementary aspect, namely the document’s topic structure. We motivate the hypothesis that LLMs capture topic structure by connecting LLM optimization to implicit Bayesian inference. De Finetti’s theorem shows that exchangeable probability distributions can be represented as a mixture with respect to a latent generating distribution. Although text is not exchangeable at the level of syntax, exchangeability is a reasonable starting assumption for topic structure. We thus hypothesize that predicting the next token in text will lead LLMs to recover latent topic distributions. We examine this hypothesis using Latent Dirichlet Allocation (LDA), an exchangeable probabilistic topic model, as a target, and we show that the representations formed by LLMs encode both the topics used to generate synthetic data and those used to explain natural corpus data.\n\n## 1 INTRODUCTION\n\nIn order to understand large language models (LLMs), it is important to determine what information they encode in their internal representations. One way to approach this question is by considering what LLMs model: text documents. Documents can be thought of as sequences of words, but beneath the surface they also have several types of latent structure, such as the syntax that shapes sentences and the topics that underlie the information in the text. LLMs excel at producing high-quality documents, suggesting that they must somehow capture this latent structure. Indeed, a rich body of literature (reviewed in Section [2.1](https://browse.arxiv.org/html/2312.14226v1/#S2.SS1)) has found evidence that the hidden states of LLMs encode many latent variables that underlie language, including syntax (Hewitt and Manning, [2019](https://browse.arxiv.org/html/2312.14226v1/#bib.bib13)), world states (Li et al., [2021](https://browse.arxiv.org/html/2312.14226v1/#bib.bib18)), and agent stances (Andreas, [2022](https://browse.arxiv.org/html/2312.14226v1/#bib.bib2)).\n\nIn this work, we hypothesize that LLMs encode a document’s topic structure—a latent variable complementary to those studied in prior work (although suggested by Andreas ( [2022](https://browse.arxiv.org/html/2312.14226v1/#bib.bib2))).\nWe motivate this hypothesis through an analysis of the LLM training task of autoregression (predicting the next word in a passage of text).\nAn extension of de Finetti’s theorem shows that, for sequences that are exchangeable,\nlearning to fit the autoregressive distribution is implicitly equivalent to conducting Bayesian inference on the latent distribution underlying the data (Korshunova et al., [2018](https://browse.arxiv.org/html/2312.14226v1/#bib.bib17)),\n\n| | | | | |\n| --- | --- | --- | --- | --- |\n| | p⁢(xn+1\\|x1:n)𝑝conditionalsubscript𝑥𝑛1subscript𝑥:1𝑛\\\\displaystyle p(x\\_{n+1}\\|x\\_{1:n})italic\\_p ( italic\\_x start\\_POSTSUBSCRIPT italic\\_n + 1 end\\_POSTSUBSCRIPT \\| italic\\_x start\\_POSTSUBSCRIPT 1 : italic\\_n end\\_POSTSUBSCRIPT ) | =∫θp⁢(xn+1\\|θ)⁢p⁢(θ\\|x1:n)⁢𝑑θ,absentsubscript𝜃𝑝conditionalsubscript𝑥𝑛1𝜃𝑝conditional𝜃subscript𝑥:1𝑛differential-d𝜃\\\\displaystyle=\\\\int\\_{\\\\theta}p(x\\_{n+1}\\|\\\\theta)p(\\\\theta\\|x\\_{1:n})d\\\\theta,= ∫ start\\_POSTSUBSCRIPT italic\\_θ end\\_POSTSUBSCRIPT italic\\_p ( italic\\_x start\\_POSTSUBSCRIPT italic\\_n + 1 end\\_POSTSUBSCRIPT \\| italic\\_θ ) italic\\_p ( italic\\_θ \\| italic\\_x start\\_POSTSUBSCRIPT 1 : italic\\_n end\\_POSTSUBSCRIPT ) italic\\_d italic\\_θ , | | (1) |\n\nwhere θ𝜃\\\\thetaitalic\\_θ denotes latent generating distributions and the sequence x1,x2,…,xnsubscript𝑥1subscript𝑥2…subscript𝑥𝑛x\\_{1},x\\_{2},...,x\\_{n}italic\\_x start\\_POSTSUBSCRIPT 1 end\\_POSTSUBSCRIPT , italic\\_x start\\_POSTSUBSCRIPT 2 end\\_POSTSUBSCRIPT , … , italic\\_x start\\_POSTSUBSCRIPT italic\\_n end\\_POSTSUBSCRIPT is said to be exchangeable if changing the order of the words in x1:nsubscript𝑥:1𝑛x\\_{1:n}italic\\_x start\\_POSTSUBSCRIPT 1 : italic\\_n end\\_POSTSUBSCRIPT does not affect p⁢(xn+1\\|x1:n)𝑝conditionalsubscript𝑥𝑛1subscript𝑥:1𝑛p(x\\_{n+1}\\|x\\_{1:n})italic\\_p ( italic\\_x start\\_POSTSUBSCRIPT italic\\_n + 1 end\\_POSTSUBSCRIPT \\| italic\\_x start\\_POSTSUBSCRIPT 1 : italic\\_n end\\_POSTSUBSCRIPT ).\nLinguistic sequences are not, in fact, exchangeable. However, certain latent properties of text—such as the topic structure—depend little on word order. Therefore",
+        "publishedAt": "2023-12-20T16:00:00.000Z",
+        "metadata": {
+          "author": "Liyi Zhang R. Thomas McCoy Theodore R. Sumers Jian-Qiao Zhu Thomas L. Griffiths",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:13:21.525Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju1e6wl0clwrmtb5od06hzn",
+        "personId": "cmjtv3hfy000ii0041pbzgdg1",
+        "person": "Percy Liang",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1e6wl0clwrmtb5od06hzn",
+          "fieldPath": "RawPoolItem[cmju1e6wl0clwrmtb5od06hzn]",
+          "objectLabel": "Recovering Topic Distributions from Large Language Models"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "论文作者列表中未出现Percy Liang，该来源与目标人物无关，属于高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:17:32.426Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjrz1aw4000kb28tbvtvovky",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "sourceType": "exa",
+        "url": "https://www.linkedin.com/in/samuel-altman-80a724b4",
+        "urlHash": "27087cf3d1ed466014de99b77cb22c96",
+        "contentHash": "49f361bda0bf744aba1f7befc586b4ad",
+        "title": "Samuel Altman - Director, Enterprise Partnerships",
+        "text": "# Samuel Altman\n\nDirector, Enterprise Partnerships\n\nDirector, Enterprise Partnerships at [Samba TV](https://www.linkedin.com/company/free-stream-media-corp-)\n\nNew York City Metropolitan Area (US)\n\n500 connections • 3,303 followers\n\n## About\n\nTotal Experience: 10 years\n\n## Experience\n\n### Director, Enterprise Partnerships at [Samba TV](https://www.linkedin.com/company/free-stream-media-corp-) (Current)\n\nApr 2024 - Present • 1 year and 7 months\n\nNew York City Metropolitan Area\n\nCompany: 201-500 employees • Founded 2008 • Privately Held • Technology, Information and Internet\n\nPlatform & Publisher\n\nDepartment: Sales • Level: Director\n\n### Director, Revenue And Growth at [FreeWheel](https://www.linkedin.com/company/freewheel)\n\nJul 2023 - Feb 2024 • 7 months\n\nCompany: 1001-5000 employees • Founded 2007 • Public Company • Advertising Services\n\n### Senior Manager, Marketplace Activation at [FreeWheel](https://www.linkedin.com/company/freewheel)\n\nOct 2022 - Feb 2024 • 1 year and 4 months\n\nNew York, United States\n\nCompany: 1001-5000 employees • Founded 2007 • Public Company • Advertising Services\n\n### Account Director, Marketplace Activation at [FreeWheel](https://www.linkedin.com/company/freewheel)\n\nOct 2020 - Nov 2022 • 2 years and 1 month\n\nCompany: 1001-5000 employees • Founded 2007 • Public Company • Advertising Services\n\nDepartment: Marketing • Level: Director\n\n### Account Manager, Programmatic And Digital at [FreeWheel](https://www.linkedin.com/company/freewheel)\n\nJun 2019 - Oct 2020 • 1 year and 4 months\n\nGreater New York City Area\n\nCompany: 1001-5000 employees • Founded 2007 • Public Company • Advertising Services\n\n### Account Manager at [Quantcast](https://www.linkedin.com/company/quantcast)\n\nDec 2017 - Jun 2019 • 1 year and 6 months\n\nGreater New York City Area\n\nCompany: 501-1000 employees • Founded 2006 • Privately Held • Technology, Information and Internet\n\nDepartment: Sales • Level: Manager\n\n### CSS at [Quantcast](https://www.linkedin.com/company/quantcast)\n\nJan 2016 - Jun 2019 • 3 years and 5 months\n\nCompany: 501-1000 employees • Founded 2006 • Privately Held • Technology, Information and Internet\n\nDepartment: Customer Service • Level: Specialist\n\n### VP Business Development at [RevUptics](https://www.linkedin.com/company/revuptics)\n\nMay 2015 - Dec 2015 • 7 months\n\nGreater New York City Area\n\nCompany: 11-50 employees • Founded 2014 • Public Company • Technology, Information and Internet\n\nDepartment: Sales • Level: President/Vice President\n\n### International Finance Intern at [Broad Street Capital Group](https://www.linkedin.com/company/broad-street-capital-group)\n\nJun 2015 - Aug 2015 • 2 months\n\nGreater New York City Area\n\nCompany: 1-10 employees • Founded 1988 • Privately Held • Financial Services\n\nDepartment: Finance & Accounting • Level: Specialist\n\n## Education\n\n### Bachelor's Degree, Marketing at [The George Washington University School of Business](https://www.linkedin.com/school/gwbusiness)\n\n2012 - 2015 • 3 years\n\nUS\n\n## Licenses & Certifications\n\n### Program Certification: Ad Tech Sales (100 Level) by [U of Digital](https://linkedin.com/company/uofdigital)\n\nIssued: Jul 2020\n\n[View Certificate](https://credential.net/e6359e29-cb15-424b-9c94-66fbf287fc8c?trk=public_profile_certification-title)\n\n### Edge Academy Certified: Data-Driven Planning by [The Trade Desk](https://linkedin.com/company/the-trade-desk)\n\nIssued: Apr 2020\n\n[View Certificate](https://youracclaim.com/badges/983a5e8c-f744-41d0-8dd0-804dce3fcb7a/linked_in_profile?trk=public_profile_certification-title)\n\n### Edge Academy Certified: Marketing Foundations by [The Trade Desk](https://linkedin.com/company/the-trade-desk)\n\nIssued: Apr 2020\n\n[View Certificate](https://youracclaim.com/badges/5c8353b2-917c-47f4-803a-27b95dd15a27/linked_in_profile?trk=public_profile_certification-title)\n\n## Skills\n\ndirector • partnerships • digital • finance • css • business development • international finance\n\n## Languages\n\nEnglish - Native or bilingual proficiency\n\nRussian - Native or bilingual proficiency\n\n## Recommendations\n\n[Alexis Brice](https://www.linkedin.com/in/alexis-brice-564483194)\n\n“I had the pleasure of working under the leadership of Sam Altman for over a year and can confidently say that he was among the greatest managers I have had to date. Coming into my position in an industry fairly unfamiliar to me, Sam made it his priority to nurture and develop my understanding of all things industry related and the nuances surrounding it. This can be attributed to his organizational, interpersonal, managerial, and communication skills that was clearly reflected not only in the work he produced but also in the work produced by his direct reports.\n\nSomething I always admired about Sam is if there was ever a question that needed answering, whether it was urgent or not, he always had an answer and knew exactly what steps to take. The knowledge that flows through him is endless and like a sponge, he continuously absorbs more and ensures that those around h",
+        "publishedAt": null,
+        "metadata": {
+          "author": "Samuel Altman"
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-29T18:31:48.581Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjrz1aw4000kb28tbvtvovky",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjrz1aw4000kb28tbvtvovky",
+          "fieldPath": "RawPoolItem[cmjrz1aw4000kb28tbvtvovky]",
+          "objectLabel": "Samuel Altman - Director, Enterprise Partnerships"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源明确指向另一位在Samba TV工作的Samuel Altman，与OpenAI的Sam Altman并非同一人。属于人名错配，为高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:17:50.979Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmjrz1avc000cb28tbka9m5du",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "sourceType": "exa",
+        "url": "https://www.highperformr.ai/people/samuel-altman-80a724b4",
+        "urlHash": "9eb753a4ee4fa5270352ba5757210a35",
+        "contentHash": "f2bdce033a494ab3d118a525d60f3cf8",
+        "title": "Who is Samuel Altman? Discover Their Role as Director ...",
+        "text": "Who is Samuel Altman? Discover Their Role as Director, Enterprise Partnerships | Highperformr\n[![highperformr logo](https://cdn.prod.website-files.com/64da26df2d1708f586bbe952/64da7ba6324b01e018f9e7c3_Logo%20-%20HP.svg)](https://www.highperformr.ai/)\n[Login](https://auth.highperformr.ai/?utm_source=navbar&amp;utm_medium=website)[Sign up](https://app.highperformr.ai/?signup=true&amp;utm_medium=website&amp;_gl=1*lxt415*_ga*MTE4NzQ1MDcyMy4xNzM1NzE4NDE1*_ga_G8871EJ2PR*MTczNTkwMDc0Mi4xMy4xLjE3MzU5MDEwNDMuMC4wLjA.)\n### Products\n[Intent Signals](https://www.highperformr.ai/intent-signals)\n* [Job Changes](https://www.highperformr.ai/job-changes)\n* [New Hires &amp; Promotions](https://www.highperformr.ai/job-changes#new-hires)\n* [Past Champions](https://www.highperformr.ai/job-changes#past-champions)\n* [Social Media Insights](https://www.highperformr.ai/social-activity)\n* [Competitor Insights](https://www.highperformr.ai/competitor-insights)\n[Engagement](https://www.highperformr.ai/engage)\n* [Social Publishing](https://www.highperformr.ai/products/publishing)\n* [Employee Advocacy](https://www.highperformr.ai/products/employee-advocacy)\n* [Social Audience](https://www.highperformr.ai/products/social-audience)\n* [Social Selling](https://www.highperformr.ai/social-selling)\n* [Social AI Copilot](https://www.highperformr.ai/products/social-media-ai-agent)\n[Analytics](https://www.highperformr.ai/product-analytics)\n* [Social Analytics](https://www.highperformr.ai/products/analytics)\n* [Audience Analytics](https://www.highperformr.ai/products/social-audience)\n* [Competitor Watchlist](https://www.highperformr.ai/products/social-audience)\n[Orchestration](https://www.highperformr.ai/orchestration)\n* [Automated Inbound](https://www.highperformr.ai/workflows)\n* [Automated Outbound](https://www.highperformr.ai/workflows)\n* [Social AI Agent](https://www.highperformr.ai/social-media-ai-agent)\n* [Sales AI Agent](#)\n* [Account Intent Scoring](https://www.highperformr.ai/intent-score)\n* [Multithreading Sales](https://www.highperformr.ai/multithreading-sales)\n[CRM Enrichment &amp; Hygiene](https://www.highperformr.ai/enriched-crm)\n* [Company &amp; Contact Search](https://www.highperformr.ai/enriched-crm)\n* [Target Account Sourcing](https://www.highperformr.ai/list-building)\n* [Automated Account Research](https://www.highperformr.ai/workflows)\n* [Lead Enrichment](https://www.highperformr.ai/lead-enrichment)\n* [Lead Prioritization](https://www.highperformr.ai/enriched-crm)\n### By Team\n[#### Sales\nMultithread effectively and personalize outreach to convert deals faster\n](https://www.highperformr.ai/use-case/sales)[#### Social Media Marketing\nElevate social presence and drive business growth from social media\n](https://www.highperformr.ai/use-case/marketing)[#### RevOps\nIdentify and prioritize high-intent leads, and improve sales effectiveness\n](https://www.highperformr.ai/use-case/operations)[#### Events &amp; Field Marketing\nFind and connect with ICP attendees, and improve event outcomes\n](https://www.highperformr.ai/use-case/events)\n### [Case studies](https://www.highperformr.ai/customers)\n[\nEverstage saw 40% higher response rates after using signals from Highperformr\n![Everstage](https://cdn.prod.website-files.com/64da26df2d1708f586bbe952/67dd41648b8842d7793f72b5_Everstage%20Case%20Study%20Thumbnail.png)\n](https://www.highperformr.ai/case-studies/everstage)[\nHow Hot Cognition discovered high-value leads using signals from Highperformr\n![Hot Cognition](https://cdn.prod.website-files.com/64da26df2d1708f586bbe952/677823d7a9e365df7b5c32d2_hot_cognition.png)\n](https://www.highperformr.ai/case-studies/hot-cognition)\n### Resources\n[#### Blog\nSales and marketing tips, and RevOps guides to help drive sales effectiveness.\n](https://www.highperformr.ai/blog)[#### Free Tools\nUp your social media game using our AI-powered free tools\n](https://www.highperformr.ai/tools)[#### Case Studies\nStories of how companies improved sales effectiveness using signals\n](https://www.highperformr.ai/customers)\n### Most popular blogs\n[\nHow to track job changes using AI Agents\n![How to track job changes using AI Agents](https://cdn.prod.website-files.com/64da26df2d1708f586bbe952/67aae6960f3fb96c3f24d295_Track%20Job%20Changes%20Like%20a%20Pro%201%20(1).png)\n](https://www.highperformr.ai/blog/track-job-changes)[\nDeveloping a multithreaded sales strategy\n![Developing a multithreaded sales strategy](https://cdn.prod.website-files.com/64da26df2d1708f586bbe952/67ebc37e92aed5bdae76fc3a_multith%20(1).png)\n](https://www.highperformr.ai/blog/how-to-use-multhreading-b2b-sales)\n# Samuel Altman\nDirector, Enterprise Partnerships,Samba TV\n![](https://www.highperformr.ai/location.svg)New York City Metropolitan Area,United States\n![](https://www.highperformr.ai/mail-02.svg)FindSamuel Altman&#x27;s Email![](https://www.highperformr.ai/arrow-narrow-right.svg)\n![](https://www.highperformr.ai/phone.svg)FindSamuel Altman&#x27;s Phone![](https://www.highperformr.ai/arrow-narrow-right.svg)\n",
+        "publishedAt": null,
+        "metadata": {
+          "author": null
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-29T18:31:48.552Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmjrz1avc000cb28tbka9m5du",
+        "personId": "cmjrz11xi0002b28tg14eugjo",
+        "person": "Sam Altman",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.95,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjrz1avc000cb28tbka9m5du",
+          "fieldPath": "RawPoolItem[cmjrz1avc000cb28tbka9m5du]",
+          "objectLabel": "Who is Samuel Altman? Discover Their Role as Director ..."
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源内容描述的是在Samba TV担任企业合作总监的Samuel Altman，与OpenAI的Sam Altman并非同一人。属于人名错配，为高置信删除候选。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:17:50.979Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    },
+    {
+      "raw": {
+        "id": "cmju0ihdu070irmtbug3n0mud",
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "sourceType": "exa",
+        "url": "https://en.wikipedia.org/wiki/Artificial_general_intelligence",
+        "urlHash": "b8f53649097e783e63ebea1909d4045f",
+        "contentHash": "718ea6a39b35b9376119f51f52b685d4",
+        "title": "Artificial general intelligence",
+        "text": "Artificial general intelligence - Wikipedia\n[Jump to content](#bodyContent)\n[![](https://en.wikipedia.org/static/images/icons/wikipedia.png)![Wikipedia](https://en.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-en.svg)![The Free Encyclopedia](https://en.wikipedia.org/static/images/mobile/copyright/wikipedia-tagline-en.svg)](https://en.wikipedia.org/wiki/Main_Page)\n[Search](https://en.wikipedia.org/wiki/Special:Search)\nSearch\n# Artificial general intelligence\n47 languages\n* [Afrikaans](https://af.wikipedia.org/wiki/Kunsmatige_algemene_intelligensie)\n* [العربية](https://ar.wikipedia.org/wiki/ذكاء_عام_اصطناعي)\n* [Azərbaycanca](https://az.wikipedia.org/wiki/Süni_ümumi_intellekt)\n* [বাংলা](https://bn.wikipedia.org/wiki/কৃত্রিম_সাধারণ_বুদ্ধিমত্তা)\n* [Български](https://bg.wikipedia.org/wiki/Изкуствен_общ_интелект)\n* [Bosanski](https://bs.wikipedia.org/wiki/Umjetna_opća_inteligencija)\n* [Català](https://ca.wikipedia.org/wiki/Intel·ligència_artificial_forta)\n* [Čeština](https://cs.wikipedia.org/wiki/Obecná_umělá_inteligence)\n* [Dansk](https://da.wikipedia.org/wiki/Kunstig_generel_intelligens)\n* [Deutsch](https://de.wikipedia.org/wiki/Artificial_General_Intelligence)\n* [Ελληνικά](https://el.wikipedia.org/wiki/Γενική_τεχνητή_νοημοσύνη)\n* [Español](https://es.wikipedia.org/wiki/Inteligencia_artificial_general)\n* [Euskara](https://eu.wikipedia.org/wiki/Adimen_artifizial_orokorra)\n* [فارسی](https://fa.wikipedia.org/wiki/هوش_جامع_مصنوعی)\n* [Français](https://fr.wikipedia.org/wiki/Intelligence_artificielle_générale)\n* [Galego](https://gl.wikipedia.org/wiki/Intelixencia_artificial_xeral)\n* [한국어](https://ko.wikipedia.org/wiki/인공_일반_지능)\n* [Հայերեն](https://hy.wikipedia.org/wiki/Ընդհանուր_արհեստական_բանականություն)\n* [Hrvatski](https://hr.wikipedia.org/wiki/Umjetna_opća_inteligencija)\n* [Ido](https://io.wikipedia.org/wiki/Artificala_general_inteligenteso)\n* [Bahasa Indonesia](https://id.wikipedia.org/wiki/Kecerdasan_umum_buatan)\n* [Italiano](https://it.wikipedia.org/wiki/Intelligenza_artificiale_forte)\n* [עברית](https://he.wikipedia.org/wiki/בינה_מלאכותית_כללית)\n* [Монгол](https://mn.wikipedia.org/wiki/Ерөнхий_хиймэл_оюун_ухаан)\n* [Nederlands](https://nl.wikipedia.org/wiki/Kunstmatige_algemene_intelligentie)\n* [日本語](https://ja.wikipedia.org/wiki/汎用人工知能)\n* [ଓଡ଼ିଆ](https://or.wikipedia.org/wiki/ଆର୍ଟିଫିସିଆଲ_ଜେନେରାଲ_ଇଣ୍ଟେଲିଜେନ୍ସ)\n* [پښتو](https://ps.wikipedia.org/wiki/ټوليزه_مصنوعي_ځيرکتيا)\n* [Polski](https://pl.wikipedia.org/wiki/Ogólna_sztuczna_inteligencja)\n* [Português](https://pt.wikipedia.org/wiki/Inteligência_artificial_geral)\n* [Română](https://ro.wikipedia.org/wiki/Inteligență_artificială_puternică)\n* [Runa Simi](https://qu.wikipedia.org/wiki/Kapchisqa_sapsi_yuyay)\n* [Русский](https://ru.wikipedia.org/wiki/Сильный_искусственный_интеллект)\n* [Shqip](https://sq.wikipedia.org/wiki/Inteligjenca_e_përgjithshme_artificiale)\n* [Simple English](https://simple.wikipedia.org/wiki/Artificial_general_intelligence)\n* [Slovenščina](https://sl.wikipedia.org/wiki/Splošna_umetna_inteligenca)\n* [کوردی](https://ckb.wikipedia.org/wiki/ژیریی_دەستکردی_باڵا)\n* [Српски / srpski](https://sr.wikipedia.org/wiki/Opšta_veštačka_inteligencija)\n* [Suomi](https://fi.wikipedia.org/wiki/Yleinen_tekoäly)\n* [Svenska](https://sv.wikipedia.org/wiki/Artificiell_generell_intelligens)\n* [ไทย](https://th.wikipedia.org/wiki/ปัญญาประดิษฐ์ทั่วไป)\n* [Türkçe](https://tr.wikipedia.org/wiki/Yapay_genel_zekâ)\n* [Українська](https://uk.wikipedia.org/wiki/Загальний_штучний_інтелект)\n* [ئۇيغۇرچە / Uyghurche](https://ug.wikipedia.org/wiki/سۈنئىي_ئاممىباب_ئىدىراك)\n* [Tiếng Việt](https://vi.wikipedia.org/wiki/Trí_tuệ_nhân_tạo_tổng_quát)\n* [粵語](https://zh-yue.wikipedia.org/wiki/強人工智能)\n* [中文](https://zh.wikipedia.org/wiki/通用人工智慧)\n[Edit links](https://www.wikidata.org/wiki/Special:EntityPage/Q2264109#sitelinks-wikipedia)\nFrom Wikipedia, the free encyclopedia\nType of AI with wide-ranging abilities\nNot to be confused with[Generative artificial intelligence](https://en.wikipedia.org/wiki/Generative_artificial_intelligence)or[Artificial superintelligence](https://en.wikipedia.org/wiki/Artificial_superintelligence).\nPart of[a series](https://en.wikipedia.org/wiki/Category:Artificial_intelligence)on|\n|[Artificial intelligence (AI)](https://en.wikipedia.org/wiki/Artificial_intelligence)|\n[![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Dall-e_3_%28jan_%2724%29_artificial_intelligence_icon.png/120px-Dall-e_3_%28jan_%2724%29_artificial_intelligence_icon.png)](https://en.wikipedia.org/wiki/File:Dall-e_3_(jan_'24)_artificial_intelligence_icon.png)|\n[Major goals](https://en.wikipedia.org/wiki/Artificial_intelligence#Goals)\n* Artificial general intelligence\n* [Intelligent agent](https://en.wikipedia.org/wiki/Intelligent_agent)\n* [Recursive self-improvement](https://en.wikipedia.org/wiki/Recursive_self-improvement)\n* [Planning](https://en.wikipedia.org/wiki/Automated_planning_and_scheduling)\n* [Computer vision](https://en.wikipedia.org/wiki/Computer_vision)\n* [G",
+        "publishedAt": "2004-04-08T16:00:00.000Z",
+        "metadata": {
+          "author": null,
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:52:38.596Z",
+        "processed": false
+      },
+      "decision": {
+        "claimId": "source-quality:cmju0ihdu070irmtbug3n0mud",
+        "personId": "cmjtszhu8000b3estb17k2kqb",
+        "person": "Shane Legg",
+        "claimType": "source_item_belongs_to_person",
+        "verdict": "wrong_person",
+        "reviewAction": "remove",
+        "remediationAction": "delete_raw_pool_item",
+        "safeToAutoApply": true,
+        "confidence": 0.9,
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0ihdu070irmtbug3n0mud",
+          "fieldPath": "RawPoolItem[cmju0ihdu070irmtbug3n0mud]",
+          "objectLabel": "Artificial general intelligence"
+        },
+        "proposedValue": null,
+        "proposedText": null,
+        "sourceQueries": [],
+        "evidenceRequirements": [],
+        "rationale": "来源为Wikipedia的通用AGI主题页面，未提及Shane Legg，属于错误归属。高置信删除候选，可安全自动应用。",
+        "blockers": [],
+        "reviewedAt": "2026-06-09T23:17:48.905Z",
+        "reviewer": {
+          "provider": "xiaomi",
+          "model": "mimo-v2.5-pro"
+        }
+      }
+    }
+  ]
+}

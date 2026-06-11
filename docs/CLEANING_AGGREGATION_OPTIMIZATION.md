@@ -16,7 +16,8 @@
 - `lib/inngest/pipeline.ts` qa-check 步骤已接入 `cleanItems`
 - `RouterAgent` 已接入 QAAuditLog 反馈: route step 读取近 90 天各来源 verdict 分布, 可选低质源自动降权/跳过, 高通过率源提权, fetch 阶段按 priority 收紧 `maxResults`
 - 卡片重聚合脚本已补齐并执行: `scripts/enrich/regenerate_cards.ts` 默认 dry-run, 只使用最新 `QAAuditLog` verdict=keep 的 RawPoolItem, 支持 `--list`/`--person`/`--top-n`/`--min-items`/`--include-candidates`/`--candidates-only`/`--execute`, 并走 Neon raw SQL 避开 Bun+Prisma native engine 签名问题。ready 人群新增 327 张卡、覆盖 59 人；candidate 人群追加 41 张卡、11 人当前均有 5-7 张卡；薄输入保护 `--min-items=3` 已加，topN 已作为保存上限执行，18 张薄输入误生成卡已删除，复核 `thin=[]`。
-- career 规范化入口已补齐并执行 safe fix: `savePersonRoles()` 入库前标准化机构名、跳过无机构 P39 职位、无 QID 机构不再用 fake qid upsert、笼统 Employee 不覆盖更具体职位；新增 `audit_career_normalization.ts`、`export_career_review_buckets.ts`、`apply_career_normalization_safe.ts`、`apply_career_review_safe_fixes.ts`、`apply_career_review_decisions.ts` 和 `apply_current_title_decisions.ts`(默认 dry-run)。本轮合并 Cambricon Technologies / DeepSeek 重复机构，去重 Christopher Manning / Noam Shazeer 的 organization 数组，删除 Zuckerberg 1 条 exact duplicate role，删除空 CTO Organization，把 CEO/professor/board of directors member position-like Organization 清到 0，并把 Daniela Amodei / Ethan Mollick / Marc Benioff / Marian Croak / 唐杰 / 李莲的 Employee 泛化 role 更新为具体职位，补正李开复在 Apple / CMU 的 2 条泛化履历，删除 Mira Murati @ Goldman Sachs 的冲突 Employee 行；随后把 33 条 education generic role 按证据更新为学位/学习阶段，删除 3 条不可信教育噪声；再按 10 条来源支持决策补正 currentTitle / People.organization。当前 Organization 622 / PersonRole 1114 / vagueRoles 0 / currentTitle mismatch 23。
+- 卡片 generation 展示替换机制已补齐: `Card` 增加 `generationId` / `isActive` / `archivedAt` 并已对生产 Neon 执行 additive ALTER；人物详情页只展示激活卡，`apply_card_reaggregation_plan.mjs` 默认 archive-active，旧卡保留历史；`cardGenerator.ts`、`regenerate_cards.ts`、candidate deep enrichment 和 refresh/fix-qid/去重脚本均已接入激活卡口径。验证: Prisma validate/generate、`tsc --noEmit`、DB dry-run/execute、周明重聚合 dry-run、`regenerate_cards --list --limit=1` 均通过。
+- career 规范化入口已补齐并执行 safe fix: `savePersonRoles()` 入库前标准化机构名、跳过无机构 P39 职位、无 QID 机构不再用 fake qid upsert、笼统 Employee 不覆盖更具体职位；新增 `audit_career_normalization.ts`、`export_career_review_buckets.ts`、`apply_career_normalization_safe.ts`、`apply_career_review_safe_fixes.ts`、`apply_career_review_decisions.ts` 和 `apply_current_title_decisions.ts`(默认 dry-run)。本轮合并 Cambricon Technologies / DeepSeek 重复机构，去重 Christopher Manning / Noam Shazeer 的 organization 数组，删除 Zuckerberg 1 条 exact duplicate role，删除空 CTO Organization，把 CEO/professor/board of directors member position-like Organization 清到 0，并把 Daniela Amodei / Ethan Mollick / Marc Benioff / Marian Croak / 唐杰 / 李莲的 Employee 泛化 role 更新为具体职位，补正李开复在 Apple / CMU 的 2 条泛化履历，删除 Mira Murati @ Goldman Sachs 的冲突 Employee 行；随后把 33 条 education generic role 按证据更新为学位/学习阶段，删除 3 条不可信教育噪声；再按三批来源支持决策补正 currentTitle / People.organization。当前 Organization 622 / PersonRole 1114 / vagueRoles 0 / currentTitle mismatch 0。
 - influenceScore v2 已补齐并执行: `scripts/enrich/recalculate_influence_v2.ts` 使用产品导向权重重算 230 人，主榜定义为影响力榜，权重保持 AI 原创贡献 35 / 产业生态 25 / 权威信号 20 / 学习价值 10 / 近况 10；`candidate`/`pending` 乘数 0.35；候选池清空和 prune 第一批后均已重算，`scripts/enrich/calculate_topic_ranks_v2.ts` 已更新 229 人、54 个 topic。
 - roster candidate flow 已补齐并执行: `scripts/enrich/apply_roster_candidates.ts` 默认 dry-run，`--execute` 已插入 11 个 `status=candidate` 新人并更新 Lilian Weng / Justin Johnson 两个既有人物。
 - roster enrichment flow 已补齐并执行: `docs/audit-2026-06/roster_enrichment.json` 提供可审种子，`scripts/enrich/apply_roster_enrichment.ts` 默认 dry-run，`--execute` 已为 11 个 candidate 补齐 topics / products / officialLinks / sourceWhitelist；重跑为 13 matched / 0 missing / 0 delta。
@@ -27,7 +28,7 @@
 - relation 高敏复核、弱 colleague 清理和证据小批次已执行: `scripts/fix/apply_relation_review_decisions.ts` 默认 dry-run，`--execute` 已确认 OpenAI/DNNresearch/Anthropic/Thinking Machines/AIX/YC/Transformer/HAI/ImageNet/Seq2Seq/FLAN/GAN/Bahdanau attention/AlexNet/Turing Award/AlphaFold/Codex 等 52 条外部证据关系，删除 12 条高敏或描述错误 false-positive、27 条无共同机构证据的 Perplexity colleague 噪声、32 条公司合作/公开信共同署名/泛泛同台等弱 collaborator 边，以及最终 8 条无日期 overlap 或无共享机构证据的 colleague 边；`export_relation_review.ts` 已尊重 DB reviewStatus，needsReview 131→0，高敏 advisor/cofounder/collaborator/colleague bucket 已清空。
 - **验证**: 造测试集跑通; 关键根因(只提"Google"的内容旧逻辑误收)被 L1 正确判 reject (ap=0); 抓错人正确拒; tsc 0 错误
 
-待办: ① 抽样确认 reject prune 第二批 ② 按 career buckets 分批裁定剩余 currentTitle mismatch ③ 设计卡片 generation-based 展示替换机制 ④ A/B 误收误拒度量
+待办: ① prune reject/review 尾巴人工复核或补源 ② A/B 误收误拒度量 ③ 部署后详情页缓存刷新验证
 
 ---
 
@@ -103,7 +104,7 @@
 - 卡片生成换 `generateObject` + zod(接 #1 LLM 抽象层),失败重试 + 非静默告警。
 - 卡片去重: 标题精确 → 标题/内容语义相似(embedding 或 LLM 判重)。
 - 已补一次性重聚合入口 `scripts/enrich/regenerate_cards.ts`: 默认 dry-run、不删旧卡,使用最新 QA keep 结果过滤输入; `--execute` 只追加去重后的新卡。importance 已在 schema 层 clamp 到 1-5，topN 在保存前硬截断。
-- 当前产品口径: 短期继续 append-only + QA keep + topN 去重；真正改展示层时，用 generation-based 替换机制让新 generation 替换前台展示，旧卡保留历史，不直接物理删卡。
+- 当前产品口径: 继续用 QA keep + topN 去重生成卡片；展示层已切到 generation-based 口径，新 generation 激活后替换前台展示，旧卡保留历史，不直接物理删卡。
 
 **4. QA 审计落库 `QAAuditLog` 表** (修 AO2)
 - 每条 item 的 verdict/score/reason 落库,字段: `personId, url, sourceType, verdict, aboutPerson, aiRelevant, quality, reason, createdAt`。
@@ -115,7 +116,7 @@
 - 入库前: 组织名标准化(复用 `ORG_ALIASES`)+ 模糊去重 + 日期冲突消解(多源取高置信)。
 - 职位笼统("Employee")用 LLM 结合上下文补精确职位。
 - 已补入口防线: 无机构 P39 不再把 CEO/professor 当 Organization; 无 QID 机构按 name/nameZh 查找或创建,避免重复 Organization; 更具体 role 会覆盖同区间的 Employee, Employee 不覆盖既有具体职位。
-- 已补存量审计: `career_normalization_audit.json` 当前 Organization 622 / PersonRole 1114 / People 230; duplicate org clusters 0, position-like org 0, duplicate role group 0, vague roles 0, People.organization 重复 0, currentTitle org mismatch 23。
+- 已补存量审计: `career_normalization_audit.json` 当前 Organization 622 / PersonRole 1114 / People 230; duplicate org clusters 0, position-like org 0, duplicate role group 0, vague roles 0, People.organization 重复 0, currentTitle org mismatch 0。
 - 已执行 safe fix: 合并 Cambricon/DeepSeek 同名机构各 1 条 role ref,去重 Christopher Manning/Noam Shazeer 的 organization 数组,删除 Zuckerberg 1 条 exact duplicate role,删除空 CTO Organization,把 Elon Musk 在 OpenAI 的泛化 Employee 修为 Co-chair,删除 5 条 `Employee @ 董事会成员`,更新 Daniela Amodei / Ethan Mollick / Marc Benioff / Marian Croak / 唐杰 / 李莲的 Employee 泛化 role,补正李开复在 Apple / CMU 的 2 条泛化履历,删除 Mira Murati @ Goldman Sachs 的冲突 Employee 行,并把 CEO/professor/board of directors member position-like Organization 清到 0。
 
 **6. Router 反馈闭环** (修 A6)

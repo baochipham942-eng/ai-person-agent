@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-06-10T18:23:40.250Z",
+  "summary": {
+    "generatedAt": "2026-06-10T18:23:40.247Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch16_curated.jsonl",
+    "archive": "docs/audit-2026-06/data/prune_tail_refetch_batch16_curated_apply_dry_run_archive.json",
+    "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_BATCH16_CURATED_APPLY_DRY_RUN.md",
+    "filters": {
+      "decisions": [
+        "replace_source",
+        "augment_source"
+      ],
+      "includeBlocked": false,
+      "includeLowAuthoritySources": false,
+      "limit": 0,
+      "minText": 80
+    },
+    "inputRows": 20,
+    "eligibleSourceRows": 6,
+    "selectedSourceRows": 6,
+    "skippedRows": 6,
+    "existingRawPoolItems": 3,
+    "rawInserted": 3,
+    "rawUpdated": 3,
+    "keepAuditsInserted": 3,
+    "keepAuditsExisting": 3,
+    "byDecision": {
+      "replace_source": 3,
+      "augment_source": 3
+    },
+    "bySourceType": {
+      "exa": 3,
+      "official": 2,
+      "paper": 1
+    },
+    "topPeople": {
+      "Jan Leike": 3,
+      "Hyung Won Chung": 1,
+      "Jeremy Howard": 1,
+      "Oriol Vinyals": 1
+    },
+    "topHosts": {
+      "80000hours.org": 1,
+      "aclanthology.org": 1,
+      "alignment.anthropic.com": 1,
+      "hwchung2.github.io": 1,
+      "jan.leike.name": 1,
+      "research.google": 1
+    },
+    "skipReasons": {
+      "decision_not_selected": 6
+    }
+  }
+}

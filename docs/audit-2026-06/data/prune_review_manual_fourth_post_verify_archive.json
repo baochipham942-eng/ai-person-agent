@@ -1,0 +1,433 @@
+{
+  "generatedAt": "2026-06-10T10:41:39.260Z",
+  "summary": {
+    "generatedAt": "2026-06-10T10:41:39.260Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_fourth_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_fourth_post_verify_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 28,
+    "existingTargets": 0,
+    "missingTargets": 28,
+    "auditRowsInserted": 0,
+    "deleted": 0,
+    "byAction": {
+      "delete_raw_pool_item": 28
+    },
+    "byVerdict": {
+      "reject": 28
+    },
+    "byPerson": {
+      "迈克·施罗普费尔": 4,
+      "Aidan Gomez": 3,
+      "Alexandr Wang": 2,
+      "Arthur Mensch": 2,
+      "Chris Olah": 2,
+      "Elon Musk": 2,
+      "吴恩达": 2,
+      "杰夫·迪恩": 2,
+      "桑达尔·皮查伊": 2,
+      "Chamath Palihapitiya": 1,
+      "Christopher Manning": 1,
+      "亚历克·拉德福德": 1,
+      "布莱恩·卡坦扎罗": 1,
+      "李开复": 1,
+      "阿希什·瓦斯瓦尼": 1,
+      "马克·扎克伯格": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqgno00wqrmtb6uo8p2nn",
+          "objectLabel": "NICE"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Generic Theano NICE algorithm repository; not useful person-specific AI profile evidence for Aidan Gomez."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqhrl00wyrmtba4tgnh72",
+          "objectLabel": "polyphonic-transcription-net"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Generic transcription project with no current profile evidence value."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Aidan Gomez",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1srxo0fiwrmtbyspywzap",
+          "objectLabel": "Meet Aidan Gomez, speaker at HumanX | San Francisco"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Conference speaker promo page with thin person-specific substance."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Alexandr Wang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0jgjg078lrmtb8nbctldw",
+          "objectLabel": "Alexandr Wang | Gold House"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Directory capture with navigation text and no substantive person evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "阿希什·瓦斯瓦尼",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwuglxo002ly6e23xhircw3",
+          "objectLabel": "Congratulations, @anilananth !"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Short congratulations post about another person; not profile evidence for Ashish Vaswani."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "布莱恩·卡坦扎罗",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxq60r044srmtbgpr5h45d",
+          "objectLabel": "NVIDIA NVFP4 blog link"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "NVIDIA technical blog link without person-specific evidence for Bryan Catanzaro."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1ibxu0dd8rmtbxzy5ig9p",
+          "objectLabel": "Gemini Flash pretraining blog link"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Third-party Gemini Flash blog link; not person-specific evidence for Jeff Dean."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtzs0h60614rmtb9pl0tjxk",
+          "objectLabel": "This was a really interesting experiment..."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Vague short post with insufficient standalone evidence value."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "李开复",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjwhhuer001d56p43alxxykk",
+          "objectLabel": "PopAI Slide Agent marketing post"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Product marketing post; not person-specific profile evidence for Kai-Fu Lee."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "马克·扎克伯格",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxs3gg04lormtbsphqg5r8",
+          "objectLabel": "Meta Agentic Commerce LinkedIn post"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Third-party LinkedIn post about Meta commerce; only mentions Zuckerberg tangentially."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "迈克·施罗普费尔",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju19zlk0bysrmtbh8tj7amg",
+          "objectLabel": "How Facebook got addicted to spreading misinformation"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Article centered on Facebook and another executive; not target-person evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju15v220b24rmtbll9je3n4",
+          "objectLabel": "Introducing Gemini: our largest and most capable AI model"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Google product announcement; not person-specific evidence and no active display dependency."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "桑达尔·皮查伊",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxowb103vnrmtbx04wyk7m",
+          "objectLabel": "Nano Banana Pro / Ashes cricket post"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Personal cricket/social trend post with low AI profile value."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "吴恩达",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1e5ej0clarmtbdxfhd2hd",
+          "objectLabel": "Best Machine Learning Andrew Ng Courses & Certificates"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Course aggregator page; not person-specific source evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "吴恩达",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmx8500blrmtbwgttgvfq",
+          "objectLabel": "Andrew Ng's 3 Week Intro AI Course in 25 Minutes"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Third-party course summary video with promotional content; not direct source evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju0py74085srmtb2ly718zk",
+          "objectLabel": "Twitch chat live experiment post"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Casual Twitch-chat comment; not evidence for Alec Radford's AI profile."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Alexandr Wang",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqlia00y4rmtbk4z7yhqv",
+          "objectLabel": "Vibes feed in the Meta AI app"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Meta product post; not person-specific evidence for Alexandr Wang."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Arthur Mensch",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqjhh00xgrmtb2s9s092t",
+          "objectLabel": "onlikorn"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Technical repository metadata without person-profile evidence value."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Arthur Mensch",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvqk2b00xormtbr8zj3u0s",
+          "objectLabel": "ProjectINFSI350"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Course project repository; not useful AI/person evidence for Arthur Mensch."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chamath Palihapitiya",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjw74ltv002nykszl9zsww2d",
+          "objectLabel": "All-In x Kill Tony: A Hilarious Holiday Special"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Entertainment video; outside the AI/technology evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmu9h03evrmtb1v4pm5gt",
+          "objectLabel": "Fanfiction-Graphs-Post"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Official repository but about fanfiction data analysis, outside the AI profile scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmut903f3rmtbj9fvwfwf",
+          "objectLabel": "FormatParser"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Generic programming parser repository; not AI profile evidence."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Christopher Manning",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvxeyu01jmrmtbggxyminw",
+          "objectLabel": "Christopher Manning's (La)TeX page"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Official LaTeX utility page, but outside the AI/NLP profile evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zbu003bc6jthj3qjexx",
+          "objectLabel": "Here is how voter fraud is done"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Political commentary, outside the AI/technology evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "Elon Musk",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjse4zc6003pc6jtrkc910y4",
+          "objectLabel": "Walz actively scamming elections"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Political commentary, outside the AI/technology evidence scope."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "迈克·施罗普费尔",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxo2u103p2rmtbdw09zx6a",
+          "objectLabel": "x.com/schrep/status/1884267789634211891"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Only a social-media link, no substantive captured text."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "迈克·施罗普费尔",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxo3ni03p8rmtby5jawns3",
+          "objectLabel": "x.com/schrep/status/1969055208698466587"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Only a social-media link, no substantive captured text."
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "person": "迈克·施罗普费尔",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju19zxz0byyrmtbb0f4lets",
+          "objectLabel": "x.com/schrep/status/2001909299606663594"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "reason": "Only a social-media link, no substantive captured text."
+      },
+      "raw": null
+    }
+  ]
+}

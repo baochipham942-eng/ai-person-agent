@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-06-10T22:09:40.892Z",
+  "summary": {
+    "generatedAt": "2026-06-10T22:09:40.892Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_tail_review_display_link_cleanup_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_display_link_cleanup_apply_archive.json",
+    "stage": "manual_prune_tail_review_display_link_cleanup",
+    "decisions": 1,
+    "existingTargets": 1,
+    "missingTargets": 0,
+    "auditRowsInserted": 1,
+    "deleted": 1,
+    "byAction": {
+      "delete_raw_pool_item": 1
+    },
+    "byVerdict": {
+      "reject": 1
+    },
+    "byPerson": {
+      "亚历克·拉德福德": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxlm6t0351rmtbkflqrpnl",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxlm6t0351rmtbkflqrpnl",
+          "objectLabel": "Alec Radford: Latest Posts"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：虽为官方个人主页，但内容几乎为空，仅有标题占位符。 Refetch curation 判为 human_review，原因：原始来源内容为空，需补充权威来源。候选中，lerandom.art文章和artificial-intelligence.blog页面提供了人物背景信息，X账号是官方社交媒体主页，三者可共同补强人物页面。其他候选因权威性不足、内容不可访问或证据不明确而被拒绝。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T22:09:15.186Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 1,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://newmu.github.io/"
+        }
+      },
+      "raw": {
+        "id": "cmjtxlm6t0351rmtbkflqrpnl",
+        "personId": "cmjtxc4op00015p081bdqzfmb",
+        "person": "亚历克·拉德福德",
+        "sourceType": "exa",
+        "url": "https://newmu.github.io/",
+        "urlHash": "83727d88091bd8475194d4dd659df8d1",
+        "contentHash": "ef061a19f100e3e3d2279842398f14d2",
+        "title": "Alec Radford: Latest Posts",
+        "text": "![Latest Posts](http://newmu.github.io//images/main3.jpg)\n\n# Alec Radford\n\n## Latest Posts\n\nPrevious\n\n- [1](http://newmu.github.io/)\n\nNext",
+        "publishedAt": "2013-12-31T16:00:00.000Z",
+        "metadata": {
+          "author": "",
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T03:27:09.462Z",
+        "processed": false
+      }
+    }
+  ]
+}

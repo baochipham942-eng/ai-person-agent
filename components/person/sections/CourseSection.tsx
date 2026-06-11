@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 // ============== 类型定义 ==============
@@ -25,6 +26,7 @@ interface Course {
   learningOrder?: number;
   topics: string[];
   verified: boolean;
+  confidence?: number;
   publishedAt?: string;
 }
 
@@ -82,6 +84,7 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
   const [filter, setFilter] = useState<CourseTypeFilter>('all');
   const [stats, setStats] = useState<{
     typeCounts: Record<string, number>;
@@ -89,18 +92,19 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
   } | null>(null);
 
   // 加载课程数据
-  const loadCourses = useCallback(async () => {
-    if (loaded) return;
+  const loadCourses = useCallback(async (force = false) => {
+    if (loaded && !force) return;
     setLoading(true);
+    setError(false);
     try {
       const response = await fetch(`/api/person/${personId}/courses?limit=20`);
-      if (response.ok) {
-        const result = await response.json();
-        setCourses(result.data || []);
-        setStats(result.stats || null);
-      }
+      if (!response.ok) throw new Error('Failed to load courses');
+      const result = await response.json();
+      setCourses(result.data || []);
+      setStats(result.stats || null);
     } catch (error) {
       console.error('Failed to load courses:', error);
+      setError(true);
     } finally {
       setLoading(false);
       setLoaded(true);
@@ -192,6 +196,18 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
               }}
             ></div>
           </div>
+        ) : error ? (
+          <div className="text-center py-8 text-stone-500">
+            <div className="text-sm font-medium text-stone-700 mb-1">加载失败</div>
+            <p className="text-xs text-stone-400 mb-3">课程资料暂时没有取回来</p>
+            <button
+              type="button"
+              onClick={() => loadCourses(true)}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium gradient-btn"
+            >
+              重试
+            </button>
+          </div>
         ) : sortedCourses.length > 0 ? (
           <>
             {/* 学习路径提示 */}
@@ -228,7 +244,11 @@ function CourseCard({ course }: { course: Course }) {
   const platformInfo = PLATFORM_CONFIG[course.platform] || PLATFORM_CONFIG.other;
   const levelInfo = course.level ? LEVEL_CONFIG[course.level] : null;
   const typeIcon = course.type === 'free' ? '🆓' : course.type === 'paid' ? '💰' : '🔄';
-  const hasThumbnail = !!course.thumbnailUrl;
+  const thumbnailUrl = course.thumbnailUrl;
+  const hasThumbnail = !!thumbnailUrl;
+  const confidenceLabel = typeof course.confidence === 'number'
+    ? `置信度 ${Math.round(course.confidence * 100)}%`
+    : null;
 
   return (
     <a
@@ -240,9 +260,12 @@ function CourseCard({ course }: { course: Course }) {
       {/* 课程封面 - 只在有缩略图时显示 */}
       {hasThumbnail && (
         <div className="relative h-24 bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center">
-          <img
-            src={course.thumbnailUrl}
+          <Image
+            src={thumbnailUrl}
             alt={course.title}
+            width={640}
+            height={320}
+            sizes="(min-width: 640px) 50vw, 100vw"
             className="w-full h-full object-cover"
           />
 
@@ -264,13 +287,20 @@ function CourseCard({ course }: { course: Course }) {
       <div className="p-3">
         {/* 无缩略图时：顶部显示平台和类型标签 */}
         {!hasThumbnail && (
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
             <div className={`px-2 py-0.5 text-[10px] font-medium rounded-md ${platformInfo.color}`}>
               {platformInfo.label}
             </div>
             <div className="px-1.5 py-0.5 bg-stone-100 text-stone-600 text-[10px] rounded-md">
               {typeIcon} {course.type === 'free' ? '免费' : course.type === 'paid' ? '付费' : '可旁听'}
             </div>
+            <QualityBadge verified={course.verified} confidenceLabel={confidenceLabel} />
+          </div>
+        )}
+
+        {hasThumbnail && (
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <QualityBadge verified={course.verified} confidenceLabel={confidenceLabel} />
           </div>
         )}
 
@@ -345,5 +375,20 @@ function CourseCard({ course }: { course: Course }) {
         )}
       </div>
     </a>
+  );
+}
+
+function QualityBadge({ verified, confidenceLabel }: { verified: boolean; confidenceLabel: string | null }) {
+  return (
+    <span
+      className={`px-1.5 py-0.5 text-[10px] font-medium rounded-md border ${
+        verified
+          ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
+          : 'bg-amber-50 text-amber-700 border-amber-100'
+      }`}
+    >
+      {verified ? '已验证' : '待核'}
+      {confidenceLabel ? ` · ${confidenceLabel}` : ''}
+    </span>
   );
 }

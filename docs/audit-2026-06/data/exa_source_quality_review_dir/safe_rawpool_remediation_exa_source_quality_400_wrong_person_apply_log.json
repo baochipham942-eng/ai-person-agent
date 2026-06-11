@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-06-09T23:26:26.437Z",
+  "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/safe_rawpool_remediation_exa_source_quality_400_wrong_person_archive.json",
+  "summary": {
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/fact_claim_remediation_exa_source_quality_mimo_summary.json",
+    "safeDecisions": 1,
+    "rejectedSafeQueueRows": 31,
+    "uniqueTargetIds": 1,
+    "existingTargets": 1,
+    "missingTargets": 0,
+    "deleted": 1,
+    "affectedPeople": 1,
+    "bySourceType": {
+      "exa": 1
+    },
+    "byVerdict": {
+      "wrong_person": 1
+    },
+    "topPeople": {
+      "Shane Legg": 1
+    }
+  }
+}

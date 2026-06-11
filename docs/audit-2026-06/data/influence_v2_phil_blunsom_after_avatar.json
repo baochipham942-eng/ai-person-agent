@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-11T08:45:14.374Z",
+  "mode": "execute",
+  "formula": {
+    "aiOriginalContribution": 35,
+    "industryEcosystem": 25,
+    "authority": 20,
+    "learningValue": 10,
+    "recency": 10,
+    "statusMultiplier": {
+      "ready": 1,
+      "active": 1,
+      "building": 0.55,
+      "candidate": 0.35,
+      "pending": 0.35,
+      "error": 0
+    }
+  },
+  "people": [
+    {
+      "id": "127ecbaa-aa90-412f-8c99-951d431a7688",
+      "name": "Phil Blunsom",
+      "status": "ready",
+      "roleCategory": "engineer",
+      "currentTitle": "Chief Technology Officer @ Cohere",
+      "aiContributionScore": 5,
+      "githubStars": 0,
+      "citationCount": 0,
+      "hIndex": 0,
+      "counts": {
+        "cards": 5,
+        "raw": 2,
+        "keep": 2,
+        "sources": 2,
+        "courses": 0,
+        "recentKeep": 2
+      },
+      "breakdown": {
+        "aiOriginal": 16.055045871559635,
+        "industryEcosystem": 11.4,
+        "authority": 2.6500000000000004,
+        "learningValue": 1.9100000000000001,
+        "recency": 4.935252729224537,
+        "subtotal": 36.95029860078417,
+        "statusMultiplier": 1,
+        "finalScore": 36.95
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-06-11T11:25:47.487Z",
+  "mode": "dry-run",
+  "input": "docs/audit-2026-06/data/candidate_xai_igor_babuschkin_source_depth_repairs.json",
+  "summary": {
+    "missingPeople": 0,
+    "sourceDeletes": 0,
+    "sources": 2,
+    "cards": 5,
+    "avatars": 1,
+    "errors": 0
+  },
+  "missingPeople": [],
+  "deletedSources": [],
+  "sources": [
+    {
+      "person": "Igor Babuschkin",
+      "url": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 6054,
+      "title": "Business Insider Igor Babuschkin xAI departure coverage"
+    },
+    {
+      "person": "Igor Babuschkin",
+      "url": "https://github.com/ibab",
+      "status": "would_insert",
+      "auditStatus": "would_insert_keep",
+      "textLength": 4530,
+      "title": "Igor Babuschkin GitHub profile"
+    }
+  ],
+  "cards": [
+    {
+      "person": "Igor Babuschkin",
+      "title": "xAI 联合创始人之一",
+      "status": "would_insert",
+      "sourceUrl": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8"
+    },
+    {
+      "person": "Igor Babuschkin",
+      "title": "2025 年离开 xAI",
+      "status": "would_insert",
+      "sourceUrl": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8"
+    },
+    {
+      "person": "Igor Babuschkin",
+      "title": "创办 Babuschkin Ventures",
+      "status": "would_insert",
+      "sourceUrl": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8"
+    },
+    {
+      "person": "Igor Babuschkin",
+      "title": "GitHub 身份与工程背景",
+      "status": "would_insert",
+      "sourceUrl": "https://github.com/ibab"
+    },
+    {
+      "person": "Igor Babuschkin",
+      "title": "xAI 名册补齐价值",
+      "status": "would_insert",
+      "sourceUrl": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8"
+    }
+  ],
+  "avatars": [
+    {
+      "person": "Igor Babuschkin",
+      "status": "would_update",
+      "previousAvatarUrl": null,
+      "nextAvatarUrl": "/avatars/igor-babuschkin-97d2ad9c.webp",
+      "inputBytes": 26304,
+      "outputPath": null,
+      "evidenceUrl": "https://github.com/ibab",
+      "evidenceNote": "GitHub profile page title is ibab (Igor Babuschkin) and its og:image points to this account avatar."
+    }
+  ],
+  "errors": []
+}

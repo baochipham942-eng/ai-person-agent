@@ -15,6 +15,11 @@ import type { NormalizedItem, PersonContext } from '@/lib/datasources/adapter';
 import { qaAgent, QAResult } from './qa-agent';
 import { dedupeBySimHash, DedupResult } from '@/lib/utils/dedup';
 import { semanticQA, SemanticQAResult } from './semantic-qa';
+import {
+    adjustConfidenceForSourceQuality,
+    applySourceQualityMetadata,
+    evaluateSourceQuality,
+} from '@/lib/skills/source-quality-policy';
 
 export interface CleanOptions {
     existingUrlHashes?: Set<string>;
@@ -35,6 +40,7 @@ export interface CleanResult {
         afterDedup: number;
         approved: number;
         l0Rejected: number;
+        sourceQualityRejected: number;
         dedupDropped: number;
         semanticRejected: number;
         semanticReview: number;
@@ -68,8 +74,31 @@ export async function cleanItems(
         audit.push({ personId: options.personId, url: i.url, urlHash: i.urlHash, sourceType: i.sourceType, stage, verdict, ...extra });
     };
 
-    // ---- L0: 规则硬过滤 (关掉关键词身份/相关性判定) ----
-    const l0 = await qaAgent.check(items, person, options.existingUrlHashes ?? new Set(), {
+    // ---- L0a: source shape / attribution gate ----
+    const sourceQualityApproved: NormalizedItem[] = [];
+    let sourceQualityRejected = 0;
+
+    for (const item of items) {
+        const decision = evaluateSourceQuality(item, person);
+        const itemWithQuality = applySourceQualityMetadata({
+            ...item,
+            confidence: adjustConfidenceForSourceQuality(item.confidence, decision),
+        }, decision);
+
+        if (decision.action === 'reject') {
+            sourceQualityRejected++;
+            logAudit(itemWithQuality, 'L0_SOURCE_QUALITY', 'reject', {
+                reason: decision.reasons.join('; ') || decision.flags.join(', '),
+                quality: decision.score,
+            });
+            continue;
+        }
+
+        sourceQualityApproved.push(itemWithQuality);
+    }
+
+    // ---- L0b: 规则硬过滤 (关掉关键词身份/相关性判定) ----
+    const l0 = await qaAgent.check(sourceQualityApproved, person, options.existingUrlHashes ?? new Set(), {
         enableIdentityCheck: false,
         enableRelevanceCheck: false,
         confidenceThreshold: 0,
@@ -115,11 +144,12 @@ export async function cleanItems(
         afterDedup: dedup.kept.length,
         approved: approved.length,
         l0Rejected: l0.rejected.length,
+        sourceQualityRejected,
         dedupDropped: dedup.dropped.length,
         semanticRejected: semantic?.reject.length ?? 0,
         semanticReview: semantic?.review.length ?? 0,
     };
-    console.log(`[cleanItems] ${stats.input} -> L0 ${stats.l0Approved} -> 去重后 ${stats.afterDedup} -> 最终 ${stats.approved} (L0拒${stats.l0Rejected}/去重${stats.dedupDropped}/语义拒${stats.semanticRejected}/待审${stats.semanticReview})`);
+    console.log(`[cleanItems] ${stats.input} -> source ${sourceQualityApproved.length} -> L0 ${stats.l0Approved} -> 去重后 ${stats.afterDedup} -> 最终 ${stats.approved} (source拒${stats.sourceQualityRejected}/L0拒${stats.l0Rejected}/去重${stats.dedupDropped}/语义拒${stats.semanticRejected}/待审${stats.semanticReview})`);
 
     return { approved, l0, dedup, semantic, stats };
 }

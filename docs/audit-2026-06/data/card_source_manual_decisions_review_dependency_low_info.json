@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-06-10T21:40:00.000Z",
+  "stage": "manual_prune_tail_review_dependency_low_info",
+  "scope": "Single active card source dependency from remaining prune-tail review unresolved rows: no_good_source and low product value after refetch.",
+  "decisions": [
+    {
+      "action": "archive_card",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "cardId": "cmjsms79l001yq8o9fooveqe0",
+      "reason": "卡片来源是过期的 Codex 使用限额运营通知；refetch 后仍为 no_good_source，候选来源无法支持该具体通知，且该卡对人物长期画像价值有限。"
+    },
+    {
+      "action": "delete_raw_pool_item",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "rawId": "cmjsmrbta001fq8o9qr7zhhul",
+      "reason": "关联卡片已归档；原 RawPoolItem 是过期的 Codex 用户限额通知，refetch 后无更好权威替代来源，保留会继续污染人物卡片聚合。"
+    }
+  ]
+}

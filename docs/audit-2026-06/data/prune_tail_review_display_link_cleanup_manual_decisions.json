@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-06-10T22:09:15.186Z",
+  "input": "docs/audit-2026-06/data/prune_tail_review_unresolved_rows.json",
+  "limit": 0,
+  "summary": {
+    "inputRows": 1,
+    "dependencySkipped": 0,
+    "missingExplicitIds": 0,
+    "decisionRows": 1
+  },
+  "byPerson": {
+    "亚历克·拉德福德": 1
+  },
+  "bySourceType": {
+    "exa": 1
+  },
+  "selectedRows": [
+    {
+      "claimId": "prune-tail:cmjtxlm6t0351rmtbkflqrpnl",
+      "batch": 1,
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "rawId": "cmjtxlm6t0351rmtbkflqrpnl",
+      "curatedDecision": "human_review",
+      "curatedReason": "原始来源内容为空，需补充权威来源。候选中，lerandom.art文章和artificial-intelligence.blog页面提供了人物背景信息，X账号是官方社交媒体主页，三者可共同补强人物页面。其他候选因权威性不足、内容不可访问或证据不明确而被拒绝。\n\nManual curation: all selected sources were removed for source-quality reasons; keep this row for human review.",
+      "originalLatestVerdict": "review",
+      "priority": "high",
+      "originalUrl": "https://newmu.github.io/",
+      "originalTitle": "Alec Radford: Latest Posts",
+      "originalReason": "虽为官方个人主页，但内容几乎为空，仅有标题占位符。",
+      "sourceType": "exa",
+      "latestDbVerdict": "review",
+      "latestStage": "L1",
+      "dependency": null
+    }
+  ],
+  "decisions": [
+    {
+      "claimId": "prune-tail:cmjtxlm6t0351rmtbkflqrpnl",
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxlm6t0351rmtbkflqrpnl",
+        "objectLabel": "Alec Radford: Latest Posts"
+      },
+      "action": "delete_raw_pool_item",
+      "verdict": "reject",
+      "confidence": 0.82,
+      "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：虽为官方个人主页，但内容几乎为空，仅有标题占位符。 Refetch curation 判为 human_review，原因：原始来源内容为空，需补充权威来源。候选中，lerandom.art文章和artificial-intelligence.blog页面提供了人物背景信息，X账号是官方社交媒体主页，三者可共同补强人物页面。其他候选因权威性不足、内容不可访问或证据不明确而被拒绝。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+      "reviewedAt": "2026-06-10T22:09:15.186Z",
+      "reviewer": {
+        "provider": "codex",
+        "model": "prune_tail_review_manual_adjudication"
+      },
+      "evidence": {
+        "batch": 1,
+        "refetchDecision": "human_review",
+        "latestVerdict": "review",
+        "priority": "high",
+        "sourceType": "exa",
+        "originalUrl": "https://newmu.github.io/"
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-06-11T12:08:32.856Z",
+  "mode": "execute",
+  "input": "docs/audit-2026-06/data/candidate_bytedance_liang_rubo_source_depth_repairs.json",
+  "summary": {
+    "missingPeople": 0,
+    "sourceDeletes": 0,
+    "sources": 2,
+    "cards": 5,
+    "avatars": 1,
+    "errors": 0
+  },
+  "missingPeople": [],
+  "deletedSources": [],
+  "sources": [
+    {
+      "person": "Liang Rubo",
+      "url": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/",
+      "status": "inserted",
+      "auditStatus": "inserted_keep",
+      "textLength": 6418,
+      "title": "TIME100 AI 2024: Liang Rubo"
+    },
+    {
+      "person": "Liang Rubo",
+      "url": "https://zh.wikipedia.org/wiki/%E6%A2%81%E6%B1%9D%E6%B3%A2",
+      "status": "inserted",
+      "auditStatus": "inserted_keep",
+      "textLength": 2254,
+      "title": "梁汝波 profile"
+    }
+  ],
+  "cards": [
+    {
+      "person": "Liang Rubo",
+      "title": "字节跳动 CEO 与 AI 推进",
+      "status": "inserted",
+      "sourceUrl": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/"
+    },
+    {
+      "person": "Liang Rubo",
+      "title": "Doubao 产品线",
+      "status": "inserted",
+      "sourceUrl": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/"
+    },
+    {
+      "person": "Liang Rubo",
+      "title": "ByteDance 联合创始人与 CEO",
+      "status": "inserted",
+      "sourceUrl": "https://zh.wikipedia.org/wiki/%E6%A2%81%E6%B1%9D%E6%B3%A2"
+    },
+    {
+      "person": "Liang Rubo",
+      "title": "从产品研发到集团管理",
+      "status": "inserted",
+      "sourceUrl": "https://zh.wikipedia.org/wiki/%E6%A2%81%E6%B1%9D%E6%B3%A2"
+    },
+    {
+      "person": "Liang Rubo",
+      "title": "TIME100 AI 2024 入选",
+      "status": "inserted",
+      "sourceUrl": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/"
+    }
+  ],
+  "avatars": [
+    {
+      "person": "Liang Rubo",
+      "status": "updated",
+      "previousAvatarUrl": null,
+      "nextAvatarUrl": "/avatars/liang-rubo-16cf3005.webp",
+      "inputBytes": 41079,
+      "outputPath": "/Users/linchen/Downloads/ai/ai-person-agent/public/avatars/liang-rubo-16cf3005.webp",
+      "evidenceUrl": "https://tollbit.time.com/collections/time100-ai-2024/7012773/liang-rubo/",
+      "evidenceNote": "TIME100 AI 2024 profile is titled Liang Rubo, credits the image source as ByteDance, and embeds this portrait."
+    }
+  ],
+  "errors": []
+}

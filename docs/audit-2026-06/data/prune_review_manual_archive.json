@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-06-10T09:25:07.628Z",
+  "summary": {
+    "generatedAt": "2026-06-10T09:25:07.628Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/prune_review_manual_decisions_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/prune_review_manual_archive.json",
+    "stage": "manual_prune_tail",
+    "decisions": 2,
+    "existingTargets": 2,
+    "missingTargets": 0,
+    "auditRowsInserted": 2,
+    "deleted": 2,
+    "byAction": {
+      "delete_raw_pool_item": 2
+    },
+    "byVerdict": {
+      "reject": 2
+    },
+    "byPerson": {
+      "Lukasz Kaiser": 1,
+      "Quoc Le": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "person": "Lukasz Kaiser",
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju14dgy0asprmtbbeorl167",
+          "objectLabel": "Papers with Code - Łukasz Kaiser"
+        },
+        "reason": "Manual prune: Papers with Code search result page is not a source about the target person and has same-name/collision noise; it should not remain as a person evidence item."
+      },
+      "raw": {
+        "id": "cmju14dgy0asprmtbbeorl167",
+        "personId": "cmjtxecfs000h5p088f0rb7vd",
+        "person": "Lukasz Kaiser",
+        "sourceType": "exa",
+        "url": "https://paperswithcode.com/search?q=author%3A%C5%81ukasz+Kaiser",
+        "urlHash": "a04a78eb3f52c191d66ca9bfbe56b4e6",
+        "contentHash": "06c59ef05f14357ab10d68fe38a82965",
+        "title": "Papers with Code - Łukasz Kaiser",
+        "text": "## Search Results for author: Łukasz Kaiser\n\n### Found **19** papers, **12** papers with code\n\nDate Published\n\n[Date Published](https://paperswithcode.com/search?q=author%3A%C5%81ukasz+Kaiser&order_by=date) [Github Stars](https://paperswithcode.com/search?q=author%3A%C5%81ukasz+Kaiser&order_by=stars)\n\n# [tsGT: Stochastic Time Series Modeling With Transformer](https://paperswithcode.com/paper/mathtt-tsgt-stochastic-time-series-modeling)\n\n[no code implementations](https://paperswithcode.com/paper/mathtt-tsgt-stochastic-time-series-modeling#code)\n•\n8 Mar 2024\n•\n[Łukasz Kuciński](https://paperswithcode.com/author/lukasz-kucinski),\n[Witold Drzewakowski](https://paperswithcode.com/author/witold-drzewakowski),\n[Mateusz Olko](https://paperswithcode.com/author/mateusz-olko),\n[Piotr Kozakowski](https://paperswithcode.com/author/piotr-kozakowski),\n[Łukasz Maziarka](https://paperswithcode.com/author/lukasz-maziarka),\n[Marta Emilia Nowakowska](https://paperswithcode.com/author/marta-emilia-nowakowska),\n[Łukasz Kaiser](https://paperswithcode.com/author/lukasz-kaiser-1),\n[Piotr Miłoś](https://paperswithcode.com/author/piotr-milos-1)\n\nTime series methods are of fundamental importance in virtually any field of science that deals with temporally structured data.\n\n[![](https://production-media.paperswithcode.com/tasks/default.gif)Time Series](https://paperswithcode.com/task/time-series-1)\n\n[Paper](https://paperswithcode.com/paper/mathtt-tsgt-stochastic-time-series-modeling)\n\n[Add Code](https://paperswithcode.com/paper/mathtt-tsgt-stochastic-time-series-modeling#code)\n\n# [GPT-4 Technical Report](https://paperswithcode.com/paper/gpt-4-technical-report-1)\n\n[11 code implementations](https://paperswithcode.com/paper/gpt-4-technical-report-1#code)\n• [Preprint 2023](https://paperswithcode.com/conference/preprint-2023-3)•\n[OpenAI](https://paperswithcode.com/author/openai),\n[:](https://paperswithcode.com/author/-1),\n[Josh Achiam](https://paperswithcode.com/author/josh-achiam),\n[Steven Adler](https://paperswithcode.com/author/steven-adler),\n[Sandhini Agarwal](https://paperswithcode.com/author/sandhini-agarwal),\n[Lama Ahmad](https://paperswithcode.com/author/lama-ahmad),\n[Ilge Akkaya](https://paperswithcode.com/author/ilge-akkaya),\n[Florencia Leoni Aleman](https://paperswithcode.com/author/florencia-leoni-aleman),\n[Diogo Almeida](https://paperswithcode.com/author/diogo-almeida),\n[Janko Altenschmidt](https://paperswithcode.com/author/janko-altenschmidt),\n[Sam Altman](https://paperswithcode.com/author/sam-altman),\n[Shyamal Anadkat](https://paperswithcode.com/author/shyamal-anadkat),\n[Red Avila](https://paperswithcode.com/author/red-avila),\n[Igor Babuschkin](https://paperswithcode.com/author/igor-babuschkin),\n[Suchir Balaji](https://paperswithcode.com/author/suchir-balaji),\n[Valerie Balcom](https://paperswithcode.com/author/valerie-balcom),\n[Paul Baltescu](https://paperswithcode.com/author/paul-baltescu),\n[Haiming Bao](https://paperswithcode.com/author/haiming-bao),\n[Mohammad Bavarian](https://paperswithcode.com/author/mohammad-bavarian),\n[Jeff Belgum](https://paperswithcode.com/author/jeff-belgum),\n[Irwan Bello](https://paperswithcode.com/author/irwan-bello),\n[Jake Berdine](https://paperswithcode.com/author/jake-berdine),\n[Gabriel Bernadett-Shapiro](https://paperswithcode.com/author/gabriel-bernadett-shapiro),\n[Christopher Berner](https://paperswithcode.com/author/christopher-berner),\n[Lenny Bogdonoff](https://paperswithcode.com/author/lenny-bogdonoff),\n[Oleg Boiko](https://paperswithcode.com/author/oleg-boiko),\n[Madelaine Boyd](https://paperswithcode.com/author/madelaine-boyd),\n[Anna-Luisa Brakman](https://paperswithcode.com/author/anna-luisa-brakman),\n[Greg Brockman](https://paperswithcode.com/author/greg-brockman),\n[Tim Brooks](https://paperswithcode.com/author/tim-brooks),\n[Miles Brundage](https://paperswithcode.com/author/miles-brundage),\n[Kevin Button](https://paperswithcode.com/author/kevin-button),\n[Trevor Cai](https://paperswithcode.com/author/trevor-cai),\n[Rosie Campbell](https://paperswithcode.com/author/rosie-campbell),\n[Andrew Cann](https://paperswithcode.com/author/andrew-cann),\n[Brittany Carey](https://paperswithcode.com/author/brittany-carey),\n[Chelsea Carlson](https://paperswithcode.com/author/chelsea-carlson),\n[Rory Carmichael](https://paperswithcode.com/author/rory-carmichael),\n[Brooke Chan](https://paperswithcode.com/author/brooke-chan),\n[Che Chang](https://paperswithcode.com/author/che-chang),\n[Fotis Chantzis](https://paperswithcode.com/author/fotis-chantzis),\n[Derek Chen](https://paperswithcode.com/author/derek-chen),\n[Sully Chen](https://paperswithcode.com/author/sully-chen),\n[Ruby Chen](https://paperswithcode.com/author/ruby-chen),\n[Jason Chen](https://paperswithcode.com/author/jason-chen),\n[Mark Chen](https://paperswithcode.com/author/mark-chen),\n[Ben Chess](https://paperswithcode.com/author/ben-chess),\n[Chester Cho](https://paperswithcode.com/author/chester-cho),\n[Casey Chu](https://paperswithcode.com/author/case",
+        "publishedAt": "2024-03-07T16:00:00.000Z",
+        "metadata": {
+          "author": "8 Mar 2024",
+          "isOfficial": false
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T05:08:16.479Z",
+        "processed": false
+      }
+    },
+    {
+      "decision": {
+        "person": "Quoc Le",
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1074e09wfrmtb3yoo0h2y",
+          "objectLabel": "Kevin Clark - CS Stanford"
+        },
+        "reason": "Manual prune: the source is Kevin Clark's CV; Quoc Le is only mentioned as another person's advisor/collaborator, so the item is not about Quoc Le."
+      },
+      "raw": {
+        "id": "cmju1074e09wfrmtb3yoo0h2y",
+        "personId": "cmjtv37mu000gi004uo73uum0",
+        "person": "Quoc Le",
+        "sourceType": "exa",
+        "url": "https://cs.stanford.edu/~kevclark/resources/cv.pdf",
+        "urlHash": "263bb2f9e892c9db9754fd9d2b2a1710",
+        "contentHash": "f01e79952771ccdb41e77bc28a8e0ade",
+        "title": "Kevin Clark - CS Stanford",
+        "text": "Kevin Clark http://cs.stanford.edu/~kevclark\nkevclark@cs.stanford.edu\nEducation\nStanford University, Palo Alto, CA September 2014 - Present\nPh.D. in Computer Science\nResearch Advisor: Christopher Manning\nMain Research Interests: Self-supervised, semi-supervised, and multi-task learning applied to NLP.\nUniversity of Washington, Seattle, WA September 2009 - June 2013\nB.S. in Computer Science and Mathematics GPA: 3.9\nResearch Experience\nStudent Researcher - Google Brain June 2017 - Present\nAdvised by Quoc Le\n- Developed ELECTRA, a new method for pre-training transformer networks on text. It uses a\nGAN-like loss function and trains much faster than prior models such as BERT, causing to perform\nwell both at large scale (setting a new state-of-the-art for the SQuAD 2.0 question answering\ndataset) or even when trained on a single GPU.\n- Built multi-task learning algorithms based on knowledge distillation to improve natural language\nunderstanding models, achieving consistent gains from multi-task learning across many tasks.\n- Developed consistency-based semi-supervised learning algorithms and applied them to computer\nvision and natural language processing, achieving excellent results on multiple sequence labeling\nand image classification tasks.\nResearcher Assistant - Stanford University September 2014 - Present\nAdvised by Chris Manning\n- Analyzed the attention mechanism of BERT and discovered it correlates remarkably well with\naspects of dependency syntax and coreference.\n- Analyzed thousands of counseling conversations from the nonprofit Crisis Text Line. Developed\nnovel techniques to quantify various aspects of crisis counseling and determine which counseling\nstrategies are the most effective.\n- Developed methods to induce domain-specific sentiment lexicons from unlabeled corpora. Used the\nframework to analyze how word sentiments have changed over 150 years and how sentiment varies\nacross 250 online communities.\n- Applied reinforcement learning and clustering-based models to improve neural coreference resolution\nsystems. Made substantial advancements to the current state-of-the-art for English and Chinese\ncoreference and publicly released the models through Stanford’s CoreNLP.\nResearcher Assistant - University of Washington September 2011 - June 2012\nAdvised by Oren Etzioni\n- Built web interface and substantially improved the opinion mining component of RevMiner, a\nsystem that uses Natural Language Processing on reviews to concisely summarize and provide\nquality search of restaurants.\nPublications\nELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators.\nKevin Clark, Minh-Thang Luong, Quoc V. Le, and Christopher D. Manning.\nSubmitted to International Conference on Learning Representations, 2020.\nWhat Does BERT Look At? An Analysis of BERT’s Attention.\nKevin Clark, Urvashi Khandelwal, Omer Levy, and Christopher D. Manning.\nBlackBoxNLP at Association for Computational Linguistics, 2019. Best Paper Award.\nBAM! Born-Again Multi-Task Networks for Natural Language Understanding.\nKevin Clark, Minh-Thang Luong, Urvashi Khandelwal, Christopher D. Manning, and Quoc V. Le.\nAssociation for Computational Linguistics, 2019.\nSemi-Supervised Sequence Modeling with Cross-View Training.\nKevin Clark, Minh-Thang Luong, Christopher D. Manning, and Quoc V. Le.\nEmpirical Methods on Natural Language Processing, 2018.\nDeep Reinforcement Learning for Mention-Ranking Coreference Models.\nKevin Clark and Christopher Manning. Empirical Methods on Natural Language Processing, 2016.\nInducing Domain-Specific Sentiment Lexicons from Unlabeled Corpora.\nWilliam L. Hamilton, Kevin Clark, Jure Leskovec, and Dan Jurafsky.\nEmpirical Methods on Natural Language Processing, 2016.\nImproving Coreference Resolution by Learning Entity-Level Distributed Representations.\nKevin Clark and Christopher Manning. Association for Computational Linguistics, 2016.\nLarge-scale Analysis of Counseling Conversations: An Application of Natural Language\nProcessing to Mental Health.\nTim Althoff*, Kevin Clark*, and Jure Leskovec.\nTransactions of the Association for Computational Linguistics, 2016.\n*equal contribution\nEntity-Centric Coreference Resolution with Model Stacking.\nKevin Clark and Christopher Manning. Association for Computational Linguistics, 2015.\nRevMiner: An Extractive Interface for Navigating Reviews on a Smartphone.\nJeff Huang, Oren Etzioni, Luke Zettlemoyer, Kevin Clark, and Christian Lee.\nUser Interface Software and Technology, 2012.\nTeaching Experience\nHead Teaching Assistant, NLP with Deep Learning Jan. 2018 - Mar. 2018\n- Helped develop course material and manage TAs, gave three class lectures, mentored over 20 groups\non their final projects.\nTeaching Assistant, NLP with Deep Learning Jan. 2017 - Mar. 2017\n- Wrote one of the three homework assignments, wrote lecture notes on computing neural network\ngradients, and mentored over 20 groups on their final projects.\nIndustry Experience\nSoftware Engineering Intern, Sift Science August 2013 - ",
+        "publishedAt": null,
+        "metadata": {
+          "author": null,
+          "isOfficial": true
+        },
+        "fetchStatus": "success",
+        "errorCode": null,
+        "fetchedAt": "2025-12-31T18:50:33.781Z",
+        "processed": false
+      }
+    }
+  ]
+}

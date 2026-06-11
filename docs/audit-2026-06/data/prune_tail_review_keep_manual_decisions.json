@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-06-10T21:45:00.000Z",
+  "stage": "manual_prune_tail_review_keep_direct",
+  "scope": "Direct, contentful, person-matching sources from remaining prune-tail review unresolved rows. These decisions only write keep QAAuditLog rows and do not alter RawPoolItem content.",
+  "decisions": [
+    {
+      "action": "keep_raw_pool_item",
+      "verdict": "keep",
+      "personId": "cmju1c75r0ccprmtbeafm5dml",
+      "person": "Noam Shazeer",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmju1hiap0d9hrmtbffp301xg",
+        "objectLabel": "Character.AI CEO Noam Shazeer returns to Google"
+      },
+      "reason": "TechCrunch 正文抓取成功且直接命中 Noam Shazeer，标题和正文均支持其 Character.AI CEO 身份及返回 Google 事件；适合作为人物页直接来源。"
+    },
+    {
+      "action": "keep_raw_pool_item",
+      "verdict": "keep",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxmg9p03bwrmtbe515a3n7",
+        "objectLabel": "In-context Learning and Induction Heads"
+      },
+      "reason": "Transformer Circuits 文章正文抓取成功并直接命中 Chris Olah，来源为研究项目原文，可支持其可解释性研究与代表作品关系。"
+    },
+    {
+      "action": "keep_raw_pool_item",
+      "verdict": "keep",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxmc0703bgrmtbcgjsy7fj",
+        "objectLabel": "Christopher Olah - ACL Anthology"
+      },
+      "reason": "ACL Anthology 作者页正文抓取成功并直接命中 Christopher Olah，能支持其论文作者身份与学术作品索引。"
+    },
+    {
+      "action": "keep_raw_pool_item",
+      "verdict": "keep",
+      "personId": "cmjtxc5rk00025p08vck9van4",
+      "person": "朱军",
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxjf5802q8rmtb01uhbllu",
+        "objectLabel": "朱军| 香港中文大学（深圳）理工学院"
+      },
+      "reason": "香港中文大学（深圳）理工学院官方教师页正文抓取成功并直接命中朱军，能支持其任职信息和人物身份。"
+    }
+  ]
+}

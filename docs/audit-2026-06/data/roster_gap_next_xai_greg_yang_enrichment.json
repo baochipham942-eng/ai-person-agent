@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "source": "Greg Yang personal site and GitHub profile",
+    "generatedAt": "2026-06-11T19:44:00+08:00",
+    "note": "Minimum enrichment for Greg Yang."
+  },
+  "people": [
+    {
+      "name": "Greg Yang",
+      "topics": ["Scaling", "大语言模型", "理论", "安全"],
+      "officialLinks": [
+        {
+          "type": "website",
+          "url": "https://thegregyang.com/",
+          "label": "Personal site"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/thegregyang",
+          "handle": "thegregyang",
+          "label": "GitHub profile"
+        }
+      ],
+      "products": [
+        {
+          "name": "Tensor Programs",
+          "description": "用于理解大型神经网络的理论框架，Greg Yang 在个人网站中将其描述为自己当前发展的核心框架。",
+          "org": "Greg Yang",
+          "year": 2020,
+          "url": "https://thegregyang.com/",
+          "category": "Theory",
+          "type": "research-framework"
+        },
+        {
+          "name": "μTransfer / hyperparameter transfer",
+          "description": "Tensor Programs 理论基础催生的超参数迁移范式，用于调参大型神经网络。",
+          "org": "Greg Yang / Microsoft Research",
+          "year": 2021,
+          "url": "https://thegregyang.com/",
+          "category": "Scaling",
+          "type": "research-method"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "Scaling",
+          "rank": 84,
+          "reason": "Greg Yang 的个人网站称 Tensor Programs 是 hyperparameter transfer 的理论基础，并直接关联 GPT-3 这类大模型调参。"
+        }
+      ]
+    }
+  ]
+}

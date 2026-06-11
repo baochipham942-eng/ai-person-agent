@@ -1,0 +1,4737 @@
+{
+  "generatedAt": "2026-06-09T12:53:41.135Z",
+  "claims": 12376,
+  "reviewed": 5044,
+  "unreviewed": 7332,
+  "reviewedByClaimType": {
+    "career_role": 571,
+    "course": 53,
+    "current_title": 229,
+    "learning_card": 721,
+    "official_link": 471,
+    "representative_achievement": 540,
+    "source_item_belongs_to_person": 1537,
+    "topic_contribution": 692,
+    "why_important": 230
+  },
+  "reviewedByVerdict": {
+    "stale": 312,
+    "needs_source": 976,
+    "supported": 2704,
+    "over_attributed": 734,
+    "wrong_person": 271,
+    "unclear": 19,
+    "unsupported": 28
+  },
+  "reviewedByAction": {
+    "rewrite": 841,
+    "needs_source": 1013,
+    "keep": 2704,
+    "human_review": 89,
+    "remove": 397
+  },
+  "remainingByType": {
+    "topic_rank": 720,
+    "profile_summary": 230,
+    "education": 482,
+    "organization_affiliation": 359,
+    "topic_membership": 720,
+    "source_item_belongs_to_person": 3093,
+    "learning_card": 374,
+    "occupation": 397,
+    "career_role": 543,
+    "person_relation": 207,
+    "person_relation_display": 207
+  },
+  "remainingByPriority": {
+    "medium": 4239,
+    "low": 3093
+  },
+  "reviewFiles": [
+    "docs/audit-2026-06/data/fact_claim_reviews_career_role_high_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_course_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_current_title_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_learning_card_high_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_official_link_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_topic_contribution_mimo.jsonl",
+    "docs/audit-2026-06/data/fact_claim_reviews_why_important_mimo.jsonl"
+  ],
+  "topPeople": [
+    {
+      "person": "丁洁",
+      "total": 31,
+      "score": 414,
+      "remove": 26,
+      "rewrite": 0,
+      "needsSource": 6,
+      "wrongPerson": 25,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "current_title: needs_source, 当前职位信息可能正确，但未提供任何来源文本或证据来验证其真实性及是否为最新状态。",
+        "learning_card / 南京邮电大学副教授丁洁的学术背景: wrong_person, 卡片描述的是南京邮电大学副教授丁洁的学术背景，但人物上下文显示当前人物是明尼苏达大学副教授丁洁。这是同名不同人，属于人名错配。",
+        "learning_card / 丁洁的教学成果与课程建设方法: wrong_person, 卡片描述的是南京邮电大学副教授丁洁的教学成果，但人物上下文显示当前人物是明尼苏达大学副教授丁洁。这是同名不同人，属于人名错配。"
+      ]
+    },
+    {
+      "person": "周明",
+      "total": 26,
+      "score": 244,
+      "remove": 14,
+      "rewrite": 3,
+      "needsSource": 9,
+      "wrongPerson": 13,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Executive Trainee (JETS Program) @ Jardine Matheson: wrong_person, 周明是澜舟科技创始人、创新工场合伙人，与怡和集团（Jardine Matheson）的管培生项目无关，疑似人名错配。",
+        "career_role / Researcher/Developer @ 清华大学: stale, 周明在清华大学的早期研究经历（1991年）是历史履历，但显示为“now”当前状态，明显过时。",
+        "current_title: needs_source, 缺少来源验证周明当前在怡和集团的职位是否真实且最新，且与AI领域关联较弱。"
+      ]
+    },
+    {
+      "person": "Elon Musk",
+      "total": 22,
+      "score": 229,
+      "remove": 12,
+      "rewrite": 7,
+      "needsSource": 1,
+      "wrongPerson": 10,
+      "stale": 5,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 首席执行官 @ 特斯拉: stale, Elon Musk 已于2023年卸任特斯拉首席执行官，职位状态应为过去式，而非当前。",
+        "career_role / 联合创始人兼首席执行官 @ PayPal: stale, Elon Musk 在 PayPal 的联合创始人兼首席执行官职位是历史角色，早已离任，不应标记为当前。",
+        "career_role / Owner & CEO @ Twitter, Inc. / X Corp.: stale, Elon Musk 已于2023年卸任Twitter/X Corp.的CEO职位，该履历显示为当前状态，信息过时。"
+      ]
+    },
+    {
+      "person": "Greg Brockman",
+      "total": 24,
+      "score": 217,
+      "remove": 13,
+      "rewrite": 9,
+      "needsSource": 2,
+      "wrongPerson": 4,
+      "stale": 1,
+      "unsupported": 2,
+      "samples": [
+        "career_role / 高中期间大学课程学习 @ 北达科他大学: stale, 该履历描述的是 Greg Brockman 高中期间在北达科他大学学习的经历，但结束时间显示为“now”，这显然已过时。",
+        "current_title: needs_source, Greg Brockman 的职位（Co-founder & President @ OpenAI）在给定上下文中未提供来源验证，无法确认其是否为最新状态（例…",
+        "learning_card / GPT-4在安全性和事实性上大幅改进: over_attributed, 卡片内容描述的是OpenAI公司产品GPT-4的性能改进，属于公司级成果。虽然Greg Brockman是OpenAI总裁，但卡片未明确其个人在GPT-4开发…"
+      ]
+    },
+    {
+      "person": "布莱恩·卡坦扎罗",
+      "total": 26,
+      "score": 216,
+      "remove": 10,
+      "rewrite": 11,
+      "needsSource": 5,
+      "wrongPerson": 9,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "current_title: needs_source, 当前职位信息可能正确，但未提供任何来源文本或证据进行核实，无法确认其真实性与时效性。",
+        "learning_card / 从图形到AI：GPU驱动NVIDIA转型的核心: over_attributed, 卡片将NVIDIA从图形公司到AI巨头的转型归因于布莱恩·卡坦扎罗个人，但这是公司战略和团队成果，个人贡献需更明确界定。",
+        "learning_card / 非典型背景的AI先驱：从俄罗斯文学到cuDNN: needs_source, 卡片内容描述布莱恩·卡坦扎罗的个人背景和cuDNN的诞生，但来源为Medium文章，权威性不足，需更可靠来源验证。"
+      ]
+    },
+    {
+      "person": "朱军",
+      "total": 21,
+      "score": 194,
+      "remove": 10,
+      "rewrite": 6,
+      "needsSource": 4,
+      "wrongPerson": 8,
+      "stale": 1,
+      "unsupported": 2,
+      "samples": [
+        "career_role / Student @ Peking University: stale, 开始时间为1997年，且结束日期为null（now），但人物当前状态为“ready”，且上下文显示其为清华大学教授，表明该学生履历可能已过时。",
+        "learning_card / 贝叶斯深度学习（BDL）方法论: over_attributed, 卡片将“珠算”库和UniCardio框架作为朱军个人的实践成果展示，但来源文本未明确其个人在这些具体项目中的角色（如是否为负责人或主要作者），存在将团队成果过…",
+        "learning_card / 清华人工智能领军人物朱军的学术与产业成就: over_attributed, 卡片称朱军“带领团队发布了中国首个长视频大模型Vidu”，但Vidu是生数科技的产品，将公司级产品发布归因于个人（即使是创始人）属于过度归因。应明确其领导角色。"
+      ]
+    },
+    {
+      "person": "Boris Cherny",
+      "total": 17,
+      "score": 188,
+      "remove": 10,
+      "rewrite": 5,
+      "needsSource": 2,
+      "wrongPerson": 10,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Member of Technical Staff @ Anthropic: stale, 职位显示为当前（now），但Boris Cherny的当前头衔显示他已离开Anthropic，现任Anysphere (Cursor)的职位。此履历可能过时。",
+        "current_title: needs_source, 该职位描述具体，但缺少来源验证其真实性及当前状态。Anysphere (Cursor) 是公司名，但职位头衔可能过时或推测。",
+        "official_link / website: needs_source, 链接指向个人网站，但缺乏直接证据（如网站内容或权威来源）证明其为Boris Cherny本人的官方主页，而非同名或粉丝页面。"
+      ]
+    },
+    {
+      "person": "黄铁军",
+      "total": 27,
+      "score": 176,
+      "remove": 10,
+      "rewrite": 5,
+      "needsSource": 11,
+      "wrongPerson": 6,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 数字视频编解码技术国家工程实验室副主任 @ 北京大学: needs_source, 该职位信息（数字视频编解码技术国家工程实验室副主任 @ 北京大学）来源为LLM提取，缺乏权威公开资料佐证，无法确认其准确性及当前状态。",
+        "career_role / 计算机学院视频与视觉研究所所长 @ 北京大学: needs_source, 黄铁军在北京大学的多个研究所所长职位可能同时存在，但未提供足够证据证明其当前状态，且其当前主要身份为智源研究院院长。",
+        "career_role / 计算机科学技术系系主任 @ 北京大学: needs_source, 黄铁军在北京大学计算机科学技术系系主任的职位可能已变更，未提供足够证据证明其当前状态。"
+      ]
+    },
+    {
+      "person": "刘知远",
+      "total": 16,
+      "score": 160,
+      "remove": 10,
+      "rewrite": 1,
+      "needsSource": 5,
+      "wrongPerson": 5,
+      "stale": 0,
+      "unsupported": 5,
+      "samples": [
+        "current_title: needs_source, 职位信息可能正确，但缺乏具体来源（如清华大学官方教员页面）来验证其当前状态和时效性。",
+        "learning_card / 聚焦“知识密度”与“模型制程”的高效模型路径: over_attributed, 内容将面壁智能公司的产品（MiniCPM系列）和技术（模型风洞）归因给刘知远个人，属于团队/公司成果过度归因。",
+        "source_item_belongs_to_person / 中国大模型团队登Nature封面，刘知远语出惊人：期待明年“用 ...: needs_source, 文章标题提及人物姓名，但提供的摘要为空，无法确认内容是否确实关于该人物或其贡献，需要进一步核实。"
+      ]
+    },
+    {
+      "person": "周伯文",
+      "total": 20,
+      "score": 153,
+      "remove": 8,
+      "rewrite": 7,
+      "needsSource": 5,
+      "wrongPerson": 3,
+      "stale": 1,
+      "unsupported": 3,
+      "samples": [
+        "career_role / 电子工程系长聘教授、惠妍讲席教授 @ 清华大学: stale, 周伯文已离开清华大学，现任上海人工智能实验室主任。该履历显示为当前状态，可能过时。",
+        "current_title: needs_source, 缺少来源验证周伯文当前在上海人工智能实验室的职位是否真实且最新。",
+        "learning_card / 领导研发全球领先的开源科学多模态大模型Intern-S1: over_attributed, 周伯文是上海人工智能实验室的领导，但将整个实验室研发的Intern-S1模型直接归为其个人领导研发，属于将机构/团队成果过度归因给个人。"
+      ]
+    },
+    {
+      "person": "Jaana Dogan",
+      "total": 16,
+      "score": 150,
+      "remove": 9,
+      "rewrite": 3,
+      "needsSource": 4,
+      "wrongPerson": 6,
+      "stale": 2,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Software Engineer @ Tikle: stale, 人物上下文显示其当前职位为 Google 的 Principal Engineer。此履历显示为 'Software Engineer @ Tikle' 且状…",
+        "career_role / Software Engineer @ 微软: stale, 人物上下文显示其当前职位为 Google 的 Principal Engineer。此履历显示为 'Software Engineer @ 微软' 且状态为 …",
+        "current_title: needs_source, Jaana Dogan 在 Google 担任首席工程师的说法需要可靠来源支持，以确认其当前职位和职责。"
+      ]
+    },
+    {
+      "person": "唐杰",
+      "total": 18,
+      "score": 148,
+      "remove": 7,
+      "rewrite": 6,
+      "needsSource": 5,
+      "wrongPerson": 7,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 教授 @ 南方医科大学: wrong_person, 唐杰是清华大学教授、智谱AI联合创始人，与南方医科大学无关，属于人名错配。",
+        "career_role / Student @ Central China Normal University: stale, 唐杰在华中师范大学的学生经历是历史履历，但显示为“now”当前状态，明显过时。",
+        "current_title: needs_source, 缺少来源验证唐杰当前在清华大学的职位是否真实且最新。"
+      ]
+    },
+    {
+      "person": "汤姆·布朗",
+      "total": 15,
+      "score": 147,
+      "remove": 8,
+      "rewrite": 3,
+      "needsSource": 4,
+      "wrongPerson": 8,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Member @ Nufarm: needs_source, 给定信息中未提及汤姆·布朗在Nufarm的职位，且Nufarm与AI领域关联不明，需要额外来源验证。",
+        "current_title: needs_source, 职位信息可能正确，但缺乏直接来源文本支持其当前状态，无法确认是否过时。",
+        "learning_card / 从GPT-3到Claude：规模化定律改变一切: over_attributed, 内容将“规模化定律”这一领域级发现归因于汤姆·布朗的个人“洞见”，并称其为Anthropic开发Claude的“核心理论基础”。这过度归因了个人在团队和领域发…"
+      ]
+    },
+    {
+      "person": "姚顺雨",
+      "total": 18,
+      "score": 144,
+      "remove": 7,
+      "rewrite": 4,
+      "needsSource": 4,
+      "wrongPerson": 6,
+      "stale": 4,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 首席AI科学家 @ 腾讯: stale, 人物上下文显示其当前职位为 Researcher @ OpenAI，但此条履历声称其为“首席AI科学家 @ 腾讯”且状态为“now”，两者冲突，表明该履历信息…",
+        "current_title: needs_source, 声称当前职位为OpenAI研究员，但未提供任何来源链接或证据，无法验证其真实性及是否最新。",
+        "learning_card / 大规模强化学习提升大模型能力: over_attributed, 卡片将Claude 3.7和Claude 4系列模型的具体成果归因于个人，但未明确其个人贡献角色（如论文作者、项目负责人）。这些是Anthropic公司的产品…"
+      ]
+    },
+    {
+      "person": "杨植麟",
+      "total": 20,
+      "score": 143,
+      "remove": 7,
+      "rewrite": 5,
+      "needsSource": 7,
+      "wrongPerson": 6,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 研究科学家 @ Facebook AI Research (FAIR): stale, 该人物当前为月之暗面创始人兼CEO，履历显示其为Facebook AI Research的研究科学家且标注为‘now’，这很可能已过时。",
+        "current_title: needs_source, 职位信息可能正确，但缺乏直接来源文本支持其当前状态，无法确认是否过时。",
+        "learning_card / 从学术到创业：坚定做To C的AGI攀登者: over_attributed, 将月之暗面公司‘最坚定且只做To C产品’的定位归因于杨植麟个人，这属于公司战略层面的描述，而非个人直接贡献。"
+      ]
+    },
+    {
+      "person": "Mustafa Suleyman",
+      "total": 26,
+      "score": 142,
+      "remove": 5,
+      "rewrite": 14,
+      "needsSource": 7,
+      "wrongPerson": 0,
+      "stale": 10,
+      "unsupported": 0,
+      "samples": [
+        "career_role / writer @ Greylock Partners: over_attributed, 该条目将 Mustafa Suleyman 标记为 Greylock Partners 的“writer”。这可能是一个团队或机构级角色，而非其个人代表成果或…",
+        "career_role / founder @ Greylock Partners: over_attributed, 该条目将 Mustafa Suleyman 标记为 Greylock Partners 的“founder”。根据公开信息，Greylock Partners…",
+        "career_role / researcher @ Greylock Partners: stale, Mustafa Suleyman 于2022年离开Greylock Partners，加入Inflection AI，后于2024年加入微软。该职位已非当前状…"
+      ]
+    },
+    {
+      "person": "Guillaume Lample",
+      "total": 16,
+      "score": 141,
+      "remove": 7,
+      "rewrite": 8,
+      "needsSource": 1,
+      "wrongPerson": 4,
+      "stale": 0,
+      "unsupported": 1,
+      "samples": [
+        "official_link / company: over_attributed, 该链接指向NVIDIA的博客文章，是关于混合专家模型的通用技术介绍，并非Guillaume Lample的个人主页、官方账号或直接代表其个人成果的链接。",
+        "representative_achievement / Mistral 7B: over_attributed, Mistral 7B 是 Mistral AI 公司级模型产品，Guillaume Lample 作为联合创始人兼首席科学家，其角色是领导公司，而非直接作为该…",
+        "representative_achievement / Mixtral 8x7B: over_attributed, Mixtral 8x7B 是 Mistral AI 公司级模型产品，Guillaume Lample 作为联合创始人兼首席科学家，其角色是领导公司，而非直接作…"
+      ]
+    },
+    {
+      "person": "肖弘",
+      "total": 18,
+      "score": 140,
+      "remove": 7,
+      "rewrite": 4,
+      "needsSource": 7,
+      "wrongPerson": 7,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 创始人 @ 武汉夜莺科技: needs_source, 信息来源仅为LLM提取，缺乏公开可验证的权威资料（如公司官网、新闻报道）来确认肖弘是武汉夜莺科技的创始人。",
+        "career_role / 联创团队副队长 @ 华中科技大学启明学院: stale, 职位“联创团队副队长”通常为学生时期职务，结束时间应早于毕业年份。当前状态显示“now”，与人物当前职业身份（创始人兼CEO）不符，信息明显过时。",
+        "current_title: needs_source, Manus AI可能是一个初创公司，但未提供任何来源证明肖弘当前担任其创始人兼CEO。信息不足。"
+      ]
+    },
+    {
+      "person": "季逸超",
+      "total": 21,
+      "score": 139,
+      "remove": 6,
+      "rewrite": 8,
+      "needsSource": 7,
+      "wrongPerson": 5,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 创始人兼CEO @ Peak Labs: stale, 人物上下文显示其当前头衔为“Co-founder & Chief Scientist @ Peak Labs”，但此条履历声称其为“创始人兼CEO @ Pea…",
+        "current_title: needs_source, 当前职位信息可能正确，但未提供任何来源文本或证据进行核实，无法确认其真实性与时效性。",
+        "learning_card / 从“被卷死”到引领AI Agent革命: over_attributed, 卡片将“全球首款通用型AI Agent——Manus”的开发归因于季逸超个人，但未说明其具体角色（如创始人、CEO）。此外，“扎克伯格20亿美元收购意向”缺乏…"
+      ]
+    },
+    {
+      "person": "贾里德·卡普兰",
+      "total": 15,
+      "score": 131,
+      "remove": 7,
+      "rewrite": 5,
+      "needsSource": 2,
+      "wrongPerson": 4,
+      "stale": 1,
+      "unsupported": 1,
+      "samples": [
+        "current_title: needs_source, 贾里德·卡普兰是Anthropic的联合创始人，但给定信息中未提供任何来源文本或证据来支持其当前职位。",
+        "learning_card / 宪法AI：基于原则对齐的开发方法: over_attributed, “宪法AI”是Anthropic公司的方法论，卡普兰作为联合创始人可能参与，但“帮助开创”的表述可能过度归因于个人，需明确其具体角色。",
+        "learning_card / 为Claude 4启动最高安全级别ASL-3: over_attributed, 将Claude 4的发布决策归因于卡普兰个人“决定”，可能过度简化了公司决策流程。他作为首席科学家和“责任扩展官”有重要影响，但发布决策通常是团队或公司行为。"
+      ]
+    },
+    {
+      "person": "Hyung Won Chung",
+      "total": 20,
+      "score": 126,
+      "remove": 5,
+      "rewrite": 9,
+      "needsSource": 6,
+      "wrongPerson": 4,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "current_title: needs_source, Hyung Won Chung 曾在 OpenAI 工作，但当前在 Meta 超级智能实验室担任 AI 研究科学家的说法需要可靠来源验证。",
+        "learning_card / AI是人类史上最强大的第四种杠杆: needs_source, 内容声称Hyung Won Chung提出了一个关于AI作为第四种杠杆的观点，但提供的来源链接是社交媒体帖子，权威性不足，需要更可靠的来源（如演讲、论文或权威…",
+        "learning_card / OpenAI o1系列模型的核心贡献者: over_attributed, 将OpenAI o1系列模型、Deep Research等具体产品版本和Codex mini模型的训练工作归因给个人，属于团队成果过度归因。个人角色应为研究贡…"
+      ]
+    },
+    {
+      "person": "Mira Murati",
+      "total": 23,
+      "score": 125,
+      "remove": 2,
+      "rewrite": 17,
+      "needsSource": 4,
+      "wrongPerson": 2,
+      "stale": 4,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 首席技术官 @ 思维机器实验室: stale, Mira Murati已离开OpenAI，创立并领导Thinking Machines Lab。此职位信息已过时。",
+        "career_role / 首席技术官 @ OpenAI: stale, 根据上下文，Mira Murati 的当前职位是思维机器实验室的创始人兼CEO，暗示她已离开OpenAI。该条目显示其为OpenAI的首席技术官且结束日期为“…",
+        "career_role / 首席技术官 @ Leap Motion: stale, 根据上下文，Mira Murati 的当前职位是思维机器实验室的创始人兼CEO。该条目显示其为Leap Motion的首席技术官且结束日期为“now”，这与当…"
+      ]
+    },
+    {
+      "person": "Jan Leike",
+      "total": 17,
+      "score": 125,
+      "remove": 4,
+      "rewrite": 10,
+      "needsSource": 1,
+      "wrongPerson": 2,
+      "stale": 8,
+      "unsupported": 2,
+      "samples": [
+        "career_role / Undergraduate Degree @ University of Freiburg: stale, Jan Leike的履历显示其当前主要职位是OpenAI研究员，其弗莱堡大学的本科学位早已完成，不应标记为‘now’。",
+        "career_role / Research Scientist @ 谷歌DeepMind: stale, Jan Leike于2024年5月已加入Anthropic，其谷歌DeepMind研究员的职位已结束，但来源未提供结束日期。",
+        "current_title: stale, Jan Leike 的当前职位被描述为弗莱堡大学的本科学位，这明显是过时的教育背景，而非当前职业职位。"
+      ]
+    },
+    {
+      "person": "Wojciech Zaremba",
+      "total": 23,
+      "score": 121,
+      "remove": 5,
+      "rewrite": 9,
+      "needsSource": 8,
+      "wrongPerson": 2,
+      "stale": 3,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 研究科学家 @ 英伟达: stale, 该履历声称人物当前（now）是英伟达的研究科学家，但人物当前状态是OpenAI的联合创始人。这表明该职位信息可能已过时或不准确。",
+        "career_role / Research Scientist @ Google Brain: stale, 该履历声称人物当前（now）是Google Brain的研究科学家，但人物当前状态是OpenAI的联合创始人。这表明该职位信息可能已过时或不准确。",
+        "career_role / Lead Researcher (Robotics/LLMs) @ OpenAI: stale, 该履历声称人物当前（now）是OpenAI的Lead Researcher (Robotics/LLMs)，但人物当前状态是Co-founder。这表明该职位…"
+      ]
+    },
+    {
+      "person": "利昂·琼斯",
+      "total": 12,
+      "score": 119,
+      "remove": 6,
+      "rewrite": 3,
+      "needsSource": 2,
+      "wrongPerson": 6,
+      "stale": 3,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Co-founder @ Sakana AI: wrong_person, Sakana AI的联合创始人是David Ha和Llion Jones。Llion Jones是知名AI研究员，而“利昂·琼斯”是音乐家，两者并非同一人。",
+        "career_role / AI Research Scientist @ Stealth Startup: needs_source, 履历信息来自AI_RECRAWL，但缺少具体来源文本验证。职位、机构和时间（2023年8月至今）可能正确，但无法确认当前状态是否仍为在职。",
+        "career_role / Ph.D. in Computer Science @ University of Edinburgh: needs_source, 履历信息来自AI_RECRAWL，但缺少具体来源文本验证。职位、机构和当前状态（now）可能正确，但无法确认是否仍在读。"
+      ]
+    },
+    {
+      "person": "马克·扎克伯格",
+      "total": 18,
+      "score": 113,
+      "remove": 4,
+      "rewrite": 11,
+      "needsSource": 3,
+      "wrongPerson": 2,
+      "stale": 1,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 本科阶段学习 @ 哈佛大学: stale, 履历显示其在哈佛大学本科阶段学习，结束时间为now，但人物早已毕业，状态过时。",
+        "current_title: needs_source, 马克·扎克伯格作为Meta CEO是广为人知的事实，但任务要求严格，仍需来源文本支持其当前职位状态。",
+        "learning_card / Meta以超25亿美元收购中国AI公司Manus: over_attributed, 收购是Meta公司的行为，虽然扎克伯格是CEO，但将公司级并购直接归为个人代表成果，归因层级过高。"
+      ]
+    },
+    {
+      "person": "杰夫·迪恩",
+      "total": 14,
+      "score": 112,
+      "remove": 5,
+      "rewrite": 6,
+      "needsSource": 2,
+      "wrongPerson": 4,
+      "stale": 2,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 资深研究员兼谷歌研究与健康高级副总裁 @ 谷歌: stale, 该人物当前标题为Google DeepMind首席科学家，履历显示其为谷歌资深研究员兼研究与健康高级副总裁且标注为‘now’，这很可能已过时。",
+        "career_role / Student @ University of Washington: stale, 该人物为资深计算机科学家，履历显示其为华盛顿大学学生且标注为‘now’，这明显已过时。",
+        "current_title: needs_source, 职位信息可能正确，但缺乏直接来源文本支持其当前状态，无法确认是否过时。"
+      ]
+    },
+    {
+      "person": "科拉伊·卡武克丘奥卢",
+      "total": 17,
+      "score": 109,
+      "remove": 5,
+      "rewrite": 8,
+      "needsSource": 4,
+      "wrongPerson": 1,
+      "stale": 2,
+      "unsupported": 1,
+      "samples": [
+        "career_role / 研究科学家 @ 谷歌DeepMind: stale, 科拉伊·卡武克丘奥卢的当前职位是谷歌的首席AI架构师兼高级副总裁，而“研究科学家”是其早期职位，该履历显示为当前状态，信息过时。",
+        "career_role / Chief Technology Officer @ 谷歌DeepMind: unsupported, 科拉伊·卡武克丘奥卢的当前职位是谷歌的首席AI架构师兼高级副总裁，而非谷歌DeepMind的首席技术官。该履历信息与已知事实冲突。",
+        "career_role / VP of Research & Technology @ 谷歌DeepMind: stale, 科拉伊·卡武克丘奥卢的当前职位是谷歌的首席AI架构师兼高级副总裁，而“研究与技术副总裁”是其早期职位，该履历显示为当前状态，信息过时。"
+      ]
+    },
+    {
+      "person": "Chris Olah",
+      "total": 17,
+      "score": 107,
+      "remove": 5,
+      "rewrite": 5,
+      "needsSource": 7,
+      "wrongPerson": 4,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Co-founder @ Anthropic: needs_source, 职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。",
+        "career_role / Interpretability @ Anthropic: needs_source, 职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。",
+        "career_role / Co-founder @ Distill: needs_source, 职位信息来源为AI_RECRAWL，但缺少具体开始/结束时间，且无法确认该职位是否为当前状态。需要更可靠的来源或时间信息来验证。"
+      ]
+    },
+    {
+      "person": "陈冕",
+      "total": 12,
+      "score": 106,
+      "remove": 6,
+      "rewrite": 1,
+      "needsSource": 5,
+      "wrongPerson": 6,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Regents' Professor and Thomas R. Brown Chair of Management and Technology @ University of Arizona: wrong_person, 履历显示为亚利桑那大学的Regents'教授，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。",
+        "career_role / B.S. degree @ National Chiao Tung University: wrong_person, 履历显示为国立交通大学的学士学位，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。",
+        "career_role / MBA @ SUNY Buffalo: wrong_person, 履历显示为纽约州立大学布法罗分校的MBA，但人物上下文是北京大学学生、Lovart AI的CEO。这明显是不同人的履历，属于人名错配。"
+      ]
+    },
+    {
+      "person": "Jason Wei",
+      "total": 16,
+      "score": 103,
+      "remove": 4,
+      "rewrite": 4,
+      "needsSource": 5,
+      "wrongPerson": 4,
+      "stale": 5,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Research Scientist @ OpenAI: stale, 履历显示为“Research Scientist @ OpenAI”且状态为“now”，但人物当前上下文显示其组织为“Google DeepMind”，表明该…",
+        "current_title: stale, Jason Wei 已于 2023 年离开 OpenAI 加入 Google DeepMind，当前职位信息过时。",
+        "learning_card / AI研究的三大定律框架: needs_source, 内容声称Jason Wei提出了“AI研究的三大定律框架”，但提供的来源链接（langcopilot.com）可能非权威或一手来源，需要更可靠的证据（如其个人…"
+      ]
+    },
+    {
+      "person": "桑达尔·皮查伊",
+      "total": 16,
+      "score": 103,
+      "remove": 5,
+      "rewrite": 7,
+      "needsSource": 4,
+      "wrongPerson": 1,
+      "stale": 1,
+      "unsupported": 1,
+      "samples": [
+        "career_role / 首席执行官 @ 谷歌: stale, 皮查伊自2019年起担任Alphabet CEO，谷歌CEO职位已由他人接任，此履历信息过时。",
+        "current_title: needs_source, 职位信息可能正确，但缺乏直接来源文本支持其当前状态，无法确认是否过时。",
+        "learning_card / 谷歌年度资本支出从300亿飙升至900亿美元: over_attributed, 卡片将谷歌公司的资本支出增长归因于皮查伊个人领导，但这是公司级财务决策，属于过度归因。"
+      ]
+    },
+    {
+      "person": "Rob Bensinger",
+      "total": 13,
+      "score": 103,
+      "remove": 6,
+      "rewrite": 0,
+      "needsSource": 7,
+      "wrongPerson": 6,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "career_role / Author @ Machine Intelligence Research Institute (MIRI): needs_source, Rob Bensinger 的职位信息来自 LLM 提取，但缺少更权威的来源（如 MIRI 官网）来确认其当前状态和具体角色。",
+        "current_title: needs_source, Rob Bensinger 在 MIRI 担任研究传播经理，但未提供来源证明其当前职位状态。需要可靠来源确认。",
+        "official_link / github: needs_source, 链接指向GitHub账号，但未提供足够证据（如个人简介、项目关联或权威来源）证明该账号确实属于Rob Bensinger本人，而非同名或无关账号。"
+      ]
+    },
+    {
+      "person": "John Schulman",
+      "total": 16,
+      "score": 101,
+      "remove": 3,
+      "rewrite": 7,
+      "needsSource": 2,
+      "wrongPerson": 3,
+      "stale": 4,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 研究科学家 @ 思维机器实验室: stale, John Schulman已离开OpenAI并加入Anthropic，但“研究科学家 @ 思维机器实验室”的当前状态“now”可能不准确，需要核实其最新职位。",
+        "current_title: needs_source, 当前职位信息可能正确，但提供的来源提示（joschu.net）未明确指向该职位，缺乏直接证据支持其时效性。",
+        "learning_card / 从物理学到神经科学，最终成为AI领军人物: over_attributed, 卡片将“领导ChatGPT开发”归因于 John Schulman。虽然他是 OpenAI 联合创始人并参与相关工作，但“领导开发”这一表述可能过度归因，Ch…"
+      ]
+    },
+    {
+      "person": "沈向洋",
+      "total": 19,
+      "score": 100,
+      "remove": 2,
+      "rewrite": 11,
+      "needsSource": 6,
+      "wrongPerson": 2,
+      "stale": 7,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 全球资深副总裁 @ 微软: stale, 沈向洋已于2019年11月从微软离职，其职位状态不应为‘now’，信息已过时。",
+        "career_role / 学士 @ 南京工学院: stale, 学历是已完成的事件，结束时间不应为‘now’，应标注为历史记录。",
+        "career_role / 哲学硕士学位 @ 香港大学电机电子工程系: stale, 学历是已完成的事件，结束时间不应为‘now’，应标注为历史记录。"
+      ]
+    },
+    {
+      "person": "Arthur Mensch",
+      "total": 15,
+      "score": 99,
+      "remove": 3,
+      "rewrite": 10,
+      "needsSource": 2,
+      "wrongPerson": 2,
+      "stale": 1,
+      "unsupported": 1,
+      "samples": [
+        "career_role / Staff Research Scientist @ 谷歌DeepMind: stale, Arthur Mensch已离开谷歌DeepMind并创立Mistral AI，该职位不应标记为当前（至今），状态过时。",
+        "learning_card / 混合开源策略：在开放与商业间寻找平衡: over_attributed, claim描述的是Mistral AI公司的混合开源策略，而非Arthur Mensch个人的方法论。将公司策略归因给个人属于过度归因。",
+        "learning_card / Mistral AI的快速崛起与核心成就: over_attributed, 卡片将公司（Mistral AI）的成就（发布模型、合作项目）归因于个人领导，但未明确说明其个人具体贡献角色，存在过度归因风险。"
+      ]
+    },
+    {
+      "person": "Lukasz Kaiser",
+      "total": 17,
+      "score": 97,
+      "remove": 4,
+      "rewrite": 6,
+      "needsSource": 5,
+      "wrongPerson": 2,
+      "stale": 2,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 研究科学家 @ Délégation Paris-Centre (DR2): stale, 职位信息（研究科学家 @ Délégation Paris-Centre (DR2)）来源为wikidata，但开始日期（2010-09-30）较早，且当前状…",
+        "current_title: needs_source, 职位描述具体，但未提供任何来源链接或证据，无法验证其真实性。",
+        "learning_card / 从逻辑与自动机理论转向深度学习: needs_source, 卡片描述了其早期学术背景，但提供的来源链接（theorg.com）可能不足以证实其在巴黎第七大学和CNRS的终身研究员职位等具体细节。"
+      ]
+    },
+    {
+      "person": "李飞飞",
+      "total": 20,
+      "score": 96,
+      "remove": 0,
+      "rewrite": 14,
+      "needsSource": 3,
+      "wrongPerson": 0,
+      "stale": 14,
+      "unsupported": 0,
+      "samples": [
+        "career_role / 教授 @ 伊利诺伊大学厄巴纳-香槟分校: stale, 李飞飞已于2024年离开斯坦福大学，加入World Labs。该履历显示其为伊利诺伊大学厄巴纳-香槟分校教授，但结束时间为'now'，与当前状态不符。",
+        "career_role / 合伙人 @ Radical Ventures: stale, 李飞飞已创立World Labs并担任联合创始人，该履历显示其为Radical Ventures合伙人且结束时间为'now'，与当前状态不符。",
+        "career_role / scientist @ 斯坦福大学: stale, 李飞飞已离开斯坦福大学，该履历显示其为斯坦福大学科学家且结束时间为'now'，与当前状态不符。"
+      ]
+    },
+    {
+      "person": "Santiago Valdarrama",
+      "total": 11,
+      "score": 96,
+      "remove": 6,
+      "rewrite": 0,
+      "needsSource": 5,
+      "wrongPerson": 5,
+      "stale": 0,
+      "unsupported": 0,
+      "samples": [
+        "current_title: needs_source, 当前职位信息缺乏来源验证，无法确认其真实性及是否为最新状态。",
+        "official_link / github: needs_source, 链接指向一个名为'svpino'的GitHub账号，但缺乏直接证据（如仓库内容、个人简介或关联信息）证明该账号确实属于Santiago Valdarrama本…",
+        "official_link / youtube: needs_source, 链接指向一个YouTube频道，但缺乏直接证据（如频道简介、视频内容或关联信息）证明该频道确实属于Santiago Valdarrama本人。"
+      ]
+    },
+    {
+      "person": "乔尔·皮诺",
+      "total": 20,
+      "score": 93,
+      "remove": 2,
+      "rewrite": 4,
+      "needsSource": 3,
+      "wrongPerson": 0,
+      "stale": 12,
+      "unsupported": 1,
+      "samples": [
+        "career_role / 研究科学家 @ Facebook AI Research (FAIR): stale, 履历显示其FAIR职位为‘now’，但根据公开信息，他已于2023年离开Meta/FAIR，信息可能过时。",
+        "career_role / Student @ 卡内基梅隆大学: stale, 履历显示其卡内基梅隆大学学生身份为‘now’，但根据其博士学位时间（2012年），该状态明显过时。",
+        "current_title: needs_source, 当前职位信息可能正确，但未提供任何来源文本或证据来验证其真实性及是否为最新状态。"
+      ]
+    }
+  ],
+  "removeItems": [
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:RawPoolItem[cmjw73yyp0013ykszaqk2ag8t]:2efc3a4badc9",
+      "personId": "cmjv6furu000gmfgh2tkuh8xm",
+      "person": "Aakash Gupta",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "video",
+      "fieldPath": "RawPoolItem[cmjw73yyp0013ykszaqk2ag8t]",
+      "objectLabel": "Main Aur Mumbai | Aakash Gupta | Stand-up Comedy",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该YouTube视频是关于一位名为Aakash Gupta的脱口秀演员，内容是孟买生活喜剧，与人物库中作为Apollo.io产品副总裁的Aakash Gupta（产品增长、大语言模型领域）无关。属于同名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:29:53.170Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:RawPoolItem[cmjtvqcsz00vqrmtb40wq3u8d]:7e6b51492737",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvqcsz00vqrmtb40wq3u8d]",
+      "objectLabel": "Damien Nicks: Getting your work-life balance right, starting a business and why the next 10 years are crucial",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "播客标题和摘要均指向 'Damien Nicks'，与人物 'Aidan Gomez' 无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:29:48.455Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:RawPoolItem[cmjtlahhp0019efnhye3o6qgv]:b1c1bef831b7",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjtlahhp0019efnhye3o6qgv]",
+      "objectLabel": "ImageNet Large Scale Visual Recognition Challenge",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "论文作者列表中未包含 Andrej Karpathy，该成果属于其他研究者，不应归因于他。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:30:44.368Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.officialLinks[2]:c54f0ac440ea",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "claimType": "official_link",
+      "surface": "profile.officialLinks",
+      "fieldPath": "People.officialLinks[2]",
+      "objectLabel": "website",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "该链接指向Elad Gil的博客文章，是Elad Gil对Arthur Mensch的采访，属于第三方内容，并非Arthur Mensch本人的官方网站或主页。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:21:49.248Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_official_link_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:RawPoolItem[cmju0q71t0874rmtb8q65nh17]:9a335206310e",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju0q71t0874rmtb8q65nh17]",
+      "objectLabel": "From Academia to Industry: The Journey of Arthur Mench",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "文章标题和内容中的人名拼写为'Arthur Mench'，与目标人物'Arthur Mensch'不符，可能指向错误实体。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:09.936Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0009mfghtf6a48k2:People.officialLinks[2]:e507ce2e275b",
+      "personId": "cmjv6furu0009mfghtf6a48k2",
+      "person": "Bob McGrew",
+      "claimType": "official_link",
+      "surface": "profile.officialLinks",
+      "fieldPath": "People.officialLinks[2]",
+      "objectLabel": "website",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.8,
+      "reason": "链接指向一个名为 Robert McGrath 的博客标签页，与 Bob McGrew 姓名不符，且内容可能不相关，属于错误链接。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:22:11.726Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_official_link_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbldg0001pnypz7xp3m9c]:badc18e867d7",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbldg0001pnypz7xp3m9c]",
+      "objectLabel": "Error saving GPT - [object Object] when I update my custom ...",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是OpenAI社区论坛的帖子，讨论GPT保存错误，作者为Jiaqing_Zhang，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbn6w0003pnypvnv3gbhm]:a4a9bfc62ee7",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbn6w0003pnypvnv3gbhm]",
+      "objectLabel": "Object Object Error when using AI outputs - Questions",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是n8n社区论坛的帖子，讨论AI输出错误，作者为匿名用户，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbo2y0007pnypwik9zz7u]:f74b2552e2b6",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbo2y0007pnypwik9zz7u]",
+      "objectLabel": "LLM object must define bindTools method when using ...",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是GitHub上的LangGraph.js项目issue，报告者为sid-js，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbp6l000dpnyp92qa3uva]:945362e3ab21",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbp6l000dpnyp92qa3uva]",
+      "objectLabel": "File upload failed: [object Object] - Google AI Studio",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是Google AI开发者论坛的帖子，讨论文件上传错误，作者为Yi_Lu，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbpmi000fpnypj0v5fhli]:5106b94f9615",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbpmi000fpnypj0v5fhli]",
+      "objectLabel": "[object Object] - Microsoft Q&A",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是关于OneDrive在Chrome中出现错误的Microsoft Q&A问题，提问者为Anthony Pineda，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbqyy000lpnypsigr7wjn]:88cc484bdde1",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbqyy000lpnypsigr7wjn]",
+      "objectLabel": "GPT-4 Technical Report",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.99,
+      "reason": "该内容是OpenAI的GPT-4技术报告，作者为OpenAI团队，未提及Boris Cherny，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbt9g000ppnyp41ifvso4]:bcb58d64debc",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbt9g000ppnyp41ifvso4]",
+      "objectLabel": "Introduction to Large Language Models",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是Google Developers关于大型语言模型的介绍页面，属于Google官方资源，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbvr1000rpnypywrpdpci]:4d73cc5238df",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbvr1000rpnypywrpdpci]",
+      "objectLabel": "ChatGPT",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.99,
+      "reason": "该内容是ChatGPT的维基百科页面，属于通用知识介绍，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbw2w000tpnypw3frf2vy]:6c9fc9f2722f",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbw2w000tpnypw3frf2vy]",
+      "objectLabel": "Large language model",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.99,
+      "reason": "该内容是大型语言模型的维基百科页面，属于通用知识介绍，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnc0y40011pnyp20516i32]:5aea061e4311",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnc0y40011pnyp20516i32]",
+      "objectLabel": "Large Language Models Explained",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是Couchbase博客上关于大型语言模型的解释文章，作者为Couchbase Product Marketing，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0003mfgha0mzdgpj:People.whyImportant:ba8b31ed8369",
+      "personId": "cmjv6furu0003mfgha0mzdgpj",
+      "person": "Cat Wu",
+      "claimType": "why_important",
+      "surface": "core.whyImportant",
+      "fieldPath": "People.whyImportant",
+      "objectLabel": null,
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "根据上下文，Cat Wu 的职位是 Anthropic 的 Claude Code 产品负责人，与具身智能和多智能体协作的开创性研究描述不符。此描述更可能属于其他研究者。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:45:34.454Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_why_important_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmju0u42w08ksrmtbzgif95yj]:12aaea23f05d",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju0u42w08ksrmtbzgif95yj]",
+      "objectLabel": "Unsolved problems in AI | Chris Olah and Lex Fridman",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "视频标题和描述显示主要嘉宾为Dario Amodei和Amanda Askell，Chris Olah仅为嘉宾之一，且内容非其主导，归因不准确。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:37.426Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmju1981h0bqhrmtb4eul4jr8]:f5f7bfa7c7a4",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju1981h0bqhrmtb4eul4jr8]",
+      "objectLabel": "Large language models, explained with a minimum of math and jargon",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者为Timothy B. Lee和Sean Trott，内容为通用科普，并非Chris Olah的作品或观点，归因错误。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:37.426Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmjtxmotm03darmtbj6vdh6lp]:f48daacf0393",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtxmotm03darmtbj6vdh6lp]",
+      "objectLabel": "06.20: It's Romance Science!",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《06.20: It's Romance Science!》来自 'Fated Mates' 频道，内容为浪漫小说讨论，与 Chris Olah 的 AI 研究员身份和主题完全无关，极可能是同名或错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:40.891Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:People.whyImportant:6a6a4091ea13",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "why_important",
+      "surface": "core.whyImportant",
+      "fieldPath": "People.whyImportant",
+      "objectLabel": null,
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "Chris Olah 不是 OpenAI 联合创始人兼首席科学家（那是 Ilya Sutskever）。他是知名研究员，但职位和贡献描述严重错误。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:45:34.454Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_why_important_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxvl001qqrmtbwjpsp3xb]:b6b3f676aa6f",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvxvl001qqrmtbwjpsp3xb]",
+      "objectLabel": "Steelers' Aaron Rodgers on Similar Career Path as Tom Brady w/Buccaneers, Peyton Manning w/Broncos?",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容标题提及 'Peyton Manning'（美式橄榄球运动员），与计算机科学家 Christopher Manning 无关，属于同名实体错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:03.207Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxw9601r2rmtbv6g7jiy8]:f3873bbdfb9c",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvxw9601r2rmtbv6g7jiy8]",
+      "objectLabel": "NFFC Average Draft Position - QBs",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容为 'RotoWire Fantasy Football Podcast'，与计算机科学家 Christopher Manning 无关，属于同名实体错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:03.207Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxwki01r8rmtbku6tonit]:0561dcf122e8",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvxwki01r8rmtbku6tonit]",
+      "objectLabel": "PPP 295 - Starting Pitcher Update & Streamers - 6-28-23",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该播客内容是关于棒球幻想体育的，与人物Christopher Manning（NLP学者）的专业领域和身份完全不符，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:04.093Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:RawPoolItem[cmjtvn9kq00d0rmtbb0kupab2]:2fd1d56de216",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvn9kq00d0rmtbb0kupab2]",
+      "objectLabel": "Daniela Amadori",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容是关于欧洲大学研究所的财务官 Daniela Amadori，与目标人物 Daniela Amodei（Anthropic 总裁）姓名不匹配，属于错误人物。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:29.806Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:RawPoolItem[cmjtvna2s00d2rmtb919jzyfj]:561fe7855473",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvna2s00d2rmtb919jzyfj]",
+      "objectLabel": "Dario Amodei — The Urgency of Interpretability",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容是关于 Dario Amodei 的博客文章，与目标人物 Daniela Amodei 不匹配，属于错误人物。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:29.806Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsw84q00023esto9f6h0w6:People.officialLinks[1]:7e555447e82f",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "claimType": "official_link",
+      "surface": "profile.officialLinks",
+      "fieldPath": "People.officialLinks[1]",
+      "objectLabel": "website",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "链接指向Scribd上的一份文档，标题为'Demis-Hassabis'，这更像是一个关于他的资料页面，而非他本人的官方个人主页或账号。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:22:42.571Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_official_link_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:RawPoolItem[cmjtvs6gq0155rmtbwat5ggem]:9c144fe1ae10",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvs6gq0155rmtbwat5ggem]",
+      "objectLabel": "Tips For Your Pokemon Sword and Shield Adventure| PUCL #416",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是关于宝可梦游戏的播客，与Dylan Field（Figma CEO）无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:24.325Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:RawPoolItem[cmjtvs8an0157rmtbapczaz0q]:6ec522c09480",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvs8an0157rmtbapczaz0q]",
+      "objectLabel": "Postcards from Pearl - Ep. 100A - Silly Scoop Stakeout",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是儿童冒险播客，与Dylan Field（Figma CEO）无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:24.325Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:People.officialLinks[2]:1465b494517b",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "official_link",
+      "surface": "profile.officialLinks",
+      "fieldPath": "People.officialLinks[2]",
+      "objectLabel": "website",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "链接域名（syedameen-elonmuskporfolio.netlify.app）包含他人姓名（Syed Ameen），明显不属于埃隆·马斯克本人或其官方主页。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:22:43.406Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_official_link_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97ttt001bp5lf0cwd4s32]:10eb76b7e8c3",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97ttt001bp5lf0cwd4s32]",
+      "objectLabel": "mRNA-1273 and BNT162b2 COVID-19 vaccines elicit antibodies with differences in Fc-mediated effector functions",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗的免疫学研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tty001dp5lfgp7dvsak]:0f538decb42b",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tty001dp5lfgp7dvsak]",
+      "objectLabel": "mRNA-1273 vaccine-induced antibodies maintain Fc effector functions across SARS-CoV-2 variants of concern",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗的免疫学研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tu2001fp5lfevzp0434]:fd4824b8c26d",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tu2001fp5lfevzp0434]",
+      "objectLabel": "Discrete SARS-CoV-2 antibody titers track with functional humoral stability",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19抗体的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuf001jp5lfypdjobwa]:69a96b3a0829",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tuf001jp5lfypdjobwa]",
+      "objectLabel": "Early cross-coronavirus reactive signatures of humoral immunity against COVID-19",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19免疫学的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuk001lp5lfv2qi5h4c]:4983d343adcb",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tuk001lp5lfv2qi5h4c]",
+      "objectLabel": "SARS-CoV-2 antibodies protect against reinfection for at least 6 months in a multicentre seroepidemiological workplace cohort",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19抗体保护作用的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuz001rp5lfmxqzngs9]:a64f5f9c7cce",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tuz001rp5lfmxqzngs9]",
+      "objectLabel": "Subtle immunological differences in mRNA-1273 and BNT162b2 COVID-19 vaccine induced Fc-functional profiles",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗免疫学差异的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tv7001tp5lf1yh3bpc0]:3a23f8ad21dd",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tv7001tp5lf1yh3bpc0]",
+      "objectLabel": "Early cross-coronavirus reactive signatures of protective humoral immunity against COVID-19",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19免疫学的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tva001vp5lf03l9quup]:69bfc664ac3b",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tva001vp5lf03l9quup]",
+      "objectLabel": "Serological Markers of SARS-CoV-2 Reinfection",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中无Elon Musk，内容为医学研究，与Elon Musk的公开身份和领域不符。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:49.826Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97txa002bp5lfhm30lfzs]:ed692bc28031",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97txa002bp5lfhm30lfzs]",
+      "objectLabel": "SARS-CoV-2 infection and reinfection in a seroepidemiological workplace cohort in the United States",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中无Elon Musk，内容为流行病学研究，与Elon Musk的公开身份和领域不符。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:49.826Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:RawPoolItem[cmju15elp0ay8rmtbxm26fdlo]:c83da327cea7",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju15elp0ay8rmtbxm26fdlo]",
+      "objectLabel": "The Evolution of LLMs: From T5 and GPT to Mixtral, o1, Claude 3.7, and Grok 3.5 — A Journey Through Completion, Reasoning, and First Principles",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Roberto Infante，内容是关于LLM技术演进的综述，与Emad Mostaque无直接关联，不应挂在其名下。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:34:18.337Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjs1jjy0005tb28te81500go:RawPoolItem[cmju0jdrd077trmtb1cndrag7]:fdfeb0b78a87",
+      "personId": "cmjs1jjy0005tb28te81500go",
+      "person": "Geoffrey Hinton",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmju0jdrd077trmtb1cndrag7]",
+      "objectLabel": "Job Predictions Collide, RTO Tightens, Workweeks Shift, and Consulting Gets Rebuilt",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.85,
+      "reason": "播客标题和摘要未提及 Geoffrey Hinton，内容主题为职场预测和管理，与该人物无关，属于错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:34:38.021Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15rmj004kftmgs6f9bvbv]:fae286f3e4d5",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15rmj004kftmgs6f9bvbv]",
+      "objectLabel": "337. Are personality tests legit?",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《337. Are personality tests legit?》来自 'The Psychology of your 20s'，内容与 Greg Brockman 的专业领域（AI、OpenAI）无关，标题和摘要均未提及他。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15rvx004mftmgwce6r8r6]:01e61614b2ca",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15rvx004mftmgwce6r8r6]",
+      "objectLabel": "873. Luke takes the MBTI Personality Test",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《873. Luke takes the MBTI Personality Test》来自 'Luke's ENGLISH Podcast'，内容是关于英语学习和性格测试，与 Greg Brockman 无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15s5j004oftmgr3ob44a0]:98f2ef7069a1",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15s5j004oftmgr3ob44a0]",
+      "objectLabel": "#112: Personality Tests",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《#112: Personality Tests》来自 'English Learning for Curious Minds'，内容是关于英语学习，与 Greg Brockman 无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15sot004sftmgm5hbekhl]:63f666d42f87",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15sot004sftmgm5hbekhl]",
+      "objectLabel": "209. Who Are You Really? On Personality and Flourishing with Professor Brian Little",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《209. Who Are You Really?...》来自 'Exam Study Expert'，内容是关于学习科学和性格，与 Greg Brockman 无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvqn0000yormtbqvq512ls]:80b655b4d56f",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvqn0000yormtbqvq512ls]",
+      "objectLabel": "A Careful Examination of Large Language Model Performance on Grade School Arithmetic",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有 Guillaume Lample，而是 Hugh Zhang 等人。内容与目标人物无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:11.401Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvqqd400zermtbazp9f1tg]:30d7ade83d56",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvqqd400zermtbazp9f1tg]",
+      "objectLabel": "Posts",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "博客作者是 Guillaume Laforge，与 Guillaume Lample 是不同的人。内容与目标人物无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:11.401Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmju1oqq80etdrmtbjftt67q2]:73be6866e8ca",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju1oqq80etdrmtbjftt67q2]",
+      "objectLabel": "NLIR: Natural Language Intermediate Representation for Mechanized Theorem Proving",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有 Guillaume Lample，而是 Guillaume Baudart 等人。内容与目标人物无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:11.401Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvri5f012drmtbb4nw55qd]:63c22e679209",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "video",
+      "fieldPath": "RawPoolItem[cmjtvri5f012drmtbb4nw55qd]",
+      "objectLabel": "Roncin, Cesar VS Lample, Guillaume",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.8,
+      "reason": "视频内容为国际象棋比赛记录，与Guillaume Lample作为AI研究员和企业家的身份及专业领域无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:28.660Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0008mfghimpelg81:People.officialLinks[2]:98922bfc5baf",
+      "personId": "cmjv6furu0008mfghimpelg81",
+      "person": "Han Xiao",
+      "claimType": "official_link",
+      "surface": "profile.officialLinks",
+      "fieldPath": "People.officialLinks[2]",
+      "objectLabel": "website",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.8,
+      "reason": "该链接指向Saatchi Art上一位名为Han Xiao的艺术家页面，与作为Jina AI CEO的AI领域人物Han Xiao身份不符，极可能是同名不同人。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:23:04.865Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_official_link_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvvmmx0191rmtbzn50t7a4]:0b9f0195f391",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvvmmx0191rmtbzn50t7a4]",
+      "objectLabel": "小扎煲汤挖人，马斯克直呼疯狂！吴恩达揭秘AI人才“亿级 ...",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "文章内容主要关于吴恩达（Andrew Ng）的年度总结和AI人才争夺，仅提及 Hyung Won Chung 为被挖角的OpenAI研究员，并非其个人作品或主要相关方。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:31.053Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmju0yp9509n5rmtbcvsg8p4s]:c53d9fc0544b",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju0yp9509n5rmtbcvsg8p4s]",
+      "objectLabel": "Large Language Model-Based Autonomous Agent for Prognostics and Health Management",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "论文作者为Joon-Young Kim，与Hyung Won Chung无关。内容被错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:36.727Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvwlce01hlrmtbmys3c1tu]:f645fa62de61",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvwlce01hlrmtbmys3c1tu]",
+      "objectLabel": "K League 1 R32 and K League 2 R31 Recap",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容为韩国足球联赛回顾，与Hyung Won Chung（AI研究员）无关，属于同名或错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:36.727Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmju0yw9p09otrmtbs3h6553u]:c9bcabe506f7",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmju0yw9p09otrmtbs3h6553u]",
+      "objectLabel": "Titillating Sports with Rick Tittle - August 15, 2025",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《Titillating Sports with Rick Tittle》是体育类节目，内容摘要与Hyung Won Chung的AI研究员身份及专业领域完全无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:43.748Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeebyp000kot7iot0rm1nt]:59074eef45bd",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeebyp000kot7iot0rm1nt]",
+      "objectLabel": "Building AI Tools: LLM Integration, Dependence, and the Path to LLM-Agnostic Applications",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Akanksha Sinha，内容是关于LLM应用开发的通用技术文章，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeedj5000mot7i4qti4fc1]:d64ab69abe04",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeedj5000mot7i4qti4fc1]",
+      "objectLabel": "AI Agents in Data Engineering: The Next Evolution in Automated Pipelines",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Navya Jammalamadaka，内容是关于数据工程中AI代理的技术文章，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeefgi000oot7i295n57ev]:c19e975b2560",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeefgi000oot7i295n57ev]",
+      "objectLabel": "Llamaindex vs Langchain: What's the difference?",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Ivan Belcic和Cole Stryker，内容是关于LlamaIndex与LangChain的技术对比，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeeh9d000qot7iefxqnzq3]:380afb33cb69",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeeh9d000qot7iefxqnzq3]",
+      "objectLabel": "Building Enterprise Solutions with LLMs - GoPenAI",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Greger Ottosson，内容是关于企业LLM解决方案的技术文章，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeejpz000sot7iyksi5nm3]:3e0602022718",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeejpz000sot7iyksi5nm3]",
+      "objectLabel": "Intelligence Brief on Artificial Intelligence 2025",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Panu Hentunen，内容是关于2025年人工智能的综合报告，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeeode000uot7itw32yhvh]:077ae3cc2501",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeeode000uot7itw32yhvh]",
+      "objectLabel": "Jan: Open source ChatGPT-alternative that runs 100% offline - Jan",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容是Jan项目的官方网站，这是一个开源ChatGPT替代品，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmjtvspbo015rrmtbzrj08f6i]:20233795631b",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvspbo015rrmtbzrj08f6i]",
+      "objectLabel": "Jan Leike (@janleike) on X | Danilo T.",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.8,
+      "reason": "内容是第三方Danilo T.在LinkedIn上关于Jan Leike的帖子，并非Jan Leike本人发布或直接相关的内容。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:17.229Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2wsq000di004ow7cjz59:RawPoolItem[cmju143rk0amhrmtbi2obhskz]:7dc9133d6bc3",
+      "personId": "cmjtv2wsq000di004ow7cjz59",
+      "person": "Jan Leike",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju143rk0amhrmtbi2obhskz]",
+      "objectLabel": null,
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是一篇关于LLM推理的综述论文，作者列表中未包含Jan Leike。内容与Jan Leike无直接关联。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:25.749Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvwecf01enrmtbaob6g9th]:818e4973abcd",
+      "personId": "cmjtv3pwq000ki004fsebecez",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvwecf01enrmtbaob6g9th]",
+      "objectLabel": "About – Wei Yi – Medium",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该Medium页面属于名为Wei Yi的用户，其个人简介显示为AstraZeneca的高级数据科学家，与目标人物Jason Wei（OpenAI研究科学家）不符。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:35.875Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmjtvwi7n01gfrmtbxewtht3g]:0357f4685aef",
+      "personId": "cmjtv3pwq000ki004fsebecez",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvwi7n01gfrmtbxewtht3g]",
+      "objectLabel": "西电，西安电子科技大学，导师信息，教师，个人主页",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.98,
+      "reason": "该页面是西安电子科技大学教师魏峰的个人主页，内容涉及微波工程论文，与目标人物Jason Wei（AI研究科学家）完全无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:35.876Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmju0oux90828rmtb8y0g7jbk]:32d1edffa9e9",
+      "personId": "cmjtv3pwq000ki004fsebecez",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju0oux90828rmtb8y0g7jbk]",
+      "objectLabel": "Papers with Code - Jerry Wei",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.99,
+      "reason": "该页面是Papers with Code上作者Jerry Wei的论文列表，与目标人物Jason Wei姓名不符，属于错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:35.876Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3pwq000ki004fsebecez:RawPoolItem[cmju0p8it083mrmtbq72mtedu]:7bd6262d069d",
+      "personId": "cmjtv3pwq000ki004fsebecez",
+      "person": "Jason Wei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmju0p8it083mrmtbq72mtedu]",
+      "objectLabel": "Do you make plans for your weekends(新)你为周末做规划吗",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容为雅思口语学习，与 Jason Wei 的研究领域（大语言模型、推理、NLP）无关，且无证据表明他参与此内容。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:43.516Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmju118o40a47rmtbnt54676b]:917f45fa73dc",
+      "personId": "cmjtv30df000ei004hqk0pamw",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju118o40a47rmtbnt54676b]",
+      "objectLabel": "Mindstorms in Natural Language-Based Societies of Mind",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容为arXiv论文《Mindstorms in Natural Language-Based Societies of Mind》，作者列表中未包含John Schulman，属于错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:37:04.102Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvvvei019trmtb1v2z0dbm]:f59f70dc70bf",
+      "personId": "cmjtv30df000ei004hqk0pamw",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvvvei019trmtb1v2z0dbm]",
+      "objectLabel": "DeJohn/Cashay",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客 'DeJohn/Cashay' 的标题和内容（'Catfish: The Podcast'）与 John Schulman 的身份（计算机科学家）完全无关，且 'DeJohn' 可能是其他人名，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:37:10.593Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv30df000ei004hqk0pamw:RawPoolItem[cmjtvvvyf019xrmtb4four8sc]:b22b00f7b538",
+      "personId": "cmjtv30df000ei004hqk0pamw",
+      "person": "John Schulman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvvvyf019xrmtb4four8sc]",
+      "objectLabel": "Episode 926 Behind the Seams featuring GA Tech Baseball's Josh Schulman hosted by John Stuper with Dave Dagostino",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.98,
+      "reason": "播客标题明确提到 'GA Tech Baseball's Josh Schulman'，嘉宾是 Josh Schulman 而非 John Schulman，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:37:10.593Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxr28904f7rmtbvvwpmwbf]:64b163b7f5f4",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtxr28904f7rmtbvvwpmwbf]",
+      "objectLabel": "Petr Mrazek, Chicago Blackhawks stifle Blues | CHGO Blackhawks Postgame Podcast",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容是关于芝加哥黑鹰队的冰球比赛，与人物 Lukasz Kaiser（AI研究员）无关，属于同名实体或错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:37:34.270Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxecfs000h5p088f0rb7vd:RawPoolItem[cmjtxqofk04b8rmtbeppq4lbt]:a7709b09a198",
+      "personId": "cmjtxecfs000h5p088f0rb7vd",
+      "person": "Lukasz Kaiser",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtxqofk04b8rmtbeppq4lbt]",
+      "objectLabel": "Lukasz Kaiser",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是DBLP网站的通用公告，与Lukasz Kaiser个人无关。页面标题虽为“Lukasz Kaiser”，但内容是关于DBLP团队处理请求的延迟和科学自由声明，属于网站运营信息，不应归因于该人物。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:37:39.305Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw773dn00b9yksz9on8mnzo]:b1ede85f8982",
+      "personId": "cmjv6furu000emfgh0aoztt24",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "video",
+      "fieldPath": "RawPoolItem[cmjw773dn00b9yksz9on8mnzo]",
+      "objectLabel": "This is how startups quietly pull ahead",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "视频内容明确为Ben Horowitz的分享，与Marc Andreessen无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:37:46.986Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu000emfgh0aoztt24:RawPoolItem[cmjw7749900bfykszhupi6ulv]:821c3591e4dc",
+      "personId": "cmjv6furu000emfgh0aoztt24",
+      "person": "Marc Andreessen",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "video",
+      "fieldPath": "RawPoolItem[cmjw7749900bfykszhupi6ulv]",
+      "objectLabel": "How AI Will Transform Fintech In 2026",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该视频内容明确显示为 a16z General Partner David Haber 和 Plaid CEO Zach Perret 的对话，与 Marc Andreessen 无直接关联。将他人内容错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:37:50.434Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:People.officialLinks[1]:d2e667d4b71e",
+      "personId": "cmjtsy8k300073est1f38zcel",
+      "person": "Mira Murati",
+      "claimType": "official_link",
+      "surface": "profile.officialLinks",
+      "fieldPath": "People.officialLinks[1]",
+      "objectLabel": "website",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "链接指向 techmeme.com 的一个新闻聚合页面，并非Mira Murati的个人网站、博客或官方主页。这更像是一个关于她的新闻报道链接，而非其官方账号。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:24:03.617Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_official_link_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsy8k300073est1f38zcel:RawPoolItem[cmju0ujvt08rgrmtbfbnv8xhk]:70f9ed6e89e3",
+      "personId": "cmjtsy8k300073est1f38zcel",
+      "person": "Mira Murati",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmju0ujvt08rgrmtbfbnv8xhk]",
+      "objectLabel": "Trevor Highlights Arizona's Ultra-MAGA Governor Candidate Kari Lake | Mira Murati & Ralph Macchio",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "播客标题包含Mira Murati，但内容摘要仅为节目名称“The Daily Show: Ears Edition”，未提供任何关于她参与或内容相关的证据，极可能是同名或无关内容。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [
+        "提供播客内容片段或描述，证明Mira Murati是嘉宾或主题"
+      ],
+      "reviewedAt": "2026-06-09T12:38:05.773Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:RawPoolItem[cmjtxhsj502bqrmtbodvjytts]:49e4d86535c1",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtxhsj502bqrmtbodvjytts]",
+      "objectLabel": "BBC Learning Zone",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容为BBC Learning Zone的维基百科页面，与Noam Shazeer无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:38:29.832Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:RawPoolItem[cmjtxht6c02byrmtbr8tkufmk]:143cb8879e07",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtxht6c02byrmtbr8tkufmk]",
+      "objectLabel": "Continuity announcers in the United Kingdom",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容为英国 continuity announcers 的维基百科页面，与Noam Shazeer无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:38:29.832Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyi9h00083estwubt8ny9:RawPoolItem[cmjtxhtn602c6rmtb7cfov4f6]:eaa77cc6bc5b",
+      "personId": "cmjtsyi9h00083estwubt8ny9",
+      "person": "Noam Shazeer",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtxhtn602c6rmtb7cfov4f6]",
+      "objectLabel": "List of former BBC newsreaders and journalists",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是关于BBC前新闻主播和记者的列表，与Noam Shazeer（AI研究员）无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:38:31.527Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv341v000fi004vikj06xr:RawPoolItem[cmju11pkf0a5yrmtbcnrn9www]:ffacea234ac5",
+      "personId": "cmjtv341v000fi004vikj06xr",
+      "person": "Oriol Vinyals",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju11pkf0a5yrmtbcnrn9www]",
+      "objectLabel": "3 Common Misunderstandings About AI in 2025",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是 Nikita Ostrovsky，Oriol Vinyals 仅在文中被引用。将整篇文章归于 Oriol Vinyals 名下属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:38:56.214Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3hfy000ii0041pbzgdg1:RawPoolItem[cmjuuv3zy0i6prmtbbh5dpmky]:2ddbee31b337",
+      "personId": "cmjtv3hfy000ii0041pbzgdg1",
+      "person": "Percy Liang",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjuuv3zy0i6prmtbbh5dpmky]",
+      "objectLabel": "DISC: Dynamic Decomposition Improves LLM Inference Scaling",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "论文《DISC: Dynamic Decomposition Improves LLM Inference Scaling》的作者列表中未包含 Percy Liang，内容与人物不匹配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:39:00.057Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    }
+  ],
+  "sourcePollution": [
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:RawPoolItem[cmjtvqcsz00vqrmtb40wq3u8d]:7e6b51492737",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvqcsz00vqrmtb40wq3u8d]",
+      "objectLabel": "Damien Nicks: Getting your work-life balance right, starting a business and why the next 10 years are crucial",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "播客标题和摘要均指向 'Damien Nicks'，与人物 'Aidan Gomez' 无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:29:48.455Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu000gmfgh2tkuh8xm:RawPoolItem[cmjw73yyp0013ykszaqk2ag8t]:2efc3a4badc9",
+      "personId": "cmjv6furu000gmfgh2tkuh8xm",
+      "person": "Aakash Gupta",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "video",
+      "fieldPath": "RawPoolItem[cmjw73yyp0013ykszaqk2ag8t]",
+      "objectLabel": "Main Aur Mumbai | Aakash Gupta | Stand-up Comedy",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该YouTube视频是关于一位名为Aakash Gupta的脱口秀演员，内容是孟买生活喜剧，与人物库中作为Apollo.io产品副总裁的Aakash Gupta（产品增长、大语言模型领域）无关。属于同名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:29:53.170Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:RawPoolItem[cmjtlahhp0019efnhye3o6qgv]:b1c1bef831b7",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjtlahhp0019efnhye3o6qgv]",
+      "objectLabel": "ImageNet Large Scale Visual Recognition Challenge",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "论文作者列表中未包含 Andrej Karpathy，该成果属于其他研究者，不应归因于他。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:30:44.368Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:RawPoolItem[cmju0q71t0874rmtb8q65nh17]:9a335206310e",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju0q71t0874rmtb8q65nh17]",
+      "objectLabel": "From Academia to Industry: The Journey of Arthur Mench",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "文章标题和内容中的人名拼写为'Arthur Mench'，与目标人物'Arthur Mensch'不符，可能指向错误实体。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:09.936Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbldg0001pnypz7xp3m9c]:badc18e867d7",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbldg0001pnypz7xp3m9c]",
+      "objectLabel": "Error saving GPT - [object Object] when I update my custom ...",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是OpenAI社区论坛的帖子，讨论GPT保存错误，作者为Jiaqing_Zhang，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbn6w0003pnypvnv3gbhm]:a4a9bfc62ee7",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbn6w0003pnypvnv3gbhm]",
+      "objectLabel": "Object Object Error when using AI outputs - Questions",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是n8n社区论坛的帖子，讨论AI输出错误，作者为匿名用户，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbo2y0007pnypwik9zz7u]:f74b2552e2b6",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbo2y0007pnypwik9zz7u]",
+      "objectLabel": "LLM object must define bindTools method when using ...",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是GitHub上的LangGraph.js项目issue，报告者为sid-js，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbp6l000dpnyp92qa3uva]:945362e3ab21",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbp6l000dpnyp92qa3uva]",
+      "objectLabel": "File upload failed: [object Object] - Google AI Studio",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是Google AI开发者论坛的帖子，讨论文件上传错误，作者为Yi_Lu，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:12.292Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbpmi000fpnypj0v5fhli]:5106b94f9615",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbpmi000fpnypj0v5fhli]",
+      "objectLabel": "[object Object] - Microsoft Q&A",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是关于OneDrive在Chrome中出现错误的Microsoft Q&A问题，提问者为Anthony Pineda，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbqyy000lpnypsigr7wjn]:88cc484bdde1",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbqyy000lpnypsigr7wjn]",
+      "objectLabel": "GPT-4 Technical Report",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.99,
+      "reason": "该内容是OpenAI的GPT-4技术报告，作者为OpenAI团队，未提及Boris Cherny，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbt9g000ppnyp41ifvso4]:bcb58d64debc",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbt9g000ppnyp41ifvso4]",
+      "objectLabel": "Introduction to Large Language Models",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是Google Developers关于大型语言模型的介绍页面，属于Google官方资源，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbvr1000rpnypywrpdpci]:4d73cc5238df",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbvr1000rpnypywrpdpci]",
+      "objectLabel": "ChatGPT",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.99,
+      "reason": "该内容是ChatGPT的维基百科页面，属于通用知识介绍，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnbw2w000tpnypw3frf2vy]:6c9fc9f2722f",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnbw2w000tpnypw3frf2vy]",
+      "objectLabel": "Large language model",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.99,
+      "reason": "该内容是大型语言模型的维基百科页面，属于通用知识介绍，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:RawPoolItem[cmjxnc0y40011pnyp20516i32]:5aea061e4311",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjxnc0y40011pnyp20516i32]",
+      "objectLabel": "Large Language Models Explained",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该内容是Couchbase博客上关于大型语言模型的解释文章，作者为Couchbase Product Marketing，与Boris Cherny无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:33.254Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmju0u42w08ksrmtbzgif95yj]:12aaea23f05d",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju0u42w08ksrmtbzgif95yj]",
+      "objectLabel": "Unsolved problems in AI | Chris Olah and Lex Fridman",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "视频标题和描述显示主要嘉宾为Dario Amodei和Amanda Askell，Chris Olah仅为嘉宾之一，且内容非其主导，归因不准确。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:37.426Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmju1981h0bqhrmtb4eul4jr8]:f5f7bfa7c7a4",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju1981h0bqhrmtb4eul4jr8]",
+      "objectLabel": "Large language models, explained with a minimum of math and jargon",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者为Timothy B. Lee和Sean Trott，内容为通用科普，并非Chris Olah的作品或观点，归因错误。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:37.426Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:RawPoolItem[cmjtxmotm03darmtbj6vdh6lp]:f48daacf0393",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtxmotm03darmtbj6vdh6lp]",
+      "objectLabel": "06.20: It's Romance Science!",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《06.20: It's Romance Science!》来自 'Fated Mates' 频道，内容为浪漫小说讨论，与 Chris Olah 的 AI 研究员身份和主题完全无关，极可能是同名或错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:31:40.891Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxvl001qqrmtbwjpsp3xb]:b6b3f676aa6f",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvxvl001qqrmtbwjpsp3xb]",
+      "objectLabel": "Steelers' Aaron Rodgers on Similar Career Path as Tom Brady w/Buccaneers, Peyton Manning w/Broncos?",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容标题提及 'Peyton Manning'（美式橄榄球运动员），与计算机科学家 Christopher Manning 无关，属于同名实体错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:03.207Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxw9601r2rmtbv6g7jiy8]:f3873bbdfb9c",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvxw9601r2rmtbv6g7jiy8]",
+      "objectLabel": "NFFC Average Draft Position - QBs",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容为 'RotoWire Fantasy Football Podcast'，与计算机科学家 Christopher Manning 无关，属于同名实体错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:03.207Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3m76000ji0044zdmrneg:RawPoolItem[cmjtvxwki01r8rmtbku6tonit]:0561dcf122e8",
+      "personId": "cmjtv3m76000ji0044zdmrneg",
+      "person": "Christopher Manning",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvxwki01r8rmtbku6tonit]",
+      "objectLabel": "PPP 295 - Starting Pitcher Update & Streamers - 6-28-23",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "该播客内容是关于棒球幻想体育的，与人物Christopher Manning（NLP学者）的专业领域和身份完全不符，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:04.093Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:RawPoolItem[cmjtvn9kq00d0rmtbb0kupab2]:2fd1d56de216",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvn9kq00d0rmtbb0kupab2]",
+      "objectLabel": "Daniela Amadori",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容是关于欧洲大学研究所的财务官 Daniela Amadori，与目标人物 Daniela Amodei（Anthropic 总裁）姓名不匹配，属于错误人物。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:29.806Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:RawPoolItem[cmjtvna2s00d2rmtb919jzyfj]:561fe7855473",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvna2s00d2rmtb919jzyfj]",
+      "objectLabel": "Dario Amodei — The Urgency of Interpretability",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "内容是关于 Dario Amodei 的博客文章，与目标人物 Daniela Amodei 不匹配，属于错误人物。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:32:29.806Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:RawPoolItem[cmjtvs6gq0155rmtbwat5ggem]:9c144fe1ae10",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvs6gq0155rmtbwat5ggem]",
+      "objectLabel": "Tips For Your Pokemon Sword and Shield Adventure| PUCL #416",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是关于宝可梦游戏的播客，与Dylan Field（Figma CEO）无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:24.325Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:RawPoolItem[cmjtvs8an0157rmtbapczaz0q]:6ec522c09480",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvs8an0157rmtbapczaz0q]",
+      "objectLabel": "Postcards from Pearl - Ep. 100A - Silly Scoop Stakeout",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "内容是儿童冒险播客，与Dylan Field（Figma CEO）无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:24.325Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97ttt001bp5lf0cwd4s32]:10eb76b7e8c3",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97ttt001bp5lf0cwd4s32]",
+      "objectLabel": "mRNA-1273 and BNT162b2 COVID-19 vaccines elicit antibodies with differences in Fc-mediated effector functions",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗的免疫学研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tty001dp5lfgp7dvsak]:0f538decb42b",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tty001dp5lfgp7dvsak]",
+      "objectLabel": "mRNA-1273 vaccine-induced antibodies maintain Fc effector functions across SARS-CoV-2 variants of concern",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗的免疫学研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tu2001fp5lfevzp0434]:fd4824b8c26d",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tu2001fp5lfevzp0434]",
+      "objectLabel": "Discrete SARS-CoV-2 antibody titers track with functional humoral stability",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19抗体的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuf001jp5lfypdjobwa]:69a96b3a0829",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tuf001jp5lfypdjobwa]",
+      "objectLabel": "Early cross-coronavirus reactive signatures of humoral immunity against COVID-19",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19免疫学的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuk001lp5lfv2qi5h4c]:4983d343adcb",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tuk001lp5lfv2qi5h4c]",
+      "objectLabel": "SARS-CoV-2 antibodies protect against reinfection for at least 6 months in a multicentre seroepidemiological workplace cohort",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19抗体保护作用的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tuz001rp5lfmxqzngs9]:a64f5f9c7cce",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tuz001rp5lfmxqzngs9]",
+      "objectLabel": "Subtle immunological differences in mRNA-1273 and BNT162b2 COVID-19 vaccine induced Fc-functional profiles",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19疫苗免疫学差异的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tv7001tp5lf1yh3bpc0]:3a23f8ad21dd",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tv7001tp5lf1yh3bpc0]",
+      "objectLabel": "Early cross-coronavirus reactive signatures of protective humoral immunity against COVID-19",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有Elon Musk，内容是关于COVID-19免疫学的研究，与Elon Musk的领域和身份无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:47.734Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97tva001vp5lf03l9quup]:69bfc664ac3b",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97tva001vp5lf03l9quup]",
+      "objectLabel": "Serological Markers of SARS-CoV-2 Reinfection",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中无Elon Musk，内容为医学研究，与Elon Musk的公开身份和领域不符。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:49.826Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjrzl1b0001hb28tvtm3unfg:RawPoolItem[cmjs97txa002bp5lfhm30lfzs]:ed692bc28031",
+      "personId": "cmjrzl1b0001hb28tvtm3unfg",
+      "person": "Elon Musk",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.papers",
+      "fieldPath": "RawPoolItem[cmjs97txa002bp5lfhm30lfzs]",
+      "objectLabel": "SARS-CoV-2 infection and reinfection in a seroepidemiological workplace cohort in the United States",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中无Elon Musk，内容为流行病学研究，与Elon Musk的公开身份和领域不符。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:33:49.826Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:RawPoolItem[cmju15elp0ay8rmtbxm26fdlo]:c83da327cea7",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju15elp0ay8rmtbxm26fdlo]",
+      "objectLabel": "The Evolution of LLMs: From T5 and GPT to Mixtral, o1, Claude 3.7, and Grok 3.5 — A Journey Through Completion, Reasoning, and First Principles",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Roberto Infante，内容是关于LLM技术演进的综述，与Emad Mostaque无直接关联，不应挂在其名下。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:34:18.337Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjs1jjy0005tb28te81500go:RawPoolItem[cmju0jdrd077trmtb1cndrag7]:fdfeb0b78a87",
+      "personId": "cmjs1jjy0005tb28te81500go",
+      "person": "Geoffrey Hinton",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmju0jdrd077trmtb1cndrag7]",
+      "objectLabel": "Job Predictions Collide, RTO Tightens, Workweeks Shift, and Consulting Gets Rebuilt",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.85,
+      "reason": "播客标题和摘要未提及 Geoffrey Hinton，内容主题为职场预测和管理，与该人物无关，属于错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:34:38.021Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15rmj004kftmgs6f9bvbv]:fae286f3e4d5",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15rmj004kftmgs6f9bvbv]",
+      "objectLabel": "337. Are personality tests legit?",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《337. Are personality tests legit?》来自 'The Psychology of your 20s'，内容与 Greg Brockman 的专业领域（AI、OpenAI）无关，标题和摘要均未提及他。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15rvx004mftmgwce6r8r6]:01e61614b2ca",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15rvx004mftmgwce6r8r6]",
+      "objectLabel": "873. Luke takes the MBTI Personality Test",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《873. Luke takes the MBTI Personality Test》来自 'Luke's ENGLISH Podcast'，内容是关于英语学习和性格测试，与 Greg Brockman 无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15s5j004oftmgr3ob44a0]:98f2ef7069a1",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15s5j004oftmgr3ob44a0]",
+      "objectLabel": "#112: Personality Tests",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《#112: Personality Tests》来自 'English Learning for Curious Minds'，内容是关于英语学习，与 Greg Brockman 无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsmop1e00017wc35sdo9tff:RawPoolItem[cmjv15sot004sftmgm5hbekhl]:63f666d42f87",
+      "personId": "cmjsmop1e00017wc35sdo9tff",
+      "person": "Greg Brockman",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjv15sot004sftmgm5hbekhl]",
+      "objectLabel": "209. Who Are You Really? On Personality and Flourishing with Professor Brian Little",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《209. Who Are You Really?...》来自 'Exam Study Expert'，内容是关于学习科学和性格，与 Greg Brockman 无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:05.291Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvqn0000yormtbqvq512ls]:80b655b4d56f",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvqn0000yormtbqvq512ls]",
+      "objectLabel": "A Careful Examination of Large Language Model Performance on Grade School Arithmetic",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有 Guillaume Lample，而是 Hugh Zhang 等人。内容与目标人物无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:11.401Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvqqd400zermtbazp9f1tg]:30d7ade83d56",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvqqd400zermtbazp9f1tg]",
+      "objectLabel": "Posts",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "博客作者是 Guillaume Laforge，与 Guillaume Lample 是不同的人。内容与目标人物无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:11.401Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmju1oqq80etdrmtbjftt67q2]:73be6866e8ca",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju1oqq80etdrmtbjftt67q2]",
+      "objectLabel": "NLIR: Natural Language Intermediate Representation for Mechanized Theorem Proving",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "论文作者列表中没有 Guillaume Lample，而是 Guillaume Baudart 等人。内容与目标人物无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:11.401Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2cix0008i004kejjlxya:RawPoolItem[cmjtvri5f012drmtbb4nw55qd]:63c22e679209",
+      "personId": "cmjtv2cix0008i004kejjlxya",
+      "person": "Guillaume Lample",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "video",
+      "fieldPath": "RawPoolItem[cmjtvri5f012drmtbb4nw55qd]",
+      "objectLabel": "Roncin, Cesar VS Lample, Guillaume",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.8,
+      "reason": "视频内容为国际象棋比赛记录，与Guillaume Lample作为AI研究员和企业家的身份及专业领域无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:28.660Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvvmmx0191rmtbzn50t7a4]:0b9f0195f391",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjtvvmmx0191rmtbzn50t7a4]",
+      "objectLabel": "小扎煲汤挖人，马斯克直呼疯狂！吴恩达揭秘AI人才“亿级 ...",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "文章内容主要关于吴恩达（Andrew Ng）的年度总结和AI人才争夺，仅提及 Hyung Won Chung 为被挖角的OpenAI研究员，并非其个人作品或主要相关方。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:31.053Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmju0yp9509n5rmtbcvsg8p4s]:c53d9fc0544b",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmju0yp9509n5rmtbcvsg8p4s]",
+      "objectLabel": "Large Language Model-Based Autonomous Agent for Prognostics and Health Management",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.9,
+      "reason": "论文作者为Joon-Young Kim，与Hyung Won Chung无关。内容被错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:36.727Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmjtvwlce01hlrmtbmys3c1tu]:f645fa62de61",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmjtvwlce01hlrmtbmys3c1tu]",
+      "objectLabel": "K League 1 R32 and K League 2 R31 Recap",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客内容为韩国足球联赛回顾，与Hyung Won Chung（AI研究员）无关，属于同名或错误归因。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:36.727Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv3tsv000li004co65fad9:RawPoolItem[cmju0yw9p09otrmtbs3h6553u]:c9bcabe506f7",
+      "personId": "cmjtv3tsv000li004co65fad9",
+      "person": "Hyung Won Chung",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.podcast",
+      "fieldPath": "RawPoolItem[cmju0yw9p09otrmtbs3h6553u]",
+      "objectLabel": "Titillating Sports with Rick Tittle - August 15, 2025",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "播客《Titillating Sports with Rick Tittle》是体育类节目，内容摘要与Hyung Won Chung的AI研究员身份及专业领域完全无关，属于人名错配。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:35:43.748Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeebyp000kot7iot0rm1nt]:59074eef45bd",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeebyp000kot7iot0rm1nt]",
+      "objectLabel": "Building AI Tools: LLM Integration, Dependence, and the Path to LLM-Agnostic Applications",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Akanksha Sinha，内容是关于LLM应用开发的通用技术文章，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeedj5000mot7i4qti4fc1]:d64ab69abe04",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeedj5000mot7i4qti4fc1]",
+      "objectLabel": "AI Agents in Data Engineering: The Next Evolution in Automated Pipelines",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Navya Jammalamadaka，内容是关于数据工程中AI代理的技术文章，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjyediag0000ot7iy9zzy6ma:RawPoolItem[cmjyeefgi000oot7i295n57ev]:c19e975b2560",
+      "personId": "cmjyediag0000ot7iy9zzy6ma",
+      "person": "Jaana Dogan",
+      "claimType": "source_item_belongs_to_person",
+      "surface": "featured.blogs",
+      "fieldPath": "RawPoolItem[cmjyeefgi000oot7i295n57ev]",
+      "objectLabel": "Llamaindex vs Langchain: What's the difference?",
+      "priority": "high",
+      "verdict": "wrong_person",
+      "confidence": 0.95,
+      "reason": "文章作者是Ivan Belcic和Cole Stryker，内容是关于LlamaIndex与LangChain的技术对比，与Jaana Dogan无关。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T12:36:03.041Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_source_item_high_mimo.jsonl"
+    }
+  ],
+  "productPolicy": [
+    {
+      "claimId": "cmjv6furu000smfghreks2bnf:People.products[1]:0d171f891206",
+      "personId": "cmjv6furu000smfghreks2bnf",
+      "person": "Allie K. Miller",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "IBM Watson's multimodal AI team",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "IBM Watson's multimodal AI team 是一个团队，而非个人可代表的产品或项目。即使 Allie K. Miller 曾领导该团队，将整个团队成果作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可考虑重写为：Allie K. Miller 曾领导 IBM Watson 的多模态 AI 团队，负责开发图像、文本、人脸识别等系统。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:31:56.325Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu000smfghreks2bnf:People.products[2]:ba4298f469c8",
+      "personId": "cmjv6furu000smfghreks2bnf",
+      "person": "Allie K. Miller",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "AWS Machine Learning for Startups and Venture Capital",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "AWS Machine Learning for Startups and Venture Capital 是 AWS 内部的一个业务部门或项目，而非个人可代表的产品。将其作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可考虑重写为：Allie K. Miller 担任 AWS 机器学习业务负责人，领导该业务发展。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:31:56.325Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu000kmfgha9aias1i:People.products[0]:f991da43d8f4",
+      "personId": "cmjv6furu000kmfgha9aias1i",
+      "person": "Amanda Askell",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Claude",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Claude 是 Anthropic 公司的产品，Amanda Askell 是团队负责人，但将整个产品作为个人代表成果归因层级过高。个人贡献应聚焦于其具体负责的领域（如性格与价值观对齐）。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可考虑重写为：Amanda Askell 领导 Anthropic 的 Claude 性格与价值观对齐工作。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:31:56.325Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:People.products[1]:c8c1a5f26619",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Command R+",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Command R+ 是 Cohere 公司的一个具体模型版本，作为创始人，展示公司级产品族更合适，而非单个模型。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Cohere 的大语言模型产品族，或注明其领导公司推出该系列模型。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:31:56.536Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv233j0006i004uet1cwt0:People.products[3]:1373e509a007",
+      "personId": "cmjtv233j0006i004uet1cwt0",
+      "person": "Aidan Gomez",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[3]",
+      "objectLabel": "Embed v3",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Embed v3 是 Cohere 公司的一个具体模型版本，作为创始人，展示公司级产品族更合适，而非单个模型。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Cohere 的嵌入模型产品线，或注明其领导公司推出该系列模型。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:31:56.536Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmkb1l3j70004h7l9e8gy2bko:People.products[3]:c37d94f38ae2",
+      "personId": "cmkb1l3j70004h7l9e8gy2bko",
+      "person": "Alexander Amini",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[3]",
+      "objectLabel": "Liquid Neural Networks",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.7,
+      "reason": "Liquid Neural Networks 是 MIT CSAIL 的研究项目，角色为 contributor，不足以作为个人代表成果，归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为他在 MIT CSAIL 参与的研究项目，或注明其作为贡献者的具体工作。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:31:56.536Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:People.products[0]:7ce124efd411",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "GPT-2",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "GPT-2 是 OpenAI 的团队研究成果，Andrej Karpathy 未在其中担任明确领导或核心作者角色，将其列为个人代表成果归因层级错误。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andrej Karpathy 在 OpenAI 的研究贡献，或注明其参与的相关工作。",
+      "evidenceNeeded": [
+        "Andrej Karpathy 在 GPT-2 项目中的具体角色或贡献证明"
+      ],
+      "reviewedAt": "2026-06-09T11:31:59.270Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjsme4n800009u972zrrxrei:People.products[1]:d25a039dcc20",
+      "personId": "cmjsme4n800009u972zrrxrei",
+      "person": "Andrej Karpathy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "ChatGPT",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "ChatGPT 是 OpenAI 的产品，Andrej Karpathy 未在其中担任明确领导或核心作者角色，将其列为个人代表成果归因层级错误。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andrej Karpathy 在 OpenAI 的研究贡献，或注明其参与的相关工作。",
+      "evidenceNeeded": [
+        "Andrej Karpathy 在 ChatGPT 项目中的具体角色或贡献证明"
+      ],
+      "reviewedAt": "2026-06-09T11:31:59.270Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[0]:e963f42b1b8a",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Alexa+",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Alexa+ 是亚马逊的产品，Andy Jassy 作为 CEO 可以展示其领导的公司级产品族，但此条未提供其具体贡献角色，且产品描述过于具体，易被视为个人直接成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导亚马逊 AI 战略，或注明其作为 CEO 对 Alexa 产品线的领导责任。",
+      "evidenceNeeded": [
+        "Andy Jassy 在 Alexa+ 项目中的具体领导或决策角色证明"
+      ],
+      "reviewedAt": "2026-06-09T11:31:59.270Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[1]:6f10e607d70b",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Amazon Nova",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Amazon Nova 是亚马逊的模型，Andy Jassy 作为 CEO 可以展示其领导的公司级产品族，但此条未提供其具体贡献角色，且产品描述过于具体，易被视为个人直接成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导亚马逊 AI 战略，或注明其作为 CEO 对 AI 模型研发的领导责任。",
+      "evidenceNeeded": [
+        "Andy Jassy 在 Amazon Nova 项目中的具体领导或决策角色证明"
+      ],
+      "reviewedAt": "2026-06-09T11:31:59.270Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[2]:13011bf046bb",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "AWS Bedrock",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "AWS Bedrock 是亚马逊云服务的产品，Andy Jassy 作为亚马逊 CEO 可以展示其领导的公司级产品族，但此条未提供其具体贡献角色，且产品描述过于具体，易被视为个人直接成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导亚马逊云服务 AI 战略，或注明其作为 CEO 对 AWS AI 服务的领导责任。",
+      "evidenceNeeded": [
+        "Andy Jassy 在 AWS Bedrock 项目中的具体领导或决策角色证明"
+      ],
+      "reviewedAt": "2026-06-09T11:31:59.270Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[3]:a4f12600e980",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[3]",
+      "objectLabel": "AWS SageMaker",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "AWS SageMaker 是 AWS 的一个具体平台服务，而非公司级产品族。作为 CEO，Andy Jassy 领导整个 AWS，但将单个服务作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导下的 AWS 云服务产品族，或明确其作为 AWS CEO 对 SageMaker 等服务的战略领导角色。",
+      "evidenceNeeded": [
+        "Andy Jassy 作为 AWS CEO 对 SageMaker 产品线有直接领导或决策角色的公开证据"
+      ],
+      "reviewedAt": "2026-06-09T11:32:04.539Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[4]:34c4728ce46c",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[4]",
+      "objectLabel": "AWS Trainium2",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "AWS Trainium2 是 AWS 的一个具体定制芯片产品，属于硬件工具。作为 CEO，Andy Jassy 领导整个 AWS，但将单个芯片型号作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导下的 AWS AI 基础设施（如 Trainium 芯片系列），或明确其作为 AWS CEO 对定制芯片战略的领导角色。",
+      "evidenceNeeded": [
+        "Andy Jassy 作为 AWS CEO 对 Trainium 芯片项目有直接领导或决策角色的公开证据"
+      ],
+      "reviewedAt": "2026-06-09T11:32:04.539Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[5]:4415136bebc2",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[5]",
+      "objectLabel": "Amazon Q",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Amazon Q 是 AWS 的一个具体 AI 代码助手服务。作为 CEO，Andy Jassy 领导整个 AWS，但将单个 AI 工具服务作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导下的 AWS AI 服务产品族，或明确其作为 AWS CEO 对 Amazon Q 等生成式 AI 服务的战略领导角色。",
+      "evidenceNeeded": [
+        "Andy Jassy 作为 AWS CEO 对 Amazon Q 产品有直接领导或决策角色的公开证据"
+      ],
+      "reviewedAt": "2026-06-09T11:32:04.539Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[6]:e7d708b3bddc",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[6]",
+      "objectLabel": "AWS AgentCore",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "AWS AgentCore 是 AWS 的一个具体 AI Agent 基础设施工具。作为 CEO，Andy Jassy 领导整个 AWS，但将单个工具框架作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导下的 AWS AI Agent 基础设施，或明确其作为 AWS CEO 对 AgentCore 等工具的战略领导角色。",
+      "evidenceNeeded": [
+        "Andy Jassy 作为 AWS CEO 对 AgentCore 项目有直接领导或决策角色的公开证据"
+      ],
+      "reviewedAt": "2026-06-09T11:32:04.539Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[7]:8c06212fadd0",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[7]",
+      "objectLabel": "Strands",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Strands 是 AWS 的一个具体开源 AI Agent 工具包。作为 CEO，Andy Jassy 领导整个 AWS，但将单个开源工具包作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导下的 AWS 开源 AI 工具，或明确其作为 AWS CEO 对 Strands 等开源项目的战略领导角色。",
+      "evidenceNeeded": [
+        "Andy Jassy 作为 AWS CEO 对 Strands 项目有直接领导或决策角色的公开证据"
+      ],
+      "reviewedAt": "2026-06-09T11:32:04.539Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtir8e0002fvaehx5kwsfy:People.products[8]:04a7ae26b508",
+      "personId": "cmjwtir8e0002fvaehx5kwsfy",
+      "person": "Andy Jassy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[8]",
+      "objectLabel": "Rufus",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Rufus 是 Amazon 的一个具体 AI 购物助手工具。作为 Amazon CEO，Andy Jassy 领导整个公司，但将单个商业工具作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Andy Jassy 领导下的 Amazon AI 商业应用，或明确其作为 Amazon CEO 对 Rufus 等工具的战略领导角色。",
+      "evidenceNeeded": [
+        "Andy Jassy 作为 Amazon CEO 对 Rufus 产品有直接领导或决策角色的公开证据"
+      ],
+      "reviewedAt": "2026-06-09T11:32:04.539Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[0]:c2bf9b357407",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Mistral 7B",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Mistral 7B 是 Mistral AI 的一个具体模型版本。作为创始人，Arthur Mensch 可以展示 Mistral AI 公司级产品族，但单个模型版本作为个人代表成果归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可改为展示 Arthur Mensch 领导下的 Mistral AI 开源大模型系列，或明确其作为创始人对 Mistral 7B 等模型的领导角色。",
+      "evidenceNeeded": [
+        "Arthur Mensch 作为 Mistral AI 创始人对 Mistral 7B 模型有直接领导或决策角色的公开证据"
+      ],
+      "reviewedAt": "2026-06-09T11:32:04.539Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtn2pr00066qvtrraqb618:People.products[2]:1e8c395cf02e",
+      "personId": "cmjwtn2pr00066qvtrraqb618",
+      "person": "Ashok Elluswamy",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Cybercab Robotaxi",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Cybercab Robotaxi 是 Tesla 的具体服务/商业入口，而非一个产品族或方法。将具体服务归为个人代表成果，归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可考虑展示其领导的‘Tesla 自动驾驶软件’或‘AI 软件团队’，而非具体服务名称。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:21.340Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmk8gtzii0007j1tn5q2gmszd:People.products[1]:ef407998f375",
+      "personId": "cmk8gtzii0007j1tn5q2gmszd",
+      "person": "Barret Zoph",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "GPT-4o",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "GPT-4o 是一个具体的模型版本。尽管描述中提到其担任领导角色，但将单个模型版本作为个人代表成果，归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可考虑展示其领导的‘GPT 系列模型’或‘多模态模型研发’，而非具体版本 GPT-4o。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:21.340Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmk8gtzii0007j1tn5q2gmszd:People.products[2]:8da5872c803f",
+      "personId": "cmk8gtzii0007j1tn5q2gmszd",
+      "person": "Barret Zoph",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "o1",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "o1 是一个具体的模型版本，且角色仅为‘contributor’。将单个模型版本作为个人代表成果，归因层级过高。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:21.340Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "f6c05518-a46b-42fa-a830-2d29ebd64049:People.products[0]:e654d3f1c8c0",
+      "personId": "f6c05518-a46b-42fa-a830-2d29ebd64049",
+      "person": "Ben Mildenhall",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "NeRF",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "NeRF 是一个具体的学术论文/方法，而非一个产品族或平台。将单个方法作为个人代表成果，归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可考虑展示其‘神经辐射场（NeRF）研究’或‘3D 视觉表示’领域贡献，而非具体方法名称。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:21.340Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[1]:e171124e777b",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Mixtral 8x7B",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "创始人/CEO 可以展示其领导的公司级产品族，但 Mixtral 8x7B 是 Mistral AI 的一个具体模型版本，属于团队成果，不应作为个人代表成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Mistral AI 的开源大语言模型系列，或明确说明 Arthur Mensch 作为创始人领导了该系列模型的开发。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:24.587Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[2]:9487aad6d9cd",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Le Chat",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Le Chat 是 Mistral AI 的官方聊天助手产品，属于公司级商业入口或营销口径，不应作为个人代表成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Mistral AI 的 AI 平台或产品线，或明确说明 Arthur Mensch 作为创始人领导了该平台的开发。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:24.587Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv28ik0007i004hn1xz67d:People.products[3]:5011ba616b45",
+      "personId": "cmjtv28ik0007i004hn1xz67d",
+      "person": "Arthur Mensch",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[3]",
+      "objectLabel": "Codestral",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Codestral 是 Mistral AI 的一个具体模型版本，属于团队成果，不应作为个人代表成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Mistral AI 的代码生成模型系列，或明确说明 Arthur Mensch 作为创始人领导了该系列模型的开发。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:24.587Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjxmgs83000011y3v2qj1z51:People.products[0]:643eafc331fe",
+      "personId": "cmjxmgs83000011y3v2qj1z51",
+      "person": "Boris Cherny",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Claude Code",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Claude Code 是 Anthropic 的产品，Boris Cherny 的职位是 Head of Claude Code Integration，但 claim 将其角色标注为 'creator'，这过度归因了个人贡献，应更准确地描述为领导或参与。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将角色从 'creator' 改为 'Head of Integration' 或 'Leader'，以反映其领导角色而非创建者。",
+      "evidenceNeeded": [
+        "Boris Cherny 在 Anthropic 的具体职位和职责描述"
+      ],
+      "reviewedAt": "2026-06-09T11:32:26.064Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[0]:65ec50d881fa",
+      "personId": "cmjv6furu0001mfghj75syorm",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "GPT-4",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "GPT-4 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为单个模型版本，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "考虑展示 Boris Power 领导的 Applied Research 项目或更广泛的 OpenAI 产品族，而非具体模型版本。",
+      "evidenceNeeded": [
+        "Boris Power 在 OpenAI 的具体领导职责或项目"
+      ],
+      "reviewedAt": "2026-06-09T11:32:26.064Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[1]:b7e91e269c3c",
+      "personId": "cmjv6furu0001mfghj75syorm",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "ChatGPT",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "ChatGPT 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体产品，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "考虑展示 Boris Power 领导的 Applied Research 项目或更广泛的 OpenAI 产品族，而非具体产品。",
+      "evidenceNeeded": [
+        "Boris Power 在 OpenAI 的具体领导职责或项目"
+      ],
+      "reviewedAt": "2026-06-09T11:32:26.064Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[2]:ac2bcf5ee664",
+      "personId": "cmjv6furu0001mfghj75syorm",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Whisper API",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Whisper API 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体 API，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "考虑展示 Boris Power 领导的 Applied Research 项目或更广泛的 OpenAI 产品族，而非具体 API。",
+      "evidenceNeeded": [
+        "Boris Power 在 OpenAI 的具体领导职责或项目"
+      ],
+      "reviewedAt": "2026-06-09T11:32:26.064Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[3]:e22ea7ab7fd8",
+      "personId": "cmjv6furu0001mfghj75syorm",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[3]",
+      "objectLabel": "Text and Code Embeddings",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Text and Code Embeddings 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体模型，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "考虑展示 Boris Power 领导的 Applied Research 项目或更广泛的 OpenAI 产品族，而非具体模型。",
+      "evidenceNeeded": [
+        "Boris Power 在 OpenAI 的具体领导职责或项目"
+      ],
+      "reviewedAt": "2026-06-09T11:32:26.064Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0001mfghj75syorm:People.products[4]:5488fcd10083",
+      "personId": "cmjv6furu0001mfghj75syorm",
+      "person": "Boris Power",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[4]",
+      "objectLabel": "GPT-4 Plugins",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "GPT-4 Plugins 是 OpenAI 的团队成果，Boris Power 的角色是 'contributor'，但作为具体功能，将其列为个人代表成果过度归因，应展示更高级别的产品族或项目。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "考虑展示 Boris Power 领导的 Applied Research 项目或更广泛的 OpenAI 产品族，而非具体功能。",
+      "evidenceNeeded": [
+        "Boris Power 在 OpenAI 的具体领导职责或项目"
+      ],
+      "reviewedAt": "2026-06-09T11:32:26.064Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0003mfgha0mzdgpj:People.products[0]:8b4b1c7585dd",
+      "personId": "cmjv6furu0003mfgha0mzdgpj",
+      "person": "Cat Wu",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Claude Code",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Claude Code 是 Anthropic 公司的一个具体产品或功能，Cat Wu 的角色是 product lead，这属于团队成果，而非个人代表成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Anthropic 公司或 Claude 产品族，并注明 Cat Wu 担任产品负责人。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:27.359Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu0003mfgha0mzdgpj:People.products[1]:ea538acc079c",
+      "personId": "cmjv6furu0003mfgha0mzdgpj",
+      "person": "Cat Wu",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Dagster Cloud",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Dagster Cloud 是 Elementl 公司的产品，Cat Wu 的角色是 led development，这属于团队成果，而非个人代表成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Elementl 公司或 Dagster 项目，并注明 Cat Wu 曾领导开发。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:27.359Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu000dmfghyv96kktn:People.products[1]:2cb95c601442",
+      "personId": "cmjv6furu000dmfghyv96kktn",
+      "person": "Chamath Palihapitiya",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Software Factory",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Software Factory 是 8090 公司的一个具体产品，Chamath Palihapitiya 的角色是 founder，这属于公司级产品族下的具体产品，而非个人代表成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 8090 公司，并注明其孵化了 Software Factory 等产品。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:27.359Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtxcggg00035p08qz4fgjbn:People.products[2]:78beef862dd8",
+      "personId": "cmjtxcggg00035p08qz4fgjbn",
+      "person": "Chris Olah",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Claude",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Claude 是 Anthropic 公司的旗舰产品，Chris Olah 作为研究员参与其安全和对齐研究，但“contributor”角色不足以将整个公司级产品归因为其个人代表成果。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "建议修改为：Chris Olah 参与了 Anthropic 公司 Claude 模型的安全与对齐研究工作。",
+      "evidenceNeeded": [
+        "Chris Olah 在 Claude 项目中的具体领导或核心贡献角色证明"
+      ],
+      "reviewedAt": "2026-06-09T11:32:44.038Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsyroa00093estgaoeadqk:People.products[0]:1a5e7ab2ac0e",
+      "personId": "cmjtsyroa00093estgaoeadqk",
+      "person": "Daniela Amodei",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Claude",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Claude 是 Anthropic 的公司级产品族，Daniela Amodei 作为 co-founder 可展示领导成果，但 'co-creator' 口径可能过度归因具体产品，需明确其领导角色。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将角色改为 'co-founder' 或 'President'，强调领导 Anthropic 公司，而非具体产品创建。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:32:50.741Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjv6furu000lmfghb5zze4nm:People.products[2]:62d515b1b8f0",
+      "personId": "cmjv6furu000lmfghb5zze4nm",
+      "person": "David Ha",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Japanese Language Models",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "人物角色为 co-creator，但展示的是公司级产品族（Japanese Language Models），而非具体项目或论文。作为创始人，展示公司级产品族是合理的，但当前描述过于宽泛，可能过度归因。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将描述具体化为 David Ha 作为 Sakana AI 联合创始人领导或参与的、基于进化模型合并技术的开源日语语言模型项目。",
+      "evidenceNeeded": [
+        "David Ha 在 Sakana AI 日语语言模型项目中的具体领导或贡献角色证明"
+      ],
+      "reviewedAt": "2026-06-09T11:32:51.729Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtn0wb00036qvtin9tmhfk:People.products[1]:f5f53ca95188",
+      "personId": "cmjwtn0wb00036qvtin9tmhfk",
+      "person": "Clément Delangue",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Transformers Library",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Transformers Library 是 Hugging Face 公司开发的开源库，作为联合创始人，其贡献是领导公司，而非直接作为该具体库的‘co-creator’。将具体库版本归为个人代表成果层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为 Hugging Face 的联合创始人，领导了包括 Transformers 库在内的开源AI平台的建设。",
+      "evidenceNeeded": [
+        "Clément Delangue 在 Transformers Library 开发中的具体角色和贡献证明"
+      ],
+      "reviewedAt": "2026-06-09T11:32:53.447Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[0]:6fc7f2cd3f21",
+      "personId": "cmjwtismz0004fvae3npd3avz",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Snapdragon processors",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Snapdragon processors 是高通公司的产品线，Cristiano Amon 作为CEO，其领导的是整个公司，而非具体处理器产品线。将具体产品线归为个人代表成果层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为高通公司CEO，领导了包括 Snapdragon 处理器在内的半导体业务。",
+      "evidenceNeeded": [
+        "Cristiano Amon 对 Snapdragon 处理器产品线的具体领导职责证明"
+      ],
+      "reviewedAt": "2026-06-09T11:32:53.447Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[1]:95856784dfc4",
+      "personId": "cmjwtismz0004fvae3npd3avz",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Oryon CPU",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Oryon CPU 是高通公司收购 Nuvia 后开发的具体产品，作为CEO，其领导的是整个公司，而非具体CPU产品。将具体产品归为个人代表成果层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为高通公司CEO，领导了包括 Oryon CPU 在内的定制芯片战略。",
+      "evidenceNeeded": [
+        "Cristiano Amon 对 Oryon CPU 项目的具体领导职责证明"
+      ],
+      "reviewedAt": "2026-06-09T11:32:53.447Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[2]:d2c797fbddea",
+      "personId": "cmjwtismz0004fvae3npd3avz",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Qualcomm 5G technology",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Qualcomm 5G technology 是高通公司的技术平台，作为CEO，其领导的是整个公司，而非具体技术平台。将具体技术平台归为个人代表成果层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为高通公司CEO，领导了包括 5G 技术在内的无线通信战略。",
+      "evidenceNeeded": [
+        "Cristiano Amon 对 Qualcomm 5G technology 的具体领导职责证明"
+      ],
+      "reviewedAt": "2026-06-09T11:32:53.447Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtismz0004fvae3npd3avz:People.products[3]:2374389fcb8e",
+      "personId": "cmjwtismz0004fvae3npd3avz",
+      "person": "Cristiano Amon",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[3]",
+      "objectLabel": "Qualcomm 4G technology",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Qualcomm 4G technology 是高通公司的技术平台，作为CEO，其领导的是整个公司，而非具体技术平台。将具体技术平台归为个人代表成果层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为高通公司CEO，领导了包括 4G 技术在内的无线通信业务。",
+      "evidenceNeeded": [
+        "Cristiano Amon 对 Qualcomm 4G technology 的具体领导职责证明"
+      ],
+      "reviewedAt": "2026-06-09T11:32:53.447Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtsw84q00023esto9f6h0w6:People.products[2]:a2766d35e301",
+      "personId": "cmjtsw84q00023esto9f6h0w6",
+      "person": "Demis Hassabis",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Gemini",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Gemini 是 Google 的旗舰多模态模型，由 Google DeepMind 团队开发。作为 DeepMind CEO，其领导角色成立，但 Gemini 更偏向 Google 整体 AI 战略产品，直接作为个人代表成果可能过度归因。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为 Google DeepMind CEO，领导了 Gemini 等前沿 AI 模型的研发工作。",
+      "evidenceNeeded": [
+        "Demis Hassabis 在 Gemini 项目中的具体领导角色或公开声明"
+      ],
+      "reviewedAt": "2026-06-09T11:33:12.683Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:People.products[1]:f49ac82d05ac",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "Figma Make",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Figma Make 是 Figma 平台内的一个具体 AI 工具或功能。作为 CEO，其领导角色成立，但将单个工具版本作为个人代表成果可能过度归因。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为 Figma CEO，领导了 Figma Make 等 AI 驱动设计工具的开发。",
+      "evidenceNeeded": [
+        "Dylan Field 在 Figma Make 项目中的具体领导角色或公开声明"
+      ],
+      "reviewedAt": "2026-06-09T11:33:12.683Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2m92000ai004uqyjwba1:People.products[2]:fcb2a5ac61c3",
+      "personId": "cmjtv2m92000ai004uqyjwba1",
+      "person": "Dylan Field",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "FigJam",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "FigJam 是 Figma 平台内的一个具体协作工具。作为 CEO，其领导角色成立，但将单个工具版本作为个人代表成果可能过度归因。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "作为 Figma CEO，领导了 FigJam 等协作工具的开发。",
+      "evidenceNeeded": [
+        "Dylan Field 在 FigJam 项目中的具体领导角色或公开声明"
+      ],
+      "reviewedAt": "2026-06-09T11:33:12.683Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:People.products[0]:3dee8facdf3e",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "Stable Diffusion",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.8,
+      "reason": "Stable Diffusion 是 Stability AI 公司开发的具体模型版本，Emad Mostaque 作为公司创始人/CEO，其代表成果应为公司级产品族（如 Stability AI Platform），而非单个模型。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Stability AI Platform，并注明其作为创始人/CEO 的领导角色。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:33:15.209Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjtv2pq7000bi0044hykxl36:People.products[2]:7002944b8711",
+      "personId": "cmjtv2pq7000bi0044hykxl36",
+      "person": "Emad Mostaque",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Stable Audio Open",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.85,
+      "reason": "Stable Audio Open 是 Stability AI 公司开发的具体模型版本，Emad Mostaque 作为公司创始人/CEO，其代表成果应为公司级产品族，而非单个模型。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "将代表成果改为 Stability AI Platform，并注明其作为创始人/CEO 的领导角色。",
+      "evidenceNeeded": [],
+      "reviewedAt": "2026-06-09T11:33:15.209Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[0]:48c749d75429",
+      "personId": "cmjwtiqg30001fvaezf7o7j54",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[0]",
+      "objectLabel": "ChatGPT",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "ChatGPT 是 OpenAI 公司的具体产品，Fidji Simo 的角色是‘contributor’，缺乏明确的领导或核心贡献口径，不足以作为个人代表成果。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [
+        "Fidji Simo 在 ChatGPT 项目中的具体领导角色或核心贡献证明"
+      ],
+      "reviewedAt": "2026-06-09T11:33:15.209Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[1]:18fb2e3ea36d",
+      "personId": "cmjwtiqg30001fvaezf7o7j54",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[1]",
+      "objectLabel": "DALL-E",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "DALL-E 是 OpenAI 公司的具体产品，Fidji Simo 的角色是‘contributor’，缺乏明确的领导或核心贡献口径，不足以作为个人代表成果。",
+      "recommendedAction": "remove",
+      "rewriteSuggestion": null,
+      "evidenceNeeded": [
+        "Fidji Simo 在 DALL-E 项目中的具体领导角色或核心贡献证明"
+      ],
+      "reviewedAt": "2026-06-09T11:33:15.209Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    },
+    {
+      "claimId": "cmjwtiqg30001fvaezf7o7j54:People.products[2]:4d0e3af8d376",
+      "personId": "cmjwtiqg30001fvaezf7o7j54",
+      "person": "Fidji Simo",
+      "claimType": "representative_achievement",
+      "surface": "featured.products",
+      "fieldPath": "People.products[2]",
+      "objectLabel": "Sora",
+      "priority": "high",
+      "verdict": "over_attributed",
+      "confidence": 0.9,
+      "reason": "Sora 是 OpenAI 的一个具体 AI 视频生成模型。Fidji Simo 作为 CEO of Applications，其角色是领导应用层业务，但将单个模型版本作为其个人代表成果，归因层级过高。",
+      "recommendedAction": "rewrite",
+      "rewriteSuggestion": "可展示为 Fidji Simo 领导下的 OpenAI 应用产品线的一部分，或明确其作为应用业务负责人的角色。",
+      "evidenceNeeded": [
+        "Fidji Simo 在 Sora 项目中的具体领导或决策角色证明"
+      ],
+      "reviewedAt": "2026-06-09T11:33:18.810Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      },
+      "reviewFile": "docs/audit-2026-06/data/fact_claim_reviews_products_mimo.jsonl"
+    }
+  ],
+  "tiboNote": [
+    "本库当前没有 `Thibault \"Tibo\" Sottiaux` / `Tibo` 记录。",
+    "公开资料更适合写成 `Codex team lead / Head of Codex / Member of Technical Staff`，不是明确 PM title。"
+  ]
+}

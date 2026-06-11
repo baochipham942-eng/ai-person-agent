@@ -25,7 +25,6 @@ async function main() {
     console.log(`Found ${roles.length} roles with missing dates.`);
 
     // Group by person to avoid redundant searches for the same person
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const personRolesMap = new Map<string, any[]>();
     for (const role of roles) {
         if (!personRolesMap.has(role.personId)) {

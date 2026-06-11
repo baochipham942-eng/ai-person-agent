@@ -1,0 +1,180 @@
+{
+  "generatedAt": "2026-06-10T22:06:13.846Z",
+  "summary": {
+    "generatedAt": "2026-06-10T22:06:13.846Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/prune_tail_review_residual_low_value_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/prune_tail_review_residual_low_value_apply_post_verify_archive.json",
+    "stage": "manual_prune_tail_review_residual_low_value",
+    "decisions": 5,
+    "existingTargets": 0,
+    "missingTargets": 5,
+    "auditRowsInserted": 0,
+    "deleted": 0,
+    "byAction": {
+      "delete_raw_pool_item": 5
+    },
+    "byVerdict": {
+      "reject": 5
+    },
+    "byPerson": {
+      "Andrej Karpathy": 1,
+      "Chris Olah": 1,
+      "Demis Hassabis": 1,
+      "Noam Shazeer": 1,
+      "杰夫·迪恩": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtlbh2z001vefnhtx74voaz",
+        "personId": "cmjsme4n800009u972zrrxrei",
+        "person": "Andrej Karpathy",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtlbh2z001vefnhtx74voaz",
+          "objectLabel": "About"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方“关于”页面，但内容过于简略，仅作为个人主页的跳转链接。 Refetch curation 判为 human_review，原因：原来源karpathy.github.io/about过于简略，仅作为跳转链接。候选中的karpathy.ai是Andrej Karpathy的官方个人主页，内容直接展示其身份、兴趣和当前活动，是权威且可访问的替代来源，能有效补强人物信息。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T22:05:29.288Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 1,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "high",
+          "sourceType": "exa",
+          "originalUrl": "https://karpathy.github.io/about/"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxmj0r03ccrmtbjqcrulo3",
+        "personId": "cmjtxcggg00035p08qz4fgjbn",
+        "person": "Chris Olah",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxmj0r03ccrmtbjqcrulo3",
+          "objectLabel": "Our interpretability team is planning to mentor more fellows this cycle!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：属于团队招募和导师计划的公告，非技术观点分享。 Refetch curation 判为 human_review，原因：所有候选来源均未直接支持“Chris Olah的团队计划在本周期指导更多研究员”这一具体声明。需要更直接的官方公告、博客文章或可靠媒体报道来证明该计划的存在及其与Chris Olah的关联。 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T22:05:29.288Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 11,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/ch402/status/1955125366407692634"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtvmit1006hrmtb0gau9zv5",
+        "personId": "cmjtsw84q00023esto9f6h0w6",
+        "person": "Demis Hassabis",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtvmit1006hrmtb0gau9zv5",
+          "objectLabel": "announcing Gemini 3 speed/performance advancements)"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方发布的 Gemini 3 性能更新简讯，信息密度较低。 Refetch curation 判为 human_review，原因：原始来源为推文，信息密度低。Wired文章是权威媒体对Demis Hassabis宣布Gemini模型的直接报道，明确关联人物与产品发布，可作为高质量替代来源。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T22:05:29.288Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 11,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/demishassabis/status/2001095039867351243"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmju1hns50dahrmtbq86peghr",
+        "personId": "cmjtsyi9h00083estwubt8ny9",
+        "person": "Noam Shazeer",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmju1hns50dahrmtbq86peghr",
+          "objectLabel": "As a friendly competitor in the AI space, we share a core mission of building AI technology that benefits every person."
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：虽然来自官方账号，但内容属于泛泛而谈的愿景陈述，信息密度较低。 Refetch curation 判为 human_review，原因：原来源（推文）信息密度低，仅为愿景陈述。候选中的TIME人物简介和深度访谈播客能提供更权威、更具体的身份与贡献信息，可作为补强来源。维基百科和领英主页虽提及人物，但权威性不足，仅作辅助线索。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T22:05:29.288Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 12,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/NoamShazeer/status/1726683169091641602"
+        }
+      },
+      "raw": null
+    },
+    {
+      "decision": {
+        "claimId": "prune-tail:cmjtxoiwv03sdrmtbr9qrwots",
+        "personId": "cmjtxdf96000a5p08z94252m2",
+        "person": "杰夫·迪恩",
+        "target": {
+          "objectType": "RawPoolItem",
+          "objectId": "cmjtxoiwv03sdrmtbr9qrwots",
+          "objectLabel": "It has been a productive 2025!  It's wonderful working with such amazing colleagues at @GoogleDeepMind and all across @Google to conduct new research and to put research into practice across many of Google's products!"
+        },
+        "action": "delete_raw_pool_item",
+        "verdict": "reject",
+        "confidence": 0.82,
+        "reason": "删除。 该行原始 QA verdict 为 review，未进入自动删除。 原始复核原因：官方账号发布，提及个人工作感受，但内容较泛，需人工判断是否值得入库。 Refetch curation 判为 human_review，原因：原始来源是杰夫·迪恩的官方推文，内容真实但较泛。候选中的谷歌研究官方页面能权威证明其当前职位和工作重点，可作为补强来源。维基百科等页面可作为辅助，但不符合替换标准。需进一步寻找能直接证明其2025年工作感受的官方采访或文章。 Manual curation: all selected sources were removed for source-quality reasons; keep this row for human review. 已确认无 active Card.sourceUrl 或 People display/source JSON 依赖。",
+        "reviewedAt": "2026-06-10T22:05:29.288Z",
+        "reviewer": {
+          "provider": "codex",
+          "model": "prune_tail_review_manual_adjudication"
+        },
+        "evidence": {
+          "batch": 13,
+          "refetchDecision": "human_review",
+          "latestVerdict": "review",
+          "priority": "medium",
+          "sourceType": "x",
+          "originalUrl": "https://x.com/JeffDean/status/2003528031906971817"
+        }
+      },
+      "raw": null
+    }
+  ]
+}

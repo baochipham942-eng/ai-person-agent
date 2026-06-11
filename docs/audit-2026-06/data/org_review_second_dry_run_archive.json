@@ -1,0 +1,927 @@
+{
+  "generatedAt": "2026-06-10T12:24:39.247Z",
+  "summary": {
+    "generatedAt": "2026-06-10T12:24:39.247Z",
+    "mode": "dry-run",
+    "input": "docs/audit-2026-06/data/org_review_decisions_second_2026_06_10.json",
+    "archive": "docs/audit-2026-06/data/org_review_second_dry_run_archive.json",
+    "decisions": 12,
+    "mergeDecisions": 2,
+    "labelRewriteDecisions": 1,
+    "keepDecisions": 9,
+    "skipped": 0,
+    "memberOrganizations": 2,
+    "rolesRepointed": 2,
+    "duplicateRolesDeleted": 0,
+    "peopleUpdated": 6
+  },
+  "skipped": [],
+  "plans": [
+    {
+      "decision": {
+        "clusterKey": "stanford_suborgs",
+        "action": "merge_organization",
+        "canonicalOrgId": "cmk8hy41i0026a1k3f5eooqxq",
+        "memberOrgIds": [
+          "cmk8g2hu6006bb64i1im4vk4e"
+        ],
+        "canonicalDisplayLabel": "Stanford HAI",
+        "reason": "Stanford HAI and Stanford Institute for Human-Centered Artificial Intelligence (HAI) refer to the same Stanford center; keep other Stanford departments, labs, and university-level rows separate."
+      },
+      "canonical": {
+        "id": "cmk8hy41i0026a1k3f5eooqxq",
+        "name": "Stanford HAI",
+        "nameZh": null,
+        "type": "company",
+        "wikidataQid": null
+      },
+      "members": [
+        {
+          "id": "cmk8g2hu6006bb64i1im4vk4e",
+          "name": "Stanford Institute for Human-Centered Artificial Intelligence (HAI)",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null
+        }
+      ],
+      "missingCanonical": false,
+      "missingMemberIds": [],
+      "canonicalRoles": [
+        {
+          "id": "cmkb2b9dp0003o21q6tcjb0sv",
+          "personId": "cmkb1kqmm0000h7l9aopl15vr",
+          "person": "Sergey Levine",
+          "role": "Affiliation",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmk8hy41i0026a1k3f5eooqxq"
+        },
+        {
+          "id": "cmk8hy4pt0028a1k3gb8kcbdf",
+          "personId": "cmk8gtqyf0004j1tnp0m2lx54",
+          "person": "Tri Dao",
+          "role": "Affiliated Researcher",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmk8hy41i0026a1k3f5eooqxq"
+        }
+      ],
+      "memberRoles": [
+        {
+          "id": "cmk8g2i4e006db64irypcvtqm",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "Co-Director / Founding Director",
+          "startDate": "2018-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmk8g2hu6006bb64i1im4vk4e"
+        }
+      ],
+      "roleActions": [
+        {
+          "action": "repoint_role",
+          "role": {
+            "id": "cmk8g2i4e006db64irypcvtqm",
+            "personId": "cmjtsxhyo00053est14oy641y",
+            "person": "李飞飞",
+            "role": "Co-Director / Founding Director",
+            "startDate": "2018-01-01 00:00:00",
+            "endDate": null,
+            "organizationId": "cmk8g2hu6006bb64i1im4vk4e"
+          }
+        }
+      ],
+      "labelMap": {
+        "Stanford Institute for Human-Centered Artificial Intelligence (HAI)": "Stanford HAI"
+      },
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "stanford_suborgs",
+        "action": "merge_organization",
+        "canonicalOrgId": "cmjuv5yb00009u3ouiduyyg1l",
+        "memberOrgIds": [
+          "cmk8g2afb005yb64iwblxqqdh"
+        ],
+        "canonicalDisplayLabel": "斯坦福大学",
+        "reason": "Stanford University, Sequoia Professor is a position-bearing Stanford role, not a distinct organization; repoint the endowed-chair role to Stanford University."
+      },
+      "canonical": {
+        "id": "cmjuv5yb00009u3ouiduyyg1l",
+        "name": "Stanford University",
+        "nameZh": "斯坦福大学",
+        "type": "company",
+        "wikidataQid": "Q41506"
+      },
+      "members": [
+        {
+          "id": "cmk8g2afb005yb64iwblxqqdh",
+          "name": "Stanford University, Sequoia Professor",
+          "nameZh": null,
+          "type": "company",
+          "wikidataQid": null
+        }
+      ],
+      "missingCanonical": false,
+      "missingMemberIds": [],
+      "canonicalRoles": [
+        {
+          "id": "cmjv556gl000op9gn0jm1kxwe",
+          "personId": "cmjsme4n800009u972zrrxrei",
+          "person": "Andrej Karpathy",
+          "role": "Student",
+          "startDate": "2011-09-01 00:00:00",
+          "endDate": "2016-09-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6misp000n13kl19xrygvl",
+          "personId": "cmjv6furu0009mfghtf6a48k2",
+          "person": "Bob McGrew",
+          "role": "Ph.D. in Computer Science",
+          "startDate": "2004-01-01 00:00:00",
+          "endDate": "2010-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6oyoy002g13kl2q3pq0hz",
+          "personId": "cmjv6furu0003mfgha0mzdgpj",
+          "person": "Cat Wu",
+          "role": "Bachelor of Science in Computer Science",
+          "startDate": "2012-01-01 00:00:00",
+          "endDate": "2016-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkb33e42001811t96lctx1zk",
+          "personId": "cmkb1ktu60001h7l950v8po69",
+          "person": "Chelsea Finn",
+          "role": "Assistant Professor",
+          "startDate": "2018-01-01 00:00:00",
+          "endDate": "2024-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy195ff00axxccmvnvhxytz",
+          "personId": "cmjv6furu000tmfghcd5hz9kr",
+          "person": "Chip Huyen",
+          "role": "Student",
+          "startDate": "2013-12-31 16:00:00",
+          "endDate": "2017-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy196cr00azxccmfqerj12d",
+          "personId": "cmjv6furu000tmfghcd5hz9kr",
+          "person": "Chip Huyen",
+          "role": "Teacher",
+          "startDate": "2017-12-31 16:00:00",
+          "endDate": "2018-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw5ho5g002uizl84srlvc5t",
+          "personId": "cmjtv3m76000ji0044zdmrneg",
+          "person": "Christopher Manning",
+          "role": "Professor of Computer Science and Linguistics",
+          "startDate": "1999-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv59l6p002xp9gngntsfusc",
+          "personId": "cmjtv3m76000ji0044zdmrneg",
+          "person": "Christopher Manning",
+          "role": "Student",
+          "startDate": "1999-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv5ca9r0043p9gnkanvjls4",
+          "personId": "cmjrzl1b0001hb28tvtm3unfg",
+          "person": "Elon Musk",
+          "role": "Student",
+          "startDate": "1994-12-31 16:00:00",
+          "endDate": "1995-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv5kpux0087p9gnez3gier1",
+          "personId": "cmjtsx87a00043estei08y4na",
+          "person": "Ilya Sutskever",
+          "role": "Student",
+          "startDate": "2000-01-01 00:00:00",
+          "endDate": "2002-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6n6ed001213kluydxdao0",
+          "personId": "cmjv6furu0000mfghokgjj8y8",
+          "person": "Joanne Jang",
+          "role": "Bachelor of Science in Computer Science",
+          "startDate": "2008-01-01 00:00:00",
+          "endDate": "2012-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv6sghe0006riygmheaq85a",
+          "personId": "cmjv6furu0000mfghokgjj8y8",
+          "person": "Joanne Jang",
+          "role": "理学学士，数学与计算科学",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv6sdcc0005riygmv8b973p",
+          "personId": "cmjv6furu0000mfghokgjj8y8",
+          "person": "Joanne Jang",
+          "role": "计算机科学硕士",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6ltpt000213kloes3jzxw",
+          "personId": "cmjv6furu0002mfghwo1rtgy3",
+          "person": "Kevin Weil",
+          "role": "Bachelor of Science in Physics",
+          "startDate": "2002-01-01 00:00:00",
+          "endDate": "2006-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkb347ja001g11t9klqsc3s6",
+          "personId": "cmkb1l6q90005h7l9mbvg3cgu",
+          "person": "Leslie Kaelbling",
+          "role": "Student",
+          "startDate": "1983-01-01 00:00:00",
+          "endDate": "1990-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv59uii0031p9gnblki1vdl",
+          "personId": "cmjtv3hfy000ii0041pbzgdg1",
+          "person": "Percy Liang",
+          "role": "Associate Professor of Computer Science",
+          "startDate": "2003-12-31 16:00:00",
+          "endDate": "2005-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy184ag00ahxccmdjg3c7tt",
+          "personId": "cmjtv3hfy000ii0041pbzgdg1",
+          "person": "Percy Liang",
+          "role": "Associate Professor of Computer Science",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy1859700ajxccm8mx9wbhd",
+          "personId": "cmjtv3hfy000ii0041pbzgdg1",
+          "person": "Percy Liang",
+          "role": "Associate Professor, by courtesy, of Statistics",
+          "startDate": "2010-12-31 16:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy1867w00alxccmn4b8relo",
+          "personId": "cmjtv3hfy000ii0041pbzgdg1",
+          "person": "Percy Liang",
+          "role": "Senior Fellow at the Stanford Institute for Human-Centered AI",
+          "startDate": "2010-12-31 16:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv5iwsf0079p9gn27rgp957",
+          "personId": "cmjtv37mu000gi004uo73uum0",
+          "person": "Quoc Le",
+          "role": "Student",
+          "startDate": "2007-01-01 00:00:00",
+          "endDate": "2013-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy0ki140001xccmh9ekf535",
+          "personId": "cmjv6furu000pmfghv7drjtak",
+          "person": "Richard Socher",
+          "role": "PhD",
+          "startDate": "2013-12-31 16:00:00",
+          "endDate": "2014-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv6m67e001w65zwulvpzeq3",
+          "personId": "cmjv6furu000pmfghv7drjtak",
+          "person": "Richard Socher",
+          "role": "Student",
+          "startDate": "2010-01-01 00:00:00",
+          "endDate": "2014-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv3dwzu0000m20724jjl647",
+          "personId": "cmjrz11xi0002b28tg14eugjo",
+          "person": "Sam Altman",
+          "role": "Computer Science (Dropped out)",
+          "startDate": "2003-09-01 00:00:00",
+          "endDate": "2005-05-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmk8ichcg000dt2pkuvao3cgh",
+          "personId": "cmk8gtqyf0004j1tnp0m2lx54",
+          "person": "Tri Dao",
+          "role": "PhD Student in Computer Science",
+          "startDate": "2011-12-31 16:00:00",
+          "endDate": "2023-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkb2hwj2000qo21qnjabgb35",
+          "personId": "cmkb1lzay000ch7l9ddgrfbmn",
+          "person": "Yann Dubois",
+          "role": "PhD Computer Science (AI)",
+          "startDate": "2021-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkb2cl7a000eo21qd76hhg2o",
+          "personId": "cmk9voz1p000bazb98cg49jhu",
+          "person": "丹·克莱因",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaeg81k003himyjaxzh254s",
+          "personId": "cmk9w1o4s000glbppkvgn3ric",
+          "person": "于克朱",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaegg55003qimyjzdgd4xhw",
+          "personId": "cmk9vlhms0000azb9q6oxhyui",
+          "person": "伊恩·J·古德费洛",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaefbz4002uimyjm8jr1aiu",
+          "personId": "cmk9vvyoh0006klccngwh2yqa",
+          "person": "克里斯蒂娜·N·图塔诺娃",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaekf0q006aimyjm9nzgj3k",
+          "personId": "cmk9w3xrw000tlbpp0ewhrm1b",
+          "person": "凯尔文·顾",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaem928007fimyjas0974ps",
+          "personId": "cmk9vo1750007azb9zharg4db",
+          "person": "吉姆·范",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy7inuv000ti855r5gkktmv",
+          "personId": "cmjvfb5w00000lqwqatt1bmoy",
+          "person": "吉滕德拉·马利克",
+          "role": "Research Scientist",
+          "startDate": "1980-09-01 00:00:00",
+          "endDate": "1985-12-31 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv5fs7w005tp9gnrkmq7lbs",
+          "personId": "cmjtsxyrk00063esttwxwxw14",
+          "person": "吴恩达",
+          "role": "Professor",
+          "startDate": "2002-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv5edqi0055p9gnlhpxm58m",
+          "personId": "cmjtxdvoh000d5p08r4ygmu04",
+          "person": "埃里克·霍维茨",
+          "role": "Student",
+          "startDate": "2019-06-01 00:00:00",
+          "endDate": "2020-02-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaecru10011imyjrn0nktnh",
+          "personId": "cmk9w1bkq000elbppgqbjqu0h",
+          "person": "塞缪尔·瑞安·鲍曼",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaeeyy7002himyjo6gmg0s4",
+          "personId": "cmk9w1u9x000hlbppe38hr5gy",
+          "person": "塞雷娜·杨-利维",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaefwdc0038imyjqf4afewf",
+          "personId": "cmk9w2eiw000klbpph0pfzva9",
+          "person": "奥尼·汉农",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaejgxe005timyjfgihty49",
+          "personId": "cmk9vlq8z0001azb9ofl9zy7v",
+          "person": "彼得·阿比尔",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6c2ac004ddtlk3mo3m65l",
+          "personId": "cmjvfedau000blqwq5jiqakh8",
+          "person": "拉里·佩奇",
+          "role": "Master of Science",
+          "startDate": "1995-01-01 00:00:00",
+          "endDate": "1998-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6ce5o004pdtlklerdek41",
+          "personId": "cmjvfedau000blqwq5jiqakh8",
+          "person": "拉里·佩奇",
+          "role": "计算机科学博士学位",
+          "startDate": "2015-08-01 00:00:00",
+          "endDate": "2019-12-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy1e02v00ehxccm0du38a5i",
+          "personId": "cmjvd42bl0003kvtpyayxr48b",
+          "person": "斯图尔特·罗素",
+          "role": "Ph.D. in Computer Science",
+          "startDate": "1981-12-31 16:00:00",
+          "endDate": "1986-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaem4jl007dimyj4zna4yr8",
+          "personId": "cmk9vwopr0009klccin41odka",
+          "person": "普拉纳夫·拉杰普尔卡",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaeik2m0055imyj5sequb22",
+          "personId": "cmk9vx3ay000bklccun8po0tb",
+          "person": "李宏乐",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmk8g23wj005lb64ib7bj99b4",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "computer scientist",
+          "startDate": "2012-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmk8g22mm005jb64ix9i3sgxz",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "computer scientist",
+          "startDate": "2012-08-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmk8g1ujj0059b64iswa2wjad",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "scientist",
+          "startDate": "2012-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmk8g1yb3005fb64i0urdstsr",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "scientist",
+          "startDate": "2012-08-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmk8g1vzj005bb64ihw8yyxjo",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "university teacher",
+          "startDate": "2012-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmk8g1z3p005hb64ivq5ww8zs",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "university teacher",
+          "startDate": "2012-08-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaecnjy000zimyjamskdgnd",
+          "personId": "cmk9vw8zp0007klccju5r9ecc",
+          "person": "梁明涛",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaefkk7002yimyjcpzntyym",
+          "personId": "cmk9w1io8000flbpph1qw9gkt",
+          "person": "胡安·卡洛斯·尼布勒斯",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaebqi0000fimyj4rk0b1rv",
+          "personId": "cmk9w1zyu000ilbpp380aokka",
+          "person": "苏浩",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaentsy0089imyji9e2v9ah",
+          "personId": "cmk9vn1800004azb9vtrfj590",
+          "person": "蒂姆尼特·格布鲁",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6cpmk0054dtlkfafmjx5k",
+          "personId": "cmjvfenx6000clqwquxw71e7f",
+          "person": "谢尔盖·布林",
+          "role": "master's degree",
+          "startDate": "1993-09-01 00:00:00",
+          "endDate": "1995-08-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaeltjm0077imyjiegszooq",
+          "personId": "cmk9vwfkh0008klcct5gvli32",
+          "person": "贾斯汀·约翰逊",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjy1fbzt00f7xccmmpemdupz",
+          "personId": "cmjtxcp4w00055p0854gyxgh2",
+          "person": "贾里德·卡普兰",
+          "role": "Bachelor of Science - BS",
+          "startDate": "2001-01-01 00:00:00",
+          "endDate": "2005-01-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv5d0q8004gp9gnuw1tjjpe",
+          "personId": "cmjtxd9gj00095p08xgbzoqfe",
+          "person": "迈克·施罗普费尔",
+          "role": "Student",
+          "startDate": "1999-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaeh7zt003yimyjpb4vexix",
+          "personId": "cmk9w26e5000jlbppfsi84dzz",
+          "person": "阿舒托什·萨克塞纳",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaef47t002limyjg69lix6p",
+          "personId": "cmk9vy3py000gklccnre8tsr9",
+          "person": "雅各布·斯坦哈特",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv57j54001wp9gnvda7hvkf",
+          "personId": "cmjs1by3o002wb28tsdopns4d",
+          "person": "黄仁勋",
+          "role": "Student",
+          "startDate": "1991-12-31 16:00:00",
+          "endDate": "1992-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjw6cg0q001mgwosm22ywcg0",
+          "personId": "cmjs1by3o002wb28tsdopns4d",
+          "person": "黄仁勋",
+          "role": "电子工程硕士学位",
+          "startDate": "1987-12-31 16:00:00",
+          "endDate": "1990-12-30 16:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmjv7thwi004isz2t321nikvw",
+          "personId": "cmjtwkyvn000dopf3z5lk40sa",
+          "person": "黄铁军",
+          "role": "电机工程系图像系统工程中心访问教授/高级访问学者",
+          "startDate": "2011-02-01 00:00:00",
+          "endDate": "2011-08-01 00:00:00",
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        },
+        {
+          "id": "cmkaedsjd001simyj65r9g3zm",
+          "personId": "cmk9vww09000aklccdkep9iq4",
+          "person": "齐科·科尔特",
+          "role": "Member",
+          "startDate": null,
+          "endDate": null,
+          "organizationId": "cmjuv5yb00009u3ouiduyyg1l"
+        }
+      ],
+      "memberRoles": [
+        {
+          "id": "cmk8g2apk0060b64insa6fbco",
+          "personId": "cmjtsxhyo00053est14oy641y",
+          "person": "李飞飞",
+          "role": "Inaugural Sequoia Professor (endowed chair)",
+          "startDate": "2019-01-01 00:00:00",
+          "endDate": null,
+          "organizationId": "cmk8g2afb005yb64iwblxqqdh"
+        }
+      ],
+      "roleActions": [
+        {
+          "action": "repoint_role",
+          "role": {
+            "id": "cmk8g2apk0060b64insa6fbco",
+            "personId": "cmjtsxhyo00053est14oy641y",
+            "person": "李飞飞",
+            "role": "Inaugural Sequoia Professor (endowed chair)",
+            "startDate": "2019-01-01 00:00:00",
+            "endDate": null,
+            "organizationId": "cmk8g2afb005yb64iwblxqqdh"
+          }
+        }
+      ],
+      "labelMap": {
+        "Stanford University, Sequoia Professor": "斯坦福大学"
+      },
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "facebook_meta_history",
+        "action": "rewrite_people_organization_labels",
+        "labelReplacements": {
+          "Facebook人工智能研究院": "Facebook AI Research (FAIR)",
+          "脸书": "Facebook",
+          "Meta超级智能实验室": "Meta Superintelligence Labs"
+        },
+        "reason": "Normalize People.organization display labels to canonical English organization names while keeping Facebook, FAIR, Meta AI, MetaMind, Metaweb, and Meta Superintelligence Labs separate."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "labelMap": {
+        "Facebook人工智能研究院": "Facebook AI Research (FAIR)",
+        "脸书": "Facebook",
+        "Meta超级智能实验室": "Meta Superintelligence Labs"
+      },
+      "peopleUpdates": [
+        {
+          "id": "cmjtv2cix0008i004kejjlxya",
+          "name": "Guillaume Lample",
+          "before": [
+            "脸书"
+          ],
+          "after": [
+            "Facebook"
+          ],
+          "changed": true
+        },
+        {
+          "id": "cmjtv3tsv000li004co65fad9",
+          "name": "Hyung Won Chung",
+          "before": [
+            "OpenAI",
+            "Meta超级智能实验室"
+          ],
+          "after": [
+            "OpenAI",
+            "Meta Superintelligence Labs"
+          ],
+          "changed": true
+        },
+        {
+          "id": "cmk9w3b88000plbppxmpwibfp",
+          "name": "乔治亚·吉奥克萨里",
+          "before": [
+            "Facebook人工智能研究院",
+            "加州理工学院",
+            "Caltech"
+          ],
+          "after": [
+            "Facebook AI Research (FAIR)",
+            "加州理工学院",
+            "Caltech"
+          ],
+          "changed": true
+        },
+        {
+          "id": "cmk9w2ptg000mlbpp7qeuope0",
+          "name": "大卫·洛佩兹-帕兹",
+          "before": [
+            "Facebook人工智能研究院",
+            "Meta AI"
+          ],
+          "after": [
+            "Facebook AI Research (FAIR)",
+            "Meta AI"
+          ],
+          "changed": true
+        },
+        {
+          "id": "cmk9w2eiw000klbpph0pfzva9",
+          "name": "奥尼·汉农",
+          "before": [
+            "Facebook人工智能研究院",
+            "Anthropic"
+          ],
+          "after": [
+            "Facebook AI Research (FAIR)",
+            "Anthropic"
+          ],
+          "changed": true
+        },
+        {
+          "id": "cmk9w16lz000dlbppb4j2wqpb",
+          "name": "阿卜杜勒-拉赫曼·穆罕默德",
+          "before": [
+            "Facebook人工智能研究院",
+            "Rembrand"
+          ],
+          "after": [
+            "Facebook AI Research (FAIR)",
+            "Rembrand"
+          ],
+          "changed": true
+        }
+      ]
+    },
+    {
+      "decision": {
+        "clusterKey": "stanford_suborgs",
+        "action": "keep_separate",
+        "reason": "Keep Stanford University, Stanford Computer Science Department, SAIL, Stanford HAI, Stanford Digital Economy Lab, CRFM, and Stanford Vision Lab as separate displayable affiliations."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "nyu_suborgs",
+        "action": "keep_separate",
+        "reason": "Keep New York University, NYU Courant, and NYU Tandon separate because university, institute, and school-level affiliations carry different display meaning."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "cmu_suborgs",
+        "action": "keep_separate",
+        "reason": "Keep Carnegie Mellon University, CMU Computer Science Department, and NeuLab @ LTI/CMU separate because school/lab affiliations are more specific than the parent university."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "facebook_meta_history",
+        "action": "keep_separate",
+        "reason": "Keep Facebook, Meta, Facebook AI Research (FAIR), Meta AI, MetaMind, Metaweb, and Meta Superintelligence Labs separate because they represent different historical employers, labs, products, or teams."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "twitter_x_history",
+        "action": "keep_separate",
+        "reason": "Keep Twitter, Twitter/X transition rows, X Corp., and X.com separate because historical roles and acquisition/founding context differ."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "cas_ict",
+        "action": "keep_separate",
+        "reason": "Keep CAS ICT, CAS Graduate School, Institute of Biophysics, Institute of Software, parent Chinese Academy of Sciences, and the automation institute lab separate."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "ibm_research",
+        "action": "keep_separate",
+        "reason": "Keep IBM and IBM Research separate because corporate leadership roles and research-lab affiliations are distinct."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "ubc",
+        "action": "keep_separate",
+        "reason": "Keep SBS & University of British Columbia separate from University of British Columbia until the SBS context has direct source support."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    },
+    {
+      "decision": {
+        "clusterKey": "kings_college",
+        "action": "keep_separate",
+        "reason": "Keep King's College, Cambridge and King's College, New Zealand separate because they are different institutions."
+      },
+      "canonical": null,
+      "members": [],
+      "roleActions": [],
+      "peopleUpdates": []
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "source": "Business Insider Igor Babuschkin xAI departure article",
+    "generatedAt": "2026-06-11T19:24:00+08:00",
+    "note": "Use past xAI role plus current Babuschkin Ventures role to avoid showing stale xAI employment."
+  },
+  "roles": [
+    {
+      "personName": "Igor Babuschkin",
+      "aliases": ["ibab"],
+      "organizationName": "xAI",
+      "organizationType": "company",
+      "role": "Co-founder",
+      "roleZh": "联合创始人",
+      "currentTitle": "Founder @ Babuschkin Ventures / former Co-founder @ xAI",
+      "roleCategory": "founder",
+      "source": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8",
+      "confidence": 0.84,
+      "startDate": "2023-07-01",
+      "endDate": "2025-08-13"
+    },
+    {
+      "personName": "Igor Babuschkin",
+      "aliases": ["ibab"],
+      "organizationName": "Babuschkin Ventures",
+      "organizationType": "company",
+      "role": "Founder",
+      "roleZh": "创始人",
+      "currentTitle": "Founder @ Babuschkin Ventures / former Co-founder @ xAI",
+      "roleCategory": "founder",
+      "source": "https://www.businessinsider.com/xai-cofounder-leaving-learned-2-things-from-elon-musk-babuschkin-2025-8",
+      "confidence": 0.8,
+      "startDate": "2025-08-13"
+    }
+  ]
+}

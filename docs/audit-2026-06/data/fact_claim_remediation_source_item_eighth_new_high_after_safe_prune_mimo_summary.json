@@ -1,0 +1,104 @@
+{
+  "generatedAt": "2026-06-09T15:49:39.270Z",
+  "input": {
+    "claimsFile": "docs/audit-2026-06/data/fact_claims_source_items_after_eighth_safe_prune_new_high.jsonl",
+    "reviewDir": "docs/audit-2026-06/data/post_eighth_prune_new_high_review_dir",
+    "model": "mimo-v2.5-pro",
+    "filters": {
+      "claimType": null,
+      "verdict": null,
+      "action": null,
+      "person": null,
+      "limit": 0,
+      "batchSize": 8,
+      "concurrency": 4,
+      "resume": false,
+      "maxRetries": 3
+    }
+  },
+  "totalProblemIssues": 2,
+  "selectedIssues": 2,
+  "remediations": 2,
+  "byAction": {
+    "delete_raw_pool_item": 2
+  },
+  "bySafe": {
+    "safe_auto_apply": 2
+  },
+  "byClaimType": {
+    "source_item_belongs_to_person": 2
+  },
+  "topPeople": [
+    {
+      "person": "姚顺雨",
+      "total": 2,
+      "safe": 2,
+      "actions": {
+        "delete_raw_pool_item": 2
+      },
+      "samples": [
+        "source_item_belongs_to_person/delete_raw_pool_item: 审核确认内容指向标普全球矿业经济分析师姚舜禹，与目标人物姚顺雨（OpenAI研究员）职业、领域、身份均不匹配，属于同名不同人，应直接删除该错误关联。",
+        "source_item_belongs_to_person/delete_raw_pool_item: 审核确认内容指向河海大学硕士研究生姚舜禹，其教育背景、研究方向与目标人物姚顺雨（普林斯顿/OpenAI研究员）完全不同，属于同名不同人，应直接删除该错误关联。"
+      ]
+    }
+  ],
+  "safeAutoApplyQueue": [
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg03q01uirmtb5lakmdjt]:ad67377d5f68",
+      "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "verdict": "wrong_person",
+      "reviewAction": "remove",
+      "remediationAction": "delete_raw_pool_item",
+      "safeToAutoApply": true,
+      "confidence": 0.95,
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxg03q01uirmtb5lakmdjt",
+        "fieldPath": "RawPoolItem[cmjtxg03q01uirmtb5lakmdjt]",
+        "objectLabel": "Shunyu Yao （姚舜禹） - Mine Economics Analyst at S&P ..."
+      },
+      "proposedValue": null,
+      "proposedText": null,
+      "sourceQueries": [],
+      "evidenceRequirements": [],
+      "rationale": "审核确认内容指向标普全球矿业经济分析师姚舜禹，与目标人物姚顺雨（OpenAI研究员）职业、领域、身份均不匹配，属于同名不同人，应直接删除该错误关联。",
+      "blockers": [],
+      "reviewedAt": "2026-06-09T15:49:39.266Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      }
+    },
+    {
+      "claimId": "cmjtwk8kl0000opf3xwqc9tr4:RawPoolItem[cmjtxg1dq01v2rmtbg33byd2t]:6c39e51a2177",
+      "personId": "cmjtwk8kl0000opf3xwqc9tr4",
+      "person": "姚顺雨",
+      "claimType": "source_item_belongs_to_person",
+      "verdict": "wrong_person",
+      "reviewAction": "remove",
+      "remediationAction": "delete_raw_pool_item",
+      "safeToAutoApply": true,
+      "confidence": 0.95,
+      "target": {
+        "objectType": "RawPoolItem",
+        "objectId": "cmjtxg1dq01v2rmtbg33byd2t",
+        "fieldPath": "RawPoolItem[cmjtxg1dq01v2rmtbg33byd2t]",
+        "objectLabel": "姚舜禹 - AIM Group"
+      },
+      "proposedValue": null,
+      "proposedText": null,
+      "sourceQueries": [],
+      "evidenceRequirements": [],
+      "rationale": "审核确认内容指向河海大学硕士研究生姚舜禹，其教育背景、研究方向与目标人物姚顺雨（普林斯顿/OpenAI研究员）完全不同，属于同名不同人，应直接删除该错误关联。",
+      "blockers": [],
+      "reviewedAt": "2026-06-09T15:49:39.268Z",
+      "reviewer": {
+        "provider": "xiaomi",
+        "model": "mimo-v2.5-pro"
+      }
+    }
+  ],
+  "manualReviewQueue": []
+}

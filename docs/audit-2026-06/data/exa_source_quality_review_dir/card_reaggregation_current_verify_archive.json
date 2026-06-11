@@ -1,0 +1,992 @@
+{
+  "generatedAt": "2026-06-11T16:26:56.116Z",
+  "summary": {
+    "generatedAt": "2026-06-11T16:26:56.116Z",
+    "mode": "dry-run",
+    "strategy": "archive-active",
+    "generationId": "card-reaggregation:2026-06-11T16:26:51.312Z",
+    "planIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json",
+    "reviewIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json",
+    "peopleConsidered": 5,
+    "peopleEligible": 5,
+    "existingCards": 24,
+    "replacementCards": 24,
+    "skippedPeople": 0
+  },
+  "people": [
+    {
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "status": "ready",
+      "currentCards": [
+        {
+          "id": "83944dc0-f4ff-4d94-828c-8d86966d07ab",
+          "type": "fact",
+          "title": "联合国科学咨询委员会成员与多国最高荣誉勋衔",
+          "content": "Yoshua Bengio 不仅是 2018 年图灵奖得主，还担任联合国秘书长科学咨询委员会成员，为突破性技术提供独立建议。他先后获得加拿大勋章（Officer of the Order of Canada）、法国荣誉军团勋章（Knight of the Legion of Honor）以及英国皇家学会院士等多项国际顶级荣誉，体现了他在全球科学政策与学术界的双重影响力。",
+          "tags": [
+            "学术荣誉",
+            "联合国",
+            "国际影响力"
+          ],
+          "sourceUrl": "https://yoshuabengio.org/profile/",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:40:44.865",
+          "updatedAt": "2026-06-10 16:40:44.865"
+        },
+        {
+          "id": "1ecdae02-9b33-476b-99b8-8509ac058938",
+          "type": "insight",
+          "title": "利用分布式表示攻克语言建模中的“维度灾难”",
+          "content": "Bengio 在 2003 年提出，传统 n-gram 模型因“维度灾难”难以处理未见过的词序列。他的核心洞见是：通过学习词的分布式表示（词向量），可以让模型在连续空间中捕捉语义相似性。这意味着一个训练句子可以向模型提供关于指数级数量的、语义邻近的句子的信息，从而实现强大的泛化能力。",
+          "tags": [
+            "维度灾难",
+            "分布式表示",
+            "泛化能力"
+          ],
+          "sourceUrl": "https://www.iro.umontreal.ca/~lisa/pointeurs/BengioDucharmeVincentJauvin_jmlr.pdf",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:40:44.865",
+          "updatedAt": "2026-06-10 16:40:44.865"
+        },
+        {
+          "id": "fc03f760-8afb-4c85-8f3c-a95846dd2755",
+          "type": "quote",
+          "title": "“AI 的恶意利用已经成为正在发生的现实”",
+          "content": "在 2025 年接受《Nature》采访时，Bengio 强调：“恶意利用已经发生了。”他认为 AI 安全不再是一个遥远的理论问题，而是迫在眉睫的威胁。他指出，随着 AI 能力的飞速提升，如果不采取强有力的监管和安全措施，技术被滥用所带来的社会风险将远超商业利益带来的价值。",
+          "tags": [
+            "AI安全",
+            "技术监管",
+            "社会责任"
+          ],
+          "sourceUrl": "https://www.nature.com/articles/d41586-025-03760-8",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:40:44.865",
+          "updatedAt": "2026-06-10 16:40:44.865"
+        },
+        {
+          "id": "4b914b3f-ec60-4858-ab6d-d63c59fbca8b",
+          "type": "story",
+          "title": "与杨立昆（Yann LeCun）关于 AI 风险的公开辩论",
+          "content": "尽管 Bengio 与 Yann LeCun 是长期的好友且共同获得图灵奖，但两人在 AI 安全监管上持有截然不同的立场。Bengio 积极参与多次公开辩论，反驳那些认为不应严肃对待 AI 安全的观点。他深入研究了反对监管的游说力量，并坚持认为在涉及数万亿美元利益和人类生存风险时，必须优先考虑安全而非单纯的商业竞争。",
+          "tags": [
+            "学术争鸣",
+            "AI监管",
+            "科学伦理"
+          ],
+          "sourceUrl": "https://yoshuabengio.org/2024/07/09/reasoning-through-arguments-against-taking-ai-safety-seriously/",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:40:44.865",
+          "updatedAt": "2026-06-10 16:40:44.865"
+        },
+        {
+          "id": "2c11f14f-d8b0-4254-b2ee-b061fc8b8e29",
+          "type": "method",
+          "title": "通过多层抽象构建复杂函数的深度学习框架",
+          "content": "Bengio 提出了一种通过多层次抽象来学习复杂函数的方法。该方法受大脑启发，利用分布式表示和反向传播算法训练多层神经网络。其核心在于：增加网络深度不仅是为了增加参数，更是为了让模型能够解耦数据的变化因素，从而在视觉、语音和自然语言处理等高级 AI 任务中获得更好的优化和泛化效果。",
+          "tags": [
+            "深度学习",
+            "多层抽象",
+            "表示学习"
+          ],
+          "sourceUrl": "http://www.iro.umontreal.ca/~bengioy/talks/IJCAI2018-DLtutorial.html",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:40:44.865",
+          "updatedAt": "2026-06-10 16:40:44.865"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "ba9b4de6-494e-4479-b815-d62911733c04",
+          "type": "fact",
+          "title": "联合国科学咨询委员会成员与多国最高荣誉勋衔",
+          "content": "Yoshua Bengio 不仅是 2018 年图灵奖得主，还担任联合国秘书长科学咨询委员会成员，为突破性技术提供独立建议。他先后获得加拿大勋章（Officer of the Order of Canada）、法国荣誉军团勋章（Knight of the Legion of Honor）以及英国皇家学会院士等多项国际顶级荣誉，体现了他在全球科学政策与学术界的双重影响力。",
+          "tags": [
+            "学术荣誉",
+            "联合国",
+            "国际影响力"
+          ],
+          "sourceUrl": "https://yoshuabengio.org/profile/",
+          "importance": 4
+        },
+        {
+          "id": "91d6cb6e-f4c0-4761-a1e9-6239570627b0",
+          "type": "insight",
+          "title": "利用分布式表示攻克语言建模中的“维度灾难”",
+          "content": "Bengio 在 2003 年提出，传统 n-gram 模型因“维度灾难”难以处理未见过的词序列。他的核心洞见是：通过学习词的分布式表示（词向量），可以让模型在连续空间中捕捉语义相似性。这意味着一个训练句子可以向模型提供关于指数级数量的、语义邻近的句子的信息，从而实现强大的泛化能力。",
+          "tags": [
+            "维度灾难",
+            "分布式表示",
+            "泛化能力"
+          ],
+          "sourceUrl": "https://www.iro.umontreal.ca/~lisa/pointeurs/BengioDucharmeVincentJauvin_jmlr.pdf",
+          "importance": 5
+        },
+        {
+          "id": "5be6fabd-d327-4d8f-b495-09af0cdd26dd",
+          "type": "quote",
+          "title": "“AI 的恶意利用已经成为正在发生的现实”",
+          "content": "在 2025 年接受《Nature》采访时，Bengio 强调：“恶意利用已经发生了。”他认为 AI 安全不再是一个遥远的理论问题，而是迫在眉睫的威胁。他指出，随着 AI 能力的飞速提升，如果不采取强有力的监管和安全措施，技术被滥用所带来的社会风险将远超商业利益带来的价值。",
+          "tags": [
+            "AI安全",
+            "技术监管",
+            "社会责任"
+          ],
+          "sourceUrl": "https://www.nature.com/articles/d41586-025-03760-8",
+          "importance": 5
+        },
+        {
+          "id": "e0499d7e-a9cc-481d-a550-ba35051a345c",
+          "type": "story",
+          "title": "与杨立昆（Yann LeCun）关于 AI 风险的公开辩论",
+          "content": "尽管 Bengio 与 Yann LeCun 是长期的好友且共同获得图灵奖，但两人在 AI 安全监管上持有截然不同的立场。Bengio 积极参与多次公开辩论，反驳那些认为不应严肃对待 AI 安全的观点。他深入研究了反对监管的游说力量，并坚持认为在涉及数万亿美元利益和人类生存风险时，必须优先考虑安全而非单纯的商业竞争。",
+          "tags": [
+            "学术争鸣",
+            "AI监管",
+            "科学伦理"
+          ],
+          "sourceUrl": "https://yoshuabengio.org/2024/07/09/reasoning-through-arguments-against-taking-ai-safety-seriously/",
+          "importance": 4
+        },
+        {
+          "id": "f4064804-2228-4ec7-a73d-332bc40ef467",
+          "type": "method",
+          "title": "通过多层抽象构建复杂函数的深度学习框架",
+          "content": "Bengio 提出了一种通过多层次抽象来学习复杂函数的方法。该方法受大脑启发，利用分布式表示和反向传播算法训练多层神经网络。其核心在于：增加网络深度不仅是为了增加参数，更是为了让模型能够解耦数据的变化因素，从而在视觉、语音和自然语言处理等高级 AI 任务中获得更好的优化和泛化效果。",
+          "tags": [
+            "深度学习",
+            "多层抽象",
+            "表示学习"
+          ],
+          "sourceUrl": "http://www.iro.umontreal.ca/~bengioy/talks/IJCAI2018-DLtutorial.html",
+          "importance": 5
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "联合国科学咨询委员会成员与多国最高荣誉勋衔",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本明确支持卡片中的所有关键事实：联合国科学咨询委员会成员身份、加拿大勋章、法国荣誉军团勋章、英国皇家学会院士，以及图灵奖得主身份。事实准确，无夸张。"
+        },
+        {
+          "title": "利用分布式表示攻克语言建模中的“维度灾难”",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "卡片标题和正文的核心观点（利用分布式表示应对维度灾难、通过词向量捕捉语义相似性、一个训练句子可泛化到指数级邻近句子）均能从来源摘要中直接推出，事实准确，无夸张或过度归因。"
+        },
+        {
+          "title": "“AI 的恶意利用已经成为正在发生的现实”",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源标题直接支持卡片标题和核心观点。卡片内容是对Bengio观点的合理概括，未发现明显夸张或事实错误。"
+        },
+        {
+          "title": "与杨立昆（Yann LeCun）关于 AI 风险的公开辩论",
+          "decision": "keep",
+          "confidence": 0.9,
+          "reason": "来源文本明确支持卡片核心事实：Bengio与Yann LeCun是朋友，观点不同，参与了多次辩论；他研究了反对监管的游说力量；并提到了数万亿美元的利益。这些关键点均可从来源直接推出。"
+        },
+        {
+          "title": "通过多层抽象构建复杂函数的深度学习框架",
+          "decision": "keep",
+          "confidence": 0.9,
+          "reason": "来源明确支持深度学习框架的核心要素：受大脑启发、分布式表示、反向传播、多层网络、以及深度带来的优化与泛化优势。卡片内容与来源描述高度一致。"
+        },
+        {
+          "title": "通用人工智能（AGI）对国家与国际安全的深远影响",
+          "decision": "human_review",
+          "confidence": 0,
+          "reason": "sourceUrl 未匹配到 RawPoolItem 文本，不能自动通过。"
+        }
+      ],
+      "skippedReason": null
+    },
+    {
+      "personId": "cmjtwkwvi000copf3rlb2nlrz",
+      "person": "周明",
+      "status": "active",
+      "currentCards": [
+        {
+          "id": "7c9e8445-a3b5-4091-8e7c-67bc01977bd2",
+          "type": "insight",
+          "title": "2024大模型落地元年的双重驱动",
+          "content": "周明指出，2024年是大模型落地元年。这一趋势由双重因素驱动：一方面，大模型技术经过快速迭代，已具备了实际落地的能力；另一方面，企业面临降本增效的迫切需求，在业务实践中积累了丰富的数据和落地场景，为大模型的商业化应用提供了土壤。",
+          "tags": [
+            "大模型落地",
+            "商业化",
+            "降本增效",
+            "澜舟科技"
+          ],
+          "sourceUrl": "https://m.21jingji.com/article/20240319/herald/8e027be1860f57b721631e21db9d60cb_zaker.html",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:00.27",
+          "updatedAt": "2026-06-10 16:41:00.27"
+        },
+        {
+          "id": "9917648e-b068-4509-a37f-45830a65cf4b",
+          "type": "fact",
+          "title": "担任创新工场首席科学家",
+          "content": "周明博士担任创新工场首席科学家。他是世界顶级的AI科学家，自然语言处理领域的代表性人物，曾任微软亚洲研究院副院长、国际计算语言学协会（ACL）主席。",
+          "tags": [
+            "创新工场",
+            "首席科学家",
+            "学术成就",
+            "AI创业"
+          ],
+          "sourceUrl": "https://www.chuangxin.com/portfolio/items/zhou-ming",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:00.27",
+          "updatedAt": "2026-06-10 16:41:00.27"
+        },
+        {
+          "id": "4bbec527-989e-481b-b9ab-2813e2da1f06",
+          "type": "insight",
+          "title": "NLP技术演进的三大历史阶段",
+          "content": "周明在ACL 2019大会演讲中指出，ACL的历史几乎就是NLP的历史。NLP技术的发展经历了三个主要起伏阶段：早期基于规则的方法、随后基于统计学习的方法，以及当前基于深度神经网络（DNN）的方法。经过几代人的努力，NLP已形成扎实的理论与先进技术，被公认为“人工智能的明珠”。",
+          "tags": [
+            "NLP历史",
+            "技术演进",
+            "深度学习",
+            "ACL"
+          ],
+          "sourceUrl": "https://www.sohu.com/a/332924037_473283",
+          "importance": 3,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:00.27",
+          "updatedAt": "2026-06-10 16:41:00.27"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "cfa61bf7-7090-4441-bfd9-a379ae383fa2",
+          "type": "insight",
+          "title": "2024大模型落地元年的双重驱动",
+          "content": "周明指出，2024年是大模型落地元年。这一趋势由双重因素驱动：一方面，大模型技术经过快速迭代，已具备了实际落地的能力；另一方面，企业面临降本增效的迫切需求，在业务实践中积累了丰富的数据和落地场景，为大模型的商业化应用提供了土壤。",
+          "tags": [
+            "大模型落地",
+            "商业化",
+            "降本增效",
+            "澜舟科技"
+          ],
+          "sourceUrl": "https://m.21jingji.com/article/20240319/herald/8e027be1860f57b721631e21db9d60cb_zaker.html",
+          "importance": 4
+        },
+        {
+          "id": "a371e480-050c-4264-a19f-f571ea151375",
+          "type": "fact",
+          "title": "担任创新工场首席科学家",
+          "content": "周明博士担任创新工场首席科学家。他是世界顶级的AI科学家，自然语言处理领域的代表性人物，曾任微软亚洲研究院副院长、国际计算语言学协会（ACL）主席。",
+          "tags": [
+            "创新工场",
+            "首席科学家",
+            "学术成就",
+            "AI创业"
+          ],
+          "sourceUrl": "https://www.chuangxin.com/portfolio/items/zhou-ming",
+          "importance": 4
+        },
+        {
+          "id": "85ac4a01-b4db-4d7a-aaf5-9eda87016881",
+          "type": "insight",
+          "title": "NLP技术演进的三大历史阶段",
+          "content": "周明在ACL 2019大会演讲中指出，ACL的历史几乎就是NLP的历史。NLP技术的发展经历了三个主要起伏阶段：早期基于规则的方法、随后基于统计学习的方法，以及当前基于深度神经网络（DNN）的方法。经过几代人的努力，NLP已形成扎实的理论与先进技术，被公认为“人工智能的明珠”。",
+          "tags": [
+            "NLP历史",
+            "技术演进",
+            "深度学习",
+            "ACL"
+          ],
+          "sourceUrl": "https://www.sohu.com/a/332924037_473283",
+          "importance": 3
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "2024大模型落地元年的双重驱动",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本明确支持卡片核心观点：周明在发布会上称2024年是大模型落地元年，并解释了技术成熟与企业需求双重驱动。标题和正文关键事实均可从来源直接推出。"
+        },
+        {
+          "title": "出任创新工场首席科学家",
+          "decision": "rewrite",
+          "confidence": 0.9,
+          "reason": "来源支持其担任创新工场首席科学家及顶级AI科学家身份，但卡片中‘创立澜舟科技’、‘谷歌H-Index达107’、‘连接学术前沿与产业投资’等细节在来源中未提及或存在差异（来源H-Index为80），需保守处理。"
+        },
+        {
+          "title": "NLP技术演进的三大历史阶段",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本明确支持卡片核心事实：周明在ACL 2019演讲中指出ACL历史即NLP历史，并阐述了三个技术阶段（规则、统计、DNN）及NLP被誉为‘人工智能的明珠’。所有关键信息均可从来源直接推出。"
+        }
+      ],
+      "skippedReason": null
+    },
+    {
+      "personId": "cmjtwkcw00002opf3k1hdzjor",
+      "person": "杨植麟",
+      "status": "active",
+      "currentCards": [
+        {
+          "id": "6603da2a-10a8-4b24-8556-62bf32252663",
+          "type": "insight",
+          "title": "训练模型本质上是在创造世界观",
+          "content": "杨植麟提出，做模型的过程本质上是在创造一种世界观，它体现了团队对于“一个好的AI应该是什么样、应该追求何种价值观”的理解。在他看来，每个token都是独一无二的，因此训练出来的每个模型也都是独一无二的，这决定了AI的底色。",
+          "tags": [
+            "大模型哲学",
+            "AI价值观",
+            "技术世界观"
+          ],
+          "sourceUrl": "https://news.qq.com/rain/a/20260110A05QLS00",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:14.291",
+          "updatedAt": "2026-06-10 16:41:14.291"
+        },
+        {
+          "id": "7b21c820-606b-44db-ba96-9bc683838bcc",
+          "type": "fact",
+          "title": "账面现金超百亿且短期内不急于上市",
+          "content": "2025年底，月之暗面完成5亿美元C轮融资，估值达43亿美元。创始人杨植麟在内部信中透露，公司账面现金储备已突破100亿元人民币。他明确表示，由于可以从一级市场募集更大量资金，公司短期内不着急上市，资金将用于更激进地扩增AI芯片及研发下一代基座模型。",
+          "tags": [
+            "月之暗面",
+            "融资",
+            "商业策略",
+            "资金储备"
+          ],
+          "sourceUrl": "https://m.caixin.com/m/2025-12-31/102399324.html",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:14.291",
+          "updatedAt": "2026-06-10 16:41:14.291"
+        },
+        {
+          "id": "180de18d-efaf-4e65-b63b-3d6aef44d713",
+          "type": "story",
+          "title": "早期参与Transformer语言模型研发并回国",
+          "content": "2017年Transformer架构提出后，杨植麟于2018年在Google Brain与同事开始训练基于Transformer的语言模型，成为全球最早探索该方向的研究者之一。2019年，看好国内政策、风投及人才环境的他，毅然选择回国创业，开启了他的AI创业之旅。",
+          "tags": [
+            "创业历程",
+            "谷歌大脑",
+            "Transformer",
+            "学术转型"
+          ],
+          "sourceUrl": "https://news.mbalib.com/story/257383",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:14.291",
+          "updatedAt": "2026-06-10 16:41:14.291"
+        },
+        {
+          "id": "1746d280-5389-496c-b83b-bbeb49f4ee0c",
+          "type": "method",
+          "title": "2025年Kimi的两大技术进化主线",
+          "content": "为应对Agentic智能时代对长程任务处理的需求，杨植麟团队确立了两大技术进化主线：一是提升“Token Efficiency”（Token效率），以在有限数据下冲击更高的智能上限；二是持续扩展“长上下文”能力，满足智能体长程记忆的需求。",
+          "tags": [
+            "技术路线",
+            "Token效率",
+            "长上下文",
+            "Agentic AI"
+          ],
+          "sourceUrl": "https://news.qq.com/rain/a/20260110A05QLS00",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:14.291",
+          "updatedAt": "2026-06-10 16:41:14.291"
+        },
+        {
+          "id": "ebf37366-3ed1-4b6f-9ae4-61dd3a7e22d6",
+          "type": "fact",
+          "title": "师从多位AI巨擘的顶尖学术履历",
+          "content": "杨植麟拥有极强的学术背景，他在清华大学本科期间师从唐杰教授；在卡内基梅隆大学（CMU）攻读博士期间，导师为机器学习泰斗 Ruslan Salakhutdinov 和 William W. Cohen。此后，他还在 Meta AI 与 Jason Weston、Google Brain 与 Quoc V. Le 等顶尖科学家共事。",
+          "tags": [
+            "学术背景",
+            "CMU",
+            "清华大学",
+            "导师阵容"
+          ],
+          "sourceUrl": "https://kimiyoung.github.io",
+          "importance": 3,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:14.291",
+          "updatedAt": "2026-06-10 16:41:14.291"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "49237809-7ff0-44ba-8066-d1f20ba90d09",
+          "type": "insight",
+          "title": "训练模型本质上是在创造世界观",
+          "content": "杨植麟提出，做模型的过程本质上是在创造一种世界观，它体现了团队对于“一个好的AI应该是什么样、应该追求何种价值观”的理解。在他看来，每个token都是独一无二的，因此训练出来的每个模型也都是独一无二的，这决定了AI的底色。",
+          "tags": [
+            "大模型哲学",
+            "AI价值观",
+            "技术世界观"
+          ],
+          "sourceUrl": "https://news.qq.com/rain/a/20260110A05QLS00",
+          "importance": 4
+        },
+        {
+          "id": "dd7a8d15-744e-41cb-b59b-15929db827e3",
+          "type": "fact",
+          "title": "账面现金超百亿且短期内不急于上市",
+          "content": "2025年底，月之暗面完成5亿美元C轮融资，估值达43亿美元。创始人杨植麟在内部信中透露，公司账面现金储备已突破100亿元人民币。他明确表示，由于可以从一级市场募集更大量资金，公司短期内不着急上市，资金将用于更激进地扩增AI芯片及研发下一代基座模型。",
+          "tags": [
+            "月之暗面",
+            "融资",
+            "商业策略",
+            "资金储备"
+          ],
+          "sourceUrl": "https://m.caixin.com/m/2025-12-31/102399324.html",
+          "importance": 5
+        },
+        {
+          "id": "4508a37b-42c8-40d1-89f0-25fe327fba35",
+          "type": "story",
+          "title": "早期参与Transformer语言模型研发并回国",
+          "content": "2017年Transformer架构提出后，杨植麟于2018年在Google Brain与同事开始训练基于Transformer的语言模型，成为全球最早探索该方向的研究者之一。2019年，看好国内政策、风投及人才环境的他，毅然选择回国创业，开启了他的AI创业之旅。",
+          "tags": [
+            "创业历程",
+            "谷歌大脑",
+            "Transformer",
+            "学术转型"
+          ],
+          "sourceUrl": "https://news.mbalib.com/story/257383",
+          "importance": 4
+        },
+        {
+          "id": "d4622a27-7650-4496-bb7c-622fedb82336",
+          "type": "method",
+          "title": "2025年Kimi的两大技术进化主线",
+          "content": "为应对Agentic智能时代对长程任务处理的需求，杨植麟团队确立了两大技术进化主线：一是提升“Token Efficiency”（Token效率），以在有限数据下冲击更高的智能上限；二是持续扩展“长上下文”能力，满足智能体长程记忆的需求。",
+          "tags": [
+            "技术路线",
+            "Token效率",
+            "长上下文",
+            "Agentic AI"
+          ],
+          "sourceUrl": "https://news.qq.com/rain/a/20260110A05QLS00",
+          "importance": 4
+        },
+        {
+          "id": "621bd268-4f67-41bc-b8f2-68aa254bd630",
+          "type": "fact",
+          "title": "师从多位AI巨擘的顶尖学术履历",
+          "content": "杨植麟拥有极强的学术背景，他在清华大学本科期间师从唐杰教授；在卡内基梅隆大学（CMU）攻读博士期间，导师为机器学习泰斗 Ruslan Salakhutdinov 和 William W. Cohen。此后，他还在 Meta AI 与 Jason Weston、Google Brain 与 Quoc V. Le 等顶尖科学家共事。",
+          "tags": [
+            "学术背景",
+            "CMU",
+            "清华大学",
+            "导师阵容"
+          ],
+          "sourceUrl": "https://kimiyoung.github.io",
+          "importance": 3
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "训练模型本质上是在创造世界观",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本直接包含杨植麟关于“创造世界观”和“每个token独一无二”的原话，与卡片核心观点完全一致，支持其作为技术哲学观点的表述。"
+        },
+        {
+          "title": "账面现金超百亿且短期内不急于上市",
+          "decision": "keep",
+          "confidence": 1,
+          "reason": "来源明确支持卡片所有关键事实：融资金额、现金储备、创始人身份、不急于上市的态度及资金用途。无夸张或过度归因。"
+        },
+        {
+          "title": "早期参与Transformer语言模型研发并回国",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本直接引用了杨植麟的演讲，明确支持其2018年在Google参与训练Transformer语言模型、2019年回国创业的核心事实，与卡片内容一致。"
+        },
+        {
+          "title": "2025年Kimi的两大技术进化主线",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本明确支持卡片中关于2025年Kimi两大技术进化主线（Token效率与长上下文）的描述，且与Agentic智能时代的需求直接关联。"
+        },
+        {
+          "title": "师从多位AI巨擘的顶尖学术履历",
+          "decision": "keep",
+          "confidence": 1,
+          "reason": "来源文本明确列出了杨植麟的本科、博士导师及工作经历，与卡片内容完全一致，所有关键事实均有直接支持。"
+        }
+      ],
+      "skippedReason": null
+    },
+    {
+      "personId": "cmjtwkkz70006opf3yblhugno",
+      "person": "闫俊杰",
+      "status": "active",
+      "currentCards": [
+        {
+          "id": "50097958-e551-454f-9d47-31e141c16ed9",
+          "type": "insight",
+          "title": "量化是模型超越人类的分水岭",
+          "content": "闫俊杰认为，只要一个领域能够被量化，AI模型就一定会强于人类，或者至少达到人类最顶尖的水平。这种认知让他对Scaling Law充满信心，同时也导致他在研发出成功模型前会产生一种对技术失控的“恐惧感”。",
+          "tags": [
+            "AGI",
+            "量化思维",
+            "Scaling Law"
+          ],
+          "sourceUrl": "https://eu.36kr.com/zh/p/3590840490688517",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:28.106",
+          "updatedAt": "2026-06-10 16:41:28.106"
+        },
+        {
+          "id": "b80465e1-0793-4b8a-81e0-aa877271cac4",
+          "type": "insight",
+          "title": "技术是科技公司问题的“掩盖剂”",
+          "content": "闫俊杰在创业三年后意识到，技术是一家科技公司最核心的要素。他总结道：技术做不好时，所有琐碎的事情都会变成严重问题；而当技术做得足够好、足够领先时，许多管理或商业上的瑕疵似乎都会被掩盖。",
+          "tags": [
+            "技术创业",
+            "核心竞争力",
+            "创业反思"
+          ],
+          "sourceUrl": "https://www.sohu.com/a/805740896_115565",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:28.106",
+          "updatedAt": "2026-06-10 16:41:28.106"
+        },
+        {
+          "id": "f6de9ec9-a682-4c77-b2ad-2e6ab352a0fc",
+          "type": "quote",
+          "title": "拒绝将产品失败归因于用户",
+          "content": "“当产品没人用或者不赚钱的时候，肯定不能怪用户，大部分只能怪自己的技术做得不够好，或者产品做得不够好。如果通不过这个考验，公司就应该关掉。”",
+          "tags": [
+            "产品观",
+            "创业心态",
+            "责任归因"
+          ],
+          "sourceUrl": "https://m.cls.cn/detail/1804715",
+          "importance": 4,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:28.106",
+          "updatedAt": "2026-06-10 16:41:28.106"
+        },
+        {
+          "id": "640d79db-ad6f-42f0-8a3c-03225045b3c6",
+          "type": "quote",
+          "title": "创造者对技术的“敬畏与恐惧”",
+          "content": "“所有做得比较成功的模型，在做出来之前都会有点害怕。”闫俊杰坦承，当模型能力开始展现出超越人类的迹象时，作为创造者首先感受到的是不安而非单纯的兴奋。",
+          "tags": [
+            "AI伦理",
+            "技术敬畏",
+            "开发者心态"
+          ],
+          "sourceUrl": "https://eu.36kr.com/zh/p/3590840490688517",
+          "importance": 3,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:28.106",
+          "updatedAt": "2026-06-10 16:41:28.106"
+        },
+        {
+          "id": "68d7b2a0-170c-4f8c-9489-88c1fb43f435",
+          "type": "fact",
+          "title": "MiniMax港股上市及认购纪录",
+          "content": "2026年1月9日，MiniMax在港交所上市，市值突破800亿港元。其公开发售部分获得1837倍超额认购，刷新了港交所近三年科技IPO的认购纪录，体现了市场对国产大模型领头羊的高度认可。",
+          "tags": [
+            "IPO",
+            "资本市场",
+            "企业成就"
+          ],
+          "sourceUrl": "https://www.cyzone.cn/article/821184.html",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:28.106",
+          "updatedAt": "2026-06-10 16:41:28.106"
+        },
+        {
+          "id": "e992ced8-be46-47a9-96a3-f53292e65139",
+          "type": "fact",
+          "title": "闫俊杰的教育背景与职业身份",
+          "content": "闫俊杰，男，1989年出生，河南人。他于2015年博士毕业于中国科学院自动化所模式识别国家重点实验室。他是Minimax的创始人、CEO、董事会主席兼首席技术官。",
+          "tags": [
+            "个人履历",
+            "精英人才",
+            "中科院"
+          ],
+          "sourceUrl": "https://baike.baidu.com/item/%E9%97%AB%E4%BF%8A%E6%9D%B0/64788782",
+          "importance": 3,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:28.106",
+          "updatedAt": "2026-06-10 16:41:28.106"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "5a452b52-eeae-420c-bff1-4c98dab128b6",
+          "type": "insight",
+          "title": "量化是模型超越人类的分水岭",
+          "content": "闫俊杰认为，只要一个领域能够被量化，AI模型就一定会强于人类，或者至少达到人类最顶尖的水平。这种认知让他对Scaling Law充满信心，同时也导致他在研发出成功模型前会产生一种对技术失控的“恐惧感”。",
+          "tags": [
+            "AGI",
+            "量化思维",
+            "Scaling Law"
+          ],
+          "sourceUrl": "https://eu.36kr.com/zh/p/3590840490688517",
+          "importance": 5
+        },
+        {
+          "id": "72566288-d37b-4381-adaf-b07df831c3b5",
+          "type": "insight",
+          "title": "技术是科技公司问题的“掩盖剂”",
+          "content": "闫俊杰在创业三年后意识到，技术是一家科技公司最核心的要素。他总结道：技术做不好时，所有琐碎的事情都会变成严重问题；而当技术做得足够好、足够领先时，许多管理或商业上的瑕疵似乎都会被掩盖。",
+          "tags": [
+            "技术创业",
+            "核心竞争力",
+            "创业反思"
+          ],
+          "sourceUrl": "https://www.sohu.com/a/805740896_115565",
+          "importance": 4
+        },
+        {
+          "id": "f64e1510-c3d4-4020-b977-6de0054ce4c8",
+          "type": "quote",
+          "title": "拒绝将产品失败归因于用户",
+          "content": "“当产品没人用或者不赚钱的时候，肯定不能怪用户，大部分只能怪自己的技术做得不够好，或者产品做得不够好。如果通不过这个考验，公司就应该关掉。”",
+          "tags": [
+            "产品观",
+            "创业心态",
+            "责任归因"
+          ],
+          "sourceUrl": "https://m.cls.cn/detail/1804715",
+          "importance": 4
+        },
+        {
+          "id": "b6ee39b1-cc73-4cf5-a358-ef5560823d9c",
+          "type": "quote",
+          "title": "创造者对技术的“敬畏与恐惧”",
+          "content": "“所有做得比较成功的模型，在做出来之前都会有点害怕。”闫俊杰坦承，当模型能力开始展现出超越人类的迹象时，作为创造者首先感受到的是不安而非单纯的兴奋。",
+          "tags": [
+            "AI伦理",
+            "技术敬畏",
+            "开发者心态"
+          ],
+          "sourceUrl": "https://eu.36kr.com/zh/p/3590840490688517",
+          "importance": 3
+        },
+        {
+          "id": "9a2489be-d2cf-4291-9553-e0b80a0930b2",
+          "type": "fact",
+          "title": "MiniMax港股上市及认购纪录",
+          "content": "2026年1月9日，MiniMax在港交所上市，市值突破800亿港元。其公开发售部分获得1837倍超额认购，刷新了港交所近三年科技IPO的认购纪录，体现了市场对国产大模型领头羊的高度认可。",
+          "tags": [
+            "IPO",
+            "资本市场",
+            "企业成就"
+          ],
+          "sourceUrl": "https://www.cyzone.cn/article/821184.html",
+          "importance": 5
+        },
+        {
+          "id": "78dfc453-0ba8-49ce-8052-a274bb7fa064",
+          "type": "fact",
+          "title": "闫俊杰的教育背景与职业身份",
+          "content": "闫俊杰，男，1989年出生，河南人。他于2015年博士毕业于中国科学院自动化所模式识别国家重点实验室。他是Minimax的创始人、CEO、董事会主席兼首席技术官。",
+          "tags": [
+            "个人履历",
+            "精英人才",
+            "中科院"
+          ],
+          "sourceUrl": "https://baike.baidu.com/item/%E9%97%AB%E4%BF%8A%E6%9D%B0/64788782",
+          "importance": 3
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "量化是模型超越人类的分水岭",
+          "decision": "keep",
+          "confidence": 1,
+          "reason": "来源文本中的直接引语完全支持卡片标题和正文的核心观点，包括量化与模型能力的关系、对Scaling Law的信心以及成功模型前的恐惧感。"
+        },
+        {
+          "title": "技术是科技公司问题的“掩盖剂”",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本直接包含闫俊杰的原话，其核心观点（技术是核心要素，做好能掩盖问题）与卡片内容完全一致。卡片中的“创业三年后意识到”与来源中“花了两年才意识到”在时间上近似，可接受。"
+        },
+        {
+          "title": "拒绝将产品失败归因于用户",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本中闫俊杰的原话与卡片内容高度一致，核心观点、措辞和逻辑均得到直接支持。"
+        },
+        {
+          "title": "创造者对技术的“敬畏与恐惧”",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源文本直接包含闫俊杰的原话，其内容与卡片标题和正文的核心观点（对技术的敬畏与恐惧）完全一致，关键事实和引语均被来源支持。"
+        },
+        {
+          "title": "MiniMax港股上市及认购纪录",
+          "decision": "keep",
+          "confidence": 1,
+          "reason": "来源文本明确支持卡片中的上市日期、市值、超额认购倍数及刷新纪录等核心事实。"
+        },
+        {
+          "title": "闫俊杰的学术背景与精英荣誉",
+          "decision": "rewrite",
+          "confidence": 0.9,
+          "reason": "来源支持其出生年份、籍贯、博士毕业院校及时间、现任职务。但未提及“2024年《财富》中国40位40岁以下的商界精英”这一荣誉，也未明确其为“学院派创业代表”，这些属于过度归因或无来源信息，需移除。"
+        }
+      ],
+      "skippedReason": null
+    },
+    {
+      "personId": "cmjtxc4op00015p081bdqzfmb",
+      "person": "亚历克·拉德福德",
+      "status": "ready",
+      "currentCards": [
+        {
+          "id": "b83082d5-0063-4ce5-93a3-b78b03b75728",
+          "type": "method",
+          "title": "k-稀疏自编码器（k-SAE）方法论",
+          "content": "拉德福德在探索模型可解释性时，提出使用 k-稀疏自编码器来直接控制稀疏性。这种方法通过固定激活神经元的数量（k），简化了超参数调优过程，并显著改善了重建质量与稀疏性之间的平衡边界（Frontier）。此外，他通过改进技术解决了“死神经元”问题，使得在极大规模下提取模型内部特征变得更加高效和稳定。",
+          "tags": [
+            "可解释性",
+            "SAE",
+            "特征提取",
+            "模型架构"
+          ],
+          "sourceUrl": "https://www.researchgate.net/scientific-contributions/Alec-Radford-2125302025",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:43.308",
+          "updatedAt": "2026-06-10 16:41:43.308"
+        },
+        {
+          "id": "4896187a-746f-4cf3-8d84-391f0ae479a4",
+          "type": "insight",
+          "title": "可解释性工具也遵循“规模法则”",
+          "content": "拉德福德的研究指出，不仅语言模型本身遵循规模法则，用于理解它们的工具（如 SAE）也存在清晰的 Scaling Laws。实验表明，特征质量（如解释性指标和下游效应稀疏度）会随着自编码器规模的扩大而持续提升。这意味着要彻底破解复杂模型的“黑盒”，必须投入相应规模的计算资源来构建观测工具。",
+          "tags": [
+            "Scaling Laws",
+            "可解释性",
+            "AI研究范式"
+          ],
+          "sourceUrl": "https://www.researchgate.net/scientific-contributions/Alec-Radford-2125302025",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:43.308",
+          "updatedAt": "2026-06-10 16:41:43.308"
+        },
+        {
+          "id": "99b5e089-9939-41a0-a82c-000b18ef28d7",
+          "type": "fact",
+          "title": "CLIP：利用4亿对互联网数据重塑视觉监督",
+          "content": "在 CLIP 的研究中，拉德福德证明了通过预测 4 亿对来自互联网的（图像，文本）组合，可以从零开始学习到最先进的视觉表示。这种方法彻底摆脱了传统计算机视觉对人工标注固定类别的依赖，通过自然语言的广泛监督，实现了视觉模型在 30 多个不同数据集上的零样本迁移能力。",
+          "tags": [
+            "CLIP",
+            "多模态",
+            "计算机视觉",
+            "大数据集"
+          ],
+          "sourceUrl": "https://proceedings.mlr.press/v139/radford21a.html",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:43.308",
+          "updatedAt": "2026-06-10 16:41:43.308"
+        },
+        {
+          "id": "ff565f2c-dfc8-4712-a443-9f632d22d297",
+          "type": "insight",
+          "title": "GPT-2论文揭示语言模型的零样本任务迁移能力",
+          "content": "在GPT-2论文中，拉德福德等人展示了语言模型在WebText数据集上训练后，无需显式监督即可开始执行问答、翻译等任务。论文指出，随着模型规模增大，其在多个任务上的零样本性能得到提升，这为后续更大规模模型的研发提供了方向。",
+          "tags": [
+            "GPT-2",
+            "零样本学习",
+            "模型规模",
+            "通用人工智能"
+          ],
+          "sourceUrl": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:43.308",
+          "updatedAt": "2026-06-10 16:41:43.308"
+        },
+        {
+          "id": "f573eccb-30d3-4042-8b81-5093c4615d77",
+          "type": "fact",
+          "title": "教育背景：MIT 计算机科学与工程学士",
+          "content": "尽管拉德福德常被视为“无博士学位”改变 AI 界的典范，但他拥有麻省理工学院（MIT）计算机科学与工程专业的学士学位。他在 1989 年出生于波士顿，在加入 OpenAI 之前，曾作为联合创始人兼首席研究员创办了 Indico。他的职业生涯证明了在 AI 领域，前沿的工程实践与深刻的直觉往往比传统的学术头衔更具破坏力。",
+          "tags": [
+            "个人背景",
+            "MIT",
+            "职业生涯"
+          ],
+          "sourceUrl": "https://www.wikibiostar.com/profile/alec-radford/",
+          "importance": 5,
+          "generationId": null,
+          "isActive": true,
+          "archivedAt": null,
+          "createdAt": "2026-06-10 16:41:43.308",
+          "updatedAt": "2026-06-10 16:41:43.308"
+        }
+      ],
+      "nextCards": [
+        {
+          "id": "ffc0f6ba-4faf-4f79-a8b4-93ee2f4ab07f",
+          "type": "method",
+          "title": "k-稀疏自编码器（k-SAE）方法论",
+          "content": "拉德福德在探索模型可解释性时，提出使用 k-稀疏自编码器来直接控制稀疏性。这种方法通过固定激活神经元的数量（k），简化了超参数调优过程，并显著改善了重建质量与稀疏性之间的平衡边界（Frontier）。此外，他通过改进技术解决了“死神经元”问题，使得在极大规模下提取模型内部特征变得更加高效和稳定。",
+          "tags": [
+            "可解释性",
+            "SAE",
+            "特征提取",
+            "模型架构"
+          ],
+          "sourceUrl": "https://www.researchgate.net/scientific-contributions/Alec-Radford-2125302025",
+          "importance": 5
+        },
+        {
+          "id": "6f943c7a-46a7-4b86-9618-9cc7b0127914",
+          "type": "insight",
+          "title": "可解释性工具也遵循“规模法则”",
+          "content": "拉德福德的研究指出，不仅语言模型本身遵循规模法则，用于理解它们的工具（如 SAE）也存在清晰的 Scaling Laws。实验表明，特征质量（如解释性指标和下游效应稀疏度）会随着自编码器规模的扩大而持续提升。这意味着要彻底破解复杂模型的“黑盒”，必须投入相应规模的计算资源来构建观测工具。",
+          "tags": [
+            "Scaling Laws",
+            "可解释性",
+            "AI研究范式"
+          ],
+          "sourceUrl": "https://www.researchgate.net/scientific-contributions/Alec-Radford-2125302025",
+          "importance": 5
+        },
+        {
+          "id": "96e945a0-c820-44d9-830e-5ee5216d894f",
+          "type": "fact",
+          "title": "CLIP：利用4亿对互联网数据重塑视觉监督",
+          "content": "在 CLIP 的研究中，拉德福德证明了通过预测 4 亿对来自互联网的（图像，文本）组合，可以从零开始学习到最先进的视觉表示。这种方法彻底摆脱了传统计算机视觉对人工标注固定类别的依赖，通过自然语言的广泛监督，实现了视觉模型在 30 多个不同数据集上的零样本迁移能力。",
+          "tags": [
+            "CLIP",
+            "多模态",
+            "计算机视觉",
+            "大数据集"
+          ],
+          "sourceUrl": "https://proceedings.mlr.press/v139/radford21a.html",
+          "importance": 5
+        },
+        {
+          "id": "ab36c7ae-90b5-4545-9fd1-6f0f9b40e1b0",
+          "type": "insight",
+          "title": "GPT-2论文揭示语言模型的零样本任务迁移能力",
+          "content": "在GPT-2论文中，拉德福德等人展示了语言模型在WebText数据集上训练后，无需显式监督即可开始执行问答、翻译等任务。论文指出，随着模型规模增大，其在多个任务上的零样本性能得到提升，这为后续更大规模模型的研发提供了方向。",
+          "tags": [
+            "GPT-2",
+            "零样本学习",
+            "模型规模",
+            "通用人工智能"
+          ],
+          "sourceUrl": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+          "importance": 5
+        },
+        {
+          "id": "81de585f-f061-4f05-a44f-3a10c345db13",
+          "type": "fact",
+          "title": "教育背景：MIT 计算机科学与工程学士",
+          "content": "尽管拉德福德常被视为“无博士学位”改变 AI 界的典范，但他拥有麻省理工学院（MIT）计算机科学与工程专业的学士学位。他在 1989 年出生于波士顿，在加入 OpenAI 之前，曾作为联合创始人兼首席研究员创办了 Indico。他的职业生涯证明了在 AI 领域，前沿的工程实践与深刻的直觉往往比传统的学术头衔更具破坏力。",
+          "tags": [
+            "个人背景",
+            "MIT",
+            "职业生涯"
+          ],
+          "sourceUrl": "https://www.wikibiostar.com/profile/alec-radford/",
+          "importance": 5
+        }
+      ],
+      "reviewDecisions": [
+        {
+          "title": "k-稀疏自编码器（k-SAE）方法论",
+          "decision": "keep",
+          "confidence": 0.9,
+          "reason": "来源文本明确支持卡片中关于使用k-稀疏自编码器控制稀疏性、简化调优、改善重建-稀疏边界以及解决死神经元问题的核心事实。"
+        },
+        {
+          "title": "可解释性工具也遵循“规模法则”",
+          "decision": "keep",
+          "confidence": 0.9,
+          "reason": "来源文本明确指出，在稀疏自编码器（SAE）的规模和稀疏性方面发现了清晰的规模法则，并且特征质量指标随自编码器规模扩大而提升。这直接支持了卡片的核心主张。"
+        },
+        {
+          "title": "CLIP：利用4亿对互联网数据重塑视觉监督",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "卡片标题和正文的关键事实（4亿对数据、零样本迁移、30多个数据集）均能从来源摘要中直接推出，且未发现夸张或过度归因。"
+        },
+        {
+          "title": "零样本迁移能力的对数线性增长规律",
+          "decision": "rewrite",
+          "confidence": 0.8,
+          "reason": "来源支持拉德福德是论文作者及零样本迁移能力的发现，但未明确提及“对数线性增长规律”或“为GPT-3提供关键信心支撑”，这些属于过度推断或归因。"
+        },
+        {
+          "title": "教育背景：MIT 计算机科学与工程学士",
+          "decision": "keep",
+          "confidence": 0.95,
+          "reason": "来源明确支持其拥有MIT计算机科学与工程学士学位。卡片中关于出生地、年份、Indico联合创始人身份等关键事实也得到来源支持。关于“无博士学位”改变AI界的评论属于观点性描述，但核心事实无误。"
+        }
+      ],
+      "skippedReason": null
+    }
+  ]
+}

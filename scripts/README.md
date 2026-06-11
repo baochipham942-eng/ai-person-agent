@@ -5,7 +5,7 @@
 ## 常用入口
 
 - `scripts/enrich/rewash_existing.ts`: 基于 RawPoolItem 重跑语义审计，写入 QAAuditLog；默认不 prune。
-- `scripts/enrich/regenerate_cards.ts`: 基于 QAAuditLog keep 结果重聚合学习卡片；默认 dry-run，`--execute` 才写库；支持 `--include-candidates`、`--candidates-only`、`--top-n`，保存前会按 topN 截断。
+- `scripts/enrich/regenerate_cards.ts`: 基于 QAAuditLog keep 结果重聚合学习卡片；默认 dry-run，`--execute` 才写库；支持 `--include-active`、`--include-candidates`、`--candidates-only`、`--top-n`，保存前会按 topN 截断。
 - `scripts/enrich/recalculate_influence_v2.ts`: 按产品导向权重重算 `People.influenceScore`；默认 dry-run，`--execute` 才写库。
 - `scripts/enrich/calculate_topic_ranks_v2.ts`: 按当前 influenceScore 重算 `People.topicRanks`；默认 dry-run，`--execute` 才写库。
 - `scripts/enrich/apply_roster_candidates.ts`: 将 `roster_seeds.json` 落为 candidate 名册；默认 dry-run，`--execute` 才插入/更新 People。
@@ -17,6 +17,27 @@
 - `scripts/audit/export_relation_review_buckets.ts`: 只读把 `relation_review.json` 的 needs_review 分成高敏和低价值 review buckets。
 - `scripts/audit/export_candidate_readiness.ts`: 只读导出 candidate 晋级复核分桶。
 - `scripts/audit/export_prune_candidates.ts`: 只读导出 RawPoolItem prune 候选摘要；默认不删数据，`--full` 才输出完整候选列表。
+- `scripts/audit/export_fact_claims.mjs`: 只读导出人物页可见 fact claims；支持 `--claim-type`、`--person`、`--person-id`。
+- `scripts/audit/report_exa_source_quality.ts`: 只读用入库门禁策略扫描 Exa RawPoolItem，导出弱来源/错挂风险报告。
+- `scripts/audit/build_exa_source_quality_remediation.mjs`: 只读把 Exa 弱来源报告拆成 strict prune / dedicated source / MiMo review 队列。
+- `scripts/audit/verify_fact_claims_mimo.mjs`: 用 Xiaomi MiMo 审查导出的 fact claims；只写 review JSONL，不改库。
+- `scripts/audit/remediate_fact_claim_issues_mimo.mjs`: 将已审出问题的 fact claims 编排成删除、重抓来源、保守改写和人工复核队列；只写 remediation JSONL/报告，不改库。
+- `scripts/audit/refetch_source_remediation.mjs`: 只读消费 remediation 的 `refetch_source` 队列，用 Exa、Tavily 或 AnySearch 重抓候选来源并交给 MiMo 选择可替换/补强来源；Tavily 支持 `TAVILY_API_KEYS` 或 `TAVILY_API_KEY_1..N` 轮换；只写 JSONL/summary/报告，不改库。
+- `scripts/audit/export_conservative_rewrite_queue.mjs`: 只读导出 `rewrite_conservative` 队列，并关联可能受影响的 People.products / Card，供人工确认后再改写。
+- `scripts/audit/build_conservative_rewrite_decisions.mjs`: 从保守改写队列生成 `apply_product_review_decisions.ts` 可读的展示面改写草案；只写 draft JSON/报告，不改库。
+- `scripts/audit/build_refetch_followup_queue.mjs`: 从 refetch 一轮结果里导出 `no_good_source` / `human_review` / 低权威 blocker 的二次补源队列；只写 JSONL/summary/报告，不改库。
+- `scripts/audit/build_hard_tail_manual_decisions.mjs`: 从 refetch hard-tail 队列生成最终人工删改裁定文件；只写 decisions JSON/报告，不改库。
+- `scripts/audit/build_card_reaggregation_plan.ts`: 只读按 source apply 影响面挑选人物，基于 audited keep RawPoolItem 生成卡片重聚合计划，并归档现有卡片用于回滚/复核。
+- `scripts/audit/review_card_reaggregation_plan_mimo.mjs`: 只读用 MiMo 按 `sourceUrl` 对应 RawPoolItem 文本审查重聚合候选卡片，输出 keep/rewrite/drop/human_review。
+- `scripts/audit/extract_new_high_source_claims_after_prune.mjs`: 对比 prune 后 source claims 与既有 review，导出新补位的高优先级 source claims。
+- `scripts/audit/summarize_source_prune_iterations.mjs`: 汇总 source item 多轮安全删除结果，生成 `SOURCE_ITEM_SAFE_PRUNE_STATUS.md`。
+- `scripts/audit/analyze_prune_reject_review_buckets.mjs`: 只读分析剩余 reject/review RawPoolItem，按错人、空抓取、作者证据缺失、低信息辅助页等分桶，并输出 strict delete candidates。
+- `scripts/fix/apply_refetch_source_candidates.mjs`: 将 refetch 的 `replace_source` / `augment_source` 候选按门禁 additive 写入 RawPoolItem，并写入 QAAuditLog keep；默认 dry-run，`--execute` 才写库。
+- `scripts/fix/apply_product_review_decisions.ts`: 按人工/审查后的产品与卡片保守改写决策更新 People.products / topics / Card；默认 dry-run，`--execute` 才写库。
+- `scripts/fix/apply_card_reaggregation_plan.mjs`: 按 MiMo 审过的卡片重聚合计划执行单个人物卡片硬替换；默认 dry-run，`--execute` 必须同时提供 `--person`。
+- `scripts/fix/apply_hard_tail_manual_decisions.mjs`: 按 hard-tail 人工裁定写入 `manual_hard_tail` 审计，并只删除明确标记 `delete_raw_pool_item` 的 RawPoolItem；默认 dry-run，`--execute` 才写库。
+- `scripts/fix/apply_prune_reject_review_buckets.mjs`: 只执行 `analyze_prune_reject_review_buckets.mjs` 产物里的 strict delete candidates，删除 RawPoolItem 并归档完整行；默认 dry-run，`--execute` 才写库。
+- `scripts/fix/apply_safe_rawpool_remediation.mjs`: 只执行通过严格门禁的 `delete_raw_pool_item` 修复；默认 dry-run，`--execute` 才删除 RawPoolItem。
 - `scripts/fix/apply_career_normalization_safe.ts`: 执行确定性 career safe fix；默认 dry-run，`--execute` 才写库。
 - `scripts/fix/apply_career_review_safe_fixes.ts`: 按 `career_review_buckets.json` 执行二次确定性 safe fix；默认 dry-run，`--execute` 才写库。
 - `scripts/fix/apply_career_review_decisions.ts`: 按 `career_review_decisions.json` 执行人工裁定后的 role 转移/删除；默认 dry-run，`--execute` 才写库。

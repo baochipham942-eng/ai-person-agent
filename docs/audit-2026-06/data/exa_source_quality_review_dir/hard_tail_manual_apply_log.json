@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-06-10T08:28:15.982Z",
+  "summary": {
+    "generatedAt": "2026-06-10T08:28:15.982Z",
+    "mode": "execute",
+    "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/hard_tail_manual_decisions.json",
+    "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/hard_tail_manual_apply_archive.json",
+    "decisions": 23,
+    "existingTargets": 23,
+    "missingTargets": 0,
+    "auditRowsInserted": 23,
+    "deleted": 21,
+    "byAction": {
+      "delete_raw_pool_item": 21,
+      "keep_raw_pool_item": 2
+    },
+    "byVerdict": {
+      "reject": 21,
+      "keep": 2
+    },
+    "byPerson": {
+      "周伯文": 4,
+      "吴恩达": 3,
+      "周明": 3,
+      "汤姆·布朗": 3,
+      "刘知远": 2,
+      "李飞飞": 2,
+      "Andrej Karpathy": 1,
+      "Christopher Manning": 1,
+      "Yann LeCun": 1,
+      "季逸超": 1,
+      "戴文渊": 1,
+      "黄铁军": 1
+    }
+  }
+}

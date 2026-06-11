@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-06-10T13:46:23.222Z",
+  "input": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch2.jsonl",
+  "output": "docs/audit-2026-06/data/prune_tail_refetch_tavily_mimo_batch2_curated.jsonl",
+  "report": "docs/audit-2026-06/PRUNE_TAIL_REFETCH_TAVILY_MIMO_BATCH2_CURATED.md",
+  "inputRows": 20,
+  "outputRows": 20,
+  "inputSelectedSources": 25,
+  "outputSelectedSources": 22,
+  "removedSelectedSources": 3,
+  "rowsChanged": 3,
+  "rowsDeferredToHumanReview": 0,
+  "byDecision": {
+    "replace_source": 12,
+    "augment_source": 5,
+    "human_review": 2,
+    "no_good_source": 1
+  },
+  "removedHosts": {
+    "singjupost.com": 2,
+    "linkedin.com": 1
+  },
+  "keptHosts": {
+    "tsinghua.edu.cn": 4,
+    "forbes.com": 2,
+    "fortune.com": 2,
+    "lexfridman.com": 2,
+    "microsoft.com": 2,
+    "technologyreview.com": 2,
+    "aclanthology.org": 1,
+    "ai.meta.com": 1,
+    "blog.google": 1,
+    "blog.southparkcommons.com": 1,
+    "distributed.blog": 1,
+    "meta.com": 1,
+    "nlp.stanford.edu": 1,
+    "research.google": 1
+  }
+}

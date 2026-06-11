@@ -17,79 +17,6 @@ interface XPost {
 const XAI_API_URL = process.env.XAI_BASE_URL || 'https://api.x.ai/v1';
 
 /**
- * 从 Grok 返回的内容中解析推文链接和内容
- * 支持多种格式:
- * - December 27: "内容" (备注) https://x.com/...
- * - **日期**: "内容" https://x.com/...
- * - - 内容描述 https://x.com/...
- */
-function parseXPostsFromContent(content: string): XPost[] {
-    const posts: XPost[] = [];
-    const lines = content.split('\n');
-
-    // 用于匹配URL的正则
-    const urlRegex = /https:\/\/x\.com\/(\w+)\/status\/(\d+)/;
-
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        const urlMatch = line.match(urlRegex);
-
-        // 如果当前行有URL
-        if (urlMatch) {
-            const url = urlMatch[0];
-            const author = urlMatch[1];
-            const postId = urlMatch[2];
-
-            // 尝试从前一行或当前行提取内容
-            let text = '';
-            let date = '';
-
-            // 当前行和前一行都要检查
-            const linesToCheck = [lines[i - 1], line].filter(Boolean);
-
-            for (const checkLine of linesToCheck) {
-                // 提取引号内的内容
-                const quoteMatch = checkLine.match(/"([^"]+)"/);
-                if (quoteMatch && !text) {
-                    text = quoteMatch[1];
-                }
-
-                // 提取日期 (December 27, **Dec 27**, 等)
-                const dateMatch = checkLine.match(/\*\*([^*]+)\*\*/) ||
-                    checkLine.match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d+/i);
-                if (dateMatch && !date) {
-                    date = dateMatch[1] || dateMatch[0];
-                }
-
-                // 如果没有引号格式，尝试提取冒号后的内容
-                if (!text && checkLine.includes(':')) {
-                    const colonMatch = checkLine.match(/:\s*[""]?([^"""\n]+)[""]?\s*(?:\(|$)/);
-                    if (colonMatch) {
-                        text = colonMatch[1].trim();
-                    }
-                }
-            }
-
-            // 如果还是没有文本，用整行（去除URL部分）作为描述
-            if (!text) {
-                const prevLine = lines[i - 1] || '';
-                text = prevLine.replace(/^[-*]\s*/, '').replace(/\*\*[^*]+\*\*:?\s*/, '').trim();
-            }
-
-            posts.push({
-                id: postId,
-                text: text || '',
-                date: date || '',
-                url: url,
-                author: author,
-            });
-        }
-    }
-
-    return posts;
-}
-
-/**
  * 使用 Grok Live Search 搜索 X 上的真实内容
  * 启用 search_parameters 获取真实推文链接
  */
@@ -191,8 +118,6 @@ Do not output any markdown formatting or explanations, just the raw JSON string.
             }
         } catch (e) {
             console.error('Failed to parse Grok JSON:', e, content.slice(0, 100));
-            // Fallback: try parsing content as text if JSON failed (though response_format should prevent this)
-            // posts = parseXPostsFromContent(content); 
         }
 
         const sources = posts.map(p => p.url).filter(Boolean);

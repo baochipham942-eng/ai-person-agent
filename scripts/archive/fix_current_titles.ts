@@ -142,7 +142,7 @@ async function main() {
 
   let updated = 0;
   let notFound = 0;
-  let failed = 0;
+  const failed = 0;
 
   const entries = Object.entries(TITLE_FIXES);
 

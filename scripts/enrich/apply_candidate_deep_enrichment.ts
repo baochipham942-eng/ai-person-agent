@@ -8,6 +8,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { neon } from '@neondatabase/serverless';
+import { loadContentReviewPolicy } from '../audit/content_review_policy.mjs';
 
 type OfficialLink = {
   type: string;
@@ -74,9 +75,12 @@ const EXECUTE = args.includes('--execute');
 const INCLUDE_NON_CANDIDATES = args.includes('--include-non-candidates');
 const SEEDS_PATH = args.find(arg => arg.startsWith('--seeds='))?.slice('--seeds='.length)
   || 'docs/audit-2026-06/roster_enrichment.json';
+const GENERATION_ID = args.find(arg => arg.startsWith('--generation-id='))?.slice('--generation-id='.length)
+  || `candidate-deep-enrichment:${new Date().toISOString()}`;
 
 if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL');
 const sql = neon(process.env.DATABASE_URL);
+const policy = loadContentReviewPolicy();
 
 function sha256(value: string): string {
   return crypto.createHash('sha256').update(value).digest('hex');
@@ -243,6 +247,7 @@ async function existingCardTitles(personId: string): Promise<Set<string>> {
     SELECT title
     FROM "Card"
     WHERE "personId" = ${personId}
+      AND "isActive" = true
   ` as Array<{ title: string }>;
   return new Set(rows.map(row => row.title.toLowerCase()));
 }
@@ -291,10 +296,14 @@ async function insertCard(person: CandidatePerson, card: StarterCard): Promise<v
   if (!EXECUTE) return;
   const now = new Date();
   await sql`
-    INSERT INTO "Card" (id, "personId", type, title, content, tags, "sourceUrl", importance, "createdAt", "updatedAt")
+    INSERT INTO "Card" (
+      id, "personId", type, title, content, tags, "sourceUrl", importance,
+      "generationId", "isActive", "createdAt", "updatedAt"
+    )
     VALUES (
       ${crypto.randomUUID()}, ${person.id}, ${card.type}, ${card.title}, ${card.content},
-      ${card.tags}, ${card.sourceUrl || null}, ${card.importance}, ${now}, ${now}
+      ${card.tags}, ${card.sourceUrl || null}, ${card.importance},
+      ${GENERATION_ID}, ${true}, ${now}, ${now}
     )
   `;
 }
@@ -305,7 +314,7 @@ async function updatePersonMeta(person: CandidatePerson, avatarUrl: string | nul
     UPDATE "People"
     SET
       "avatarUrl" = COALESCE(NULLIF("avatarUrl", ''), ${avatarUrl}),
-      completeness = GREATEST(COALESCE(completeness, 0), ${35}),
+      completeness = GREATEST(COALESCE(completeness, 0), ${policy.candidateCompletenessFloors.deepEnrichment}),
       "updatedAt" = NOW()
     WHERE id = ${person.id}
   `;

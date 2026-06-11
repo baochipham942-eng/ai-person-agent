@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-06-11T16:26:45.022Z",
+  "queue": "docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl",
+  "batches": 26,
+  "summary": {
+    "curatedUnresolvedRows": 220,
+    "existingRawPoolItems": 31,
+    "latestKeepRowsExcluded": 29,
+    "reviewUnresolvedRows": 0,
+    "dependencyRows": 0
+  },
+  "bySourceType": {},
+  "byCuratedDecision": {},
+  "byLatestStage": {},
+  "topPeople": {},
+  "rows": []
+}
