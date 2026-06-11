@@ -1,9 +1,9 @@
 # Card Reaggregation Apply
 
-Generated at: 2026-06-11T16:26:56.116Z
+Generated at: 2026-06-11T16:55:34.494Z
 Mode: dry-run
 Strategy: archive-active
-Generation ID: card-reaggregation:2026-06-11T16:26:51.312Z
+Generation ID: card-reaggregation:2026-06-11T16:55:29.331Z
 Plan: docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json
 Review: docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json
 

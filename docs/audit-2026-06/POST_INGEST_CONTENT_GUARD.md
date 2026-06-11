@@ -1,6 +1,6 @@
 # Post-Ingest Content Guard
 
-Generated at: 2026-06-11T16:27:00.642Z
+Generated at: 2026-06-11T16:55:39.070Z
 Status: passed
 
 ## Steps
@@ -91,10 +91,10 @@ Relation review buckets written: docs/audit-2026-06/data/relation_review_buckets
   "archive": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_current_verify_archive.json",
   "reportOut": "docs/audit-2026-06/CARD_REAGGREGATION_CURRENT_VERIFY.md",
   "summary": {
-    "generatedAt": "2026-06-11T16:26:56.116Z",
+    "generatedAt": "2026-06-11T16:55:34.494Z",
     "mode": "dry-run",
     "strategy": "archive-active",
-    "generationId": "card-reaggregation:2026-06-11T16:26:51.312Z",
+    "generationId": "card-reaggregation:2026-06-11T16:55:29.331Z",
     "planIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json",
     "reviewIn": "docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json",
     "peopleConsidered": 5,
