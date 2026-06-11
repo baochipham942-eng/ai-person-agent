@@ -105,10 +105,10 @@ OPENAI_API_KEY=             # (Optional) fallback
 
 ### People
 ```
-id, qid (唯一), name, aliases[], description, whyImportant,
+id, qid (唯一), name, aliases[], description, whyImportant, aiContributionScore,
 avatarUrl, gender, country, occupation[], organization[],
-officialLinks (JSON), status, completeness,
-topics[], topicRanks (JSON), highlights (JSON), roleCategory,
+officialLinks (JSON), sourceWhitelist[], status, completeness,
+topics[], topicRanks (JSON), topicDetails (JSON), highlights (JSON), roleCategory,
 influenceScore, quotes (JSON), currentTitle, products (JSON), education (JSON),
 citationCount, hIndex, openalexId, githubStars,
 viewCount, weeklyViewCount, lastFetchedAt (JSON),
@@ -143,7 +143,8 @@ wikidataQid (不是 qid!), description
 
 ### Card
 ```
-id, personId, type, title, content, tags[], sourceUrl, importance, createdAt, updatedAt
+id, personId, type, title, content, tags[], sourceUrl, importance,
+generationId, isActive, archivedAt, createdAt, updatedAt
 ```
 
 ### RawPoolItem
