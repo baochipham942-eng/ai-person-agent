@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, type KeyboardEvent, type MouseEvent } from 'react';
+import { memo, useCallback, useRef, type KeyboardEvent, type MouseEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -127,6 +127,7 @@ function shouldIgnoreCardClick(target: EventTarget | null) {
 export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
   const router = useRouter();
   const detailHref = `/person/${person.id}`;
+  const hasPrefetchedRef = useRef(false);
   const roleLabel = person.roleCategory ? ROLE_LABELS[person.roleCategory] : null;
   // 优先使用 currentTitle 中的机构，回退到 organization[0]
   const primaryOrg = extractOrgFromTitle(person.currentTitle) || person.organization[0] || '';
@@ -137,6 +138,12 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
     if (event.defaultPrevented || !isPlainLeftClick(event) || shouldIgnoreCardClick(event.target)) return;
     router.push(detailHref);
   };
+
+  const prefetchDetail = useCallback(() => {
+    if (hasPrefetchedRef.current) return;
+    hasPrefetchedRef.current = true;
+    router.prefetch(detailHref);
+  }, [detailHref, router]);
 
   const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.defaultPrevented || event.target !== event.currentTarget) return;
@@ -153,6 +160,8 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
       aria-label={`查看 ${person.name} 的详情`}
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
+      onMouseEnter={prefetchDetail}
+      onFocus={prefetchDetail}
       className="card-interactive relative p-4 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2"
     >
       {/* Rank Badge */}

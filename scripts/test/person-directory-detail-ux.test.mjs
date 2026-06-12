@@ -79,7 +79,9 @@ test('home page SSR renders people, influence copy, and card links without neste
 
   const cardSource = await readFile('components/home/ResearcherCard.tsx', 'utf8');
   const directorySource = await readFile('components/home/ResearcherDirectory.tsx', 'utf8');
-  assert.match(cardSource, /<article className="card-interactive/);
+  assert.match(cardSource, /<article[\s\S]*className="card-interactive/);
+  assert.match(cardSource, /onMouseEnter=\{prefetchDetail\}/);
+  assert.match(cardSource, /router\.prefetch\(detailHref\)/);
   assert.doesNotMatch(cardSource, /return\s*\(\s*<Link[^>]+className="block group"/);
   assert.match(cardSource, /href=\{`\/\?view=topic&topic=/);
   assert.match(cardSource, /href=\{`\/\?view=role&role=/);
