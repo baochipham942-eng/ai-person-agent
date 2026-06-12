@@ -56,13 +56,41 @@ export interface DirectoryFilters {
   search: string;
 }
 
-export const DIRECTORY_TOPICS = [
-  '大语言模型', 'Transformer', 'RAG', 'Agent', '多模态', '推理',
-  'Scaling', '强化学习', 'RLHF', 'Memory', 'Eval', 'MoE',
-  '代码生成', 'NLP', '计算机视觉', '语音', '机器人', '自动驾驶',
-  '对齐', '安全', '合规', '医疗AI', '教育', '金融AI',
-  '开源', '产品', '基础设施', '芯片', 'AGI', '个性化'
+export interface DirectoryTopicGroup {
+  key: string;
+  label: string;
+  topics: string[];
+}
+
+export const DIRECTORY_TOPIC_GROUPS: DirectoryTopicGroup[] = [
+  {
+    key: 'model-foundations',
+    label: '模型基础',
+    topics: ['大语言模型', 'Transformer', 'Scaling', 'MoE', 'Memory', 'AGI'],
+  },
+  {
+    key: 'reasoning-alignment',
+    label: '推理与对齐',
+    topics: ['推理', '强化学习', 'RLHF', 'Eval', '对齐', '安全', '合规'],
+  },
+  {
+    key: 'agent-systems',
+    label: 'Agent 与应用',
+    topics: ['RAG', 'Agent', '代码生成', '产品', '基础设施', '开源', '个性化'],
+  },
+  {
+    key: 'modalities-embodied',
+    label: '多模态与具身',
+    topics: ['多模态', 'NLP', '计算机视觉', '语音', '机器人', '自动驾驶'],
+  },
+  {
+    key: 'industry-hardware',
+    label: '行业与硬件',
+    topics: ['医疗AI', '教育', '金融AI', '芯片'],
+  },
 ];
+
+export const DIRECTORY_TOPICS = DIRECTORY_TOPIC_GROUPS.flatMap(group => group.topics);
 
 export interface DirectoryOrganizationGroup {
   key: string;

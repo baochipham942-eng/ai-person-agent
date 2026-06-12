@@ -7,6 +7,7 @@ import {
   DIRECTORY_ORGANIZATIONS,
   DIRECTORY_ORGANIZATION_GROUPS,
   DIRECTORY_ROLES,
+  DIRECTORY_TOPIC_GROUPS,
   DIRECTORY_TOPICS,
   DIRECTORY_VIEW_MODES,
   buildDirectoryApiUrl,
@@ -57,7 +58,6 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
   const [searchQuery, setSearchQuery] = useState(initialFilters.search);
   const [debouncedSearch, setDebouncedSearch] = useState(initialFilters.search);
   const [allPeople, setAllPeople] = useState<DirectoryPerson[]>(initialData.data);
-  const [expandedFilters, setExpandedFilters] = useState(false);
   const hasMountedRef = useRef(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
@@ -177,7 +177,6 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
     setSearchQuery(next.search);
     setDebouncedSearch(next.search);
     setPage(1);
-    setExpandedFilters(false);
     updateDirectoryUrl(next, historyMode);
   };
 
@@ -354,9 +353,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
         {/* Filter Chips - 更紧凑的标签样式 */}
         {viewMode === 'topic' && (
           <div className="mb-4">
-            <div className={`flex flex-wrap gap-1.5 overflow-hidden transition-all duration-300 ${
-              expandedFilters ? 'max-h-[500px]' : 'max-h-[72px]'
-            }`}>
+            <div className="mb-2 flex flex-wrap items-center gap-1.5">
               <button
                 onClick={() => handleTopicSelect(null)}
                 className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
@@ -365,34 +362,35 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
                     : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
                 }`}
               >
-                全部
+                全部话题
               </button>
-              {DIRECTORY_TOPICS.map((topic) => (
-                <button
-                  key={topic}
-                  onClick={() => handleTopicSelect(topic)}
-                  onMouseEnter={() => handleTopicHover(topic)}
-                  className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-                    selectedTopic === topic
-                      ? 'gradient-btn'
-                      : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
-                  }`}
-                >
-                  {topic}
-                </button>
+              <span className="text-[11px] text-stone-400">按研究方向和应用场景归类</span>
+            </div>
+            <div className="space-y-2">
+              {DIRECTORY_TOPIC_GROUPS.map((group) => (
+                <div key={group.key} className="flex flex-col gap-1.5 sm:flex-row sm:items-start">
+                  <div className="w-24 flex-shrink-0 pt-1 text-[11px] font-medium text-stone-400">
+                    {group.label}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {group.topics.map((topic) => (
+                      <button
+                        key={topic}
+                        onClick={() => handleTopicSelect(topic)}
+                        onMouseEnter={() => handleTopicHover(topic)}
+                        className={`whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                          selectedTopic === topic
+                            ? 'gradient-btn'
+                            : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200 hover:border-stone-300'
+                        }`}
+                      >
+                        {topic}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
-            {DIRECTORY_TOPICS.length > 15 && (
-              <button
-                onClick={() => setExpandedFilters(!expandedFilters)}
-                className="mt-2 text-xs text-orange-600 hover:text-orange-700 flex items-center gap-0.5"
-              >
-                {expandedFilters ? '收起' : `展开全部`}
-                <svg className={`w-3.5 h-3.5 transition-transform ${expandedFilters ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            )}
           </div>
         )}
 

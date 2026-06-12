@@ -1,8 +1,9 @@
 'use client';
 
-import { memo, type MouseEvent } from 'react';
+import { memo, type KeyboardEvent, type MouseEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import type { DirectoryPerson } from '@/lib/person-directory-config';
 
 interface ResearcherCardProps {
@@ -113,16 +114,47 @@ function preventMouseFocus(event: MouseEvent<HTMLAnchorElement>) {
   event.preventDefault();
 }
 
+function isPlainLeftClick(event: MouseEvent<HTMLElement>) {
+  return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+}
+
+function shouldIgnoreCardClick(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) return false;
+  return Boolean(target.closest('a, button, input, select, textarea, [role="button"]'));
+}
+
 // 使用 memo 包裹整个组件，避免父组件重渲染时子组件不必要的渲染
 export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
+  const router = useRouter();
+  const detailHref = `/person/${person.id}`;
   const roleLabel = person.roleCategory ? ROLE_LABELS[person.roleCategory] : null;
   // 优先使用 currentTitle 中的机构，回退到 organization[0]
   const primaryOrg = extractOrgFromTitle(person.currentTitle) || person.organization[0] || '';
   const safeDescription = person.description || '资料还在整理中，先查看已确认的职位、机构和主题线索。';
   const organizationMatchText = formatOrganizationMatch(person);
 
+  const handleCardClick = (event: MouseEvent<HTMLElement>) => {
+    if (event.defaultPrevented || !isPlainLeftClick(event) || shouldIgnoreCardClick(event.target)) return;
+    router.push(detailHref);
+  };
+
+  const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.defaultPrevented || event.target !== event.currentTarget) return;
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+
+    event.preventDefault();
+    router.push(detailHref);
+  };
+
   return (
-    <article className="card-interactive relative p-4 group">
+    <article
+      role="link"
+      tabIndex={0}
+      aria-label={`查看 ${person.name} 的详情`}
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      className="card-interactive relative p-4 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2"
+    >
       {/* Rank Badge */}
       {rank && rank <= 3 && <RankBadge rank={rank} />}
 
@@ -139,7 +171,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
       {/* Header: Avatar + Name + Org */}
       <div className="flex items-start gap-3 mb-3">
         <Link
-          href={`/person/${person.id}`}
+          href={detailHref}
           aria-label={`查看 ${person.name} 的详情`}
           onMouseDown={preventMouseFocus}
           className="relative w-11 h-11 rounded-xl overflow-hidden bg-stone-100 flex-shrink-0 ring-1 ring-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
@@ -165,7 +197,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
 
         {/* Name & Org */}
         <div className="flex-1 min-w-0">
-          <Link href={`/person/${person.id}`} onMouseDown={preventMouseFocus} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded-md">
+          <Link href={detailHref} onMouseDown={preventMouseFocus} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded-md">
             <h3 className="text-sm font-semibold text-stone-900 truncate group-hover:text-orange-600 transition-colors">
               {person.name}
             </h3>
@@ -235,7 +267,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
           </div>
         </div>
         <Link
-          href={`/person/${person.id}`}
+          href={detailHref}
           onMouseDown={preventMouseFocus}
           className="text-[10px] text-stone-500 group-hover:text-orange-600 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 rounded-md px-1 py-0.5"
         >
