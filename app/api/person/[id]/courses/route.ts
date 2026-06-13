@@ -20,8 +20,8 @@ export async function GET(
   const searchParams = request.nextUrl.searchParams;
   const type = searchParams.get('type') || 'all';
   const platform = searchParams.get('platform') || 'all';
-  const limit = parseInt(searchParams.get('limit') || '20');
-  const offset = parseInt(searchParams.get('offset') || '0');
+  const limit = readBoundedInt(searchParams.get('limit'), 1, 40, 20);
+  const offset = readBoundedInt(searchParams.get('offset'), 0, 10000, 0);
 
   try {
     const where: Prisma.CourseWhereInput = {
@@ -40,6 +40,29 @@ export async function GET(
     const [courses, total, typeCounts, platformCounts] = await Promise.all([
       prisma.course.findMany({
         where,
+        select: {
+          id: true,
+          title: true,
+          titleZh: true,
+          platform: true,
+          url: true,
+          type: true,
+          level: true,
+          category: true,
+          description: true,
+          thumbnailUrl: true,
+          duration: true,
+          language: true,
+          enrollments: true,
+          rating: true,
+          reviewCount: true,
+          prerequisite: true,
+          learningOrder: true,
+          topics: true,
+          verified: true,
+          confidence: true,
+          publishedAt: true,
+        },
         orderBy: [
           { learningOrder: 'asc' },
           { enrollments: 'desc' },
@@ -118,4 +141,10 @@ export async function GET(
       { status: 500 }
     );
   }
+}
+
+function readBoundedInt(value: string | null, min: number, max: number, fallback: number): number {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.min(max, Math.max(min, Math.floor(parsed)));
 }

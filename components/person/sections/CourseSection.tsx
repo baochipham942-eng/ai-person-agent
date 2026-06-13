@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { buildTopicHref, normalizeDirectoryTopics } from '@/lib/person-directory-config';
+import { useSectionVisibility } from './useSectionVisibility';
 
 // ============== 类型定义 ==============
 
@@ -82,6 +83,7 @@ function formatRating(rating?: number): string {
 // ============== 组件 ==============
 
 export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps) {
+  const { sectionRef, isVisible } = useSectionVisibility<HTMLElement>();
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -112,12 +114,11 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
     }
   }, [personId, loaded]);
 
-  // 首次可见时加载
   useEffect(() => {
-    if (courseCount > 0) {
+    if (courseCount > 0 && isVisible) {
       loadCourses();
     }
-  }, [courseCount, loadCourses]);
+  }, [courseCount, isVisible, loadCourses]);
 
   // 如果没有课程，不渲染
   if (courseCount === 0) {
@@ -145,7 +146,7 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
   });
 
   return (
-    <section className="card-base overflow-hidden">
+    <section ref={sectionRef} className="card-base overflow-hidden">
       {/* 标题栏 */}
       <div className="px-5 py-3 border-b border-stone-100">
         <div className="flex items-center gap-2">
@@ -186,7 +187,7 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
 
       {/* 内容区域 */}
       <div className="p-5">
-        {loading ? (
+        {!isVisible || loading ? (
           <div className="flex items-center justify-center py-8">
             <div
               className="w-6 h-6 rounded-full animate-spin"
@@ -252,11 +253,19 @@ function CourseCard({ course }: { course: Course }) {
     : null;
 
   return (
-    <a
-      href={course.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block rounded-xl overflow-hidden bg-stone-50 hover:shadow-md transition-all border border-transparent hover:border-orange-100"
+    <div
+      role="link"
+      tabIndex={0}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest('a')) return;
+        window.open(course.url, '_blank', 'noopener,noreferrer');
+      }}
+      onKeyDown={(e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        window.open(course.url, '_blank', 'noopener,noreferrer');
+      }}
+      className="group block cursor-pointer rounded-xl overflow-hidden bg-stone-50 hover:shadow-md transition-all border border-transparent hover:border-orange-100"
     >
       {/* 课程封面 - 只在有缩略图时显示 */}
       {hasThumbnail && (
@@ -379,7 +388,7 @@ function CourseCard({ course }: { course: Course }) {
           </div>
         )}
       </div>
-    </a>
+    </div>
   );
 }
 

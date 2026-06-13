@@ -111,9 +111,10 @@ export function readLocalWatchlist(): WatchlistSnapshot {
   }
 }
 
-export function writeLocalWatchlist(watchlist: WatchlistSnapshot) {
+export function writeLocalWatchlist(watchlist: WatchlistSnapshot, options: { notify?: boolean } = {}) {
   if (typeof window === 'undefined') return;
   window.localStorage.setItem(WATCHLIST_STORAGE_KEY, JSON.stringify(normalizeWatchlist(watchlist)));
+  if (options.notify === false) return;
   window.dispatchEvent(new CustomEvent(WATCHLIST_CHANGED_EVENT));
 }
 

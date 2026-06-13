@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { buildTopicHref, normalizeDirectoryTopics } from '@/lib/person-directory-config';
+import { useSectionVisibility } from './useSectionVisibility';
 
 interface RawPoolItem {
   id: string;
@@ -72,6 +73,7 @@ function formatDate(dateStr: string | null): string {
 }
 
 export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
+  const { sectionRef, isVisible } = useSectionVisibility<HTMLElement>();
   const [videos, setVideos] = useState<RawPoolItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -99,12 +101,11 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
     }
   }, [personId, loaded]);
 
-  // 首次可见时加载
   useEffect(() => {
-    if (videoCount > 0) {
+    if (videoCount > 0 && isVisible) {
       loadVideos();
     }
-  }, [videoCount, loadVideos]);
+  }, [videoCount, isVisible, loadVideos]);
 
   // 如果没有视频，不渲染
   if (videoCount === 0) {
@@ -118,7 +119,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
     : videos.filter(v => v.metadata?.videoCategory === filter);
 
   return (
-    <section className="card-base overflow-hidden">
+    <section ref={sectionRef} className="card-base overflow-hidden">
       {/* 标题栏 */}
       <div className="px-5 py-3 border-b border-stone-100">
         <div className="flex items-center gap-2">
@@ -149,7 +150,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
 
       {/* 内容区域 */}
       <div className="p-5">
-        {loading ? (
+        {!isVisible || loading ? (
           <div className="flex items-center justify-center py-8">
             <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316', borderRightColor: '#ec4899' }}></div>
           </div>

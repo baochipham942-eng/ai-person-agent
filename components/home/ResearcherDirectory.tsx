@@ -67,9 +67,11 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(initialFilters.search);
   const [debouncedSearch, setDebouncedSearch] = useState(initialFilters.search);
+  const [searchOpen, setSearchOpen] = useState(Boolean(initialFilters.search));
   const [allPeople, setAllPeople] = useState<DirectoryPerson[]>(initialData.data);
   const hasMountedRef = useRef(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const currentFilters: DirectoryFilters = useMemo(() => ({
     ...filters,
@@ -111,6 +113,12 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
     }, 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);
+
+  useEffect(() => {
+    if (searchOpen) {
+      searchInputRef.current?.focus();
+    }
+  }, [searchOpen]);
 
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -249,6 +257,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
   };
 
   const handleClearFilters = () => {
+    setSearchOpen(false);
     applyFilters({
       view: 'trending',
       topic: null,
@@ -297,30 +306,72 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
         <section className="min-w-0">
-          <ActivityFeed
-            topic={selectedTopic}
-            organization={selectedOrg}
-            initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
-          />
-
           <div className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="搜索人物、公司或话题..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-10 w-full rounded-xl border border-stone-200 bg-white px-4 pl-10 text-sm text-stone-900 shadow-sm transition-all placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <ActivityFeed
+                topic={selectedTopic}
+                organization={selectedOrg}
+                initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
               />
-              <svg
-                className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+
+              <button
+                type="button"
+                aria-expanded={searchOpen}
+                aria-controls="home-directory-search"
+                onClick={() => setSearchOpen(open => !open)}
+                className={`inline-flex h-9 flex-shrink-0 items-center justify-center gap-1.5 self-start rounded-lg border px-3 text-xs font-medium shadow-sm transition-colors ${
+                  searchOpen || debouncedSearch
+                    ? 'border-orange-200 bg-orange-50 text-orange-700'
+                    : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
+                }`}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+                </svg>
+                搜索
+              </button>
             </div>
+
+            {searchOpen && (
+              <div className="mt-3 flex justify-end border-t border-stone-100 pt-3">
+                <div className="relative w-full sm:w-[420px]">
+                  <input
+                    id="home-directory-search"
+                    ref={searchInputRef}
+                    type="text"
+                    placeholder="搜索人物、公司或话题..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="h-10 w-full rounded-xl border border-stone-200 bg-white px-4 pl-10 pr-10 text-sm text-stone-900 shadow-sm transition-all placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+                  </svg>
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      aria-label="清除搜索"
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
 
             <div className="mt-3 grid gap-3 border-t border-stone-100 pt-3 xl:grid-cols-[minmax(0,0.62fr)_minmax(0,1fr)]">
               <div className="min-w-0">

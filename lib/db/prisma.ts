@@ -1,7 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { PrismaNeon } from '@prisma/adapter-neon';
-import ws from 'ws';
+import { createRequire } from 'node:module';
+
+process.env.WS_NO_BUFFER_UTIL ??= '1';
+
+const require = createRequire(import.meta.url);
+const ws = require('ws');
 
 /**
  * Prisma Client Singleton with Neon Serverless Driver

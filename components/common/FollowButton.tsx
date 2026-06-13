@@ -15,9 +15,10 @@ interface FollowButtonProps {
   target: WatchTarget;
   size?: 'sm' | 'md';
   className?: string;
+  syncOnMount?: boolean;
 }
 
-export function FollowButton({ target, size = 'md', className = '' }: FollowButtonProps) {
+export function FollowButton({ target, size = 'md', className = '', syncOnMount = true }: FollowButtonProps) {
   const [following, setFollowing] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [syncing, setSyncing] = useState(false);
@@ -33,6 +34,8 @@ export function FollowButton({ target, size = 'md', className = '' }: FollowButt
     setFollowing(hasWatchTarget(localWatchlist, stableTarget));
     setHydrated(true);
 
+    if (!syncOnMount) return;
+
     try {
       const response = await fetch('/api/user/watchlist', {
         cache: 'no-store',
@@ -47,7 +50,7 @@ export function FollowButton({ target, size = 'md', className = '' }: FollowButt
     } catch {
       // 本地关注状态仍然可用。
     }
-  }, [stableTarget]);
+  }, [stableTarget, syncOnMount]);
 
   useEffect(() => {
     refreshState();

@@ -8,7 +8,7 @@
     {
       "key": "agent-reasoning",
       "label": "Agent 与推理",
-      "topics": ["Agent", "推理", "RAG", "代码生成", "开发者工具/AI Coding"]
+      "topics": ["Agent", "推理", "RAG", "AI Coding"]
     },
     {
       "key": "generation-modalities",
@@ -76,16 +76,10 @@
       "color": "bg-purple-50 text-purple-600 border border-purple-100"
     },
     {
-      "label": "代码生成",
-      "aliases": ["Code Generation", "AI Coding"],
+      "label": "AI Coding",
+      "aliases": ["代码生成", "开发者工具/AI Coding", "Code Generation", "开发者工具", "Claude Code", "Prompt Engineering", "Prompting", "ChatGPT API", "LangChain", "LLM Applications", "LLM Apps"],
       "icon": "💻",
       "color": "bg-sky-50 text-sky-700 border border-sky-100"
-    },
-    {
-      "label": "开发者工具/AI Coding",
-      "aliases": ["开发者工具", "Claude Code", "Prompt Engineering", "Prompting", "ChatGPT API", "LangChain", "LLM Applications", "LLM Apps"],
-      "icon": "🛠️",
-      "color": "bg-slate-50 text-slate-700 border border-slate-200"
     },
     {
       "label": "AIGC/生成式媒体",

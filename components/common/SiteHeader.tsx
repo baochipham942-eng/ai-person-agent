@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { CompareNavLink } from '@/components/common/CompareNavLink';
 
-type SiteHeaderCurrent = 'home' | 'compareReports' | 'graph' | 'digest' | 'watchlist';
+type SiteHeaderCurrent = 'home' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist';
 type SiteHeaderWidth = '5xl' | '6xl' | '7xl';
 
 interface SiteHeaderProps {
@@ -15,6 +15,7 @@ const CONTENT_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: st
   { key: 'home', href: '/', label: '推荐人物' },
   { key: 'digest', href: '/digest', label: '本周动态' },
   { key: 'graph', href: '/graph', label: '人物关系' },
+  { key: 'compareReports', href: '/compare/reports', label: '人物对比' },
 ];
 
 const USER_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
@@ -66,7 +67,7 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
             </nav>
 
             <nav className="flex flex-shrink-0 items-center justify-center gap-2 overflow-x-auto scrollbar-hide md:justify-end" aria-label="个人工具">
-              <CompareNavLink isCurrent={current === 'compareReports'} />
+              <CompareNavLink isCurrent={current === 'myCompare'} />
               {USER_NAV_ITEMS.map(item => {
                 const isCurrent = current === item.key;
                 return (
