@@ -31,7 +31,7 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
   return (
     <header className="glass-header sticky top-0 z-50 border-b border-subtle">
       <div className={`${WIDTH_CLASS[maxWidth]} mx-auto px-4 sm:px-6`}>
-        <div className="flex min-h-14 flex-col gap-2 py-2 md:flex-row md:items-center md:justify-between md:gap-5">
+        <div className="grid min-h-14 grid-cols-1 gap-2 py-2 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-5">
           <Link href="/" className="flex min-w-0 items-center gap-2.5">
             <span
               className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl shadow-sm"
@@ -44,8 +44,8 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
 
           {statsSlot && <div className="hidden items-center gap-6 text-sm lg:flex">{statsSlot}</div>}
 
-          <div className="flex min-w-0 flex-1 items-center justify-between gap-3 md:justify-end">
-            <nav className="flex min-w-0 items-center gap-5 overflow-x-auto text-sm scrollbar-hide" aria-label="内容导航">
+          <div className="flex min-w-0 flex-col gap-2 md:contents">
+            <nav className="flex min-w-0 items-center justify-center gap-6 overflow-x-auto text-sm scrollbar-hide" aria-label="内容导航">
               {CONTENT_NAV_ITEMS.map(item => {
                 const isCurrent = current === item.key;
                 return (
@@ -53,9 +53,9 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
                     key={item.key}
                     href={item.href}
                     aria-current={isCurrent ? 'page' : undefined}
-                    className={`relative flex-shrink-0 whitespace-nowrap py-1 font-medium transition-colors ${
+                    className={`flex-shrink-0 whitespace-nowrap py-1 font-medium transition-colors ${
                       isCurrent
-                        ? 'text-stone-950 after:absolute after:inset-x-0 after:-bottom-2 after:h-0.5 after:rounded-full after:bg-stone-950'
+                        ? 'text-stone-950'
                         : 'text-stone-500 hover:text-orange-600'
                     }`}
                   >
@@ -65,7 +65,7 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
               })}
             </nav>
 
-            <nav className="flex flex-shrink-0 items-center gap-2 overflow-x-auto scrollbar-hide" aria-label="个人工具">
+            <nav className="flex flex-shrink-0 items-center justify-center gap-2 overflow-x-auto scrollbar-hide md:justify-end" aria-label="个人工具">
               {USER_NAV_ITEMS.map(item => {
               const isCurrent = current === item.key;
               return (

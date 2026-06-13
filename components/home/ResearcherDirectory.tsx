@@ -7,13 +7,10 @@ import { ResearcherCard, SharedSvgDefs } from './ResearcherCard';
 import { ActivityFeed } from './ActivityFeed';
 import type { ActivityEvent } from '@/lib/activity';
 import {
-  DIRECTORY_ORGANIZATIONS,
   DIRECTORY_ORGANIZATION_GROUPS,
   DIRECTORY_ROLES,
   DIRECTORY_SORT_OPTIONS,
   DIRECTORY_TOPIC_GROUPS,
-  DIRECTORY_TOPICS,
-  DIRECTORY_VIEW_MODES,
   buildDirectoryApiUrl,
   getInitialDirectoryFilters,
   type DirectoryFilters,
@@ -51,6 +48,13 @@ const LoadingSkeleton = memo(function LoadingSkeleton() {
     </div>
   );
 });
+
+const FILTER_MODES: Array<{ key: DirectoryViewMode; label: string }> = [
+  { key: 'trending', label: '全部' },
+  { key: 'topic', label: '话题' },
+  { key: 'organization', label: '机构' },
+  { key: 'role', label: '角色' },
+];
 
 interface ResearcherDirectoryProps {
   initialData: DirectoryResponse;
@@ -154,9 +158,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
     hasMore: data?.pagination?.hasMore ?? false
   };
 
-  const stats = data?.stats ?? initialData.stats;
   const isFallbackData = Boolean(data?.isFallback && page === 1 && allPeople.length === 0);
-  const displayTotalPeople = isFallbackData ? null : stats?.totalPeople ?? pagination.total;
   const hasActiveFilters = Boolean(selectedTopic || selectedOrg || selectedRole || debouncedSearch);
 
   const handleLoadMore = useCallback(() => {
@@ -293,43 +295,47 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
 
       <SiteHeader current="home" maxWidth="7xl" />
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
-          <section className="min-w-0">
-            <div className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
-              {/* Search & View Mode - 水平排列 */}
-              <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-                {/* Search Bar */}
-                <div className="relative flex-1">
-                  <input
-                    type="text"
-                    placeholder="搜索人物、公司或话题..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-10 px-4 pl-10 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-400 text-stone-900 placeholder:text-stone-400 shadow-sm transition-all"
-                  />
-                  <svg
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
+        <section className="min-w-0">
+          <ActivityFeed
+            topic={selectedTopic}
+            organization={selectedOrg}
+            initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
+          />
 
-                {/* View Mode Tabs */}
-                <div className="flex w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 xl:w-auto">
-                  {DIRECTORY_VIEW_MODES.map((mode) => (
+          <div className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="搜索人物、公司或话题..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="h-10 w-full rounded-xl border border-stone-200 bg-white px-4 pl-10 text-sm text-stone-900 shadow-sm transition-all placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+              />
+              <svg
+                className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+
+            <div className="mt-3 grid gap-3 border-t border-stone-100 pt-3 xl:grid-cols-[minmax(0,0.62fr)_minmax(0,1fr)]">
+              <div className="min-w-0">
+                <div className="mb-1.5 text-[11px] font-medium text-stone-400">筛选</div>
+                <div className="flex w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
+                  {FILTER_MODES.map((mode) => (
                     <button
                       key={mode.key}
+                      type="button"
                       onClick={() => handleViewModeChange(mode.key)}
                       onMouseEnter={() => handleTabHover(mode.key)}
-                      className={`flex flex-shrink-0 items-center whitespace-nowrap px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                      className={`flex-shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
                         viewMode === mode.key
                           ? 'gradient-btn shadow-sm'
-                          : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
+                          : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                       }`}
                     >
                       {mode.label}
@@ -338,38 +344,33 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
                 </div>
               </div>
 
-              <div className="mt-3 grid grid-cols-3 gap-2 border-t border-stone-100 pt-3">
-                <DirectoryStat
-                  label="研究者"
-                  value={displayTotalPeople === null ? '加载中' : displayTotalPeople}
-                />
-                <DirectoryStat label="话题" value={stats?.totalTopics ?? DIRECTORY_TOPICS.length} />
-                <DirectoryStat label="机构" value={stats?.totalOrgs ?? DIRECTORY_ORGANIZATIONS.length} />
+              <div className="min-w-0">
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-medium text-stone-400">排序</span>
+                  <span className="hidden truncate text-[11px] text-stone-400 md:block">
+                    {DIRECTORY_SORT_OPTIONS.find(option => option.key === selectedSort)?.hint}
+                  </span>
+                </div>
+                <div className="flex w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
+                  {DIRECTORY_SORT_OPTIONS.map((option) => (
+                    <button
+                      key={option.key}
+                      type="button"
+                      title={option.hint}
+                      onClick={() => handleSortChange(option.key)}
+                      className={`flex-shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                        selectedSort === option.key
+                          ? 'gradient-btn shadow-sm'
+                          : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-
-            <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex w-full items-center gap-1 overflow-x-auto rounded-xl bg-white p-1 shadow-sm ring-1 ring-stone-200 sm:w-auto">
-                {DIRECTORY_SORT_OPTIONS.map((option) => (
-                  <button
-                    key={option.key}
-                    type="button"
-                    title={option.hint}
-                    onClick={() => handleSortChange(option.key)}
-                    className={`flex-shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-                      selectedSort === option.key
-                        ? 'gradient-btn shadow-sm'
-                        : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-              <div className="hidden text-[11px] text-stone-400 sm:block">
-                {DIRECTORY_SORT_OPTIONS.find(option => option.key === selectedSort)?.hint}
-              </div>
-            </div>
+          </div>
 
         {/* Filter Chips - 更紧凑的标签样式 */}
         {viewMode === 'topic' && (
@@ -576,26 +577,8 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
             )}
           </>
         )}
-          </section>
-
-          <aside className="lg:sticky lg:top-20">
-            <ActivityFeed
-              topic={selectedTopic}
-              organization={selectedOrg}
-              initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
-            />
-          </aside>
-        </div>
+        </section>
       </main>
-    </div>
-  );
-}
-
-function DirectoryStat({ label, value }: { label: string; value: number | string }) {
-  return (
-    <div className="rounded-lg bg-stone-50 px-3 py-2 text-center ring-1 ring-stone-100">
-      <div className="text-sm font-semibold text-stone-950">{value}</div>
-      <div className="mt-0.5 text-[11px] text-stone-500">{label}</div>
     </div>
   );
 }

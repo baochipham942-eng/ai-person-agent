@@ -1,11 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import useSWR from 'swr';
 import type { ActivityEvent } from '@/lib/activity';
-import { buildTopicHref } from '@/lib/person-directory-config';
 
 interface ActivityFeedProps {
   topic?: string | null;
@@ -33,9 +31,10 @@ const fetcher = async (url: string): Promise<ActivityResponse> => {
 };
 
 export function ActivityFeed({ topic, organization, initialEvents }: ActivityFeedProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
   const apiUrl = useMemo(() => {
     const params = new URLSearchParams({
-      limit: '1',
+      limit: '5',
       days: '7',
       includeRelations: 'false',
     });
@@ -49,31 +48,29 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
     dedupingInterval: 60000,
     fallbackData: initialEvents ? { data: initialEvents } : undefined,
   });
-  const featuredEvent = data?.data?.[0] || null;
+  const events = useMemo(() => (data?.data || []).slice(0, 5), [data]);
+  const safeActiveIndex = events.length > 0 ? activeIndex % events.length : 0;
+  const featuredEvent = events[safeActiveIndex] || null;
   const showLoading = isLoading && !data;
   const scopeLabel = topic ? ` · ${topic}` : organization ? ` · ${organization}` : '';
 
+  const nextEvent = () => {
+    if (events.length < 2) return;
+    setActiveIndex(index => (index + 1) % events.length);
+  };
+
   return (
-    <section className="mb-5 rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm">
-      <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h2 className="text-base font-semibold text-stone-950">本周值得扫一眼{scopeLabel}</h2>
-          <p className="mt-1 text-xs leading-5 text-stone-500">按北京时间展示近 7 天可信来源里的优先信号。</p>
-        </div>
-        <Link
-          href="/digest"
-          className="inline-flex h-8 flex-shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-700 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
-        >
-          查看全部
-        </Link>
+    <section className="mb-4">
+      <div className="mb-2 flex items-center justify-between gap-3">
+        <h2 className="text-base font-semibold text-stone-950">本周推荐{scopeLabel}</h2>
       </div>
 
       {error ? (
-        <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 text-xs text-stone-500">
+        <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 text-xs text-stone-500 shadow-sm">
           动态暂时加载失败，目录仍可继续使用。
         </div>
       ) : showLoading ? (
-        <div className="rounded-xl border border-stone-200 bg-stone-50/70 px-4 py-4">
+        <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm">
           <div className="mb-2 flex items-center gap-2 text-[11px] text-stone-400">
             <span className="rounded-md bg-white px-2 py-0.5 ring-1 ring-stone-200">内容</span>
             <span>正在选取本周信号</span>
@@ -83,12 +80,30 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
             <div className="h-3 w-full animate-pulse rounded bg-stone-200/60" />
             <div className="h-3 w-2/3 animate-pulse rounded bg-stone-200/60" />
           </div>
-          <div className="mt-4 h-8 w-full animate-pulse rounded-lg bg-white ring-1 ring-stone-200" />
         </div>
       ) : featuredEvent ? (
-        <FeaturedActivityCard event={featuredEvent} />
+        <div className="space-y-2">
+          <FeaturedActivityCard event={featuredEvent} onCycle={nextEvent} />
+          {events.length > 1 && (
+            <div className="flex justify-center gap-1.5" aria-label="本周推荐切换">
+              {events.map((event, index) => (
+                <button
+                  key={event.id}
+                  type="button"
+                  aria-label={`切换到第 ${index + 1} 条推荐`}
+                  onClick={() => setActiveIndex(index)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    index === safeActiveIndex
+                      ? 'w-5 bg-orange-500'
+                      : 'w-1.5 bg-stone-300 hover:bg-stone-400'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       ) : (
-        <div className="rounded-xl border border-dashed border-stone-200 bg-stone-50/70 px-4 py-6 text-center text-xs text-stone-500">
+        <div className="rounded-xl border border-dashed border-stone-200 bg-white px-4 py-6 text-center text-xs text-stone-500 shadow-sm">
           本周暂时没有可展示的动态
         </div>
       )}
@@ -96,11 +111,15 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
   );
 }
 
-function FeaturedActivityCard({ event }: { event: ActivityEvent }) {
+function FeaturedActivityCard({ event, onCycle }: { event: ActivityEvent; onCycle: () => void }) {
   const eventTime = event.occurredAt || event.detectedAt;
 
   return (
-    <article className="rounded-xl border border-stone-200 bg-stone-50/70 px-4 py-4 transition-colors hover:border-orange-200 hover:bg-orange-50/40">
+    <button
+      type="button"
+      onClick={onCycle}
+      className="block w-full cursor-pointer rounded-xl border border-stone-200 bg-white px-4 py-4 text-left shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/30 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+    >
       <div className="flex flex-col gap-4">
         <div className="min-w-0 flex-1">
           <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px] text-stone-500">
@@ -110,40 +129,18 @@ function FeaturedActivityCard({ event }: { event: ActivityEvent }) {
             <span>{event.sourceLabel}</span>
             <span>{formatDateTime(eventTime)}</span>
           </div>
-          <a
-            href={event.url}
-            target="_blank"
-            rel="noreferrer"
-            className="line-clamp-2 text-lg font-semibold leading-7 text-stone-950 hover:text-orange-700"
-          >
+          <h3 className="line-clamp-2 text-lg font-semibold leading-7 text-stone-950">
             {event.title}
-          </a>
+          </h3>
           {event.importanceReason && (
             <p className="mt-2 line-clamp-2 text-sm leading-6 text-stone-700">
               <span className="font-medium text-stone-950">推荐理由：</span>
               {event.importanceReason}
             </p>
           )}
-          {event.summary && (
-            <p className="mt-1 line-clamp-2 text-sm leading-6 text-stone-500">{event.summary}</p>
-          )}
-          {event.topics.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {event.topics.slice(0, 3).map(topic => (
-                <Link
-                  key={topic}
-                  href={buildTopicHref(topic)}
-                  className="rounded-md bg-white px-2 py-0.5 text-[11px] text-stone-500 ring-1 ring-stone-200 hover:bg-orange-50 hover:text-orange-700 hover:ring-orange-100"
-                >
-                  {topic}
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
 
-        <Link
-          href={`/person/${event.personId}`}
+        <div
           className="flex w-full flex-shrink-0 items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-stone-700 ring-1 ring-stone-200 hover:text-orange-700"
           title={event.personName}
         >
@@ -162,9 +159,9 @@ function FeaturedActivityCard({ event }: { event: ActivityEvent }) {
               <span className="mt-0.5 block truncate text-[11px] font-normal text-stone-400">{event.personCurrentTitle}</span>
             )}
           </span>
-        </Link>
+        </div>
       </div>
-    </article>
+    </button>
   );
 }
 
