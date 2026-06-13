@@ -40,7 +40,7 @@ export function WatchlistClient() {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const totalCount = watchlist.people.length + watchlist.topics.length + watchlist.organizations.length;
+  const totalCount = watchlistItemCount(watchlist);
   const hasItems = totalCount > 0;
 
   const loadWatchlist = useCallback(async () => {
@@ -48,6 +48,13 @@ export function WatchlistClient() {
     const localWatchlist = readLocalWatchlist();
     let nextWatchlist = localWatchlist;
     let isAuthenticated = false;
+    const localIsEmpty = watchlistItemCount(localWatchlist) === 0;
+
+    setWatchlist(localWatchlist);
+    if (localIsEmpty) {
+      setSummary({ people: [], events: [] });
+      setLoading(false);
+    }
 
     try {
       const response = await fetch('/api/user/watchlist', {
@@ -78,6 +85,12 @@ export function WatchlistClient() {
     setWatchlist(nextWatchlist);
     setAuthenticated(isAuthenticated);
 
+    if (watchlistItemCount(nextWatchlist) === 0) {
+      setSummary({ people: [], events: [] });
+      setLoading(false);
+      return;
+    }
+
     try {
       const nextSummary = await fetchSummary(nextWatchlist);
       setSummary(nextSummary);
@@ -91,6 +104,10 @@ export function WatchlistClient() {
     const handleChange = () => {
       const next = readLocalWatchlist();
       setWatchlist(next);
+      if (watchlistItemCount(next) === 0) {
+        setSummary({ people: [], events: [] });
+        return;
+      }
       void fetchSummary(next).then(setSummary);
     };
     window.addEventListener(WATCHLIST_CHANGED_EVENT, handleChange);
@@ -127,8 +144,8 @@ export function WatchlistClient() {
           </div>
         </section>
 
-        {!hasItems && !loading ? (
-          <EmptyState authenticated={authenticated} />
+        {!hasItems ? (
+          <EmptyState authenticated={authenticated} loading={loading} />
         ) : (
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div className="space-y-8">
@@ -173,6 +190,10 @@ export function WatchlistClient() {
       </main>
     </div>
   );
+}
+
+function watchlistItemCount(watchlist: WatchlistSnapshot): number {
+  return watchlist.people.length + watchlist.topics.length + watchlist.organizations.length;
 }
 
 async function fetchSummary(watchlist: WatchlistSnapshot): Promise<WatchlistSummary> {
@@ -254,28 +275,36 @@ function WatchChipSection({ title, items }: { title: string; items: WatchTarget[
   );
 }
 
-function EmptyState({ authenticated }: { authenticated: boolean | null }) {
+function EmptyState({ authenticated, loading }: { authenticated: boolean | null; loading: boolean }) {
   return (
     <section className="rounded-xl border border-dashed border-stone-200 bg-white/70 px-5 py-10 text-center">
-      <h2 className="text-base font-semibold text-stone-950">还没有关注内容</h2>
+      <h2 className="text-base font-semibold text-stone-950">
+        {loading ? '正在读取关注内容' : '还没有关注内容'}
+      </h2>
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-stone-500">
-        先从高频入口开始关注，个人动态流会自动聚合近期变化。
+        {loading ? '如果当前浏览器里没有关注，稍后会展示空态入口。' : '先从高频入口开始关注，个人动态流会自动聚合近期变化。'}
       </p>
-      <div className="mt-5 flex flex-wrap justify-center gap-2">
-        <Link href="/topic/Agent" className="rounded-lg bg-stone-900 px-3 py-2 text-xs font-medium text-white hover:bg-orange-600">
-          Agent 方向
-        </Link>
-        <Link href="/org/OpenAI" className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-700 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700">
-          OpenAI 机构
-        </Link>
-      </div>
-      <div className="mx-auto mt-6 max-w-md rounded-xl border border-stone-200 bg-white px-4 py-3 text-xs leading-5 text-stone-500 shadow-sm">
-        <div className="mb-1 text-sm font-medium text-stone-900">同步状态</div>
-        {authenticated ? '已登录，关注会写入账号资料。' : '当前使用本地关注，登录后可同步到账号。'}
-      </div>
-      <div className="mx-auto mt-3 max-w-md text-left">
-        <NewsletterSettings authenticated={authenticated} />
-      </div>
+      {loading ? (
+        <div className="mx-auto mt-6 h-10 w-10 animate-spin rounded-full border-2 border-stone-200 border-t-orange-500" />
+      ) : (
+        <>
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
+            <Link href="/topic/Agent" className="rounded-lg bg-stone-900 px-3 py-2 text-xs font-medium text-white hover:bg-orange-600">
+              Agent 方向
+            </Link>
+            <Link href="/org/OpenAI" className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-700 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700">
+              OpenAI 机构
+            </Link>
+          </div>
+          <div className="mx-auto mt-6 max-w-md rounded-xl border border-stone-200 bg-white px-4 py-3 text-xs leading-5 text-stone-500 shadow-sm">
+            <div className="mb-1 text-sm font-medium text-stone-900">同步状态</div>
+            {authenticated ? '已登录，关注会写入账号资料。' : '当前使用本地关注，登录后可同步到账号。'}
+          </div>
+          <div className="mx-auto mt-3 max-w-md text-left">
+            <NewsletterSettings authenticated={authenticated} />
+          </div>
+        </>
+      )}
     </section>
   );
 }

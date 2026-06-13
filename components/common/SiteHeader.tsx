@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { CompareNavLink } from '@/components/common/CompareNavLink';
 
 type SiteHeaderCurrent = 'home' | 'compareReports' | 'graph' | 'digest' | 'watchlist';
 type SiteHeaderWidth = '5xl' | '6xl' | '7xl';
@@ -17,7 +18,6 @@ const CONTENT_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: st
 ];
 
 const USER_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
-  { key: 'compareReports', href: '/compare/reports', label: '人物对比' },
   { key: 'watchlist', href: '/watchlist', label: '我的关注' },
 ];
 
@@ -66,23 +66,24 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
             </nav>
 
             <nav className="flex flex-shrink-0 items-center justify-center gap-2 overflow-x-auto scrollbar-hide md:justify-end" aria-label="个人工具">
+              <CompareNavLink isCurrent={current === 'compareReports'} />
               {USER_NAV_ITEMS.map(item => {
-              const isCurrent = current === item.key;
-              return (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  aria-current={isCurrent ? 'page' : undefined}
-                  className={`whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-xs font-medium shadow-sm transition-colors ${
-                    isCurrent
-                      ? 'border-stone-900 bg-stone-900 text-white'
-                      : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+                const isCurrent = current === item.key;
+                return (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    aria-current={isCurrent ? 'page' : undefined}
+                    className={`inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
+                      isCurrent
+                        ? 'border-stone-900 bg-stone-50 text-stone-950'
+                        : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
         </div>

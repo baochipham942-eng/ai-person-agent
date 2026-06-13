@@ -3,7 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  MAX_COMPARE_PEOPLE,
+  notifyCompareChanged,
+  readCompareIds,
+  writeCompareIds,
+} from '@/components/common/compareSelection';
 import { COMPARE_AGENT_TOOLS } from '@/lib/compare-report';
 
 export interface ComparePersonOption {
@@ -25,17 +31,23 @@ interface CompareReportEvent {
 
 interface CompareReportBuilderProps {
   initialPeople?: ComparePersonOption[];
+  initialIds?: string[];
   initialTopic?: string;
 }
 
 const DEFAULT_TOPIC = 'AI 观点、商业路径、安全治理、开放策略、算力基础设施、未来判断';
+const EMPTY_PEOPLE: ComparePersonOption[] = [];
+const EMPTY_IDS: string[] = [];
 
 export function CompareReportBuilder({
-  initialPeople = [],
+  initialPeople = EMPTY_PEOPLE,
+  initialIds = EMPTY_IDS,
   initialTopic = DEFAULT_TOPIC,
 }: CompareReportBuilderProps) {
   const router = useRouter();
-  const [selectedPeople, setSelectedPeople] = useState<ComparePersonOption[]>(initialPeople.slice(0, 3));
+  const initialPeopleRef = useRef(initialPeople.slice(0, MAX_COMPARE_PEOPLE));
+  const initialIdsRef = useRef(initialIds.slice(0, MAX_COMPARE_PEOPLE));
+  const [selectedPeople, setSelectedPeople] = useState<ComparePersonOption[]>(initialPeople.slice(0, MAX_COMPARE_PEOPLE));
   const [query, setQuery] = useState('');
   const [topic, setTopic] = useState(initialTopic);
   const [results, setResults] = useState<ComparePersonOption[]>([]);
@@ -43,11 +55,66 @@ export function CompareReportBuilder({
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [activeReportId, setActiveReportId] = useState<string | null>(null);
+  const [activeReportTitle, setActiveReportTitle] = useState<string | null>(null);
   const [reportStatus, setReportStatus] = useState<string | null>(null);
+  const [progressOpen, setProgressOpen] = useState(false);
+  const [storageReady, setStorageReady] = useState(false);
   const [events, setEvents] = useState<CompareReportEvent[]>([]);
 
   const selectedIds = useMemo(() => new Set(selectedPeople.map(person => person.id)), [selectedPeople]);
-  const canCreate = selectedPeople.length >= 2 && selectedPeople.length <= 3 && !creating;
+  const reportInFlight = Boolean(activeReportId && reportStatus !== 'completed' && reportStatus !== 'failed');
+  const canCreate = selectedPeople.length >= 2 && selectedPeople.length <= MAX_COMPARE_PEOPLE && !creating && !reportInFlight;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function hydrateSelectionFromStorage() {
+      const initialPeopleSnapshot = initialPeopleRef.current;
+      const initialIdsSnapshot = initialIdsRef.current;
+
+      if (initialPeopleSnapshot.length > 0) {
+        writeCompareIds(initialPeopleSnapshot.map(person => person.id));
+        notifyCompareChanged();
+        setStorageReady(true);
+        return;
+      }
+
+      const fallbackIds = uniqueIds(initialIdsSnapshot.length > 0 ? initialIdsSnapshot : readCompareIds()).slice(0, MAX_COMPARE_PEOPLE);
+      if (fallbackIds.length === 0) {
+        setStorageReady(true);
+        return;
+      }
+
+      writeCompareIds(fallbackIds);
+      notifyCompareChanged();
+      setSelectedPeople(fallbackIds.map(id => fallbackPersonOption(id)));
+
+      try {
+        const response = await fetch(`/api/compare/people?ids=${encodeURIComponent(fallbackIds.join(','))}`, {
+          cache: 'no-store',
+        });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload?.error || '读取候选人物失败');
+        const people = Array.isArray(payload.data) ? payload.data : [];
+        if (!cancelled && people.length > 0) setSelectedPeople(people);
+      } catch {
+        if (!cancelled) setError('本地候选人物暂时无法读取，请重新添加。');
+      } finally {
+        if (!cancelled) setStorageReady(true);
+      }
+    }
+
+    void hydrateSelectionFromStorage();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!storageReady) return;
+    writeCompareIds(selectedPeople.map(person => person.id));
+    notifyCompareChanged();
+  }, [selectedPeople, storageReady]);
 
   useEffect(() => {
     if (query.trim().length === 0) {
@@ -110,7 +177,7 @@ export function CompareReportBuilder({
     setError(null);
     setSelectedPeople(current => {
       if (current.some(item => item.id === person.id)) return current;
-      return [person, ...current].slice(0, 3);
+      return [person, ...current].slice(0, MAX_COMPARE_PEOPLE);
     });
   };
 
@@ -123,8 +190,10 @@ export function CompareReportBuilder({
     setCreating(true);
     setError(null);
     setActiveReportId(null);
+    setActiveReportTitle(null);
     setReportStatus(null);
     setEvents([]);
+    setProgressOpen(true);
 
     try {
       const response = await fetch('/api/compare/reports', {
@@ -140,9 +209,11 @@ export function CompareReportBuilder({
         throw new Error(payload?.error || '创建报告失败');
       }
       setActiveReportId(payload.data.id);
+      setActiveReportTitle(payload.data.title || null);
       setReportStatus(payload.data.status);
     } catch (createError) {
       setError(createError instanceof Error ? createError.message : '创建报告失败');
+      setProgressOpen(false);
     } finally {
       setCreating(false);
     }
@@ -157,20 +228,16 @@ export function CompareReportBuilder({
       <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
         <div className="mb-5 flex flex-col gap-3 border-b border-stone-100 pb-5 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <div className="text-xs font-medium text-orange-600">生成向导</div>
-            <h1 className="mt-1 text-2xl font-semibold text-stone-950">新建对比报告</h1>
+            <div className="text-xs font-medium text-orange-600">人物对比</div>
+            <h1 className="mt-1 text-2xl font-semibold text-stone-950">对比候选</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-600">
-              选择 2 到 3 位人物，确认分析主题后生成一份可保存的报告。
+              从人物卡片加入候选，也可以在这里删除或重新添加；凑齐 2 到 3 位后开始对比。
             </p>
           </div>
-          {selectedPeople.length >= 2 && (
-            <Link
-              href={`/compare?people=${encodeURIComponent(selectedPeople.map(person => person.id).join(','))}`}
-              className="inline-flex h-9 items-center justify-center rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-700 transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
-            >
-              先看临时对比
-            </Link>
-          )}
+          <div className="rounded-xl border border-stone-100 bg-stone-50 px-3 py-2 text-center">
+            <div className="text-lg font-semibold text-stone-950">{selectedPeople.length}/{MAX_COMPARE_PEOPLE}</div>
+            <div className="mt-0.5 text-[11px] text-stone-500">已选人物</div>
+          </div>
         </div>
 
         <div className="space-y-6">
@@ -250,15 +317,15 @@ export function CompareReportBuilder({
               onClick={createReport}
               className="rounded-lg bg-stone-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-stone-300"
             >
-              {creating ? '正在创建' : '生成对比报告'}
+              {creating ? '正在启动' : '开始对比'}
             </button>
             {activeReportId && (
               <button
                 type="button"
-                onClick={openReport}
+                onClick={reportStatus === 'completed' ? openReport : () => setProgressOpen(true)}
                 className="rounded-lg border border-stone-200 px-4 py-2 text-sm font-medium text-stone-700 transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
               >
-                查看报告
+                {reportStatus === 'completed' ? '打开对比详情' : '查看执行进度'}
               </button>
             )}
           </div>
@@ -266,7 +333,10 @@ export function CompareReportBuilder({
       </section>
 
       <aside className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
-        <div className="mb-3 text-sm font-semibold text-stone-950">生成进度</div>
+        <div className="mb-3 text-sm font-semibold text-stone-950">执行配置</div>
+        <div className="mb-4 rounded-lg bg-stone-50 px-3 py-3 text-xs leading-5 text-stone-500 ring-1 ring-stone-100">
+          Agent 会按人物匹配、资料检索、观点整理、差异分析和审查五步生成报告。
+        </div>
         <div className="mb-4 flex flex-wrap gap-1.5">
           {COMPARE_AGENT_TOOLS.map(tool => (
             <span
@@ -278,34 +348,38 @@ export function CompareReportBuilder({
             </span>
           ))}
         </div>
-        {events.length > 0 ? (
-          <div className="space-y-2">
-            {events.map(event => (
-              <div key={event.id} className="rounded-lg bg-stone-50 px-3 py-2 ring-1 ring-stone-100">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs font-medium text-stone-900">{event.title}</span>
-                  <span className={`rounded px-1.5 py-0.5 text-[10px] ${eventStatusClass(event.status)}`}>
-                    {eventStatusLabel(event.status)}
-                  </span>
-                </div>
-                {event.message && <div className="mt-1 text-[11px] leading-5 text-stone-500">{event.message}</div>}
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="rounded-lg border border-dashed border-stone-200 px-3 py-8 text-center text-xs leading-5 text-stone-400">
-            等待生成
-          </div>
-        )}
-
-        {activeReportId && reportStatus === 'completed' && (
-          <div className="mt-3 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-800">
-            报告已生成。
-          </div>
-        )}
+        <div className="rounded-lg border border-dashed border-stone-200 px-3 py-8 text-center text-xs leading-5 text-stone-400">
+          点击开始对比后会打开执行弹窗
+        </div>
       </aside>
+
+      {progressOpen && (creating || activeReportId) && (
+        <AgentProgressModal
+          creating={creating}
+          events={events}
+          reportId={activeReportId}
+          reportTitle={activeReportTitle}
+          reportStatus={reportStatus}
+          onClose={() => setProgressOpen(false)}
+          onOpenReport={openReport}
+        />
+      )}
     </div>
   );
+}
+
+function fallbackPersonOption(id: string): ComparePersonOption {
+  const suffix = id.slice(-4).toUpperCase();
+  return {
+    id,
+    name: suffix ? `候选人物 ${suffix}` : '候选人物',
+    avatarUrl: null,
+    currentTitle: '资料读取中',
+  };
+}
+
+function uniqueIds(ids: string[]): string[] {
+  return [...new Set(ids.map(id => id.trim()).filter(Boolean))];
 }
 
 function SelectedPersonChip({ person, onRemove }: { person: ComparePersonOption; onRemove: () => void }) {
@@ -351,4 +425,93 @@ function eventStatusClass(status: CompareReportEvent['status']): string {
   if (status === 'failed') return 'bg-red-50 text-red-700';
   if (status === 'queued') return 'bg-stone-100 text-stone-500';
   return 'bg-orange-50 text-orange-700';
+}
+
+function AgentProgressModal({
+  creating,
+  events,
+  reportId,
+  reportTitle,
+  reportStatus,
+  onClose,
+  onOpenReport,
+}: {
+  creating: boolean;
+  events: CompareReportEvent[];
+  reportId: string | null;
+  reportTitle: string | null;
+  reportStatus: string | null;
+  onClose: () => void;
+  onOpenReport: () => void;
+}) {
+  const completed = reportStatus === 'completed';
+  const failed = reportStatus === 'failed';
+
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-stone-950/35 px-4 py-6">
+      <div className="w-full max-w-xl rounded-2xl border border-stone-200 bg-white p-5 shadow-2xl">
+        <div className="flex items-start justify-between gap-4 border-b border-stone-100 pb-4">
+          <div>
+            <div className="text-xs font-medium text-orange-600">Agent 执行</div>
+            <h2 className="mt-1 text-lg font-semibold text-stone-950">
+              {completed ? '对比报告已完成' : failed ? '对比任务失败' : '正在执行人物对比'}
+            </h2>
+            <p className="mt-1 text-xs leading-5 text-stone-500">
+              {completed ? '产物已经生成，可以进入详情页查看。' : '系统正在整理公开资料、观点差异和证据链。'}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg px-2 py-1 text-sm text-stone-400 hover:bg-stone-100 hover:text-stone-700"
+            aria-label="关闭执行弹窗"
+          >
+            x
+          </button>
+        </div>
+
+        {completed && reportId ? (
+          <button
+            type="button"
+            onClick={onOpenReport}
+            className="mt-4 w-full rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-4 text-left transition hover:border-emerald-200 hover:bg-emerald-100/70"
+          >
+            <div className="text-sm font-semibold text-emerald-900">{reportTitle || '人物对比报告'}</div>
+            <div className="mt-1 text-xs leading-5 text-emerald-700">点击进入人物对比详情页</div>
+          </button>
+        ) : (
+          <div className="mt-4 space-y-2">
+            {creating && (
+              <div className="rounded-lg bg-orange-50 px-3 py-2 text-xs leading-5 text-orange-700 ring-1 ring-orange-100">
+                正在启动对比任务
+              </div>
+            )}
+            {events.length > 0 ? (
+              events.map(event => (
+                <div key={event.id} className="rounded-lg bg-stone-50 px-3 py-2 ring-1 ring-stone-100">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-medium text-stone-900">{event.title}</span>
+                    <span className={`rounded px-1.5 py-0.5 text-[10px] ${eventStatusClass(event.status)}`}>
+                      {eventStatusLabel(event.status)}
+                    </span>
+                  </div>
+                  {event.message && <div className="mt-1 text-[11px] leading-5 text-stone-500">{event.message}</div>}
+                </div>
+              ))
+            ) : (
+              <div className="rounded-lg border border-dashed border-stone-200 px-3 py-8 text-center text-xs leading-5 text-stone-400">
+                等待任务进度
+              </div>
+            )}
+          </div>
+        )}
+
+        {failed && (
+          <div className="mt-4 rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs leading-5 text-red-700">
+            任务没有完成，可以关闭弹窗后重新开始。
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }

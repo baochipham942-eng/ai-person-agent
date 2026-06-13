@@ -28,6 +28,6 @@ export function CompareReportLauncher({
 
 function buildNewReportHref(people: ComparePersonOption[]): string {
   const ids = people.map(person => person.id).filter(Boolean).slice(0, 3);
-  if (ids.length === 0) return '/compare/reports/new';
-  return `/compare/reports/new?people=${encodeURIComponent(ids.join(','))}`;
+  if (ids.length === 0) return '/compare';
+  return `/compare?people=${encodeURIComponent(ids.join(','))}`;
 }
