@@ -52,13 +52,18 @@ function bucketRelation(relation: NeedsReviewRelation): string {
     if (relation.same_org_count > 0) return 'colleague_same_org_dates_missing';
     return 'colleague_no_shared_org';
   }
+  if (relation.type === 'former_colleague') {
+    if (relation.overlap_count > 0) return 'former_colleague_has_role_overlap';
+    if (relation.same_org_count > 0) return 'former_colleague_same_org_dates_missing';
+    return 'former_colleague_no_shared_org';
+  }
   return 'other_needs_review';
 }
 
 function priority(relation: NeedsReviewRelation): number {
   if (relation.type === 'advisor' || relation.type === 'cofounder') return 1;
   if (relation.type === 'collaborator') return 2;
-  if (relation.type === 'colleague') return 3;
+  if (relation.type === 'colleague' || relation.type === 'former_colleague') return 3;
   return 4;
 }
 
@@ -98,6 +103,8 @@ const payload = {
     collaborator_publication_claim: 'Verify against publication/project source before confirming.',
     colleague_same_org_dates_missing: 'Usually lower product value; confirm only if overlap dates or source-backed team evidence exists.',
     colleague_no_shared_org: 'Weakest relation bucket; deletion candidates after sample review.',
+    former_colleague_same_org_dates_missing: 'Confirm only if historical overlap dates or source-backed former-team evidence exists.',
+    former_colleague_no_shared_org: 'Likely weak or polluted former-colleague claim; deletion candidate after sample review.',
   },
   buckets,
 };

@@ -6,6 +6,8 @@
  */
 import 'dotenv/config';
 import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
 import * as cheerio from 'cheerio';
 import { neon } from '@neondatabase/serverless';
 import { loadContentReviewPolicy } from '../audit/content_review_policy.mjs';
@@ -39,12 +41,23 @@ const args = process.argv.slice(2);
 const EXECUTE = args.includes('--execute');
 const INCLUDE_NON_CANDIDATES = args.includes('--include-non-candidates');
 const personFilter = args.find(arg => arg.startsWith('--person='))?.slice('--person='.length);
+const seedsPath = args.find(arg => arg.startsWith('--seeds='))?.slice('--seeds='.length);
 const limitArg = args.find(arg => arg.startsWith('--limit='))?.slice('--limit='.length);
 const LIMIT = limitArg ? Number(limitArg) : undefined;
 
 if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL');
 const sql = neon(process.env.DATABASE_URL);
 const policy = loadContentReviewPolicy();
+const seedNames = seedsPath ? loadSeedNames(seedsPath) : [];
+
+function loadSeedNames(filePath: string): string[] {
+  const payload = JSON.parse(fs.readFileSync(path.join(process.cwd(), filePath), 'utf-8'));
+  const names = [
+    ...(payload.seeds || []).map((seed: { name?: string }) => seed.name),
+    ...(payload.people || []).map((person: { name?: string }) => person.name),
+  ].filter((name: unknown): name is string => typeof name === 'string' && name.trim().length > 0);
+  return [...new Set(names.map(name => name.trim()))];
+}
 
 function sha256(value: string): string {
   return crypto.createHash('sha256').update(value).digest('hex');
@@ -171,6 +184,7 @@ async function loadPeople(): Promise<CandidatePerson[]> {
     FROM "People"
     WHERE (${INCLUDE_NON_CANDIDATES} OR status = ${'candidate'})
       AND (${personFilter || null}::text IS NULL OR name = ${personFilter || null} OR aliases && ${personFilter ? [personFilter] : []}::text[])
+      AND (${seedNames.length === 0} OR name = ANY(${seedNames}::text[]) OR aliases && ${seedNames}::text[])
     ORDER BY name ASC
   ` as CandidatePerson[];
   return LIMIT ? rows.slice(0, LIMIT) : rows;
@@ -206,13 +220,13 @@ async function upsertRawAndAudit(person: CandidatePerson, result: FetchResult): 
         ${crypto.randomUUID()}, ${person.id}, ${result.sourceType}, ${result.url}, ${urlHash}, ${contentHash},
         ${result.title}, ${result.text}, ${null}, ${JSON.stringify(result.metadata)}::jsonb, ${'success'}, NOW(), ${false}
       )
-      ON CONFLICT ("urlHash") DO UPDATE
-      SET title = EXCLUDED.title,
-          text = EXCLUDED.text,
-          metadata = EXCLUDED.metadata,
-          "contentHash" = EXCLUDED."contentHash",
-          "fetchedAt" = EXCLUDED."fetchedAt",
-          "fetchStatus" = EXCLUDED."fetchStatus"
+    ON CONFLICT ("urlHash") DO UPDATE
+    SET title = EXCLUDED.title,
+        text = EXCLUDED.text,
+        metadata = COALESCE("RawPoolItem".metadata, '{}'::jsonb) || EXCLUDED.metadata,
+        "contentHash" = EXCLUDED."contentHash",
+        "fetchedAt" = EXCLUDED."fetchedAt",
+        "fetchStatus" = EXCLUDED."fetchStatus"
     `;
 
     if (!(await hasAudit(person.id, urlHash))) {

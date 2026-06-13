@@ -12,6 +12,8 @@
 - `scripts/enrich/apply_roster_enrichment.ts`: 将 `roster_enrichment.json` 合并到 People 的 topics / products / officialLinks / sourceWhitelist；默认 dry-run，`--execute` 才写库。
 - `scripts/enrich/apply_candidate_deep_enrichment.ts`: 为 candidate 追加 curated RawPoolItem、QA keep、starter cards 和高置信 GitHub 头像；默认 dry-run，`--execute` 才写库。
 - `scripts/enrich/fetch_candidate_live_sources.ts`: 抓取 candidate officialLinks 的真实页面内容，回填 RawPoolItem / QAAuditLog / 高置信头像；默认 dry-run，`--execute` 才写库。
+- `scripts/enrich/plan_youtube_caption_batches.mjs`: 只读按 `People.influenceScore` 和视频价值把 YouTube `videoId` 切成 `local` / `lobster` / `deferred` 三批；`--write` 才写入 `exports/youtube-captions/plans/`。
+- `scripts/enrich/fetch_youtube_captions_with_ytdlp.mjs`: 按批次 plan 调 `yt-dlp` 抓字幕；默认 dry-run，`--execute` 才访问 YouTube，状态写入 `exports/youtube-captions/subtitles/_status/`。
 - `scripts/audit/audit_career_normalization.ts`: 只读导出 career 规范化风险包。
 - `scripts/audit/export_career_review_buckets.ts`: 只读把 career 剩余问题分成可人工裁定的 review buckets。
 - `scripts/audit/export_relation_review_buckets.ts`: 只读把 `relation_review.json` 的 needs_review 分成高敏和低价值 review buckets。
@@ -44,6 +46,7 @@
 - `scripts/fix/apply_current_title_decisions.ts`: 按 `current_title_decisions.json` 执行来源支持的 `currentTitle` / `People.organization` 修正；默认 dry-run，`--execute` 才写库。
 - `scripts/fix/apply_candidate_avatar_decisions.ts`: 按 `candidate_avatar_decisions.json` 执行来源支持的 candidate 头像修正；默认 dry-run，`--execute` 才写库。
 - `scripts/fix/apply_relation_review_decisions.ts`: 按 `relation_decisions.json` 确认或删除有外部证据支持的 PersonRelation；默认 dry-run，`--execute` 才写库。
+- `scripts/fix/apply_former_colleague_relations.mjs`: 把只有历史任职重叠、没有当前共同机构的 `colleague` 清洗成 `former_colleague`；默认 dry-run，`--execute` 才写库，支持 `--person` 定向检查。
 - `scripts/fix/promote_candidate_readiness.ts`: 将事实门槛达标且有头像的 candidate 晋级为 ready；默认 dry-run，`--execute` 才写库。
 - `scripts/fix/prune_raw_pool_items.ts`: 按最新 QA verdict 删除 RawPoolItem；默认只删 `duplicate` / `empty_content` / `incomplete`，`reject` 需显式 `--include-reject`。
 - `scripts/enrich/trigger_content_fetch.ts`: 触发内容抓取。
@@ -53,6 +56,30 @@
 - `scripts/tools/export_people_csv.ts`: 导出人物 CSV。
 - `scripts/test_courses.ts`: 课程抓取能力测试。
 - `scripts/test_courses_free.ts`: 课程测试的免费源验证脚本。
+
+## YouTube 字幕批处理
+
+1. 生成三批 videoId plan：`npm run youtube:caption-plan -- --local-limit=200 --lobster-limit=200 --write`
+2. 启动本地 PO token provider。YouTube 自动字幕经常需要 PO token；没有 provider 时可能只能看到字幕列表，正文拿不到。
+3. 本机先 dry-run 看命令：`npm run youtube:caption-fetch -- --batch=local --limit=2`
+4. 本机执行第一批：`npm run youtube:caption-fetch -- --batch=local --execute --no-stop-on-timeout`
+5. 龙虾执行第二批时复制 `exports/youtube-captions/plans/lobster_video_ids.txt`，再跑：`npm run youtube:caption-fetch -- --ids-file=lobster_video_ids.txt --batch=lobster --execute --no-stop-on-timeout`
+
+当前默认只抓 `en,en.*`，先减少请求数和 429 风险。需要中文字幕时再显式传 `--sub-langs=zh,zh.*,en,en.*`。
+
+抓取脚本会先读 YouTube watch page 的 captionTracks：没有字幕轨就直接记 `no_caption_track`；有目标字幕轨时，默认优先走 timedtext + 本地 PO provider 写 VTT，yt-dlp 作为兜底路径。
+
+PO token provider 可放在 ignored 的 `exports/youtube-captions/` 下：
+
+```bash
+git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git exports/youtube-captions/bgutil-ytdlp-pot-provider
+cd exports/youtube-captions/bgutil-ytdlp-pot-provider/server
+npm ci
+npx tsc
+node build/main.js --port 4416
+```
+
+抓取脚本遇到 `rate_limited_or_blocked` 或 `command_timeout` 会默认停止整批，避免继续消耗 IP 信誉或卡住机器；如果已经写出字幕但后续语言失败，会记为 `partial_success` 并继续。
 
 ## 目录归属
 

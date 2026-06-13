@@ -10,6 +10,7 @@ import {
     normalizeTopicDetails,
     normalizeTopicRanks,
 } from '@/lib/utils/person-json';
+import { normalizeDirectoryTopic, normalizeDirectoryTopics } from '@/lib/person-directory-config';
 
 interface PersonRoleRow {
     id: string;
@@ -33,6 +34,7 @@ interface RelationRow {
     reviewStatus: string | null;
     evidenceUrl: string | null;
     evidenceNote: string | null;
+    confidence: number | null;
     isReverse: boolean;
     relatedPersonId: string;
     relatedPersonName: string;
@@ -66,6 +68,7 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
     const resolvedSearchParams = await searchParams;
     const section = firstParam(resolvedSearchParams?.section);
     const highlight = firstParam(resolvedSearchParams?.highlight);
+    const highlightTopic = highlight ? normalizeDirectoryTopic(highlight) : null;
     const initialSection = section === 'topics' ? 'topics' : null;
 
     // Prisma relation include 会在 Neon 上串行发多次查询；这里把首屏需要的数据拆成并行查询。
@@ -86,6 +89,11 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
                 completeness: true,
                 occupation: true,
                 organization: true,
+                influenceScore: true,
+                citationCount: true,
+                hIndex: true,
+                githubStars: true,
+                weeklyViewCount: true,
                 aliases: true,
                 officialLinks: true,
                 topics: true,
@@ -139,6 +147,7 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
                 rel."reviewStatus",
                 rel."evidenceUrl",
                 rel."evidenceNote",
+                rel.confidence,
                 false AS "isReverse",
                 p.id AS "relatedPersonId",
                 p.name AS "relatedPersonName",
@@ -155,6 +164,7 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
                 rel."reviewStatus",
                 rel."evidenceUrl",
                 rel."evidenceNote",
+                rel.confidence,
                 true AS "isReverse",
                 p.id AS "relatedPersonId",
                 p.name AS "relatedPersonName",
@@ -213,12 +223,17 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
         completeness: person.completeness,
         occupation: person.occupation,
         organization: person.organization,
+        influenceScore: person.influenceScore,
+        citationCount: person.citationCount,
+        hIndex: person.hIndex,
+        githubStars: person.githubStars,
+        weeklyViewCount: person.weeklyViewCount,
         aliases: person.aliases,
         officialLinks: normalizeOfficialLinks(person.officialLinks),
         // 话题和排名
-        topics: person.topics || [],
-        topicRanks: normalizeTopicRanks(person.topicRanks),
-        topicDetails: normalizeTopicDetails(person.topicDetails),
+        topics: normalizeDirectoryTopics(person.topics || []),
+        topicRanks: normalizeDisplayTopicRanks(normalizeTopicRanks(person.topicRanks)),
+        topicDetails: normalizeDisplayTopicDetails(normalizeTopicDetails(person.topicDetails)),
         // 新增字段
         quotes: normalizeQuotes(person.quotes),
         products: normalizeProducts(person.products),
@@ -281,6 +296,7 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
                     reviewStatus: rel.reviewStatus,
                     evidenceUrl: rel.evidenceUrl,
                     evidenceNote: rel.evidenceNote,
+                    confidence: rel.confidence,
                     relatedPerson: {
                         id: rel.relatedPersonId,
                         name: rel.relatedPersonName,
@@ -297,9 +313,39 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
         <PersonPageClient
             person={personData}
             initialSection={initialSection}
-            highlightTopic={initialSection === 'topics' ? highlight : null}
+            highlightTopic={initialSection === 'topics' ? highlightTopic : null}
         />
     );
+}
+
+function normalizeDisplayTopicRanks(ranks: Record<string, number> | null): Record<string, number> | null {
+    if (!ranks) return null;
+
+    const normalized: Record<string, number> = {};
+    for (const [topic, rank] of Object.entries(ranks)) {
+        const canonical = normalizeDirectoryTopic(topic);
+        normalized[canonical] = Math.min(normalized[canonical] ?? rank, rank);
+    }
+
+    return Object.keys(normalized).length > 0 ? normalized : null;
+}
+
+function normalizeDisplayTopicDetails<T extends { topic: string; rank: number }>(details: T[] | null): T[] | null {
+    if (!details) return null;
+
+    const byTopic = new Map<string, T>();
+    for (const detail of details) {
+        const canonical = normalizeDirectoryTopic(detail.topic);
+        const normalizedDetail = { ...detail, topic: canonical };
+        const existing = byTopic.get(canonical);
+        if (!existing || normalizedDetail.rank < existing.rank) {
+            byTopic.set(canonical, normalizedDetail);
+        }
+    }
+
+    return byTopic.size > 0
+        ? [...byTopic.values()].sort((left, right) => left.rank - right.rank)
+        : null;
 }
 
 function firstParam(value?: string | string[] | null): string | null {

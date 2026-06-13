@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { buildTopicHref, getDirectoryTopicIcon } from '@/lib/person-directory-config';
 
 interface Product {
   name: string;
@@ -123,22 +124,8 @@ function getRankLabel(rank: number): string {
   return `Top ${rank}`;
 }
 
-// 话题颜色
-const TOPIC_ICONS: Record<string, string> = {
-  'Scaling': '📈',
-  'Agent': '🤖',
-  'RAG': '🔍',
-  '推理': '🧠',
-  '多模态': '🎨',
-  '对齐': '🛡️',
-  'AGI': '🌟',
-  '大语言模型': '💬',
-  '强化学习': '🎮',
-  '开源': '🔓',
-};
-
 function getTopicIcon(topic: string): string {
-  return TOPIC_ICONS[topic] || '📚';
+  return getDirectoryTopicIcon(topic);
 }
 
 // 从 URL 获取 Google Favicon
@@ -676,7 +663,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                   {/* 底部操作 */}
                   <div className="px-4 py-3 bg-stone-50/50 border-t border-stone-100">
                     <Link
-                      href={`/?view=topic&topic=${encodeURIComponent(item.topic)}`}
+                      href={buildTopicHref(item.topic)}
                       className="flex items-center justify-between text-xs text-orange-600 hover:text-orange-700 font-medium group/link"
                     >
                       <span>进入学习路径</span>

@@ -92,7 +92,7 @@ function formatDate(dateStr: string | null): string {
   if (!dateStr) return '';
   try {
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+    return date.toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: 'short', day: 'numeric' });
   } catch {
     return '';
   }
@@ -149,6 +149,7 @@ const VideoItem = ({ item }: { item: RawPoolItem }) => {
             src={thumbnailUrl}
             alt={item.title}
             fill
+            unoptimized
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => {

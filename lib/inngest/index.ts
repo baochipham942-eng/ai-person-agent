@@ -3,5 +3,9 @@
  */
 
 export { inngest } from './client';
-export { functions, buildPersonJob } from './functions';
+export { functions, buildPersonJob, compareReportJob } from './functions';
 export { weeklyQualityCheck, manualQualityCheck } from './qualityJobs';
+export {
+    materializeActivityEventsJob,
+    prepareWeeklyNewsletterDigestJob,
+} from './signalJobs';

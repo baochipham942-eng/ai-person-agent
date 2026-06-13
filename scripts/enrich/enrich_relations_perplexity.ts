@@ -10,7 +10,7 @@ import { searchPerplexity } from '../../lib/datasources/perplexity';
 import { relationReviewFields, validateRelationCandidate } from '../../lib/agents/relation-validation';
 
 // 关系类型
-const RELATION_TYPES = ['advisor', 'cofounder', 'colleague', 'collaborator'] as const;
+const RELATION_TYPES = ['advisor', 'cofounder', 'colleague', 'former_colleague', 'collaborator'] as const;
 
 interface ParsedRelation {
   relatedPersonName: string;
@@ -42,7 +42,8 @@ ${batch.map((n, idx) => `${idx + 1}. ${n}`).join('\n')}
 For each person that ${personName} has a relationship with, identify:
 - advisor: PhD advisor or mentor
 - cofounder: co-founded a company together
-- colleague: worked at the same company
+- colleague: currently work at the same company
+- former_colleague: previously worked at the same company, but do not currently share an employer
 - collaborator: published papers together or collaborated on research
 
 Return ONLY confirmed relationships in this exact format (one per line):

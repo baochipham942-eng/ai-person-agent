@@ -21,6 +21,8 @@ model User {
   quickLoginToken String?
   searchSessions  SearchSession[]
   userProfile     UserProfile?
+  newsletterDeliveries NewsletterDeliveryLog[]
+  compareReports  CompareReport[]
 }
 
 model InvitationCode {
@@ -87,12 +89,14 @@ model People {
   cards           Card[]
   roles           PersonRole[]
   rawPoolItems    RawPoolItem[]
+  activityEvents  ActivityEvent[]
   searchSessions  SearchSession[]
   pageViews       PageView[]
   relations       PersonRelation[] @relation("PersonRelations")
   relatedTo       PersonRelation[] @relation("RelatedPersons")
   advisedRoles    PersonRole[]     @relation("RoleAdvisor") // 作为导师的履历记录
   courses         Course[]         // 开设/主讲的课程
+  influenceScoreAudits InfluenceScoreAuditLog[]
 
   @@index([name])
   @@index([status])
@@ -174,9 +178,41 @@ model RawPoolItem {
   fetchedAt   DateTime  @default(now())
   processed   Boolean   @default(false)
   person      People    @relation(fields: [personId], references: [id], onDelete: Cascade)
+  activityEvent ActivityEvent?
 
   @@index([personId])
   @@index([sourceType])
+}
+
+model ActivityEvent {
+  id            String    @id @default(cuid())
+  personId      String
+  sourceItemId  String?   @unique
+  eventType     String
+  sourceType    String
+  title         String
+  summary       String?
+  url           String
+  occurredAt    DateTime?
+  detectedAt    DateTime  @default(now())
+  topics        String[]
+  organizations String[]
+  confidence    Float     @default(0.8)
+  evidenceNote  String?
+  reviewStatus  String    @default("auto")
+  metadata      Json?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  person        People       @relation(fields: [personId], references: [id], onDelete: Cascade)
+  sourceItem    RawPoolItem? @relation(fields: [sourceItemId], references: [id], onDelete: SetNull)
+
+  @@index([personId])
+  @@index([eventType])
+  @@index([sourceType])
+  @@index([reviewStatus])
+  @@index([occurredAt])
+  @@index([detectedAt])
 }
 
 model SearchSession {
@@ -211,6 +247,69 @@ model UserProfile {
   user                User     @relation(fields: [userId], references: [id])
 }
 
+model NewsletterDeliveryLog {
+  id           String    @id @default(cuid())
+  userId       String?
+  email        String
+  frequency    String
+  deliveryType String    @default("weekly_digest")
+  subject      String
+  status       String    @default("dry_run")
+  provider     String?
+  providerMessageId String?
+  attempts     Int       @default(0)
+  payload      Json?
+  errorMessage String?
+  createdAt    DateTime  @default(now())
+  lastAttemptAt DateTime?
+  sentAt       DateTime?
+  user         User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([email])
+  @@index([status])
+  @@index([provider])
+  @@index([createdAt])
+}
+
+model CompareReport {
+  id             String               @id @default(cuid())
+  title          String
+  topic          String?
+  peopleIds      String[]
+  status         String               @default("pending") // pending | running | completed | failed
+  visibility     String               @default("public")
+  summary        String?
+  reportJson     Json?
+  sourceSnapshot Json?
+  errorMessage   String?
+  createdById    String?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  completedAt    DateTime?
+  createdBy      User?                @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  events         CompareReportEvent[]
+
+  @@index([createdById])
+  @@index([status, createdAt])
+  @@index([createdAt])
+}
+
+model CompareReportEvent {
+  id        String        @id @default(cuid())
+  reportId  String
+  step      String
+  status    String        @default("running") // queued | running | completed | failed
+  title     String
+  message   String?
+  metadata  Json?
+  createdAt DateTime      @default(now())
+  report    CompareReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  @@index([reportId, createdAt])
+  @@index([step])
+}
+
 // 访问记录表 - 用于统计人物页面访问量
 model PageView {
   id        String   @id @default(cuid())
@@ -233,7 +332,7 @@ model PersonRelation {
   id              String   @id @default(cuid())
   personId        String
   relatedPersonId String
-  relationType    String   // advisor, advisee, cofounder, colleague, collaborator, successor
+  relationType    String   // advisor, advisee, cofounder, colleague, former_colleague, collaborator, successor
   description     String?
   source          String   @default("wikidata")
   confidence      Float    @default(1.0)
@@ -323,5 +422,28 @@ model QAAuditLog {
   @@index([personId])
   @@index([verdict])
   @@index([stage])
+  @@index([createdAt])
+}
+
+/// 影响力评分审计日志: 记录某个评分版本对人物分数的解释、校准和应用结果
+model InfluenceScoreAuditLog {
+  id            String   @id @default(cuid())
+  personId      String
+  scoreVersion  String
+  previousScore Float
+  computedScore Float
+  appliedScore  Float?
+  dimensions    Json
+  signals       Json
+  weights       Json
+  status        String   @default("dry_run") // dry_run | reviewed | applied | ignored
+  reason        String?
+  reviewer      String?
+  createdAt     DateTime @default(now())
+  person        People   @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([personId])
+  @@index([scoreVersion])
+  @@index([status])
   @@index([createdAt])
 }

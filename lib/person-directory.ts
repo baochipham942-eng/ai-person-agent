@@ -1,10 +1,13 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db/prisma';
+import { normalizePublicAvatarUrl } from '@/lib/public-avatar';
 import { normalizeHighlights } from '@/lib/utils/person-json';
 import {
   DIRECTORY_ORGANIZATIONS,
   DIRECTORY_TOPICS,
+  getDirectoryTopicAliases,
   getDirectoryOrganizationAliases,
+  normalizeDirectoryTopics,
   type DirectoryOrganizationMatch,
   type DirectoryResponse,
 } from '@/lib/person-directory-config';
@@ -42,7 +45,7 @@ export async function fetchPersonDirectory(params: {
     status: { in: ['ready', 'active'] },
   };
 
-  if (topic) where.topics = { has: topic };
+  if (topic) where.topics = { hasSome: getDirectoryTopicAliases(topic) };
   if (organization) {
     where.OR = [
       { roles: { some: organizationRoleWhere } },
@@ -63,16 +66,13 @@ export async function fetchPersonDirectory(params: {
       { name: { contains: search, mode: 'insensitive' } },
       { aliases: { hasSome: searchVariants } },
       { organization: { hasSome: searchVariants } },
-      { topics: { hasSome: searchVariants } },
+      { topics: { hasSome: uniqueSearchTerms(searchVariants.flatMap(term => getDirectoryTopicAliases(term))) } },
     ];
     const existingAnd = Array.isArray(where.AND) ? where.AND : where.AND ? [where.AND] : [];
     where.AND = [...existingAnd, { OR: searchFilters }];
   }
 
-  let orderBy: Prisma.PeopleOrderByWithRelationInput = { influenceScore: 'desc' };
-  if (params.sortBy === 'weeklyViewCount') orderBy = { weeklyViewCount: 'desc' };
-  if (params.sortBy === 'citationCount') orderBy = { citationCount: 'desc' };
-  if (params.sortBy === 'name') orderBy = { name: 'asc' };
+  const orderBy = buildDirectoryOrderBy(params.sortBy);
 
   const [people, total] = await Promise.all([
     prisma.people.findMany({
@@ -88,6 +88,8 @@ export async function fetchPersonDirectory(params: {
         highlights: true,
         roleCategory: true,
         influenceScore: true,
+        citationCount: true,
+        githubStars: true,
         roles: {
           where: organizationRoleWhere,
           select: {
@@ -115,7 +117,7 @@ export async function fetchPersonDirectory(params: {
           },
         },
       },
-      orderBy: [orderBy, { name: 'asc' }],
+      orderBy,
       skip: start,
       take: limit,
     }),
@@ -129,12 +131,14 @@ export async function fetchPersonDirectory(params: {
       id: person.id,
       name: person.name,
       description: person.description,
-      avatarUrl: person.avatarUrl,
+      avatarUrl: normalizePublicAvatarUrl(person.avatarUrl),
       organization: person.organization,
       currentTitle: person.currentTitle,
-      topics: person.topics,
+      topics: normalizeDirectoryTopics(person.topics),
       roleCategory: person.roleCategory,
       influenceScore: person.influenceScore,
+      citationCount: person.citationCount,
+      githubStars: person.githubStars,
       weeklyViewCount: person._count.pageViews,
       organizationMatch: organization
         ? buildOrganizationMatch({
@@ -161,6 +165,26 @@ export async function fetchPersonDirectory(params: {
       },
     }),
   };
+}
+
+function buildDirectoryOrderBy(sortBy?: string | null): Prisma.PeopleOrderByWithRelationInput[] {
+  switch (sortBy) {
+    case 'weeklyViewCount':
+      return [{ weeklyViewCount: 'desc' }, { influenceScore: 'desc' }, { name: 'asc' }];
+    case 'citationCount':
+      return [{ citationCount: 'desc' }, { influenceScore: 'desc' }, { name: 'asc' }];
+    case 'githubStars':
+      return [{ githubStars: 'desc' }, { influenceScore: 'desc' }, { name: 'asc' }];
+    case 'industryImpact':
+      return [{ roles: { _count: 'desc' } }, { influenceScore: 'desc' }, { weeklyViewCount: 'desc' }, { name: 'asc' }];
+    case 'risingScore':
+      return [{ weeklyViewCount: 'desc' }, { createdAt: 'desc' }, { influenceScore: 'desc' }, { name: 'asc' }];
+    case 'name':
+      return [{ name: 'asc' }];
+    case 'influenceScore':
+    default:
+      return [{ influenceScore: 'desc' }, { name: 'asc' }];
+  }
 }
 
 function uniqueSearchTerms(values: string[]): string[] {

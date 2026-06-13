@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { buildOrganizationHref, buildTopicHref, getDirectoryTopicColor } from '@/lib/person-directory-config';
 
 interface OfficialLink {
   type: string;
@@ -57,23 +58,8 @@ function getCountryFlag(countryCode: string | null | undefined): string {
   return String.fromCodePoint(...[...code].map(c => c.charCodeAt(0) + offset));
 }
 
-// 话题颜色映射（保持多色，优化样式）
-const TOPIC_COLORS: Record<string, string> = {
-  'RAG': 'bg-purple-50 text-purple-600 border border-purple-100',
-  'Agent': 'bg-blue-50 text-blue-600 border border-blue-100',
-  '推理': 'bg-green-50 text-green-600 border border-green-100',
-  '多模态': 'bg-orange-50 text-orange-600 border border-orange-100',
-  '对齐': 'bg-red-50 text-red-600 border border-red-100',
-  'Scaling': 'bg-cyan-50 text-cyan-600 border border-cyan-100',
-  '大语言模型': 'bg-indigo-50 text-indigo-600 border border-indigo-100',
-  'Transformer': 'bg-pink-50 text-pink-600 border border-pink-100',
-  '开源': 'bg-emerald-50 text-emerald-600 border border-emerald-100',
-  'AGI': 'bg-rose-50 text-rose-600 border border-rose-100',
-  '强化学习': 'bg-amber-50 text-amber-600 border border-amber-100',
-};
-
 function getTopicColor(topic: string): string {
-  return TOPIC_COLORS[topic] || 'bg-stone-50 text-stone-600 border border-stone-100';
+  return getDirectoryTopicColor(topic);
 }
 
 // 链接图标组件
@@ -369,7 +355,7 @@ export function PersonHeader({ person }: PersonHeaderProps) {
                 {person.topics.slice(0, 5).map((topic, idx) => (
                   <Link
                     key={idx}
-                    href={`/?view=topic&topic=${encodeURIComponent(topic)}`}
+                    href={buildTopicHref(topic)}
                     className={`px-2 py-0.5 text-xs font-medium rounded-md ${getTopicColor(topic)} hover:opacity-80 hover:scale-105 transition-all cursor-pointer`}
                   >
                     {topic}
@@ -427,7 +413,7 @@ export function PersonHeader({ person }: PersonHeaderProps) {
                           <span className={`text-sm ${isCurrent ? 'text-stone-900 font-medium' : 'text-stone-600'}`}>
                             {role.roleZh || role.role} @{' '}
                             <Link
-                              href={`/?view=organization&organization=${encodeURIComponent(orgName)}`}
+                              href={buildOrganizationHref(orgName)}
                               className="hover:text-orange-600 hover:underline transition-colors"
                               onClick={(e) => e.stopPropagation()}
                             >

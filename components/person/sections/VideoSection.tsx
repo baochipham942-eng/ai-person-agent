@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { buildTopicHref, normalizeDirectoryTopics } from '@/lib/person-directory-config';
 
 interface RawPoolItem {
   id: string;
@@ -64,7 +65,7 @@ function formatDate(dateStr: string | null): string {
   if (!dateStr) return '';
   try {
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short' });
+    return date.toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: 'short' });
   } catch {
     return '';
   }
@@ -197,6 +198,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                         src={thumbnailUrl}
                         alt={video.title}
                         fill
+                        unoptimized
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="absolute inset-0 w-full h-full object-cover"
                         onError={(e) => {
@@ -246,10 +248,10 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                     {/* 话题标签 */}
                     {video.metadata?.tags && video.metadata.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-2">
-                        {video.metadata.tags.slice(0, 3).map(tag => (
+                        {normalizeDirectoryTopics(video.metadata.tags).slice(0, 3).map(tag => (
                           <Link
                             key={tag}
-                            href={`/?view=topic&topic=${encodeURIComponent(tag)}`}
+                            href={buildTopicHref(tag)}
                             className="px-1.5 py-0.5 text-[10px] bg-orange-50 text-orange-600 rounded-md hover:bg-orange-100 transition-colors"
                           >
                             {tag}

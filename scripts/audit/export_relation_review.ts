@@ -92,6 +92,16 @@ function toBucket(row: RelationRow): ReviewRow {
     } else {
       reasons.push('no shared organization in PersonRole');
     }
+  } else if (row.type === 'former_colleague') {
+    if (row.overlap_count > 0) {
+      reasons.push('historical overlapping roles at the same organization');
+      return { ...row, bucket: 'confirmed_by_roles', reasons };
+    }
+    if (row.same_org_count > 0) {
+      reasons.push('same organization exists but dates do not prove historical overlap');
+    } else {
+      reasons.push('no shared organization in PersonRole');
+    }
   } else if (row.type === 'collaborator') {
     reasons.push('collaborator requires paper/project evidence outside PersonRole');
   } else {

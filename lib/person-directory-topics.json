@@ -1,0 +1,187 @@
+{
+  "groups": [
+    {
+      "key": "model-training",
+      "label": "模型与训练",
+      "topics": ["大语言模型", "Scaling", "高效训练", "Transformer", "自监督学习"]
+    },
+    {
+      "key": "agent-reasoning",
+      "label": "Agent 与推理",
+      "topics": ["Agent", "推理", "RAG", "代码生成", "开发者工具/AI Coding"]
+    },
+    {
+      "key": "generation-modalities",
+      "label": "生成与模态",
+      "topics": ["AIGC/生成式媒体", "多模态", "计算机视觉", "NLP"]
+    },
+    {
+      "key": "safety-eval",
+      "label": "安全与评测",
+      "topics": ["AI 安全", "对齐", "可解释性", "评测与基准", "AGI"]
+    },
+    {
+      "key": "industry-systems",
+      "label": "应用与产业",
+      "topics": ["AI 产品化", "AI 基础设施", "AI 搜索", "具身智能/机器人", "医疗AI", "教育", "AI 芯片与算力"]
+    }
+  ],
+  "topics": [
+    {
+      "label": "大语言模型",
+      "aliases": ["Large Language Models", "Large Language Model", "Language Models", "LLM", "LLMs", "中文大模型", "MoE"],
+      "icon": "💬",
+      "color": "bg-indigo-50 text-indigo-600 border border-indigo-100"
+    },
+    {
+      "label": "Scaling",
+      "aliases": ["规模化", "Scaling Laws", "理论"],
+      "icon": "📈",
+      "color": "bg-cyan-50 text-cyan-600 border border-cyan-100"
+    },
+    {
+      "label": "高效训练",
+      "aliases": ["Optimization", "Regularization", "Neural Network Training", "Optimization Algorithms", "Deep Learning Optimization", "Model Optimization", "Pretraining and Fine-tuning"],
+      "icon": "⚙️",
+      "color": "bg-lime-50 text-lime-700 border border-lime-100"
+    },
+    {
+      "label": "Transformer",
+      "aliases": ["Transformers", "Attention", "GPT-style Models"],
+      "icon": "🔁",
+      "color": "bg-pink-50 text-pink-600 border border-pink-100"
+    },
+    {
+      "label": "自监督学习",
+      "aliases": ["Self-Supervised Learning", "Unsupervised Learning", "Representation Learning", "Contrastive Learning"],
+      "icon": "🧩",
+      "color": "bg-teal-50 text-teal-700 border border-teal-100"
+    },
+    {
+      "label": "Agent",
+      "aliases": ["Agents", "智能体", "智能体记忆", "Memory", "Tool Use", "对话系统"],
+      "icon": "🤖",
+      "color": "bg-blue-50 text-blue-600 border border-blue-100"
+    },
+    {
+      "label": "推理",
+      "aliases": ["Reasoning", "推理模型"],
+      "icon": "🧠",
+      "color": "bg-green-50 text-green-600 border border-green-100"
+    },
+    {
+      "label": "RAG",
+      "aliases": ["Retrieval-Augmented Generation", "知识图谱", "Text Embeddings", "Vector Search", "Similarity"],
+      "icon": "🔎",
+      "color": "bg-purple-50 text-purple-600 border border-purple-100"
+    },
+    {
+      "label": "代码生成",
+      "aliases": ["Code Generation", "AI Coding"],
+      "icon": "💻",
+      "color": "bg-sky-50 text-sky-700 border border-sky-100"
+    },
+    {
+      "label": "开发者工具/AI Coding",
+      "aliases": ["开发者工具", "Claude Code", "Prompt Engineering", "Prompting", "ChatGPT API", "LangChain", "LLM Applications", "LLM Apps"],
+      "icon": "🛠️",
+      "color": "bg-slate-50 text-slate-700 border border-slate-200"
+    },
+    {
+      "label": "AIGC/生成式媒体",
+      "aliases": ["AIGC", "Generative AI", "创意生成", "视频生成", "3D 生成", "图像生成", "空间智能", "世界模型"],
+      "icon": "🎬",
+      "color": "bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-100"
+    },
+    {
+      "label": "多模态",
+      "aliases": ["Multimodal", "语音", "Speech", "Audio", "Voice"],
+      "icon": "🎨",
+      "color": "bg-orange-50 text-orange-600 border border-orange-100"
+    },
+    {
+      "label": "计算机视觉",
+      "aliases": ["Computer Vision", "Convolutional Neural Networks", "Convolutional Networks", "CNN", "CNNs", "ConvNets", "Object Detection", "Image Classification", "Face Recognition", "Modern Vision Architectures"],
+      "icon": "👁️",
+      "color": "bg-amber-50 text-amber-700 border border-amber-100"
+    },
+    {
+      "label": "NLP",
+      "aliases": ["Natural Language Processing", "Word Embeddings", "Sequence Models", "Sequence Modeling", "RNN", "RNNs", "LSTMs", "Recurrent Networks"],
+      "icon": "📝",
+      "color": "bg-violet-50 text-violet-700 border border-violet-100"
+    },
+    {
+      "label": "AI 安全",
+      "aliases": ["安全", "AI安全", "AI Safety", "Safety and Limitations", "合规", "AI Policy", "Ethics in AI"],
+      "icon": "🛡️",
+      "color": "bg-red-50 text-red-600 border border-red-100"
+    },
+    {
+      "label": "对齐",
+      "aliases": ["Alignment", "RLHF", "后训练"],
+      "icon": "🎯",
+      "color": "bg-rose-50 text-rose-700 border border-rose-100"
+    },
+    {
+      "label": "可解释性",
+      "aliases": ["解释性", "Interpretability", "Explainability"],
+      "icon": "🔬",
+      "color": "bg-emerald-50 text-emerald-700 border border-emerald-100"
+    },
+    {
+      "label": "评测与基准",
+      "aliases": ["Eval", "Evaluation", "Benchmark", "Benchmarks", "评测"],
+      "icon": "📊",
+      "color": "bg-stone-50 text-stone-700 border border-stone-200"
+    },
+    {
+      "label": "AGI",
+      "aliases": ["Artificial General Intelligence"],
+      "icon": "🌟",
+      "color": "bg-yellow-50 text-yellow-700 border border-yellow-100"
+    },
+    {
+      "label": "AI 产品化",
+      "aliases": ["产品", "产业化", "平台", "企业 AI", "AI 生态", "金融AI", "个性化", "Business Applications", "Business Use Cases", "AI Strategy", "Application Patterns"],
+      "icon": "📦",
+      "color": "bg-orange-50 text-orange-700 border border-orange-100"
+    },
+    {
+      "label": "AI 基础设施",
+      "aliases": ["基础设施", "AI Infra", "AI 工程", "Machine Learning Systems", "Machine Learning Compilation", "MLOps", "Deployment", "Monitoring", "Data Pipelines", "Distributed Systems", "Distributed Computing", "Deep Learning Systems", "ML Frameworks", "Framework Implementation", "Apache TVM"],
+      "icon": "🏗️",
+      "color": "bg-zinc-50 text-zinc-700 border border-zinc-200"
+    },
+    {
+      "label": "AI 搜索",
+      "aliases": ["搜索", "Search", "AI Search"],
+      "icon": "🔍",
+      "color": "bg-blue-50 text-blue-700 border border-blue-100"
+    },
+    {
+      "label": "具身智能/机器人",
+      "aliases": ["机器人", "具身智能", "自动驾驶", "Robotics", "Deep Reinforcement Learning", "Imitation Learning", "Model-Based RL"],
+      "icon": "🦾",
+      "color": "bg-green-50 text-green-700 border border-green-100"
+    },
+    {
+      "label": "医疗AI",
+      "aliases": ["Healthcare AI", "Medical AI"],
+      "icon": "🏥",
+      "color": "bg-cyan-50 text-cyan-700 border border-cyan-100"
+    },
+    {
+      "label": "教育",
+      "aliases": ["Online Education", "MOOCs", "Education Technology", "Higher Education Strategy", "AI4ALL"],
+      "icon": "📚",
+      "color": "bg-amber-50 text-amber-700 border border-amber-100"
+    },
+    {
+      "label": "AI 芯片与算力",
+      "aliases": ["芯片", "AI 芯片", "算力", "CUDA", "Hardware Deployment"],
+      "icon": "🔲",
+      "color": "bg-neutral-50 text-neutral-700 border border-neutral-200"
+    }
+  ]
+}

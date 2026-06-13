@@ -15,6 +15,12 @@ import {
     applySourceQualityMetadata,
     evaluateSourceQuality,
 } from '@/lib/skills/source-quality-policy';
+import { manualQualityCheck, weeklyQualityCheck } from './qualityJobs';
+import {
+    materializeActivityEventsJob,
+    prepareWeeklyNewsletterDigestJob,
+} from './signalJobs';
+import { runCompareReportAgent } from '@/lib/compare-report-agent';
 import crypto from 'crypto';
 
 /**
@@ -663,7 +669,31 @@ export const buildPersonJob = inngest.createFunction(
     }
 );
 
+export const compareReportJob = inngest.createFunction(
+    {
+        id: 'generate-compare-report',
+        retries: 1,
+        concurrency: {
+            limit: 2,
+        },
+        triggers: [{ event: 'compare/report.requested' }],
+    },
+    async ({ event, step }) => {
+        const { reportId } = event.data;
+        return step.run('run-compare-report-agent', async () => {
+            return runCompareReportAgent(reportId);
+        });
+    }
+);
+
 /**
  * 导出所有 Inngest 函数
  */
-export const functions = [buildPersonJob];
+export const functions = [
+    buildPersonJob,
+    compareReportJob,
+    weeklyQualityCheck,
+    manualQualityCheck,
+    materializeActivityEventsJob,
+    prepareWeeklyNewsletterDigestJob,
+];

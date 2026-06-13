@@ -7,24 +7,10 @@
 
 import { prisma } from '../../lib/db/prisma';
 import { chatStructuredCompletion, type ChatMessage } from '../../lib/ai/deepseek';
+import topicRegistry from '../../lib/person-directory-topics.json';
 
-// AI 话题标签预定义列表 - 扩展版（导出供其他脚本使用）
-export const AI_TOPICS = [
-  // 核心技术
-  '大语言模型', 'Transformer', 'RAG', 'Agent', '多模态', '推理',
-  // 训练与优化
-  'Scaling', '高效训练', '强化学习', '自监督学习', 'RLHF',
-  // 应用方向
-  '代码生成', 'NLP', '计算机视觉', '语音', '机器人', '自动驾驶',
-  // 新兴热点
-  'Memory', 'Deep Research', 'Eval', '个性化', '知识图谱', 'MoE',
-  // 安全与治理
-  '对齐', '安全', '合规', '可解释性',
-  // 行业应用
-  '医疗AI', '教育', '金融AI', '创意生成',
-  // 生态
-  '开源', '产品', '基础设施', '芯片', 'AGI'
-];
+// AI 话题标签候选从前台 topic registry 生成，避免新数据继续写入旧标签。
+export const AI_TOPICS = topicRegistry.groups.flatMap(group => group.topics);
 
 // 角色分类
 const ROLE_CATEGORIES = {

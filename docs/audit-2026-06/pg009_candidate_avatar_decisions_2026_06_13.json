@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-06-13T00:00:00+08:00",
+  "reason": "PG-009 source-ready candidates that remained blocked only by avatar_missing and have high-confidence person-page, organization-page, event-page, or GitHub profile evidence.",
+  "decisions": [
+    {
+      "personId": "cmqc1gavx000412ic4mqniky5",
+      "person": "Aman Sanger",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/17725268?v=4",
+      "evidenceUrl": "https://github.com/Sanger2000",
+      "evidenceNote": "GitHub profile name is Aman Sanger, company is Cursor, and bio says coding with @getcursor at @anysphere.",
+      "rejectedAlternatives": [
+        "Other GitHub accounts with similar names were rejected because they lacked Cursor or Anysphere evidence."
+      ]
+    },
+    {
+      "personId": "cmqc1gcl6000712iclk2jfp6r",
+      "person": "Arvid Lunnemark",
+      "avatarUrl": "https://anysphere-messaging.com/static/53976bf3df25792034ebf6e6d975a8a6/95990/arvid-lunnemark.jpg",
+      "evidenceUrl": "https://anysphere-messaging.com/team/",
+      "evidenceNote": "Anysphere team page lists Arvid Lunnemark with an @anysphere.co email and a clear portrait image.",
+      "rejectedAlternatives": [
+        "Forbes and LinkedIn search results were not used because the direct pages were inaccessible or not suitable as image sources."
+      ]
+    },
+    {
+      "personId": "cmqc1glwa000n12icdy235x76",
+      "person": "Anton Osika",
+      "avatarUrl": "https://github.com/AntonOsika.png",
+      "evidenceUrl": "https://github.com/AntonOsika",
+      "evidenceNote": "GitHub account owns the gpt-engineer repository already present in PG-009 officialLinks; used only after official GitHub URL parsing was added.",
+      "rejectedAlternatives": [
+        "Lovable product imagery was not used because it is product branding, not a person portrait."
+      ]
+    },
+    {
+      "personId": "cmqc1gnzh000r12icirourf6w",
+      "person": "Daya Guo",
+      "avatarUrl": "https://guoday.github.io/assets/images/guodaya-3.jpg",
+      "evidenceUrl": "https://guoday.github.io/",
+      "evidenceNote": "Daya Guo's personal homepage hosts this sidebar portrait and lists AI Researcher in DeepSeek plus DeepSeek-Coder, DeepSeekMath, DeepSeek-V3, and DeepSeek-R1 contributions.",
+      "rejectedAlternatives": [
+        "Hugging Face and paper pages were not used because the personal homepage gives stronger identity and image evidence."
+      ]
+    },
+    {
+      "personId": "cmqc1h5jk001j12iclgen52l9",
+      "person": "Dmitry Shevelenko",
+      "avatarUrl": "https://www.lazard.com/media/mu0pwcku/edited_dmitry-headshot_hr-003.png?width=1112&height=1112&upscale=false",
+      "evidenceUrl": "https://www.lazard.com/our-people/dmitry-shevelenko/",
+      "evidenceNote": "Lazard's people page hosts a clear headshot and states Dmitry Shevelenko is Chief Business Officer of Perplexity.",
+      "rejectedAlternatives": [
+        "X and YouTube thumbnails were not used because the Lazard page is a more stable named profile source."
+      ]
+    },
+    {
+      "personId": "cmqc1gt49001012icyec5k39e",
+      "person": "Lysandre Debut",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/30755778?v=4",
+      "evidenceUrl": "https://github.com/LysandreJik",
+      "evidenceNote": "GitHub profile name is Lysandre Debut, company is Hugging Face, and bio says Chief OS Officer at HF.",
+      "rejectedAlternatives": [
+        "Arxiv paper pages were not used because they provide authorship evidence but no person portrait."
+      ]
+    },
+    {
+      "personId": "cmqc1gk6x000k12icaeiuax8g",
+      "person": "Steven Hao",
+      "avatarUrl": "https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/v1781116939/unnamed_l6cwel.png?auto=format,compress&fit=crop&w=300&h=300",
+      "evidenceUrl": "https://gitnation.com/person/steven_hao",
+      "evidenceNote": "GitNation profile hosts Steven Hao's portrait and states he is co-founder and CTO of Cognition, the AI lab behind Devin.",
+      "rejectedAlternatives": [
+        "X avatar was not used because the GitNation speaker page gives a named portrait and role evidence in one source."
+      ]
+    },
+    {
+      "personId": "cmqc1g8q5000012icbhyikc59",
+      "person": "Sualeh Asif",
+      "avatarUrl": "https://anysphere-messaging.com/static/fbcd65bb8c9325cff0892c964f16ff78/3fd2e/sualeh-asif.jpg",
+      "evidenceUrl": "https://anysphere-messaging.com/team/",
+      "evidenceNote": "Anysphere team page lists Sualeh Asif with an @anysphere.co email and a clear portrait image.",
+      "rejectedAlternatives": [
+        "Sualeh's personal homepage circle.png was rejected because it is decorative artwork rather than a person portrait.",
+        "X avatar was not used because the Anysphere team page is a stronger organization-backed source."
+      ]
+    },
+    {
+      "personId": "cmqc1gutc001312ic106t71ec",
+      "person": "Sylvain Gugger",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/35901082?v=4",
+      "evidenceUrl": "https://github.com/sgugger",
+      "evidenceNote": "GitHub profile name is Sylvain Gugger, and bio references machine learning plus prior Hugging Face/fast.ai work.",
+      "rejectedAlternatives": [
+        "Arxiv paper pages were not used because they provide authorship evidence but no person portrait."
+      ]
+    },
+    {
+      "personId": "cmqc1h0yd001d12iciz0vggv2",
+      "person": "Xinyu Zhou",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/888911?v=4",
+      "evidenceUrl": "https://github.com/zxytim",
+      "evidenceNote": "GitHub profile name is Xinyu Zhou and the profile shows contributions to MoonshotAI/Kimi-K2; Hugging Face profile for zxytim also uses fullname Xinyu Zhou.",
+      "rejectedAlternatives": [
+        "X avatar was not used because unavatar did not return a usable image in this run."
+      ]
+    },
+    {
+      "personId": "cmqc1h37y001g12ic04gs46c2",
+      "person": "Yuxin Wu",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1381301?v=4",
+      "evidenceUrl": "https://github.com/ppwwyyxx",
+      "evidenceNote": "GitHub profile name is Yuxin Wu and bio says @facebookresearch -> @google -> @MoonshotAI; his homepage also states he is building foundation models at Moonshot AI (Kimi).",
+      "rejectedAlternatives": [
+        "Homepage Gravatar URL was not used because the GitHub avatar is a stable profile image with matching identity metadata."
+      ]
+    },
+    {
+      "personId": "cmqc1grfh000x12iczwt7ooyy",
+      "person": "Zhihong Shao",
+      "avatarUrl": "https://ZhihongShao.github.io/images/profile0.jpeg",
+      "evidenceUrl": "https://zhihongshao.github.io/",
+      "evidenceNote": "Zhihong Shao's personal homepage hosts this profile photo and states he is a Research Scientist at DeepSeek.",
+      "rejectedAlternatives": [
+        "Paper pages were not used because the personal homepage gives stronger identity and image evidence."
+      ]
+    }
+  ]
+}

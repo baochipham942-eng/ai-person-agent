@@ -1,9 +1,12 @@
 export { PersonHeader } from './PersonHeader';
 export { CoreContribution } from './CoreContribution';
+export { InfluenceBreakdown } from './InfluenceBreakdown';
 export { TopicRanking } from './TopicRanking';
 export { RelatedPeople } from './RelatedPeople';
+export { RelationshipGraphExplorer } from './RelationshipGraphExplorer';
 export { TimelineSection } from './TimelineSection';
 export { ContentTabs } from './ContentTabs';
 export { FeaturedWorks } from './FeaturedWorks';
 export { VideoSection } from './VideoSection';
 export { CourseSection } from './CourseSection';
+export { RecentActivity } from './RecentActivity';

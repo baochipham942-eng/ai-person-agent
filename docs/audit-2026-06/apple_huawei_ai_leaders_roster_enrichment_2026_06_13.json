@@ -1,0 +1,151 @@
+{
+  "_meta": {
+    "source": "2026-06-13 Apple and Huawei AI leadership follow-up",
+    "note": "Minimum viable enrichment for candidate rows and stale Apple leader repair."
+  },
+  "people": [
+    {
+      "name": "Amar Subramanya",
+      "topics": ["Apple Intelligence", "基础模型", "大语言模型", "AI安全", "端侧AI"],
+      "officialLinks": [
+        {
+          "type": "website",
+          "url": "https://www.apple.com/newsroom/2025/12/john-giannandrea-to-retire-from-apple/",
+          "label": "Apple Newsroom"
+        }
+      ],
+      "products": [
+        {
+          "name": "Apple Foundation Models",
+          "description": "Apple 的基础模型体系；Apple 公告称 Amar Subramanya 负责 Apple Foundation Models。",
+          "org": "Apple",
+          "year": 2025,
+          "url": "https://www.apple.com/newsroom/2025/12/john-giannandrea-to-retire-from-apple/",
+          "category": "AI Model",
+          "type": "foundation-model"
+        },
+        {
+          "name": "Apple Intelligence",
+          "description": "Apple 面向系统级体验的 AI 产品体系，依托 Apple Foundation Models 等能力。",
+          "org": "Apple",
+          "year": 2024,
+          "url": "https://www.apple.com/apple-intelligence/",
+          "category": "Platform",
+          "type": "ai-platform"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "基础模型",
+          "rank": 99,
+          "reason": "Apple 官方公告称其负责 Apple Foundation Models、ML research、AI safety and evaluation。"
+        }
+      ]
+    },
+    {
+      "name": "John Giannandrea",
+      "topics": ["Apple Intelligence", "机器学习", "搜索", "知识图谱"],
+      "officialLinks": [
+        {
+          "type": "website",
+          "url": "https://www.apple.com/newsroom/2025/12/john-giannandrea-to-retire-from-apple/",
+          "label": "Apple Newsroom"
+        }
+      ],
+      "products": [
+        {
+          "name": "Apple Machine Learning and AI Strategy",
+          "description": "John Giannandrea 曾负责 Apple 的机器学习与 AI 战略。",
+          "org": "Apple",
+          "year": "2018-2025",
+          "url": "https://www.apple.com/newsroom/2025/12/john-giannandrea-to-retire-from-apple/",
+          "category": "Strategy",
+          "type": "ai-strategy"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "机器学习",
+          "rank": 99,
+          "reason": "Apple 官方公告确认其曾担任机器学习与 AI 战略高级副总裁。"
+        }
+      ]
+    },
+    {
+      "name": "张平安",
+      "topics": ["华为云", "盘古大模型", "AI基础设施", "行业大模型"],
+      "officialLinks": [
+        {
+          "type": "website",
+          "url": "https://www.huawei.com/minisite/annual-report-download/annual_report_2024_cn.pdf",
+          "label": "Huawei Annual Report 2024"
+        }
+      ],
+      "products": [
+        {
+          "name": "华为云",
+          "description": "华为云聚焦 AI for Industries，并提供 AI-Native 云基础设施与行业 AI 服务。",
+          "org": "华为云",
+          "year": 2024,
+          "url": "https://www.huawei.com/minisite/annual-report-download/annual_report_2024_cn.pdf",
+          "category": "Cloud",
+          "type": "ai-cloud"
+        },
+        {
+          "name": "盘古大模型",
+          "description": "华为云面向行业的大模型体系，2024 年报称其已在 30 多个行业、400 多个场景中落地。",
+          "org": "华为云",
+          "year": 2024,
+          "url": "https://www.huawei.com/minisite/annual-report-download/annual_report_2024_cn.pdf",
+          "category": "AI Model",
+          "type": "industry-llm"
+        },
+        {
+          "name": "CloudMatrix",
+          "description": "华为云 AI-Native 云基础设施架构，用于满足大模型训练与推理的 AI 算力需求。",
+          "org": "华为云",
+          "year": 2024,
+          "url": "https://www.huawei.com/minisite/annual-report-download/annual_report_2024_cn.pdf",
+          "category": "Infrastructure",
+          "type": "ai-infrastructure"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "华为云",
+          "rank": 99,
+          "reason": "华为年报确认张平安为华为云计算 BU CEO，且华为云章节集中承载 AI-Native、盘古和昇腾 AI 云服务。"
+        }
+      ]
+    },
+    {
+      "name": "田奇",
+      "topics": ["盘古大模型", "多模态", "计算机视觉", "行业大模型"],
+      "officialLinks": [
+        {
+          "type": "website",
+          "url": "https://www.huawei.com/cn/huaweitech/publication/90/huawei-cloud-pangu-model-releases-ai-productivity",
+          "label": "HuaweiTech"
+        }
+      ],
+      "products": [
+        {
+          "name": "盘古大模型",
+          "description": "华为云面向行业落地的大模型体系；华为技术专栏将田奇与盘古大模型研发和应用落地相连。",
+          "org": "华为云",
+          "year": 2023,
+          "url": "https://www.huawei.com/cn/huaweitech/publication/90/huawei-cloud-pangu-model-releases-ai-productivity",
+          "category": "AI Model",
+          "type": "industry-llm"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "盘古大模型",
+          "rank": 99,
+          "reason": "华为技术专栏称其为华为云人工智能领域首席科学家，并描述其与团队推动盘古大模型。"
+        }
+      ]
+    }
+  ]
+}

@@ -95,7 +95,8 @@ function firstWebsite(seed: EnrichmentSeed): OfficialLink | undefined {
 }
 
 function githubAvatar(seed: EnrichmentSeed): string | null {
-  const handle = seed.officialLinks?.find(link => link.type === 'github')?.handle;
+  const githubLink = seed.officialLinks?.find(link => link.type === 'github');
+  const handle = githubLink?.handle || githubLink?.url.match(/^https?:\/\/github\.com\/([^/]+)/)?.[1];
   if (!handle || handle.includes('/')) return null;
   return `https://github.com/${handle}.png`;
 }
@@ -112,7 +113,9 @@ function sourceText(person: CandidatePerson, seed: EnrichmentSeed, product?: Pro
     : `${person.name} 的候选资料覆盖 ${topics}，当前职位为 ${person.currentTitle || '待补充'}。`;
 
   return [
-    `${person.name} 是 AI 人物库 candidate 名册中的人物，当前仍保持 candidate 状态，资料用于后续人工复核和内容抓取。`,
+    person.status === 'candidate'
+      ? `${person.name} 是 AI 人物库 candidate 名册中的人物，当前仍保持 candidate 状态，资料用于后续人工复核和内容抓取。`
+      : `${person.name} 是 AI 人物库中的人物，本条资料用于补强来源、素材和学习卡片。`,
     person.currentTitle ? `当前职位线索：${person.currentTitle}。` : '',
     orgs ? `相关机构：${orgs}。` : '',
     person.whyImportant ? `入库原因：${person.whyImportant}。` : '',

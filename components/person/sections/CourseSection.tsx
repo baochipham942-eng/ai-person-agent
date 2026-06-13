@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { buildTopicHref, normalizeDirectoryTopics } from '@/lib/person-directory-config';
 
 // ============== 类型定义 ==============
 
@@ -265,8 +266,12 @@ function CourseCard({ course }: { course: Course }) {
             alt={course.title}
             width={640}
             height={320}
+            unoptimized
             sizes="(min-width: 640px) 50vw, 100vw"
             className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
           />
 
           {/* 平台标签 */}
@@ -354,10 +359,10 @@ function CourseCard({ course }: { course: Course }) {
             className="flex flex-wrap gap-1 mt-2"
             onClick={(e) => e.stopPropagation()}
           >
-            {course.topics.slice(0, 3).map((tag) => (
+            {normalizeDirectoryTopics(course.topics).slice(0, 3).map((tag) => (
               <Link
                 key={tag}
-                href={`/?view=topic&topic=${encodeURIComponent(tag)}`}
+                href={buildTopicHref(tag)}
                 className="px-1.5 py-0.5 text-[10px] bg-orange-50 text-orange-600 rounded-md hover:bg-orange-100 transition-colors"
               >
                 {tag}

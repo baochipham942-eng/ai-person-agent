@@ -1,4 +1,13 @@
+import topicRegistry from '@/lib/person-directory-topics.json';
+
 export type DirectoryViewMode = 'trending' | 'topic' | 'organization' | 'role';
+export type DirectorySortKey =
+  | 'influenceScore'
+  | 'weeklyViewCount'
+  | 'citationCount'
+  | 'githubStars'
+  | 'industryImpact'
+  | 'risingScore';
 
 export interface DirectoryHighlight {
   icon: string;
@@ -18,6 +27,8 @@ export interface DirectoryPerson {
   roleCategory: string | null;
   influenceScore: number;
   weeklyViewCount: number;
+  citationCount: number;
+  githubStars: number;
 }
 
 export interface DirectoryOrganizationMatch {
@@ -32,7 +43,7 @@ export interface DirectoryOrganizationMatch {
 }
 
 export interface DirectoryStats {
-  totalPeople: number;
+  totalPeople: number | null;
   totalTopics: number;
   totalOrgs: number;
 }
@@ -46,6 +57,7 @@ export interface DirectoryResponse {
     hasMore: boolean;
   };
   stats?: DirectoryStats;
+  isFallback?: boolean;
 }
 
 export interface DirectoryFilters {
@@ -54,6 +66,7 @@ export interface DirectoryFilters {
   organization: string | null;
   role: string | null;
   search: string;
+  sortBy: DirectorySortKey;
 }
 
 export interface DirectoryTopicGroup {
@@ -62,35 +75,70 @@ export interface DirectoryTopicGroup {
   topics: string[];
 }
 
-export const DIRECTORY_TOPIC_GROUPS: DirectoryTopicGroup[] = [
-  {
-    key: 'model-foundations',
-    label: '模型基础',
-    topics: ['大语言模型', 'Transformer', 'Scaling', 'MoE', 'Memory', 'AGI'],
-  },
-  {
-    key: 'reasoning-alignment',
-    label: '推理与对齐',
-    topics: ['推理', '强化学习', 'RLHF', 'Eval', '对齐', '安全', '合规'],
-  },
-  {
-    key: 'agent-systems',
-    label: 'Agent 与应用',
-    topics: ['RAG', 'Agent', '代码生成', '产品', '基础设施', '开源', '个性化'],
-  },
-  {
-    key: 'modalities-embodied',
-    label: '多模态与具身',
-    topics: ['多模态', 'NLP', '计算机视觉', '语音', '机器人', '自动驾驶'],
-  },
-  {
-    key: 'industry-hardware',
-    label: '行业与硬件',
-    topics: ['医疗AI', '教育', '金融AI', '芯片'],
-  },
-];
+interface TopicRegistryData {
+  groups: DirectoryTopicGroup[];
+  topics: Array<{
+    label: string;
+    aliases?: string[];
+    icon?: string;
+    color?: string;
+  }>;
+}
 
+const TOPIC_REGISTRY = topicRegistry as TopicRegistryData;
+
+export const DIRECTORY_TOPIC_GROUPS: DirectoryTopicGroup[] = TOPIC_REGISTRY.groups;
 export const DIRECTORY_TOPICS = DIRECTORY_TOPIC_GROUPS.flatMap(group => group.topics);
+
+export const DIRECTORY_TOPIC_ALIASES: Record<string, string[]> = Object.fromEntries(
+  TOPIC_REGISTRY.topics.map(topic => [topic.label, topic.aliases || []])
+);
+
+export const DIRECTORY_TOPIC_ICON_MAP: Record<string, string> = Object.fromEntries(
+  TOPIC_REGISTRY.topics.map(topic => [topic.label, topic.icon || '📚'])
+);
+
+export const DIRECTORY_TOPIC_COLOR_MAP: Record<string, string> = Object.fromEntries(
+  TOPIC_REGISTRY.topics
+    .filter(topic => topic.color)
+    .map(topic => [topic.label, topic.color as string])
+);
+
+const DIRECTORY_TOPIC_CANONICAL_BY_ALIAS = new Map<string, string>();
+
+for (const topic of TOPIC_REGISTRY.topics) {
+  DIRECTORY_TOPIC_CANONICAL_BY_ALIAS.set(normalizeTopicKey(topic.label), topic.label);
+  for (const alias of topic.aliases || []) {
+    DIRECTORY_TOPIC_CANONICAL_BY_ALIAS.set(normalizeTopicKey(alias), topic.label);
+  }
+}
+
+export function normalizeDirectoryTopic(topic: string): string {
+  return DIRECTORY_TOPIC_CANONICAL_BY_ALIAS.get(normalizeTopicKey(topic)) || topic;
+}
+
+export function normalizeDirectoryTopics(topics: string[]): string[] {
+  return uniqueStrings(topics.map(normalizeDirectoryTopic));
+}
+
+export function getDirectoryTopicAliases(topic: string): string[] {
+  const canonical = normalizeDirectoryTopic(topic);
+  return uniqueStrings([
+    canonical,
+    topic,
+    ...(DIRECTORY_TOPIC_ALIASES[canonical] || []),
+  ]);
+}
+
+export function getDirectoryTopicIcon(topic: string): string {
+  const canonical = normalizeDirectoryTopic(topic);
+  return DIRECTORY_TOPIC_ICON_MAP[canonical] || '📚';
+}
+
+export function getDirectoryTopicColor(topic: string): string {
+  const canonical = normalizeDirectoryTopic(topic);
+  return DIRECTORY_TOPIC_COLOR_MAP[canonical] || 'bg-stone-50 text-stone-600 border border-stone-100';
+}
 
 export interface DirectoryOrganizationGroup {
   key: string;
@@ -118,7 +166,7 @@ export const DIRECTORY_ORGANIZATION_GROUPS: DirectoryOrganizationGroup[] = [
   {
     key: 'big-tech-platforms',
     label: '大厂与平台',
-    organizations: ['Google', 'Microsoft', 'Meta', 'Apple'],
+    organizations: ['Google', 'Microsoft', 'Meta', 'Apple', '华为'],
   },
   {
     key: 'universities',
@@ -142,6 +190,7 @@ export const DIRECTORY_ORGANIZATION_ALIASES: Record<string, string[]> = {
   Microsoft: ['Microsoft', '微软', '微软研究院', '微软AI', 'Microsoft Research'],
   Meta: ['Meta', 'Facebook', 'Meta AI', 'FAIR', 'FAIR蒙特利尔', '脸书', 'Meta超级智能实验室'],
   Apple: ['Apple', '苹果'],
+  华为: ['华为', 'Huawei', '华为技术有限公司', '华为公司', '华为集团', '华为云', 'Huawei Cloud', '华为云计算BU', '华为云计算 BU', '盘古', '盘古大模型', '昇腾', 'Ascend', '华为诺亚方舟实验室', "Noah's Ark Lab"],
   Amazon: ['Amazon', 'AWS', '亚马逊'],
   Tesla: ['Tesla', '特斯拉', '特斯拉公司', 'Tesla, Inc.'],
   Nvidia: ['Nvidia', 'NVIDIA', '英伟达'],
@@ -197,18 +246,36 @@ export const DIRECTORY_VIEW_MODES: { key: DirectoryViewMode; icon: string; label
   { key: 'role', icon: '👤', label: '按角色' }
 ];
 
+export const DIRECTORY_SORT_OPTIONS: { key: DirectorySortKey; label: string; hint: string }[] = [
+  { key: 'influenceScore', label: '综合影响力', hint: '综合学术、开源、产业和内容信号' },
+  { key: 'weeklyViewCount', label: '最近热度', hint: '按近 7 天站内访问排序' },
+  { key: 'citationCount', label: '学术影响力', hint: '按论文引用量排序' },
+  { key: 'githubStars', label: '开源影响力', hint: '按 GitHub stars 排序' },
+  { key: 'industryImpact', label: '产业影响力', hint: '按履历关系、机构线索和综合影响力排序' },
+  { key: 'risingScore', label: '新晋上升', hint: '按近 7 天访问和最近入库信号排序' },
+];
+
+const DIRECTORY_SORT_KEYS = new Set<DirectorySortKey>(
+  DIRECTORY_SORT_OPTIONS.map(option => option.key)
+);
+
 export function getInitialDirectoryFilters(params: {
   view?: string | string[] | null;
   topic?: string | string[] | null;
   organization?: string | string[] | null;
   role?: string | string[] | null;
   search?: string | string[] | null;
+  sortBy?: string | string[] | null;
 }): DirectoryFilters {
   const viewParam = firstParam(params.view);
   const topic = firstParam(params.topic);
   const organization = firstParam(params.organization);
   const role = firstParam(params.role);
   const search = firstParam(params.search) || '';
+  const sortParam = firstParam(params.sortBy);
+  const sortBy = sortParam && DIRECTORY_SORT_KEYS.has(sortParam as DirectorySortKey)
+    ? sortParam as DirectorySortKey
+    : 'influenceScore';
 
   let view: DirectoryViewMode = 'trending';
   if (viewParam && ['trending', 'topic', 'organization', 'role'].includes(viewParam)) {
@@ -223,10 +290,11 @@ export function getInitialDirectoryFilters(params: {
 
   return {
     view,
-    topic: topic || null,
+    topic: topic ? normalizeDirectoryTopic(topic) : null,
     organization: organization || null,
     role: role || null,
     search,
+    sortBy,
   };
 }
 
@@ -236,14 +304,15 @@ export function buildDirectoryApiUrl(params: {
   organization?: string | null;
   roleCategory?: string | null;
   search?: string;
+  sortBy?: DirectorySortKey | string | null;
 }): string {
   const searchParams = new URLSearchParams({
     page: params.page.toString(),
     limit: '12',
-    sortBy: 'influenceScore',
+    sortBy: params.sortBy || 'influenceScore',
   });
 
-  if (params.topic) searchParams.set('topic', params.topic);
+  if (params.topic) searchParams.set('topic', normalizeDirectoryTopic(params.topic));
   if (params.organization) searchParams.set('organization', params.organization);
   if (params.roleCategory) searchParams.set('roleCategory', params.roleCategory);
   if (params.search) searchParams.set('search', params.search);
@@ -251,7 +320,42 @@ export function buildDirectoryApiUrl(params: {
   return `/api/person/directory?${searchParams}`;
 }
 
+export function buildTopicHref(topic: string): string {
+  return `/topic/${encodeURIComponent(normalizeDirectoryTopic(topic))}`;
+}
+
+export function buildOrganizationHref(organization: string): string {
+  return `/org/${encodeURIComponent(organization)}`;
+}
+
+export function buildDirectoryHref(params: {
+  view?: DirectoryViewMode;
+  topic?: string | null;
+  organization?: string | null;
+  role?: string | null;
+  sortBy?: DirectorySortKey | string | null;
+}): string {
+  const searchParams = new URLSearchParams();
+
+  if (params.view) searchParams.set('view', params.view);
+  if (params.topic) searchParams.set('topic', normalizeDirectoryTopic(params.topic));
+  if (params.organization) searchParams.set('organization', params.organization);
+  if (params.role) searchParams.set('role', params.role);
+  if (params.sortBy && params.sortBy !== 'influenceScore') searchParams.set('sortBy', params.sortBy);
+
+  const query = searchParams.toString();
+  return query ? `/?${query}` : '/';
+}
+
 function firstParam(value?: string | string[] | null): string | null {
   if (Array.isArray(value)) return value[0] || null;
   return value || null;
+}
+
+function normalizeTopicKey(value: string): string {
+  return value.trim().toLowerCase().replace(/\s+/g, '');
+}
+
+function uniqueStrings(values: string[]): string[] {
+  return [...new Set(values.map(value => value.trim()).filter(Boolean))];
 }

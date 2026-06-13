@@ -1,7 +1,7 @@
 import type { PrismaClient } from '@prisma/client';
 
-const RELATION_TYPES = ['advisor', 'advisee', 'cofounder', 'colleague', 'collaborator', 'successor'] as const;
-const SYMMETRIC_RELATION_TYPES = new Set(['cofounder', 'colleague', 'collaborator']);
+const RELATION_TYPES = ['advisor', 'advisee', 'cofounder', 'colleague', 'former_colleague', 'collaborator', 'successor'] as const;
+const SYMMETRIC_RELATION_TYPES = new Set(['cofounder', 'colleague', 'former_colleague', 'collaborator']);
 const TRUSTED_SOURCES = new Set(['wikidata']);
 const EXTERNAL_SOURCES = new Set(['exa', 'perplexity']);
 
@@ -196,8 +196,19 @@ async function getSharedRoleEvidence(
 
 function validateByRoleEvidence(type: RelationType, sharedRoles: SharedRoleEvidence[]): string[] {
   if (type === 'colleague') {
-    const overlap = sharedRoles.find(shared => rolesOverlap(shared.personRole, shared.relatedRole));
-    return overlap ? [`overlapping role at ${overlap.organizationName}`] : [];
+    const overlap = sharedRoles.find(shared =>
+      rolesOverlap(shared.personRole, shared.relatedRole)
+      && rolesCurrentlyOverlap(shared.personRole, shared.relatedRole)
+    );
+    return overlap ? [`current overlapping role at ${overlap.organizationName}`] : [];
+  }
+
+  if (type === 'former_colleague') {
+    const overlap = sharedRoles.find(shared =>
+      rolesOverlap(shared.personRole, shared.relatedRole)
+      && !rolesCurrentlyOverlap(shared.personRole, shared.relatedRole)
+    );
+    return overlap ? [`historical overlapping role at ${overlap.organizationName}`] : [];
   }
 
   if (type === 'cofounder') {
@@ -251,6 +262,10 @@ function rolesOverlap(a: RoleRow, b: RoleRow): boolean {
   return aStart <= bEnd && bStart <= aEnd;
 }
 
+function rolesCurrentlyOverlap(a: RoleRow, b: RoleRow): boolean {
+  return !a.endDate && !b.endDate;
+}
+
 function hasFounderRole(role: string): boolean {
   const normalized = role.toLowerCase();
   return [
@@ -276,7 +291,9 @@ function relationKeywords(type: RelationType): string[] {
     case 'cofounder':
       return ['cofounder', 'co-founder', 'co founder', 'founded', 'founder', '联合创始', '共同创立'];
     case 'colleague':
-      return ['colleague', 'worked with', 'worked at', 'same company', '同事', '共事'];
+      return ['colleague', 'works with', 'currently works', 'same company', '同事', '共事'];
+    case 'former_colleague':
+      return ['former colleague', 'previously worked with', 'worked at', 'same company', 'ex-colleague', '前同事', '曾共事', '曾同事'];
     case 'collaborator':
       return ['collaborator', 'collaborated', 'coauthor', 'co-author', 'paper', 'research', '合作', '论文'];
     case 'successor':

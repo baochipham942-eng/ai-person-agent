@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "source": "2026-06-13 Apple and Huawei AI leadership follow-up",
+    "note": "Candidate-level roster seeds. New people stay candidate; existing John Giannandrea is updated only to remove stale currentTitle."
+  },
+  "seeds": [
+    {
+      "name": "Amar Subramanya",
+      "qid": "CANDIDATE-amar-subramanya",
+      "roleCategory": "executive",
+      "organization": ["Apple"],
+      "currentTitle": "Vice President of AI @ Apple",
+      "aliases": ["Amar Subramanya"],
+      "reason": "Apple announced in 2025 that Amar Subramanya joined as vice president of AI, reporting to Craig Federighi and leading Apple Foundation Models, ML research, AI safety, and evaluation."
+    },
+    {
+      "name": "John Giannandrea",
+      "roleCategory": "executive",
+      "organization": ["Apple"],
+      "currentTitle": "Former Senior Vice President, Machine Learning and AI Strategy @ Apple",
+      "aliases": ["John Giannandrea"],
+      "reason": "Former Apple machine learning and AI strategy leader; Apple announced he stepped down and would retire after an advisory period."
+    },
+    {
+      "name": "张平安",
+      "nameZh": "张平安",
+      "qid": "CANDIDATE-zhang-pingan",
+      "roleCategory": "executive",
+      "organization": ["华为", "华为云"],
+      "currentTitle": "常务董事、华为云计算 BU CEO @ 华为",
+      "aliases": ["Zhang Pingan", "Zhang Ping'an", "Ping-An Zhang"],
+      "reason": "华为年报确认张平安为华为常务董事、华为云计算 BU CEO；适合作为华为云与盘古大模型业务落地负责人候选。"
+    },
+    {
+      "name": "田奇",
+      "nameZh": "田奇",
+      "qid": "CANDIDATE-tian-qi",
+      "roleCategory": "researcher",
+      "organization": ["华为", "华为云"],
+      "currentTitle": "华为云人工智能领域首席科学家",
+      "aliases": ["Tian Qi", "Qi Tian"],
+      "reason": "华为技术专栏明确称田奇为华为云人工智能领域首席科学家，并将其与盘古大模型研发和产业落地相连。"
+    }
+  ]
+}

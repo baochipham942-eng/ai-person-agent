@@ -14,7 +14,8 @@ const RELATION_TYPES = [
   'advisor',      // 导师
   'advisee',      // 学生
   'cofounder',    // 联合创始人
-  'colleague',    // 同事（同公司工作过）
+  'colleague',    // 当前同事
+  'former_colleague', // 前同事（历史上同公司工作过）
   'collaborator', // 合作者（论文合作等）
 ];
 
@@ -156,7 +157,8 @@ async function inferRelationWithAI(candidate: RelationCandidate): Promise<AIRela
 - advisor: A是B的导师（博士导师等）
 - advisee: A是B的学生
 - cofounder: 联合创始人（共同创立公司）
-- colleague: 同事（在同一公司工作过）
+- colleague: 当前同事（当前在同一公司或机构共事）
+- former_colleague: 前同事（历史上在同一公司或机构共事，但现在不在同一机构）
 - collaborator: 合作者（研究合作）
 
 如果关系不明确或不确定，返回 null。

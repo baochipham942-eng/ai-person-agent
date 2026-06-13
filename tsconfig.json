@@ -38,6 +38,7 @@
   ],
   "exclude": [
     "node_modules",
+    "exports",
     "test_*.ts",
     "refresh_*.ts",
     "scripts/**/*.ts"

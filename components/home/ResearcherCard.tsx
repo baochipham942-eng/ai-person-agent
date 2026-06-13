@@ -4,12 +4,15 @@ import { memo, useCallback, useRef, type KeyboardEvent, type MouseEvent } from '
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import type { DirectoryPerson } from '@/lib/person-directory-config';
+import { CompareButton } from '@/components/common/CompareButton';
+import { INFLUENCE_SCORE_VERSION, INFLUENCE_SCORE_WEIGHTS } from '@/lib/influence-scoring';
+import { buildTopicHref, type DirectoryPerson, type DirectorySortKey } from '@/lib/person-directory-config';
 
 interface ResearcherCardProps {
   person: DirectoryPerson;
   rank?: number;
   isHot?: boolean;
+  sortBy?: DirectorySortKey;
 }
 
 // 根据名字生成一致的颜色（温暖色调）
@@ -123,8 +126,23 @@ function shouldIgnoreCardClick(target: EventTarget | null) {
   return Boolean(target.closest('a, button, input, select, textarea, [role="button"]'));
 }
 
+function formatCompactNumber(value: number): string {
+  if (value >= 1000000) return `${(value / 1000000).toFixed(1).replace(/\.0$/, '')}M`;
+  if (value >= 1000) return `${(value / 1000).toFixed(1).replace(/\.0$/, '')}k`;
+  return String(value);
+}
+
+function formatSortSignal(person: DirectoryPerson, sortBy: DirectorySortKey): string {
+  if (sortBy === 'weeklyViewCount') return `近 7 天 ${person.weeklyViewCount} 次访问`;
+  if (sortBy === 'citationCount') return `引用 ${formatCompactNumber(person.citationCount)}`;
+  if (sortBy === 'githubStars') return `GitHub ${formatCompactNumber(person.githubStars)} stars`;
+  if (sortBy === 'industryImpact') return person.organization[0] ? `产业线索 ${person.organization[0]}` : `影响力 ${person.influenceScore.toFixed(1)}`;
+  if (sortBy === 'risingScore') return `近 7 天 ${person.weeklyViewCount} 次访问`;
+  return `影响力 ${person.influenceScore.toFixed(1)}`;
+}
+
 // 使用 memo 包裹整个组件，避免父组件重渲染时子组件不必要的渲染
-export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot }: ResearcherCardProps) {
+export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot, sortBy = 'influenceScore' }: ResearcherCardProps) {
   const router = useRouter();
   const detailHref = `/person/${person.id}`;
   const hasPrefetchedRef = useRef(false);
@@ -247,7 +265,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
           {person.topics.slice(0, 3).map((topic, i) => (
             <Link
               key={i}
-              href={`/?view=topic&topic=${encodeURIComponent(topic)}`}
+              href={buildTopicHref(topic)}
               onMouseDown={preventMouseFocus}
               className={`text-[10px] font-medium px-1.5 py-0.5 rounded-md ${TOPIC_STYLE} hover:bg-orange-100 hover:text-orange-700 hover:border-orange-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300`}
             >
@@ -261,27 +279,37 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
       <div className="flex items-center justify-between pt-2.5 border-t border-stone-100">
         <div className="relative group/score flex items-center gap-1 text-[10px] text-stone-400">
           <StarIcon />
-          <span className="font-medium text-stone-500">影响力 {person.influenceScore.toFixed(1)}</span>
+          <span className="font-medium text-stone-500">{formatSortSignal(person, sortBy)}</span>
           {/* 打分规则提示 */}
           <div className="absolute bottom-full left-0 mb-2 w-56 p-3 bg-stone-900 text-white text-[10px] rounded-lg shadow-lg opacity-0 invisible group-hover/score:opacity-100 group-hover/score:visible group-focus-within/score:opacity-100 group-focus-within/score:visible transition-all z-50 pointer-events-none">
-            <div className="font-medium mb-1.5 text-orange-400">影响力评分规则</div>
+            <div className="font-medium mb-1.5 text-orange-400">影响力与榜单信号</div>
             <ul className="space-y-1 text-stone-300">
-              <li>学术引用量 (30%)</li>
-              <li>核心论文数量 (25%)</li>
-              <li>GitHub Stars (15%)</li>
-              <li>社交媒体影响力 (15%)</li>
-              <li>行业经历权重 (15%)</li>
+              <li>综合影响力: {person.influenceScore.toFixed(1)}</li>
+              <li>近 7 天访问: {person.weeklyViewCount}</li>
+              <li>论文引用: {formatCompactNumber(person.citationCount)}</li>
+              <li>GitHub stars: {formatCompactNumber(person.githubStars)}</li>
+            </ul>
+            <div className="mt-2 border-t border-stone-700 pt-2 text-stone-400">
+              综合分参考 · {INFLUENCE_SCORE_VERSION}
+            </div>
+            <ul className="mt-1 space-y-1 text-stone-400">
+              {INFLUENCE_SCORE_WEIGHTS.map(weight => (
+                <li key={weight.key}>{weight.label} ({weight.weight}%)</li>
+              ))}
             </ul>
             <div className="absolute -bottom-1 left-3 w-2 h-2 bg-stone-900 transform rotate-45"></div>
           </div>
         </div>
-        <Link
-          href={detailHref}
-          onMouseDown={preventMouseFocus}
-          className="text-[10px] text-stone-500 group-hover:text-orange-600 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 rounded-md px-1 py-0.5"
-        >
-          进入详情 →
-        </Link>
+        <div className="flex items-center gap-1.5">
+          <CompareButton target={{ id: person.id, name: person.name }} />
+          <Link
+            href={detailHref}
+            onMouseDown={preventMouseFocus}
+            className="text-[10px] text-stone-500 group-hover:text-orange-600 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 rounded-md px-1 py-0.5"
+          >
+            进入详情 →
+          </Link>
+        </div>
       </div>
     </article>
   );

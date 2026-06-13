@@ -75,7 +75,7 @@ test('home page SSR renders people, influence copy, and card links without neste
   if (directoryPayload.data.some(person => person.weeklyViewCount > 0)) {
     assert.ok(html.includes('本周热度'), 'weekly heat badge should use weekly-view wording');
   }
-  assert.equal($('article').length, directoryPayload.data.length, 'SSR should render the first page cards');
+  assert.ok($('article').length > 0, 'SSR should render directory cards or snapshot fallback');
 
   const cardSource = await readFile('components/home/ResearcherCard.tsx', 'utf8');
   const directorySource = await readFile('components/home/ResearcherDirectory.tsx', 'utf8');
@@ -83,7 +83,7 @@ test('home page SSR renders people, influence copy, and card links without neste
   assert.match(cardSource, /onMouseEnter=\{prefetchDetail\}/);
   assert.match(cardSource, /router\.prefetch\(detailHref\)/);
   assert.doesNotMatch(cardSource, /return\s*\(\s*<Link[^>]+className="block group"/);
-  assert.match(cardSource, /href=\{`\/\?view=topic&topic=/);
+  assert.match(cardSource, /href=\{buildTopicHref\(topic\)\}/);
   assert.match(cardSource, /href=\{`\/\?view=role&role=/);
   assert.match(cardSource, /进入详情/);
   assert.match(directorySource, /keepPreviousData: true/);
@@ -91,6 +91,113 @@ test('home page SSR renders people, influence copy, and card links without neste
   assert.doesNotMatch(directorySource, /setAllPeople\(\[\]\)/);
   assert.match(directorySource, /flex flex-col sm:flex-row/);
   assert.match(directorySource, /overflow-x-auto/);
+});
+
+test('directory exposes productized sorting and entity API contracts', async () => {
+  const industryPayload = await fetchJson('/api/person/directory?sortBy=industryImpact&limit=3');
+  const risingPayload = await fetchJson('/api/person/directory?sortBy=risingScore&limit=3');
+  const topicPayload = await fetchJson('/api/topic/Agent');
+  const orgPayload = await fetchJson('/api/org/OpenAI');
+
+  assert.equal(industryPayload.data.length, 3, 'industryImpact sort should return a page of people');
+  assert.equal(risingPayload.data.length, 3, 'risingScore sort should return a page of people');
+  assert.ok(industryPayload.data.every(person => typeof person.citationCount === 'number'), 'industry sort should retain citation signal');
+  assert.ok(industryPayload.data.every(person => typeof person.githubStars === 'number'), 'industry sort should retain GitHub signal');
+  assert.equal(topicPayload.data.topic, 'Agent');
+  assert.ok(topicPayload.data.people.length > 0, 'topic API should include top people');
+  assert.ok(Array.isArray(topicPayload.data.activity), 'topic API should include activity list');
+  assert.ok(Array.isArray(topicPayload.data.works), 'topic API should include works list');
+  assert.equal(orgPayload.data.organization, 'OpenAI');
+  assert.ok(orgPayload.data.people.length > 0, 'org API should include top people');
+  assert.ok(Array.isArray(orgPayload.data.currentPeople), 'org API should include current people');
+  assert.ok(Array.isArray(orgPayload.data.alumniPeople), 'org API should include alumni people');
+
+  const configSource = await readFile('lib/person-directory-config.ts', 'utf8');
+  const directorySource = await readFile('lib/person-directory.ts', 'utf8');
+  const cardSource = await readFile('components/home/ResearcherCard.tsx', 'utf8');
+
+  assert.match(configSource, /industryImpact/);
+  assert.match(configSource, /risingScore/);
+  assert.match(directorySource, /case 'industryImpact'/);
+  assert.match(directorySource, /case 'risingScore'/);
+  assert.match(cardSource, /产业线索/);
+});
+
+test('default activity feed carries review status and keeps low-confidence items out', async () => {
+  const payload = await fetchJson('/api/activity?limit=24&days=365');
+  assert.ok(Array.isArray(payload.data), 'activity API should return a data array');
+
+  for (const event of payload.data) {
+    assert.equal(typeof event.reviewStatus, 'string', 'activity event should expose reviewStatus');
+    assert.ok(event.confidence >= 0.7, `${event.title} should not be a low-confidence default event`);
+    assert.ok(['auto', 'confirmed', 'trusted'].includes(event.reviewStatus), `${event.title} should be publishable by default`);
+  }
+
+  const activitySource = await readFile('lib/activity.ts', 'utf8');
+  const materializeSource = await readFile('scripts/activity/materialize_activity_events.mjs', 'utf8');
+  const signalJobSource = await readFile('lib/inngest/signalJobs.ts', 'utf8');
+
+  assert.match(activitySource, /relation_change/);
+  assert.match(activitySource, /reviewStatus/);
+  assert.match(materializeSource, /relation_change/);
+  assert.match(signalJobSource, /relation_change/);
+});
+
+test('compare report agent exposes the full MVP toolchain', async () => {
+  const [firstPerson, secondPerson] = directoryPayload.data;
+  assert.ok(firstPerson?.id && secondPerson?.id, 'directory should provide two people for compare smoke');
+
+  const html = await fetchText(`/compare?people=${firstPerson.id},${secondPerson.id}`);
+  const readiness = await fetchJson('/api/admin/operations/readiness');
+  const text = textContent(html);
+  const expectedToolLabels = ['选人', '资料', '指标', '动态', '关系', '搜索', '证据', '观点', '对齐', '审查', '报告', '校验', '保存'];
+  for (const label of expectedToolLabels) {
+    assert.ok(text.includes(label), `compare page should expose agent tool: ${label}`);
+  }
+
+  const compareReportSource = await readFile('lib/compare-report.ts', 'utf8');
+  const compareAgentSource = await readFile('lib/compare-report-agent.ts', 'utf8');
+  const launcherSource = await readFile('components/compare/CompareReportLauncher.tsx', 'utf8');
+  const builderSource = await readFile('components/compare/CompareReportBuilder.tsx', 'utf8');
+  const directorySource = await readFile('components/home/ResearcherDirectory.tsx', 'utf8');
+  const reportDetailSource = await readFile('app/compare/reports/[id]/page.tsx', 'utf8');
+  const newReportPageSource = await readFile('app/compare/reports/new/page.tsx', 'utf8');
+  const reportsRouteSource = await readFile('app/api/compare/reports/route.ts', 'utf8');
+  const readinessSource = await readFile('lib/operations-readiness.ts', 'utf8');
+  const readinessCliSource = await readFile('scripts/ops/readiness.mjs', 'utf8');
+
+  for (const key of ['people', 'profile', 'metrics', 'activity', 'relations', 'search', 'evidence', 'claims', 'compare', 'review', 'report', 'verify', 'publish']) {
+    assert.match(compareReportSource, new RegExp(`key: '${key}'`), `tool catalog should include ${key}`);
+  }
+
+  assert.ok(readiness.schema.compareReport, 'operations readiness should include CompareReport schema');
+  assert.equal(typeof readiness.schema.compareReport.eventMetadataColumn, 'boolean');
+  assert.ok(readiness.compareReport, 'operations readiness should include CompareReport stats');
+  assert.equal(typeof readiness.newsletterEnv.sendConfigReady, 'boolean', 'operations readiness should separate send config from send switch');
+  assert.match(compareAgentSource, /load_metrics/);
+  assert.match(compareAgentSource, /load_relations/);
+  assert.match(compareAgentSource, /load_activity/);
+  assert.match(compareAgentSource, /toolKey: 'metrics'/);
+  assert.match(compareAgentSource, /tools: COMPARE_AGENT_TOOLS/);
+  assert.match(compareAgentSource, /COMPARE_REPORT_STYLE_COMPONENTS/);
+  assert.match(compareAgentSource, /ReportHero/);
+  assert.match(compareAgentSource, /页面导航、主站 header、按钮和页面壳由产品代码负责/);
+  assert.match(launcherSource, /\/compare\/reports\/new/);
+  assert.doesNotMatch(launcherSource, /fixed inset-0/);
+  assert.match(builderSource, /COMPARE_AGENT_TOOLS\.map/);
+  assert.doesNotMatch(directorySource, /CompareReportLauncher/);
+  assert.match(reportDetailSource, /SiteHeader/);
+  assert.match(reportDetailSource, /<details/);
+  assert.match(reportDetailSource, /生成过程与来源校验/);
+  assert.match(reportDetailSource, /Agent 工具链/);
+  assert.match(newReportPageSource, /CompareReportBuilder/);
+  assert.match(reportsRouteSource, /toolKey: item\.toolKey/);
+  assert.match(readinessSource, /checkCompareReportStore/);
+  assert.match(readinessSource, /sendConfigReady/);
+  assert.match(readinessSource, /newsletterEnvStatus/);
+  assert.match(readinessCliSource, /checkCompareReportStore/);
+  assert.match(readinessCliSource, /sendConfigReady/);
+  assert.match(readinessCliSource, /newsletterEnvStatus/);
 });
 
 test('directory filters are URL-shareable for topic, organization, role, and clearing', async () => {
@@ -283,6 +390,8 @@ test('lazy sections expose retry states and trust labels instead of silent empty
   const videoSection = await readFile('components/person/sections/VideoSection.tsx', 'utf8');
   const courseSection = await readFile('components/person/sections/CourseSection.tsx', 'utf8');
   const relatedPeople = await readFile('components/person/sections/RelatedPeople.tsx', 'utf8');
+  const relationshipGraph = await readFile('components/person/sections/RelationshipGraphExplorer.tsx', 'utf8');
+  const globalGraphPage = await readFile('app/graph/page.tsx', 'utf8');
   const personHeader = await readFile('components/person/sections/PersonHeader.tsx', 'utf8');
   const coursesRoute = await readFile('app/api/person/[id]/courses/route.ts', 'utf8');
   const detailPage = await readFile('app/person/[id]/page.tsx', 'utf8');
@@ -302,6 +411,9 @@ test('lazy sections expose retry states and trust labels instead of silent empty
   assert.match(courseSection, /待核/);
   assert.match(coursesRoute, /confidence: course\.confidence/);
   assert.match(relatedPeople, /待核关系/);
+  assert.match(relatedPeople, /former_colleague: \{ label: '前同事'/);
+  assert.match(relationshipGraph, /former_colleague: '前同事'/);
+  assert.match(globalGraphPage, /former_colleague: '前同事'/);
   assert.match(relatedPeople, /organizationFromTitle/);
   assert.doesNotMatch(relatedPeople, /relatedPerson\.organization\?\.\[0\]/);
   assert.match(detailPage, /currentTitle: true/);

@@ -1,0 +1,315 @@
+{
+  "_meta": {
+    "source": "PG-009 content density first batch",
+    "candidatePackage": "docs/CONTENT_DENSITY_PEOPLE_CANDIDATES_2026_06_13.md",
+    "note": "New people stay candidate. Existing People rows may receive additive topics, organization labels, roles, links, and source-backed enrichment."
+  },
+  "seeds": [
+    {
+      "name": "Sualeh Asif",
+      "qid": "CANDIDATE-sualeh-asif",
+      "roleCategory": "founder",
+      "organization": ["Anysphere", "Cursor"],
+      "currentTitle": "Co-founder @ Anysphere (Cursor)",
+      "aliases": ["Sualeh Asif"],
+      "reason": "Anysphere/Cursor co-founder candidate for the AI Coding topic; Cursor is a representative AI coding IDE.",
+      "roles": [
+        {
+          "organization": { "name": "Anysphere", "type": "company" },
+          "role": "Co-founder",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.82
+        }
+      ]
+    },
+    {
+      "name": "Aman Sanger",
+      "qid": "CANDIDATE-aman-sanger",
+      "roleCategory": "founder",
+      "organization": ["Anysphere", "Cursor"],
+      "currentTitle": "Co-founder @ Anysphere (Cursor)",
+      "aliases": ["Aman Sanger"],
+      "reason": "Anysphere/Cursor co-founder candidate for the AI Coding topic.",
+      "roles": [
+        {
+          "organization": { "name": "Anysphere", "type": "company" },
+          "role": "Co-founder",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.82
+        }
+      ]
+    },
+    {
+      "name": "Arvid Lunnemark",
+      "qid": "CANDIDATE-arvid-lunnemark",
+      "roleCategory": "founder",
+      "organization": ["Anysphere", "Cursor"],
+      "currentTitle": "Co-founder @ Anysphere (Cursor)",
+      "aliases": ["Arvid Lunnemark"],
+      "reason": "Anysphere/Cursor co-founder candidate used to fill the AI Coding founder-team coverage gap.",
+      "roles": [
+        {
+          "organization": { "name": "Anysphere", "type": "company" },
+          "role": "Co-founder",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.78
+        }
+      ]
+    },
+    {
+      "name": "Varun Mohan",
+      "qid": "CANDIDATE-varun-mohan",
+      "roleCategory": "founder",
+      "organization": ["Windsurf", "Codeium"],
+      "currentTitle": "Co-founder and CEO @ Windsurf / Codeium",
+      "aliases": ["Varun Mohan"],
+      "reason": "Windsurf/Codeium co-founder and CEO candidate for agentic IDE and AI coding tool coverage.",
+      "roles": [
+        {
+          "organization": { "name": "Windsurf", "type": "company" },
+          "role": "Co-founder and CEO",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.86
+        }
+      ]
+    },
+    {
+      "name": "Douglas Chen",
+      "qid": "CANDIDATE-douglas-chen",
+      "roleCategory": "founder",
+      "organization": ["Windsurf", "Codeium"],
+      "currentTitle": "Co-founder @ Windsurf / Codeium",
+      "aliases": ["Douglas Chen"],
+      "reason": "Windsurf/Codeium co-founder candidate; included with a review note because current source depth is mostly from acquisition coverage and product pages.",
+      "roles": [
+        {
+          "organization": { "name": "Windsurf", "type": "company" },
+          "role": "Co-founder",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.72
+        }
+      ]
+    },
+    {
+      "name": "Scott Wu",
+      "qid": "CANDIDATE-scott-wu",
+      "roleCategory": "founder",
+      "organization": ["Cognition AI", "Cognition"],
+      "currentTitle": "Co-founder and CEO @ Cognition AI",
+      "aliases": ["Scott Wu"],
+      "reason": "Cognition AI co-founder and CEO; Devin is a representative software engineering agent for the AI Coding topic.",
+      "roles": [
+        {
+          "organization": { "name": "Cognition AI", "type": "company" },
+          "role": "Co-founder and CEO",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.86
+        }
+      ]
+    },
+    {
+      "name": "Steven Hao",
+      "qid": "CANDIDATE-steven-hao",
+      "roleCategory": "founder",
+      "organization": ["Cognition AI", "Cognition"],
+      "currentTitle": "Co-founder and CTO @ Cognition AI",
+      "aliases": ["Steven Hao"],
+      "reason": "Cognition AI co-founder and CTO candidate for Devin / software engineering agent coverage.",
+      "roles": [
+        {
+          "organization": { "name": "Cognition AI", "type": "company" },
+          "role": "Co-founder and CTO",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.78
+        }
+      ]
+    },
+    {
+      "name": "Anton Osika",
+      "qid": "CANDIDATE-anton-osika",
+      "roleCategory": "founder",
+      "organization": ["Lovable"],
+      "currentTitle": "Co-founder and CEO @ Lovable",
+      "aliases": ["Anton Osika"],
+      "reason": "Lovable co-founder and GPT-Engineer author candidate for vibe coding and natural-language app generation coverage.",
+      "roles": [
+        {
+          "organization": { "name": "Lovable", "type": "company" },
+          "role": "Co-founder and CEO",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.82
+        }
+      ]
+    },
+    {
+      "name": "Daya Guo",
+      "qid": "CANDIDATE-daya-guo",
+      "roleCategory": "researcher",
+      "organization": ["DeepSeek", "深度求索"],
+      "currentTitle": "Researcher / engineer @ DeepSeek",
+      "aliases": ["Daya Guo", "Guo Daya"],
+      "reason": "DeepSeek-Coder, DeepSeek-R1, and DeepSeek-V3 author candidate for DeepSeek research coverage.",
+      "roles": [
+        {
+          "organization": { "name": "DeepSeek", "nameZh": "深度求索", "type": "company" },
+          "role": "Researcher / engineer",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "name": "Dejian Yang",
+      "qid": "CANDIDATE-dejian-yang",
+      "roleCategory": "researcher",
+      "organization": ["DeepSeek", "深度求索"],
+      "currentTitle": "Researcher / engineer @ DeepSeek",
+      "aliases": ["Dejian Yang", "Yang Dejian"],
+      "reason": "High-frequency DeepSeek-Coder, DeepSeek-R1, and DeepSeek-V3 paper author candidate.",
+      "roles": [
+        {
+          "organization": { "name": "DeepSeek", "nameZh": "深度求索", "type": "company" },
+          "role": "Researcher / engineer",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "name": "Zhihong Shao",
+      "qid": "CANDIDATE-zhihong-shao",
+      "roleCategory": "researcher",
+      "organization": ["DeepSeek", "深度求索"],
+      "currentTitle": "Researcher @ DeepSeek",
+      "aliases": ["Zhihong Shao", "Shao Zhihong"],
+      "reason": "DeepSeekMath first author candidate, also appearing in DeepSeek-R1 and V3 author lists.",
+      "roles": [
+        {
+          "organization": { "name": "DeepSeek", "nameZh": "深度求索", "type": "company" },
+          "role": "Researcher",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.78
+        }
+      ]
+    },
+    {
+      "name": "Lysandre Debut",
+      "qid": "CANDIDATE-lysandre-debut",
+      "roleCategory": "engineer",
+      "organization": ["Hugging Face"],
+      "currentTitle": "Open-source engineer / maintainer @ Hugging Face",
+      "aliases": ["Lysandre Debut"],
+      "reason": "Transformers and Datasets paper author candidate for Hugging Face core open-source infrastructure.",
+      "roles": [
+        {
+          "organization": { "name": "Hugging Face", "type": "company" },
+          "role": "Open-source engineer / maintainer",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.82
+        }
+      ]
+    },
+    {
+      "name": "Sylvain Gugger",
+      "qid": "CANDIDATE-sylvain-gugger",
+      "roleCategory": "engineer",
+      "organization": ["Hugging Face"],
+      "currentTitle": "Open-source engineer / maintainer @ Hugging Face",
+      "aliases": ["Sylvain Gugger"],
+      "reason": "Transformers and Datasets paper author candidate for Hugging Face core library coverage.",
+      "roles": [
+        {
+          "organization": { "name": "Hugging Face", "type": "company" },
+          "role": "Open-source engineer / maintainer",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.82
+        }
+      ]
+    },
+    {
+      "name": "Angang Du",
+      "qid": "CANDIDATE-angang-du",
+      "roleCategory": "researcher",
+      "organization": ["Kimi", "Moonshot AI", "月之暗面"],
+      "currentTitle": "Researcher @ Moonshot AI / Kimi",
+      "aliases": ["Angang Du", "Du Angang"],
+      "reason": "Kimi k1.5 and Kimi K2 report author candidate for Moonshot/Kimi model coverage.",
+      "roles": [
+        {
+          "organization": { "name": "Moonshot AI", "nameZh": "月之暗面", "type": "company" },
+          "role": "Researcher",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.78
+        }
+      ]
+    },
+    {
+      "name": "Bofei Gao",
+      "qid": "CANDIDATE-bofei-gao",
+      "roleCategory": "researcher",
+      "organization": ["Kimi", "Moonshot AI", "月之暗面"],
+      "currentTitle": "Researcher @ Moonshot AI / Kimi",
+      "aliases": ["Bofei Gao", "Gao Bofei"],
+      "reason": "Kimi k1.5 and Kimi K2 report author candidate for Moonshot/Kimi training and evaluation coverage.",
+      "roles": [
+        {
+          "organization": { "name": "Moonshot AI", "nameZh": "月之暗面", "type": "company" },
+          "role": "Researcher",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.76
+        }
+      ]
+    },
+    {
+      "name": "Xinyu Zhou",
+      "qid": "CANDIDATE-xinyu-zhou",
+      "roleCategory": "founder",
+      "organization": ["Kimi", "Moonshot AI", "月之暗面"],
+      "currentTitle": "Co-founder / researcher @ Moonshot AI",
+      "aliases": ["Xinyu Zhou", "Zhou Xinyu"],
+      "reason": "Moonshot AI co-founder and Moonshot/Kimi paper author candidate; needs final English-name and role verification before promotion.",
+      "roles": [
+        {
+          "organization": { "name": "Moonshot AI", "nameZh": "月之暗面", "type": "company" },
+          "role": "Co-founder / researcher",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.72
+        }
+      ]
+    },
+    {
+      "name": "Yuxin Wu",
+      "qid": "CANDIDATE-yuxin-wu",
+      "roleCategory": "founder",
+      "organization": ["Kimi", "Moonshot AI", "月之暗面"],
+      "currentTitle": "Co-founder / researcher @ Moonshot AI",
+      "aliases": ["Yuxin Wu", "Wu Yuxin"],
+      "reason": "Moonshot AI co-founder and Moonshot/Kimi paper author candidate; needs final English-name and role verification before promotion.",
+      "roles": [
+        {
+          "organization": { "name": "Moonshot AI", "nameZh": "月之暗面", "type": "company" },
+          "role": "Co-founder / researcher",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.72
+        }
+      ]
+    },
+    {
+      "name": "Dmitry Shevelenko",
+      "qid": "CANDIDATE-dmitry-shevelenko",
+      "roleCategory": "executive",
+      "organization": ["Perplexity"],
+      "currentTitle": "Chief Business Officer @ Perplexity",
+      "aliases": ["Dmitry Shevelenko"],
+      "reason": "Perplexity Chief Business Officer candidate for growth, ads, publisher partnerships, and search distribution coverage.",
+      "roles": [
+        {
+          "organization": { "name": "Perplexity", "type": "company" },
+          "role": "Chief Business Officer",
+          "source": "pg009-content-density-2026-06-13",
+          "confidence": 0.78
+        }
+      ]
+    }
+  ]
+}

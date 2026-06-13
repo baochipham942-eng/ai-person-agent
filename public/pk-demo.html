@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 人物 PK 原型</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f4ef;
+      --panel: #fffdf8;
+      --panel-strong: #fff8ea;
+      --ink: #201c17;
+      --muted: #776f64;
+      --soft: #e7dfd2;
+      --line: #ded4c4;
+      --accent: #c85f20;
+      --accent-2: #2f6f73;
+      --risk: #9f2f2f;
+      --deploy: #245d9a;
+      --infra: #7657a8;
+      --ok: #2c6b4f;
+      --warn: #9a6b1f;
+      --shadow: 0 18px 45px rgba(71, 52, 26, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(200, 95, 32, 0.11), transparent 34rem),
+        linear-gradient(180deg, #fbfaf6 0%, var(--bg) 32rem);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid rgba(32, 28, 23, 0.1);
+      border-radius: 8px;
+      background: #201c17;
+      color: #fff8ea;
+      font-weight: 800;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .hero-main,
+    .source-panel,
+    .section,
+    .drawer {
+      border: 1px solid rgba(91, 74, 51, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.86);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.14;
+      letter-spacing: 0;
+    }
+
+    .hero-main p {
+      max-width: 730px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .group-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .tab-button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #4f463b;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: 160ms ease;
+    }
+
+    .tab-button strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 760;
+    }
+
+    .tab-button span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .tab-button.active {
+      border-color: rgba(200, 95, 32, 0.42);
+      background: #fff2de;
+      color: #8a3a12;
+    }
+
+    .source-panel {
+      padding: 18px;
+    }
+
+    .source-panel h2,
+    .section h2 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .source-panel p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .source-stat {
+      border: 1px solid rgba(91, 74, 51, 0.11);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .source-stat strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .source-stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .quality-note {
+      margin-top: 12px;
+      border-left: 3px solid var(--warn);
+      background: #fff8e8;
+      padding: 10px 12px;
+      color: #6f501b;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .pk-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.72fr) minmax(0, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+      align-items: stretch;
+    }
+
+    .person-card,
+    .verdict-card {
+      border: 1px solid rgba(91, 74, 51, 0.14);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      min-width: 0;
+    }
+
+    .person-head {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #ebe2d4;
+      border: 1px solid rgba(91, 74, 51, 0.14);
+    }
+
+    .avatar img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .person-title {
+      min-width: 0;
+    }
+
+    .person-title h2 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .person-title p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(91, 74, 51, 0.13);
+      border-radius: 999px;
+      background: #fff;
+      color: #5f5548;
+      padding: 5px 8px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      border-radius: 8px;
+      background: #f7f1e7;
+      padding: 9px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .verdict-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background: #201c17;
+      color: #fff8ea;
+    }
+
+    .verdict-card .label {
+      color: #d8b991;
+      font-size: 12px;
+      font-weight: 740;
+    }
+
+    .verdict-card h2 {
+      margin: 9px 0 0;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    .verdict-card p {
+      margin: 12px 0 0;
+      color: #e7ddcb;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .section {
+      margin-bottom: 18px;
+      padding: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .matrix {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 156px repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid #eee5d7;
+    }
+
+    .matrix-row:last-child {
+      border-bottom: 0;
+    }
+
+    .matrix-cell {
+      min-width: 0;
+      padding: 13px 14px;
+      border-right: 1px solid #eee5d7;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .matrix-cell:last-child {
+      border-right: 0;
+    }
+
+    .matrix-head {
+      background: #f8f1e7;
+      color: #5f5548;
+      font-weight: 750;
+      font-size: 12px;
+    }
+
+    .dimension {
+      background: #fbf7ee;
+      font-weight: 780;
+    }
+
+    .stance {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 8px;
+      border-radius: 999px;
+      padding: 5px 8px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 760;
+      line-height: 1;
+    }
+
+    .risk { background: var(--risk); }
+    .deploy { background: var(--deploy); }
+    .infra { background: var(--infra); }
+    .ok { background: var(--ok); }
+    .warn { background: var(--warn); }
+
+    .evidence-link {
+      display: inline-flex;
+      margin-top: 9px;
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+      padding: 0;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 740;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .timeline {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+
+    .timeline h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .event {
+      position: relative;
+      padding-left: 18px;
+      margin-top: 12px;
+    }
+
+    .event:before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .event:after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 17px;
+      bottom: -13px;
+      width: 1px;
+      background: #eadfce;
+    }
+
+    .event:last-child:after {
+      display: none;
+    }
+
+    .event time {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 780;
+    }
+
+    .event p {
+      margin: 4px 0 0;
+      color: #4d4439;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 12px;
+    }
+
+    .report-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+
+    .report-card h3 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .report-card ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: #4d4439;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .source-item {
+      display: block;
+      border: 1px solid rgba(91, 74, 51, 0.12);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .source-item strong {
+      display: block;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .source-item span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      display: none;
+      background: rgba(23, 20, 17, 0.32);
+      z-index: 20;
+    }
+
+    .drawer-backdrop.open {
+      display: block;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 30;
+      width: min(470px, calc(100vw - 32px));
+      display: none;
+      overflow: auto;
+      padding: 18px;
+    }
+
+    .drawer.open {
+      display: block;
+    }
+
+    .drawer-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .drawer h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .close-button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .drawer-summary {
+      border-left: 3px solid var(--accent);
+      background: #fff5e4;
+      padding: 10px 12px;
+      color: #5f4320;
+      font-size: 12px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .empty-state {
+      border: 1px dashed rgba(154, 107, 31, 0.45);
+      border-radius: 8px;
+      background: #fff9ec;
+      padding: 12px;
+      color: #79571d;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .pk-stage,
+      .report-grid,
+      .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .verdict-card {
+        min-height: 170px;
+      }
+
+      .matrix-row {
+        grid-template-columns: 1fr;
+      }
+
+      .matrix-cell {
+        border-right: 0;
+        border-bottom: 1px solid #eee5d7;
+      }
+
+      .matrix-cell:last-child {
+        border-bottom: 0;
+      }
+
+      .matrix-head {
+        display: none;
+      }
+
+      .dimension {
+        background: #201c17;
+        color: #fff8ea;
+      }
+
+      .source-grid,
+      .metric-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 16px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .source-grid,
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">PK</div>
+        <div class="brand-text">
+          <strong>AI 人物观点 PK 原型</strong>
+          <span>基于公开资料和可核验证据生成，重点看观点差异和变化。</span>
+        </div>
+      </div>
+      <div class="meta">
+        <span>2 组对照</span>
+        <span>·</span>
+        <span>证据可点开</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow"><span class="dot"></span>观点对照，不是资料堆叠</div>
+        <h1>先给判断，再把判断拆成矩阵、时间线和证据。</h1>
+        <p>选择两位人物后，页面先给出核心判断，再展示观点矩阵、变化时间线和支撑来源。资料不够充分的地方会直接标出来，避免把谨慎推断包装成确定结论。</p>
+        <div class="group-tabs" role="tablist" aria-label="PK 组切换">
+          <button class="tab-button active" type="button" data-group="altman-amodei">
+            <strong>Altman × Amodei</strong>
+            <span>AGI、安全、治理</span>
+          </button>
+          <button class="tab-button" type="button" data-group="huang-su">
+            <strong>黄仁勋 × 苏姿丰</strong>
+            <span>AI 算力、基础设施</span>
+          </button>
+        </div>
+      </div>
+      <aside class="source-panel">
+        <h2>证据预览</h2>
+        <p id="source-copy">当前组已有足够多的直接观点来源，可展示完整矩阵和时间线。</p>
+        <div class="source-grid" id="source-grid"></div>
+        <div class="quality-note" id="quality-note"></div>
+      </aside>
+    </section>
+
+    <main id="groups"></main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="drawer" id="drawer" aria-live="polite">
+    <div class="drawer-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>证据抽屉</div>
+        <h2 id="drawer-title">证据</h2>
+      </div>
+      <button class="close-button" id="drawer-close" type="button" aria-label="关闭">×</button>
+    </div>
+    <div class="drawer-summary" id="drawer-summary"></div>
+    <div class="source-list" id="drawer-sources"></div>
+  </aside>
+
+  <script>
+    const groups = {
+      "altman-amodei": {
+        sourceCopy: "当前组已有较多直接观点来源：Altman 有个人博客、访谈和媒体深访；Amodei 有个人文章、Anthropic 相关来源、CBS/Stanford 等资料。适合展示完整 PK。",
+        qualityNote: "本页只基于已收录的公开资料形成判断。更严肃的结论需要逐条回到原始来源核验。",
+        sourceStats: [
+          { label: "Altman 来源", value: "88" },
+          { label: "Amodei 来源", value: "40" },
+          { label: "直接观点源", value: "18+" }
+        ],
+        people: [
+          {
+            name: "Sam Altman",
+            avatar: "avatars/e174e984.webp",
+            title: "CEO @ OpenAI",
+            desc: "美国硅谷风险投资家；OpenAI CEO，ChatGPT / GPT-4 / Sora 等产品的组织推动者。",
+            tags: ["AGI", "AI 产品化", "Agent", "大语言模型"],
+            metrics: [{ k: "影响力", v: "71.0" }, { k: "观点摘录", v: "26" }, { k: "来源", v: "88" }]
+          },
+          {
+            name: "Dario Amodei",
+            avatar: "avatars/67bcb0b7.webp",
+            title: "CEO @ Anthropic",
+            desc: "Anthropic 联合创始人兼 CEO；将 AI 安全、可解释性和可控性作为公司核心方向。",
+            tags: ["AI 安全", "对齐", "Constitutional AI", "大语言模型"],
+            metrics: [{ k: "影响力", v: "73.8" }, { k: "观点摘录", v: "12" }, { k: "来源", v: "40" }]
+          }
+        ],
+        verdict: {
+          label: "核心判断",
+          title: "Altman 更像加速型治理，Amodei 更像风险前置型治理。",
+          copy: "两人都承认 AGI 和前沿模型风险，也都没有主张停下技术进展。差异在优先级：Altman 更强调部署、产品化和制度迭代；Amodei 更强调在能力跃迁前理解、约束和监管。"
+        },
+        matrix: [
+          {
+            dim: "AGI 时间表",
+            left: ["deploy", "已进入起飞段", "从 OpenAI 使命、Reflections、The Gentle Singularity 等来源看，Altman 把 AGI 视作已经临近、且会以渐进方式改变经济和社会。"],
+            right: ["risk", "临近但必须先布安全边界", "Amodei 的材料同样认为强大 AI 不远，但表达重心落在可解释性、可控性和制度准备。"],
+            diff: "时间判断接近，行动节奏不同：Altman 偏推动落地，Amodei 偏提前减速带。",
+            evidence: "agi"
+          },
+          {
+            dim: "安全风险",
+            left: ["warn", "承认高风险，仍保持建设叙事", "Altman 早期公开文章对机器智能风险表达很强，但近期更多把风险放进产品推进与社会适配框架。"],
+            right: ["risk", "风险是组织定位的一部分", "Amodei 的公开资料明显围绕 AI 风险、可解释性和 Constitutional AI 展开。"],
+            diff: "Altman 的安全是推进 AGI 的治理条件；Amodei 的安全更像公司存在理由。",
+            evidence: "safety"
+          },
+          {
+            dim: "监管与公共政策",
+            left: ["deploy", "支持制度化治理", "Altman 的媒体与访谈材料更常出现社会影响、监管、董事会治理和信任问题。"],
+            right: ["risk", "更主动进入政策争论", "Amodei 有反对监管暂停令、出口管制、American AI leadership 等材料，政策表达更尖锐。"],
+            diff: "Altman 更像平台责任叙事；Amodei 更愿意把具体政策立场摆出来。",
+            evidence: "policy"
+          },
+          {
+            dim: "技术路线",
+            left: ["deploy", "产品生态牵引模型进步", "ChatGPT、GPT-4、Sora、API 等产品条目显示 OpenAI 的路线是模型能力和消费/开发者产品互相强化。"],
+            right: ["ok", "对齐方法牵引产品形态", "Claude 与 Constitutional AI 是 Anthropic 的两个核心产品/方法条目，强调 steerable、interpretable、safe。"],
+            diff: "一个用产品扩大反馈面，一个用原则和可解释性收窄风险面。",
+            evidence: "route"
+          }
+        ],
+        timelines: [
+          {
+            name: "Sam Altman",
+            events: [
+              ["2015 前后", "围绕超级机器智能提出生存风险，但同时推动 OpenAI 以 AGI 造福全人类为使命。"],
+              ["2022-2024", "ChatGPT、GPT-4、Sora 把 AGI 叙事拉进真实产品和开发者生态。"],
+              ["2025-2026", "Reflections、The Gentle Singularity 等材料显示，他把 AI 起飞描述为已经开始的渐进过程。"]
+            ]
+          },
+          {
+            name: "Dario Amodei",
+            events: [
+              ["OpenAI 阶段", "参与 GPT-2/GPT-3、RLHF 等工作，积累大模型与对齐实践。"],
+              ["2021-2023", "创立 Anthropic，Claude 与 Constitutional AI 把安全、可控性做成公司主轴。"],
+              ["2024-2026", "通过 Machines of Loving Grace、Urgency of Interpretability、CBS 访谈等材料持续强调风险与可解释性。"]
+            ]
+          }
+        ],
+        report: {
+          common: [
+            "都认为前沿 AI 会带来系统级社会影响，不能当成普通软件升级看。",
+            "都没有把“停止发展”作为主方案，区别在于如何控制发展路径。",
+            "都把公司使命和公共治理绑定，只是叙事重心不同。"
+          ],
+          differences: [
+            "Altman 的表达更偏“把能力推向社会，再通过反馈和制度修正”；Amodei 更偏“先理解能力边界，再扩大部署”。",
+            "Altman 更强在产品化和生态组织；Amodei 更强在安全框架和政策姿态。",
+            "Altman 的观点材料来源多元但也更受治理争议包围；Amodei 的观点材料更集中，可信方向更清晰。"
+          ]
+        },
+        sources: {
+          agi: {
+            title: "AGI 时间表",
+            summary: "这一格主要来自 Altman 的个人博客和 OpenAI 产品资料，以及 Amodei 的个人主页、Machines of Loving Grace、Urgency of Interpretability 等材料。",
+            items: [
+              ["Reflections - Sam Altman", "blog.samaltman.com/reflections", "提到 ChatGPT 两周年、接近 AGI 时回看 OpenAI 进展。"],
+              ["The Gentle Singularity - Sam Altman", "blog.samaltman.com/the-gentle-singularity", "以“takeoff has started”表达 AI 起飞已经开始。"],
+              ["Machines of Loving Grace - Dario Amodei", "darioamodei.com/essay/machines-of-loving-grace", "在风险之外讨论强 AI 如何改善世界。"],
+              ["The Urgency of Interpretability - Dario Amodei", "darioamodei.com/post/the-urgency-of-interpretability", "把模型能力增长和解释能力滞后作为紧迫问题。"]
+            ]
+          },
+          safety: {
+            title: "安全风险",
+            summary: "Altman 有早期机器智能风险观点和近期“真实影响阶段”材料；Amodei 的证据更集中在 AI danger、Constitutional AI、可解释性。",
+            items: [
+              ["Machine Intelligence Part 1 - Sam Altman", "blog.samaltman.com/machine-intelligence-part-1", "Altman 早期公开文章把超级机器智能描述为人类存续层面的风险。"],
+              ["ABC News: AI will reshape society", "abcnews.com/Technology/openai-ceo-sam-altman-ai-reshape-society-acknowledges/story?id=97897122", "采访里承认 AI 将重塑社会，并需要谨慎。"],
+              ["CBS: Amodei warning of AI potential dangers", "cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript", "CBS 60 Minutes 转录，直接围绕 Dario 对 AI 潜在危险的警告。"],
+              ["Constitutional AI", "anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback", "Anthropic 的公开研究资料展示了其用原则和 AI 反馈降低模型伤害性的路线。"]
+            ]
+          },
+          policy: {
+            title: "监管与公共政策",
+            summary: "这一维度需要更多直接政策表达来支撑。现有资料能看出：Altman 经常处在治理与信任争议中心，Amodei 更频繁公开讨论具体政策选择。",
+            items: [
+              ["Sam Altman May Control Our Future", "newyorker.com/magazine/2026/04/13/sam-altman-may-control-our-future-can-he-be-trusted", "围绕 OpenAI 领导权、可信度和治理争议。"],
+              ["TIME100 AI 2025: Sam Altman", "time.com/collections/time100-ai-2025/7305828/sam-altman-ai", "把 Altman 放在 2025 AI 权力与影响力语境中。"],
+              ["TIME100 AI 2025: Dario Amodei", "time.com/collections/time100-ai-2025/7305835/dario-amodei-ai", "公开资料记录其反对 AI 监管十年暂停令的政策立场。"],
+              ["On DeepSeek and Export Controls - Dario Amodei", "darioamodei.com/post/on-deepseek-and-export-controls", "把 AI 发展和先进芯片出口管制直接绑定。"]
+            ]
+          },
+          route: {
+            title: "技术路线",
+            summary: "这里主要来自公开产品资料和人物贡献整理：Altman 的路线由 ChatGPT/GPT-4/Sora/API 呈现；Amodei 的路线由 Claude/Constitutional AI 呈现。",
+            items: [
+              ["ChatGPT", "chat.openai.com", "OpenAI 的对话 AI 产品，开启大语言模型消费级应用时代。"],
+              ["GPT-4", "openai.com/gpt-4", "OpenAI 的多模态大语言模型，代表其能力推进路线。"],
+              ["Claude", "anthropic.com/news/introducing-claude", "Anthropic 的 AI 助手产品族，强调安全、有用、可控。"],
+              ["Constitutional AI", "anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback", "Anthropic 用原则列表和 AI 反馈训练更无害、更可控助手的方法。"]
+            ]
+          }
+        }
+      },
+      "huang-su": {
+        sourceCopy: "这组资料覆盖不均衡：黄仁勋有较多公开访谈、官方资料和媒体深访；苏姿丰目前更多是近期动态和产品信息。页面会把这类不确定性直接呈现出来。",
+        qualityNote: "苏姿丰侧还需要 AMD 官方发布、财报日、公开访谈和 MI 系列路线图等更强来源，才适合生成完整观点报告。",
+        sourceStats: [
+          { label: "黄仁勋来源", value: "71" },
+          { label: "苏姿丰来源", value: "5" },
+          { label: "资料覆盖", value: "不均衡" }
+        ],
+        people: [
+          {
+            name: "黄仁勋",
+            avatar: "avatars/cc0c0e9b.webp",
+            title: "CEO & Founder @ Nvidia",
+            desc: "NVIDIA 创始人兼 CEO；CUDA、H100、Blackwell 等 AI 计算基础设施的代表人物。",
+            tags: ["AI 芯片与算力", "AI 基础设施", "大语言模型", "计算机视觉"],
+            metrics: [{ k: "影响力", v: "66.3" }, { k: "观点摘录", v: "20" }, { k: "来源", v: "71" }]
+          },
+          {
+            name: "苏姿丰",
+            avatar: "avatars/26c1688f.webp",
+            title: "Chair & CEO @ AMD",
+            desc: "AMD 董事长兼 CEO；以 Instinct MI 系列、EPYC 和 ROCm 参与 AI 算力竞争。",
+            tags: ["AI 芯片与算力", "AI 基础设施", "高效训练"],
+            metrics: [{ k: "影响力", v: "34.8" }, { k: "观点摘录", v: "少" }, { k: "来源", v: "5" }]
+          }
+        ],
+        verdict: {
+          label: "核心判断",
+          title: "黄仁勋是 AI 工业平台叙事，苏姿丰是开放替代和算力供给叙事。",
+          copy: "黄仁勋侧的公开资料足以支撑完整判断：AI 是新工业基础设施，GPU/CUDA 是核心平台。苏姿丰侧目前更适合做谨慎推断：AMD 正用 MI 系列、开放机架和国家/企业合作切入 AI 基础设施。"
+        },
+        matrix: [
+          {
+            dim: "AI 算力定位",
+            left: ["infra", "AI 工业时代基础设施", "NVIDIA 官方博客和高盛/WIRED/TIME 等来源把黄仁勋和 AI 革命、加速计算、基础设施直接绑定。"],
+            right: ["ok", "用 AMD 体系补足供给和选择", "苏姿丰现有 X 动态集中在 MI450、Helios、国家实验室、超算和 AI science，表达是供给侧扩容。"],
+            diff: "黄仁勋讲平台定义权，苏姿丰讲替代方案和交付能力。",
+            evidence: "compute"
+          },
+          {
+            dim: "产品路线",
+            left: ["infra", "CUDA + GPU + 系统平台", "公开产品资料显示，NVIDIA 路线从 CUDA、H100、TensorRT、NeMo 扩展到 Blackwell 和整套软件生态。"],
+            right: ["ok", "Instinct + EPYC + ROCm + rack-scale", "公开产品资料显示，AMD 正围绕 MI 系列、Instinct、EPYC 和开放机架平台切入 AI 基础设施。"],
+            diff: "NVIDIA 是软硬一体平台，AMD 是开放硬件栈和生态兼容打法。",
+            evidence: "product"
+          },
+          {
+            dim: "过去到现在",
+            left: ["infra", "从 GPU 图形到 AI 基础设施", "黄仁勋的核心故事是 GPU/CUDA 从图形处理转成 AI 并行计算底座。"],
+            right: ["warn", "从 CPU 翻盘到 AI 加速器追赶", "公开履历和产品资料显示，她带领 AMD 从 CPU/数据中心能力延展到 MI 系列 AI 加速器。"],
+            diff: "一个完成范式定义，一个正在争取第二供给曲线。",
+            evidence: "history"
+          },
+          {
+            dim: "证据可信度",
+            left: ["ok", "强来源充足", "官方传记、NVIDIA 官方博客、TIME、Goldman Sachs、WIRED、CSIS 等可支撑多维观点。"],
+            right: ["warn", "资料仍需补充", "目前主要是近期动态和产品信息，缺少长访谈、官方路线图正文和第三方深度材料。"],
+            diff: "这组最能说明页面要内置证据质量提示，不然会误导用户。",
+            evidence: "quality"
+          }
+        ],
+        timelines: [
+          {
+            name: "黄仁勋",
+            events: [
+              ["1993-2007", "创立 NVIDIA，GPU 与 CUDA 奠定并行计算平台基础。"],
+              ["2022-2024", "H100、Blackwell 和 GTC 叙事把 NVIDIA 推到生成式 AI 基础设施中心。"],
+              ["2025-2026", "TIME、CSIS、NVIDIA GTC 资料继续强化“AI 工业时代中心”的定位。"]
+            ]
+          },
+          {
+            name: "苏姿丰",
+            events: [
+              ["AMD 翻盘阶段", "通过 Zen、EPYC 等产品重建 AMD 数据中心与高性能计算竞争力。"],
+              ["2023-2025", "MI300、MI400、MI450/Helios 等条目显示 AMD 进入 AI 加速器竞争。"],
+              ["资料缺口", "目前缺少足够强的一手长文本，无法严谨生成完整观点演变。"]
+            ]
+          }
+        ],
+        report: {
+          common: [
+            "两人都把 AI 竞争看成算力和系统工程竞争，而不是单颗芯片竞争。",
+            "两家公司都在把 AI 基础设施从芯片扩展到整机、网络、软件和生态合作。",
+            "都把国家级/超大规模客户视为关键场景。"
+          ],
+          differences: [
+            "黄仁勋的叙事是定义 AI 时代的平台中心；苏姿丰的叙事是给市场提供开放、可替代、可扩展的 AI 供给。",
+            "NVIDIA 侧资料能支持观点层分析；AMD/Lisa Su 侧目前更适合支撑产品路线和近期动态。",
+            "这组需要补充更多一手资料后，才适合生成强判断报告。"
+          ]
+        },
+        sources: {
+          compute: {
+            title: "AI 算力定位",
+            summary: "黄仁勋侧有多类强来源；苏姿丰侧目前主要来自 Lisa Su 的公开动态和产品信息。",
+            items: [
+              ["NVIDIA CEO: GTC 2026 AI 时代", "blogs.nvidia.cn/blog/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026", "黄仁勋称 GTC 是 AI 工业时代中心，AI 是必不可少的基础设施。"],
+              ["Goldman Sachs: Jensen Huang dissects the AI revolution", "goldmansachs.com/insights/articles/nvidias-jensen-huang-dissects-the-ai-revolution", "高盛官方访谈，聚焦黄仁勋对 AI 革命的看法。"],
+              ["Lisa Su X: Genesis Mission", "x.com/LisaSu/status/1993304656970498107", "提到 AMD 与 DOE/National labs 合作推进 AI for scientific discovery。"],
+              ["Lisa Su X: Financial Analyst Day", "x.com/LisaSu/status/1988666198498955435", "表达 AMD 对 AI 和 high-performance computing 未来机会的判断。"]
+            ]
+          },
+          product: {
+            title: "产品路线",
+            summary: "这一格主要来自公开产品信息，适合做路线对照，但不能替代人物本人的完整观点表达。",
+            items: [
+              ["CUDA", "developer.nvidia.com/cuda-zone", "GPU 并行计算平台，是 AI 训练基础设施的重要组成。"],
+              ["H100 GPU", "nvidia.com/en-us/data-center/h100", "Hopper 架构数据中心 GPU，常用于大模型训练与推理。"],
+              ["MI300 Series", "AMD product information", "AMD 面向数据中心 AI 应用的加速器系列。"],
+              ["Helios / MI450 X 动态", "x.com/LisaSu/status/1978149980956180773", "苏姿丰提到开放 rack-scale AI platform、MI450、EPYC 和 Pensando networking。"]
+            ]
+          },
+          history: {
+            title: "过去到现在",
+            summary: "黄仁勋有官方传记和多篇长资料支撑；苏姿丰侧还需要更多长访谈和官方路线图来支撑观点变化。",
+            items: [
+              ["Jensen Huang | NVIDIA Newsroom", "nvidianews.nvidia.com/bios/jensen-huang", "官方传记：1993 年创立 NVIDIA，并长期担任 CEO。"],
+              ["NVIDIA 中国官方传记", "nvidia.cn/newsroom/bios/jensen-huang", "官方资料说明 GPU 和 AI 算力基础之间的关系。"],
+              ["苏姿丰公开履历与产品资料", "AMD public profile and product information", "公开资料显示其领导 AMD 围绕 Zen/EPYC、Instinct/ROCm 建立数据中心与 AI 竞争力。"],
+              ["Lisa Su X: supercomputers Discovery and Lux", "x.com/LisaSu/status/1982899151923769356", "提到 AMD 参与国家级 AI computing capabilities。"]
+            ]
+          },
+          quality: {
+            title: "证据可信度",
+            summary: "这一格说明资料覆盖情况：黄仁勋侧可以生成更完整的观点报告，苏姿丰侧需要先补充更强来源。",
+            items: [
+              ["黄仁勋资料覆盖", "NVIDIA official / media interviews / public profiles", "已有较多官方资料、媒体深访和公开演讲，可支撑多维分析。"],
+              ["苏姿丰资料覆盖", "Lisa Su public updates / AMD product information", "目前更多是近期动态和产品信息，适合做谨慎判断。"],
+              ["Lisa Su X 动态", "x.com/LisaSu", "近期动态适合呈现行动方向，但不足以单独支撑完整观点史。"],
+              ["建议补充来源", "AMD official / earnings / interviews", "后续应补 AMD 官方博客、财报电话会、公开访谈和产品路线图。"]
+            ]
+          }
+        }
+      }
+    };
+
+    const groupsRoot = document.getElementById("groups");
+    const sourceGrid = document.getElementById("source-grid");
+    const sourceCopy = document.getElementById("source-copy");
+    const qualityNote = document.getElementById("quality-note");
+    const drawer = document.getElementById("drawer");
+    const backdrop = document.getElementById("drawer-backdrop");
+    const drawerTitle = document.getElementById("drawer-title");
+    const drawerSummary = document.getElementById("drawer-summary");
+    const drawerSources = document.getElementById("drawer-sources");
+    let activeGroup = "altman-amodei";
+
+    function render() {
+      const group = groups[activeGroup];
+      sourceCopy.textContent = group.sourceCopy;
+      qualityNote.textContent = group.qualityNote;
+      sourceGrid.innerHTML = group.sourceStats.map(stat => `
+        <div class="source-stat">
+          <strong>${stat.value}</strong>
+          <span>${stat.label}</span>
+        </div>
+      `).join("");
+
+      const [left, right] = group.people;
+      groupsRoot.innerHTML = `
+        <section class="pk-stage">
+          ${renderPerson(left)}
+          <article class="verdict-card">
+            <div class="label">${group.verdict.label}</div>
+            <h2>${group.verdict.title}</h2>
+            <p>${group.verdict.copy}</p>
+          </article>
+          ${renderPerson(right)}
+        </section>
+        ${renderMatrix(group)}
+        ${renderTimeline(group)}
+        ${renderReport(group)}
+      `;
+
+      groupsRoot.querySelectorAll("[data-evidence]").forEach(button => {
+        button.addEventListener("click", () => openEvidence(button.dataset.evidence));
+      });
+    }
+
+    function renderPerson(person) {
+      return `
+        <article class="person-card">
+          <div class="person-head">
+            <div class="avatar"><img src="${person.avatar}" alt="${person.name}"></div>
+            <div class="person-title">
+              <h2>${person.name}</h2>
+              <p>${person.title}</p>
+            </div>
+          </div>
+          <p style="margin:14px 0 0;color:var(--muted);font-size:12px;line-height:1.7;">${person.desc}</p>
+          <div class="tag-row">${person.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
+          <div class="metric-row">${person.metrics.map(metric => `
+            <div class="metric"><strong>${metric.v}</strong><span>${metric.k}</span></div>
+          `).join("")}</div>
+        </article>
+      `;
+    }
+
+    function renderMatrix(group) {
+      return `
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2>观点矩阵</h2>
+              <p>每一格是观点标签，点“看证据”打开来源详情。</p>
+            </div>
+          </div>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div class="matrix-cell">维度</div>
+              <div class="matrix-cell">${group.people[0].name}</div>
+              <div class="matrix-cell">${group.people[1].name}</div>
+              <div class="matrix-cell">差异判断</div>
+            </div>
+            ${group.matrix.map(row => `
+              <div class="matrix-row">
+                <div class="matrix-cell dimension">${row.dim}</div>
+                <div class="matrix-cell">
+                  <span class="stance ${row.left[0]}">${row.left[1]}</span>
+                  <div>${row.left[2]}</div>
+                  <button class="evidence-link" type="button" data-evidence="${row.evidence}">看证据</button>
+                </div>
+                <div class="matrix-cell">
+                  <span class="stance ${row.right[0]}">${row.right[1]}</span>
+                  <div>${row.right[2]}</div>
+                  <button class="evidence-link" type="button" data-evidence="${row.evidence}">看证据</button>
+                </div>
+                <div class="matrix-cell">${row.diff}</div>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderTimeline(group) {
+      return `
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2>时间线对照</h2>
+              <p>这里展示“观点语境怎么变”，不是简单事件列表。</p>
+            </div>
+          </div>
+          <div class="timeline-grid">
+            ${group.timelines.map(timeline => `
+              <div class="timeline">
+                <h3>${timeline.name}</h3>
+                ${timeline.events.map(event => `
+                  <div class="event">
+                    <time>${event[0]}</time>
+                    <p>${event[1]}</p>
+                  </div>
+                `).join("")}
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderReport(group) {
+      const sparse = activeGroup === "huang-su";
+      return `
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2>分析报告</h2>
+              <p>正式版可以流式生成；这个原型先固定结构，避免报告压过矩阵。</p>
+            </div>
+          </div>
+          ${sparse ? `<div class="empty-state">这组当前不适合生成“强结论长报告”。黄仁勋侧可以完整分析，苏姿丰侧需要先补充更多长文本来源；页面先给谨慎判断和资料提示。</div>` : ""}
+          <div class="report-grid" style="margin-top:${sparse ? "12px" : "0"}">
+            <div class="report-card">
+              <h3>共同点</h3>
+              <ul>${group.report.common.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
+            <div class="report-card">
+              <h3>差异点</h3>
+              <ul>${group.report.differences.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function openEvidence(key) {
+      const group = groups[activeGroup];
+      const evidence = group.sources[key];
+      if (!evidence) return;
+
+      drawerTitle.textContent = evidence.title;
+      drawerSummary.textContent = evidence.summary;
+      drawerSources.innerHTML = evidence.items.map(item => `
+        <a class="source-item" href="${normalizeHref(item[1])}" target="_blank" rel="noreferrer">
+          <strong>${item[0]}</strong>
+          <span>${item[1]}</span>
+          <span>${item[2]}</span>
+        </a>
+      `).join("");
+      drawer.classList.add("open");
+      backdrop.classList.add("open");
+    }
+
+    function normalizeHref(value) {
+      if (value.startsWith("http")) return value;
+      if (value.includes(".")) return "https://" + value;
+      return "#";
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      backdrop.classList.remove("open");
+    }
+
+    document.querySelectorAll(".tab-button").forEach(button => {
+      button.addEventListener("click", () => {
+        activeGroup = button.dataset.group;
+        document.querySelectorAll(".tab-button").forEach(item => item.classList.toggle("active", item === button));
+        closeDrawer();
+        render();
+      });
+    });
+
+    document.getElementById("drawer-close").addEventListener("click", closeDrawer);
+    backdrop.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeDrawer();
+    });
+
+    render();
+  </script>
+</body>
+</html>

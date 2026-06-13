@@ -2,11 +2,14 @@
 
 import { useEffect, useState, useRef, useCallback, useMemo, memo } from 'react';
 import useSWR, { preload } from 'swr';
+import { SiteHeader } from '@/components/common/SiteHeader';
 import { ResearcherCard, SharedSvgDefs } from './ResearcherCard';
+import { ActivityFeed } from './ActivityFeed';
 import {
   DIRECTORY_ORGANIZATIONS,
   DIRECTORY_ORGANIZATION_GROUPS,
   DIRECTORY_ROLES,
+  DIRECTORY_SORT_OPTIONS,
   DIRECTORY_TOPIC_GROUPS,
   DIRECTORY_TOPICS,
   DIRECTORY_VIEW_MODES,
@@ -15,6 +18,7 @@ import {
   type DirectoryFilters,
   type DirectoryPerson,
   type DirectoryResponse,
+  type DirectorySortKey,
   type DirectoryViewMode,
 } from '@/lib/person-directory-config';
 
@@ -71,6 +75,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
     topic: selectedTopic,
     organization: selectedOrg,
     role: selectedRole,
+    sortBy: selectedSort,
   } = currentFilters;
 
   const apiUrl = buildDirectoryApiUrl({
@@ -79,6 +84,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
     organization: currentFilters.organization,
     roleCategory: currentFilters.role,
     search: currentFilters.search,
+    sortBy: currentFilters.sortBy,
   });
 
   const { data, error, isLoading, isValidating, mutate } = useSWR<DirectoryResponse>(
@@ -88,6 +94,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
       revalidateOnFocus: false,
       dedupingInterval: 60000,
       keepPreviousData: true,
+      revalidateOnMount: true,
       fallbackData: isSameInitialQuery(initialFilters, currentFilters) && page === 1 ? initialData : undefined,
     }
   );
@@ -146,7 +153,8 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
   };
 
   const stats = data?.stats ?? initialData.stats;
-  const displayTotalPeople = stats?.totalPeople ?? pagination.total;
+  const isFallbackData = Boolean(data?.isFallback && page === 1 && allPeople.length === 0);
+  const displayTotalPeople = isFallbackData ? null : stats?.totalPeople ?? pagination.total;
   const hasActiveFilters = Boolean(selectedTopic || selectedOrg || selectedRole || debouncedSearch);
 
   const handleLoadMore = useCallback(() => {
@@ -187,12 +195,20 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
       organization: null,
       role: null,
       search: debouncedSearch,
+      sortBy: currentFilters.sortBy,
     });
   };
 
   const handleTabHover = (mode: DirectoryViewMode) => {
     if (mode === viewMode) return;
-    preloadData({ page: 1 });
+    preloadData({ page: 1, sortBy: currentFilters.sortBy });
+  };
+
+  const handleSortChange = (sortBy: DirectorySortKey) => {
+    applyFilters({
+      ...currentFilters,
+      sortBy,
+    });
   };
 
   const handleTopicSelect = (topic: string | null) => {
@@ -202,6 +218,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
       organization: null,
       role: null,
       search: debouncedSearch,
+      sortBy: currentFilters.sortBy,
     });
   };
 
@@ -212,6 +229,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
       organization,
       role: null,
       search: debouncedSearch,
+      sortBy: currentFilters.sortBy,
     });
   };
 
@@ -222,6 +240,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
       organization: null,
       role,
       search: debouncedSearch,
+      sortBy: currentFilters.sortBy,
     });
   };
 
@@ -232,22 +251,23 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
       organization: null,
       role: null,
       search: '',
+      sortBy: currentFilters.sortBy,
     });
   };
 
   const handleTopicHover = (topic: string) => {
     if (topic === selectedTopic) return;
-    preloadData({ page: 1, topic });
+    preloadData({ page: 1, topic, sortBy: currentFilters.sortBy });
   };
 
   const handleOrgHover = (org: string) => {
     if (org === selectedOrg) return;
-    preloadData({ page: 1, organization: org });
+    preloadData({ page: 1, organization: org, sortBy: currentFilters.sortBy });
   };
 
   const handleRoleHover = (role: string) => {
     if (role === selectedRole) return;
-    preloadData({ page: 1, roleCategory: role });
+    preloadData({ page: 1, roleCategory: role, sortBy: currentFilters.sortBy });
   };
 
   const hotPersonIds = useMemo(() => {
@@ -259,7 +279,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
 
   const isHot = (person: DirectoryPerson) => hotPersonIds.has(person.id);
 
-  const loading = isLoading && page === 1 && allPeople.length === 0;
+  const loading = (isLoading || isFallbackData) && page === 1 && allPeople.length === 0;
   const loadingMore = isValidating && page > 1;
   const hasLoadError = Boolean(error && allPeople.length === 0);
 
@@ -268,44 +288,34 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
       {/* 共享 SVG 渐变定义 */}
       <SharedSvgDefs />
 
-      {/* Header - 玻璃拟态效果 */}
-      <header className="glass-header border-b border-subtle sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-14">
-            {/* Logo & Title */}
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-sm" style={{ background: 'var(--gradient-primary)' }}>
-                <span className="text-white text-sm font-semibold">AI</span>
-              </div>
-              <h1 className="text-lg font-semibold text-stone-900">AI 人物库</h1>
+      <SiteHeader
+        current="home"
+        maxWidth="7xl"
+        statsSlot={
+          <>
+            <div className="flex items-center gap-1.5">
+              {displayTotalPeople === null ? (
+                <span className="font-medium text-stone-500">加载中</span>
+              ) : (
+                <>
+                  <span className="font-semibold text-stone-900">{displayTotalPeople}</span>
+                  <span className="text-stone-500">位研究者</span>
+                </>
+              )}
             </div>
-
-            {/* Stats - 右侧紧凑展示 */}
-            <div className="hidden sm:flex items-center gap-6 text-sm">
-              <div className="flex items-center gap-1.5">
-                {displayTotalPeople === null ? (
-                  <span className="font-medium text-stone-500">加载中</span>
-                ) : (
-                  <>
-                    <span className="font-semibold text-stone-900">{displayTotalPeople}</span>
-                    <span className="text-stone-500">位研究者</span>
-                  </>
-                )}
-              </div>
-              <div className="w-px h-4 bg-stone-200"></div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-stone-900">{stats?.totalTopics ?? DIRECTORY_TOPICS.length}</span>
-                <span className="text-stone-500">话题</span>
-              </div>
-              <div className="w-px h-4 bg-stone-200"></div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-stone-900">{stats?.totalOrgs ?? DIRECTORY_ORGANIZATIONS.length}</span>
-                <span className="text-stone-500">机构</span>
-              </div>
+            <div className="h-4 w-px bg-stone-200"></div>
+            <div className="flex items-center gap-1.5">
+              <span className="font-semibold text-stone-900">{stats?.totalTopics ?? DIRECTORY_TOPICS.length}</span>
+              <span className="text-stone-500">话题</span>
             </div>
-          </div>
-        </div>
-      </header>
+            <div className="h-4 w-px bg-stone-200"></div>
+            <div className="flex items-center gap-1.5">
+              <span className="font-semibold text-stone-900">{stats?.totalOrgs ?? DIRECTORY_ORGANIZATIONS.length}</span>
+              <span className="text-stone-500">机构</span>
+            </div>
+          </>
+        }
+      />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
@@ -347,6 +357,31 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
                 <span>{mode.label}</span>
               </button>
             ))}
+          </div>
+        </div>
+
+        <ActivityFeed topic={selectedTopic} organization={selectedOrg} />
+
+        <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex w-full items-center gap-1 overflow-x-auto rounded-xl bg-white p-1 shadow-sm ring-1 ring-stone-200 sm:w-auto">
+            {DIRECTORY_SORT_OPTIONS.map((option) => (
+              <button
+                key={option.key}
+                type="button"
+                title={option.hint}
+                onClick={() => handleSortChange(option.key)}
+                className={`flex-shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                  selectedSort === option.key
+                    ? 'gradient-btn shadow-sm'
+                    : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+          <div className="hidden text-[11px] text-stone-400 sm:block">
+            {DIRECTORY_SORT_OPTIONS.find(option => option.key === selectedSort)?.hint}
           </div>
         </div>
 
@@ -469,7 +504,7 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
         {/* Results Count - 更小巧 */}
         <div className="flex flex-col gap-2 mb-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-stone-500">
-            {`共 ${pagination.total} 位研究者`}
+            {isFallbackData ? '资料库正在唤醒' : `共 ${pagination.total} 位研究者`}
             {isValidating && !loading && <span className="ml-2 text-orange-500">更新中...</span>}
           </p>
           {hasActiveFilters && (
@@ -509,7 +544,9 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
           </div>
         ) : loading ? (
           <div>
-            <div className="mb-3 text-xs text-stone-500">正在加载研究者</div>
+            <div className="mb-3 text-xs text-stone-500">
+              {isFallbackData ? '正在唤醒资料库，先加载最新目录' : '正在加载研究者'}
+            </div>
             <LoadingSkeleton />
           </div>
         ) : (
@@ -520,8 +557,9 @@ export function ResearcherDirectory({ initialData, initialFilters }: ResearcherD
                 <ResearcherCard
                   key={person.id}
                   person={person}
-                  rank={viewMode === 'trending' && page === 1 && index < 12 ? index + 1 : undefined}
+                  rank={viewMode === 'trending' && index < 12 ? index + 1 : undefined}
                   isHot={isHot(person)}
+                  sortBy={selectedSort}
                 />
               ))}
             </div>
@@ -562,7 +600,8 @@ function isSameInitialQuery(left: DirectoryFilters, right: DirectoryFilters): bo
     && left.topic === right.topic
     && left.organization === right.organization
     && left.role === right.role
-    && left.search === right.search;
+    && left.search === right.search
+    && left.sortBy === right.sortBy;
 }
 
 function readFiltersFromLocation(): DirectoryFilters {
@@ -573,6 +612,7 @@ function readFiltersFromLocation(): DirectoryFilters {
     organization: searchParams.get('organization'),
     role: searchParams.get('role'),
     search: searchParams.get('search'),
+    sortBy: searchParams.get('sortBy'),
   });
 }
 
@@ -596,6 +636,7 @@ function buildDirectoryPageUrl(filters: DirectoryFilters): string {
   if (filters.organization) searchParams.set('organization', filters.organization);
   if (filters.role) searchParams.set('role', filters.role);
   if (filters.search) searchParams.set('search', filters.search);
+  if (filters.sortBy !== 'influenceScore') searchParams.set('sortBy', filters.sortBy);
 
   const query = searchParams.toString();
   return query ? `/?${query}` : '/';
