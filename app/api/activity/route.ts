@@ -12,6 +12,7 @@ export async function GET(request: Request) {
       organization: searchParams.get('organization'),
       limit: parseInt(searchParams.get('limit') || '12', 10),
       days: parseInt(searchParams.get('days') || '30', 10),
+      includeRelations: searchParams.get('includeRelations') !== 'false',
     });
 
     const response = NextResponse.json({ data });

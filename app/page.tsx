@@ -174,7 +174,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
-      <ResearcherDirectory initialData={initialData} initialFilters={initialFilters} />
+      <ResearcherDirectory
+        initialData={initialData}
+        initialFilters={initialFilters}
+      />
     </Suspense>
   );
 }

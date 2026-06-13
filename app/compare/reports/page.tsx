@@ -1,37 +1,23 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { unstable_cache } from 'next/cache';
 import { CompareReportLauncher } from '@/components/compare/CompareReportLauncher';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { prisma } from '@/lib/db/prisma';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 300;
 export const metadata: Metadata = {
-  title: '人物对比分析 | AI 人物库',
+  title: '人物对比 | AI 人物库',
   description: '查看已生成的 AI 人物观点对比报告。',
 };
 
 export default async function CompareReportsPage() {
-  const reports = await prisma.compareReport.findMany({
-    where: {
-      status: 'completed',
-      visibility: 'public',
-    },
-    select: {
-      id: true,
-      title: true,
-      topic: true,
-      summary: true,
-      peopleIds: true,
-      sourceSnapshot: true,
-      completedAt: true,
-      createdAt: true,
-    },
-    orderBy: [{ completedAt: 'desc' }, { createdAt: 'desc' }],
-    take: 48,
-  });
-
-  const peopleById = await loadPeopleById(reports.flatMap(report => report.peopleIds));
+  const reports = await loadPublicCompareReports();
+  const peopleById = new Map(
+    (await loadPeopleById(reports.flatMap(report => report.peopleIds)))
+      .map(person => [person.id, person])
+  );
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -40,7 +26,7 @@ export default async function CompareReportsPage() {
       <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <section className="mb-6 flex flex-col gap-4 rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:flex-row sm:items-end sm:justify-between sm:px-7">
           <div>
-            <div className="mb-2 text-xs font-medium text-orange-600">人物对比分析</div>
+            <div className="mb-2 text-xs font-medium text-orange-600">人物对比</div>
             <h1 className="text-2xl font-semibold text-stone-950">公开对比报告</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-600">
               从公开资料里比较人物的观点变化、路径差异和关键证据。
@@ -116,9 +102,32 @@ interface PersonPreview {
   currentTitle: string | null;
 }
 
-async function loadPeopleById(ids: string[]) {
+const loadPublicCompareReports = unstable_cache(
+  async () => prisma.compareReport.findMany({
+    where: {
+      status: 'completed',
+      visibility: 'public',
+    },
+    select: {
+      id: true,
+      title: true,
+      topic: true,
+      summary: true,
+      peopleIds: true,
+      sourceSnapshot: true,
+      completedAt: true,
+      createdAt: true,
+    },
+    orderBy: [{ completedAt: 'desc' }, { createdAt: 'desc' }],
+    take: 48,
+  }),
+  ['public-compare-reports'],
+  { revalidate: 300 }
+);
+
+const loadPeopleById = unstable_cache(async (ids: string[]): Promise<PersonPreview[]> => {
   const uniqueIds = [...new Set(ids)];
-  if (uniqueIds.length === 0) return new Map<string, PersonPreview>();
+  if (uniqueIds.length === 0) return [];
 
   const people = await prisma.people.findMany({
     where: { id: { in: uniqueIds } },
@@ -131,13 +140,13 @@ async function loadPeopleById(ids: string[]) {
     },
   });
 
-  return new Map(people.map(person => [person.id, {
+  return people.map(person => ({
     id: person.id,
     name: person.name,
     avatarUrl: person.avatarUrl,
     currentTitle: person.currentTitle || person.organization[0] || null,
-  }]));
-}
+  }));
+}, ['compare-report-people'], { revalidate: 300 });
 
 function PersonAvatar({ person }: { person: PersonPreview }) {
   return (

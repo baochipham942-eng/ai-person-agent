@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ActivityEventList } from '@/components/activity/ActivityEventList';
 import { FollowButton } from '@/components/common/FollowButton';
+import { SiteHeader } from '@/components/common/SiteHeader';
 import { ResearcherCard, SharedSvgDefs } from '@/components/home/ResearcherCard';
 import type { ActivityEvent } from '@/lib/activity';
 import type { WatchTarget } from '@/lib/watchlist';
@@ -28,19 +29,14 @@ interface EntityHeaderProps {
 
 export function EntityPageNav({ currentLabel }: { currentLabel: string }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/85 backdrop-blur">
-      <div className="mx-auto flex h-12 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="text-sm font-medium text-stone-600 transition-colors hover:text-orange-600">
-          AI 人物库
-        </Link>
-        <div className="flex min-w-0 items-center gap-3">
-          <span className="max-w-[48vw] truncate text-xs text-stone-400">{currentLabel}</span>
-          <Link href="/watchlist" className="text-xs font-medium text-stone-500 hover:text-orange-600">
-            我的关注
-          </Link>
+    <>
+      <SiteHeader current="home" maxWidth="6xl" />
+      <div className="border-b border-stone-100 bg-white/70">
+        <div className="mx-auto max-w-6xl px-4 py-2 text-xs text-stone-400 sm:px-6">
+          {currentLabel}
         </div>
       </div>
-    </header>
+    </>
   );
 }
 

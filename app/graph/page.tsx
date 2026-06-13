@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { unstable_cache } from 'next/cache';
+import { SiteHeader } from '@/components/common/SiteHeader';
 import {
   DIRECTORY_ORGANIZATION_GROUPS,
   DIRECTORY_TOPIC_GROUPS,
@@ -15,11 +17,10 @@ import {
   type GlobalRelationshipGraphNode,
 } from '@/lib/global-relationship-graph';
 
-export const dynamic = 'force-dynamic';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: '关系图谱 | AI 人物库',
+  title: '人物关系 | AI 人物库',
   description: '探索 AI 关键人物、机构和话题之间的可信关系网络。',
 };
 
@@ -43,38 +44,18 @@ export default async function GraphPage({ searchParams }: GraphPageProps) {
   const topic = firstParam(resolvedSearchParams?.topic);
   const organization = firstParam(resolvedSearchParams?.organization);
   const relationType = firstParam(resolvedSearchParams?.relationType);
-  const graph = await fetchGlobalRelationshipGraph({
-    topic,
-    organization,
-    relationType,
-    seedLimit: 20,
-    edgeLimit: 72,
-  });
+  const graph = await fetchCachedGlobalRelationshipGraph(topic, organization, relationType);
   const title = topic || organization || (relationType ? relationLabel(relationType) : 'AI 关键人物');
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/85 backdrop-blur">
-        <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="text-sm font-medium text-stone-600 transition-colors hover:text-orange-600">
-            AI 人物库
-          </Link>
-          <div className="flex items-center gap-3">
-            <Link href="/digest" className="text-xs font-medium text-stone-500 hover:text-orange-600">
-              本周动态
-            </Link>
-            <Link href="/watchlist" className="text-xs font-medium text-stone-500 hover:text-orange-600">
-              我的关注
-            </Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader current="graph" maxWidth="7xl" />
 
       <main className="mx-auto max-w-7xl space-y-6 px-4 py-6 sm:px-6">
         <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
           <div>
             <div className="mb-2 text-xs font-medium text-orange-600">可信关系网络</div>
-            <h1 className="text-2xl font-semibold text-stone-950">关系图谱</h1>
+            <h1 className="text-2xl font-semibold text-stone-950">人物关系</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-stone-600">
               当前视图围绕 {title} 展示已确认关系，默认排除待核关系。每条边都保留置信度和证据线索，适合顺着导师、联创、同事和合作者继续查人。
             </p>
@@ -101,6 +82,18 @@ export default async function GraphPage({ searchParams }: GraphPageProps) {
     </div>
   );
 }
+
+const fetchCachedGlobalRelationshipGraph = unstable_cache(
+  async (topic: string | null, organization: string | null, relationType: string | null) => fetchGlobalRelationshipGraph({
+    topic,
+    organization,
+    relationType,
+    seedLimit: 14,
+    edgeLimit: 48,
+  }),
+  ['global-relationship-graph'],
+  { revalidate: 300 }
+);
 
 function FilterPanel({
   topic,

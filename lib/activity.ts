@@ -42,6 +42,7 @@ export interface FetchActivityParams {
   organization?: string | null;
   limit?: number;
   days?: number;
+  includeRelations?: boolean;
 }
 
 const ACTIVITY_SOURCE_TYPES = ['openalex', 'github', 'youtube', 'exa', 'podcast', 'career'];
@@ -64,12 +65,13 @@ export async function fetchActivityEvents(params: FetchActivityParams = {}): Pro
   const days = Math.min(Math.max(params.days ?? 30, 1), 365);
   const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 
-  const persistedEvents = await fetchPersistedActivityEvents(params, since, limit).catch(error => {
-    if (isMissingActivityEventStore(error)) return null;
-    throw error;
-  });
-
-  const relationEvents = await fetchRelationActivityEvents(params, since, limit);
+  const [persistedEvents, relationEvents] = await Promise.all([
+    fetchPersistedActivityEvents(params, since, limit).catch(error => {
+      if (isMissingActivityEventStore(error)) return null;
+      throw error;
+    }),
+    params.includeRelations === false ? Promise.resolve([]) : fetchRelationActivityEvents(params, since, limit),
+  ]);
 
   if (persistedEvents && persistedEvents.length > 0) {
     return mergeActivityEvents([...persistedEvents, ...relationEvents], limit);

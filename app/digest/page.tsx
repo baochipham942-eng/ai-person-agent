@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ActivityEventList } from '@/components/activity/ActivityEventList';
+import { SiteHeader } from '@/components/common/SiteHeader';
 import type { ActivityEvent, ActivityEventType } from '@/lib/activity';
 import {
   fetchWeeklyDigest,
@@ -40,25 +41,7 @@ export default async function WeeklyDigestPage() {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <header className="glass-header sticky top-0 z-40 border-b border-subtle">
-        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-xl text-sm font-semibold text-white shadow-sm" style={{ background: 'var(--gradient-primary)' }}>
-              AI
-            </span>
-            <span className="text-sm font-semibold text-stone-900">AI 人物库</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <Link href="/" className="hidden text-xs font-medium text-stone-500 hover:text-orange-600 sm:inline">
-              人物榜
-            </Link>
-            <Link href="/watchlist" className="text-xs font-medium text-stone-500 hover:text-orange-600">
-              我的关注
-            </Link>
-            <span className="text-xs text-stone-400">本周动态</span>
-          </div>
-        </div>
-      </header>
+      <SiteHeader current="digest" maxWidth="7xl" />
 
       <main className="mx-auto max-w-7xl space-y-6 px-4 py-5 sm:px-6">
         <section className="rounded-xl border border-stone-200 bg-white px-5 py-5 shadow-sm sm:px-7">

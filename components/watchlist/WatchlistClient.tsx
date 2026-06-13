@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ActivityEventList } from '@/components/activity/ActivityEventList';
 import { FollowButton } from '@/components/common/FollowButton';
+import { SiteHeader } from '@/components/common/SiteHeader';
 import { NewsletterSettings } from '@/components/newsletter/NewsletterSettings';
 import type { ActivityEvent } from '@/lib/activity';
 import {
@@ -106,24 +107,7 @@ export function WatchlistClient() {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/85 backdrop-blur">
-        <div className="mx-auto flex h-12 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="text-sm font-medium text-stone-600 transition-colors hover:text-orange-600">
-            AI 人物库
-          </Link>
-          <div className="flex items-center gap-3">
-            <Link href="/digest" className="text-xs font-medium text-stone-500 hover:text-orange-600">
-              本周动态
-            </Link>
-            <span className="text-xs text-stone-400">我的关注</span>
-            {authenticated === false && (
-              <Link href="/login" className="text-xs font-medium text-orange-600 hover:text-orange-700">
-                登录同步
-              </Link>
-            )}
-          </div>
-        </div>
-      </header>
+      <SiteHeader current="watchlist" maxWidth="6xl" />
 
       <main className="mx-auto max-w-6xl space-y-8 px-4 py-6 sm:px-6">
         <section className="rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7">
