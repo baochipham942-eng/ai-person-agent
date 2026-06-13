@@ -127,7 +127,7 @@ advisorId (导师关联), createdAt
 ### PersonRelation
 ```
 id, personId, relatedPersonId,
-relationType (advisor|advisee|cofounder|colleague|collaborator|successor),
+relationType (advisor|advisee|cofounder|colleague|former_colleague|collaborator|successor),
 description, source, confidence,
 reviewStatus (trusted|confirmed|needs_review), evidenceUrl, evidenceNote,
 createdAt
@@ -154,6 +154,16 @@ title, text, publishedAt, metadata (JSON),
 fetchStatus, errorCode, fetchedAt, processed
 ```
 
+### ActivityEvent
+```
+id, personId, sourceItemId,
+eventType, sourceType, title, summary, url,
+occurredAt, detectedAt, topics[], organizations[],
+confidence, evidenceNote, reviewStatus, metadata (JSON),
+createdAt, updatedAt
+```
+> 动态流持久化事件。默认发布侧只展示可信状态和足够置信度的事件。
+
 ### Course
 ```
 id, personId, title, titleZh, platform, url, urlHash,
@@ -170,6 +180,30 @@ stage (L0规则|L1语义|L2去重), verdict (keep|reject|review|duplicate),
 aboutPerson, aiRelevant, quality (L1 语义评分, 0-1), reason, createdAt
 ```
 > 三段式清洗(lib/agents/clean-orchestrator.ts)的决策审计日志, 用于回溯/度量/数据飞轮
+
+### NewsletterDeliveryLog
+```
+id, userId, email, frequency, deliveryType, subject,
+status, provider, providerMessageId, attempts, payload (JSON),
+errorMessage, createdAt, lastAttemptAt, sentAt
+```
+
+### CompareReport / CompareReportEvent
+```
+CompareReport: id, title, topic, peopleIds[], status, visibility,
+summary, reportJson (JSON), sourceSnapshot (JSON), errorMessage,
+createdById, createdAt, updatedAt, completedAt
+
+CompareReportEvent: id, reportId, step, status, title, message,
+metadata (JSON), createdAt
+```
+
+### InfluenceScoreAuditLog
+```
+id, personId, scoreVersion, previousScore, computedScore, appliedScore,
+dimensions (JSON), signals (JSON), weights (JSON),
+status, reason, reviewer, createdAt
+```
 
 ## Core Workflows
 
