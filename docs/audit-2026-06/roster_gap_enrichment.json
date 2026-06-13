@@ -1,0 +1,315 @@
+{
+  "_meta": {
+    "source": "ORG_ROSTER_GAP_VERIFICATION.md",
+    "note": "Minimum viable enrichment for high-confidence newcomer candidates. Keep status=candidate until readiness gates pass.",
+    "generatedAt": "2026-06-11T11:55:44+08:00"
+  },
+  "people": [
+    {
+      "name": "Nick Frosst",
+      "topics": ["大语言模型", "企业 AI", "安全"],
+      "officialLinks": [
+        { "type": "website", "url": "https://cohere.com/about", "label": "Cohere about" }
+      ],
+      "products": [
+        {
+          "name": "Cohere",
+          "description": "面向企业的大语言模型和 AI 平台",
+          "org": "Cohere",
+          "year": 2019,
+          "url": "https://cohere.com/about",
+          "category": "Platform",
+          "type": "llm"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "大语言模型",
+          "rank": 88,
+          "reason": "Cohere 联合创始人，参与企业级大语言模型公司建设。"
+        }
+      ]
+    },
+    {
+      "name": "Ivan Zhang",
+      "topics": ["大语言模型", "企业 AI", "基础设施"],
+      "officialLinks": [
+        { "type": "website", "url": "https://cohere.com/about", "label": "Cohere about" }
+      ],
+      "products": [
+        {
+          "name": "Cohere",
+          "description": "面向企业的大语言模型和 AI 平台",
+          "org": "Cohere",
+          "year": 2019,
+          "url": "https://cohere.com/about",
+          "category": "Platform",
+          "type": "llm"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "企业 AI",
+          "rank": 86,
+          "reason": "Cohere 联合创始人，代表企业级大模型平台方向。"
+        }
+      ]
+    },
+    {
+      "name": "Phil Blunsom",
+      "topics": ["大语言模型", "NLP", "企业 AI"],
+      "officialLinks": [
+        { "type": "website", "url": "https://cohere.com/about", "label": "Cohere about" }
+      ],
+      "products": [
+        {
+          "name": "Cohere",
+          "description": "面向企业的大语言模型和 AI 平台",
+          "org": "Cohere",
+          "year": 2019,
+          "url": "https://cohere.com/about",
+          "category": "Platform",
+          "type": "llm"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "NLP",
+          "rank": 85,
+          "reason": "Cohere CTO，负责企业级语言模型技术方向。"
+        }
+      ]
+    },
+    {
+      "name": "Timothee Lacroix",
+      "topics": ["大语言模型", "开源", "多模态"],
+      "officialLinks": [
+        { "type": "website", "url": "https://mistral.ai/company", "label": "Mistral AI company" }
+      ],
+      "products": [
+        {
+          "name": "Mistral AI",
+          "description": "欧洲前沿大模型实验室和开源/商业模型提供方",
+          "org": "Mistral AI",
+          "year": 2023,
+          "url": "https://mistral.ai/company",
+          "category": "AI Model",
+          "type": "llm"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "大语言模型",
+          "rank": 88,
+          "reason": "Mistral AI 联合创始人兼 CTO，代表欧洲前沿模型实验室路线。"
+        }
+      ]
+    },
+    {
+      "name": "Evan Hubinger",
+      "topics": ["对齐", "安全", "大语言模型"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training", "label": "Anthropic research: Sleeper Agents" },
+        { "type": "paper", "url": "https://arxiv.org/abs/2401.05566", "label": "Sleeper Agents arXiv" }
+      ],
+      "products": [
+        {
+          "name": "Sleeper Agents",
+          "description": "研究经过安全训练后仍可能保留欺骗行为的语言模型，是 Anthropic 对齐和安全研究中的高影响力工作。",
+          "org": "Anthropic",
+          "year": 2024,
+          "url": "https://arxiv.org/abs/2401.05566",
+          "category": "Paper",
+          "type": "alignment"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "对齐",
+          "rank": 88,
+          "reason": "Sleeper Agents 作者之一，代表 Anthropic 对齐与欺骗行为安全研究方向。"
+        }
+      ]
+    },
+    {
+      "name": "Tamera Lanham",
+      "topics": ["对齐", "安全", "大语言模型"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training", "label": "Anthropic research: Sleeper Agents" },
+        { "type": "paper", "url": "https://arxiv.org/abs/2401.05566", "label": "Sleeper Agents arXiv" }
+      ],
+      "products": [
+        {
+          "name": "Sleeper Agents",
+          "description": "研究经过安全训练后仍可能保留欺骗行为的语言模型，是 Anthropic 对齐和安全研究中的高影响力工作。",
+          "org": "Anthropic",
+          "year": 2024,
+          "url": "https://arxiv.org/abs/2401.05566",
+          "category": "Paper",
+          "type": "alignment"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "AI 安全",
+          "rank": 84,
+          "reason": "Sleeper Agents 作者之一，参与 Anthropic 关于欺骗行为和安全训练稳健性的研究。"
+        }
+      ]
+    },
+    {
+      "name": "Catherine Olsson",
+      "topics": ["可解释性", "Transformer", "安全"],
+      "officialLinks": [
+        { "type": "website", "url": "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html", "label": "Transformer Circuits: In-context Learning and Induction Heads" },
+        { "type": "paper", "url": "https://arxiv.org/abs/2209.11895", "label": "In-context Learning and Induction Heads arXiv" }
+      ],
+      "products": [
+        {
+          "name": "In-context Learning and Induction Heads",
+          "description": "提出和分析 induction heads 与上下文学习机制的联系，是 transformer circuits 和机械可解释性方向的代表工作。",
+          "org": "Anthropic",
+          "year": 2022,
+          "url": "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html",
+          "category": "Paper",
+          "type": "interpretability"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "可解释性",
+          "rank": 89,
+          "reason": "In-context Learning and Induction Heads 作者之一，代表 Anthropic 机械可解释性研究。"
+        }
+      ]
+    },
+    {
+      "name": "Nicholas Joseph",
+      "topics": ["可解释性", "Transformer", "安全"],
+      "officialLinks": [
+        { "type": "website", "url": "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html", "label": "Transformer Circuits: In-context Learning and Induction Heads" },
+        { "type": "paper", "url": "https://arxiv.org/abs/2209.11895", "label": "In-context Learning and Induction Heads arXiv" }
+      ],
+      "products": [
+        {
+          "name": "In-context Learning and Induction Heads",
+          "description": "提出和分析 induction heads 与上下文学习机制的联系，是 transformer circuits 和机械可解释性方向的代表工作。",
+          "org": "Anthropic",
+          "year": 2022,
+          "url": "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html",
+          "category": "Paper",
+          "type": "interpretability"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "Transformer",
+          "rank": 82,
+          "reason": "In-context Learning and Induction Heads 作者之一，参与 transformer circuits 机制分析。"
+        }
+      ]
+    },
+    {
+      "name": "Trenton Bricken",
+      "topics": ["可解释性", "大语言模型", "安全"],
+      "officialLinks": [
+        { "type": "website", "url": "https://transformer-circuits.pub/2023/monosemantic-features/index.html", "label": "Transformer Circuits: Towards Monosemanticity" },
+        { "type": "website", "url": "https://trentonbricken.com/", "label": "Trenton Bricken personal site" }
+      ],
+      "products": [
+        {
+          "name": "Towards Monosemanticity",
+          "description": "用 dictionary learning 分解语言模型特征，是 Anthropic 可解释性路线中的代表工作。",
+          "org": "Anthropic",
+          "year": 2023,
+          "url": "https://transformer-circuits.pub/2023/monosemantic-features/index.html",
+          "category": "Paper",
+          "type": "interpretability"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "可解释性",
+          "rank": 90,
+          "reason": "Towards Monosemanticity 作者之一，代表 Anthropic sparse autoencoder / dictionary learning 可解释性工作。"
+        }
+      ]
+    },
+    {
+      "name": "Tristan Hume",
+      "topics": ["可解释性", "Transformer", "安全"],
+      "officialLinks": [
+        { "type": "website", "url": "https://transformer-circuits.pub/2023/monosemantic-features/index.html", "label": "Transformer Circuits: Towards Monosemanticity" },
+        { "type": "website", "url": "https://transformer-circuits.pub/2022/toy_model/index.html", "label": "Transformer Circuits: Toy Models of Superposition" }
+      ],
+      "products": [
+        {
+          "name": "Towards Monosemanticity",
+          "description": "用 dictionary learning 分解语言模型特征，是 Anthropic 可解释性路线中的代表工作。",
+          "org": "Anthropic",
+          "year": 2023,
+          "url": "https://transformer-circuits.pub/2023/monosemantic-features/index.html",
+          "category": "Paper",
+          "type": "interpretability"
+        },
+        {
+          "name": "Toy Models of Superposition",
+          "description": "研究神经网络特征叠加现象，是 Anthropic transformer circuits 机械可解释性路线的早期代表工作。",
+          "org": "Anthropic",
+          "year": 2022,
+          "url": "https://transformer-circuits.pub/2022/toy_model/index.html",
+          "category": "Paper",
+          "type": "interpretability"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "可解释性",
+          "rank": 87,
+          "reason": "Toy Models of Superposition 和 Towards Monosemanticity 作者之一，参与 Anthropic 机械可解释性工程和研究。"
+        }
+      ]
+    },
+    {
+      "name": "Thariq Shihipar",
+      "topics": ["Agent", "Claude Code", "AI 工程", "开发者工具"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.thariq.io", "label": "Thariq Shihipar personal site" },
+        { "type": "x", "url": "https://x.com/trq212", "handle": "@trq212", "label": "Thariq on X" },
+        { "type": "website", "url": "https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code", "label": "Claude blog: dynamic workflows in Claude Code" }
+      ],
+      "products": [
+        {
+          "name": "Claude Code",
+          "description": "Anthropic 面向开发者的 agentic coding 产品，支持在代码库中阅读、编辑、运行命令并协助完成工程任务。",
+          "org": "Anthropic",
+          "year": 2025,
+          "url": "https://claude.com/product/claude-code",
+          "category": "Developer Tool",
+          "type": "agent"
+        },
+        {
+          "name": "Dynamic Workflows in Claude Code",
+          "description": "Claude Code 的 workflow 能力，让 Claude 动态编写和协调多 agent harness 来处理更复杂的任务。",
+          "org": "Anthropic",
+          "year": 2026,
+          "url": "https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code",
+          "category": "Feature",
+          "type": "agent-workflow"
+        }
+      ],
+      "topicDetails": [
+        {
+          "topic": "Claude Code",
+          "rank": 91,
+          "reason": "Claude Code 团队成员，公开技术写作覆盖 skills、dynamic workflows、HTML 输出和 agent 工程实践，开发者社区传播度高。"
+        },
+        {
+          "topic": "Agent",
+          "rank": 88,
+          "reason": "围绕 Claude Code 的 harness、workflow、skills 和人机协作输出形态形成高影响力实践总结。"
+        }
+      ]
+    }
+  ]
+}

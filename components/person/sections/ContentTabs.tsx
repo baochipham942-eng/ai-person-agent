@@ -1,6 +1,22 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
+
+type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
+
+interface RawPoolMetadata {
+  videoId?: string;
+  thumbnailUrl?: string;
+  videoCategory?: VideoCategory | string;
+  stars?: number;
+  language?: string;
+  forks?: number;
+  citedByCount?: number;
+  venue?: string;
+  domain?: string;
+  [key: string]: unknown;
+}
 
 interface RawPoolItem {
   id: string;
@@ -9,7 +25,7 @@ interface RawPoolItem {
   title: string;
   text: string;
   publishedAt: string | null;
-  metadata: any;
+  metadata: RawPoolMetadata | null;
 }
 
 interface Card {
@@ -25,10 +41,8 @@ interface ContentTabsProps {
   personId: string;
   cards: Card[];
   sourceTypeCounts: Record<string, number>;
-  officialLinks: any[];
+  officialLinks: Array<Record<string, unknown>>;
 }
-
-type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
 
 // Tab 配置 - 只保留播客，学习卡片已移动到代表作品模块
 const TAB_CONFIG: Record<string, { icon: string; label: string }> = {
@@ -54,8 +68,23 @@ const VIDEO_CATEGORY_CONFIG: Record<VideoCategory, { label: string }> = {
 
 // 提取 YouTube 视频 ID
 function extractVideoId(url: string): string | null {
-  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-  return match ? match[1] : null;
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.replace(/^www\./, '');
+    if (hostname === 'youtu.be') {
+      return parsed.pathname.split('/').filter(Boolean)[0] || null;
+    }
+    if (hostname.endsWith('youtube.com')) {
+      const fromQuery = parsed.searchParams.get('v');
+      if (fromQuery) return fromQuery;
+      const match = parsed.pathname.match(/\/(?:shorts|embed|live)\/([^/?#]+)/);
+      return match?.[1] || null;
+    }
+  } catch {
+    const match = url.match(/(?:v=|youtu\.be\/|\/shorts\/|\/embed\/|\/live\/)([A-Za-z0-9_-]{6,})/);
+    return match?.[1] || null;
+  }
+  return null;
 }
 
 // 格式化日期
@@ -63,7 +92,7 @@ function formatDate(dateStr: string | null): string {
   if (!dateStr) return '';
   try {
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+    return date.toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: 'short', day: 'numeric' });
   } catch {
     return '';
   }
@@ -108,9 +137,25 @@ const VideoItem = ({ item }: { item: RawPoolItem }) => {
       className="group block bg-stone-50 rounded-xl overflow-hidden hover:shadow-md transition-all border border-transparent hover:border-orange-100"
     >
       {/* 缩略图 */}
-      <div className="relative aspect-video bg-stone-200">
+      <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-stone-100 to-stone-200">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center text-stone-400">
+          <svg className="w-9 h-9 text-stone-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <span className="text-xs font-medium line-clamp-2">{item.title || '视频内容'}</span>
+        </div>
         {thumbnailUrl && (
-          <img src={thumbnailUrl} alt={item.title} className="w-full h-full object-cover" />
+          <Image
+            src={thumbnailUrl}
+            alt={item.title}
+            fill
+            unoptimized
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
+          />
         )}
         {/* 播放按钮 */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -254,7 +299,7 @@ const ArticleItem = ({ item }: { item: RawPoolItem }) => {
   );
 };
 
-export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }: ContentTabsProps) {
+export function ContentTabs({ personId, cards, sourceTypeCounts }: ContentTabsProps) {
   const [activeTab, setActiveTab] = useState('podcast');
   const [loadedItems, setLoadedItems] = useState<Record<string, RawPoolItem[]>>({});
   const [loadingTab, setLoadingTab] = useState<string | null>(null);
@@ -264,7 +309,7 @@ export function ContentTabs({ personId, cards, sourceTypeCounts, officialLinks }
   // 确定要显示的 tabs - 只显示播客
   const availableTabs = [
     ...Object.entries(sourceTypeCounts || {})
-      .filter(([_, count]) => count > 0)
+      .filter(([, count]) => count > 0)
       .map(([key, count]) => ({ key, count }))
   ].filter(tab => TAB_CONFIG[tab.key]);
 

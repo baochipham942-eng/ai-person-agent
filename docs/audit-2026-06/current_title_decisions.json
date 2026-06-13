@@ -1,0 +1,88 @@
+{
+  "decisions": [
+    {
+      "personId": "cmjv6furu0008mfghimpelg81",
+      "person": "Han Xiao",
+      "action": "add_organizations",
+      "organizations": ["Jina AI"],
+      "evidenceUrl": "https://jina.ai/en-US/about-us/",
+      "evidenceNote": "Jina AI's official about page says the company was founded in 2020 by Han Xiao; currentTitle already says CEO & Founder @ Jina AI."
+    },
+    {
+      "personId": "cmjtsvqew00013est5j2tsqcx",
+      "person": "Yoshua Bengio",
+      "action": "add_organizations",
+      "organizations": ["Mila"],
+      "evidenceUrl": "https://yoshuabengio.org/fr/profil/",
+      "evidenceNote": "Yoshua Bengio's official profile identifies him as founder and scientific advisor of Mila; currentTitle includes Scientific Director @ Mila."
+    },
+    {
+      "personId": "cmjtxdf96000a5p08z94252m2",
+      "person": "杰夫·迪恩",
+      "action": "add_organizations",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://research.google/people/jeff",
+      "evidenceNote": "Jeff Dean's Google Research profile says he is Google's Chief Scientist focusing on AI advances for Google DeepMind and Google Research."
+    },
+    {
+      "personId": "cmk9vn1800004azb9vtrfj590",
+      "person": "蒂姆尼特·格布鲁",
+      "action": "add_organizations",
+      "organizations": ["DAIR Institute"],
+      "evidenceUrl": "https://www.codeforsociety.org/fsp/news/the-distributed-ai-research-institute-joins-cs-s",
+      "evidenceNote": "Code for Society refers to Timnit Gebru as DAIR Founder and Executive Director; currentTitle says Founder @ DAIR Institute."
+    },
+    {
+      "personId": "cmk9vogh20009azb988tw6aaa",
+      "person": "雷亚·哈德塞尔",
+      "action": "add_organizations",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://raiahadsell.com/",
+      "evidenceNote": "Raia Hadsell's homepage says she is a VP of Research at Google DeepMind; currentTitle says VP Research @ Google DeepMind."
+    },
+    {
+      "personId": "cmk9vx9kt000cklccp5q11ydf",
+      "person": "沙基尔·穆罕默德",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Director for Research @ Google DeepMind",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://shakirm.com/",
+      "evidenceNote": "Shakir Mohamed's homepage says he is a Director for research at Google DeepMind in London; existing currentTitle was less precise."
+    },
+    {
+      "personId": "cmk9w3xrw000tlbpp0ewhrm1b",
+      "person": "凯尔文·顾",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Principal Research Scientist / Director @ Google DeepMind",
+      "organizations": ["Google DeepMind"],
+      "evidenceUrl": "https://www.kelvinguu.com/",
+      "evidenceNote": "Kelvin Guu's homepage title is Principal Research Scientist / Director at Google DeepMind; existing currentTitle incorrectly pointed to MIT."
+    },
+    {
+      "personId": "cmk9w1o4s000glbppkvgn3ric",
+      "person": "于克朱",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "Associate Professor @ University of Texas at Austin; Director and Distinguished Research Scientist @ NVIDIA Research",
+      "organizations": ["University of Texas at Austin", "NVIDIA Research"],
+      "evidenceUrl": "https://yukezhu.me/",
+      "evidenceNote": "Yuke Zhu's homepage says he is an Associate Professor at UT Austin and a Director and Distinguished Research Scientist at NVIDIA Research; existing currentTitle incorrectly pointed to Apple."
+    },
+    {
+      "personId": "cmk9vn8pg0005azb9egtb11gm",
+      "person": "贾扬清",
+      "action": "update_current_title_and_add_organizations",
+      "currentTitle": "VP @ NVIDIA; Founder and CEO @ Lepton AI",
+      "organizations": ["NVIDIA", "Lepton AI"],
+      "evidenceUrl": "https://daggerfs.com/",
+      "evidenceNote": "Yangqing Jia's homepage lists VP NVIDIA and Founder and CEO Lepton AI; existing currentTitle only mentioned Lepton AI."
+    },
+    {
+      "personId": "cmjvd5h5e0008kvtpx9afvlid",
+      "person": "印奇",
+      "action": "add_organizations",
+      "organizations": ["旷视科技"],
+      "evidenceUrl": "https://www.megvii.com/news_detail/id/116",
+      "evidenceNote": "Megvii's official news page says Megvii was founded in Beijing in 2011 by Yin Qi, Tang Wenbin and Yang Mu; currentTitle says CEO & Co-founder @ 旷视科技."
+    }
+  ]
+}

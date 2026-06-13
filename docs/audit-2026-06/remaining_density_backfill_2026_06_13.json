@@ -1,0 +1,429 @@
+{
+  "generationId": "density-backfill:remaining-global:2026-06-13",
+  "scope": {
+    "intent": "Clear remaining global entity-density gaps with source-backed people intake and works backfill.",
+    "targetEntities": [
+      "topic:RAG",
+      "topic:开发者工具/AI Coding",
+      "organization:xAI",
+      "organization:Mistral",
+      "organization:DeepSeek",
+      "organization:Kimi"
+    ]
+  },
+  "people": [
+    {
+      "name": "Jerry Liu",
+      "aliases": ["Jerry Liu", "Jerry J. Liu", "jerryjliu"],
+      "status": "ready",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/4858925?v=4",
+      "currentTitle": "Co-founder & CEO @ LlamaIndex",
+      "roleCategory": "founder",
+      "organization": ["LlamaIndex"],
+      "topics": ["RAG", "Agent", "大语言模型", "开源", "AI 基础设施"],
+      "description": "Co-founder and CEO of LlamaIndex, a widely used data framework for RAG and agent applications.",
+      "whyImportant": "LlamaIndex is a core open-source framework in the RAG ecosystem.",
+      "completeness": 60,
+      "officialLinks": [
+        { "type": "github", "label": "GitHub", "url": "https://github.com/jerryjliu", "handle": "jerryjliu" },
+        { "type": "website", "label": "LlamaIndex", "url": "https://www.llamaindex.ai/" }
+      ],
+      "sourceWhitelist": ["github.com", "llamaindex.ai"],
+      "products": [
+        { "name": "LlamaIndex", "org": "LlamaIndex", "year": 2022, "description": "Open-source framework for connecting private or domain data to LLM applications.", "url": "https://github.com/run-llama/llama_index" }
+      ],
+      "sources": [
+        {
+          "title": "Jerry Liu GitHub profile",
+          "url": "https://github.com/jerryjliu",
+          "sourceType": "github",
+          "text": "Jerry Liu public GitHub profile, used as identity and avatar evidence for the LlamaIndex founder intake."
+        },
+        {
+          "title": "LlamaIndex official site",
+          "url": "https://www.llamaindex.ai/",
+          "sourceType": "exa",
+          "text": "LlamaIndex official site; used as organization and RAG framework context for Jerry Liu."
+        }
+      ]
+    },
+    {
+      "name": "Omar Khattab",
+      "aliases": ["Omar Khattab", "okhat"],
+      "status": "ready",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/963532?v=4",
+      "currentTitle": "Assistant Professor @ MIT / Creator of ColBERT and DSPy",
+      "roleCategory": "professor",
+      "organization": ["MIT", "Stanford"],
+      "topics": ["RAG", "AI 搜索", "大语言模型", "开源", "AI 基础设施"],
+      "description": "Researcher behind ColBERT and DSPy, with major work on neural retrieval and retrieval-augmented systems.",
+      "whyImportant": "ColBERT and DSPy are core building blocks for modern retrieval and RAG systems.",
+      "completeness": 60,
+      "officialLinks": [
+        { "type": "website", "label": "Personal site", "url": "https://omarkhattab.com/" },
+        { "type": "github", "label": "GitHub", "url": "https://github.com/okhat", "handle": "okhat" }
+      ],
+      "sourceWhitelist": ["omarkhattab.com", "github.com", "arxiv.org"],
+      "products": [
+        { "name": "ColBERT", "org": "Stanford", "year": 2020, "description": "Late-interaction neural retrieval model and open-source retrieval toolkit.", "url": "https://github.com/stanford-futuredata/ColBERT" },
+        { "name": "DSPy", "org": "Stanford", "year": 2023, "description": "Programming model for optimizing language-model pipelines, often used with retrieval workflows.", "url": "https://github.com/stanfordnlp/dspy" }
+      ],
+      "sources": [
+        {
+          "title": "Omar Khattab personal site",
+          "url": "https://omarkhattab.com/",
+          "sourceType": "exa",
+          "text": "Personal site for Omar Khattab; used as identity and research-area evidence."
+        },
+        {
+          "title": "Omar Khattab GitHub profile",
+          "url": "https://github.com/okhat",
+          "sourceType": "github",
+          "text": "GitHub profile used as avatar and open-source identity evidence."
+        }
+      ]
+    },
+    {
+      "name": "Nils Reimers",
+      "aliases": ["Nils Reimers", "nreimers"],
+      "status": "ready",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10706961?v=4",
+      "currentTitle": "Creator of Sentence Transformers",
+      "roleCategory": "engineer",
+      "organization": ["Sentence Transformers", "Hugging Face"],
+      "topics": ["RAG", "AI 搜索", "NLP", "开源", "AI 基础设施"],
+      "description": "Creator of Sentence Transformers, one of the most widely used embedding/retrieval toolkits for RAG systems.",
+      "whyImportant": "Sentence Transformers provides embedding infrastructure used across semantic search and RAG stacks.",
+      "completeness": 60,
+      "officialLinks": [
+        { "type": "github", "label": "GitHub", "url": "https://github.com/nreimers", "handle": "nreimers" },
+        { "type": "website", "label": "Sentence Transformers", "url": "https://www.sbert.net/" }
+      ],
+      "sourceWhitelist": ["github.com", "sbert.net"],
+      "products": [
+        { "name": "Sentence Transformers", "org": "Hugging Face", "year": 2019, "description": "Open-source Python framework for text embeddings and semantic search.", "url": "https://github.com/huggingface/sentence-transformers" }
+      ],
+      "sources": [
+        {
+          "title": "Nils Reimers GitHub profile",
+          "url": "https://github.com/nreimers",
+          "sourceType": "github",
+          "text": "GitHub profile used as identity and avatar evidence for Nils Reimers."
+        },
+        {
+          "title": "Sentence Transformers documentation",
+          "url": "https://www.sbert.net/",
+          "sourceType": "exa",
+          "text": "Sentence Transformers documentation site; used as RAG retrieval infrastructure context."
+        }
+      ]
+    },
+    {
+      "name": "Amjad Masad",
+      "aliases": ["Amjad Masad", "amasad"],
+      "status": "ready",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/587518?v=4",
+      "currentTitle": "Founder & CEO @ Replit",
+      "roleCategory": "founder",
+      "organization": ["Replit"],
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "AI 产品化"],
+      "description": "Founder and CEO of Replit, whose AI products include agentic coding and software-building workflows.",
+      "whyImportant": "Replit is a major AI coding platform and developer workflow company.",
+      "completeness": 60,
+      "officialLinks": [
+        { "type": "github", "label": "GitHub", "url": "https://github.com/amasad", "handle": "amasad" },
+        { "type": "website", "label": "Replit AI", "url": "https://replit.com/ai" }
+      ],
+      "sourceWhitelist": ["github.com", "replit.com"],
+      "products": [
+        { "name": "Replit AI", "org": "Replit", "year": 2023, "description": "AI-assisted coding and app-building product line from Replit.", "url": "https://replit.com/ai" }
+      ],
+      "sources": [
+        {
+          "title": "Amjad Masad GitHub profile",
+          "url": "https://github.com/amasad",
+          "sourceType": "github",
+          "text": "GitHub profile used as identity and avatar evidence for Amjad Masad."
+        },
+        {
+          "title": "Replit AI official page",
+          "url": "https://replit.com/ai",
+          "sourceType": "exa",
+          "text": "Replit AI official page; used as AI coding product context."
+        }
+      ]
+    },
+    {
+      "name": "Albert Q. Jiang",
+      "aliases": ["Albert Q. Jiang", "Albert Jiang"],
+      "status": "ready",
+      "avatarUrl": null,
+      "currentTitle": "Researcher @ Mistral AI",
+      "roleCategory": "researcher",
+      "organization": ["Mistral AI"],
+      "topics": ["大语言模型", "开源", "高效训练", "Scaling"],
+      "description": "Mistral AI researcher and author on Mistral / Mixtral model work.",
+      "whyImportant": "Albert Q. Jiang is a recurring author on Mistral model releases and papers.",
+      "completeness": 50,
+      "officialLinks": [
+        { "type": "website", "label": "OpenReview profile", "url": "https://openreview.net/profile?id=~Albert_Q._Jiang1" },
+        { "type": "paper", "label": "Mixtral of Experts", "url": "https://arxiv.org/abs/2401.04088" }
+      ],
+      "sourceWhitelist": ["openreview.net", "arxiv.org", "mistral.ai"],
+      "products": [
+        { "name": "Mixtral of Experts", "org": "Mistral AI", "year": 2024, "description": "Mistral sparse mixture-of-experts model report.", "url": "https://arxiv.org/abs/2401.04088" }
+      ],
+      "sources": [
+        {
+          "title": "Albert Q. Jiang OpenReview profile",
+          "url": "https://openreview.net/profile?id=~Albert_Q._Jiang1",
+          "sourceType": "exa",
+          "text": "OpenReview profile for Albert Q. Jiang; used as identity evidence."
+        },
+        {
+          "title": "Mixtral of Experts",
+          "url": "https://arxiv.org/abs/2401.04088",
+          "sourceType": "openalex",
+          "text": "Mixtral model report; used as Mistral AI representative work and author-context source."
+        }
+      ]
+    },
+    {
+      "name": "Marie-Anne Lachaux",
+      "aliases": ["Marie-Anne Lachaux", "Marie Anne Lachaux"],
+      "status": "ready",
+      "avatarUrl": null,
+      "currentTitle": "Researcher @ Mistral AI",
+      "roleCategory": "researcher",
+      "organization": ["Mistral AI"],
+      "topics": ["大语言模型", "代码生成", "开源", "高效训练"],
+      "description": "Mistral AI researcher and author on Mixtral and Code Llama related work.",
+      "whyImportant": "Marie-Anne Lachaux links Mistral model work and code-generation research into the organization page.",
+      "completeness": 50,
+      "officialLinks": [
+        { "type": "website", "label": "OpenReview profile", "url": "https://openreview.net/profile?id=~Marie-Anne_Lachaux1" },
+        { "type": "paper", "label": "Mixtral of Experts", "url": "https://arxiv.org/abs/2401.04088" }
+      ],
+      "sourceWhitelist": ["openreview.net", "arxiv.org", "mistral.ai"],
+      "products": [
+        { "name": "Mixtral of Experts", "org": "Mistral AI", "year": 2024, "description": "Mistral sparse mixture-of-experts model report.", "url": "https://arxiv.org/abs/2401.04088" }
+      ],
+      "sources": [
+        {
+          "title": "Marie-Anne Lachaux OpenReview profile",
+          "url": "https://openreview.net/profile?id=~Marie-Anne_Lachaux1",
+          "sourceType": "exa",
+          "text": "OpenReview profile for Marie-Anne Lachaux; used as identity evidence."
+        },
+        {
+          "title": "Mixtral of Experts",
+          "url": "https://arxiv.org/abs/2401.04088",
+          "sourceType": "openalex",
+          "text": "Mixtral model report; used as Mistral AI representative work and author-context source."
+        }
+      ]
+    },
+    {
+      "name": "Zihang Dai",
+      "aliases": ["Zihang Dai", "zihangdai"],
+      "status": "ready",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/3943442?v=4",
+      "currentTitle": "Researcher @ xAI",
+      "roleCategory": "researcher",
+      "organization": ["xAI"],
+      "topics": ["大语言模型", "Scaling", "AI 基础设施", "推理"],
+      "description": "Researcher associated with xAI and author of widely cited language-model work such as Transformer-XL.",
+      "whyImportant": "Adds a fifth source-backed xAI research person for the organization page.",
+      "completeness": 55,
+      "officialLinks": [
+        { "type": "github", "label": "GitHub", "url": "https://github.com/zihangdai", "handle": "zihangdai" },
+        { "type": "paper", "label": "Transformer-XL", "url": "https://arxiv.org/abs/1901.02860" }
+      ],
+      "sourceWhitelist": ["github.com", "arxiv.org"],
+      "products": [
+        { "name": "Transformer-XL", "org": "Google Brain / CMU", "year": 2019, "description": "Long-context Transformer architecture paper.", "url": "https://arxiv.org/abs/1901.02860" }
+      ],
+      "sources": [
+        {
+          "title": "Zihang Dai GitHub profile",
+          "url": "https://github.com/zihangdai",
+          "sourceType": "github",
+          "text": "GitHub profile used as identity and avatar evidence for Zihang Dai."
+        },
+        {
+          "title": "Transformer-XL",
+          "url": "https://arxiv.org/abs/1901.02860",
+          "sourceType": "openalex",
+          "text": "Transformer-XL paper; used as representative research context for Zihang Dai."
+        }
+      ]
+    },
+    {
+      "name": "Runxin Xu",
+      "aliases": ["Runxin Xu", "Eric Xu"],
+      "status": "ready",
+      "avatarUrl": null,
+      "currentTitle": "Researcher @ DeepSeek",
+      "roleCategory": "researcher",
+      "organization": ["DeepSeek", "深度求索"],
+      "topics": ["DeepSeek", "大语言模型", "数学推理", "推理", "开源"],
+      "description": "DeepSeek researcher associated with DeepSeekMath and reasoning-model work.",
+      "whyImportant": "Adds a source-backed DeepSeek research person without relaxing the held PG-009 candidate gate.",
+      "completeness": 50,
+      "officialLinks": [
+        { "type": "website", "label": "Personal site", "url": "https://eric-xu-r.github.io/" },
+        { "type": "github", "label": "DeepSeekMath", "url": "https://github.com/deepseek-ai/DeepSeek-Math" }
+      ],
+      "sourceWhitelist": ["eric-xu-r.github.io", "github.com", "arxiv.org"],
+      "products": [
+        { "name": "DeepSeekMath", "org": "DeepSeek", "year": 2024, "description": "Open-source mathematical reasoning model project.", "url": "https://github.com/deepseek-ai/DeepSeek-Math" }
+      ],
+      "sources": [
+        {
+          "title": "Runxin Xu personal site",
+          "url": "https://eric-xu-r.github.io/",
+          "sourceType": "exa",
+          "text": "Runxin Xu personal site; used as DeepSeek identity and role evidence."
+        },
+        {
+          "title": "DeepSeekMath GitHub repository",
+          "url": "https://github.com/deepseek-ai/DeepSeek-Math",
+          "sourceType": "github",
+          "text": "DeepSeekMath repository; used as DeepSeek representative work context."
+        }
+      ]
+    },
+    {
+      "name": "Liang Chen",
+      "aliases": ["Liang Chen", "chenllliang"],
+      "status": "ready",
+      "avatarUrl": null,
+      "currentTitle": "Researcher @ Moonshot AI / Kimi",
+      "roleCategory": "researcher",
+      "organization": ["Kimi", "Moonshot AI", "月之暗面"],
+      "topics": ["Kimi", "月之暗面", "多模态", "大语言模型", "长上下文"],
+      "description": "Researcher associated with Moonshot AI / Kimi multimodal model work.",
+      "whyImportant": "Adds source-backed Moonshot/Kimi research coverage beyond the founder trio.",
+      "completeness": 50,
+      "officialLinks": [
+        { "type": "website", "label": "Personal site", "url": "https://chenllliang.github.io/" },
+        { "type": "github", "label": "Kimi-VL", "url": "https://github.com/MoonshotAI/Kimi-VL" }
+      ],
+      "sourceWhitelist": ["chenllliang.github.io", "github.com", "arxiv.org"],
+      "products": [
+        { "name": "Kimi-VL", "org": "Moonshot AI", "year": 2025, "description": "Moonshot AI vision-language model project.", "url": "https://github.com/MoonshotAI/Kimi-VL" }
+      ],
+      "sources": [
+        {
+          "title": "Liang Chen personal site",
+          "url": "https://chenllliang.github.io/",
+          "sourceType": "exa",
+          "text": "Liang Chen personal site; used as Moonshot AI / Kimi identity and role evidence."
+        }
+      ]
+    },
+    {
+      "name": "Yibo Miao",
+      "aliases": ["Yibo Miao"],
+      "status": "ready",
+      "avatarUrl": null,
+      "currentTitle": "Researcher @ Moonshot AI / Kimi",
+      "roleCategory": "researcher",
+      "organization": ["Kimi", "Moonshot AI", "月之暗面"],
+      "topics": ["Kimi", "月之暗面", "大语言模型", "推理", "强化学习"],
+      "description": "Moonshot AI researcher with OpenReview profile and Kimi model-work context.",
+      "whyImportant": "Adds source-backed Moonshot/Kimi research coverage for the organization page.",
+      "completeness": 50,
+      "officialLinks": [
+        { "type": "website", "label": "OpenReview profile", "url": "https://openreview.net/profile?id=~Yibo_Miao1" },
+        { "type": "paper", "label": "Kimi k1.5", "url": "https://arxiv.org/abs/2501.12599" }
+      ],
+      "sourceWhitelist": ["openreview.net", "arxiv.org", "github.com"],
+      "products": [
+        { "name": "Kimi k1.5", "org": "Moonshot AI", "year": 2025, "description": "Moonshot AI reinforcement-learning reasoning model report.", "url": "https://arxiv.org/abs/2501.12599" }
+      ],
+      "sources": [
+        {
+          "title": "Yibo Miao OpenReview profile",
+          "url": "https://openreview.net/profile?id=~Yibo_Miao1",
+          "sourceType": "exa",
+          "text": "OpenReview profile for Yibo Miao; used as identity evidence."
+        },
+        {
+          "title": "Kimi k1.5",
+          "url": "https://arxiv.org/abs/2501.12599",
+          "sourceType": "openalex",
+          "text": "Kimi k1.5 paper; used as Moonshot/Kimi representative work and author-context source."
+        }
+      ]
+    }
+  ],
+  "works": [
+    {
+      "person": "Jerry Liu",
+      "entity": { "type": "topic", "label": "RAG" },
+      "title": "LlamaIndex",
+      "url": "https://github.com/run-llama/llama_index",
+      "sourceType": "github",
+      "publishedAt": "2022-11-01",
+      "text": "Open-source data framework for RAG and agent applications.",
+      "metadata": { "stars": 50101, "repo": "run-llama/llama_index" },
+      "tags": ["RAG", "LlamaIndex", "github", "agent"]
+    },
+    {
+      "person": "Omar Khattab",
+      "entity": { "type": "topic", "label": "RAG" },
+      "title": "ColBERT",
+      "url": "https://github.com/stanford-futuredata/ColBERT",
+      "sourceType": "github",
+      "publishedAt": "2020-04-26",
+      "text": "ColBERT neural retrieval toolkit for efficient and effective passage search.",
+      "metadata": { "stars": 3881, "repo": "stanford-futuredata/ColBERT" },
+      "tags": ["RAG", "retrieval", "ColBERT", "github"]
+    },
+    {
+      "person": "Nils Reimers",
+      "entity": { "type": "topic", "label": "RAG" },
+      "title": "Sentence Transformers",
+      "url": "https://github.com/huggingface/sentence-transformers",
+      "sourceType": "github",
+      "publishedAt": "2019-07-23",
+      "text": "Sentence Transformers toolkit for embeddings, semantic search, and retrieval.",
+      "metadata": { "repo": "huggingface/sentence-transformers" },
+      "tags": ["RAG", "embeddings", "semantic search", "github"]
+    },
+    {
+      "person": "Omar Khattab",
+      "entity": { "type": "topic", "label": "RAG" },
+      "title": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+      "url": "https://arxiv.org/abs/2004.12832",
+      "sourceType": "openalex",
+      "publishedAt": "2020-04-27",
+      "text": "ColBERT paper; representative neural retrieval work for RAG systems.",
+      "metadata": { "venue": "SIGIR / arXiv" },
+      "tags": ["RAG", "retrieval", "paper"]
+    },
+    {
+      "person": "Zihang Dai",
+      "entity": { "type": "organization", "label": "xAI" },
+      "title": "Grok-1",
+      "url": "https://github.com/xai-org/grok-1",
+      "sourceType": "github",
+      "publishedAt": "2024-03-17",
+      "text": "xAI Grok-1 open release repository.",
+      "metadata": { "stars": 51691, "repo": "xai-org/grok-1" },
+      "tags": ["xAI", "Grok", "github", "LLM"]
+    },
+    {
+      "person": "Liang Chen",
+      "entity": { "type": "organization", "label": "Kimi" },
+      "title": "Kimi-VL",
+      "url": "https://github.com/MoonshotAI/Kimi-VL",
+      "sourceType": "github",
+      "publishedAt": "2025-04-15",
+      "text": "Moonshot AI Kimi-VL repository, a vision-language model project under the Kimi family.",
+      "metadata": { "stars": 1198, "repo": "MoonshotAI/Kimi-VL" },
+      "tags": ["Kimi", "Moonshot AI", "multimodal", "github"]
+    }
+  ]
+}

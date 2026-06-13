@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "lib/agents/relation-validation.ts",
+    "scripts/audit/export_relation_review.ts",
+    "scripts/enrich/enrich_relations_*.ts",
+    "scripts/enrich/fetch_related_people.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

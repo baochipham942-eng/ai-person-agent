@@ -100,7 +100,7 @@ async function main() {
     for (const role of suspiciousRoles) {
         // 针对刘知远的历史数据进行特判删除
         const isLiuZhiyuanHistorical = role.person.name === '刘知远' && (
-            role.startDate?.getFullYear()! < 1980 ||
+            (role.startDate ? role.startDate.getFullYear() < 1980 : false) ||
             historicalKeywords.some(kw => role.organization?.nameZh?.includes(kw))
         );
 

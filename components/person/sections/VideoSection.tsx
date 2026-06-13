@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { buildTopicHref, normalizeDirectoryTopics } from '@/lib/person-directory-config';
 
 interface RawPoolItem {
   id: string;
@@ -14,6 +16,9 @@ interface RawPoolItem {
     videoId?: string;
     thumbnailUrl?: string;
     videoCategory?: string;
+    videoCategoryConfidence?: number;
+    isOfficial?: boolean;
+    author?: string;
     viewCount?: number;
     duration?: string;
     tags?: string[];  // AI 话题标签
@@ -28,7 +33,7 @@ interface VideoSectionProps {
 type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
 
 const CATEGORY_CONFIG: Record<VideoCategory, { label: string }> = {
-  all: { label: '全部' },
+  all: { label: '精选' },
   self_talk: { label: '本人演讲' },
   interview: { label: '访谈对话' },
   analysis: { label: '相关分析' },
@@ -36,8 +41,23 @@ const CATEGORY_CONFIG: Record<VideoCategory, { label: string }> = {
 
 // 提取 YouTube 视频 ID
 function extractVideoId(url: string): string | null {
-  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-  return match ? match[1] : null;
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.replace(/^www\./, '');
+    if (hostname === 'youtu.be') {
+      return parsed.pathname.split('/').filter(Boolean)[0] || null;
+    }
+    if (hostname.endsWith('youtube.com')) {
+      const fromQuery = parsed.searchParams.get('v');
+      if (fromQuery) return fromQuery;
+      const match = parsed.pathname.match(/\/(?:shorts|embed|live)\/([^/?#]+)/);
+      return match?.[1] || null;
+    }
+  } catch {
+    const match = url.match(/(?:v=|youtu\.be\/|\/shorts\/|\/embed\/|\/live\/)([A-Za-z0-9_-]{6,})/);
+    return match?.[1] || null;
+  }
+  return null;
 }
 
 // 格式化日期
@@ -45,7 +65,7 @@ function formatDate(dateStr: string | null): string {
   if (!dateStr) return '';
   try {
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short' });
+    return date.toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: 'short' });
   } catch {
     return '';
   }
@@ -55,22 +75,24 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
   const [videos, setVideos] = useState<RawPoolItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
   const [filter, setFilter] = useState<VideoCategory>('all');
   const [showAll, setShowAll] = useState(false);
   const INITIAL_DISPLAY_COUNT = 6;
 
   // 加载视频数据
-  const loadVideos = useCallback(async () => {
-    if (loaded) return;
+  const loadVideos = useCallback(async (force = false) => {
+    if (loaded && !force) return;
     setLoading(true);
+    setError(false);
     try {
       const response = await fetch(`/api/person/${personId}/items?type=youtube&limit=12`);
-      if (response.ok) {
-        const result = await response.json();
-        setVideos(result.data || []);
-      }
+      if (!response.ok) throw new Error('Failed to load videos');
+      const result = await response.json();
+      setVideos(result.data || []);
     } catch (error) {
       console.error('Failed to load videos:', error);
+      setError(true);
     } finally {
       setLoading(false);
       setLoaded(true);
@@ -90,8 +112,9 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
   }
 
   // 筛选视频
+  const firstPartyVideos = videos.filter(v => v.metadata?.videoCategory !== 'analysis');
   const filteredVideos = filter === 'all'
-    ? videos
+    ? (firstPartyVideos.length > 0 ? firstPartyVideos : videos)
     : videos.filter(v => v.metadata?.videoCategory === filter);
 
   return (
@@ -100,7 +123,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
       <div className="px-5 py-3 border-b border-stone-100">
         <div className="flex items-center gap-2">
           <span className="text-base">🎬</span>
-          <h2 className="text-sm font-medium text-stone-900">听 TA 亲自讲</h2>
+          <h2 className="text-sm font-medium text-stone-900">视频与访谈</h2>
           <span className="text-xs text-stone-400">({videoCount})</span>
         </div>
 
@@ -130,13 +153,27 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
           <div className="flex items-center justify-center py-8">
             <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316', borderRightColor: '#ec4899' }}></div>
           </div>
+        ) : error ? (
+          <div className="text-center py-8 text-stone-500">
+            <div className="text-sm font-medium text-stone-700 mb-1">加载失败</div>
+            <p className="text-xs text-stone-400 mb-3">视频资料暂时没有取回来</p>
+            <button
+              type="button"
+              onClick={() => loadVideos(true)}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium gradient-btn"
+            >
+              重试
+            </button>
+          </div>
         ) : filteredVideos.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {(showAll ? filteredVideos : filteredVideos.slice(0, INITIAL_DISPLAY_COUNT)).map(video => {
               const videoId = video.metadata?.videoId || extractVideoId(video.url);
               const thumbnailUrl = video.metadata?.thumbnailUrl ||
                 (videoId ? `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg` : null);
-              const category = video.metadata?.videoCategory;
+              const category = video.metadata?.videoCategory as VideoCategory | undefined;
+              const badgeLabel = getVideoBadgeLabel(video);
+              const confidence = video.metadata?.videoCategoryConfidence;
 
               return (
                 <div
@@ -149,12 +186,24 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                   className="group block rounded-xl overflow-hidden bg-stone-50 hover:shadow-md transition-all border border-transparent hover:border-orange-100 cursor-pointer"
                 >
                   {/* 缩略图 */}
-                  <div className="relative aspect-video bg-stone-200">
+                  <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-stone-100 to-stone-200">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center text-stone-400">
+                      <svg className="w-9 h-9 text-stone-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <span className="text-xs font-medium line-clamp-2">{video.title || '视频内容'}</span>
+                    </div>
                     {thumbnailUrl && (
-                      <img
+                      <Image
                         src={thumbnailUrl}
                         alt={video.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        unoptimized
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="absolute inset-0 w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).style.display = 'none';
+                        }}
                       />
                     )}
                     {/* 播放按钮遮罩 */}
@@ -169,9 +218,9 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                       </div>
                     </div>
                     {/* 分类标签 */}
-                    {category && category !== 'analysis' && (
+                    {badgeLabel && (
                       <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/70 text-white text-[10px] rounded-md">
-                        {CATEGORY_CONFIG[category as VideoCategory]?.label || category}
+                        {badgeLabel}
                       </div>
                     )}
                     {/* 时长 */}
@@ -187,6 +236,10 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                       {video.title}
                     </h4>
                     <div className="flex items-center gap-2 mt-1.5 text-xs text-stone-400">
+                      <span>{video.metadata?.isOfficial ? '本人频道' : category === 'analysis' ? '第三方分析' : '自动分类'}</span>
+                      {typeof confidence === 'number' && (
+                        <span>置信度 {Math.round(confidence * 100)}%</span>
+                      )}
                       {video.metadata?.viewCount && (
                         <span>👁️ {(video.metadata.viewCount / 1000).toFixed(0)}K</span>
                       )}
@@ -195,10 +248,10 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
                     {/* 话题标签 */}
                     {video.metadata?.tags && video.metadata.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-2">
-                        {video.metadata.tags.slice(0, 3).map(tag => (
+                        {normalizeDirectoryTopics(video.metadata.tags).slice(0, 3).map(tag => (
                           <Link
                             key={tag}
-                            href={`/?view=topic&topic=${encodeURIComponent(tag)}`}
+                            href={buildTopicHref(tag)}
                             className="px-1.5 py-0.5 text-[10px] bg-orange-50 text-orange-600 rounded-md hover:bg-orange-100 transition-colors"
                           >
                             {tag}
@@ -236,4 +289,13 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
       </div>
     </section>
   );
+}
+
+function getVideoBadgeLabel(video: RawPoolItem): string | null {
+  if (video.metadata?.isOfficial) return '本人频道';
+  const category = video.metadata?.videoCategory as VideoCategory | undefined;
+  if (category === 'analysis') return '第三方分析';
+  if (category === 'interview') return '访谈';
+  if (category === 'self_talk') return '本人演讲';
+  return category ? CATEGORY_CONFIG[category]?.label || category : null;
 }

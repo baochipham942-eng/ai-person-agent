@@ -6,15 +6,26 @@ import { prisma } from '@/lib/db/prisma';
 import bcrypt from 'bcryptjs';
 import type { User } from '@prisma/client';
 
-async function getUser(username: string): Promise<User | null> {
-    try {
-        const user = await prisma.user.findUnique({ where: { username } });
-        return user;
-    } catch (error) {
-        console.error('Failed to fetch user:', error);
-        throw new Error('Failed to fetch user.');
-    }
-}
+type SessionUserWithProfile = typeof authConfig.callbacks extends { session: (...args: infer Args) => unknown }
+    ? Args[0] extends { session: { user: infer SessionUser } }
+        ? SessionUser & {
+            id?: string;
+            username?: unknown;
+            nickname?: unknown;
+            avatar?: unknown;
+            phone?: unknown;
+            quickLoginToken?: unknown;
+        }
+        : never
+    : {
+        id?: string;
+        name?: string | null;
+        username?: unknown;
+        nickname?: unknown;
+        avatar?: unknown;
+        phone?: unknown;
+        quickLoginToken?: unknown;
+    };
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     ...authConfig,
@@ -62,7 +73,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         async jwt({ token, user }) {
             // Initial sign in
             if (user) {
-                const u = user as any;
+                const u = user as User;
                 token.id = u.id;
                 token.name = u.username;
                 token.username = u.username;
@@ -76,7 +87,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         },
         async session({ session, token }) {
             if (token && session.user) {
-                const s = session.user as any;
+                const s = session.user as SessionUserWithProfile;
                 s.id = token.id as string;
                 s.name = token.name as string;
                 s.username = token.username;

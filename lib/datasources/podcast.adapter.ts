@@ -6,7 +6,6 @@ import {
     DataSourceAdapter,
     DataSourceResult,
     FetchParams,
-    NormalizedItem,
     createNormalizedItem,
     createSuccessResult,
     createErrorResult,

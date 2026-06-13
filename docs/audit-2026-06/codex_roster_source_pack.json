@@ -1,0 +1,130 @@
+{
+  "scope": "Codex roster gap review after discovering that Thibault \"Tibo\" Sottiaux is absent from the People table.",
+  "generatedAt": "2026-06-09",
+  "usage": "Inputs for scripts/audit/discover_codex_roster_gaps_mimo.mjs. Treat these as source hints, not as automatic database truth.",
+  "sourcePolicy": [
+    "Prefer official OpenAI pages, official social profiles, GitHub accounts, and direct interview/podcast pages.",
+    "Do not create a person record from model memory alone.",
+    "If the source supports a Codex role but not a formal PM title, use lead/head/design/product wording instead of product manager."
+  ],
+  "sources": [
+    {
+      "id": "openai_forum_tibo_codex",
+      "url": "https://forum.openai.com/public/events/codex-is-for-everyone-why-codex-matters-beyond-code-fa40puy7wi",
+      "sourceType": "official_event",
+      "candidateNames": ["Thibault Sottiaux", "Tibo"],
+      "evidenceNote": "OpenAI Forum event identifies Thibault 'Tibo' Sottiaux as Member of Technical Staff at OpenAI and Head/lead of Codex, OpenAI's software engineering agent.",
+      "supportedClaims": [
+        "Thibault Sottiaux is associated with OpenAI.",
+        "Thibault Sottiaux leads Codex.",
+        "Codex should be described as OpenAI's software engineering agent."
+      ]
+    },
+    {
+      "id": "github_tibo_openai",
+      "url": "https://github.com/tibo-openai",
+      "sourceType": "profile",
+      "candidateNames": ["Thibault Sottiaux", "Tibo"],
+      "evidenceNote": "GitHub profile name is Thibault Sottiaux and handle is tibo-openai; repositories include a fork of openai/codex.",
+      "supportedClaims": [
+        "Likely official GitHub handle for Thibault Sottiaux.",
+        "Useful as an officialLinks candidate after manual identity check."
+      ]
+    },
+    {
+      "id": "lenny_alexander_embiricos",
+      "url": "https://poddtoppen.se/podcast/1627920305/lennys-podcast-product-career-growth/why-humans-are-ais-biggest-bottleneck-and-whats-coming-in-2026-alexander-embiricos-openai-codex-product-lead",
+      "sourceType": "direct_interview",
+      "candidateNames": ["Alexander Embiricos"],
+      "evidenceNote": "Podcast page describes Alexander Embiricos as leading product on OpenAI Codex and discusses Codex growth and workflows.",
+      "supportedClaims": [
+        "Alexander Embiricos leads product on Codex at OpenAI.",
+        "He belongs to the modern Codex product/agent roster."
+      ]
+    },
+    {
+      "id": "how_i_ai_alexander_embiricos",
+      "url": "https://www.listennotes.com/podcasts/how-i-ai/a-full-software-engineering-gDrtj4BipWH/",
+      "sourceType": "direct_interview",
+      "candidateNames": ["Alexander Embiricos"],
+      "evidenceNote": "Interview page identifies Alexander Embiricos as product lead for Codex at OpenAI and focuses on Codex workflows.",
+      "supportedClaims": [
+        "Alexander Embiricos is a Codex product lead.",
+        "He is a good roster candidate for the product/operator side of AI coding agents."
+      ]
+    },
+    {
+      "id": "software_daily_tibo_ed_bayes",
+      "url": "https://podcasts.apple.com/us/podcast/openai-and-codex-with-thibault-sottiaux-and-ed-bayes/id1019576853?i=1000747157901",
+      "sourceType": "direct_interview",
+      "candidateNames": ["Thibault Sottiaux", "Ed Bayes"],
+      "evidenceNote": "Apple Podcasts page for Software Engineering Daily says Thibault Sottiaux is the Codex engineering lead and Ed Bayes is the Codex product designer.",
+      "supportedClaims": [
+        "Thibault Sottiaux is the Codex engineering lead.",
+        "Ed Bayes is the Codex product designer.",
+        "Both are publicly associated with Codex through a direct interview page."
+      ]
+    },
+    {
+      "id": "figmalion_ed_bayes",
+      "url": "https://figmalion.com/topics/codex",
+      "sourceType": "secondary_topic_page",
+      "candidateNames": ["Ed Bayes"],
+      "evidenceNote": "Topic page says Ed Bayes leads design on Codex at OpenAI.",
+      "supportedClaims": [
+        "Ed Bayes appears to be a Codex design lead/designer.",
+        "Treat as medium confidence until confirmed by official profile or direct interview page."
+      ]
+    }
+  ],
+  "candidateHints": [
+    {
+      "name": "Thibault Sottiaux",
+      "aliases": ["Tibo", "Thibault \"Tibo\" Sottiaux", "tibo-openai"],
+      "expectedAction": "add",
+      "expectedPriority": "P0",
+      "expectedCurrentTitle": "Member of Technical Staff / Head of Codex @ OpenAI",
+      "why": "Directly missing person discovered by Tibo/Codex product-owner check."
+    },
+    {
+      "name": "Alexander Embiricos",
+      "aliases": ["Alex Embiricos", "embirico"],
+      "expectedAction": "add",
+      "expectedPriority": "P0",
+      "expectedCurrentTitle": "Product Lead, Codex @ OpenAI",
+      "why": "The actual Codex product lead appears missing from the current database."
+    },
+    {
+      "name": "Ed Bayes",
+      "aliases": [],
+      "expectedAction": "add",
+      "expectedPriority": "P1",
+      "expectedCurrentTitle": "Codex Product Designer @ OpenAI",
+      "why": "Design/product-surface owner for Codex; Apple Podcasts direct interview page supports the product designer role."
+    },
+    {
+      "name": "Boris Power",
+      "expectedAction": "update_existing",
+      "expectedPriority": "P1",
+      "why": "Already in database but organization is null and current title needs source confirmation."
+    },
+    {
+      "name": "Joanne Jang",
+      "expectedAction": "update_existing",
+      "expectedPriority": "P1",
+      "why": "Already in database, but currentTitle is an education record; product/role fields need refetch and correction."
+    },
+    {
+      "name": "Kevin Weil",
+      "expectedAction": "update_existing",
+      "expectedPriority": "P2",
+      "why": "Already in database, OpenAI product leadership fields are inconsistent and should not be mixed into Codex unless sourced."
+    },
+    {
+      "name": "Fidji Simo",
+      "expectedAction": "update_existing",
+      "expectedPriority": "P2",
+      "why": "Already in database; products are over-attributed and should be rewritten at application-business level."
+    }
+  ]
+}

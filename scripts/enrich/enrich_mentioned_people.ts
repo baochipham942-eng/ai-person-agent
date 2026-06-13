@@ -165,7 +165,7 @@ async function main() {
     // 跳过已标记的内容
     const hasMarks = (text: string | null) => text?.includes('[[') && text?.includes('|');
 
-    let updates: { whyImportant?: string; description?: string; quotes?: Quote[] } = {};
+    const updates: { whyImportant?: string; description?: string; quotes?: Quote[] } = {};
     let mentionedAny = false;
 
     // 处理 whyImportant

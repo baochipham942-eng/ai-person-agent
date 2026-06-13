@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { buildOrganizationHref, buildTopicHref, getDirectoryTopicColor } from '@/lib/person-directory-config';
 
 interface OfficialLink {
   type: string;
@@ -15,6 +17,8 @@ interface PersonRole {
   roleZh: string | null;
   startDate?: string | null;
   endDate?: string | null;
+  source?: string | null;
+  confidence?: number | null;
   organizationName: string;
   organizationNameZh: string | null;
   organizationType: string;
@@ -54,23 +58,8 @@ function getCountryFlag(countryCode: string | null | undefined): string {
   return String.fromCodePoint(...[...code].map(c => c.charCodeAt(0) + offset));
 }
 
-// 话题颜色映射（保持多色，优化样式）
-const TOPIC_COLORS: Record<string, string> = {
-  'RAG': 'bg-purple-50 text-purple-600 border border-purple-100',
-  'Agent': 'bg-blue-50 text-blue-600 border border-blue-100',
-  '推理': 'bg-green-50 text-green-600 border border-green-100',
-  '多模态': 'bg-orange-50 text-orange-600 border border-orange-100',
-  '对齐': 'bg-red-50 text-red-600 border border-red-100',
-  'Scaling': 'bg-cyan-50 text-cyan-600 border border-cyan-100',
-  '大语言模型': 'bg-indigo-50 text-indigo-600 border border-indigo-100',
-  'Transformer': 'bg-pink-50 text-pink-600 border border-pink-100',
-  '开源': 'bg-emerald-50 text-emerald-600 border border-emerald-100',
-  'AGI': 'bg-rose-50 text-rose-600 border border-rose-100',
-  '强化学习': 'bg-amber-50 text-amber-600 border border-amber-100',
-};
-
 function getTopicColor(topic: string): string {
-  return TOPIC_COLORS[topic] || 'bg-stone-50 text-stone-600 border border-stone-100';
+  return getDirectoryTopicColor(topic);
 }
 
 // 链接图标组件
@@ -251,9 +240,21 @@ function formatYear(dateStr: string | null | undefined): string {
   }
 }
 
+function isStudentRole(role: string | null | undefined): boolean {
+  return Boolean(role && role.toLowerCase().includes('student'));
+}
+
+function isLowConfidenceRole(role: PersonRole): boolean {
+  return typeof role.confidence === 'number' && role.confidence < 0.75;
+}
+
+function isTrustedRole(role: PersonRole): boolean {
+  return !isLowConfidenceRole(role);
+}
+
 export function PersonHeader({ person }: PersonHeaderProps) {
   const [avatarError, setAvatarError] = useState(false);
-  const [timelineExpanded, setTimelineExpanded] = useState(true);
+  const [timelineExpanded, setTimelineExpanded] = useState(false);
 
   // 获取头像 URL（使用温暖色调）
   const getAvatarUrl = () => {
@@ -266,16 +267,17 @@ export function PersonHeader({ person }: PersonHeaderProps) {
     return person.avatarUrl;
   };
 
-  // 生成当前职位文本
-  // 优先使用 personRoles 中最新的在职职位（无 endDate），其次 currentTitle，最后 occupation+organization
   const generateCurrentTitle = () => {
-    // 1. 从 personRoles 获取最新的当前职位（有 startDate 且无 endDate，排除 Student 角色）
+    if (person.currentTitle && !isStudentRole(person.currentTitle)) {
+      return person.currentTitle;
+    }
+
     const currentRoles = (person.personRoles || [])
-      .filter(role => !role.endDate && role.role !== 'Student')
+      .filter(role => !role.endDate && !isStudentRole(role.role) && isTrustedRole(role))
       .sort((a, b) => {
         const aDate = a.startDate || '0000';
         const bDate = b.startDate || '0000';
-        return bDate.localeCompare(aDate); // 按开始时间降序
+        return bDate.localeCompare(aDate);
       });
 
     if (currentRoles.length > 0) {
@@ -284,12 +286,6 @@ export function PersonHeader({ person }: PersonHeaderProps) {
       return `${role.roleZh || role.role} @ ${orgName}`;
     }
 
-    // 2. 使用 currentTitle（但排除包含 Student 的值）
-    if (person.currentTitle && !person.currentTitle.includes('Student')) {
-      return person.currentTitle;
-    }
-
-    // 3. Fallback 到 occupation + organization
     if (person.occupation[0] && person.organization[0]) {
       return `${person.occupation[0]} @ ${person.organization[0]}`;
     }
@@ -299,8 +295,8 @@ export function PersonHeader({ person }: PersonHeaderProps) {
 
   const currentTitle = generateCurrentTitle();
 
-  // 履历数据（按 startDate 降序，最新的在前，取最近5条）
   const timelineRoles = (person.personRoles || [])
+    .filter(role => !isStudentRole(role.role))
     .sort((a, b) => {
       const aDate = a.startDate || '0000';
       const bDate = b.startDate || '0000';
@@ -320,13 +316,15 @@ export function PersonHeader({ person }: PersonHeaderProps) {
         <div className="flex gap-4 items-start">
           {/* 头像 - 首屏关键图片，不使用 lazy */}
           <div className="flex-shrink-0">
-            <img
+            <Image
               src={getAvatarUrl()}
               alt={person.name}
+              width={80}
+              height={80}
+              priority
+              sizes="(min-width: 640px) 80px, 64px"
               className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover ring-1 ring-stone-100"
               onError={() => setAvatarError(true)}
-              fetchPriority="high"
-              decoding="async"
             />
           </div>
 
@@ -357,7 +355,7 @@ export function PersonHeader({ person }: PersonHeaderProps) {
                 {person.topics.slice(0, 5).map((topic, idx) => (
                   <Link
                     key={idx}
-                    href={`/?view=topic&topic=${encodeURIComponent(topic)}`}
+                    href={buildTopicHref(topic)}
                     className={`px-2 py-0.5 text-xs font-medium rounded-md ${getTopicColor(topic)} hover:opacity-80 hover:scale-105 transition-all cursor-pointer`}
                   >
                     {topic}
@@ -376,8 +374,9 @@ export function PersonHeader({ person }: PersonHeaderProps) {
               className="flex items-center justify-between w-full px-3 py-2 bg-white/60 hover:bg-white/80 rounded-lg text-sm text-stone-600 transition-colors border border-stone-100"
             >
               <span className="flex items-center gap-1.5">
-                <span>📋</span>
-                <span className="font-medium">个人履历</span>
+                <span className="font-medium">
+                  {timelineExpanded ? '收起履历' : `查看履历 (${timelineRoles.length})`}
+                </span>
               </span>
               <svg
                 className={`w-4 h-4 transition-transform ${timelineExpanded ? 'rotate-180' : ''}`}
@@ -391,12 +390,13 @@ export function PersonHeader({ person }: PersonHeaderProps) {
 
             {timelineExpanded && (
               <div className="mt-2 pl-3 border-l-2 border-stone-200 space-y-1.5">
-                {timelineRoles.map((role, idx) => {
+                {timelineRoles.map((role) => {
                   const isCurrent = !role.endDate;
                   const startYear = formatYear(role.startDate);
                   const endYear = role.endDate ? formatYear(role.endDate) : 'now';
                   const dateRange = startYear ? `${startYear} - ${endYear}` : '';
                   const orgName = role.organizationNameZh || role.organizationName;
+                  const needsReview = isLowConfidenceRole(role);
 
                   return (
                     <div
@@ -413,12 +413,17 @@ export function PersonHeader({ person }: PersonHeaderProps) {
                           <span className={`text-sm ${isCurrent ? 'text-stone-900 font-medium' : 'text-stone-600'}`}>
                             {role.roleZh || role.role} @{' '}
                             <Link
-                              href={`/?view=organization&organization=${encodeURIComponent(orgName)}`}
+                              href={buildOrganizationHref(orgName)}
                               className="hover:text-orange-600 hover:underline transition-colors"
                               onClick={(e) => e.stopPropagation()}
                             >
                               {orgName}
                             </Link>
+                            {needsReview && (
+                              <span className="ml-1.5 rounded-md bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium text-amber-700 border border-amber-100">
+                                待核
+                              </span>
+                            )}
                           </span>
                         </div>
                         {dateRange && (

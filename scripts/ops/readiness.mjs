@@ -1,0 +1,396 @@
+#!/usr/bin/env node
+import dotenv from 'dotenv';
+import { PrismaClient } from '@prisma/client';
+
+dotenv.config({ path: '.env', quiet: true });
+dotenv.config({ path: '.env.local', quiet: true });
+
+const prisma = new PrismaClient();
+
+main()
+  .catch(error => {
+    console.error(error);
+    process.exitCode = 1;
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
+
+async function main() {
+  const [activityStore, newsletterStore, influenceStore, compareReportStore] = await Promise.all([
+    checkActivityStore(),
+    checkNewsletterStore(),
+    checkTable('InfluenceScoreAuditLog'),
+    checkCompareReportStore(),
+  ]);
+
+  const [activity, newsletter, influence, compareReport] = await Promise.all([
+    activityStore.exists && activityStore.reviewStatusColumn ? fetchActivityStats() : emptyActivityStats(),
+    newsletterStore.exists && newsletterStore.providerColumns ? fetchNewsletterStats() : emptyNewsletterStats(),
+    influenceStore.exists ? fetchInfluenceStats() : emptyInfluenceStats(),
+    compareReportStore.exists && compareReportStore.eventTable && compareReportStore.eventMetadataColumn ? fetchCompareReportStats() : emptyCompareReportStats(),
+  ]);
+  const newsletterEnv = buildNewsletterEnv();
+  const checks = buildChecks({
+    activityStore,
+    newsletterStore,
+    influenceStore,
+    compareReportStore,
+    activity,
+    newsletter,
+    influence,
+    compareReport,
+    newsletterEnv,
+  });
+  const readiness = {
+    generatedAt: new Date().toISOString(),
+    overallStatus: summarizeStatus(checks),
+    schema: {
+      activityEvent: activityStore,
+      newsletterDeliveryLog: newsletterStore,
+      influenceScoreAuditLog: influenceStore,
+      compareReport: compareReportStore,
+    },
+    newsletterEnv,
+    activity,
+    newsletter,
+    influence,
+    compareReport,
+    checks,
+  };
+
+  console.log(JSON.stringify(readiness, null, 2));
+}
+
+async function checkTable(tableName) {
+  const rows = await prisma.$queryRawUnsafe(
+    `SELECT to_regclass('public."${tableName}"') IS NOT NULL AS "exists"`,
+  );
+  const exists = Boolean(rows[0]?.exists);
+  return {
+    exists,
+    status: exists ? 'ready' : 'blocked',
+    detail: exists ? `${tableName} exists` : `${tableName} migration is not applied`,
+  };
+}
+
+async function checkActivityStore() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      to_regclass('public."ActivityEvent"') IS NOT NULL AS "exists",
+      EXISTS (
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+          AND table_name = 'ActivityEvent'
+          AND column_name = 'reviewStatus'
+      ) AS "reviewStatusColumn"
+  `;
+  const exists = Boolean(rows[0]?.exists);
+  const reviewStatusColumn = Boolean(rows[0]?.reviewStatusColumn);
+  const ready = exists && reviewStatusColumn;
+
+  return {
+    exists,
+    reviewStatusColumn,
+    status: ready ? 'ready' : 'blocked',
+    detail: ready
+      ? 'ActivityEvent exists with reviewStatus column'
+      : exists
+        ? 'ActivityEvent exists but reviewStatus column is missing'
+        : 'ActivityEvent migration is not applied',
+  };
+}
+
+async function checkNewsletterStore() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      to_regclass('public."NewsletterDeliveryLog"') IS NOT NULL AS "exists",
+      EXISTS (
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+          AND table_name = 'NewsletterDeliveryLog'
+          AND column_name = 'provider'
+      )
+      AND EXISTS (
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+          AND table_name = 'NewsletterDeliveryLog'
+          AND column_name = 'attempts'
+      ) AS "providerColumns"
+  `;
+  const exists = Boolean(rows[0]?.exists);
+  const providerColumns = Boolean(rows[0]?.providerColumns);
+  const ready = exists && providerColumns;
+
+  return {
+    exists,
+    providerColumns,
+    status: ready ? 'ready' : 'blocked',
+    detail: ready
+      ? 'NewsletterDeliveryLog exists with provider columns'
+      : exists
+        ? 'NewsletterDeliveryLog exists but provider columns are missing'
+        : 'NewsletterDeliveryLog migration is not applied',
+  };
+}
+
+async function checkCompareReportStore() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      to_regclass('public."CompareReport"') IS NOT NULL AS "exists",
+      to_regclass('public."CompareReportEvent"') IS NOT NULL AS "eventTable",
+      EXISTS (
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+          AND table_name = 'CompareReportEvent'
+          AND column_name = 'metadata'
+      ) AS "eventMetadataColumn"
+  `;
+  const exists = Boolean(rows[0]?.exists);
+  const eventTable = Boolean(rows[0]?.eventTable);
+  const eventMetadataColumn = Boolean(rows[0]?.eventMetadataColumn);
+  const ready = exists && eventTable && eventMetadataColumn;
+
+  return {
+    exists,
+    eventTable,
+    eventMetadataColumn,
+    status: ready ? 'ready' : 'blocked',
+    detail: ready
+      ? 'CompareReport and CompareReportEvent exist with event metadata'
+      : !exists
+        ? 'CompareReport migration is not applied'
+        : !eventTable
+          ? 'CompareReportEvent migration is not applied'
+          : 'CompareReportEvent metadata column is missing',
+  };
+}
+
+async function fetchActivityStats() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      COUNT(*) AS "total",
+      COUNT(*) FILTER (WHERE "detectedAt" >= NOW() - INTERVAL '30 days') AS "recent30d",
+      MAX("detectedAt") AS "latestDetectedAt"
+    FROM "ActivityEvent"
+  `;
+  const row = rows[0];
+  return {
+    total: toNumber(row?.total),
+    recent30d: toNumber(row?.recent30d),
+    latestDetectedAt: row?.latestDetectedAt?.toISOString() || null,
+  };
+}
+
+async function fetchNewsletterStats() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      COUNT(*) AS "total",
+      COUNT(*) FILTER (WHERE status = 'dry_run') AS "dryRun",
+      COUNT(*) FILTER (WHERE status = 'sent') AS "sent",
+      COUNT(*) FILTER (WHERE status = 'failed') AS "failed",
+      MAX("createdAt") AS "latestCreatedAt"
+    FROM "NewsletterDeliveryLog"
+  `;
+  const row = rows[0];
+  return {
+    total: toNumber(row?.total),
+    dryRun: toNumber(row?.dryRun),
+    sent: toNumber(row?.sent),
+    failed: toNumber(row?.failed),
+    latestCreatedAt: row?.latestCreatedAt?.toISOString() || null,
+  };
+}
+
+async function fetchInfluenceStats() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      COUNT(*) AS "audits",
+      MAX("createdAt") AS "latestCreatedAt"
+    FROM "InfluenceScoreAuditLog"
+  `;
+  const row = rows[0];
+  return {
+    audits: toNumber(row?.audits),
+    latestCreatedAt: row?.latestCreatedAt?.toISOString() || null,
+  };
+}
+
+async function fetchCompareReportStats() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      COUNT(*) AS "total",
+      COUNT(*) FILTER (WHERE status = 'completed') AS "completed",
+      COUNT(*) FILTER (WHERE status = 'running') AS "running",
+      COUNT(*) FILTER (WHERE status = 'pending') AS "pending",
+      COUNT(*) FILTER (WHERE status = 'failed') AS "failed",
+      MAX("createdAt") AS "latestCreatedAt"
+    FROM "CompareReport"
+  `;
+  const row = rows[0];
+  return {
+    total: toNumber(row?.total),
+    completed: toNumber(row?.completed),
+    running: toNumber(row?.running),
+    pending: toNumber(row?.pending),
+    failed: toNumber(row?.failed),
+    latestCreatedAt: row?.latestCreatedAt?.toISOString() || null,
+  };
+}
+
+function buildNewsletterEnv() {
+  const provider = process.env.NEWSLETTER_EMAIL_PROVIDER || null;
+  const sendEnabled = process.env.NEWSLETTER_SEND_ENABLED === 'true';
+  const hasApiKey = Boolean(process.env.RESEND_API_KEY);
+  const hasFromEmail = Boolean(process.env.NEWSLETTER_FROM_EMAIL);
+  const hasSiteUrl = Boolean(process.env.PRODUCTION_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL);
+  const hasTokenSecret = Boolean(process.env.NEWSLETTER_TOKEN_SECRET || process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET);
+  const sendConfigReady = provider === 'resend' && hasApiKey && hasFromEmail && hasSiteUrl && hasTokenSecret;
+  const readyToSend = sendConfigReady && sendEnabled;
+
+  return {
+    provider,
+    sendEnabled,
+    hasApiKey,
+    hasFromEmail,
+    hasSiteUrl,
+    hasTokenSecret,
+    sendConfigReady,
+    readyToSend,
+  };
+}
+
+function buildChecks(params) {
+  return [
+    {
+      key: 'activity-schema',
+      label: 'ActivityEvent migration',
+      status: params.activityStore.status,
+      detail: params.activityStore.detail,
+    },
+    {
+      key: 'activity-backfill',
+      label: 'ActivityEvent backfill',
+      status: params.activityStore.status === 'blocked' ? 'blocked' : params.activity.total > 0 ? 'ready' : 'pending',
+      detail: params.activityStore.status === 'blocked'
+        ? 'Apply ActivityEvent migration and reviewStatus column before backfill'
+        : params.activity.total > 0
+          ? `${params.activity.total} events materialized`
+          : 'No ActivityEvent rows yet',
+    },
+    {
+      key: 'newsletter-schema',
+      label: 'NewsletterDeliveryLog migration',
+      status: params.newsletterStore.status,
+      detail: params.newsletterStore.detail,
+    },
+    {
+      key: 'newsletter-env',
+      label: 'Newsletter send env',
+      status: newsletterEnvStatus(params.newsletterEnv, params.newsletter),
+      detail: newsletterEnvDetail(params.newsletterEnv, params.newsletter),
+    },
+    {
+      key: 'newsletter-send-observation',
+      label: 'Newsletter real-send observation',
+      status: !params.newsletterStore.providerColumns ? 'blocked' : params.newsletter.sent > 0 ? 'ready' : 'pending',
+      detail: !params.newsletterStore.providerColumns
+        ? 'Apply provider columns before observing sends'
+        : params.newsletter.sent > 0
+          ? `${params.newsletter.sent} sent delivery logs`
+          : 'No sent newsletter delivery logs yet',
+    },
+    {
+      key: 'influence-audit-schema',
+      label: 'InfluenceScoreAuditLog migration',
+      status: params.influenceStore.status,
+      detail: params.influenceStore.detail,
+    },
+    {
+      key: 'influence-audit-observation',
+      label: 'Influence calibration observation',
+      status: !params.influenceStore.exists ? 'blocked' : params.influence.audits > 0 ? 'ready' : 'pending',
+      detail: !params.influenceStore.exists
+        ? 'Apply InfluenceScoreAuditLog migration before calibration audit'
+        : params.influence.audits > 0
+          ? `${params.influence.audits} calibration audit rows`
+          : 'No influence calibration audit rows yet',
+    },
+    {
+      key: 'compare-report-schema',
+      label: 'CompareReport migration',
+      status: params.compareReportStore.status,
+      detail: params.compareReportStore.detail,
+    },
+    {
+      key: 'compare-report-observation',
+      label: 'Compare report observation',
+      status: params.compareReportStore.status === 'blocked' ? 'blocked' : params.compareReport.total > 0 ? 'ready' : 'pending',
+      detail: params.compareReportStore.status === 'blocked'
+        ? 'Apply CompareReport migration before generating PK reports'
+        : params.compareReport.total > 0
+          ? `${params.compareReport.total} reports, ${params.compareReport.completed} completed`
+          : 'No compare reports generated yet',
+    },
+  ];
+}
+
+function newsletterEnvStatus(env, newsletter) {
+  if (env.readyToSend) return 'ready';
+  if (env.sendConfigReady && !env.sendEnabled && newsletter.sent > 0) return 'ready';
+  return 'pending';
+}
+
+function newsletterEnvDetail(env, newsletter) {
+  if (env.readyToSend) return 'Resend sending env is ready';
+  if (env.sendConfigReady && !env.sendEnabled && newsletter.sent > 0) {
+    return 'Resend config is present; NEWSLETTER_SEND_ENABLED=false is a safety switch after sent observation';
+  }
+
+  const missing = [];
+  if (env.provider !== 'resend') missing.push('NEWSLETTER_EMAIL_PROVIDER=resend');
+  if (!env.hasApiKey) missing.push('RESEND_API_KEY');
+  if (!env.hasFromEmail) missing.push('NEWSLETTER_FROM_EMAIL');
+  if (!env.hasSiteUrl) missing.push('PRODUCTION_BASE_URL/NEXT_PUBLIC_SITE_URL/SITE_URL');
+  if (!env.hasTokenSecret) missing.push('NEWSLETTER_TOKEN_SECRET/AUTH_SECRET/NEXTAUTH_SECRET');
+  if (!env.sendEnabled) {
+    missing.push(newsletter.sent > 0 ? 'NEWSLETTER_SEND_ENABLED=true for the next real send' : 'NEWSLETTER_SEND_ENABLED=true or a sent delivery observation');
+  }
+  return `Missing or disabled: ${missing.join(', ')}`;
+}
+
+function summarizeStatus(checks) {
+  if (checks.some(check => check.status === 'blocked')) return 'blocked';
+  if (checks.some(check => check.status === 'pending')) return 'pending';
+  return 'ready';
+}
+
+function emptyActivityStats() {
+  return { total: 0, recent30d: 0, latestDetectedAt: null };
+}
+
+function emptyNewsletterStats() {
+  return { total: 0, dryRun: 0, sent: 0, failed: 0, latestCreatedAt: null };
+}
+
+function emptyInfluenceStats() {
+  return { audits: 0, latestCreatedAt: null };
+}
+
+function emptyCompareReportStats() {
+  return { total: 0, completed: 0, running: 0, pending: 0, failed: 0, latestCreatedAt: null };
+}
+
+function toNumber(value) {
+  if (typeof value === 'bigint') return Number(value);
+  if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
+  if (typeof value === 'string') {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+  return 0;
+}

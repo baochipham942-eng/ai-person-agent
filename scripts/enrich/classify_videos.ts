@@ -299,7 +299,7 @@ async function main() {
 
     console.log(`[${i + 1}/${videos.length}] ${video.title.slice(0, 50)}...`);
 
-    let newMetadata = { ...metadata };
+    const newMetadata = { ...metadata };
 
     // 如果需要分类（未分类或强制重新分类）
     if (!hasCategory || reclassify) {

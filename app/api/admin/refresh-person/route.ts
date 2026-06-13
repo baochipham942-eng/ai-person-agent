@@ -47,9 +47,11 @@ export async function POST(request: NextRequest) {
             where: { personId }
         });
 
-        // 5. Clear old cards
-        const deletedCards = await prisma.card.deleteMany({
-            where: { personId }
+        // 5. Archive old active cards
+        const archivedAt = new Date();
+        const archivedCards = await prisma.card.updateMany({
+            where: { personId, isActive: true },
+            data: { isActive: false, archivedAt }
         });
 
         // 6. Trigger Inngest job
@@ -76,7 +78,8 @@ export async function POST(request: NextRequest) {
             twitter: entity.officialLinks.find(l => l.type === 'x')?.handle,
             youtube: entity.officialLinks.find(l => l.type === 'youtube')?.handle,
             deletedItems: deletedItems.count,
-            deletedCards: deletedCards.count,
+            deletedCards: archivedCards.count,
+            archivedCards: archivedCards.count,
             message: 'Refresh triggered',
         });
     } catch (error) {

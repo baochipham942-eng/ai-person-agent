@@ -7,6 +7,7 @@
 
 import { prisma } from '../../lib/db/prisma';
 import { chatStructuredCompletion } from '../../lib/ai/deepseek';
+import { relationReviewFields, validateRelationCandidate } from '../../lib/agents/relation-validation';
 
 // Exa API
 const EXA_API_URL = 'https://api.exa.ai/search';
@@ -47,7 +48,7 @@ async function searchExa(query: string): Promise<ExaResult[]> {
 }
 
 // 关系类型
-const RELATION_TYPES = ['advisor', 'cofounder', 'colleague', 'collaborator'] as const;
+const RELATION_TYPES = ['advisor', 'cofounder', 'colleague', 'former_colleague', 'collaborator'] as const;
 
 interface ParsedRelation {
   relatedPersonName: string;
@@ -79,11 +80,12 @@ ${candidateList}
 Relationship types to identify:
 - advisor: PhD advisor or mentor relationship
 - cofounder: co-founded a company together
-- colleague: worked at the same organization/company
+- colleague: currently work at the same organization/company
+- former_colleague: previously worked at the same organization/company, but do not currently share an employer
 - collaborator: published papers together, collaborated on research, or publicly worked together on AI projects
 
 Return a JSON array. If no relationships found, return empty array [].
-Format: [{ "name": "exact name from list above", "type": "advisor|cofounder|colleague|collaborator", "desc": "简短中文描述" }]
+Format: [{ "name": "exact name from list above", "type": "advisor|cofounder|colleague|former_colleague|collaborator", "desc": "简短中文描述" }]
 
 Important: Only include relationships that are clearly mentioned or strongly implied in the search results.`;
 
@@ -155,7 +157,7 @@ async function main() {
 
     try {
       // 搜索人物关系信息 - 使用更具体的查询
-      const query = `"${person.name}" AI researcher mentor advisor student colleague cofounder collaborator`;
+      const query = `"${person.name}" AI researcher mentor advisor student colleague former colleague cofounder collaborator`;
       const results = await searchExa(query);
 
       if (results.length === 0) {
@@ -215,6 +217,25 @@ async function main() {
 
         console.log(`    ✅ ${rel.relatedPersonName} (${rel.relationType}): ${rel.description}`);
 
+        const validationInput = {
+          personId: person.id,
+          relatedPersonId: finalRelatedId,
+          relationType: rel.relationType,
+          description: rel.description,
+          source: 'exa',
+          confidence: 0.8,
+          evidenceTexts: results.map(r => `${r.title || ''}\n${r.text || ''}`),
+          evidenceUrls: results.map(r => r.url).filter(Boolean),
+        };
+        const validation = await validateRelationCandidate(prisma, validationInput);
+
+        if (!validation.ok) {
+          console.log(`    🚫 校验未通过: ${validation.reasons.join('; ')}`);
+          continue;
+        }
+
+        console.log(`    🔒 校验通过: ${validation.evidence.join('; ')}`);
+
         if (!dryRun) {
           try {
             await prisma.personRelation.create({
@@ -225,6 +246,7 @@ async function main() {
                 description: rel.description,
                 source: 'exa',
                 confidence: 0.8,
+                ...relationReviewFields(validationInput, validation),
               }
             });
             totalCreated++;

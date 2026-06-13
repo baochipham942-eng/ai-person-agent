@@ -15,14 +15,18 @@ export interface QualityScoreResult {
     missingFields: string[];
 }
 
+interface OfficialLinkForScoring {
+    type?: string | null;
+}
+
 export interface PersonForScoring {
     avatarUrl: string | null;
     description: string | null;
     occupation: string[];
     organization: string[];
-    officialLinks: any[];
+    officialLinks: OfficialLinkForScoring[];
     rawPoolItems?: { sourceType: string }[];
-    cards?: any[];
+    cards?: unknown[];
     updatedAt?: Date | string;
 }
 
@@ -42,9 +46,9 @@ export function calculateQualityScore(person: PersonForScoring): QualityScoreRes
     // 2. 官方链接 (20分)
     let officialLinks = 0;
     const links = person.officialLinks || [];
-    const hasX = links.some((l: any) => l.type === 'x' || l.type === 'twitter');
-    const hasGitHub = links.some((l: any) => l.type === 'github');
-    const hasWebsite = links.some((l: any) => l.type === 'website' || l.type === 'official');
+    const hasX = links.some((l) => l.type === 'x' || l.type === 'twitter');
+    const hasGitHub = links.some((l) => l.type === 'github');
+    const hasWebsite = links.some((l) => l.type === 'website' || l.type === 'official');
 
     if (hasX) officialLinks += 10; else missingFields.push('X链接');
     if (hasGitHub) officialLinks += 5;

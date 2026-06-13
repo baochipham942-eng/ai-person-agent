@@ -1,0 +1,399 @@
+{
+  "_meta": {
+    "source": "2026-06-09 career review decisions",
+    "note": "Curated fixes for position-like Organization rows. Reassign only when the target organization is already present in current profile evidence; delete only duplicated generic position rows."
+  },
+  "decisions": [
+    {
+      "action": "reassign_role",
+      "roleId": "cmjw5gezb0012izl8xlsmcx83",
+      "targetOrganizationId": "cmjy0klbq0008xccmw1idmpbp",
+      "role": "Chief Executive Officer",
+      "roleZh": "首席执行官",
+      "evidenceNote": "Richard Socher currentTitle and existing roles already identify You.com; this role incorrectly used the position label as Organization."
+    },
+    {
+      "action": "reassign_role",
+      "roleId": "cmjw6bxfi003vdtlklm0wwq8s",
+      "targetOrganizationId": "cmjw5jqu6006kizl8th6nlmn0",
+      "role": "Chief Executive Officer",
+      "roleZh": "首席执行官",
+      "evidenceNote": "Larry Page's 2015-2019 CEO period belongs to Alphabet Inc., not a position-label Organization."
+    },
+    {
+      "action": "reassign_role",
+      "roleId": "cmjw6by8m003ydtlk38dk0exw",
+      "targetOrganizationId": "cmjw5g0ok000hizl8x1zn2lxc",
+      "role": "Chief Executive Officer",
+      "roleZh": "首席执行官",
+      "evidenceNote": "Larry Page's 2011-2015 CEO period belongs to Google, not a position-label Organization."
+    },
+    {
+      "action": "reassign_role",
+      "roleId": "cmjw6bz1m0041dtlkdt9x34cr",
+      "targetOrganizationId": "cmjw5g0ok000hizl8x1zn2lxc",
+      "role": "Chief Executive Officer",
+      "roleZh": "首席执行官",
+      "evidenceNote": "Larry Page's 1999-2001 CEO period belongs to Google, not a position-label Organization."
+    },
+    {
+      "action": "reassign_role",
+      "roleId": "cmjw5jql7006jizl8hfartjt2",
+      "targetOrganizationId": "cmjw5g0ok000hizl8x1zn2lxc",
+      "role": "Chief Executive Officer",
+      "roleZh": "首席执行官",
+      "evidenceNote": "Sundar Pichai's 2015 CEO role belongs to Google; the source row stored the position as Organization and a vague Employee role."
+    },
+    {
+      "action": "reassign_role",
+      "roleId": "cmjw6d1wo005sdtlkjcdap23h",
+      "targetOrganizationId": "cmjw5ht3v0034izl8w8rqd1y8",
+      "role": "Chief Executive Officer",
+      "roleZh": "首席执行官",
+      "evidenceNote": "Satya Nadella's 2014 CEO role belongs to Microsoft; the source row stored the position as Organization and a vague employee role."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmkaed4bj0016imyj5fbs30yk",
+      "evidenceNote": "Carl Edward Rasmussen already has professor roles at concrete universities; this row stores the position label itself as Organization and adds no usable organization evidence."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5bxvx003wp9gn56at2ncb",
+      "role": "Co-chair",
+      "roleZh": "联合主席",
+      "evidenceNote": "OpenAI launch post names Elon Musk as a co-chair/funder; the existing OpenAI PersonRole was a vague Employee label."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw5g0dp000gizl82iesgrxt",
+      "evidenceNote": "This row stores the position label board of directors member as Organization and a vague Employee role; no target organization is present, while James Manyika has concrete Google/McKinsey/Oxford roles."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw5gt3r001tizl8e6wjmaog",
+      "evidenceNote": "This row stores the position label board of directors member as Organization and a vague Employee role; no target organization is present, while Marc Andreessen has concrete Andreessen Horowitz/Netscape roles."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw6bzut0044dtlkeitckmex",
+      "evidenceNote": "This row stores the position label board of directors member as Organization and a vague Employee role; Larry Page already has concrete Google/Alphabet roles."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw6dim1006ydtlkjrzaik7d",
+      "evidenceNote": "This row stores the position label board of directors member as Organization and a vague Employee role; Lisa Su already has concrete AMD/IBM/Freescale roles."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw6cotd0051dtlkwo7kce9e",
+      "evidenceNote": "This row stores the position label board of directors member as Organization and a vague Employee role; Sergey Brin already has a concrete Alphabet Co-founder and Board Member role."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5arj4003bp9gngv1nrd5x",
+      "role": "Head of Risk Operations",
+      "roleZh": "风险运营负责人",
+      "evidenceUrl": "https://events.wired.com/big-interview-2025/speaker/1971748/daniela-amodei",
+      "evidenceNote": "WIRED speaker bio describes Daniela Amodei as previously Head of Risk Operations at Stripe; the existing Stripe row was a vague Employee label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjw5gbqp000yizl8g8238ro0",
+      "role": "Associate Professor of Management",
+      "roleZh": "管理学副教授",
+      "evidenceUrl": "https://knowledge.wharton.upenn.edu/faculty/ethan-mollick/",
+      "evidenceNote": "Wharton faculty profile identifies Ethan Mollick as Associate Professor of Management; the existing Wharton role was a vague Employee label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjy13ywr007jxccmnfcpvbh2",
+      "role": "Vice President",
+      "roleZh": "副总裁",
+      "evidenceUrl": "https://www.salesforce.com/company/marc-benioff-bio/",
+      "evidenceNote": "Salesforce official bio says Marc Benioff spent 13 years at Oracle and was the youngest vice president in company history; the existing Oracle row was a vague Employee label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv6i891000f65zwcwbtcwbg",
+      "role": "Senior Vice President, Applications and Services Infrastructure",
+      "roleZh": "应用与服务基础设施高级副总裁",
+      "evidenceUrl": "https://www.att.com/Common/about_us/pdf/marian_croak.pdf",
+      "evidenceNote": "AT&T official bio names Marian Croak as Senior Vice President of Applications and Services Infrastructure and says she joined AT&T in 1982 at Bell Laboratories; the existing Bell Labs row was a vague Employee label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5w7sh000ewyx6366iyl77",
+      "role": "Principal Scientist and Vice President, Interactive Media Group",
+      "roleZh": "首席科学家及交互媒体事业部副总裁",
+      "evidenceUrl": "https://news.microsoft.com/source/?p=10979",
+      "evidenceNote": "Microsoft announcement says Kai-Fu Lee spent six years at Apple, most recently as vice president of the Interactive Media Group; the existing Apple row was a vague Employee label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjw5hw3j003fizl8u8w0tdz7",
+      "role": "Assistant Professor",
+      "roleZh": "助理教授",
+      "evidenceUrl": "https://news.microsoft.com/source/?p=10979",
+      "evidenceNote": "Microsoft announcement says Kai-Fu Lee was an assistant professor at Carnegie Mellon University before joining Apple; the existing CMU row was a vague Employee label."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw5is7a0051izl8fc4g2r6w",
+      "evidenceNote": "Mira Murati already has source-backed current Thinking Machines Lab founder/CEO roles starting before this 2025 Goldman Sachs Employee row; Goldman Sachs is absent from her current organization list and official profile evidence, so this row is unsupported and conflicts with the timeline."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5wlmh000hwyx6pd5r1jjo",
+      "role": "Professor",
+      "roleZh": "教授",
+      "evidenceUrl": "https://portal.smu.edu.cn/jcyxy/info/1108/2349.htm",
+      "evidenceNote": "Southern Medical University's official profile for Tang Jie says 2012.01-present, Professor, Department of Physiology, School of Basic Medical Sciences; the existing row was a vague Employee label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5ewse005ep9gn994uakor",
+      "role": "Staff Machine Learning Engineer",
+      "roleZh": "资深机器学习工程师",
+      "evidenceUrl": "https://wiza.co/d/thinkingmachinesai/6b42/lilian-weng",
+      "evidenceNote": "Public career profile lists Lilian Weng as Staff Machine Learning Engineer at Affirm from Feb 2016 to Feb 2018; Business Insider also describes her pre-OpenAI experience as data scientist/software engineer work at companies including Affirm."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5iads006yp9gnqw4gweag",
+      "role": "PhD, Computer Science",
+      "roleZh": "计算机科学博士",
+      "evidenceNote": "Existing People.education lists Aidan Gomez's University of Oxford education as PhD, Computer Science; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv6la1k001k65zwq6tdwnsl",
+      "role": "BPhil, Philosophy",
+      "roleZh": "哲学 BPhil",
+      "evidenceNote": "Existing People.education lists Amanda Askell's University of Oxford education as BPhil, Philosophy; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5bbuw003kp9gn2mk9ehwl",
+      "role": "BA, Computer Science",
+      "roleZh": "计算机科学学士",
+      "evidenceNote": "Existing People.education lists Demis Hassabis's University of Cambridge education as BA, Computer Science; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5j2u5007cp9gnzearftbc",
+      "role": "BA / MA, Mathematics and Computer Science",
+      "roleZh": "数学与计算机科学 BA / MA",
+      "evidenceNote": "Existing People.education lists Emad Mostaque's University of Oxford education as BA and MA in Mathematics and Computer Science; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv6lyji001t65zwzlnfoev5",
+      "role": "BA, Science, Technology and Policy",
+      "roleZh": "科学、技术与政策学士",
+      "evidenceNote": "Existing People.education lists Ethan Mollick's Harvard University education as BA, Science, Technology and Policy; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8fwxkz001fb64invf8k5bh",
+      "role": "Secondary education",
+      "roleZh": "中学教育",
+      "evidenceNote": "Clifton College is a secondary school entry in the current structured education history; this keeps the education row but removes the generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv6hwnf000965zwrey4plex",
+      "role": "MA / MSc / DPhil, AI and Robotics",
+      "roleZh": "人工智能与机器人方向 MA / MSc / DPhil",
+      "evidenceNote": "Existing People.education lists James Manyika's Oxford education as MA, MSc and DPhil across AI, robotics and computation; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8g3k2y0077b64ivwr3sqy8",
+      "role": "International Baccalaureate",
+      "roleZh": "国际文凭课程",
+      "evidenceNote": "Existing People.education lists Mira Murati's Pearson College UWC education as International Baccalaureate; the United World Colleges PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv58bku002cp9gngiomvi8h",
+      "role": "Philosophy and Theology (incomplete)",
+      "roleZh": "哲学与神学肄业",
+      "evidenceNote": "Existing People.education lists Mustafa Suleyman's Oxford education as Philosophy and Theology (incomplete); the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv592et002mp9gnrv8go610",
+      "role": "PhD, EECS",
+      "roleZh": "电子工程与计算机科学博士",
+      "evidenceNote": "Existing People.education lists Oriol Vinyals's UC Berkeley education as PhD, EECS; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv6itw4000o65zwj5mke94x",
+      "role": "PhD, Computer Science",
+      "roleZh": "计算机科学博士",
+      "evidenceNote": "Existing People.education lists Paul Graham's Harvard University education as PhD, Computer Science; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv59wwy0032p9gn08u1hnj1",
+      "role": "PhD, Computer Science",
+      "roleZh": "计算机科学博士",
+      "evidenceNote": "Existing People.education lists Percy Liang's UC Berkeley education as PhD, Computer Science; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8fux5n0001b64ins06m7sm",
+      "role": "Secondary education",
+      "roleZh": "中学教育",
+      "evidenceNote": "John Burroughs School is a secondary-school education entry; this keeps the education row but removes the generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8g348a006ub64imng83csp",
+      "role": "PhD, Computer Science",
+      "roleZh": "计算机科学博士",
+      "evidenceNote": "Existing People.education lists Andrew Ng's UC Berkeley education as PhD, Computer Science; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8g32jm006sb64i4y3r3crs",
+      "role": "Secondary education",
+      "roleZh": "中学教育",
+      "evidenceNote": "Raffles Institution is a secondary-school education entry; this keeps the education row but removes the generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv574a4001qp9gnqsml73b4",
+      "role": "PhD, Electrical Engineering and Computer Sciences",
+      "roleZh": "电子工程与计算机科学博士",
+      "evidenceNote": "Existing People.education lists Bryan Catanzaro's UC Berkeley education as PhD, Electrical Engineering and Computer Sciences; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw6c33d004gdtlkcnppiq3d",
+      "evidenceNote": "Larry Page's current structured education lists University of Michigan and Stanford; this Interlochen Center for the Arts student row has a 2019 start date and no supporting education entry, so it is timeline noise."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjw69meq000gdtlktm2d9v2p",
+      "role": "BS",
+      "roleZh": "学士",
+      "evidenceNote": "Existing People.education lists Harry Shum's undergraduate degree as BS from Southeast University, the successor/renamed institution for Nanjing Institute of Technology; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjw6avj9000egwosr4g9jqx9",
+      "role": "MPhil, Electrical and Electronic Engineering",
+      "roleZh": "电机电子工程哲学硕士",
+      "evidenceNote": "Existing People.education lists Harry Shum's University of Hong Kong education as MPhil in Electrical and Electronic Engineering; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw6csv5005gdtlkpirfxnfy",
+      "evidenceNote": "Sergey Brin's current structured education lists University of Maryland and Stanford; this Johns Hopkins CTY student row has a 2019 start date and no supporting education entry, so it is timeline noise."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5g6sk005zp9gn6dut1mr9",
+      "role": "PhD, Physics",
+      "roleZh": "物理学博士",
+      "evidenceNote": "Existing People.education lists Jared Kaplan's Harvard University education as PhD, Physics; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8fw783000tb64iks27b04c",
+      "role": "BS, Electrical Engineering",
+      "roleZh": "电气工程学士",
+      "evidenceNote": "Existing People.education lists Jensen Huang's Oregon State University education as BS, Electrical Engineering; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw6ce5a001jgwosn4xn8i39",
+      "evidenceNote": "Jensen Huang already has an Oregon State University degree row; this second generic student row has a conflicting earlier start date and duplicates the same education history."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8fw682000rb64ix03k1g3k",
+      "role": "Secondary education",
+      "roleZh": "中学教育",
+      "evidenceNote": "Oneida Baptist Institute is a secondary-school education entry; this keeps the education row but removes the generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmk8fvmcf000ab64ignj8c52d",
+      "role": "Undergraduate study",
+      "roleZh": "本科阶段学习",
+      "evidenceUrl": "https://www.queensu.ca/alumnireview/articles/2013-02-01/elon-musk",
+      "evidenceNote": "Queen's Alumni Review says Elon Musk spent his freshman and sophomore years at Queen's before transferring to the University of Pennsylvania; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5448m0004p9gnekw2h4tm",
+      "role": "University coursework while in high school",
+      "roleZh": "高中期间大学课程学习",
+      "evidenceUrl": "https://blogs.und.edu/und-today/2023/09/so-key-to-what-i-was-able-to-do-later/?print=print",
+      "evidenceNote": "UND Today says Greg Brockman attended the University of North Dakota while still in high school; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv53yis0002p9gngl5f7pc8",
+      "role": "Undergraduate study",
+      "roleZh": "本科阶段学习",
+      "evidenceUrl": "https://www.inforum.com/news/north-dakota/co-creator-of-chatgpt-talks-about-growing-up-in-grand-forks",
+      "evidenceNote": "InForum reports Greg Brockman attended Harvard before dropping out and moving toward Silicon Valley; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5a1ak0034p9gn6rh0ciha",
+      "role": "PhD, Machine Super Intelligence",
+      "roleZh": "机器超级智能博士",
+      "evidenceUrl": "https://time.com/6310659/shane-legg/",
+      "evidenceNote": "TIME reports Shane Legg started a PhD at the Dalle Molle Institute for Artificial Intelligence Research in 2003 and his thesis was Machine Super Intelligence; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "delete_role",
+      "roleId": "cmjw6cw82005jdtlka33y544s",
+      "evidenceUrl": "https://people.csail.mit.edu/kaiming/",
+      "evidenceNote": "Kaiming He's official page lists his BS from Tsinghua University and PhD from the Chinese University of Hong Kong, with no UC Berkeley education entry; this Berkeley student row is unsupported by current structured education evidence."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjw6a881001ddtlk9zlcv8qh",
+      "role": "BS, Computer Science",
+      "roleZh": "计算机科学学士",
+      "evidenceUrl": "https://www.tsinghua.edu.cn/info/1181/38632.htm",
+      "evidenceNote": "Tsinghua University says Yin Qi entered Tsinghua in 2006 and graduated from the computer science experimental class in 2010; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjw6ba3j000lgwosaqodysbg",
+      "role": "Graduate study",
+      "roleZh": "研究生阶段学习",
+      "evidenceUrl": "https://www.baike.com/wikiid/7729565169347732841",
+      "evidenceNote": "Public profile records Yin Qi as having studied at the Chinese University of Hong Kong after graduating from Tsinghua; no degree is asserted, so normalize only to graduate study."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjw6d54a0064dtlk3jap993o",
+      "role": "Bachelor's degree, Electrical Engineering",
+      "roleZh": "电气工程学士",
+      "evidenceUrl": "https://news.microsoft.com/source/exec/satya-nadella/?selected_tab=0",
+      "evidenceNote": "Microsoft's executive profile says Satya Nadella earned a bachelor's degree in electrical engineering from Mangalore University; the PersonRole row used a generic Student label."
+    },
+    {
+      "action": "update_role",
+      "roleId": "cmjv5jumw007pp9gnbde211bd",
+      "role": "Undergraduate study",
+      "roleZh": "本科阶段学习",
+      "evidenceUrl": "https://www.harvardmagazine.com/2011/11/mark-zuckerberg-at-harvard-and-mit",
+      "evidenceNote": "Harvard Magazine describes Mark Zuckerberg's Harvard origins and dropout; the linked evidence supports undergraduate study, so this row is normalized from generic Student to a conservative education role."
+    }
+  ],
+  "cleanupOrganizations": [
+    "cmjw5geh40010izl8qbxz7s0q",
+    "cmkaed3o00014imyjtupxz832",
+    "cmjw5fzvn000eizl8f64e5xbh"
+  ]
+}

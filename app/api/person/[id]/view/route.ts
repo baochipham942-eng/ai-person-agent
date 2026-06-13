@@ -78,7 +78,7 @@ export async function POST(
       counted: true
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Failed to record page view:', error);
     return NextResponse.json(
       { error: 'Failed to record view' },
@@ -118,7 +118,7 @@ export async function GET(
       weeklyViewCount: person.weeklyViewCount
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Failed to get view stats:', error);
     return NextResponse.json(
       { error: 'Failed to get stats' },

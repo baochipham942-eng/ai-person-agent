@@ -1,5 +1,4 @@
 import { translateBatch } from '@/lib/ai/translator';
-import { prisma } from '@/lib/db/prisma';
 
 export interface CareerItem {
   type: 'education' | 'career' | 'award';
@@ -19,6 +18,118 @@ export interface RawCareerData {
   role?: string;             // 英文职位
   startDate?: string;
   endDate?: string;
+}
+
+const ORG_ALIASES = new Map<string, string>([
+  ['openai foundation', 'OpenAI'],
+  ['openai基金会', 'OpenAI'],
+  ['开放人工智能基金会', 'OpenAI'],
+  ['tesla, inc.', 'Tesla'],
+  ['特斯拉公司', 'Tesla'],
+]);
+
+const POSITION_AS_ORG = new Set([
+  'chief executive officer',
+  'ceo',
+  'chief technology officer',
+  'cto',
+  'founder',
+  'co-founder',
+  'research scientist',
+  'computer scientist',
+  'entrepreneur',
+  'professor',
+  'researcher',
+  'engineer',
+  'student',
+  'employee',
+]);
+
+const VAGUE_CAREER_ROLES = new Set(['employee', 'staff', 'worker', '员工', '雇员']);
+const VAGUE_EDUCATION_ROLES = new Set(['student', '学生']);
+
+async function loadPrisma() {
+  const db = await import('@/lib/db/prisma');
+  return db.prisma;
+}
+
+function cleanName(value: string): string {
+  return value.replace(/\s+/g, ' ').trim();
+}
+
+export function normalizeCareerOrgName(orgName: string): string {
+  const cleaned = cleanName(orgName);
+  return ORG_ALIASES.get(cleaned.toLowerCase()) || cleaned;
+}
+
+export function normalizeCareerRole(role: string | undefined, type: RawCareerData['type']): string {
+  const cleaned = cleanName(role || '');
+  if (cleaned) return cleaned;
+  return type === 'education' ? 'Student' : 'Employee';
+}
+
+export function isVagueCareerRole(role: string | undefined, type: RawCareerData['type']): boolean {
+  const normalized = cleanName(role || '').toLowerCase();
+  if (!normalized) return true;
+  if (type === 'education') return VAGUE_EDUCATION_ROLES.has(normalized);
+  return VAGUE_CAREER_ROLES.has(normalized);
+}
+
+function normalizeRawCareerData(rawData: RawCareerData[]): RawCareerData[] {
+  const seen = new Set<string>();
+  const normalized: RawCareerData[] = [];
+
+  for (const item of rawData) {
+    const orgName = normalizeCareerOrgName(item.orgName);
+    if (!orgName) continue;
+
+    const orgKey = orgName.toLowerCase();
+    if (item.type !== 'education' && POSITION_AS_ORG.has(orgKey) && !item.role) continue;
+
+    const role = item.role ? normalizeCareerRole(item.role, item.type) : undefined;
+    const key = [
+      item.type,
+      orgKey,
+      (role || '').toLowerCase(),
+      item.startDate || '',
+      item.endDate || '',
+    ].join('|');
+
+    if (seen.has(key)) continue;
+    seen.add(key);
+    normalized.push({ ...item, orgName, role });
+  }
+
+  return normalized;
+}
+
+function safeDate(dateStr?: string): Date | null {
+  if (!dateStr) return null;
+  const normalized = dateStr
+    .replace(/^\+/, '')
+    .replace(/-00-00/, '-01-01')
+    .replace(/-00T/, '-01T');
+  const d = new Date(normalized);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function sameDate(a: Date | null, b: Date | null): boolean {
+  if (!a && !b) return true;
+  if (!a || !b) return false;
+  return a.getTime() === b.getTime();
+}
+
+function rangesProbablySame(
+  aStart: Date | null,
+  aEnd: Date | null,
+  bStart: Date | null,
+  bEnd: Date | null
+): boolean {
+  if (sameDate(aStart, bStart)) return true;
+  if (!aStart || !bStart) return true;
+  const aEndValue = aEnd?.getTime() ?? Number.POSITIVE_INFINITY;
+  const bEndValue = bEnd?.getTime() ?? Number.POSITIVE_INFINITY;
+  return aStart.getTime() <= bEndValue && bStart.getTime() <= aEndValue;
 }
 
 /**
@@ -87,6 +198,8 @@ export async function fetchRawCareerData(qid: string): Promise<RawCareerData[]> 
         role = orgName; // "chief executive officer"
         orgName = binding.relatedItemLabel.value; // "OpenAI"
         orgQid = binding.relatedItem?.value?.replace('http://www.wikidata.org/entity/', '');
+      } else if (type === 'career_position') {
+        continue;
       }
 
       // Skip if no org name
@@ -121,68 +234,91 @@ export async function savePersonRoles(
   personId: string,
   rawData: RawCareerData[]
 ): Promise<void> {
-  if (rawData.length === 0) return;
+  const normalizedData = normalizeRawCareerData(rawData);
+  if (normalizedData.length === 0) return;
 
   // 1. 收集需要翻译的文本
-  const textsToTranslate: string[] = [];
-  rawData.forEach(item => {
-    textsToTranslate.push(item.orgName);
-    if (item.role) textsToTranslate.push(item.role);
+  const textsToTranslate = new Set<string>();
+  normalizedData.forEach(item => {
+    textsToTranslate.add(item.orgName);
+    if (item.role) textsToTranslate.add(item.role);
   });
 
   // 2. 批量翻译
-  const translations = await translateBatch(textsToTranslate);
+  const uniqueTexts = [...textsToTranslate];
+  const translations = await translateBatch(uniqueTexts);
 
   // 3. 重建翻译映射
   const translateMap = new Map<string, string>();
-  let idx = 0;
-  rawData.forEach(item => {
-    translateMap.set(item.orgName, translations[idx++] || item.orgName);
-    if (item.role) {
-      translateMap.set(item.role, translations[idx++] || item.role);
-    }
+  uniqueTexts.forEach((text, idx) => {
+    translateMap.set(text, translations[idx] || text);
   });
 
-  // Helper: Safe Date parsing
-  const safeDate = (dateStr?: string) => {
-    if (!dateStr) return null;
-    const d = new Date(dateStr);
-    return isNaN(d.getTime()) ? null : d;
-  };
-
   // 4. 保存到数据库
-  for (const item of rawData) {
+  const prisma = await loadPrisma();
+  for (const item of normalizedData) {
     const orgType = item.type === 'education' ? 'university' : 'company';
 
-    // Upsert Organization
-    const org = await prisma.organization.upsert({
-      where: { wikidataQid: item.orgQid || `no-qid-${item.orgName}` },
-      create: {
-        name: item.orgName,
-        nameZh: translateMap.get(item.orgName),
-        type: orgType,
-        wikidataQid: item.orgQid,
-      },
-      update: {
-        nameZh: translateMap.get(item.orgName),
-      },
-    });
+    const nameZh = translateMap.get(item.orgName);
+    const org = item.orgQid
+      ? await prisma.organization.upsert({
+        where: { wikidataQid: item.orgQid },
+        create: {
+          name: item.orgName,
+          nameZh,
+          type: orgType,
+          wikidataQid: item.orgQid,
+        },
+        update: {
+          name: item.orgName,
+          nameZh,
+        },
+      })
+      : await findOrCreateOrganization(prisma, item.orgName, nameZh, orgType);
 
     // Create or Update PersonRole
     const startDate = safeDate(item.startDate);
     const endDate = safeDate(item.endDate);
-    const role = item.role || (item.type === 'education' ? 'student' : 'employee');
+    const role = normalizeCareerRole(item.role, item.type);
     const roleZh = translateMap.get(item.role || '') || (item.type === 'education' ? '学生' : '员工');
+    const vagueIncoming = isVagueCareerRole(role, item.type);
+
+    const rolesAtOrg = await prisma.personRole.findMany({
+      where: { personId, organizationId: org.id },
+      select: { id: true, role: true, roleZh: true, startDate: true, endDate: true },
+    });
+
+    const richerExisting = rolesAtOrg.find(existing =>
+      !isVagueCareerRole(existing.role, item.type) &&
+      rangesProbablySame(startDate, endDate, existing.startDate, existing.endDate)
+    );
+
+    if (vagueIncoming && richerExisting) continue;
+
+    const vagueExisting = !vagueIncoming
+      ? rolesAtOrg.find(existing =>
+        isVagueCareerRole(existing.role, item.type) &&
+        rangesProbablySame(startDate, endDate, existing.startDate, existing.endDate)
+      )
+      : undefined;
+
+    if (vagueExisting) {
+      await prisma.personRole.update({
+        where: { id: vagueExisting.id },
+        data: {
+          role,
+          roleZh,
+          startDate: vagueExisting.startDate ?? startDate,
+          endDate: vagueExisting.endDate ?? endDate,
+        },
+      });
+      continue;
+    }
 
     // Find existing role
-    const existing = await prisma.personRole.findFirst({
-      where: {
-        personId,
-        organizationId: org.id,
-        role,
-        startDate,
-      },
-    });
+    const existing = rolesAtOrg.find(candidate =>
+      candidate.role === role && sameDate(candidate.startDate, startDate)
+    );
 
     if (existing) {
       // Update existing
@@ -190,7 +326,7 @@ export async function savePersonRoles(
         where: { id: existing.id },
         data: {
           roleZh,
-          endDate,
+          endDate: existing.endDate ?? endDate,
         },
       });
     } else {
@@ -208,6 +344,33 @@ export async function savePersonRoles(
       });
     }
   }
+}
+
+async function findOrCreateOrganization(
+  prisma: Awaited<ReturnType<typeof loadPrisma>>,
+  name: string,
+  nameZh: string | undefined,
+  type: string
+) {
+  const existing = await prisma.organization.findFirst({
+    where: {
+      OR: [
+        { name },
+        ...(nameZh ? [{ nameZh }] : []),
+      ],
+    },
+  });
+
+  if (existing) {
+    return await prisma.organization.update({
+      where: { id: existing.id },
+      data: { name, nameZh: nameZh || existing.nameZh, type: existing.type || type },
+    });
+  }
+
+  return await prisma.organization.create({
+    data: { name, nameZh, type },
+  });
 }
 
 /**

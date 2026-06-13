@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface PersonRole {
@@ -91,9 +93,11 @@ function calculateDuration(start: string | null | undefined, end: string | null 
 }
 
 const RoleItem = ({ role, isFirst }: { role: PersonRole; isFirst: boolean }) => {
+  const [iconFailed, setIconFailed] = useState(false);
   const orgName = role.organizationNameZh || role.organizationName;
   const roleTitle = role.roleZh || role.role;
   const isIntern = isInternRole(roleTitle);
+  const fallbackInitial = (orgName || role.organizationName || '?').trim().charAt(0).toUpperCase();
 
   // 实习经历没有结束时间时，只显示年份；其他经历显示"至今"
   const hasNoEndDate = !role.endDate;
@@ -133,14 +137,19 @@ const RoleItem = ({ role, isFirst }: { role: PersonRole; isFirst: boolean }) => 
     <div className="flex gap-3 py-3 border-b border-gray-100 last:border-0">
       {/* 机构图标 */}
       <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
-        <img
-          src={faviconUrl}
-          alt=""
-          className="w-5 h-5"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
-          }}
-        />
+        {iconFailed ? (
+          <span className="text-xs font-semibold text-gray-500">{fallbackInitial}</span>
+        ) : (
+          <Image
+            src={faviconUrl}
+            alt=""
+            width={20}
+            height={20}
+            unoptimized
+            className="w-5 h-5"
+            onError={() => setIconFailed(true)}
+          />
+        )}
       </div>
 
       {/* 内容 */}

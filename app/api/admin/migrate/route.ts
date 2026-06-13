@@ -26,11 +26,11 @@ export async function POST(request: Request) {
       success: true,
       message: 'Migration completed: added currentTitle, products, education columns'
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Migration error:', error);
     return NextResponse.json({
       error: 'Migration failed',
-      details: error.message
+      details: error instanceof Error ? error.message : String(error)
     }, { status: 500 });
   }
 }

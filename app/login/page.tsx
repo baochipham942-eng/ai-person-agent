@@ -7,6 +7,8 @@ import { Button, Input, Message, Avatar } from '@arco-design/web-react';
 import { IconUser, IconLock, IconPhone, IconSafe } from '@arco-design/web-react/icon';
 import { useRouter } from 'next/navigation';
 
+type RegisterResult = Awaited<ReturnType<typeof registerUser>>;
+
 export default function LoginPage() {
     const router = useRouter();
     const [view, setView] = useState<'LOGIN' | 'REGISTER' | 'QUICK'>('LOGIN');
@@ -70,7 +72,7 @@ export default function LoginPage() {
             } else {
                 Message.error(result?.error === 'CredentialsSignin' ? '账号或密码错误' : '登录失败，请重试');
             }
-        } catch (error: any) {
+        } catch (error) {
             console.error('Login error:', error);
             Message.error('登录发生错误，请稍后重试');
         } finally {
@@ -140,8 +142,8 @@ export default function LoginPage() {
         setIsRegistering(true);
 
         try {
-            const result: any = await registerUser(undefined, formData);
-            if (result.success && result.user) {
+            const result: RegisterResult = await registerUser(undefined, formData);
+            if (result.success) {
                 Message.success('注册成功！');
 
                 // Save to LocalStorage
@@ -169,9 +171,9 @@ export default function LoginPage() {
             } else {
                 Message.error(result.error || '注册失败');
             }
-        } catch (error: any) {
+        } catch (error) {
             console.error('Registration error:', error);
-            Message.error(error?.message || '注册发生错误，请稍后重试');
+            Message.error(error instanceof Error ? error.message : '注册发生错误，请稍后重试');
         } finally {
             setIsRegistering(false);
         }

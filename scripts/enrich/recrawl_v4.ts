@@ -20,7 +20,7 @@ async function main() {
     console.log('=== Recrawl V4 (Final Mode) ===');
 
     // 1. Fetch Aggregation (Iterative Strategy for Stability)
-    let targets: { id: string, name: string }[] = [];
+    const targets: { id: string, name: string }[] = [];
     try {
         console.log('Fetching people list...');
         const allPeople = await prisma.people.findMany({ select: { id: true, name: true } });

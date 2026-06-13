@@ -6,34 +6,103 @@
  */
 
 import { inngest } from './client';
+import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db/prisma';
 import {
     adapters,
     safeFetch,
     FetchParams,
+    SourceType,
     PersonContext as AdapterPersonContext,
     NormalizedItem,
     DataSourceResult,
 } from '@/lib/datasources';
-import { routerAgent, RouterInput } from '@/lib/agents/router-agent';
-import { qaAgent } from '@/lib/agents/qa-agent';
+import { routerAgent, RouterInput, SourceQualitySignal } from '@/lib/agents/router-agent';
+import { cleanItems } from '@/lib/agents/clean-orchestrator';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
-import { savePersonRoles } from '@/lib/datasources/career';
+import { savePersonRoles, type RawCareerData } from '@/lib/datasources/career';
 import { hashUrl } from '@/lib/datasources/adapter';
 
-/**
- * 数据源刷新间隔配置（毫秒）
- */
-const REFRESH_INTERVALS: Record<string, number> = {
-    exa: 24 * 60 * 60 * 1000,
-    x: 24 * 60 * 60 * 1000,
-    youtube: 24 * 60 * 60 * 1000,
-    openalex: 7 * 24 * 60 * 60 * 1000,
-    podcast: 7 * 24 * 60 * 60 * 1000,
-    github: 24 * 60 * 60 * 1000,
-    career: 7 * 24 * 60 * 60 * 1000,
-    baike: 7 * 24 * 60 * 60 * 1000,
+const SOURCE_FEEDBACK_WINDOW_DAYS = 90;
+const BAD_VERDICTS = new Set(['reject', 'duplicate', 'empty_content', 'incomplete']);
+
+type OfficialLink = { type: string; url: string; handle?: string };
+type SerializableNormalizedItem = Omit<NormalizedItem, 'publishedAt'> & {
+    publishedAt: Date | string | null;
 };
+
+function isRawCareerData(value: unknown): value is RawCareerData {
+    if (!value || typeof value !== 'object') return false;
+    const candidate = value as Record<string, unknown>;
+    return typeof candidate.type === 'string' && typeof candidate.orgName === 'string';
+}
+
+function isSourceType(value: string): value is SourceType {
+    return value in adapters;
+}
+
+function maxResultsForPriority(priority: 'high' | 'medium' | 'low'): number | undefined {
+    if (priority === 'high') return undefined;
+    if (priority === 'medium') return 10;
+    return 5;
+}
+
+async function loadSourceQualitySignals(): Promise<SourceQualitySignal[]> {
+    const since = new Date(Date.now() - SOURCE_FEEDBACK_WINDOW_DAYS * 24 * 60 * 60 * 1000);
+
+    let rows: Array<{ sourceType: string; verdict: string; count: number }>;
+    try {
+        rows = await prisma.$queryRaw<Array<{ sourceType: string; verdict: string; count: number }>>`
+            SELECT "sourceType", verdict, COUNT(*)::int AS count
+            FROM "QAAuditLog"
+            WHERE "createdAt" >= ${since}
+            GROUP BY "sourceType", verdict
+        `;
+    } catch (error) {
+        console.warn(`[V2 Job] Router source feedback unavailable: ${(error as Error).message?.slice(0, 160)}`);
+        return [];
+    }
+
+    const bySource = new Map<SourceType, SourceQualitySignal>();
+
+    for (const row of rows) {
+        if (!isSourceType(row.sourceType)) continue;
+
+        const current = bySource.get(row.sourceType) || {
+            source: row.sourceType,
+            total: 0,
+            keep: 0,
+            reject: 0,
+            review: 0,
+            duplicate: 0,
+            emptyContent: 0,
+            incomplete: 0,
+            badRate: 0,
+            keepRate: 0,
+        };
+
+        const count = Number(row.count);
+        current.total += count;
+
+        if (row.verdict === 'keep') current.keep += count;
+        else if (row.verdict === 'review') current.review += count;
+        else if (row.verdict === 'duplicate') current.duplicate += count;
+        else if (row.verdict === 'empty_content') current.emptyContent += count;
+        else if (row.verdict === 'incomplete') current.incomplete += count;
+        else if (row.verdict === 'reject' || BAD_VERDICTS.has(row.verdict)) current.reject += count;
+
+        bySource.set(row.sourceType, current);
+    }
+
+    return [...bySource.values()].map(signal => {
+        const bad = signal.reject + signal.duplicate + signal.emptyContent + signal.incomplete + signal.review * 0.5;
+        return {
+            ...signal,
+            badRate: signal.total > 0 ? bad / signal.total : 0,
+            keepRate: signal.total > 0 ? signal.keep / signal.total : 0,
+        };
+    });
+}
 
 /**
  * V2: 使用 Agent Pipeline 架构的任务
@@ -85,7 +154,6 @@ export const buildPersonJobV2 = inngest.createFunction(
         };
 
         // 解析官方链接
-        type OfficialLink = { type: string; url: string; handle?: string };
         const links = (officialLinks || []) as OfficialLink[];
         const xHandle = links.find(l => l.type === 'x')?.handle?.replace('@', '');
         const youtubeChannelId = links.find(l => l.type === 'youtube')?.handle;
@@ -109,32 +177,40 @@ export const buildPersonJobV2 = inngest.createFunction(
 
         // Step 2: Router Agent 决策
         const decision = await step.run('route', async () => {
+            const sourceQuality = await loadSourceQualitySignals();
             const input: RouterInput = {
                 person: personContext,
                 officialLinks: links,
                 orcid,
                 qid,
+                sourceQuality,
             };
             return routerAgent.analyze(input);
         });
 
         console.log(`[V2 Job] Router decision: ${decision.enabledSources.map(s => s.source).join(', ')}`);
+        if (decision.sourceFeedback.length > 0) {
+            console.log(`[V2 Job] Router QA feedback: ${decision.sourceFeedback.map(f => `${f.source}:${f.action}`).join(', ')}`);
+        }
 
         // Step 3: 并行调用各 Adapter
         const adapterResults = await step.run('fetch-all', async () => {
-            const enabledSources = decision.enabledSources.map(s => s.source);
             const results: DataSourceResult[] = [];
 
             // 根据 Router 决策调用 Adapters
-            const promises = enabledSources.map(async (source) => {
+            const promises = decision.enabledSources.map(async (sourceDecision) => {
+                const source = sourceDecision.source;
                 const adapter = adapters[source];
                 if (!adapter) {
                     console.warn(`[V2 Job] Unknown adapter: ${source}`);
                     return null;
                 }
 
-                // 特殊处理：Grok 需要 handle，如果没有则用搜索名
-                const params = { ...fetchParams };
+                const params = { ...fetchParams, ...(sourceDecision.params || {}) } as FetchParams;
+                const maxResults = maxResultsForPriority(sourceDecision.priority);
+                if (maxResults) params.maxResults = maxResults;
+
+                // 特殊处理：Grok 需要 X handle，防止被 GitHub handle 覆盖
                 if (source === 'x' && xHandle) {
                     params.handle = xHandle;
                 }
@@ -169,7 +245,7 @@ export const buildPersonJobV2 = inngest.createFunction(
 
         console.log(`[V2 Job] Total items before QA: ${allItems.length}`);
 
-        // Step 4: QA Agent 质检
+        // Step 4: 三段式清洗 (L0 规则硬过滤 -> L2 模糊去重 -> L1 语义判定 + 审计日志)
         const qaResult = await step.run('qa-check', async () => {
             // 获取已存在的 URL hashes（用于去重）
             const existingItems = await prisma.rawPoolItem.findMany({
@@ -178,16 +254,31 @@ export const buildPersonJobV2 = inngest.createFunction(
             });
             const existingHashes = new Set(existingItems.map(i => i.urlHash));
 
-            return await qaAgent.check(allItems, personContext, existingHashes);
+            const result = await cleanItems(allItems, personContext, {
+                existingUrlHashes: existingHashes,
+                persistAudit: true,
+                personId,
+            });
+
+            // 返回精简结果 (避免 step 序列化大对象)
+            return {
+                approved: result.approved,
+                report: {
+                    approvedCount: result.stats.approved,
+                    fixedCount: result.l0.report.fixedCount,
+                    rejectedCount: result.stats.sourceQualityRejected + result.stats.l0Rejected + result.stats.dedupDropped + result.stats.semanticRejected,
+                    reviewCount: result.stats.semanticReview,
+                },
+            };
         });
 
-        console.log(`[V2 Job] QA Result: ${qaResult.report.approvedCount} approved, ${qaResult.report.fixedCount} fixed, ${qaResult.report.rejectedCount} rejected`);
+        console.log(`[V2 Job] QA Result: ${qaResult.report.approvedCount} approved, ${qaResult.report.fixedCount} fixed, ${qaResult.report.rejectedCount} rejected, ${qaResult.report.reviewCount} review`);
 
         // Step 5: 保存到数据库
         const savedCount = await step.run('save-items', async () => {
             let count = 0;
             // 恢复 approved items 的 Date 对象
-            const itemsToSave = qaResult.approved.map((item: any) => ({
+            const itemsToSave = qaResult.approved.map((item: SerializableNormalizedItem) => ({
                 ...item,
                 publishedAt: item.publishedAt ? new Date(item.publishedAt) : null,
             }));
@@ -209,7 +300,7 @@ export const buildPersonJobV2 = inngest.createFunction(
                                 title: item.title,
                                 text: item.text,
                                 publishedAt: item.publishedAt,
-                                metadata: item.metadata as any,
+                                metadata: item.metadata as Prisma.InputJsonValue,
                             },
                         });
                     } else {
@@ -223,7 +314,7 @@ export const buildPersonJobV2 = inngest.createFunction(
                                 title: item.title,
                                 text: item.text,
                                 publishedAt: item.publishedAt,
-                                metadata: item.metadata as any,
+                                metadata: item.metadata as Prisma.InputJsonValue,
                             },
                         });
                     }
@@ -243,10 +334,10 @@ export const buildPersonJobV2 = inngest.createFunction(
 
             const rawData = careerItems
                 .map(i => i.metadata?._rawData)
-                .filter(Boolean);
+                .filter(isRawCareerData);
 
             if (rawData.length > 0) {
-                await savePersonRoles(personId, rawData as any);
+                await savePersonRoles(personId, rawData);
                 console.log(`[V2 Job] Saved ${rawData.length} career items`);
             }
         });
@@ -311,7 +402,7 @@ export async function triggerBuildPersonV2(data: {
     personId: string;
     personName: string;
     qid?: string;
-    officialLinks?: any[];
+    officialLinks?: OfficialLink[];
     aliases?: string[];
     englishName?: string;
     orcid?: string;

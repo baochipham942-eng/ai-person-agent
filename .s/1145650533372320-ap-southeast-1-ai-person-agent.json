@@ -9,11 +9,11 @@
       "enableRequestMetrics": false,
       "enableInstanceMetrics": false,
       "logBeginRule": "None",
-      "enableCustomExtraLog": true
+      "enableLlmMetrics": null
     },
     "serviceId": "66346b41-39d5-4cf1-9aa1-b940f47672f5",
     "createdTime": "2025-12-30T10:21:36Z",
-    "lastModifiedTime": "2026-01-12T11:00:00Z",
+    "lastModifiedTime": "2026-06-09T06:58:45Z",
     "vpcConfig": {
       "vpcId": "",
       "vSwitchIds": [],

@@ -1,7 +1,47 @@
-import { Suspense } from 'react';
 import { prisma } from '@/lib/db/prisma';
 import { notFound } from 'next/navigation';
 import { PersonPageClient } from '@/components/person/PersonPageClient';
+import {
+    normalizeEducation,
+    normalizeMetadata,
+    normalizeOfficialLinks,
+    normalizeProducts,
+    normalizeQuotes,
+    normalizeTopicDetails,
+    normalizeTopicRanks,
+} from '@/lib/utils/person-json';
+import { normalizeDirectoryTopic, normalizeDirectoryTopics } from '@/lib/person-directory-config';
+
+interface PersonRoleRow {
+    id: string;
+    role: string;
+    roleZh: string | null;
+    startDate: Date | null;
+    endDate: Date | null;
+    source: string | null;
+    confidence: number | null;
+    advisorId: string | null;
+    organizationName: string;
+    organizationNameZh: string | null;
+    organizationType: string;
+    advisorName: string | null;
+}
+
+interface RelationRow {
+    id: string;
+    relationType: string;
+    description: string | null;
+    reviewStatus: string | null;
+    evidenceUrl: string | null;
+    evidenceNote: string | null;
+    confidence: number | null;
+    isReverse: boolean;
+    relatedPersonId: string;
+    relatedPersonName: string;
+    relatedPersonAvatarUrl: string | null;
+    relatedPersonCurrentTitle: string | null;
+    relatedPersonOrganization: string[];
+}
 
 // ISR 缓存：1小时后重新验证
 export const revalidate = 3600;
@@ -20,80 +60,139 @@ export async function generateStaticParams() {
 
 interface PersonPageProps {
     params: Promise<{ id: string }>;
+    searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function PersonPage({ params }: PersonPageProps) {
+export default async function PersonPage({ params, searchParams }: PersonPageProps) {
     const { id } = await params;
+    const resolvedSearchParams = await searchParams;
+    const section = firstParam(resolvedSearchParams?.section);
+    const highlight = firstParam(resolvedSearchParams?.highlight);
+    const highlightTopic = highlight ? normalizeDirectoryTopic(highlight) : null;
+    const initialSection = section === 'topics' ? 'topics' : null;
 
-    // 合并所有查询为单个 Promise.all，减少数据库往返
-    const [person, typeCounts, courseCount, papers] = await Promise.all([
-        // 主查询：基本信息、卡片、职业数据、关联人物
+    // Prisma relation include 会在 Neon 上串行发多次查询；这里把首屏需要的数据拆成并行查询。
+    const [person, cards, roles, relationRows, typeCounts, courseCount, papers] = await Promise.all([
         prisma.people.findUnique({
             where: { id },
-            include: {
-                cards: {
-                    orderBy: { importance: 'desc' },
-                    take: 10, // 首屏裁剪：从 20 减到 10
-                },
-                roles: {
-                    include: {
-                        organization: true,
-                        advisor: {
-                            select: { id: true, name: true }
-                        }
-                    },
-                    orderBy: { startDate: 'desc' },
-                },
-                // 关联人物关系（正向：当前人物作为主体）- 限制数量
-                relations: {
-                    take: 10, // 首屏裁剪：限制 10 条
-                    include: {
-                        relatedPerson: {
-                            select: {
-                                id: true,
-                                name: true,
-                                avatarUrl: true,
-                                organization: true,
-                            }
-                        }
-                    }
-                },
-                // 关联人物关系（反向：当前人物作为关联对象）- 限制数量
-                relatedTo: {
-                    take: 10, // 首屏裁剪：限制 10 条
-                    include: {
-                        person: {
-                            select: {
-                                id: true,
-                                name: true,
-                                avatarUrl: true,
-                                organization: true,
-                            }
-                        }
-                    }
-                },
-                // 只获取 rawPoolItems 的统计信息，用于显示 tab 数量
-                _count: {
-                    select: {
-                        rawPoolItems: true,
-                        courses: true, // 合并 courseCount 到这里
-                    }
-                }
+            select: {
+                id: true,
+                name: true,
+                description: true,
+                whyImportant: true,
+                avatarUrl: true,
+                updatedAt: true,
+                gender: true,
+                country: true,
+                qid: true,
+                status: true,
+                completeness: true,
+                occupation: true,
+                organization: true,
+                influenceScore: true,
+                citationCount: true,
+                hIndex: true,
+                githubStars: true,
+                weeklyViewCount: true,
+                aliases: true,
+                officialLinks: true,
+                topics: true,
+                topicRanks: true,
+                topicDetails: true,
+                quotes: true,
+                products: true,
+                education: true,
+                currentTitle: true,
             },
         }),
-        // 各类型数量统计（用于 tab badge）
+        prisma.card.findMany({
+            where: { personId: id, isActive: true },
+            select: {
+                id: true,
+                type: true,
+                title: true,
+                content: true,
+                tags: true,
+                sourceUrl: true,
+                importance: true,
+            },
+            orderBy: [{ importance: 'desc' }, { createdAt: 'desc' }],
+            take: 10,
+        }),
+        prisma.$queryRaw<PersonRoleRow[]>`
+            SELECT
+                pr.id,
+                pr.role,
+                pr."roleZh",
+                pr."startDate",
+                pr."endDate",
+                pr.source,
+                pr.confidence,
+                pr."advisorId",
+                o.name AS "organizationName",
+                o."nameZh" AS "organizationNameZh",
+                o.type AS "organizationType",
+                advisor.name AS "advisorName"
+            FROM "PersonRole" pr
+            JOIN "Organization" o ON o.id = pr."organizationId"
+            LEFT JOIN "People" advisor ON advisor.id = pr."advisorId"
+            WHERE pr."personId" = ${id}
+            ORDER BY pr."startDate" DESC
+        `,
+        prisma.$queryRaw<RelationRow[]>`
+            SELECT
+                rel.id,
+                rel."relationType",
+                rel.description,
+                rel."reviewStatus",
+                rel."evidenceUrl",
+                rel."evidenceNote",
+                rel.confidence,
+                false AS "isReverse",
+                p.id AS "relatedPersonId",
+                p.name AS "relatedPersonName",
+                p."avatarUrl" AS "relatedPersonAvatarUrl",
+                p."currentTitle" AS "relatedPersonCurrentTitle",
+                p.organization AS "relatedPersonOrganization"
+            FROM (SELECT * FROM "PersonRelation" WHERE "personId" = ${id} LIMIT 10) rel
+            JOIN "People" p ON p.id = rel."relatedPersonId"
+            UNION ALL
+            SELECT
+                rel.id,
+                rel."relationType",
+                rel.description,
+                rel."reviewStatus",
+                rel."evidenceUrl",
+                rel."evidenceNote",
+                rel.confidence,
+                true AS "isReverse",
+                p.id AS "relatedPersonId",
+                p.name AS "relatedPersonName",
+                p."avatarUrl" AS "relatedPersonAvatarUrl",
+                p."currentTitle" AS "relatedPersonCurrentTitle",
+                p.organization AS "relatedPersonOrganization"
+            FROM (SELECT * FROM "PersonRelation" WHERE "relatedPersonId" = ${id} LIMIT 10) rel
+            JOIN "People" p ON p.id = rel."personId"
+        `,
         prisma.rawPoolItem.groupBy({
             by: ['sourceType'],
             where: { personId: id },
             _count: true
         }),
-        // 课程数量（备用，如果 _count 不支持）
         prisma.course.count({ where: { personId: id } }),
         // 论文数据（前10篇）
         prisma.rawPoolItem.findMany({
             where: {
                 personId: id,
                 sourceType: 'openalex',
+            },
+            select: {
+                id: true,
+                title: true,
+                text: true,
+                url: true,
+                publishedAt: true,
+                metadata: true,
             },
             orderBy: { fetchedAt: 'desc' },
             take: 10,
@@ -116,6 +215,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
         description: person.description,
         whyImportant: person.whyImportant,
         avatarUrl: person.avatarUrl,
+        updatedAt: person.updatedAt.toISOString(),
         gender: person.gender,
         country: person.country,
         qid: person.qid,
@@ -123,16 +223,21 @@ export default async function PersonPage({ params }: PersonPageProps) {
         completeness: person.completeness,
         occupation: person.occupation,
         organization: person.organization,
+        influenceScore: person.influenceScore,
+        citationCount: person.citationCount,
+        hIndex: person.hIndex,
+        githubStars: person.githubStars,
+        weeklyViewCount: person.weeklyViewCount,
         aliases: person.aliases,
-        officialLinks: (person.officialLinks as any[]) || [],
+        officialLinks: normalizeOfficialLinks(person.officialLinks),
         // 话题和排名
-        topics: person.topics || [],
-        topicRanks: (person.topicRanks as Record<string, number>) || null,
-        topicDetails: (person.topicDetails as any[]) || null,
+        topics: normalizeDirectoryTopics(person.topics || []),
+        topicRanks: normalizeDisplayTopicRanks(normalizeTopicRanks(person.topicRanks)),
+        topicDetails: normalizeDisplayTopicDetails(normalizeTopicDetails(person.topicDetails)),
         // 新增字段
-        quotes: (person.quotes as any[]) || null,
-        products: (person.products as any[]) || null,
-        education: (person.education as any[]) || null,
+        quotes: normalizeQuotes(person.quotes),
+        products: normalizeProducts(person.products),
+        education: normalizeEducation(person.education),
         currentTitle: person.currentTitle || null,
         courseCount, // 课程数量
         // 论文数据
@@ -142,30 +247,33 @@ export default async function PersonPage({ params }: PersonPageProps) {
             text: p.text,
             url: p.url,
             publishedAt: p.publishedAt?.toISOString() || null,
-            metadata: (p.metadata as any) || {},
+            metadata: normalizeMetadata(p.metadata),
         })),
         // 不再传递 rawPoolItems，改为客户端懒加载
         rawPoolItems: [], // 空数组，客户端会按需加载
         sourceTypeCounts, // 各类型数量统计
-        cards: person.cards.map(card => ({
+        cards: cards.map(card => ({
             id: card.id,
             type: card.type,
             title: card.title,
             content: card.content,
             tags: card.tags,
+            sourceUrl: card.sourceUrl,
             importance: card.importance,
         })),
-        personRoles: person.roles.map(role => ({
+        personRoles: roles.map(role => ({
             id: role.id,
             role: role.role,
             roleZh: role.roleZh,
             startDate: role.startDate?.toISOString() || undefined,
             endDate: role.endDate?.toISOString() || undefined,
-            organizationName: role.organization.name,
-            organizationNameZh: role.organization.nameZh,
-            organizationType: role.organization.type,
+            source: role.source,
+            confidence: role.confidence,
+            organizationName: role.organizationName,
+            organizationNameZh: role.organizationNameZh,
+            organizationType: role.organizationType,
             advisorId: role.advisorId || undefined,
-            advisorName: role.advisor?.name || undefined,
+            advisorName: role.advisorName || undefined,
         })),
         // 关联人物 - 合并正向和反向关系
         // 数据模型语义: { personId: A, relatedPersonId: B, type: X } 表示 B 是 A 的 X
@@ -174,21 +282,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
             // 正向关系：当前人物的 relations 表
             // { personId: 当前人物, relatedPersonId: B, type: X } = B 是当前人物的 X
             // 从当前人物视角：B 就是我的 X，不需要转换
-            ...person.relations.map(rel => ({
-                id: rel.id,
-                relationType: rel.relationType, // B 是我的 relationType，直接使用
-                description: rel.description,
-                relatedPerson: {
-                    id: rel.relatedPerson.id,
-                    name: rel.relatedPerson.name,
-                    avatarUrl: rel.relatedPerson.avatarUrl,
-                    organization: rel.relatedPerson.organization,
-                }
-            })),
-            // 反向关系：其他人物指向当前人物的关系
-            // { personId: A, relatedPersonId: 当前人物, type: X } = 当前人物是 A 的 X
-            // 从当前人物视角：A 是我的反向关系（如果我是 A 的导师，那 A 是我的学生）
-            ...person.relatedTo.map(rel => {
+            ...relationRows.map(rel => {
                 const reverseType: Record<string, string> = {
                     advisor: 'advisee',       // 我是他导师 → 他是我学生
                     advisee: 'advisor',       // 我是他学生 → 他是我导师
@@ -196,14 +290,19 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     predecessor: 'successor', // 我是他前任 → 他是我继任者
                 };
                 return {
-                    id: rel.id + '-reverse',
-                    relationType: reverseType[rel.relationType] || rel.relationType,
+                    id: rel.isReverse ? rel.id + '-reverse' : rel.id,
+                    relationType: rel.isReverse ? reverseType[rel.relationType] || rel.relationType : rel.relationType,
                     description: rel.description,
+                    reviewStatus: rel.reviewStatus,
+                    evidenceUrl: rel.evidenceUrl,
+                    evidenceNote: rel.evidenceNote,
+                    confidence: rel.confidence,
                     relatedPerson: {
-                        id: rel.person.id,
-                        name: rel.person.name,
-                        avatarUrl: rel.person.avatarUrl,
-                        organization: rel.person.organization,
+                        id: rel.relatedPersonId,
+                        name: rel.relatedPersonName,
+                        avatarUrl: rel.relatedPersonAvatarUrl,
+                        currentTitle: rel.relatedPersonCurrentTitle,
+                        organization: rel.relatedPersonOrganization,
                     }
                 };
             }),
@@ -211,9 +310,45 @@ export default async function PersonPage({ params }: PersonPageProps) {
     };
 
     return (
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 rounded-full animate-spin border-3 border-transparent border-t-orange-500"></div></div>}>
-            <PersonPageClient person={personData} />
-        </Suspense>
+        <PersonPageClient
+            person={personData}
+            initialSection={initialSection}
+            highlightTopic={initialSection === 'topics' ? highlightTopic : null}
+        />
     );
 }
 
+function normalizeDisplayTopicRanks(ranks: Record<string, number> | null): Record<string, number> | null {
+    if (!ranks) return null;
+
+    const normalized: Record<string, number> = {};
+    for (const [topic, rank] of Object.entries(ranks)) {
+        const canonical = normalizeDirectoryTopic(topic);
+        normalized[canonical] = Math.min(normalized[canonical] ?? rank, rank);
+    }
+
+    return Object.keys(normalized).length > 0 ? normalized : null;
+}
+
+function normalizeDisplayTopicDetails<T extends { topic: string; rank: number }>(details: T[] | null): T[] | null {
+    if (!details) return null;
+
+    const byTopic = new Map<string, T>();
+    for (const detail of details) {
+        const canonical = normalizeDirectoryTopic(detail.topic);
+        const normalizedDetail = { ...detail, topic: canonical };
+        const existing = byTopic.get(canonical);
+        if (!existing || normalizedDetail.rank < existing.rank) {
+            byTopic.set(canonical, normalizedDetail);
+        }
+    }
+
+    return byTopic.size > 0
+        ? [...byTopic.values()].sort((left, right) => left.rank - right.rank)
+        : null;
+}
+
+function firstParam(value?: string | string[] | null): string | null {
+    if (Array.isArray(value)) return value[0] || null;
+    return value || null;
+}

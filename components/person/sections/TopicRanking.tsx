@@ -1,5 +1,7 @@
 'use client';
 
+import { getDirectoryTopicIcon } from '@/lib/person-directory-config';
+
 interface TopicDetail {
   topic: string;
   rank: number;
@@ -12,40 +14,6 @@ interface TopicRankingProps {
   topicRanks: Record<string, number> | null;
   topicDetails?: TopicDetail[] | null;
 }
-
-// 话题图标映射
-const TOPIC_ICONS: Record<string, string> = {
-  '大语言模型': '🤖',
-  'Transformer': '🔄',
-  'RAG': '📚',
-  'Agent': '🤝',
-  '多模态': '🎨',
-  '推理': '🧠',
-  'Scaling': '📈',
-  '强化学习': '🎮',
-  'RLHF': '👥',
-  'Memory': '💾',
-  'Eval': '📊',
-  'MoE': '🔀',
-  '代码生成': '💻',
-  'NLP': '💬',
-  '计算机视觉': '👁️',
-  '语音': '🎙️',
-  '机器人': '🦾',
-  '自动驾驶': '🚗',
-  '对齐': '🎯',
-  '安全': '🔒',
-  '合规': '📋',
-  '医疗AI': '🏥',
-  '教育': '📖',
-  '金融AI': '💰',
-  '开源': '🌐',
-  '产品': '📦',
-  '基础设施': '🏗️',
-  '芯片': '🔲',
-  'AGI': '🌟',
-  '个性化': '👤',
-};
 
 export function TopicRanking({ topics, topicRanks, topicDetails }: TopicRankingProps) {
   if (!topics || topics.length === 0) return null;
@@ -67,7 +35,7 @@ export function TopicRanking({ topics, topicRanks, topicDetails }: TopicRankingP
           const detail = detailsMap.get(topic);
           const rank = detail?.rank || topicRanks?.[topic];
           const reason = detail?.reason;
-          const icon = TOPIC_ICONS[topic] || '📌';
+          const icon = getDirectoryTopicIcon(topic);
 
           return (
             <div

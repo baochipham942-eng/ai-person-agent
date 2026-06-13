@@ -18,7 +18,7 @@ async function main() {
 
     let missingStartDate = 0;
     let totalRoles = 0;
-    let rolesWithMissingDates: { personName: string; org: string; role: string }[] = [];
+    const rolesWithMissingDates: { personName: string; org: string; role: string }[] = [];
 
     for (const person of peopleWithRoles) {
         for (const role of person.roles) {
@@ -73,11 +73,11 @@ async function main() {
         select: { id: true, name: true, avatarUrl: true }
     });
 
-    let nullAvatars: string[] = [];
-    let wikimediaAvatars: string[] = [];
-    let weservAvatars: string[] = [];
-    let twitterAvatars: string[] = [];
-    let otherAvatars: string[] = [];
+    const nullAvatars: string[] = [];
+    const wikimediaAvatars: string[] = [];
+    const weservAvatars: string[] = [];
+    const twitterAvatars: string[] = [];
+    const otherAvatars: string[] = [];
 
     for (const p of people) {
         if (!p.avatarUrl || p.avatarUrl === '') {

@@ -1,16 +1,37 @@
 {
   "name": "ai-person-agent",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "postinstall": "prisma generate",
     "predev": "lsof -ti:4001 | xargs kill -9 2>/dev/null || true",
-    "dev": "next dev -p 4001",
+    "dev": "next dev --webpack -p 4001",
     "dev:inngest": "npx inngest-cli@latest dev -u http://localhost:4001/api/inngest",
     "dev:all": "concurrently \"pnpm dev\" \"sleep 3 && pnpm dev:inngest\"",
     "build": "prisma generate && next build",
     "start": "next start -p 4001",
     "lint": "eslint",
+    "test:ux": "npm run build && node --test scripts/test/person-directory-detail-ux.test.mjs",
+    "activity:materialize": "node scripts/activity/materialize_activity_events.mjs",
+    "newsletter:weekly": "node scripts/newsletter/build_weekly_digest_email.mjs",
+    "youtube:caption-plan": "node scripts/enrich/plan_youtube_caption_batches.mjs",
+    "youtube:caption-fetch": "node scripts/enrich/fetch_youtube_captions_with_ytdlp.mjs",
+    "youtube:caption-import": "node scripts/enrich/import_youtube_captions_to_rawpool.mjs",
+    "audit:content-guard": "node scripts/audit/check_content_review_guardrails.mjs",
+    "audit:signal-quality": "node scripts/audit/sample_signal_quality.mjs",
+    "audit:quality-review": "node scripts/audit/quality_review_queue.mjs",
+    "audit:quality-apply": "node scripts/audit/apply_quality_review_decisions.mjs",
+    "audit:entity-density": "node scripts/audit/entity_density_audit.mjs",
+    "audit:relation-graph": "node scripts/audit/relation_graph_audit.mjs",
+    "qa:responsive": "node scripts/qa/responsive_smoke.mjs",
+    "audit:newcomer-preflight": "node scripts/audit/preflight_newcomer_intake.mjs",
+    "audit:post-ingest-guard": "node scripts/audit/post_ingest_content_guard.mjs",
+    "influence:calibrate": "node scripts/influence/calibrate_scores.mjs",
+    "ops:readiness": "node scripts/ops/readiness.mjs",
+    "ops:migration-plan": "node scripts/ops/migration_plan.mjs",
+    "ops:launch-gate": "node scripts/ops/launch_gate.mjs",
+    "ops:production-launch-gate": "node scripts/ops/production_launch_gate.mjs",
+    "ops:production-rollout": "node scripts/ops/production_rollout.mjs",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
@@ -48,11 +69,14 @@
     "@types/react-dom": "^19",
     "@types/sharp": "^0.32.0",
     "@types/ws": "^8.18.1",
-    "eslint": "^10",
+    "eslint": "^9.39.1",
     "eslint-config-next": "16.2.6",
     "prisma": "5.22.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
-    "typescript": "^6"
-  }
+    "typescript": "^5.9.3"
+  },
+  "workspaces": [
+    "."
+  ]
 }

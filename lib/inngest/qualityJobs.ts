@@ -5,6 +5,7 @@
 import { inngest } from './client';
 import { prisma } from '@/lib/db/prisma';
 import { calculateQualityScore } from '@/lib/utils/qualityScore';
+import { normalizeOfficialLinks } from '@/lib/utils/person-json';
 
 /**
  * 定期质量检查任务 - 每周一执行
@@ -23,7 +24,7 @@ export const weeklyQualityCheck = inngest.createFunction(
             return await prisma.people.findMany({
                 include: {
                     rawPoolItems: { select: { sourceType: true } },
-                    cards: { select: { id: true } }
+                    cards: { where: { isActive: true }, select: { id: true } }
                 }
             });
         });
@@ -38,7 +39,7 @@ export const weeklyQualityCheck = inngest.createFunction(
                     description: person.description,
                     occupation: person.occupation,
                     organization: person.organization,
-                    officialLinks: person.officialLinks as any[],
+                    officialLinks: normalizeOfficialLinks(person.officialLinks),
                     rawPoolItems: person.rawPoolItems,
                     cards: person.cards,
                     updatedAt: person.updatedAt
@@ -96,7 +97,7 @@ export const manualQualityCheck = inngest.createFunction(
                     where: { id: personId },
                     include: {
                         rawPoolItems: { select: { sourceType: true } },
-                        cards: { select: { id: true } }
+                        cards: { where: { isActive: true }, select: { id: true } }
                     }
                 });
             });
@@ -108,7 +109,7 @@ export const manualQualityCheck = inngest.createFunction(
                 description: person.description,
                 occupation: person.occupation,
                 organization: person.organization,
-                officialLinks: person.officialLinks as any[],
+                officialLinks: normalizeOfficialLinks(person.officialLinks),
                 rawPoolItems: person.rawPoolItems,
                 cards: person.cards,
                 updatedAt: person.updatedAt

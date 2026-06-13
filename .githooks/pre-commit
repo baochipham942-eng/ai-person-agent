@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# 检查 prisma schema 是否有变更
+if git diff --cached --name-only | grep -q "prisma/schema.prisma"; then
+  echo ""
+  echo "⚠️  prisma/schema.prisma 已变更!"
+  echo "   请检查 CLAUDE.md 中的 'Key Database Models' 部分是否需要同步更新。"
+  echo ""
+  echo "   提示: 只更新变更的表，不要修改其他内容。"
+  echo ""
+fi
+
+exit 0

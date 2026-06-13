@@ -1,5 +1,5 @@
 
-import { prisma } from '../lib/db/prisma';
+import { prisma } from '../../lib/db/prisma';
 
 
 const SCORES: Record<string, number> = {

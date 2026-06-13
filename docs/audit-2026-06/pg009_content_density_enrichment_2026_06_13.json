@@ -1,0 +1,445 @@
+{
+  "_meta": {
+    "source": "PG-009 content density first batch",
+    "candidatePackage": "docs/CONTENT_DENSITY_PEOPLE_CANDIDATES_2026_06_13.md",
+    "note": "Minimum viable profile enrichment for PG-009 candidates and existing matching rows."
+  },
+  "people": [
+    {
+      "name": "Sualeh Asif",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "AI 产品化"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.cursor.com/", "label": "Cursor" }
+      ],
+      "products": [
+        {
+          "name": "Cursor",
+          "description": "AI coding IDE built by Anysphere.",
+          "org": "Anysphere",
+          "year": 2024,
+          "url": "https://www.cursor.com/",
+          "category": "AI Coding IDE",
+          "type": "product"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Cursor is a representative AI coding IDE and Sualeh Asif is included as an Anysphere/Cursor co-founder candidate." }
+      ]
+    },
+    {
+      "name": "Aman Sanger",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "AI 产品化"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.cursor.com/", "label": "Cursor" }
+      ],
+      "products": [
+        {
+          "name": "Cursor",
+          "description": "AI coding IDE built by Anysphere.",
+          "org": "Anysphere",
+          "year": 2024,
+          "url": "https://www.cursor.com/",
+          "category": "AI Coding IDE",
+          "type": "product"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Included to fill Cursor founder-team coverage for the AI Coding topic." }
+      ]
+    },
+    {
+      "name": "Arvid Lunnemark",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "AI 产品化"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.cursor.com/", "label": "Cursor" }
+      ],
+      "products": [
+        {
+          "name": "Cursor",
+          "description": "AI coding IDE built by Anysphere.",
+          "org": "Anysphere",
+          "year": 2024,
+          "url": "https://www.cursor.com/",
+          "category": "AI Coding IDE",
+          "type": "product"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Included to fill Cursor founder-team coverage for the AI Coding topic." }
+      ]
+    },
+    {
+      "name": "Varun Mohan",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "AI 产品化"],
+      "officialLinks": [
+        { "type": "website", "url": "https://windsurf.com/", "label": "Windsurf" },
+        { "type": "website", "url": "https://www.businessinsider.com/ai-startups-rebuild-products-windsurf-ceo-varun-mohan-2025-4", "label": "Business Insider profile/interview" }
+      ],
+      "products": [
+        {
+          "name": "Windsurf",
+          "description": "Agentic IDE and AI coding tool from Codeium/Windsurf.",
+          "org": "Windsurf",
+          "year": 2024,
+          "url": "https://windsurf.com/",
+          "category": "AI Coding IDE",
+          "type": "product"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Windsurf is a representative agentic IDE and Varun Mohan is its co-founder/CEO candidate." }
+      ]
+    },
+    {
+      "name": "Douglas Chen",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "AI 产品化"],
+      "officialLinks": [
+        { "type": "website", "url": "https://windsurf.com/", "label": "Windsurf" },
+        { "type": "website", "url": "https://www.itpro.com/software/development/openais-plan-to-acquire-ai-coding-startup-windsurf-ended-in-disaster-heres-how-the-deal-fell-apart", "label": "ITPro deal coverage" }
+      ],
+      "products": [
+        {
+          "name": "Windsurf",
+          "description": "Agentic IDE and AI coding tool from Codeium/Windsurf.",
+          "org": "Windsurf",
+          "year": 2024,
+          "url": "https://windsurf.com/",
+          "category": "AI Coding IDE",
+          "type": "product"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Included as a Windsurf/Codeium co-founder candidate, with source-depth review still needed." }
+      ]
+    },
+    {
+      "name": "Scott Wu",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "强化学习"],
+      "officialLinks": [
+        { "type": "website", "url": "https://cognition.ai/", "label": "Cognition AI" }
+      ],
+      "products": [
+        {
+          "name": "Devin",
+          "description": "Autonomous software engineering agent from Cognition AI.",
+          "org": "Cognition AI",
+          "year": 2024,
+          "url": "https://cognition.ai/",
+          "category": "AI Coding Agent",
+          "type": "product"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Devin is a representative software engineering agent, and Scott Wu leads Cognition AI." }
+      ]
+    },
+    {
+      "name": "Steven Hao",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent"],
+      "officialLinks": [
+        { "type": "website", "url": "https://cognition.ai/", "label": "Cognition AI" }
+      ],
+      "products": [
+        {
+          "name": "Devin",
+          "description": "Autonomous software engineering agent from Cognition AI.",
+          "org": "Cognition AI",
+          "year": 2024,
+          "url": "https://cognition.ai/",
+          "category": "AI Coding Agent",
+          "type": "product"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Included as Cognition AI co-founder/CTO candidate for Devin coverage." }
+      ]
+    },
+    {
+      "name": "Anton Osika",
+      "topics": ["开发者工具/AI Coding", "代码生成", "Agent", "开源"],
+      "officialLinks": [
+        { "type": "website", "url": "https://lovable.dev/", "label": "Lovable" },
+        { "type": "github", "url": "https://github.com/AntonOsika/gpt-engineer", "label": "gpt-engineer" }
+      ],
+      "products": [
+        {
+          "name": "Lovable",
+          "description": "AI app generation and vibe coding platform.",
+          "org": "Lovable",
+          "year": 2024,
+          "url": "https://lovable.dev/",
+          "category": "AI Coding Product",
+          "type": "product"
+        },
+        {
+          "name": "gpt-engineer",
+          "description": "Open-source project for generating code from natural language prompts.",
+          "org": "Lovable",
+          "year": 2023,
+          "url": "https://github.com/AntonOsika/gpt-engineer",
+          "category": "Open Source",
+          "type": "github"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "开发者工具/AI Coding", "rank": 99, "reason": "Lovable and gpt-engineer are directly tied to AI-assisted code/app generation." }
+      ]
+    },
+    {
+      "name": "Daya Guo",
+      "topics": ["DeepSeek", "大语言模型", "代码生成", "推理", "Scaling"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/2401.14196", "label": "DeepSeek-Coder paper" },
+        { "type": "website", "url": "https://arxiv.org/abs/2501.12948", "label": "DeepSeek-R1 paper" }
+      ],
+      "products": [
+        {
+          "name": "DeepSeek-Coder",
+          "description": "DeepSeek code model paper co-authored by Daya Guo.",
+          "org": "DeepSeek",
+          "year": 2024,
+          "url": "https://arxiv.org/abs/2401.14196",
+          "category": "Paper",
+          "type": "paper"
+        },
+        {
+          "name": "DeepSeek-R1",
+          "description": "DeepSeek reasoning model paper co-authored by Daya Guo.",
+          "org": "DeepSeek",
+          "year": 2025,
+          "url": "https://arxiv.org/abs/2501.12948",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "DeepSeek", "rank": 99, "reason": "DeepSeek-Coder/R1/V3 paper authorship connects Daya Guo to DeepSeek model lines." }
+      ]
+    },
+    {
+      "name": "Dejian Yang",
+      "topics": ["DeepSeek", "大语言模型", "代码生成", "推理", "Scaling"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/2401.14196", "label": "DeepSeek-Coder paper" },
+        { "type": "website", "url": "https://arxiv.org/abs/2501.12948", "label": "DeepSeek-R1 paper" }
+      ],
+      "products": [
+        {
+          "name": "DeepSeek-Coder",
+          "description": "DeepSeek code model paper co-authored by Dejian Yang.",
+          "org": "DeepSeek",
+          "year": 2024,
+          "url": "https://arxiv.org/abs/2401.14196",
+          "category": "Paper",
+          "type": "paper"
+        },
+        {
+          "name": "DeepSeek-V3",
+          "description": "DeepSeek-V3 technical report co-authorship candidate.",
+          "org": "DeepSeek",
+          "year": 2024,
+          "url": "https://arxiv.org/abs/2412.19437",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "DeepSeek", "rank": 99, "reason": "High-frequency author across DeepSeek-Coder, R1, and V3 reports." }
+      ]
+    },
+    {
+      "name": "Zhihong Shao",
+      "topics": ["DeepSeek", "推理", "大语言模型", "数学推理"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/2402.03300", "label": "DeepSeekMath paper" },
+        { "type": "website", "url": "https://arxiv.org/abs/2501.12948", "label": "DeepSeek-R1 paper" }
+      ],
+      "products": [
+        {
+          "name": "DeepSeekMath",
+          "description": "Mathematical reasoning paper with Zhihong Shao as a lead author candidate.",
+          "org": "DeepSeek",
+          "year": 2024,
+          "url": "https://arxiv.org/abs/2402.03300",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "DeepSeek", "rank": 99, "reason": "DeepSeekMath and R1 authorship connect Zhihong Shao to DeepSeek mathematical reasoning." }
+      ]
+    },
+    {
+      "name": "Lysandre Debut",
+      "topics": ["Hugging Face", "开源", "大语言模型", "NLP", "AI 基础设施"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/1910.03771", "label": "Transformers paper" },
+        { "type": "website", "url": "https://arxiv.org/abs/2109.02846", "label": "Datasets paper" }
+      ],
+      "products": [
+        {
+          "name": "Transformers",
+          "description": "Hugging Face core open-source library and paper.",
+          "org": "Hugging Face",
+          "year": 2019,
+          "url": "https://arxiv.org/abs/1910.03771",
+          "category": "Paper",
+          "type": "paper"
+        },
+        {
+          "name": "Datasets",
+          "description": "Hugging Face community dataset library paper.",
+          "org": "Hugging Face",
+          "year": 2021,
+          "url": "https://arxiv.org/abs/2109.02846",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "Hugging Face", "rank": 99, "reason": "Transformers and Datasets authorship connects Lysandre Debut to Hugging Face infrastructure." }
+      ]
+    },
+    {
+      "name": "Sylvain Gugger",
+      "topics": ["Hugging Face", "开源", "大语言模型", "NLP", "AI 基础设施"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/1910.03771", "label": "Transformers paper" },
+        { "type": "website", "url": "https://arxiv.org/abs/2109.02846", "label": "Datasets paper" }
+      ],
+      "products": [
+        {
+          "name": "Transformers",
+          "description": "Hugging Face core open-source library and paper.",
+          "org": "Hugging Face",
+          "year": 2019,
+          "url": "https://arxiv.org/abs/1910.03771",
+          "category": "Paper",
+          "type": "paper"
+        },
+        {
+          "name": "Datasets",
+          "description": "Hugging Face community dataset library paper.",
+          "org": "Hugging Face",
+          "year": 2021,
+          "url": "https://arxiv.org/abs/2109.02846",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "Hugging Face", "rank": 99, "reason": "Transformers and Datasets authorship connects Sylvain Gugger to Hugging Face infrastructure." }
+      ]
+    },
+    {
+      "name": "Angang Du",
+      "topics": ["Kimi", "月之暗面", "大语言模型", "推理", "强化学习"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/2501.12599", "label": "Kimi k1.5 report" },
+        { "type": "website", "url": "https://arxiv.org/abs/2507.20534", "label": "Kimi K2 report candidate" }
+      ],
+      "products": [
+        {
+          "name": "Kimi k1.5",
+          "description": "Moonshot/Kimi reinforcement learning technical report.",
+          "org": "Moonshot AI",
+          "year": 2025,
+          "url": "https://arxiv.org/abs/2501.12599",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "Kimi", "rank": 99, "reason": "Kimi k1.5 and Kimi K2 authorship candidate for Moonshot/Kimi model coverage." }
+      ]
+    },
+    {
+      "name": "Bofei Gao",
+      "topics": ["Kimi", "月之暗面", "大语言模型", "推理", "强化学习"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/2501.12599", "label": "Kimi k1.5 report" },
+        { "type": "website", "url": "https://arxiv.org/abs/2507.20534", "label": "Kimi K2 report candidate" }
+      ],
+      "products": [
+        {
+          "name": "Kimi k1.5",
+          "description": "Moonshot/Kimi reinforcement learning technical report.",
+          "org": "Moonshot AI",
+          "year": 2025,
+          "url": "https://arxiv.org/abs/2501.12599",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "Kimi", "rank": 99, "reason": "Kimi k1.5 and Kimi K2 authorship candidate for Moonshot/Kimi model coverage." }
+      ]
+    },
+    {
+      "name": "Xinyu Zhou",
+      "topics": ["Kimi", "月之暗面", "大语言模型", "长上下文", "AI 基础设施"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/2502.16982", "label": "Kimi Linear paper" },
+        { "type": "website", "url": "https://en.wikipedia.org/wiki/Moonshot_AI", "label": "Moonshot AI public company page" }
+      ],
+      "products": [
+        {
+          "name": "Kimi Linear",
+          "description": "Moonshot/Kimi attention architecture paper candidate.",
+          "org": "Moonshot AI",
+          "year": 2025,
+          "url": "https://arxiv.org/abs/2502.16982",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "Kimi", "rank": 99, "reason": "Moonshot AI co-founder and Kimi/Moonshot paper-author candidate; identity needs final review before promotion." }
+      ]
+    },
+    {
+      "name": "Yuxin Wu",
+      "topics": ["Kimi", "月之暗面", "大语言模型", "长上下文", "AI 基础设施"],
+      "officialLinks": [
+        { "type": "website", "url": "https://arxiv.org/abs/2502.16982", "label": "Kimi Linear paper" },
+        { "type": "website", "url": "https://en.wikipedia.org/wiki/Moonshot_AI", "label": "Moonshot AI public company page" }
+      ],
+      "products": [
+        {
+          "name": "Kimi Linear",
+          "description": "Moonshot/Kimi attention architecture paper candidate.",
+          "org": "Moonshot AI",
+          "year": 2025,
+          "url": "https://arxiv.org/abs/2502.16982",
+          "category": "Paper",
+          "type": "paper"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "Kimi", "rank": 99, "reason": "Moonshot AI co-founder and Kimi/Moonshot paper-author candidate; identity needs final review before promotion." }
+      ]
+    },
+    {
+      "name": "Dmitry Shevelenko",
+      "topics": ["Perplexity", "AI 搜索", "AI 产品化", "AI 商业化"],
+      "officialLinks": [
+        { "type": "website", "url": "https://www.ft.com/content/87af3340-2611-4650-9ae3-036927e9f65c", "label": "Financial Times Perplexity coverage" },
+        { "type": "website", "url": "https://www.theverge.com/policy/654835/perplexity-google-antitrust-trial-remedies-chrome", "label": "The Verge Perplexity coverage" }
+      ],
+      "products": [
+        {
+          "name": "Perplexity publisher and ads strategy",
+          "description": "Perplexity business and distribution work connected to growth, ads, and publisher relationships.",
+          "org": "Perplexity",
+          "year": 2025,
+          "url": "https://www.ft.com/content/87af3340-2611-4650-9ae3-036927e9f65c",
+          "category": "Business",
+          "type": "strategy"
+        }
+      ],
+      "topicDetails": [
+        { "topic": "Perplexity", "rank": 99, "reason": "Chief Business Officer candidate for Perplexity growth and distribution coverage; official company source still preferred before promotion." }
+      ]
+    }
+  ]
+}

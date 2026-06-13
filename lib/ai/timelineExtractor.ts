@@ -1,6 +1,8 @@
 import { generateText } from 'ai';
 import { deepseek } from './deepseek';
 
+type GenerateTextParams = Parameters<typeof generateText>[0];
+
 export interface ExtractedTimelineEvent {
     title: string;           // Company or school name
     role?: string;           // Position or degree
@@ -44,7 +46,7 @@ If no events found, return: []`;
             prompt,
             temperature: 0.1,
             maxTokens: 2000,
-        } as any);
+        } as GenerateTextParams);
 
         const content = result.text?.trim() || '[]';
 

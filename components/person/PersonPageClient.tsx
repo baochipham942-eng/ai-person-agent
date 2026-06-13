@@ -1,15 +1,20 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { CompareReportLauncher } from '@/components/compare/CompareReportLauncher';
+import { CompareButton } from '@/components/common/CompareButton';
+import { FollowButton } from '@/components/common/FollowButton';
 import {
   PersonHeader,
   CoreContribution,
+  InfluenceBreakdown,
+  RecentActivity,
   FeaturedWorks,
   VideoSection,
   CourseSection,
   RelatedPeople,
+  RelationshipGraphExplorer,
 } from './sections';
 
 interface OfficialLink {
@@ -24,6 +29,7 @@ interface Card {
   title: string;
   content: string;
   tags: string[];
+  sourceUrl?: string | null;
   importance: number;
 }
 
@@ -33,6 +39,8 @@ interface PersonRole {
   roleZh: string | null;
   startDate?: string | null;
   endDate?: string | null;
+  source?: string | null;
+  confidence?: number | null;
   organizationName: string;
   organizationNameZh: string | null;
   organizationType: string;
@@ -44,6 +52,7 @@ interface RelatedPerson {
   id: string;
   name: string;
   avatarUrl: string | null;
+  currentTitle?: string | null;
   organization: string[];
 }
 
@@ -51,6 +60,10 @@ interface Relation {
   id: string;
   relationType: string;
   description?: string | null;
+  reviewStatus?: string | null;
+  evidenceUrl?: string | null;
+  evidenceNote?: string | null;
+  confidence?: number | null;
   relatedPerson: RelatedPerson;
 }
 
@@ -112,6 +125,7 @@ interface PersonData {
   description: string | null;
   whyImportant: string | null;
   avatarUrl: string | null;
+  updatedAt: string;
   gender?: string | null;
   country?: string | null;
   qid: string;
@@ -119,6 +133,11 @@ interface PersonData {
   completeness: number;
   occupation: string[];
   organization: string[];
+  influenceScore: number;
+  citationCount: number;
+  hIndex: number;
+  githubStars: number;
+  weeklyViewCount: number;
   officialLinks: OfficialLink[];
   topics: string[];
   topicRanks: Record<string, number> | null;
@@ -137,39 +156,57 @@ interface PersonData {
 
 interface PersonPageClientProps {
   person: PersonData;
+  initialSection?: 'topics' | null;
+  highlightTopic?: string | null;
 }
 
-// 状态徽章组件
-function StatusBadge({ status, completeness }: { status: string; completeness: number }) {
-  const statusConfig: Record<string, { label: string; color: string }> = {
-    pending: { label: '待处理', color: 'bg-stone-100 text-stone-600 border border-stone-200' },
-    building: { label: '构建中', color: 'bg-orange-50 text-orange-600 border border-orange-100' },
-    ready: { label: '已就绪', color: 'bg-emerald-50 text-emerald-600 border border-emerald-100' },
-    partial: { label: '部分完成', color: 'bg-amber-50 text-amber-600 border border-amber-100' },
-    error: { label: '错误', color: 'bg-red-50 text-red-600 border border-red-100' },
-  };
-
-  const config = statusConfig[status] || statusConfig.pending;
+function SourceSummary({ person }: { person: PersonData }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const sourceTypeTotal = Object.values(person.sourceTypeCounts || {}).reduce((sum, count) => sum + count, 0);
+  const cardSources = person.cards.filter(card => card.sourceUrl).length;
+  const relationSources = (person.relations || []).filter(relation => relation.evidenceUrl).length;
+  const sourceCount = sourceTypeTotal + cardSources + relationSources;
+  const updatedAt = formatDate(person.updatedAt);
+  const sourceRows = buildSourceRows(person.sourceTypeCounts || {}, cardSources, relationSources);
 
   return (
-    <div className="flex items-center gap-2">
-      <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${config.color}`}>
-        {config.label}
-      </span>
-      {completeness > 0 && completeness < 100 && (
-        <span className="text-xs text-stone-400">{completeness}%</span>
+    <div className="relative flex flex-wrap items-center justify-end gap-2 text-xs text-stone-500">
+      <span>更新 {updatedAt}</span>
+      <span className="hidden h-3 w-px bg-stone-200 sm:block" />
+      <button
+        type="button"
+        onClick={() => setIsOpen(open => !open)}
+        className="rounded-md px-1 py-0.5 font-medium text-stone-600 hover:bg-orange-50 hover:text-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300"
+        aria-expanded={isOpen}
+      >
+        {sourceCount > 0 ? `${sourceCount} 条资料来源` : '资料来源整理中'}
+      </button>
+      <span className="hidden h-3 w-px bg-stone-200 sm:block" />
+      <span className="text-orange-600">自动整理，重要事实请看来源</span>
+
+      {isOpen && (
+        <div className="absolute right-0 top-7 z-50 w-72 rounded-xl border border-stone-200 bg-white p-3 text-left shadow-lg">
+          <div className="mb-2 text-xs font-medium text-stone-900">资料来源构成</div>
+          <div className="space-y-1.5">
+            {sourceRows.length > 0 ? sourceRows.map(row => (
+              <div key={row.label} className="flex items-center justify-between gap-3 text-xs">
+                <span className="text-stone-500">{row.label}</span>
+                <span className="font-medium text-stone-900">{row.count}</span>
+              </div>
+            )) : (
+              <div className="text-xs text-stone-500">来源仍在整理中</div>
+            )}
+          </div>
+          <div className="mt-3 border-t border-stone-100 pt-2 text-[11px] leading-5 text-stone-400">
+            自动整理只作为导航线索，关键事实以原始来源为准。
+          </div>
+        </div>
       )}
     </div>
   );
 }
 
-export default function PersonPageClient({ person }: PersonPageClientProps) {
-  const searchParams = useSearchParams();
-
-  // 从 URL 读取 section 和 highlight 参数
-  const urlSection = searchParams.get('section'); // 'topics' | 'role' | etc.
-  const urlHighlight = searchParams.get('highlight'); // 具体的标签名
-
+export default function PersonPageClient({ person, initialSection, highlightTopic }: PersonPageClientProps) {
   // 记录页面访问
   useEffect(() => {
     const recordView = async () => {
@@ -178,7 +215,7 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
         });
-      } catch (error) {
+      } catch {
         // 静默失败
       }
     };
@@ -207,8 +244,30 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
               <span className="text-sm font-medium">返回</span>
             </Link>
 
-            {/* 状态 */}
-            <StatusBadge status={person.status} completeness={person.completeness} />
+            <div className="flex min-w-0 items-center gap-2">
+              <SourceSummary person={person} />
+              <FollowButton
+                size="sm"
+                target={{
+                  type: 'person',
+                  id: person.id,
+                  label: person.name,
+                  href: `/person/${person.id}`,
+                }}
+              />
+              <CompareReportLauncher
+                initialPeople={[{
+                  id: person.id,
+                  name: person.name,
+                  avatarUrl: person.avatarUrl,
+                  currentTitle: person.currentTitle || person.organization[0] || null,
+                  topics: person.topics,
+                }]}
+                triggerLabel="生成报告"
+                triggerClassName="rounded-lg bg-stone-900 px-2.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-orange-600"
+              />
+              <CompareButton target={{ id: person.id, name: person.name }} size="sm" />
+            </div>
           </div>
         </div>
       </header>
@@ -241,7 +300,21 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           />
         )}
 
-        {/* 3. 代表作品（代表产品/开源项目/核心论文/话题贡献/学习卡片/博客/播客） */}
+        <InfluenceBreakdown
+          influenceScore={person.influenceScore}
+          citationCount={person.citationCount}
+          hIndex={person.hIndex}
+          githubStars={person.githubStars}
+          weeklyViewCount={person.weeklyViewCount}
+          sourceTypeCounts={person.sourceTypeCounts || {}}
+          products={person.products}
+          personRoles={person.personRoles}
+          cards={person.cards}
+        />
+
+        <RecentActivity personId={person.id} />
+
+        {/* 4. 代表作品（代表成果/开源项目/核心论文/话题贡献/学习卡片/博客/播客） */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}
@@ -249,30 +322,32 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
           topicRanks={person.topicRanks}
           topicDetails={person.topicDetails}
           personId={person.id}
-          initialTab={urlSection === 'topics' ? 'topics' : undefined}
-          highlightTopic={urlSection === 'topics' ? urlHighlight : undefined}
+          initialTab={initialSection === 'topics' ? 'topics' : undefined}
+          highlightTopic={initialSection === 'topics' ? highlightTopic : undefined}
           cards={person.cards}
           podcastCount={person.sourceTypeCounts?.podcast || 0}
           githubCount={githubCount}
           blogCount={blogCount}
         />
 
-        {/* 4. 视频内容 */}
+        {/* 5. 视频内容 */}
         <VideoSection
           personId={person.id}
           videoCount={videoCount}
         />
 
-        {/* 5. 课程 */}
+        {/* 6. 课程 */}
         <CourseSection
           personId={person.id}
           courseCount={person.courseCount || 0}
         />
 
-        {/* 6. 关联人物 */}
+        {/* 7. 关联人物 */}
         {person.relations && person.relations.length > 0 && (
-          <RelatedPeople relations={person.relations} />
+          <RelatedPeople centerName={person.name} relations={person.relations} />
         )}
+
+        <RelationshipGraphExplorer personId={person.id} />
       </main>
     </div>
   );
@@ -280,3 +355,40 @@ export default function PersonPageClient({ person }: PersonPageClientProps) {
 
 // 兼容旧的命名导出
 export { PersonPageClient };
+
+function formatDate(value: string): string {
+  try {
+    return new Intl.DateTimeFormat('zh-CN', {
+      timeZone: 'Asia/Shanghai',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }).format(new Date(value));
+  } catch {
+    return '最近';
+  }
+}
+
+function buildSourceRows(
+  sourceTypeCounts: Record<string, number>,
+  cardSources: number,
+  relationSources: number
+): Array<{ label: string; count: number }> {
+  const labels: Record<string, string> = {
+    openalex: '论文与学术资料',
+    github: 'GitHub 与开源项目',
+    youtube: '视频与访谈',
+    exa: '网页与媒体资料',
+    podcast: '播客',
+    x: '社交平台',
+    career: '履历来源',
+  };
+  const rows = Object.entries(sourceTypeCounts)
+    .filter(([, count]) => count > 0)
+    .map(([type, count]) => ({ label: labels[type] || type, count }));
+
+  if (cardSources > 0) rows.push({ label: '学习卡片来源', count: cardSources });
+  if (relationSources > 0) rows.push({ label: '关系证据来源', count: relationSources });
+
+  return rows.sort((left, right) => right.count - left.count || left.label.localeCompare(right.label));
+}

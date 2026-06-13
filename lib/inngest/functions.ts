@@ -1,15 +1,26 @@
 import { inngest } from './client';
 import { prisma } from '@/lib/db/prisma';
+import type { Prisma } from '@prisma/client';
 import { searchPersonContent } from '@/lib/datasources/exa';
 import { getPersonXActivity } from '@/lib/datasources/grok';
 import { getChannelVideos, searchYouTubeVideos } from '@/lib/datasources/youtube';
-import { searchOpenAlexAuthor, getAuthorWorks, getAuthorByOrcid } from '@/lib/datasources/openalex';
+import { getAuthorWorks, getAuthorByOrcid } from '@/lib/datasources/openalex';
 import { searchPodcasts } from '@/lib/datasources/itunes';
 import { getUserRepos } from '@/lib/datasources/github';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
-import { fetchRawCareerData, savePersonRoles } from '@/lib/datasources/career';
+import { fetchRawCareerData, savePersonRoles, type RawCareerData } from '@/lib/datasources/career';
 import { extractTimelineFromSources } from '@/lib/ai/timelineExtractor';
 import { isAboutPerson, PersonContext } from '@/lib/utils/identity';
+import {
+    applySourceQualityMetadata,
+    evaluateSourceQuality,
+} from '@/lib/skills/source-quality-policy';
+import { manualQualityCheck, weeklyQualityCheck } from './qualityJobs';
+import {
+    materializeActivityEventsJob,
+    prepareWeeklyNewsletterDigestJob,
+} from './signalJobs';
+import { runCompareReportAgent } from '@/lib/compare-report-agent';
 import crypto from 'crypto';
 
 /**
@@ -23,6 +34,24 @@ const REFRESH_INTERVALS: Record<string, number> = {
     podcast: 7 * 24 * 60 * 60 * 1000,  // 7 天
     github: 24 * 60 * 60 * 1000,   // 24h
     career: 7 * 24 * 60 * 60 * 1000,   // 7 天
+};
+
+type RawJobCareerData = RawCareerData & { source?: string };
+
+type RawJobMetadata = Record<string, unknown> & {
+    isOfficial?: boolean;
+    _rawData?: RawJobCareerData;
+    confidence?: number;
+    endDate?: string;
+};
+
+type RawJobItem = {
+    sourceType: string;
+    url: string;
+    title: string;
+    text: string;
+    publishedAt: Date | string | null;
+    metadata: RawJobMetadata;
 };
 
 /**
@@ -54,6 +83,8 @@ export const buildPersonJob = inngest.createFunction(
                     id: true,
                     organization: true,
                     occupation: true,
+                    topics: true,
+                    currentTitle: true,
                     lastFetchedAt: true,
                 }
             });
@@ -75,10 +106,6 @@ export const buildPersonJob = inngest.createFunction(
         function getLastFetchTime(source: string): Date | undefined {
             const lastTime = lastFetchedAt[source];
             return lastTime ? new Date(lastTime) : undefined;
-        }
-
-        function markFetched(source: string): void {
-            newFetchedAt[source] = new Date().toISOString();
         }
 
         // 提取官方链接信息
@@ -106,10 +133,15 @@ export const buildPersonJob = inngest.createFunction(
             organizations: person.organization || [],
             occupations: person.occupation || [],
         };
+        const sourceQualityContext = {
+            ...personContext,
+            topics: person.topics || [],
+            currentTitle: person.currentTitle,
+        };
 
         // 并行获取各数据源
         // 必须返回 source 和 fetchedAt，以便在 Promise.all 结束后汇总更新时间（因为 step 内部无法持久化修改外部变量）
-        type StepResult = { source: string; items: any[]; fetchedAt?: string };
+        type StepResult = { source: string; items: RawJobItem[]; fetchedAt?: string };
 
         const results = await Promise.allSettled([
             // 1. Exa 网页搜索
@@ -141,11 +173,19 @@ export const buildPersonJob = inngest.createFunction(
                     };
                 });
 
+                const qualityItems = items
+                    .map(item => {
+                        const decision = evaluateSourceQuality(item, sourceQualityContext);
+                        if (decision.action === 'reject') return null;
+                        return applySourceQualityMetadata(item, decision);
+                    })
+                    .filter(Boolean) as typeof items;
+
                 // 身份验证：过滤掉与目标人物无关的内容
-                const validItems = items.filter(item =>
+                const validItems = qualityItems.filter(item =>
                     item.metadata.isOfficial || isAboutPerson(item.title + ' ' + item.text, personContext)
                 );
-                console.log(`[Job] Exa: ${items.length} fetched, ${validItems.length} validated`);
+                console.log(`[Job] Exa: ${items.length} fetched, ${qualityItems.length} source-quality, ${validItems.length} validated`);
 
                 return { source: 'exa', items: validItems, fetchedAt };
             }),
@@ -161,7 +201,7 @@ export const buildPersonJob = inngest.createFunction(
                 const grokResult = await getPersonXActivity(searchName, xHandle);
                 const fetchedAt = new Date().toISOString();
 
-                let items: any[] = [];
+                let items: RawJobItem[] = [];
                 if (grokResult.posts && grokResult.posts.length > 0) {
                     const existingUrls = await prisma.rawPoolItem.findMany({
                         where: { personId, sourceType: 'x' },
@@ -384,7 +424,7 @@ export const buildPersonJob = inngest.createFunction(
 
 
         // 收集所有成功的结果
-        const allItems: any[] = [];
+        const allItems: RawJobItem[] = [];
         let successCount = 0;
         let errorCount = 0;
 
@@ -525,7 +565,7 @@ export const buildPersonJob = inngest.createFunction(
             const careerItems = allItems.filter(i => i.sourceType === 'career');
             const rawDataList = careerItems
                 .map(i => i.metadata?._rawData)
-                .filter(Boolean);
+                .filter((rawData): rawData is RawJobCareerData => Boolean(rawData));
 
             if (rawDataList.length > 0) {
                 await savePersonRoles(personId, rawDataList);
@@ -552,7 +592,7 @@ export const buildPersonJob = inngest.createFunction(
                     let cleanPath = u.href;
                     if (cleanPath.endsWith('/')) cleanPath = cleanPath.slice(0, -1);
                     normalizedUrl = cleanPath;
-                } catch (e) {
+                } catch {
                     // ignore invalid urls
                 }
 
@@ -571,14 +611,14 @@ export const buildPersonJob = inngest.createFunction(
                         title: item.title,
                         text: item.text,
                         publishedAt: item.publishedAt,
-                        metadata: item.metadata,
+                        metadata: item.metadata as Prisma.InputJsonValue,
                         fetchStatus: 'success',
                     },
                     update: {
                         // 如果已存在，更新内容
                         title: item.title,
                         text: item.text,
-                        metadata: item.metadata,
+                        metadata: item.metadata as Prisma.InputJsonValue,
                         fetchedAt: new Date(),
                     },
                 });
@@ -629,7 +669,31 @@ export const buildPersonJob = inngest.createFunction(
     }
 );
 
+export const compareReportJob = inngest.createFunction(
+    {
+        id: 'generate-compare-report',
+        retries: 1,
+        concurrency: {
+            limit: 2,
+        },
+        triggers: [{ event: 'compare/report.requested' }],
+    },
+    async ({ event, step }) => {
+        const { reportId } = event.data;
+        return step.run('run-compare-report-agent', async () => {
+            return runCompareReportAgent(reportId);
+        });
+    }
+);
+
 /**
  * 导出所有 Inngest 函数
  */
-export const functions = [buildPersonJob];
+export const functions = [
+    buildPersonJob,
+    compareReportJob,
+    weeklyQualityCheck,
+    manualQualityCheck,
+    materializeActivityEventsJob,
+    prepareWeeklyNewsletterDigestJob,
+];

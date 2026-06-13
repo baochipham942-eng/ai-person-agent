@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
                 userId: userId,
                 query: searchQuery,
                 localHits: [],
-                wikidataCandidates: wikidataResults as any,
+                wikidataCandidates: wikidataResults as Prisma.InputJsonValue,
                 status: 'pending',
             },
         });

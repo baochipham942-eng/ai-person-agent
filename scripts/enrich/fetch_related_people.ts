@@ -10,6 +10,7 @@
 
 import { prisma } from '../../lib/db/prisma';
 import { getWikidataRelations } from '../../lib/datasources/wikidata';
+import { relationReviewFields, validateRelationCandidate } from '../../lib/agents/relation-validation';
 
 // 教育相关关键词
 const EDUCATION_KEYWORDS = ['university', 'college', 'school', 'academy', 'institute', 'polytechnic'];
@@ -135,6 +136,21 @@ async function main() {
 
         // 创建关联记录（如果不存在）
         try {
+          const validationInput = {
+            personId: person.id,
+            relatedPersonId,
+            relationType: rel.relationType,
+            description: rel.description,
+            source: 'wikidata',
+            confidence: 1.0,
+          };
+          const validation = await validateRelationCandidate(prisma, validationInput);
+
+          if (!validation.ok) {
+            log(`    🚫 ${rel.label}: ${validation.reasons.join('; ')}`);
+            continue;
+          }
+
           await prisma.personRelation.upsert({
             where: {
               personId_relatedPersonId_relationType: {
@@ -150,6 +166,7 @@ async function main() {
               description: rel.description,
               source: 'wikidata',
               confidence: 1.0,
+              ...relationReviewFields(validationInput, validation),
             },
             update: {} // 如果存在则不更新
           });

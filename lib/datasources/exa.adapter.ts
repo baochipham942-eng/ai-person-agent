@@ -12,8 +12,13 @@ import {
     createSuccessResult,
     createErrorResult,
 } from './adapter';
-import { searchExa, searchPersonContent } from './exa';
+import { searchPersonContent } from './exa';
 import { isAboutPerson, PersonContext as IdentityContext } from '@/lib/utils/identity';
+import {
+    adjustConfidenceForSourceQuality,
+    applySourceQualityMetadata,
+    evaluateSourceQuality,
+} from '@/lib/skills/source-quality-policy';
 
 export class ExaAdapter implements DataSourceAdapter {
     readonly sourceType = 'exa' as const;
@@ -65,18 +70,37 @@ export class ExaAdapter implements DataSourceAdapter {
                 occupations: params.person.occupations,
             };
 
-            const validatedItems: NormalizedItem[] = [];
-            let filteredCount = 0;
+            const qualityItems: NormalizedItem[] = [];
+            let sourceQualityFilteredCount = 0;
 
             for (const item of rawItems) {
+                const decision = evaluateSourceQuality(item, params.person);
+                const itemWithQuality = applySourceQualityMetadata({
+                    ...item,
+                    confidence: adjustConfidenceForSourceQuality(item.confidence, decision),
+                }, decision);
+
+                if (decision.action === 'reject') {
+                    sourceQualityFilteredCount++;
+                    continue;
+                }
+
+                qualityItems.push(itemWithQuality);
+            }
+
+            const validatedItems: NormalizedItem[] = [];
+            let identityFilteredCount = 0;
+
+            for (const item of qualityItems) {
                 if (item.isOfficial || isAboutPerson(`${item.title} ${item.text}`, identityContext)) {
                     validatedItems.push(item);
                 } else {
-                    filteredCount++;
+                    identityFilteredCount++;
                 }
             }
 
-            console.log(`[ExaAdapter] ${rawItems.length} fetched, ${validatedItems.length} validated, ${filteredCount} filtered`);
+            const filteredCount = sourceQualityFilteredCount + identityFilteredCount;
+            console.log(`[ExaAdapter] ${rawItems.length} fetched, ${validatedItems.length} validated, ${filteredCount} filtered (${sourceQualityFilteredCount} source-quality, ${identityFilteredCount} identity)`);
 
             return createSuccessResult(this.sourceType, validatedItems, {
                 fetched: rawItems.length,

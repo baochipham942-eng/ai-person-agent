@@ -10,17 +10,10 @@
 import 'dotenv/config';
 import { prisma } from '../../lib/db/prisma';
 import { chatStructuredCompletion } from '../../lib/ai/deepseek';
+import topicRegistry from '../../lib/person-directory-topics.json';
 
-// AI 话题标签
-const AI_TOPICS = [
-  '大语言模型', 'Transformer', 'RAG', 'Agent', '多模态', '推理',
-  'Scaling', '高效训练', '强化学习', '自监督学习', 'RLHF',
-  '代码生成', 'NLP', '计算机视觉', '语音', '机器人', '自动驾驶',
-  'Memory', 'Deep Research', 'Eval', '个性化', '知识图谱', 'MoE',
-  '对齐', '安全', '合规', '可解释性',
-  '医疗AI', '教育', '金融AI', '创意生成',
-  '开源', '产品', '基础设施', '芯片', 'AGI'
-];
+// AI 话题标签候选从前台 topic registry 生成，避免新数据继续写入旧标签。
+const AI_TOPICS = topicRegistry.groups.flatMap(group => group.topics);
 
 interface PersonCoreData {
   description: string;
@@ -261,7 +254,7 @@ async function main() {
       organization: true,
       officialLinks: true,
       _count: {
-        select: { rawPoolItems: true, roles: true, cards: true }
+        select: { rawPoolItems: true, roles: true, cards: { where: { isActive: true } } }
       }
     },
     take: limit,
@@ -310,7 +303,7 @@ async function main() {
     const updated = await prisma.people.findUnique({
       where: { id: person.id },
       include: {
-        _count: { select: { rawPoolItems: true, roles: true, cards: true } }
+        _count: { select: { rawPoolItems: true, roles: true, cards: { where: { isActive: true } } } }
       }
     });
 

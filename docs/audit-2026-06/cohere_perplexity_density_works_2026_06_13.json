@@ -1,0 +1,87 @@
+{
+  "generationId": "density-works-backfill:cohere-perplexity:2026-06-13",
+  "scope": {
+    "organizations": ["Cohere", "Perplexity"],
+    "lane": "works",
+    "reason": "Clear global entity-density works gaps for Cohere and Perplexity with source-backed representative works."
+  },
+  "works": [
+    {
+      "person": "Aidan Gomez",
+      "organization": "Cohere",
+      "title": "Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "sourceType": "openalex",
+      "publishedAt": "2017-06-12",
+      "text": "Transformer paper co-authored by Aidan Gomez; representative foundation work for Cohere's founder context and language-model lineage.",
+      "evidenceNote": "Aidan Gomez is a Cohere co-founder and co-author of the Transformer paper.",
+      "tags": ["Transformer", "paper", "Cohere", "LLM"]
+    },
+    {
+      "person": "Ivan Zhang",
+      "organization": "Cohere",
+      "title": "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier",
+      "url": "https://arxiv.org/abs/2412.04261",
+      "sourceType": "openalex",
+      "publishedAt": "2024-12-05",
+      "text": "Cohere for AI model report already attached to Ivan Zhang; representative multilingual model work for Cohere.",
+      "evidenceNote": "Existing source-backed paper row is promoted into the works lane for Cohere density coverage.",
+      "tags": ["Cohere", "Aya", "multilingual", "paper"]
+    },
+    {
+      "person": "Nick Frosst",
+      "organization": "Cohere",
+      "title": "Distilling a Neural Network Into a Soft Decision Tree",
+      "url": "https://arxiv.org/abs/1711.09784",
+      "sourceType": "openalex",
+      "publishedAt": "2017-11-27",
+      "text": "Interpretable-model paper co-authored by Nick Frosst; representative research work for a Cohere co-founder.",
+      "evidenceNote": "Nick Frosst is a Cohere co-founder and co-author of this paper.",
+      "tags": ["Cohere", "interpretability", "paper"]
+    },
+    {
+      "person": "Phil Blunsom",
+      "organization": "Cohere",
+      "title": "A Convolutional Neural Network for Modelling Sentences",
+      "url": "https://arxiv.org/abs/1404.2188",
+      "sourceType": "openalex",
+      "publishedAt": "2014-04-08",
+      "text": "Sentence-modelling paper co-authored by Phil Blunsom; representative NLP research work for Cohere's CTO context.",
+      "evidenceNote": "Phil Blunsom is Cohere CTO and co-author of this NLP paper.",
+      "tags": ["Cohere", "NLP", "paper"]
+    },
+    {
+      "person": "Jay Alammar",
+      "organization": "Cohere",
+      "title": "The Illustrated Transformer",
+      "url": "https://jalammar.github.io/illustrated-transformer/",
+      "sourceType": "official",
+      "publishedAt": "2018-06-27",
+      "text": "Widely used Transformer explainer by Jay Alammar; representative educational work for Cohere's Engineering Fellow context.",
+      "evidenceNote": "Jay Alammar is a Cohere Engineering Fellow and author of this Transformer explainer.",
+      "tags": ["Cohere", "Transformer", "education"]
+    },
+    {
+      "person": "Denis Yarats",
+      "organization": "Perplexity",
+      "title": "Sonar",
+      "url": "https://docs.perplexity.ai/docs/sonar/models/sonar.md",
+      "sourceType": "official",
+      "publishedAt": "2026-06-13",
+      "text": "Perplexity Sonar model documentation; representative product/API work for Perplexity's AI search platform.",
+      "evidenceNote": "Official Perplexity documentation for Sonar, attached to Perplexity CTO Denis Yarats for organization-level works coverage.",
+      "tags": ["Perplexity", "Sonar", "AI search", "API"]
+    },
+    {
+      "person": "Aravind Srinivas",
+      "organization": "Perplexity",
+      "title": "Sonar Deep Research",
+      "url": "https://docs.perplexity.ai/docs/sonar/models/sonar-deep-research.md",
+      "sourceType": "official",
+      "publishedAt": "2026-06-13",
+      "text": "Perplexity Sonar Deep Research model documentation; representative research workflow work for Perplexity's answer engine.",
+      "evidenceNote": "Official Perplexity documentation for Sonar Deep Research, attached to CEO Aravind Srinivas for organization-level works coverage.",
+      "tags": ["Perplexity", "Sonar", "Deep Research", "AI search"]
+    }
+  ]
+}

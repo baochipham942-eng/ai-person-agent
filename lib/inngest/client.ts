@@ -30,6 +30,14 @@ export type PersonCreatedEvent = {
     };
 };
 
+export type CompareReportRequestedEvent = {
+    name: 'compare/report.requested';
+    data: {
+        reportId: string;
+    };
+};
+
 export type Events = {
     'person/created': PersonCreatedEvent;
+    'compare/report.requested': CompareReportRequestedEvent;
 };

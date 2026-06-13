@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "source": "docs/audit-2026-06/AUDIT_FINDINGS.md",
+    "generated": "2026-06-07",
+    "note": "低风险高确定子集。orgMerge 按英文 name 匹配; People.organization[] 中文 denorm 同步由 member.nameZh->canonical.nameZh 自动推导。needs_review 的弱合并(IBM/UBC/King's)未纳入。"
+  },
+  "orgMerge": [
+    { "keep": "OpenAI", "members": ["OpenAI Foundation"] },
+    { "keep": "Tesla, Inc.", "members": ["Tesla"] },
+    { "keep": "Apple Inc.", "members": ["Apple"] },
+    { "keep": "Amazon", "members": ["Amazon.com"] },
+    { "keep": "Baidu", "members": ["Baidu, Inc."] },
+    { "keep": "Alphabet Inc.", "members": ["Alphabet"] },
+    { "keep": "Google DeepMind", "members": ["DeepMind", "DeepMind Technologies"] },
+    { "keep": "Facebook AI Research (FAIR)", "members": ["Facebook AI Research", "Facebook Artificial Intelligence Research", "FAIR Montreal"] },
+    { "keep": "Massachusetts Institute of Technology (MIT)", "members": ["Massachusetts Institute of Technology", "MIT"] },
+    { "keep": "University of California, Berkeley", "members": ["UC Berkeley", "Berkeley RISE Lab"] },
+    { "keep": "Safe Superintelligence Inc.", "members": ["Safe Superintelligence Inc"] },
+    { "keep": "Thinking Machines Lab", "members": ["Thinking Machines"] },
+    { "keep": "Vector Institute", "members": ["Vector Institute for Artificial Intelligence"] },
+    { "keep": "Indian Institute of Technology Kanpur", "members": ["Indian Institute of Technology, Kanpur"] },
+    { "keep": "University of Illinois Urbana–Champaign", "members": ["University of Illinois at Urbana-Champaign", "University of Illinois at Urbana–Champaign"] },
+    { "keep": "Johns Hopkins University", "members": ["The Johns Hopkins University"] },
+    { "keep": "Dropbox", "members": ["Dropbox Inc."] },
+    { "keep": "Netflix", "members": ["Netflix Inc."] },
+    { "keep": "Microsoft Research Asia", "members": ["Microsoft Research Asia (MSRA)"] },
+    { "keep": "Stanford Institute for Human-Centered AI (HAI)", "members": ["Stanford HAI"] },
+    { "keep": "Machine Intelligence Research Institute (MIRI)", "members": ["Machine Intelligence Research Institute"] }
+  ],
+  "orgRename": [
+    { "match": "Stepfun 阶跃星辰", "name": "StepFun", "nameZh": "阶跃星辰" },
+    { "match": "Hangzhou Huanfang Technology Co Ltd (幻方量化)", "name": "Hangzhou Huanfang Technology Co., Ltd. (High-Flyer)", "nameZh": "杭州幻方科技有限公司（幻方量化 / High-Flyer）" },
+    { "match": "Cambricon Technologies (中科寒武纪科技股份有限公司)", "name": "Cambricon Technologies", "nameZh": "中科寒武纪科技股份有限公司" },
+    { "match": "DeepSeek (杭州深度求索人工智能基础技术研究有限公司)", "name": "DeepSeek", "nameZh": "杭州深度求索人工智能基础技术研究有限公司（深度求索 / DeepSeek）" }
+  ],
+  "relationDelete": [
+    { "person": "Andrej Karpathy", "related": "Hugo Larochelle", "type": "colleague" },
+    { "person": "Andrej Karpathy", "related": "德米特里·巴丹瑙", "type": "colleague" },
+    { "person": "Andrej Karpathy", "related": "丹·克莱因", "type": "collaborator" },
+    { "person": "Lukasz Kaiser", "related": "Shane Legg", "type": "colleague" },
+    { "person": "Demis Hassabis", "related": "黄仁勋", "type": "colleague" },
+    { "person": "Ilya Sutskever", "related": "Emad Mostaque", "type": "collaborator" },
+    { "person": "Ilya Sutskever", "related": "Paul Graham", "type": "collaborator" },
+    { "person": "Ilya Sutskever", "related": "戴文渊", "type": "collaborator" },
+    { "person": "Ilya Sutskever", "related": "Scott Wu", "type": "collaborator" },
+    { "person": "Dario Amodei", "related": "Emad Mostaque", "type": "colleague" },
+    { "person": "Jeremy Howard", "related": "Jan Leike", "type": "collaborator" }
+  ],
+  "dateFix": [
+    { "person": "Emad Mostaque", "org": "University of Oxford", "role": "Student", "start": "2000-12-31", "end": "2004-12-30" },
+    { "person": "苏姿丰", "org": "麻省理工学院", "role": "电机工程博士", "start": "1990-01-01", "end": "1994-01-01" },
+    { "person": "Boris Power", "org": "Microsoft Research", "role": "Research Intern", "end": "2013-09-01", "markEstimate": true },
+    { "person": "Dylan Field", "org": "LinkedIn", "role": "Intern", "end": "2010-09-01", "markEstimate": true },
+    { "person": "Andrej Karpathy", "org": "Google Research", "role": "实习生", "end": "2013-09-01", "markEstimate": true },
+    { "person": "Andrej Karpathy", "org": "Google Brain", "role": "实习生", "end": "2011-09-01", "markEstimate": true },
+    { "person": "Andrej Karpathy", "org": "Google DeepMind", "role": "实习生", "end": "2015-09-01", "markEstimate": true }
+  ],
+  "currentTitleFix": [
+    { "person": "Mira Murati", "newTitle": "Founder & CEO @ Thinking Machines Lab" },
+    { "person": "Wojciech Zaremba", "newTitle": "Co-founder @ OpenAI" },
+    { "person": "苏姿丰", "newTitle": "Chair & CEO @ AMD" },
+    { "person": "James Manyika", "newTitle": "SVP, Research & Technology @ Google" },
+    { "person": "张鹏", "newTitle": "CEO @ 智谱AI" },
+    { "person": "Rachel Thomas", "newTitle": "Co-founder @ fast.ai" },
+    { "person": "Arvind Krishna", "newTitle": "Chairman & CEO @ IBM" }
+  ]
+}

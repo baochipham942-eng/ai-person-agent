@@ -10,6 +10,7 @@
 import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 
 const AVATAR_DIR = path.join(process.cwd(), 'public', 'avatars');
 const TARGET_SIZE = 256; // 256x256 足够用于头像
@@ -165,7 +166,6 @@ async function main() {
     console.log(`   Total saved: ${formatSize(totalSaved)}`);
 
     // Show current directory size
-    const { execSync } = require('child_process');
     const dirSize = execSync(`du -sh ${AVATAR_DIR}`).toString().trim();
     console.log(`   Current avatars size: ${dirSize.split('\t')[0]}`);
 }

@@ -100,11 +100,110 @@ OPENAI_API_KEY=             # (Optional) fallback
 ```
 
 ## Key Database Models
-- **People** - profiles with QID (Wikidata ID), bio, scores, status
-- **PersonRole** - career history with organizations and dates
-- **Organization** - companies, universities, linked to Wikidata
-- **Card** - content cards (achievements, news, research)
-- **RawPoolItem** - raw content from GitHub, YouTube, blogs
+
+> **MCP 查询注意**：PostgreSQL 驼峰字段需双引号，如 `"wikidataQid"`, `"roleZh"`
+
+### People
+```
+id, qid (唯一), name, aliases[], description, whyImportant, aiContributionScore,
+avatarUrl, gender, country, occupation[], organization[],
+officialLinks (JSON), sourceWhitelist[], status, completeness,
+topics[], topicRanks (JSON), topicDetails (JSON), highlights (JSON), roleCategory,
+influenceScore, quotes (JSON), currentTitle, products (JSON), education (JSON),
+citationCount, hIndex, openalexId, githubStars,
+viewCount, weeklyViewCount, lastFetchedAt (JSON),
+createdAt, updatedAt
+```
+
+### PersonRole
+```
+id, personId, organizationId,
+role (职位名), roleZh (中文职位),
+startDate, endDate, source, confidence,
+advisorId (导师关联), createdAt
+```
+⚠️ **没有 title 字段，用 role**
+
+### PersonRelation
+```
+id, personId, relatedPersonId,
+relationType (advisor|advisee|cofounder|colleague|former_colleague|collaborator|successor),
+description, source, confidence,
+reviewStatus (trusted|confirmed|needs_review), evidenceUrl, evidenceNote,
+createdAt
+```
+⚠️ **reviewStatus 控制详情页关联人物展示**：needs_review 用弱化标签。新关系写入须经 `lib/agents/relation-validation.ts` 校验闸
+
+### Organization
+```
+id, name, nameZh, type,
+wikidataQid (不是 qid!), description
+```
+⚠️ **字段是 wikidataQid，查询时写 `"wikidataQid"`**
+
+### Card
+```
+id, personId, type, title, content, tags[], sourceUrl, importance,
+generationId, isActive, archivedAt, createdAt, updatedAt
+```
+
+### RawPoolItem
+```
+id, personId, sourceType, url, urlHash, contentHash,
+title, text, publishedAt, metadata (JSON),
+fetchStatus, errorCode, fetchedAt, processed
+```
+
+### ActivityEvent
+```
+id, personId, sourceItemId,
+eventType, sourceType, title, summary, url,
+occurredAt, detectedAt, topics[], organizations[],
+confidence, evidenceNote, reviewStatus, metadata (JSON),
+createdAt, updatedAt
+```
+> 动态流持久化事件。默认发布侧只展示可信状态和足够置信度的事件。
+
+### Course
+```
+id, personId, title, titleZh, platform, url, urlHash,
+type, level, category, description, thumbnailUrl,
+duration, language, enrollments, rating, reviewCount,
+prerequisite, learningOrder, topics[], source, verified, confidence,
+publishedAt, lastUpdatedAt, createdAt, updatedAt
+```
+
+### QAAuditLog
+```
+id, personId, url, urlHash, sourceType,
+stage (L0规则|L1语义|L2去重), verdict (keep|reject|review|duplicate),
+aboutPerson, aiRelevant, quality (L1 语义评分, 0-1), reason, createdAt
+```
+> 三段式清洗(lib/agents/clean-orchestrator.ts)的决策审计日志, 用于回溯/度量/数据飞轮
+
+### NewsletterDeliveryLog
+```
+id, userId, email, frequency, deliveryType, subject,
+status, provider, providerMessageId, attempts, payload (JSON),
+errorMessage, createdAt, lastAttemptAt, sentAt
+```
+
+### CompareReport / CompareReportEvent
+```
+CompareReport: id, title, topic, peopleIds[], status, visibility,
+summary, reportJson (JSON), sourceSnapshot (JSON), errorMessage,
+createdById, createdAt, updatedAt, completedAt
+
+CompareReportEvent: id, reportId, step, status, title, message,
+metadata (JSON), createdAt
+```
+
+### InfluenceScoreAuditLog
+```
+id, personId, scoreVersion, previousScore, computedScore, appliedScore,
+dimensions (JSON), signals (JSON), weights (JSON),
+status, reason, reviewer, createdAt
+```
 
 ## Core Workflows
 

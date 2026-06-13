@@ -1,0 +1,7 @@
+[mcp_servers.postgres]
+command = "npx"
+args = [
+    "-y",
+    "@modelcontextprotocol/server-postgres",
+    "postgresql://neondb_owner:npg_yJ05EdKOxWlQ@ep-purple-leaf-a11okpqu-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require",
+]

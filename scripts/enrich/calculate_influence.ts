@@ -25,7 +25,7 @@ interface InfluenceFactors {
 async function calculateContentRichness(personId: string): Promise<number> {
   const [rawPoolCount, cardCount] = await Promise.all([
     prisma.rawPoolItem.count({ where: { personId } }),
-    prisma.card.count({ where: { personId } })
+    prisma.card.count({ where: { personId, isActive: true } })
   ]);
 
   // 基准：10 个 RawPoolItem = 50 分，20 个 = 80 分，30+ = 100 分
@@ -89,21 +89,31 @@ function calculateAcademicScore(citationCount: number, hIndex: number): number {
 
 /**
  * 将 AI 贡献评分转换为 0-100
+ * 人工分层榜原始分 0-10.9（Tier 10 神级）。
+ * 注意：不能用 min(100, x*10) 封顶——那会把 10.0~10.9 整个神级层压成同一个 100，
+ * 抹掉榜内 10.9>10.8>10.5 的编辑区分。改为按真实上限线性缩放，保留顺序。
  */
+const AI_SCORE_MAX = 10.9; // 人工榜 Tier 10 上限（Hinton）
 function normalizeAiScore(aiContributionScore: number): number {
-  // 原始分数 0-10，转换为 0-100
-  return aiContributionScore * 10;
+  return Math.min(100, (aiContributionScore / AI_SCORE_MAX) * 100);
 }
 
 /**
  * 计算综合影响力分数
+ *
+ * 权重口径（2026-06-07 重定，"信编辑榜"）：以人工分层榜（aiScore）为骨架。
+ * 旧公式 contentRichness(0.30)+github(0.25) 结构性偏袒 builder 型学者、压低纯产业
+ * 领袖（黄仁勋/Altman/Dario）；且 contentRichness 对几乎所有人饱和成 100、是常数无区分度。
+ * - aiScore 0.70：唯一覆盖产业+学术的人类判断，当主锚，让排名跟随编辑榜
+ * - academic 0.15 / github 0.10：客观信号做微调（github 降权，避免 31 万星把纯执行层埋掉）
+ * - contentRichness 0.05：饱和常数，仅留极小完整度兜底
  */
 function calculateFinalScore(factors: InfluenceFactors): number {
   const weights = {
-    contentRichness: 0.30,
-    githubScore: 0.25,
-    academicScore: 0.25,
-    aiScore: 0.20
+    contentRichness: 0.05,
+    githubScore: 0.10,
+    academicScore: 0.15,
+    aiScore: 0.70
   };
 
   return (

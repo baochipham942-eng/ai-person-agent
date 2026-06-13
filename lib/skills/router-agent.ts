@@ -164,7 +164,7 @@ export class RouterAgentSkill {
         }
 
         // 生成搜索策略
-        const searchStrategy = this.buildSearchStrategy(person, isChinese);
+        const searchStrategy = this.buildSearchStrategy(person);
 
         // 设置置信度阈值
         const confidenceThreshold = isAcademic ? 70 : isTechFounder ? 60 : 50;
@@ -242,7 +242,7 @@ export class RouterAgentSkill {
     /**
      * 构建搜索策略
      */
-    private buildSearchStrategy(person: PersonContext, isChinese: boolean): SearchStrategy {
+    private buildSearchStrategy(person: PersonContext): SearchStrategy {
         const primaryName = person.englishName || person.name;
 
         const alternativeNames = [
