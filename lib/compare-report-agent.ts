@@ -465,9 +465,39 @@ async function loadPersonContexts(people: ComparePerson[]): Promise<LoadedPerson
     },
   });
 
+  const captionRows = await prisma.rawPoolItem.findMany({
+    where: {
+      personId: { in: ids },
+      fetchStatus: 'success',
+      sourceType: 'youtube',
+      metadata: {
+        path: ['sourceKind'],
+        equals: 'youtube_caption',
+      },
+    },
+    select: {
+      id: true,
+      personId: true,
+      sourceType: true,
+      url: true,
+      title: true,
+      text: true,
+      publishedAt: true,
+      fetchedAt: true,
+    },
+    orderBy: [{ fetchedAt: 'desc' }],
+    take: Math.max(ids.length * 8, 24),
+  });
+  const captionsByPerson = groupCaptionRows(captionRows);
   const rowById = new Map(rows.map(row => [row.id, row]));
   return people.map(person => {
     const row = rowById.get(person.id);
+    const rawSources = mergePriorityRawSources(
+      captionsByPerson.get(person.id) || [],
+      row?.rawPoolItems || [],
+      14,
+    );
+
     return {
       id: person.id,
       name: person.name,
@@ -480,10 +510,55 @@ async function loadPersonContexts(people: ComparePerson[]): Promise<LoadedPerson
       products: person.products,
       comparePerson: person,
       cards: row?.cards || [],
-      rawSources: row?.rawPoolItems || [],
+      rawSources,
       activityEvents: row?.activityEvents || [],
     };
   });
+}
+
+function groupCaptionRows(
+  rows: Array<{
+    id: string;
+    personId: string;
+    sourceType: string;
+    url: string;
+    title: string;
+    text: string;
+    publishedAt: Date | null;
+    fetchedAt: Date;
+  }>
+) {
+  const grouped = new Map<string, LoadedPersonContext['rawSources']>();
+  for (const row of rows) {
+    const items = grouped.get(row.personId) || [];
+    items.push({
+      id: row.id,
+      sourceType: row.sourceType,
+      url: row.url,
+      title: row.title,
+      text: row.text,
+      publishedAt: row.publishedAt,
+    });
+    grouped.set(row.personId, items);
+  }
+  return grouped;
+}
+
+function mergePriorityRawSources(
+  priority: LoadedPersonContext['rawSources'],
+  regular: LoadedPersonContext['rawSources'],
+  limit: number
+) {
+  const seen = new Set<string>();
+  const merged: LoadedPersonContext['rawSources'] = [];
+  for (const item of [...priority, ...regular]) {
+    const key = item.id || item.url;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    merged.push(item);
+    if (merged.length >= limit) break;
+  }
+  return merged;
 }
 
 function assessSourceCoverage(contexts: LoadedPersonContext[]): CoverageAssessment {

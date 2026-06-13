@@ -14,6 +14,7 @@
 - `scripts/enrich/fetch_candidate_live_sources.ts`: 抓取 candidate officialLinks 的真实页面内容，回填 RawPoolItem / QAAuditLog / 高置信头像；默认 dry-run，`--execute` 才写库。
 - `scripts/enrich/plan_youtube_caption_batches.mjs`: 只读按 `People.influenceScore` 和视频价值把 YouTube `videoId` 切成 `local` / `lobster` / `deferred` 三批；`--write` 才写入 `exports/youtube-captions/plans/`。
 - `scripts/enrich/fetch_youtube_captions_with_ytdlp.mjs`: 按批次 plan 调 `yt-dlp` 抓字幕；默认 dry-run，`--execute` 才访问 YouTube，状态写入 `exports/youtube-captions/subtitles/_status/`。
+- `scripts/enrich/import_youtube_captions_to_rawpool.mjs`: 把已落盘的 YouTube 字幕转成 `RawPoolItem` 补充证据；默认 dry-run，`--execute` 才写库，并写入 `caption_import` keep 审计。
 - `scripts/audit/audit_career_normalization.ts`: 只读导出 career 规范化风险包。
 - `scripts/audit/export_career_review_buckets.ts`: 只读把 career 剩余问题分成可人工裁定的 review buckets。
 - `scripts/audit/export_relation_review_buckets.ts`: 只读把 `relation_review.json` 的 needs_review 分成高敏和低价值 review buckets。
@@ -80,6 +81,8 @@ node build/main.js --port 4416
 ```
 
 抓取脚本遇到 `rate_limited_or_blocked` 或 `command_timeout` 会默认停止整批，避免继续消耗 IP 信誉或卡住机器；如果已经写出字幕但后续语言失败，会记为 `partial_success` 并继续。
+
+字幕抓完后导入 PK 报告上下文：`npm run youtube:caption-import -- --execute`。默认会读取 `exports/youtube-captions/subtitles/local` 和 `/Users/linchen/Downloads/remaining`，按 plan/manifest 映射回人物，再作为 `sourceType=youtube` 的补充来源进入人物对比报告 evidence pack。
 
 ## 目录归属
 
