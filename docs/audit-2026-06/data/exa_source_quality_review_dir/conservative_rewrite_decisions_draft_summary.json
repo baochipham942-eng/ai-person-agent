@@ -1,9 +1,0 @@
-{
-  "generatedAt": "2026-06-10T07:20:17.571Z",
-  "input": "docs/audit-2026-06/data/exa_source_quality_review_dir/conservative_rewrite_queue.json",
-  "decisions": 5,
-  "productEdits": 4,
-  "cardUpdates": 2,
-  "skipped": 0,
-  "includeLowConfidenceCards": false
-}
