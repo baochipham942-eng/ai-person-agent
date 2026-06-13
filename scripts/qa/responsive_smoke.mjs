@@ -11,7 +11,7 @@ const DEFAULT_PAGES = [
   { name: 'topic-agent', path: '/topic/Agent', expectText: ['Agent 方向关键人物'] },
   { name: 'org-openai', path: '/org/OpenAI', expectText: ['OpenAI AI 关键人物'] },
   { name: 'digest', path: '/digest', expectText: ['本周动态'] },
-  { name: 'graph', path: '/graph', expectText: ['关系图谱'] },
+  { name: 'graph', path: '/graph', expectText: ['人物关系'] },
   { name: 'watchlist', path: '/watchlist', expectText: ['我的关注'] },
   { name: 'compare', path: '/compare', expectText: ['人物对比'] },
   { name: 'quality', path: '/admin/quality', expectText: ['质量复核队列'] },
