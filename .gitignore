@@ -44,3 +44,6 @@ next-env.d.ts
 # junk / backups
 /exports
 /public/avatars_backup
+
+# generated audit artifacts
+/docs/audit-2026-06/data/
