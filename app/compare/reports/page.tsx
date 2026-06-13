@@ -168,11 +168,15 @@ function sourceCountFromSnapshot(value: unknown): number {
   return typeof count === 'number' && Number.isFinite(count) ? count : 0;
 }
 
-function formatDate(value: Date): string {
+function formatDate(value: Date | string | null | undefined): string {
+  if (!value) return '日期待确认';
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return '日期待确认';
+
   return new Intl.DateTimeFormat('zh-CN', {
     timeZone: 'Asia/Shanghai',
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-  }).format(value);
+  }).format(date);
 }

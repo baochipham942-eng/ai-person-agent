@@ -48,13 +48,9 @@ export function WatchlistClient() {
     const localWatchlist = readLocalWatchlist();
     let nextWatchlist = localWatchlist;
     let isAuthenticated = false;
-    const localIsEmpty = watchlistItemCount(localWatchlist) === 0;
 
     setWatchlist(localWatchlist);
-    if (localIsEmpty) {
-      setSummary({ people: [], events: [] });
-      setLoading(false);
-    }
+    setSummary({ people: [], events: [] });
 
     try {
       const response = await fetch('/api/user/watchlist', {
@@ -64,16 +60,20 @@ export function WatchlistClient() {
         const result = await response.json();
         isAuthenticated = Boolean(result.authenticated);
         if (isAuthenticated && result.watchlist) {
-          const mergeResponse = await fetch('/api/user/watchlist', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ watchlist: localWatchlist }),
-          });
-          if (mergeResponse.ok) {
-            const mergeResult = await mergeResponse.json();
-            nextWatchlist = mergeWatchlists(localWatchlist, mergeResult.watchlist);
+          if (watchlistItemCount(localWatchlist) === 0) {
+            nextWatchlist = result.watchlist;
           } else {
-            nextWatchlist = mergeWatchlists(localWatchlist, result.watchlist);
+            const mergeResponse = await fetch('/api/user/watchlist', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ watchlist: localWatchlist }),
+            });
+            if (mergeResponse.ok) {
+              const mergeResult = await mergeResponse.json();
+              nextWatchlist = mergeWatchlists(localWatchlist, mergeResult.watchlist);
+            } else {
+              nextWatchlist = mergeWatchlists(localWatchlist, result.watchlist);
+            }
           }
         }
       }
@@ -81,7 +81,7 @@ export function WatchlistClient() {
       isAuthenticated = false;
     }
 
-    writeLocalWatchlist(nextWatchlist);
+    writeLocalWatchlist(nextWatchlist, { notify: false });
     setWatchlist(nextWatchlist);
     setAuthenticated(isAuthenticated);
 
@@ -162,26 +162,17 @@ export function WatchlistClient() {
                 )}
               </section>
 
-              <section>
-                <SectionTitle title="关注人物" />
-                {personTargets.length > 0 ? (
-                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    {personTargets.map(({ target, person }) => (
-                      <PersonWatchCard key={target.id} target={target} person={person} />
-                    ))}
-                  </div>
-                ) : (
-                  <EmptyPanel text="还没有关注人物。" />
-                )}
-              </section>
+              <WatchTargetSection
+                people={personTargets}
+                topics={watchlist.topics}
+                organizations={watchlist.organizations}
+              />
             </div>
 
             <aside className="space-y-8">
-              <WatchChipSection title="关注话题" items={watchlist.topics} />
-              <WatchChipSection title="关注机构" items={watchlist.organizations} />
               <section className="rounded-xl border border-stone-200 bg-white p-4 text-xs leading-5 text-stone-500 shadow-sm">
                 <div className="mb-2 text-sm font-medium text-stone-900">同步状态</div>
-                {authenticated ? '已登录，关注会写入账号资料。' : '当前使用本地关注，登录后可同步到账号。'}
+                {loading ? '正在同步本地和账号关注。' : authenticated ? '已登录，关注会写入账号资料。' : '当前使用本地关注，登录后可同步到账号。'}
               </section>
               <NewsletterSettings authenticated={authenticated} />
             </aside>
@@ -223,6 +214,33 @@ function SectionTitle({ title }: { title: string }) {
   return <h2 className="mb-3 text-base font-semibold text-stone-950">{title}</h2>;
 }
 
+function WatchTargetSection({
+  people,
+  topics,
+  organizations,
+}: {
+  people: Array<{ target: WatchTarget; person: WatchlistPerson | null }>;
+  topics: WatchTarget[];
+  organizations: WatchTarget[];
+}) {
+  return (
+    <section>
+      <SectionTitle title="关注对象" />
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {people.map(({ target, person }) => (
+          <PersonWatchCard key={target.id} target={target} person={person} />
+        ))}
+        {topics.map(target => (
+          <TargetWatchCard key={target.id} target={target} />
+        ))}
+        {organizations.map(target => (
+          <TargetWatchCard key={target.id} target={target} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function PersonWatchCard({ target, person }: { target: WatchTarget; person: WatchlistPerson | null }) {
   return (
     <div className="flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
@@ -248,30 +266,27 @@ function PersonWatchCard({ target, person }: { target: WatchTarget; person: Watc
           </div>
         )}
       </div>
-      <FollowButton target={target} size="sm" />
+      <FollowButton target={target} size="sm" syncOnMount={false} />
     </div>
   );
 }
 
-function WatchChipSection({ title, items }: { title: string; items: WatchTarget[] }) {
+function TargetWatchCard({ target }: { target: WatchTarget }) {
+  const typeLabel = target.type === 'topic' ? '话题' : '机构';
+
   return (
-    <section>
-      <SectionTitle title={title} />
-      {items.length > 0 ? (
-        <div className="space-y-2">
-          {items.map(item => (
-            <div key={item.id} className="flex items-center justify-between gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 shadow-sm">
-              <Link href={item.href} className="min-w-0 truncate text-sm font-medium text-stone-700 hover:text-orange-600">
-                {item.label}
-              </Link>
-              <FollowButton target={item} size="sm" />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <EmptyPanel text="还没有关注。" />
-      )}
-    </section>
+    <div className="flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
+      <Link href={target.href} className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-stone-100 text-xs font-semibold text-stone-500 hover:bg-orange-50 hover:text-orange-700">
+        {targetInitial(target.label)}
+      </Link>
+      <div className="min-w-0 flex-1">
+        <div className="text-[11px] text-stone-400">{typeLabel}</div>
+        <Link href={target.href} className="block truncate text-sm font-medium text-stone-900 hover:text-orange-600">
+          {target.label}
+        </Link>
+      </div>
+      <FollowButton target={target} size="sm" syncOnMount={false} />
+    </div>
   );
 }
 
@@ -282,18 +297,18 @@ function EmptyState({ authenticated, loading }: { authenticated: boolean | null;
         {loading ? '正在读取关注内容' : '还没有关注内容'}
       </h2>
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-stone-500">
-        {loading ? '如果当前浏览器里没有关注，稍后会展示空态入口。' : '先从高频入口开始关注，个人动态流会自动聚合近期变化。'}
+        {loading ? '正在合并本地和账号里的关注内容。' : '先从高频入口开始关注，个人动态流会自动聚合近期变化。'}
       </p>
       {loading ? (
         <div className="mx-auto mt-6 h-10 w-10 animate-spin rounded-full border-2 border-stone-200 border-t-orange-500" />
       ) : (
         <>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
-            <Link href="/topic/Agent" className="rounded-lg bg-stone-900 px-3 py-2 text-xs font-medium text-white hover:bg-orange-600">
-              Agent 方向
+            <Link href="/" className="rounded-lg bg-stone-900 px-3 py-2 text-xs font-medium text-white hover:bg-orange-600">
+              推荐人物
             </Link>
-            <Link href="/org/OpenAI" className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-700 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700">
-              OpenAI 机构
+            <Link href="/digest" className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-700 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700">
+              本周动态
             </Link>
           </div>
           <div className="mx-auto mt-6 max-w-md rounded-xl border border-stone-200 bg-white px-4 py-3 text-xs leading-5 text-stone-500 shadow-sm">
@@ -309,12 +324,10 @@ function EmptyState({ authenticated, loading }: { authenticated: boolean | null;
   );
 }
 
-function EmptyPanel({ text }: { text: string }) {
-  return (
-    <div className="rounded-xl border border-dashed border-stone-200 bg-white/70 px-4 py-6 text-center text-xs text-stone-500">
-      {text}
-    </div>
-  );
+function targetInitial(label: string): string {
+  const trimmed = label.trim();
+  if (!trimmed) return '#';
+  return trimmed.slice(0, 2).toUpperCase();
 }
 
 function LoadingRows() {

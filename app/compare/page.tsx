@@ -21,7 +21,7 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <SiteHeader current="compareReports" />
+      <SiteHeader current="myCompare" />
       <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <CompareReportBuilder
           key={ids.join(',') || 'empty'}

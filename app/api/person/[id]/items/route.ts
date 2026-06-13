@@ -12,8 +12,8 @@ export async function GET(
     const { id } = await params;
     const searchParams = request.nextUrl.searchParams;
     const sourceType = searchParams.get('type') || 'all';
-    const limit = parseInt(searchParams.get('limit') || '20');
-    const offset = parseInt(searchParams.get('offset') || '0');
+    const limit = readBoundedInt(searchParams.get('limit'), 1, 50, 20);
+    const offset = readBoundedInt(searchParams.get('offset'), 0, 10000, 0);
 
     try {
         const where = {
@@ -24,6 +24,15 @@ export async function GET(
         const [items, total] = await Promise.all([
             prisma.rawPoolItem.findMany({
                 where,
+                select: {
+                    id: true,
+                    sourceType: true,
+                    url: true,
+                    title: true,
+                    text: true,
+                    publishedAt: true,
+                    metadata: true,
+                },
                 orderBy: { publishedAt: 'desc' },
                 take: limit,
                 skip: offset,
@@ -60,4 +69,10 @@ export async function GET(
         console.error('Error fetching items:', error);
         return NextResponse.json({ error: 'Failed to fetch items' }, { status: 500 });
     }
+}
+
+function readBoundedInt(value: string | null, min: number, max: number, fallback: number): number {
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return fallback;
+    return Math.min(max, Math.max(min, Math.floor(parsed)));
 }

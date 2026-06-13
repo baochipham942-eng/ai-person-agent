@@ -1,6 +1,9 @@
 import { prisma } from '@/lib/db/prisma';
 import { notFound } from 'next/navigation';
+import { unstable_cache } from 'next/cache';
+import { Suspense } from 'react';
 import { PersonPageClient } from '@/components/person/PersonPageClient';
+import PersonDetailLoading from './loading';
 import {
     normalizeEducation,
     normalizeMetadata,
@@ -60,17 +63,30 @@ export async function generateStaticParams() {
 
 interface PersonPageProps {
     params: Promise<{ id: string }>;
-    searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function PersonPage({ params, searchParams }: PersonPageProps) {
+export default async function PersonPage({ params }: PersonPageProps) {
     const { id } = await params;
-    const resolvedSearchParams = await searchParams;
-    const section = firstParam(resolvedSearchParams?.section);
-    const highlight = firstParam(resolvedSearchParams?.highlight);
-    const highlightTopic = highlight ? normalizeDirectoryTopic(highlight) : null;
-    const initialSection = section === 'topics' ? 'topics' : null;
+    const personData = await fetchCachedPersonPageData(id);
 
+    if (!personData) {
+        notFound();
+    }
+
+    return (
+        <Suspense fallback={<PersonDetailLoading />}>
+            <PersonPageClient person={personData} />
+        </Suspense>
+    );
+}
+
+const fetchCachedPersonPageData = unstable_cache(
+    fetchPersonPageData,
+    ['person-page-data-v1'],
+    { revalidate: 3600 }
+);
+
+async function fetchPersonPageData(id: string) {
     // Prisma relation include 会在 Neon 上串行发多次查询；这里把首屏需要的数据拆成并行查询。
     const [person, cards, roles, relationRows, typeCounts, courseCount, papers] = await Promise.all([
         prisma.people.findUnique({
@@ -200,7 +216,7 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
     ]);
 
     if (!person) {
-        notFound();
+        return null;
     }
 
     const sourceTypeCounts: Record<string, number> = {};
@@ -209,7 +225,7 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
     });
 
     // 序列化数据传递给客户端组件
-    const personData = {
+    return {
         id: person.id,
         name: person.name,
         description: person.description,
@@ -308,14 +324,6 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
             }),
         ],
     };
-
-    return (
-        <PersonPageClient
-            person={personData}
-            initialSection={initialSection}
-            highlightTopic={initialSection === 'topics' ? highlightTopic : null}
-        />
-    );
 }
 
 function normalizeDisplayTopicRanks(ranks: Record<string, number> | null): Record<string, number> | null {
@@ -346,9 +354,4 @@ function normalizeDisplayTopicDetails<T extends { topic: string; rank: number }>
     return byTopic.size > 0
         ? [...byTopic.values()].sort((left, right) => left.rank - right.rank)
         : null;
-}
-
-function firstParam(value?: string | string[] | null): string | null {
-    if (Array.isArray(value)) return value[0] || null;
-    return value || null;
 }

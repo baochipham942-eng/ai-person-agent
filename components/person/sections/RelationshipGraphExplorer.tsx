@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { RelationshipGraph, RelationshipGraphEdge, RelationshipGraphPerson } from '@/lib/relation-graph';
+import { useSectionVisibility } from './useSectionVisibility';
 
 interface RelationshipGraphExplorerProps {
   personId: string;
@@ -21,19 +22,19 @@ const RELATION_LABELS: Record<string, string> = {
 };
 
 export function RelationshipGraphExplorer({ personId }: RelationshipGraphExplorerProps) {
+  const { sectionRef, isVisible } = useSectionVisibility<HTMLElement>('480px 0px');
   const [graph, setGraph] = useState<RelationshipGraph | null>(null);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
+    if (!isVisible) return;
     let active = true;
 
     async function loadGraph() {
       setLoading(true);
       try {
-        const response = await fetch(`/api/person/${personId}/relationship-graph?firstHopLimit=10&secondHopLimit=18`, {
-          cache: 'no-store',
-        });
+        const response = await fetch(`/api/person/${personId}/relationship-graph?firstHopLimit=10&secondHopLimit=18`);
         if (!response.ok) return;
         const result = await response.json() as { graph?: RelationshipGraph };
         if (active) setGraph(result.graph || null);
@@ -48,7 +49,7 @@ export function RelationshipGraphExplorer({ personId }: RelationshipGraphExplore
     return () => {
       active = false;
     };
-  }, [personId]);
+  }, [personId, isVisible]);
 
   const visibleNodes = useMemo(() => {
     if (!graph) return [];
@@ -58,9 +59,9 @@ export function RelationshipGraphExplorer({ personId }: RelationshipGraphExplore
       .slice(0, expanded ? 28 : 12);
   }, [expanded, graph]);
 
-  if (loading) {
+  if (!isVisible || loading) {
     return (
-      <section className="card-base p-5 sm:p-6">
+      <section ref={sectionRef} className="card-base p-5 sm:p-6">
         <div className="h-4 w-28 rounded bg-stone-100" />
         <div className="mt-4 grid gap-2 sm:grid-cols-3">
           <div className="h-20 rounded-lg bg-stone-100" />
@@ -74,7 +75,7 @@ export function RelationshipGraphExplorer({ personId }: RelationshipGraphExplore
   if (!graph || graph.nodes.length <= 1 || graph.edges.length === 0) return null;
 
   return (
-    <section className="card-base p-5 sm:p-6">
+    <section ref={sectionRef} className="card-base p-5 sm:p-6">
       <div className="mb-4 flex flex-col gap-3 border-b border-stone-100 pb-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-2">

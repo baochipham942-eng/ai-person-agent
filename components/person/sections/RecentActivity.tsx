@@ -3,6 +3,7 @@
 import useSWR from 'swr';
 import { ActivityEventList } from '@/components/activity/ActivityEventList';
 import type { ActivityEvent } from '@/lib/activity';
+import { useSectionVisibility } from './useSectionVisibility';
 
 interface RecentActivityProps {
   personId: string;
@@ -19,8 +20,9 @@ const fetcher = async (url: string): Promise<ActivityResponse> => {
 };
 
 export function RecentActivity({ personId }: RecentActivityProps) {
+  const { sectionRef, isVisible } = useSectionVisibility<HTMLElement>();
   const { data, error, isLoading } = useSWR<ActivityResponse>(
-    `/api/person/${personId}/activity?limit=5&days=90`,
+    isVisible ? `/api/person/${personId}/activity?limit=5&days=90` : null,
     fetcher,
     {
       revalidateOnFocus: false,
@@ -30,7 +32,7 @@ export function RecentActivity({ personId }: RecentActivityProps) {
   const events = data?.data || [];
 
   return (
-    <section className="card-base overflow-hidden">
+    <section ref={sectionRef} className="card-base overflow-hidden">
       <div className="flex items-center justify-between gap-3 border-b border-stone-100 px-5 py-3">
         <div className="flex items-center gap-2">
           <span className="text-base">↗</span>
@@ -44,7 +46,7 @@ export function RecentActivity({ personId }: RecentActivityProps) {
           <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 text-xs text-stone-500">
             最近变化暂时加载失败，其他资料仍可查看。
           </div>
-        ) : isLoading ? (
+        ) : !isVisible || isLoading ? (
           <div className="grid gap-2">
             {[0, 1, 2].map(index => (
               <div key={index} className="h-16 animate-pulse rounded-xl bg-stone-50 ring-1 ring-stone-100" />

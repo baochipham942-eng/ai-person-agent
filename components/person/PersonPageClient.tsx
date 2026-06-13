@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { CompareReportLauncher } from '@/components/compare/CompareReportLauncher';
 import { CompareButton } from '@/components/common/CompareButton';
 import { FollowButton } from '@/components/common/FollowButton';
+import { normalizeDirectoryTopic } from '@/lib/person-directory-config';
 import {
   PersonHeader,
   CoreContribution,
@@ -207,6 +209,15 @@ function SourceSummary({ person }: { person: PersonData }) {
 }
 
 export default function PersonPageClient({ person, initialSection, highlightTopic }: PersonPageClientProps) {
+  const searchParams = useSearchParams();
+  const sectionFromUrl = searchParams.get('section') === 'topics' ? 'topics' : null;
+  const activeInitialSection = initialSection ?? sectionFromUrl;
+  const activeHighlightTopic = highlightTopic ?? (
+    activeInitialSection === 'topics' && searchParams.get('highlight')
+      ? normalizeDirectoryTopic(searchParams.get('highlight')!)
+      : null
+  );
+
   // 记录页面访问
   useEffect(() => {
     const recordView = async () => {
@@ -322,8 +333,8 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
           topicRanks={person.topicRanks}
           topicDetails={person.topicDetails}
           personId={person.id}
-          initialTab={initialSection === 'topics' ? 'topics' : undefined}
-          highlightTopic={initialSection === 'topics' ? highlightTopic : undefined}
+          initialTab={activeInitialSection === 'topics' ? 'topics' : undefined}
+          highlightTopic={activeInitialSection === 'topics' ? activeHighlightTopic : undefined}
           cards={person.cards}
           podcastCount={person.sourceTypeCounts?.podcast || 0}
           githubCount={githubCount}
