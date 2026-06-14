@@ -94,9 +94,51 @@ export async function registerUser(prevState: string | undefined, formData: Form
             { username: email },
           ],
         },
+        select: {
+          id: true,
+          status: true,
+          email: true,
+          nickname: true,
+          displayName: true,
+          avatar: true,
+          tags: true,
+        },
       });
 
       if (existingUser) {
+        if (canReactivatePendingEmailUser(existingUser)) {
+          const nextDisplayName = nickname || existingUser.displayName || existingUser.nickname || displayName;
+          const user = await tx.user.update({
+            where: { id: existingUser.id },
+            data: {
+              passwordHash: hashedPassword,
+              quickLoginToken,
+              nickname: nextDisplayName,
+              displayName: nextDisplayName,
+              avatar: existingUser.avatar || randomProfile.avatar,
+              status: UserStatus.ACTIVE,
+              tags: mergeUserTags(existingUser.tags, ['email-verification-skipped']),
+            },
+            select: {
+              id: true,
+              email: true,
+            },
+          });
+
+          await tx.userAuditLog.create({
+            data: {
+              targetUserId: user.id,
+              action: 'PENDING_EMAIL_REGISTRATION_ACTIVATED',
+              metadata: {
+                email,
+                reason: 'email_verification_paused_retry',
+              } satisfies Prisma.InputJsonObject,
+            },
+          });
+
+          return { user, token: null, reactivated: true };
+        }
+
         throw new Error('该邮箱已注册');
       }
 
@@ -177,7 +219,7 @@ export async function registerUser(prevState: string | undefined, formData: Form
       const token = EMAIL_VERIFICATION_REQUIRED
         ? await createEmailVerificationToken(tx, user.id)
         : null;
-      return { user, token };
+      return { user, token, reactivated: false };
     }, {
       maxWait: 10_000,
       timeout: 20_000,
@@ -201,7 +243,7 @@ export async function registerUser(prevState: string | undefined, formData: Form
         verificationSent: false,
         emailVerificationRequired: false,
         isBootstrapAdmin,
-        message: '注册成功，正在登录',
+        message: result.reactivated ? '账号已激活，正在登录' : '注册成功，正在登录',
       };
     }
 
@@ -560,4 +602,12 @@ function isExpectedRegistrationError(message: string): boolean {
     '邀请码已过期',
     '邀请码已被使用完',
   ].includes(message);
+}
+
+function canReactivatePendingEmailUser(user: { status: UserStatus }): boolean {
+  return !EMAIL_VERIFICATION_REQUIRED && user.status === UserStatus.PENDING_EMAIL;
+}
+
+function mergeUserTags(currentTags: string[], nextTags: string[]): string[] {
+  return [...new Set([...currentTags, ...nextTags])].slice(0, 12);
 }

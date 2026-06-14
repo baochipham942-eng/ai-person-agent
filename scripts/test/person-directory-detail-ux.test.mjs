@@ -234,6 +234,8 @@ test('auth pages keep registration feedback hydratable in local dev', async () =
   assert.match(registerActionSource, /const hashedPassword = await bcrypt\.hash\(password, 10\);[\s\S]+prisma\.\$transaction/, 'password hashing should finish before opening the registration transaction');
   assert.match(registerActionSource, /EMAIL_VERIFICATION_REQUIRED = false/, 'email verification should be explicitly paused for open registration');
   assert.match(registerActionSource, /EMAIL_VERIFICATION_REQUIRED \? UserStatus\.PENDING_EMAIL : UserStatus\.ACTIVE/, 'new users should be active while email verification is paused');
+  assert.match(registerActionSource, /canReactivatePendingEmailUser/, 'pending email users created before verification was paused should be reactivated on retry');
+  assert.match(registerActionSource, /PENDING_EMAIL_REGISTRATION_ACTIVATED/, 'pending email retry activation should be auditable');
   assert.match(registerActionSource, /EMAIL_VERIFICATION_SKIPPED/, 'skipped email verification should be auditable');
   assert.match(registerActionSource, /timeout:\s*20_000/, 'registration transaction should have an explicit timeout');
   assert.match(registerActionSource, /isExpectedRegistrationError/, 'registration should not expose raw database errors to the form');
