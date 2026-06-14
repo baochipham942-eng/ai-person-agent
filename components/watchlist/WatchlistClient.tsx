@@ -169,12 +169,8 @@ export function WatchlistClient() {
               />
             </div>
 
-            <aside className="space-y-8">
-              <section className="rounded-xl border border-stone-200 bg-white p-4 text-xs leading-5 text-stone-500 shadow-sm">
-                <div className="mb-2 text-sm font-medium text-stone-900">同步状态</div>
-                {loading ? '正在同步本地和账号关注。' : authenticated ? '已登录，关注会写入账号资料。' : '当前使用本地关注，登录后可同步到账号。'}
-              </section>
-              <NewsletterSettings authenticated={authenticated} />
+            <aside className="lg:sticky lg:top-20 lg:self-start">
+              <AccountPanel authenticated={authenticated} loading={loading} />
             </aside>
           </div>
         )}
@@ -305,20 +301,70 @@ function EmptyState({ authenticated, loading }: { authenticated: boolean | null;
         <>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             <Link href="/" className="rounded-lg bg-stone-900 px-3 py-2 text-xs font-medium text-white hover:bg-orange-600">
-              推荐人物
+              去人物库关注
             </Link>
             <Link href="/digest" className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-700 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700">
-              本周动态
+              浏览本周动态
             </Link>
           </div>
-          <div className="mx-auto mt-6 max-w-md rounded-xl border border-stone-200 bg-white px-4 py-3 text-xs leading-5 text-stone-500 shadow-sm">
-            <div className="mb-1 text-sm font-medium text-stone-900">同步状态</div>
-            {authenticated ? '已登录，关注会写入账号资料。' : '当前使用本地关注，登录后可同步到账号。'}
-          </div>
-          <div className="mx-auto mt-3 max-w-md text-left">
-            <NewsletterSettings authenticated={authenticated} />
-          </div>
+          <AccountPanel authenticated={authenticated} loading={loading} compact />
         </>
+      )}
+    </section>
+  );
+}
+
+function AccountPanel({
+  authenticated,
+  loading,
+  compact = false,
+}: {
+  authenticated: boolean | null;
+  loading: boolean;
+  compact?: boolean;
+}) {
+  const isAuthenticated = authenticated === true;
+  const pending = loading || authenticated === null;
+  const statusLabel = pending ? '确认中' : isAuthenticated ? '已登录' : '未登录';
+  const statusClass = pending
+    ? 'border-stone-200 bg-stone-50 text-stone-500'
+    : isAuthenticated
+      ? 'border-green-200 bg-green-50 text-green-700'
+      : 'border-orange-200 bg-orange-50 text-orange-700';
+  const statusText = pending
+    ? '正在确认本地关注和账号状态。'
+    : isAuthenticated
+      ? '已登录，关注会自动写入账号资料，也可以开启每周邮件。'
+      : '当前关注保存在本浏览器，登录或注册后会合并进账号，并可开启每周邮件。';
+
+  return (
+    <section id="newsletter-settings" className={`${compact ? 'mx-auto mt-6 max-w-xl' : ''} scroll-mt-20 rounded-xl border border-stone-200 bg-white p-4 text-left shadow-sm`}>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <div className="text-sm font-semibold text-stone-950">保存关注和每周提醒</div>
+          <p className="mt-1 text-xs leading-5 text-stone-500">{statusText}</p>
+        </div>
+        <span className={`inline-flex flex-shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-medium ${statusClass}`}>
+          {statusLabel}
+        </span>
+      </div>
+
+      {isAuthenticated ? (
+        <div className="mt-4 border-t border-stone-100 pt-4">
+          <NewsletterSettings authenticated={authenticated} surface="inline" />
+        </div>
+      ) : (
+        <div className="mt-4 grid gap-3 rounded-lg bg-stone-50 p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+          <div className="text-xs leading-5 text-stone-600">
+            一个账号同时处理跨设备同步和邮件周报，不再把关注列表留在单台浏览器里。
+          </div>
+          <Link
+            href="/login"
+            className="inline-flex h-9 items-center justify-center rounded-lg bg-stone-900 px-3 text-xs font-medium text-white hover:bg-orange-600"
+          >
+            登录或注册
+          </Link>
+        </div>
       )}
     </section>
   );

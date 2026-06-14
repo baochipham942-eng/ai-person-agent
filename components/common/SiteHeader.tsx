@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { CompareNavLink } from '@/components/common/CompareNavLink';
+import { UserMenu } from '@/components/common/UserMenu';
 
 type SiteHeaderCurrent = 'home' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist';
 type SiteHeaderWidth = '5xl' | '6xl' | '7xl';
@@ -85,6 +86,7 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
                   </Link>
                 );
               })}
+              <UserMenu />
             </nav>
           </div>
         </div>

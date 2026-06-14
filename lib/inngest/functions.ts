@@ -20,6 +20,7 @@ import {
     materializeActivityEventsJob,
     prepareWeeklyNewsletterDigestJob,
 } from './signalJobs';
+import { maintenanceJobRunner, maintenanceScheduleScanner } from './maintenanceJobs';
 import { runCompareReportAgent } from '@/lib/compare-report-agent';
 import crypto from 'crypto';
 
@@ -35,6 +36,9 @@ const REFRESH_INTERVALS: Record<string, number> = {
     github: 24 * 60 * 60 * 1000,   // 24h
     career: 7 * 24 * 60 * 60 * 1000,   // 7 天
 };
+
+const BUILD_SOURCE_TYPES = ['exa', 'grok', 'youtube', 'openalex', 'podcast', 'github', 'career'] as const;
+type BuildSourceType = typeof BUILD_SOURCE_TYPES[number];
 
 type RawJobCareerData = RawCareerData & { source?: string };
 
@@ -68,11 +72,14 @@ export const buildPersonJob = inngest.createFunction(
         triggers: [{ event: 'person/created' }],
     },
     async ({ event, step }) => {
-        const { personId, personName, qid, officialLinks, aliases, englishName, orcid, forceRefresh = false } = event.data;
+        const { personId, personName, qid, officialLinks, aliases, englishName, orcid, forceRefresh = false, sourceTypes } = event.data;
+        const enabledSourceTypes = normalizeBuildSourceTypes(sourceTypes);
+        const activeSourceTypes = enabledSourceTypes || new Set<BuildSourceType>(BUILD_SOURCE_TYPES);
 
         // 搜索用的名称：优先使用英文名（API 检索更准确），否则使用中文名
         const searchName = englishName || personName;
-        console.log(`[Job] Building person: ${personName} (Search: ${searchName})${forceRefresh ? ' [FORCE REFRESH]' : ''}`);
+        const sourceScope = enabledSourceTypes ? ` [SOURCES: ${[...enabledSourceTypes].join(',')}]` : '';
+        console.log(`[Job] Building person: ${personName} (Search: ${searchName})${forceRefresh ? ' [FORCE REFRESH]' : ''}${sourceScope}`);
 
         // 更新状态为 building 并获取 lastFetchedAt
         const person = await step.run('update-status-building', async () => {
@@ -101,6 +108,10 @@ export const buildPersonJob = inngest.createFunction(
             if (!lastTime) return true;
             const interval = REFRESH_INTERVALS[source] || 24 * 60 * 60 * 1000;
             return now - new Date(lastTime).getTime() > interval;
+        }
+
+        function sourceEnabled(source: BuildSourceType): boolean {
+            return !enabledSourceTypes || enabledSourceTypes.has(source);
         }
 
         function getLastFetchTime(source: string): Date | undefined {
@@ -146,6 +157,11 @@ export const buildPersonJob = inngest.createFunction(
         const results = await Promise.allSettled([
             // 1. Exa 网页搜索
             step.run('fetch-exa', async (): Promise<StepResult> => {
+                if (!sourceEnabled('exa')) {
+                    console.log(`[Job] Skipping Exa for ${personName}: source not selected`);
+                    return { source: 'exa', items: [] };
+                }
+
                 if (!shouldFetch('exa')) {
                     console.log(`[Job] Skipping Exa for ${personName}: fetched within 24h`);
                     return { source: 'exa', items: [] };
@@ -192,6 +208,11 @@ export const buildPersonJob = inngest.createFunction(
 
             // 2. X/Grok
             step.run('fetch-grok', async (): Promise<StepResult> => {
+                if (!sourceEnabled('grok')) {
+                    console.log(`[Job] Skipping Grok for ${personName}: source not selected`);
+                    return { source: 'grok', items: [] };
+                }
+
                 if (!xHandle) return { source: 'grok', items: [] };
                 if (!shouldFetch('grok')) {
                     console.log(`[Job] Skipping Grok for ${personName}: fetched within 24h`);
@@ -256,6 +277,11 @@ export const buildPersonJob = inngest.createFunction(
 
             // 3. YouTube
             step.run('fetch-youtube', async (): Promise<StepResult> => {
+                if (!sourceEnabled('youtube')) {
+                    console.log(`[Job] Skipping YouTube for ${personName}: source not selected`);
+                    return { source: 'youtube', items: [] };
+                }
+
                 if (!shouldFetch('youtube')) {
                     console.log(`[Job] Skipping YouTube for ${personName}: fetched within 24h`);
                     return { source: 'youtube', items: [] };
@@ -299,6 +325,11 @@ export const buildPersonJob = inngest.createFunction(
 
             // 4. OpenAlex
             step.run('fetch-openalex', async (): Promise<StepResult> => {
+                if (!sourceEnabled('openalex')) {
+                    console.log(`[Job] Skipping OpenAlex for ${personName}: source not selected`);
+                    return { source: 'openalex', items: [] };
+                }
+
                 if (!orcid) return { source: 'openalex', items: [] };
                 if (!shouldFetch('openalex')) {
                     console.log(`[Job] Skipping OpenAlex for ${personName}: fetched within 7 days`);
@@ -331,6 +362,11 @@ export const buildPersonJob = inngest.createFunction(
 
             // 5. Podcast
             step.run('fetch-podcasts', async (): Promise<StepResult> => {
+                if (!sourceEnabled('podcast')) {
+                    console.log(`[Job] Skipping Podcast for ${personName}: source not selected`);
+                    return { source: 'podcast', items: [] };
+                }
+
                 if (!shouldFetch('podcast')) {
                     console.log(`[Job] Skipping Podcast for ${personName}: fetched within 7 days`);
                     return { source: 'podcast', items: [] };
@@ -366,6 +402,11 @@ export const buildPersonJob = inngest.createFunction(
 
             // 6. GitHub
             step.run('fetch-github', async (): Promise<StepResult> => {
+                if (!sourceEnabled('github')) {
+                    console.log(`[Job] Skipping GitHub for ${personName}: source not selected`);
+                    return { source: 'github', items: [] };
+                }
+
                 if (!githubUsername) return { source: 'github', items: [] };
                 if (!shouldFetch('github')) {
                     console.log(`[Job] Skipping GitHub for ${personName}: fetched within 24h`);
@@ -395,6 +436,11 @@ export const buildPersonJob = inngest.createFunction(
 
             // 7. Career
             step.run('fetch-career', async (): Promise<StepResult> => {
+                if (!sourceEnabled('career')) {
+                    console.log(`[Job] Skipping Career for ${personName}: source not selected`);
+                    return { source: 'career', items: [] };
+                }
+
                 if (!shouldFetch('career')) {
                     console.log(`[Job] Skipping Career for ${personName}: fetched within 7 days`);
                     return { source: 'career', items: [] };
@@ -423,12 +469,15 @@ export const buildPersonJob = inngest.createFunction(
         ]);
 
 
-        // 收集所有成功的结果
+        // 收集所有启用数据源的结果。未选中的来源会被 step 跳过，但不计入本次完成度。
         const allItems: RawJobItem[] = [];
         let successCount = 0;
         let errorCount = 0;
 
-        for (const result of results) {
+        for (const [index, result] of results.entries()) {
+            const sourceType = BUILD_SOURCE_TYPES[index];
+            const isActiveSource = activeSourceTypes.has(sourceType);
+
             if (result.status === 'fulfilled' && result.value) {
                 const { source, items, fetchedAt } = result.value;
                 allItems.push(...items);
@@ -438,9 +487,13 @@ export const buildPersonJob = inngest.createFunction(
                     newFetchedAt[source] = fetchedAt;
                 }
 
-                successCount++;
+                if (isActiveSource) {
+                    successCount++;
+                }
             } else {
-                errorCount++;
+                if (isActiveSource) {
+                    errorCount++;
+                }
                 console.error('Data source failed:', result);
             }
         }
@@ -645,8 +698,10 @@ export const buildPersonJob = inngest.createFunction(
 
         // 更新人物状态和完成度
         await step.run('update-status-final', async () => {
-            const completeness = Math.round((successCount / 6) * 100);  // 6 个数据源
-            const status = errorCount === 0 ? 'ready' : errorCount < 4 ? 'partial' : 'error';
+            const activeSourceCount = Math.max(activeSourceTypes.size, 1);
+            const completeness = Math.min(100, Math.round((successCount / activeSourceCount) * 100));
+            const failureThreshold = Math.max(1, Math.ceil(activeSourceCount / 2));
+            const status = errorCount === 0 ? 'ready' : errorCount < failureThreshold ? 'partial' : 'error';
 
             await prisma.people.update({
                 where: { id: personId },
@@ -696,4 +751,21 @@ export const functions = [
     manualQualityCheck,
     materializeActivityEventsJob,
     prepareWeeklyNewsletterDigestJob,
+    maintenanceJobRunner,
+    maintenanceScheduleScanner,
 ];
+
+function normalizeBuildSourceTypes(value: unknown): Set<BuildSourceType> | null {
+    if (!Array.isArray(value)) return null;
+
+    const selected = value
+        .map(item => typeof item === 'string' ? normalizeBuildSourceType(item) : null)
+        .filter((item): item is BuildSourceType => Boolean(item));
+
+    return selected.length > 0 ? new Set(selected) : null;
+}
+
+function normalizeBuildSourceType(value: string): BuildSourceType | null {
+    if (value === 'x') return 'grok';
+    return BUILD_SOURCE_TYPES.includes(value as BuildSourceType) ? value as BuildSourceType : null;
+}

@@ -4,12 +4,16 @@ import {
   recordInfluenceCalibrationAudit,
   type InfluenceCalibrationStatus,
 } from '@/lib/influence-calibration';
+import { requireAdminOrResponse, requireAdminOrSecretResponse } from '@/lib/auth/permissions';
 
 export const dynamic = 'force-dynamic';
 
 const SUPPORTED_STATUS = new Set(['all', 'aligned', 'review', 'large_gap']);
 
 export async function GET(request: Request) {
+  const { response } = await requireAdminOrResponse();
+  if (response) return response;
+
   try {
     const { searchParams } = new URL(request.url);
     const status = normalizeStatus(searchParams.get('status'));
@@ -31,10 +35,8 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const authHeader = request.headers.get('authorization');
-  if (!process.env.AUTH_SECRET || authHeader !== `Bearer ${process.env.AUTH_SECRET}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const { response } = await requireAdminOrSecretResponse(request);
+  if (response) return response;
 
   try {
     const body = await request.json();

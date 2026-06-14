@@ -21,12 +21,15 @@ export type PersonCreatedEvent = {
         englishName?: string;
         qid: string;
         orcid?: string;  // ORCID for academic verification
+        forceRefresh?: boolean;
+        sourceTypes?: string[];
         officialLinks: {
             type: string;
             url: string;
             handle?: string;
         }[];
         aliases: string[];
+        organization?: string[];
     };
 };
 
@@ -37,7 +40,15 @@ export type CompareReportRequestedEvent = {
     };
 };
 
+export type MaintenanceJobRequestedEvent = {
+    name: 'maintenance/job.requested';
+    data: {
+        jobId: string;
+    };
+};
+
 export type Events = {
     'person/created': PersonCreatedEvent;
     'compare/report.requested': CompareReportRequestedEvent;
+    'maintenance/job.requested': MaintenanceJobRequestedEvent;
 };

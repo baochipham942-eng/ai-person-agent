@@ -1,16 +1,49 @@
 import type { Metadata } from 'next';
+import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { auth } from '@/auth';
 import { SiteHeader } from '@/components/common/SiteHeader';
-import { prisma } from '@/lib/db/prisma';
-import { sanitizeCompareReportContent, type CompareReportContent } from '@/lib/compare-report-agent';
 import { COMPARE_AGENT_TOOLS } from '@/lib/compare-report';
+import { prisma } from '@/lib/db/prisma';
+import {
+  normalizeCompareReportLayout,
+  sanitizeCompareReportContent,
+  type CompareReportContent,
+  type CompareReportModuleKey,
+  type ReportEvidence,
+} from '@/lib/compare-report-agent';
 
 interface ReportDetailPageProps {
   params: Promise<{ id: string }>;
 }
+
+interface ReportPersonPreview {
+  id: string;
+  name: string;
+  avatarUrl: string | null;
+  currentTitle: string | null;
+  organization?: string[];
+  topics: string[];
+}
+
+type ReportPerson = CompareReportContent['people'][number];
+type ReportDimension = CompareReportContent['dimensions'][number];
+type ReportTimelineItem = CompareReportContent['timeline'][number];
+type ReportEvent = {
+  id: string;
+  step: string;
+  status: string;
+  title: string;
+  message: string | null;
+  createdAt: Date;
+};
+
+const pageBackground: CSSProperties = {
+  backgroundColor: '#f6f4ef',
+  backgroundImage: 'radial-gradient(circle at top left, rgba(200, 95, 32, 0.11), transparent 34rem), linear-gradient(180deg, #fbfaf6 0%, #f6f4ef 32rem)',
+};
 
 export const dynamic = 'force-dynamic';
 
@@ -77,203 +110,444 @@ export default async function CompareReportDetailPage({ params }: ReportDetailPa
   const peopleById = new Map(people.map(person => [person.id, person]));
   const orderedPeople = report.peopleIds
     .map(personId => peopleById.get(personId))
-    .filter(Boolean) as typeof people;
+    .filter(Boolean)
+    .map(person => ({
+      id: person!.id,
+      name: person!.name,
+      avatarUrl: person!.avatarUrl,
+      currentTitle: person!.currentTitle || person!.organization[0] || null,
+      organization: person!.organization,
+      topics: person!.topics,
+    })) as ReportPersonPreview[];
   const content = isReportContent(report.reportJson) ? sanitizeCompareReportContent(report.reportJson) : null;
+  const modules = content ? new Set(normalizeCompareReportLayout(content.layout, content).modules) : new Set<CompareReportModuleKey>();
   const sourceCount = sourceCountFromSnapshot(report.sourceSnapshot, content);
   const isAnonymous = !session?.user?.id;
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
+    <div className="min-h-screen text-[#201c17]" style={pageBackground}>
       <SiteHeader current="compareReports" />
 
-      <main className="mx-auto max-w-6xl space-y-6 px-4 py-6 sm:px-6">
-        <section className="rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-            <div className="min-w-0">
-              <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className="rounded-md bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-700">对比报告</span>
-                <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${statusClass(report.status)}`}>
-                  {statusLabel(report.status)}
-                </span>
-                <span className="text-xs text-stone-400">{formatDate(report.completedAt || report.createdAt)}</span>
-              </div>
-              <h1 className="text-2xl font-semibold leading-8 text-stone-950">{content?.title || report.title}</h1>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-stone-600">
-                {content?.summary || report.summary || '报告正在生成。'}
-              </p>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <AvatarStack people={orderedPeople} />
-                <span className="text-xs text-stone-500">{sourceCount} 条公开资料</span>
-                {report.topic && <span className="rounded-md bg-stone-50 px-2 py-0.5 text-xs text-stone-500">{report.topic}</span>}
-              </div>
-            </div>
-          </div>
-        </section>
+      <main className="mx-auto max-w-[1180px] px-4 py-7 sm:px-6">
+        <ReportHero
+          reportTitle={report.title}
+          reportSummary={report.summary}
+          topic={report.topic}
+          status={report.status}
+          generatedAt={report.completedAt || report.createdAt}
+          people={orderedPeople}
+          content={content}
+          sourceCount={sourceCount}
+        />
 
-        <details className="rounded-xl border border-stone-200 bg-white px-5 py-4 shadow-sm sm:px-7">
-          <summary className="cursor-pointer text-sm font-medium text-stone-700 marker:text-stone-400 hover:text-orange-600">
-            生成过程与来源校验
-          </summary>
-          <div className="mt-4">
-            <div className="mb-3 text-xs font-medium text-orange-600">Agent 工具链</div>
-            <div className="flex flex-wrap gap-2">
-              {COMPARE_AGENT_TOOLS.map(tool => (
-                <span
-                  key={tool.key}
-                  title={tool.description}
-                  className="rounded-md border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-medium text-stone-600"
-                >
-                  {tool.label}
-                </span>
-              ))}
-            </div>
-          </div>
-        </details>
+        <ProcessDetails events={report.events} />
 
         {report.status !== 'completed' || !content ? (
           <PendingOrFailedPanel status={report.status} errorMessage={report.errorMessage} events={report.events} />
         ) : (
           <>
-            <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-              <div className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
-                <div className="mb-2 text-xs font-medium text-orange-600">核心判断</div>
-                <h2 className="text-xl font-semibold leading-7 text-stone-950">{content.verdict.headline}</h2>
-                <p className="mt-3 text-sm leading-7 text-stone-600">{content.verdict.body}</p>
-              </div>
-              <aside className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
-                <div className="mb-3 text-xs font-medium text-stone-500">来源覆盖</div>
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <ReportStat label="总资料" value={content.coverage.sourceCount} />
-                  <ReportStat label="已有资料" value={content.coverage.localSourceCount} />
-                  <ReportStat label="公开搜索" value={content.coverage.webSourceCount} />
-                </div>
-                {content.coverage.limitations.length > 0 && (
-                  <div className="mt-4 space-y-2">
-                    {content.coverage.limitations.slice(0, 3).map(item => (
-                      <p key={item} className="rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-800">{item}</p>
-                    ))}
-                  </div>
-                )}
-              </aside>
-            </section>
-
-            <section>
-              <SectionTitle title="人物立场" />
-              <div className={gridClass(content.people.length)}>
-                {content.people.map(person => (
-                  <article key={person.id} className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
-                    <div className="flex items-start gap-3">
-                      <PersonAvatar person={person} />
-                      <div className="min-w-0">
-                        <Link href={`/person/${person.id}`} className="font-semibold text-stone-950 hover:text-orange-600">
-                          {person.name}
-                        </Link>
-                        <div className="mt-1 text-xs leading-5 text-stone-500">{person.currentTitle || '公开身份整理中'}</div>
-                      </div>
-                    </div>
-                    <p className="mt-3 text-sm leading-6 text-stone-600">{person.stanceSummary}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <SectionTitle title="观点矩阵" />
-              <div className="overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm">
-                {content.dimensions.map(dimension => (
-                  <div key={dimension.key} className="border-b border-stone-100 p-4 last:border-b-0">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h3 className="text-sm font-semibold text-stone-950">{dimension.label}</h3>
-                      <span className="rounded-md bg-stone-50 px-2 py-0.5 text-[11px] text-stone-500">{confidenceLabel(dimension.confidence)}</span>
-                    </div>
-                    <p className="mt-2 text-sm leading-6 text-stone-600">{dimension.sharedView}</p>
-                    <p className="mt-2 text-sm leading-6 text-stone-600">{dimension.differences}</p>
-                    <div className="mt-3 grid gap-2 md:grid-cols-2">
-                      {dimension.personViews.map(view => (
-                        <div key={`${dimension.key}-${view.personId}`} className="rounded-lg bg-stone-50 px-3 py-2">
-                          <div className="text-xs font-semibold text-stone-900">{view.personName}</div>
-                          <p className="mt-1 text-xs leading-5 text-stone-600">{view.view}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {content.timeline.length > 0 && (
-              <section>
-                <SectionTitle title="变化时间线" />
-                <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
-                  <div className="space-y-3">
-                    {content.timeline.map((item, index) => (
-                      <div key={`${item.description}-${index}`} className="grid gap-2 border-b border-stone-100 pb-3 last:border-b-0 last:pb-0 sm:grid-cols-[7rem_minmax(0,1fr)]">
-                        <div className="text-xs font-medium text-stone-400">{formatTimelineDate(item.date)}</div>
-                        <div>
-                          <div className="text-xs font-semibold text-orange-700">{item.label}</div>
-                          {item.sourceUrl ? (
-                            <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="mt-1 block text-sm leading-6 text-stone-700 hover:text-orange-600">
-                              {item.description}
-                            </a>
-                          ) : (
-                            <p className="mt-1 text-sm leading-6 text-stone-700">{item.description}</p>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
+            {modules.has('pkStage') && (
+              <CompareStage content={content} people={orderedPeople} />
             )}
 
-            <section>
-              <SectionTitle title="完整分析" />
-              <div className="grid gap-4 md:grid-cols-2">
-                {content.analysisSections.map(section => (
-                  <article key={section.title} className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
-                    <h3 className="text-base font-semibold text-stone-950">{section.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-stone-600">{section.body}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
+            {modules.has('viewpointMatrix') && (
+              <ViewpointMatrix content={content} />
+            )}
 
-            <section>
-              <SectionTitle title="关键证据" />
-              <div className="grid gap-3 md:grid-cols-2">
-                {content.evidence.map(item => (
-                  <article key={item.id} className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
-                    <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <span className="rounded-md bg-stone-50 px-2 py-0.5 text-[11px] text-stone-500">{item.personName}</span>
-                      <span className="rounded-md bg-stone-50 px-2 py-0.5 text-[11px] text-stone-500">{item.sourceType}</span>
-                    </div>
-                    {item.url ? (
-                      <a href={item.url} target="_blank" rel="noreferrer" className="line-clamp-2 text-sm font-semibold leading-6 text-stone-950 hover:text-orange-600">
-                        {item.title}
-                      </a>
-                    ) : (
-                      <h3 className="line-clamp-2 text-sm font-semibold leading-6 text-stone-950">{item.title}</h3>
-                    )}
-                    <p className="mt-2 line-clamp-3 text-xs leading-5 text-stone-600">{item.excerpt}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
+            {modules.has('timeline') && (
+              <TimelineSection content={content} />
+            )}
+
+            {modules.has('analysis') && (
+              <AnalysisSection sections={content.analysisSections} />
+            )}
+
+            {modules.has('evidence') && (
+              <EvidenceSection evidence={content.evidence} />
+            )}
           </>
         )}
 
         {isAnonymous && (
-          <section className="rounded-xl border border-orange-100 bg-orange-50 px-5 py-5">
+          <section className="mt-5 rounded-lg border border-orange-100 bg-orange-50 px-5 py-5">
             <h2 className="text-base font-semibold text-orange-950">登录后可以生成自己的对比报告</h2>
             <p className="mt-2 text-sm leading-6 text-orange-800">
               选择 2 到 3 位人物，系统会整理公开资料、补充近期信息，并保存成可分享的报告。
             </p>
-            <Link href="/login" className="mt-4 inline-flex rounded-lg bg-stone-900 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600">
+            <Link href="/login" className="mt-4 inline-flex rounded-lg bg-[#201c17] px-4 py-2 text-sm font-medium text-[#fff8ea] hover:bg-orange-700">
               登录或注册
             </Link>
           </section>
         )}
       </main>
+    </div>
+  );
+}
+
+function ReportHero({
+  reportTitle,
+  reportSummary,
+  topic,
+  status,
+  generatedAt,
+  people,
+  content,
+  sourceCount,
+}: {
+  reportTitle: string;
+  reportSummary: string | null;
+  topic: string | null;
+  status: string;
+  generatedAt: Date;
+  people: ReportPersonPreview[];
+  content: CompareReportContent | null;
+  sourceCount: number;
+}) {
+  const title = content?.title || reportTitle;
+  const summary = content?.summary || reportSummary || '报告正在生成。';
+  const limitations = content?.coverage.limitations || [];
+
+  return (
+    <section className="grid gap-4 lg:grid-cols-[minmax(0,1.18fr)_minmax(20rem,0.82fr)]">
+      <article className="rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-5 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-6">
+        <div className="mb-3 inline-flex items-center gap-2 text-xs font-bold text-[#c85f20]">
+          <span className="h-[7px] w-[7px] rounded-full bg-[#c85f20]" />
+          观点对照，不是资料堆叠
+        </div>
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="rounded-md bg-[#fff2de] px-2 py-0.5 text-xs font-medium text-[#8a3a12]">对比报告</span>
+          <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${statusClass(status)}`}>
+            {statusLabel(status)}
+          </span>
+          <span className="text-xs text-[#776f64]">{formatDate(generatedAt)}</span>
+        </div>
+        <h1 className="max-w-3xl text-[28px] font-semibold leading-tight tracking-normal text-[#201c17] sm:text-[34px]">
+          {title}
+        </h1>
+        <p className="mt-3 max-w-3xl text-sm leading-7 text-[#776f64]">{summary}</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {people.map(person => (
+            <Link
+              key={person.id}
+              href={`/person/${person.id}`}
+              className="inline-flex items-center gap-2 rounded-lg border border-[#ded4c4] bg-white px-3 py-2 text-left text-xs text-[#4f463b] hover:border-orange-200 hover:text-orange-700"
+            >
+              <PersonAvatar person={person} size={28} />
+              <span className="min-w-0">
+                <strong className="block text-[13px] text-[#201c17]">{person.name}</strong>
+                <span className="block max-w-[13rem] truncate text-[11px] text-[#776f64]">{person.currentTitle || '公开身份整理中'}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </article>
+
+      <aside className="rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-5 shadow-[0_18px_45px_rgba(71,52,26,0.10)]">
+        <h2 className="text-[15px] font-semibold text-[#201c17]">证据预览</h2>
+        <p className="mt-2 text-xs leading-5 text-[#776f64]">
+          {limitations.length > 0
+            ? '这份报告会把资料限制直接露出来，强判断需要回到来源逐条核验。'
+            : '当前报告已有可展开来源，适合先看核心判断，再回到矩阵和证据。'}
+        </p>
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          <SourceStat label="可展开证据" value={sourceCount} />
+          <SourceStat label="已有资料" value={content?.coverage.localSourceCount ?? 0} />
+          <SourceStat label="公开搜索" value={content?.coverage.webSourceCount ?? 0} />
+        </div>
+        {topic && (
+          <p className="mt-3 rounded-lg bg-white px-3 py-2 text-xs leading-5 text-[#5f5548] ring-1 ring-[#ded4c4]/70">
+            {topic}
+          </p>
+        )}
+        <div className="mt-3 border-l-4 border-[#9a6b1f] bg-[#fff8e8] px-3 py-2 text-xs leading-5 text-[#6f501b]">
+          {limitations[0] || '本页基于已收录公开资料形成判断，更严肃的结论仍要回到原始来源。'}
+        </div>
+      </aside>
+    </section>
+  );
+}
+
+function SourceStat({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-lg bg-white px-3 py-2 ring-1 ring-[#ded4c4]/70">
+      <div className="text-lg font-semibold leading-none text-[#201c17]">{value}</div>
+      <div className="mt-1 text-[11px] text-[#776f64]">{label}</div>
+    </div>
+  );
+}
+
+function ProcessDetails({ events }: { events: ReportEvent[] }) {
+  return (
+    <details className="my-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/80 px-5 py-4 shadow-[0_12px_30px_rgba(71,52,26,0.07)]">
+      <summary className="cursor-pointer text-sm font-medium text-[#5f5548] marker:text-[#c85f20] hover:text-[#c85f20]">
+        生成过程与来源校验
+      </summary>
+      <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)]">
+        <div>
+          <div className="mb-2 text-xs font-bold text-[#c85f20]">固定工具链</div>
+          <div className="flex flex-wrap gap-2">
+            {COMPARE_AGENT_TOOLS.map(tool => (
+              <span
+                key={tool.key}
+                title={tool.description}
+                className="rounded-md border border-[#ded4c4] bg-white px-2.5 py-1 text-xs font-medium text-[#5f5548]"
+              >
+                {tool.label}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="grid gap-2">
+          {events.slice(-4).map(event => (
+            <div key={event.id} className="rounded-lg bg-white px-3 py-2 text-xs ring-1 ring-[#ded4c4]/70">
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-medium text-[#201c17]">{event.title}</span>
+                <span className={`rounded-md px-2 py-0.5 ${eventStatusClass(event.status)}`}>{eventStatusLabel(event.status)}</span>
+              </div>
+              {event.message && <p className="mt-1 leading-5 text-[#776f64]">{event.message}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </details>
+  );
+}
+
+function CompareStage({ content, people }: { content: CompareReportContent; people: ReportPersonPreview[] }) {
+  const personMeta = new Map(people.map(person => [person.id, person]));
+  if (content.people.length === 2) {
+    return (
+      <section className="mb-4 grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(220px,0.72fr)_minmax(0,1fr)]">
+        <PersonSummaryCard person={content.people[0]} meta={personMeta.get(content.people[0].id)} />
+        <VerdictCard verdict={content.verdict} />
+        <PersonSummaryCard person={content.people[1]} meta={personMeta.get(content.people[1].id)} />
+      </section>
+    );
+  }
+
+  return (
+    <section className="mb-4 grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.62fr)]">
+      <div className="grid gap-3 md:grid-cols-3">
+        {content.people.map(person => (
+          <PersonSummaryCard key={person.id} person={person} meta={personMeta.get(person.id)} />
+        ))}
+      </div>
+      <VerdictCard verdict={content.verdict} />
+    </section>
+  );
+}
+
+function PersonSummaryCard({ person, meta }: { person: ReportPerson; meta?: ReportPersonPreview }) {
+  const topics = (meta?.topics || []).slice(0, 4);
+
+  return (
+    <article className="min-w-0 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8] p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)]">
+      <div className="flex items-center gap-3">
+        <PersonAvatar person={person} size={58} />
+        <div className="min-w-0">
+          <Link href={`/person/${person.id}`} className="text-xl font-semibold tracking-normal text-[#201c17] hover:text-[#c85f20]">
+            {person.name}
+          </Link>
+          <p className="mt-1 text-xs leading-5 text-[#776f64]">{person.currentTitle || '公开身份整理中'}</p>
+        </div>
+      </div>
+      {topics.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {topics.map(topic => (
+            <span key={topic} className="rounded-full border border-[#5b4a33]/15 bg-white px-2 py-1 text-[11px] leading-none text-[#5f5548]">
+              {topic}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="mt-4 text-sm leading-6 text-[#4d4439]">{person.stanceSummary}</p>
+      <div className="mt-4 grid grid-cols-2 gap-2">
+        <MiniMetric label="证据" value={person.evidenceCount} />
+        <MiniMetric label="话题" value={topics.length} />
+      </div>
+    </article>
+  );
+}
+
+function MiniMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-lg bg-[#f7f1e7] px-3 py-2">
+      <strong className="block text-base leading-none text-[#201c17]">{value}</strong>
+      <span className="mt-1 block text-[11px] text-[#776f64]">{label}</span>
+    </div>
+  );
+}
+
+function VerdictCard({ verdict }: { verdict: CompareReportContent['verdict'] }) {
+  return (
+    <aside className="flex min-h-[12rem] flex-col justify-center rounded-lg border border-[#201c17] bg-[#201c17] p-5 text-center text-[#fff8ea] shadow-[0_18px_45px_rgba(71,52,26,0.10)]">
+      <div className="text-xs font-bold text-[#d8b991]">核心判断</div>
+      <h2 className="mt-3 text-xl font-semibold leading-7 tracking-normal">{verdict.headline}</h2>
+      <p className="mt-4 text-xs leading-6 text-[#e7ddcb]">{verdict.body}</p>
+    </aside>
+  );
+}
+
+function ViewpointMatrix({ content }: { content: CompareReportContent }) {
+  const evidenceById = new Map(content.evidence.map(item => [item.id, item]));
+  const gridStyle = {
+    gridTemplateColumns: `156px repeat(${content.people.length}, minmax(0, 1fr)) minmax(180px, 0.8fr)`,
+  };
+
+  return (
+    <section className="mb-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-5">
+      <SectionHead title="观点矩阵" note="先看共同点，再看每个人的视角和差异来源。" />
+      <div className="overflow-hidden rounded-lg border border-[#ded4c4] bg-white">
+        <div className="hidden border-b border-[#eee5d7] bg-[#f8f1e7] text-xs font-bold text-[#5f5548] lg:grid" style={gridStyle}>
+          <div className="border-r border-[#eee5d7] px-4 py-3">维度</div>
+          {content.people.map(person => (
+            <div key={person.id} className="border-r border-[#eee5d7] px-4 py-3">{person.name}</div>
+          ))}
+          <div className="px-4 py-3">差异</div>
+        </div>
+        {content.dimensions.map(dimension => (
+          <MatrixRow key={dimension.key} dimension={dimension} people={content.people} evidenceById={evidenceById} gridStyle={gridStyle} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MatrixRow({
+  dimension,
+  people,
+  evidenceById,
+  gridStyle,
+}: {
+  dimension: ReportDimension;
+  people: ReportPerson[];
+  evidenceById: Map<string, ReportEvidence>;
+  gridStyle: CSSProperties;
+}) {
+  const viewsByPerson = new Map(dimension.personViews.map(view => [view.personId, view]));
+  const evidence = dimension.evidenceIds.map(id => evidenceById.get(id)).filter(Boolean) as ReportEvidence[];
+
+  return (
+    <article className="border-b border-[#eee5d7] last:border-b-0 lg:grid" style={gridStyle}>
+      <div className="bg-[#201c17] px-4 py-3 text-[#fff8ea] lg:border-r lg:border-[#eee5d7] lg:bg-[#fbf7ee] lg:text-[#201c17]">
+        <div className="text-sm font-bold">{dimension.label}</div>
+        <div className="mt-2 inline-flex rounded-full bg-[#fff2de] px-2 py-1 text-[11px] font-medium text-[#8a3a12] lg:bg-white">
+          {confidenceLabel(dimension.confidence)}
+        </div>
+      </div>
+      {people.map(person => {
+        const view = viewsByPerson.get(person.id);
+        return (
+          <div key={`${dimension.key}-${person.id}`} className="border-b border-[#eee5d7] px-4 py-3 text-sm leading-6 text-[#4d4439] lg:border-b-0 lg:border-r">
+            <div className="mb-2 text-xs font-semibold text-[#201c17] lg:hidden">{person.name}</div>
+            {view?.view || '这一维度的公开资料仍需补充。'}
+          </div>
+        );
+      })}
+      <div className="px-4 py-3 text-sm leading-6 text-[#4d4439]">
+        <div className="mb-2 text-xs font-semibold text-[#201c17] lg:hidden">差异</div>
+        <p>{dimension.differences}</p>
+        <p className="mt-2 text-xs leading-5 text-[#776f64]">{dimension.sharedView}</p>
+        {evidence.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {evidence.slice(0, 3).map((item, index) => (
+              <a
+                key={item.id}
+                href={`#${evidenceAnchorId(item.id)}`}
+                className="text-xs font-bold text-[#c85f20] hover:text-orange-800"
+              >
+                证据 {index + 1}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function TimelineSection({ content }: { content: CompareReportContent }) {
+  const groups = groupTimeline(content.timeline, content.people);
+
+  return (
+    <section className="mb-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-5">
+      <SectionHead title="变化时间线" note="只放已有日期、年份或明确阶段的证据。" />
+      <div className="grid gap-3 lg:grid-cols-2">
+        {groups.map(group => (
+          <article key={group.key} className="rounded-lg border border-[#ded4c4] bg-white p-4">
+            <h3 className="text-sm font-semibold text-[#201c17]">{group.label}</h3>
+            <div className="mt-3 space-y-3">
+              {group.items.map((item, index) => (
+                <div key={`${group.key}-${item.description}-${index}`} className="relative pl-5">
+                  <span className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-[#c85f20]" />
+                  {index < group.items.length - 1 && <span className="absolute bottom-[-14px] left-[3px] top-4 w-px bg-[#eadfce]" />}
+                  <time className="text-[11px] font-bold text-[#c85f20]">{formatTimelineDate(item.date)}</time>
+                  {item.sourceUrl ? (
+                    <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="mt-1 block text-xs leading-5 text-[#4d4439] hover:text-[#c85f20]">
+                      {item.description}
+                    </a>
+                  ) : (
+                    <p className="mt-1 text-xs leading-5 text-[#4d4439]">{item.description}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function AnalysisSection({ sections }: { sections: CompareReportContent['analysisSections'] }) {
+  return (
+    <section className="mb-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-5">
+      <SectionHead title="完整分析" note="把长结论拆成几个可检查的问题。" />
+      <div className="grid gap-3 md:grid-cols-2">
+        {sections.map(section => (
+          <article key={section.title} className="rounded-lg border border-[#ded4c4] bg-white p-4">
+            <h3 className="text-sm font-semibold text-[#201c17]">{section.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-[#4d4439]">{section.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EvidenceSection({ evidence }: { evidence: ReportEvidence[] }) {
+  return (
+    <section className="mb-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-5">
+      <SectionHead title="关键证据" note="报告判断只引用这里能回看的来源。" />
+      <div className="grid gap-3 md:grid-cols-2">
+        {evidence.map(item => (
+          <article id={evidenceAnchorId(item.id)} key={item.id} className="scroll-mt-24 rounded-lg border border-[#ded4c4] bg-white p-4">
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <span className="rounded-md bg-[#f8f1e7] px-2 py-0.5 text-[11px] text-[#5f5548]">{item.personName}</span>
+              <span className="rounded-md bg-[#f8f1e7] px-2 py-0.5 text-[11px] text-[#5f5548]">{item.sourceType}</span>
+            </div>
+            {item.url ? (
+              <a href={item.url} target="_blank" rel="noreferrer" className="text-sm font-semibold leading-6 text-[#201c17] hover:text-[#c85f20]">
+                {item.title}
+              </a>
+            ) : (
+              <h3 className="text-sm font-semibold leading-6 text-[#201c17]">{item.title}</h3>
+            )}
+            <p className="mt-2 text-xs leading-5 text-[#5f5548]">{item.excerpt}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function SectionHead({ title, note }: { title: string; note: string }) {
+  return (
+    <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h2 className="text-[15px] font-semibold text-[#201c17]">{title}</h2>
+        <p className="mt-1 text-xs leading-5 text-[#776f64]">{note}</p>
+      </div>
     </div>
   );
 }
@@ -285,31 +559,29 @@ function PendingOrFailedPanel({
 }: {
   status: string;
   errorMessage: string | null;
-  events: Array<{ id: string; status: string; title: string; message: string | null; createdAt: Date }>;
+  events: ReportEvent[];
 }) {
   return (
-    <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <div>
-          <div className="text-xs font-medium text-orange-600">生成进度</div>
-          <h2 className="mt-1 text-lg font-semibold text-stone-950">
-            {status === 'failed' ? '报告生成失败' : '报告正在生成'}
-          </h2>
-        </div>
+    <section className="rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-5 shadow-[0_18px_45px_rgba(71,52,26,0.10)]">
+      <div className="mb-4">
+        <div className="text-xs font-bold text-[#c85f20]">生成进度</div>
+        <h2 className="mt-1 text-lg font-semibold text-[#201c17]">
+          {status === 'failed' ? '报告生成失败' : '报告正在生成'}
+        </h2>
       </div>
       {errorMessage && (
-        <div className="mb-4 rounded-xl border border-amber-100 bg-amber-50 px-3 py-2 text-sm leading-6 text-amber-800">
+        <div className="mb-4 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2 text-sm leading-6 text-amber-800">
           {errorMessage}
         </div>
       )}
       <div className="grid gap-2 md:grid-cols-2">
         {events.map(event => (
-          <div key={event.id} className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-2">
+          <div key={event.id} className="rounded-lg border border-[#ded4c4] bg-white px-3 py-2">
             <div className="flex items-center justify-between gap-2">
-              <span className="text-sm font-medium text-stone-900">{event.title}</span>
+              <span className="text-sm font-medium text-[#201c17]">{event.title}</span>
               <span className={`rounded-md px-2 py-0.5 text-[11px] ${eventStatusClass(event.status)}`}>{eventStatusLabel(event.status)}</span>
             </div>
-            {event.message && <p className="mt-1 text-xs leading-5 text-stone-500">{event.message}</p>}
+            {event.message && <p className="mt-1 text-xs leading-5 text-[#776f64]">{event.message}</p>}
           </div>
         ))}
       </div>
@@ -317,31 +589,16 @@ function PendingOrFailedPanel({
   );
 }
 
-function AvatarStack({ people }: { people: Array<{ id: string; name: string; avatarUrl: string | null }> }) {
+function PersonAvatar({ person, size }: { person: { name: string; avatarUrl: string | null }; size: number }) {
   return (
-    <div className="flex -space-x-2">
-      {people.map(person => (
-        <span key={person.id} className="relative inline-flex h-9 w-9 overflow-hidden rounded-lg bg-stone-100 ring-2 ring-white">
-          {person.avatarUrl ? (
-            <Image src={person.avatarUrl} alt={person.name} fill sizes="36px" className="object-cover object-top" />
-          ) : (
-            <span className="flex h-full w-full items-center justify-center bg-orange-500 text-xs font-semibold text-white">
-              {person.name.charAt(0)}
-            </span>
-          )}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function PersonAvatar({ person }: { person: { name: string; avatarUrl: string | null } }) {
-  return (
-    <span className="relative inline-flex h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl bg-stone-100">
+    <span
+      className="relative inline-flex flex-shrink-0 overflow-hidden rounded-lg bg-[#ebe2d4] ring-1 ring-[#5b4a33]/15"
+      style={{ width: size, height: size }}
+    >
       {person.avatarUrl ? (
-        <Image src={person.avatarUrl} alt={person.name} fill sizes="48px" className="object-cover object-top" />
+        <Image src={person.avatarUrl} alt={person.name} fill sizes={`${size}px`} className="object-cover object-top" />
       ) : (
-        <span className="flex h-full w-full items-center justify-center bg-orange-500 text-sm font-semibold text-white">
+        <span className="flex h-full w-full items-center justify-center bg-[#c85f20] text-sm font-semibold text-white">
           {person.name.charAt(0)}
         </span>
       )}
@@ -349,17 +606,19 @@ function PersonAvatar({ person }: { person: { name: string; avatarUrl: string | 
   );
 }
 
-function ReportStat({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="rounded-lg bg-stone-50 px-2 py-2">
-      <div className="text-lg font-semibold text-stone-950">{value}</div>
-      <div className="mt-0.5 text-[11px] text-stone-500">{label}</div>
-    </div>
-  );
-}
+function groupTimeline(timeline: ReportTimelineItem[], people: ReportPerson[]) {
+  const nameById = new Map(people.map(person => [person.id, person.name]));
+  const groups = new Map<string, { key: string; label: string; items: ReportTimelineItem[] }>();
 
-function SectionTitle({ title }: { title: string }) {
-  return <h2 className="mb-3 text-base font-semibold text-stone-950">{title}</h2>;
+  for (const item of timeline) {
+    const key = item.personId || 'shared';
+    const label = item.personId ? (nameById.get(item.personId) || item.label) : '共同线索';
+    const group = groups.get(key) || { key, label, items: [] };
+    group.items.push(item);
+    groups.set(key, group);
+  }
+
+  return [...groups.values()].filter(group => group.items.length > 0);
 }
 
 function isReportContent(value: unknown): value is CompareReportContent {
@@ -379,6 +638,10 @@ function sourceCountFromSnapshot(value: unknown, content: CompareReportContent |
   if (!value || typeof value !== 'object' || Array.isArray(value)) return 0;
   const count = (value as { evidenceCount?: unknown }).evidenceCount;
   return typeof count === 'number' && Number.isFinite(count) ? count : 0;
+}
+
+function evidenceAnchorId(id: string): string {
+  return `evidence-${id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
 }
 
 function statusLabel(status: string): string {
@@ -413,11 +676,6 @@ function confidenceLabel(confidence: string): string {
   if (confidence === 'high') return '资料较充分';
   if (confidence === 'medium') return '资料可用';
   return '谨慎参考';
-}
-
-function gridClass(count: number): string {
-  if (count >= 3) return 'grid gap-4 lg:grid-cols-3';
-  return 'grid gap-4 md:grid-cols-2';
 }
 
 function formatDate(value: Date | string | null | undefined): string {

@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server';
 import { fetchQualityReviewQueue, normalizeIssueType, normalizeSeverity } from '@/lib/quality-review';
+import { requireAdminOrResponse } from '@/lib/auth/permissions';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
+  const { response } = await requireAdminOrResponse();
+  if (response) return response;
+
   try {
     const { searchParams } = new URL(request.url);
     const data = await fetchQualityReviewQueue({

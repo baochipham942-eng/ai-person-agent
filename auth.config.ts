@@ -13,14 +13,12 @@ export const authConfig = {
     callbacks: {
         authorized({ auth, request: { nextUrl } }) {
             const isLoggedIn = !!auth?.user;
+            const isAdminRoute = nextUrl.pathname.startsWith('/admin');
 
-            // 允许所有用户访问首页、详情页和搜索接口
-            // 受保护的路由：仅部分 API 可能需要保护，或者管理页面
-            const isProtectedRoute = false;
-
-            if (isProtectedRoute) {
-                if (isLoggedIn) return true;
-                return false; // Redirect unauthenticated users to login page
+            if (isAdminRoute) {
+                if (!isLoggedIn) return false;
+                if (auth.user?.role === 'ADMIN' && auth.user?.status === 'ACTIVE') return true;
+                return Response.redirect(new URL('/', nextUrl));
             }
 
             // 已登录用户访问 /login，重定向到首页

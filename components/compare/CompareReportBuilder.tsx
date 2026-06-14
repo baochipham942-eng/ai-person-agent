@@ -448,39 +448,40 @@ function AgentProgressModal({
   const failed = reportStatus === 'failed';
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-stone-950/35 px-4 py-6">
-      <div className="w-full max-w-xl rounded-2xl border border-stone-200 bg-white p-5 shadow-2xl">
-        <div className="flex items-start justify-between gap-4 border-b border-stone-100 pb-4">
-          <div>
-            <div className="text-xs font-medium text-orange-600">Agent 执行</div>
-            <h2 className="mt-1 text-lg font-semibold text-stone-950">
-              {completed ? '对比报告已完成' : failed ? '对比任务失败' : '正在执行人物对比'}
-            </h2>
-            <p className="mt-1 text-xs leading-5 text-stone-500">
-              {completed ? '产物已经生成，可以进入详情页查看。' : '系统正在整理公开资料、观点差异和证据链。'}
-            </p>
+    <div className="fixed inset-0 z-[80] overflow-y-auto bg-stone-950/35 px-4 py-4 sm:py-6">
+      <div className="flex min-h-full items-center justify-center">
+        <div className="flex max-h-[calc(100vh-2rem)] w-full max-w-xl flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white p-5 shadow-2xl sm:max-h-[calc(100vh-3rem)]">
+          <div className="flex shrink-0 items-start justify-between gap-4 border-b border-stone-100 pb-4">
+            <div>
+              <div className="text-xs font-medium text-orange-600">Agent 执行</div>
+              <h2 className="mt-1 text-lg font-semibold text-stone-950">
+                {completed ? '对比报告已完成' : failed ? '对比任务失败' : '正在执行人物对比'}
+              </h2>
+              <p className="mt-1 text-xs leading-5 text-stone-500">
+                {completed ? '产物已经生成，可以进入详情页查看。' : '系统正在整理公开资料、观点差异和证据链。'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-lg px-2 py-1 text-sm text-stone-400 hover:bg-stone-100 hover:text-stone-700"
+              aria-label="关闭执行弹窗"
+            >
+              x
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-lg px-2 py-1 text-sm text-stone-400 hover:bg-stone-100 hover:text-stone-700"
-            aria-label="关闭执行弹窗"
-          >
-            x
-          </button>
-        </div>
 
         {completed && reportId ? (
           <button
             type="button"
             onClick={onOpenReport}
-            className="mt-4 w-full rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-4 text-left transition hover:border-emerald-200 hover:bg-emerald-100/70"
+            className="mt-4 w-full shrink-0 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-4 text-left transition hover:border-emerald-200 hover:bg-emerald-100/70"
           >
             <div className="text-sm font-semibold text-emerald-900">{reportTitle || '人物对比报告'}</div>
             <div className="mt-1 text-xs leading-5 text-emerald-700">点击进入人物对比详情页</div>
           </button>
         ) : (
-          <div className="mt-4 space-y-2">
+          <div className="mt-4 min-h-0 flex-1 space-y-2 overflow-y-auto pr-1">
             {creating && (
               <div className="rounded-lg bg-orange-50 px-3 py-2 text-xs leading-5 text-orange-700 ring-1 ring-orange-100">
                 正在启动对比任务
@@ -507,10 +508,11 @@ function AgentProgressModal({
         )}
 
         {failed && (
-          <div className="mt-4 rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs leading-5 text-red-700">
+          <div className="mt-4 shrink-0 rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs leading-5 text-red-700">
             任务没有完成，可以关闭弹窗后重新开始。
           </div>
         )}
+        </div>
       </div>
     </div>
   );

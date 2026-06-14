@@ -2,10 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
 import { getWikidataEntityWithTranslation } from '@/lib/datasources/wikidata';
 import { inngest } from '@/lib/inngest/client';
+import { requireAdminOrSecretResponse } from '@/lib/auth/permissions';
 
 // POST /api/admin/fix-qid
 // Body: { oldQid?: string, personId?: string, newQid: string }
 export async function POST(request: NextRequest) {
+    const { response } = await requireAdminOrSecretResponse(request);
+    if (response) return response;
+
     try {
         const { oldQid, personId, newQid } = await request.json();
 

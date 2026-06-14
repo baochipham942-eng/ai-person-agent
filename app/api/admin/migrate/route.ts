@@ -1,12 +1,10 @@
 import { prisma } from '@/lib/db/prisma';
 import { NextResponse } from 'next/server';
+import { requireAdminOrSecretResponse } from '@/lib/auth/permissions';
 
 export async function POST(request: Request) {
-  // 简单的安全检查
-  const authHeader = request.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.AUTH_SECRET}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const { response } = await requireAdminOrSecretResponse(request);
+  if (response) return response;
 
   try {
     // 执行原生 SQL 添加新字段

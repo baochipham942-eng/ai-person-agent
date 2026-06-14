@@ -7,46 +7,66 @@ import { searchTavily, isTavilyConfigured, type TavilySearchResult } from '@/lib
 
 export const DEFAULT_COMPARE_TOPIC = 'AI 观点、商业路径、安全治理、开放策略、算力基础设施、未来判断';
 
+export const COMPARE_REPORT_MODULE_KEYS = [
+  'hero',
+  'coverage',
+  'pkStage',
+  'viewpointMatrix',
+  'timeline',
+  'analysis',
+  'evidence',
+] as const;
+
+export type CompareReportModuleKey = typeof COMPARE_REPORT_MODULE_KEYS[number];
+
 export const COMPARE_REPORT_STYLE_COMPONENTS = [
   {
+    key: 'hero',
     component: 'ReportHero',
     fields: ['title', 'subtitle', 'summary'],
     contract: '说明这份报告在比较谁、围绕什么问题、基于多少资料。标题直接用人物名和报告类型，summary 用一段话交代阅读入口。',
   },
   {
+    key: 'pkStage',
     component: 'VerdictCard',
     fields: ['verdict.headline', 'verdict.body'],
     contract: '给出全篇最核心判断。headline 要像编辑判断，不要写成泛泛概括；body 解释差异来自角色、组织位置、产品路径或公开观点。',
   },
   {
+    key: 'coverage',
     component: 'CoverageRail',
     fields: ['coverage'],
     contract: '只描述来源覆盖和资料限制，用普通用户能理解的话。不要出现数据库、RawPool、pipeline、agent、verifier 等内部词。',
   },
   {
+    key: 'pkStage',
     component: 'StanceCards',
     fields: ['people[].stanceSummary'],
     contract: '每个人一张短卡，先说身份位置，再说主要关注点或代表成果。每张卡只写一个清楚角度。',
   },
   {
+    key: 'viewpointMatrix',
     component: 'ViewpointMatrix',
     fields: ['dimensions'],
     contract: '每个维度必须同时有共同点、差异点和每个人自己的视角。差异要可比较，不要把两个人分别介绍完就结束。',
   },
   {
+    key: 'timeline',
     component: 'TimelineStrip',
     fields: ['timeline'],
     contract: '只放输入里已有日期或成果年份，用来解释观点或路径如何变化；没有时间证据时宁可少写。',
   },
   {
+    key: 'analysis',
     component: 'AnalysisCards',
     fields: ['analysisSections'],
     contract: '把长分析拆成 2 到 4 张卡，每张卡围绕一个问题：为什么可比、差异从哪里来、读者该谨慎看哪里。',
   },
   {
+    key: 'evidence',
     component: 'EvidenceCards',
     fields: ['evidence'],
-    contract: '直接复用输入 evidence，不新增来源。excerpt 保留能支撑判断的短摘录。',
+    contract: '产品代码会直接复用输入 evidence 渲染证据卡。模型不要复制 evidence 列表，只需要在 dimensions.evidenceIds 里引用可支撑判断的证据 id。',
   },
 ] as const;
 
@@ -73,7 +93,12 @@ export const COMPARE_REPORT_STEPS = [
 export type CompareReportStep = typeof COMPARE_REPORT_STEPS[number]['step'];
 export type CompareReportRunStatus = 'pending' | 'running' | 'completed' | 'failed';
 
+export interface CompareReportLayout {
+  modules: CompareReportModuleKey[];
+}
+
 export interface CompareReportContent {
+  layout?: CompareReportLayout;
   title: string;
   subtitle: string;
   summary: string;
@@ -132,6 +157,8 @@ export interface ReportEvidence {
   publishedAt: string | null;
   excerpt: string;
 }
+
+const ReportModuleKeySchema = z.enum(COMPARE_REPORT_MODULE_KEYS);
 
 interface LoadedPersonContext {
   id: string;
@@ -199,6 +226,9 @@ interface ClaimPack {
 }
 
 const ReportContentSchema: z.ZodType<CompareReportContent> = z.object({
+  layout: z.object({
+    modules: z.array(ReportModuleKeySchema).min(1).max(COMPARE_REPORT_MODULE_KEYS.length),
+  }).optional(),
   title: z.string().min(1),
   subtitle: z.string().min(1),
   summary: z.string().min(1),
@@ -769,11 +799,43 @@ function buildEvidencePack(
   const webSearchErrors = uniqueStrings(webResults.flatMap(item => item.error ? [item.error] : []));
 
   return {
-    evidence: evidence.slice(0, 36),
+    evidence: balanceEvidenceByPerson(evidence, contexts.map(person => person.id), 36),
     localSourceCount,
     webSourceCount,
     webSearchErrors,
   };
+}
+
+function balanceEvidenceByPerson(evidence: ReportEvidence[], personIds: string[], limit: number): ReportEvidence[] {
+  if (personIds.length === 0) return evidence.slice(0, limit);
+
+  const buckets = new Map<string, ReportEvidence[]>();
+  for (const personId of personIds) buckets.set(personId, []);
+  for (const item of evidence) {
+    const bucket = buckets.get(item.personId);
+    if (bucket) bucket.push(item);
+  }
+
+  const selected: ReportEvidence[] = [];
+  const selectedIds = new Set<string>();
+  const initialPerPerson = Math.max(1, Math.floor(limit / personIds.length));
+
+  for (const personId of personIds) {
+    for (const item of (buckets.get(personId) || []).slice(0, initialPerPerson)) {
+      if (selectedIds.has(item.id)) continue;
+      selected.push(item);
+      selectedIds.add(item.id);
+    }
+  }
+
+  for (const item of evidence) {
+    if (selected.length >= limit) break;
+    if (selectedIds.has(item.id)) continue;
+    selected.push(item);
+    selectedIds.add(item.id);
+  }
+
+  return selected.slice(0, limit);
 }
 
 function extractClaims(contexts: LoadedPersonContext[], evidencePack: EvidencePack): ClaimPack {
@@ -800,9 +862,51 @@ function extractClaims(contexts: LoadedPersonContext[], evidencePack: EvidencePa
 }
 
 function alignClaims(contexts: LoadedPersonContext[], claims: ClaimPack, evidencePack: EvidencePack): CompareReportContent['dimensions'] {
-  const evidenceIds = evidencePack.evidence.slice(0, 8).map(item => item.id);
+  const personIds = contexts.map(person => person.id);
+  const evidenceIds = balancedEvidenceIds(evidencePack.evidence, personIds, 6);
   const claimByPerson = new Map(claims.people.map(person => [person.personId, person.claims]));
   const sharedTopics = intersection(contexts.map(person => person.topics)).slice(0, 4);
+  const recentEvidenceByPerson = contexts.map(person => ({
+    person,
+    evidence: evidencePack.evidence
+      .filter(item => item.personId === person.id && isRecentPublishedEvidence(item))
+      .slice(0, 2),
+  }));
+  const hasRecentEvidenceForAll = recentEvidenceByPerson.every(item => item.evidence.length > 0);
+  const thirdDimension: CompareReportContent['dimensions'][number] = hasRecentEvidenceForAll
+    ? {
+      key: 'recent_change',
+      label: '近期变化',
+      sharedView: '三人都有近两年可核验的公开资料，可用来观察他们的路线是否在强化或调整。',
+      differences: recentEvidenceByPerson.map(item => {
+        const latest = item.evidence[0];
+        return `${item.person.name} 的近期线索是 ${latest.title}`;
+      }).join('；'),
+      personViews: recentEvidenceByPerson.map(item => ({
+        personId: item.person.id,
+        personName: item.person.name,
+        view: item.evidence.map(evidence => `${formatEvidenceDate(evidence.publishedAt)}：${evidence.title}`).join('；'),
+      })),
+      confidence: 'medium',
+      evidenceIds: recentEvidenceByPerson.flatMap(item => item.evidence.map(evidence => evidence.id)).slice(0, 6),
+    }
+    : {
+      key: 'coverage_strength',
+      label: '资料覆盖和证据强度',
+      sharedView: '这组比较可以成立，但每个人的直接观点资料厚度不同，强判断要按证据强弱分层看。',
+      differences: contexts.map(person => {
+        const personEvidence = evidencePack.evidence.filter(item => item.personId === person.id);
+        const datedEvidence = personEvidence.filter(item => item.publishedAt).length;
+        return `${person.name} 有 ${personEvidence.length} 条可展开证据，其中 ${datedEvidence} 条带明确发布时间`;
+      }).join('；'),
+      personViews: contexts.map(person => ({
+        personId: person.id,
+        personName: person.name,
+        view: buildCoverageStrengthView(person, evidencePack.evidence.filter(item => item.personId === person.id)),
+      })),
+      confidence: 'high',
+      evidenceIds,
+    };
 
   return [
     {
@@ -838,23 +942,85 @@ function alignClaims(contexts: LoadedPersonContext[], claims: ClaimPack, evidenc
       confidence: 'medium',
       evidenceIds,
     },
-    {
-      key: 'recent_change',
-      label: '近期变化',
-      sharedView: '近期公开动态会影响外界对他们路线的判断。',
-      differences: contexts.map(person => {
-        const latest = person.activityEvents[0];
-        return `${person.name}${latest ? `最近的公开线索是 ${latest.title}` : '近期动态资料较少'}`;
-      }).join('；'),
-      personViews: contexts.map(person => ({
-        personId: person.id,
-        personName: person.name,
-        view: person.activityEvents.slice(0, 2).map(event => event.title).join('；') || '近期动态资料较少。',
-      })),
-      confidence: evidencePack.webSourceCount > 0 ? 'medium' : 'low',
-      evidenceIds,
-    },
+    thirdDimension,
   ];
+}
+
+function balancedEvidenceIds(evidence: ReportEvidence[], personIds: string[], limit: number): string[] {
+  const selected: string[] = [];
+  const seen = new Set<string>();
+  const add = (item: ReportEvidence | undefined) => {
+    if (!item || seen.has(item.id) || selected.length >= limit) return;
+    seen.add(item.id);
+    selected.push(item.id);
+  };
+
+  for (const personId of personIds) {
+    add(evidence.find(item => item.personId === personId));
+  }
+
+  for (const item of balanceEvidenceByPerson(evidence, personIds, limit * 2)) {
+    add(item);
+  }
+
+  return selected;
+}
+
+function normalizeDimensionEvidenceIds(
+  ids: string[],
+  evidencePack: EvidencePack,
+  personIds: string[],
+  limit = 6,
+  filterEvidence?: (item: ReportEvidence) => boolean
+): string[] {
+  const evidencePool = filterEvidence ? evidencePack.evidence.filter(filterEvidence) : evidencePack.evidence;
+  const evidenceById = new Map(evidencePool.map(item => [item.id, item]));
+  const selected: string[] = [];
+  const seen = new Set<string>();
+  const perPersonLimit = Math.max(1, Math.ceil(limit / Math.max(personIds.length, 1)));
+  const selectedCountByPerson = new Map<string, number>();
+  const add = (id: string | undefined) => {
+    if (!id || seen.has(id) || selected.length >= limit) return;
+    const evidence = evidenceById.get(id);
+    if (!evidence) return;
+    const count = selectedCountByPerson.get(evidence.personId) || 0;
+    if (count >= perPersonLimit) return;
+    seen.add(id);
+    selectedCountByPerson.set(evidence.personId, count + 1);
+    selected.push(id);
+  };
+
+  for (const personId of personIds) {
+    add(ids.find(id => evidenceById.get(id)?.personId === personId));
+    add(evidencePool.find(item => item.personId === personId)?.id);
+  }
+
+  for (const id of ids) add(id);
+  for (const id of balancedEvidenceIds(evidencePool, personIds, limit * 2)) add(id);
+
+  return selected;
+}
+
+function isRecentPublishedEvidence(item: ReportEvidence): boolean {
+  if (!item.publishedAt) return false;
+  const publishedAt = new Date(item.publishedAt);
+  if (Number.isNaN(publishedAt.getTime())) return false;
+  const twoYearsAgo = new Date();
+  twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+  return publishedAt >= twoYearsAgo;
+}
+
+function formatEvidenceDate(value: string | null): string {
+  if (!value) return '未标日期';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '未标日期';
+  return date.toISOString().slice(0, 10);
+}
+
+function buildCoverageStrengthView(person: LoadedPersonContext, evidence: ReportEvidence[]): string {
+  const datedEvidenceCount = evidence.filter(item => item.publishedAt).length;
+  const sourceTypes = uniqueStrings(evidence.map(item => item.sourceType)).slice(0, 3);
+  return `${person.name} 当前有 ${evidence.length} 条可展开证据，${datedEvidenceCount} 条带明确发布时间，来源主要来自 ${sourceTypes.join('、') || '公开资料'}。`;
 }
 
 async function generateReportContent(input: {
@@ -887,7 +1053,7 @@ async function generateReportContent(input: {
       limitations: [...input.coverage.limitations, ...input.evidencePack.webSearchErrors],
     });
 
-    const parsed = ReportContentSchema.parse(raw);
+    const parsed = ReportContentSchema.parse(prepareMimoReportCandidate(raw, fallback));
     return normalizeGeneratedContent(parsed, fallback, input);
   } catch (error) {
     console.warn('[compare-report-agent] MiMo generation failed, using fallback:', error);
@@ -904,6 +1070,76 @@ async function generateReportContent(input: {
   }
 }
 
+function prepareMimoReportCandidate(raw: unknown, fallback: CompareReportContent): CompareReportContent {
+  const record = asPlainRecord(unwrapMimoReportObject(raw));
+  if (!record) return fallback;
+
+  const fallbackLayout = fallback.layout || normalizeCompareReportLayout(null, fallback);
+  const layoutRecord = asPlainRecord(record.layout);
+  const coverageRecord = asPlainRecord(record.coverage);
+  const limitations = coverageRecord ? coverageRecord.limitations : undefined;
+
+  return {
+    layout: {
+      modules: Array.isArray(layoutRecord?.modules)
+        ? layoutRecord.modules
+        : fallbackLayout.modules,
+    },
+    title: stringOrFallback(record.title, fallback.title),
+    subtitle: stringOrFallback(record.subtitle, fallback.subtitle),
+    summary: stringOrFallback(record.summary, fallback.summary),
+    verdict: asPlainRecord(record.verdict) ? record.verdict as CompareReportContent['verdict'] : fallback.verdict,
+    people: Array.isArray(record.people) ? record.people as CompareReportContent['people'] : fallback.people,
+    dimensions: Array.isArray(record.dimensions) ? record.dimensions as CompareReportContent['dimensions'] : fallback.dimensions,
+    timeline: Array.isArray(record.timeline) ? record.timeline as CompareReportContent['timeline'] : fallback.timeline,
+    evidence: Array.isArray(record.evidence) ? record.evidence as ReportEvidence[] : [],
+    analysisSections: Array.isArray(record.analysisSections)
+      ? record.analysisSections as CompareReportContent['analysisSections']
+      : fallback.analysisSections,
+    coverage: {
+      sourceCount: numberOrFallback(coverageRecord?.sourceCount, fallback.coverage.sourceCount),
+      localSourceCount: numberOrFallback(coverageRecord?.localSourceCount, fallback.coverage.localSourceCount),
+      webSourceCount: numberOrFallback(coverageRecord?.webSourceCount, fallback.coverage.webSourceCount),
+      limitations: Array.isArray(limitations)
+        ? limitations
+        : typeof limitations === 'string' && limitations.trim()
+          ? [limitations.trim()]
+          : fallback.coverage.limitations,
+    },
+  };
+}
+
+function unwrapMimoReportObject(raw: unknown): unknown {
+  let current = raw;
+  const wrapperKeys = ['report', 'content', 'reportContent', 'compareReport', 'data', 'result'];
+
+  for (let depth = 0; depth < 3; depth += 1) {
+    const record = asPlainRecord(current);
+    if (!record) return current;
+    if (typeof record.title === 'string' || Array.isArray(record.people) || Array.isArray(record.dimensions)) {
+      return record;
+    }
+    const nextKey = wrapperKeys.find(key => asPlainRecord(record[key]));
+    if (!nextKey) return record;
+    current = record[nextKey];
+  }
+
+  return current;
+}
+
+function asPlainRecord(value: unknown): Record<string, unknown> | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  return value as Record<string, unknown>;
+}
+
+function stringOrFallback(value: unknown, fallback: string): string {
+  return typeof value === 'string' && value.trim() ? value : fallback;
+}
+
+function numberOrFallback(value: unknown, fallback: number): number {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+}
+
 function verifyReportContent(
   content: CompareReportContent,
   evidencePack: EvidencePack,
@@ -918,6 +1154,7 @@ function verifyReportContent(
 
   return sanitizeCompareReportContent({
     ...content,
+    layout: normalizeCompareReportLayout(content.layout, content),
     title: stripInternalTerms(content.title),
     subtitle: stripInternalTerms(content.subtitle),
     summary: stripInternalTerms(content.summary),
@@ -941,6 +1178,7 @@ function verifyReportContent(
 export function sanitizeCompareReportContent(content: CompareReportContent): CompareReportContent {
   return {
     ...content,
+    layout: normalizeCompareReportLayout(content.layout, content),
     title: cleanPublicText(content.title),
     subtitle: cleanPublicText(content.subtitle),
     summary: cleanPublicText(content.summary),
@@ -988,6 +1226,48 @@ export function sanitizeCompareReportContent(content: CompareReportContent): Com
   };
 }
 
+const REQUIRED_COMPARE_REPORT_MODULES: CompareReportModuleKey[] = ['hero', 'coverage', 'pkStage', 'viewpointMatrix', 'evidence'];
+const DEFAULT_COMPARE_REPORT_MODULES: CompareReportModuleKey[] = [
+  ...REQUIRED_COMPARE_REPORT_MODULES,
+  'timeline',
+  'analysis',
+  'evidence',
+];
+const COMPARE_REPORT_MODULE_SET = new Set<CompareReportModuleKey>(COMPARE_REPORT_MODULE_KEYS);
+
+export function normalizeCompareReportLayout(
+  layout: CompareReportLayout | null | undefined,
+  content?: Pick<CompareReportContent, 'dimensions' | 'timeline' | 'analysisSections' | 'evidence'>
+): CompareReportLayout {
+  const requested = Array.isArray(layout?.modules)
+    ? layout.modules.filter((item): item is CompareReportModuleKey => COMPARE_REPORT_MODULE_SET.has(item))
+    : [];
+  const contentModules: CompareReportModuleKey[] = content
+    ? [
+      ...(content.timeline.length > 0 ? ['timeline' as const] : []),
+      ...(content.analysisSections.length > 0 ? ['analysis' as const] : []),
+      ...(content.evidence.length > 0 ? ['evidence' as const] : []),
+    ]
+    : [];
+  const selected = uniqueModuleKeys([
+    ...REQUIRED_COMPARE_REPORT_MODULES,
+    ...(requested.length ? requested : DEFAULT_COMPARE_REPORT_MODULES),
+    ...contentModules,
+  ]);
+  const available = selected.filter(module => {
+    if (!content) return true;
+    if (module === 'viewpointMatrix') return content.dimensions.length > 0;
+    if (module === 'timeline') return content.timeline.length > 0;
+    if (module === 'analysis') return content.analysisSections.length > 0;
+    if (module === 'evidence') return content.evidence.length > 0;
+    return true;
+  });
+
+  return {
+    modules: available.length ? available : REQUIRED_COMPARE_REPORT_MODULES,
+  };
+}
+
 function buildFallbackReportContent(input: {
   title: string;
   topic: string;
@@ -1001,6 +1281,9 @@ function buildFallbackReportContent(input: {
   const webSourceCount = input.evidencePack.webSourceCount;
 
   return {
+    layout: {
+      modules: DEFAULT_COMPARE_REPORT_MODULES,
+    },
     title: input.title || `${names} 人物对比报告`,
     subtitle: input.topic,
     summary: `${names} 的对比重点在于他们分别通过哪些组织、产品和公开观点影响 AI 方向。当前报告基于 ${localSourceCount + webSourceCount} 条公开资料整理。`,
@@ -1018,7 +1301,7 @@ function buildFallbackReportContent(input: {
     })),
     dimensions: input.dimensions,
     timeline: buildTimeline(input.contexts, input.evidencePack),
-    evidence: input.evidencePack.evidence.slice(0, 18),
+    evidence: input.evidencePack.evidence.slice(0, 36),
     analysisSections: [
       {
         title: '他们真正可比的地方',
@@ -1075,10 +1358,12 @@ function normalizeGeneratedContent(
   }
 ): CompareReportContent {
   const knownEvidenceIds = new Set(input.evidencePack.evidence.map(item => item.id));
+  const personIds = input.contexts.map(person => person.id);
 
   return {
     ...fallback,
     ...content,
+    layout: normalizeCompareReportLayout(content.layout, content),
     people: input.contexts.map(person => {
       const generated = content.people.find(item => item.id === person.id);
       return {
@@ -1093,10 +1378,16 @@ function normalizeGeneratedContent(
     dimensions: content.dimensions.length > 0
       ? content.dimensions.map(dimension => ({
         ...dimension,
-        evidenceIds: dimension.evidenceIds.filter(id => knownEvidenceIds.has(id)).slice(0, 6),
+        evidenceIds: normalizeDimensionEvidenceIds(
+          dimension.evidenceIds.filter(id => knownEvidenceIds.has(id)),
+          input.evidencePack,
+          personIds,
+          6,
+          dimension.key === 'recent_change' ? isRecentPublishedEvidence : undefined
+        ),
       }))
       : fallback.dimensions,
-    evidence: input.evidencePack.evidence.slice(0, 18),
+    evidence: input.evidencePack.evidence.slice(0, 36),
     coverage: {
       sourceCount: input.evidencePack.evidence.length,
       localSourceCount: input.evidencePack.localSourceCount,
@@ -1122,8 +1413,11 @@ async function callMimo(task: Record<string, unknown>): Promise<unknown> {
       role: 'system',
       content: [
         '你是面向普通用户的人物观点对比报告作者。',
-        '页面导航、主站 header、按钮和页面壳由产品代码负责，你只生成报告内容 JSON。',
-        '你必须按输入的 styleComponents 填充内容：ReportHero、VerdictCard、CoverageRail、StanceCards、ViewpointMatrix、TimelineStrip、AnalysisCards、EvidenceCards。',
+        '页面导航、主站 header、按钮、页面壳、布局、组件样式、颜色和响应式规则全部由产品代码负责。',
+        '你只生成报告内容 JSON，并在 layout.modules 里从 allowedModules 选择本页需要展示的固定模块。',
+        '顶层 JSON 必须就是 CompareReportContent，不要套 report、content、data、result 或 markdown wrapper。',
+        '不要输出 HTML、CSS、className、组件代码、设计说明或页面使用说明。',
+        '你必须按输入的 moduleCatalog 填充内容：ReportHero、VerdictCard、CoverageRail、StanceCards、ViewpointMatrix、TimelineStrip、AnalysisCards、EvidenceCards。',
         '只根据输入 evidence 写作，不要编造来源，不要出现 raw item、库、字段、verifier、agent SDK 等内部表达。',
         '语言要自然、有判断，但每个强判断都要能回到 evidenceIds。',
         '只输出 JSON。',
@@ -1133,8 +1427,46 @@ async function callMimo(task: Record<string, unknown>): Promise<unknown> {
       role: 'user',
       content: JSON.stringify({
         schema: 'CompareReportContent',
-        styleComponents: COMPARE_REPORT_STYLE_COMPONENTS,
+        allowedModules: COMPARE_REPORT_MODULE_KEYS,
+        requiredModules: REQUIRED_COMPARE_REPORT_MODULES,
+        moduleCatalog: COMPARE_REPORT_STYLE_COMPONENTS,
+        outputShape: {
+          layout: { modules: ['hero', 'coverage', 'pkStage', 'viewpointMatrix', 'evidence'] },
+          title: 'string',
+          subtitle: 'string',
+          summary: 'string',
+          verdict: { headline: 'string', body: 'string' },
+          people: [{ id: 'person id from input', name: 'string', avatarUrl: null, currentTitle: null, stanceSummary: 'string', evidenceCount: 0 }],
+          dimensions: [{
+            key: 'stable snake_case key',
+            label: 'string',
+            sharedView: 'string',
+            differences: 'string',
+            personViews: [{ personId: 'person id from input', personName: 'string', view: 'string' }],
+            confidence: 'high | medium | low',
+            evidenceIds: ['input evidence id'],
+          }],
+          timeline: [],
+          evidence: [],
+          analysisSections: [{ title: 'string', body: 'string' }],
+          coverage: { sourceCount: 0, localSourceCount: 0, webSourceCount: 0, limitations: [] },
+        },
         requirements: [
+          '必须输出 outputShape 里的所有顶层字段，不能只输出 layout/modules 或 coverage',
+          'layout.modules 只能包含 allowedModules 里的 key，不要自创模块',
+          'layout.modules 至少包含 hero、coverage、pkStage、viewpointMatrix、evidence',
+          'timeline 只有存在明确日期、年份或阶段证据时才选择',
+          'analysis 只有能拆出 2 到 4 个清晰问题时才选择',
+          '只要输入 evidence 非空，layout.modules 必须包含 evidence',
+          'evidence 字段必须返回空数组 []，不要复制输入 evidence；产品代码会用输入证据回填',
+          'dimensions 每个维度最多引用 6 个 evidenceIds，且尽量覆盖不同人物',
+          'dimensions 每个维度的 evidenceIds 必须尽量覆盖每位人物，避免只引用单个人的来源',
+          '不要把抓取时间、检测时间、页面更新时间当成近期变化；recent_change 只能使用 evidence.publishedAt 明确的近两年材料',
+          'timeline 最多 6 条，analysisSections 保持 2 到 3 张短卡',
+          '如果 layout.modules 不含 timeline，timeline 必须返回空数组 []',
+          '如果 layout.modules 不含 analysis，analysisSections 必须返回空数组 []',
+          '如果 timeline 非空，layout.modules 必须包含 timeline',
+          '如果 analysisSections 非空，layout.modules 必须包含 analysis',
           'title/subtitle/summary/verdict 要适合公开页面展示',
           '不要生成主导航、面包屑、按钮、工具栏或页面说明文本',
           '核心判断必须先给结论，再解释原因',
@@ -1160,7 +1492,7 @@ async function callMimo(task: Record<string, unknown>): Promise<unknown> {
       messages,
       temperature: 0,
       top_p: 0.95,
-      max_completion_tokens: 4096,
+      max_completion_tokens: 6144,
       thinking: { type: 'disabled' },
       response_format: { type: 'json_object' },
     }),
@@ -1376,6 +1708,10 @@ function truncate(value: string, maxLength: number): string {
 
 function uniqueStrings(values: string[]): string[] {
   return [...new Set(values.map(item => item.trim()).filter(Boolean))];
+}
+
+function uniqueModuleKeys(values: CompareReportModuleKey[]): CompareReportModuleKey[] {
+  return [...new Set(values)];
 }
 
 function intersection(groups: string[][]): string[] {

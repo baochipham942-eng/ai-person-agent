@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
+import { requireAdminOrResponse } from '@/lib/auth/permissions';
 
 // GET /api/admin/list-people - List all people in database
 export async function GET() {
+    const { response } = await requireAdminOrResponse();
+    if (response) return response;
+
     try {
         const people = await prisma.people.findMany({
             select: {

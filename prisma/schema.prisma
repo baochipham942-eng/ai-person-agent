@@ -10,92 +10,291 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum UserStatus {
+  PENDING_EMAIL
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
 model User {
-  id              String          @id @default(cuid())
-  username        String          @unique
-  passwordHash    String
-  nickname        String?
-  createdAt       DateTime        @default(now())
-  avatar          String?
-  phone           String?         @unique
-  quickLoginToken String?
-  searchSessions  SearchSession[]
-  userProfile     UserProfile?
-  newsletterDeliveries NewsletterDeliveryLog[]
-  compareReports  CompareReport[]
+  id                      String                   @id @default(cuid())
+  username                String                   @unique
+  email                   String?                  @unique
+  emailVerifiedAt         DateTime?
+  passwordHash            String
+  nickname                String?
+  displayName             String?
+  role                    UserRole                 @default(USER)
+  status                  UserStatus               @default(PENDING_EMAIL)
+  tags                    String[]                 @default([])
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
+  lastLoginAt             DateTime?
+  lastSeenAt              DateTime?
+  failedLoginCount        Int                      @default(0)
+  lockedUntil             DateTime?
+  avatar                  String?
+  phone                   String?                  @unique
+  quickLoginToken         String?
+  searchSessions          SearchSession[]
+  userProfile             UserProfile?
+  newsletterDeliveries    NewsletterDeliveryLog[]
+  compareReports          CompareReport[]
+  emailVerificationTokens EmailVerificationToken[]
+  passwordResetTokens     PasswordResetToken[]
+  invitationCodeUses      InvitationCodeUse[]
+  quickLoginDevices       QuickLoginDevice[]
+  maintenanceJobs         MaintenanceJob[]
+  maintenanceSchedules    MaintenanceSchedule[]
+  createdInvitationCodes  InvitationCode[]         @relation("InvitationCodesCreated")
+  auditLogsAuthored       UserAuditLog[]           @relation("UserAuditActor")
+  auditLogsReceived       UserAuditLog[]           @relation("UserAuditTarget")
+
+  @@index([role])
+  @@index([status])
+  @@index([createdAt])
 }
 
 model InvitationCode {
-  id        String   @id @default(cuid())
-  code      String   @unique
-  type      String   @default("REGISTRATION")
-  maxUsages Int      @default(1)
-  usedCount Int      @default(0)
+  id          String              @id @default(cuid())
+  code        String              @unique
+  type        String              @default("REGISTRATION")
+  maxUsages   Int                 @default(1)
+  usedCount   Int                 @default(0)
+  expiresAt   DateTime
+  channel     String?
+  note        String?
+  createdById String?
+  createdAt   DateTime            @default(now())
+  createdBy   User?               @relation("InvitationCodesCreated", fields: [createdById], references: [id], onDelete: SetNull)
+  uses        InvitationCodeUse[]
+
+  @@index([expiresAt])
+  @@index([channel])
+  @@index([createdById])
+}
+
+model InvitationCodeUse {
+  id               String         @id @default(cuid())
+  invitationCodeId String
+  userId           String
+  usedAt           DateTime       @default(now())
+  invitationCode   InvitationCode @relation(fields: [invitationCodeId], references: [id], onDelete: Cascade)
+  user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([invitationCodeId, userId])
+  @@index([userId])
+  @@index([usedAt])
+}
+
+model EmailVerificationToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
   expiresAt DateTime
-  channel   String?
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model UserAuditLog {
+  id           String   @id @default(cuid())
+  actorUserId  String?
+  targetUserId String?
+  action       String
+  metadata     Json?
+  createdAt    DateTime @default(now())
+  actor        User?    @relation("UserAuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  target       User?    @relation("UserAuditTarget", fields: [targetUserId], references: [id], onDelete: SetNull)
+
+  @@index([actorUserId])
+  @@index([targetUserId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+model AuthRateLimitEvent {
+  id        String   @id @default(cuid())
+  key       String
+  action    String
   createdAt DateTime @default(now())
+
+  @@index([key, action, createdAt])
+  @@index([createdAt])
+}
+
+model QuickLoginDevice {
+  id         String    @id @default(cuid())
+  userId     String
+  deviceName String?
+  tokenHash  String    @unique
+  userAgent  String?
+  ipHash     String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  lastUsedAt DateTime?
+  revokedAt  DateTime?
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([revokedAt])
+  @@index([lastUsedAt])
+}
+
+model MaintenanceJob {
+  id              String              @id @default(cuid())
+  kind            String
+  status          String              @default("queued")
+  dryRun          Boolean             @default(true)
+  triggerSource   String              @default("manual")
+  requestedById   String?
+  sourceJobId     String?
+  retryCount      Int                 @default(0)
+  targetPersonIds String[]            @default([])
+  options         Json                @default("{}")
+  command         String?
+  progressTotal   Int                 @default(0)
+  progressDone    Int                 @default(0)
+  errorMessage    String?
+  startedAt       DateTime?
+  completedAt     DateTime?
+  cancelRequestedAt DateTime?
+  canceledById      String?
+  cancelReason      String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  requestedBy     User?               @relation(fields: [requestedById], references: [id], onDelete: SetNull)
+  logs            MaintenanceJobLog[]
+
+  @@index([kind])
+  @@index([status])
+  @@index([triggerSource])
+  @@index([requestedById])
+  @@index([sourceJobId])
+  @@index([canceledById])
+  @@index([cancelRequestedAt])
+  @@index([createdAt])
+}
+
+model MaintenanceJobLog {
+  id        String         @id @default(cuid())
+  jobId     String
+  level     String         @default("info")
+  message   String
+  metadata  Json?
+  createdAt DateTime       @default(now())
+  job       MaintenanceJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId, createdAt])
+  @@index([level])
+}
+
+model MaintenanceSchedule {
+  id              String   @id @default(cuid())
+  name            String
+  enabled         Boolean  @default(false)
+  kind            String
+  dryRun          Boolean  @default(true)
+  targetPersonIds String[] @default([])
+  options         Json     @default("{}")
+  intervalHours   Int      @default(24)
+  nextRunAt       DateTime?
+  lastRunAt       DateTime?
+  lastJobId       String?
+  runCount        Int      @default(0)
+  createdById     String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  createdBy       User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([enabled, nextRunAt])
+  @@index([kind])
+  @@index([createdById])
+  @@index([lastJobId])
 }
 
 model People {
-  id              String          @id @default(cuid())
-  qid             String          @unique
-  name            String
-  aliases         String[]
-  description     String?
-  whyImportant    String?         // AI贡献总结：核心贡献 + 数据来源
-  aiContributionScore Float           @default(5) // AI 贡献度评分 (0-10, 支持小数)
-  avatarUrl       String?
-  gender          String?         // "male", "female", "other", "unknown"
-  country         String?         // ISO 3166-1 alpha-2, e.g. "CN", "US"
-  occupation      String[]
-  organization    String[]
-  officialLinks   Json            @default("[]")
-  sourceWhitelist String[]
-  status          String          @default("pending")
-  completeness    Int             @default(0)
+  id                  String   @id @default(cuid())
+  qid                 String   @unique
+  name                String
+  aliases             String[]
+  description         String?
+  whyImportant        String? // AI贡献总结：核心贡献 + 数据来源
+  aiContributionScore Float    @default(5) // AI 贡献度评分 (0-10, 支持小数)
+  avatarUrl           String?
+  gender              String? // "male", "female", "other", "unknown"
+  country             String? // ISO 3166-1 alpha-2, e.g. "CN", "US"
+  occupation          String[]
+  organization        String[]
+  officialLinks       Json     @default("[]")
+  sourceWhitelist     String[]
+  status              String   @default("pending")
+  completeness        Int      @default(0)
 
   // 新增：影响力评估相关字段
-  topics          String[]        // AI话题标签：RAG, Agent, 推理, 多模态, 对齐, Scaling 等
-  topicRanks      Json?           // 话题排名：{ "Scaling": 1, "Agent": 3 }
-  topicDetails    Json?           // 话题详情含金句：[{ topic, rank, quote?: { text, source, url } }]
-  highlights      Json?           // 卡片亮点：[{icon: "📄", text: "论文标题"}, ...]
-  roleCategory    String?         // 角色分类：researcher, founder, engineer, professor, evangelist
-  influenceScore  Float           @default(0) // 综合影响力分数
-  quotes          Json?           // 代表语录：[{ text, source, url, year, importance }]
+  topics         String[] // AI话题标签：RAG, Agent, 推理, 多模态, 对齐, Scaling 等
+  topicRanks     Json? // 话题排名：{ "Scaling": 1, "Agent": 3 }
+  topicDetails   Json? // 话题详情含金句：[{ topic, rank, quote?: { text, source, url } }]
+  highlights     Json? // 卡片亮点：[{icon: "📄", text: "论文标题"}, ...]
+  roleCategory   String? // 角色分类：researcher, founder, engineer, professor, evangelist
+  influenceScore Float    @default(0) // 综合影响力分数
+  quotes         Json? // 代表语录：[{ text, source, url, year, importance }]
 
   // 新增：人物详情页展示字段
-  currentTitle    String?         // 当前职位标题，如 "Co-founder & Chief Scientist @ SSI"
-  products        Json?           // 代表作品：[{ name, org, year, description, url, icon?, stats? }]
-  education       Json?           // 教育背景：[{ school, degree, field?, year?, advisor? }]
+  currentTitle String? // 当前职位标题，如 "Co-founder & Chief Scientist @ SSI"
+  products     Json? // 代表作品：[{ name, org, year, description, url, icon?, stats? }]
+  education    Json? // 教育背景：[{ school, degree, field?, year?, advisor? }]
 
   // 学术指标 (来自 OpenAlex)
-  citationCount   Int             @default(0) // 论文总引用数
-  hIndex          Int             @default(0) // h-index
-  openalexId      String?         // OpenAlex author ID
+  citationCount Int     @default(0) // 论文总引用数
+  hIndex        Int     @default(0) // h-index
+  openalexId    String? // OpenAlex author ID
 
   // GitHub 指标
-  githubStars     Int             @default(0) // GitHub 总 stars
+  githubStars Int @default(0) // GitHub 总 stars
 
   // 访问统计
-  viewCount       Int             @default(0) // 总访问次数
-  weeklyViewCount Int             @default(0) // 本周访问次数
+  viewCount       Int @default(0) // 总访问次数
+  weeklyViewCount Int @default(0) // 本周访问次数
 
   // 增量更新：记录每个数据源的上次获取时间
   // { exa: "2026-01-01T00:00:00Z", grok: "2026-01-01T00:00:00Z", ... }
   lastFetchedAt Json @default("{}")
 
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-  cards           Card[]
-  roles           PersonRole[]
-  rawPoolItems    RawPoolItem[]
-  activityEvents  ActivityEvent[]
-  searchSessions  SearchSession[]
-  pageViews       PageView[]
-  relations       PersonRelation[] @relation("PersonRelations")
-  relatedTo       PersonRelation[] @relation("RelatedPersons")
-  advisedRoles    PersonRole[]     @relation("RoleAdvisor") // 作为导师的履历记录
-  courses         Course[]         // 开设/主讲的课程
+  createdAt            DateTime                 @default(now())
+  updatedAt            DateTime                 @updatedAt
+  cards                Card[]
+  roles                PersonRole[]
+  rawPoolItems         RawPoolItem[]
+  activityEvents       ActivityEvent[]
+  searchSessions       SearchSession[]
+  pageViews            PageView[]
+  relations            PersonRelation[]         @relation("PersonRelations")
+  relatedTo            PersonRelation[]         @relation("RelatedPersons")
+  advisedRoles         PersonRole[]             @relation("RoleAdvisor") // 作为导师的履历记录
+  courses              Course[] // 开设/主讲的课程
   influenceScoreAudits InfluenceScoreAuditLog[]
 
   @@index([name])
@@ -163,21 +362,21 @@ model Card {
 }
 
 model RawPoolItem {
-  id          String    @id @default(cuid())
-  personId    String
-  sourceType  String
-  url         String
-  urlHash     String    @unique
-  contentHash String
-  title       String
-  text        String
-  publishedAt DateTime?
-  metadata    Json?
-  fetchStatus String    @default("success")
-  errorCode   String?
-  fetchedAt   DateTime  @default(now())
-  processed   Boolean   @default(false)
-  person      People    @relation(fields: [personId], references: [id], onDelete: Cascade)
+  id            String         @id @default(cuid())
+  personId      String
+  sourceType    String
+  url           String
+  urlHash       String         @unique
+  contentHash   String
+  title         String
+  text          String
+  publishedAt   DateTime?
+  metadata      Json?
+  fetchStatus   String         @default("success")
+  errorCode     String?
+  fetchedAt     DateTime       @default(now())
+  processed     Boolean        @default(false)
+  person        People         @relation(fields: [personId], references: [id], onDelete: Cascade)
   activityEvent ActivityEvent?
 
   @@index([personId])
@@ -204,8 +403,8 @@ model ActivityEvent {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  person        People       @relation(fields: [personId], references: [id], onDelete: Cascade)
-  sourceItem    RawPoolItem? @relation(fields: [sourceItemId], references: [id], onDelete: SetNull)
+  person     People       @relation(fields: [personId], references: [id], onDelete: Cascade)
+  sourceItem RawPoolItem? @relation(fields: [sourceItemId], references: [id], onDelete: SetNull)
 
   @@index([personId])
   @@index([eventType])
@@ -248,22 +447,22 @@ model UserProfile {
 }
 
 model NewsletterDeliveryLog {
-  id           String    @id @default(cuid())
-  userId       String?
-  email        String
-  frequency    String
-  deliveryType String    @default("weekly_digest")
-  subject      String
-  status       String    @default("dry_run")
-  provider     String?
+  id                String    @id @default(cuid())
+  userId            String?
+  email             String
+  frequency         String
+  deliveryType      String    @default("weekly_digest")
+  subject           String
+  status            String    @default("dry_run")
+  provider          String?
   providerMessageId String?
-  attempts     Int       @default(0)
-  payload      Json?
-  errorMessage String?
-  createdAt    DateTime  @default(now())
-  lastAttemptAt DateTime?
-  sentAt       DateTime?
-  user         User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  attempts          Int       @default(0)
+  payload           Json?
+  errorMessage      String?
+  createdAt         DateTime  @default(now())
+  lastAttemptAt     DateTime?
+  sentAt            DateTime?
+  user              User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   @@index([userId])
   @@index([email])
@@ -314,10 +513,10 @@ model CompareReportEvent {
 model PageView {
   id        String   @id @default(cuid())
   personId  String
-  visitorId String   // 访客指纹（IP+UA hash，用于去重）
-  userId    String?  // 可选：登录用户ID
-  sessionId String?  // 可选：匿名用户会话ID
-  referrer  String?  // 来源页面
+  visitorId String // 访客指纹（IP+UA hash，用于去重）
+  userId    String? // 可选：登录用户ID
+  sessionId String? // 可选：匿名用户会话ID
+  referrer  String? // 来源页面
   viewedAt  DateTime @default(now())
   person    People   @relation(fields: [personId], references: [id], onDelete: Cascade)
 
@@ -332,7 +531,7 @@ model PersonRelation {
   id              String   @id @default(cuid())
   personId        String
   relatedPersonId String
-  relationType    String   // advisor, advisee, cofounder, colleague, former_colleague, collaborator, successor
+  relationType    String // advisor, advisee, cofounder, colleague, former_colleague, collaborator, successor
   description     String?
   source          String   @default("wikidata")
   confidence      Float    @default(1.0)
@@ -341,8 +540,8 @@ model PersonRelation {
   evidenceNote    String?
   createdAt       DateTime @default(now())
 
-  person          People   @relation("PersonRelations", fields: [personId], references: [id], onDelete: Cascade)
-  relatedPerson   People   @relation("RelatedPersons", fields: [relatedPersonId], references: [id], onDelete: Cascade)
+  person        People @relation("PersonRelations", fields: [personId], references: [id], onDelete: Cascade)
+  relatedPerson People @relation("RelatedPersons", fields: [relatedPersonId], references: [id], onDelete: Cascade)
 
   @@unique([personId, relatedPersonId, relationType])
   @@index([personId])
@@ -352,50 +551,50 @@ model PersonRelation {
 
 // 课程表 - 记录人物开设/主讲的公开课程
 model Course {
-  id            String   @id @default(cuid())
-  personId      String
-  title         String
-  titleZh       String?  // 中文标题
-  platform      String   // coursera, edx, youtube, udacity, fast.ai, stanford, mit, udemy
-  url           String
-  urlHash       String   @unique // URL 去重
+  id       String  @id @default(cuid())
+  personId String
+  title    String
+  titleZh  String? // 中文标题
+  platform String // coursera, edx, youtube, udacity, fast.ai, stanford, mit, udemy
+  url      String
+  urlHash  String  @unique // URL 去重
 
   // 课程分类
-  type          String   // free, paid, freemium
-  level         String?  // beginner, intermediate, advanced
-  category      String?  // ml, dl, nlp, cv, rl, llm, other
+  type     String // free, paid, freemium
+  level    String? // beginner, intermediate, advanced
+  category String? // ml, dl, nlp, cv, rl, llm, other
 
   // 课程信息
-  description   String?
-  thumbnailUrl  String?
-  duration      String?  // "12 weeks", "40 hours", "25 lectures"
-  language      String?  // en, zh, etc.
+  description  String?
+  thumbnailUrl String?
+  duration     String? // "12 weeks", "40 hours", "25 lectures"
+  language     String? // en, zh, etc.
 
   // 统计数据
-  enrollments   Int?     // 学员数
-  rating        Float?   // 评分 (0-5)
-  reviewCount   Int?     // 评价数
+  enrollments Int? // 学员数
+  rating      Float? // 评分 (0-5)
+  reviewCount Int? // 评价数
 
   // 学习路径
-  prerequisite  String?  // 先修条件
-  learningOrder Int?     // 推荐学习顺序 (1, 2, 3...)
+  prerequisite  String? // 先修条件
+  learningOrder Int? // 推荐学习顺序 (1, 2, 3...)
 
   // 话题标签
-  topics        String[] // AI话题：Deep Learning, NLP, Computer Vision, etc.
+  topics String[] // AI话题：Deep Learning, NLP, Computer Vision, etc.
 
   // 数据来源和质量
-  source        String   @default("perplexity") // perplexity, youtube, manual, wikidata
-  verified      Boolean  @default(false)        // 是否人工验证
-  confidence    Float    @default(0.8)          // 数据置信度 0-1
+  source     String  @default("perplexity") // perplexity, youtube, manual, wikidata
+  verified   Boolean @default(false) // 是否人工验证
+  confidence Float   @default(0.8) // 数据置信度 0-1
 
   // 发布时间
   publishedAt   DateTime?
   lastUpdatedAt DateTime?
 
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  person        People   @relation(fields: [personId], references: [id], onDelete: Cascade)
+  person People @relation(fields: [personId], references: [id], onDelete: Cascade)
 
   @@index([personId])
   @@index([platform])
@@ -410,8 +609,8 @@ model QAAuditLog {
   url         String
   urlHash     String
   sourceType  String
-  stage       String   // L0(规则) | L1(语义) | L2(模糊去重)
-  verdict     String   // keep | reject | review | duplicate
+  stage       String // L0(规则) | L1(语义) | L2(模糊去重)
+  verdict     String // keep | reject | review | duplicate
   // L1 语义评分 (L0/L2 可空)
   aboutPerson Float?
   aiRelevant  Float?

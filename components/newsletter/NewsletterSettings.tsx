@@ -17,9 +17,10 @@ interface NewsletterSettingsResponse {
 
 interface NewsletterSettingsProps {
   authenticated: boolean | null;
+  surface?: 'card' | 'inline';
 }
 
-export function NewsletterSettings({ authenticated }: NewsletterSettingsProps) {
+export function NewsletterSettings({ authenticated, surface = 'card' }: NewsletterSettingsProps) {
   const [frequency, setFrequency] = useState<NewsletterFrequency>('none');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
@@ -86,6 +87,8 @@ export function NewsletterSettings({ authenticated }: NewsletterSettingsProps) {
   };
 
   if (authenticated === false) {
+    if (surface === 'inline') return null;
+
     return (
       <section className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
         <div className="mb-2 text-sm font-medium text-stone-900">邮件订阅</div>
@@ -97,8 +100,12 @@ export function NewsletterSettings({ authenticated }: NewsletterSettingsProps) {
     );
   }
 
+  const containerClass = surface === 'card'
+    ? 'rounded-lg border border-stone-200 bg-white p-4 shadow-sm'
+    : '';
+
   return (
-    <section className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
+    <section className={containerClass}>
       <div className="mb-3 flex items-center justify-between gap-3">
         <div>
           <div className="text-sm font-medium text-stone-900">邮件订阅</div>
