@@ -78,6 +78,11 @@ export async function registerUser(prevState: string | undefined, formData: Form
     return { success: false, error: '注册请求过于频繁，请稍后再试' };
   }
 
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const quickLoginToken = crypto.randomBytes(32).toString('hex');
+  const randomProfile = getRandomProfile();
+  const displayName = nickname || randomProfile.nickname;
+
   try {
     const result = await prisma.$transaction(async (tx) => {
       const existingUser = await tx.user.findFirst({
@@ -115,11 +120,6 @@ export async function registerUser(prevState: string | undefined, formData: Form
         if (invite.expiresAt < new Date()) throw new Error('邀请码已过期');
         if (invite.usedCount >= invite.maxUsages) throw new Error('邀请码已被使用完');
       }
-
-      const hashedPassword = await bcrypt.hash(password, 10);
-      const quickLoginToken = crypto.randomBytes(32).toString('hex');
-      const randomProfile = getRandomProfile();
-      const displayName = nickname || randomProfile.nickname;
 
       const user = await tx.user.create({
         data: {
@@ -170,6 +170,9 @@ export async function registerUser(prevState: string | undefined, formData: Form
 
       const token = await createEmailVerificationToken(tx, user.id);
       return { user, token };
+    }, {
+      maxWait: 10_000,
+      timeout: 20_000,
     });
 
     const emailResult = await sendVerificationEmail(email, result.token);
@@ -197,7 +200,9 @@ export async function registerUser(prevState: string | undefined, formData: Form
     };
   } catch (error) {
     console.error('Registration error:', error);
-    if (error instanceof Error && error.message) return { success: false, error: error.message };
+    if (error instanceof Error && isExpectedRegistrationError(error.message)) {
+      return { success: false, error: error.message };
+    }
     return { success: false, error: '注册失败，请稍后重试' };
   }
 }
@@ -511,4 +516,13 @@ function isBootstrapAdminEmail(email: string): boolean {
     .filter(Boolean);
 
   return configured.includes(email);
+}
+
+function isExpectedRegistrationError(message: string): boolean {
+  return [
+    '该邮箱已注册',
+    '邀请码无效',
+    '邀请码已过期',
+    '邀请码已被使用完',
+  ].includes(message);
 }

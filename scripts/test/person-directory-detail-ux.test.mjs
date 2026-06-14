@@ -205,6 +205,7 @@ test('auth pages keep registration feedback hydratable in local dev', async () =
   const layoutSource = await readFile('app/layout.tsx', 'utf8');
   const arcoBridgeSource = await readFile('components/common/ArcoReactRootBridge.tsx', 'utf8');
   const loginSource = await readFile('app/login/page.tsx', 'utf8');
+  const registerActionSource = await readFile('lib/actions/register.ts', 'utf8');
 
   assert.match(proxySource, /\(\?!api\|_next\|favicon\.ico/, 'Next internals should not go through auth proxy');
   assert.match(nextConfigSource, /allowedDevOrigins:\s*\[\s*'127\.0\.0\.1'\s*\]/, '127.0.0.1 dev origin should keep HMR and hydration working');
@@ -214,6 +215,9 @@ test('auth pages keep registration feedback hydratable in local dev', async () =
   assert.match(loginSource, /CredentialsSignin[\s\S]+CallbackRouteError/, 'credentials failures should map to a user-facing login error');
   assert.match(loginSource, /role="alert"/, 'registration errors should have an inline fallback');
   assert.match(loginSource, /请输入邀请码，没有邀请码无法完成注册/, 'missing invite should show an explicit registration error');
+  assert.match(registerActionSource, /const hashedPassword = await bcrypt\.hash\(password, 10\);[\s\S]+prisma\.\$transaction/, 'password hashing should finish before opening the registration transaction');
+  assert.match(registerActionSource, /timeout:\s*20_000/, 'registration transaction should have an explicit timeout');
+  assert.match(registerActionSource, /isExpectedRegistrationError/, 'registration should not expose raw database errors to the form');
 });
 
 test('directory filters are URL-shareable for topic, organization, role, and clearing', async () => {
