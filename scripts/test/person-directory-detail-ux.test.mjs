@@ -472,13 +472,24 @@ test('signed-in navigation keeps compare next to search and removes low-value ac
   const siteHeader = await readFile('components/common/SiteHeader.tsx', 'utf8');
   const compareNavLink = await readFile('components/common/CompareNavLink.tsx', 'utf8');
   const userMenu = await readFile('components/common/UserMenu.tsx', 'utf8');
+  const identityNavigation = await readFile('components/common/identityNavigation.ts', 'utf8');
+  const maintenancePage = await readFile('app/admin/maintenance/page.tsx', 'utf8');
 
   assert.match(siteHeader, /utilitySlot[\s\S]+CompareNavLink[\s\S]+UserMenu/, 'compare should render beside search before the account menu');
   assert.match(compareNavLink, /\/api\/user\/me/, 'compare nav should respect signed-in state');
   assert.match(compareNavLink, /if \(!authenticated\) return null/, 'compare nav should stay hidden for signed-out visitors');
-  assert.doesNotMatch(userMenu, /href: '\/compare'/, 'compare should not be duplicated inside the account menu');
-  assert.doesNotMatch(userMenu, /账号安全/, 'account security should not appear in the account menu');
-  assert.match(userMenu, /我的关注/);
+  assert.match(userMenu, /USER_ACCOUNT_MENU_ITEMS[\s\S]+item\.href !== '\/compare'/, 'new compare should not be duplicated inside the account menu');
+  assert.doesNotMatch(identityNavigation, /账号安全/, 'account security should not appear in identity navigation');
+  assert.doesNotMatch(identityNavigation, /后台首页/, 'admin home should not be duplicated in admin navigation');
+  assert.match(identityNavigation, /我的关注/);
+  assert.match(userMenu, /cachedMenuUser/, 'signed-in account state should be reused across route changes');
+  assert.match(userMenu, /aria-label="读取账号状态"/, 'loading state should not flash the login button');
+  assert.match(userMenu, /router\.prefetch\(item\.href\)/, 'account menu items should prefetch admin destinations');
+  assert.match(identityNavigation, /内容维护[\s\S]+质量复核[\s\S]+影响力校准[\s\S]+Newsletter 投递[\s\S]+用户管理[\s\S]+邀请码管理[\s\S]+审计日志[\s\S]+上线准备度/, 'admin menu items should be grouped by related work');
+  assert.match(maintenancePage, /take: 120/, 'maintenance page should not load an oversized people list on first paint');
+  assert.match(maintenancePage, /take: 20/, 'maintenance page should keep the initial job list compact');
+  assert.match(maintenancePage, /take: 3/, 'maintenance page should keep inline job logs compact');
+  assert.match(maintenancePage, /select:\s*\{[\s\S]+triggerSource[\s\S]+cancelReason/, 'maintenance page should select the fields it renders');
 });
 
 async function fetchText(path) {

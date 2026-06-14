@@ -51,10 +51,22 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
         status: true,
       },
       orderBy: [{ weeklyViewCount: 'desc' }, { name: 'asc' }],
-      take: 200,
+      take: 120,
     }),
     prisma.maintenanceSchedule.findMany({
-      include: {
+      select: {
+        id: true,
+        name: true,
+        enabled: true,
+        kind: true,
+        dryRun: true,
+        targetPersonIds: true,
+        options: true,
+        intervalHours: true,
+        nextRunAt: true,
+        lastRunAt: true,
+        lastJobId: true,
+        runCount: true,
         createdBy: {
           select: {
             email: true,
@@ -64,11 +76,29 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
         },
       },
       orderBy: { createdAt: 'desc' },
-      take: 20,
+      take: 10,
     }),
     prisma.maintenanceJob.findMany({
       where: selectedStatus === 'all' ? undefined : { status: selectedStatus },
-      include: {
+      select: {
+        id: true,
+        kind: true,
+        status: true,
+        dryRun: true,
+        triggerSource: true,
+        sourceJobId: true,
+        retryCount: true,
+        targetPersonIds: true,
+        options: true,
+        command: true,
+        progressTotal: true,
+        progressDone: true,
+        errorMessage: true,
+        startedAt: true,
+        completedAt: true,
+        cancelRequestedAt: true,
+        cancelReason: true,
+        createdAt: true,
         requestedBy: {
           select: {
             email: true,
@@ -77,12 +107,18 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
           },
         },
         logs: {
+          select: {
+            id: true,
+            level: true,
+            message: true,
+            createdAt: true,
+          },
           orderBy: { createdAt: 'desc' },
-          take: 6,
+          take: 3,
         },
       },
       orderBy: { createdAt: 'desc' },
-      take: 40,
+      take: 20,
     }),
     prisma.maintenanceJob.groupBy({
       by: ['status'],

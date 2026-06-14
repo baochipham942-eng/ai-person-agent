@@ -1,8 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useEffect, useRef, useState } from 'react';
+import {
+  ADMIN_WORKSPACE_NAV_ITEMS,
+  USER_WORKSPACE_NAV_ITEMS,
+  type IdentityNavItem,
+} from '@/components/common/identityNavigation';
 
 interface MenuUser {
   username: string;
@@ -19,48 +25,30 @@ interface UserMeResponse {
   user: MenuUser | null;
 }
 
-const USER_MENU_ITEMS = [
-  { href: '/watchlist', label: '我的关注' },
-  { href: '/compare/reports', label: '我的对比报告' },
-  { href: '/watchlist#newsletter-settings', label: '邮件订阅设置' },
-];
+const MENU_USER_CACHE_TTL_MS = 30_000;
+const USER_ACCOUNT_MENU_ITEMS = USER_WORKSPACE_NAV_ITEMS.filter(item => item.href !== '/compare');
 
-const ADMIN_MENU_ITEMS = [
-  { href: '/admin', label: '后台首页' },
-  { href: '/admin/maintenance', label: '内容维护' },
-  { href: '/admin/quality', label: '质量复核' },
-  { href: '/admin/users', label: '用户管理' },
-  { href: '/admin/invitations', label: '邀请码管理' },
-  { href: '/admin/audit', label: '审计日志' },
-  { href: '/admin/newsletter', label: 'Newsletter 投递' },
-  { href: '/admin/influence', label: '影响力校准' },
-  { href: '/admin/operations', label: '上线准备度' },
-];
+let cachedMenuUser: MenuUser | undefined;
+let cachedMenuUserAt = 0;
+let menuUserRequest: Promise<MenuUser | null> | null = null;
 
 export function UserMenu() {
-  const [user, setUser] = useState<MenuUser | null>(null);
-  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const initialUser = readCachedMenuUser();
+  const [user, setUser] = useState<MenuUser | null>(initialUser ?? null);
+  const [loading, setLoading] = useState(!initialUser);
   const [open, setOpen] = useState(false);
-  const [avatarFailed, setAvatarFailed] = useState(false);
+  const [failedAvatarSrc, setFailedAvatarSrc] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let active = true;
 
-    async function loadUser() {
-      try {
-        const response = await fetch('/api/user/me', { cache: 'no-store' });
-        const result = await response.json() as UserMeResponse;
-        if (!active) return;
-        setUser(result.authenticated ? result.user : null);
-      } catch {
-        if (active) setUser(null);
-      } finally {
-        if (active) setLoading(false);
-      }
-    }
-
-    void loadUser();
+    void requestMenuUser().then(result => {
+      if (!active) return;
+      setUser(result);
+      setLoading(false);
+    });
     return () => {
       active = false;
     };
@@ -86,15 +74,27 @@ export function UserMenu() {
   }, [open]);
 
   useEffect(() => {
-    setAvatarFailed(false);
-  }, [user?.avatar]);
+    if (!open || user?.role !== 'ADMIN') return;
+    for (const item of ADMIN_WORKSPACE_NAV_ITEMS) {
+      router.prefetch(item.href);
+    }
+  }, [open, router, user?.role]);
 
   if (!user) {
+    if (loading) {
+      return (
+        <div
+          aria-busy="true"
+          aria-label="读取账号状态"
+          className="h-8 w-8 flex-shrink-0 rounded-full border border-stone-200 bg-stone-100 shadow-sm"
+        />
+      );
+    }
+
     return (
       <Link
         href="/login"
-        aria-busy={loading || undefined}
-        aria-label={loading ? '读取账号状态，登录' : '登录'}
+        aria-label="登录"
         className="inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-600 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
       >
         登录
@@ -104,7 +104,7 @@ export function UserMenu() {
 
   const label = displayName(user);
   const initial = avatarInitial(label);
-  const avatarSrc = user.avatar && !avatarFailed ? user.avatar : null;
+  const avatarSrc = user.avatar && failedAvatarSrc !== user.avatar ? user.avatar : null;
 
   return (
     <div ref={rootRef} className="relative flex-shrink-0">
@@ -120,7 +120,7 @@ export function UserMenu() {
       >
         {avatarSrc ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={avatarSrc} alt={label} className="h-full w-full object-cover" onError={() => setAvatarFailed(true)} />
+          <img src={avatarSrc} alt={label} className="h-full w-full object-cover" onError={() => setFailedAvatarSrc(avatarSrc)} />
         ) : (
           initial
         )}
@@ -129,26 +129,30 @@ export function UserMenu() {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-10 z-50 w-64 overflow-hidden rounded-xl border border-stone-200 bg-white text-sm shadow-lg"
+          className="absolute right-0 top-10 z-50 max-h-[80vh] w-64 overflow-y-auto rounded-xl border border-stone-200 bg-white text-sm shadow-lg"
         >
           <div className="border-b border-stone-100 px-4 py-3">
             <div className="truncate font-medium text-stone-950">{label}</div>
             <div className="mt-0.5 truncate text-xs text-stone-500">{user.email || user.username}</div>
           </div>
 
-          <MenuSection items={USER_MENU_ITEMS} onSelect={() => setOpen(false)} />
+          <MenuSection items={USER_ACCOUNT_MENU_ITEMS} onSelect={() => setOpen(false)} />
 
           {user.role === 'ADMIN' && (
             <div className="border-t border-stone-100">
               <div className="px-4 pt-3 text-[11px] font-medium uppercase tracking-wide text-stone-400">管理员</div>
-              <MenuSection items={ADMIN_MENU_ITEMS} onSelect={() => setOpen(false)} />
+              <MenuSection items={ADMIN_WORKSPACE_NAV_ITEMS} onSelect={() => setOpen(false)} />
             </div>
           )}
 
           <div className="border-t border-stone-100 p-2">
             <button
               type="button"
-              onClick={() => void signOut({ callbackUrl: '/' })}
+              onClick={() => {
+                cachedMenuUser = undefined;
+                cachedMenuUserAt = 0;
+                void signOut({ callbackUrl: '/' });
+              }}
               className="flex h-9 w-full items-center rounded-lg px-2 text-left text-xs font-medium text-rose-600 transition hover:bg-rose-50"
             >
               退出登录
@@ -160,7 +164,9 @@ export function UserMenu() {
   );
 }
 
-function MenuSection({ items, onSelect }: { items: Array<{ href: string; label: string }>; onSelect: () => void }) {
+function MenuSection({ items, onSelect }: { items: IdentityNavItem[]; onSelect: () => void }) {
+  const router = useRouter();
+
   return (
     <div className="p-2">
       {items.map(item => (
@@ -168,6 +174,8 @@ function MenuSection({ items, onSelect }: { items: Array<{ href: string; label: 
           key={item.href}
           href={item.href}
           role="menuitem"
+          onFocus={() => router.prefetch(item.href)}
+          onMouseEnter={() => router.prefetch(item.href)}
           onClick={onSelect}
           className="flex h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-700 transition hover:bg-orange-50 hover:text-orange-700"
         >
@@ -176,6 +184,44 @@ function MenuSection({ items, onSelect }: { items: Array<{ href: string; label: 
       ))}
     </div>
   );
+}
+
+function readCachedMenuUser(): MenuUser | undefined {
+  if (!cachedMenuUser) return undefined;
+  if (Date.now() - cachedMenuUserAt > MENU_USER_CACHE_TTL_MS) return undefined;
+  return cachedMenuUser;
+}
+
+async function requestMenuUser(): Promise<MenuUser | null> {
+  const cached = readCachedMenuUser();
+  if (cached) return cached;
+
+  if (!menuUserRequest) {
+    menuUserRequest = fetchMenuUser().finally(() => {
+      menuUserRequest = null;
+    });
+  }
+
+  return menuUserRequest;
+}
+
+async function fetchMenuUser(): Promise<MenuUser | null> {
+  try {
+    const response = await fetch('/api/user/me', { cache: 'no-store' });
+    if (!response.ok) return null;
+    const result = await response.json() as UserMeResponse;
+    const nextUser = result.authenticated ? result.user : null;
+    if (nextUser) {
+      cachedMenuUser = nextUser;
+      cachedMenuUserAt = Date.now();
+    } else {
+      cachedMenuUser = undefined;
+      cachedMenuUserAt = 0;
+    }
+    return nextUser;
+  } catch {
+    return null;
+  }
 }
 
 function displayName(user: MenuUser): string {
