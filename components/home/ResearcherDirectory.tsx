@@ -302,7 +302,34 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
       {/* 共享 SVG 渐变定义 */}
       <SharedSvgDefs />
 
-      <SiteHeader current="home" maxWidth="7xl" />
+      <SiteHeader
+        current="home"
+        maxWidth="7xl"
+        utilitySlot={
+          <button
+            type="button"
+            aria-expanded={searchOpen}
+            aria-controls="home-directory-search"
+            onClick={() => setSearchOpen(open => !open)}
+            className={`inline-flex h-8 flex-shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
+              searchOpen || debouncedSearch
+                ? 'border-orange-200 bg-orange-50 text-orange-700'
+                : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
+            }`}
+          >
+            <svg
+              aria-hidden="true"
+              className="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+            </svg>
+            搜索
+          </button>
+        }
+      />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
         <section className="min-w-0">
@@ -313,29 +340,6 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
                 organization={selectedOrg}
                 initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
               />
-
-              <button
-                type="button"
-                aria-expanded={searchOpen}
-                aria-controls="home-directory-search"
-                onClick={() => setSearchOpen(open => !open)}
-                className={`inline-flex h-9 flex-shrink-0 items-center justify-center gap-1.5 self-start rounded-lg border px-3 text-xs font-medium shadow-sm transition-colors ${
-                  searchOpen || debouncedSearch
-                    ? 'border-orange-200 bg-orange-50 text-orange-700'
-                    : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
-                }`}
-              >
-                <svg
-                  aria-hidden="true"
-                  className="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
-                </svg>
-                搜索
-              </button>
             </div>
 
             {searchOpen && (
@@ -376,7 +380,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
             <div className="mt-3 grid gap-3 border-t border-stone-100 pt-3 xl:grid-cols-[minmax(0,0.62fr)_minmax(0,1fr)]">
               <div className="min-w-0">
                 <div className="mb-1.5 text-[11px] font-medium text-stone-400">筛选</div>
-                <div className="flex w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
+                <div className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
                   {FILTER_MODES.map((mode) => (
                     <button
                       key={mode.key}
@@ -402,7 +406,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
                     {DIRECTORY_SORT_OPTIONS.find(option => option.key === selectedSort)?.hint}
                   </span>
                 </div>
-                <div className="flex w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
+                <div className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
                   {DIRECTORY_SORT_OPTIONS.map((option) => (
                     <button
                       key={option.key}

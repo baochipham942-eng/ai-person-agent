@@ -10,6 +10,7 @@ interface SiteHeaderProps {
   current?: SiteHeaderCurrent;
   maxWidth?: SiteHeaderWidth;
   statsSlot?: ReactNode;
+  utilitySlot?: ReactNode;
 }
 
 const CONTENT_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
@@ -29,7 +30,7 @@ const WIDTH_CLASS: Record<SiteHeaderWidth, string> = {
   '7xl': 'max-w-7xl',
 };
 
-export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: SiteHeaderProps) {
+export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot, utilitySlot }: SiteHeaderProps) {
   return (
     <header className="glass-header sticky top-0 z-50 border-b border-subtle">
       <div className={`${WIDTH_CLASS[maxWidth]} mx-auto px-4 sm:px-6`}>
@@ -67,27 +68,30 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot }: Si
               })}
             </nav>
 
-            <nav className="flex flex-shrink-0 items-center justify-center gap-2 overflow-x-auto scrollbar-hide md:justify-end" aria-label="个人工具">
-              <CompareNavLink isCurrent={current === 'myCompare'} />
-              {USER_NAV_ITEMS.map(item => {
-                const isCurrent = current === item.key;
-                return (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    aria-current={isCurrent ? 'page' : undefined}
-                    className={`inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
-                      isCurrent
-                        ? 'border-stone-900 bg-stone-50 text-stone-950'
-                        : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+            <div className="flex min-w-0 flex-shrink-0 items-center justify-center gap-2 md:justify-end">
+              <nav className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide" aria-label="个人工具">
+                {utilitySlot}
+                <CompareNavLink isCurrent={current === 'myCompare'} />
+                {USER_NAV_ITEMS.map(item => {
+                  const isCurrent = current === item.key;
+                  return (
+                    <Link
+                      key={item.key}
+                      href={item.href}
+                      aria-current={isCurrent ? 'page' : undefined}
+                      className={`inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
+                        isCurrent
+                          ? 'border-stone-900 bg-stone-50 text-stone-950'
+                          : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
               <UserMenu />
-            </nav>
+            </div>
           </div>
         </div>
       </div>

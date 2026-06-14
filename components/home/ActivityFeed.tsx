@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import useSWR from 'swr';
+import { IconArrowLeft, IconArrowRight } from '@arco-design/web-react/icon';
 import type { ActivityEvent } from '@/lib/activity';
 
 interface ActivityFeedProps {
@@ -59,6 +60,11 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
     setActiveIndex(index => (index + 1) % events.length);
   };
 
+  const previousEvent = () => {
+    if (events.length < 2) return;
+    setActiveIndex(index => (index - 1 + events.length) % events.length);
+  };
+
   return (
     <section className="min-w-0 flex-1">
       <div className="mb-1.5 flex items-center gap-2">
@@ -84,22 +90,25 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
         </div>
       ) : featuredEvent ? (
         <div className="space-y-1.5">
-          <FeaturedActivityCard event={featuredEvent} onCycle={nextEvent} />
+          <FeaturedActivityCard event={featuredEvent} />
           {events.length > 1 && (
-            <div className="flex gap-1.5" aria-label="本周推荐切换">
-              {events.map((event, index) => (
-                <button
-                  key={event.id}
-                  type="button"
-                  aria-label={`切换到第 ${index + 1} 条推荐`}
-                  onClick={() => setActiveIndex(index)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === safeActiveIndex
-                      ? 'w-5 bg-orange-500'
-                      : 'w-1.5 bg-stone-300 hover:bg-stone-400'
-                  }`}
-                />
-              ))}
+            <div className="flex items-center gap-1.5" aria-label="本周推荐切换">
+              <button
+                type="button"
+                aria-label="上一条推荐"
+                onClick={previousEvent}
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
+              >
+                <IconArrowLeft aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                aria-label="下一条推荐"
+                onClick={nextEvent}
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
+              >
+                <IconArrowRight aria-hidden="true" />
+              </button>
             </div>
           )}
         </div>
@@ -112,15 +121,11 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
   );
 }
 
-function FeaturedActivityCard({ event, onCycle }: { event: ActivityEvent; onCycle: () => void }) {
+function FeaturedActivityCard({ event }: { event: ActivityEvent }) {
   const eventTime = event.occurredAt || event.detectedAt;
 
   return (
-    <button
-      type="button"
-      onClick={onCycle}
-      className="block w-full cursor-pointer rounded-lg border border-stone-100 bg-stone-50 px-3 py-2.5 text-left transition-colors hover:border-orange-200 hover:bg-orange-50/40 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
-    >
+    <div className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-2.5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0 flex-1">
           <div className="mb-1.5 flex flex-wrap items-center gap-2 text-[11px] text-stone-500">
@@ -162,7 +167,7 @@ function FeaturedActivityCard({ event, onCycle }: { event: ActivityEvent; onCycl
           </span>
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 

@@ -314,14 +314,9 @@ export default function LoginPage() {
                 <Button type="text" className="px-0 text-stone-500" onClick={() => setView('FORGOT')}>
                   忘记密码
                 </Button>
-                <div className="flex items-center gap-3">
-                  <Button type="text" className="px-0 text-stone-500" onClick={() => setView('VERIFY_NOTICE')}>
-                    重发验证
-                  </Button>
-                  <Button type="text" className="px-0 font-medium text-orange-600" onClick={() => setView('REGISTER')}>
-                    立即注册
-                  </Button>
-                </div>
+                <Button type="text" className="px-0 font-medium text-orange-600" onClick={() => setView('REGISTER')}>
+                  立即注册
+                </Button>
               </div>
             </div>
           )}
