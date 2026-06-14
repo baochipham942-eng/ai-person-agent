@@ -17,8 +17,9 @@ export const authConfig = {
 
             if (isAdminRoute) {
                 if (!isLoggedIn) return false;
-                if (auth.user?.role === 'ADMIN' && auth.user?.status === 'ACTIVE') return true;
-                return Response.redirect(new URL('/', nextUrl));
+                // Role and status in the session can lag behind database changes.
+                // Admin pages and APIs do the authoritative DB-backed check.
+                return true;
             }
 
             // 已登录用户访问 /login，重定向到首页

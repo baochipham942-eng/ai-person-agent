@@ -201,6 +201,7 @@ test('compare report agent exposes the full MVP toolchain', async () => {
 });
 
 test('auth pages keep registration feedback hydratable in local dev', async () => {
+  const authConfigSource = await readFile('auth.config.ts', 'utf8');
   const proxySource = await readFile('proxy.ts', 'utf8');
   const nextConfigSource = await readFile('next.config.ts', 'utf8');
   const layoutSource = await readFile('app/layout.tsx', 'utf8');
@@ -213,6 +214,8 @@ test('auth pages keep registration feedback hydratable in local dev', async () =
   const globalCssSource = await readFile('app/globals.css', 'utf8');
 
   assert.match(proxySource, /\(\?!api\|_next\|favicon\.ico/, 'Next internals should not go through auth proxy');
+  assert.match(authConfigSource, /if \(isAdminRoute\) \{\s*if \(!isLoggedIn\) return false;\s*\/\/ Role and status in the session can lag behind database changes\.[\s\S]+return true;\s*\}/, 'admin route middleware should not block on stale session role');
+  assert.doesNotMatch(authConfigSource, /auth\.user\?\.role === 'ADMIN'/, 'admin authorization should use DB-backed checks after middleware');
   assert.match(nextConfigSource, /allowedDevOrigins:\s*\[\s*'127\.0\.0\.1'\s*\]/, '127.0.0.1 dev origin should keep HMR and hydration working');
   assert.match(nextConfigSource, /allowedOrigins:\s*\[\s*'people\.llmxy\.xyz'/, 'production reverse proxy domain should be allowed for server actions');
   assert.match(layoutSource, /ArcoReactRootBridge/, 'root layout should initialize Arco React 19 bridge');
