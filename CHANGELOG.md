@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.4 - 2026-06-14
+
+### 修复
+
+- 修复本地开发环境下 Next 内部 HMR 路径被 auth proxy 截获，导致登录页无法完成 hydration、按钮点击无响应的问题。
+- 为 Arco feedback API 注入 React 19 `createRoot`，避免注册、登录和忘记密码提示触发 `ReactDOM.render` 兼容错误。
+- 修正 NextAuth credentials 失败结果被误判为登录成功的问题，错误账号密码现在会展示登录失败提示。
+- 补充 auth 页面的回归断言，覆盖注册提示 hydration、Arco bridge 和登录错误判断顺序。
+
 ## 0.4.3 - 2026-06-14
 
 ### 修复
