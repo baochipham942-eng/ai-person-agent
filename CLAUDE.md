@@ -103,6 +103,54 @@ OPENAI_API_KEY=             # (Optional) fallback
 
 > **MCP 查询注意**：PostgreSQL 驼峰字段需双引号，如 `"wikidataQid"`, `"roleZh"`
 
+### User / Auth
+```
+User: id, username, email, emailVerifiedAt, passwordHash, nickname, displayName,
+role (USER|ADMIN), status (PENDING_EMAIL|ACTIVE|SUSPENDED|DELETED), tags[],
+lastLoginAt, lastSeenAt, failedLoginCount, lockedUntil, avatar, phone,
+quickLoginToken, createdAt, updatedAt
+
+EmailVerificationToken / PasswordResetToken:
+id, userId, tokenHash, expiresAt, usedAt, createdAt
+
+QuickLoginDevice:
+id, userId, deviceName, tokenHash, userAgent, ipHash,
+lastUsedAt, revokedAt, createdAt, updatedAt
+```
+> 后台权限以 `User.role=ADMIN` 且 `User.status=ACTIVE` 为准；一键登录设备可在 `/account/security` 撤销。
+
+### Invitation / Audit
+```
+InvitationCode: id, code, type, maxUsages, usedCount, expiresAt,
+channel, note, createdById, createdAt
+
+InvitationCodeUse: id, invitationCodeId, userId, usedAt
+
+UserAuditLog: id, actorUserId, targetUserId, action, metadata (JSON), createdAt
+
+AuthRateLimitEvent: id, key, action, createdAt
+```
+> 管理员对用户、邀请码、维护任务和定时规则的操作应写入 `UserAuditLog`。
+
+### MaintenanceJob / MaintenanceSchedule
+```
+MaintenanceJob:
+id, kind, status, dryRun, triggerSource, requestedById, sourceJobId, retryCount,
+targetPersonIds[], options (JSON), command, progressTotal, progressDone,
+errorMessage, startedAt, completedAt,
+cancelRequestedAt, canceledById, cancelReason,
+createdAt, updatedAt
+
+MaintenanceJobLog:
+id, jobId, level, message, metadata (JSON), createdAt
+
+MaintenanceSchedule:
+id, name, enabled, kind, dryRun, targetPersonIds[], options (JSON),
+intervalHours, nextRunAt, lastRunAt, lastJobId, runCount,
+createdById, createdAt, updatedAt
+```
+> 内容维护菜单支持新人物构建、单人物/多人物/全站刷新、dry-run、execute、媒体渠道筛选、重试、取消和 Inngest 定时扫描。
+
 ### People
 ```
 id, qid (唯一), name, aliases[], description, whyImportant, aiContributionScore,
