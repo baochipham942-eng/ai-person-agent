@@ -205,7 +205,11 @@ test('auth pages keep registration feedback hydratable in local dev', async () =
   const layoutSource = await readFile('app/layout.tsx', 'utf8');
   const arcoBridgeSource = await readFile('components/common/ArcoReactRootBridge.tsx', 'utf8');
   const loginSource = await readFile('app/login/page.tsx', 'utf8');
+  const resetPasswordSource = await readFile('app/reset-password/ResetPasswordForm.tsx', 'utf8');
   const registerActionSource = await readFile('lib/actions/register.ts', 'utf8');
+  const tokenSource = await readFile('lib/auth/tokens.ts', 'utf8');
+  const emailSource = await readFile('lib/auth/email.ts', 'utf8');
+  const globalCssSource = await readFile('app/globals.css', 'utf8');
 
   assert.match(proxySource, /\(\?!api\|_next\|favicon\.ico/, 'Next internals should not go through auth proxy');
   assert.match(nextConfigSource, /allowedDevOrigins:\s*\[\s*'127\.0\.0\.1'\s*\]/, '127.0.0.1 dev origin should keep HMR and hydration working');
@@ -216,7 +220,21 @@ test('auth pages keep registration feedback hydratable in local dev', async () =
   assert.match(loginSource, /CredentialsSignin[\s\S]+CallbackRouteError/, 'credentials failures should map to a user-facing login error');
   assert.match(loginSource, /role="alert"/, 'registration errors should have an inline fallback');
   assert.match(loginSource, /请输入邀请码，没有邀请码无法完成注册/, 'missing invite should show an explicit registration error');
+  assert.match(loginSource, /!result\.emailVerificationRequired/, 'new registrations should bypass the email verification notice while verification is paused');
+  assert.match(loginSource, /Message\.success\('注册成功，请登录'\)/, 'registration should fall back to login if automatic sign-in fails');
+  assert.match(loginSource, /getMailInboxUrl/, 'verification notice should guide people to their mailbox');
+  assert.match(loginSource, /去邮箱查看/, 'verification notice should make checking email the primary action');
+  assert.doesNotMatch(loginSource, /type="primary"[\s\S]{0,240}重发验证邮件/, 'verification resend should not be the primary action');
+  assert.match(loginSource, /auth-primary-button/, 'auth form primary actions should use the black action button');
+  assert.match(resetPasswordSource, /auth-primary-button/, 'reset-password action should use the same black action button');
+  assert.match(globalCssSource, /auth-primary-button[\s\S]+#0c0a09/, 'auth action button styles should override Arco primary blue');
+  assert.match(emailSource, /background:#0c0a09/, 'transactional email CTA should be black');
+  assert.match(tokenSource, /PRODUCTION_BASE_URL[\s\S]+NEXT_PUBLIC_SITE_URL/, 'auth email links should prefer the production base URL');
+  assert.match(tokenSource, /isLocalSiteUrl/, 'production auth email links should avoid localhost candidates when a public URL exists');
   assert.match(registerActionSource, /const hashedPassword = await bcrypt\.hash\(password, 10\);[\s\S]+prisma\.\$transaction/, 'password hashing should finish before opening the registration transaction');
+  assert.match(registerActionSource, /EMAIL_VERIFICATION_REQUIRED = false/, 'email verification should be explicitly paused for open registration');
+  assert.match(registerActionSource, /EMAIL_VERIFICATION_REQUIRED \? UserStatus\.PENDING_EMAIL : UserStatus\.ACTIVE/, 'new users should be active while email verification is paused');
+  assert.match(registerActionSource, /EMAIL_VERIFICATION_SKIPPED/, 'skipped email verification should be auditable');
   assert.match(registerActionSource, /timeout:\s*20_000/, 'registration transaction should have an explicit timeout');
   assert.match(registerActionSource, /isExpectedRegistrationError/, 'registration should not expose raw database errors to the form');
 });

@@ -107,6 +107,38 @@ body {
   background: var(--gradient-subtle);
 }
 
+.auth-primary-button.arco-btn-primary,
+.auth-primary-button.arco-btn-primary:not(.arco-btn-disabled) {
+  background: #0c0a09 !important;
+  border-color: #0c0a09 !important;
+  color: #ffffff !important;
+}
+
+.auth-primary-button.arco-btn-primary:not(.arco-btn-disabled):hover,
+.auth-primary-button.arco-btn-primary:not(.arco-btn-disabled):focus {
+  background: #292524 !important;
+  border-color: #292524 !important;
+  color: #ffffff !important;
+}
+
+.auth-primary-button.arco-btn-disabled {
+  background: #a8a29e !important;
+  border-color: #a8a29e !important;
+  color: #ffffff !important;
+}
+
+.auth-primary-link {
+  background: #0c0a09;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.auth-primary-link:hover,
+.auth-primary-link:focus {
+  background: #292524;
+  color: #ffffff;
+}
+
 /* 渐变边框 */
 .gradient-border {
   position: relative;

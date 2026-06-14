@@ -111,7 +111,7 @@ function buildAuthEmailHtml(input: { eyebrow: string; title: string; body: strin
         <p style="margin:0 0 8px 0;color:#ea580c;font-size:12px;font-weight:600;">${escapeHtml(input.eyebrow)}</p>
         <h1 style="margin:0 0 14px 0;font-size:22px;line-height:1.35;color:#0c0a09;">${escapeHtml(input.title)}</h1>
         <p style="margin:0 0 20px 0;font-size:14px;line-height:1.8;color:#57534e;">${escapeHtml(input.body)}</p>
-        <a href="${escapeAttribute(input.ctaUrl)}" style="display:inline-block;border-radius:6px;background:#ea580c;color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 16px;">${escapeHtml(input.ctaLabel)}</a>
+        <a href="${escapeAttribute(input.ctaUrl)}" style="display:inline-block;border-radius:6px;background:#0c0a09;color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 16px;">${escapeHtml(input.ctaLabel)}</a>
         <p style="margin:20px 0 0 0;font-size:12px;line-height:1.6;color:#78716c;">如果按钮打不开，把这个链接复制到浏览器：<br><span style="word-break:break-all;">${escapeHtml(input.ctaUrl)}</span></p>
       </div>
     </div>
@@ -145,4 +145,3 @@ function escapeHtml(value: string): string {
 function escapeAttribute(value: string): string {
   return escapeHtml(value).replace(/`/g, '&#96;');
 }
-

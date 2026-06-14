@@ -61,10 +61,9 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         placeholder="再次输入新密码"
         className="h-12 rounded-md border-stone-200 bg-stone-50"
       />
-      <Button type="primary" long size="large" htmlType="submit" loading={loading} className="h-12 rounded-md text-base">
+      <Button type="primary" long size="large" htmlType="submit" loading={loading} className="auth-primary-button h-12 rounded-md text-base">
         {loading ? '更新中...' : '更新密码'}
       </Button>
     </form>
   );
 }
-

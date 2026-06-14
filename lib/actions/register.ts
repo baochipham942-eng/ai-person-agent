@@ -11,6 +11,7 @@ import { sendPasswordResetEmail, sendVerificationEmail } from '@/lib/auth/email'
 import { checkAndRecordAuthRateLimit, getRequestIdentity } from '@/lib/auth/rate-limit';
 
 const PASSWORD_MIN_LENGTH = 8;
+const EMAIL_VERIFICATION_REQUIRED = false;
 
 const RegisterSchema = z.object({
   email: z.string().email('请输入有效邮箱'),
@@ -39,6 +40,7 @@ export type RegisterUserResult =
       success: true;
       email: string;
       verificationSent: boolean;
+      emailVerificationRequired: boolean;
       isBootstrapAdmin: boolean;
       message: string;
     }
@@ -131,8 +133,12 @@ export async function registerUser(prevState: string | undefined, formData: Form
           displayName,
           avatar: randomProfile.avatar,
           role: isBootstrapAdmin ? UserRole.ADMIN : UserRole.USER,
-          status: UserStatus.PENDING_EMAIL,
-          tags: isBootstrapAdmin ? ['bootstrap-admin'] : ['invited'],
+          status: EMAIL_VERIFICATION_REQUIRED ? UserStatus.PENDING_EMAIL : UserStatus.ACTIVE,
+          tags: isBootstrapAdmin
+            ? ['bootstrap-admin']
+            : EMAIL_VERIFICATION_REQUIRED
+              ? ['invited']
+              : ['invited', 'email-verification-skipped'],
           userProfile: {
             create: {},
           },
@@ -168,12 +174,40 @@ export async function registerUser(prevState: string | undefined, formData: Form
         },
       });
 
-      const token = await createEmailVerificationToken(tx, user.id);
+      const token = EMAIL_VERIFICATION_REQUIRED
+        ? await createEmailVerificationToken(tx, user.id)
+        : null;
       return { user, token };
     }, {
       maxWait: 10_000,
       timeout: 20_000,
     });
+
+    if (!EMAIL_VERIFICATION_REQUIRED) {
+      await prisma.userAuditLog.create({
+        data: {
+          targetUserId: result.user.id,
+          action: 'EMAIL_VERIFICATION_SKIPPED',
+          metadata: {
+            email,
+            reason: 'temporary_registration_open',
+          } satisfies Prisma.InputJsonObject,
+        },
+      });
+
+      return {
+        success: true,
+        email,
+        verificationSent: false,
+        emailVerificationRequired: false,
+        isBootstrapAdmin,
+        message: '注册成功，正在登录',
+      };
+    }
+
+    if (!result.token) {
+      return { success: false, error: '注册失败，请稍后重试' };
+    }
 
     const emailResult = await sendVerificationEmail(email, result.token);
 
@@ -193,6 +227,7 @@ export async function registerUser(prevState: string | undefined, formData: Form
       success: true,
       email,
       verificationSent: emailResult.sent,
+      emailVerificationRequired: true,
       isBootstrapAdmin,
       message: emailResult.sent
         ? '注册成功，请去邮箱完成验证'

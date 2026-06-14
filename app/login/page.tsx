@@ -31,6 +31,7 @@ export default function LoginPage() {
   const [isRequestingReset, setIsRequestingReset] = useState(false);
   const [isResendingVerification, setIsResendingVerification] = useState(false);
   const [registerError, setRegisterError] = useState<string | null>(null);
+  const mailInboxUrl = getMailInboxUrl(pendingEmail);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -183,6 +184,38 @@ export default function LoginPage() {
         setRegisterError(null);
         setPendingEmail(result.email);
         Message.success(result.message);
+        if (!result.emailVerificationRequired) {
+          let loginResult: Awaited<ReturnType<typeof signIn>> | undefined;
+          try {
+            loginResult = await signIn('credentials', {
+              username: result.email,
+              password,
+              redirect: false,
+            });
+          } catch (error) {
+            console.error('Auto sign-in after registration failed:', error);
+            Message.success('注册成功，请登录');
+            setView('LOGIN');
+            return;
+          }
+
+          if (loginResult?.error) {
+            Message.success('注册成功，请登录');
+            setView('LOGIN');
+            return;
+          }
+
+          if (loginResult?.ok) {
+            await saveQuickLoginProfile();
+            router.push('/');
+            return;
+          }
+
+          Message.success('注册成功，请登录');
+          setView('LOGIN');
+          return;
+        }
+
         setView('VERIFY_NOTICE');
       } else {
         const message = result.error || '注册失败';
@@ -293,7 +326,7 @@ export default function LoginPage() {
                 size="large"
                 onClick={handleQuickLogin}
                 loading={isLoggingIn}
-                className="h-12 rounded-md text-base"
+                className="auth-primary-button h-12 rounded-md text-base"
               >
                 {isLoggingIn ? '登录中...' : '一键登录'}
               </Button>
@@ -330,7 +363,7 @@ export default function LoginPage() {
                   htmlType="submit"
                   loading={isLoggingIn}
                   disabled={isLoggingIn}
-                  className="mt-2 h-12 rounded-md text-base"
+                  className="auth-primary-button mt-2 h-12 rounded-md text-base"
                 >
                   {isLoggingIn ? '登录中...' : '登录'}
                 </Button>
@@ -405,7 +438,7 @@ export default function LoginPage() {
                   size="large"
                   htmlType="submit"
                   loading={isRegistering}
-                  className="mt-2 h-12 rounded-md text-base"
+                  className="auth-primary-button mt-2 h-12 rounded-md text-base"
                 >
                   {isRegistering ? '注册中...' : '注册'}
                 </Button>
@@ -430,29 +463,54 @@ export default function LoginPage() {
               <div className="text-center">
                 <h2 className="text-xl font-bold text-stone-900">去邮箱完成验证</h2>
                 <p className="mt-3 text-sm leading-6 text-stone-500">
-                  验证链接已发送到 {pendingEmail || '你的邮箱'}。验证后再回来登录。
+                  验证链接已发送到 {pendingEmail || '你的邮箱'}。通常几分钟内到达，收件箱没有就看一下垃圾箱。
                 </p>
               </div>
-              <form onSubmit={handleResendVerification} className="mt-6 space-y-4">
-                <Input
-                  name="email"
-                  defaultValue={pendingEmail}
-                  prefix={<IconUser />}
-                  placeholder="注册邮箱"
-                  className="h-12 rounded-md border-stone-200 bg-stone-50"
-                />
-                <Button
-                  type="primary"
-                  long
-                  size="large"
-                  htmlType="submit"
-                  loading={isResendingVerification}
-                  className="h-12 rounded-md text-base"
-                >
-                  {isResendingVerification ? '发送中...' : '重发验证邮件'}
-                </Button>
-              </form>
-              <Button type="text" long className="mt-4 text-stone-500" onClick={() => setView('LOGIN')}>
+              <div className="mt-6 space-y-4">
+                {mailInboxUrl ? (
+                  <a
+                    href={mailInboxUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="auth-primary-link flex h-12 w-full items-center justify-center rounded-md text-base font-medium"
+                  >
+                    去邮箱查看
+                  </a>
+                ) : (
+                  <div className="rounded-md border border-stone-200 bg-stone-50 px-3 py-3 text-center text-sm text-stone-600">
+                    请打开你的邮箱，查看来自 AI 人物库的验证邮件。
+                  </div>
+                )}
+                <form onSubmit={handleResendVerification} className="space-y-3">
+                  {pendingEmail ? (
+                    <input type="hidden" name="email" value={pendingEmail} />
+                  ) : (
+                    <Input
+                      name="email"
+                      prefix={<IconUser />}
+                      placeholder="注册邮箱"
+                      className="h-12 rounded-md border-stone-200 bg-stone-50"
+                    />
+                  )}
+                  <div className="text-center">
+                    <p className="text-xs leading-5 text-stone-400">几分钟后还没收到，再重新发送。</p>
+                    <Button
+                      type="text"
+                      htmlType="submit"
+                      loading={isResendingVerification}
+                      className="mt-1 px-0 text-stone-600 hover:text-stone-950"
+                    >
+                      {isResendingVerification ? '发送中...' : '重新发送验证邮件'}
+                    </Button>
+                  </div>
+                </form>
+              </div>
+              <Button
+                type="text"
+                long
+                className="mt-4 text-stone-500"
+                onClick={() => setView('LOGIN')}
+              >
                 返回登录
               </Button>
             </div>
@@ -474,7 +532,7 @@ export default function LoginPage() {
                   size="large"
                   htmlType="submit"
                   loading={isRequestingReset}
-                  className="mt-2 h-12 rounded-md text-base"
+                  className="auth-primary-button mt-2 h-12 rounded-md text-base"
                 >
                   {isRequestingReset ? '发送中...' : '发送重置链接'}
                 </Button>
@@ -490,6 +548,30 @@ export default function LoginPage() {
       </div>
     </div>
   );
+}
+
+function getMailInboxUrl(email: string): string | null {
+  const domain = email.split('@')[1]?.trim().toLowerCase();
+  if (!domain) return null;
+
+  const providers: Record<string, string> = {
+    'qq.com': 'https://mail.qq.com/',
+    'foxmail.com': 'https://mail.qq.com/',
+    'gmail.com': 'https://mail.google.com/',
+    'googlemail.com': 'https://mail.google.com/',
+    'outlook.com': 'https://outlook.live.com/mail/',
+    'hotmail.com': 'https://outlook.live.com/mail/',
+    'live.com': 'https://outlook.live.com/mail/',
+    'icloud.com': 'https://www.icloud.com/mail/',
+    'me.com': 'https://www.icloud.com/mail/',
+    '163.com': 'https://mail.163.com/',
+    '126.com': 'https://mail.126.com/',
+    'yeah.net': 'https://www.yeah.net/',
+    'sina.com': 'https://mail.sina.com.cn/',
+    'aliyun.com': 'https://mail.aliyun.com/',
+  };
+
+  return providers[domain] || `https://mail.${domain}/`;
 }
 
 function maskAccount(account: string | null | undefined) {
