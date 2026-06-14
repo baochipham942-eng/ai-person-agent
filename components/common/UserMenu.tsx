@@ -85,19 +85,15 @@ export function UserMenu() {
     };
   }, [open]);
 
-  if (loading) {
-    return (
-      <div className="h-8 w-8 flex-shrink-0 animate-pulse rounded-full bg-stone-100" aria-label="读取账号状态" />
-    );
-  }
-
   if (!user) {
     return (
       <Link
         href="/login"
+        aria-busy={loading || undefined}
+        aria-label={loading ? '读取账号状态，登录' : '登录'}
         className="inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg bg-stone-900 px-3 text-xs font-medium text-white shadow-sm transition-colors hover:bg-orange-600"
       >
-        登录/注册
+        登录
       </Link>
     );
   }
