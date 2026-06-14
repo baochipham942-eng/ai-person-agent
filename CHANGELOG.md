@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.6 - 2026-06-14
+
+### 修复
+
+- 允许 `people.llmxy.xyz` 反代域名调用 Next Server Actions，修复正式域名注册提交被 CSRF origin 校验拦截并显示 Server Components 泛化错误的问题。
+
 ## 0.4.5 - 2026-06-14
 
 ### 修复
