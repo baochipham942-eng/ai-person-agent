@@ -21,9 +21,7 @@ interface UserMeResponse {
 
 const USER_MENU_ITEMS = [
   { href: '/watchlist', label: '我的关注' },
-  { href: '/compare', label: '我的对比' },
   { href: '/compare/reports', label: '我的对比报告' },
-  { href: '/account/security', label: '账号安全' },
   { href: '/watchlist#newsletter-settings', label: '邮件订阅设置' },
 ];
 

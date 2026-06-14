@@ -92,6 +92,7 @@ test('home page SSR renders people, influence copy, and card links without neste
   assert.doesNotMatch(directorySource, /setAllPeople\(\[\]\)/);
   assert.match(directorySource, /flex-wrap items-center justify-between/);
   assert.match(directorySource, /overflow-x-auto/);
+  assert.doesNotMatch(directorySource, /selectedSortOption\?\.hint/);
 });
 
 test('directory exposes productized sorting and entity API contracts', async () => {
@@ -443,6 +444,8 @@ test('lazy sections expose retry states and trust labels instead of silent empty
   }
 
   assert.match(featuredWorks, /成果与资料/);
+  assert.match(featuredWorks, /label: '话题贡献', count: topicContributions\.length/);
+  assert.doesNotMatch(featuredWorks, /label: '话题贡献', count: topics\?\.length/);
   assert.match(featuredWorks, /有来源/);
   assert.match(featuredWorks, /自动整理/);
   assert.match(featuredWorks, /overflow-x-auto/);
@@ -460,6 +463,19 @@ test('lazy sections expose retry states and trust labels instead of silent empty
   assert.match(detailPage, /currentTitle: true/);
   assert.match(personHeader, /useState\(false\)/);
   assert.match(personHeader, /person\.currentTitle/);
+});
+
+test('signed-in navigation keeps compare next to search and removes low-value account menu items', async () => {
+  const siteHeader = await readFile('components/common/SiteHeader.tsx', 'utf8');
+  const compareNavLink = await readFile('components/common/CompareNavLink.tsx', 'utf8');
+  const userMenu = await readFile('components/common/UserMenu.tsx', 'utf8');
+
+  assert.match(siteHeader, /utilitySlot[\s\S]+CompareNavLink[\s\S]+UserMenu/, 'compare should render beside search before the account menu');
+  assert.match(compareNavLink, /\/api\/user\/me/, 'compare nav should respect signed-in state');
+  assert.match(compareNavLink, /if \(!authenticated\) return null/, 'compare nav should stay hidden for signed-out visitors');
+  assert.doesNotMatch(userMenu, /href: '\/compare'/, 'compare should not be duplicated inside the account menu');
+  assert.doesNotMatch(userMenu, /账号安全/, 'account security should not appear in the account menu');
+  assert.match(userMenu, /我的关注/);
 });
 
 async function fetchText(path) {

@@ -296,7 +296,6 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
   const loadingMore = isValidating && page > 1;
   const hasLoadError = Boolean(error && allPeople.length === 0);
   const shouldUseInitialActivity = selectedTopic === initialFilters.topic && selectedOrg === initialFilters.organization;
-  const selectedSortOption = DIRECTORY_SORT_OPTIONS.find(option => option.key === selectedSort);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -403,12 +402,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
               </div>
 
               <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">
-                <div className="flex min-w-0 flex-shrink-0 items-baseline gap-2">
-                  <span className="flex-shrink-0 text-[11px] font-medium text-stone-400">排序</span>
-                  <span className="hidden max-w-48 truncate text-[11px] text-stone-400 sm:inline xl:max-w-64">
-                    {selectedSortOption?.hint}
-                  </span>
-                </div>
+                <span className="flex-shrink-0 text-[11px] font-medium text-stone-400">排序</span>
                 <div className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
                   {DIRECTORY_SORT_OPTIONS.map((option) => (
                     <button

@@ -191,10 +191,24 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
       });
   }, [products]);
 
+  // 生成话题贡献数据：优先使用 topicDetails，否则从 topics + topicRanks 生成
+  const topicContributions: TopicDetail[] = useMemo(() => {
+    if (topicDetails && topicDetails.length > 0) {
+      return [...topicDetails].sort((a, b) => a.rank - b.rank);
+    }
+
+    return (topics || [])
+      .map(topic => ({
+        topic,
+        rank: topicRanks?.[topic] || 99,
+      }))
+      .sort((a, b) => a.rank - b.rank);
+  }, [topicDetails, topicRanks, topics]);
+
   // 检查各 tab 是否有内容 - 使用 useMemo 缓存计算结果
   const hasProducts = realProducts.length > 0;
   const hasPapers = papers && papers.length > 0;
-  const hasTopics = topics && topics.length > 0;
+  const hasTopics = topicContributions.length > 0;
   const hasCards = cards && cards.length > 0;
   // 开源项目、博客、播客通过 personId 动态加载
   // 只有当确实有数据时才显示对应 Tab
@@ -210,7 +224,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     // 开源项目 tab
     if (hasOpensource) result.push({ key: 'opensource', label: '开源项目', count: githubCount });
     if (hasPapers) result.push({ key: 'papers', label: '核心论文', count: papers?.length });
-    if (hasTopics) result.push({ key: 'topics', label: '话题贡献', count: topics?.length });
+    if (hasTopics) result.push({ key: 'topics', label: '话题贡献', count: topicContributions.length });
     // 学习卡片 tab
     if (hasCards) result.push({ key: 'cards', label: '学习卡片', count: cards?.length });
     // 博客 tab
@@ -218,7 +232,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     // 播客 tab
     if (hasPodcast) result.push({ key: 'podcast', label: '播客', count: podcastCount });
     return result;
-  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasPodcast, realProducts.length, githubCount, papers?.length, topics?.length, cards?.length, blogCount, podcastCount]);
+  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasPodcast, realProducts.length, githubCount, papers?.length, topicContributions.length, cards?.length, blogCount, podcastCount]);
 
   // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
   const validInitialTab = useMemo(() => {
@@ -330,14 +344,6 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics && !hasCards && !hasBlogs && !hasPodcast) {
     return null;
   }
-
-  // 生成话题贡献数据：优先使用 topicDetails，否则从 topics + topicRanks 生成
-  const topicContributions: TopicDetail[] = topicDetails && topicDetails.length > 0
-    ? topicDetails.sort((a, b) => a.rank - b.rank)
-    : (topics || []).map(topic => ({
-        topic,
-        rank: topicRanks?.[topic] || 99,
-      })).sort((a, b) => a.rank - b.rank);
 
   return (
     <section ref={sectionRef} className="card-base overflow-hidden">

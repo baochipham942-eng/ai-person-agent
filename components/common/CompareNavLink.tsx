@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useSyncExternalStore } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import {
   MAX_COMPARE_PEOPLE,
   buildCompareHref,
@@ -15,10 +15,36 @@ interface CompareNavLinkProps {
   isCurrent: boolean;
 }
 
+interface UserMeResponse {
+  authenticated: boolean;
+}
+
 export function CompareNavLink({ isCurrent }: CompareNavLinkProps) {
+  const [authenticated, setAuthenticated] = useState(false);
   const idsSnapshot = useSyncExternalStore(subscribeCompareIds, getCompareIdsSnapshot, getEmptyCompareIdsSnapshot);
   const ids = useMemo(() => decodeCompareIdsSnapshot(idsSnapshot), [idsSnapshot]);
   const href = useMemo(() => buildCompareHref(ids), [ids]);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadAuthState() {
+      try {
+        const response = await fetch('/api/user/me', { cache: 'no-store' });
+        const result = await response.json() as UserMeResponse;
+        if (active) setAuthenticated(Boolean(result.authenticated));
+      } catch {
+        if (active) setAuthenticated(false);
+      }
+    }
+
+    void loadAuthState();
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  if (!authenticated) return null;
 
   return (
     <Link

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { CompareNavLink } from '@/components/common/CompareNavLink';
 import { UserMenu } from '@/components/common/UserMenu';
 
 type SiteHeaderCurrent = 'home' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist';
@@ -65,6 +66,7 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot, util
             <div className="flex min-w-0 flex-shrink-0 items-center justify-center gap-2 md:justify-end">
               <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">
                 {utilitySlot}
+                <CompareNavLink isCurrent={current === 'myCompare'} />
               </div>
               <UserMenu />
             </div>
