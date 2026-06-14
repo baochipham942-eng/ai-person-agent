@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   output: 'standalone', // For serverless deployment
   outputFileTracingRoot: projectRoot,
   allowedDevOrigins: ['127.0.0.1'],
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['people.llmxy.xyz', 'ai-person-agent.vercel.app'],
+    },
+  },
   pageExtensions: ['ts', 'tsx'],
   turbopack: {
     root: projectRoot,

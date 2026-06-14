@@ -209,6 +209,7 @@ test('auth pages keep registration feedback hydratable in local dev', async () =
 
   assert.match(proxySource, /\(\?!api\|_next\|favicon\.ico/, 'Next internals should not go through auth proxy');
   assert.match(nextConfigSource, /allowedDevOrigins:\s*\[\s*'127\.0\.0\.1'\s*\]/, '127.0.0.1 dev origin should keep HMR and hydration working');
+  assert.match(nextConfigSource, /allowedOrigins:\s*\[\s*'people\.llmxy\.xyz'/, 'production reverse proxy domain should be allowed for server actions');
   assert.match(layoutSource, /ArcoReactRootBridge/, 'root layout should initialize Arco React 19 bridge');
   assert.match(arcoBridgeSource, /setCreateRoot\(createRoot\)/, 'Arco feedback APIs should use React 19 createRoot');
   assert.match(loginSource, /if \(result\?\.error\)[\s\S]+else if \(result\?\.ok\)/, 'credentials sign-in should inspect error before ok');
