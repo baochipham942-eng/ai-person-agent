@@ -84,12 +84,14 @@ export default function LoginPage() {
         redirect: false,
       });
 
-      if (result?.ok) {
+      if (result?.error) {
+        Message.error(formatLoginError(result.error));
+      } else if (result?.ok) {
         await saveQuickLoginProfile();
         Message.success('登录成功');
         router.push('/');
       } else {
-        Message.error(result?.error === 'CredentialsSignin' ? '账号或密码错误，或邮箱尚未验证' : '登录失败，请重试');
+        Message.error('登录失败，请重试');
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -109,7 +111,12 @@ export default function LoginPage() {
         redirect: false,
       });
 
-      if (result?.ok) {
+      if (result?.error) {
+        Message.error('快捷登录已过期，请重新登录');
+        setQuickUser(null);
+        localStorage.removeItem('quick_login_info');
+        setView('LOGIN');
+      } else if (result?.ok) {
         Message.success('登录成功');
         router.push('/');
       } else {
@@ -494,4 +501,10 @@ function maskAccount(account: string | null | undefined) {
   }
   if (account.length < 7) return account;
   return account.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+}
+
+function formatLoginError(error: string) {
+  return error === 'CredentialsSignin' || error === 'CallbackRouteError'
+    ? '账号或密码错误，或邮箱尚未验证'
+    : '登录失败，请重试';
 }

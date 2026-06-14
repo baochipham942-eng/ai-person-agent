@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArcoReactRootBridge } from "@/components/common/ArcoReactRootBridge";
 import "@arco-design/web-react/dist/css/arco.css";
 import "./globals.css";
 
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="antialiased">
+        <ArcoReactRootBridge />
         {children}
       </body>
     </html>

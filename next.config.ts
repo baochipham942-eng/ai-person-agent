@@ -7,6 +7,7 @@ const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig: NextConfig = {
   output: 'standalone', // For serverless deployment
   outputFileTracingRoot: projectRoot,
+  allowedDevOrigins: ['127.0.0.1'],
   pageExtensions: ['ts', 'tsx'],
   turbopack: {
     root: projectRoot,

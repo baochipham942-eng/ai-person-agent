@@ -7,7 +7,7 @@ export const proxy = auth;
 
 export const config = {
     matcher: [
-        // 匹配所有路由，排除静态资源
-        '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|css|js)$).*)',
+        // Match app routes while leaving Next internals and static assets untouched.
+        '/((?!api|_next|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|css|js)$).*)',
     ],
 };

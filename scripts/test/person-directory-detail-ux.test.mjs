@@ -199,6 +199,23 @@ test('compare report agent exposes the full MVP toolchain', async () => {
   assert.match(readinessCliSource, /newsletterEnvStatus/);
 });
 
+test('auth pages keep registration feedback hydratable in local dev', async () => {
+  const proxySource = await readFile('proxy.ts', 'utf8');
+  const nextConfigSource = await readFile('next.config.ts', 'utf8');
+  const layoutSource = await readFile('app/layout.tsx', 'utf8');
+  const arcoBridgeSource = await readFile('components/common/ArcoReactRootBridge.tsx', 'utf8');
+  const loginSource = await readFile('app/login/page.tsx', 'utf8');
+
+  assert.match(proxySource, /\(\?!api\|_next\|favicon\.ico/, 'Next internals should not go through auth proxy');
+  assert.match(nextConfigSource, /allowedDevOrigins:\s*\[\s*'127\.0\.0\.1'\s*\]/, '127.0.0.1 dev origin should keep HMR and hydration working');
+  assert.match(layoutSource, /ArcoReactRootBridge/, 'root layout should initialize Arco React 19 bridge');
+  assert.match(arcoBridgeSource, /setCreateRoot\(createRoot\)/, 'Arco feedback APIs should use React 19 createRoot');
+  assert.match(loginSource, /if \(result\?\.error\)[\s\S]+else if \(result\?\.ok\)/, 'credentials sign-in should inspect error before ok');
+  assert.match(loginSource, /CredentialsSignin[\s\S]+CallbackRouteError/, 'credentials failures should map to a user-facing login error');
+  assert.match(loginSource, /role="alert"/, 'registration errors should have an inline fallback');
+  assert.match(loginSource, /请输入邀请码，没有邀请码无法完成注册/, 'missing invite should show an explicit registration error');
+});
+
 test('directory filters are URL-shareable for topic, organization, role, and clearing', async () => {
   const topic = directoryPayload.data.find(person => person.topics?.length)?.topics[0];
   assert.ok(topic, 'fixture data should include at least one topic');
