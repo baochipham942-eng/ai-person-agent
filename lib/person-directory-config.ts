@@ -3,11 +3,7 @@ import topicRegistry from '@/lib/person-directory-topics.json';
 export type DirectoryViewMode = 'trending' | 'topic' | 'organization' | 'role';
 export type DirectorySortKey =
   | 'influenceScore'
-  | 'weeklyViewCount'
-  | 'citationCount'
-  | 'githubStars'
-  | 'industryImpact'
-  | 'risingScore';
+  | 'weeklyViewCount';
 
 export interface DirectoryHighlight {
   icon: string;
@@ -248,11 +244,7 @@ export const DIRECTORY_VIEW_MODES: { key: DirectoryViewMode; icon: string; label
 
 export const DIRECTORY_SORT_OPTIONS: { key: DirectorySortKey; label: string; hint: string }[] = [
   { key: 'influenceScore', label: '综合影响力', hint: '综合学术、开源、产业和内容信号' },
-  { key: 'weeklyViewCount', label: '最近热度', hint: '按近 7 天站内访问排序' },
-  { key: 'citationCount', label: '学术影响力', hint: '按论文引用量排序' },
-  { key: 'githubStars', label: '开源影响力', hint: '按 GitHub stars 排序' },
-  { key: 'industryImpact', label: '产业影响力', hint: '按履历关系、机构线索和综合影响力排序' },
-  { key: 'risingScore', label: '新晋上升', hint: '按近 7 天访问和最近入库信号排序' },
+  { key: 'weeklyViewCount', label: '最近热度', hint: '合并近 7 天访问和新近入库信号' },
 ];
 
 const DIRECTORY_SORT_KEYS = new Set<DirectorySortKey>(
@@ -273,8 +265,15 @@ export function getInitialDirectoryFilters(params: {
   const role = firstParam(params.role);
   const search = firstParam(params.search) || '';
   const sortParam = firstParam(params.sortBy);
-  const sortBy = sortParam && DIRECTORY_SORT_KEYS.has(sortParam as DirectorySortKey)
-    ? sortParam as DirectorySortKey
+  const deprecatedSortMap: Record<string, DirectorySortKey> = {
+    risingScore: 'weeklyViewCount',
+    citationCount: 'influenceScore',
+    githubStars: 'influenceScore',
+    industryImpact: 'influenceScore',
+  };
+  const normalizedSortParam = sortParam ? deprecatedSortMap[sortParam] || sortParam : null;
+  const sortBy = normalizedSortParam && DIRECTORY_SORT_KEYS.has(normalizedSortParam as DirectorySortKey)
+    ? normalizedSortParam as DirectorySortKey
     : 'influenceScore';
 
   let view: DirectoryViewMode = 'trending';

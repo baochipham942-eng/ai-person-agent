@@ -10,6 +10,7 @@ const SHOULD_START_SERVER = !process.env.PERSON_UX_BASE_URL;
 let serverProcess;
 let directoryPayload;
 let allDirectoryPeople;
+let operationsReadiness;
 
 before(async () => {
   if (SHOULD_START_SERVER) {
@@ -71,7 +72,7 @@ test('home page SSR renders people, influence copy, and card links without neste
   const $ = cheerio.load(html);
 
   assert.ok(html.includes(firstPerson.name), 'SSR HTML should include the first person name');
-  assert.ok(html.includes('影响力排序'), 'tab copy should match influenceScore sort');
+  assert.ok(html.includes('综合影响力'), 'sort copy should match influenceScore sort');
   if (directoryPayload.data.some(person => person.weeklyViewCount > 0)) {
     assert.ok(html.includes('本周热度'), 'weekly heat badge should use weekly-view wording');
   }
@@ -89,20 +90,18 @@ test('home page SSR renders people, influence copy, and card links without neste
   assert.match(directorySource, /keepPreviousData: true/);
   assert.match(directorySource, /fallbackData:/);
   assert.doesNotMatch(directorySource, /setAllPeople\(\[\]\)/);
-  assert.match(directorySource, /flex flex-col sm:flex-row/);
+  assert.match(directorySource, /flex-wrap items-center justify-between/);
   assert.match(directorySource, /overflow-x-auto/);
 });
 
 test('directory exposes productized sorting and entity API contracts', async () => {
-  const industryPayload = await fetchJson('/api/person/directory?sortBy=industryImpact&limit=3');
-  const risingPayload = await fetchJson('/api/person/directory?sortBy=risingScore&limit=3');
+  const weeklyPayload = await fetchJson('/api/person/directory?sortBy=weeklyViewCount&limit=3');
   const topicPayload = await fetchJson('/api/topic/Agent');
   const orgPayload = await fetchJson('/api/org/OpenAI');
 
-  assert.equal(industryPayload.data.length, 3, 'industryImpact sort should return a page of people');
-  assert.equal(risingPayload.data.length, 3, 'risingScore sort should return a page of people');
-  assert.ok(industryPayload.data.every(person => typeof person.citationCount === 'number'), 'industry sort should retain citation signal');
-  assert.ok(industryPayload.data.every(person => typeof person.githubStars === 'number'), 'industry sort should retain GitHub signal');
+  assert.equal(weeklyPayload.data.length, 3, 'weeklyViewCount sort should return a page of people');
+  assert.ok(weeklyPayload.data.every(person => typeof person.citationCount === 'number'), 'weekly sort should retain citation signal');
+  assert.ok(weeklyPayload.data.every(person => typeof person.githubStars === 'number'), 'weekly sort should retain GitHub signal');
   assert.equal(topicPayload.data.topic, 'Agent');
   assert.ok(topicPayload.data.people.length > 0, 'topic API should include top people');
   assert.ok(Array.isArray(topicPayload.data.activity), 'topic API should include activity list');
@@ -116,11 +115,9 @@ test('directory exposes productized sorting and entity API contracts', async () 
   const directorySource = await readFile('lib/person-directory.ts', 'utf8');
   const cardSource = await readFile('components/home/ResearcherCard.tsx', 'utf8');
 
-  assert.match(configSource, /industryImpact/);
-  assert.match(configSource, /risingScore/);
-  assert.match(directorySource, /case 'industryImpact'/);
+  assert.match(configSource, /weeklyViewCount/);
   assert.match(directorySource, /case 'risingScore'/);
-  assert.match(cardSource, /产业线索/);
+  assert.doesNotMatch(cardSource, /sortBy === 'industryImpact'/);
 });
 
 test('default activity feed carries review status and keeps low-confidence items out', async () => {
@@ -148,7 +145,9 @@ test('compare report agent exposes the full MVP toolchain', async () => {
   assert.ok(firstPerson?.id && secondPerson?.id, 'directory should provide two people for compare smoke');
 
   const html = await fetchText(`/compare?people=${firstPerson.id},${secondPerson.id}`);
-  const readiness = await fetchJson('/api/admin/operations/readiness');
+  const readinessResponse = await fetch(`${BASE_URL}/api/admin/operations/readiness`);
+  assert.equal(readinessResponse.status, 401, 'operations readiness API should require admin auth');
+  const readiness = await fetchOperationsReadinessFromCli();
   const text = textContent(html);
   const expectedToolLabels = ['选人', '资料', '指标', '动态', '关系', '搜索', '证据', '观点', '对齐', '审查', '报告', '校验', '保存'];
   for (const label of expectedToolLabels) {
@@ -431,6 +430,42 @@ async function fetchJson(path) {
   const response = await fetch(`${BASE_URL}${path}`);
   assert.equal(response.ok, true, `GET ${path} should return ${response.status}`);
   return response.json();
+}
+
+async function fetchOperationsReadinessFromCli() {
+  if (operationsReadiness) return operationsReadiness;
+
+  operationsReadiness = await new Promise((resolve, reject) => {
+    const child = spawn('node', ['scripts/ops/readiness.mjs'], {
+      cwd: process.cwd(),
+      env: process.env,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    let stdout = '';
+    let stderr = '';
+
+    child.stdout.on('data', chunk => {
+      stdout += chunk;
+    });
+    child.stderr.on('data', chunk => {
+      stderr += chunk;
+    });
+    child.on('error', reject);
+    child.on('close', code => {
+      if (code !== 0) {
+        reject(new Error(`readiness CLI failed with code ${code}: ${stderr || stdout}`));
+        return;
+      }
+
+      try {
+        resolve(JSON.parse(stdout));
+      } catch (error) {
+        reject(new Error(`readiness CLI returned invalid JSON: ${error instanceof Error ? error.message : String(error)}`));
+      }
+    });
+  });
+
+  return operationsReadiness;
 }
 
 async function fetchAllDirectoryPeople() {

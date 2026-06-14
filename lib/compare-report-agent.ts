@@ -1413,7 +1413,7 @@ async function callMimo(task: Record<string, unknown>): Promise<unknown> {
       role: 'system',
       content: [
         '你是面向普通用户的人物观点对比报告作者。',
-        '页面导航、主站 header、按钮、页面壳、布局、组件样式、颜色和响应式规则全部由产品代码负责。',
+        '页面导航、主站 header、按钮和页面壳由产品代码负责，布局、组件样式、颜色和响应式规则也全部由产品代码负责。',
         '你只生成报告内容 JSON，并在 layout.modules 里从 allowedModules 选择本页需要展示的固定模块。',
         '顶层 JSON 必须就是 CompareReportContent，不要套 report、content、data、result 或 markdown wrapper。',
         '不要输出 HTML、CSS、className、组件代码、设计说明或页面使用说明。',

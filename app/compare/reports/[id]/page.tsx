@@ -284,7 +284,7 @@ function ProcessDetails({ events }: { events: ReportEvent[] }) {
       </summary>
       <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)]">
         <div>
-          <div className="mb-2 text-xs font-bold text-[#c85f20]">固定工具链</div>
+          <div className="mb-2 text-xs font-bold text-[#c85f20]">Agent 工具链</div>
           <div className="flex flex-wrap gap-2">
             {COMPARE_AGENT_TOOLS.map(tool => (
               <span

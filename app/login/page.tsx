@@ -30,6 +30,7 @@ export default function LoginPage() {
   const [isRegistering, setIsRegistering] = useState(false);
   const [isRequestingReset, setIsRequestingReset] = useState(false);
   const [isResendingVerification, setIsResendingVerification] = useState(false);
+  const [registerError, setRegisterError] = useState<string | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -129,29 +130,42 @@ export default function LoginPage() {
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setRegisterError(null);
+
     const formData = new FormData(e.currentTarget);
     const email = (formData.get('email') as string)?.trim().toLowerCase();
     const password = formData.get('password') as string;
     const inviteCode = (formData.get('inviteCode') as string)?.trim();
 
     if (!email) {
-      Message.warning('请输入邮箱');
+      const message = '请输入邮箱';
+      setRegisterError(message);
+      Message.warning(message);
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      Message.warning('请输入有效邮箱');
+      const message = '请输入有效邮箱';
+      setRegisterError(message);
+      Message.warning(message);
       return;
     }
     if (!password) {
-      Message.warning('请设置密码');
+      const message = '请设置密码';
+      setRegisterError(message);
+      Message.warning(message);
       return;
     }
     if (password.length < 8) {
-      Message.warning('密码至少需要8位');
+      const message = '密码至少需要8位';
+      setRegisterError(message);
+      Message.warning(message);
       return;
     }
     if (!inviteCode) {
-      Message.warning('请输入邀请码；初始管理员邮箱可留空');
+      const message = '请输入邀请码，没有邀请码无法完成注册';
+      setRegisterError(message);
+      Message.warning(message);
+      return;
     }
 
     setIsRegistering(true);
@@ -159,15 +173,20 @@ export default function LoginPage() {
     try {
       const result: RegisterResult = await registerUser(undefined, formData);
       if (result.success) {
+        setRegisterError(null);
         setPendingEmail(result.email);
         Message.success(result.message);
         setView('VERIFY_NOTICE');
       } else {
-        Message.error(result.error || '注册失败');
+        const message = result.error || '注册失败';
+        setRegisterError(message);
+        Message.error(message);
       }
     } catch (error) {
       console.error('Registration error:', error);
-      Message.error(error instanceof Error ? error.message : '注册发生错误，请稍后重试');
+      const message = error instanceof Error ? error.message : '注册发生错误，请稍后重试';
+      setRegisterError(message);
+      Message.error(message);
     } finally {
       setIsRegistering(false);
     }
@@ -314,7 +333,14 @@ export default function LoginPage() {
                 <Button type="text" className="px-0 text-stone-500" onClick={() => setView('FORGOT')}>
                   忘记密码
                 </Button>
-                <Button type="text" className="px-0 font-medium text-orange-600" onClick={() => setView('REGISTER')}>
+                <Button
+                  type="text"
+                  className="px-0 font-medium text-orange-600"
+                  onClick={() => {
+                    setRegisterError(null);
+                    setView('REGISTER');
+                  }}
+                >
                   立即注册
                 </Button>
               </div>
@@ -324,7 +350,14 @@ export default function LoginPage() {
           {view === 'REGISTER' && (
             <div>
               <h2 className="mb-6 text-center text-xl font-bold text-stone-900">新用户注册</h2>
-              <form onSubmit={handleRegister} className="space-y-4" id="registerForm">
+              <form
+                onSubmit={handleRegister}
+                onChange={() => {
+                  if (registerError) setRegisterError(null);
+                }}
+                className="space-y-4"
+                id="registerForm"
+              >
                 <Input
                   name="email"
                   prefix={<IconUser />}
@@ -350,8 +383,14 @@ export default function LoginPage() {
                   placeholder="邀请码"
                   className="h-12 rounded-md border-stone-200 bg-stone-50"
                   maxLength={24}
+                  status={registerError?.includes('邀请码') ? 'error' : undefined}
                   style={{ textTransform: 'uppercase' }}
                 />
+                {registerError && (
+                  <div role="alert" className="rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-xs leading-5 text-rose-700">
+                    {registerError}
+                  </div>
+                )}
 
                 <Button
                   type="primary"
@@ -365,7 +404,14 @@ export default function LoginPage() {
                 </Button>
               </form>
               <div className="mt-6 text-center">
-                <Button type="text" className="text-stone-500" onClick={() => setView('LOGIN')}>
+                <Button
+                  type="text"
+                  className="text-stone-500"
+                  onClick={() => {
+                    setRegisterError(null);
+                    setView('LOGIN');
+                  }}
+                >
                   返回登录
                 </Button>
               </div>

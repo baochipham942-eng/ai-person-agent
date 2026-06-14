@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { CompareReportLauncher } from '@/components/compare/CompareReportLauncher';
 import { CompareButton } from '@/components/common/CompareButton';
 import { FollowButton } from '@/components/common/FollowButton';
-import { normalizeDirectoryTopic } from '@/lib/person-directory-config';
 import {
   PersonHeader,
   CoreContribution,
@@ -209,14 +207,8 @@ function SourceSummary({ person }: { person: PersonData }) {
 }
 
 export default function PersonPageClient({ person, initialSection, highlightTopic }: PersonPageClientProps) {
-  const searchParams = useSearchParams();
-  const sectionFromUrl = searchParams.get('section') === 'topics' ? 'topics' : null;
-  const activeInitialSection = initialSection ?? sectionFromUrl;
-  const activeHighlightTopic = highlightTopic ?? (
-    activeInitialSection === 'topics' && searchParams.get('highlight')
-      ? normalizeDirectoryTopic(searchParams.get('highlight')!)
-      : null
-  );
+  const activeInitialSection = initialSection ?? null;
+  const activeHighlightTopic = activeInitialSection === 'topics' ? highlightTopic ?? null : null;
 
   // 记录页面访问
   useEffect(() => {

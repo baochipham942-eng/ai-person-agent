@@ -42,6 +42,7 @@ export function WatchlistClient() {
 
   const totalCount = watchlistItemCount(watchlist);
   const hasItems = totalCount > 0;
+  const isAuthenticated = authenticated === true;
 
   const loadWatchlist = useCallback(async () => {
     setLoading(true);
@@ -130,10 +131,16 @@ export function WatchlistClient() {
         <section className="rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div className="mb-2 text-xs font-medium text-orange-600">个人动态</div>
-              <h1 className="text-2xl font-semibold text-stone-950">我的关注</h1>
+              <div className="mb-2 text-xs font-medium text-orange-600">
+                {isAuthenticated ? '个人动态' : '注册后同步'}
+              </div>
+              <h1 className="text-2xl font-semibold text-stone-950">
+                {isAuthenticated ? '我的关注' : '注册后开启个人关注'}
+              </h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-600">
-                关注的人物、话题和机构会汇总成个人动态流，未登录状态保存在当前浏览器。
+                {isAuthenticated
+                  ? '关注的人物、话题和机构会汇总成个人动态流。'
+                  : '当前浏览器里的关注可以先用，注册后再合并到账号里。'}
               </p>
             </div>
             <div className="grid grid-cols-3 gap-2 text-center">
@@ -287,28 +294,30 @@ function TargetWatchCard({ target }: { target: WatchTarget }) {
 }
 
 function EmptyState({ authenticated, loading }: { authenticated: boolean | null; loading: boolean }) {
+  const isAuthenticated = authenticated === true;
+
   return (
-    <section className="rounded-xl border border-dashed border-stone-200 bg-white/70 px-5 py-10 text-center">
+    <section className="rounded-xl border border-stone-200 bg-white px-5 py-12 text-center shadow-sm">
       <h2 className="text-base font-semibold text-stone-950">
         {loading ? '正在读取关注内容' : '还没有关注内容'}
       </h2>
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-stone-500">
-        {loading ? '正在合并本地和账号里的关注内容。' : '先从高频入口开始关注，个人动态流会自动聚合近期变化。'}
+        {loading
+          ? '正在合并本地和账号里的关注内容。'
+          : isAuthenticated
+            ? '先回到人物库关注人物、话题或机构。'
+            : '注册后可以把关注保存到账号里，后续再开启每周提醒。'}
       </p>
       {loading ? (
         <div className="mx-auto mt-6 h-10 w-10 animate-spin rounded-full border-2 border-stone-200 border-t-orange-500" />
       ) : (
-        <>
-          <div className="mt-5 flex flex-wrap justify-center gap-2">
-            <Link href="/" className="rounded-lg bg-stone-900 px-3 py-2 text-xs font-medium text-white hover:bg-orange-600">
-              去人物库关注
-            </Link>
-            <Link href="/digest" className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-700 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700">
-              浏览本周动态
-            </Link>
-          </div>
-          <AccountPanel authenticated={authenticated} loading={loading} compact />
-        </>
+        <Link
+          href={isAuthenticated ? '/' : '/login'}
+          className="mt-5 inline-flex h-10 items-center justify-center rounded-lg px-4 text-sm font-medium text-white shadow-sm transition hover:opacity-90"
+          style={{ background: 'var(--gradient-primary)' }}
+        >
+          {isAuthenticated ? '去人物库关注' : '注册或登录'}
+        </Link>
       )}
     </section>
   );
@@ -335,13 +344,13 @@ function AccountPanel({
     ? '正在确认本地关注和账号状态。'
     : isAuthenticated
       ? '已登录，关注会自动写入账号资料，也可以开启每周邮件。'
-      : '当前关注保存在本浏览器，登录或注册后会合并进账号，并可开启每周邮件。';
+      : '注册后把当前关注合并到账号，后续再开启每周邮件。';
 
   return (
     <section id="newsletter-settings" className={`${compact ? 'mx-auto mt-6 max-w-xl' : ''} scroll-mt-20 rounded-xl border border-stone-200 bg-white p-4 text-left shadow-sm`}>
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="text-sm font-semibold text-stone-950">保存关注和每周提醒</div>
+          <div className="text-sm font-semibold text-stone-950">{isAuthenticated ? '每周提醒' : '注册后同步关注'}</div>
           <p className="mt-1 text-xs leading-5 text-stone-500">{statusText}</p>
         </div>
         <span className={`inline-flex flex-shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-medium ${statusClass}`}>
@@ -354,15 +363,13 @@ function AccountPanel({
           <NewsletterSettings authenticated={authenticated} surface="inline" />
         </div>
       ) : (
-        <div className="mt-4 grid gap-3 rounded-lg bg-stone-50 p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
-          <div className="text-xs leading-5 text-stone-600">
-            一个账号同时处理跨设备同步和邮件周报，不再把关注列表留在单台浏览器里。
-          </div>
+        <div className="mt-4">
           <Link
             href="/login"
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-stone-900 px-3 text-xs font-medium text-white hover:bg-orange-600"
+            className="inline-flex h-9 items-center justify-center rounded-lg px-3 text-xs font-medium text-white shadow-sm transition hover:opacity-90"
+            style={{ background: 'var(--gradient-primary)' }}
           >
-            登录或注册
+            注册或登录
           </Link>
         </div>
       )}

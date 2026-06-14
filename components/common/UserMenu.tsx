@@ -21,6 +21,7 @@ interface UserMeResponse {
 
 const USER_MENU_ITEMS = [
   { href: '/watchlist', label: '我的关注' },
+  { href: '/compare', label: '我的对比' },
   { href: '/compare/reports', label: '我的对比报告' },
   { href: '/account/security', label: '账号安全' },
   { href: '/watchlist#newsletter-settings', label: '邮件订阅设置' },
@@ -42,6 +43,7 @@ export function UserMenu() {
   const [user, setUser] = useState<MenuUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [avatarFailed, setAvatarFailed] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,13 +87,17 @@ export function UserMenu() {
     };
   }, [open]);
 
+  useEffect(() => {
+    setAvatarFailed(false);
+  }, [user?.avatar]);
+
   if (!user) {
     return (
       <Link
         href="/login"
         aria-busy={loading || undefined}
         aria-label={loading ? '读取账号状态，登录' : '登录'}
-        className="inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg bg-stone-900 px-3 text-xs font-medium text-white shadow-sm transition-colors hover:bg-orange-600"
+        className="inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-600 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
       >
         登录
       </Link>
@@ -100,6 +106,7 @@ export function UserMenu() {
 
   const label = displayName(user);
   const initial = avatarInitial(label);
+  const avatarSrc = user.avatar && !avatarFailed ? user.avatar : null;
 
   return (
     <div ref={rootRef} className="relative flex-shrink-0">
@@ -108,11 +115,14 @@ export function UserMenu() {
         onClick={() => setOpen(current => !current)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-stone-200 bg-white text-xs font-semibold text-stone-700 shadow-sm transition hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
+        className={`flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-stone-200 text-xs font-semibold shadow-sm transition hover:border-orange-200 ${
+          avatarSrc ? 'bg-white text-stone-700 hover:bg-orange-50 hover:text-orange-700' : 'text-white'
+        }`}
+        style={avatarSrc ? undefined : { background: 'var(--gradient-primary)' }}
       >
-        {user.avatar ? (
+        {avatarSrc ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={user.avatar} alt={label} className="h-full w-full object-cover" />
+          <img src={avatarSrc} alt={label} className="h-full w-full object-cover" onError={() => setAvatarFailed(true)} />
         ) : (
           initial
         )}

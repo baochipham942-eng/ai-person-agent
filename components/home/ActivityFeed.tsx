@@ -67,9 +67,31 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
 
   return (
     <section className="min-w-0 flex-1">
-      <div className="mb-1.5 flex items-center gap-2">
-        <h2 className="text-xs font-semibold text-stone-950">本周推荐{scopeLabel}</h2>
-        <span className="hidden text-[11px] text-stone-400 sm:inline">近 7 天可信来源</span>
+      <div className="mb-2 flex items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-2">
+          <h2 className="flex-shrink-0 text-xs font-semibold text-stone-950">本周推荐{scopeLabel}</h2>
+          <span className="hidden truncate text-[11px] text-stone-400 sm:inline">近 7 天可信来源</span>
+        </div>
+        {events.length > 1 && (
+          <div className="flex flex-shrink-0 items-center gap-1" aria-label="本周推荐切换">
+            <button
+              type="button"
+              aria-label="上一条推荐"
+              onClick={previousEvent}
+              className="inline-flex h-6 w-6 items-center justify-center rounded-md text-stone-300 transition-colors hover:bg-stone-100 hover:text-stone-600"
+            >
+              <IconArrowLeft aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              aria-label="下一条推荐"
+              onClick={nextEvent}
+              className="inline-flex h-6 w-6 items-center justify-center rounded-md text-stone-300 transition-colors hover:bg-stone-100 hover:text-stone-600"
+            >
+              <IconArrowRight aria-hidden="true" />
+            </button>
+          </div>
+        )}
       </div>
 
       {error ? (
@@ -89,29 +111,7 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
           </div>
         </div>
       ) : featuredEvent ? (
-        <div className="space-y-1.5">
-          <FeaturedActivityCard event={featuredEvent} />
-          {events.length > 1 && (
-            <div className="flex items-center gap-1.5" aria-label="本周推荐切换">
-              <button
-                type="button"
-                aria-label="上一条推荐"
-                onClick={previousEvent}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
-              >
-                <IconArrowLeft aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                aria-label="下一条推荐"
-                onClick={nextEvent}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
-              >
-                <IconArrowRight aria-hidden="true" />
-              </button>
-            </div>
-          )}
-        </div>
+        <FeaturedActivityCard event={featuredEvent} />
       ) : (
         <div className="rounded-lg border border-dashed border-stone-200 bg-stone-50 px-3 py-3 text-xs text-stone-500">
           本周暂时没有可展示的动态

@@ -103,7 +103,7 @@ export function InfluenceBreakdown({
       </div>
 
       <div className="mt-4 rounded-xl bg-stone-50 px-3 py-3 text-xs leading-5 text-stone-500">
-        榜单差异的读法: “综合影响力”更看长期贡献和可验证资料，“最近热度”只看近 7 天站内访问，“学术影响力”优先论文引用，“开源影响力”优先 GitHub stars。当前存量分与版本预估相差 {scoreDelta.toFixed(1)}，需要校准时以审计记录为准。
+        榜单差异的读法: “综合影响力”更看长期贡献和可验证资料，“最近热度”只看近 7 天站内访问；学术和开源只作为已匹配到的引用、H-index、GitHub stars 信号，不把缺失数据当成低影响力。当前存量分与版本预估相差 {scoreDelta.toFixed(1)}，需要校准时以审计记录为准。
       </div>
     </section>
   );

@@ -88,10 +88,10 @@ export default async function TopicPage({ params }: TopicPageProps) {
               <div className="mb-2 text-sm font-medium text-stone-900">数据口径</div>
               <p>人物来自已发布资料库，动态和作品来自可回溯的原始来源。低覆盖话题会优先保留可验证信息。</p>
               <Link
-                href={buildDirectoryHref({ view: 'topic', topic, sortBy: 'citationCount' })}
+                href={buildDirectoryHref({ view: 'topic', topic, sortBy: 'influenceScore' })}
                 className="mt-3 inline-flex font-medium text-orange-600 hover:text-orange-700"
               >
-                按学术影响力查看
+                按综合影响力查看
               </Link>
             </section>
           </aside>

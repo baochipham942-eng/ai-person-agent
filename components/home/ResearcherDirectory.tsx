@@ -296,6 +296,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
   const loadingMore = isValidating && page > 1;
   const hasLoadError = Boolean(error && allPeople.length === 0);
   const shouldUseInitialActivity = selectedTopic === initialFilters.topic && selectedOrg === initialFilters.organization;
+  const selectedSortOption = DIRECTORY_SORT_OPTIONS.find(option => option.key === selectedSort);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -306,80 +307,82 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
         current="home"
         maxWidth="7xl"
         utilitySlot={
-          <button
-            type="button"
-            aria-expanded={searchOpen}
-            aria-controls="home-directory-search"
-            onClick={() => setSearchOpen(open => !open)}
-            className={`inline-flex h-8 flex-shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
-              searchOpen || debouncedSearch
-                ? 'border-orange-200 bg-orange-50 text-orange-700'
-                : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
-            }`}
-          >
-            <svg
-              aria-hidden="true"
-              className="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          searchOpen ? (
+            <div className="relative w-56 max-w-[calc(100vw-6rem)] flex-shrink-0 sm:w-64 lg:w-72">
+              <input
+                id="home-directory-search"
+                ref={searchInputRef}
+                type="text"
+                placeholder="搜索人物、公司或话题..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="h-8 w-full rounded-lg border border-orange-200 bg-white px-3 pl-8 pr-8 text-xs text-stone-900 shadow-sm transition-all placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+              />
+              <svg
+                aria-hidden="true"
+                className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-orange-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+              </svg>
+              <button
+                type="button"
+                aria-label={searchQuery ? '清除搜索' : '关闭搜索'}
+                onClick={() => {
+                  if (searchQuery) {
+                    setSearchQuery('');
+                    return;
+                  }
+                  setSearchOpen(false);
+                }}
+                className="absolute right-1.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-md text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
+              >
+                ×
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              aria-expanded={searchOpen}
+              aria-controls="home-directory-search"
+              onClick={() => setSearchOpen(true)}
+              className={`inline-flex h-8 flex-shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
+                debouncedSearch
+                  ? 'border-orange-200 bg-orange-50 text-orange-700'
+                  : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
+              }`}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
-            </svg>
-            搜索
-          </button>
+              <svg
+                aria-hidden="true"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+              </svg>
+              搜索
+            </button>
+          )
         }
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
         <section className="min-w-0">
+          <div className="mb-3 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
+            <ActivityFeed
+              topic={selectedTopic}
+              organization={selectedOrg}
+              initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
+            />
+          </div>
+
           <div className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <ActivityFeed
-                topic={selectedTopic}
-                organization={selectedOrg}
-                initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
-              />
-            </div>
-
-            {searchOpen && (
-              <div className="mt-3 flex justify-end border-t border-stone-100 pt-3">
-                <div className="relative w-full sm:w-[420px]">
-                  <input
-                    id="home-directory-search"
-                    ref={searchInputRef}
-                    type="text"
-                    placeholder="搜索人物、公司或话题..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="h-10 w-full rounded-xl border border-stone-200 bg-white px-4 pl-10 pr-10 text-sm text-stone-900 shadow-sm transition-all placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
-                  />
-                  <svg
-                    aria-hidden="true"
-                    className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
-                  </svg>
-                  {searchQuery && (
-                    <button
-                      type="button"
-                      aria-label="清除搜索"
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
-                    >
-                      ×
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
-
-            <div className="mt-3 grid gap-3 border-t border-stone-100 pt-3 xl:grid-cols-[minmax(0,0.62fr)_minmax(0,1fr)]">
-              <div className="min-w-0">
-                <div className="mb-1.5 text-[11px] font-medium text-stone-400">筛选</div>
+            <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-5 gap-y-3">
+              <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">
+                <span className="flex-shrink-0 text-[11px] font-medium text-stone-400">筛选</span>
                 <div className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">
                   {FILTER_MODES.map((mode) => (
                     <button
@@ -399,11 +402,11 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
                 </div>
               </div>
 
-              <div className="min-w-0">
-                <div className="mb-1.5 flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-medium text-stone-400">排序</span>
-                  <span className="hidden truncate text-[11px] text-stone-400 md:block">
-                    {DIRECTORY_SORT_OPTIONS.find(option => option.key === selectedSort)?.hint}
+              <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">
+                <div className="flex min-w-0 flex-shrink-0 items-baseline gap-2">
+                  <span className="flex-shrink-0 text-[11px] font-medium text-stone-400">排序</span>
+                  <span className="hidden max-w-48 truncate text-[11px] text-stone-400 sm:inline xl:max-w-64">
+                    {selectedSortOption?.hint}
                   </span>
                 </div>
                 <div className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-xl bg-stone-100 p-1 scrollbar-hide">

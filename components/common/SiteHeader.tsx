@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { CompareNavLink } from '@/components/common/CompareNavLink';
 import { UserMenu } from '@/components/common/UserMenu';
 
 type SiteHeaderCurrent = 'home' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist';
@@ -16,12 +15,7 @@ interface SiteHeaderProps {
 const CONTENT_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
   { key: 'home', href: '/', label: '推荐人物' },
   { key: 'digest', href: '/digest', label: '本周动态' },
-  { key: 'graph', href: '/graph', label: '人物关系' },
   { key: 'compareReports', href: '/compare/reports', label: '人物对比' },
-];
-
-const USER_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
-  { key: 'watchlist', href: '/watchlist', label: '我的关注' },
 ];
 
 const WIDTH_CLASS: Record<SiteHeaderWidth, string> = {
@@ -69,27 +63,9 @@ export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot, util
             </nav>
 
             <div className="flex min-w-0 flex-shrink-0 items-center justify-center gap-2 md:justify-end">
-              <nav className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide" aria-label="个人工具">
+              <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">
                 {utilitySlot}
-                <CompareNavLink isCurrent={current === 'myCompare'} />
-                {USER_NAV_ITEMS.map(item => {
-                  const isCurrent = current === item.key;
-                  return (
-                    <Link
-                      key={item.key}
-                      href={item.href}
-                      aria-current={isCurrent ? 'page' : undefined}
-                      className={`inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
-                        isCurrent
-                          ? 'border-stone-900 bg-stone-50 text-stone-950'
-                          : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
-              </nav>
+              </div>
               <UserMenu />
             </div>
           </div>

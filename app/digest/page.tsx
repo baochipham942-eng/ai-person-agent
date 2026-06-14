@@ -162,13 +162,13 @@ export default async function WeeklyDigestPage() {
             <section className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-6 text-stone-600 shadow-sm">
               <div className="mb-2 text-sm font-semibold text-stone-950">个人订阅</div>
               <p className="text-xs leading-5 text-stone-500">
-                已关注的人物、话题和机构会生成个人动态流。
+                注册后可以保存关注，并生成个人动态流。
               </p>
               <Link
-                href="/watchlist"
+                href="/login"
                 className="mt-3 inline-flex rounded-lg bg-stone-900 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-orange-600"
               >
-                我的关注
+                注册或登录
               </Link>
             </section>
           </aside>

@@ -63,10 +63,19 @@ export async function generateStaticParams() {
 
 interface PersonPageProps {
     params: Promise<{ id: string }>;
+    searchParams?: Promise<{
+        section?: string | string[];
+        highlight?: string | string[];
+    }>;
 }
 
-export default async function PersonPage({ params }: PersonPageProps) {
+export default async function PersonPage({ params, searchParams }: PersonPageProps) {
     const { id } = await params;
+    const query = searchParams ? await searchParams : {};
+    const initialSection = firstParam(query.section) === 'topics' ? 'topics' : null;
+    const highlightTopic = initialSection === 'topics'
+        ? normalizeHighlightTopic(firstParam(query.highlight))
+        : null;
     const personData = await fetchCachedPersonPageData(id);
 
     if (!personData) {
@@ -75,7 +84,11 @@ export default async function PersonPage({ params }: PersonPageProps) {
 
     return (
         <Suspense fallback={<PersonDetailLoading />}>
-            <PersonPageClient person={personData} />
+            <PersonPageClient
+                person={personData}
+                initialSection={initialSection}
+                highlightTopic={highlightTopic}
+            />
         </Suspense>
     );
 }
@@ -354,4 +367,15 @@ function normalizeDisplayTopicDetails<T extends { topic: string; rank: number }>
     return byTopic.size > 0
         ? [...byTopic.values()].sort((left, right) => left.rank - right.rank)
         : null;
+}
+
+function firstParam(value: string | string[] | undefined): string {
+    if (Array.isArray(value)) return value[0] || '';
+    return value || '';
+}
+
+function normalizeHighlightTopic(value: string): string | null {
+    if (!value) return null;
+    const normalized = normalizeDirectoryTopic(value);
+    return normalized || null;
 }

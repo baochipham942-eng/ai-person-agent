@@ -6,13 +6,13 @@
       "key": "academic",
       "label": "学术",
       "weight": 35,
-      "note": "引用和 H-index 属于高置信长期信号，适合解释研究影响力。"
+      "note": "引用和 H-index 只作为已匹配学者的长期信号，未覆盖时不代表没有学术贡献。"
     },
     {
       "key": "opensource",
       "label": "开源",
       "weight": 20,
-      "note": "开源影响力来自可访问项目声量，不代表论文或产业贡献。"
+      "note": "GitHub stars 只反映已抓取仓库声量，不等同于人的完整开源贡献。"
     },
     {
       "key": "industry",

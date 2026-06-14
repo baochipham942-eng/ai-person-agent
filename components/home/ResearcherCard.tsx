@@ -134,10 +134,6 @@ function formatCompactNumber(value: number): string {
 
 function formatSortSignal(person: DirectoryPerson, sortBy: DirectorySortKey): string {
   if (sortBy === 'weeklyViewCount') return `近 7 天 ${person.weeklyViewCount} 次访问`;
-  if (sortBy === 'citationCount') return `引用 ${formatCompactNumber(person.citationCount)}`;
-  if (sortBy === 'githubStars') return `GitHub ${formatCompactNumber(person.githubStars)} stars`;
-  if (sortBy === 'industryImpact') return person.organization[0] ? `产业线索 ${person.organization[0]}` : `影响力 ${person.influenceScore.toFixed(1)}`;
-  if (sortBy === 'risingScore') return `近 7 天 ${person.weeklyViewCount} 次访问`;
   return `影响力 ${person.influenceScore.toFixed(1)}`;
 }
 
