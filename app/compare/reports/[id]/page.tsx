@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { auth } from '@/auth';
-import { SiteHeader } from '@/components/common/SiteHeader';
+import { IdentityWorkspaceLayout } from '@/components/common/IdentityWorkspaceLayout';
 import { COMPARE_AGENT_TOOLS } from '@/lib/compare-report';
 import { prisma } from '@/lib/db/prisma';
 import {
@@ -125,62 +125,62 @@ export default async function CompareReportDetailPage({ params }: ReportDetailPa
   const isAnonymous = !session?.user?.id;
 
   return (
-    <div className="min-h-screen text-[#201c17]" style={pageBackground}>
-      <SiteHeader current="compareReports" />
+    <IdentityWorkspaceLayout identity="user">
+      <div className="min-h-screen text-[#201c17]" style={pageBackground}>
+        <main className="mx-auto max-w-[1180px] px-4 py-7 sm:px-6">
+          <ReportHero
+            reportTitle={report.title}
+            reportSummary={report.summary}
+            topic={report.topic}
+            status={report.status}
+            generatedAt={report.completedAt || report.createdAt}
+            people={orderedPeople}
+            content={content}
+            sourceCount={sourceCount}
+          />
 
-      <main className="mx-auto max-w-[1180px] px-4 py-7 sm:px-6">
-        <ReportHero
-          reportTitle={report.title}
-          reportSummary={report.summary}
-          topic={report.topic}
-          status={report.status}
-          generatedAt={report.completedAt || report.createdAt}
-          people={orderedPeople}
-          content={content}
-          sourceCount={sourceCount}
-        />
+          <ProcessDetails events={report.events} />
 
-        <ProcessDetails events={report.events} />
+          {report.status !== 'completed' || !content ? (
+            <PendingOrFailedPanel status={report.status} errorMessage={report.errorMessage} events={report.events} />
+          ) : (
+            <>
+              {modules.has('pkStage') && (
+                <CompareStage content={content} people={orderedPeople} />
+              )}
 
-        {report.status !== 'completed' || !content ? (
-          <PendingOrFailedPanel status={report.status} errorMessage={report.errorMessage} events={report.events} />
-        ) : (
-          <>
-            {modules.has('pkStage') && (
-              <CompareStage content={content} people={orderedPeople} />
-            )}
+              {modules.has('viewpointMatrix') && (
+                <ViewpointMatrix content={content} />
+              )}
 
-            {modules.has('viewpointMatrix') && (
-              <ViewpointMatrix content={content} />
-            )}
+              {modules.has('timeline') && (
+                <TimelineSection content={content} />
+              )}
 
-            {modules.has('timeline') && (
-              <TimelineSection content={content} />
-            )}
+              {modules.has('analysis') && (
+                <AnalysisSection sections={content.analysisSections} />
+              )}
 
-            {modules.has('analysis') && (
-              <AnalysisSection sections={content.analysisSections} />
-            )}
+              {modules.has('evidence') && (
+                <EvidenceSection evidence={content.evidence} dimensions={content.dimensions} />
+              )}
+            </>
+          )}
 
-            {modules.has('evidence') && (
-              <EvidenceSection evidence={content.evidence} />
-            )}
-          </>
-        )}
-
-        {isAnonymous && (
-          <section className="mt-5 rounded-lg border border-orange-100 bg-orange-50 px-5 py-5">
-            <h2 className="text-base font-semibold text-orange-950">登录后可以生成自己的对比报告</h2>
-            <p className="mt-2 text-sm leading-6 text-orange-800">
-              选择 2 到 3 位人物，系统会整理公开资料、补充近期信息，并保存成可分享的报告。
-            </p>
-            <Link href="/login" className="mt-4 inline-flex rounded-lg bg-[#201c17] px-4 py-2 text-sm font-medium text-[#fff8ea] hover:bg-orange-700">
-              登录或注册
-            </Link>
-          </section>
-        )}
-      </main>
-    </div>
+          {isAnonymous && (
+            <section className="mt-5 rounded-lg border border-orange-100 bg-orange-50 px-5 py-5">
+              <h2 className="text-base font-semibold text-orange-950">登录后可以生成自己的对比报告</h2>
+              <p className="mt-2 text-sm leading-6 text-orange-800">
+                选择 2 到 3 位人物，系统会整理公开资料、补充近期信息，并保存成可分享的报告。
+              </p>
+              <Link href="/login" className="mt-4 inline-flex rounded-lg bg-[#201c17] px-4 py-2 text-sm font-medium text-[#fff8ea] hover:bg-orange-700">
+                登录或注册
+              </Link>
+            </section>
+          )}
+        </main>
+      </div>
+    </IdentityWorkspaceLayout>
   );
 }
 
@@ -280,12 +280,20 @@ function ProcessDetails({ events }: { events: ReportEvent[] }) {
   return (
     <details className="my-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/80 px-5 py-4 shadow-[0_12px_30px_rgba(71,52,26,0.07)]">
       <summary className="cursor-pointer text-sm font-medium text-[#5f5548] marker:text-[#c85f20] hover:text-[#c85f20]">
-        生成过程与来源校验
+        报告可信度链路
       </summary>
       <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)]">
         <div>
-          <div className="mb-2 text-xs font-bold text-[#c85f20]">Agent 工具链</div>
-          <div className="flex flex-wrap gap-2">
+          <div className="mb-2 text-xs font-bold text-[#c85f20]">它和读者的关系</div>
+          <p className="max-w-2xl text-sm leading-6 text-[#4d4439]">
+            这里说明报告为什么敢给出这些判断：先确认人物和资料覆盖，再整理公开来源和近期动态，最后把强判断限制在能回看的证据内。读者可以用它判断哪些结论能先参考，哪些需要回到原始来源再核验。
+          </p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-3">
+            <ProcessPillar title="取材" body="人物资料、观点摘录、近期动态和公开网页。" />
+            <ProcessPillar title="成文" body="把证据整理成共同点、差异点和个人视角。" />
+            <ProcessPillar title="复核" body="检查来源覆盖，弱证据会进入限制说明。" />
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
             {COMPARE_AGENT_TOOLS.map(tool => (
               <span
                 key={tool.key}
@@ -310,6 +318,15 @@ function ProcessDetails({ events }: { events: ReportEvent[] }) {
         </div>
       </div>
     </details>
+  );
+}
+
+function ProcessPillar({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-lg bg-white px-3 py-2 ring-1 ring-[#ded4c4]/70">
+      <div className="text-xs font-semibold text-[#201c17]">{title}</div>
+      <p className="mt-1 text-xs leading-5 text-[#776f64]">{body}</p>
+    </div>
   );
 }
 
@@ -450,13 +467,16 @@ function MatrixRow({
         <p className="mt-2 text-xs leading-5 text-[#776f64]">{dimension.sharedView}</p>
         {evidence.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-2">
-            {evidence.slice(0, 3).map((item, index) => (
+            {evidence.slice(0, 3).map(item => (
               <a
                 key={item.id}
                 href={`#${evidenceAnchorId(item.id)}`}
-                className="text-xs font-bold text-[#c85f20] hover:text-orange-800"
+                title={item.title}
+                className="inline-flex max-w-full rounded-md bg-[#fff2de] px-2 py-1 text-left text-xs font-semibold leading-5 text-[#8a3a12] ring-1 ring-[#f0d4b8] hover:bg-[#ffe8c5] hover:text-orange-900"
               >
-                证据 {index + 1}
+                <span className="line-clamp-2">
+                  {item.personName} · {item.title}
+                </span>
               </a>
             ))}
           </div>
@@ -515,29 +535,67 @@ function AnalysisSection({ sections }: { sections: CompareReportContent['analysi
   );
 }
 
-function EvidenceSection({ evidence }: { evidence: ReportEvidence[] }) {
+function EvidenceSection({ evidence, dimensions }: { evidence: ReportEvidence[]; dimensions: ReportDimension[] }) {
+  const referencesByEvidenceId = buildEvidenceReferenceMap(dimensions);
+  const viewpointEvidence = evidence.filter(item => (referencesByEvidenceId.get(item.id) || []).length > 0);
+  const backgroundEvidence = evidence.filter(item => (referencesByEvidenceId.get(item.id) || []).length === 0);
+
   return (
-    <section className="mb-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-5">
-      <SectionHead title="关键证据" note="报告判断只引用这里能回看的来源。" />
-      <div className="grid gap-3 md:grid-cols-2">
-        {evidence.map(item => (
-          <article id={evidenceAnchorId(item.id)} key={item.id} className="scroll-mt-24 rounded-lg border border-[#ded4c4] bg-white p-4">
-            <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className="rounded-md bg-[#f8f1e7] px-2 py-0.5 text-[11px] text-[#5f5548]">{item.personName}</span>
-              <span className="rounded-md bg-[#f8f1e7] px-2 py-0.5 text-[11px] text-[#5f5548]">{item.sourceType}</span>
-            </div>
-            {item.url ? (
-              <a href={item.url} target="_blank" rel="noreferrer" className="text-sm font-semibold leading-6 text-[#201c17] hover:text-[#c85f20]">
-                {item.title}
-              </a>
-            ) : (
-              <h3 className="text-sm font-semibold leading-6 text-[#201c17]">{item.title}</h3>
-            )}
-            <p className="mt-2 text-xs leading-5 text-[#5f5548]">{item.excerpt}</p>
-          </article>
-        ))}
+    <>
+      <section className="mb-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-5">
+        <SectionHead title="观点引用证据" note="这些资料被观点矩阵直接引用，用来支撑页面里的共同点、差异点和个人视角。" />
+        {viewpointEvidence.length > 0 ? (
+          <div className="grid gap-3 md:grid-cols-2">
+            {viewpointEvidence.map(item => (
+              <EvidenceCard key={item.id} item={item} references={referencesByEvidenceId.get(item.id) || []} />
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-lg border border-[#ded4c4] bg-white px-4 py-3 text-sm leading-6 text-[#776f64]">
+            当前观点矩阵还没有绑定到具体证据，结论只能作为阅读线索。
+          </p>
+        )}
+      </section>
+
+      {backgroundEvidence.length > 0 && (
+        <section className="mb-4 rounded-lg border border-[#5b4a33]/15 bg-[#fffdf8]/90 p-4 shadow-[0_18px_45px_rgba(71,52,26,0.10)] sm:p-5">
+          <SectionHead title="补充来源" note="这些资料参与人物背景、覆盖度和资料厚度判断，但没有被观点矩阵直接引用。" />
+          <div className="grid gap-3 md:grid-cols-2">
+            {backgroundEvidence.map(item => (
+              <EvidenceCard key={item.id} item={item} references={[]} />
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
+function EvidenceCard({ item, references }: { item: ReportEvidence; references: string[] }) {
+  return (
+    <article id={evidenceAnchorId(item.id)} className="scroll-mt-24 rounded-lg border border-[#ded4c4] bg-white p-4">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <span className="rounded-md bg-[#f8f1e7] px-2 py-0.5 text-[11px] text-[#5f5548]">{item.personName}</span>
+        <span className="rounded-md bg-[#f8f1e7] px-2 py-0.5 text-[11px] text-[#5f5548]">{item.sourceType}</span>
+        {references.length > 0 ? (
+          references.slice(0, 2).map(reference => (
+            <span key={`${item.id}-${reference}`} className="rounded-md bg-[#fff2de] px-2 py-0.5 text-[11px] font-medium text-[#8a3a12]">
+              支撑：{reference}
+            </span>
+          ))
+        ) : (
+          <span className="rounded-md bg-stone-50 px-2 py-0.5 text-[11px] text-[#776f64]">补充资料</span>
+        )}
       </div>
-    </section>
+      {item.url ? (
+        <a href={item.url} target="_blank" rel="noreferrer" className="text-sm font-semibold leading-6 text-[#201c17] hover:text-[#c85f20]">
+          {item.title}
+        </a>
+      ) : (
+        <h3 className="text-sm font-semibold leading-6 text-[#201c17]">{item.title}</h3>
+      )}
+      <p className="mt-2 text-xs leading-5 text-[#5f5548]">{item.excerpt}</p>
+    </article>
   );
 }
 
@@ -642,6 +700,20 @@ function sourceCountFromSnapshot(value: unknown, content: CompareReportContent |
 
 function evidenceAnchorId(id: string): string {
   return `evidence-${id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+}
+
+function buildEvidenceReferenceMap(dimensions: ReportDimension[]): Map<string, string[]> {
+  const references = new Map<string, string[]>();
+
+  for (const dimension of dimensions) {
+    for (const evidenceId of dimension.evidenceIds) {
+      const labels = references.get(evidenceId) || [];
+      if (!labels.includes(dimension.label)) labels.push(dimension.label);
+      references.set(evidenceId, labels);
+    }
+  }
+
+  return references;
 }
 
 function statusLabel(status: string): string {

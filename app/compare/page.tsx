@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { CompareReportBuilder } from '@/components/compare/CompareReportBuilder';
-import { SiteHeader } from '@/components/common/SiteHeader';
+import { IdentityWorkspaceLayout } from '@/components/common/IdentityWorkspaceLayout';
 import { DEFAULT_COMPARE_TOPIC } from '@/lib/compare-report-agent';
 
 interface ComparePageProps {
@@ -20,8 +20,7 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
   const topic = firstParam(resolvedSearchParams?.topic) || DEFAULT_COMPARE_TOPIC;
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <SiteHeader current="myCompare" />
+    <IdentityWorkspaceLayout identity="user">
       <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <CompareReportBuilder
           key={ids.join(',') || 'empty'}
@@ -29,7 +28,7 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
           initialIds={ids}
         />
       </main>
-    </div>
+    </IdentityWorkspaceLayout>
   );
 }
 

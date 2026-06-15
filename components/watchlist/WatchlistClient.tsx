@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ActivityEventList } from '@/components/activity/ActivityEventList';
 import { FollowButton } from '@/components/common/FollowButton';
-import { SiteHeader } from '@/components/common/SiteHeader';
 import { NewsletterSettings } from '@/components/newsletter/NewsletterSettings';
 import type { ActivityEvent } from '@/lib/activity';
 import {
@@ -124,65 +123,61 @@ export function WatchlistClient() {
   }, [summary.people, watchlist.people]);
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <SiteHeader current="watchlist" maxWidth="6xl" />
-
-      <main className="mx-auto max-w-6xl space-y-8 px-4 py-6 sm:px-6">
-        <section className="rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <div className="mb-2 text-xs font-medium text-orange-600">
-                {isAuthenticated ? '个人动态' : '注册后同步'}
-              </div>
-              <h1 className="text-2xl font-semibold text-stone-950">
-                {isAuthenticated ? '我的关注' : '注册后开启个人关注'}
-              </h1>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-600">
-                {isAuthenticated
-                  ? '关注的人物、话题和机构会汇总成个人动态流。'
-                  : '当前浏览器里的关注可以先用，注册后再合并到账号里。'}
-              </p>
+    <main className="mx-auto max-w-6xl space-y-8 px-4 py-6 sm:px-6">
+      <section className="rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <div className="mb-2 text-xs font-medium text-orange-600">
+              {isAuthenticated ? '个人动态' : '注册后同步'}
             </div>
-            <div className="grid grid-cols-3 gap-2 text-center">
-              <Stat label="人物" value={watchlist.people.length} />
-              <Stat label="话题" value={watchlist.topics.length} />
-              <Stat label="机构" value={watchlist.organizations.length} />
-            </div>
+            <h1 className="text-2xl font-semibold text-stone-950">
+              {isAuthenticated ? '我的关注' : '注册后开启个人关注'}
+            </h1>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-600">
+              {isAuthenticated
+                ? '关注的人物、话题和机构会汇总成个人动态流。'
+                : '当前浏览器里的关注可以先用，注册后再合并到账号里。'}
+            </p>
           </div>
-        </section>
-
-        {!hasItems ? (
-          <EmptyState authenticated={authenticated} loading={loading} />
-        ) : (
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
-            <div className="space-y-8">
-              <section>
-                <SectionTitle title="关注动态" />
-                {loading ? (
-                  <LoadingRows />
-                ) : (
-                  <ActivityEventList
-                    events={summary.events}
-                    emptyText="关注内容暂时没有近期动态"
-                    showPerson
-                  />
-                )}
-              </section>
-
-              <WatchTargetSection
-                people={personTargets}
-                topics={watchlist.topics}
-                organizations={watchlist.organizations}
-              />
-            </div>
-
-            <aside className="lg:sticky lg:top-20 lg:self-start">
-              <AccountPanel authenticated={authenticated} loading={loading} />
-            </aside>
+          <div className="grid grid-cols-3 gap-2 text-center">
+            <Stat label="人物" value={watchlist.people.length} />
+            <Stat label="话题" value={watchlist.topics.length} />
+            <Stat label="机构" value={watchlist.organizations.length} />
           </div>
-        )}
-      </main>
-    </div>
+        </div>
+      </section>
+
+      {!hasItems ? (
+        <EmptyState authenticated={authenticated} loading={loading} />
+      ) : (
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+          <div className="space-y-8">
+            <section>
+              <SectionTitle title="关注动态" />
+              {loading ? (
+                <LoadingRows />
+              ) : (
+                <ActivityEventList
+                  events={summary.events}
+                  emptyText="关注内容暂时没有近期动态"
+                  showPerson
+                />
+              )}
+            </section>
+
+            <WatchTargetSection
+              people={personTargets}
+              topics={watchlist.topics}
+              organizations={watchlist.organizations}
+            />
+          </div>
+
+          <aside className="lg:sticky lg:top-20 lg:self-start">
+            <AccountPanel authenticated={authenticated} loading={loading} />
+          </aside>
+        </div>
+      )}
+    </main>
   );
 }
 

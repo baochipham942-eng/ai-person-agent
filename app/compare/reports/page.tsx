@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { unstable_cache } from 'next/cache';
 import { CompareReportLauncher } from '@/components/compare/CompareReportLauncher';
-import { SiteHeader } from '@/components/common/SiteHeader';
+import { IdentityWorkspaceLayout } from '@/components/common/IdentityWorkspaceLayout';
 import { prisma } from '@/lib/db/prisma';
 
 export const revalidate = 300;
@@ -20,9 +20,7 @@ export default async function CompareReportsPage() {
   );
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <SiteHeader current="compareReports" />
-
+    <IdentityWorkspaceLayout identity="user">
       <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <section className="mb-6 flex flex-col gap-4 rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:flex-row sm:items-end sm:justify-between sm:px-7">
           <div>
@@ -91,7 +89,7 @@ export default async function CompareReportsPage() {
           </div>
         )}
       </main>
-    </div>
+    </IdentityWorkspaceLayout>
   );
 }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { IdentityWorkspaceLayout } from '@/components/common/IdentityWorkspaceLayout';
 import { WatchlistClient } from '@/components/watchlist/WatchlistClient';
 
 export const metadata: Metadata = {
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function WatchlistPage() {
-  return <WatchlistClient />;
+  return (
+    <IdentityWorkspaceLayout identity="user">
+      <WatchlistClient />
+    </IdentityWorkspaceLayout>
+  );
 }

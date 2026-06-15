@@ -186,10 +186,11 @@ test('compare report agent exposes the full MVP toolchain', async () => {
   assert.doesNotMatch(launcherSource, /fixed inset-0/);
   assert.match(builderSource, /COMPARE_AGENT_TOOLS\.map/);
   assert.doesNotMatch(directorySource, /CompareReportLauncher/);
-  assert.match(reportDetailSource, /SiteHeader/);
+  assert.match(reportDetailSource, /IdentityWorkspaceLayout/);
   assert.match(reportDetailSource, /<details/);
-  assert.match(reportDetailSource, /生成过程与来源校验/);
-  assert.match(reportDetailSource, /Agent 工具链/);
+  assert.match(reportDetailSource, /报告可信度链路/);
+  assert.match(reportDetailSource, /观点引用证据/);
+  assert.match(reportDetailSource, /buildEvidenceReferenceMap/);
   assert.match(newReportPageSource, /CompareReportBuilder/);
   assert.match(reportsRouteSource, /toolKey: item\.toolKey/);
   assert.match(readinessSource, /checkCompareReportStore/);

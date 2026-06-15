@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import { IdentityWorkspaceLayout } from '@/components/common/IdentityWorkspaceLayout';
 import { AuthAccessError, requireAdmin } from '@/lib/auth/permissions';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -9,5 +10,5 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     redirect('/');
   }
 
-  return children;
+  return <IdentityWorkspaceLayout identity="admin">{children}</IdentityWorkspaceLayout>;
 }
