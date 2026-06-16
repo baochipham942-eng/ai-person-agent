@@ -59,6 +59,7 @@ export default async function CompareReportsPage() {
                 <Link
                   key={report.id}
                   href={`/compare/reports/${report.id}`}
+                  prefetch={false}
                   className="group rounded-xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-orange-200 hover:shadow-md"
                 >
                   <div className="flex items-start justify-between gap-4">

@@ -133,7 +133,7 @@ function FilterPanel({
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <div className="text-sm font-medium text-stone-900">筛选视图</div>
         {(topic || organization || relationType) && (
-          <Link href="/graph" className="text-xs font-medium text-orange-600 hover:text-orange-700">
+          <Link href="/graph" prefetch={false} className="text-xs font-medium text-orange-600 hover:text-orange-700">
             清除筛选
           </Link>
         )}
@@ -167,6 +167,7 @@ function FilterRow({
           <Link
             key={item}
             href={hrefFor(item)}
+            prefetch={false}
             className={`rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors ${
               active === item
                 ? 'border-orange-200 bg-orange-50 text-orange-700'
@@ -223,6 +224,7 @@ function NodeGroup({ title, nodes, tone }: { title: string; nodes: GlobalRelatio
           <Link
             key={node.id}
             href={`/person/${node.id}`}
+            prefetch={false}
             className={`flex min-h-16 items-center gap-2 rounded-lg border px-2.5 py-2 transition-colors ${
               tone === 'seed'
                 ? 'border-orange-100 bg-orange-50 hover:border-orange-200'
@@ -256,13 +258,13 @@ function EdgeCard({ edge }: { edge: GlobalRelationshipGraphEdge }) {
   return (
     <div className="rounded-lg border border-stone-200 bg-white px-3 py-3 shadow-sm">
       <div className="flex flex-wrap items-center gap-2">
-        <Link href={`/person/${edge.sourceId}?fromGraph=1`} className="text-sm font-medium text-stone-900 hover:text-orange-600">
+        <Link href={`/person/${edge.sourceId}?fromGraph=1`} prefetch={false} className="text-sm font-medium text-stone-900 hover:text-orange-600">
           {edge.sourceName}
         </Link>
         <span className="rounded-full border border-orange-100 bg-orange-50 px-2 py-0.5 text-[10px] font-medium text-orange-700">
           {relationLabel(edge.relationType)}
         </span>
-        <Link href={`/person/${edge.targetId}?fromGraph=1`} className="text-sm font-medium text-stone-900 hover:text-orange-600">
+        <Link href={`/person/${edge.targetId}?fromGraph=1`} prefetch={false} className="text-sm font-medium text-stone-900 hover:text-orange-600">
           {edge.targetName}
         </Link>
       </div>
@@ -308,7 +310,7 @@ function HubSection({ graph }: { graph: GlobalRelationshipGraph }) {
       {graph.hubs.length > 0 ? (
         <div className="space-y-2">
           {graph.hubs.slice(0, 6).map(hub => (
-            <Link key={hub.personId} href={`/person/${hub.personId}?fromGraphHub=1`} className="block rounded-lg bg-stone-50 px-3 py-2 text-xs hover:bg-orange-50">
+            <Link key={hub.personId} href={`/person/${hub.personId}?fromGraphHub=1`} prefetch={false} className="block rounded-lg bg-stone-50 px-3 py-2 text-xs hover:bg-orange-50">
               <div className="flex items-center justify-between gap-3">
                 <span className="min-w-0 truncate font-medium text-stone-900">{hub.name}</span>
                 <span className="shrink-0 text-stone-400">{hub.degree} 条</span>
@@ -342,13 +344,13 @@ function RecommendedPathSection({ graph }: { graph: GlobalRelationshipGraph }) {
           {graph.recommendedPaths.slice(0, 6).map(path => (
             <div key={path.id} className="rounded-lg bg-stone-50 px-3 py-2 text-xs">
               <div className="flex flex-wrap items-center gap-1.5 leading-5">
-                <Link href={`/person/${path.sourceId}?fromGraphPath=1`} className="font-medium text-stone-900 hover:text-orange-600">
+                <Link href={`/person/${path.sourceId}?fromGraphPath=1`} prefetch={false} className="font-medium text-stone-900 hover:text-orange-600">
                   {path.sourceName}
                 </Link>
                 <span className="rounded-full bg-white px-1.5 py-0.5 text-[10px] text-orange-700 ring-1 ring-orange-100">
                   {relationLabel(path.relationType)}
                 </span>
-                <Link href={`/person/${path.targetId}?fromGraphPath=1`} className="font-medium text-stone-900 hover:text-orange-600">
+                <Link href={`/person/${path.targetId}?fromGraphPath=1`} prefetch={false} className="font-medium text-stone-900 hover:text-orange-600">
                   {path.targetName}
                 </Link>
               </div>
@@ -382,7 +384,7 @@ function FacetSection({
       {facets.length > 0 ? (
         <div className="space-y-2">
           {facets.slice(0, 8).map(facet => (
-            <Link key={facet.label} href={facet.href} className="flex items-center justify-between gap-3 rounded-lg bg-stone-50 px-3 py-2 text-xs hover:bg-orange-50">
+            <Link key={facet.label} href={facet.href} prefetch={false} className="flex items-center justify-between gap-3 rounded-lg bg-stone-50 px-3 py-2 text-xs hover:bg-orange-50">
               <span className="min-w-0 truncate font-medium text-stone-700">{labelFor(facet.label)}</span>
               <span className="text-stone-400">{facet.count}</span>
             </Link>
@@ -426,7 +428,7 @@ function EmptyGraph({ graph }: { graph: GlobalRelationshipGraph }) {
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-stone-500">
         {isDegraded ? graph.message : '可以换一个话题、机构或关系类型查看。'}
       </p>
-      <Link href="/graph" className="mt-5 inline-flex h-9 items-center rounded-lg bg-stone-900 px-3 text-xs font-medium text-white hover:bg-orange-600">
+      <Link href="/graph" prefetch={false} className="mt-5 inline-flex h-9 items-center rounded-lg bg-stone-900 px-3 text-xs font-medium text-white hover:bg-orange-600">
         查看默认图谱
       </Link>
     </section>

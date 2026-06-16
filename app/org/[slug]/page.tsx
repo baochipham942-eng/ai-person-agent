@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import Link from 'next/link';
 import {
   ActivitySection,
@@ -20,7 +21,13 @@ interface OrganizationPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 300;
+
+const loadOrganizationPageData = unstable_cache(
+  async (organization: string) => fetchOrganizationPageData(organization),
+  ['organization-page-data-v2'],
+  { revalidate: 300 }
+);
 
 export async function generateMetadata({ params }: OrganizationPageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -35,7 +42,7 @@ export async function generateMetadata({ params }: OrganizationPageProps): Promi
 export default async function OrganizationPage({ params }: OrganizationPageProps) {
   const { slug } = await params;
   const organization = decodeRouteParam(slug);
-  const data = await fetchOrganizationPageData(organization);
+  const data = await loadOrganizationPageData(organization);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -102,6 +109,7 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
               )}
               <Link
                 href={buildDirectoryHref({ view: 'organization', organization, sortBy: 'weeklyViewCount' })}
+                prefetch={false}
                 className="mt-3 inline-flex font-medium text-orange-600 hover:text-orange-700"
               >
                 按最近热度查看

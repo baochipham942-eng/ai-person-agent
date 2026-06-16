@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useCallback, useRef, type KeyboardEvent, type MouseEvent } from 'react';
+import { memo, type KeyboardEvent, type MouseEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -141,7 +141,6 @@ function formatSortSignal(person: DirectoryPerson, sortBy: DirectorySortKey): st
 export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot, sortBy = 'influenceScore' }: ResearcherCardProps) {
   const router = useRouter();
   const detailHref = `/person/${person.id}`;
-  const hasPrefetchedRef = useRef(false);
   const roleLabel = person.roleCategory ? ROLE_LABELS[person.roleCategory] : null;
   // 优先使用 currentTitle 中的机构，回退到 organization[0]
   const primaryOrg = extractOrgFromTitle(person.currentTitle) || person.organization[0] || '';
@@ -152,12 +151,6 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
     if (event.defaultPrevented || !isPlainLeftClick(event) || shouldIgnoreCardClick(event.target)) return;
     router.push(detailHref);
   };
-
-  const prefetchDetail = useCallback(() => {
-    if (hasPrefetchedRef.current) return;
-    hasPrefetchedRef.current = true;
-    router.prefetch(detailHref);
-  }, [detailHref, router]);
 
   const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.defaultPrevented || event.target !== event.currentTarget) return;
@@ -174,8 +167,6 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
       aria-label={`查看 ${person.name} 的详情`}
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
-      onMouseEnter={prefetchDetail}
-      onFocus={prefetchDetail}
       className="card-interactive relative p-4 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2"
     >
       {/* Rank Badge */}
@@ -195,6 +186,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
       <div className="flex items-start gap-3 mb-3">
         <Link
           href={detailHref}
+          prefetch={false}
           aria-label={`查看 ${person.name} 的详情`}
           onMouseDown={preventMouseFocus}
           className="relative w-11 h-11 rounded-xl overflow-hidden bg-stone-100 flex-shrink-0 ring-1 ring-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
@@ -220,7 +212,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
 
         {/* Name & Org */}
         <div className="flex-1 min-w-0">
-          <Link href={detailHref} onMouseDown={preventMouseFocus} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded-md">
+          <Link href={detailHref} prefetch={false} onMouseDown={preventMouseFocus} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded-md">
             <h3 className="text-sm font-semibold text-stone-900 truncate group-hover:text-orange-600 transition-colors">
               {person.name}
             </h3>
@@ -241,6 +233,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
           {roleLabel && person.roleCategory && (
             <Link
               href={`/?view=role&role=${encodeURIComponent(person.roleCategory)}`}
+              prefetch={false}
               onMouseDown={preventMouseFocus}
               className="inline-block mt-1 text-[10px] font-medium text-orange-600 bg-orange-50 border border-orange-100 px-1.5 py-0.5 rounded-md hover:bg-orange-100 hover:border-orange-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300"
             >
@@ -262,6 +255,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
             <Link
               key={i}
               href={buildTopicHref(topic)}
+              prefetch={false}
               onMouseDown={preventMouseFocus}
               className={`text-[10px] font-medium px-1.5 py-0.5 rounded-md ${TOPIC_STYLE} hover:bg-orange-100 hover:text-orange-700 hover:border-orange-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300`}
             >
@@ -300,6 +294,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
           <CompareButton target={{ id: person.id, name: person.name }} />
           <Link
             href={detailHref}
+            prefetch={false}
             onMouseDown={preventMouseFocus}
             className="text-[10px] text-stone-500 group-hover:text-orange-600 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 rounded-md px-1 py-0.5"
           >

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import Link from 'next/link';
 import {
   ActivitySection,
@@ -20,7 +21,13 @@ interface TopicPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 300;
+
+const loadTopicPageData = unstable_cache(
+  async (topic: string) => fetchTopicPageData(topic),
+  ['topic-page-data-v2'],
+  { revalidate: 300 }
+);
 
 export async function generateMetadata({ params }: TopicPageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -35,7 +42,7 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
 export default async function TopicPage({ params }: TopicPageProps) {
   const { slug } = await params;
   const topic = normalizeDirectoryTopic(decodeRouteParam(slug));
-  const data = await fetchTopicPageData(topic);
+  const data = await loadTopicPageData(topic);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -89,6 +96,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               <p>人物来自已发布资料库，动态和作品来自可回溯的原始来源。低覆盖话题会优先保留可验证信息。</p>
               <Link
                 href={buildDirectoryHref({ view: 'topic', topic, sortBy: 'influenceScore' })}
+                prefetch={false}
                 className="mt-3 inline-flex font-medium text-orange-600 hover:text-orange-700"
               >
                 按综合影响力查看

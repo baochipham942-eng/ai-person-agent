@@ -54,6 +54,7 @@ export function EntityHeader({ eyebrow, title, description, stats, primaryAction
           {primaryAction && (
             <Link
               href={primaryAction.href || '/'}
+              prefetch={false}
               className="inline-flex h-9 items-center justify-center rounded-lg bg-stone-900 px-3 text-xs font-medium text-white transition-colors hover:bg-orange-600"
             >
               {primaryAction.label}
@@ -143,7 +144,7 @@ export function WorksSection({ works }: { works: EntityWork[] }) {
                 {work.title}
               </a>
               <div className="mt-1 flex flex-wrap items-center gap-2">
-                <Link href={`/person/${work.personId}`} className="text-xs font-medium text-stone-500 hover:text-orange-600">
+                <Link href={`/person/${work.personId}`} prefetch={false} className="text-xs font-medium text-stone-500 hover:text-orange-600">
                   {work.personName}
                 </Link>
                 {work.summary && <p className="line-clamp-1 text-xs text-stone-400">{work.summary}</p>}
@@ -178,6 +179,7 @@ export function FacetCloud({
             <Link
               key={facet.label}
               href={type === 'topic' ? buildTopicHref(facet.label) : buildOrganizationHref(facet.label)}
+              prefetch={false}
               className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-medium text-stone-600 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
             >
               <span>{facet.label}</span>
@@ -266,6 +268,7 @@ export function OrganizationRoleSection({
             <Link
               key={person.personId}
               href={`/person/${person.personId}`}
+              prefetch={false}
               className="flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/50"
             >
               <Avatar name={person.name} avatarUrl={person.avatarUrl} />

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { auth } from '@/auth';
+import { AnonymousReportCta } from '@/components/compare/AnonymousReportCta';
 import { IdentityWorkspaceLayout } from '@/components/common/IdentityWorkspaceLayout';
 import { COMPARE_AGENT_TOOLS } from '@/lib/compare-report';
 import { prisma } from '@/lib/db/prisma';
@@ -45,14 +46,38 @@ const pageBackground: CSSProperties = {
   backgroundImage: 'radial-gradient(circle at top left, rgba(200, 95, 32, 0.11), transparent 34rem), linear-gradient(180deg, #fbfaf6 0%, #f6f4ef 32rem)',
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 300;
+
+const loadPublicCompareReport = unstable_cache(
+  async (id: string) => prisma.compareReport.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      title: true,
+      topic: true,
+      status: true,
+      visibility: true,
+      summary: true,
+      peopleIds: true,
+      reportJson: true,
+      errorMessage: true,
+      createdAt: true,
+      completedAt: true,
+    },
+  }),
+  ['public-compare-report-detail-v2'],
+  { revalidate: 300 }
+);
+
+const loadCompareReportEvents = unstable_cache(
+  async (reportId: string, reportStatus: string) => fetchReportEvents(reportId, reportStatus),
+  ['compare-report-events-v2'],
+  { revalidate: 300 }
+);
 
 export async function generateMetadata({ params }: ReportDetailPageProps): Promise<Metadata> {
   const { id } = await params;
-  const report = await prisma.compareReport.findUnique({
-    where: { id },
-    select: { title: true, summary: true },
-  });
+  const report = await loadPublicCompareReport(id);
 
   return {
     title: report ? `${report.title} | AI 人物库` : '人物对比报告 | AI 人物库',
@@ -62,51 +87,24 @@ export async function generateMetadata({ params }: ReportDetailPageProps): Promi
 
 export default async function CompareReportDetailPage({ params }: ReportDetailPageProps) {
   const { id } = await params;
-  const [session, report] = await Promise.all([
-    auth(),
-    prisma.compareReport.findUnique({
-      where: { id },
-      select: {
-        id: true,
-        title: true,
-        topic: true,
-        status: true,
-        visibility: true,
-        summary: true,
-        peopleIds: true,
-        reportJson: true,
-        sourceSnapshot: true,
-        errorMessage: true,
-        createdAt: true,
-        completedAt: true,
-        events: {
-          select: {
-            id: true,
-            step: true,
-            status: true,
-            title: true,
-            message: true,
-            createdAt: true,
-          },
-          orderBy: { createdAt: 'asc' },
-        },
-      },
-    }),
-  ]);
+  const report = await loadPublicCompareReport(id);
 
   if (!report || report.visibility !== 'public') notFound();
 
-  const people = await prisma.people.findMany({
-    where: { id: { in: report.peopleIds } },
-    select: {
-      id: true,
-      name: true,
-      avatarUrl: true,
-      currentTitle: true,
-      organization: true,
-      topics: true,
-    },
-  });
+  const [people, events] = await Promise.all([
+    prisma.people.findMany({
+      where: { id: { in: report.peopleIds } },
+      select: {
+        id: true,
+        name: true,
+        avatarUrl: true,
+        currentTitle: true,
+        organization: true,
+        topics: true,
+      },
+    }),
+    loadCompareReportEvents(report.id, report.status),
+  ]);
   const peopleById = new Map(people.map(person => [person.id, person]));
   const orderedPeople = report.peopleIds
     .map(personId => peopleById.get(personId))
@@ -121,8 +119,7 @@ export default async function CompareReportDetailPage({ params }: ReportDetailPa
     })) as ReportPersonPreview[];
   const content = isReportContent(report.reportJson) ? sanitizeCompareReportContent(report.reportJson) : null;
   const modules = content ? new Set(normalizeCompareReportLayout(content.layout, content).modules) : new Set<CompareReportModuleKey>();
-  const sourceCount = sourceCountFromSnapshot(report.sourceSnapshot, content);
-  const isAnonymous = !session?.user?.id;
+  const sourceCount = sourceCountFromSnapshot(null, content);
 
   return (
     <IdentityWorkspaceLayout identity="user">
@@ -139,10 +136,10 @@ export default async function CompareReportDetailPage({ params }: ReportDetailPa
             sourceCount={sourceCount}
           />
 
-          <ProcessDetails events={report.events} />
+          <ProcessDetails events={events} />
 
           {report.status !== 'completed' || !content ? (
-            <PendingOrFailedPanel status={report.status} errorMessage={report.errorMessage} events={report.events} />
+            <PendingOrFailedPanel status={report.status} errorMessage={report.errorMessage} events={events} />
           ) : (
             <>
               {modules.has('pkStage') && (
@@ -167,21 +164,30 @@ export default async function CompareReportDetailPage({ params }: ReportDetailPa
             </>
           )}
 
-          {isAnonymous && (
-            <section className="mt-5 rounded-lg border border-orange-100 bg-orange-50 px-5 py-5">
-              <h2 className="text-base font-semibold text-orange-950">登录后可以生成自己的对比报告</h2>
-              <p className="mt-2 text-sm leading-6 text-orange-800">
-                选择 2 到 3 位人物，系统会整理公开资料、补充近期信息，并保存成可分享的报告。
-              </p>
-              <Link href="/login" className="mt-4 inline-flex rounded-lg bg-[#201c17] px-4 py-2 text-sm font-medium text-[#fff8ea] hover:bg-orange-700">
-                登录或注册
-              </Link>
-            </section>
-          )}
+          <AnonymousReportCta />
         </main>
       </div>
     </IdentityWorkspaceLayout>
   );
+}
+
+async function fetchReportEvents(reportId: string, reportStatus: string): Promise<ReportEvent[]> {
+  const isCompleted = reportStatus === 'completed';
+  const rows = await prisma.compareReportEvent.findMany({
+    where: { reportId },
+    select: {
+      id: true,
+      step: true,
+      status: true,
+      title: true,
+      message: true,
+      createdAt: true,
+    },
+    orderBy: { createdAt: isCompleted ? 'desc' : 'asc' },
+    ...(isCompleted && { take: 4 }),
+  });
+
+  return isCompleted ? rows.reverse() : rows;
 }
 
 function ReportHero({
@@ -230,6 +236,7 @@ function ReportHero({
             <Link
               key={person.id}
               href={`/person/${person.id}`}
+              prefetch={false}
               className="inline-flex items-center gap-2 rounded-lg border border-[#ded4c4] bg-white px-3 py-2 text-left text-xs text-[#4f463b] hover:border-orange-200 hover:text-orange-700"
             >
               <PersonAvatar person={person} size={28} />
@@ -362,7 +369,7 @@ function PersonSummaryCard({ person, meta }: { person: ReportPerson; meta?: Repo
       <div className="flex items-center gap-3">
         <PersonAvatar person={person} size={58} />
         <div className="min-w-0">
-          <Link href={`/person/${person.id}`} className="text-xl font-semibold tracking-normal text-[#201c17] hover:text-[#c85f20]">
+          <Link href={`/person/${person.id}`} prefetch={false} className="text-xl font-semibold tracking-normal text-[#201c17] hover:text-[#c85f20]">
             {person.name}
           </Link>
           <p className="mt-1 text-xs leading-5 text-[#776f64]">{person.currentTitle || '公开身份整理中'}</p>

@@ -87,7 +87,6 @@ export interface OrganizationPageData {
 }
 
 const READY_STATUS = ['ready', 'active'];
-const ACTIVITY_SOURCE_TYPES = ['openalex', 'github', 'youtube', 'exa', 'podcast', 'career'];
 const WORK_SOURCE_TYPES = ['openalex', 'github'];
 const COVERAGE_DAYS = 365;
 const TOPIC_COVERAGE_THRESHOLDS = {
@@ -103,29 +102,16 @@ const ORGANIZATION_COVERAGE_THRESHOLDS = {
 
 export async function fetchTopicPageData(topic: string): Promise<TopicPageData> {
   const topicAliases = getDirectoryTopicAliases(topic);
-  const personWhere: Prisma.PeopleWhereInput = {
-    status: { in: READY_STATUS },
-    topics: { hasSome: topicAliases },
-  };
-  const [directory, activity, facetPeople, works, activityCount, workCount] = await Promise.all([
+  const [directory, activity] = await Promise.all([
     fetchPersonDirectory({ page: 1, limit: 12, topic, sortBy: 'influenceScore' }),
-    fetchActivityEvents({ topic, limit: 8, days: COVERAGE_DAYS }),
-    prisma.people.findMany({
-      where: personWhere,
-      select: {
-        organization: true,
-        topics: true,
-      },
-      orderBy: { influenceScore: 'desc' },
-      take: 80,
+    fetchActivityEvents({
+      topic,
+      limit: TOPIC_COVERAGE_THRESHOLDS.activity,
+      days: COVERAGE_DAYS,
+      includeRelations: false,
     }),
-    fetchEntityWorks({
-      personWhere,
-      limit: 8,
-    }),
-    countEntityActivity(personWhere, COVERAGE_DAYS),
-    countEntityWorks(personWhere),
   ]);
+  const works = await fetchEntityWorksForPeople(directory.data.map(person => person.id), Math.max(8, TOPIC_COVERAGE_THRESHOLDS.works));
 
   return {
     topic,
@@ -134,21 +120,21 @@ export async function fetchTopicPageData(topic: string): Promise<TopicPageData> 
     activity,
     works,
     relatedTopics: topFacets(
-      facetPeople.flatMap(person => person.topics).filter(value => !topicAliases.includes(value)),
+      directory.data.flatMap(person => person.topics).filter(value => !topicAliases.includes(value)),
       DIRECTORY_TOPICS,
       8,
       normalizeDirectoryTopic,
       true
     ),
     relatedOrganizations: topFacets(
-      facetPeople.flatMap(person => person.organization),
+      directory.data.flatMap(person => person.organization),
       DIRECTORY_ORGANIZATIONS,
       8
     ),
     coverage: buildContentCoverage({
       peopleCount: directory.pagination.total,
-      activityCount,
-      workCount,
+      activityCount: activity.length,
+      workCount: works.length,
       thresholds: TOPIC_COVERAGE_THRESHOLDS,
     }),
   };
@@ -157,11 +143,10 @@ export async function fetchTopicPageData(topic: string): Promise<TopicPageData> 
 export async function fetchOrganizationPageData(organization: string): Promise<OrganizationPageData> {
   const aliases = getDirectoryOrganizationAliases(organization);
   const roleWhere = buildOrganizationRoleWhere(aliases);
-  const personWhere = buildOrganizationPersonWhere(organization, aliases);
 
-  const [directory, activity, roles, facetPeople, works, activityCount, workCount] = await Promise.all([
+  const [directory, activity, roles] = await Promise.all([
     fetchPersonDirectory({ page: 1, limit: 12, organization, sortBy: 'influenceScore' }),
-    fetchActivityEvents({ organization, limit: 8, days: COVERAGE_DAYS }),
+    fetchActivityEvents({ organization, limit: 8, days: COVERAGE_DAYS, includeRelations: false }),
     prisma.personRole.findMany({
       where: roleWhere,
       select: {
@@ -180,23 +165,10 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
         },
       },
       orderBy: [{ endDate: 'asc' }, { startDate: 'desc' }],
-      take: 120,
+      take: 64,
     }),
-    prisma.people.findMany({
-      where: personWhere,
-      select: {
-        topics: true,
-      },
-      orderBy: { influenceScore: 'desc' },
-      take: 100,
-    }),
-    fetchEntityWorks({
-      personWhere,
-      limit: 8,
-    }),
-    countEntityActivity(personWhere, COVERAGE_DAYS),
-    countEntityWorks(personWhere),
   ]);
+  const works = await fetchEntityWorksForPeople(directory.data.map(person => person.id), Math.max(8, ORGANIZATION_COVERAGE_THRESHOLDS.works));
 
   const uniqueCurrent = uniqueRolePeople(roles.filter(role => !role.endDate), 8);
   const uniqueAlumni = uniqueRolePeople(roles.filter(role => role.endDate), 8);
@@ -211,7 +183,7 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
     currentPeople: uniqueCurrent,
     alumniPeople: uniqueAlumni,
     relatedTopics: topFacets(
-      facetPeople.flatMap(person => person.topics),
+      directory.data.flatMap(person => person.topics),
       DIRECTORY_TOPICS,
       10,
       normalizeDirectoryTopic,
@@ -219,8 +191,8 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
     ),
     coverage: buildContentCoverage({
       peopleCount: directory.pagination.total,
-      activityCount,
-      workCount,
+      activityCount: activity.length,
+      workCount: works.length,
       thresholds: ORGANIZATION_COVERAGE_THRESHOLDS,
     }),
   };
@@ -240,38 +212,16 @@ function buildOrganizationRoleWhere(aliases: string[]): Prisma.PersonRoleWhereIn
   };
 }
 
-function buildOrganizationPersonWhere(organization: string, aliases: string[]): Prisma.PeopleWhereInput {
-  return {
-    status: { in: READY_STATUS },
-    OR: [
-      { organization: { hasSome: aliases } },
-      { currentTitle: { contains: organization, mode: 'insensitive' } },
-      {
-        roles: {
-          some: {
-            organization: {
-              OR: [
-                { name: { in: aliases } },
-                { nameZh: { in: aliases } },
-              ],
-            },
-          },
-        },
-      },
-    ],
-  };
-}
+async function fetchEntityWorksForPeople(personIds: string[], limit: number): Promise<EntityWork[]> {
+  const uniquePersonIds = [...new Set(personIds)];
+  if (uniquePersonIds.length === 0) return [];
 
-async function fetchEntityWorks(params: {
-  personWhere: Prisma.PeopleWhereInput;
-  limit: number;
-}): Promise<EntityWork[]> {
   const rows = await prisma.rawPoolItem.findMany({
     where: {
+      personId: { in: uniquePersonIds },
       fetchStatus: 'success',
       url: { not: '' },
       title: { not: '' },
-      person: params.personWhere,
       OR: [
         { sourceType: { in: WORK_SOURCE_TYPES } },
         { metadata: { path: ['contentDensityLane'], equals: 'works' } },
@@ -294,42 +244,10 @@ async function fetchEntityWorks(params: {
       },
     },
     orderBy: [{ publishedAt: 'desc' }, { fetchedAt: 'desc' }],
-    take: params.limit * 2,
+    take: limit * 2,
   });
 
-  return rows.map(row => toEntityWork(row)).slice(0, params.limit);
-}
-
-async function countEntityActivity(personWhere: Prisma.PeopleWhereInput, days: number): Promise<number> {
-  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
-  return prisma.rawPoolItem.count({
-    where: {
-      sourceType: { in: ACTIVITY_SOURCE_TYPES },
-      fetchStatus: 'success',
-      url: { not: '' },
-      title: { not: '' },
-      person: personWhere,
-      OR: [
-        { publishedAt: { gte: since } },
-        { fetchedAt: { gte: since } },
-      ],
-    },
-  });
-}
-
-async function countEntityWorks(personWhere: Prisma.PeopleWhereInput): Promise<number> {
-  return prisma.rawPoolItem.count({
-    where: {
-      fetchStatus: 'success',
-      url: { not: '' },
-      title: { not: '' },
-      person: personWhere,
-      OR: [
-        { sourceType: { in: WORK_SOURCE_TYPES } },
-        { metadata: { path: ['contentDensityLane'], equals: 'works' } },
-      ],
-    },
-  });
+  return rows.map(row => toEntityWork(row)).slice(0, limit);
 }
 
 function buildContentCoverage(params: {

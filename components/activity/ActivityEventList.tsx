@@ -82,6 +82,7 @@ export function ActivityEventList({
                     <Link
                       key={topic}
                       href={buildTopicHref(topic)}
+                      prefetch={false}
                       className="rounded-md bg-stone-50 px-1.5 py-0.5 text-[10px] text-stone-500 ring-1 ring-stone-200 hover:bg-orange-50 hover:text-orange-700 hover:ring-orange-100"
                     >
                       {topic}
@@ -92,6 +93,7 @@ export function ActivityEventList({
               {showPerson && (
                 <Link
                   href={`/person/${event.personId}`}
+                  prefetch={false}
                   className="flex min-w-0 items-center gap-2 border-t border-stone-100 pt-3 text-xs font-medium text-stone-600 hover:text-orange-600"
                   title={event.personName}
                 >
@@ -155,6 +157,7 @@ export function ActivityEventList({
                     <Link
                       key={topic}
                       href={buildTopicHref(topic)}
+                      prefetch={false}
                       className="rounded-md bg-stone-50 px-1.5 py-0.5 text-[10px] text-stone-500 ring-1 ring-stone-200 hover:bg-orange-50 hover:text-orange-700 hover:ring-orange-100"
                     >
                       {topic}
@@ -166,6 +169,7 @@ export function ActivityEventList({
             {showPerson && (
               <Link
                 href={`/person/${event.personId}`}
+                prefetch={false}
                 className="flex-shrink-0 text-xs font-medium text-stone-500 hover:text-orange-600 sm:max-w-[9rem] sm:truncate"
                 title={event.personName}
               >

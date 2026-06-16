@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -33,7 +32,6 @@ let cachedMenuUserAt = 0;
 let menuUserRequest: Promise<MenuUser | null> | null = null;
 
 export function UserMenu() {
-  const router = useRouter();
   const initialUser = readCachedMenuUser();
   const [user, setUser] = useState<MenuUser | null>(initialUser ?? null);
   const [loading, setLoading] = useState(!initialUser);
@@ -72,13 +70,6 @@ export function UserMenu() {
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [open]);
-
-  useEffect(() => {
-    if (!open || user?.role !== 'ADMIN') return;
-    for (const item of ADMIN_WORKSPACE_NAV_ITEMS) {
-      router.prefetch(item.href);
-    }
-  }, [open, router, user?.role]);
 
   if (!user) {
     if (loading) {
@@ -165,17 +156,14 @@ export function UserMenu() {
 }
 
 function MenuSection({ items, onSelect }: { items: IdentityNavItem[]; onSelect: () => void }) {
-  const router = useRouter();
-
   return (
     <div className="p-2">
       {items.map(item => (
         <Link
           key={item.href}
           href={item.href}
+          prefetch={false}
           role="menuitem"
-          onFocus={() => router.prefetch(item.href)}
-          onMouseEnter={() => router.prefetch(item.href)}
           onClick={onSelect}
           className="flex h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-700 transition hover:bg-orange-50 hover:text-orange-700"
         >

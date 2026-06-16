@@ -12,6 +12,19 @@ import {
   type DirectoryResponse,
 } from '@/lib/person-directory-config';
 
+type OrganizationDirectoryRole = {
+  role: string;
+  roleZh: string | null;
+  startDate: Date | null;
+  endDate: Date | null;
+  source: string | null;
+  confidence: number | null;
+  organization: {
+    name: string;
+    nameZh: string | null;
+  };
+};
+
 export async function fetchPersonDirectory(params: {
   page?: number;
   limit?: number;
@@ -28,7 +41,6 @@ export async function fetchPersonDirectory(params: {
   const organization = params.organization || null;
   const roleCategory = params.roleCategory || null;
   const search = params.search?.trim() || null;
-  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
   const organizationAliases = organization ? getDirectoryOrganizationAliases(organization) : [];
   const organizationRoleWhere: Prisma.PersonRoleWhereInput = organization
     ? {
@@ -73,6 +85,7 @@ export async function fetchPersonDirectory(params: {
   }
 
   const orderBy = buildDirectoryOrderBy(params.sortBy);
+  const includeOrganizationRoles = Boolean(organization);
 
   const [people, total] = await Promise.all([
     prisma.people.findMany({
@@ -90,32 +103,26 @@ export async function fetchPersonDirectory(params: {
         influenceScore: true,
         citationCount: true,
         githubStars: true,
-        roles: {
-          where: organizationRoleWhere,
-          select: {
-            role: true,
-            roleZh: true,
-            startDate: true,
-            endDate: true,
-            source: true,
-            confidence: true,
-            organization: {
-              select: {
-                name: true,
-                nameZh: true,
+        weeklyViewCount: true,
+        ...(includeOrganizationRoles && {
+          roles: {
+            where: organizationRoleWhere,
+            select: {
+              role: true,
+              roleZh: true,
+              startDate: true,
+              endDate: true,
+              source: true,
+              confidence: true,
+              organization: {
+                select: {
+                  name: true,
+                  nameZh: true,
+                },
               },
             },
           },
-        },
-        _count: {
-          select: {
-            pageViews: {
-              where: {
-                viewedAt: { gte: sevenDaysAgo },
-              },
-            },
-          },
-        },
+        }),
       },
       orderBy,
       skip: start,
@@ -127,30 +134,36 @@ export async function fetchPersonDirectory(params: {
   const shouldIncludeStats = page === 1 && !topic && !organization && !roleCategory && !search;
 
   return {
-    data: people.map(person => ({
-      id: person.id,
-      name: person.name,
-      description: person.description,
-      avatarUrl: normalizePublicAvatarUrl(person.avatarUrl),
-      organization: person.organization,
-      currentTitle: person.currentTitle,
-      topics: normalizeDirectoryTopics(person.topics),
-      roleCategory: person.roleCategory,
-      influenceScore: person.influenceScore,
-      citationCount: person.citationCount,
-      githubStars: person.githubStars,
-      weeklyViewCount: person._count.pageViews,
-      organizationMatch: organization
-        ? buildOrganizationMatch({
-            requestedOrganization: organization,
-            aliases: organizationAliases,
-            currentTitle: person.currentTitle,
-            profileOrganizations: person.organization,
-            roles: person.roles,
-          })
-        : null,
-      highlights: normalizeHighlights(person.highlights),
-    })),
+    data: people.map(person => {
+      const organizationRoles = organization && 'roles' in person
+        ? (person.roles as unknown as OrganizationDirectoryRole[])
+        : [];
+
+      return {
+        id: person.id,
+        name: person.name,
+        description: person.description,
+        avatarUrl: normalizePublicAvatarUrl(person.avatarUrl),
+        organization: person.organization,
+        currentTitle: person.currentTitle,
+        topics: normalizeDirectoryTopics(person.topics),
+        roleCategory: person.roleCategory,
+        influenceScore: person.influenceScore,
+        citationCount: person.citationCount,
+        githubStars: person.githubStars,
+        weeklyViewCount: person.weeklyViewCount,
+        organizationMatch: organization
+          ? buildOrganizationMatch({
+              requestedOrganization: organization,
+              aliases: organizationAliases,
+              currentTitle: person.currentTitle,
+              profileOrganizations: person.organization,
+              roles: organizationRoles,
+            })
+          : null,
+        highlights: normalizeHighlights(person.highlights),
+      };
+    }),
     pagination: {
       page,
       limit,
@@ -196,18 +209,7 @@ function buildOrganizationMatch(params: {
   aliases: string[];
   currentTitle: string | null;
   profileOrganizations: string[];
-  roles: Array<{
-    role: string;
-    roleZh: string | null;
-    startDate: Date | null;
-    endDate: Date | null;
-    source: string | null;
-    confidence: number | null;
-    organization: {
-      name: string;
-      nameZh: string | null;
-    };
-  }>;
+  roles: OrganizationDirectoryRole[];
 }): DirectoryOrganizationMatch {
   const aliasSet = new Set(params.aliases.map(normalizeOrgName));
   const titleHasFormerTenure = titleMentionsFormerTenure(params.currentTitle, params.aliases);

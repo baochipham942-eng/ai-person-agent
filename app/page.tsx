@@ -9,7 +9,7 @@ import {
 } from '@/lib/person-directory-config';
 import { fetchPersonDirectory } from '@/lib/person-directory';
 
-const INITIAL_DIRECTORY_TIMEOUT_MS = 2500;
+const INITIAL_DIRECTORY_TIMEOUT_MS = 600;
 const FALLBACK_DIRECTORY_PEOPLE: DirectoryPerson[] = [
   {
     id: 'cmjtsvcil00003esttihbrsjm',

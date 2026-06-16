@@ -102,7 +102,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
       revalidateOnFocus: false,
       dedupingInterval: 60000,
       keepPreviousData: true,
-      revalidateOnMount: false,
+      revalidateOnMount: Boolean(initialData.isFallback),
       fallbackData: isSameInitialQuery(initialFilters, currentFilters) && page === 1 ? initialData : undefined,
     }
   );
