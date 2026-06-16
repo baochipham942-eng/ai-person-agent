@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.13 - 2026-06-16
+
+### 修复
+
+- 修复增量内容抓取脚本的运行路径、环境加载和 YouTube API 前置检查，支持按来源、人物和数量重跑，并记录 YouTube 失败原因。
+- 新增本轮 YouTube 后处理脚本，把最新抓取内容补齐 QA 审计、processed 标记和动态物化，只将最新 QA verdict 为 keep 的视频推入 `ActivityEvent`。
+- 修复 YouTube 描述含 emoji 时摘要截断切断 surrogate pair，导致 Prisma 写入动态时报 `unexpected end of hex escape` 的问题。
+
+### 性能优化
+
+- 优化首页、话题页、机构页、关系图和对比报告相关查询与组件加载，降低首屏和实体页的数据读取压力。
+
 ## 0.4.12 - 2026-06-15
 
 ### 新功能
