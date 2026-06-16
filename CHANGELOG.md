@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.14 - 2026-06-16
+
+### 新功能
+
+- 管理员上线准备度页新增 YouTube 数据管道观测，展示 `GOOGLE_API_KEY`、语义 QA、Raw 抓取、QAAuditLog 覆盖、ActivityEvent 入库和 YouTube 卡片生成状态。
+- 内容维护页在选择 YouTube 来源时提示当前按钮走标准人物刷新链路，批量 Raw 抓取、QA 清洗和 ActivityEvent 入库状态统一到上线准备度页查看。
+
 ## 0.4.13 - 2026-06-16
 
 ### 修复
