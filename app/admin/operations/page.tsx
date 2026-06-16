@@ -19,6 +19,8 @@ const STATUS_STYLES: Record<ReadinessStatus, string> = {
 export default async function OperationsPage() {
   const readiness = await fetchOperationsReadiness();
   const newsletterEnvCheck = readiness.checks.find(check => check.key === 'newsletter-env');
+  const youtubeQaCheck = readiness.checks.find(check => check.key === 'youtube-qa-coverage');
+  const youtubeMaterializationCheck = readiness.checks.find(check => check.key === 'youtube-activity-materialization');
   const newsletterLaunchReady = newsletterEnvCheck?.status === 'ready';
   const newsletterStatusLabel = readiness.newsletterEnv.readyToSend
     ? '可真实发送'
@@ -45,7 +47,16 @@ export default async function OperationsPage() {
           </span>
         </header>
 
-        <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+          <MetricCard
+            title="YouTube 管道"
+            status={youtubeMaterializationCheck?.status || 'pending'}
+            rows={[
+              `近 24h Raw ${readiness.youtubePipeline.rawRecent24h}`,
+              `QA ${readiness.youtubePipeline.auditedRecent7d}/${readiness.youtubePipeline.rawRecent7d}`,
+              `入库 ${readiness.youtubePipeline.keepMaterializedRecent7d}/${readiness.youtubePipeline.verdictsRecent7d.keep}`,
+            ]}
+          />
           <MetricCard
             title="ActivityEvent"
             status={readiness.schema.activityEvent.status}
@@ -66,6 +77,65 @@ export default async function OperationsPage() {
             status={readiness.schema.compareReport.status}
             rows={[`总数 ${readiness.compareReport.total}`, `完成 ${readiness.compareReport.completed}`, `失败 ${readiness.compareReport.failed}`]}
           />
+        </section>
+
+        <section className="rounded-lg border border-stone-200 bg-white p-4">
+          <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-sm font-semibold text-stone-950">YouTube 数据管道</h2>
+              <p className="mt-1 text-xs leading-5 text-stone-500">
+                监控 YouTube Data API、RawPoolItem、QAAuditLog、ActivityEvent 和卡片生成的闭环状态。
+              </p>
+            </div>
+            <span className={`w-fit rounded-full border px-2 py-0.5 text-[11px] font-medium ${STATUS_STYLES[youtubeQaCheck?.status || 'pending']}`}>
+              QA {formatPercent(readiness.youtubePipeline.auditCoveragePct)}
+            </span>
+          </div>
+
+          <div className="grid gap-2 sm:grid-cols-3">
+            <EnvPill label="Google API key" value={readiness.youtubeEnv.hasGoogleApiKey ? 'present' : 'missing'} ok={readiness.youtubeEnv.hasGoogleApiKey} />
+            <EnvPill label="Semantic QA" value={readiness.youtubeEnv.semanticQaEnabled ? 'enabled' : 'disabled'} ok={readiness.youtubeEnv.semanticQaEnabled} />
+            <EnvPill label="Latest fetch" value={formatMaybeDate(readiness.youtubePipeline.latestFetchedAt)} ok={readiness.youtubePipeline.rawRecent7d > 0} />
+          </div>
+
+          <div className="mt-4 grid gap-3 lg:grid-cols-4">
+            <PipelineBlock
+              title="Raw 抓取"
+              rows={[
+                `总量 ${readiness.youtubePipeline.rawTotal}`,
+                `近 24 小时 ${readiness.youtubePipeline.rawRecent24h}`,
+                `近 7 天 ${readiness.youtubePipeline.rawRecent7d}`,
+                `已标记处理 ${readiness.youtubePipeline.processedRecent7d}`,
+              ]}
+            />
+            <PipelineBlock
+              title="抓取游标"
+              rows={[
+                `30 天尝试 ${readiness.youtubePipeline.attemptedPeople30d} 人`,
+                `仍有错误 ${readiness.youtubePipeline.failedPeople30d} 人`,
+                `最近尝试 ${formatMaybeDate(readiness.youtubePipeline.latestAttemptedAt)}`,
+                `最近错误 ${readiness.youtubePipeline.latestError || '-'}`,
+              ]}
+            />
+            <PipelineBlock
+              title="QA 清洗"
+              rows={[
+                `覆盖 ${readiness.youtubePipeline.auditedRecent7d}/${readiness.youtubePipeline.rawRecent7d} (${formatPercent(readiness.youtubePipeline.auditCoveragePct)})`,
+                `keep ${readiness.youtubePipeline.verdictsRecent7d.keep} · review ${readiness.youtubePipeline.verdictsRecent7d.review}`,
+                `reject ${readiness.youtubePipeline.verdictsRecent7d.reject} · duplicate ${readiness.youtubePipeline.verdictsRecent7d.duplicate}`,
+                `最近 ${formatMaybeDate(readiness.youtubePipeline.latestAuditAt)}`,
+              ]}
+            />
+            <PipelineBlock
+              title="前台入库"
+              rows={[
+                `YouTube ActivityEvent ${readiness.youtubePipeline.activityTotal}`,
+                `近 7 天入库 ${readiness.youtubePipeline.activityRecent7d}`,
+                `keep 入库 ${readiness.youtubePipeline.keepMaterializedRecent7d}/${readiness.youtubePipeline.verdictsRecent7d.keep} (${formatPercent(readiness.youtubePipeline.materializationCoveragePct)})`,
+                `新卡片 ${readiness.youtubePipeline.generatedCards7d}`,
+              ]}
+            />
+          </div>
         </section>
 
         <section className="rounded-lg border border-stone-200 bg-white p-4">
@@ -106,6 +176,17 @@ export default async function OperationsPage() {
   );
 }
 
+function PipelineBlock({ title, rows }: { title: string; rows: string[] }) {
+  return (
+    <div className="rounded-md border border-stone-100 bg-stone-50 px-3 py-2">
+      <h3 className="text-xs font-semibold text-stone-800">{title}</h3>
+      <div className="mt-2 grid gap-1 text-xs leading-5 text-stone-500">
+        {rows.map(row => <div key={row} className="break-words">{row}</div>)}
+      </div>
+    </div>
+  );
+}
+
 function MetricCard({ title, status, rows }: { title: string; status: ReadinessStatus; rows: string[] }) {
   return (
     <div className="rounded-lg border border-stone-200 bg-white p-4">
@@ -133,6 +214,10 @@ function EnvPill({ label, value, ok }: { label: string; value: string; ok: boole
 
 function formatMaybeDate(value: string | null): string {
   return value ? formatDateTime(value) : '-';
+}
+
+function formatPercent(value: number): string {
+  return `${Math.max(0, Math.min(100, value))}%`;
 }
 
 function formatDateTime(value: string) {

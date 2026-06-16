@@ -257,6 +257,11 @@ export default function MaintenanceClient({ people }: MaintenanceClientProps) {
           <p className="text-xs leading-5 text-stone-400">
             不选择时默认全来源。清空重建会清旧内容并按全来源重建，不支持单独选择渠道。
           </p>
+          {sourceTypes.includes('youtube') && refreshMode !== 'rebuild' ? (
+            <div className="rounded-md border border-sky-100 bg-sky-50 px-3 py-2 text-xs leading-5 text-sky-800">
+              这里的 YouTube 会进入标准人物刷新链路；批量 Raw 抓取、QA 清洗和 ActivityEvent 入库状态请看 <a href="/admin/operations" className="font-medium text-sky-700 underline underline-offset-2">上线准备度</a>。
+            </div>
+          ) : null}
         </div>
 
         <div className="rounded-md border border-amber-100 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-800">

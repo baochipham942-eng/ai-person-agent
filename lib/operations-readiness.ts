@@ -14,9 +14,43 @@ export interface OperationsReadiness {
   overallStatus: ReadinessStatus;
   schema: {
     activityEvent: ActivityStoreReadiness;
+    rawPoolItem: StoreReadiness;
+    qaAuditLog: StoreReadiness;
     newsletterDeliveryLog: NewsletterStoreReadiness;
     influenceScoreAuditLog: StoreReadiness;
     compareReport: CompareReportStoreReadiness;
+  };
+  youtubeEnv: {
+    hasGoogleApiKey: boolean;
+    semanticQaEnabled: boolean;
+  };
+  youtubePipeline: {
+    rawTotal: number;
+    rawRecent24h: number;
+    rawRecent7d: number;
+    latestFetchedAt: string | null;
+    attemptedPeople30d: number;
+    failedPeople30d: number;
+    latestAttemptedAt: string | null;
+    latestError: string | null;
+    auditedRecent7d: number;
+    auditCoveragePct: number;
+    latestAuditAt: string | null;
+    verdictsRecent7d: {
+      keep: number;
+      review: number;
+      reject: number;
+      duplicate: number;
+      skipped: number;
+      other: number;
+    };
+    processedRecent7d: number;
+    activityTotal: number;
+    activityRecent7d: number;
+    keepMaterializedRecent7d: number;
+    materializationCoveragePct: number;
+    latestActivityAt: string | null;
+    generatedCards7d: number;
   };
   newsletterEnv: {
     provider: string | null;
@@ -77,29 +111,44 @@ interface CompareReportStoreReadiness extends StoreReadiness {
 export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
   const [
     activityStore,
+    rawPoolStore,
+    qaAuditStore,
     newsletterStore,
     influenceStore,
     compareReportStore,
   ] = await Promise.all([
     checkActivityStore(),
+    checkTable('RawPoolItem'),
+    checkTable('QAAuditLog'),
     checkNewsletterStore(),
     checkTable('InfluenceScoreAuditLog'),
     checkCompareReportStore(),
   ]);
 
-  const [activity, newsletter, influence, compareReport] = await Promise.all([
+  const [activity, youtubePipeline, newsletter, influence, compareReport] = await Promise.all([
     activityStore.exists && activityStore.reviewStatusColumn ? fetchActivityStats() : emptyActivityStats(),
+    rawPoolStore.exists
+      ? fetchYouTubePipelineStats({
+        qaAuditReady: qaAuditStore.exists,
+        activityEventReady: activityStore.exists && activityStore.reviewStatusColumn,
+      })
+      : emptyYouTubePipelineStats(),
     newsletterStore.exists && newsletterStore.providerColumns ? fetchNewsletterStats() : emptyNewsletterStats(),
     influenceStore.exists ? fetchInfluenceStats() : emptyInfluenceStats(),
     compareReportStore.exists && compareReportStore.eventTable && compareReportStore.eventMetadataColumn ? fetchCompareReportStats() : emptyCompareReportStats(),
   ]);
+  const youtubeEnv = buildYouTubeEnv();
   const newsletterEnv = buildNewsletterEnv();
   const checks = buildChecks({
     activityStore,
+    rawPoolStore,
+    qaAuditStore,
     newsletterStore,
     influenceStore,
     compareReportStore,
     activity,
+    youtubeEnv,
+    youtubePipeline,
     newsletter,
     influence,
     compareReport,
@@ -111,10 +160,14 @@ export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
     overallStatus: summarizeStatus(checks),
     schema: {
       activityEvent: activityStore,
+      rawPoolItem: rawPoolStore,
+      qaAuditLog: qaAuditStore,
       newsletterDeliveryLog: newsletterStore,
       influenceScoreAuditLog: influenceStore,
       compareReport: compareReportStore,
     },
+    youtubeEnv,
+    youtubePipeline,
     newsletterEnv,
     activity,
     newsletter,
@@ -256,6 +309,224 @@ async function fetchActivityStats() {
   };
 }
 
+async function fetchYouTubePipelineStats(params: {
+  qaAuditReady: boolean;
+  activityEventReady: boolean;
+}): Promise<OperationsReadiness['youtubePipeline']> {
+  const [rawStats, attemptStats, auditStats, activityStats, cardStats] = await Promise.all([
+    fetchYouTubeRawStats(),
+    fetchYouTubeAttemptStats(),
+    params.qaAuditReady ? fetchYouTubeAuditStats(params.activityEventReady) : Promise.resolve(emptyYouTubeAuditStats()),
+    params.activityEventReady ? fetchYouTubeActivityStats() : Promise.resolve(emptyYouTubeActivityStats()),
+    fetchYouTubeCardStats(),
+  ]);
+
+  const auditCoveragePct = rawStats.rawRecent7d > 0
+    ? Math.round((auditStats.auditedRecent7d / rawStats.rawRecent7d) * 100)
+    : 100;
+  const keepRecent7d = auditStats.verdictsRecent7d.keep;
+  const materializationCoveragePct = keepRecent7d > 0
+    ? Math.round((auditStats.keepMaterializedRecent7d / keepRecent7d) * 100)
+    : 100;
+
+  return {
+    ...rawStats,
+    ...attemptStats,
+    ...auditStats,
+    auditCoveragePct,
+    ...activityStats,
+    materializationCoveragePct,
+    generatedCards7d: cardStats.generatedCards7d,
+  };
+}
+
+async function fetchYouTubeRawStats() {
+  const rows = await prisma.$queryRaw<Array<{
+    rawTotal: bigint | number | string;
+    rawRecent24h: bigint | number | string;
+    rawRecent7d: bigint | number | string;
+    processedRecent7d: bigint | number | string;
+    latestFetchedAt: Date | null;
+  }>>`
+    SELECT
+      COUNT(*) AS "rawTotal",
+      COUNT(*) FILTER (WHERE "fetchedAt" >= NOW() - INTERVAL '24 hours') AS "rawRecent24h",
+      COUNT(*) FILTER (WHERE "fetchedAt" >= NOW() - INTERVAL '7 days') AS "rawRecent7d",
+      COUNT(*) FILTER (WHERE "fetchedAt" >= NOW() - INTERVAL '7 days' AND processed = true) AS "processedRecent7d",
+      MAX("fetchedAt") AS "latestFetchedAt"
+    FROM "RawPoolItem"
+    WHERE "sourceType" = 'youtube'
+      AND "fetchStatus" = 'success'
+  `;
+  const row = rows[0];
+  return {
+    rawTotal: toNumber(row?.rawTotal),
+    rawRecent24h: toNumber(row?.rawRecent24h),
+    rawRecent7d: toNumber(row?.rawRecent7d),
+    processedRecent7d: toNumber(row?.processedRecent7d),
+    latestFetchedAt: row?.latestFetchedAt?.toISOString() || null,
+  };
+}
+
+async function fetchYouTubeAttemptStats() {
+  const people = await prisma.people.findMany({
+    select: { lastFetchedAt: true },
+  });
+  const cutoff = Date.now() - 30 * 24 * 60 * 60 * 1000;
+  let attemptedPeople30d = 0;
+  let failedPeople30d = 0;
+  let latestAttemptedAt: Date | null = null;
+  let latestErrorAt: Date | null = null;
+  let latestError: string | null = null;
+
+  for (const person of people) {
+    const cursor = asRecord(person.lastFetchedAt);
+    const attemptedAt = parseDateValue(cursor.youtubeAttemptedAt);
+    if (!attemptedAt || attemptedAt.getTime() < cutoff) continue;
+
+    attemptedPeople30d++;
+    if (!latestAttemptedAt || attemptedAt > latestAttemptedAt) {
+      latestAttemptedAt = attemptedAt;
+    }
+
+    const error = typeof cursor.youtubeLastError === 'string' ? cursor.youtubeLastError : null;
+    if (error) {
+      failedPeople30d++;
+      if (!latestErrorAt || attemptedAt > latestErrorAt) {
+        latestErrorAt = attemptedAt;
+        latestError = error;
+      }
+    }
+  }
+
+  return {
+    attemptedPeople30d,
+    failedPeople30d,
+    latestAttemptedAt: latestAttemptedAt?.toISOString() || null,
+    latestError,
+  };
+}
+
+async function fetchYouTubeAuditStats(activityEventReady: boolean) {
+  const rows = await prisma.$queryRaw<Array<{
+    auditedRecent7d: bigint | number | string;
+    keep: bigint | number | string;
+    review: bigint | number | string;
+    reject: bigint | number | string;
+    duplicate: bigint | number | string;
+    skipped: bigint | number | string;
+    other: bigint | number | string;
+    latestAuditAt: Date | null;
+  }>>`
+    WITH recent AS (
+      SELECT id, "personId", "urlHash"
+      FROM "RawPoolItem"
+      WHERE "sourceType" = 'youtube'
+        AND "fetchStatus" = 'success'
+        AND "fetchedAt" >= NOW() - INTERVAL '7 days'
+    ),
+    latest AS (
+      SELECT DISTINCT ON (q."personId", q."urlHash")
+        q."personId",
+        q."urlHash",
+        q.verdict,
+        q."createdAt"
+      FROM "QAAuditLog" q
+      JOIN recent r ON r."personId" = q."personId" AND r."urlHash" = q."urlHash"
+      WHERE q."sourceType" = 'youtube'
+      ORDER BY q."personId", q."urlHash", q."createdAt" DESC
+    )
+    SELECT
+      COUNT(*) AS "auditedRecent7d",
+      COUNT(*) FILTER (WHERE verdict = 'keep') AS "keep",
+      COUNT(*) FILTER (WHERE verdict = 'review') AS "review",
+      COUNT(*) FILTER (WHERE verdict = 'reject') AS "reject",
+      COUNT(*) FILTER (WHERE verdict = 'duplicate') AS "duplicate",
+      COUNT(*) FILTER (WHERE verdict = 'skipped') AS "skipped",
+      COUNT(*) FILTER (WHERE verdict NOT IN ('keep', 'review', 'reject', 'duplicate', 'skipped')) AS "other",
+      MAX("createdAt") AS "latestAuditAt"
+    FROM latest
+  `;
+  const row = rows[0];
+  const verdictsRecent7d = {
+    keep: toNumber(row?.keep),
+    review: toNumber(row?.review),
+    reject: toNumber(row?.reject),
+    duplicate: toNumber(row?.duplicate),
+    skipped: toNumber(row?.skipped),
+    other: toNumber(row?.other),
+  };
+
+  return {
+    auditedRecent7d: toNumber(row?.auditedRecent7d),
+    latestAuditAt: row?.latestAuditAt?.toISOString() || null,
+    verdictsRecent7d,
+    keepMaterializedRecent7d: activityEventReady ? await fetchYouTubeKeepMaterializedRecent7d() : 0,
+  };
+}
+
+async function fetchYouTubeKeepMaterializedRecent7d(): Promise<number> {
+  const rows = await prisma.$queryRaw<Array<{ count: bigint | number | string }>>`
+    WITH recent AS (
+      SELECT id, "personId", "urlHash"
+      FROM "RawPoolItem"
+      WHERE "sourceType" = 'youtube'
+        AND "fetchStatus" = 'success'
+        AND "fetchedAt" >= NOW() - INTERVAL '7 days'
+    ),
+    latest AS (
+      SELECT DISTINCT ON (q."personId", q."urlHash")
+        q."personId",
+        q."urlHash",
+        q.verdict
+      FROM "QAAuditLog" q
+      JOIN recent r ON r."personId" = q."personId" AND r."urlHash" = q."urlHash"
+      WHERE q."sourceType" = 'youtube'
+      ORDER BY q."personId", q."urlHash", q."createdAt" DESC
+    )
+    SELECT COUNT(*) AS "count"
+    FROM recent r
+    JOIN latest l ON l."personId" = r."personId" AND l."urlHash" = r."urlHash"
+    JOIN "ActivityEvent" a ON a."sourceItemId" = r.id
+    WHERE l.verdict = 'keep'
+      AND a."sourceType" = 'youtube'
+  `;
+  return toNumber(rows[0]?.count);
+}
+
+async function fetchYouTubeActivityStats() {
+  const rows = await prisma.$queryRaw<Array<{
+    activityTotal: bigint | number | string;
+    activityRecent7d: bigint | number | string;
+    latestActivityAt: Date | null;
+  }>>`
+    SELECT
+      COUNT(*) AS "activityTotal",
+      COUNT(*) FILTER (WHERE "detectedAt" >= NOW() - INTERVAL '7 days') AS "activityRecent7d",
+      MAX("detectedAt") AS "latestActivityAt"
+    FROM "ActivityEvent"
+    WHERE "sourceType" = 'youtube'
+  `;
+  const row = rows[0];
+  return {
+    activityTotal: toNumber(row?.activityTotal),
+    activityRecent7d: toNumber(row?.activityRecent7d),
+    latestActivityAt: row?.latestActivityAt?.toISOString() || null,
+  };
+}
+
+async function fetchYouTubeCardStats() {
+  const rows = await prisma.$queryRaw<Array<{ generatedCards7d: bigint | number | string }>>`
+    SELECT COUNT(*) AS "generatedCards7d"
+    FROM "Card"
+    WHERE "createdAt" >= NOW() - INTERVAL '7 days'
+      AND "generationId" LIKE 'youtube-postprocess-%'
+  `;
+  return {
+    generatedCards7d: toNumber(rows[0]?.generatedCards7d),
+  };
+}
+
 async function fetchNewsletterStats() {
   const rows = await prisma.$queryRaw<Array<{
     total: bigint | number | string;
@@ -328,6 +599,13 @@ async function fetchCompareReportStats() {
   };
 }
 
+function buildYouTubeEnv(): OperationsReadiness['youtubeEnv'] {
+  return {
+    hasGoogleApiKey: Boolean(process.env.GOOGLE_API_KEY),
+    semanticQaEnabled: process.env.ENABLE_SEMANTIC_QA !== 'false',
+  };
+}
+
 function buildNewsletterEnv(): OperationsReadiness['newsletterEnv'] {
   const provider = process.env.NEWSLETTER_EMAIL_PROVIDER || null;
   const sendEnabled = process.env.NEWSLETTER_SEND_ENABLED === 'true';
@@ -352,10 +630,14 @@ function buildNewsletterEnv(): OperationsReadiness['newsletterEnv'] {
 
 function buildChecks(params: {
   activityStore: StoreReadiness;
+  rawPoolStore: StoreReadiness;
+  qaAuditStore: StoreReadiness;
   newsletterStore: NewsletterStoreReadiness;
   influenceStore: StoreReadiness;
   compareReportStore: CompareReportStoreReadiness;
   activity: OperationsReadiness['activity'];
+  youtubeEnv: OperationsReadiness['youtubeEnv'];
+  youtubePipeline: OperationsReadiness['youtubePipeline'];
   newsletter: OperationsReadiness['newsletter'];
   influence: OperationsReadiness['influence'];
   compareReport: OperationsReadiness['compareReport'];
@@ -377,6 +659,44 @@ function buildChecks(params: {
         : params.activity.total > 0
           ? `${params.activity.total} events materialized`
           : 'No ActivityEvent rows yet',
+    },
+    {
+      key: 'youtube-api-env',
+      label: 'YouTube API env',
+      status: params.youtubeEnv.hasGoogleApiKey ? 'ready' : 'blocked',
+      detail: params.youtubeEnv.hasGoogleApiKey
+        ? `GOOGLE_API_KEY is present; semantic QA is ${params.youtubeEnv.semanticQaEnabled ? 'enabled' : 'disabled'}`
+        : 'GOOGLE_API_KEY is missing; YouTube Data API calls cannot run',
+    },
+    {
+      key: 'youtube-rawpool-schema',
+      label: 'RawPoolItem migration',
+      status: params.rawPoolStore.status,
+      detail: params.rawPoolStore.detail,
+    },
+    {
+      key: 'youtube-qa-schema',
+      label: 'QAAuditLog migration',
+      status: params.qaAuditStore.status,
+      detail: params.qaAuditStore.detail,
+    },
+    {
+      key: 'youtube-recent-fetch',
+      label: 'YouTube recent fetch',
+      status: youtubeFetchStatus(params.youtubeEnv, params.youtubePipeline),
+      detail: youtubeFetchDetail(params.youtubeEnv, params.youtubePipeline),
+    },
+    {
+      key: 'youtube-qa-coverage',
+      label: 'YouTube QA coverage',
+      status: youtubeQaCoverageStatus(params.rawPoolStore, params.qaAuditStore, params.youtubePipeline),
+      detail: youtubeQaCoverageDetail(params.rawPoolStore, params.qaAuditStore, params.youtubePipeline),
+    },
+    {
+      key: 'youtube-activity-materialization',
+      label: 'YouTube ActivityEvent materialization',
+      status: youtubeMaterializationStatus(params.activityStore, params.youtubePipeline),
+      detail: youtubeMaterializationDetail(params.activityStore, params.youtubePipeline),
     },
     {
       key: 'newsletter-schema',
@@ -435,6 +755,73 @@ function buildChecks(params: {
   ];
 }
 
+function youtubeFetchStatus(
+  env: OperationsReadiness['youtubeEnv'],
+  pipeline: OperationsReadiness['youtubePipeline']
+): ReadinessStatus {
+  if (!env.hasGoogleApiKey) return 'blocked';
+  if (pipeline.rawRecent7d > 0) return 'ready';
+  return pipeline.attemptedPeople30d > 0 ? 'pending' : 'pending';
+}
+
+function youtubeFetchDetail(
+  env: OperationsReadiness['youtubeEnv'],
+  pipeline: OperationsReadiness['youtubePipeline']
+): string {
+  if (!env.hasGoogleApiKey) return 'Configure GOOGLE_API_KEY before running YouTube fetch';
+  if (pipeline.rawRecent7d > 0) {
+    const failure = pipeline.failedPeople30d > 0 ? `; ${pipeline.failedPeople30d} people still have channel errors` : '';
+    return `${pipeline.rawRecent7d} YouTube raw rows fetched in the last 7 days${failure}`;
+  }
+  if (pipeline.attemptedPeople30d > 0) {
+    return `${pipeline.attemptedPeople30d} people attempted in 30 days, but no recent raw rows`;
+  }
+  return 'No YouTube fetch attempt recorded in the last 30 days';
+}
+
+function youtubeQaCoverageStatus(
+  rawPoolStore: StoreReadiness,
+  qaAuditStore: StoreReadiness,
+  pipeline: OperationsReadiness['youtubePipeline']
+): ReadinessStatus {
+  if (!rawPoolStore.exists || !qaAuditStore.exists) return 'blocked';
+  if (pipeline.rawRecent7d === 0) return 'pending';
+  if (pipeline.auditedRecent7d >= pipeline.rawRecent7d) return 'ready';
+  if (pipeline.auditedRecent7d > 0) return 'pending';
+  return 'blocked';
+}
+
+function youtubeQaCoverageDetail(
+  rawPoolStore: StoreReadiness,
+  qaAuditStore: StoreReadiness,
+  pipeline: OperationsReadiness['youtubePipeline']
+): string {
+  if (!rawPoolStore.exists) return 'RawPoolItem migration is missing';
+  if (!qaAuditStore.exists) return 'QAAuditLog migration is missing';
+  if (pipeline.rawRecent7d === 0) return 'No recent YouTube raw rows to audit';
+  return `${pipeline.auditedRecent7d}/${pipeline.rawRecent7d} recent YouTube rows audited (${pipeline.auditCoveragePct}%)`;
+}
+
+function youtubeMaterializationStatus(
+  activityStore: StoreReadiness,
+  pipeline: OperationsReadiness['youtubePipeline']
+): ReadinessStatus {
+  if (!activityStore.exists) return 'blocked';
+  const keepRecent7d = pipeline.verdictsRecent7d.keep;
+  if (keepRecent7d === 0) return pipeline.auditedRecent7d > 0 ? 'ready' : 'pending';
+  return pipeline.keepMaterializedRecent7d >= keepRecent7d ? 'ready' : 'pending';
+}
+
+function youtubeMaterializationDetail(
+  activityStore: StoreReadiness,
+  pipeline: OperationsReadiness['youtubePipeline']
+): string {
+  if (!activityStore.exists) return 'ActivityEvent migration is missing';
+  const keepRecent7d = pipeline.verdictsRecent7d.keep;
+  if (keepRecent7d === 0) return 'No recent keep verdicts require ActivityEvent materialization';
+  return `${pipeline.keepMaterializedRecent7d}/${keepRecent7d} recent keep verdicts materialized (${pipeline.materializationCoveragePct}%)`;
+}
+
 function newsletterEnvStatus(
   env: OperationsReadiness['newsletterEnv'],
   newsletter: OperationsReadiness['newsletter']
@@ -475,6 +862,61 @@ function emptyActivityStats(): OperationsReadiness['activity'] {
   return { total: 0, recent30d: 0, latestDetectedAt: null };
 }
 
+function emptyYouTubePipelineStats(): OperationsReadiness['youtubePipeline'] {
+  return {
+    rawTotal: 0,
+    rawRecent24h: 0,
+    rawRecent7d: 0,
+    latestFetchedAt: null,
+    attemptedPeople30d: 0,
+    failedPeople30d: 0,
+    latestAttemptedAt: null,
+    latestError: null,
+    auditedRecent7d: 0,
+    auditCoveragePct: 100,
+    latestAuditAt: null,
+    verdictsRecent7d: {
+      keep: 0,
+      review: 0,
+      reject: 0,
+      duplicate: 0,
+      skipped: 0,
+      other: 0,
+    },
+    processedRecent7d: 0,
+    activityTotal: 0,
+    activityRecent7d: 0,
+    keepMaterializedRecent7d: 0,
+    materializationCoveragePct: 100,
+    latestActivityAt: null,
+    generatedCards7d: 0,
+  };
+}
+
+function emptyYouTubeAuditStats(): Pick<OperationsReadiness['youtubePipeline'], 'auditedRecent7d' | 'latestAuditAt' | 'verdictsRecent7d' | 'keepMaterializedRecent7d'> {
+  return {
+    auditedRecent7d: 0,
+    latestAuditAt: null,
+    verdictsRecent7d: {
+      keep: 0,
+      review: 0,
+      reject: 0,
+      duplicate: 0,
+      skipped: 0,
+      other: 0,
+    },
+    keepMaterializedRecent7d: 0,
+  };
+}
+
+function emptyYouTubeActivityStats(): Pick<OperationsReadiness['youtubePipeline'], 'activityTotal' | 'activityRecent7d' | 'latestActivityAt'> {
+  return {
+    activityTotal: 0,
+    activityRecent7d: 0,
+    latestActivityAt: null,
+  };
+}
+
 function emptyNewsletterStats(): OperationsReadiness['newsletter'] {
   return { total: 0, dryRun: 0, sent: 0, failed: 0, latestCreatedAt: null };
 }
@@ -495,4 +937,15 @@ function toNumber(value: bigint | number | string | null | undefined): number {
     return Number.isFinite(parsed) ? parsed : 0;
   }
   return 0;
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
+}
+
+function parseDateValue(value: unknown): Date | null {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  if (typeof value !== 'string') return null;
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
