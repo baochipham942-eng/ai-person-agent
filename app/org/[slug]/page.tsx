@@ -28,7 +28,7 @@ export const revalidate = 300;
 
 const loadOrganizationPageData = unstable_cache(
   async (organization: string) => fetchOrganizationPageData(organization),
-  ['organization-page-data-v5'],
+  ['organization-page-data-v6'],
   { revalidate: 300 }
 );
 
@@ -47,38 +47,52 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
   const organization = decodeRouteParam(slug);
   const data = await loadOrganizationPageData(organization);
   const companyIntelligence = data.companyIntelligence ?? buildEmptyCompanyIntelligence();
+  const displayName = companyIntelligence.displayName || organization;
+  const threadEvidenceCount = new Set(
+    companyIntelligence.relatedThreads.flatMap(thread => thread.evidenceSourceIds)
+  ).size;
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <EntityPageNav currentLabel={`${organization} 机构`} />
+      <EntityPageNav
+        sectionLabel="公司"
+        sectionHref={buildDirectoryHref({ view: 'organization' })}
+        currentLabel={displayName}
+      />
       <main className="mx-auto max-w-6xl space-y-8 px-4 py-6 sm:px-6">
         <EntityHeader
-          eyebrow="公司情报"
-          title={`${organization} AI intelligence`}
-          description={`围绕 ${organization} 汇总公司级 AI 证据、相关知识线程、关键人物、历史履历和近期事件。公司证据缺失时会明确展示空态，不用人物动态冒充公司证据。`}
+          eyebrow="公司详情"
+          title={displayName}
+          logoUrl={companyIntelligence.logoUrl}
+          logoAlt={`${displayName} logo`}
+          description={`围绕 ${displayName} 汇总公司级 AI 证据、相关知识线程、关键人物、历史履历和近期事件。公司证据缺失时会明确展示空态，不用人物动态冒充公司证据。`}
+          metaItems={[
+            companyIntelligence.homepageUrl ? { label: '官网', value: companyIntelligence.homepageUrl.replace(/^https?:\/\//, '') } : null,
+            { label: '来源模式', value: companyIntelligence.sourceMode === 'db' ? 'CompanySource DB' : companyIntelligence.sourceMode },
+          ].filter((item): item is { label: string; value: string } => Boolean(item))}
           stats={[
-            { label: '关键人物', value: data.totalPeople },
             { label: '公司证据', value: companyIntelligence.coverage.evidenceCount },
             { label: '关联产品', value: companyIntelligence.products.length },
             { label: '知识线程', value: companyIntelligence.relatedThreads.length },
+            { label: '回链来源', value: threadEvidenceCount },
           ]}
           primaryAction={{
-            label: '查看完整列表',
-            href: buildDirectoryHref({ view: 'organization', organization }),
+            label: '相关人物',
+            href: buildDirectoryHref({ view: 'organization', organization: displayName }),
           }}
           followTarget={{
             type: 'organization',
             id: organization,
-            label: organization,
+            label: displayName,
             href: buildOrganizationHref(organization),
           }}
         />
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
           <div className="space-y-8">
-            <CompanyOverviewSection organization={organization} intelligence={companyIntelligence} />
-            <CompanyEvidenceSection intelligence={companyIntelligence} />
+            <CompanyOverviewSection organization={displayName} intelligence={companyIntelligence} />
             <RelatedThreadsSection threads={companyIntelligence.relatedThreads} />
+            <CompanyEvidenceSection intelligence={companyIntelligence} />
             <TopPeopleSection people={data.people} />
             <OrganizationRoleSection
               title="当前关键人物"
@@ -90,7 +104,7 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
               people={data.alumniPeople}
               emptyText="历史履历仍在整理中。"
             />
-            <ActivitySection events={data.activity} title={`${organization} 最近动态`} />
+            <ActivitySection events={data.activity} title={`${displayName} 最近动态`} />
             <WorksSection works={data.works} />
           </div>
 
@@ -115,7 +129,7 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
                 </div>
               )}
               <Link
-                href={buildDirectoryHref({ view: 'organization', organization, sortBy: 'weeklyViewCount' })}
+                href={buildDirectoryHref({ view: 'organization', organization: displayName, sortBy: 'weeklyViewCount' })}
                 prefetch={false}
                 className="mt-3 inline-flex font-medium text-orange-600 hover:text-orange-700"
               >

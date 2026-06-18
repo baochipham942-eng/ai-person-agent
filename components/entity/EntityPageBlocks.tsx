@@ -31,34 +31,81 @@ interface EntityHeaderProps {
   eyebrow: string;
   title: string;
   description: string;
+  logoUrl?: string | null;
+  logoAlt?: string;
+  metaItems?: Array<{ label: string; value: string }>;
   stats: Array<{ label: string; value: string | number }>;
   primaryAction?: EntityNavProps;
   followTarget?: WatchTarget;
 }
 
-export function EntityPageNav({ currentLabel }: { currentLabel: string }) {
+export function EntityPageNav({
+  currentLabel,
+  sectionLabel,
+  sectionHref,
+}: {
+  currentLabel: string;
+  sectionLabel?: string;
+  sectionHref?: string;
+}) {
   return (
     <>
-      <SiteHeader current="home" maxWidth="6xl" />
+      <SiteHeader current={null} maxWidth="6xl" />
       <div className="border-b border-stone-100 bg-white/70">
-        <div className="mx-auto max-w-6xl px-4 py-2 text-xs text-stone-400 sm:px-6">
-          {currentLabel}
+        <div className="mx-auto flex max-w-6xl items-center gap-1.5 px-4 py-2 text-xs text-stone-400 sm:px-6">
+          <Link href="/" className="font-medium text-stone-500 hover:text-orange-600">AI 人物库</Link>
+          {sectionLabel && (
+            <>
+              <span>/</span>
+              {sectionHref ? (
+                <Link href={sectionHref} prefetch={false} className="font-medium text-stone-500 hover:text-orange-600">
+                  {sectionLabel}
+                </Link>
+              ) : (
+                <span>{sectionLabel}</span>
+              )}
+            </>
+          )}
+          <span>/</span>
+          <span className="truncate text-stone-500">{currentLabel}</span>
         </div>
       </div>
     </>
   );
 }
 
-export function EntityHeader({ eyebrow, title, description, stats, primaryAction, followTarget }: EntityHeaderProps) {
+export function EntityHeader({
+  eyebrow,
+  title,
+  description,
+  logoUrl,
+  logoAlt,
+  metaItems = [],
+  stats,
+  primaryAction,
+  followTarget,
+}: EntityHeaderProps) {
   return (
-    <section className="rounded-xl border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7 sm:py-8">
-      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-3xl">
-          <div className="mb-2 text-xs font-medium text-orange-600">{eyebrow}</div>
-          <h1 className="text-2xl font-semibold tracking-normal text-stone-950 sm:text-3xl">{title}</h1>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-stone-600">{description}</p>
+    <section className="rounded-lg border border-stone-200 bg-white px-5 py-5 shadow-sm sm:px-6">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex min-w-0 gap-4">
+          <EntityLogo title={title} logoUrl={logoUrl} alt={logoAlt || `${title} logo`} />
+          <div className="min-w-0 max-w-3xl">
+            <div className="mb-2 text-xs font-medium text-orange-600">{eyebrow}</div>
+            <h1 className="text-2xl font-semibold tracking-normal text-stone-950 sm:text-3xl">{title}</h1>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-stone-600">{description}</p>
+            {metaItems.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {metaItems.map(item => (
+                  <span key={`${item.label}:${item.value}`} className="rounded-md bg-stone-50 px-2 py-1 text-[11px] font-medium text-stone-500 ring-1 ring-stone-200">
+                    {item.label}: <span className="text-stone-800">{item.value}</span>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 lg:pt-1">
           {followTarget && <FollowButton target={followTarget} />}
           {primaryAction && (
             <Link
@@ -83,6 +130,18 @@ export function EntityHeader({ eyebrow, title, description, stats, primaryAction
         </div>
       )}
     </section>
+  );
+}
+
+function EntityLogo({ title, logoUrl, alt }: { title: string; logoUrl?: string | null; alt: string }) {
+  return (
+    <div className="relative flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg border border-stone-200 bg-stone-50 shadow-sm">
+      {logoUrl ? (
+        <Image src={logoUrl} alt={alt} fill sizes="64px" className="object-contain p-2" />
+      ) : (
+        <span className="text-xl font-semibold text-stone-700">{title.trim().charAt(0).toUpperCase()}</span>
+      )}
+    </div>
   );
 }
 
@@ -123,11 +182,11 @@ export function CompanyOverviewSection({
 
   return (
     <section>
-      <SectionTitle title="公司 AI 概览" description="只展示公司级来源整理出的策略、产品和覆盖状态。" />
+      <SectionTitle title="公司 AI 概览" description="把公司来源、产品线和知识线程放在同一张链路里看。" />
       <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <div className="text-xs font-medium text-stone-500">{organization}</div>
+            <div className="text-xs font-medium text-stone-500">{intelligence.displayName || organization}</div>
             <h2 className="mt-1 text-base font-semibold text-stone-950">
               {intelligence.positioning || '公司级证据尚未入库'}
             </h2>
@@ -140,8 +199,27 @@ export function CompanyOverviewSection({
             {intelligence.aiStrategySummary && (
               <p className="mt-3 text-sm leading-6 text-stone-700">{intelligence.aiStrategySummary}</p>
             )}
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <CompanyChainMetric
+                label="公司证据"
+                value={`${intelligence.coverage.evidenceCount} 条`}
+                detail="官方、产品、融资、合作、团队"
+              />
+              <CompanyChainMetric
+                label="主题回链"
+                value={`${intelligence.relatedThreads.length} 条`}
+                detail="只做背景，不计入技术 readiness"
+              />
+              <CompanyChainMetric
+                label="证据边界"
+                value={intelligence.coverage.hasFinancialSignal ? '已隔离' : '待补'}
+                detail="融资/财报留在公司页"
+              />
+            </div>
             {intelligence.products.length > 0 && (
-              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="mt-4">
+                <div className="mb-2 text-xs font-medium text-stone-500">产品线与发布</div>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {intelligence.products.map(product => (
                   <article key={product.name} className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-3">
                     {product.url ? (
@@ -159,6 +237,7 @@ export function CompanyOverviewSection({
                     <p className="mt-1 text-xs leading-5 text-stone-500">{product.summary}</p>
                   </article>
                 ))}
+                </div>
               </div>
             )}
           </>
@@ -171,6 +250,16 @@ export function CompanyOverviewSection({
         </p>
       </div>
     </section>
+  );
+}
+
+function CompanyChainMetric({ label, value, detail }: { label: string; value: string; detail: string }) {
+  return (
+    <div className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-3">
+      <div className="text-xs font-medium text-stone-500">{label}</div>
+      <div className="mt-1 text-base font-semibold text-stone-950">{value}</div>
+      <div className="mt-1 text-[11px] leading-4 text-stone-500">{detail}</div>
+    </div>
   );
 }
 
@@ -206,7 +295,7 @@ export function CompanyEvidenceSection({ intelligence }: { intelligence: Company
 export function RelatedThreadsSection({ threads }: { threads: CompanyThreadLink[] }) {
   return (
     <section>
-      <SectionTitle title="相关知识线程" description="公司策略和产品线可以回链知识线程，但不把财报材料放进技术主题 readiness。" />
+      <SectionTitle title="公司到知识线程" description="每条回链都显示它由哪些公司来源支撑，避免公司材料和技术主题证据混在一起。" />
       {threads.length > 0 ? (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {threads.map(thread => (
@@ -223,6 +312,24 @@ export function RelatedThreadsSection({ threads }: { threads: CompanyThreadLink[
                 </span>
               </div>
               <p className="mt-2 text-xs leading-5 text-stone-500">{thread.summary}</p>
+              {thread.evidenceSources.length > 0 && (
+                <div className="mt-3 border-t border-stone-100 pt-2">
+                  <div className="mb-1 text-[10px] font-medium uppercase tracking-normal text-stone-400">
+                    支撑公司来源 · {thread.evidenceSources.length}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {thread.evidenceSources.slice(0, 4).map(source => (
+                      <span
+                        key={source.id}
+                        className="rounded-md bg-stone-50 px-1.5 py-0.5 text-[10px] text-stone-500 ring-1 ring-stone-200"
+                        title={source.title}
+                      >
+                        {COMPANY_EVIDENCE_ROLE_LABELS[source.role]}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </Link>
           ))}
         </div>

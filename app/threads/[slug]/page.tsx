@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { MissingThreadState, ThreadPageBlocks } from '@/components/knowledge/ThreadPageBlocks';
 import { fetchKnowledgeThreadPage, listStaticKnowledgeThreadSlugs } from '@/lib/knowledge-threads';
@@ -38,10 +39,14 @@ export default async function ThreadPage({ params }: ThreadPageProps) {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
-      <SiteHeader current="home" maxWidth="6xl" />
+      <SiteHeader current={null} maxWidth="6xl" />
       <div className="border-b border-stone-100 bg-white/70">
-        <div className="mx-auto max-w-6xl px-4 py-2 text-xs text-stone-400 sm:px-6">
-          知识主题 / {thread?.title || decodedSlug}
+        <div className="mx-auto flex max-w-6xl items-center gap-1.5 px-4 py-2 text-xs text-stone-400 sm:px-6">
+          <Link href="/" className="font-medium text-stone-500 hover:text-orange-600">AI 人物库</Link>
+          <span>/</span>
+          <span>知识主题</span>
+          <span>/</span>
+          <span className="truncate text-stone-500">{thread?.title || decodedSlug}</span>
         </div>
       </div>
       {thread ? <ThreadPageBlocks thread={thread} /> : <MissingThreadState slug={decodedSlug} />}

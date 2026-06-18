@@ -7,7 +7,7 @@ type SiteHeaderCurrent = 'home' | 'compareReports' | 'myCompare' | 'graph' | 'di
 type SiteHeaderWidth = '5xl' | '6xl' | '7xl';
 
 interface SiteHeaderProps {
-  current?: SiteHeaderCurrent;
+  current?: SiteHeaderCurrent | null;
   maxWidth?: SiteHeaderWidth;
   statsSlot?: ReactNode;
   utilitySlot?: ReactNode;
@@ -25,7 +25,7 @@ const WIDTH_CLASS: Record<SiteHeaderWidth, string> = {
   '7xl': 'max-w-7xl',
 };
 
-export function SiteHeader({ current = 'home', maxWidth = '6xl', statsSlot, utilitySlot }: SiteHeaderProps) {
+export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilitySlot }: SiteHeaderProps) {
   return (
     <header className="glass-header sticky top-0 z-50 border-b border-subtle">
       <div className={`${WIDTH_CLASS[maxWidth]} mx-auto px-4 sm:px-6`}>

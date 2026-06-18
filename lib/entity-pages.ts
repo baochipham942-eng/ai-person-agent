@@ -88,14 +88,27 @@ export interface CompanyProductItem {
   url?: string;
 }
 
+export interface CompanyThreadEvidenceSource {
+  id: string;
+  role: CompanyEvidenceRole;
+  title: string;
+  sourceType: string;
+  url: string;
+}
+
 export interface CompanyThreadLink {
   slug: string;
   title: string;
   relationType: 'invests_in' | 'productizes' | 'researches' | 'platform_for';
   summary: string;
+  evidenceSourceIds: string[];
+  evidenceSources: CompanyThreadEvidenceSource[];
 }
 
 export interface CompanyPageIntelligence {
+  displayName: string | null;
+  homepageUrl: string | null;
+  logoUrl: string | null;
   positioning: string | null;
   aiStrategySummary: string | null;
   products: CompanyProductItem[];
@@ -258,6 +271,9 @@ export function buildEmptyCompanyIntelligence(): CompanyPageIntelligence {
     products: [],
     evidence: [],
     relatedThreads: [],
+    displayName: null,
+    homepageUrl: null,
+    logoUrl: null,
     sourceMode: 'empty',
     sourceNote: '公司级证据尚未入库。当前页面不会用人物动态、论文或项目来冒充公司证据。',
   });
@@ -283,6 +299,7 @@ async function fetchCompanyIntelligenceFromDb(organization: string, aliases: str
       select: {
         name: true,
         nameZh: true,
+        description: true,
         companySources: {
           orderBy: [{ publishedAt: 'desc' }, { createdAt: 'desc' }],
           take: 32,
@@ -308,16 +325,36 @@ async function fetchCompanyIntelligenceFromDb(organization: string, aliases: str
         sourceLabel: jsonString(source.metadata, 'sourceLabel') || row.nameZh || row.name || organization,
         confidence: source.confidence,
       }));
-    const relatedThreads = row.companyThreadLinks.map(link => ({
-      slug: link.threadSlug,
-      title: link.threadTitle,
-      relationType: toCompanyThreadRelationType(link.relationType),
-      summary: link.summary,
-    }));
+    const evidenceById = new Map(evidence.map(item => [item.id, item]));
+    const relatedThreads = row.companyThreadLinks.map(link => {
+      const evidenceSources = link.evidenceSourceIds
+        .map(id => evidenceById.get(id))
+        .filter((item): item is CompanyEvidenceItem => Boolean(item))
+        .map(item => ({
+          id: item.id,
+          role: item.role,
+          title: item.title,
+          sourceType: item.sourceType,
+          url: item.url,
+        }));
+      return {
+        slug: link.threadSlug,
+        title: link.threadTitle,
+        relationType: toCompanyThreadRelationType(link.relationType),
+        summary: link.summary,
+        evidenceSourceIds: link.evidenceSourceIds,
+        evidenceSources,
+      };
+    });
     const productSources = row.companySources.filter(source => source.role === 'product_release').slice(0, 6);
+    const displayName = row.nameZh || row.name || organization;
+    const homepageUrl = deriveCompanyHomepage(row.description, row.companySources.map(source => source.url));
 
     return buildCompanyIntelligence({
-      positioning: `${row.nameZh || row.name || organization} company evidence is hydrated from reviewed CompanySource records.`,
+      displayName,
+      homepageUrl,
+      logoUrl: buildCompanyLogoUrl(displayName, homepageUrl),
+      positioning: `${displayName} 的公司页已接入 reviewed CompanySource 记录，证据只来自公司级官方、产品、融资、合作和团队来源。`,
       aiStrategySummary: relatedThreads[0]?.summary || evidence.find(item => item.role === 'official_strategy')?.summary || null,
       products: productSources.map(source => ({
         name: source.title,
@@ -354,9 +391,23 @@ function buildAnthropicFixtureIntelligence(): CompanyPageIntelligence {
     title: context.threadTitle,
     relationType: context.relationType as CompanyThreadLink['relationType'],
     summary: context.summary,
+    evidenceSourceIds: context.sourceIds,
+    evidenceSources: context.sourceIds
+      .map(sourceId => evidence.find(item => item.id === sourceId))
+      .filter((item): item is CompanyEvidenceItem => Boolean(item))
+      .map(item => ({
+        id: item.id,
+        role: item.role,
+        title: item.title,
+        sourceType: item.sourceType,
+        url: item.url,
+      })),
   }));
 
   return buildCompanyIntelligence({
+    displayName: anthropicEvidenceSeed.company.name,
+    homepageUrl: anthropicEvidenceSeed.company.homepage,
+    logoUrl: '/logos/anthropic.png',
     positioning: 'Anthropic 是 Claude 和 Claude Code 背后的 AI 公司。当前样板来自 P1 company-source dry-run contract。',
     aiStrategySummary: 'P1 dry-run 使用 Anthropic 官方 newsroom、产品文档、融资公告、合作公告和 careers 种子，验证公司级证据如何承载官方策略、产品发布、融资、合作和团队信号。',
     products: [
@@ -389,6 +440,44 @@ function buildCompanyIntelligence(params: Omit<CompanyPageIntelligence, 'coverag
       hasProductRelease: roles.has('product_release'),
     },
   };
+}
+
+const LOCAL_COMPANY_LOGOS: Record<string, string> = {
+  anthropic: '/logos/anthropic.png',
+};
+
+function buildCompanyLogoUrl(displayName: string, homepageUrl: string | null): string | null {
+  const localLogo = LOCAL_COMPANY_LOGOS[normalizeCompanyKey(displayName)];
+  if (localLogo) return localLogo;
+
+  const homepageKey = homepageUrl ? normalizeCompanyKey(hostnameFromUrl(homepageUrl) || '') : '';
+  return homepageKey ? LOCAL_COMPANY_LOGOS[homepageKey] || null : null;
+}
+
+function deriveCompanyHomepage(description: string | null, sourceUrls: string[]): string | null {
+  const descriptionUrl = description?.match(/https?:\/\/[^\s)]+/)?.[0] || null;
+  const candidates = [descriptionUrl, ...sourceUrls].filter((value): value is string => Boolean(value));
+  for (const candidate of candidates) {
+    const origin = originFromUrl(candidate);
+    if (origin) return origin;
+  }
+  return null;
+}
+
+function originFromUrl(value: string): string | null {
+  try {
+    return new URL(value).origin;
+  } catch {
+    return null;
+  }
+}
+
+function hostnameFromUrl(value: string): string | null {
+  try {
+    return new URL(value).hostname.replace(/^www\./, '');
+  } catch {
+    return null;
+  }
 }
 
 function isCompanyEvidenceRole(value: string): value is CompanyEvidenceRole {
