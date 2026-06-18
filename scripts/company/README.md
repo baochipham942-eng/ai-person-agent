@@ -187,7 +187,7 @@ Add `--strict` when CI should fail on review issues.
 
 ## Staging Materialize Preview
 
-`materialize_company_sources.mjs` turns the reviewed dry-run pack into a stable staging artifact shaped like the future `CompanySource` and `CompanyThreadLink` rows. It still does not write the database, import Prisma, or enable execute mode. Passing `--execute` is refused until the Prisma migration exists.
+`materialize_company_sources.mjs` turns the reviewed dry-run pack into a stable staging artifact shaped like the future `CompanySource` and `CompanyThreadLink` rows. By default it does not write the database. Execute mode requires the `CompanySource` migration to be applied and refuses production or unconfirmed remote databases.
 
 Run it:
 
@@ -200,6 +200,14 @@ The output includes:
 - `dryRunResult.companySources`: future `CompanySource` row previews, with canonical URL hashes and company-page readiness boundaries.
 - `dryRunResult.companyThreadLinks`: company-to-thread backlinks backed by company evidence IDs.
 - `dryRunResult.p0ViewModelPreview`: the shape the company page can consume without treating company evidence as topic readiness.
+
+After applying the migration to a local or confirmed dev/staging database, execute mode can upsert reviewed rows:
+
+```bash
+pnpm company:materialize -- --execute --create-organization --input=docs/company/anthropic-evidence-seed.json --output=/tmp/company-sources-apply.json
+```
+
+Remote dev/staging databases require `--allow-remote-dev`. Production and Vercel environments are refused.
 
 ## Access Boundary
 

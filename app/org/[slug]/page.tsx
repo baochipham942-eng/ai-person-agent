@@ -28,7 +28,7 @@ export const revalidate = 300;
 
 const loadOrganizationPageData = unstable_cache(
   async (organization: string) => fetchOrganizationPageData(organization),
-  ['organization-page-data-v4'],
+  ['organization-page-data-v5'],
   { revalidate: 300 }
 );
 

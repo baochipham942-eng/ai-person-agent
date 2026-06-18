@@ -101,7 +101,7 @@ export interface CompanyPageIntelligence {
   products: CompanyProductItem[];
   evidence: CompanyEvidenceItem[];
   relatedThreads: CompanyThreadLink[];
-  sourceMode: 'empty' | 'fixture' | 'dry_run';
+  sourceMode: 'empty' | 'fixture' | 'dry_run' | 'db';
   sourceNote: string;
   coverage: {
     evidenceCount: number;
@@ -195,7 +195,7 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
   const aliases = getDirectoryOrganizationAliases(organization);
   const roleWhere = buildOrganizationRoleWhere(aliases);
 
-  const [directory, activity, roles] = await Promise.all([
+  const [directory, activity, roles, companyIntelligence] = await Promise.all([
     fetchPersonDirectory({ page: 1, limit: 12, organization, sortBy: 'influenceScore' }),
     fetchActivityEvents({ organization, limit: 8, days: COVERAGE_DAYS, includeRelations: false }),
     prisma.personRole.findMany({
@@ -218,6 +218,7 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
       orderBy: [{ endDate: 'asc' }, { startDate: 'desc' }],
       take: 64,
     }),
+    fetchCompanyPageIntelligence(organization, aliases),
   ]);
   const works = await fetchEntityWorksForPeople(directory.data.map(person => person.id), Math.max(8, ORGANIZATION_COVERAGE_THRESHOLDS.works));
 
@@ -227,7 +228,7 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
   return {
     organization,
     aliases,
-    companyIntelligence: buildCompanyPageIntelligence(organization, aliases),
+    companyIntelligence,
     people: directory.data,
     totalPeople: directory.pagination.total,
     activity,
@@ -262,12 +263,79 @@ export function buildEmptyCompanyIntelligence(): CompanyPageIntelligence {
   });
 }
 
-function buildCompanyPageIntelligence(organization: string, aliases: string[]): CompanyPageIntelligence {
+async function fetchCompanyPageIntelligence(organization: string, aliases: string[]): Promise<CompanyPageIntelligence> {
+  const databaseIntelligence = await fetchCompanyIntelligenceFromDb(organization, aliases);
+  if (databaseIntelligence) return databaseIntelligence;
+
   if (COMPANY_FIXTURE_ENABLED && matchesCompanyFixture(organization, aliases, anthropicEvidenceSeed.company.slug)) {
     return buildAnthropicFixtureIntelligence();
   }
 
   return buildEmptyCompanyIntelligence();
+}
+
+async function fetchCompanyIntelligenceFromDb(organization: string, aliases: string[]): Promise<CompanyPageIntelligence | null> {
+  try {
+    const row = await prisma.organization.findFirst({
+      where: {
+        OR: [
+          { name: { in: aliases } },
+          { nameZh: { in: aliases } },
+        ],
+      },
+      select: {
+        name: true,
+        nameZh: true,
+        companySources: {
+          orderBy: [{ publishedAt: 'desc' }, { createdAt: 'desc' }],
+          take: 32,
+        },
+        companyThreadLinks: {
+          orderBy: [{ threadSlug: 'asc' }, { createdAt: 'asc' }],
+          take: 16,
+        },
+      },
+    });
+    if (!row || (row.companySources.length === 0 && row.companyThreadLinks.length === 0)) return null;
+
+    const evidence = row.companySources
+      .filter(source => isCompanyEvidenceRole(source.role))
+      .map(source => ({
+        id: source.id,
+        role: source.role as CompanyEvidenceRole,
+        sourceType: source.sourceKind,
+        title: source.title,
+        url: source.url,
+        summary: source.summary || source.title,
+        publishedAt: source.publishedAt ? source.publishedAt.toISOString().slice(0, 10) : null,
+        sourceLabel: jsonString(source.metadata, 'sourceLabel') || row.nameZh || row.name || organization,
+        confidence: source.confidence,
+      }));
+    const relatedThreads = row.companyThreadLinks.map(link => ({
+      slug: link.threadSlug,
+      title: link.threadTitle,
+      relationType: toCompanyThreadRelationType(link.relationType),
+      summary: link.summary,
+    }));
+    const productSources = row.companySources.filter(source => source.role === 'product_release').slice(0, 6);
+
+    return buildCompanyIntelligence({
+      positioning: `${row.nameZh || row.name || organization} company evidence is hydrated from reviewed CompanySource records.`,
+      aiStrategySummary: relatedThreads[0]?.summary || evidence.find(item => item.role === 'official_strategy')?.summary || null,
+      products: productSources.map(source => ({
+        name: source.title,
+        summary: source.summary || source.title,
+        url: source.url,
+      })),
+      evidence,
+      relatedThreads,
+      sourceMode: 'db',
+      sourceNote: 'CompanySource / CompanyThreadLink records are present in the database. Financial evidence remains company-page only and does not count toward technical thread readiness.',
+    });
+  } catch (error) {
+    if (isCompanySourceTableMissing(error)) return null;
+    throw error;
+  }
 }
 
 function buildAnthropicFixtureIntelligence(): CompanyPageIntelligence {
@@ -324,6 +392,32 @@ function buildCompanyIntelligence(params: Omit<CompanyPageIntelligence, 'coverag
       hasProductRelease: roles.has('product_release'),
     },
   };
+}
+
+function isCompanyEvidenceRole(value: string): value is CompanyEvidenceRole {
+  return value === 'official_strategy'
+    || value === 'product_release'
+    || value === 'financial_signal'
+    || value === 'partnership_signal'
+    || value === 'hiring_team_signal';
+}
+
+function toCompanyThreadRelationType(value: string): CompanyThreadLink['relationType'] {
+  if (value === 'invests_in' || value === 'productizes' || value === 'researches' || value === 'platform_for') {
+    return value;
+  }
+  return 'productizes';
+}
+
+function jsonString(value: Prisma.JsonValue | null, key: string): string | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const candidate = value[key];
+  return typeof candidate === 'string' && candidate.trim() ? candidate : null;
+}
+
+function isCompanySourceTableMissing(error: unknown): boolean {
+  if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2021') return true;
+  return error instanceof Error && /CompanySource|CompanyThreadLink/i.test(error.message) && /does not exist|not exist|unknown/i.test(error.message);
 }
 
 function matchesCompanyFixture(organization: string, aliases: string[], slug: string): boolean {

@@ -2,12 +2,22 @@
 /**
  * Build a reviewed staging artifact for future CompanySource rows.
  *
- * This script is intentionally read-only. It does not import Prisma and will
- * refuse --execute until the CompanySource migration exists.
+ * Default mode is read-only. Execute mode is guarded for local/dev databases
+ * after the CompanySource migration is applied.
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import dotenv from 'dotenv';
+import { Pool, neonConfig } from '@neondatabase/serverless';
+import { PrismaNeon } from '@prisma/adapter-neon';
+import { PrismaClient } from '@prisma/client';
+import ws from 'ws';
+
+dotenv.config({ path: '.env', quiet: true });
+dotenv.config({ path: '.env.local', quiet: true });
+
+neonConfig.webSocketConstructor = ws;
 
 const DEFAULT_INPUT = 'docs/company/anthropic-evidence-seed.json';
 const REQUIRED_SOURCE_ROLES = [
@@ -39,9 +49,6 @@ async function main() {
     printHelp();
     return;
   }
-  if (options.execute) {
-    throw new Error('CompanySource execute mode is not enabled. Add the Prisma model and migration before opening writes.');
-  }
 
   const payload = readJson(options.input);
   const company = normalizeCompany(payload.company);
@@ -50,9 +57,48 @@ async function main() {
   const review = reviewCompanySources(payload, sources, contexts);
   const staging = buildStagingArtifact({ options, payload, company, sources, contexts, review });
 
-  writeJson(staging, options.output);
-  if (options.strict && !review.pass) {
-    process.exitCode = 1;
+  if (!options.execute) {
+    writeJson(staging, options.output);
+    if (options.strict && !review.pass) {
+      process.exitCode = 1;
+    }
+    return;
+  }
+
+  const db = getDbInfo();
+  assertWritableDb(db, options);
+  if (!review.pass) {
+    throw new Error(`Refusing to materialize a non-ready company source pack: ${JSON.stringify(review)}`);
+  }
+
+  const prisma = createPrismaClient();
+  try {
+    const materialized = await materializeCompanySources({
+      prisma,
+      company,
+      sourceRows: staging.dryRunResult.companySources,
+      threadLinks: staging.dryRunResult.companyThreadLinks,
+      createOrganization: options.createOrganization,
+    });
+    writeJson({
+      ...staging,
+      dryRun: false,
+      db,
+      stagingBatch: {
+        ...staging.stagingBatch,
+        status: 'materialized_dev',
+        writeEnabled: true,
+        writeGuard: 'Executed only after production/remote guards passed. Production database writes remain refused.',
+      },
+      dryRunResult: {
+        ...staging.dryRunResult,
+        productionDbWrites: false,
+        devDbWrites: true,
+      },
+      materialized,
+    }, options.output);
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
@@ -62,6 +108,8 @@ function parseArgs(argv) {
     output: null,
     strict: false,
     execute: false,
+    allowRemoteDev: false,
+    createOrganization: false,
     help: false,
   };
 
@@ -70,6 +118,8 @@ function parseArgs(argv) {
     if (arg === '--help' || arg === '-h') options.help = true;
     else if (arg === '--strict') options.strict = true;
     else if (arg === '--execute') options.execute = true;
+    else if (arg === '--allow-remote-dev') options.allowRemoteDev = true;
+    else if (arg === '--create-organization') options.createOrganization = true;
     else if (arg.startsWith('--input=')) options.input = arg.slice('--input='.length);
     else if (arg.startsWith('--out=')) options.output = arg.slice('--out='.length);
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length);
@@ -315,7 +365,7 @@ function buildStagingArtifact({ options, payload, company, sources, contexts, re
         'CompanySource',
         'CompanyThreadLink',
       ],
-      writeGuard: 'No database writes are implemented in this script. --execute always fails until the CompanySource migration is added.',
+      writeGuard: 'Dry-run output only. Use --execute only after applying the CompanySource migration to a local or explicitly confirmed dev database.',
     },
     dryRunResult: {
       productionDbWrites: false,
@@ -424,6 +474,165 @@ function buildP0ViewModelPreview(company, sourceRows, threadLinks) {
   };
 }
 
+async function materializeCompanySources({ prisma, company, sourceRows, threadLinks, createOrganization }) {
+  const organization = await resolveOrganization(prisma, company, createOrganization);
+  const sourceIdByPreviewId = new Map();
+  const result = {
+    organization: {
+      id: organization.id,
+      name: organization.name,
+      created: organization.created === true,
+    },
+    sourcesUpserted: 0,
+    threadLinksUpserted: 0,
+  };
+
+  for (const row of sourceRows) {
+    const persistedSource = await prisma.companySource.upsert({
+      where: { urlHash: row.urlHash },
+      update: {
+        organizationId: organization.id,
+        sourceKind: row.sourceKind,
+        role: row.role,
+        title: row.title,
+        url: row.url,
+        finalUrl: row.finalUrl,
+        canonicalUrl: row.canonicalUrl,
+        text: row.text,
+        summary: row.summary,
+        publishedAt: toDate(row.publishedAt),
+        fetchedAt: toDate(row.fetchedAt) || new Date(),
+        confidence: row.confidence,
+        readinessUse: row.readinessUse,
+        excludedFromTopicReadiness: row.excludedFromTopicReadiness,
+        companyPageOnly: row.companyPageOnly,
+        metadata: row.metadata,
+      },
+      create: {
+        id: row.id,
+        organizationId: organization.id,
+        sourceKind: row.sourceKind,
+        role: row.role,
+        title: row.title,
+        url: row.url,
+        finalUrl: row.finalUrl,
+        canonicalUrl: row.canonicalUrl,
+        urlHash: row.urlHash,
+        text: row.text,
+        summary: row.summary,
+        publishedAt: toDate(row.publishedAt),
+        fetchedAt: toDate(row.fetchedAt) || new Date(),
+        confidence: row.confidence,
+        readinessUse: row.readinessUse,
+        excludedFromTopicReadiness: row.excludedFromTopicReadiness,
+        companyPageOnly: row.companyPageOnly,
+        metadata: row.metadata,
+      },
+    });
+    sourceIdByPreviewId.set(row.id, persistedSource.id);
+    result.sourcesUpserted += 1;
+  }
+
+  for (const row of threadLinks) {
+    const evidenceSourceIds = row.evidenceSourceIds.map(sourceId => sourceIdByPreviewId.get(sourceId) || sourceId);
+    await prisma.companyThreadLink.upsert({
+      where: {
+        organizationId_threadSlug_relationType: {
+          organizationId: organization.id,
+          threadSlug: row.threadSlug,
+          relationType: row.relationType,
+        },
+      },
+      update: {
+        threadTitle: row.threadTitle,
+        summary: row.summary,
+        evidenceSourceIds,
+        confidence: row.confidence,
+        excludedFromTopicReadiness: row.excludedFromTopicReadiness,
+        countsTowardTopicReadiness: row.countsTowardTopicReadiness,
+        metadata: row.metadata,
+      },
+      create: {
+        id: row.id,
+        organizationId: organization.id,
+        threadSlug: row.threadSlug,
+        threadTitle: row.threadTitle,
+        relationType: row.relationType,
+        summary: row.summary,
+        evidenceSourceIds,
+        confidence: row.confidence,
+        excludedFromTopicReadiness: row.excludedFromTopicReadiness,
+        countsTowardTopicReadiness: row.countsTowardTopicReadiness,
+        metadata: row.metadata,
+      },
+    });
+    result.threadLinksUpserted += 1;
+  }
+
+  return result;
+}
+
+async function resolveOrganization(prisma, company, createOrganization) {
+  const names = unique([company.name, company.slug, ...company.aliases].filter(Boolean));
+  const existing = names.length > 0
+    ? await prisma.organization.findFirst({
+      where: {
+        OR: [
+          { name: { in: names } },
+          { nameZh: { in: names } },
+        ],
+      },
+      orderBy: { name: 'asc' },
+    })
+    : null;
+
+  if (existing) return { ...existing, created: false };
+  if (!createOrganization) {
+    throw new Error(`No Organization row matched ${names.join(', ')}. Re-run with --create-organization only for a confirmed dev/staging database.`);
+  }
+
+  const created = await prisma.organization.create({
+    data: {
+      name: company.name || company.slug,
+      type: 'company',
+      description: company.homepage ? `Company source seed: ${company.homepage}` : null,
+    },
+  });
+  return { ...created, created: true };
+}
+
+function createPrismaClient() {
+  if (getDbInfo().local) return new PrismaClient();
+  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  return new PrismaClient({ adapter: new PrismaNeon(pool) });
+}
+
+function getDbInfo() {
+  const connectionString = process.env.DATABASE_URL;
+  if (!connectionString) return { configured: false, host: null, database: null, local: false };
+  try {
+    const url = new URL(connectionString);
+    return {
+      configured: true,
+      host: url.hostname,
+      database: url.pathname.replace(/^\//, '') || null,
+      local: ['localhost', '127.0.0.1', '::1'].includes(url.hostname),
+    };
+  } catch {
+    return { configured: true, host: 'unparseable', database: null, local: false };
+  }
+}
+
+function assertWritableDb(db, options) {
+  if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+    throw new Error('Refusing to materialize company sources while NODE_ENV=production or VERCEL is set.');
+  }
+  if (!db.configured) throw new Error('DATABASE_URL is not configured.');
+  if (!db.local && !options.allowRemoteDev) {
+    throw new Error(`Refusing to write to remote database host "${db.host}". Re-run with --allow-remote-dev only after confirming this is a dev/staging database.`);
+  }
+}
+
 function defaultConfidence(source) {
   if (source.fetch && source.fetch.ok === false) return 0.4;
   if (source.role === 'official_strategy' || source.role === 'product_release') return 0.82;
@@ -468,8 +677,18 @@ function maybeBoolean(value) {
   return typeof value === 'boolean' ? value : null;
 }
 
+function toDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
 function isRecord(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function unique(values) {
+  return [...new Set(values.filter(Boolean))];
 }
 
 function countBy(items, keyFn) {
@@ -506,7 +725,8 @@ function printHelp() {
 Usage:
   node scripts/company/materialize_company_sources.mjs --input=docs/company/anthropic-evidence-seed.json --strict
   node scripts/company/materialize_company_sources.mjs --input=/tmp/fetched-company-pack.json --output=/tmp/company-staging.json
+  node scripts/company/materialize_company_sources.mjs --execute --create-organization --input=docs/company/anthropic-evidence-seed.json
 
-Default mode is read-only dry-run. --execute is intentionally refused until CompanySource has a Prisma migration.
+Default mode is read-only dry-run. Execute mode refuses production and remote databases unless --allow-remote-dev is passed.
 `);
 }

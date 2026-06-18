@@ -304,16 +304,70 @@ model People {
 }
 
 model Organization {
-  id          String       @id @default(cuid())
-  name        String
-  nameZh      String?
-  type        String
-  wikidataQid String?      @unique
-  description String?
-  roles       PersonRole[]
+  id                 String              @id @default(cuid())
+  name               String
+  nameZh             String?
+  type               String
+  wikidataQid        String?             @unique
+  description        String?
+  roles              PersonRole[]
+  companySources     CompanySource[]
+  companyThreadLinks CompanyThreadLink[]
 
   @@index([name])
   @@index([wikidataQid])
+}
+
+model CompanySource {
+  id                         String       @id @default(cuid())
+  organizationId             String
+  sourceKind                 String
+  role                       String
+  title                      String
+  url                        String
+  finalUrl                   String?
+  canonicalUrl               String
+  urlHash                    String       @unique
+  text                       String
+  summary                    String?
+  publishedAt                DateTime?
+  fetchedAt                  DateTime?
+  confidence                 Float        @default(0.8)
+  readinessUse               String       @default("company_page_only")
+  excludedFromTopicReadiness Boolean      @default(true)
+  companyPageOnly            Boolean      @default(true)
+  metadata                   Json?
+  createdAt                  DateTime     @default(now())
+  updatedAt                  DateTime     @updatedAt
+  organization               Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([role])
+  @@index([sourceKind])
+  @@index([publishedAt])
+  @@index([fetchedAt])
+}
+
+model CompanyThreadLink {
+  id                         String       @id @default(cuid())
+  organizationId             String
+  threadSlug                 String
+  threadTitle                String
+  relationType               String
+  summary                    String
+  evidenceSourceIds          String[]     @default([])
+  confidence                 Float        @default(0.8)
+  excludedFromTopicReadiness Boolean      @default(true)
+  countsTowardTopicReadiness Boolean      @default(false)
+  metadata                   Json?
+  createdAt                  DateTime     @default(now())
+  updatedAt                  DateTime     @updatedAt
+  organization               Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, threadSlug, relationType])
+  @@index([organizationId])
+  @@index([threadSlug])
+  @@index([relationType])
 }
 
 model PersonRole {

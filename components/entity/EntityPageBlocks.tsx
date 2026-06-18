@@ -408,16 +408,19 @@ function CompanyEvidenceRow({ item }: { item: CompanyEvidenceItem }) {
 function CompanySourceModePill({ intelligence }: { intelligence: CompanyPageIntelligence }) {
   const isFixture = intelligence.sourceMode === 'fixture';
   const isDryRun = intelligence.sourceMode === 'dry_run';
+  const isDb = intelligence.sourceMode === 'db';
   return (
     <span className={`w-fit rounded-md px-2 py-1 text-[10px] font-semibold uppercase tracking-normal ring-1 ${
-      isDryRun
+      isDb
+        ? 'bg-stone-900 text-white ring-stone-900'
+        : isDryRun
         ? 'bg-emerald-50 text-emerald-700 ring-emerald-100'
         : isFixture
         ? 'bg-blue-50 text-blue-700 ring-blue-100'
         : 'bg-amber-50 text-amber-700 ring-amber-100'
     }`}
     >
-      {isDryRun ? 'dry-run' : isFixture ? 'dev fixture' : 'not ingested'}
+      {isDb ? 'db' : isDryRun ? 'dry-run' : isFixture ? 'dev fixture' : 'not ingested'}
     </span>
   );
 }
