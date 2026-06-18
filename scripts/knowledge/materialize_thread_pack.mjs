@@ -45,7 +45,7 @@ async function main() {
 
   const payload = readJson(options.input);
   const thread = normalizeThread(payload, options);
-  const sources = normalizeSources(payload);
+  const sources = normalizeSources(payload, thread);
   const edges = normalizeEdges(payload);
   const review = reviewPack({ sources, edges, requiredRoles: options.requiredRoles });
   const db = getDbInfo();
@@ -149,10 +149,11 @@ function normalizeThread(payload, options) {
   };
 }
 
-function normalizeSources(payload) {
+function normalizeSources(payload, thread) {
   const sources = Array.isArray(payload.sources) ? payload.sources : [];
   return sources.map(source => ({
-    id: source.id,
+    id: source.id ? `knowledge-source:${thread.slug}:${source.id}` : null,
+    packSourceId: source.id,
     role: source.metadata?.role || source.role,
     sourceKind: source.sourceKind || 'unknown',
     sourceOwner: source.sourceOwner || source.owner || ownerFromUrl(source.url),
@@ -204,10 +205,10 @@ function reviewPack({ sources, edges, requiredRoles }) {
   const missingRoles = requiredRoles.filter(role => !roleCounts[role]);
   const duplicateUrlHashes = duplicateKeys(sources.map(source => source.urlHash).filter(Boolean));
   const missingFields = sources
-    .filter(source => !source.id || !source.role || !source.url || !source.urlHash || !source.title || !source.text)
-    .map(source => ({ id: source.id || null, role: source.role || null, url: source.url || null }));
+    .filter(source => !source.packSourceId || !source.id || !source.role || !source.url || !source.urlHash || !source.title || !source.text)
+    .map(source => ({ id: source.packSourceId || source.id || null, role: source.role || null, url: source.url || null }));
   const danglingEdges = edges
-    .filter(edge => !sources.some(source => source.id === edge.fromSourceId) || !sources.some(source => source.id === edge.toSourceId))
+    .filter(edge => !sources.some(source => source.packSourceId === edge.fromSourceId) || !sources.some(source => source.packSourceId === edge.toSourceId))
     .map(edge => edge.id);
 
   return {
@@ -277,7 +278,7 @@ async function materialize({ prisma, thread, sources, edges }) {
         metadata: source.metadata,
       },
     });
-    sourceIdByPackId.set(source.id, persistedSource.id);
+    sourceIdByPackId.set(source.packSourceId, persistedSource.id);
     result.sourcesUpserted += 1;
 
     const sourceId = persistedSource.id;
@@ -300,7 +301,7 @@ async function materialize({ prisma, thread, sources, edges }) {
         },
       },
       create: {
-        id: `knowledge-thread-source:${thread.slug}:${source.id}:${source.role}`,
+        id: `knowledge-thread-source:${thread.slug}:${source.packSourceId}:${source.role}`,
         threadId: persistedThread.id,
         sourceId,
         role: source.role,

@@ -278,10 +278,7 @@ async function fetchCompanyIntelligenceFromDb(organization: string, aliases: str
   try {
     const row = await prisma.organization.findFirst({
       where: {
-        OR: [
-          { name: { in: aliases } },
-          { nameZh: { in: aliases } },
-        ],
+        OR: buildOrganizationNameLookup(organization, aliases),
       },
       select: {
         name: true,
@@ -423,6 +420,14 @@ function isCompanySourceTableMissing(error: unknown): boolean {
 function matchesCompanyFixture(organization: string, aliases: string[], slug: string): boolean {
   const normalizedSlug = normalizeCompanyKey(slug);
   return [organization, ...aliases].some(value => normalizeCompanyKey(value) === normalizedSlug);
+}
+
+function buildOrganizationNameLookup(organization: string, aliases: string[]): Prisma.OrganizationWhereInput[] {
+  const names = Array.from(new Set([organization, ...aliases].map(value => value.trim()).filter(Boolean)));
+  return names.flatMap(value => [
+    { name: { equals: value, mode: 'insensitive' } },
+    { nameZh: { equals: value, mode: 'insensitive' } },
+  ]);
 }
 
 function normalizeCompanyKey(value: string): string {
