@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { MissingThreadState, ThreadPageBlocks } from '@/components/knowledge/ThreadPageBlocks';
 import { fetchKnowledgeThreadPage, listStaticKnowledgeThreadSlugs } from '@/lib/knowledge-threads';
+import { buildDirectoryHref } from '@/lib/person-directory-config';
 
 interface ThreadPageProps {
   params: Promise<{ slug: string }>;
@@ -44,7 +45,9 @@ export default async function ThreadPage({ params }: ThreadPageProps) {
         <div className="mx-auto flex max-w-6xl items-center gap-1.5 px-4 py-2 text-xs text-stone-400 sm:px-6">
           <Link href="/" className="font-medium text-stone-500 hover:text-orange-600">AI 人物库</Link>
           <span>/</span>
-          <span>知识主题</span>
+          <Link href={buildDirectoryHref({ view: 'topic' })} className="font-medium text-stone-500 hover:text-orange-600">
+            知识主题
+          </Link>
           <span>/</span>
           <span className="truncate text-stone-500">{thread?.title || decodedSlug}</span>
         </div>
