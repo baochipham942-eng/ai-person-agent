@@ -1,4 +1,7 @@
 {
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "contract": "docs/company/company-source-contract.schema.json",
   "company": {
     "name": "Anthropic",
     "slug": "anthropic",
@@ -20,54 +23,117 @@
   ],
   "candidates": [
     {
+      "id": "cs_anthropic_newsroom",
       "url": "https://www.anthropic.com/news",
       "role": "official_strategy",
       "sourceKind": "newsroom_index",
+      "title": "Anthropic News",
       "label": "Anthropic News",
+      "sourceLabel": "Anthropic",
       "access": "free_web",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
       "notes": "Official company newsroom index for strategy, announcements, and product-release discovery."
     },
     {
+      "id": "cs_anthropic_claude_code_overview",
       "url": "https://docs.anthropic.com/en/docs/claude-code/overview",
       "role": "product_release",
       "sourceKind": "product_docs",
+      "title": "Claude Code overview docs",
       "label": "Claude Code overview docs",
+      "sourceLabel": "Anthropic Docs",
       "access": "free_web",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
       "notes": "Official documentation page. It may redirect to code.claude.com docs."
     },
     {
+      "id": "cs_anthropic_claude_code_release_notes",
       "url": "https://docs.anthropic.com/en/release-notes/claude-code",
       "role": "product_release",
       "sourceKind": "product_changelog",
+      "title": "Claude Code release notes",
       "label": "Claude Code release notes",
+      "sourceLabel": "Anthropic Docs",
       "access": "free_web",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
       "notes": "Official release-note URL. It may redirect to the public GitHub changelog."
     },
     {
+      "id": "cs_anthropic_claude_4",
       "url": "https://www.anthropic.com/news/claude-4",
       "role": "product_release",
       "sourceKind": "newsroom_article",
+      "title": "Claude 4 announcement",
       "label": "Claude 4 announcement",
+      "sourceLabel": "Anthropic",
       "access": "free_web",
       "publishedAt": "2025-05-22",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
       "notes": "Official product announcement seed."
     },
     {
+      "id": "cs_anthropic_series_f",
       "url": "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation",
       "role": "financial_signal",
       "sourceKind": "newsroom_article",
+      "title": "Anthropic Series F announcement",
       "label": "Anthropic Series F announcement",
+      "sourceLabel": "Anthropic",
       "access": "free_web",
       "publishedAt": "2025-09-02",
+      "readinessUse": "company_page_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": true,
       "notes": "Official financing announcement seed."
     },
     {
+      "id": "cs_anthropic_amazon_trainium",
       "url": "https://www.anthropic.com/news/anthropic-amazon-trainium",
       "role": "partnership_signal",
       "sourceKind": "newsroom_article",
+      "title": "Anthropic and Amazon Trainium announcement",
       "label": "Anthropic and Amazon Trainium announcement",
+      "sourceLabel": "Anthropic",
       "access": "free_web",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
       "notes": "Official partnership and infrastructure strategy seed."
+    },
+    {
+      "id": "cs_anthropic_careers",
+      "url": "https://www.anthropic.com/careers",
+      "role": "hiring_team_signal",
+      "sourceKind": "careers_page",
+      "title": "Anthropic Careers",
+      "label": "Anthropic Careers",
+      "sourceLabel": "Anthropic",
+      "access": "free_web",
+      "readinessUse": "company_page_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": true,
+      "notes": "Official hiring surface for team-expansion direction. It is company-page evidence only and does not satisfy technical thread readiness."
     }
-  ]
+  ],
+  "companyStrategyContexts": [
+    {
+      "id": "csc_anthropic_loop_engineering",
+      "threadSlug": "loop-engineering",
+      "threadTitle": "Loop Engineering",
+      "relationType": "productizes",
+      "summary": "Anthropic official newsroom, Claude Code docs, release notes, and infrastructure partnership sources support a company-level background summary for Claude Code as an agentic coding product surface. This context is a background backlink only.",
+      "sourceIds": [
+        "cs_anthropic_newsroom",
+        "cs_anthropic_claude_code_overview",
+        "cs_anthropic_claude_code_release_notes",
+        "cs_anthropic_amazon_trainium"
+      ],
+      "excludedFromTopicReadiness": true,
+      "readinessNote": "Do not count this context toward Loop Engineering required roles. Thread readiness must still come from KnowledgeSource records reviewed under thread roles."
+    }
+  ],
+  "threadReadinessExports": []
 }

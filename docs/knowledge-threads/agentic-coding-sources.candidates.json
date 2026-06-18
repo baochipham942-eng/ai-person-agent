@@ -1,0 +1,630 @@
+{
+  "thread": {
+    "slug": "agentic-coding",
+    "title": "Agentic Coding",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-18",
+    "category": "agentic_coding",
+    "tags": [
+      "coding_agents",
+      "developer_workflow",
+      "software_engineering",
+      "verification"
+    ],
+    "aliases": [
+      "AI coding agents",
+      "coding agents",
+      "agentic software engineering",
+      "AI pair programmer"
+    ],
+    "definitionDraft": "A software-development mode where an AI agent plans, edits, runs tools, verifies results, and iterates with a developer or automation system across real repositories.",
+    "whyNow": "Claude Code, Codex-style agents, GitHub workflows, and real-repo benchmarks have moved AI coding from completion assistance toward reviewable multi-step engineering loops.",
+    "useBoundary": "Evidence pack only; no schema, production data, route changes, paid API calls, publishing, X Search/Grok changes, or UI work. Financial and IR materials are company_strategy_context candidates only and do not count toward topic-page readiness."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "sig_anthropic_claude_code_expertise",
+      "sourceKind": "official_research",
+      "role": "signal",
+      "sourceOwner": "anthropic.com",
+      "url": "https://www.anthropic.com/research/claude-code-expertise",
+      "title": "Agentic coding and persistent returns to expertise",
+      "publishedAt": "2026-06-16",
+      "whyRelevant": "Fresh official research signal that agentic coding is being studied as a real developer workflow, not just a product launch phrase.",
+      "confidence": 0.82,
+      "evidenceQuote": "agentic coding and persistent returns to expertise",
+      "reviewNotes": "Use as signal for why the topic is timely. Do not turn this into a benchmark claim without reading the study details.",
+      "urlHash": "a6ebb163a6c3bf175c39e54eeac5010fd84b9e52c0a6e23dcf5da992c57fed9e",
+      "text": "Agentic coding and persistent returns to expertise\n\nFresh official research signal that agentic coding is being studied as a real developer workflow, not just a product launch phrase.\n\nEvidence note: agentic coding and persistent returns to expertise\n\nUse as signal for why the topic is timely. Do not turn this into a benchmark claim without reading the study details.",
+      "status": "usable",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "sig_github_coding_agent_101",
+      "sourceKind": "official_product_blog",
+      "role": "signal",
+      "sourceOwner": "github.blog",
+      "url": "https://github.blog/ai-and-ml/github-copilot/github-copilot-coding-agent-101-getting-started-with-agentic-workflows-on-github/",
+      "title": "GitHub Copilot coding agent 101: Getting started with agentic workflows on GitHub",
+      "publishedAt": "2025-05-19",
+      "whyRelevant": "Official GitHub vocabulary signal for agentic coding workflows moving into issues and pull requests.",
+      "confidence": 0.78,
+      "evidenceQuote": "agentic workflows on GitHub",
+      "reviewNotes": "Use as signal and product-surface context; keep claims grounded in docs for final publication.",
+      "urlHash": "f7abaf560aef9feef46d37700b36ea0c58e2a8efb3ed5a6c536b814d88abbf92",
+      "text": "GitHub Copilot coding agent 101: Getting started with agentic workflows on GitHub\n\nOfficial GitHub vocabulary signal for agentic coding workflows moving into issues and pull requests.\n\nEvidence note: agentic workflows on GitHub\n\nUse as signal and product-surface context; keep claims grounded in docs for final publication.",
+      "status": "usable",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "sig_openai_harness_engineering",
+      "sourceKind": "official_engineering_blog",
+      "role": "signal",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/harness-engineering/",
+      "title": "Why we think of building agents as harness engineering",
+      "publishedAt": "2026-02-11",
+      "whyRelevant": "OpenAI engineering framing that agent performance depends on the harness around the model, matching the agentic-coding shift from autocomplete to orchestrated work.",
+      "confidence": 0.76,
+      "evidenceQuote": "Humans steer. Agents execute.",
+      "reviewNotes": "Use as a method signal, not as a Codex product definition.",
+      "urlHash": "f6b93302265de7767e51d257d3c85013b5a77b5e3a3d3ece72caa10e64fbb1bf",
+      "text": "Why we think of building agents as harness engineering\n\nOpenAI engineering framing that agent performance depends on the harness around the model, matching the agentic-coding shift from autocomplete to orchestrated work.\n\nEvidence note: Humans steer. Agents execute.\n\nUse as a method signal, not as a Codex product definition.",
+      "status": "usable",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_claude_code_overview",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "code.claude.com",
+      "url": "https://code.claude.com/docs/en/overview",
+      "title": "Claude Code overview",
+      "publishedAt": null,
+      "whyRelevant": "Defines Claude Code as a terminal coding agent that can read, edit, test, and commit in a developer's repository.",
+      "confidence": 0.95,
+      "evidenceQuote": "agentic coding tool that lives in your terminal",
+      "reviewNotes": "Primary official definition for the Anthropic product surface.",
+      "urlHash": "c23f3e7cbb0eb40f23d19dc78d052553e89acbec876e4a3bd41cd7f33f89940f",
+      "text": "Claude Code overview\n\nDefines Claude Code as a terminal coding agent that can read, edit, test, and commit in a developer's repository.\n\nEvidence note: agentic coding tool that lives in your terminal\n\nPrimary official definition for the Anthropic product surface.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_claude_code_best_practices",
+      "sourceKind": "official_engineering_blog",
+      "role": "official_definition",
+      "sourceOwner": "code.claude.com",
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "title": "Claude Code: Best practices for agentic coding",
+      "publishedAt": "2025-04-18",
+      "whyRelevant": "Official guidance on context, planning, verification, iteration, and human review for agentic coding workflows.",
+      "confidence": 0.94,
+      "evidenceQuote": "best practices for agentic coding",
+      "reviewNotes": "Core source for how the page explains workflow mechanics without overclaiming autonomy.",
+      "urlHash": "9686dc1633cd25c65213f850326132f3817d1f78727852f4491807300460857b",
+      "text": "Claude Code: Best practices for agentic coding\n\nOfficial guidance on context, planning, verification, iteration, and human review for agentic coding workflows.\n\nEvidence note: best practices for agentic coding\n\nCore source for how the page explains workflow mechanics without overclaiming autonomy.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_openai_codex_cloud",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "developers.openai.com",
+      "url": "https://developers.openai.com/codex/cloud",
+      "title": "Codex cloud",
+      "publishedAt": null,
+      "whyRelevant": "Official OpenAI documentation for delegating software-development tasks to Codex in an isolated cloud environment.",
+      "confidence": 0.93,
+      "evidenceQuote": "Delegate tasks to Codex",
+      "reviewNotes": "Primary official definition for the OpenAI cloud coding-agent surface.",
+      "urlHash": "8ac2222c5db439acd684a78c15bec7e2672998325943f7c6a8a2d9a72a590db2",
+      "text": "Codex cloud\n\nOfficial OpenAI documentation for delegating software-development tasks to Codex in an isolated cloud environment.\n\nEvidence note: Delegate tasks to Codex\n\nPrimary official definition for the OpenAI cloud coding-agent surface.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_openai_codex_cli",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "developers.openai.com",
+      "url": "https://developers.openai.com/codex/cli",
+      "title": "Codex CLI",
+      "publishedAt": null,
+      "whyRelevant": "Official OpenAI CLI docs for local coding-agent sessions, approvals, sandboxing, and model/tool interaction.",
+      "confidence": 0.9,
+      "evidenceQuote": "Codex CLI",
+      "reviewNotes": "Use with sandbox and repository implementation docs to distinguish local CLI from cloud tasks.",
+      "urlHash": "75f12278ddfac0994c36dbcc6db2d23cf15c09d1cb7f823c90da885056d493a4",
+      "text": "Codex CLI\n\nOfficial OpenAI CLI docs for local coding-agent sessions, approvals, sandboxing, and model/tool interaction.\n\nEvidence note: Codex CLI\n\nUse with sandbox and repository implementation docs to distinguish local CLI from cloud tasks.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_github_copilot_cloud_agent",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "docs.github.com",
+      "url": "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent",
+      "title": "About GitHub Copilot's coding agent",
+      "publishedAt": null,
+      "whyRelevant": "Official GitHub concept page for a Copilot coding agent that works on issues and pull requests in a cloud environment.",
+      "confidence": 0.91,
+      "evidenceQuote": "acts like an autonomous pair programmer",
+      "reviewNotes": "Good official counterweight to Claude and Codex definitions.",
+      "urlHash": "ebc17186b3d44851891e9379ed65ff2640721306a2e7e808b124d53310dea7f4",
+      "text": "About GitHub Copilot's coding agent\n\nOfficial GitHub concept page for a Copilot coding agent that works on issues and pull requests in a cloud environment.\n\nEvidence note: acts like an autonomous pair programmer\n\nGood official counterweight to Claude and Codex definitions.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "tx_every_claude_code_builders",
+      "sourceKind": "podcast_transcript",
+      "role": "transcript_context",
+      "sourceOwner": "every.to",
+      "url": "https://every.to/podcast/transcript-how-to-use-claude-code-like-the-people-who-built-it",
+      "title": "How to Use Claude Code Like the People Who Built It",
+      "publishedAt": "2026-06-10",
+      "whyRelevant": "Full transcript interview with members of the Claude Code team about workflows, prompting, context, and how builders use the agent.",
+      "confidence": 0.82,
+      "evidenceQuote": "like the people who built it",
+      "reviewNotes": "Transcript text is accessible on the page. Use only short quotes after final page copy picks the exact claim.",
+      "urlHash": "fe31359a0316428e1b4fe15a8fd27d408a484b2a1270b373a9d729a4fdbdb699",
+      "text": "How to Use Claude Code Like the People Who Built It\n\nFull transcript interview with members of the Claude Code team about workflows, prompting, context, and how builders use the agent.\n\nEvidence note: like the people who built it\n\nTranscript text is accessible on the page. Use only short quotes after final page copy picks the exact claim.",
+      "status": "usable",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "transcript_accessible_html"
+      }
+    },
+    {
+      "id": "tx_every_openai_codex_team",
+      "sourceKind": "podcast_transcript",
+      "role": "transcript_context",
+      "sourceOwner": "every.to",
+      "url": "https://every.to/podcast/transcript-how-openai-s-codex-team-uses-their-coding-agent",
+      "title": "How OpenAI's Codex Team Uses Their Own Coding Agent",
+      "publishedAt": "2025-05-23",
+      "whyRelevant": "Full transcript interview with the OpenAI Codex team about internal usage, cloud agents, code review, and handoff boundaries.",
+      "confidence": 0.82,
+      "evidenceQuote": "uses their own coding agent",
+      "reviewNotes": "Transcript text is accessible on the page. Use for context, not product-performance claims.",
+      "urlHash": "7a5515e0e00a10a0fc4335c0f0a53ac63151e6eb25729f7b69d1b3f8cbd5f5c8",
+      "text": "How OpenAI's Codex Team Uses Their Own Coding Agent\n\nFull transcript interview with the OpenAI Codex team about internal usage, cloud agents, code review, and handoff boundaries.\n\nEvidence note: uses their own coding agent\n\nTranscript text is accessible on the page. Use for context, not product-performance claims.",
+      "status": "usable",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "transcript_accessible_html"
+      }
+    },
+    {
+      "id": "paper_react",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "publishedAt": "2022-10-06",
+      "whyRelevant": "Foundational reasoning-plus-action paper for agents that alternate planning, tool calls, observations, and revisions.",
+      "confidence": 0.92,
+      "evidenceQuote": "reasoning traces and task-specific actions",
+      "reviewNotes": "Use as the general agent loop foundation, not as a coding-specific benchmark.",
+      "urlHash": "7647307fe49844a005ca6dd6c2883016ab3bf2840918166c6764d65c199ffa37",
+      "text": "ReAct: Synergizing Reasoning and Acting in Language Models\n\nFoundational reasoning-plus-action paper for agents that alternate planning, tool calls, observations, and revisions.\n\nEvidence note: reasoning traces and task-specific actions\n\nUse as the general agent loop foundation, not as a coding-specific benchmark.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_swe_bench",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2310.06770",
+      "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "publishedAt": "2023-10-10",
+      "whyRelevant": "Benchmark foundation for evaluating whether models can resolve real repository issues rather than only generate snippets.",
+      "confidence": 0.94,
+      "evidenceQuote": "resolve real-world GitHub issues",
+      "reviewNotes": "Core source for the page's verification and real-repo evaluation boundary.",
+      "urlHash": "3e4a5dea3aec490fe3b7bc9536c9ac06c9758b4b3d572ac667536f95fbf38fc0",
+      "text": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\n\nBenchmark foundation for evaluating whether models can resolve real repository issues rather than only generate snippets.\n\nEvidence note: resolve real-world GitHub issues\n\nCore source for the page's verification and real-repo evaluation boundary.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_swe_agent",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2405.15793",
+      "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+      "publishedAt": "2024-05-24",
+      "whyRelevant": "Shows how agent-computer interfaces can structure automated software engineering tasks over repositories.",
+      "confidence": 0.9,
+      "evidenceQuote": "Agent-Computer Interfaces Enable Automated Software Engineering",
+      "reviewNotes": "Strong bridge from benchmark framing to implementation surfaces.",
+      "urlHash": "54b1ddaabf07edcee470bc553137a485a2b4c9c96855e0fe2eb9de9313928c46",
+      "text": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering\n\nShows how agent-computer interfaces can structure automated software engineering tasks over repositories.\n\nEvidence note: Agent-Computer Interfaces Enable Automated Software Engineering\n\nStrong bridge from benchmark framing to implementation surfaces.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_agentless",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2407.01489",
+      "title": "Agentless: Demystifying LLM-based Software Engineering Agents",
+      "publishedAt": "2024-07-01",
+      "whyRelevant": "Provides a skeptical baseline for what coding agents need to prove beyond packaging an LLM workflow as an agent.",
+      "confidence": 0.84,
+      "evidenceQuote": "Demystifying LLM-based Software Engineering Agents",
+      "reviewNotes": "Use to keep the page balanced around agent claims and evaluation evidence.",
+      "urlHash": "320d81ab86d682b5ef6c8d719613fbcdc3f9e5bfd7a27d0d3222beca239bf033",
+      "text": "Agentless: Demystifying LLM-based Software Engineering Agents\n\nProvides a skeptical baseline for what coding agents need to prove beyond packaging an LLM workflow as an agent.\n\nEvidence note: Demystifying LLM-based Software Engineering Agents\n\nUse to keep the page balanced around agent claims and evaluation evidence.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_codeact",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2402.01030",
+      "title": "Executable Code Actions Elicit Better LLM Agents",
+      "publishedAt": "2024-02-02",
+      "whyRelevant": "Connects agent action spaces to executable code, which matters for coding agents that edit, run, and inspect code.",
+      "confidence": 0.83,
+      "evidenceQuote": "Executable Code Actions",
+      "reviewNotes": "Use as an action-interface foundation alongside ReAct and SWE-agent.",
+      "urlHash": "1b716912396dc989a26003754727de5356039ce3dd269a7f60eae28592149881",
+      "text": "Executable Code Actions Elicit Better LLM Agents\n\nConnects agent action spaces to executable code, which matters for coding agents that edit, run, and inspect code.\n\nEvidence note: Executable Code Actions\n\nUse as an action-interface foundation alongside ReAct and SWE-agent.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_openai_codex_repo",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com",
+      "url": "https://github.com/openai/codex",
+      "title": "openai/codex",
+      "publishedAt": null,
+      "whyRelevant": "Open-source implementation surface for local Codex agent behavior, approvals, sandboxing, and CLI integration.",
+      "confidence": 0.86,
+      "evidenceQuote": "openai/codex",
+      "reviewNotes": "Use repository facts only after checking current README or docs snippets for exact claims.",
+      "urlHash": "8c3dc2a0187cafccea2a84cdfe601e19b505d4faad42c77c2b39a3214738e26a",
+      "text": "openai/codex\n\nOpen-source implementation surface for local Codex agent behavior, approvals, sandboxing, and CLI integration.\n\nEvidence note: openai/codex\n\nUse repository facts only after checking current README or docs snippets for exact claims.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_openai_codex_sandboxing",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "developers.openai.com",
+      "url": "https://developers.openai.com/codex/concepts/sandboxing",
+      "title": "Codex sandboxing",
+      "publishedAt": null,
+      "whyRelevant": "Documents the execution boundary for Codex tasks, including isolation and environment constraints around agent actions.",
+      "confidence": 0.88,
+      "evidenceQuote": "Sandboxing",
+      "reviewNotes": "Important implementation source for safety and reviewability in coding-agent loops.",
+      "urlHash": "0b0e6bbe5dd9407ea47c2c02953413164364ea02b5bf226fa89fa1b72873bb2f",
+      "text": "Codex sandboxing\n\nDocuments the execution boundary for Codex tasks, including isolation and environment constraints around agent actions.\n\nEvidence note: Sandboxing\n\nImportant implementation source for safety and reviewability in coding-agent loops.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_openai_codex_agents_sdk",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "developers.openai.com",
+      "url": "https://developers.openai.com/codex/guides/agents-sdk",
+      "title": "Use Codex with the Agents SDK",
+      "publishedAt": null,
+      "whyRelevant": "Shows Codex as part of an agent-building surface rather than a standalone autocomplete tool.",
+      "confidence": 0.84,
+      "evidenceQuote": "Use Codex with the Agents SDK",
+      "reviewNotes": "Use as implementation context only; do not substitute it for Codex product docs.",
+      "urlHash": "12e8d6892ae5ac253a9a677a6b754600d0a8ff79d1a0ff4c24899b8faeefab77",
+      "text": "Use Codex with the Agents SDK\n\nShows Codex as part of an agent-building surface rather than a standalone autocomplete tool.\n\nEvidence note: Use Codex with the Agents SDK\n\nUse as implementation context only; do not substitute it for Codex product docs.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_action",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com",
+      "url": "https://github.com/anthropics/claude-code-action",
+      "title": "anthropics/claude-code-action",
+      "publishedAt": null,
+      "whyRelevant": "Official GitHub Action surface for bringing Claude Code into issue and pull-request workflows.",
+      "confidence": 0.88,
+      "evidenceQuote": "Claude Code Action",
+      "reviewNotes": "Primary implementation source for automation through GitHub.",
+      "urlHash": "0b22ca37fd3884c923ac214e3cf2efde652c9f3083c83a4b7ec3e12802fdbd51",
+      "text": "anthropics/claude-code-action\n\nOfficial GitHub Action surface for bringing Claude Code into issue and pull-request workflows.\n\nEvidence note: Claude Code Action\n\nPrimary implementation source for automation through GitHub.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_agent_sdk",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "code.claude.com",
+      "url": "https://code.claude.com/docs/en/agent-sdk/overview",
+      "title": "Agent SDK overview",
+      "publishedAt": null,
+      "whyRelevant": "Shows Claude Code-style agent sessions being exposed as programmable automation and custom agents.",
+      "confidence": 0.86,
+      "evidenceQuote": "Agent SDK",
+      "reviewNotes": "Good implementation bridge from interactive agentic coding to reusable agent workflows.",
+      "urlHash": "d69a094d34b18b2e552b9061a1285f07713719191effc4dd160b75ded66e5a51",
+      "text": "Agent SDK overview\n\nShows Claude Code-style agent sessions being exposed as programmable automation and custom agents.\n\nEvidence note: Agent SDK\n\nGood implementation bridge from interactive agentic coding to reusable agent workflows.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_hooks",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "code.claude.com",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "title": "Claude Code hooks",
+      "publishedAt": null,
+      "whyRelevant": "Hooks provide deterministic checkpoints around tool use, notifications, formatting, tests, and workflow guardrails.",
+      "confidence": 0.85,
+      "evidenceQuote": "Hooks are user-defined shell commands",
+      "reviewNotes": "Implementation source for verification and control points inside agentic coding loops.",
+      "urlHash": "20106b0f3bee09dd540039d6a1a5294fbfbe0ae0b182affd4138cf3caa31e0c6",
+      "text": "Claude Code hooks\n\nHooks provide deterministic checkpoints around tool use, notifications, formatting, tests, and workflow guardrails.\n\nEvidence note: Hooks are user-defined shell commands\n\nImplementation source for verification and control points inside agentic coding loops.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_swe_agent_repo",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com",
+      "url": "https://github.com/SWE-agent/SWE-agent",
+      "title": "SWE-agent/SWE-agent",
+      "publishedAt": null,
+      "whyRelevant": "Reference implementation associated with the SWE-agent paper and real repository issue-resolution workflows.",
+      "confidence": 0.83,
+      "evidenceQuote": "SWE-agent",
+      "reviewNotes": "Use as paper-to-implementation evidence, not as a product claim.",
+      "urlHash": "5bcded0c10e1cee3925da25a31376e4b89fe68593151ab8978c3b1c9f03f4283",
+      "text": "SWE-agent/SWE-agent\n\nReference implementation associated with the SWE-agent paper and real repository issue-resolution workflows.\n\nEvidence note: SWE-agent\n\nUse as paper-to-implementation evidence, not as a product claim.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    }
+  ],
+  "companyStrategyContextCandidates": [
+    {
+      "id": "ctx_github_new_coding_agent",
+      "company": "GitHub / Microsoft",
+      "sourceKind": "official_product_blog",
+      "role": "company_strategy_context",
+      "url": "https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/",
+      "title": "GitHub Copilot: Meet the new coding agent",
+      "publishedAt": "2025-05-19",
+      "whyRelevant": "Optional company-page context for GitHub Copilot product strategy. It is not needed for topic-page readiness because docs already provide the technical definition.",
+      "confidence": 0.74,
+      "evidenceQuote": "new coding agent",
+      "excludedFromTopicReadiness": true
+    },
+    {
+      "id": "ctx_openai_codex_app",
+      "company": "OpenAI",
+      "sourceKind": "official_product_blog",
+      "role": "company_strategy_context",
+      "url": "https://openai.com/index/introducing-the-codex-app/",
+      "title": "Introducing the Codex app",
+      "publishedAt": "2026-02-02",
+      "whyRelevant": "Optional company-page context for Codex product packaging. It is excluded from readiness because the technical topic uses developer docs and implementation sources.",
+      "confidence": 0.74,
+      "evidenceQuote": "Codex app",
+      "excludedFromTopicReadiness": true
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "off_claude_code_best_practices",
+      "toId": "paper_react",
+      "relationType": "agent_loop_to_reason_action_foundation",
+      "confidence": 0.84,
+      "evidenceNote": "Claude Code workflow guidance maps to the broader reason-act loop foundation."
+    },
+    {
+      "fromId": "off_openai_codex_cloud",
+      "toId": "paper_swe_bench",
+      "relationType": "product_claim_to_real_repo_benchmark",
+      "confidence": 0.83,
+      "evidenceNote": "Codex cloud delegation should be interpreted against real repository issue-resolution benchmarks."
+    },
+    {
+      "fromId": "off_github_copilot_cloud_agent",
+      "toId": "sig_github_coding_agent_101",
+      "relationType": "official_concept_to_practitioner_workflow_signal",
+      "confidence": 0.78,
+      "evidenceNote": "GitHub concept docs define the cloud agent; the 101 guide shows the agentic workflow vocabulary in use."
+    },
+    {
+      "fromId": "tx_every_claude_code_builders",
+      "toId": "off_claude_code_best_practices",
+      "relationType": "speaker_context_to_product_docs",
+      "confidence": 0.8,
+      "evidenceNote": "The builder transcript gives practical context for the official best-practices page."
+    },
+    {
+      "fromId": "tx_every_openai_codex_team",
+      "toId": "off_openai_codex_cloud",
+      "relationType": "speaker_context_to_product_docs",
+      "confidence": 0.8,
+      "evidenceNote": "The Codex team transcript clarifies handoff and review behavior around the official cloud product surface."
+    },
+    {
+      "fromId": "paper_swe_agent",
+      "toId": "impl_swe_agent_repo",
+      "relationType": "paper_to_reference_implementation",
+      "confidence": 0.82,
+      "evidenceNote": "The SWE-agent paper has a corresponding repository that demonstrates the agent-computer interface in code."
+    },
+    {
+      "fromId": "paper_agentless",
+      "toId": "paper_swe_bench",
+      "relationType": "skeptical_baseline_to_benchmark",
+      "confidence": 0.74,
+      "evidenceNote": "Agentless uses the same evaluation conversation to challenge what agentic coding adds beyond structured repair."
+    },
+    {
+      "fromId": "off_openai_codex_cli",
+      "toId": "impl_openai_codex_repo",
+      "relationType": "official_cli_to_open_source_runtime",
+      "confidence": 0.82,
+      "evidenceNote": "The official CLI surface is backed by the open-source Codex repository."
+    },
+    {
+      "fromId": "impl_openai_codex_sandboxing",
+      "toId": "off_openai_codex_cloud",
+      "relationType": "execution_boundary_for_cloud_agent",
+      "confidence": 0.8,
+      "evidenceNote": "Sandboxing explains the safety boundary behind delegating Codex work in the cloud."
+    },
+    {
+      "fromId": "impl_claude_hooks",
+      "toId": "impl_claude_agent_sdk",
+      "relationType": "workflow_control_to_programmable_agent_runtime",
+      "confidence": 0.76,
+      "evidenceNote": "Hooks and the Agent SDK are complementary implementation surfaces for controlled, repeatable agentic coding."
+    },
+    {
+      "fromId": "paper_codeact",
+      "toId": "impl_openai_codex_sandboxing",
+      "relationType": "code_action_space_to_execution_boundary",
+      "confidence": 0.72,
+      "evidenceNote": "Executable code actions need an explicit sandbox boundary before being productized in a coding agent."
+    }
+  ],
+  "review": {
+    "topicSourceCount": 22,
+    "readinessCountingSourceCount": 22,
+    "companyStrategyContextCandidateCount": 2,
+    "roleCoverage": {
+      "signal": 3,
+      "official_definition": 5,
+      "transcript_context": 2,
+      "paper_foundation": 5,
+      "implementation_signal": 7
+    },
+    "missingRoles": [],
+    "weakSources": [
+      {
+        "id": "sig_openai_harness_engineering",
+        "reason": "Method signal only; it should not define Codex or agentic coding by itself."
+      },
+      {
+        "id": "paper_agentless",
+        "reason": "Useful skeptical baseline, but final page should make clear it is not an agentic-coding endorsement source."
+      },
+      {
+        "id": "impl_openai_codex_agents_sdk",
+        "reason": "Implementation context only; keep product claims tied to Codex docs."
+      }
+    ],
+    "publishReadiness": "source_pack_ready_for_main_thread_review",
+    "thinSpots": [
+      "Transcript sources are usable because transcript text is accessible on Every, but exact quotes should still be re-opened before rendered publication.",
+      "Agentic Coding overlaps with Loop Engineering; keep this page broader than Claude Code loop technique and include Codex/GitHub surfaces.",
+      "Company strategy materials are excluded from topic-page readiness and should route to company pages."
+    ],
+    "notesForMimo": [
+      "No X/social source is used as anything other than signal.",
+      "No earnings transcript, SEC filing, investor relations source, annual report, or shareholder letter is counted toward readiness.",
+      "The pack is designed for review/materialize dry-run only and does not write production data."
+    ]
+  }
+}

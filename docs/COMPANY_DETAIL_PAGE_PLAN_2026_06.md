@@ -325,6 +325,24 @@ model CompanyThreadLink {
 - 不写生产 DB。
 - 财报类来源只进入 `CompanySource.role = financial_signal`。
 
+### P1 dry-run contract update
+
+本轮 P1 先不落 Prisma migration，先用 `docs/company/company-source-contract.schema.json` 固化 `CompanySource` / `CompanyStrategyContext` 的 JSON contract。
+
+原因:
+
+1. 当前目标是验证公司证据候选、来源角色、去重和 thread readiness 边界，不需要持久写入。
+2. 真实 `CompanySource.organizationId` 需要先决定 organization canonical ID 和回填策略，直接 migration 会把候选材料误推成已入库事实。
+3. 公司页 P0 view model 已经能消费 evidence / relatedThreads，P1 dry-run 只需要输出可映射的 preview，再由后续 staging materialize 接入。
+
+新增 review gate:
+
+```bash
+node scripts/company/review_company_sources.mjs --input=docs/company/anthropic-evidence-seed.json --strict
+```
+
+它检查五类 P1 source role 覆盖、canonical URL 去重、财务/IR 只留公司页、`company_strategy_context.sourceIds` 必填，以及不向技术 thread readiness 导出来源。
+
 ## 7. 页面验收口径
 
 P0 验收:

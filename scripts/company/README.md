@@ -4,6 +4,8 @@ Company and institution pages own business, financial, partnership, and product-
 
 This directory is the dry-run entry point for company evidence packs. It does not write the database.
 
+The P1 dry-run contract lives at `docs/company/company-source-contract.schema.json`. This round intentionally keeps Prisma migration deferred: the review goal is to prove source ownership, role coverage, URL hygiene, and thread-readiness boundaries before turning candidate evidence into durable `CompanySource` rows.
+
 ## Source Roles
 
 | CompanySource role | Page use | Typical source | Access |
@@ -19,12 +21,15 @@ Use `sourceKind` for the finer source type: `official_blog`, `product_docs`, `pr
 
 Private companies often have no public SEC annual report or earnings transcript. Mark those unavailable financial source kinds under `notAvailableRoles` rather than forcing weak substitutes.
 
-## Input Schema
+## Input Contract
 
 `fetch_company_financial_sources.mjs` reads a JSON file shaped like this:
 
 ```json
 {
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "contract": "docs/company/company-source-contract.schema.json",
   "company": {
     "name": "Anthropic",
     "slug": "anthropic",
@@ -44,11 +49,27 @@ Private companies often have no public SEC annual report or earnings transcript.
       "url": "https://www.anthropic.com/news",
       "role": "official_strategy",
       "sourceKind": "newsroom_index",
+      "title": "Anthropic News",
       "label": "Anthropic News",
       "access": "free_web",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
       "notes": "Official newsroom index."
     }
-  ]
+  ],
+  "companyStrategyContexts": [
+    {
+      "id": "csc_anthropic_loop_engineering",
+      "threadSlug": "loop-engineering",
+      "threadTitle": "Loop Engineering",
+      "relationType": "productizes",
+      "summary": "Company-level background only.",
+      "sourceIds": ["cs_anthropic_newsroom"],
+      "excludedFromTopicReadiness": true,
+      "readinessNote": "Do not count this context toward thread required roles."
+    }
+  ],
+  "threadReadinessExports": []
 }
 ```
 
@@ -59,11 +80,16 @@ Candidate fields:
 | `url` | yes | Candidate page or raw document URL |
 | `role` | yes | One of the CompanySource roles above |
 | `sourceKind` | yes | More specific type, for example `newsroom_article`, `docs_page`, `sec_10k`, `annual_report_pdf` |
+| `title` | yes | Stable CompanySource title |
 | `label` | no | Human-readable source label |
 | `publishedAt` | no | ISO date when known |
 | `access` | no | `free_web`, `free_sec`, `api_key_optional`, or `paid_or_rate_limited` |
 | `originalFileUrl` | no | Raw PDF/filing/transcript URL when the candidate page is a landing page |
+| `readinessUse` | yes | `company_page_only` or `company_strategy_context_only` |
+| `excludedFromTopicReadiness` | yes | Must be `true` for CompanySource dry-run records |
 | `notes` | no | Reviewer-facing context |
+
+`companyStrategyContexts` are thread backlinks, not thread evidence. Each context must carry `sourceIds` and `excludedFromTopicReadiness=true`. Financial, IR, earnings, SEC, annual report, and financing sources stay `company_page_only`.
 
 ## Fetch Output Schema
 
@@ -123,11 +149,18 @@ Useful flags:
 
 ## Review Output Schema
 
-`review_company_evidence_pack.mjs` checks role coverage and source hygiene. It accepts fetch output or the original seed.
+`review_company_sources.mjs` is the P1 review gate. It accepts fetch output or the original seed and checks:
+
+- Required role coverage: `official_strategy`, `product_release`, `financial_signal`, `partnership_signal`, `hiring_team_signal`.
+- Duplicate source IDs and canonical URLs.
+- Unknown roles and missing required fields.
+- Financial / IR placement: company page only, excluded from topic readiness, no strategy-context reference.
+- `company_strategy_context` must include valid `sourceIds`.
+- `threadReadinessExports` must stay empty.
 
 ```json
 {
-  "pipeline": "company_evidence_review",
+  "pipeline": "company_sources_review",
   "review": {
     "pass": true,
     "sourceCountsByRole": {
@@ -145,10 +178,12 @@ Useful flags:
 Run it:
 
 ```bash
-node scripts/company/review_company_evidence_pack.mjs --in=/tmp/company-evidence.json
+node scripts/company/review_company_sources.mjs --input=docs/company/anthropic-evidence-seed.json --strict
 ```
 
 Add `--strict` when CI should fail on review issues.
+
+`review_company_evidence_pack.mjs` remains a lighter backward-compatible hygiene check for older evidence-pack outputs.
 
 ## Access Boundary
 

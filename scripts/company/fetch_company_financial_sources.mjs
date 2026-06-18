@@ -404,6 +404,8 @@ async function main() {
     pipeline: 'company_evidence',
     dryRun: true,
     generatedAt: new Date().toISOString(),
+    schemaVersion: seed.schemaVersion || null,
+    contract: seed.contract || null,
     company: seed.company || null,
     input: {
       path: seed.inputPath,
@@ -411,6 +413,8 @@ async function main() {
       fetchedCandidates: candidates.length,
     },
     notAvailableRoles: seed.notAvailableRoles || [],
+    companyStrategyContexts: seed.companyStrategyContexts || [],
+    threadReadinessExports: seed.threadReadinessExports || [],
     sourceCountsByRole: roleCounts(sources),
     sources,
   });

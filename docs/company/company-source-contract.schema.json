@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-person-agent.local/schemas/company-source-contract.schema.json",
+  "title": "CompanySource dry-run contract",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "mode",
+    "company",
+    "candidates",
+    "companyStrategyContexts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "company-source-seed/v1"
+    },
+    "mode": {
+      "const": "dry-run"
+    },
+    "contract": {
+      "type": "string"
+    },
+    "company": {
+      "type": "object",
+      "required": [
+        "name",
+        "slug",
+        "homepage",
+        "publicCompany"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "slug": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "homepage": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publicCompany": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "notAvailableRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "sourceKind",
+          "reason"
+        ],
+        "properties": {
+          "role": {
+            "$ref": "#/$defs/companySourceRole"
+          },
+          "sourceKind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/companySourceCandidate"
+      }
+    },
+    "companyStrategyContexts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/companyStrategyContext"
+      }
+    },
+    "threadReadinessExports": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Must stay empty for company evidence dry-run packs."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "companySourceRole": {
+      "type": "string",
+      "enum": [
+        "official_strategy",
+        "product_release",
+        "financial_signal",
+        "partnership_signal",
+        "hiring_team_signal",
+        "technical_thread_link"
+      ]
+    },
+    "readinessUse": {
+      "type": "string",
+      "enum": [
+        "company_page_only",
+        "company_strategy_context_only"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "free_web",
+        "free_sec",
+        "api_key_optional",
+        "paid_or_rate_limited"
+      ]
+    },
+    "companySourceCandidate": {
+      "type": "object",
+      "required": [
+        "id",
+        "url",
+        "role",
+        "sourceKind",
+        "title",
+        "access",
+        "readinessUse",
+        "excludedFromTopicReadiness"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "role": {
+          "$ref": "#/$defs/companySourceRole"
+        },
+        "sourceKind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string"
+        },
+        "sourceLabel": {
+          "type": "string"
+        },
+        "access": {
+          "$ref": "#/$defs/access"
+        },
+        "publishedAt": {
+          "type": "string"
+        },
+        "originalFileUrl": {
+          "type": "string"
+        },
+        "readinessUse": {
+          "$ref": "#/$defs/readinessUse"
+        },
+        "excludedFromTopicReadiness": {
+          "const": true
+        },
+        "companyPageOnly": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "companyStrategyContext": {
+      "type": "object",
+      "required": [
+        "id",
+        "threadSlug",
+        "threadTitle",
+        "relationType",
+        "summary",
+        "sourceIds",
+        "excludedFromTopicReadiness",
+        "readinessNote"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "threadSlug": {
+          "type": "string",
+          "minLength": 1
+        },
+        "threadTitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationType": {
+          "type": "string",
+          "enum": [
+            "invests_in",
+            "productizes",
+            "researches",
+            "platform_for"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "excludedFromTopicReadiness": {
+          "const": true
+        },
+        "readinessNote": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
