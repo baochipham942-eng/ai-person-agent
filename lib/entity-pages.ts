@@ -1,6 +1,7 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db/prisma';
 import { fetchActivityEvents, type ActivityEvent } from '@/lib/activity';
+import anthropicEvidenceSeed from '@/docs/company/anthropic-evidence-seed.json';
 import { fetchPersonDirectory } from '@/lib/person-directory';
 import {
   DIRECTORY_ORGANIZATIONS,
@@ -62,6 +63,54 @@ export interface EntityContentCoverage {
   missing: EntityCoverageMissing[];
 }
 
+export type CompanyEvidenceRole =
+  | 'official_strategy'
+  | 'product_release'
+  | 'financial_signal'
+  | 'partnership_signal'
+  | 'hiring_team_signal';
+
+export interface CompanyEvidenceItem {
+  id: string;
+  role: CompanyEvidenceRole;
+  sourceType: string;
+  title: string;
+  url: string;
+  summary: string;
+  publishedAt: string | null;
+  sourceLabel: string;
+  confidence: number;
+}
+
+export interface CompanyProductItem {
+  name: string;
+  summary: string;
+  url?: string;
+}
+
+export interface CompanyThreadLink {
+  slug: string;
+  title: string;
+  relationType: 'invests_in' | 'productizes' | 'researches' | 'platform_for';
+  summary: string;
+}
+
+export interface CompanyPageIntelligence {
+  positioning: string | null;
+  aiStrategySummary: string | null;
+  products: CompanyProductItem[];
+  evidence: CompanyEvidenceItem[];
+  relatedThreads: CompanyThreadLink[];
+  sourceMode: 'empty' | 'fixture';
+  sourceNote: string;
+  coverage: {
+    evidenceCount: number;
+    hasOfficialStrategy: boolean;
+    hasFinancialSignal: boolean;
+    hasProductRelease: boolean;
+  };
+}
+
 export interface TopicPageData {
   topic: string;
   people: DirectoryPerson[];
@@ -76,6 +125,7 @@ export interface TopicPageData {
 export interface OrganizationPageData {
   organization: string;
   aliases: string[];
+  companyIntelligence: CompanyPageIntelligence;
   people: DirectoryPerson[];
   totalPeople: number;
   activity: ActivityEvent[];
@@ -99,6 +149,7 @@ const ORGANIZATION_COVERAGE_THRESHOLDS = {
   activity: 5,
   works: 5,
 };
+const COMPANY_FIXTURE_ENABLED = process.env.NODE_ENV !== 'production';
 
 export async function fetchTopicPageData(topic: string): Promise<TopicPageData> {
   const topicAliases = getDirectoryTopicAliases(topic);
@@ -176,6 +227,7 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
   return {
     organization,
     aliases,
+    companyIntelligence: buildCompanyPageIntelligence(organization, aliases),
     people: directory.data,
     totalPeople: directory.pagination.total,
     activity,
@@ -196,6 +248,92 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
       thresholds: ORGANIZATION_COVERAGE_THRESHOLDS,
     }),
   };
+}
+
+export function buildEmptyCompanyIntelligence(): CompanyPageIntelligence {
+  return buildCompanyIntelligence({
+    positioning: null,
+    aiStrategySummary: null,
+    products: [],
+    evidence: [],
+    relatedThreads: [],
+    sourceMode: 'empty',
+    sourceNote: '公司级证据尚未入库。当前页面不会用人物动态、论文或项目来冒充公司证据。',
+  });
+}
+
+function buildCompanyPageIntelligence(organization: string, aliases: string[]): CompanyPageIntelligence {
+  if (COMPANY_FIXTURE_ENABLED && matchesCompanyFixture(organization, aliases, anthropicEvidenceSeed.company.slug)) {
+    return buildAnthropicFixtureIntelligence();
+  }
+
+  return buildEmptyCompanyIntelligence();
+}
+
+function buildAnthropicFixtureIntelligence(): CompanyPageIntelligence {
+  const evidence = anthropicEvidenceSeed.candidates.map((candidate, index) => ({
+    id: `fixture-anthropic-${index + 1}`,
+    role: candidate.role as CompanyEvidenceRole,
+    sourceType: candidate.sourceKind,
+    title: candidate.label,
+    url: candidate.url,
+    summary: candidate.notes,
+    publishedAt: 'publishedAt' in candidate && typeof candidate.publishedAt === 'string'
+      ? candidate.publishedAt
+      : null,
+    sourceLabel: candidate.label,
+    confidence: 0.72,
+  }));
+
+  return buildCompanyIntelligence({
+    positioning: 'Anthropic 是 Claude 和 Claude Code 背后的 AI 公司。这个样例只用于本地验证公司页结构。',
+    aiStrategySummary: 'Dev-only fixture: 使用 Anthropic 官方 newsroom、产品文档、融资公告和合作公告种子，验证公司级证据区块如何承载官方策略、产品发布、融资和合作信号。',
+    products: [
+      {
+        name: 'Claude',
+        summary: 'Anthropic 面向个人和企业的模型产品入口。本项来自 dev-only fixture，不代表生产数据已入库。',
+        url: anthropicEvidenceSeed.company.homepage,
+      },
+      {
+        name: 'Claude Code',
+        summary: '面向开发者的 agentic coding 产品线。本项来自官方文档 seed，用于验证公司页产品区块。',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
+      },
+    ],
+    evidence,
+    relatedThreads: [
+      {
+        slug: 'loop-engineering',
+        title: 'Loop Engineering',
+        relationType: 'productizes',
+        summary: 'Claude Code 是把 agentic coding loop 产品化的公司级样例；财务和融资材料仍只留在公司页证据区块。',
+      },
+    ],
+    sourceMode: 'fixture',
+    sourceNote: 'Dev-only fixture from docs/company/anthropic-evidence-seed.json. 生产环境默认不读取这份样例，也不会把它标为公司证据已入库。',
+  });
+}
+
+function buildCompanyIntelligence(params: Omit<CompanyPageIntelligence, 'coverage'>): CompanyPageIntelligence {
+  const roles = new Set(params.evidence.map(item => item.role));
+  return {
+    ...params,
+    coverage: {
+      evidenceCount: params.evidence.length,
+      hasOfficialStrategy: roles.has('official_strategy'),
+      hasFinancialSignal: roles.has('financial_signal'),
+      hasProductRelease: roles.has('product_release'),
+    },
+  };
+}
+
+function matchesCompanyFixture(organization: string, aliases: string[], slug: string): boolean {
+  const normalizedSlug = normalizeCompanyKey(slug);
+  return [organization, ...aliases].some(value => normalizeCompanyKey(value) === normalizedSlug);
+}
+
+function normalizeCompanyKey(value: string): string {
+  return value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
 function buildOrganizationRoleWhere(aliases: string[]): Prisma.PersonRoleWhereInput {

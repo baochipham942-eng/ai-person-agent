@@ -11,7 +11,16 @@ import {
   buildOrganizationHref,
   buildTopicHref,
 } from '@/lib/person-directory-config';
-import type { EntityContentCoverage, EntityFacet, EntityWork, OrganizationRolePerson } from '@/lib/entity-pages';
+import type {
+  CompanyEvidenceItem,
+  CompanyEvidenceRole,
+  CompanyPageIntelligence,
+  CompanyThreadLink,
+  EntityContentCoverage,
+  EntityFacet,
+  EntityWork,
+  OrganizationRolePerson,
+} from '@/lib/entity-pages';
 
 interface EntityNavProps {
   label: string;
@@ -85,6 +94,142 @@ export function SectionTitle({ title, description }: { title: string; descriptio
         {description && <p className="mt-1 text-xs leading-5 text-stone-500">{description}</p>}
       </div>
     </div>
+  );
+}
+
+const COMPANY_EVIDENCE_ROLE_LABELS: Record<CompanyEvidenceRole, string> = {
+  official_strategy: '官方策略',
+  product_release: '产品发布',
+  financial_signal: '融资/财务信号',
+  partnership_signal: '合作信号',
+  hiring_team_signal: '团队信号',
+};
+
+const COMPANY_THREAD_RELATION_LABELS: Record<CompanyThreadLink['relationType'], string> = {
+  invests_in: '投入',
+  productizes: '产品化',
+  researches: '研究',
+  platform_for: '平台支撑',
+};
+
+export function CompanyOverviewSection({
+  organization,
+  intelligence,
+}: {
+  organization: string;
+  intelligence: CompanyPageIntelligence;
+}) {
+  const hasOverview = Boolean(intelligence.positioning || intelligence.aiStrategySummary || intelligence.products.length > 0);
+
+  return (
+    <section>
+      <SectionTitle title="公司 AI 概览" description="只展示公司级来源整理出的策略、产品和覆盖状态。" />
+      <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-5">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <div className="text-xs font-medium text-stone-500">{organization}</div>
+            <h2 className="mt-1 text-base font-semibold text-stone-950">
+              {intelligence.positioning || '公司级证据尚未入库'}
+            </h2>
+          </div>
+          <CompanySourceModePill intelligence={intelligence} />
+        </div>
+
+        {hasOverview ? (
+          <>
+            {intelligence.aiStrategySummary && (
+              <p className="mt-3 text-sm leading-6 text-stone-700">{intelligence.aiStrategySummary}</p>
+            )}
+            {intelligence.products.length > 0 && (
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {intelligence.products.map(product => (
+                  <article key={product.name} className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-3">
+                    {product.url ? (
+                      <a
+                        href={product.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-sm font-semibold text-stone-950 hover:text-orange-600"
+                      >
+                        {product.name}
+                      </a>
+                    ) : (
+                      <div className="text-sm font-semibold text-stone-950">{product.name}</div>
+                    )}
+                    <p className="mt-1 text-xs leading-5 text-stone-500">{product.summary}</p>
+                  </article>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <EmptyPanel text="公司级证据尚未入库。当前页保留人物、履历和动态聚合，但不会把这些内容标成公司证据。" />
+        )}
+
+        <p className="mt-3 border-t border-stone-100 pt-3 text-xs leading-5 text-stone-500">
+          {intelligence.sourceNote}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+export function CompanyEvidenceSection({ intelligence }: { intelligence: CompanyPageIntelligence }) {
+  const groupedEvidence = groupCompanyEvidence(intelligence.evidence);
+
+  return (
+    <section>
+      <SectionTitle title="公司级证据" description="财报、IR、产品发布、融资和合作材料只在公司页承担证据角色。" />
+      {intelligence.evidence.length > 0 ? (
+        <div className="space-y-3">
+          {groupedEvidence.map(group => (
+            <article key={group.role} className="rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm">
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <h2 className="text-sm font-semibold text-stone-950">{COMPANY_EVIDENCE_ROLE_LABELS[group.role]}</h2>
+                <span className="text-xs font-medium text-stone-400">{group.items.length}</span>
+              </div>
+              <div className="divide-y divide-stone-100">
+                {group.items.map(item => (
+                  <CompanyEvidenceRow key={item.id} item={item} />
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <EmptyPanel text="公司级证据尚未入库。不会用人物动态、论文、项目或履历记录顶替公司证据。" />
+      )}
+    </section>
+  );
+}
+
+export function RelatedThreadsSection({ threads }: { threads: CompanyThreadLink[] }) {
+  return (
+    <section>
+      <SectionTitle title="相关知识线程" description="公司策略和产品线可以回链知识线程，但不把财报材料放进技术主题 readiness。" />
+      {threads.length > 0 ? (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {threads.map(thread => (
+            <Link
+              key={thread.slug}
+              href={`/threads/${thread.slug}`}
+              prefetch={false}
+              className="rounded-xl border border-stone-200 bg-white px-4 py-3 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <h2 className="text-sm font-semibold text-stone-950">{thread.title}</h2>
+                <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-500">
+                  {COMPANY_THREAD_RELATION_LABELS[thread.relationType]}
+                </span>
+              </div>
+              <p className="mt-2 text-xs leading-5 text-stone-500">{thread.summary}</p>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <EmptyPanel text="相关知识线程尚未关联。公司页会先保留空态，不把技术主题页反向改成 ready。" />
+      )}
+    </section>
   );
 }
 
@@ -235,6 +380,60 @@ export function CoveragePanel({ coverage }: { coverage: EntityContentCoverage })
       )}
     </section>
   );
+}
+
+function CompanyEvidenceRow({ item }: { item: CompanyEvidenceItem }) {
+  return (
+    <div className="py-3 first:pt-0 last:pb-0">
+      <div className="flex flex-wrap items-center gap-1.5">
+        <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-600">
+          {item.sourceType}
+        </span>
+        {item.publishedAt && <span className="text-[10px] text-stone-400">{formatDate(item.publishedAt)}</span>}
+        <span className="text-[10px] text-stone-400">{Math.round(item.confidence * 100)}%</span>
+      </div>
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-1 block text-sm font-medium leading-5 text-stone-950 hover:text-orange-600"
+      >
+        {item.title}
+      </a>
+      <p className="mt-1 text-xs leading-5 text-stone-500">{item.summary}</p>
+    </div>
+  );
+}
+
+function CompanySourceModePill({ intelligence }: { intelligence: CompanyPageIntelligence }) {
+  const isFixture = intelligence.sourceMode === 'fixture';
+  return (
+    <span className={`w-fit rounded-md px-2 py-1 text-[10px] font-semibold uppercase tracking-normal ring-1 ${
+      isFixture
+        ? 'bg-blue-50 text-blue-700 ring-blue-100'
+        : 'bg-amber-50 text-amber-700 ring-amber-100'
+    }`}
+    >
+      {isFixture ? 'dev fixture' : 'not ingested'}
+    </span>
+  );
+}
+
+function groupCompanyEvidence(evidence: CompanyEvidenceItem[]): Array<{ role: CompanyEvidenceRole; items: CompanyEvidenceItem[] }> {
+  const order: CompanyEvidenceRole[] = [
+    'official_strategy',
+    'product_release',
+    'financial_signal',
+    'partnership_signal',
+    'hiring_team_signal',
+  ];
+
+  return order
+    .map(role => ({
+      role,
+      items: evidence.filter(item => item.role === role),
+    }))
+    .filter(group => group.items.length > 0);
 }
 
 function CoverageMetric({ label, current, target }: { label: string; current: number; target: number }) {

@@ -1,0 +1,644 @@
+{
+  "schemaVersion": "knowledge-thread-batch-seeds/v1",
+  "mode": "dry-run",
+  "generatedAt": "2026-06-18",
+  "scope": {
+    "sourcePlan": "docs/KNOWLEDGE_THREAD_TOPIC_PAGES_PLAN_2026_06.md",
+    "goldenSample": "loop-engineering",
+    "purpose": "Batch seed input for Mimo or read-only scripts to produce review-ready knowledge thread packs.",
+    "outOfScope": [
+      "production database writes",
+      "paid API calls",
+      "publishing",
+      "X Search or Grok file changes",
+      "new UI"
+    ]
+  },
+  "selection": {
+    "selectedTopics": [
+      "agentic-coding",
+      "context-engineering",
+      "mcp"
+    ],
+    "rationale": "Agentic Coding is closest to the Loop Engineering sample and should validate direct replication first. Context Engineering should run second because it tests a method-level topic with broader source boundaries. MCP runs third because it is a strong protocol/ecosystem topic, but it depends on the context/tool-use framing that the first two topics establish.",
+    "deferredP2Candidates": [
+      "computer-use",
+      "tool-use",
+      "inference-scaling",
+      "ai-coding-eval",
+      "multi-agent-research",
+      "long-running-agents",
+      "enterprise-ai-agents"
+    ]
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCountPerTopic": 15,
+    "minimumEdgesPerTopic": 6,
+    "maxPerRole": 8,
+    "primarySourcePreference": true,
+    "readinessExcludedSourceKinds": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "topics": [
+    {
+      "slug": "agentic-coding",
+      "title": "Agentic Coding",
+      "priorityRank": 1,
+      "category": "agentic_coding",
+      "tags": [
+        "coding_agents",
+        "developer_workflow",
+        "software_engineering",
+        "verification"
+      ],
+      "aliases": [
+        "AI coding agents",
+        "coding agents",
+        "agentic software engineering",
+        "AI pair programmer"
+      ],
+      "definitionDraft": "A software-development mode where an AI agent plans, edits, runs tools, verifies results, and iterates with a developer or automation system across real repositories.",
+      "whyNowDraft": "Claude Code, Codex-style agents, GitHub workflows, and real-repo benchmarks have moved AI coding from completion assistance toward reviewable multi-step engineering loops.",
+      "requiredRoles": [
+        "signal",
+        "official_definition",
+        "transcript_context",
+        "paper_foundation",
+        "implementation_signal"
+      ],
+      "sourceQueries": {
+        "signal": [
+          {
+            "query": "\"agentic coding\" Claude Code Boris Cherny workflow",
+            "notes": "Use only as freshness or vocabulary signal."
+          },
+          {
+            "query": "\"coding agents\" \"SWE-bench\" developer workflow",
+            "notes": "Prefer practitioner posts or conference talk pages with stable URLs over raw X if possible."
+          }
+        ],
+        "official_definition": [
+          {
+            "query": "Anthropic Claude Code overview official docs agentic coding",
+            "preferredDomains": [
+              "code.claude.com",
+              "anthropic.com"
+            ]
+          },
+          {
+            "query": "OpenAI Codex coding agent official docs",
+            "preferredDomains": [
+              "openai.com",
+              "platform.openai.com"
+            ]
+          },
+          {
+            "query": "GitHub Copilot coding agent official docs pull request issues",
+            "preferredDomains": [
+              "docs.github.com",
+              "github.blog"
+            ]
+          }
+        ],
+        "transcript_context": [
+          {
+            "query": "Boris Cherny Claude Code podcast transcript coding agents",
+            "notes": "Transcript text must be captured before extracting quotes."
+          },
+          {
+            "query": "Claude Code team interview transcript agentic coding",
+            "notes": "Use only transcript or reliable written interview text."
+          }
+        ],
+        "paper_foundation": [
+          {
+            "query": "SWE-bench real-world GitHub issues paper",
+            "preferredDomains": [
+              "arxiv.org",
+              "swebench.com"
+            ]
+          },
+          {
+            "query": "SWE-agent agent computer interfaces automated software engineering paper",
+            "preferredDomains": [
+              "arxiv.org",
+              "swe-agent.com"
+            ]
+          },
+          {
+            "query": "ReAct reasoning acting language models paper tool use coding agents",
+            "preferredDomains": [
+              "arxiv.org"
+            ]
+          }
+        ],
+        "implementation_signal": [
+          {
+            "query": "anthropics claude-code-action GitHub official",
+            "preferredDomains": [
+              "github.com"
+            ]
+          },
+          {
+            "query": "Claude Code SDK hooks subagents skills official docs",
+            "preferredDomains": [
+              "code.claude.com"
+            ]
+          }
+        ]
+      },
+      "mustHaveSources": [
+        {
+          "role": "official_definition",
+          "sourceKind": "official_docs",
+          "title": "Claude Code overview",
+          "url": "https://code.claude.com/docs/en/overview",
+          "whyRequired": "Defines the official coding-agent product surface."
+        },
+        {
+          "role": "official_definition",
+          "sourceKind": "official_engineering_blog",
+          "title": "Claude Code: Best practices for agentic coding",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "whyRequired": "Primary official explanation of workflow, context, verification, and iteration."
+        },
+        {
+          "role": "implementation_signal",
+          "sourceKind": "github_repo",
+          "title": "anthropics/claude-code-action",
+          "url": "https://github.com/anthropics/claude-code-action",
+          "whyRequired": "Shows agentic coding entering issue and pull-request workflows."
+        },
+        {
+          "role": "paper_foundation",
+          "sourceKind": "paper",
+          "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+          "url": "https://arxiv.org/abs/2310.06770",
+          "whyRequired": "Grounds readiness in real repository issue resolution."
+        },
+        {
+          "role": "paper_foundation",
+          "sourceKind": "paper",
+          "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+          "url": "https://arxiv.org/abs/2405.15793",
+          "whyRequired": "Connects agent interfaces to automated software engineering tasks."
+        }
+      ],
+      "weakSpots": [
+        "The term overlaps with Loop Engineering; keep this page focused on the broader software-development mode, not only repeated Claude Code workflow loops.",
+        "Vendor docs can overclaim capability; pair official sources with benchmarks and implementation examples.",
+        "Transcript candidates must expose actual transcript text before page-ready quotes.",
+        "Avoid turning GitHub Copilot, Codex, or Claude Code marketing pages into unverified performance claims."
+      ],
+      "edgeIdeas": [
+        {
+          "fromRole": "official_definition",
+          "toRole": "paper_foundation",
+          "relationType": "product_claim_to_real_repo_benchmark",
+          "evidenceNeed": "Map product workflow claims to SWE-bench or SWE-agent evaluation scope."
+        },
+        {
+          "fromRole": "official_definition",
+          "toRole": "implementation_signal",
+          "relationType": "workflow_to_automation_surface",
+          "evidenceNeed": "Connect Claude Code workflows to GitHub Action or SDK implementation."
+        },
+        {
+          "fromRole": "transcript_context",
+          "toRole": "official_definition",
+          "relationType": "speaker_context_to_product_docs",
+          "evidenceNeed": "Use transcript explanation to clarify, not replace, official definitions."
+        },
+        {
+          "fromRole": "paper_foundation",
+          "toRole": "implementation_signal",
+          "relationType": "benchmark_to_tooling_practice",
+          "evidenceNeed": "Show how real-repo benchmarks pressure implementation choices such as tests, patches, and review loops."
+        }
+      ],
+      "companyStrategyContextTargets": [
+        {
+          "company": "Microsoft",
+          "reason": "Optional company page context for GitHub Copilot strategy; do not count earnings or IR sources toward topic readiness.",
+          "excludedFromTopicReadiness": true
+        },
+        {
+          "company": "OpenAI",
+          "reason": "Optional company page context for Codex product strategy; official product docs may count, IR-style strategy sources may not.",
+          "excludedFromTopicReadiness": true
+        }
+      ],
+      "handoffNotes": "This is the safest first Mimo batch topic because Loop Engineering already supplies overlapping Claude Code, SWE-bench, and implementation-source patterns."
+    },
+    {
+      "slug": "context-engineering",
+      "title": "Context Engineering",
+      "priorityRank": 2,
+      "category": "agentic_system_design",
+      "tags": [
+        "context",
+        "memory",
+        "retrieval",
+        "prompting",
+        "agent_runtime"
+      ],
+      "aliases": [
+        "context design",
+        "agent context management",
+        "LLM memory engineering",
+        "prompt and context architecture"
+      ],
+      "definitionDraft": "The practice of designing what information, memory, tools, retrieval results, instructions, and state an AI agent sees at each step so it can act reliably over long or complex tasks.",
+      "whyNowDraft": "As agents move from one-shot prompts to long-running work, context becomes an engineered runtime resource rather than a single prompt.",
+      "requiredRoles": [
+        "signal",
+        "official_definition",
+        "transcript_context",
+        "paper_foundation",
+        "implementation_signal"
+      ],
+      "sourceQueries": {
+        "signal": [
+          {
+            "query": "\"context engineering\" agents LLM memory retrieval",
+            "notes": "Use signal sources for vocabulary emergence only."
+          },
+          {
+            "query": "\"context engineering\" \"prompt engineering\" agent systems",
+            "notes": "Separate practitioner vocabulary from official product docs."
+          }
+        ],
+        "official_definition": [
+          {
+            "query": "Anthropic prompt engineering overview context official docs",
+            "preferredDomains": [
+              "platform.claude.com"
+            ]
+          },
+          {
+            "query": "Claude Code memory context official docs",
+            "preferredDomains": [
+              "code.claude.com"
+            ]
+          },
+          {
+            "query": "OpenAI Agents SDK context management official docs",
+            "preferredDomains": [
+              "openai.github.io",
+              "platform.openai.com"
+            ]
+          }
+        ],
+        "transcript_context": [
+          {
+            "query": "agent context management interview transcript LLM memory retrieval",
+            "notes": "Prefer long-form interviews with transcript text and named speakers."
+          },
+          {
+            "query": "Claude Code context memory workflow transcript",
+            "notes": "Use transcript only to explain practice and tradeoffs."
+          }
+        ],
+        "paper_foundation": [
+          {
+            "query": "Lost in the Middle context window paper",
+            "preferredDomains": [
+              "arxiv.org"
+            ]
+          },
+          {
+            "query": "Retrieval-Augmented Generation knowledge intensive NLP tasks paper",
+            "preferredDomains": [
+              "arxiv.org"
+            ]
+          },
+          {
+            "query": "MemGPT memory management LLM agents paper",
+            "preferredDomains": [
+              "arxiv.org"
+            ]
+          }
+        ],
+        "implementation_signal": [
+          {
+            "query": "Claude Code memory custom slash commands docs",
+            "preferredDomains": [
+              "code.claude.com"
+            ]
+          },
+          {
+            "query": "MCP resources prompts tools context official docs",
+            "preferredDomains": [
+              "modelcontextprotocol.io",
+              "github.com"
+            ]
+          }
+        ]
+      },
+      "mustHaveSources": [
+        {
+          "role": "official_definition",
+          "sourceKind": "official_docs",
+          "title": "Prompt engineering overview",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+          "whyRequired": "Anchors context work in official prompt and instruction design guidance."
+        },
+        {
+          "role": "official_definition",
+          "sourceKind": "official_engineering_blog",
+          "title": "Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "whyRequired": "Explains agents as systems that combine models, tools, workflows, and context."
+        },
+        {
+          "role": "implementation_signal",
+          "sourceKind": "official_docs",
+          "title": "Claude Code memory",
+          "url": "https://code.claude.com/docs/en/memory",
+          "whyRequired": "Concrete implementation surface for reusable project and user context."
+        },
+        {
+          "role": "paper_foundation",
+          "sourceKind": "paper",
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "whyRequired": "Shows why longer context does not automatically mean better context."
+        },
+        {
+          "role": "paper_foundation",
+          "sourceKind": "paper",
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "whyRequired": "Foundation for retrieval as a context supply mechanism."
+        },
+        {
+          "role": "paper_foundation",
+          "sourceKind": "paper",
+          "title": "MemGPT: Towards LLMs as Operating Systems",
+          "url": "https://arxiv.org/abs/2310.08560",
+          "whyRequired": "Foundation for explicit memory management in long-running agent tasks."
+        }
+      ],
+      "weakSpots": [
+        "The phrase is practitioner vocabulary and may not have one official definition; page definition must say what the product means by it.",
+        "Do not collapse Context Engineering into prompt tips. Include retrieval, memory, tools, instructions, state, compression, and verification.",
+        "Paper sources can be broad; Mimo should explain exactly how each paper supports the topic.",
+        "Implementation examples should prove context handling, not just mention a larger context window."
+      ],
+      "edgeIdeas": [
+        {
+          "fromRole": "paper_foundation",
+          "toRole": "official_definition",
+          "relationType": "context_limit_to_product_guidance",
+          "evidenceNeed": "Connect long-context failure modes to official memory, prompt, or retrieval guidance."
+        },
+        {
+          "fromRole": "official_definition",
+          "toRole": "implementation_signal",
+          "relationType": "guidance_to_runtime_mechanism",
+          "evidenceNeed": "Show how memory files, resources, prompts, or SDK context objects make guidance operational."
+        },
+        {
+          "fromRole": "signal",
+          "toRole": "paper_foundation",
+          "relationType": "vocabulary_to_research_root",
+          "evidenceNeed": "Use practitioner vocabulary only after grounding it in retrieval, memory, or long-context research."
+        },
+        {
+          "fromRole": "implementation_signal",
+          "toRole": "paper_foundation",
+          "relationType": "runtime_design_to_context_constraint",
+          "evidenceNeed": "Explain how implementation choices address position bias, context bloat, or stale memory."
+        }
+      ],
+      "companyStrategyContextTargets": [
+        {
+          "company": "Anthropic",
+          "reason": "Optional company page context for Claude memory and agent platform direction; technical docs count, financial strategy sources do not.",
+          "excludedFromTopicReadiness": true
+        },
+        {
+          "company": "OpenAI",
+          "reason": "Optional company page context for Agents platform direction; product docs may count, IR-style strategy sources may not.",
+          "excludedFromTopicReadiness": true
+        }
+      ],
+      "handoffNotes": "Give this to Mimo after Agentic Coding so the reviewer can compare a product/workflow topic with a method/runtime topic."
+    },
+    {
+      "slug": "mcp",
+      "title": "MCP",
+      "priorityRank": 3,
+      "category": "agentic_infrastructure",
+      "tags": [
+        "model_context_protocol",
+        "tools",
+        "integrations",
+        "agent_runtime",
+        "protocol"
+      ],
+      "aliases": [
+        "Model Context Protocol",
+        "MCP servers",
+        "MCP clients",
+        "tool protocol"
+      ],
+      "definitionDraft": "Model Context Protocol is an open protocol for connecting AI applications to tools, data sources, prompts, and resources through standardized client-server integrations.",
+      "whyNowDraft": "Agentic products increasingly need reliable tool and data access, and MCP is becoming a common integration surface across clients, servers, SDKs, and examples.",
+      "requiredRoles": [
+        "signal",
+        "official_definition",
+        "transcript_context",
+        "paper_foundation",
+        "implementation_signal"
+      ],
+      "sourceQueries": {
+        "signal": [
+          {
+            "query": "\"Model Context Protocol\" adoption client server tools",
+            "notes": "Prefer official ecosystem posts or stable engineering blog posts."
+          },
+          {
+            "query": "\"MCP server\" \"Claude Code\" tools data sources",
+            "notes": "Use community posts only as adoption signals."
+          }
+        ],
+        "official_definition": [
+          {
+            "query": "Model Context Protocol official docs introduction",
+            "preferredDomains": [
+              "modelcontextprotocol.io"
+            ]
+          },
+          {
+            "query": "MCP specification official GitHub",
+            "preferredDomains": [
+              "github.com"
+            ]
+          },
+          {
+            "query": "Claude Code MCP official docs",
+            "preferredDomains": [
+              "code.claude.com"
+            ]
+          }
+        ],
+        "transcript_context": [
+          {
+            "query": "Model Context Protocol interview transcript Anthropic",
+            "notes": "Do not use video title alone; require transcript text."
+          },
+          {
+            "query": "MCP protocol tools agents podcast transcript",
+            "notes": "Use for motivation and ecosystem context only."
+          }
+        ],
+        "paper_foundation": [
+          {
+            "query": "Toolformer language models external tools paper",
+            "preferredDomains": [
+              "arxiv.org"
+            ]
+          },
+          {
+            "query": "ReAct reasoning acting language models tools paper",
+            "preferredDomains": [
+              "arxiv.org"
+            ]
+          },
+          {
+            "query": "Tool learning with foundation models survey paper",
+            "preferredDomains": [
+              "arxiv.org"
+            ]
+          }
+        ],
+        "implementation_signal": [
+          {
+            "query": "modelcontextprotocol TypeScript SDK official GitHub",
+            "preferredDomains": [
+              "github.com"
+            ]
+          },
+          {
+            "query": "modelcontextprotocol Python SDK official GitHub",
+            "preferredDomains": [
+              "github.com"
+            ]
+          },
+          {
+            "query": "MCP reference servers official GitHub",
+            "preferredDomains": [
+              "github.com"
+            ]
+          }
+        ]
+      },
+      "mustHaveSources": [
+        {
+          "role": "official_definition",
+          "sourceKind": "official_docs",
+          "title": "Model Context Protocol documentation",
+          "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+          "whyRequired": "Primary official entry point for the protocol."
+        },
+        {
+          "role": "official_definition",
+          "sourceKind": "official_spec",
+          "title": "modelcontextprotocol/modelcontextprotocol",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+          "whyRequired": "Canonical specification source for protocol terms and capabilities."
+        },
+        {
+          "role": "implementation_signal",
+          "sourceKind": "github_repo",
+          "title": "modelcontextprotocol/typescript-sdk",
+          "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+          "whyRequired": "Official SDK surface for client/server implementation examples."
+        },
+        {
+          "role": "implementation_signal",
+          "sourceKind": "github_repo",
+          "title": "modelcontextprotocol/python-sdk",
+          "url": "https://github.com/modelcontextprotocol/python-sdk",
+          "whyRequired": "Second official SDK surface to prove cross-language implementation."
+        },
+        {
+          "role": "official_definition",
+          "sourceKind": "official_docs",
+          "title": "Connect Claude Code to tools via MCP",
+          "url": "https://code.claude.com/docs/en/mcp",
+          "whyRequired": "Product-level official source for MCP inside Claude Code workflows."
+        },
+        {
+          "role": "paper_foundation",
+          "sourceKind": "paper",
+          "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+          "url": "https://arxiv.org/abs/2302.04761",
+          "whyRequired": "Tool-use foundation for why a protocolized tool layer matters."
+        }
+      ],
+      "weakSpots": [
+        "MCP is a protocol topic, not a generic tool-use topic. Keep protocol primitives, client/server shape, resources, prompts, tools, security, and SDKs visible.",
+        "Community server lists can be noisy; prioritize official spec, SDKs, reference servers, and product docs.",
+        "Transcript sources may be sparse; if transcript coverage is thin, mark the pack thin rather than inventing motivation.",
+        "Do not count company adoption announcements or earnings remarks as technical readiness."
+      ],
+      "edgeIdeas": [
+        {
+          "fromRole": "official_definition",
+          "toRole": "implementation_signal",
+          "relationType": "protocol_spec_to_sdk_surface",
+          "evidenceNeed": "Map spec capabilities to TypeScript or Python SDK implementation."
+        },
+        {
+          "fromRole": "official_definition",
+          "toRole": "official_definition",
+          "relationType": "protocol_to_product_integration",
+          "evidenceNeed": "Connect MCP docs to Claude Code MCP docs without making Claude Code the whole protocol."
+        },
+        {
+          "fromRole": "paper_foundation",
+          "toRole": "official_definition",
+          "relationType": "tool_use_foundation_to_protocol_design",
+          "evidenceNeed": "Explain how tool-use research motivates standardized tool/data access."
+        },
+        {
+          "fromRole": "implementation_signal",
+          "toRole": "signal",
+          "relationType": "sdk_examples_to_ecosystem_signal",
+          "evidenceNeed": "Use SDK/reference-server examples to vet ecosystem adoption signals."
+        }
+      ],
+      "companyStrategyContextTargets": [
+        {
+          "company": "Anthropic",
+          "reason": "Optional company page context for MCP launch and ecosystem strategy; technical docs and spec count, financial strategy sources do not.",
+          "excludedFromTopicReadiness": true
+        }
+      ],
+      "handoffNotes": "MCP is ready for Mimo after the reviewer verifies current official doc URLs and transcript availability."
+    }
+  ],
+  "mimoInstructions": {
+    "outputStatusBeforeReview": "review_ready_or_thin",
+    "mustNotPublish": true,
+    "mustNotWriteDatabase": true,
+    "quotePolicy": "Short quotes only; rendered page should prefer paraphrase and preserve source binding.",
+    "financialSourcePolicy": "Reject earnings_transcript, sec_filing, investor_relations, annual_report, and shareholder_letter as readiness sources. Preserve only in companyStrategyContextTargets with excludedFromTopicReadiness=true.",
+    "thinPackRule": "If a required role is missing, transcript text is unavailable, or source count is below 15, mark the topic thin."
+  }
+}
