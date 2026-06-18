@@ -106,6 +106,7 @@ function parseArgs(argv) {
   };
 
   for (const arg of argv) {
+    if (arg === '--') continue;
     if (arg === '--help' || arg === '-h') options.help = true;
     else if (arg === '--execute') options.execute = true;
     else if (arg === '--allow-remote-dev') options.allowRemoteDev = true;
