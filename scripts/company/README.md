@@ -185,6 +185,22 @@ Add `--strict` when CI should fail on review issues.
 
 `review_company_evidence_pack.mjs` remains a lighter backward-compatible hygiene check for older evidence-pack outputs.
 
+## Staging Materialize Preview
+
+`materialize_company_sources.mjs` turns the reviewed dry-run pack into a stable staging artifact shaped like the future `CompanySource` and `CompanyThreadLink` rows. It still does not write the database, import Prisma, or enable execute mode. Passing `--execute` is refused until the Prisma migration exists.
+
+Run it:
+
+```bash
+pnpm company:materialize -- --input=docs/company/anthropic-evidence-seed.json --strict --output=/tmp/company-sources-staging.json
+```
+
+The output includes:
+
+- `dryRunResult.companySources`: future `CompanySource` row previews, with canonical URL hashes and company-page readiness boundaries.
+- `dryRunResult.companyThreadLinks`: company-to-thread backlinks backed by company evidence IDs.
+- `dryRunResult.p0ViewModelPreview`: the shape the company page can consume without treating company evidence as topic readiness.
+
 ## Access Boundary
 
 Allowed by default:

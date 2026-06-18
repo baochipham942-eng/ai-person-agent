@@ -17,6 +17,7 @@
     "youtube:caption-plan": "node scripts/enrich/plan_youtube_caption_batches.mjs",
     "youtube:caption-fetch": "node scripts/enrich/fetch_youtube_captions_with_ytdlp.mjs",
     "youtube:caption-import": "node scripts/enrich/import_youtube_captions_to_rawpool.mjs",
+    "company:materialize": "node scripts/company/materialize_company_sources.mjs",
     "audit:content-guard": "node scripts/audit/check_content_review_guardrails.mjs",
     "audit:signal-quality": "node scripts/audit/sample_signal_quality.mjs",
     "audit:quality-review": "node scripts/audit/quality_review_queue.mjs",
