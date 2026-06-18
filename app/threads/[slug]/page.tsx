@@ -1,10 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { MissingThreadState, ThreadPageBlocks } from '@/components/knowledge/ThreadPageBlocks';
-import {
-  loopEngineeringThread,
-} from '@/lib/knowledge-thread-fixtures/loop-engineering';
-import { fetchKnowledgeThreadPage } from '@/lib/knowledge-threads';
+import { fetchKnowledgeThreadPage, listStaticKnowledgeThreadSlugs } from '@/lib/knowledge-threads';
 
 interface ThreadPageProps {
   params: Promise<{ slug: string }>;
@@ -13,7 +10,7 @@ interface ThreadPageProps {
 export const revalidate = 300;
 
 export function generateStaticParams() {
-  return [{ slug: loopEngineeringThread.slug }];
+  return listStaticKnowledgeThreadSlugs().map(slug => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ThreadPageProps): Promise<Metadata> {

@@ -101,7 +101,7 @@ export interface CompanyPageIntelligence {
   products: CompanyProductItem[];
   evidence: CompanyEvidenceItem[];
   relatedThreads: CompanyThreadLink[];
-  sourceMode: 'empty' | 'fixture';
+  sourceMode: 'empty' | 'fixture' | 'dry_run';
   sourceNote: string;
   coverage: {
     evidenceCount: number;
@@ -272,45 +272,44 @@ function buildCompanyPageIntelligence(organization: string, aliases: string[]): 
 
 function buildAnthropicFixtureIntelligence(): CompanyPageIntelligence {
   const evidence = anthropicEvidenceSeed.candidates.map((candidate, index) => ({
-    id: `fixture-anthropic-${index + 1}`,
+    id: candidate.id || `fixture-anthropic-${index + 1}`,
     role: candidate.role as CompanyEvidenceRole,
     sourceType: candidate.sourceKind,
-    title: candidate.label,
+    title: candidate.title || candidate.label,
     url: candidate.url,
     summary: candidate.notes,
     publishedAt: 'publishedAt' in candidate && typeof candidate.publishedAt === 'string'
       ? candidate.publishedAt
       : null,
-    sourceLabel: candidate.label,
+    sourceLabel: candidate.sourceLabel || candidate.label,
     confidence: 0.72,
+  }));
+  const relatedThreads = anthropicEvidenceSeed.companyStrategyContexts.map(context => ({
+    slug: context.threadSlug,
+    title: context.threadTitle,
+    relationType: context.relationType as CompanyThreadLink['relationType'],
+    summary: context.summary,
   }));
 
   return buildCompanyIntelligence({
-    positioning: 'Anthropic 是 Claude 和 Claude Code 背后的 AI 公司。这个样例只用于本地验证公司页结构。',
-    aiStrategySummary: 'Dev-only fixture: 使用 Anthropic 官方 newsroom、产品文档、融资公告和合作公告种子，验证公司级证据区块如何承载官方策略、产品发布、融资和合作信号。',
+    positioning: 'Anthropic 是 Claude 和 Claude Code 背后的 AI 公司。当前样板来自 P1 company-source dry-run contract。',
+    aiStrategySummary: 'P1 dry-run 使用 Anthropic 官方 newsroom、产品文档、融资公告、合作公告和 careers 种子，验证公司级证据如何承载官方策略、产品发布、融资、合作和团队信号。',
     products: [
       {
         name: 'Claude',
-        summary: 'Anthropic 面向个人和企业的模型产品入口。本项来自 dev-only fixture，不代表生产数据已入库。',
+        summary: 'Anthropic 面向个人和企业的模型产品入口。本项来自 dry-run contract，不代表生产 CompanySource 已入库。',
         url: anthropicEvidenceSeed.company.homepage,
       },
       {
         name: 'Claude Code',
-        summary: '面向开发者的 agentic coding 产品线。本项来自官方文档 seed，用于验证公司页产品区块。',
+        summary: '面向开发者的 agentic coding 产品线。本项来自官方文档 seed，用于验证公司页产品区块和主题页回链。',
         url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
       },
     ],
     evidence,
-    relatedThreads: [
-      {
-        slug: 'loop-engineering',
-        title: 'Loop Engineering',
-        relationType: 'productizes',
-        summary: 'Claude Code 是把 agentic coding loop 产品化的公司级样例；财务和融资材料仍只留在公司页证据区块。',
-      },
-    ],
-    sourceMode: 'fixture',
-    sourceNote: 'Dev-only fixture from docs/company/anthropic-evidence-seed.json. 生产环境默认不读取这份样例，也不会把它标为公司证据已入库。',
+    relatedThreads,
+    sourceMode: 'dry_run',
+    sourceNote: 'Dry-run contract from docs/company/anthropic-evidence-seed.json. 生产环境默认不读取这份样例；财务和融资材料仍只留在公司页，不进入技术主题 readiness。',
   });
 }
 

@@ -3,10 +3,14 @@ import {
   getKnowledgeThreadFixture as getStaticKnowledgeThreadFixture,
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
 import type {
+  KnowledgeActionKind,
+  KnowledgeLinkKind,
   KnowledgeSourceRole,
   KnowledgeThreadFixture,
   KnowledgeThreadSource,
+  KnowledgeThreadStatus,
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
+import agenticCodingSourcePack from '@/docs/knowledge-threads/agentic-coding-sources.candidates.json';
 
 const REQUIRED_ROLES = [
   'signal',
@@ -14,6 +18,10 @@ const REQUIRED_ROLES = [
   'transcript_context',
   'paper_foundation',
   'implementation_signal',
+] as const;
+
+const SOURCE_PACK_FIXTURES = [
+  agenticCodingSourcePack,
 ] as const;
 
 let knowledgeThreadStoreReadyPromise: Promise<boolean> | null = null;
@@ -82,6 +90,17 @@ export interface KnowledgeThreadReadEdge {
 
 interface FetchKnowledgeThreadOptions {
   allowFixtureFallback?: boolean;
+}
+
+interface SourcePackEdge {
+  id?: string;
+  fromId?: string;
+  toId?: string;
+  fromSourceId?: string;
+  toSourceId?: string;
+  relationType: string;
+  confidence?: unknown;
+  evidenceNote?: string;
 }
 
 export async function fetchKnowledgeThread(
@@ -171,7 +190,9 @@ export async function fetchKnowledgeThreadPage(slug: string): Promise<KnowledgeT
   if (!readModel) return null;
 
   const fixture = getStaticKnowledgeThreadFixture(readModel.thread.slug);
-  if (readModel.thread.isFixture) return fixture ?? readModelToFixture(readModel);
+  if (readModel.thread.isFixture) {
+    return fixture ?? getSourcePackFixture(readModel.thread.slug) ?? readModelToFixture(readModel);
+  }
   if (fixture) return mergeReadModelWithFixture(readModel, fixture);
   return readModelToFixture(readModel);
 }
@@ -424,6 +445,11 @@ function firstText(value: string, length: number): string {
   return text.length <= length ? text : `${text.slice(0, length - 1)}...`;
 }
 
+function toFiniteNumber(value: unknown, fallback: number): number {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+
 function ownerFromUrl(value: string): string | null {
   try {
     return new URL(value).hostname.replace(/^www\./, '');
@@ -438,9 +464,178 @@ function dateToIsoDay(value: Date): string {
 
 function getKnowledgeThreadFixture(slug: string): KnowledgeThreadReadModel | null {
   const fixture = getStaticKnowledgeThreadFixture(slug);
-  if (!fixture) return null;
+  if (fixture) return fixtureToReadModel(fixture);
 
-  return fixtureToReadModel(fixture);
+  const sourcePackFixture = getSourcePackFixture(slug);
+  if (!sourcePackFixture) return null;
+
+  return fixtureToReadModel(sourcePackFixture);
+}
+
+export function listStaticKnowledgeThreadSlugs(): string[] {
+  return [
+    ...new Set([
+      ...SOURCE_PACK_FIXTURES.map(pack => pack.thread.slug),
+      'loop-engineering',
+    ]),
+  ];
+}
+
+function getSourcePackFixture(slug: string): KnowledgeThreadFixture | null {
+  const pack = SOURCE_PACK_FIXTURES.find(item => normalizeSlug(item.thread.slug) === normalizeSlug(slug));
+  if (!pack) return null;
+
+  const requiredRoles = toKnowledgeSourceRoles(pack.sourceRequirements.requiredRoles);
+  const sources = pack.sources.map(source => ({
+    id: source.id,
+    role: toKnowledgeSourceRole(source.metadata?.role || source.role),
+    sourceKind: source.sourceKind || 'unknown',
+    title: source.title || source.id,
+    owner: source.sourceOwner || ownerFromUrl(source.url) || 'Unknown',
+    url: source.url || undefined,
+    publishedAt: typeof source.publishedAt === 'string' ? source.publishedAt : undefined,
+    summary: source.whyRelevant || firstText(source.text || '', 180),
+    evidenceNote: source.reviewNotes || source.evidenceQuote || source.whyRelevant || firstText(source.text || '', 180),
+    evidenceQuote: source.evidenceQuote || undefined,
+    confidence: toFiniteNumber(source.confidence, 0.8),
+    status: normalizedSourceStatus(source.status),
+  }));
+
+  return {
+    slug: pack.thread.slug,
+    title: pack.thread.title,
+    summary: pack.thread.definitionDraft,
+    whyNow: pack.thread.whyNow,
+    confidence: 0.82,
+    lastReviewedAt: pack.thread.updatedAt,
+    status: toKnowledgeThreadStatus(pack.thread.status),
+    readinessNote: 'Source pack 已通过 review/materialize dry-run，可作为主题页样板；正式入库仍需走 KnowledgeSource materialize gate。',
+    definition: pack.thread.definitionDraft,
+    boundary: pack.thread.useBoundary,
+    requiredRoles,
+    sources,
+    timeline: buildSourcePackTimeline(sources),
+    edges: pack.edges.map(sourcePackEdgeToFixtureEdge),
+    actions: buildSourcePackActions(sources),
+    relatedLinks: buildSourcePackRelatedLinks(pack.thread.slug, pack.thread.title, sources),
+  };
+}
+
+function sourcePackEdgeToFixtureEdge(edge: SourcePackEdge) {
+  const fromSourceId = edge.fromSourceId || edge.fromId || '';
+  const toSourceId = edge.toSourceId || edge.toId || '';
+
+  return {
+    id: edge.id || `${fromSourceId}--${toSourceId}--${edge.relationType}`,
+    fromSourceId,
+    toSourceId,
+    relationType: edge.relationType,
+    confidence: toFiniteNumber(edge.confidence, 0.7),
+    evidenceNote: edge.evidenceNote || '',
+  };
+}
+
+function buildSourcePackTimeline(sources: KnowledgeThreadSource[]) {
+  return sources
+    .filter(source => source.publishedAt)
+    .sort((left, right) => String(left.publishedAt).localeCompare(String(right.publishedAt)))
+    .slice(-8)
+    .map(source => ({
+      date: source.publishedAt || '',
+      label: source.title,
+      sourceIds: [source.id],
+      note: source.summary,
+    }));
+}
+
+function buildSourcePackActions(sources: KnowledgeThreadSource[]) {
+  const actions: Array<{ kind: KnowledgeActionKind; title: string; description: string; sourceIds: string[] }> = [];
+  const official = sources.filter(source => source.role === 'official_definition').slice(0, 3).map(source => source.id);
+  const transcripts = sources.filter(source => source.role === 'transcript_context').slice(0, 2).map(source => source.id);
+  const implementations = sources.filter(source => source.role === 'implementation_signal').slice(0, 3).map(source => source.id);
+
+  if (official.length > 0) {
+    actions.push({
+      kind: 'read',
+      title: 'Read the official boundaries',
+      description: '先用官方文档和产品说明确定 agentic coding 的产品边界，再看论文和实现。',
+      sourceIds: official,
+    });
+  }
+  if (transcripts.length > 0) {
+    actions.push({
+      kind: 'watch',
+      title: 'Compare builder narratives',
+      description: '用访谈逐字稿补足官方文档里没有展开的工作流语境。',
+      sourceIds: transcripts,
+    });
+  }
+  if (implementations.length > 0) {
+    actions.push({
+      kind: 'try',
+      title: 'Trace implementation surfaces',
+      description: '从 CLI、SDK、GitHub agent 和 SWE-agent 这类入口判断工程实现是否能支撑主题判断。',
+      sourceIds: implementations,
+    });
+  }
+
+  return actions;
+}
+
+function buildSourcePackRelatedLinks(
+  slug: string,
+  title: string,
+  sources: KnowledgeThreadSource[],
+) {
+  const sourceIds = sources.slice(0, 3).map(source => source.id);
+  const links: Array<{ kind: KnowledgeLinkKind; label: string; href: string; relation: string; sourceIds: string[] }> = [
+    {
+      kind: 'topic',
+      label: title,
+      href: `/topic/${encodeURIComponent(title)}`,
+      relation: '把主题页和目录中的宽话题入口接起来。',
+      sourceIds,
+    },
+  ];
+
+  if (slug !== 'loop-engineering') {
+    links.push({
+      kind: 'thread',
+      label: 'Loop Engineering',
+      href: '/threads/loop-engineering',
+      relation: 'Agentic Coding 是更宽的技术主题，Loop Engineering 是更窄的工作流样板。',
+      sourceIds,
+    });
+  }
+
+  return links;
+}
+
+function toKnowledgeSourceRoles(values: readonly string[]): KnowledgeSourceRole[] {
+  return values.map(toKnowledgeSourceRole);
+}
+
+function toKnowledgeSourceRole(value: string): KnowledgeSourceRole {
+  if (
+    value === 'signal'
+    || value === 'official_definition'
+    || value === 'transcript_context'
+    || value === 'paper_foundation'
+    || value === 'implementation_signal'
+    || value === 'company_strategy_context'
+  ) {
+    return value;
+  }
+
+  return 'signal';
+}
+
+function toKnowledgeThreadStatus(value: string): KnowledgeThreadStatus {
+  if (value === 'source_pack_review' || value === 'review_ready' || value === 'thin' || value === 'draft') {
+    return value;
+  }
+
+  return 'source_pack_review';
 }
 
 function fixtureToReadModel(fixture: KnowledgeThreadFixture): KnowledgeThreadReadModel {
