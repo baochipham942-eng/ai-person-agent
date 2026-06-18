@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, type Prisma } from '@prisma/client';
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { PrismaNeon } from '@prisma/adapter-neon';
 import { createRequire } from 'node:module';
@@ -20,8 +20,13 @@ const ws = require('ws');
 neonConfig.webSocketConstructor = ws;
 
 const prismaClientSingleton = () => {
-    // Create Neon connection pool
+    const log: Prisma.LogLevel[] = process.env.NODE_ENV === 'production' ? ['error'] : ['query', 'error', 'warn'];
     const connectionString = process.env.DATABASE_URL!;
+    if (isLocalPostgres(connectionString)) {
+        return new PrismaClient({ log });
+    }
+
+    // Create Neon connection pool
     const pool = new Pool({ connectionString });
 
     // Create Prisma adapter
@@ -29,7 +34,7 @@ const prismaClientSingleton = () => {
 
     return new PrismaClient({
         adapter,
-        log: process.env.NODE_ENV === 'production' ? ['error'] : ['query', 'error', 'warn'],
+        log,
     });
 };
 
@@ -43,4 +48,13 @@ export const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
 
 if (process.env.NODE_ENV !== 'production') {
     globalForPrisma.prisma = prisma;
+}
+
+function isLocalPostgres(connectionString: string): boolean {
+    try {
+        const hostname = new URL(connectionString).hostname;
+        return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+    } catch {
+        return false;
+    }
 }

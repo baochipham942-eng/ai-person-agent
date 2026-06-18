@@ -378,9 +378,101 @@ model RawPoolItem {
   processed     Boolean        @default(false)
   person        People         @relation(fields: [personId], references: [id], onDelete: Cascade)
   activityEvent ActivityEvent?
+  knowledgeThreadSources KnowledgeThreadSource[]
 
   @@index([personId])
   @@index([sourceType])
+}
+
+model KnowledgeThread {
+  id                 String                  @id @default(cuid())
+  slug               String                  @unique
+  title              String
+  summary            String
+  whyNow             String?
+  status             String                  @default("draft")
+  priorityScore      Float                   @default(0)
+  confidence         Float                   @default(0.7)
+  category           String?
+  tags               String[]                @default([])
+  aliases            String[]                @default([])
+  refreshCadenceDays Int                     @default(14)
+  lastReviewedAt     DateTime?
+  createdAt          DateTime                @default(now())
+  updatedAt          DateTime                @updatedAt
+  sources            KnowledgeThreadSource[]
+  edges              KnowledgeThreadEdge[]
+
+  @@index([status])
+  @@index([priorityScore])
+  @@index([lastReviewedAt])
+}
+
+model KnowledgeSource {
+  id            String                  @id @default(cuid())
+  sourceKind    String
+  sourceOwner   String?
+  title         String
+  url           String
+  urlHash       String                  @unique
+  text          String
+  publishedAt   DateTime?
+  fetchedAt     DateTime                @default(now())
+  metadata      Json?
+  threadSources KnowledgeThreadSource[]
+  outgoingEdges KnowledgeThreadEdge[]    @relation("KnowledgeEdgeFromSource")
+  incomingEdges KnowledgeThreadEdge[]    @relation("KnowledgeEdgeToSource")
+
+  @@index([sourceKind])
+  @@index([sourceOwner])
+  @@index([publishedAt])
+  @@index([fetchedAt])
+}
+
+model KnowledgeThreadSource {
+  id             String           @id @default(cuid())
+  threadId       String
+  sourceId       String?
+  rawPoolItemId  String?
+  role           String
+  relevanceScore Float            @default(0.8)
+  sourceWeight   Float            @default(1.0)
+  evidenceQuote  String?
+  summary        String?
+  metadata       Json?
+  createdAt      DateTime         @default(now())
+  thread         KnowledgeThread  @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  source         KnowledgeSource? @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  rawPoolItem    RawPoolItem?     @relation(fields: [rawPoolItemId], references: [id], onDelete: SetNull)
+
+  @@unique([threadId, sourceId, role])
+  @@unique([threadId, rawPoolItemId, role])
+  @@index([threadId])
+  @@index([sourceId])
+  @@index([rawPoolItemId])
+  @@index([role])
+  @@index([relevanceScore])
+}
+
+model KnowledgeThreadEdge {
+  id           String          @id @default(cuid())
+  threadId     String
+  fromSourceId String
+  toSourceId   String
+  relationType String
+  confidence   Float           @default(0.7)
+  evidenceNote String?
+  createdAt    DateTime        @default(now())
+  thread       KnowledgeThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  fromSource   KnowledgeSource @relation("KnowledgeEdgeFromSource", fields: [fromSourceId], references: [id], onDelete: Cascade)
+  toSource     KnowledgeSource @relation("KnowledgeEdgeToSource", fields: [toSourceId], references: [id], onDelete: Cascade)
+
+  @@unique([threadId, fromSourceId, toSourceId, relationType])
+  @@index([threadId])
+  @@index([fromSourceId])
+  @@index([toSourceId])
+  @@index([relationType])
+  @@index([confidence])
 }
 
 model ActivityEvent {

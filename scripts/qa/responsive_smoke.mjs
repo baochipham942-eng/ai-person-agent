@@ -9,6 +9,7 @@ import WebSocket from 'ws';
 const DEFAULT_PAGES = [
   { name: 'home', path: '/', expectText: ['AI 人物库'] },
   { name: 'topic-agent', path: '/topic/Agent', expectText: ['Agent 方向关键人物'] },
+  { name: 'thread-loop-engineering', path: '/threads/loop-engineering', expectText: ['Loop Engineering', 'Evidence map', 'Action cards'] },
   { name: 'org-openai', path: '/org/OpenAI', expectText: ['OpenAI AI 关键人物'] },
   { name: 'digest', path: '/digest', expectText: ['本周动态'] },
   { name: 'graph', path: '/graph', expectText: ['人物关系'] },

@@ -202,6 +202,28 @@ title, text, publishedAt, metadata (JSON),
 fetchStatus, errorCode, fetchedAt, processed
 ```
 
+### KnowledgeThread / KnowledgeSource
+```
+KnowledgeThread:
+id, slug (唯一), title, summary, whyNow, status,
+priorityScore, confidence, category, tags[], aliases[],
+refreshCadenceDays, lastReviewedAt, createdAt, updatedAt
+
+KnowledgeSource:
+id, sourceKind, sourceOwner, title, url, urlHash (唯一),
+text, publishedAt, fetchedAt, metadata (JSON)
+
+KnowledgeThreadSource:
+id, threadId, sourceId, rawPoolItemId, role,
+relevanceScore, sourceWeight, evidenceQuote, summary,
+metadata (JSON), createdAt
+
+KnowledgeThreadEdge:
+id, threadId, fromSourceId, toSourceId, relationType,
+confidence, evidenceNote, createdAt
+```
+> 知识线程页使用 `KnowledgeThread*` 承载官方博客、字幕、论文、GitHub/examples 等非人物中心来源。财报/IR/earnings call 属于公司页证据，不计入技术主题页 required roles。
+
 ### ActivityEvent
 ```
 id, personId, sourceItemId,

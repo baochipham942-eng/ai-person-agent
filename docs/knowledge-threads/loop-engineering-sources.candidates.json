@@ -1,0 +1,598 @@
+{
+  "thread": {
+    "slug": "loop-engineering",
+    "title": "Loop Engineering",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-18",
+    "definitionDraft": "A developer workflow pattern built around repeated agent planning, code or tool execution, verification, and feedback inside coding-agent environments such as Claude Code.",
+    "useBoundary": "Evidence pack only; no schema, production data, or route changes. Financial and IR materials are company_strategy_context candidates only and do not count toward topic-page readiness."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations"
+    ]
+  },
+  "sources": [
+    {
+      "id": "sig_bcherny_x_workflow_2026_01",
+      "sourceKind": "x_post",
+      "role": "signal",
+      "url": "https://x.com/bcherny/status/2007179832300581177",
+      "title": "Boris Cherny X post on Claude Code workflow",
+      "publishedAt": "2026-01-02T19:58:58.275Z",
+      "whyRelevant": "Direct Boris Cherny signal that Claude Code value depends on user-created workflow, matching the loop-engineering framing.",
+      "confidence": 0.72,
+      "evidenceQuote": "There is no one correct way to use Claude Code.",
+      "reviewNotes": "Use only as signal. X availability and full-context retrieval should be rechecked before page publish.",
+      "urlHash": "ac796dc1de191efe8000875d86bb19d236826715c54c30a99a978e3cad66729a",
+      "text": "Boris Cherny X post on Claude Code workflow\n\nDirect Boris Cherny signal that Claude Code value depends on user-created workflow, matching the loop-engineering framing.\n\nEvidence note: There is no one correct way to use Claude Code.\n\nUse only as signal. X availability and full-context retrieval should be rechecked before page publish.",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "sig_osmani_loop_engineering",
+      "sourceKind": "practitioner_blog",
+      "role": "signal",
+      "url": "https://addyo.substack.com/p/the-rise-of-loop-engineering",
+      "title": "The Rise of Loop Engineering",
+      "publishedAt": "2025-11-12",
+      "whyRelevant": "Practitioner vocabulary source for the phrase and for the plan-generate-review-refine loop pattern.",
+      "confidence": 0.7,
+      "evidenceQuote": "Loop engineering treats AI work as an iterative process.",
+      "reviewNotes": "Useful for terminology, but secondary. Do not let it override official Anthropic definitions.",
+      "urlHash": "f507c0a316cef651931540e809b494b96a409c814b8bcaf1c16bdf966d3e5b70",
+      "text": "The Rise of Loop Engineering\n\nPractitioner vocabulary source for the phrase and for the plan-generate-review-refine loop pattern.\n\nEvidence note: Loop engineering treats AI work as an iterative process.\n\nUseful for terminology, but secondary. Do not let it override official Anthropic definitions.",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_anthropic_claude_code_research_preview",
+      "sourceKind": "official_blog",
+      "role": "official_definition",
+      "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+      "title": "Claude 3.7 Sonnet and Claude Code",
+      "publishedAt": "2025-02-24",
+      "whyRelevant": "Launches Claude Code as an agentic coding tool and gives the official product entry point.",
+      "confidence": 0.95,
+      "evidenceQuote": "Claude Code is an agentic coding tool.",
+      "reviewNotes": "Primary official source for research-preview origin.",
+      "urlHash": "a6c92f94a0af49f7360a4698df1dad57e03f175e96b5a1854b47bb5661c625c3",
+      "text": "Claude 3.7 Sonnet and Claude Code\n\nLaunches Claude Code as an agentic coding tool and gives the official product entry point.\n\nEvidence note: Claude Code is an agentic coding tool.\n\nPrimary official source for research-preview origin.",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_claude_code_overview",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/overview",
+      "title": "Claude Code overview",
+      "publishedAt": null,
+      "whyRelevant": "Defines Claude Code as the main product surface for coding-agent workflows.",
+      "confidence": 0.94,
+      "evidenceQuote": "Claude Code is Anthropic's official CLI for agentic coding.",
+      "reviewNotes": "Docs page may update; store fetchedAt when ingested.",
+      "urlHash": "9a532b2b74e5d48a29e0f81f94490e6ef730d982da4562b8400d187f56e39991",
+      "text": "Claude Code overview\n\nDefines Claude Code as the main product surface for coding-agent workflows.\n\nEvidence note: Claude Code is Anthropic's official CLI for agentic coding.\n\nDocs page may update; store fetchedAt when ingested.",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_claude_code_how_it_works",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/how-claude-code-works",
+      "title": "How Claude Code works",
+      "publishedAt": null,
+      "whyRelevant": "Explains context, tools, permissions, and agent operation boundaries behind the loop.",
+      "confidence": 0.92,
+      "evidenceQuote": "Claude Code uses context and tools to help you code.",
+      "reviewNotes": "Best source for explaining loop components without overclaiming.",
+      "urlHash": "899f66e790034b2bfdf615beae50316bbb8502788b1e95bb949e328ecbd3d34f",
+      "text": "How Claude Code works\n\nExplains context, tools, permissions, and agent operation boundaries behind the loop.\n\nEvidence note: Claude Code uses context and tools to help you code.\n\nBest source for explaining loop components without overclaiming.",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_claude_code_common_workflows",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/common-workflows",
+      "title": "Common workflows",
+      "publishedAt": null,
+      "whyRelevant": "Officially documents repeatable Claude Code workflows, including exploration, planning, fixing, and automation.",
+      "confidence": 0.9,
+      "evidenceQuote": "Claude Code supports common development workflows.",
+      "reviewNotes": "Good bridge from Boris workflow signal to productized workflow.",
+      "urlHash": "a196904d488d7ddb16b9cf775d0816f5ea40e83cfa92bcd20e0f672dd39dd798",
+      "text": "Common workflows\n\nOfficially documents repeatable Claude Code workflows, including exploration, planning, fixing, and automation.\n\nEvidence note: Claude Code supports common development workflows.\n\nGood bridge from Boris workflow signal to productized workflow.",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_claude_code_best_practices",
+      "sourceKind": "official_engineering_blog",
+      "role": "official_definition",
+      "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+      "title": "Claude Code: Best practices for agentic coding",
+      "publishedAt": "2025-04-18",
+      "whyRelevant": "Official engineering guidance for agentic coding loops, verification, context setting, and iteration.",
+      "confidence": 0.94,
+      "evidenceQuote": "Claude Code is intentionally low-level and unopinionated.",
+      "reviewNotes": "Core source for the page's official definition and user workflow module.",
+      "urlHash": "b77235353457c81e3b8d5fccd3aef46f77e1c1329aa75b4cc3ca2026e710e935",
+      "text": "Claude Code: Best practices for agentic coding\n\nOfficial engineering guidance for agentic coding loops, verification, context setting, and iteration.\n\nEvidence note: Claude Code is intentionally low-level and unopinionated.\n\nCore source for the page's official definition and user workflow module.",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "tx_pragmatic_engineer_bcherny",
+      "sourceKind": "podcast_transcript",
+      "role": "transcript_context",
+      "url": "https://newsletter.pragmaticengineer.com/p/claude-code-with-boris-cherny",
+      "title": "Building Claude Code with Boris Cherny",
+      "publishedAt": "2026-03-04",
+      "whyRelevant": "Long-form Boris Cherny context on Claude Code, agent workflows, product philosophy, and developer behavior.",
+      "confidence": 0.78,
+      "evidenceQuote": "working with agents in parallel",
+      "reviewNotes": "Confirm transcript access and quote from transcript text before rendered publication.",
+      "urlHash": "049dec0a69740c616f2d22886133f6ac09edf7222cbcd7cdf100601cdf346df7",
+      "text": "Building Claude Code with Boris Cherny\n\nLong-form Boris Cherny context on Claude Code, agent workflows, product philosophy, and developer behavior.\n\nEvidence note: working with agents in parallel\n\nConfirm transcript access and quote from transcript text before rendered publication.",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "tx_lenny_bcherny",
+      "sourceKind": "podcast_transcript",
+      "role": "transcript_context",
+      "url": "https://www.lennysnewsletter.com/p/what-happens-after-coding-is-solved",
+      "title": "What happens after coding is solved? with Boris Cherny",
+      "publishedAt": "2026-05-04",
+      "whyRelevant": "Transcript context for how Claude Code changes coding workflows and product-building behavior.",
+      "confidence": 0.72,
+      "evidenceQuote": "What happens after coding is solved?",
+      "reviewNotes": "Use for context only after confirming accessible transcript text.",
+      "urlHash": "dbbb33ee618c693b6e2b58d9741adf6c0f44abf69450b3a64b1cd09d0ab96595",
+      "text": "What happens after coding is solved? with Boris Cherny\n\nTranscript context for how Claude Code changes coding workflows and product-building behavior.\n\nEvidence note: What happens after coding is solved?\n\nUse for context only after confirming accessible transcript text.",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_react",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "publishedAt": "2022-10-06",
+      "whyRelevant": "Foundational framing for interleaving reasoning and actions, which maps directly to coding-agent loops.",
+      "confidence": 0.93,
+      "evidenceQuote": "generate both reasoning traces and task-specific actions",
+      "reviewNotes": "Primary paper foundation for reason-act loops.",
+      "urlHash": "7647307fe49844a005ca6dd6c2883016ab3bf2840918166c6764d65c199ffa37",
+      "text": "ReAct: Synergizing Reasoning and Acting in Language Models\n\nFoundational framing for interleaving reasoning and actions, which maps directly to coding-agent loops.\n\nEvidence note: generate both reasoning traces and task-specific actions\n\nPrimary paper foundation for reason-act loops.",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_toolformer",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "url": "https://arxiv.org/abs/2302.04761",
+      "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "publishedAt": "2023-02-09",
+      "whyRelevant": "Foundational tool-use paper for models deciding when and how to call external tools.",
+      "confidence": 0.9,
+      "evidenceQuote": "teach themselves to use external tools",
+      "reviewNotes": "Good support for tool-call mechanics in the loop.",
+      "urlHash": "200002328137240fce9a0a5ea54512fb96063c42b722f71e4fd96c0372b5ddde",
+      "text": "Toolformer: Language Models Can Teach Themselves to Use Tools\n\nFoundational tool-use paper for models deciding when and how to call external tools.\n\nEvidence note: teach themselves to use external tools\n\nGood support for tool-call mechanics in the loop.",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_swe_bench",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "url": "https://arxiv.org/abs/2310.06770",
+      "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "publishedAt": "2023-10-10",
+      "whyRelevant": "Benchmark foundation for real-world coding-agent evaluation and repository-level issue resolution.",
+      "confidence": 0.94,
+      "evidenceQuote": "resolve real-world GitHub issues",
+      "reviewNotes": "Use to explain why verification against real repos matters.",
+      "urlHash": "3e4a5dea3aec490fe3b7bc9536c9ac06c9758b4b3d572ac667536f95fbf38fc0",
+      "text": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\n\nBenchmark foundation for real-world coding-agent evaluation and repository-level issue resolution.\n\nEvidence note: resolve real-world GitHub issues\n\nUse to explain why verification against real repos matters.",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_swe_agent",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "url": "https://arxiv.org/abs/2405.15793",
+      "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+      "publishedAt": "2024-05-24",
+      "whyRelevant": "Agent-computer interface paper that turns software-engineering work into interactive agent loops.",
+      "confidence": 0.9,
+      "evidenceQuote": "Agent-Computer Interfaces Enable Automated Software Engineering",
+      "reviewNotes": "Strong bridge from abstract agents to coding-agent interface design.",
+      "urlHash": "54b1ddaabf07edcee470bc553137a485a2b4c9c96855e0fe2eb9de9313928c46",
+      "text": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering\n\nAgent-computer interface paper that turns software-engineering work into interactive agent loops.\n\nEvidence note: Agent-Computer Interfaces Enable Automated Software Engineering\n\nStrong bridge from abstract agents to coding-agent interface design.",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_agent_spend",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "url": "https://arxiv.org/abs/2604.22750",
+      "title": "How Do AI Agents Spend Your Money? Analyzing Token Usage Patterns",
+      "publishedAt": "2026-04-29",
+      "whyRelevant": "Helps explain the cost and token dynamics of long-running agent loops.",
+      "confidence": 0.7,
+      "evidenceQuote": "Analyzing Token Usage Patterns",
+      "reviewNotes": "Newer paper; verify peer status and exact scope before heavy use.",
+      "urlHash": "817ba7c5f7606ec470747727e877fa0cd5ff785f6c46f8e07b120b2781b30d29",
+      "text": "How Do AI Agents Spend Your Money? Analyzing Token Usage Patterns\n\nHelps explain the cost and token dynamics of long-running agent loops.\n\nEvidence note: Analyzing Token Usage Patterns\n\nNewer paper; verify peer status and exact scope before heavy use.",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_sdk",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/sdk/sdk-overview",
+      "title": "Agent SDK overview",
+      "publishedAt": null,
+      "whyRelevant": "Shows Claude Code loops being exposed as programmable agent sessions rather than only an interactive CLI.",
+      "confidence": 0.9,
+      "evidenceQuote": "build custom agents and automation",
+      "reviewNotes": "Useful for implementation cards and developer action items.",
+      "urlHash": "fb4f63fc85434f0cc53d1af889dff9844d517b781f6bea3dcb6c2b6b9094b5cb",
+      "text": "Agent SDK overview\n\nShows Claude Code loops being exposed as programmable agent sessions rather than only an interactive CLI.\n\nEvidence note: build custom agents and automation\n\nUseful for implementation cards and developer action items.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_hooks_reference",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/hooks",
+      "title": "Hooks reference",
+      "publishedAt": null,
+      "whyRelevant": "Hooks show deterministic intervention points around agent loops, including tool-use and notification events.",
+      "confidence": 0.88,
+      "evidenceQuote": "Hooks are user-defined shell commands.",
+      "reviewNotes": "Strong implementation source for verification and workflow control.",
+      "urlHash": "5be2e21d45c9c7614982049eaeaf09cc925d537e2b7d3d228bb685eb4803cc18",
+      "text": "Hooks reference\n\nHooks show deterministic intervention points around agent loops, including tool-use and notification events.\n\nEvidence note: Hooks are user-defined shell commands.\n\nStrong implementation source for verification and workflow control.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_hooks_guide",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/hooks-guide",
+      "title": "Automate actions with hooks",
+      "publishedAt": null,
+      "whyRelevant": "Provides examples for automating checks, formatting, and guardrails around coding-agent work.",
+      "confidence": 0.86,
+      "evidenceQuote": "automate actions with hooks",
+      "reviewNotes": "Use alongside hooks reference to show concrete snippets.",
+      "urlHash": "c5d417e5e8ad73ad4b3bde1eceada817560753b2544846064a249f3cac75d8fa",
+      "text": "Automate actions with hooks\n\nProvides examples for automating checks, formatting, and guardrails around coding-agent work.\n\nEvidence note: automate actions with hooks\n\nUse alongside hooks reference to show concrete snippets.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_subagents",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+      "title": "Create custom subagents",
+      "publishedAt": null,
+      "whyRelevant": "Subagents show loop decomposition into specialized review, planning, testing, or implementation roles.",
+      "confidence": 0.84,
+      "evidenceQuote": "specialized AI assistants",
+      "reviewNotes": "Good source for workflow decomposition without making it a new schema requirement.",
+      "urlHash": "9a7d4217c64c9a0a7f3e17aeff9717dca1ad5844feeeb967adad292f9b7c5dda",
+      "text": "Create custom subagents\n\nSubagents show loop decomposition into specialized review, planning, testing, or implementation roles.\n\nEvidence note: specialized AI assistants\n\nGood source for workflow decomposition without making it a new schema requirement.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_skills",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/skills",
+      "title": "Extend Claude with skills",
+      "publishedAt": null,
+      "whyRelevant": "Skills package instructions, scripts, and resources so repeated loop practices can be reused.",
+      "confidence": 0.82,
+      "evidenceQuote": "package specialized knowledge",
+      "reviewNotes": "Adjacent implementation source for repeatable workflows.",
+      "urlHash": "486f1e6121c857a65dec6787871276fff355c6505f6f2ed2a0cb57c925fae3a6",
+      "text": "Extend Claude with skills\n\nSkills package instructions, scripts, and resources so repeated loop practices can be reused.\n\nEvidence note: package specialized knowledge\n\nAdjacent implementation source for repeatable workflows.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_mcp",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+      "title": "Connect Claude Code to tools via MCP",
+      "publishedAt": null,
+      "whyRelevant": "MCP is an implementation bridge from agent loops to external tools, data, and local services.",
+      "confidence": 0.84,
+      "evidenceQuote": "connect Claude Code to external tools",
+      "reviewNotes": "Use to explain why implementation sources matter for topic pages.",
+      "urlHash": "058eaca1fe559add8fee75f54a8b80d8c12564f9a3bc54c497782cbde5648d0e",
+      "text": "Connect Claude Code to tools via MCP\n\nMCP is an implementation bridge from agent loops to external tools, data, and local services.\n\nEvidence note: connect Claude Code to external tools\n\nUse to explain why implementation sources matter for topic pages.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_action",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "url": "https://github.com/anthropics/claude-code-action",
+      "title": "anthropics/claude-code-action",
+      "publishedAt": null,
+      "whyRelevant": "Official GitHub Action implementation surface for using Claude Code inside issue and PR workflows.",
+      "confidence": 0.86,
+      "evidenceQuote": "Claude Code Action",
+      "reviewNotes": "Primary GitHub implementation source.",
+      "urlHash": "0b22ca37fd3884c923ac214e3cf2efde652c9f3083c83a4b7ec3e12802fdbd51",
+      "text": "anthropics/claude-code-action\n\nOfficial GitHub Action implementation surface for using Claude Code inside issue and PR workflows.\n\nEvidence note: Claude Code Action\n\nPrimary GitHub implementation source.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_action_example",
+      "sourceKind": "github_example",
+      "role": "implementation_signal",
+      "url": "https://github.com/anthropics/claude-code-action/tree/main/examples",
+      "title": "claude-code-action example workflow",
+      "publishedAt": null,
+      "whyRelevant": "Examples can provide snippets for turning coding-agent loops into reviewable GitHub workflows.",
+      "confidence": 0.82,
+      "evidenceQuote": "examples",
+      "reviewNotes": "Use snippets only after checking the exact example file.",
+      "urlHash": "8c850d484970e282b3d28ced98a44a4eddfbcec8aa881841ccdc8fde8c23b8b1",
+      "text": "claude-code-action example workflow\n\nExamples can provide snippets for turning coding-agent loops into reviewable GitHub workflows.\n\nEvidence note: examples\n\nUse snippets only after checking the exact example file.",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    }
+  ],
+  "companyStrategyContextCandidates": [
+    {
+      "id": "ctx_amazon_q_developer",
+      "company": "Amazon",
+      "sourceKind": "official_company_blog",
+      "role": "company_strategy_context",
+      "url": "https://www.aboutamazon.com/news/aws/amazon-q-developer-260-million-code-transformation",
+      "title": "Amazon Q Developer saved teams 4,500 developer years",
+      "publishedAt": "2024-08-22",
+      "whyRelevant": "Company page candidate for AI coding productivity and code-transformation strategy.",
+      "confidence": 0.88,
+      "evidenceQuote": "saved the company the equivalent of 4,500 developer-years",
+      "excludedFromTopicReadiness": true
+    },
+    {
+      "id": "ctx_amazon_shareholder_letter_2024",
+      "company": "Amazon",
+      "sourceKind": "shareholder_letter",
+      "role": "company_strategy_context",
+      "url": "https://www.aboutamazon.com/news/company-news/2024-letter-to-shareholders",
+      "title": "2024 Amazon Letter to Shareholders",
+      "publishedAt": "2025-04-10",
+      "whyRelevant": "Company page candidate for management-level generative AI and AWS investment direction.",
+      "confidence": 0.84,
+      "evidenceQuote": "Generative AI may be the largest technology transformation",
+      "excludedFromTopicReadiness": true
+    },
+    {
+      "id": "ctx_microsoft_fy26_q1",
+      "company": "Microsoft",
+      "sourceKind": "earnings_transcript",
+      "role": "company_strategy_context",
+      "url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q1.aspx",
+      "title": "Microsoft FY26 Q1 earnings call",
+      "publishedAt": "2025-10-29",
+      "whyRelevant": "Company page candidate for GitHub Copilot, developer productivity, and AI infrastructure investment.",
+      "confidence": 0.82,
+      "evidenceQuote": "GitHub Copilot is transforming how developers write code.",
+      "excludedFromTopicReadiness": true
+    },
+    {
+      "id": "ctx_alphabet_q3_2024",
+      "company": "Alphabet / Google",
+      "sourceKind": "earnings_transcript",
+      "role": "company_strategy_context",
+      "url": "https://abc.xyz/2024-q3-earnings-call/",
+      "title": "Alphabet Q3 2024 earnings call",
+      "publishedAt": "2024-10-29",
+      "whyRelevant": "Company page candidate for internal AI-generated-code productivity.",
+      "confidence": 0.86,
+      "evidenceQuote": "more than a quarter of all new code",
+      "excludedFromTopicReadiness": true
+    },
+    {
+      "id": "ctx_alphabet_q1_2026",
+      "company": "Alphabet / Google",
+      "sourceKind": "earnings_transcript",
+      "role": "company_strategy_context",
+      "url": "https://abc.xyz/2026-q1-earnings-call/",
+      "title": "Alphabet Q1 2026 earnings call",
+      "publishedAt": "2026-04-23",
+      "whyRelevant": "Company page candidate for AI infrastructure and agentic product investment context.",
+      "confidence": 0.78,
+      "evidenceQuote": "AI continues to drive strong momentum across the business.",
+      "excludedFromTopicReadiness": true
+    },
+    {
+      "id": "ctx_nvidia_q1_fy27",
+      "company": "NVIDIA",
+      "sourceKind": "ir_release",
+      "role": "company_strategy_context",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2027",
+      "title": "NVIDIA Announces Financial Results for First Quarter Fiscal 2027",
+      "publishedAt": "2026-05-27",
+      "whyRelevant": "Company page candidate for AI infrastructure demand behind long-running agent workloads.",
+      "confidence": 0.76,
+      "evidenceQuote": "AI factories are now essential infrastructure.",
+      "excludedFromTopicReadiness": true
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "sig_bcherny_x_workflow_2026_01",
+      "toId": "off_claude_code_common_workflows",
+      "relationType": "tweet_keyword_to_official_workflow",
+      "confidence": 0.74,
+      "evidenceNote": "Boris frames Claude Code around custom workflow; docs formalize common workflows."
+    },
+    {
+      "fromId": "off_claude_code_best_practices",
+      "toId": "paper_react",
+      "relationType": "agent_loop_to_reason_action_foundation",
+      "confidence": 0.84,
+      "evidenceNote": "Agentic coding practice maps to interleaved reasoning and actions."
+    },
+    {
+      "fromId": "off_claude_code_how_it_works",
+      "toId": "paper_toolformer",
+      "relationType": "tool_use_to_tool_call_foundation",
+      "confidence": 0.8,
+      "evidenceNote": "Claude Code tool behavior sits on the broader tool-use foundation."
+    },
+    {
+      "fromId": "off_claude_code_best_practices",
+      "toId": "paper_swe_bench",
+      "relationType": "coding_loop_to_eval_benchmark",
+      "confidence": 0.82,
+      "evidenceNote": "Real coding workflows require real repository issue benchmarks."
+    },
+    {
+      "fromId": "impl_claude_code_sdk",
+      "toId": "impl_claude_code_mcp",
+      "relationType": "agent_runtime_to_tool_integration",
+      "confidence": 0.78,
+      "evidenceNote": "Programmable Claude Code sessions can connect to tool execution surfaces."
+    },
+    {
+      "fromId": "impl_claude_code_hooks_reference",
+      "toId": "impl_claude_code_hooks_guide",
+      "relationType": "reference_to_workflow_example",
+      "confidence": 0.8,
+      "evidenceNote": "Hook schemas and examples show deterministic checkpoints around agent loops."
+    },
+    {
+      "fromId": "impl_claude_code_subagents",
+      "toId": "off_claude_code_common_workflows",
+      "relationType": "workflow_decomposition",
+      "confidence": 0.76,
+      "evidenceNote": "Subagents support delegated exploration and task-specific workflow loops."
+    },
+    {
+      "fromId": "impl_claude_code_action_example",
+      "toId": "impl_claude_code_action",
+      "relationType": "example_to_implementation",
+      "confidence": 0.78,
+      "evidenceNote": "The GitHub workflow turns coding-agent loops into PR and issue automation."
+    }
+  ],
+  "review": {
+    "topicSourceCount": 22,
+    "companyStrategyContextCandidateCount": 6,
+    "roleCoverage": {
+      "signal": 2,
+      "official_definition": 5,
+      "transcript_context": 2,
+      "paper_foundation": 5,
+      "implementation_signal": 8
+    },
+    "missingRoles": [],
+    "weakSources": [
+      {
+        "id": "sig_bcherny_x_workflow_2026_01",
+        "reason": "X access can be unstable; keep as signal only."
+      },
+      {
+        "id": "tx_lenny_bcherny",
+        "reason": "Transcript text must be re-captured before page-ready quotes."
+      },
+      {
+        "id": "paper_agent_spend",
+        "reason": "Recent paper; verify review status and scope."
+      },
+      {
+        "id": "impl_claude_code_action_example",
+        "reason": "Use only after checking the exact example file or snippet that will be rendered."
+      }
+    ],
+    "publishReadiness": "source_pack_ready_for_main_thread_review",
+    "thinSpots": [
+      "The phrase Loop Engineering is practitioner vocabulary, not an official Anthropic term.",
+      "Transcript candidates require final transcript capture before rendered quotes.",
+      "Company strategy materials are excluded from topic-page readiness and should route to company pages."
+    ]
+  }
+}
