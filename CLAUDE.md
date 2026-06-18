@@ -189,6 +189,21 @@ wikidataQid (不是 qid!), description
 ```
 ⚠️ **字段是 wikidataQid，查询时写 `"wikidataQid"`**
 
+### CompanySource / CompanyThreadLink
+```
+CompanySource:
+id, organizationId, sourceKind, role, title, url, finalUrl, canonicalUrl,
+urlHash (唯一), text, summary, publishedAt, fetchedAt, confidence,
+readinessUse, excludedFromTopicReadiness, companyPageOnly,
+metadata (JSON), createdAt, updatedAt
+
+CompanyThreadLink:
+id, organizationId, threadSlug, threadTitle, relationType, summary,
+evidenceSourceIds[], confidence, excludedFromTopicReadiness,
+countsTowardTopicReadiness, metadata (JSON), createdAt, updatedAt
+```
+> 公司页证据使用 `CompanySource`，公司到主题页的背景链接使用 `CompanyThreadLink`。财报、IR、earnings call 和融资材料只留公司页，不计入技术主题页 readiness。
+
 ### Card
 ```
 id, personId, type, title, content, tags[], sourceUrl, importance,
