@@ -189,6 +189,18 @@ Add `--strict` when CI should fail on review issues.
 
 `materialize_company_sources.mjs` turns the reviewed dry-run pack into a stable staging artifact shaped like the future `CompanySource` and `CompanyThreadLink` rows. By default it does not write the database. Execute mode requires the `CompanySource` migration to be applied and refuses production or unconfirmed remote databases.
 
+Before any migration or execute attempt, run the rollout preflight:
+
+```bash
+pnpm company:preflight -- --input=docs/company/anthropic-evidence-seed.json --output=/tmp/company-source-preflight.json
+```
+
+Default preflight does not query the database. After `DATABASE_URL` points to a confirmed local/dev/staging database, add `--check-db`:
+
+```bash
+pnpm company:preflight -- --check-db --input=docs/company/anthropic-evidence-seed.json --output=/tmp/company-source-preflight-db.json
+```
+
 Run it:
 
 ```bash
