@@ -47,7 +47,7 @@ export default async function OperationsPage() {
           </span>
         </header>
 
-        <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
           <MetricCard
             title="YouTube 管道"
             status={youtubeMaterializationCheck?.status || 'pending'}
@@ -76,6 +76,16 @@ export default async function OperationsPage() {
             title="CompareReport"
             status={readiness.schema.compareReport.status}
             rows={[`总数 ${readiness.compareReport.total}`, `完成 ${readiness.compareReport.completed}`, `失败 ${readiness.compareReport.failed}`]}
+          />
+          <MetricCard
+            title="CompanySource"
+            status={readiness.schema.companySource.status}
+            rows={[
+              `来源 ${readiness.companyEvidence.sources}`,
+              `公司 ${readiness.companyEvidence.organizations}`,
+              `回链 ${readiness.companyEvidence.threadLinks}`,
+              `边界问题 ${readiness.companyEvidence.boundaryIssues}`,
+            ]}
           />
         </section>
 

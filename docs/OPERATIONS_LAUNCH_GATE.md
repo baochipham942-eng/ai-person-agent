@@ -15,7 +15,7 @@ npm run ops:launch-gate -- \
 
 证据包会包含三块：
 
-1. `ops:readiness`：迁移、回填、newsletter 环境和影响力校准观察。
+1. `ops:readiness`：迁移、回填、newsletter 环境、影响力校准、对比报告和公司证据观察。
 2. `audit:quality-review`：critical/high 队列和问题分布。
 3. `qa:responsive`：核心路径桌面/移动端 smoke 与截图目录。
 
@@ -82,7 +82,7 @@ npm run ops:production-launch-gate -- \
 结果口径:
 
 1. `passForExit=true`，命令退出码为 0。
-2. `readiness=ready`，schema、ActivityEvent、Newsletter sent observation、Influence audit、CompareReport observation 均 ready。
+2. `readiness=ready`，schema、ActivityEvent、Newsletter sent observation、Influence audit、CompareReport observation、CompanySource observation 均 ready。
 3. `responsive=18/18`，覆盖首页、topic、org、digest、graph、watchlist、compare、admin quality、admin operations 的桌面和移动端。
 4. `gateStatus=ready`，quality queue 为 `0 critical / 0 high`。
 5. 经爸明确批准后，已执行 high queue 全量建议文件 `/tmp/ai-person-quality-decisions-current-high80-full-suggested.json`，共 84 条: `keep=18`、`reject=66`。

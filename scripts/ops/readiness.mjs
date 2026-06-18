@@ -17,18 +17,22 @@ main()
   });
 
 async function main() {
-  const [activityStore, newsletterStore, influenceStore, compareReportStore] = await Promise.all([
+  const [activityStore, newsletterStore, influenceStore, compareReportStore, companySourceStore] = await Promise.all([
     checkActivityStore(),
     checkNewsletterStore(),
     checkTable('InfluenceScoreAuditLog'),
     checkCompareReportStore(),
+    checkCompanySourceStore(),
   ]);
 
-  const [activity, newsletter, influence, compareReport] = await Promise.all([
+  const [activity, newsletter, influence, compareReport, companyEvidence] = await Promise.all([
     activityStore.exists && activityStore.reviewStatusColumn ? fetchActivityStats() : emptyActivityStats(),
     newsletterStore.exists && newsletterStore.providerColumns ? fetchNewsletterStats() : emptyNewsletterStats(),
     influenceStore.exists ? fetchInfluenceStats() : emptyInfluenceStats(),
     compareReportStore.exists && compareReportStore.eventTable && compareReportStore.eventMetadataColumn ? fetchCompareReportStats() : emptyCompareReportStats(),
+    companySourceStore.exists && companySourceStore.threadLinkTable && companySourceStore.evidenceSourceIdsColumn
+      ? fetchCompanyEvidenceStats()
+      : emptyCompanyEvidenceStats(),
   ]);
   const newsletterEnv = buildNewsletterEnv();
   const checks = buildChecks({
@@ -36,10 +40,12 @@ async function main() {
     newsletterStore,
     influenceStore,
     compareReportStore,
+    companySourceStore,
     activity,
     newsletter,
     influence,
     compareReport,
+    companyEvidence,
     newsletterEnv,
   });
   const readiness = {
@@ -50,12 +56,14 @@ async function main() {
       newsletterDeliveryLog: newsletterStore,
       influenceScoreAuditLog: influenceStore,
       compareReport: compareReportStore,
+      companySource: companySourceStore,
     },
     newsletterEnv,
     activity,
     newsletter,
     influence,
     compareReport,
+    companyEvidence,
     checks,
   };
 
@@ -170,6 +178,39 @@ async function checkCompareReportStore() {
   };
 }
 
+async function checkCompanySourceStore() {
+  const rows = await prisma.$queryRaw`
+    SELECT
+      to_regclass('public."CompanySource"') IS NOT NULL AS "exists",
+      to_regclass('public."CompanyThreadLink"') IS NOT NULL AS "threadLinkTable",
+      EXISTS (
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+          AND table_name = 'CompanyThreadLink'
+          AND column_name = 'evidenceSourceIds'
+      ) AS "evidenceSourceIdsColumn"
+  `;
+  const exists = Boolean(rows[0]?.exists);
+  const threadLinkTable = Boolean(rows[0]?.threadLinkTable);
+  const evidenceSourceIdsColumn = Boolean(rows[0]?.evidenceSourceIdsColumn);
+  const ready = exists && threadLinkTable && evidenceSourceIdsColumn;
+
+  return {
+    exists,
+    threadLinkTable,
+    evidenceSourceIdsColumn,
+    status: ready ? 'ready' : 'blocked',
+    detail: ready
+      ? 'CompanySource and CompanyThreadLink exist'
+      : !exists
+        ? 'CompanySource migration is not applied'
+        : !threadLinkTable
+          ? 'CompanyThreadLink migration is not applied'
+          : 'CompanyThreadLink evidenceSourceIds column is missing',
+  };
+}
+
 async function fetchActivityStats() {
   const rows = await prisma.$queryRaw`
     SELECT
@@ -239,6 +280,37 @@ async function fetchCompareReportStats() {
     pending: toNumber(row?.pending),
     failed: toNumber(row?.failed),
     latestCreatedAt: row?.latestCreatedAt?.toISOString() || null,
+  };
+}
+
+async function fetchCompanyEvidenceStats() {
+  const [sourceRows, linkRows] = await Promise.all([
+    prisma.$queryRaw`
+      SELECT
+        COUNT(*) AS "sources",
+        COUNT(DISTINCT "organizationId") AS "organizations",
+        COUNT(*) FILTER (WHERE role = 'financial_signal') AS "financialSignals",
+        COUNT(*) FILTER (
+          WHERE "excludedFromTopicReadiness" IS NOT true
+             OR (role = 'financial_signal' AND "companyPageOnly" IS NOT true)
+        ) AS "boundaryIssues",
+        MAX("fetchedAt") AS "latestFetchedAt"
+      FROM "CompanySource"
+    `,
+    prisma.$queryRaw`
+      SELECT COUNT(*) AS "threadLinks"
+      FROM "CompanyThreadLink"
+    `,
+  ]);
+  const sourceRow = sourceRows[0];
+  const linkRow = linkRows[0];
+  return {
+    sources: toNumber(sourceRow?.sources),
+    organizations: toNumber(sourceRow?.organizations),
+    threadLinks: toNumber(linkRow?.threadLinks),
+    financialSignals: toNumber(sourceRow?.financialSignals),
+    boundaryIssues: toNumber(sourceRow?.boundaryIssues),
+    latestFetchedAt: sourceRow?.latestFetchedAt?.toISOString() || null,
   };
 }
 
@@ -336,7 +408,35 @@ function buildChecks(params) {
           ? `${params.compareReport.total} reports, ${params.compareReport.completed} completed`
           : 'No compare reports generated yet',
     },
+    {
+      key: 'company-source-schema',
+      label: 'CompanySource migration',
+      status: params.companySourceStore.status,
+      detail: params.companySourceStore.detail,
+    },
+    {
+      key: 'company-source-observation',
+      label: 'Company evidence materialization',
+      status: companyEvidenceStatus(params.companySourceStore, params.companyEvidence),
+      detail: companyEvidenceDetail(params.companySourceStore, params.companyEvidence),
+    },
   ];
+}
+
+function companyEvidenceStatus(store, evidence) {
+  if (store.status === 'blocked') return 'blocked';
+  if (evidence.boundaryIssues > 0) return 'blocked';
+  if (evidence.sources > 0 && evidence.threadLinks > 0) return 'ready';
+  return 'pending';
+}
+
+function companyEvidenceDetail(store, evidence) {
+  if (store.status === 'blocked') return 'Apply CompanySource migration before materializing company evidence';
+  if (evidence.boundaryIssues > 0) return `${evidence.boundaryIssues} CompanySource rows violate topic-readiness boundaries`;
+  if (evidence.sources > 0) {
+    return `${evidence.sources} company sources across ${evidence.organizations} organizations; ${evidence.threadLinks} thread links`;
+  }
+  return 'No CompanySource rows materialized yet';
 }
 
 function newsletterEnvStatus(env, newsletter) {
@@ -383,6 +483,10 @@ function emptyInfluenceStats() {
 
 function emptyCompareReportStats() {
   return { total: 0, completed: 0, running: 0, pending: 0, failed: 0, latestCreatedAt: null };
+}
+
+function emptyCompanyEvidenceStats() {
+  return { sources: 0, organizations: 0, threadLinks: 0, financialSignals: 0, boundaryIssues: 0, latestFetchedAt: null };
 }
 
 function toNumber(value) {

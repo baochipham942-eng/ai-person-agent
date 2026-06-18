@@ -19,6 +19,7 @@ export interface OperationsReadiness {
     newsletterDeliveryLog: NewsletterStoreReadiness;
     influenceScoreAuditLog: StoreReadiness;
     compareReport: CompareReportStoreReadiness;
+    companySource: CompanySourceStoreReadiness;
   };
   youtubeEnv: {
     hasGoogleApiKey: boolean;
@@ -86,6 +87,14 @@ export interface OperationsReadiness {
     failed: number;
     latestCreatedAt: string | null;
   };
+  companyEvidence: {
+    sources: number;
+    organizations: number;
+    threadLinks: number;
+    financialSignals: number;
+    boundaryIssues: number;
+    latestFetchedAt: string | null;
+  };
   checks: ReadinessCheck[];
 }
 
@@ -108,6 +117,11 @@ interface CompareReportStoreReadiness extends StoreReadiness {
   eventMetadataColumn: boolean;
 }
 
+interface CompanySourceStoreReadiness extends StoreReadiness {
+  threadLinkTable: boolean;
+  evidenceSourceIdsColumn: boolean;
+}
+
 export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
   const [
     activityStore,
@@ -116,6 +130,7 @@ export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
     newsletterStore,
     influenceStore,
     compareReportStore,
+    companySourceStore,
   ] = await Promise.all([
     checkActivityStore(),
     checkTable('RawPoolItem'),
@@ -123,9 +138,10 @@ export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
     checkNewsletterStore(),
     checkTable('InfluenceScoreAuditLog'),
     checkCompareReportStore(),
+    checkCompanySourceStore(),
   ]);
 
-  const [activity, youtubePipeline, newsletter, influence, compareReport] = await Promise.all([
+  const [activity, youtubePipeline, newsletter, influence, compareReport, companyEvidence] = await Promise.all([
     activityStore.exists && activityStore.reviewStatusColumn ? fetchActivityStats() : emptyActivityStats(),
     rawPoolStore.exists
       ? fetchYouTubePipelineStats({
@@ -136,6 +152,9 @@ export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
     newsletterStore.exists && newsletterStore.providerColumns ? fetchNewsletterStats() : emptyNewsletterStats(),
     influenceStore.exists ? fetchInfluenceStats() : emptyInfluenceStats(),
     compareReportStore.exists && compareReportStore.eventTable && compareReportStore.eventMetadataColumn ? fetchCompareReportStats() : emptyCompareReportStats(),
+    companySourceStore.exists && companySourceStore.threadLinkTable && companySourceStore.evidenceSourceIdsColumn
+      ? fetchCompanyEvidenceStats()
+      : emptyCompanyEvidenceStats(),
   ]);
   const youtubeEnv = buildYouTubeEnv();
   const newsletterEnv = buildNewsletterEnv();
@@ -146,12 +165,14 @@ export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
     newsletterStore,
     influenceStore,
     compareReportStore,
+    companySourceStore,
     activity,
     youtubeEnv,
     youtubePipeline,
     newsletter,
     influence,
     compareReport,
+    companyEvidence,
     newsletterEnv,
   });
 
@@ -165,6 +186,7 @@ export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
       newsletterDeliveryLog: newsletterStore,
       influenceScoreAuditLog: influenceStore,
       compareReport: compareReportStore,
+      companySource: companySourceStore,
     },
     youtubeEnv,
     youtubePipeline,
@@ -173,6 +195,7 @@ export async function fetchOperationsReadiness(): Promise<OperationsReadiness> {
     newsletter,
     influence,
     compareReport,
+    companyEvidence,
     checks,
   };
 }
@@ -286,6 +309,43 @@ async function checkCompareReportStore(): Promise<CompareReportStoreReadiness> {
         : !eventTable
           ? 'CompareReportEvent migration is not applied'
           : 'CompareReportEvent metadata column is missing',
+  };
+}
+
+async function checkCompanySourceStore(): Promise<CompanySourceStoreReadiness> {
+  const rows = await prisma.$queryRaw<Array<{
+    exists: boolean;
+    threadLinkTable: boolean;
+    evidenceSourceIdsColumn: boolean;
+  }>>`
+    SELECT
+      to_regclass('public."CompanySource"') IS NOT NULL AS "exists",
+      to_regclass('public."CompanyThreadLink"') IS NOT NULL AS "threadLinkTable",
+      EXISTS (
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+          AND table_name = 'CompanyThreadLink'
+          AND column_name = 'evidenceSourceIds'
+      ) AS "evidenceSourceIdsColumn"
+  `;
+  const exists = Boolean(rows[0]?.exists);
+  const threadLinkTable = Boolean(rows[0]?.threadLinkTable);
+  const evidenceSourceIdsColumn = Boolean(rows[0]?.evidenceSourceIdsColumn);
+  const ready = exists && threadLinkTable && evidenceSourceIdsColumn;
+
+  return {
+    exists,
+    threadLinkTable,
+    evidenceSourceIdsColumn,
+    status: ready ? 'ready' : 'blocked',
+    detail: ready
+      ? 'CompanySource and CompanyThreadLink exist'
+      : !exists
+        ? 'CompanySource migration is not applied'
+        : !threadLinkTable
+          ? 'CompanyThreadLink migration is not applied'
+          : 'CompanyThreadLink evidenceSourceIds column is missing',
   };
 }
 
@@ -599,6 +659,43 @@ async function fetchCompareReportStats() {
   };
 }
 
+async function fetchCompanyEvidenceStats(): Promise<OperationsReadiness['companyEvidence']> {
+  const [sourceRows, linkRows] = await Promise.all([
+    prisma.$queryRaw<Array<{
+      sources: bigint | number | string;
+      organizations: bigint | number | string;
+      financialSignals: bigint | number | string;
+      boundaryIssues: bigint | number | string;
+      latestFetchedAt: Date | null;
+    }>>`
+      SELECT
+        COUNT(*) AS "sources",
+        COUNT(DISTINCT "organizationId") AS "organizations",
+        COUNT(*) FILTER (WHERE role = 'financial_signal') AS "financialSignals",
+        COUNT(*) FILTER (
+          WHERE "excludedFromTopicReadiness" IS NOT true
+             OR (role = 'financial_signal' AND "companyPageOnly" IS NOT true)
+        ) AS "boundaryIssues",
+        MAX("fetchedAt") AS "latestFetchedAt"
+      FROM "CompanySource"
+    `,
+    prisma.$queryRaw<Array<{ threadLinks: bigint | number | string }>>`
+      SELECT COUNT(*) AS "threadLinks"
+      FROM "CompanyThreadLink"
+    `,
+  ]);
+  const sourceRow = sourceRows[0];
+  const linkRow = linkRows[0];
+  return {
+    sources: toNumber(sourceRow?.sources),
+    organizations: toNumber(sourceRow?.organizations),
+    threadLinks: toNumber(linkRow?.threadLinks),
+    financialSignals: toNumber(sourceRow?.financialSignals),
+    boundaryIssues: toNumber(sourceRow?.boundaryIssues),
+    latestFetchedAt: sourceRow?.latestFetchedAt?.toISOString() || null,
+  };
+}
+
 function buildYouTubeEnv(): OperationsReadiness['youtubeEnv'] {
   return {
     hasGoogleApiKey: Boolean(process.env.GOOGLE_API_KEY),
@@ -635,12 +732,14 @@ function buildChecks(params: {
   newsletterStore: NewsletterStoreReadiness;
   influenceStore: StoreReadiness;
   compareReportStore: CompareReportStoreReadiness;
+  companySourceStore: CompanySourceStoreReadiness;
   activity: OperationsReadiness['activity'];
   youtubeEnv: OperationsReadiness['youtubeEnv'];
   youtubePipeline: OperationsReadiness['youtubePipeline'];
   newsletter: OperationsReadiness['newsletter'];
   influence: OperationsReadiness['influence'];
   compareReport: OperationsReadiness['compareReport'];
+  companyEvidence: OperationsReadiness['companyEvidence'];
   newsletterEnv: OperationsReadiness['newsletterEnv'];
 }): ReadinessCheck[] {
   return [
@@ -752,7 +851,41 @@ function buildChecks(params: {
           ? `${params.compareReport.total} reports, ${params.compareReport.completed} completed`
           : 'No compare reports generated yet',
     },
+    {
+      key: 'company-source-schema',
+      label: 'CompanySource migration',
+      status: params.companySourceStore.status,
+      detail: params.companySourceStore.detail,
+    },
+    {
+      key: 'company-source-observation',
+      label: 'Company evidence materialization',
+      status: companyEvidenceStatus(params.companySourceStore, params.companyEvidence),
+      detail: companyEvidenceDetail(params.companySourceStore, params.companyEvidence),
+    },
   ];
+}
+
+function companyEvidenceStatus(
+  store: CompanySourceStoreReadiness,
+  evidence: OperationsReadiness['companyEvidence']
+): ReadinessStatus {
+  if (store.status === 'blocked') return 'blocked';
+  if (evidence.boundaryIssues > 0) return 'blocked';
+  if (evidence.sources > 0 && evidence.threadLinks > 0) return 'ready';
+  return 'pending';
+}
+
+function companyEvidenceDetail(
+  store: CompanySourceStoreReadiness,
+  evidence: OperationsReadiness['companyEvidence']
+): string {
+  if (store.status === 'blocked') return 'Apply CompanySource migration before materializing company evidence';
+  if (evidence.boundaryIssues > 0) return `${evidence.boundaryIssues} CompanySource rows violate topic-readiness boundaries`;
+  if (evidence.sources > 0) {
+    return `${evidence.sources} company sources across ${evidence.organizations} organizations; ${evidence.threadLinks} thread links`;
+  }
+  return 'No CompanySource rows materialized yet';
 }
 
 function youtubeFetchStatus(
@@ -927,6 +1060,10 @@ function emptyInfluenceStats(): OperationsReadiness['influence'] {
 
 function emptyCompareReportStats(): OperationsReadiness['compareReport'] {
   return { total: 0, completed: 0, running: 0, pending: 0, failed: 0, latestCreatedAt: null };
+}
+
+function emptyCompanyEvidenceStats(): OperationsReadiness['companyEvidence'] {
+  return { sources: 0, organizations: 0, threadLinks: 0, financialSignals: 0, boundaryIssues: 0, latestFetchedAt: null };
 }
 
 function toNumber(value: bigint | number | string | null | undefined): number {
