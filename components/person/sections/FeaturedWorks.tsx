@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { buildTopicHref, getDirectoryTopicIcon } from '@/lib/person-directory-config';
+import { resolveCanonicalWork } from '@/lib/work-taxonomy';
 
 interface Product {
   name: string;
@@ -114,6 +115,7 @@ interface FeaturedWorksProps {
   githubCount?: number;  // GitHub 开源项目数量
   blogCount?: number;    // 博客文章数量
   xCount?: number;       // X 动态数量
+  workSlugs?: string[];  // 该人物已实体化的作品 slug，用于把产品卡链到 /work 实体页
 }
 
 type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs' | 'x' | 'podcast';
@@ -181,7 +183,8 @@ const CARD_TYPE_CONFIG: Record<string, { icon: string; label: string; color: str
   fact: { icon: '📊', label: '事实', color: 'border-l-cyan-400' },
 };
 
-export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount, githubCount, blogCount, xCount }: FeaturedWorksProps) {
+export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount, githubCount, blogCount, xCount, workSlugs }: FeaturedWorksProps) {
+  const workSlugSet = useMemo(() => new Set(workSlugs || []), [workSlugs]);
   const [showAllPapers, setShowAllPapers] = useState(false);
   const [showAllCards, setShowAllCards] = useState(false);
   const [githubRepos, setGithubRepos] = useState<GithubRepo[]>([]);
@@ -437,12 +440,17 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                 {realProducts.slice(0, 6).map((product, idx) => {
                   // 优先使用 logo，其次从 url 获取 favicon，最后用 emoji
                   const logoUrl = product.logo || getGoogleFavicon(product.url);
+                  // 若该作品已实体化（且本人是贡献者），卡片链到内部 /work 实体页；否则保留外链
+                  const workSlug = product.name ? resolveCanonicalWork(product.name).slug : '';
+                  const linkToWork = Boolean(workSlug && workSlugSet.has(workSlug));
+                  const href = linkToWork ? `/work/${workSlug}` : (product.url || '#');
+                  const external = !linkToWork && Boolean(product.url);
                   return (
                   <a
                     key={idx}
-                    href={product.url || '#'}
-                    target={product.url ? '_blank' : undefined}
-                    rel={product.url ? 'noopener noreferrer' : undefined}
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
                     className="block p-4 bg-gradient-to-br from-stone-50 to-white hover:from-orange-50/50 hover:to-white rounded-xl transition-all hover:shadow-md border border-stone-100 hover:border-orange-200 group"
                   >
                     <div className="flex items-start gap-3">

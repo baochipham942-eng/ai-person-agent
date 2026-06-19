@@ -296,6 +296,7 @@ model People {
   advisedRoles         PersonRole[]             @relation("RoleAdvisor") // 作为导师的履历记录
   courses              Course[] // 开设/主讲的课程
   influenceScoreAudits InfluenceScoreAuditLog[]
+  productContributions ProductContributor[] // 参与的作品/产品
 
   @@index([name])
   @@index([status])
@@ -791,4 +792,45 @@ model InfluenceScoreAuditLog {
   @@index([scoreVersion])
   @@index([status])
   @@index([createdAt])
+}
+
+// 作品/产品实体：把散落在 People.products JSON 里、跨人重复的产品提炼成第一类实体。
+// 一次连通 人(贡献者) / 公司(主理方) / 主题 / 话题。模型用 type=model 子类型表达，不另立实体。
+model Product {
+  id               String               @id @default(cuid())
+  slug             String               @unique
+  name             String
+  aliases          String[]             @default([])
+  type             String // model | app | tool | framework | architecture | lab | dataset | benchmark | other
+  category         String?
+  description      String?
+  url              String?
+  iconUrl          String?
+  firstYear        Int?
+  organizationId   String? // 主理公司（解析 org 名匹配 Organization）
+  organizationName String? // 冗余展示，匹配不到时回退
+  topics           String[]             @default([])
+  threadSlugs      String[]             @default([]) // 关联主题（策展补）
+  priorityScore    Float                @default(0)
+  status           String               @default("active")
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+  contributors     ProductContributor[]
+
+  @@index([type])
+  @@index([organizationId])
+  @@index([priorityScore])
+}
+
+model ProductContributor {
+  id        String  @id @default(cuid())
+  productId String
+  personId  String
+  role      String  @default("contributor") // creator | lead | contributor
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  person    People  @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, personId])
+  @@index([productId])
+  @@index([personId])
 }

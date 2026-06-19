@@ -88,6 +88,26 @@ model ProductContributor {
 4. **先做哪个**：✅ 林晨拍板**先 Course 热身再上 Product**。Course 热身已实现（2026-06-19）：`lib/courses.ts` + `/courses` 聚合页（按方向/难度/类型筛选，课程卡链讲师）+ 话题页「想系统学 X?」课程横切 + SiteHeader 加「AI 课程」导航。tsc 0 error，dev 渲染正确。Course 是 1:N（每课属一个讲师），课程链外部平台故不建内部详情页。**Product 实体待启动（本方案主体）。**
 5. **生产库写入**：回填是 prod Neon 写操作（加 Product/ProductContributor 表 + 数据）。按惯例我写好 migration+脚本+`--dry-run`，执行那一步你授权再跑。
 
+## 6.5 落地结果（2026-06-19，一期完成）
+
+**关键修正（林晨两轮拍板）**：GPT-4/Claude 3 是模型不是"产品"——
+- 实体用户可见一律「作品/成果」，按 `type` 区分 模型/产品/工具/框架/架构/实验室/基准；模型永不标"产品"。
+- **模型收敛到系列**：GPT-1..5→「GPT」、Claude 各版本→「Claude」、o1/o3→「o 系列」等，避免版本噪音（Altman 页面不再被 GPT-1..5 刷屏）。
+- **CEO/founder（roleCategory=founder）不进作品贡献者主区**，关系走公司边（回填跳过 180 次）。
+
+**落地文件**：
+- `prisma/schema.prisma`：`Product` + `ProductContributor`（表名内部沿用 Product）。
+- `lib/work-taxonomy.ts`：归类单一真理源（系列折叠规则 + slug + type + 中文标签），回填与运行时共用。
+- `lib/products.ts`：`fetchWorkPage` / `listWorksForPerson`。
+- `scripts/enrich/materialize_products.ts`：回填（默认 dry-run，`--execute` 写；幂等 upsert；year 字符串区间已强制转 int）。
+- `app/work/[slug]/page.tsx` + `components/work/WorkPageView.tsx`：实体页（贡献者人前置、类型徽标、话题 chips、参考层）。
+- 人物页 `FeaturedWorks` 代表成果卡 → 链到 `/work/[slug]`（`workSlugs` 经 PersonPageClient + 服务端 `listWorksForPerson` 注入）。
+
+**回填结果**：617 原始条目 → 497 作品（模型系列 9），**已写入 496/497**（缺 1 = "Apple…Strategy" 的 year 字符串 bug，代码已修，待一次授权 top-up `--execute` 补齐）。
+**验证**：`/work/gpt`=「GPT（模型）」200、`/work/chatgpt`=「ChatGPT（产品）」、`/work/claude-code`=「Claude Code（工具）」Boris 核心作者、Boris 人物页代表成果链到 /work/claude-code；tsc（Product 相关）0 error。
+
+**二期（待启动）**：公司页「旗舰作品」+ 主题页「催生的作品」横切；review 清单（10 个同名不同 org）人工校正；模型系列若需 benchmark/谱系再升级为独立实体。
+
 ## 7. 验收
 
 - migration 加法、不动 People.products 写路径；`--dry-run` 先出去重统计 + review 清单。

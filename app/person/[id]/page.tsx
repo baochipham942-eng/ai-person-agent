@@ -15,6 +15,7 @@ import {
 } from '@/lib/utils/person-json';
 import { normalizeDirectoryTopic, normalizeDirectoryTopics } from '@/lib/person-directory-config';
 import { getThreadsForPerson } from '@/lib/knowledge-thread-people';
+import { listWorksForPerson } from '@/lib/products';
 
 interface PersonRoleRow {
     id: string;
@@ -282,6 +283,8 @@ async function fetchPersonPageData(id: string) {
         aliases: person.aliases,
         // 当前卷入的主题（人 ↔ 主题这条边的人物侧；纯内存反查策展数据）
         involvedThreads: getThreadsForPerson({ name: person.name, aliases: person.aliases || [] }),
+        // 已实体化的作品 slug，用于把「代表成果」卡片链到 /work 实体页
+        workSlugs: (await listWorksForPerson(person.id, 50)).map(w => w.slug),
         officialLinks: normalizeOfficialLinks(person.officialLinks),
         // 话题和排名
         topics: normalizeDirectoryTopics(person.topics || []),

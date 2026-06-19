@@ -154,6 +154,7 @@ interface PersonData {
   papers?: Paper[];
   courseCount?: number;
   involvedThreads?: PersonThreadInvolvement[];
+  workSlugs?: string[];
 }
 
 interface PersonPageClientProps {
@@ -340,6 +341,7 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
           githubCount={githubCount}
           blogCount={blogCount}
           xCount={xCount}
+          workSlugs={person.workSlugs}
         />
 
         {/* 5. 视频内容 */}
