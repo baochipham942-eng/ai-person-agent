@@ -30,6 +30,7 @@
     "qa:responsive": "node scripts/qa/responsive_smoke.mjs",
     "audit:newcomer-preflight": "node scripts/audit/preflight_newcomer_intake.mjs",
     "audit:post-ingest-guard": "node scripts/audit/post_ingest_content_guard.mjs",
+    "audit:aihot": "node scripts/audit/aihot_daily_gap_source_audit.mjs",
     "influence:calibrate": "node scripts/influence/calibrate_scores.mjs",
     "ops:readiness": "node scripts/ops/readiness.mjs",
     "ops:migration-plan": "node scripts/ops/migration_plan.mjs",

@@ -21,7 +21,7 @@ import { routerAgent, RouterInput, SourceQualitySignal } from '@/lib/agents/rout
 import { cleanItems } from '@/lib/agents/clean-orchestrator';
 import { generateCardsForPerson, saveCardsToDatabase } from '@/lib/ai/cardGenerator';
 import { savePersonRoles, type RawCareerData } from '@/lib/datasources/career';
-import { hashUrl } from '@/lib/datasources/adapter';
+import { buildRawPoolIdentity, contentHash } from '@/lib/rawpool-identity';
 
 const SOURCE_FEEDBACK_WINDOW_DAYS = 90;
 const BAD_VERDICTS = new Set(['reject', 'duplicate', 'empty_content', 'incomplete']);
@@ -39,6 +39,31 @@ function isRawCareerData(value: unknown): value is RawCareerData {
 
 function isSourceType(value: string): value is SourceType {
     return value in adapters;
+}
+
+function metadataRecord(value: unknown): Record<string, unknown> {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+    return value as Record<string, unknown>;
+}
+
+function itemWithRawPoolIdentity<T extends NormalizedItem>(personId: string, item: T): T {
+    const metadata = metadataRecord(item.metadata);
+    const identity = buildRawPoolIdentity({
+        personId,
+        sourceType: item.sourceType,
+        url: item.url,
+        metadata,
+    });
+
+    return {
+        ...item,
+        urlHash: identity.urlHash,
+        contentHash: item.contentHash || contentHash(item.text),
+        metadata: {
+            ...metadata,
+            rawPoolCanonicalKey: identity.canonicalKey,
+        },
+    };
 }
 
 function maxResultsForPriority(priority: 'high' | 'medium' | 'low'): number | undefined {
@@ -235,10 +260,10 @@ export const buildPersonJobV2 = inngest.createFunction(
         for (const result of adapterResults) {
             if (result.success) {
                 for (const item of result.items) {
-                    allItems.push({
+                    allItems.push(itemWithRawPoolIdentity(personId, {
                         ...item,
                         publishedAt: item.publishedAt ? new Date(item.publishedAt) : null,
-                    });
+                    }));
                 }
             }
         }
@@ -250,9 +275,18 @@ export const buildPersonJobV2 = inngest.createFunction(
             // 获取已存在的 URL hashes（用于去重）
             const existingItems = await prisma.rawPoolItem.findMany({
                 where: { personId },
-                select: { urlHash: true },
+                select: { urlHash: true, sourceType: true, url: true, metadata: true },
             });
-            const existingHashes = new Set(existingItems.map(i => i.urlHash));
+            const existingHashes = new Set<string>();
+            for (const existing of existingItems) {
+                existingHashes.add(existing.urlHash);
+                existingHashes.add(buildRawPoolIdentity({
+                    personId,
+                    sourceType: existing.sourceType,
+                    url: existing.url,
+                    metadata: metadataRecord(existing.metadata),
+                }).urlHash);
+            }
 
             const result = await cleanItems(allItems, personContext, {
                 existingUrlHashes: existingHashes,
@@ -285,36 +319,35 @@ export const buildPersonJobV2 = inngest.createFunction(
 
             for (const item of itemsToSave) {
                 try {
-                    const urlHash = item.urlHash || hashUrl(item.url);
+                    const itemForSave = itemWithRawPoolIdentity(personId, item);
+                    const urlHash = itemForSave.urlHash;
 
                     // 检查是否已存在
-                    const existing = await prisma.rawPoolItem.findFirst({
-                        where: { personId, urlHash },
-                    });
+                    const existing = await prisma.rawPoolItem.findUnique({ where: { urlHash } });
 
                     if (existing) {
                         await prisma.rawPoolItem.update({
                             where: { id: existing.id },
                             data: {
-                                contentHash: item.contentHash,
-                                title: item.title,
-                                text: item.text,
-                                publishedAt: item.publishedAt,
-                                metadata: item.metadata as Prisma.InputJsonValue,
+                                contentHash: itemForSave.contentHash,
+                                title: itemForSave.title,
+                                text: itemForSave.text,
+                                publishedAt: itemForSave.publishedAt,
+                                metadata: itemForSave.metadata as unknown as Prisma.InputJsonValue,
                             },
                         });
                     } else {
                         await prisma.rawPoolItem.create({
                             data: {
                                 personId,
-                                sourceType: item.sourceType,
-                                url: item.url,
+                                sourceType: itemForSave.sourceType,
+                                url: itemForSave.url,
                                 urlHash,
-                                contentHash: item.contentHash,
-                                title: item.title,
-                                text: item.text,
-                                publishedAt: item.publishedAt,
-                                metadata: item.metadata as Prisma.InputJsonValue,
+                                contentHash: itemForSave.contentHash,
+                                title: itemForSave.title,
+                                text: itemForSave.text,
+                                publishedAt: itemForSave.publishedAt,
+                                metadata: itemForSave.metadata as unknown as Prisma.InputJsonValue,
                             },
                         });
                     }

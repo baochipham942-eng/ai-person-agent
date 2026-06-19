@@ -2,8 +2,8 @@
  * 刷新所有人物的 Podcast 内容 (使用 iTunes Search API)
  */
 import { PrismaClient } from '@prisma/client';
-import crypto from 'crypto';
 import { searchPodcasts } from './lib/datasources/itunes';
+import { buildRawPoolIdentity, contentHash } from '../../lib/rawpool-identity';
 
 const prisma = new PrismaClient();
 
@@ -26,36 +26,34 @@ async function refreshPersonPodcasts(personId: string, personName: string) {
 
     // 3. 保存
     for (const p of podcasts) {
-        // 创建唯一hash
-        const urlHash = crypto.createHash('md5').update(p.url).digest('hex');
-        const contentHash = crypto.createHash('md5').update((p.title + p.author).slice(0, 1000)).digest('hex');
+        const metadata = {
+            thumbnailUrl: p.thumbnailUrl,
+            feedUrl: p.feedUrl,
+            categories: p.categories,
+        };
+        const identity = buildRawPoolIdentity({ personId, sourceType: 'podcast', url: p.url, metadata });
+        const itemMetadata = { ...metadata, rawPoolCanonicalKey: identity.canonicalKey };
+        const itemContentHash = contentHash(p.title + p.author);
 
         await prisma.rawPoolItem.upsert({
-            where: { urlHash },
+            where: { urlHash: identity.urlHash },
             create: {
                 personId,
                 sourceType: 'podcast',
                 url: p.url,
-                urlHash,
-                contentHash,
+                urlHash: identity.urlHash,
+                contentHash: itemContentHash,
                 title: p.title,
                 text: p.author, // 存作者
                 publishedAt: p.publishedAt || new Date(),
-                metadata: {
-                    thumbnailUrl: p.thumbnailUrl,
-                    feedUrl: p.feedUrl,
-                    categories: p.categories,
-                },
+                metadata: itemMetadata,
                 fetchStatus: 'success',
             },
             update: {
                 title: p.title,
                 text: p.author,
-                metadata: {
-                    thumbnailUrl: p.thumbnailUrl,
-                    feedUrl: p.feedUrl,
-                    categories: p.categories,
-                },
+                contentHash: itemContentHash,
+                metadata: itemMetadata,
                 fetchedAt: new Date(),
             },
         });

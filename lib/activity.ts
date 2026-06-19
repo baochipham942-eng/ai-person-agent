@@ -47,6 +47,48 @@ export interface FetchActivityParams {
 
 const ACTIVITY_SOURCE_TYPES = ['openalex', 'github', 'youtube', 'exa', 'podcast', 'career'];
 const DEFAULT_ACTIVITY_REVIEW_STATUSES = ['auto', 'confirmed', 'trusted'];
+const LOW_SIGNAL_SOURCE_KINDS = new Set(['youtube_caption']);
+const DISCOVERY_ONLY_HOST_PATTERNS = [
+  /(^|\.)ithome\.com$/i,
+  /(^|\.)techcrunch\.com$/i,
+  /(^|\.)theverge\.com$/i,
+  /(^|\.)the-decoder\.com$/i,
+  /(^|\.)bloomberg\.com$/i,
+];
+const PRIMARY_SOURCE_HOST_PATTERNS = [
+  /(^|\.)openai\.com$/i,
+  /(^|\.)anthropic\.com$/i,
+  /(^|\.)claude\.com$/i,
+  /(^|\.)deepmind\.google$/i,
+  /(^|\.)research\.google$/i,
+  /(^|\.)blog\.google$/i,
+  /(^|\.)ai\.google$/i,
+  /(^|\.)huggingface\.co$/i,
+  /(^|\.)x\.ai$/i,
+  /(^|\.)mistral\.ai$/i,
+  /(^|\.)cohere\.com$/i,
+  /(^|\.)meta\.com$/i,
+  /(^|\.)microsoft\.com$/i,
+  /(^|\.)nvidia\.com$/i,
+  /(^|\.)apple\.com$/i,
+  /(^|\.)qwen\.ai$/i,
+  /(^|\.)deepseek\.com$/i,
+  /(^|\.)perplexity\.ai$/i,
+  /(^|\.)cursor\.com$/i,
+  /(^|\.)runwayml\.com$/i,
+  /(^|\.)replit\.com$/i,
+  /(^|\.)openrouter\.ai$/i,
+  /(^|\.)github\.blog$/i,
+  /(^|\.)cloudflare\.com$/i,
+];
+const LOW_SIGNAL_TITLE_PATTERNS = [
+  /\bwtf\b/i,
+  /\bwhat\s+the\s+f/i,
+  /\bwhat\s+is\s+going\s+on\b/i,
+  /\byou\s+won'?t\s+believe\b/i,
+  /\b(mind[-\s]?blowing|shocking|insane|crazy)\b/i,
+  /[!?]{2,}/,
+];
 
 const SOURCE_TYPE_LABELS: Record<string, { eventType: ActivityEventType; sourceLabel: string }> = {
   openalex: { eventType: 'paper', sourceLabel: 'OpenAlex' },
@@ -74,11 +116,11 @@ export async function fetchActivityEvents(params: FetchActivityParams = {}): Pro
   ]);
 
   if (persistedEvents && persistedEvents.length > 0) {
-    return mergeActivityEvents([...persistedEvents, ...relationEvents], limit);
+    return mergeActivityEvents([...persistedEvents, ...relationEvents], limit, params);
   }
 
   const rawEvents = await fetchRawPoolActivityEvents(params, since, limit);
-  return mergeActivityEvents([...rawEvents, ...relationEvents], limit);
+  return mergeActivityEvents([...rawEvents, ...relationEvents], limit, params);
 }
 
 async function fetchPersistedActivityEvents(
@@ -107,6 +149,13 @@ async function fetchPersistedActivityEvents(
       confidence: true,
       evidenceNote: true,
       reviewStatus: true,
+      metadata: true,
+      sourceItem: {
+        select: {
+          publishedAt: true,
+          metadata: true,
+        },
+      },
       person: {
         select: {
           name: true,
@@ -116,38 +165,61 @@ async function fetchPersistedActivityEvents(
       },
     },
     orderBy: [{ occurredAt: 'desc' }, { detectedAt: 'desc' }],
-    take: limit,
+    take: Math.min(limit * 8, 160),
   });
 
   return rows
-    .map(row => ({
-      id: row.id,
-      personId: row.personId,
-      personName: row.person.name,
-      personAvatarUrl: row.person.avatarUrl,
-      personCurrentTitle: row.person.currentTitle,
-      eventType: normalizeEventType(row.eventType),
-      sourceType: row.sourceType,
-      title: row.title,
-      summary: row.summary,
-      url: row.url,
-      occurredAt: row.occurredAt ? row.occurredAt.toISOString() : null,
-      detectedAt: row.detectedAt.toISOString(),
-      topics: normalizeDirectoryTopics(row.topics),
-      organizations: row.organizations,
-      confidence: clampConfidence(row.confidence),
-      reviewStatus: row.reviewStatus || reviewStatusFromConfidence(row.confidence),
-      sourceLabel: SOURCE_TYPE_LABELS[row.sourceType]?.sourceLabel || row.sourceType,
-      importanceReason: buildImportanceReason({
-        eventType: normalizeEventType(row.eventType),
-        sourceLabel: SOURCE_TYPE_LABELS[row.sourceType]?.sourceLabel || row.sourceType,
-        topics: normalizeDirectoryTopics(row.topics),
+    .map(row => {
+      const eventType = normalizeEventType(row.eventType);
+      const title = normalizeActivityTitle(row.title);
+      const confidence = clampConfidence(row.confidence);
+      const reviewStatus = row.reviewStatus || reviewStatusFromConfidence(row.confidence);
+      const topics = normalizeDirectoryTopics(row.topics);
+      const sourceLabel = SOURCE_TYPE_LABELS[row.sourceType]?.sourceLabel || row.sourceType;
+
+      if (!isRecommendedActivity({
+        sourceType: row.sourceType,
+        eventType,
+        title,
+        confidence,
+        reviewStatus,
+        eventMetadata: asRecord(row.metadata),
+        sourceItemMetadata: asRecord(row.sourceItem?.metadata ?? null),
+        sourceItemPublishedAt: row.sourceItem?.publishedAt ?? null,
+      })) {
+        return null;
+      }
+
+      return {
+        id: row.id,
+        personId: row.personId,
+        personName: row.person.name,
+        personAvatarUrl: row.person.avatarUrl,
+        personCurrentTitle: row.person.currentTitle,
+        eventType,
+        sourceType: row.sourceType,
+        title,
+        summary: row.summary,
+        url: row.url,
+        occurredAt: row.occurredAt ? row.occurredAt.toISOString() : null,
+        detectedAt: row.detectedAt.toISOString(),
+        topics,
         organizations: row.organizations,
-        confidence: clampConfidence(row.confidence),
-        evidenceNote: row.evidenceNote,
-      }),
-    }))
-    .sort((left, right) => eventTime(right) - eventTime(left));
+        confidence,
+        reviewStatus,
+        sourceLabel,
+        importanceReason: buildImportanceReason({
+          eventType,
+          sourceLabel,
+          topics,
+          organizations: row.organizations,
+          confidence,
+          evidenceNote: row.evidenceNote,
+        }),
+      };
+    })
+    .filter((event): event is ActivityEvent => Boolean(event))
+    .sort(compareActivityRank);
 }
 
 async function fetchRawPoolActivityEvents(
@@ -180,15 +252,14 @@ async function fetchRawPoolActivityEvents(
       },
     },
     orderBy: [{ publishedAt: 'desc' }, { fetchedAt: 'desc' }],
-    take: limit * 3,
+    take: Math.min(limit * 8, 160),
   });
 
   return rows
     .map(row => toActivityEvent(row))
     .filter((event): event is ActivityEvent => Boolean(event))
     .filter(isDefaultPublishableActivity)
-    .sort((left, right) => eventTime(right) - eventTime(left))
-    .slice(0, limit);
+    .sort(compareActivityRank);
 }
 
 async function fetchRelationActivityEvents(
@@ -239,7 +310,7 @@ async function fetchRelationActivityEvents(
   return rows
     .map(row => toRelationActivityEvent(row, params.personId || null))
     .filter((event): event is ActivityEvent => Boolean(event))
-    .sort((left, right) => eventTime(right) - eventTime(left));
+    .sort(compareActivityRank);
 }
 
 function buildRelationActivityWhere(params: FetchActivityParams, since: Date): Prisma.PersonRelationWhereInput {
@@ -401,6 +472,21 @@ function toActivityEvent(row: {
   const metadataTags = metadata ? toStringArray(metadata.tags) : [];
   const topics = normalizeDirectoryTopics([...metadataTags, ...row.person.topics]).slice(0, 4);
   const occurredAt = row.publishedAt ?? row.fetchedAt;
+  const title = normalizeActivityTitle(row.title);
+  const confidence = readConfidence(metadata);
+  const reviewStatus = reviewStatusFromConfidence(confidence);
+
+  if (!isRecommendedActivity({
+    sourceType: row.sourceType,
+    eventType: sourceConfig.eventType,
+    title,
+    confidence,
+    reviewStatus,
+    sourceItemMetadata: metadata,
+    sourceItemPublishedAt: row.publishedAt,
+  })) {
+    return null;
+  }
 
   return {
     id: row.id,
@@ -410,22 +496,22 @@ function toActivityEvent(row: {
     personCurrentTitle: row.person.currentTitle,
     eventType: sourceConfig.eventType,
     sourceType: row.sourceType,
-    title: row.title,
+    title,
     summary: buildSummary(row.text),
     url: row.url,
     occurredAt: occurredAt ? occurredAt.toISOString() : null,
     detectedAt: row.fetchedAt.toISOString(),
     topics,
     organizations: uniqueStrings(row.person.organization).slice(0, 3),
-    confidence: readConfidence(metadata),
-    reviewStatus: reviewStatusFromConfidence(readConfidence(metadata)),
+    confidence,
+    reviewStatus,
     sourceLabel: sourceConfig.sourceLabel,
     importanceReason: buildImportanceReason({
       eventType: sourceConfig.eventType,
       sourceLabel: sourceConfig.sourceLabel,
       topics,
       organizations: uniqueStrings(row.person.organization).slice(0, 3),
-      confidence: readConfidence(metadata),
+      confidence,
       evidenceNote: readString(metadata?.evidenceNote) || readString(metadata?.sourceNote),
     }),
   };
@@ -559,7 +645,7 @@ function cleanShortUrl(value: string | null | undefined): string | null {
   return normalized && normalized !== 'null' ? normalized : null;
 }
 
-function asRecord(value: Prisma.JsonValue | null): Record<string, unknown> | null {
+function asRecord(value: unknown): Record<string, unknown> | null {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return null;
   return value as Record<string, unknown>;
 }
@@ -587,6 +673,22 @@ function readString(value: unknown): string | null {
   return typeof value === 'string' && value.trim().length > 0 ? value.trim() : null;
 }
 
+function normalizeActivityTitle(value: string): string {
+  return decodeBasicHtmlEntities(value)
+    .replace(/^YouTube\s*字幕[:：]\s*/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function decodeBasicHtmlEntities(value: string): string {
+  return value
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
 function clampConfidence(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
@@ -596,20 +698,267 @@ function reviewStatusFromConfidence(confidence: number): string {
 }
 
 function isDefaultPublishableActivity(event: ActivityEvent): boolean {
-  return DEFAULT_ACTIVITY_REVIEW_STATUSES.includes(event.reviewStatus) && event.confidence >= 0.7;
+  return DEFAULT_ACTIVITY_REVIEW_STATUSES.includes(event.reviewStatus)
+    && event.confidence >= 0.7
+    && isRecommendedActivityTitle(event.title, event.sourceType, event.eventType);
 }
 
-function mergeActivityEvents(events: ActivityEvent[], limit: number): ActivityEvent[] {
-  const seen = new Set<string>();
-  return events
+function isRecommendedActivity(input: {
+  sourceType: string;
+  eventType: ActivityEventType;
+  title: string;
+  confidence: number;
+  reviewStatus: string;
+  eventMetadata?: Record<string, unknown> | null;
+  sourceItemMetadata?: Record<string, unknown> | null;
+  sourceItemPublishedAt?: Date | null;
+}): boolean {
+  if (!DEFAULT_ACTIVITY_REVIEW_STATUSES.includes(input.reviewStatus) || input.confidence < 0.7) {
+    return false;
+  }
+
+  if (isLowSignalSourceImport(input.eventMetadata, input.sourceItemMetadata, input.sourceItemPublishedAt)) {
+    return false;
+  }
+
+  return isRecommendedActivityTitle(input.title, input.sourceType, input.eventType);
+}
+
+function isRecommendedActivityTitle(title: string, sourceType: string, eventType: ActivityEventType): boolean {
+  const normalized = title.trim();
+  if (!normalized) return false;
+
+  if (LOW_SIGNAL_TITLE_PATTERNS.some(pattern => pattern.test(normalized))) {
+    return false;
+  }
+
+  if (eventType === 'video' || sourceType === 'youtube' || sourceType === 'podcast') {
+    const lettersAndNumbers = normalized.replace(/[^\p{L}\p{N}]/gu, '');
+    return lettersAndNumbers.length >= 12;
+  }
+
+  return true;
+}
+
+function isLowSignalSourceImport(
+  eventMetadata: Record<string, unknown> | null | undefined,
+  sourceItemMetadata: Record<string, unknown> | null | undefined,
+  sourceItemPublishedAt: Date | null | undefined
+): boolean {
+  const eventSourceMetadata = asRecord(eventMetadata?.source ?? null);
+  const sourceKind = readString(sourceItemMetadata?.sourceKind)
+    || readString(eventMetadata?.sourceKind)
+    || readString(eventSourceMetadata?.sourceKind);
+
+  return Boolean(sourceKind && LOW_SIGNAL_SOURCE_KINDS.has(sourceKind) && !sourceItemPublishedAt);
+}
+
+function mergeActivityEvents(
+  events: ActivityEvent[],
+  limit: number,
+  params: FetchActivityParams = {}
+): ActivityEvent[] {
+  const ranked = events
     .filter(isDefaultPublishableActivity)
-    .sort((left, right) => eventTime(right) - eventTime(left))
-    .filter(event => {
-      if (seen.has(event.id)) return false;
-      seen.add(event.id);
-      return true;
-    })
-    .slice(0, limit);
+    .sort(compareActivityRank);
+  const selected: ActivityEvent[] = [];
+  const seenKeys = new Set<string>();
+  const personCounts = new Map<string, number>();
+  const hostCounts = new Map<string, number>();
+  const personLimit = params.personId ? Number.POSITIVE_INFINITY : 2;
+  const hostLimit = params.personId ? Number.POSITIVE_INFINITY : 2;
+
+  for (const event of ranked) {
+    if (tryAddActivityEvent(event, selected, seenKeys, personCounts, hostCounts, personLimit, hostLimit, limit)) {
+      if (selected.length >= limit) return selected;
+    }
+  }
+
+  for (const event of ranked) {
+    if (tryAddActivityEvent(
+      event,
+      selected,
+      seenKeys,
+      personCounts,
+      hostCounts,
+      Number.POSITIVE_INFINITY,
+      Number.POSITIVE_INFINITY,
+      limit
+    )) {
+      if (selected.length >= limit) return selected;
+    }
+  }
+
+  return selected;
+}
+
+function tryAddActivityEvent(
+  event: ActivityEvent,
+  selected: ActivityEvent[],
+  seenKeys: Set<string>,
+  personCounts: Map<string, number>,
+  hostCounts: Map<string, number>,
+  personLimit: number,
+  hostLimit: number,
+  limit: number
+): boolean {
+  if (selected.length >= limit) return false;
+
+  const dedupeKeys = activityDedupeKeys(event);
+  if (dedupeKeys.some(key => seenKeys.has(key))) return false;
+
+  const personCount = personCounts.get(event.personId) || 0;
+  if (personCount >= personLimit) return false;
+
+  const hostBucket = sourceHostBucketForUrl(event.url);
+  const hostCount = hostBucket ? hostCounts.get(hostBucket) || 0 : 0;
+  if (hostBucket && hostCount >= hostLimit) return false;
+
+  selected.push(event);
+  for (const key of dedupeKeys) seenKeys.add(key);
+  personCounts.set(event.personId, personCount + 1);
+  if (hostBucket) hostCounts.set(hostBucket, hostCount + 1);
+  return true;
+}
+
+function compareActivityRank(left: ActivityEvent, right: ActivityEvent): number {
+  const rankDelta = activityRankScore(right) - activityRankScore(left);
+  if (rankDelta !== 0) return rankDelta;
+  return eventTime(right) - eventTime(left) || left.title.localeCompare(right.title);
+}
+
+function activityRankScore(event: ActivityEvent): number {
+  const sourceScore = sourceQualityScore(event);
+  const recency = recencyScore(event);
+  const confidence = event.confidence * 3;
+  const reviewStatus = event.reviewStatus === 'trusted' ? 1 : event.reviewStatus === 'confirmed' ? 0.7 : 0;
+
+  return sourceScore * 8
+    + eventTypePriority(event.eventType) * 2
+    + confidence
+    + reviewStatus
+    + recency * 2
+    + personContextScore(event);
+}
+
+function sourceQualityScore(event: ActivityEvent): number {
+  const host = hostForUrl(event.url);
+  const sourceType = event.sourceType.toLowerCase();
+
+  if (isDiscoveryOnlyHost(host) || isXHost(host) || sourceType === 'x') {
+    return sourceType === 'x' || isXHost(host) ? 0.8 : 1.1;
+  }
+
+  if (isPrimarySourceHost(host)) return 4.8;
+  if (sourceType === 'openalex') return 4.2;
+  if (sourceType === 'github') return 4.0;
+  if (sourceType === 'career') return 3.4;
+  if (sourceType === 'relation') return 2.6;
+  if (sourceType === 'exa') return 2.2;
+  if (sourceType === 'youtube') return 1.7;
+  if (sourceType === 'podcast') return 1.5;
+  return 2;
+}
+
+function eventTypePriority(eventType: ActivityEventType): number {
+  switch (eventType) {
+    case 'article':
+      return 1.4;
+    case 'paper':
+    case 'github':
+      return 1.2;
+    case 'role_change':
+      return 1.1;
+    case 'relation_change':
+      return 0.9;
+    case 'video':
+    case 'podcast':
+    default:
+      return 0.6;
+  }
+}
+
+function recencyScore(event: ActivityEvent): number {
+  const ageMs = Date.now() - eventTime(event);
+  if (!Number.isFinite(ageMs) || ageMs <= 0) return 1;
+  const ageDays = ageMs / (24 * 60 * 60 * 1000);
+  return Math.max(0, 1 - ageDays / 14);
+}
+
+function personContextScore(event: ActivityEvent): number {
+  return (event.personCurrentTitle ? 0.6 : 0)
+    + (event.organizations.length > 0 ? 0.4 : 0)
+    + (event.topics.length > 0 ? 0.3 : 0);
+}
+
+function activityDedupeKeys(event: ActivityEvent): string[] {
+  const keys = [`id:${event.id}`];
+  const normalizedUrl = normalizeUrlForActivityDedupe(event.url);
+  if (normalizedUrl) keys.push(`url:${normalizedUrl}`);
+
+  const titleSignature = activityTitleSignature(event.title);
+  if (titleSignature) {
+    keys.push(`title:${titleSignature}`);
+    keys.push(`person-title:${event.personId}:${titleSignature}`);
+  }
+
+  return keys;
+}
+
+function activityTitleSignature(title: string): string | null {
+  const normalized = title
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (normalized.length < 18) return null;
+  return normalized.split(' ').slice(0, 14).join(' ');
+}
+
+function normalizeUrlForActivityDedupe(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    parsed.protocol = parsed.protocol.toLowerCase();
+    parsed.hostname = parsed.hostname.toLowerCase().replace(/^www\./, '');
+    parsed.hash = '';
+    for (const key of [...parsed.searchParams.keys()]) {
+      if (key.toLowerCase().startsWith('utm_') || ['ref', 'ref_src', 'fbclid', 'gclid'].includes(key.toLowerCase())) {
+        parsed.searchParams.delete(key);
+      }
+    }
+    parsed.searchParams.sort();
+    if (parsed.pathname !== '/') parsed.pathname = parsed.pathname.replace(/\/+$/, '');
+    return parsed.toString().replace(/\/$/, '');
+  } catch {
+    return null;
+  }
+}
+
+function hostForUrl(url: string): string {
+  try {
+    return new URL(url).hostname.toLowerCase().replace(/^www\./, '');
+  } catch {
+    return '';
+  }
+}
+
+function sourceHostBucketForUrl(url: string): string {
+  const host = hostForUrl(url);
+  const parts = host.split('.').filter(Boolean);
+  if (parts.length <= 2) return host;
+  return parts.slice(-2).join('.');
+}
+
+function isPrimarySourceHost(host: string): boolean {
+  return PRIMARY_SOURCE_HOST_PATTERNS.some(pattern => pattern.test(host));
+}
+
+function isDiscoveryOnlyHost(host: string): boolean {
+  return DISCOVERY_ONLY_HOST_PATTERNS.some(pattern => pattern.test(host));
+}
+
+function isXHost(host: string): boolean {
+  return host === 'x.com' || host === 'twitter.com';
 }
 
 function relationTypeLabel(value: string): string {

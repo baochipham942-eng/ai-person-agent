@@ -16,7 +16,7 @@ interface ActivityResponse {
   data: ActivityEvent[];
 }
 
-const ACTIVITY_PREVIEW_TIMEOUT_MS = 2500;
+const ACTIVITY_PREVIEW_TIMEOUT_MS = 6000;
 
 const fetcher = async (url: string): Promise<ActivityResponse> => {
   const controller = new AbortController();
@@ -33,6 +33,7 @@ const fetcher = async (url: string): Promise<ActivityResponse> => {
 
 export function ActivityFeed({ topic, organization, initialEvents }: ActivityFeedProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const hasInitialEvents = initialEvents !== undefined;
   const apiUrl = useMemo(() => {
     const params = new URLSearchParams({
       limit: '5',
@@ -47,12 +48,14 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
   const { data, error, isLoading } = useSWR<ActivityResponse>(apiUrl, fetcher, {
     revalidateOnFocus: false,
     dedupingInterval: 60000,
-    fallbackData: initialEvents ? { data: initialEvents } : undefined,
+    fallbackData: hasInitialEvents ? { data: initialEvents } : undefined,
+    revalidateOnMount: !hasInitialEvents || initialEvents.length === 0,
   });
   const events = useMemo(() => (data?.data || []).slice(0, 5), [data]);
   const safeActiveIndex = events.length > 0 ? activeIndex % events.length : 0;
   const featuredEvent = events[safeActiveIndex] || null;
   const showLoading = isLoading && !data;
+  const hasLoadError = Boolean(error && events.length === 0 && !showLoading);
   const scopeLabel = topic ? ` · ${topic}` : organization ? ` · ${organization}` : '';
 
   const nextEvent = () => {
@@ -94,9 +97,9 @@ export function ActivityFeed({ topic, organization, initialEvents }: ActivityFee
         )}
       </div>
 
-      {error ? (
+      {hasLoadError ? (
         <div className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-2.5 text-xs text-stone-500">
-          动态暂时加载失败，目录仍可继续使用。
+          本周推荐正在更新，目录仍可继续使用。
         </div>
       ) : showLoading ? (
         <div className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-2.5">

@@ -1,6 +1,6 @@
 # Prune Tail Review Unresolved
 
-Generated at: 2026-06-11T16:55:23.122Z
+Generated at: 2026-06-18T09:36:56.015Z
 Queue: docs/audit-2026-06/data/prune_tail_refetch_queue.jsonl
 Batches: 26
 
@@ -9,8 +9,8 @@ Batches: 26
 | Metric | Value |
 | --- | ---: |
 | curated unresolved rows | 220 |
-| existing RawPoolItem rows | 31 |
-| latest keep rows excluded | 29 |
+| existing RawPoolItem rows | 30 |
+| latest keep rows excluded | 28 |
 | review unresolved rows | 0 |
 | dependency rows | 0 |
 

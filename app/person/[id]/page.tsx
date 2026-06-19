@@ -46,6 +46,10 @@ interface RelationRow {
     relatedPersonOrganization: string[];
 }
 
+interface CountRow {
+    count: number;
+}
+
 // ISR 缓存：1小时后重新验证
 export const revalidate = 3600;
 
@@ -101,7 +105,7 @@ const fetchCachedPersonPageData = unstable_cache(
 
 async function fetchPersonPageData(id: string) {
     // Prisma relation include 会在 Neon 上串行发多次查询；这里把首屏需要的数据拆成并行查询。
-    const [person, cards, roles, relationRows, typeCounts, courseCount, papers] = await Promise.all([
+    const [person, cards, roles, relationRows, typeCounts, youtubeDisplayCountRows, courseCount, papers] = await Promise.all([
         prisma.people.findUnique({
             where: { id },
             select: {
@@ -208,6 +212,22 @@ async function fetchPersonPageData(id: string) {
             where: { personId: id },
             _count: true
         }),
+        prisma.$queryRaw<CountRow[]>`
+            WITH raw AS (
+                SELECT
+                    COALESCE(
+                        NULLIF(metadata->>'videoId', ''),
+                        substring(url from '(?:v=|youtu\\.be/|embed/|shorts/|live/)([A-Za-z0-9_-]{6,})'),
+                        id
+                    ) AS video_key
+                FROM "RawPoolItem"
+                WHERE "personId" = ${id}
+                  AND "sourceType" = 'youtube'
+                  AND metadata->>'sourceKind' IS DISTINCT FROM 'youtube_caption'
+            )
+            SELECT COUNT(DISTINCT video_key)::int AS count
+            FROM raw
+        `,
         prisma.course.count({ where: { personId: id } }),
         // 论文数据（前10篇）
         prisma.rawPoolItem.findMany({
@@ -236,6 +256,7 @@ async function fetchPersonPageData(id: string) {
     typeCounts.forEach(tc => {
         sourceTypeCounts[tc.sourceType] = tc._count;
     });
+    sourceTypeCounts.youtube = youtubeDisplayCountRows[0]?.count || 0;
 
     // 序列化数据传递给客户端组件
     return {
