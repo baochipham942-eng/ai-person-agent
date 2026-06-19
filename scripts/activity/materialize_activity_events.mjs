@@ -19,6 +19,15 @@ const SOURCE_TYPE_CONFIG = {
 };
 const MAX_SCAN_LIMIT = 500;
 const DEFAULT_BATCH_SIZE = 100;
+const LOW_SIGNAL_SOURCE_KINDS = new Set(['youtube_caption']);
+const LOW_SIGNAL_TITLE_PATTERNS = [
+  /\bwtf\b/i,
+  /\bwhat\s+the\s+f/i,
+  /\bwhat\s+is\s+going\s+on\b/i,
+  /\byou\s+won'?t\s+believe\b/i,
+  /\b(mind[-\s]?blowing|shocking|insane|crazy)\b/i,
+  /[!?]{2,}/,
+];
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
@@ -204,25 +213,41 @@ function toActivityEventData(row) {
   const metadata = asRecord(row.metadata);
   const metadataTags = metadata ? toStringArray(metadata.tags) : [];
   const occurredAt = row.publishedAt || row.fetchedAt;
+  const confidence = readConfidence(metadata);
+  const reviewStatus = reviewStatusFromConfidence(confidence);
+  const title = normalizeActivityTitle(row.title);
+
+  if (!isMaterializableActivity({
+    sourceType: row.sourceType,
+    eventType: sourceConfig.eventType,
+    title,
+    confidence,
+    reviewStatus,
+    metadata,
+    publishedAt: row.publishedAt,
+  })) {
+    return null;
+  }
 
   return {
     personId: row.personId,
     sourceItemId: row.id,
     eventType: sourceConfig.eventType,
     sourceType: row.sourceType,
-    title: row.title,
+    title,
     summary: buildSummary(row.text),
     url: row.url,
     occurredAt,
     detectedAt: row.fetchedAt,
     topics: uniqueStrings([...metadataTags, ...(row.person?.topics || [])]).slice(0, 8),
     organizations: uniqueStrings(row.person?.organization || []).slice(0, 6),
-    confidence: readConfidence(metadata),
+    confidence,
     evidenceNote: readString(metadata?.evidenceNote) || readString(metadata?.sourceNote),
-    reviewStatus: reviewStatusFromConfidence(readConfidence(metadata)),
+    reviewStatus,
     metadata: {
       sourceLabel: sourceConfig.sourceLabel,
       rawPoolItemId: row.id,
+      sourceKind: readString(metadata?.sourceKind),
     },
   };
 }
@@ -302,6 +327,22 @@ function buildSummary(text) {
   return normalized.length > 120 ? `${normalized.slice(0, 117)}...` : normalized;
 }
 
+function normalizeActivityTitle(value) {
+  return decodeBasicHtmlEntities(String(value || ''))
+    .replace(/^YouTube\s*字幕[:：]\s*/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function decodeBasicHtmlEntities(value) {
+  return value
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
 function asRecord(value) {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return null;
   return value;
@@ -332,6 +373,22 @@ function clampConfidence(value) {
 
 function reviewStatusFromConfidence(confidence) {
   return confidence < 0.7 ? 'needs_review' : 'auto';
+}
+
+function isMaterializableActivity({ sourceType, eventType, title, confidence, reviewStatus, metadata, publishedAt }) {
+  if (!['auto', 'confirmed', 'trusted'].includes(reviewStatus) || confidence < 0.7) return false;
+
+  const sourceKind = readString(metadata?.sourceKind);
+  if (sourceKind && LOW_SIGNAL_SOURCE_KINDS.has(sourceKind) && !publishedAt) return false;
+
+  if (LOW_SIGNAL_TITLE_PATTERNS.some(pattern => pattern.test(title))) return false;
+
+  if (eventType === 'video' || sourceType === 'youtube' || sourceType === 'podcast') {
+    const lettersAndNumbers = title.replace(/[^\p{L}\p{N}]/gu, '');
+    return lettersAndNumbers.length >= 12;
+  }
+
+  return true;
 }
 
 function relationTypeLabel(value) {

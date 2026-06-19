@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -156,6 +157,8 @@ export function UserMenu() {
 }
 
 function MenuSection({ items, onSelect }: { items: IdentityNavItem[]; onSelect: () => void }) {
+  const router = useRouter();
+
   return (
     <div className="p-2">
       {items.map(item => (
@@ -164,6 +167,7 @@ function MenuSection({ items, onSelect }: { items: IdentityNavItem[]; onSelect: 
           href={item.href}
           prefetch={false}
           role="menuitem"
+          onMouseEnter={() => router.prefetch(item.href)}
           onClick={onSelect}
           className="flex h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-700 transition hover:bg-orange-50 hover:text-orange-700"
         >

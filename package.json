@@ -1,6 +1,6 @@
 {
   "name": "ai-person-agent",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "private": true,
   "scripts": {
     "postinstall": "prisma generate",
@@ -30,6 +30,14 @@
     "qa:responsive": "node scripts/qa/responsive_smoke.mjs",
     "audit:newcomer-preflight": "node scripts/audit/preflight_newcomer_intake.mjs",
     "audit:post-ingest-guard": "node scripts/audit/post_ingest_content_guard.mjs",
+    "audit:aihot": "node scripts/audit/aihot_daily_gap_source_audit.mjs",
+    "audit:aihot-company-sources": "node scripts/company/build_aihot_company_source_worklist.mjs",
+    "audit:aihot-existing-people-backfill": "node scripts/audit/build_aihot_existing_people_backfill_worklist.mjs",
+    "audit:aihot-existing-people-primary-sources": "node scripts/audit/enrich_aihot_existing_people_primary_sources.mjs",
+    "audit:aihot-p0-apply-plan": "node scripts/audit/build_aihot_p0_apply_plan.mjs",
+    "audit:aihot-candidate-worklist:build": "node scripts/audit/build_aihot_candidate_review_worklist.mjs",
+    "audit:aihot-candidate-worklist": "node scripts/audit/check_aihot_candidate_review_worklist.mjs",
+    "company:aihot-p0-seeds": "node scripts/company/build_aihot_p0_company_seed_packs.mjs",
     "influence:calibrate": "node scripts/influence/calibrate_scores.mjs",
     "ops:readiness": "node scripts/ops/readiness.mjs",
     "ops:migration-plan": "node scripts/ops/migration_plan.mjs",

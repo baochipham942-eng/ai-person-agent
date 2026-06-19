@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "Alibaba DAMO Academy",
+    "slug": "alibaba-damo-academy",
+    "aliases": [
+      "Alibaba",
+      "阿里巴巴",
+      "阿里云",
+      "Qwen",
+      "通义千问"
+    ],
+    "homepage": "https://www.alibabacloud.com",
+    "publicCompany": true
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_alibaba-damo-academy_04fbb04c81141b0c_3caabb4a9b33",
+      "url": "https://qwen.ai/blog?id=qwen-robotmanip",
+      "role": "product_release",
+      "sourceKind": "product_announcement",
+      "title": "Qwen-RobotManip：对齐解锁机器人操作基础模型的规模化能力",
+      "label": "Qwen-RobotManip：对齐解锁机器人操作基础模型的规模化能力",
+      "sourceLabel": "Qwen：Blog Retrieval（API）",
+      "access": "free_web",
+      "publishedAt": "2026-06-17",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8i16en003aa1k3soj5uepk|product_release|official|77174be618335755. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_alibaba-damo-academy_f10a20f9057cce27_c7ead31637f0",
+      "url": "https://qwen.ai/blog?id=qwen-robotnav",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Qwen-RobotNav：面向智能体导航系统的可扩展导航模型",
+      "label": "Qwen-RobotNav：面向智能体导航系统的可扩展导航模型",
+      "sourceLabel": "Qwen：Blog Retrieval（API）",
+      "access": "free_web",
+      "publishedAt": "2026-06-17",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8i16en003aa1k3soj5uepk|technical_thread_link|official|ef0d852f35874a13. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_alibaba-damo-academy_cdbee4a79ca33452_1c2f4e3b793a",
+      "url": "https://qwen.ai/blog?id=qwen3.7",
+      "role": "product_release",
+      "sourceKind": "product_announcement",
+      "title": "Qwen3.7：智能体前沿",
+      "label": "Qwen3.7：智能体前沿",
+      "sourceLabel": "Qwen：Blog Retrieval（API）",
+      "access": "free_web",
+      "publishedAt": "2026-05-21",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8i16en003aa1k3soj5uepk|product_release|official|7b7d8b71f0fd6aec. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_alibaba-damo-academy_f66140dee391459d_2ebc386c8531",
+      "url": "https://qwen.ai/blog?id=qwen-robotworld",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Qwen-RobotWorld：具身智能体的无界世界",
+      "label": "Qwen-RobotWorld：具身智能体的无界世界",
+      "sourceLabel": "Qwen：Blog Retrieval（API）",
+      "access": "free_web",
+      "publishedAt": "2026-06-17",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8i16en003aa1k3soj5uepk|technical_thread_link|official|574ce185ed1dcf0c. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

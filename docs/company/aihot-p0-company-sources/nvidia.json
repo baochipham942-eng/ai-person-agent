@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "英伟达",
+    "slug": "nvidia",
+    "aliases": [
+      "NVIDIA"
+    ],
+    "homepage": "https://www.nvidia.com",
+    "publicCompany": true
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_nvidia_38640bd877f8c419_03de06baa81f",
+      "url": "https://blogs.nvidia.com/blog/krafton-nc-t1-korea-gaming-pc-bang-rtx-spark",
+      "role": "partnership_signal",
+      "sourceKind": "partnership_announcement",
+      "title": "NVIDIA 与 KRAFTON、NC、T1 在韩国 PC 房庆祝 RTX Spark 发布",
+      "label": "NVIDIA 与 KRAFTON、NC、T1 在韩国 PC 房庆祝 RTX Spark 发布",
+      "sourceLabel": "NVIDIA AI Blog",
+      "access": "free_web",
+      "publishedAt": "2026-06-08",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5h65i0029izl8ne05kn2b|partnership_signal|official|1792007f6aef7e13. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_nvidia_51db37bda5ef9019_185b7659ee21",
+      "url": "https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brain",
+      "role": "product_release",
+      "sourceKind": "product_announcement",
+      "title": "NVIDIA 发布工厂运营蓝图，为工厂提供自主智能管理智能体",
+      "label": "NVIDIA 发布工厂运营蓝图，为工厂提供自主智能管理智能体",
+      "sourceLabel": "NVIDIA Blog：Agentic AI（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-02",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5h65i0029izl8ne05kn2b|product_release|official|bf73407259473cd6. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_nvidia_2279b11eca93984d_a20f3afa16f5",
+      "url": "https://blogs.nvidia.com/blog/nvidia-and-lg-group-ai-factory",
+      "role": "partnership_signal",
+      "sourceKind": "partnership_announcement",
+      "title": "NVIDIA与LG集团合作建设AI工厂，加速物理AI与自动驾驶",
+      "label": "NVIDIA与LG集团合作建设AI工厂，加速物理AI与自动驾驶",
+      "sourceLabel": "NVIDIA AI Blog",
+      "access": "free_web",
+      "publishedAt": "2026-06-09",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5h65i0029izl8ne05kn2b|partnership_signal|official|2fe5220fe12eab3a. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_nvidia_fb249dd3599989b0_1b7451e056ac",
+      "url": "https://blogs.nvidia.com/blog/uk-sovereign-ai-advancements",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "英国借助 NVIDIA 技术将主权 AI 雄心转化为行动",
+      "label": "英国借助 NVIDIA 技术将主权 AI 雄心转化为行动",
+      "sourceLabel": "NVIDIA AI Blog",
+      "access": "free_web",
+      "publishedAt": "2026-06-09",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5h65i0029izl8ne05kn2b|technical_thread_link|official|03ae40c475c71d8c. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

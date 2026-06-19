@@ -17,6 +17,14 @@
     "mode": {
       "const": "dry-run"
     },
+    "profileCompleteness": {
+      "type": "string",
+      "enum": [
+        "complete_profile",
+        "incremental_sources"
+      ],
+      "default": "complete_profile"
+    },
     "contract": {
       "type": "string"
     },

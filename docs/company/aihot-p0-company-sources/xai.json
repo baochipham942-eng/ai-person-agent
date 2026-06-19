@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "xAI",
+    "slug": "xai",
+    "aliases": [
+      "Grok"
+    ],
+    "homepage": "https://x.ai",
+    "publicCompany": false
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_xai_0af85eb145f581b7_91340a05138b",
+      "url": "https://x.ai/news/grok-amazon-bedrock",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Grok 4.3 在 Amazon Bedrock 正式可用",
+      "label": "Grok 4.3 在 Amazon Bedrock 正式可用",
+      "sourceLabel": "xAI：News（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-18",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8fvtlh000nb64i1x6hko5w|technical_thread_link|official|d0663d984d0cd3c0. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_xai_b0b7bd6a4dcccb96_6a7137146cea",
+      "url": "https://x.ai/news/introducing-powerpoint-addin",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Grok for PowerPoint 发布：在 Microsoft PowerPoint 内直接生成和编辑幻灯片",
+      "label": "Grok for PowerPoint 发布：在 Microsoft PowerPoint 内直接生成和编辑幻灯片",
+      "sourceLabel": "xAI：News（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-17",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8fvtlh000nb64i1x6hko5w|technical_thread_link|official|af50b81a2a8b54b5. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_xai_96c51262b9967244_ceb6aac70072",
+      "url": "https://x.ai/news/agent-dashboard",
+      "role": "product_release",
+      "sourceKind": "product_announcement",
+      "title": "Grok Build 推出 Agent Dashboard 管理多个编码会话",
+      "label": "Grok Build 推出 Agent Dashboard 管理多个编码会话",
+      "sourceLabel": "xAI：News（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-16",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8fvtlh000nb64i1x6hko5w|product_release|official|14ea83f1c192ddc3. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_xai_701ac96f92b5bf3c_9136a0e75188",
+      "url": "https://x.ai/news/composer-2-5",
+      "role": "product_release",
+      "sourceKind": "product_announcement",
+      "title": "xAI发布Composer 2.5",
+      "label": "xAI发布Composer 2.5",
+      "sourceLabel": "xAI：News（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-02",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmk8fvtlh000nb64i1x6hko5w|product_release|official|ee2042bc7671ef43. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

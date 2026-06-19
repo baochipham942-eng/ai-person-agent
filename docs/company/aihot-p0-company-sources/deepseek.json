@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "杭州深度求索人工智能基础技术研究有限公司（深度求索 / DeepSeek）",
+    "slug": "deepseek",
+    "aliases": [
+      "DeepSeek",
+      "深度求索"
+    ],
+    "homepage": "https://www.deepseek.com",
+    "publicCompany": false
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_deepseek_976d9e159f0a52e8_2b34c9ffc71c",
+      "url": "https://github.com/deepseek-ai/Thinking-with-Visual-Primitives",
+      "role": "hiring_team_signal",
+      "sourceKind": "github_repository",
+      "title": "DeepSeek团队提出“视觉基元思维”新范式，解决多模态模型空间推理指代鸿沟",
+      "label": "DeepSeek团队提出“视觉基元思维”新范式，解决多模态模型空间推理指代鸿沟",
+      "sourceLabel": "DeepSeek：GitHub 新仓库",
+      "access": "free_web",
+      "publishedAt": "2026-05-01",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=github. Content family=cmk8i0gvm0035a1k3ppw3g23m|hiring_team_signal|github|4893bc3120c55fe2. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.4.15 - 2026-06-19
+
+### 新功能
+
+- 新增 AI HOT P0/P1 审计、候选工作台和公司源种子生成脚本，用现有内容源、公司和人物三条线补充内容库。
+- 首页近期热点接入经过边界隔离的 CompanySource，公司官方源可进入全局推荐，但不计入话题 readiness。
+- 人物动态补充 AI HOT 已审核官方源，支持将 existing people 的 ready 条目回填 RawPoolItem 并物化为 ActivityEvent。
+- 新增 X/Grok 数据源适配和 X handle 回填脚本，为后续人物内容源补全保留受控入口。
+
+### 修复
+
+- 修复 `ops:readiness` 本地访问 Neon 时的 Prisma P1001 连接问题，CLI 和应用层 readiness 统一使用公司源边界口径。
+- 修正 RawPoolItem 身份去重逻辑在 YouTube、X、GitHub 和 podcast 等来源上的规范化规则，降低跨来源重复内容进入库里的概率。
+
+### 改进
+
+- 优化知识线程、机构页、人物页和首页动态的阅读层级，减少低质量热点和重复来源对首屏推荐的干扰。
+- 补充 CompanySource 合约、README 和审计文档，明确 company page only、topic readiness 隔离和 P0 入库规则。
+
 ## 0.4.14 - 2026-06-16
 
 ### 新功能

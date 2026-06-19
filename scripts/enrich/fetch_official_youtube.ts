@@ -13,7 +13,7 @@
 
 import { prisma } from '../../lib/db/prisma';
 import { getChannelVideos, getYouTubeChannel } from '../../lib/datasources/youtube';
-import crypto from 'crypto';
+import { buildRawPoolIdentity, contentHash } from '../../lib/rawpool-identity';
 
 const WIKIDATA_API = 'https://www.wikidata.org/w/api.php';
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
@@ -139,45 +139,40 @@ async function saveOfficialVideo(
   video: any,
   channelTitle: string
 ) {
-  const urlHash = crypto.createHash('md5').update(video.url).digest('hex');
   const content = video.description || '';
-  const contentHash = crypto.createHash('md5').update((video.title + content).slice(0, 1000)).digest('hex');
+  const metadata = {
+    videoId: video.id,
+    thumbnailUrl: video.thumbnailUrl,
+    viewCount: video.viewCount,
+    duration: video.duration,
+    isOfficial: true,  // 标记为官方频道视频
+    author: channelTitle,
+    channelId: video.channelId
+  };
+  const identity = buildRawPoolIdentity({ personId, sourceType: 'youtube', url: video.url, metadata });
+  const itemMetadata = { ...metadata, rawPoolCanonicalKey: identity.canonicalKey };
+  const itemContentHash = contentHash(video.title + content);
 
   await prisma.rawPoolItem.upsert({
-    where: { urlHash },
+    where: { urlHash: identity.urlHash },
     create: {
       personId,
       sourceType: 'youtube',
       url: video.url,
-      urlHash,
-      contentHash,
+      urlHash: identity.urlHash,
+      contentHash: itemContentHash,
       title: video.title,
       text: content,
       publishedAt: video.publishedAt ? new Date(video.publishedAt) : new Date(),
-      metadata: {
-        videoId: video.id,
-        thumbnailUrl: video.thumbnailUrl,
-        viewCount: video.viewCount,
-        duration: video.duration,
-        isOfficial: true,  // 标记为官方频道视频
-        author: channelTitle,
-        channelId: video.channelId
-      },
+      metadata: itemMetadata,
       fetchStatus: 'success',
       fetchedAt: new Date()
     },
     update: {
       title: video.title,
       text: content,
-      metadata: {
-        videoId: video.id,
-        thumbnailUrl: video.thumbnailUrl,
-        viewCount: video.viewCount,
-        duration: video.duration,
-        isOfficial: true,
-        author: channelTitle,
-        channelId: video.channelId
-      },
+      contentHash: itemContentHash,
+      metadata: itemMetadata,
       fetchedAt: new Date()
     }
   });

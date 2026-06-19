@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "MiniMax",
+    "slug": "minimax",
+    "aliases": [
+      "稀宇科技"
+    ],
+    "homepage": "https://www.minimax.io",
+    "publicCompany": false
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_minimax_526c1f74195b8ca6_cf573eb9d869",
+      "url": "https://www.minimax.io/blog/minimax-m3",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "MiniMax M3：前沿编码、100万token上下文与原生多模态一体模型",
+      "label": "MiniMax M3：前沿编码、100万token上下文与原生多模态一体模型",
+      "sourceLabel": "MiniMax：Blog（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-02",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=942d2a38-7739-4b0c-bf07-0db7c440da18|technical_thread_link|official|bd2d7be8a134d599. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

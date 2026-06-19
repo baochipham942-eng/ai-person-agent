@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "Anthropic",
+    "slug": "anthropic",
+    "aliases": [
+      "Claude"
+    ],
+    "homepage": "https://www.anthropic.com",
+    "publicCompany": false
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_anthropic_d9d990489fef67db_d80db832569e",
+      "url": "https://www.anthropic.com/news/chris-olah-pope-leo-encyclical",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Anthropic联合创始人Chris Olah在教皇通谕发布会上的讲话",
+      "label": "Anthropic联合创始人Chris Olah在教皇通谕发布会上的讲话",
+      "sourceLabel": "Anthropic：Newsroom（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-05-26",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5iwfj0058izl8k2xxb366|technical_thread_link|official|7c34d2e76363bb0e. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_anthropic_ba63e8670915e8a0_9b47ed4bcab0",
+      "url": "https://claude.com/blog/claude-design-stays-on-brand-for-daily-work",
+      "role": "hiring_team_signal",
+      "sourceKind": "team_announcement",
+      "title": "Claude Design 更新：跨项目保持品牌一致，与Claude Code协同",
+      "label": "Claude Design 更新：跨项目保持品牌一致，与Claude Code协同",
+      "sourceLabel": "Claude：Blog（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-18",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5iwfj0058izl8k2xxb366|hiring_team_signal|official|2ad0c517007807dc. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_anthropic_94e296f550dff68a_c434910782ba",
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Claude Fable 5 和 Claude Mythos 5",
+      "label": "Claude Fable 5 和 Claude Mythos 5",
+      "sourceLabel": "Anthropic：Newsroom（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-06-10",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5iwfj0058izl8k2xxb366|technical_thread_link|official|f40d6a5140380b4b. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_anthropic_8aeee400adc88496_0bd128184c57",
+      "url": "https://www.anthropic.com/news/claude-opus-4-8",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Claude Opus 4.8 发布：在编码、智能体技能与推理方面实现全面升级",
+      "label": "Claude Opus 4.8 发布：在编码、智能体技能与推理方面实现全面升级",
+      "sourceLabel": "Anthropic：Newsroom（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-05-29",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5iwfj0058izl8k2xxb366|technical_thread_link|official|442755aba2e4f0f3. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

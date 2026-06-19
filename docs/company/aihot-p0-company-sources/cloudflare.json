@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "Cloudflare",
+    "slug": "cloudflare",
+    "aliases": [],
+    "homepage": "https://www.cloudflare.com",
+    "publicCompany": true
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_cloudflare_ccc4f5c0db368089_1f0d135c252b",
+      "url": "https://blog.cloudflare.com/ensemble-ai-talent-joins-cloudflare",
+      "role": "hiring_team_signal",
+      "sourceKind": "team_announcement",
+      "title": "Cloudflare 引入 Ensemble AI 团队，加速 AI 基础设施研发",
+      "label": "Cloudflare 引入 Ensemble AI 团队，加速 AI 基础设施研发",
+      "sourceLabel": "Cloudflare Blog",
+      "access": "free_web",
+      "publishedAt": "2026-06-16",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjy1gglb00g4xccmyj8v1vk3|hiring_team_signal|official|b1fd7c8d8b6bb143. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_cloudflare_14ac877898c02583_87a196dd2517",
+      "url": "https://blog.cloudflare.com/build-your-own-vulnerability-harness",
+      "role": "technical_thread_link",
+      "sourceKind": "official_blog_article",
+      "title": "Cloudflare 发布多阶段漏洞发现工具，详解对抗性审查与上下文绕过技术",
+      "label": "Cloudflare 发布多阶段漏洞发现工具，详解对抗性审查与上下文绕过技术",
+      "sourceLabel": "Cloudflare Blog",
+      "access": "free_web",
+      "publishedAt": "2026-06-19",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjy1gglb00g4xccmyj8v1vk3|technical_thread_link|official|c5f01fedfc9bf397. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_cloudflare_37a6d0d3481b5005_8eb3d8dac47f",
+      "url": "https://blog.cloudflare.com/ai-gateway-spend-limits",
+      "role": "product_release",
+      "sourceKind": "product_announcement",
+      "title": "你的AI账单失控了。Cloudflare现在可以解决这个问题。",
+      "label": "你的AI账单失控了。Cloudflare现在可以解决这个问题。",
+      "sourceLabel": "Cloudflare Blog",
+      "access": "free_web",
+      "publishedAt": "2026-06-06",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjy1gglb00g4xccmyj8v1vk3|product_release|official|9d61ce660f4fcf96. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

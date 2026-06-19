@@ -31,6 +31,8 @@ const ALLOWED_READINESS_USES = new Set([
 ]);
 
 const P0_EVIDENCE_ROLES = new Set(REQUIRED_SOURCE_ROLES);
+const PROFILE_COMPLETENESS_COMPLETE = 'complete_profile';
+const PROFILE_COMPLETENESS_INCREMENTAL = 'incremental_sources';
 
 function getArg(name) {
   const prefix = `${name}=`;
@@ -74,6 +76,12 @@ function asString(value) {
 
 function maybeBoolean(value) {
   return typeof value === 'boolean' ? value : null;
+}
+
+function readProfileCompleteness(payload) {
+  const value = asString(payload.profileCompleteness);
+  if (value === PROFILE_COMPLETENESS_INCREMENTAL) return PROFILE_COMPLETENESS_INCREMENTAL;
+  return PROFILE_COMPLETENESS_COMPLETE;
 }
 
 function candidateFromFetchedSource(source) {
@@ -172,12 +180,12 @@ function sourceCountsByRole(sources) {
 function isFinancialOrIrKind(source) {
   const text = `${source.role} ${source.sourceKind} ${source.url}`.toLowerCase();
   return source.role === 'financial_signal'
-    || /(sec|10-k|10-q|20-f|s-1|annual|earnings|transcript|ir|investor|shareholder|financing)/i.test(text);
+    || /(^|[\W_])(sec|10-k|10-q|20-f|s-1|annual|earnings|transcript|ir|investor|shareholder|financing)(?=$|[\W_])/i.test(text);
 }
 
 function isDocumentLikeFinancialKind(source) {
   const text = `${source.sourceKind} ${source.url}`.toLowerCase();
-  return /(sec|10-k|10-q|20-f|s-1|annual|earnings|transcript|ir|investor_presentation|shareholder_letter|pdf)/i.test(text);
+  return /(^|[\W_])(sec|10-k|10-q|20-f|s-1|annual|earnings|transcript|ir|investor_presentation|shareholder_letter|pdf)(?=$|[\W_])/i.test(text);
 }
 
 function hasOriginalFileLink(source) {
@@ -303,9 +311,9 @@ function validateSources(sources) {
   };
 }
 
-function validateStrategyContexts(contexts, sources) {
+function validateStrategyContexts(contexts, sources, { allowMissingStrategyContext = false } = {}) {
   const sourceById = new Map(sources.map(source => [source.id, source]));
-  const missingStrategyContexts = contexts.length === 0
+  const missingStrategyContexts = contexts.length === 0 && !allowMissingStrategyContext
     ? [{ issue: 'At least one company_strategy_context is required for this P1 dry-run pack.' }]
     : [];
   const strategyContextIssues = [];
@@ -417,9 +425,13 @@ function review(payload, sources, contexts) {
     roles: [...new Set(group.items.map(source => source.role).filter(Boolean))],
   }));
   const counts = sourceCountsByRole(sources);
+  const profileCompleteness = readProfileCompleteness(payload);
+  const allowMissingRequiredRoles = profileCompleteness === PROFILE_COMPLETENESS_INCREMENTAL;
   const missingRequiredRoles = REQUIRED_SOURCE_ROLES.filter(role => !counts[role]);
   const sourceIssues = validateSources(sources);
-  const contextIssues = validateStrategyContexts(contexts, sources);
+  const contextIssues = validateStrategyContexts(contexts, sources, {
+    allowMissingStrategyContext: allowMissingRequiredRoles,
+  });
   const threadReadinessExportIssues = Array.isArray(payload.threadReadinessExports) && payload.threadReadinessExports.length > 0
     ? [{
       count: payload.threadReadinessExports.length,
@@ -428,7 +440,7 @@ function review(payload, sources, contexts) {
     : [];
 
   const issueGroups = [
-    missingRequiredRoles,
+    allowMissingRequiredRoles ? [] : missingRequiredRoles,
     duplicateSourceIds,
     duplicateUrls,
     sourceIssues.missingRequiredFields,
@@ -457,9 +469,13 @@ function review(payload, sources, contexts) {
     },
     review: {
       pass,
+      profileCompleteness,
       requiredRoles: REQUIRED_SOURCE_ROLES,
       sourceCountsByRole: counts,
       missingRequiredRoles,
+      requiredRoleGate: allowMissingRequiredRoles
+        ? 'partial_allowed_for_incremental_sources'
+        : 'complete_profile_required',
       duplicateSourceIds,
       duplicateUrls,
       notAvailableRoles: payload.notAvailableRoles || [],

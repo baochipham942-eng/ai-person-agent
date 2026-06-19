@@ -35,7 +35,9 @@ const ALLOWED_READINESS_USES = new Set([
   'company_page_only',
   'company_strategy_context_only',
 ]);
-const FINANCIAL_KIND_RE = /(sec|10-k|10-q|20-f|s-1|annual|earnings|transcript|ir|investor|shareholder|financing)/i;
+const PROFILE_COMPLETENESS_COMPLETE = 'complete_profile';
+const PROFILE_COMPLETENESS_INCREMENTAL = 'incremental_sources';
+const FINANCIAL_KIND_RE = /(^|[\W_])(sec|10-k|10-q|20-f|s-1|annual|earnings|transcript|ir|investor|shareholder|financing)(?=$|[\W_])/i;
 
 main()
   .catch(error => {
@@ -234,6 +236,8 @@ function normalizeStrategyContexts(payload) {
 
 function reviewCompanySources(payload, sources, contexts) {
   const roleCounts = countBy(sources, source => source.role || 'unknown');
+  const profileCompleteness = readProfileCompleteness(payload);
+  const allowMissingRequiredRoles = profileCompleteness === PROFILE_COMPLETENESS_INCREMENTAL;
   const duplicateSourceIds = duplicateGroups(sources, source => source.id).map(group => ({
     id: group.key,
     count: group.items.length,
@@ -277,7 +281,7 @@ function reviewCompanySources(payload, sources, contexts) {
     }
   }
 
-  if (contexts.length === 0) {
+  if (contexts.length === 0 && !allowMissingRequiredRoles) {
     contextIssues.push({ issue: 'missing_company_strategy_context' });
   }
 
@@ -313,7 +317,7 @@ function reviewCompanySources(payload, sources, contexts) {
   const threadReadinessExportIssues = Array.isArray(payload.threadReadinessExports) && payload.threadReadinessExports.length > 0
     ? [{ issue: 'company_pack_must_not_export_thread_readiness_sources', count: payload.threadReadinessExports.length }]
     : [];
-  const pass = missingRequiredRoles.length === 0
+  const pass = (allowMissingRequiredRoles || missingRequiredRoles.length === 0)
     && duplicateSourceIds.length === 0
     && duplicateUrls.length === 0
     && sourceIssues.length === 0
@@ -322,9 +326,13 @@ function reviewCompanySources(payload, sources, contexts) {
 
   return {
     pass,
+    profileCompleteness,
     requiredRoles: REQUIRED_SOURCE_ROLES,
     sourceCountsByRole: roleCounts,
     missingRequiredRoles,
+    requiredRoleGate: allowMissingRequiredRoles
+      ? 'partial_allowed_for_incremental_sources'
+      : 'complete_profile_required',
     duplicateSourceIds,
     duplicateUrls,
     sourceIssues,
@@ -332,6 +340,12 @@ function reviewCompanySources(payload, sources, contexts) {
     threadReadinessExportIssues,
     notAvailableRoles: payload.notAvailableRoles || [],
   };
+}
+
+function readProfileCompleteness(payload) {
+  const value = asString(payload.profileCompleteness);
+  if (value === PROFILE_COMPLETENESS_INCREMENTAL) return PROFILE_COMPLETENESS_INCREMENTAL;
+  return PROFILE_COMPLETENESS_COMPLETE;
 }
 
 function buildStagingArtifact({ options, payload, company, sources, contexts, review }) {

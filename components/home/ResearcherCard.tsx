@@ -146,6 +146,9 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
   const primaryOrg = extractOrgFromTitle(person.currentTitle) || person.organization[0] || '';
   const safeDescription = person.description || '资料还在整理中，先查看已确认的职位、机构和主题线索。';
   const organizationMatchText = formatOrganizationMatch(person);
+  const prefetchDetail = () => {
+    router.prefetch(detailHref);
+  };
 
   const handleCardClick = (event: MouseEvent<HTMLElement>) => {
     if (event.defaultPrevented || !isPlainLeftClick(event) || shouldIgnoreCardClick(event.target)) return;
@@ -167,6 +170,7 @@ export const ResearcherCard = memo(function ResearcherCard({ person, rank, isHot
       aria-label={`查看 ${person.name} 的详情`}
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
+      onMouseEnter={prefetchDetail}
       className="card-interactive relative p-4 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2"
     >
       {/* Rank Badge */}

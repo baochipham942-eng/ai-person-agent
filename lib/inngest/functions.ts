@@ -3,6 +3,7 @@ import { prisma } from '@/lib/db/prisma';
 import type { Prisma } from '@prisma/client';
 import { searchPersonContent } from '@/lib/datasources/exa';
 import { getPersonXActivity } from '@/lib/datasources/grok';
+import { normalizeXHandle } from '@/lib/datasources/xai-x-search';
 import { getChannelVideos, searchYouTubeVideos } from '@/lib/datasources/youtube';
 import { getAuthorWorks, getAuthorByOrcid } from '@/lib/datasources/openalex';
 import { searchPodcasts } from '@/lib/datasources/itunes';
@@ -22,7 +23,7 @@ import {
 } from './signalJobs';
 import { maintenanceJobRunner, maintenanceScheduleScanner } from './maintenanceJobs';
 import { runCompareReportAgent } from '@/lib/compare-report-agent';
-import crypto from 'crypto';
+import { buildRawPoolIdentity, contentHash } from '@/lib/rawpool-identity';
 
 /**
  * 数据源刷新间隔配置（毫秒）
@@ -253,15 +254,14 @@ export const buildPersonJob = inngest.createFunction(
                         metadata: { sources: grokResult.sources, isOfficial: true },
                     }];
                 }
-                // 身份验证：非官方 X 帖子需要验证是否相关
-                // 如果是官方账号抓取 (xHandle 存在)，通常认为相关，但为了保险起见，
-                // 如果是自动搜索结果，必须验证。
-                // 鉴于用户反馈 Grok 有时会抓取无关内容，这里强制进行 isAboutPerson 检查
-                // 除非是极其确定的官方源 (summary case)
+                // 官方 handle 的帖子通常不会在正文里重复提到本人姓名；先按 author 绑定，
+                // 只有非目标作者才回落到人物文本匹配。
                 let validItems = items;
                 if (items.length > 0 && items[0].title !== `${searchName} on X`) {
                     validItems = items.filter(item => {
-                        // 构建完整的检查文本
+                        const author = typeof item.metadata.author === 'string' ? normalizeXHandle(item.metadata.author) : null;
+                        if (author && normalizeXHandle(xHandle)?.toLowerCase() === author.toLowerCase()) return true;
+
                         const textToCheck = `${item.title} ${item.text}`;
                         const isValid = isAboutPerson(textToCheck, personContext);
                         if (!isValid) {
@@ -631,47 +631,39 @@ export const buildPersonJob = inngest.createFunction(
             const itemsToSave = allItems.filter(i => i.sourceType !== 'career');
 
             for (const item of itemsToSave) {
-                // Normalize URL to prevent duplicates (remove query params, trailing slash)
-                let normalizedUrl = item.url;
-                try {
-                    const u = new URL(item.url);
-                    // Keep path, but remove query params for most sites to avoid duplicates ?? 
-                    // 某些站点 query param 是必须的 (如 youtube watch?v=), 大部分文章不是
-                    // 采取保守策略: 只对特定域名做去参，或者只去尾部斜杠
-                    if (u.hostname !== 'www.youtube.com' && u.hostname !== 'youtube.com' && !u.pathname.includes('watch')) {
-                        u.search = '';
-                    }
-                    // Remove trailing slash
-                    let cleanPath = u.href;
-                    if (cleanPath.endsWith('/')) cleanPath = cleanPath.slice(0, -1);
-                    normalizedUrl = cleanPath;
-                } catch {
-                    // ignore invalid urls
-                }
-
-                const urlHash = crypto.createHash('md5').update(normalizedUrl).digest('hex');
-                const contentHash = crypto.createHash('md5').update(item.text.slice(0, 1000)).digest('hex');
+                const identity = buildRawPoolIdentity({
+                    personId,
+                    sourceType: item.sourceType,
+                    url: item.url,
+                    metadata: item.metadata,
+                });
+                const itemMetadata = {
+                    ...item.metadata,
+                    rawPoolCanonicalKey: identity.canonicalKey,
+                };
+                const itemContentHash = contentHash(item.text);
 
                 // 使用 upsert 避免重复
                 await prisma.rawPoolItem.upsert({
-                    where: { urlHash },
+                    where: { urlHash: identity.urlHash },
                     create: {
                         personId,
                         sourceType: item.sourceType,
                         url: item.url,
-                        urlHash,
-                        contentHash,
+                        urlHash: identity.urlHash,
+                        contentHash: itemContentHash,
                         title: item.title,
                         text: item.text,
                         publishedAt: item.publishedAt,
-                        metadata: item.metadata as Prisma.InputJsonValue,
+                        metadata: itemMetadata as unknown as Prisma.InputJsonValue,
                         fetchStatus: 'success',
                     },
                     update: {
                         // 如果已存在，更新内容
                         title: item.title,
                         text: item.text,
-                        metadata: item.metadata as Prisma.InputJsonValue,
+                        contentHash: itemContentHash,
+                        metadata: itemMetadata as unknown as Prisma.InputJsonValue,
                         fetchedAt: new Date(),
                     },
                 });

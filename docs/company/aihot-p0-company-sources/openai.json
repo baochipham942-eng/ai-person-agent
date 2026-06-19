@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "OpenAI",
+    "slug": "openai",
+    "aliases": [],
+    "homepage": "https://openai.com",
+    "publicCompany": false
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_openai_06dd53ad1596103b_9f4dbdd37bfa",
+      "url": "https://openai.com/index/improving-health-intelligence-in-chatgpt",
+      "role": "product_release",
+      "sourceKind": "official_rss_article",
+      "title": "GPT-5.5 Instant提升ChatGPT健康智能",
+      "label": "GPT-5.5 Instant提升ChatGPT健康智能",
+      "sourceLabel": "OpenAI：官网动态（RSS · 排除企业/客户案例）",
+      "access": "free_web",
+      "publishedAt": "2026-06-19",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw6m3oj000i13klsnhakdpt|product_release|rss|881203c1809fb6ba. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_openai_b2d061d6488f56da_a3a9d76e0605",
+      "url": "https://alignment.openai.com/beneficial-rl",
+      "role": "technical_thread_link",
+      "sourceKind": "official_rss_article",
+      "title": "OpenAI 强化学习实现广泛且持久的有益模型",
+      "label": "OpenAI 强化学习实现广泛且持久的有益模型",
+      "sourceLabel": "OpenAI：Alignment 研究博客（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-06-19",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw6m3oj000i13klsnhakdpt|technical_thread_link|rss|67e858ed0987a3ee. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_openai_de4d4dcd237dcb52_4f58867f6813",
+      "url": "https://alignment.openai.com/validating-public-evals",
+      "role": "technical_thread_link",
+      "sourceKind": "official_rss_article",
+      "title": "公开聊天数据能否预测真实世界AI失调？",
+      "label": "公开聊天数据能否预测真实世界AI失调？",
+      "sourceLabel": "OpenAI：Alignment 研究博客（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-06-17",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw6m3oj000i13klsnhakdpt|technical_thread_link|rss|df7e2550d1126a4f. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

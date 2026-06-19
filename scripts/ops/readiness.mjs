@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
+import { Pool, neonConfig } from '@neondatabase/serverless';
+import { PrismaNeon } from '@prisma/adapter-neon';
+import ws from 'ws';
 
 dotenv.config({ path: '.env', quiet: true });
 dotenv.config({ path: '.env.local', quiet: true });
 
-const prisma = new PrismaClient();
+process.env.WS_NO_BUFFER_UTIL ??= '1';
+neonConfig.webSocketConstructor = ws;
+
+const prisma = createPrismaClient();
 
 main()
   .catch(error => {
@@ -426,7 +432,7 @@ function buildChecks(params) {
 function companyEvidenceStatus(store, evidence) {
   if (store.status === 'blocked') return 'blocked';
   if (evidence.boundaryIssues > 0) return 'blocked';
-  if (evidence.sources > 0 && evidence.threadLinks > 0) return 'ready';
+  if (evidence.sources > 0) return 'ready';
   return 'pending';
 }
 
@@ -434,7 +440,7 @@ function companyEvidenceDetail(store, evidence) {
   if (store.status === 'blocked') return 'Apply CompanySource migration before materializing company evidence';
   if (evidence.boundaryIssues > 0) return `${evidence.boundaryIssues} CompanySource rows violate topic-readiness boundaries`;
   if (evidence.sources > 0) {
-    return `${evidence.sources} company sources across ${evidence.organizations} organizations; ${evidence.threadLinks} thread links`;
+    return `${evidence.sources} company sources across ${evidence.organizations} organizations; ${evidence.threadLinks} optional thread links`;
   }
   return 'No CompanySource rows materialized yet';
 }
@@ -497,4 +503,20 @@ function toNumber(value) {
     return Number.isFinite(parsed) ? parsed : 0;
   }
   return 0;
+}
+
+function createPrismaClient() {
+  const connectionString = process.env.DATABASE_URL;
+  if (!connectionString || isLocalPostgres(connectionString)) return new PrismaClient();
+  const pool = new Pool({ connectionString });
+  return new PrismaClient({ adapter: new PrismaNeon(pool) });
+}
+
+function isLocalPostgres(connectionString) {
+  try {
+    const hostname = new URL(connectionString).hostname;
+    return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+  } catch {
+    return false;
+  }
 }

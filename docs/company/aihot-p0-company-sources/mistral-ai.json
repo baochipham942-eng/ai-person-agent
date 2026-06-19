@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "Mistral AI",
+    "slug": "mistral-ai",
+    "aliases": [],
+    "homepage": "https://mistral.ai",
+    "publicCompany": false
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_mistral-ai_025a95f8d7070292_bba0291239de",
+      "url": "https://mistral.ai/news/search-toolkit",
+      "role": "hiring_team_signal",
+      "sourceKind": "team_announcement",
+      "title": "发布 Search Toolkit",
+      "label": "发布 Search Toolkit",
+      "sourceLabel": "Mistral AI：News（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-05-29",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5j5rq005kizl8lvd1btrf|hiring_team_signal|official|31b09aaa58ed198c. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_mistral-ai_f555cf74a94a8215_1fad6f064584",
+      "url": "https://mistral.ai/news/ai-now-summit-2026",
+      "role": "partnership_signal",
+      "sourceKind": "partnership_announcement",
+      "title": "AI Now Summit 2026",
+      "label": "AI Now Summit 2026",
+      "sourceLabel": "Mistral AI：News（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-05-29",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5j5rq005kizl8lvd1btrf|partnership_signal|official|95f66541e5d5d749. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_mistral-ai_89f4a6b657ea4333_75112bbe31f9",
+      "url": "https://mistral.ai/news/science-to-win-industrial-ai",
+      "role": "partnership_signal",
+      "sourceKind": "partnership_announcement",
+      "title": "加倍投入科学以赢得工业AI",
+      "label": "加倍投入科学以赢得工业AI",
+      "sourceLabel": "Mistral AI：News（网页）",
+      "access": "free_web",
+      "publishedAt": "2026-05-24",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=official. Content family=cmjw5j5rq005kizl8lvd1btrf|partnership_signal|official|1bfdc7c1c4fa2d7f. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

@@ -29,6 +29,7 @@ Private companies often have no public SEC annual report or earnings transcript.
 {
   "schemaVersion": "company-source-seed/v1",
   "mode": "dry-run",
+  "profileCompleteness": "complete_profile",
   "contract": "docs/company/company-source-contract.schema.json",
   "company": {
     "name": "Anthropic",
@@ -91,6 +92,8 @@ Candidate fields:
 
 `companyStrategyContexts` are thread backlinks, not thread evidence. Each context must carry `sourceIds` and `excludedFromTopicReadiness=true`. Financial, IR, earnings, SEC, annual report, and financing sources stay `company_page_only`.
 
+Use `profileCompleteness: "complete_profile"` when the pack is meant to prove all required company roles. Use `profileCompleteness: "incremental_sources"` for additive intake such as AI HOT P0 source backfill; that mode still enforces URL hygiene, valid roles, duplicate checks, and topic-readiness boundaries, but it does not require the batch itself to cover every required role.
+
 ## Fetch Output Schema
 
 The fetcher writes JSON to stdout by default:
@@ -151,7 +154,7 @@ Useful flags:
 
 `review_company_sources.mjs` is the P1 review gate. It accepts fetch output or the original seed and checks:
 
-- Required role coverage: `official_strategy`, `product_release`, `financial_signal`, `partnership_signal`, `hiring_team_signal`.
+- Required role coverage: `official_strategy`, `product_release`, `financial_signal`, `partnership_signal`, `hiring_team_signal` for complete-profile packs. Incremental source packs may be partial only when they explicitly set `profileCompleteness: "incremental_sources"`.
 - Duplicate source IDs and canonical URLs.
 - Unknown roles and missing required fields.
 - Financial / IR placement: company page only, excluded from topic readiness, no strategy-context reference.

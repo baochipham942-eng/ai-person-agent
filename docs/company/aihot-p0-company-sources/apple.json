@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "苹果公司",
+    "slug": "apple",
+    "aliases": [
+      "Apple"
+    ],
+    "homepage": "https://www.apple.com",
+    "publicCompany": true
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_apple_c98a90b5717e6970_1ba92b1861d6",
+      "url": "https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models",
+      "role": "partnership_signal",
+      "sourceKind": "official_rss_article",
+      "title": "苹果发布第三代 Apple Foundation Models（AFM）",
+      "label": "苹果发布第三代 Apple Foundation Models（AFM）",
+      "sourceLabel": "Apple Machine Learning Research（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-06-09",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw5huq5003aizl8v2f5l7v5|partnership_signal|rss|840e9e3f6ae80d36. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_apple_54bfaafa30482a25_ce4cffa85270",
+      "url": "https://machinelearning.apple.com/updates/ppml-2026",
+      "role": "hiring_team_signal",
+      "sourceKind": "official_rss_article",
+      "title": "苹果隐私保护机器学习与AI研讨会2026",
+      "label": "苹果隐私保护机器学习与AI研讨会2026",
+      "sourceLabel": "Apple Machine Learning Research（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-05-09",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw5huq5003aizl8v2f5l7v5|hiring_team_signal|rss|91a39e5949522bd0. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_apple_6198c67e6d870391_4cab60eebb53",
+      "url": "https://machinelearning.apple.com/updates/apple-at-icassp-2026",
+      "role": "technical_thread_link",
+      "sourceKind": "official_rss_article",
+      "title": "国际声学、语音与信号处理会议 (ICASSP) 2026",
+      "label": "国际声学、语音与信号处理会议 (ICASSP) 2026",
+      "sourceLabel": "Apple Machine Learning Research（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-05-01",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw5huq5003aizl8v2f5l7v5|technical_thread_link|rss|5ebe2a15020c0d4d. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "Hugging Face",
+    "slug": "hugging-face",
+    "aliases": [],
+    "homepage": "https://huggingface.co",
+    "publicCompany": false
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_hugging-face_e8337d3a9b1504ba_ece735789829",
+      "url": "https://huggingface.co/blog/allenai/molmomotion",
+      "role": "technical_thread_link",
+      "sourceKind": "official_rss_article",
+      "title": "MolmoMotion：语言引导的3D运动预测模型",
+      "label": "MolmoMotion：语言引导的3D运动预测模型",
+      "sourceLabel": "Hugging Face：Blog（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-06-18",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjy6n5qi00064anv461tqo1j|technical_thread_link|rss|661f70fae367bab1. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_hugging-face_cdb66b23df6d7175_270262b34266",
+      "url": "https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware",
+      "role": "product_release",
+      "sourceKind": "official_rss_article",
+      "title": "Strands Robots SDK：用单一智能体打通 Hugging Face Hub 到物理机器人",
+      "label": "Strands Robots SDK：用单一智能体打通 Hugging Face Hub 到物理机器人",
+      "sourceLabel": "Hugging Face：Blog（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-06-18",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjy6n5qi00064anv461tqo1j|product_release|rss|92c11923f782d544. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_hugging-face_0f5bcd3f0544c4ff_8f76e67ad854",
+      "url": "https://huggingface.co/blog/allenai/olmo-eval",
+      "role": "technical_thread_link",
+      "sourceKind": "official_rss_article",
+      "title": "olmo-eval：面向模型开发循环的评估工作台",
+      "label": "olmo-eval：面向模型开发循环的评估工作台",
+      "sourceLabel": "Hugging Face：Blog（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-06-13",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjy6n5qi00064anv461tqo1j|technical_thread_link|rss|6147b4c38586d183. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

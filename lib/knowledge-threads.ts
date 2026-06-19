@@ -11,6 +11,7 @@ import type {
   KnowledgeThreadStatus,
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
 import agenticCodingSourcePack from '@/docs/knowledge-threads/agentic-coding-sources.candidates.json';
+import aiEvalsSourcePack from '@/docs/knowledge-threads/ai-evals-sources.candidates.json';
 
 const REQUIRED_ROLES = [
   'signal',
@@ -20,9 +21,10 @@ const REQUIRED_ROLES = [
   'implementation_signal',
 ] as const;
 
-const SOURCE_PACK_FIXTURES = [
-  agenticCodingSourcePack,
-] as const;
+const SOURCE_PACK_FIXTURES: SourcePackFixture[] = [
+  agenticCodingSourcePack as SourcePackFixture,
+  aiEvalsSourcePack as SourcePackFixture,
+];
 
 let knowledgeThreadStoreReadyPromise: Promise<boolean> | null = null;
 
@@ -101,6 +103,43 @@ interface SourcePackEdge {
   relationType: string;
   confidence?: unknown;
   evidenceNote?: string;
+}
+
+// 多个 source pack JSON 字段不完全一致（有的带 metadata/text，有的没有）。
+// 用一个宽松类型注解 SOURCE_PACK_FIXTURES，避免 TS 把它们推断成互斥的字面量 union。
+interface SourcePackSource {
+  id: string;
+  role: string;
+  sourceKind?: string;
+  title?: string;
+  sourceOwner?: string;
+  url: string;
+  publishedAt?: string;
+  whyRelevant?: string;
+  reviewNotes?: string;
+  evidenceQuote?: string;
+  confidence?: unknown;
+  status?: string;
+  text?: string;
+  textStatus?: string;
+  urlHash?: string;
+  metadata?: { role?: string } & Record<string, unknown>;
+}
+
+interface SourcePackFixture {
+  thread: {
+    slug: string;
+    title: string;
+    definitionDraft: string;
+    whyNow: string;
+    updatedAt: string;
+    status: string;
+    useBoundary: string;
+    [key: string]: unknown;
+  };
+  sourceRequirements: { requiredRoles: string[] };
+  sources: SourcePackSource[];
+  edges: SourcePackEdge[];
 }
 
 export async function fetchKnowledgeThread(

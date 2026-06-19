@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "company-source-seed/v1",
+  "mode": "dry-run",
+  "profileCompleteness": "incremental_sources",
+  "contract": "docs/company/company-source-contract.schema.json",
+  "company": {
+    "name": "谷歌",
+    "slug": "google",
+    "aliases": [
+      "Google",
+      "Alphabet"
+    ],
+    "homepage": "https://www.google.com",
+    "publicCompany": true
+  },
+  "notAvailableRoles": [],
+  "candidates": [
+    {
+      "id": "cs_aihot_google_1c10fee4082fe1e0_eac0c79affa1",
+      "url": "https://developers.googleblog.com/introducing-the-google-colab-cli",
+      "role": "product_release",
+      "sourceKind": "official_rss_article",
+      "title": "Google Colab CLI 发布",
+      "label": "Google Colab CLI 发布",
+      "sourceLabel": "Google Developers Blog（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-06-06",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw5g0ok000hizl8x1zn2lxc|product_release|rss|c2f61ed4ecac3421. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_google_cf025672b5d802e0_a2ed21811f8d",
+      "url": "https://developers.googleblog.com/supercharge-your-integration-workflow-with-the-google-pay-wallet-developer-mcp-server",
+      "role": "product_release",
+      "sourceKind": "official_rss_article",
+      "title": "使用 Google Pay & Wallet Developer MCP server 加速你的集成工作流",
+      "label": "使用 Google Pay & Wallet Developer MCP server 加速你的集成工作流",
+      "sourceLabel": "Google Developers Blog（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-05-29",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw5g0ok000hizl8x1zn2lxc|product_release|rss|4d89d22b0e7b3039. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    },
+    {
+      "id": "cs_aihot_google_38042ded8c40af44_bb01a234ac21",
+      "url": "https://developers.googleblog.com/adk-kotlin-android-building-ai-agents",
+      "role": "product_release",
+      "sourceKind": "official_rss_article",
+      "title": "发布 Kotlin版ADK与Android版ADK 0.1.0：在Android及其他平台构建AI Agent",
+      "label": "发布 Kotlin版ADK与Android版ADK 0.1.0：在Android及其他平台构建AI Agent",
+      "sourceLabel": "Google Developers Blog（RSS）",
+      "access": "free_web",
+      "publishedAt": "2026-05-22",
+      "readinessUse": "company_strategy_context_only",
+      "excludedFromTopicReadiness": true,
+      "companyPageOnly": false,
+      "notes": "AI HOT P0 incremental CompanySource candidate. Original sourceKind=rss. Content family=cmjw5g0ok000hizl8x1zn2lxc|product_release|rss|0a5c1ecfd5610afc. Excluded from topic readiness; use only for company page/background evidence until reviewed."
+    }
+  ],
+  "companyStrategyContexts": [],
+  "threadReadinessExports": []
+}

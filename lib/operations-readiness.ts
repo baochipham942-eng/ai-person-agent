@@ -872,7 +872,7 @@ function companyEvidenceStatus(
 ): ReadinessStatus {
   if (store.status === 'blocked') return 'blocked';
   if (evidence.boundaryIssues > 0) return 'blocked';
-  if (evidence.sources > 0 && evidence.threadLinks > 0) return 'ready';
+  if (evidence.sources > 0) return 'ready';
   return 'pending';
 }
 
@@ -883,7 +883,7 @@ function companyEvidenceDetail(
   if (store.status === 'blocked') return 'Apply CompanySource migration before materializing company evidence';
   if (evidence.boundaryIssues > 0) return `${evidence.boundaryIssues} CompanySource rows violate topic-readiness boundaries`;
   if (evidence.sources > 0) {
-    return `${evidence.sources} company sources across ${evidence.organizations} organizations; ${evidence.threadLinks} thread links`;
+    return `${evidence.sources} company sources across ${evidence.organizations} organizations; ${evidence.threadLinks} optional thread links`;
   }
   return 'No CompanySource rows materialized yet';
 }
