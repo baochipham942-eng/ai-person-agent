@@ -11,8 +11,10 @@ import {
   WorksSection,
 } from '@/components/entity/EntityPageBlocks';
 import { CurrentThreadsStream } from '@/components/home/CurrentThreadsStream';
+import { CoursesStrip } from '@/components/courses/CoursesHubView';
 import { fetchTopicPageData } from '@/lib/entity-pages';
 import { listThreadsForTopic } from '@/lib/knowledge-thread-people';
+import { listCoursesForTopic } from '@/lib/courses';
 import {
   buildDirectoryHref,
   buildTopicHref,
@@ -46,6 +48,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const topic = normalizeDirectoryTopic(decodeRouteParam(slug));
   const data = await loadTopicPageData(topic);
   const topicThreads = listThreadsForTopic(topic);
+  const topicCourses = await listCoursesForTopic(topic, 6).catch(() => []);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -85,6 +88,14 @@ export default async function TopicPage({ params }: TopicPageProps) {
             )}
             <TopPeopleSection people={data.people} />
             <ActivitySection events={data.activity} title={`${topic} 最近动态`} />
+            {topicCourses.length > 0 && (
+              <CoursesStrip
+                courses={topicCourses}
+                title={`想系统学 ${topic}?`}
+                subtitle="这个方向值得先学的几门课，点开直达课程平台。"
+                moreHref={`/courses?topic=${encodeURIComponent(topic)}`}
+              />
+            )}
             <WorksSection works={data.works} />
           </div>
 
