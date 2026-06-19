@@ -25,6 +25,11 @@ import { buildRawPoolIdentity, contentHash } from '../../lib/rawpool-identity';
 import { fetchYoutubeTranscript, SupadataQuotaError } from '../../lib/datasources/supadata';
 import { extractContentKeywords } from '../../lib/ai/extract-keywords';
 
+// 兜底：Supadata 202 轮询有长空闲，Neon WebSocket 可能断连抛未处理 'error' 事件直接杀进程。
+// 吞掉瞬时错误让批量任务存活，prisma 下次查询会自动重连。
+process.on('unhandledRejection', e => console.warn('[unhandledRejection]', String(e).slice(0, 160)));
+process.on('uncaughtException', e => console.warn('[uncaughtException]', String(e).slice(0, 160)));
+
 interface Options {
     execute: boolean;
     backfillOnly: boolean;
@@ -155,13 +160,17 @@ async function main() {
         const captionedKeys = new Set(
             all.filter(isCaption).map(r => `${r.personId}:${videoIdOf(r)}`),
         );
+        let skippedMarked = 0;
         const videosMissing = all.filter(r => {
             if (isCaption(r)) return false;
             const vid = videoIdOf(r);
             if (!vid) return false;
-            return !captionedKeys.has(`${r.personId}:${vid}`);
+            if (captionedKeys.has(`${r.personId}:${vid}`)) return false;
+            // 已确认无字幕的视频（前轮标记）永久跳过，不再扣额度重查
+            if (metaRecord(r.metadata).captionFetchStatus === 'none') { skippedMarked++; return false; }
+            return true;
         });
-        log(opts.quiet, `[B] 视频总数 ${all.filter(r => !isCaption(r)).length}，缺字幕 ${videosMissing.length} 个`);
+        log(opts.quiet, `[B] 视频总数 ${all.filter(r => !isCaption(r)).length}，缺字幕 ${videosMissing.length} 个（另 ${skippedMarked} 个已确认无字幕跳过）`);
 
         const budget = Math.min(videosMissing.length, opts.limit, opts.maxSupadata);
         const targets = videosMissing.slice(0, budget);
@@ -188,6 +197,16 @@ async function main() {
 
             if (!transcript.available || transcript.text.length < 50) {
                 skippedNoCaption++;
+                // 确实没字幕(none) / 内容太短：在视频条目上永久标记，后续轮次跳过不再扣额度。
+                // timeout/error 不标记，留待重试（可能有字幕只是慢）。
+                if (transcript.status === 'none' || (transcript.status === 'ok' && transcript.text.length < 50)) {
+                    try {
+                        await prisma.rawPoolItem.update({
+                            where: { id: v.id },
+                            data: { metadata: { ...metaRecord(v.metadata), captionFetchStatus: 'none', captionCheckedAt: new Date().toISOString() } },
+                        });
+                    } catch { /* 标记失败无所谓，下轮重试 */ }
+                }
                 continue;
             }
 

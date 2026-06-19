@@ -21,12 +21,20 @@ export class SupadataQuotaError extends Error {
     }
 }
 
+export type TranscriptStatus =
+    | 'ok'        // 拿到字幕
+    | 'none'      // 确实没字幕（404 / 任务 failed / 内容空）→ 调用方应永久标记跳过
+    | 'timeout'   // 202 异步任务未在轮询窗口内完成 → 可能有，留待重试，别标记
+    | 'error';    // 其他错误 → 留待重试
+
 export interface TranscriptResult {
     text: string;
     lang: string | null;
     availableLangs: string[];
-    /** 命中字幕时为 true；视频无字幕（404/transcript-unavailable）时为 false */
+    /** 命中字幕时为 true；视频无字幕/失败时为 false */
     available: boolean;
+    /** 细分状态，供调用方决定是否永久标记跳过（none）还是重试（timeout/error） */
+    status: TranscriptStatus;
 }
 
 function loadKeys(): string[] {
@@ -66,11 +74,11 @@ async function pollTranscriptJob(jobId: string, key: string, pollMs: number, max
         const data = await res.json().catch(() => null);
         const status = data && typeof data === 'object' ? (data as Record<string, unknown>).status : null;
         if (status === 'completed') return parseTranscript(data);
-        if (status === 'failed') return { text: '', lang: null, availableLangs: [], available: false };
+        if (status === 'failed') return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
         // queued / active：继续轮询
     }
-    // 超时仍未完成：按 unavailable 处理（不阻塞批量任务）
-    return { text: '', lang: null, availableLangs: [], available: false };
+    // 超时仍未完成：可能有字幕只是慢，标 timeout 留待重试（不永久跳过）
+    return { text: '', lang: null, availableLangs: [], available: false, status: 'timeout' };
 }
 
 /**
@@ -115,13 +123,13 @@ export async function fetchYoutubeTranscript(
             if (typeof jobId === 'string' && jobId) {
                 return await pollTranscriptJob(jobId, key, options.jobPollMs ?? 3000, options.jobMaxPolls ?? 8);
             }
-            return { text: '', lang: null, availableLangs: [], available: false };
+            return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
         }
 
-        // 404 / 这条视频无字幕：不是额度问题，直接返回 unavailable
+        // 404 / 这条视频无字幕：不是额度问题，永久标记跳过
         if (res.status === 404 || res.status === 206) {
             keyCursor = idx;
-            return { text: '', lang: null, availableLangs: [], available: false };
+            return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
         }
 
         // 429 限流 / 402 / 403 额度耗尽：换下一个 key
@@ -130,10 +138,10 @@ export async function fetchYoutubeTranscript(
             continue;
         }
 
-        // 其他错误（4xx/5xx）：当前 key 不一定坏，但这条视频拿不到，按 unavailable 处理并记录
+        // 其他错误（4xx/5xx）：当前 key 不一定坏，留待重试（不永久标记）
         const body = await res.text().catch(() => '');
         console.warn(`[supadata] ${url} -> HTTP ${res.status}: ${body.slice(0, 160)}`);
-        return { text: '', lang: null, availableLangs: [], available: false };
+        return { text: '', lang: null, availableLangs: [], available: false, status: 'error' };
     }
 
     throw new SupadataQuotaError(
@@ -157,7 +165,7 @@ async function fetchWithRetry(endpoint: string, key: string, retries: number): P
 
 function parseTranscript(data: unknown): TranscriptResult {
     if (!data || typeof data !== 'object') {
-        return { text: '', lang: null, availableLangs: [], available: false };
+        return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
     }
     const obj = data as Record<string, unknown>;
     const content = obj.content;
@@ -174,7 +182,7 @@ function parseTranscript(data: unknown): TranscriptResult {
     const availableLangs = Array.isArray(obj.availableLangs)
         ? obj.availableLangs.filter((l): l is string => typeof l === 'string')
         : [];
-    return { text, lang, availableLangs, available: text.length > 0 };
+    return { text, lang, availableLangs, available: text.length > 0, status: text.length > 0 ? 'ok' : 'none' };
 }
 
 function normalizeVideoUrl(videoUrlOrId: string): string {
