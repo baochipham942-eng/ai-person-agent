@@ -107,9 +107,10 @@ model ThreadPersonLink {
 - 反查：Boris(`cmjxmgs83…`) → Loop Engineering（提出者）。
 - dev(4101) 实跑三面均正确渲染：主题页「关键人物/谁在定义这个主题/Boris Cherny/提出者」、主页「当期主题 + 三条 thread」、Boris 人物页「当前卷入的主题/Loop Engineering」。
 
-待办（数据，不改代码）：
-1. 把 Addy Osmani、Geoffrey Huntley 走正常入库流程补进 People（补后主题页自动出 3 人，无需改代码）。
-2. 给 agentic-coding / context-engineering 策展 grounded 关键人物（往 CURATED_THREADS 对应条目的 `people` 加数据）。
+待办推进（2026-06-19 完成）：
+1. ✅ Addy Osmani、Geoffrey Huntley、Phil Schmid 已入库（`scripts/enrich/add_thread_people.ts`，Wikidata 免费路径，无付费 API；无 Wikidata 命中走 TEMP qid，status=pending）。loop-engineering 现渲染 3/3 人。
+2. ✅ agentic-coding 补 Boris Cherny（推动者）；context-engineering 补 Phil Schmid（提出者）+ Andrej Karpathy（推动者）。审计 6/6 全匹配、0 待确认。
+3. 可选后续（付费 API，按需手动）：对新入库的 3 人跑 recrawl_robust / enrich_openalex / enrich_topics_highlights / fix_missing_avatars 补全头像、影响力分、话题（当前为 pending 稀疏档）。
 
 ## 7. 验收
 

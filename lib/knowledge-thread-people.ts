@@ -94,8 +94,16 @@ const CURATED_THREADS: CuratedThreadSeed[] = [
       'coding agent 从「一次性生成代码」进化成「理解→调用工具→改代码→验证→沉淀流程」的闭环，正在重塑开发工作流。',
     topics: ['AI Coding', 'Agent'],
     priority: 90,
-    // 关键人物待 grounded 后补（见 docs/homepage-ia-redesign.md 与 audit 脚本）。
-    people: [],
+    people: [
+      {
+        name: 'Boris Cherny',
+        aliases: ['bcherny'],
+        relation: 'driver',
+        summary:
+          'Claude Code 创建者，把 agentic coding 工具做成可日常使用的产品，是「让 agent 真正写代码」这条线的核心推动者。',
+        sourceIds: ['tx_every_claude_code_builders', 'sig_anthropic_claude_code_expertise'],
+      },
+    ],
   },
   {
     slug: 'context-engineering',
@@ -104,7 +112,24 @@ const CURATED_THREADS: CuratedThreadSeed[] = [
       '当 prompt engineering 不够用，如何为 agent 分层组织系统指令、记忆、检索、工具返回与状态，成为新的核心工程能力。',
     topics: ['AI Coding', 'Agent'],
     priority: 80,
-    people: [],
+    people: [
+      {
+        name: 'Phil Schmid',
+        aliases: ['Philipp Schmid', 'philschmid', '_philschmid'],
+        relation: 'proposer',
+        summary:
+          '撰写定义性博客《The New Skill in AI is Not Prompting, It is Context Engineering》，把「上下文工程」从模糊概念讲清成一项可操作的工程技能。',
+        sourceIds: ['sig_phil_schmid_context_engineering'],
+      },
+      {
+        name: 'Andrej Karpathy',
+        aliases: ['karpathy'],
+        relation: 'driver',
+        summary:
+          '公开把重心从 prompt engineering 转向 context engineering 的代表声音，推动这一框架进入主流视野。',
+        sourceIds: ['sig_phil_schmid_context_engineering'],
+      },
+    ],
   },
 ];
 
