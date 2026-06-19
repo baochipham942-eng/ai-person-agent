@@ -5,7 +5,9 @@ import useSWR, { preload } from 'swr';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { ResearcherCard, SharedSvgDefs } from './ResearcherCard';
 import { ActivityFeed } from './ActivityFeed';
+import { CurrentThreadsStream } from './CurrentThreadsStream';
 import type { ActivityEvent } from '@/lib/activity';
+import type { FeaturedThread } from '@/lib/knowledge-thread-people';
 import {
   DIRECTORY_ORGANIZATION_GROUPS,
   DIRECTORY_ROLES,
@@ -60,9 +62,10 @@ interface ResearcherDirectoryProps {
   initialData: DirectoryResponse;
   initialFilters: DirectoryFilters;
   initialActivity?: ActivityEvent[];
+  featuredThreads?: FeaturedThread[];
 }
 
-export function ResearcherDirectory({ initialData, initialFilters, initialActivity }: ResearcherDirectoryProps) {
+export function ResearcherDirectory({ initialData, initialFilters, initialActivity, featuredThreads = [] }: ResearcherDirectoryProps) {
   const [filters, setFilters] = useState<DirectoryFilters>(initialFilters);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(initialFilters.search);
@@ -369,6 +372,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
+        {featuredThreads.length > 0 && <CurrentThreadsStream threads={featuredThreads} />}
         <section className="min-w-0">
           <div className="mb-3 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
             <ActivityFeed

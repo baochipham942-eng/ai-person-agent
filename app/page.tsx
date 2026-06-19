@@ -9,6 +9,7 @@ import {
 } from '@/lib/person-directory-config';
 import { fetchPersonDirectory } from '@/lib/person-directory';
 import { fetchActivityEvents, type ActivityEvent } from '@/lib/activity';
+import { listFeaturedThreads } from '@/lib/knowledge-thread-people';
 
 const INITIAL_DIRECTORY_TIMEOUT_MS = 6000;
 const INITIAL_ACTIVITY_TIMEOUT_MS = 6000;
@@ -180,12 +181,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     }),
   ]);
 
+  const featuredThreads = listFeaturedThreads(3);
+
   return (
     <Suspense fallback={<LoadingFallback />}>
       <ResearcherDirectory
         initialData={initialData}
         initialFilters={initialFilters}
         initialActivity={initialActivity}
+        featuredThreads={featuredThreads}
       />
     </Suspense>
   );

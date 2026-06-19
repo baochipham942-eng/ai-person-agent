@@ -14,6 +14,7 @@ import {
     normalizeTopicRanks,
 } from '@/lib/utils/person-json';
 import { normalizeDirectoryTopic, normalizeDirectoryTopics } from '@/lib/person-directory-config';
+import { getThreadsForPerson } from '@/lib/knowledge-thread-people';
 
 interface PersonRoleRow {
     id: string;
@@ -279,6 +280,8 @@ async function fetchPersonPageData(id: string) {
         githubStars: person.githubStars,
         weeklyViewCount: person.weeklyViewCount,
         aliases: person.aliases,
+        // 当前卷入的主题（人 ↔ 主题这条边的人物侧；纯内存反查策展数据）
+        involvedThreads: getThreadsForPerson({ name: person.name, aliases: person.aliases || [] }),
         officialLinks: normalizeOfficialLinks(person.officialLinks),
         // 话题和排名
         topics: normalizeDirectoryTopics(person.topics || []),
