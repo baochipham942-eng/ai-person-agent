@@ -4,10 +4,8 @@ import { useEffect, useState, useRef, useCallback, useMemo, memo } from 'react';
 import useSWR, { preload } from 'swr';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { ResearcherCard, SharedSvgDefs } from './ResearcherCard';
-import { ActivityFeed } from './ActivityFeed';
-import { CurrentThreadsStream } from './CurrentThreadsStream';
-import type { ActivityEvent } from '@/lib/activity';
-import type { FeaturedThread } from '@/lib/knowledge-thread-people';
+import { WeeklyPicksStream } from './WeeklyPicksStream';
+import type { FeaturedCard } from '@/lib/home/featured-cards';
 import {
   DIRECTORY_ORGANIZATION_GROUPS,
   DIRECTORY_ROLES,
@@ -61,11 +59,10 @@ const FILTER_MODES: Array<{ key: DirectoryViewMode; label: string }> = [
 interface ResearcherDirectoryProps {
   initialData: DirectoryResponse;
   initialFilters: DirectoryFilters;
-  initialActivity?: ActivityEvent[];
-  featuredThreads?: FeaturedThread[];
+  initialWeeklyPicks?: FeaturedCard[];
 }
 
-export function ResearcherDirectory({ initialData, initialFilters, initialActivity, featuredThreads = [] }: ResearcherDirectoryProps) {
+export function ResearcherDirectory({ initialData, initialFilters, initialWeeklyPicks }: ResearcherDirectoryProps) {
   const [filters, setFilters] = useState<DirectoryFilters>(initialFilters);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(initialFilters.search);
@@ -298,7 +295,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
   const loading = (isLoading || isFallbackData) && page === 1 && allPeople.length === 0;
   const loadingMore = isValidating && page > 1;
   const hasLoadError = Boolean(error && allPeople.length === 0);
-  const shouldUseInitialActivity = selectedTopic === initialFilters.topic && selectedOrg === initialFilters.organization;
+  const shouldUseInitialWeeklyPicks = selectedTopic === initialFilters.topic && selectedOrg === initialFilters.organization;
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -372,16 +369,12 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
-        {featuredThreads.length > 0 && <CurrentThreadsStream threads={featuredThreads} />}
+        <WeeklyPicksStream
+          topic={selectedTopic}
+          organization={selectedOrg}
+          initialCards={shouldUseInitialWeeklyPicks ? initialWeeklyPicks : undefined}
+        />
         <section className="min-w-0">
-          <div className="mb-3 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
-            <ActivityFeed
-              topic={selectedTopic}
-              organization={selectedOrg}
-              initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
-            />
-          </div>
-
           <div className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
             <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-5 gap-y-3">
               <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">
