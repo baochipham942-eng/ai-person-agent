@@ -20,10 +20,20 @@ loadEnv({ path: '.env' });
 loadEnv({ path: '.env.local' });
 
 import { prisma } from '../../lib/db/prisma';
-import { fetchExaContents } from '../../lib/datasources/exa';
+import { fetchArticleText } from '../../lib/datasources/jina-reader';
 import { extractContentKeywords } from '../../lib/ai/extract-keywords';
 
+// 兜底：Jina 抓取较慢有空闲，Neon WebSocket 可能断连抛未捕获 'error' 杀进程
+process.on('unhandledRejection', e => console.warn('[unhandledRejection]', String(e).slice(0, 160)));
+process.on('uncaughtException', e => console.warn('[uncaughtException]', String(e).slice(0, 160)));
+
 const DEFAULT_TYPES = ['official', 'personal_site', 'news', 'biography'];
+// 正文残缺判定：偏薄（落地页/摘要）或卡在 5000 截断（长文后半截没抓到）
+const THIN_MAX = 800;
+const TRUNCATED_MIN = 4900;
+function isIncomplete(len: number): boolean {
+    return len < THIN_MAX || len >= TRUNCATED_MIN;
+}
 
 interface Options {
     execute: boolean;
@@ -81,42 +91,51 @@ async function main() {
         where: { sourceType: { in: opts.types }, ...(personFilter ? { personId: personFilter } : {}) },
         select: { id: true, url: true, title: true, text: true, metadata: true },
     });
-    const need = rows.filter(r => !hasKeywords(r.metadata)).slice(0, opts.limit);
-    console.log(`命中 ${rows.length} 条，缺关键词 ${rows.filter(r => !hasKeywords(r.metadata)).length} 条，本轮处理 ${need.length} 条`);
 
-    // 可选：批量重抓全文（Exa /contents），仅当目标正文偏短/疑似截断时才重抓以省额度
-    const rescraped = new Map<string, string>();
-    if (opts.rescrape && opts.execute) {
-        const urls = need
-            .filter(r => /^https?:\/\//.test(r.url) && (r.text?.length ?? 0) >= 4500) // 接近 5000 截断的优先重抓
-            .map(r => r.url);
-        console.log(`[rescrape] 对 ${urls.length} 条疑似截断的正文重抓全文…`);
-        for (let i = 0; i < urls.length; i += 50) {
-            const batch = urls.slice(i, i + 50);
-            const map = await fetchExaContents(batch, 12000);
-            for (const [u, v] of map) if (v.text.length > 0) rescraped.set(u, v.text);
-        }
-        console.log(`[rescrape] 成功重抓 ${rescraped.size} 条`);
+    // 两种模式：
+    //   --rescrape：按正文残缺度选目标（薄/截断），Jina 重抓全文 → 更新正文 → 重抽关键词
+    //   默认：缺关键词的条目，用现有正文抽关键词
+    const need = (opts.rescrape
+        ? rows.filter(r =>
+            /^https?:\/\//.test(r.url)
+            && isIncomplete(r.text?.length ?? 0)
+            && metaRecord(r.metadata).rescrapeStatus !== 'failed') // 上轮重抓失败的不反复试
+        : rows.filter(r => !hasKeywords(r.metadata))
+    ).slice(0, opts.limit);
+
+    if (opts.rescrape) {
+        const incomplete = rows.filter(r => /^https?:\/\//.test(r.url) && isIncomplete(r.text?.length ?? 0)).length;
+        console.log(`命中 ${rows.length} 条，正文残缺(薄/截断) ${incomplete} 条，本轮重抓 ${need.length} 条（Jina）`);
+    } else {
+        console.log(`命中 ${rows.length} 条，缺关键词 ${rows.filter(r => !hasKeywords(r.metadata)).length} 条，本轮处理 ${need.length} 条`);
     }
 
     let done = 0;
     let textUpgraded = 0;
     for (let i = 0; i < need.length; i++) {
         const r = need[i];
+        const oldLen = r.text?.length ?? 0;
         if (!opts.execute) { done++; continue; }
 
-        const fuller = rescraped.get(r.url);
-        const text = fuller && fuller.length > (r.text?.length ?? 0) ? fuller : (r.text ?? '');
-        if (fuller && fuller.length > (r.text?.length ?? 0)) textUpgraded++;
-
-        if (!text || text.length < 80) {
-            // 正文太薄，跳过关键词提取（标记一下避免反复重试）
-            await prisma.rawPoolItem.update({
-                where: { id: r.id },
-                data: { metadata: { ...metaRecord(r.metadata), keywords: [], keywordSkipped: 'text_too_short' } },
-            });
-            continue;
+        // rescrape 模式：先 Jina 抓全文
+        let text = r.text ?? '';
+        if (opts.rescrape) {
+            const fetched = await fetchArticleText(r.url, { maxChars: 15000 });
+            if (fetched.ok && fetched.text.length > oldLen) {
+                text = fetched.text;
+                textUpgraded++;
+            } else if (!fetched.ok) {
+                // 抓取失败：标记避免下轮反复试
+                try {
+                    await prisma.rawPoolItem.update({
+                        where: { id: r.id },
+                        data: { metadata: { ...metaRecord(r.metadata), rescrapeStatus: 'failed' } },
+                    });
+                } catch { /* ignore */ }
+            }
         }
+
+        if (!text || text.length < 80) continue;
 
         try {
             const kw = await extractContentKeywords(r.title, text, { contentType: '官方博客/文章' });
@@ -124,17 +143,21 @@ async function main() {
                 where: { id: r.id },
                 data: {
                     text: text !== (r.text ?? '') ? text : undefined,
-                    metadata: { ...metaRecord(r.metadata), keywords: kw.keywords, entities: kw.entities, contentTopics: kw.topics, gist: kw.gist },
+                    metadata: {
+                        ...metaRecord(r.metadata),
+                        keywords: kw.keywords, entities: kw.entities, contentTopics: kw.topics, gist: kw.gist,
+                        ...(opts.rescrape && text !== (r.text ?? '') ? { rescrapeStatus: 'ok', fullTextSource: 'jina' } : {}),
+                    },
                 },
             });
             done++;
-            if (!opts.quiet && done % 10 === 0) console.log(`  ${done}/${need.length}`);
+            if (!opts.quiet && done % 5 === 0) console.log(`  ${done}/${need.length}（全文升级 ${textUpgraded}）`);
         } catch (e) {
             console.warn(`  跳过 ${r.url}: ${(e as Error).message.slice(0, 120)}`);
         }
     }
 
-    console.log(`\n📊 ${done} 条${opts.execute ? '已' : '将'}补关键词${opts.rescrape ? `，全文升级 ${textUpgraded} 条` : ''}`);
+    console.log(`\n📊 ${done} 条${opts.execute ? '已' : '将'}处理${opts.rescrape ? `，全文升级 ${textUpgraded} 条` : '（补关键词）'}`);
     if (!opts.execute) console.log(`（DRY-RUN，未写库。加 --execute 执行）`);
 
     await prisma.$disconnect();
