@@ -47,6 +47,15 @@ export interface FetchActivityParams {
 
 const ACTIVITY_SOURCE_TYPES = ['openalex', 'github', 'youtube', 'exa', 'podcast', 'career'];
 const DEFAULT_ACTIVITY_REVIEW_STATUSES = ['auto', 'confirmed', 'trusted'];
+const LOW_SIGNAL_SOURCE_KINDS = new Set(['youtube_caption']);
+const LOW_SIGNAL_TITLE_PATTERNS = [
+  /\bwtf\b/i,
+  /\bwhat\s+the\s+f/i,
+  /\bwhat\s+is\s+going\s+on\b/i,
+  /\byou\s+won'?t\s+believe\b/i,
+  /\b(mind[-\s]?blowing|shocking|insane|crazy)\b/i,
+  /[!?]{2,}/,
+];
 
 const SOURCE_TYPE_LABELS: Record<string, { eventType: ActivityEventType; sourceLabel: string }> = {
   openalex: { eventType: 'paper', sourceLabel: 'OpenAlex' },
@@ -107,6 +116,13 @@ async function fetchPersistedActivityEvents(
       confidence: true,
       evidenceNote: true,
       reviewStatus: true,
+      metadata: true,
+      sourceItem: {
+        select: {
+          publishedAt: true,
+          metadata: true,
+        },
+      },
       person: {
         select: {
           name: true,
@@ -116,37 +132,60 @@ async function fetchPersistedActivityEvents(
       },
     },
     orderBy: [{ occurredAt: 'desc' }, { detectedAt: 'desc' }],
-    take: limit,
+    take: Math.min(limit * 4, 96),
   });
 
   return rows
-    .map(row => ({
-      id: row.id,
-      personId: row.personId,
-      personName: row.person.name,
-      personAvatarUrl: row.person.avatarUrl,
-      personCurrentTitle: row.person.currentTitle,
-      eventType: normalizeEventType(row.eventType),
-      sourceType: row.sourceType,
-      title: row.title,
-      summary: row.summary,
-      url: row.url,
-      occurredAt: row.occurredAt ? row.occurredAt.toISOString() : null,
-      detectedAt: row.detectedAt.toISOString(),
-      topics: normalizeDirectoryTopics(row.topics),
-      organizations: row.organizations,
-      confidence: clampConfidence(row.confidence),
-      reviewStatus: row.reviewStatus || reviewStatusFromConfidence(row.confidence),
-      sourceLabel: SOURCE_TYPE_LABELS[row.sourceType]?.sourceLabel || row.sourceType,
-      importanceReason: buildImportanceReason({
-        eventType: normalizeEventType(row.eventType),
-        sourceLabel: SOURCE_TYPE_LABELS[row.sourceType]?.sourceLabel || row.sourceType,
-        topics: normalizeDirectoryTopics(row.topics),
+    .map(row => {
+      const eventType = normalizeEventType(row.eventType);
+      const title = normalizeActivityTitle(row.title);
+      const confidence = clampConfidence(row.confidence);
+      const reviewStatus = row.reviewStatus || reviewStatusFromConfidence(row.confidence);
+      const topics = normalizeDirectoryTopics(row.topics);
+      const sourceLabel = SOURCE_TYPE_LABELS[row.sourceType]?.sourceLabel || row.sourceType;
+
+      if (!isRecommendedActivity({
+        sourceType: row.sourceType,
+        eventType,
+        title,
+        confidence,
+        reviewStatus,
+        eventMetadata: asRecord(row.metadata),
+        sourceItemMetadata: asRecord(row.sourceItem?.metadata ?? null),
+        sourceItemPublishedAt: row.sourceItem?.publishedAt ?? null,
+      })) {
+        return null;
+      }
+
+      return {
+        id: row.id,
+        personId: row.personId,
+        personName: row.person.name,
+        personAvatarUrl: row.person.avatarUrl,
+        personCurrentTitle: row.person.currentTitle,
+        eventType,
+        sourceType: row.sourceType,
+        title,
+        summary: row.summary,
+        url: row.url,
+        occurredAt: row.occurredAt ? row.occurredAt.toISOString() : null,
+        detectedAt: row.detectedAt.toISOString(),
+        topics,
         organizations: row.organizations,
-        confidence: clampConfidence(row.confidence),
-        evidenceNote: row.evidenceNote,
-      }),
-    }))
+        confidence,
+        reviewStatus,
+        sourceLabel,
+        importanceReason: buildImportanceReason({
+          eventType,
+          sourceLabel,
+          topics,
+          organizations: row.organizations,
+          confidence,
+          evidenceNote: row.evidenceNote,
+        }),
+      };
+    })
+    .filter((event): event is ActivityEvent => Boolean(event))
     .sort((left, right) => eventTime(right) - eventTime(left));
 }
 
@@ -401,6 +440,21 @@ function toActivityEvent(row: {
   const metadataTags = metadata ? toStringArray(metadata.tags) : [];
   const topics = normalizeDirectoryTopics([...metadataTags, ...row.person.topics]).slice(0, 4);
   const occurredAt = row.publishedAt ?? row.fetchedAt;
+  const title = normalizeActivityTitle(row.title);
+  const confidence = readConfidence(metadata);
+  const reviewStatus = reviewStatusFromConfidence(confidence);
+
+  if (!isRecommendedActivity({
+    sourceType: row.sourceType,
+    eventType: sourceConfig.eventType,
+    title,
+    confidence,
+    reviewStatus,
+    sourceItemMetadata: metadata,
+    sourceItemPublishedAt: row.publishedAt,
+  })) {
+    return null;
+  }
 
   return {
     id: row.id,
@@ -410,22 +464,22 @@ function toActivityEvent(row: {
     personCurrentTitle: row.person.currentTitle,
     eventType: sourceConfig.eventType,
     sourceType: row.sourceType,
-    title: row.title,
+    title,
     summary: buildSummary(row.text),
     url: row.url,
     occurredAt: occurredAt ? occurredAt.toISOString() : null,
     detectedAt: row.fetchedAt.toISOString(),
     topics,
     organizations: uniqueStrings(row.person.organization).slice(0, 3),
-    confidence: readConfidence(metadata),
-    reviewStatus: reviewStatusFromConfidence(readConfidence(metadata)),
+    confidence,
+    reviewStatus,
     sourceLabel: sourceConfig.sourceLabel,
     importanceReason: buildImportanceReason({
       eventType: sourceConfig.eventType,
       sourceLabel: sourceConfig.sourceLabel,
       topics,
       organizations: uniqueStrings(row.person.organization).slice(0, 3),
-      confidence: readConfidence(metadata),
+      confidence,
       evidenceNote: readString(metadata?.evidenceNote) || readString(metadata?.sourceNote),
     }),
   };
@@ -559,7 +613,7 @@ function cleanShortUrl(value: string | null | undefined): string | null {
   return normalized && normalized !== 'null' ? normalized : null;
 }
 
-function asRecord(value: Prisma.JsonValue | null): Record<string, unknown> | null {
+function asRecord(value: unknown): Record<string, unknown> | null {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return null;
   return value as Record<string, unknown>;
 }
@@ -587,6 +641,22 @@ function readString(value: unknown): string | null {
   return typeof value === 'string' && value.trim().length > 0 ? value.trim() : null;
 }
 
+function normalizeActivityTitle(value: string): string {
+  return decodeBasicHtmlEntities(value)
+    .replace(/^YouTube\s*字幕[:：]\s*/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function decodeBasicHtmlEntities(value: string): string {
+  return value
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
 function clampConfidence(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
@@ -596,7 +666,59 @@ function reviewStatusFromConfidence(confidence: number): string {
 }
 
 function isDefaultPublishableActivity(event: ActivityEvent): boolean {
-  return DEFAULT_ACTIVITY_REVIEW_STATUSES.includes(event.reviewStatus) && event.confidence >= 0.7;
+  return DEFAULT_ACTIVITY_REVIEW_STATUSES.includes(event.reviewStatus)
+    && event.confidence >= 0.7
+    && isRecommendedActivityTitle(event.title, event.sourceType, event.eventType);
+}
+
+function isRecommendedActivity(input: {
+  sourceType: string;
+  eventType: ActivityEventType;
+  title: string;
+  confidence: number;
+  reviewStatus: string;
+  eventMetadata?: Record<string, unknown> | null;
+  sourceItemMetadata?: Record<string, unknown> | null;
+  sourceItemPublishedAt?: Date | null;
+}): boolean {
+  if (!DEFAULT_ACTIVITY_REVIEW_STATUSES.includes(input.reviewStatus) || input.confidence < 0.7) {
+    return false;
+  }
+
+  if (isLowSignalSourceImport(input.eventMetadata, input.sourceItemMetadata, input.sourceItemPublishedAt)) {
+    return false;
+  }
+
+  return isRecommendedActivityTitle(input.title, input.sourceType, input.eventType);
+}
+
+function isRecommendedActivityTitle(title: string, sourceType: string, eventType: ActivityEventType): boolean {
+  const normalized = title.trim();
+  if (!normalized) return false;
+
+  if (LOW_SIGNAL_TITLE_PATTERNS.some(pattern => pattern.test(normalized))) {
+    return false;
+  }
+
+  if (eventType === 'video' || sourceType === 'youtube' || sourceType === 'podcast') {
+    const lettersAndNumbers = normalized.replace(/[^\p{L}\p{N}]/gu, '');
+    return lettersAndNumbers.length >= 12;
+  }
+
+  return true;
+}
+
+function isLowSignalSourceImport(
+  eventMetadata: Record<string, unknown> | null | undefined,
+  sourceItemMetadata: Record<string, unknown> | null | undefined,
+  sourceItemPublishedAt: Date | null | undefined
+): boolean {
+  const eventSourceMetadata = asRecord(eventMetadata?.source ?? null);
+  const sourceKind = readString(sourceItemMetadata?.sourceKind)
+    || readString(eventMetadata?.sourceKind)
+    || readString(eventSourceMetadata?.sourceKind);
+
+  return Boolean(sourceKind && LOW_SIGNAL_SOURCE_KINDS.has(sourceKind) && !sourceItemPublishedAt);
 }
 
 function mergeActivityEvents(events: ActivityEvent[], limit: number): ActivityEvent[] {

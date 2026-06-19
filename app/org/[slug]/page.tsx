@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import Link from 'next/link';
 import {
   ActivitySection,
   CompanyEvidenceSection,
+  CompanyLearningSection,
   CompanyOverviewSection,
-  CoveragePanel,
   EntityHeader,
   EntityPageNav,
-  FacetCloud,
-  OrganizationRoleSection,
+  OrganizationRosterSection,
+  ReferenceTier,
   RelatedThreadsSection,
+  TOP_PEOPLE_LIMIT,
   TopPeopleSection,
   WorksSection,
 } from '@/components/entity/EntityPageBlocks';
@@ -18,6 +18,7 @@ import { buildEmptyCompanyIntelligence, fetchOrganizationPageData } from '@/lib/
 import {
   buildDirectoryHref,
   buildOrganizationHref,
+  type DirectoryPerson,
 } from '@/lib/person-directory-config';
 
 interface OrganizationPageProps {
@@ -37,8 +38,8 @@ export async function generateMetadata({ params }: OrganizationPageProps): Promi
   const organization = decodeRouteParam(slug);
 
   return {
-    title: `${organization} AI intelligence | AI 人物库`,
-    description: `查看 ${organization} 的公司级 AI 证据、相关知识线程、关键人物、履历线索和近期动态。`,
+    title: `${organization} 公司页 | AI 人物库`,
+    description: `查看 ${organization} 的 AI 产品线、相关技术主题、公司来源和关键人物。`,
   };
 }
 
@@ -48,9 +49,9 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
   const data = await loadOrganizationPageData(organization);
   const companyIntelligence = data.companyIntelligence ?? buildEmptyCompanyIntelligence();
   const displayName = companyIntelligence.displayName || organization;
-  const threadEvidenceCount = new Set(
-    companyIntelligence.relatedThreads.flatMap(thread => thread.evidenceSourceIds)
-  ).size;
+  const coreProductCount = getCompanyCoreProductCount(displayName, companyIntelligence.products.length);
+  const learningResourceCount = getCompanyLearningResourceCount(displayName);
+  const rankedPeople = rankPeopleForCompany(data.people, displayName);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -65,16 +66,15 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
           title={displayName}
           logoUrl={companyIntelligence.logoUrl}
           logoAlt={`${displayName} logo`}
-          description={`围绕 ${displayName} 汇总公司级 AI 证据、相关知识线程、关键人物、历史履历和近期事件。公司证据缺失时会明确展示空态，不用人物动态冒充公司证据。`}
+          description={getCompanyHeroDescription(displayName)}
           metaItems={[
             companyIntelligence.homepageUrl ? { label: '官网', value: companyIntelligence.homepageUrl.replace(/^https?:\/\//, '') } : null,
-            { label: '来源模式', value: companyIntelligence.sourceMode === 'db' ? 'CompanySource DB' : companyIntelligence.sourceMode },
           ].filter((item): item is { label: string; value: string } => Boolean(item))}
           stats={[
-            { label: '公司证据', value: companyIntelligence.coverage.evidenceCount },
-            { label: '关联产品', value: companyIntelligence.products.length },
-            { label: '知识线程', value: companyIntelligence.relatedThreads.length },
-            { label: '回链来源', value: threadEvidenceCount },
+            { label: '关键人物', value: data.people.length },
+            { label: '核心产品', value: coreProductCount },
+            { label: '官方好文', value: learningResourceCount },
+            { label: '来源材料', value: companyIntelligence.coverage.evidenceCount },
           ]}
           primaryAction={{
             label: '相关人物',
@@ -88,56 +88,32 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
           }}
         />
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
-          <div className="space-y-8">
-            <CompanyOverviewSection organization={displayName} intelligence={companyIntelligence} />
-            <RelatedThreadsSection threads={companyIntelligence.relatedThreads} />
-            <CompanyEvidenceSection intelligence={companyIntelligence} />
-            <TopPeopleSection people={data.people} />
-            <OrganizationRoleSection
-              title="当前关键人物"
-              people={data.currentPeople}
-              emptyText="当前履历仍在整理中。"
+        {/* 主阅读带：做什么 → 该读什么 → 谁在做 */}
+        <div className="space-y-8">
+          <CompanyOverviewSection organization={displayName} intelligence={companyIntelligence} />
+          <CompanyLearningSection organization={displayName} intelligence={companyIntelligence} />
+          {rankedPeople.length > 0 && (
+            <TopPeopleSection
+              people={rankedPeople}
+              description="按公司相关性排序：现任成员、创始团队和旗舰产品贡献者优先，再看综合影响力。"
             />
-            <OrganizationRoleSection
-              title="历史人物与 Alumni"
-              people={data.alumniPeople}
-              emptyText="历史履历仍在整理中。"
+          )}
+          {(data.currentPeople.length > 0 || data.alumniPeople.length > 0) && (
+            <OrganizationRosterSection
+              current={data.currentPeople}
+              alumni={data.alumniPeople}
+              excludeIds={rankedPeople.slice(0, TOP_PEOPLE_LIMIT).map(person => person.id)}
             />
-            <ActivitySection events={data.activity} title={`${displayName} 最近动态`} />
-            <WorksSection works={data.works} />
-          </div>
-
-          <aside className="space-y-8">
-            <CoveragePanel coverage={data.coverage} />
-            <FacetCloud
-              title="相关话题"
-              description="按相关人物的技术标签统计。"
-              facets={data.relatedTopics}
-              type="topic"
-            />
-            <section className="rounded-xl border border-stone-200 bg-white p-4 text-xs leading-5 text-stone-500 shadow-sm">
-              <div className="mb-2 text-sm font-medium text-stone-900">匹配口径</div>
-              <p>机构匹配会同时参考机构别名、人物简介、当前职位和履历表。显示待核时，说明来源置信度还不够高。</p>
-              {data.aliases.length > 1 && (
-                <div className="mt-3 flex flex-wrap gap-1">
-                  {data.aliases.slice(0, 6).map(alias => (
-                    <span key={alias} className="rounded-md bg-stone-50 px-1.5 py-0.5 text-[10px] text-stone-500 ring-1 ring-stone-200">
-                      {alias}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <Link
-                href={buildDirectoryHref({ view: 'organization', organization: displayName, sortBy: 'weeklyViewCount' })}
-                prefetch={false}
-                className="mt-3 inline-flex font-medium text-orange-600 hover:text-orange-700"
-              >
-                按最近热度查看
-              </Link>
-            </section>
-          </aside>
+          )}
         </div>
+
+        {/* 参考与来源：支撑上方判断的证据、主题与动态，按需展开 */}
+        <ReferenceTier>
+          <RelatedThreadsSection threads={companyIntelligence.relatedThreads} topics={data.relatedTopics} />
+          <CompanyEvidenceSection intelligence={companyIntelligence} />
+          {data.activity.length > 0 && <ActivitySection events={data.activity} title={`${displayName} 最近动态`} />}
+          {data.works.length > 0 && <WorksSection works={data.works} />}
+        </ReferenceTier>
       </main>
     </div>
   );
@@ -149,4 +125,51 @@ function decodeRouteParam(value: string): string {
   } catch {
     return value;
   }
+}
+
+function isAnthropicCompany(name: string): boolean {
+  return name.trim().toLowerCase() === 'anthropic';
+}
+
+// 公司页的人物排序：全局影响力是基线，但要让现任成员、创始团队和旗舰产品贡献者优先，
+// 否则学术影响力会盖过对这家公司真正关键的人（比如 Claude Code 创建者）。
+function getCompanyFlagshipKeywords(name: string): string[] {
+  if (isAnthropicCompany(name)) return ['claude code', 'mcp', 'agentic'];
+  return [];
+}
+
+function companyRelevanceScore(person: DirectoryPerson, flagshipKeywords: string[]): number {
+  let score = person.influenceScore || 0;
+  const match = person.organizationMatch;
+  if (match?.isCurrent || match?.status === 'current') score += 30;
+  const title = (person.currentTitle || '').toLowerCase();
+  const haystack = `${title} ${(person.description || '').toLowerCase()}`;
+  if (/found|创始|ceo|cto|chief/.test(title)) score += 45;
+  else if (/head|lead|director|\bvp\b|principal|负责人|主管/.test(title)) score += 20;
+  if (flagshipKeywords.some(keyword => haystack.includes(keyword))) score += 40;
+  return score;
+}
+
+function rankPeopleForCompany(people: DirectoryPerson[], organization: string): DirectoryPerson[] {
+  const flagshipKeywords = getCompanyFlagshipKeywords(organization);
+  return [...people].sort(
+    (a, b) => companyRelevanceScore(b, flagshipKeywords) - companyRelevanceScore(a, flagshipKeywords)
+  );
+}
+
+function getCompanyCoreProductCount(name: string, fallback: number): number {
+  if (isAnthropicCompany(name)) return 4;
+  return fallback;
+}
+
+function getCompanyLearningResourceCount(name: string): number {
+  if (isAnthropicCompany(name)) return 6;
+  return 0;
+}
+
+function getCompanyHeroDescription(name: string): string {
+  if (isAnthropicCompany(name)) {
+    return 'Anthropic 的公司页先看 Claude、Claude API、Claude Code 和安全研究怎样组成 AI 产品线，再看它和 Loop Engineering、Agentic Coding 等主题的关系。';
+  }
+  return `查看 ${name} 的 AI 产品线、相关技术主题、公司来源和关键人物。`;
 }

@@ -69,6 +69,19 @@ function parseTrailingJson(output, label) {
   }
 }
 
+function readGeneratedJson(filePath, label) {
+  if (!fs.existsSync(filePath)) {
+    addFailure(`${label}: expected output was not generated (${filePath})`);
+    return null;
+  }
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch (error) {
+    addFailure(`${label}: could not read generated JSON (${error.message})`);
+    return null;
+  }
+}
+
 function runStep(label, command, commandArgs) {
   const result = spawnSync(command, commandArgs, {
     cwd: ROOT,
@@ -190,20 +203,22 @@ function validateRuntimeDryRuns() {
     'scripts/audit/export_candidate_readiness.ts',
     `--out=${readinessOut}`,
   ]);
-  const readinessPayload = JSON.parse(fs.readFileSync(readinessOut, 'utf8'));
-  notes.push(`readiness export ok: ${JSON.stringify(readinessPayload.summary || {})}`);
+  const readinessPayload = readGeneratedJson(readinessOut, 'candidate readiness export');
+  if (readinessPayload) notes.push(`readiness export ok: ${JSON.stringify(readinessPayload.summary || {})}`);
 
   const promotionOut = path.join(os.tmpdir(), 'candidate_promotion_preflight.json');
   runStep('candidate promotion dry-run', 'bun', [
     'scripts/fix/promote_candidate_readiness.ts',
     `--out=${promotionOut}`,
   ]);
-  const promotionPayload = JSON.parse(fs.readFileSync(promotionOut, 'utf8'));
-  const promotionSummary = promotionPayload.summary || {};
-  if (policy.preflight.failOnHeldCandidates && Number(promotionSummary.held || 0) > 0) {
+  const promotionPayload = readGeneratedJson(promotionOut, 'candidate promotion dry-run');
+  const promotionSummary = promotionPayload?.summary || {};
+  if (promotionPayload && policy.preflight.failOnHeldCandidates && Number(promotionSummary.held || 0) > 0) {
     addFailure(`candidate promotion dry-run: held=${promotionSummary.held}`);
   }
-  notes.push(`promotion dry-run ok: candidates=${promotionSummary.candidates || 0}, promotable=${promotionSummary.promotable || 0}, held=${promotionSummary.held || 0}`);
+  if (promotionPayload) {
+    notes.push(`promotion dry-run ok: candidates=${promotionSummary.candidates || 0}, promotable=${promotionSummary.promotable || 0}, held=${promotionSummary.held || 0}`);
+  }
 
   if (policy.preflight.runContentGuard) {
     runStep('content guard', 'node', ['scripts/audit/check_content_review_guardrails.mjs']);
