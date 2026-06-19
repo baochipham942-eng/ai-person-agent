@@ -216,28 +216,34 @@ async function main() {
             const identity = buildRawPoolIdentity({ personId: v.personId, sourceType: 'youtube', url: v.url, metadata: captionMeta });
             const title = v.title.startsWith('YouTube 字幕：') ? v.title : `YouTube 字幕：${v.title}`;
 
-            await prisma.rawPoolItem.upsert({
-                where: { urlHash: identity.urlHash },
-                create: {
-                    personId: v.personId,
-                    sourceType: 'youtube',
-                    url: v.url,
-                    urlHash: identity.urlHash,
-                    contentHash: contentHash(transcript.text),
-                    title,
-                    text: transcript.text,
-                    publishedAt: new Date(),
-                    metadata: { ...captionMeta, rawPoolCanonicalKey: identity.canonicalKey },
-                    fetchStatus: 'success',
-                    fetchedAt: new Date(),
-                },
-                update: {
-                    text: transcript.text,
-                    contentHash: contentHash(transcript.text),
-                    metadata: { ...captionMeta, rawPoolCanonicalKey: identity.canonicalKey },
-                    fetchedAt: new Date(),
-                },
-            });
+            try {
+                await prisma.rawPoolItem.upsert({
+                    where: { urlHash: identity.urlHash },
+                    create: {
+                        personId: v.personId,
+                        sourceType: 'youtube',
+                        url: v.url,
+                        urlHash: identity.urlHash,
+                        contentHash: contentHash(transcript.text),
+                        title,
+                        text: transcript.text,
+                        publishedAt: new Date(),
+                        metadata: { ...captionMeta, rawPoolCanonicalKey: identity.canonicalKey },
+                        fetchStatus: 'success',
+                        fetchedAt: new Date(),
+                    },
+                    update: {
+                        text: transcript.text,
+                        contentHash: contentHash(transcript.text),
+                        metadata: { ...captionMeta, rawPoolCanonicalKey: identity.canonicalKey },
+                        fetchedAt: new Date(),
+                    },
+                });
+            } catch (e) {
+                // Neon 冷启动/连接抖动等：跳过这条，不让整批崩（已扣的 Supadata 额度记一笔损耗）
+                console.warn(`  [B] 落库失败（跳过，可重跑补）${v.url}: ${(e as Error).message.slice(0, 100)}`);
+                continue;
+            }
             captionsFetched++;
             if (!opts.quiet && captionsFetched % 5 === 0) {
                 console.log(`  [B] ${captionsFetched} 条字幕已落库（Supadata 调用 ${supadataCalls}）`);

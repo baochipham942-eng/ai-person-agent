@@ -45,6 +45,32 @@ interface FetchOptions {
     lang?: string;
     /** 单 key 网络错误重试次数 */
     retries?: number;
+    /** 异步任务轮询间隔 ms（默认 4000） */
+    jobPollMs?: number;
+    /** 异步任务最大轮询次数（默认 15，约 1 分钟） */
+    jobMaxPolls?: number;
+}
+
+/** 轮询 Supadata 异步任务（202 返回的 jobId）直到 completed/failed/超时 */
+async function pollTranscriptJob(jobId: string, key: string, pollMs: number, maxPolls: number): Promise<TranscriptResult> {
+    const endpoint = `${SUPADATA_BASE_URL}/transcript/${jobId}`;
+    for (let i = 0; i < maxPolls; i++) {
+        await sleep(pollMs);
+        let res: Response;
+        try {
+            res = await fetch(endpoint, { headers: { 'x-api-key': key } });
+        } catch {
+            continue; // 网络抖动，下一轮再试
+        }
+        if (res.status !== 200) continue;
+        const data = await res.json().catch(() => null);
+        const status = data && typeof data === 'object' ? (data as Record<string, unknown>).status : null;
+        if (status === 'completed') return parseTranscript(data);
+        if (status === 'failed') return { text: '', lang: null, availableLangs: [], available: false };
+        // queued / active：继续轮询
+    }
+    // 超时仍未完成：按 unavailable 处理（不阻塞批量任务）
+    return { text: '', lang: null, availableLangs: [], available: false };
 }
 
 /**
@@ -79,6 +105,17 @@ export async function fetchYoutubeTranscript(
             keyCursor = idx; // 记住这个能用的 key
             const data = await res.json().catch(() => null);
             return parseTranscript(data);
+        }
+
+        // 202：长视频走异步任务，返回 jobId，需轮询任务结果（不额外计费，同一 job）
+        if (res.status === 202) {
+            keyCursor = idx;
+            const data = await res.json().catch(() => null);
+            const jobId = data && typeof data === 'object' ? (data as Record<string, unknown>).jobId : null;
+            if (typeof jobId === 'string' && jobId) {
+                return await pollTranscriptJob(jobId, key, options.jobPollMs ?? 3000, options.jobMaxPolls ?? 8);
+            }
+            return { text: '', lang: null, availableLangs: [], available: false };
         }
 
         // 404 / 这条视频无字幕：不是额度问题，直接返回 unavailable
