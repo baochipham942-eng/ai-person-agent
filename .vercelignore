@@ -7,6 +7,11 @@ node_modules
 .codex
 .code-agent
 docs
+!docs/company/
+!docs/company/anthropic-evidence-seed.json
+!docs/knowledge-threads/
+!docs/knowledge-threads/agentic-coding-sources.candidates.json
+!docs/knowledge-threads/ai-evals-sources.candidates.json
 exports
 proxy
 *.tsbuildinfo
