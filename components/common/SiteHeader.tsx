@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { CompareNavLink } from '@/components/common/CompareNavLink';
 import { UserMenu } from '@/components/common/UserMenu';
 
-type SiteHeaderCurrent = 'home' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist' | 'courses';
+type SiteHeaderCurrent = 'home' | 'organizations' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist' | 'courses';
 type SiteHeaderWidth = '5xl' | '6xl' | '7xl';
 
 interface SiteHeaderProps {
@@ -15,6 +15,7 @@ interface SiteHeaderProps {
 
 const CONTENT_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
   { key: 'home', href: '/', label: '推荐人物' },
+  { key: 'organizations', href: '/org', label: '公司' },
   { key: 'digest', href: '/digest', label: '本周动态' },
   { key: 'courses', href: '/courses', label: 'AI 课程' },
   { key: 'compareReports', href: '/compare/reports', label: '人物对比' },

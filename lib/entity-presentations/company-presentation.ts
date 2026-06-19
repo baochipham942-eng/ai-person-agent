@@ -2534,6 +2534,23 @@ export function getCompanyPresentationSeed(name: string): CompanyPresentation | 
   return COMPANY_PRESENTATIONS[key] ?? (aliasKey ? COMPANY_PRESENTATIONS[aliasKey] : null) ?? null;
 }
 
+/** 把任意公司名解析成其策展页的「规范 key」（含 alias）；没有策展页返回 null。 */
+export function resolveCompanyPresentationKey(name: string): string | null {
+  const key = companyKey(name);
+  if (COMPANY_PRESENTATIONS[key]) return key;
+  const aliasKey = COMPANY_PRESENTATION_ALIASES[key];
+  if (aliasKey && COMPANY_PRESENTATIONS[aliasKey]) return aliasKey;
+  return null;
+}
+
+/** 已注册策展页的全部规范 key（公司目录上架白名单）。 */
+export const COMPANY_PRESENTATION_KEYS = Object.keys(COMPANY_PRESENTATIONS);
+
+/** 按 key 取策展页（不走名称/alias 解析）。 */
+export function getCompanyPresentationByKey(key: string): CompanyPresentation | null {
+  return COMPANY_PRESENTATIONS[key] ?? null;
+}
+
 const COMPANY_PRESENTATION_ALIASES: Record<string, string> = {
   '阿里巴巴': 'alibaba-damo-academy',
   '阿里云': 'alibaba-damo-academy',
