@@ -35,6 +35,8 @@ interface Course {
 interface CourseSectionProps {
   personId: string;
   courseCount?: number;
+  /** 作为「成果与资料」tab 内嵌渲染时为 true：去掉外层卡片外壳，避免卡中卡 */
+  bare?: boolean;
 }
 
 type CourseTypeFilter = 'all' | 'free' | 'paid';
@@ -82,7 +84,7 @@ function formatRating(rating?: number): string {
 
 // ============== 组件 ==============
 
-export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps) {
+export function CourseSection({ personId, courseCount = 0, bare = false }: CourseSectionProps) {
   const { sectionRef, isVisible } = useSectionVisibility<HTMLElement>();
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(false);
@@ -146,18 +148,20 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
   });
 
   return (
-    <section ref={sectionRef} className="card-base overflow-hidden">
+    <section ref={sectionRef} className={bare ? '' : 'card-base overflow-hidden'}>
       {/* 标题栏 */}
-      <div className="px-5 py-3 border-b border-stone-100">
-        <div className="flex items-center gap-2">
-          <span className="text-base">🎓</span>
-          <h2 className="text-sm font-medium text-stone-900">TA 的课程</h2>
-          <span className="text-xs text-stone-400">({courseCount})</span>
-        </div>
+      <div className={bare ? 'pb-2' : 'px-5 py-3 border-b border-stone-100'}>
+        {!bare && (
+          <div className="flex items-center gap-2">
+            <span className="text-base">🎓</span>
+            <h2 className="text-sm font-medium text-stone-900">TA 的课程</h2>
+            <span className="text-xs text-stone-400">({courseCount})</span>
+          </div>
+        )}
 
         {/* 类型筛选 */}
         {courses.length > 0 && (
-          <div className="flex gap-1.5 mt-3">
+          <div className={`flex gap-1.5 ${bare ? '' : 'mt-3'}`}>
             {Object.entries(TYPE_CONFIG).map(([key, { label }]) => {
               const count =
                 key === 'all'
@@ -186,7 +190,7 @@ export function CourseSection({ personId, courseCount = 0 }: CourseSectionProps)
       </div>
 
       {/* 内容区域 */}
-      <div className="p-5">
+      <div className={bare ? '' : 'p-5'}>
         {!isVisible || loading ? (
           <div className="flex items-center justify-center py-8">
             <div

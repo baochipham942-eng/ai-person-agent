@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { buildTopicHref, getDirectoryTopicIcon } from '@/lib/person-directory-config';
 import { resolveCanonicalWork } from '@/lib/work-taxonomy';
+import { VideoSection } from './VideoSection';
+import { CourseSection } from './CourseSection';
 
 interface Product {
   name: string;
@@ -115,10 +117,12 @@ interface FeaturedWorksProps {
   githubCount?: number;  // GitHub 开源项目数量
   blogCount?: number;    // 博客文章数量
   xCount?: number;       // X 动态数量
+  videoCount?: number;   // 视频数量（收编为 tab）
+  courseCount?: number;  // 课程数量（收编为 tab）
   workSlugs?: string[];  // 该人物已实体化的作品 slug，用于把产品卡链到 /work 实体页
 }
 
-type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs' | 'x' | 'podcast';
+type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs' | 'x' | 'video' | 'podcast' | 'course';
 
 // 排名徽章样式
 function getRankBadgeStyle(rank: number): string {
@@ -183,7 +187,7 @@ const CARD_TYPE_CONFIG: Record<string, { icon: string; label: string; color: str
   fact: { icon: '📊', label: '事实', color: 'border-l-cyan-400' },
 };
 
-export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount, githubCount, blogCount, xCount, workSlugs }: FeaturedWorksProps) {
+export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount, githubCount, blogCount, xCount, videoCount, courseCount, workSlugs }: FeaturedWorksProps) {
   const workSlugSet = useMemo(() => new Set(workSlugs || []), [workSlugs]);
   const [showAllPapers, setShowAllPapers] = useState(false);
   const [showAllCards, setShowAllCards] = useState(false);
@@ -244,7 +248,9 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const hasOpensource = !!personId && (githubCount ?? 0) > 0;
   const hasBlogs = !!personId && (blogCount ?? 0) > 0;
   const hasX = !!personId && (xCount ?? 0) > 0;
+  const hasVideo = !!personId && (videoCount ?? 0) > 0;
   const hasPodcast = (podcastCount ?? 0) > 0;
+  const hasCourse = !!personId && (courseCount ?? 0) > 0;
 
   // 构建可用的 tabs - 使用 useMemo 避免重复计算
   const tabs = useMemo(() => {
@@ -261,10 +267,14 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     if (hasBlogs) result.push({ key: 'blogs', label: '博客', count: blogCount });
     // X 动态 tab
     if (hasX) result.push({ key: 'x', label: 'X动态', count: xCount });
+    // 视频 tab（原独立模块收编，统一"这人产出的内容"= tab）
+    if (hasVideo) result.push({ key: 'video', label: '视频', count: videoCount });
     // 播客 tab
     if (hasPodcast) result.push({ key: 'podcast', label: '播客', count: podcastCount });
+    // 课程 tab（原独立模块收编）
+    if (hasCourse) result.push({ key: 'course', label: '课程', count: courseCount });
     return result;
-  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasX, hasPodcast, realProducts.length, githubCount, papers?.length, topicContributions.length, cards?.length, blogCount, xCount, podcastCount]);
+  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasX, hasVideo, hasPodcast, hasCourse, realProducts.length, githubCount, papers?.length, topicContributions.length, cards?.length, blogCount, xCount, videoCount, podcastCount, courseCount]);
 
   // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
   const validInitialTab = useMemo(() => {
@@ -989,6 +999,16 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
               )
             )}
           </div>
+        )}
+
+        {/* 视频（原独立模块，收编为 tab，bare 模式去卡壳） */}
+        {activeTab === 'video' && personId && (
+          <VideoSection personId={personId} videoCount={videoCount ?? 0} bare />
+        )}
+
+        {/* 课程（原独立模块，收编为 tab） */}
+        {activeTab === 'course' && personId && (
+          <CourseSection personId={personId} courseCount={courseCount ?? 0} bare />
         )}
       </div>
     </section>

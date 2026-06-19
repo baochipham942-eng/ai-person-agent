@@ -12,8 +12,6 @@ import {
   InfluenceBreakdown,
   RecentActivity,
   FeaturedWorks,
-  VideoSection,
-  CourseSection,
   RelatedPeople,
   RelationshipGraphExplorer,
 } from './sections';
@@ -299,7 +297,7 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
           }}
         />
 
-        {/* 2. 为什么值得关注 + 代表语录 */}
+        {/* 2. 为什么值得关注 + 代表语录（价值钩子） */}
         {person.whyImportant && (
           <CoreContribution
             content={person.whyImportant}
@@ -307,26 +305,8 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
           />
         )}
 
-        <InfluenceBreakdown
-          influenceScore={person.influenceScore}
-          citationCount={person.citationCount}
-          hIndex={person.hIndex}
-          githubStars={person.githubStars}
-          weeklyViewCount={person.weeklyViewCount}
-          sourceTypeCounts={person.sourceTypeCounts || {}}
-          products={person.products}
-          personRoles={person.personRoles}
-          cards={person.cards}
-        />
-
-        <RecentActivity personId={person.id} />
-
-        {/* 当前卷入的主题（人 ↔ 主题这条边的人物侧） */}
-        {person.involvedThreads && person.involvedThreads.length > 0 && (
-          <InvolvedThreads threads={person.involvedThreads} />
-        )}
-
-        {/* 4. 代表作品（代表成果/开源项目/核心论文/话题贡献/学习卡片/博客/X动态/播客） */}
+        {/* 3. 成果与资料 —— TA 做出了什么（主角，价值密度最高，前置不埋底）
+            统一承载：代表成果/开源/论文/话题贡献/学习卡片/博客/X动态/视频/播客/课程 */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}
@@ -341,27 +321,37 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
           githubCount={githubCount}
           blogCount={blogCount}
           xCount={xCount}
+          videoCount={videoCount}
+          courseCount={person.courseCount || 0}
           workSlugs={person.workSlugs}
         />
 
-        {/* 5. 视频内容 */}
-        <VideoSection
-          personId={person.id}
-          videoCount={videoCount}
-        />
+        {/* 4. 当前卷入的主题 —— TA 在定义哪些当期 AI 热点（人 ↔ 主题边的人物侧） */}
+        {person.involvedThreads && person.involvedThreads.length > 0 && (
+          <InvolvedThreads threads={person.involvedThreads} />
+        )}
 
-        {/* 6. 课程 */}
-        <CourseSection
-          personId={person.id}
-          courseCount={person.courseCount || 0}
-        />
+        {/* 5. 最近变化 —— TA 最近在做什么（动态流，次于代表成果） */}
+        <RecentActivity personId={person.id} />
 
-        {/* 7. 关联人物 */}
+        {/* 6. 关联人物 + 关系图谱 —— 谁与 TA 相关 */}
         {person.relations && person.relations.length > 0 && (
           <RelatedPeople centerName={person.name} relations={person.relations} />
         )}
-
         <RelationshipGraphExplorer personId={person.id} />
+
+        {/* 7. 影响力评分构成 —— 内部排序参考，安静层，默认折叠，无信号自动隐藏 */}
+        <InfluenceBreakdown
+          influenceScore={person.influenceScore}
+          citationCount={person.citationCount}
+          hIndex={person.hIndex}
+          githubStars={person.githubStars}
+          weeklyViewCount={person.weeklyViewCount}
+          sourceTypeCounts={person.sourceTypeCounts || {}}
+          products={person.products}
+          personRoles={person.personRoles}
+          cards={person.cards}
+        />
       </main>
     </div>
   );

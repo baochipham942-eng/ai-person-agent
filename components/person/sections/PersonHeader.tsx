@@ -254,7 +254,7 @@ function isTrustedRole(role: PersonRole): boolean {
 
 export function PersonHeader({ person }: PersonHeaderProps) {
   const [avatarError, setAvatarError] = useState(false);
-  const [timelineExpanded, setTimelineExpanded] = useState(false);
+  const [timelineExpanded, setTimelineExpanded] = useState(true);
 
   // 获取头像 URL（使用温暖色调）
   const getAvatarUrl = () => {
