@@ -10,8 +10,8 @@ import type {
   KnowledgeThreadSource,
   KnowledgeThreadStatus,
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
-import agenticCodingSourcePack from '@/docs/knowledge-threads/agentic-coding-sources.candidates.json';
-import aiEvalsSourcePack from '@/docs/knowledge-threads/ai-evals-sources.candidates.json';
+import agenticCodingSourcePack from '@/data/knowledge-threads/agentic-coding-sources.candidates.json';
+import aiEvalsSourcePack from '@/data/knowledge-threads/ai-evals-sources.candidates.json';
 
 const REQUIRED_ROLES = [
   'signal',

@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/db/prisma';
 import { fetchActivityEvents, type ActivityEvent } from '@/lib/activity';
-import anthropicEvidenceSeed from '@/docs/company/anthropic-evidence-seed.json';
+import anthropicEvidenceSeed from '@/data/company/anthropic-evidence-seed.json';
 import { fetchPersonDirectory } from '@/lib/person-directory';
 import {
   DIRECTORY_ORGANIZATIONS,
@@ -425,7 +425,7 @@ function buildAnthropicFixtureIntelligence(): CompanyPageIntelligence {
     evidence,
     relatedThreads,
     sourceMode: 'dry_run',
-    sourceNote: 'Dry-run contract from docs/company/anthropic-evidence-seed.json. 生产环境默认不读取这份样例；财务和融资材料仍只留在公司页，不进入技术主题 readiness。',
+    sourceNote: 'Dry-run contract mirrored into data/company/anthropic-evidence-seed.json for runtime rendering. 财务和融资材料仍只留在公司页，不进入技术主题 readiness。',
   });
 }
 
