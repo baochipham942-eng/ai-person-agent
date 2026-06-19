@@ -20,11 +20,13 @@ export interface ArticleText {
  */
 export async function fetchArticleText(
     url: string,
-    { maxChars = 15000, timeoutMs = 30000 }: { maxChars?: number; timeoutMs?: number } = {},
+    { maxChars = 15000, timeoutMs = 30000, format = 'text' }: { maxChars?: number; timeoutMs?: number; format?: 'text' | 'markdown' } = {},
 ): Promise<ArticleText> {
     if (!/^https?:\/\//.test(url)) return { text: '', ok: false };
 
-    const headers: Record<string, string> = { 'X-Return-Format': 'text' };
+    // text=纯正文(抓文章用)；markdown=带 [标题](url) 链接(抓列表页提链用)
+    const headers: Record<string, string> = {};
+    if (format === 'text') headers['X-Return-Format'] = 'text';
     if (process.env.JINA_API_KEY) headers.Authorization = `Bearer ${process.env.JINA_API_KEY}`;
 
     const controller = new AbortController();
