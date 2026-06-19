@@ -57,6 +57,8 @@ interface FetchOptions {
     jobPollMs?: number;
     /** 异步任务最大轮询次数（默认 15，约 1 分钟） */
     jobMaxPolls?: number;
+    /** 单 key 429 限流退避重试次数（默认 6） */
+    rateLimitRetries?: number;
 }
 
 /** 轮询 Supadata 异步任务（202 返回的 jobId）直到 completed/failed/超时 */
@@ -101,52 +103,74 @@ export async function fetchYoutubeTranscript(
     if (options.lang) params.set('lang', options.lang);
     const endpoint = `${SUPADATA_BASE_URL}/transcript?${params}`;
 
-    let exhausted = 0;
-    // 从当前游标开始，依次尝试每个 key；额度耗尽的 key 推进游标
+    let quotaExhausted = 0; // 仅统计真额度耗尽(402/403)的 key
+    // 从当前游标开始，依次尝试每个 key
     for (let attempt = 0; attempt < keys.length; attempt++) {
         const idx = (keyCursor + attempt) % keys.length;
         const key = keys[idx];
 
-        const res = await fetchWithRetry(endpoint, key, options.retries ?? 2);
+        // 同一 key 上的 429 限流退避重试（429≠额度耗尽，是请求太快，等一下就好）
+        let rateLimitTries = 0;
+        const maxRateLimit = options.rateLimitRetries ?? 6;
+        let rotate = false;
 
-        if (res.status === 200) {
-            keyCursor = idx; // 记住这个能用的 key
-            const data = await res.json().catch(() => null);
-            return parseTranscript(data);
-        }
+        while (!rotate) {
+            const res = await fetchWithRetry(endpoint, key, options.retries ?? 2);
 
-        // 202：长视频走异步任务，返回 jobId，需轮询任务结果（不额外计费，同一 job）
-        if (res.status === 202) {
-            keyCursor = idx;
-            const data = await res.json().catch(() => null);
-            const jobId = data && typeof data === 'object' ? (data as Record<string, unknown>).jobId : null;
-            if (typeof jobId === 'string' && jobId) {
-                return await pollTranscriptJob(jobId, key, options.jobPollMs ?? 3000, options.jobMaxPolls ?? 8);
+            if (res.status === 200) {
+                keyCursor = idx;
+                const data = await res.json().catch(() => null);
+                return parseTranscript(data);
             }
-            return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
-        }
 
-        // 404 / 这条视频无字幕：不是额度问题，永久标记跳过
-        if (res.status === 404 || res.status === 206) {
-            keyCursor = idx;
-            return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
-        }
+            // 202：异步任务，轮询 jobId（不额外计费）
+            if (res.status === 202) {
+                keyCursor = idx;
+                const data = await res.json().catch(() => null);
+                const jobId = data && typeof data === 'object' ? (data as Record<string, unknown>).jobId : null;
+                if (typeof jobId === 'string' && jobId) {
+                    return await pollTranscriptJob(jobId, key, options.jobPollMs ?? 3000, options.jobMaxPolls ?? 8);
+                }
+                return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
+            }
 
-        // 429 限流 / 402 / 403 额度耗尽：换下一个 key
-        if (res.status === 429 || res.status === 402 || res.status === 403) {
-            exhausted++;
-            continue;
-        }
+            // 404：确实没字幕，永久标记
+            if (res.status === 404 || res.status === 206) {
+                keyCursor = idx;
+                return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
+            }
 
-        // 其他错误（4xx/5xx）：当前 key 不一定坏，留待重试（不永久标记）
-        const body = await res.text().catch(() => '');
-        console.warn(`[supadata] ${url} -> HTTP ${res.status}: ${body.slice(0, 160)}`);
-        return { text: '', lang: null, availableLangs: [], available: false, status: 'error' };
+            // 429：限流（临时）→ 退避重试同一个 key，不算额度耗尽
+            if (res.status === 429) {
+                rateLimitTries++;
+                if (rateLimitTries > maxRateLimit) { rotate = true; break; } // 这个 key 持续限流，换下一个
+                const backoff = Math.min(60000, 4000 * 2 ** (rateLimitTries - 1)); // 4s,8s,16s,32s,60s,60s
+                await sleep(backoff);
+                continue; // 重试同一个 key
+            }
+
+            // 402 / 403：真额度耗尽 → 换下一个 key
+            if (res.status === 402 || res.status === 403) {
+                quotaExhausted++;
+                rotate = true;
+                break;
+            }
+
+            // 其他错误：留待重试
+            const body = await res.text().catch(() => '');
+            console.warn(`[supadata] ${url} -> HTTP ${res.status}: ${body.slice(0, 160)}`);
+            return { text: '', lang: null, availableLangs: [], available: false, status: 'error' };
+        }
     }
 
-    throw new SupadataQuotaError(
-        `Supadata 全部 ${keys.length} 个 key 额度/限流耗尽（exhausted=${exhausted}）。请补充 SUPADATA_API_KEYS 后重跑。`,
-    );
+    // 只有当所有 key 都真额度耗尽(402/403)才抛 Quota；否则是持续限流
+    if (quotaExhausted >= keys.length) {
+        throw new SupadataQuotaError(
+            `Supadata 全部 ${keys.length} 个 key 额度耗尽(402/403)。请补充 SUPADATA_API_KEYS 后重跑。`,
+        );
+    }
+    // 全程只遇到持续 429 限流：这条先放弃(留待重试)，不毒杀整批
+    return { text: '', lang: null, availableLangs: [], available: false, status: 'error' };
 }
 
 async function fetchWithRetry(endpoint: string, key: string, retries: number): Promise<Response> {
