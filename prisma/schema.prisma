@@ -311,6 +311,7 @@ model Organization {
   type               String
   wikidataQid        String?             @unique
   description        String?
+  aliases            String[]            @default([]) // 合并旧名/别名，防止重新碎片化
   roles              PersonRole[]
   companySources     CompanySource[]
   companyThreadLinks CompanyThreadLink[]
