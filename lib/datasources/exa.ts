@@ -117,6 +117,46 @@ export async function searchExa(options: ExaSearchOptions): Promise<ExaSearchRes
 }
 
 /**
+ * 按已知 URL 抓取全文（Exa /contents）。
+ * 用于把库里截断/只有摘要的文章重抓成更完整正文。
+ * @param urls 目标 URL 列表（一次最多约 100 个）
+ * @param maxCharacters 单篇最大字符数（默认 12000，高于搜索时的 5000 截断）
+ * @returns url -> 全文 的映射（抓取失败的 url 不在映射里）
+ */
+export async function fetchExaContents(
+    urls: string[],
+    maxCharacters = 12000,
+): Promise<Map<string, { text: string; title?: string; author?: string; publishedDate?: string }>> {
+    const result = new Map<string, { text: string; title?: string; author?: string; publishedDate?: string }>();
+    const apiKey = process.env.EXA_API_KEY;
+    if (!apiKey || urls.length === 0) {
+        if (!apiKey) console.warn('EXA_API_KEY not configured');
+        return result;
+    }
+
+    try {
+        const res = await fetch(`${EXA_API_URL}/contents`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey },
+            body: JSON.stringify({ urls, text: { maxCharacters } }),
+        });
+        if (!res.ok) {
+            console.warn(`Exa contents error: HTTP ${res.status} ${(await res.text()).slice(0, 160)}`);
+            return result;
+        }
+        const data = await res.json();
+        for (const r of data.results || []) {
+            if (r?.url && typeof r.text === 'string' && r.text.trim()) {
+                result.set(r.url, { text: r.text, title: r.title, author: r.author, publishedDate: r.publishedDate });
+            }
+        }
+    } catch (error) {
+        console.error('Exa contents fetch error:', error);
+    }
+    return result;
+}
+
+/**
  * 搜索人物相关内容
  * @param personName 人物姓名
  * @param aliases 别名列表

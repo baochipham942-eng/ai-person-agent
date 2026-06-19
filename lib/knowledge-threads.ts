@@ -20,6 +20,7 @@ import agentMemorySourcePack from '@/data/knowledge-threads/agent-memory-sources
 import reasoningModelsSourcePack from '@/data/knowledge-threads/reasoning-models-sources.candidates.json';
 import agentSecuritySourcePack from '@/data/knowledge-threads/agent-security-sources.candidates.json';
 import computerUseSourcePack from '@/data/knowledge-threads/computer-use-sources.candidates.json';
+import generativeUiSourcePack from '@/data/knowledge-threads/generative-ui-sources.candidates.json';
 
 const REQUIRED_ROLES = [
   'signal',
@@ -40,9 +41,18 @@ const SOURCE_PACK_FIXTURES: SourcePackFixture[] = [
   reasoningModelsSourcePack as unknown as SourcePackFixture,
   agentSecuritySourcePack as unknown as SourcePackFixture,
   computerUseSourcePack as unknown as SourcePackFixture,
+  generativeUiSourcePack as unknown as SourcePackFixture,
 ];
 
 let knowledgeThreadStoreReadyPromise: Promise<boolean> | null = null;
+
+/** 11 个 source-pack 主题的 slug（注册表派生，落库/校验脚本复用，避免漂移） */
+export const SOURCE_PACK_SLUGS: string[] = SOURCE_PACK_FIXTURES.map(p => p.thread.slug);
+
+/** 返回 source-pack 原始数据（落库脚本复用，保证与站点渲染同一份数据） */
+export function getSourcePacks(): SourcePackFixture[] {
+  return SOURCE_PACK_FIXTURES;
+}
 
 export type KnowledgeThreadSourceRole = typeof REQUIRED_ROLES[number] | string;
 
@@ -366,7 +376,13 @@ function buildReadModel({
   sources,
   edges,
 }: Omit<KnowledgeThreadReadModel, 'coverage'>): KnowledgeThreadReadModel {
-  const roles = Array.from(new Set(sources.map(source => source.role))).sort();
+  // 自动挂载的内容源（字幕/博客）若被标记 excludedFromTopicReadiness，
+  // 仍正常展示，但不计入 required-role 覆盖，避免低置信自动源虚假"凑齐"就绪度。
+  const countsTowardReadiness = (source: KnowledgeThreadReadSource) => {
+    const link = isRecord(source.metadata) && isRecord(source.metadata.threadLink) ? source.metadata.threadLink : null;
+    return !(link && link.excludedFromTopicReadiness === true);
+  };
+  const roles = Array.from(new Set(sources.filter(countsTowardReadiness).map(source => source.role))).sort();
   const missingRequiredRoles = REQUIRED_ROLES.filter(role => !roles.includes(role));
 
   return {
@@ -536,7 +552,7 @@ export function listStaticKnowledgeThreadSlugs(): string[] {
   ];
 }
 
-function getSourcePackFixture(slug: string): KnowledgeThreadFixture | null {
+export function getSourcePackFixture(slug: string): KnowledgeThreadFixture | null {
   const pack = SOURCE_PACK_FIXTURES.find(item => normalizeSlug(item.thread.slug) === normalizeSlug(slug));
   if (!pack) return null;
 
