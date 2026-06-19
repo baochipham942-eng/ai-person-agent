@@ -8,8 +8,10 @@ import {
   type DirectoryResponse,
 } from '@/lib/person-directory-config';
 import { fetchPersonDirectory } from '@/lib/person-directory';
+import { fetchActivityEvents, type ActivityEvent } from '@/lib/activity';
 
-const INITIAL_DIRECTORY_TIMEOUT_MS = 600;
+const INITIAL_DIRECTORY_TIMEOUT_MS = 6000;
+const INITIAL_ACTIVITY_TIMEOUT_MS = 6000;
 const FALLBACK_DIRECTORY_PEOPLE: DirectoryPerson[] = [
   {
     id: 'cmjtsvcil00003esttihbrsjm',
@@ -170,13 +172,20 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     search: initialFilters.search,
     sortBy: initialFilters.sortBy,
   };
-  const initialData = await fetchInitialDirectory(directoryParams);
+  const [initialData, initialActivity] = await Promise.all([
+    fetchInitialDirectory(directoryParams),
+    fetchInitialActivity({
+      topic: initialFilters.topic,
+      organization: initialFilters.organization,
+    }),
+  ]);
 
   return (
     <Suspense fallback={<LoadingFallback />}>
       <ResearcherDirectory
         initialData={initialData}
         initialFilters={initialFilters}
+        initialActivity={initialActivity}
       />
     </Suspense>
   );
@@ -193,6 +202,27 @@ async function fetchInitialDirectory(params: Parameters<typeof fetchPersonDirect
   });
 
   return Promise.race([directoryPromise, timeoutPromise]);
+}
+
+async function fetchInitialActivity(params: {
+  topic?: string | null;
+  organization?: string | null;
+}): Promise<ActivityEvent[]> {
+  const activityPromise = fetchActivityEvents({
+    topic: params.topic,
+    organization: params.organization,
+    limit: 5,
+    days: 7,
+    includeRelations: false,
+  }).catch(error => {
+    console.error('Failed to fetch initial activity:', error);
+    return [];
+  });
+  const timeoutPromise = new Promise<ActivityEvent[]>(resolve => {
+    setTimeout(() => resolve([]), INITIAL_ACTIVITY_TIMEOUT_MS);
+  });
+
+  return Promise.race([activityPromise, timeoutPromise]);
 }
 
 function createDirectoryFallback(): DirectoryResponse {

@@ -3,7 +3,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { prisma } from '../../lib/db/prisma';
 import { getUserRepos } from '../../lib/datasources/github';
-import crypto from 'crypto';
+import { buildRawPoolIdentity, contentHash } from '../../lib/rawpool-identity';
 
 loadEnvFiles();
 
@@ -461,40 +461,38 @@ async function checkYouTubeApiAvailability(): Promise<string | null> {
 
 // Save RawPoolItem
 async function saveRawItem(personId: string, sourceType: string, item: any) {
-    const urlHash = crypto.createHash('md5').update(item.url).digest('hex');
     const content = item.description || item.text || '';
-    const contentHash = crypto.createHash('md5').update((item.title + content).slice(0, 1000)).digest('hex');
+    const metadata = {
+        thumbnailUrl: item.thumbnailUrl,
+        stars: item.stars,
+        language: item.language,
+        viewCount: item.viewCount,
+        duration: item.duration
+    };
+    const identity = buildRawPoolIdentity({ personId, sourceType, url: item.url, metadata });
+    const itemMetadata = { ...metadata, rawPoolCanonicalKey: identity.canonicalKey };
+    const itemContentHash = contentHash(item.title + content);
 
     await prisma.rawPoolItem.upsert({
-        where: { urlHash },
+        where: { urlHash: identity.urlHash },
         create: {
             personId,
             sourceType,
             url: item.url,
-            urlHash,
-            contentHash,
+            urlHash: identity.urlHash,
+            contentHash: itemContentHash,
             title: item.title,
             text: content,
             publishedAt: new Date(item.publishedAt || item.updatedAt || new Date()),
-            metadata: {
-                thumbnailUrl: item.thumbnailUrl,
-                stars: item.stars,
-                language: item.language,
-                viewCount: item.viewCount,
-                duration: item.duration
-            },
+            metadata: itemMetadata,
             fetchStatus: 'success',
             fetchedAt: new Date()
         },
         update: {
             title: item.title,
             text: content,
-            metadata: {
-                thumbnailUrl: item.thumbnailUrl,
-                stars: item.stars,
-                language: item.language,
-                viewCount: item.viewCount
-            },
+            contentHash: itemContentHash,
+            metadata: itemMetadata,
             fetchedAt: new Date()
         }
     });

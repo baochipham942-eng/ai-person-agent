@@ -80,6 +80,14 @@ interface BlogItem {
   };
 }
 
+interface XItem {
+  id: string;
+  url: string;
+  title: string;
+  text: string;
+  publishedAt: string | null;
+}
+
 interface PodcastItem {
   id: string;
   url: string;
@@ -105,9 +113,10 @@ interface FeaturedWorksProps {
   podcastCount?: number;  // 播客数量
   githubCount?: number;  // GitHub 开源项目数量
   blogCount?: number;    // 博客文章数量
+  xCount?: number;       // X 动态数量
 }
 
-type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs' | 'podcast';
+type TabKey = 'products' | 'opensource' | 'papers' | 'topics' | 'cards' | 'blogs' | 'x' | 'podcast';
 
 // 排名徽章样式
 function getRankBadgeStyle(rank: number): string {
@@ -149,6 +158,20 @@ function formatYear(dateStr: string | null): string {
   }
 }
 
+function formatDate(dateStr: string | null): string {
+  if (!dateStr) return '';
+  try {
+    return new Intl.DateTimeFormat('zh-CN', {
+      timeZone: 'Asia/Shanghai',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }).format(new Date(dateStr));
+  } catch {
+    return '';
+  }
+}
+
 // 卡片类型配置
 const CARD_TYPE_CONFIG: Record<string, { icon: string; label: string; color: string }> = {
   insight: { icon: '💡', label: '核心洞见', color: 'border-l-blue-400' },
@@ -158,17 +181,20 @@ const CARD_TYPE_CONFIG: Record<string, { icon: string; label: string; color: str
   fact: { icon: '📊', label: '事实', color: 'border-l-cyan-400' },
 };
 
-export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount, githubCount, blogCount }: FeaturedWorksProps) {
+export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetails, personId, initialTab, highlightTopic, cards, podcastCount, githubCount, blogCount, xCount }: FeaturedWorksProps) {
   const [showAllPapers, setShowAllPapers] = useState(false);
   const [showAllCards, setShowAllCards] = useState(false);
   const [githubRepos, setGithubRepos] = useState<GithubRepo[]>([]);
   const [blogItems, setBlogItems] = useState<BlogItem[]>([]);
+  const [xItems, setXItems] = useState<XItem[]>([]);
   const [podcastItems, setPodcastItems] = useState<PodcastItem[]>([]);
   const [loadingRepos, setLoadingRepos] = useState(false);
   const [loadingBlogs, setLoadingBlogs] = useState(false);
+  const [loadingX, setLoadingX] = useState(false);
   const [loadingPodcast, setLoadingPodcast] = useState(false);
   const [reposError, setReposError] = useState(false);
   const [blogsError, setBlogsError] = useState(false);
+  const [xError, setXError] = useState(false);
   const [podcastError, setPodcastError] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const hasScrolled = useRef(false);
@@ -210,10 +236,11 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   const hasPapers = papers && papers.length > 0;
   const hasTopics = topicContributions.length > 0;
   const hasCards = cards && cards.length > 0;
-  // 开源项目、博客、播客通过 personId 动态加载
+  // 开源项目、博客、X 动态、播客通过 personId 动态加载
   // 只有当确实有数据时才显示对应 Tab
   const hasOpensource = !!personId && (githubCount ?? 0) > 0;
   const hasBlogs = !!personId && (blogCount ?? 0) > 0;
+  const hasX = !!personId && (xCount ?? 0) > 0;
   const hasPodcast = (podcastCount ?? 0) > 0;
 
   // 构建可用的 tabs - 使用 useMemo 避免重复计算
@@ -229,10 +256,12 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     if (hasCards) result.push({ key: 'cards', label: '学习卡片', count: cards?.length });
     // 博客 tab
     if (hasBlogs) result.push({ key: 'blogs', label: '博客', count: blogCount });
+    // X 动态 tab
+    if (hasX) result.push({ key: 'x', label: 'X动态', count: xCount });
     // 播客 tab
     if (hasPodcast) result.push({ key: 'podcast', label: '播客', count: podcastCount });
     return result;
-  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasPodcast, realProducts.length, githubCount, papers?.length, topicContributions.length, cards?.length, blogCount, podcastCount]);
+  }, [hasProducts, hasOpensource, hasPapers, hasTopics, hasCards, hasBlogs, hasX, hasPodcast, realProducts.length, githubCount, papers?.length, topicContributions.length, cards?.length, blogCount, xCount, podcastCount]);
 
   // 计算有效的初始 tab - 使用 useMemo 确保只在相关依赖变化时重新计算
   const validInitialTab = useMemo(() => {
@@ -290,6 +319,23 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
     }
   }, [personId, blogItems.length]);
 
+  const loadXItems = useCallback(async (force = false) => {
+    if (!personId || (!force && xItems.length > 0)) return;
+    setLoadingX(true);
+    setXError(false);
+    try {
+      const response = await fetch(`/api/person/${personId}/items?type=x&limit=20`);
+      if (!response.ok) throw new Error('Failed to load X items');
+      const result = await response.json();
+      setXItems(result.data || []);
+    } catch (error) {
+      console.error('Failed to load X items:', error);
+      setXError(true);
+    } finally {
+      setLoadingX(false);
+    }
+  }, [personId, xItems.length]);
+
   // 当切换到开源项目 tab 时加载 GitHub 仓库
   useEffect(() => {
     if (activeTab === 'opensource' && personId) {
@@ -303,6 +349,12 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
       loadBlogItems();
     }
   }, [activeTab, personId, loadBlogItems]);
+
+  useEffect(() => {
+    if (activeTab === 'x' && personId) {
+      loadXItems();
+    }
+  }, [activeTab, personId, loadXItems]);
 
   // 加载播客数据
   const loadPodcastItems = useCallback(async (force = false) => {
@@ -341,7 +393,7 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
   }, [initialTab]);
 
   // 如果没有任何内容，不渲染
-  if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics && !hasCards && !hasBlogs && !hasPodcast) {
+  if (!hasProducts && !hasOpensource && !hasPapers && !hasTopics && !hasCards && !hasBlogs && !hasX && !hasPodcast) {
     return null;
   }
 
@@ -822,6 +874,54 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
               ) : (
               <div className="text-center py-8 text-stone-400">
                 <div className="text-3xl mb-2">📝</div>
+                <div className="text-sm">暂无已整理内容</div>
+              </div>
+              )
+            )}
+          </div>
+        )}
+
+        {/* X 动态 */}
+        {activeTab === 'x' && (
+          <div className="space-y-4">
+            {loadingX ? (
+              <div className="flex items-center justify-center py-8">
+                <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316' }}></div>
+              </div>
+            ) : xItems.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {xItems.map(item => {
+                  const content = item.text || item.title;
+                  if (/^https?:\/\/\S+$/.test(content.trim())) return null;
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block rounded-xl border border-transparent border-l-4 border-l-stone-900 bg-stone-50 p-4 transition-all hover:border-orange-100 hover:bg-orange-50/30 hover:shadow-md"
+                    >
+                      <div className="mb-2 flex items-center justify-between gap-3">
+                        <span className="rounded-md bg-stone-900 px-1.5 py-0.5 text-[10px] font-medium text-white">
+                          X
+                        </span>
+                        {item.publishedAt && (
+                          <span className="text-xs text-stone-400">{formatDate(item.publishedAt)}</span>
+                        )}
+                      </div>
+                      <p className="whitespace-pre-wrap text-sm leading-6 text-stone-700 line-clamp-5">
+                        {content}
+                      </p>
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              xError ? (
+                <LazyLoadError onRetry={() => loadXItems(true)} />
+              ) : (
+              <div className="text-center py-8 text-stone-400">
+                <div className="text-3xl mb-2">X</div>
                 <div className="text-sm">暂无已整理内容</div>
               </div>
               )

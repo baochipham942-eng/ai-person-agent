@@ -4,7 +4,11 @@
  * 所有数据源 adapter 都必须实现这个接口，确保返回格式一致
  */
 
-import crypto from 'crypto';
+import {
+    canonicalRawPoolKey,
+    contentHash as rawPoolContentHash,
+    sha256,
+} from '@/lib/rawpool-identity';
 
 // ============== 枚举类型 ==============
 
@@ -127,26 +131,14 @@ export interface DataSourceAdapter {
  * 生成 URL Hash
  */
 export function hashUrl(url: string): string {
-    // 标准化 URL
-    let normalized = url;
-    try {
-        const u = new URL(url);
-        // 对非 YouTube 链接移除 query params 避免重复
-        if (!u.hostname.includes('youtube.com') || !u.pathname.includes('watch')) {
-            u.search = '';
-        }
-        normalized = u.href.replace(/\/$/, ''); // 移除尾部斜杠
-    } catch {
-        // 无效 URL 直接使用原始值
-    }
-    return crypto.createHash('md5').update(normalized).digest('hex');
+    return sha256(canonicalRawPoolKey({ sourceType: 'unknown', url }));
 }
 
 /**
  * 生成内容 Hash
  */
 export function hashContent(text: string): string {
-    return crypto.createHash('md5').update(text?.slice(0, 1000) || '').digest('hex');
+    return rawPoolContentHash(text);
 }
 
 /**
@@ -157,7 +149,11 @@ export function createNormalizedItem(
 ): NormalizedItem {
     return {
         ...params,
-        urlHash: hashUrl(params.url),
+        urlHash: sha256(canonicalRawPoolKey({
+            sourceType: params.sourceType,
+            url: params.url,
+            metadata: params.metadata,
+        })),
         contentHash: hashContent(params.text),
     };
 }

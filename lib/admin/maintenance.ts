@@ -355,11 +355,12 @@ async function resolveTargets(kind: MaintenanceKind, targetPersonIds: string[], 
   if (kind === 'single_person_refresh' || kind === 'multi_person_refresh') {
     const ids = uniqueStrings(targetPersonIds).slice(0, kind === 'single_person_refresh' ? 1 : 200);
     if (ids.length === 0) return [];
-    return prisma.people.findMany({
+    const people = await prisma.people.findMany({
       where: { id: { in: ids } },
       select: personSelect(),
-      orderBy: { name: 'asc' },
     });
+    const byId = new Map(people.map(person => [person.id, person]));
+    return ids.map(id => byId.get(id)).filter((person): person is MaintenancePerson => Boolean(person));
   }
 
   return prisma.people.findMany({

@@ -229,6 +229,7 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
   const videoCount = person.sourceTypeCounts?.youtube || 0;
   const githubCount = person.sourceTypeCounts?.github || 0;
   const blogCount = person.sourceTypeCounts?.exa || 0;
+  const xCount = person.sourceTypeCounts?.x || 0;
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -317,7 +318,7 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
 
         <RecentActivity personId={person.id} />
 
-        {/* 4. 代表作品（代表成果/开源项目/核心论文/话题贡献/学习卡片/博客/播客） */}
+        {/* 4. 代表作品（代表成果/开源项目/核心论文/话题贡献/学习卡片/博客/X动态/播客） */}
         <FeaturedWorks
           products={person.products}
           papers={person.papers}
@@ -331,6 +332,7 @@ export default function PersonPageClient({ person, initialSection, highlightTopi
           podcastCount={person.sourceTypeCounts?.podcast || 0}
           githubCount={githubCount}
           blogCount={blogCount}
+          xCount={xCount}
         />
 
         {/* 5. 视频内容 */}
