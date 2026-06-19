@@ -49,6 +49,7 @@ export function CompareNavLink({ isCurrent }: CompareNavLinkProps) {
   return (
     <Link
       href={href}
+      prefetch={false}
       aria-current={isCurrent ? 'page' : undefined}
       className={`inline-flex h-8 flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
         isCurrent

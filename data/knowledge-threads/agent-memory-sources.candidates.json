@@ -1,0 +1,395 @@
+{
+  "thread": {
+    "slug": "agent-memory",
+    "title": "Agent Memory",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "AI Agent Architecture",
+    "tags": [
+      "agent-memory",
+      "long-term-memory",
+      "context-management",
+      "stateful-agent",
+      "rag",
+      "memgpt",
+      "mem0"
+    ],
+    "aliases": [
+      "agent long-term memory",
+      "persistent agent state",
+      "agent memory management"
+    ],
+    "definitionDraft": "Agent Memory refers to systems and architectures that enable AI agents to preserve, manage, and recall information—such as working state, user preferences, project-specific facts, and external knowledge—across multiple reasoning steps, tool calls, or interactive sessions. It is distinct from simply expanding the model's context window or using retrieval-augmented generation (RAG), focusing instead on structured, persistent, and often self-managed memory stores.",
+    "whyNow": "As AI agents are deployed for more complex, long-running, and personalized tasks (e.g., continuous coding assistance, long-term project management, personalized tutoring), the limitations of transient context and stateless interactions become critical bottlenecks. Robust memory systems are essential for agent reliability, personalization, and task continuity, driving rapid innovation in this space.",
+    "useBoundary": "This topic covers systems for state persistence, memory management, and knowledge retention across agent steps/sessions. It excludes discussions focused solely on increasing the base model's context length or basic RAG pipelines without explicit memory layer abstractions."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "minimumEdgesPerTopic": 6,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "memgpt_paper_arxiv",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arXiv",
+      "url": "https://arxiv.org/abs/2310.08560",
+      "title": "MemGPT: Towards LLMs as Operating Systems",
+      "publishedAt": "2023-10-12",
+      "whyRelevant": "The foundational paper introducing the concept of virtual context management for LLMs, directly inspiring systems like Letta.",
+      "confidence": 0.95,
+      "evidenceQuote": "MemGPT: Towards LLMs as Operating Systems",
+      "reviewNotes": "Primary source, verified arXiv paper.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "full_text_available"
+      },
+      "urlHash": "26e7ae529ac5e81bc7e010f6e7bfd8d72689fb0249bc9a424f718ab7bc4c2df7",
+      "text": "MemGPT: Towards LLMs as Operating Systems\n\nThe foundational paper introducing the concept of virtual context management for LLMs, directly inspiring systems like Letta.\n\nEvidence note: MemGPT: Towards LLMs as Operating Systems\n\nPrimary source, verified arXiv paper."
+    },
+    {
+      "id": "letta_docs_home",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "letta.com",
+      "url": "https://docs.letta.com/",
+      "title": "Letta Documentation (Home)",
+      "publishedAt": null,
+      "whyRelevant": "Primary documentation for the Letta platform (successor to MemGPT project), defining its memory architecture and APIs.",
+      "confidence": 0.9,
+      "evidenceQuote": "Letta is a framework for building stateful LLM applications",
+      "reviewNotes": "Official docs, stable URL for the documentation home.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "9ba284908099620904bbe5c20a844078004c9beb6a1e07e9a98064b6159664d7",
+      "text": "Letta Documentation (Home)\n\nPrimary documentation for the Letta platform (successor to MemGPT project), defining its memory architecture and APIs.\n\nEvidence note: Letta is a framework for building stateful LLM applications\n\nOfficial docs, stable URL for the documentation home."
+    },
+    {
+      "id": "mem0_docs_home",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "mem0.ai",
+      "url": "https://docs.mem0.ai/",
+      "title": "mem0 Documentation (Home)",
+      "publishedAt": null,
+      "whyRelevant": "Primary documentation for the mem0 memory layer, defining its unified memory management approach for AI agents.",
+      "confidence": 0.85,
+      "evidenceQuote": "mem0 is a memory layer for AI agents",
+      "reviewNotes": "Official docs, stable URL.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "081401359e2c606c517a2ab06828280ad910918ce9f0b3a389e391dab4577fd2",
+      "text": "mem0 Documentation (Home)\n\nPrimary documentation for the mem0 memory layer, defining its unified memory management approach for AI agents.\n\nEvidence note: mem0 is a memory layer for AI agents\n\nOfficial docs, stable URL."
+    },
+    {
+      "id": "mem0_docs_overview",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "mem0.ai",
+      "url": "https://docs.mem0.ai/overview",
+      "title": "mem0 Overview",
+      "publishedAt": null,
+      "whyRelevant": "Detailed overview of mem0's architecture, features, and integration points for agent memory.",
+      "confidence": 0.85,
+      "evidenceQuote": "Unified memory layer for AI agents, enabling personalized interactions",
+      "reviewNotes": "Specific conceptual page within official docs.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "923858b871b982d3db466a6075df342f562e6abb456c0bff2cd41c3cfbe57d68",
+      "text": "mem0 Overview\n\nDetailed overview of mem0's architecture, features, and integration points for agent memory.\n\nEvidence note: Unified memory layer for AI agents, enabling personalized interactions\n\nSpecific conceptual page within official docs."
+    },
+    {
+      "id": "langchain_memory_docs",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "langchain.com",
+      "url": "https://python.langchain.com/docs/modules/memory/",
+      "title": "LangChain Memory Module",
+      "publishedAt": null,
+      "whyRelevant": "Official documentation for LangChain's various memory classes, showing implementation patterns for conversation history and long-term storage.",
+      "confidence": 0.9,
+      "evidenceQuote": "Memory refers to the concept of persisting state between calls of a chain/agent",
+      "reviewNotes": "Primary framework docs, stable URL.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "305cf589e25272466b688aa20cc44703fd61c170e2da74f74649346b2273934f",
+      "text": "LangChain Memory Module\n\nOfficial documentation for LangChain's various memory classes, showing implementation patterns for conversation history and long-term storage.\n\nEvidence note: Memory refers to the concept of persisting state between calls of a chain/agent\n\nPrimary framework docs, stable URL."
+    },
+    {
+      "id": "langgraph_memory_concept",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "langchain.com",
+      "url": "https://langchain-ai.github.io/langgraph/concepts/memory/",
+      "title": "LangGraph Memory Concept",
+      "publishedAt": null,
+      "whyRelevant": "Explains how memory is integrated as a stateful component within LangGraph's graph-based agent framework.",
+      "confidence": 0.85,
+      "evidenceQuote": "Memory in LangGraph is about persisting state across graph executions",
+      "reviewNotes": "Specific conceptual page for the LangGraph framework.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "12dc0d5d6a5512d83b68b9616d987ef58f18497ffa5b535cf7d961355531151a",
+      "text": "LangGraph Memory Concept\n\nExplains how memory is integrated as a stateful component within LangGraph's graph-based agent framework.\n\nEvidence note: Memory in LangGraph is about persisting state across graph executions\n\nSpecific conceptual page for the LangGraph framework."
+    },
+    {
+      "id": "langgraph_memory_howto",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "langchain.com",
+      "url": "https://langchain-ai.github.io/langgraph/how-tos/persistence/",
+      "title": "LangGraph Persistence & Memory How-to",
+      "publishedAt": null,
+      "whyRelevant": "Practical guide showing implementation of persistent memory and state checkpointing in LangGraph agents.",
+      "confidence": 0.85,
+      "evidenceQuote": "Adding persistence to your LangGraph agent enables memory across interactions",
+      "reviewNotes": "Official tutorial, demonstrates concrete implementation.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "0bbfd7c2fa95498218d6b1bfed6e5ef481f17a6af74f327914d2d87c89bba218",
+      "text": "LangGraph Persistence & Memory How-to\n\nPractical guide showing implementation of persistent memory and state checkpointing in LangGraph agents.\n\nEvidence note: Adding persistence to your LangGraph agent enables memory across interactions\n\nOfficial tutorial, demonstrates concrete implementation."
+    },
+    {
+      "id": "claude_code_memory_docs",
+      "sourceKind": "official_product_blog",
+      "role": "implementation_signal",
+      "sourceOwner": "anthropic.com",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/memory",
+      "title": "Claude Code Memory",
+      "publishedAt": null,
+      "whyRelevant": "Documents how Claude Code uses file-based memory (e.g., CLAUDE.md files) for persistent context and project-specific knowledge.",
+      "confidence": 0.9,
+      "evidenceQuote": "Claude Code uses a memory file (CLAUDE.md) to store instructions and context",
+      "reviewNotes": "Official product documentation page.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "96b9a35307c0f2c479f7cc6f116b1c59acef451a4d55f903a72eb4bc0e38055c",
+      "text": "Claude Code Memory\n\nDocuments how Claude Code uses file-based memory (e.g., CLAUDE.md files) for persistent context and project-specific knowledge.\n\nEvidence note: Claude Code uses a memory file (CLAUDE.md) to store instructions and context\n\nOfficial product documentation page."
+    },
+    {
+      "id": "openai_assistant_memory_blog",
+      "sourceKind": "official_blog",
+      "role": "signal",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/memory-and-new-controls-for-chatgpt/",
+      "title": "Memory and new controls for ChatGPT",
+      "publishedAt": "2024-02-13",
+      "whyRelevant": "Announcement and description of OpenAI's memory feature for ChatGPT, illustrating a consumer-facing approach to agent memory.",
+      "confidence": 0.8,
+      "evidenceQuote": "We're introducing memory to ChatGPT so it can remember useful details",
+      "reviewNotes": "Official blog post, describes product feature.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "e9af39a26febc2203938141ff774502eeddc695860f2068e09f403840011e2ef",
+      "text": "Memory and new controls for ChatGPT\n\nAnnouncement and description of OpenAI's memory feature for ChatGPT, illustrating a consumer-facing approach to agent memory.\n\nEvidence note: We're introducing memory to ChatGPT so it can remember useful details\n\nOfficial blog post, describes product feature."
+    },
+    {
+      "id": "mem0_github_repo",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com/mem0ai",
+      "url": "https://github.com/mem0ai/mem0",
+      "title": "mem0 GitHub Repository",
+      "publishedAt": null,
+      "whyRelevant": "Primary source code repository for mem0, providing the most direct insight into its implementation, APIs, and integrations.",
+      "confidence": 0.9,
+      "evidenceQuote": "Memory layer for AI agents",
+      "reviewNotes": "Official open-source repository.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "cddc9a2d075a51037ba44e9147d87bac14f8ecee6231b07be5d63984cf63ee77",
+      "text": "mem0 GitHub Repository\n\nPrimary source code repository for mem0, providing the most direct insight into its implementation, APIs, and integrations.\n\nEvidence note: Memory layer for AI agents\n\nOfficial open-source repository."
+    },
+    {
+      "id": "letta_github_repo",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com/letta-ai",
+      "url": "https://github.com/letta-ai/letta",
+      "title": "Letta GitHub Repository",
+      "publishedAt": null,
+      "whyRelevant": "Primary source code repository for the Letta framework, enabling direct examination of its memory management implementation.",
+      "confidence": 0.85,
+      "evidenceQuote": "Framework for building stateful LLM applications",
+      "reviewNotes": "Official open-source repository.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "7fe841355559703a02eb6fcda1ab91ecc0afbad7b3f8825a106c4ae7d29ae14b",
+      "text": "Letta GitHub Repository\n\nPrimary source code repository for the Letta framework, enabling direct examination of its memory management implementation.\n\nEvidence note: Framework for building stateful LLM applications\n\nOfficial open-source repository."
+    },
+    {
+      "id": "llm_memory_research_blog",
+      "sourceKind": "engineering_blog",
+      "role": "signal",
+      "sourceOwner": "lilianweng.github.io",
+      "url": "https://lilianweng.github.io/posts/2023-06-23-agent/",
+      "title": "LLM Powered Autonomous Agents (includes Memory discussion)",
+      "publishedAt": "2023-06-23",
+      "whyRelevant": "Highly cited blog post summarizing autonomous agent architectures, with a detailed section on memory types and implementations.",
+      "confidence": 0.85,
+      "evidenceQuote": "Memory in LLM agents typically involves short-term and long-term components",
+      "reviewNotes": "Authoritative engineering blog from a well-known AI researcher.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "19472db6d6f483d547526a2a3bc433dda1ab0895787e2365df428501e8ccf01d",
+      "text": "LLM Powered Autonomous Agents (includes Memory discussion)\n\nHighly cited blog post summarizing autonomous agent architectures, with a detailed section on memory types and implementations.\n\nEvidence note: Memory in LLM agents typically involves short-term and long-term components\n\nAuthoritative engineering blog from a well-known AI researcher."
+    },
+    {
+      "id": "tx_mem0_founder_ai_agents_memory",
+      "sourceKind": "blog",
+      "role": "transcript_context",
+      "sourceOwner": "youtube.com or podcast platform",
+      "url": "https://www.youtube.com/watch?v=ljb7zd2nzfk",
+      "title": "E56: Why AI Agents Need Memory with Taranjeet Singh (Mem0)",
+      "publishedAt": null,
+      "whyRelevant": "Potential source for practitioner insights on the challenges and design decisions behind building a memory layer for agents.",
+      "confidence": 0.6,
+      "evidenceQuote": "Why AI Agents Need Memory",
+      "reviewNotes": "Public YouTube interview page; use as transcript_context only after caption/transcript extraction is verified.",
+      "status": "usable",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "969107b4a4a1914d20ce2b3465532eb4521899c437c56d8d2b535885abd40f98",
+      "text": "E56: Why AI Agents Need Memory with Taranjeet Singh (Mem0)\n\nPotential source for practitioner insights on the challenges and design decisions behind building a memory layer for agents.\n\nEvidence note: Why AI Agents Need Memory\n\nPublic YouTube interview page; use as transcript_context only after caption/transcript extraction is verified."
+    },
+    {
+      "id": "zep_ai_memory_docs",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "getzep.com",
+      "url": "https://docs.getzep.com/",
+      "title": "Zep AI Memory Docs",
+      "publishedAt": null,
+      "whyRelevant": "Documentation for Zep, another memory server for LLM applications, providing an alternative architectural perspective.",
+      "confidence": 0.75,
+      "evidenceQuote": "Zep makes it easy to build fast, scalable LLM applications with long-term memory",
+      "reviewNotes": "Another official memory platform docs for comparison.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "d73deb2102793cf8f3079d09bc2e9ac84fec2747801b75b22c4911c9d890f779",
+      "text": "Zep AI Memory Docs\n\nDocumentation for Zep, another memory server for LLM applications, providing an alternative architectural perspective.\n\nEvidence note: Zep makes it easy to build fast, scalable LLM applications with long-term memory\n\nAnother official memory platform docs for comparison."
+    },
+    {
+      "id": "cognitive_architecture_memory_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arXiv",
+      "url": "https://arxiv.org/abs/2309.02427",
+      "title": "A Survey on Large Language Model based Autonomous Agents (Section on Memory)",
+      "publishedAt": "2023-09-05",
+      "whyRelevant": "Comprehensive survey paper that includes a detailed taxonomy and analysis of memory mechanisms in LLM-based agents.",
+      "confidence": 0.85,
+      "evidenceQuote": "Memory mechanisms enable agents to store and retrieve past experiences and knowledge",
+      "reviewNotes": "Academic survey providing a broad overview of the field.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "full_text_available"
+      },
+      "urlHash": "40e8a18080ce7a7f0bff245f774f6dff05a1314e5fa0724ada7fa29b4b1efa1e",
+      "text": "A Survey on Large Language Model based Autonomous Agents (Section on Memory)\n\nComprehensive survey paper that includes a detailed taxonomy and analysis of memory mechanisms in LLM-based agents.\n\nEvidence note: Memory mechanisms enable agents to store and retrieve past experiences and knowledge\n\nAcademic survey providing a broad overview of the field."
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "mem0_docs_overview",
+      "toId": "mem0_github_repo",
+      "relationType": "official_implementation",
+      "confidence": 0.9,
+      "evidenceNote": "The mem0 documentation describes the architecture, and the GitHub repository contains its primary implementation."
+    },
+    {
+      "fromId": "letta_docs_home",
+      "toId": "letta_github_repo",
+      "relationType": "official_implementation",
+      "confidence": 0.9,
+      "evidenceNote": "Letta's documentation provides the conceptual overview, and its GitHub repo is the main source code."
+    },
+    {
+      "fromId": "langchain_memory_docs",
+      "toId": "langgraph_memory_concept",
+      "relationType": "framework_evolution",
+      "confidence": 0.8,
+      "evidenceNote": "LangGraph is built on LangChain concepts and represents a more advanced, graph-based approach to including memory in agent workflows."
+    },
+    {
+      "fromId": "llm_memory_research_blog",
+      "toId": "memgpt_paper_arxiv",
+      "relationType": "summarizes_and_contextualizes",
+      "confidence": 0.7,
+      "evidenceNote": "Lilian Weng's influential blog post discusses and contextualizes memory research, including the MemGPT paper's contributions."
+    },
+    {
+      "fromId": "cognitive_architecture_memory_paper",
+      "toId": "memgpt_paper_arxiv",
+      "relationType": "cites_and_extends",
+      "confidence": 0.8,
+      "evidenceNote": "The survey paper on LLM-based agents cites and discusses the MemGPT paper as part of the memory mechanism analysis."
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "source_pack_has_only_5_edges_vs_minimum_6_after_url_audit",
+      "removed_2_dead_or_placeholder_urls_after_url_audit"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "thin_source_pack_review_only",
+    "notes": "First-pass Mimo pack after URL audit. Dead or placeholder URLs were removed; keep source_pack_review until human content audit passes."
+  }
+}

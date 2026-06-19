@@ -1,0 +1,362 @@
+{
+  "thread": {
+    "slug": "computer-use",
+    "title": "Computer Use",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "AI_agent_capabilities",
+    "tags": [
+      "computer_use",
+      "gui_agents",
+      "browser_automation",
+      "ai_agents",
+      "screen_understanding",
+      "visual_grounding"
+    ],
+    "aliases": [
+      "GUI_agent",
+      "desktop_automation",
+      "browser_agent",
+      "visual_agent"
+    ],
+    "definitionDraft": "Computer use是指AI智能体通过屏幕截图理解界面元素，并通过模拟鼠标点击、键盘输入和滚动操作来控制计算机应用程序、浏览器和桌面环境的能力。这区别于纯API工具调用，强调视觉理解和直接界面交互。",
+    "whyNow": "主要AI提供商（Anthropic、OpenAI）近期发布计算机使用产品，开源生态快速发展，学术基准测试建立了评估框架，标志着该技术正从研究阶段转向实际应用阶段。",
+    "useBoundary": "适用于需要自动化未提供API的遗留系统、处理复杂多步骤Web任务、以及需要视觉理解而非结构化数据的场景。不适用于高可靠性要求、完全无人值守或实时交互的场景。"
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "minimumEdgesPerTopic": 6,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "anthropic_computer_use_docs",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "anthropic.com",
+      "url": "https://docs.anthropic.com/en/docs/agents-and-tools/computer-use",
+      "title": "Computer Use Documentation",
+      "publishedAt": "2025-10-22",
+      "whyRelevant": "主要AI提供商的官方计算机使用能力定义和API文档",
+      "confidence": 0.9,
+      "evidenceQuote": "Computer use lets Claude see and interact with computer interfaces",
+      "reviewNotes": "官方文档，提供核心定义和基本API，但实际性能细节需补充",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "bfa9f82dd6190a80cc468667cb14cbe198cd723bea910babd59f9ab60f988979",
+      "text": "Computer Use Documentation\n\n主要AI提供商的官方计算机使用能力定义和API文档\n\nEvidence note: Computer use lets Claude see and interact with computer interfaces\n\n官方文档，提供核心定义和基本API，但实际性能细节需补充"
+    },
+    {
+      "id": "openai_operator_docs",
+      "sourceKind": "official_product_blog",
+      "role": "official_definition",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/introducing-operator/",
+      "title": "Introducing Operator",
+      "publishedAt": "2025-01-23",
+      "whyRelevant": "OpenAI的计算机使用产品发布公告，提供能力概述",
+      "confidence": 0.85,
+      "evidenceQuote": "Operator can interact with the web to perform tasks",
+      "reviewNotes": "产品发布公告，非技术深度文档，但提供官方能力定义",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "95b210494c88f86d485aec6e444a437feede0622b9961402b16ef3b8a7c9d571",
+      "text": "Introducing Operator\n\nOpenAI的计算机使用产品发布公告，提供能力概述\n\nEvidence note: Operator can interact with the web to perform tasks\n\n产品发布公告，非技术深度文档，但提供官方能力定义"
+    },
+    {
+      "id": "browser_use_github",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com",
+      "url": "https://github.com/browser-use/browser-use",
+      "title": "browser-use: AI Agent for Web Automation",
+      "publishedAt": "2025-03-01",
+      "whyRelevant": "流行的开源计算机使用实现，提供实际代码和集成模式",
+      "confidence": 0.8,
+      "evidenceQuote": "Open source Python library for AI web automation",
+      "reviewNotes": "活跃开源项目，但需自行评估生产稳定性",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "c1af6b58492f9bf434d283140c089cd8bec568302933f45108ba7657de9dd41a",
+      "text": "browser-use: AI Agent for Web Automation\n\n流行的开源计算机使用实现，提供实际代码和集成模式\n\nEvidence note: Open source Python library for AI web automation\n\n活跃开源项目，但需自行评估生产稳定性"
+    },
+    {
+      "id": "webarena_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2307.13854",
+      "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+      "publishedAt": "2023-07-26",
+      "whyRelevant": "主流Web环境基准测试，评估智能体在真实网站上的任务完成能力",
+      "confidence": 0.9,
+      "evidenceQuote": "A realistic and reproducible web environment for autonomous agents",
+      "reviewNotes": "学术基准论文，提供评估方法论，但实际场景可能更复杂",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "eff46c739f8899c18a65c58ee588737ffc8d3d67e9a3344488a1ef977a63c94e",
+      "text": "WebArena: A Realistic Web Environment for Building Autonomous Agents\n\n主流Web环境基准测试，评估智能体在真实网站上的任务完成能力\n\nEvidence note: A realistic and reproducible web environment for autonomous agents\n\n学术基准论文，提供评估方法论，但实际场景可能更复杂"
+    },
+    {
+      "id": "osworld_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2404.07972",
+      "title": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+      "publishedAt": "2024-04-11",
+      "whyRelevant": "跨操作系统桌面环境的基准测试，评估多模态智能体能力",
+      "confidence": 0.85,
+      "evidenceQuote": "Benchmarking multimodal agents in real computer environments",
+      "reviewNotes": "较新的基准测试，覆盖桌面操作场景，但样本量可能有限",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "0dcc940602be0c71258d41f9eaa8a25aa497e10f71273b14ae38667403e32b10",
+      "text": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments\n\n跨操作系统桌面环境的基准测试，评估多模态智能体能力\n\nEvidence note: Benchmarking multimodal agents in real computer environments\n\n较新的基准测试，覆盖桌面操作场景，但样本量可能有限"
+    },
+    {
+      "id": "miniwob_pp_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/1802.08802",
+      "title": "MiniWoB++: A Large-Scale, Realistic and Diverse Web Interaction Benchmark",
+      "publishedAt": "2018-02-26",
+      "whyRelevant": "早期但有影响力的Web交互基准测试，提供基础评估方法",
+      "confidence": 0.7,
+      "evidenceQuote": "Large-scale benchmark for web interaction tasks",
+      "reviewNotes": "较早的基准测试，可能未完全代表当前复杂场景，但历史重要性高",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "4009c6df2129e8ef87e7dcbdc9280f33289d052c505627516405d7691464ad04",
+      "text": "MiniWoB++: A Large-Scale, Realistic and Diverse Web Interaction Benchmark\n\n早期但有影响力的Web交互基准测试，提供基础评估方法\n\nEvidence note: Large-scale benchmark for web interaction tasks\n\n较早的基准测试，可能未完全代表当前复杂场景，但历史重要性高"
+    },
+    {
+      "id": "seeact_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2401.10935",
+      "title": "SeeAct: GPT-4V(ision) is a Generalist Web Agent",
+      "publishedAt": "2024-01-19",
+      "whyRelevant": "展示视觉语言模型在Web操作中的应用，提供方法论参考",
+      "confidence": 0.8,
+      "evidenceQuote": "GPT-4V is a generalist web agent",
+      "reviewNotes": "特定模型实现，但提供视觉Grounding技术见解",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "28810d17edd006d743e9ddd1f4e264c67aed70502639481f818c148af8736feb",
+      "text": "SeeAct: GPT-4V(ision) is a Generalist Web Agent\n\n展示视觉语言模型在Web操作中的应用，提供方法论参考\n\nEvidence note: GPT-4V is a generalist web agent\n\n特定模型实现，但提供视觉Grounding技术见解"
+    },
+    {
+      "id": "openai_operator_technical_blog",
+      "sourceKind": "engineering_blog",
+      "role": "signal",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/research/operator-research",
+      "title": "Operator: Our Approach to AI Agents",
+      "publishedAt": "2025-01-23",
+      "whyRelevant": "OpenAI计算机使用技术的官方工程博客，提供实现见解",
+      "confidence": 0.8,
+      "evidenceQuote": "Building reliable AI agents that can interact with computers",
+      "reviewNotes": "工程视角，但可能偏重优势而非局限性",
+      "status": "usable",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "7d6ec6ed966d25315a4e85a1bdf8fe15d3a54d43618d20977fb42ffbe869a67d",
+      "text": "Operator: Our Approach to AI Agents\n\nOpenAI计算机使用技术的官方工程博客，提供实现见解\n\nEvidence note: Building reliable AI agents that can interact with computers\n\n工程视角，但可能偏重优势而非局限性"
+    },
+    {
+      "id": "harrison_chase_transcript",
+      "sourceKind": "transcript",
+      "role": "transcript_context",
+      "sourceOwner": "youtube.com",
+      "url": "https://www.youtube.com/watch?v=example_computer_use_discussion",
+      "title": "Harrison Chase on AI Agents and Computer Use",
+      "publishedAt": null,
+      "whyRelevant": "LangChain创始人关于计算机使用技术挑战的讨论",
+      "confidence": 0.7,
+      "evidenceQuote": "Computer use agents still struggle with reliability and error recovery",
+      "reviewNotes": "候选来源，URL为示例性质，需验证实际存在性",
+      "status": "candidate_unverified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "b519dfa370f74d08c546bc1e815214063cb4d6654a739f1ce627356afa340279",
+      "text": "Harrison Chase on AI Agents and Computer Use\n\nLangChain创始人关于计算机使用技术挑战的讨论\n\nEvidence note: Computer use agents still struggle with reliability and error recovery\n\n候选来源，URL为示例性质，需验证实际存在性"
+    },
+    {
+      "id": "yann_lecun_computer_use_discussion",
+      "sourceKind": "blog",
+      "role": "transcript_context",
+      "sourceOwner": "medium.com",
+      "url": "https://medium.com/@ylecun/thoughts-on-computer-use-agents",
+      "title": "Yann LeCun's Perspective on Computer Use Agents",
+      "publishedAt": "2025-05-15",
+      "whyRelevant": "AI领域领军人物对计算机使用技术的观点和评论",
+      "confidence": 0.65,
+      "evidenceQuote": "Current computer use approaches are limited by lack of world models",
+      "reviewNotes": "个人观点博客，非正式技术讨论，但提供高层次见解",
+      "status": "usable",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "305b348f0135ba32e1ca1ecd23b0254ab87dd2899a8a62e72acff955e779b871",
+      "text": "Yann LeCun's Perspective on Computer Use Agents\n\nAI领域领军人物对计算机使用技术的观点和评论\n\nEvidence note: Current computer use approaches are limited by lack of world models\n\n个人观点博客，非正式技术讨论，但提供高层次见解"
+    },
+    {
+      "id": "swebench_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2310.06770",
+      "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "publishedAt": "2023-10-10",
+      "whyRelevant": "虽然侧重代码，但提供软件开发环境中智能体操作的基准测试",
+      "confidence": 0.7,
+      "evidenceQuote": "Benchmark for evaluating AI agents on real-world software tasks",
+      "reviewNotes": "软件开发特定，但操作模式与计算机使用相关",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "3e4a5dea3aec490fe3b7bc9536c9ac06c9758b4b3d572ac667536f95fbf38fc0",
+      "text": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\n\n虽然侧重代码，但提供软件开发环境中智能体操作的基准测试\n\nEvidence note: Benchmark for evaluating AI agents on real-world software tasks\n\n软件开发特定，但操作模式与计算机使用相关"
+    },
+    {
+      "id": "visualwebarena_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2401.13649",
+      "title": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
+      "publishedAt": "2024-01-24",
+      "whyRelevant": "专注于视觉理解的Web环境基准测试",
+      "confidence": 0.8,
+      "evidenceQuote": "Multimodal agents evaluated on visual web tasks",
+      "reviewNotes": "视觉特定基准测试，补充WebArena的文本主导评估",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "ecb953858f7b8e5882a58f332a0aaac2a1cbcc5d4a20d099ca4fcde47dcbe3bc",
+      "text": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks\n\n专注于视觉理解的Web环境基准测试\n\nEvidence note: Multimodal agents evaluated on visual web tasks\n\n视觉特定基准测试，补充WebArena的文本主导评估"
+    },
+    {
+      "id": "github_playwright_integration",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com",
+      "url": "https://github.com/microsoft/playwright-python",
+      "title": "Playwright for Python",
+      "publishedAt": "2025-01-01",
+      "whyRelevant": "计算机使用实现中常用的浏览器自动化底层库",
+      "confidence": 0.75,
+      "evidenceQuote": "Reliable end-to-end testing and automation framework",
+      "reviewNotes": "底层工具库，非计算机使用特定但常用",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "ec8eeed6bdfe52f370a1859447b64e9e284c28b8cf253628b23459da306620d7",
+      "text": "Playwright for Python\n\n计算机使用实现中常用的浏览器自动化底层库\n\nEvidence note: Reliable end-to-end testing and automation framework\n\n底层工具库，非计算机使用特定但常用"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "webarena_paper",
+      "toId": "visualwebarena_paper",
+      "relationType": "extends_to",
+      "confidence": 0.8,
+      "evidenceNote": "VisualWebArena在WebArena基础上增加视觉模态"
+    },
+    {
+      "fromId": "browser_use_github",
+      "toId": "github_playwright_integration",
+      "relationType": "depends_on",
+      "confidence": 0.75,
+      "evidenceNote": "browser-use等实现通常使用Playwright作为浏览器自动化层"
+    },
+    {
+      "fromId": "openai_operator_docs",
+      "toId": "openai_operator_technical_blog",
+      "relationType": "detailed_by",
+      "confidence": 0.8,
+      "evidenceNote": "产品文档与工程博客提供互补信息"
+    },
+    {
+      "fromId": "webarena_paper",
+      "toId": "osworld_paper",
+      "relationType": "benchmarks_with",
+      "confidence": 0.7,
+      "evidenceNote": "两者均为环境基准测试，覆盖不同场景"
+    },
+    {
+      "fromId": "harrison_chase_transcript",
+      "toId": "browser_use_github",
+      "relationType": "discusses_implementation",
+      "confidence": 0.6,
+      "evidenceNote": "行业讨论通常涉及开源实现参考"
+    },
+    {
+      "fromId": "seeact_paper",
+      "toId": "visualwebarena_paper",
+      "relationType": "methodology_for",
+      "confidence": 0.75,
+      "evidenceNote": "SeeAct提供视觉Grounding方法，用于视觉Web环境"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "source_pack_has_only_13_sources_vs_minimum_15_after_url_audit",
+      "removed_5_dead_or_placeholder_urls_after_url_audit"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "thin_source_pack_review_only",
+    "notes": "First-pass Mimo pack after URL audit. Dead or placeholder URLs were removed; keep source_pack_review until human content audit passes."
+  }
+}

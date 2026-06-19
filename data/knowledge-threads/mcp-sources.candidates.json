@@ -1,0 +1,215 @@
+{
+  "thread": {
+    "slug": "mcp",
+    "title": "Model Context Protocol (MCP)",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "agentic_infrastructure",
+    "tags": [
+      "model_context_protocol",
+      "tools",
+      "integrations",
+      "agent_runtime",
+      "protocol"
+    ],
+    "aliases": [
+      "Model Context Protocol",
+      "MCP servers",
+      "MCP clients",
+      "tool protocol"
+    ],
+    "definitionDraft": "Model Context Protocol is an open protocol for connecting AI applications to tools, data sources, prompts, and resources through standardized client-server integrations.",
+    "whyNow": "Agentic products increasingly need reliable tool and data access, and MCP is becoming a common integration surface across clients, servers, SDKs, and examples.",
+    "useBoundary": "Focus on the protocol's technical design, official implementations, and product integrations. Exclude financial analysis, company earnings, or generic tool-use discussions without protocol context."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "mcp_docs_intro",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "modelcontextprotocol.io",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+      "title": "Model Context Protocol documentation",
+      "publishedAt": null,
+      "whyRelevant": "Primary official entry point for the protocol, explaining core concepts and getting started.",
+      "confidence": 0.9,
+      "evidenceQuote": "Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to LLMs.",
+      "reviewNotes": "URL provided in seed. Verify current content and structure.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Model Context Protocol documentation\n\nPrimary official entry point for the protocol, explaining core concepts and getting started.\n\nEvidence note: Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to LLMs.\n\nURL provided in seed. Verify current content and structure.",
+      "urlHash": "f2490090eaecafe829b4340ee7c91cfe3f5de1e7563870127d7a56766e340d94"
+    },
+    {
+      "id": "mcp_spec_github",
+      "role": "official_definition",
+      "sourceKind": "official_spec",
+      "sourceOwner": "github.com/modelcontextprotocol",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+      "title": "modelcontextprotocol/modelcontextprotocol",
+      "publishedAt": null,
+      "whyRelevant": "Canonical specification source for protocol terms, capabilities, and message formats.",
+      "confidence": 0.9,
+      "evidenceQuote": "The Model Context Protocol allows applications to provide context for LLMs in a standardized way.",
+      "reviewNotes": "URL provided in seed. Check for latest spec version and README.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "modelcontextprotocol/modelcontextprotocol\n\nCanonical specification source for protocol terms, capabilities, and message formats.\n\nEvidence note: The Model Context Protocol allows applications to provide context for LLMs in a standardized way.\n\nURL provided in seed. Check for latest spec version and README.",
+      "urlHash": "1f9a6ffe7d318ba329370a2c250ca0b7d030bc072598378d77f1388cc996cb64"
+    },
+    {
+      "id": "mcp_ts_sdk",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/modelcontextprotocol",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+      "title": "modelcontextprotocol/typescript-sdk",
+      "publishedAt": null,
+      "whyRelevant": "Official SDK surface for client/server implementation examples in TypeScript.",
+      "confidence": 0.85,
+      "evidenceQuote": "The official TypeScript SDK for Model Context Protocol servers and clients.",
+      "reviewNotes": "URL provided in seed. Verify SDK status and example code.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "modelcontextprotocol/typescript-sdk\n\nOfficial SDK surface for client/server implementation examples in TypeScript.\n\nEvidence note: The official TypeScript SDK for Model Context Protocol servers and clients.\n\nURL provided in seed. Verify SDK status and example code.",
+      "urlHash": "f7fb7d70e0ff6a4e7a73f06ab6611f114f925c625fcbd6be38e12239d0145042"
+    },
+    {
+      "id": "mcp_python_sdk",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/modelcontextprotocol",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "title": "modelcontextprotocol/python-sdk",
+      "publishedAt": null,
+      "whyRelevant": "Second official SDK surface to prove cross-language implementation capability.",
+      "confidence": 0.85,
+      "evidenceQuote": "The official Python SDK for Model Context Protocol servers and clients.",
+      "reviewNotes": "URL provided in seed. Verify SDK status and example code.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "modelcontextprotocol/python-sdk\n\nSecond official SDK surface to prove cross-language implementation capability.\n\nEvidence note: The official Python SDK for Model Context Protocol servers and clients.\n\nURL provided in seed. Verify SDK status and example code.",
+      "urlHash": "b275ec28fddd14c2c0674fab334689bc3766e24c04eecf2a3434e5265ed473d0"
+    },
+    {
+      "id": "claude_code_mcp_docs",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "code.claude.com",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "title": "Connect Claude Code to tools via MCP",
+      "publishedAt": null,
+      "whyRelevant": "Product-level official source for MCP inside Claude Code workflows, showing real-world integration.",
+      "confidence": 0.8,
+      "evidenceQuote": "Claude Code can connect to external tools and data sources using the Model Context Protocol (MCP).",
+      "reviewNotes": "URL provided in seed. Verify current documentation and integration details.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Connect Claude Code to tools via MCP\n\nProduct-level official source for MCP inside Claude Code workflows, showing real-world integration.\n\nEvidence note: Claude Code can connect to external tools and data sources using the Model Context Protocol (MCP).\n\nURL provided in seed. Verify current documentation and integration details.",
+      "urlHash": "e8ecdafbf282bc3c2fee4136e6b9fccc2dae8e187be050e478d1fa9da947fd20"
+    },
+    {
+      "id": "toolformer_paper",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2302.04761",
+      "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "publishedAt": "2023-02-09",
+      "whyRelevant": "Tool-use foundation paper demonstrating why a protocolized tool layer matters for LLMs.",
+      "confidence": 0.9,
+      "evidenceQuote": "We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best integrate the results.",
+      "reviewNotes": "URL provided in seed. Key foundational paper for tool-use research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Toolformer: Language Models Can Teach Themselves to Use Tools\n\nTool-use foundation paper demonstrating why a protocolized tool layer matters for LLMs.\n\nEvidence note: We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best integrate the results.\n\nURL provided in seed. Key foundational paper for tool-use research.",
+      "urlHash": "200002328137240fce9a0a5ea54512fb96063c42b722f71e4fd96c0372b5ddde"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "mcp_spec_github",
+      "toId": "mcp_ts_sdk",
+      "relationType": "protocol_spec_to_sdk_surface",
+      "confidence": 0.8,
+      "evidenceNote": "The TypeScript SDK implements the protocol defined in the specification repository."
+    },
+    {
+      "fromId": "mcp_spec_github",
+      "toId": "mcp_python_sdk",
+      "relationType": "protocol_spec_to_sdk_surface",
+      "confidence": 0.8,
+      "evidenceNote": "The Python SDK implements the protocol defined in the specification repository."
+    },
+    {
+      "fromId": "mcp_docs_intro",
+      "toId": "claude_code_mcp_docs",
+      "relationType": "protocol_to_product_integration",
+      "confidence": 0.7,
+      "evidenceNote": "Claude Code's MCP integration is a product-level implementation of the general protocol described in the main docs."
+    },
+    {
+      "fromId": "toolformer_paper",
+      "toId": "mcp_docs_intro",
+      "relationType": "tool_use_foundation_to_protocol_design",
+      "confidence": 0.6,
+      "evidenceNote": "Research on LLM tool-use motivates the need for standardized tool access, which MCP provides."
+    },
+    {
+      "fromId": "mcp_ts_sdk",
+      "toId": "mcp_docs_intro",
+      "relationType": "sdk_examples_to_ecosystem_signal",
+      "confidence": 0.7,
+      "evidenceNote": "The existence and quality of official SDKs signal ecosystem maturity and adoption potential."
+    }
+  ],
+  "review": {
+    "missingRoles": [
+      "signal",
+      "transcript_context"
+    ],
+    "weakSources": [
+      "source_pack_has_only_6_sources_vs_minimum_15"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "thin_source_pack_review_only",
+    "notes": "Generated from Mimo first-pass draft on 2026-06-19. Keep source_pack_review until signal and transcript_context sources are added."
+  }
+}

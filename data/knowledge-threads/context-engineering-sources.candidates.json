@@ -1,0 +1,374 @@
+{
+  "thread": {
+    "slug": "context-engineering",
+    "title": "Context Engineering",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "agentic_system_design",
+    "tags": [
+      "context",
+      "memory",
+      "retrieval",
+      "prompting",
+      "agent_runtime"
+    ],
+    "aliases": [
+      "context design",
+      "agent context management",
+      "LLM memory engineering",
+      "prompt and context architecture"
+    ],
+    "definitionDraft": "The practice of designing what information, memory, retrieval results, tool descriptions, instructions, and runtime state an AI agent sees at each step so it can act reliably over long or complex tasks.",
+    "whyNow": "As agents move from one-shot prompts to long-running work, context becomes an engineered runtime resource rather than a single prompt.",
+    "useBoundary": "Evidence pack only; no schema, production data, route changes, paid API calls, publishing, X Search/Grok changes, or UI work. Financial and IR materials are company_strategy_context candidates only and do not count toward topic-page readiness."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "sig_phil_schmid_context_engineering",
+      "sourceKind": "practitioner_blog",
+      "role": "signal",
+      "sourceOwner": "Philipp Schmid",
+      "url": "https://www.philschmid.de/context-engineering",
+      "title": "The New Skill in AI is Not Prompting, It is Context Engineering",
+      "publishedAt": null,
+      "whyRelevant": "Practitioner vocabulary signal that the field is separating context design from narrow prompt tips.",
+      "confidence": 0.72,
+      "evidenceQuote": "context engineering",
+      "reviewNotes": "Use as vocabulary signal only. Do not treat this practitioner framing as the official definition.",
+      "status": "usable",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_anthropic_prompt_engineering_overview",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "Anthropic Docs",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+      "title": "Prompt engineering overview",
+      "publishedAt": null,
+      "whyRelevant": "Official guidance for instructions and prompting; useful as the lower-level boundary that context engineering extends beyond.",
+      "confidence": 0.88,
+      "evidenceQuote": "Prompt engineering",
+      "reviewNotes": "Official source, but do not collapse the page into prompt tips.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_anthropic_building_effective_agents",
+      "sourceKind": "official_engineering_blog",
+      "role": "official_definition",
+      "sourceOwner": "Anthropic Engineering",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "title": "Building effective agents",
+      "publishedAt": null,
+      "whyRelevant": "Official agent-system framing that combines models, tools, workflows, and context rather than treating the prompt as the whole system.",
+      "confidence": 0.9,
+      "evidenceQuote": "Building effective agents",
+      "reviewNotes": "Core official definition source for the system boundary.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "off_anthropic_effective_context_engineering",
+      "sourceKind": "official_engineering_blog",
+      "role": "official_definition",
+      "sourceOwner": "Anthropic Engineering",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "title": "Effective context engineering for AI agents",
+      "publishedAt": null,
+      "whyRelevant": "Most direct official source for the page concept: context is the information an agent sees at each step.",
+      "confidence": 0.95,
+      "evidenceQuote": "context engineering",
+      "reviewNotes": "Highest-priority official definition source; exact quote should be checked before final publication.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "tx_every_claude_code_builders",
+      "sourceKind": "podcast_transcript",
+      "role": "transcript_context",
+      "sourceOwner": "every.to",
+      "url": "https://every.to/podcast/transcript-how-to-use-claude-code-like-the-people-who-built-it",
+      "title": "How to Use Claude Code Like the People Who Built It",
+      "publishedAt": "2026-06-10",
+      "whyRelevant": "Transcript interview with Claude Code builders; useful for practice context around prompting, workflows, and context handling.",
+      "confidence": 0.78,
+      "evidenceQuote": "like the people who built it",
+      "reviewNotes": "Transcript exists in the current source-pack corpus. Use for context only until exact context-engineering claims are re-quoted.",
+      "status": "usable",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "transcript_accessible_html"
+      }
+    },
+    {
+      "id": "tx_every_openai_codex_team",
+      "sourceKind": "podcast_transcript",
+      "role": "transcript_context",
+      "sourceOwner": "every.to",
+      "url": "https://every.to/podcast/transcript-how-openai-s-codex-team-uses-their-coding-agent",
+      "title": "How OpenAI's Codex Team Uses Their Own Coding Agent",
+      "publishedAt": "2025-05-23",
+      "whyRelevant": "Transcript context for how a coding-agent team handles task handoff, repository context, and review boundaries in practice.",
+      "confidence": 0.76,
+      "evidenceQuote": "uses their own coding agent",
+      "reviewNotes": "Use as workflow context, not as a product-performance or official definition claim.",
+      "status": "usable",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "transcript_accessible_html"
+      }
+    },
+    {
+      "id": "paper_lost_in_the_middle",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "Liu et al.",
+      "url": "https://arxiv.org/abs/2307.03172",
+      "title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "publishedAt": "2023-07-06",
+      "whyRelevant": "Shows that longer context windows do not automatically make models use relevant information well; position bias matters.",
+      "confidence": 0.92,
+      "evidenceQuote": "Lost in the Middle",
+      "reviewNotes": "Core paper for the context-window constraint.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_rag",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "Lewis et al.",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "publishedAt": "2020-05-22",
+      "whyRelevant": "Foundation for retrieval as a context supply mechanism rather than relying only on static prompt text.",
+      "confidence": 0.9,
+      "evidenceQuote": "Retrieval-Augmented Generation",
+      "reviewNotes": "Use to explain retrieval as one lane of context engineering.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_memgpt",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "Packer et al.",
+      "url": "https://arxiv.org/abs/2310.08560",
+      "title": "MemGPT: Towards LLMs as Operating Systems",
+      "publishedAt": "2023-10-12",
+      "whyRelevant": "Research foundation for explicit memory management across long-running agent tasks.",
+      "confidence": 0.86,
+      "evidenceQuote": "memory management",
+      "reviewNotes": "Use to explain memory tiers and long-lived state, not to claim current products implement MemGPT directly.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "paper_react",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "Yao et al.",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "publishedAt": "2022-10-06",
+      "whyRelevant": "Shows how tool actions and observations become new context for the next reasoning step.",
+      "confidence": 0.82,
+      "evidenceQuote": "Reasoning and Acting",
+      "reviewNotes": "Use as agent-loop context foundation, not as a context-engineering definition.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_memory",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/memory",
+      "title": "Claude Code memory",
+      "publishedAt": null,
+      "whyRelevant": "Concrete implementation surface for reusable project and user context.",
+      "confidence": 0.86,
+      "evidenceQuote": "memory",
+      "reviewNotes": "Runtime mechanism source; exact behavior should be rechecked before production copy.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_claude_code_slash_commands",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/slash-commands",
+      "title": "Claude Code custom slash commands",
+      "publishedAt": null,
+      "whyRelevant": "Reusable commands show how instructions and workflow context can become named runtime surfaces.",
+      "confidence": 0.78,
+      "evidenceQuote": "slash commands",
+      "reviewNotes": "Adjacent implementation signal; weaker than memory and MCP.",
+      "status": "usable",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_mcp_intro",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+      "title": "Model Context Protocol introduction",
+      "publishedAt": null,
+      "whyRelevant": "Protocol-level implementation surface for providing tools, resources, and prompts to model applications.",
+      "confidence": 0.86,
+      "evidenceQuote": "Model Context Protocol",
+      "reviewNotes": "Use to connect context engineering to standardized resources, prompts, and tools.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_mcp_typescript_sdk",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "Model Context Protocol",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+      "title": "modelcontextprotocol/typescript-sdk",
+      "publishedAt": null,
+      "whyRelevant": "Official TypeScript implementation surface for MCP clients and servers.",
+      "confidence": 0.72,
+      "evidenceQuote": "typescript-sdk",
+      "reviewNotes": "Implementation source; use for SDK presence, not for product claims.",
+      "status": "usable",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    },
+    {
+      "id": "impl_mcp_python_sdk",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "Model Context Protocol",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "title": "modelcontextprotocol/python-sdk",
+      "publishedAt": null,
+      "whyRelevant": "Official Python implementation surface for MCP clients and servers.",
+      "confidence": 0.72,
+      "evidenceQuote": "python-sdk",
+      "reviewNotes": "Implementation source; use for SDK presence, not for product claims.",
+      "status": "usable",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "paper_lost_in_the_middle",
+      "toId": "off_anthropic_effective_context_engineering",
+      "relationType": "context_limit_to_product_guidance",
+      "confidence": 0.82,
+      "evidenceNote": "Long-context position bias explains why official guidance must treat context selection and ordering as design work."
+    },
+    {
+      "fromId": "paper_rag",
+      "toId": "off_anthropic_effective_context_engineering",
+      "relationType": "retrieval_to_context_supply",
+      "confidence": 0.78,
+      "evidenceNote": "RAG supplies external knowledge into context; context engineering decides when and how that retrieved material is shown."
+    },
+    {
+      "fromId": "paper_memgpt",
+      "toId": "impl_claude_code_memory",
+      "relationType": "memory_research_to_runtime_mechanism",
+      "confidence": 0.72,
+      "evidenceNote": "MemGPT motivates explicit memory management; Claude Code memory is a product runtime surface for persistent context."
+    },
+    {
+      "fromId": "off_anthropic_effective_context_engineering",
+      "toId": "impl_claude_code_memory",
+      "relationType": "guidance_to_runtime_mechanism",
+      "confidence": 0.84,
+      "evidenceNote": "The official context-engineering framing becomes actionable when project and user memory can be configured."
+    },
+    {
+      "fromId": "off_anthropic_building_effective_agents",
+      "toId": "impl_mcp_intro",
+      "relationType": "agent_system_to_context_protocol",
+      "confidence": 0.78,
+      "evidenceNote": "Agent systems need tools and context; MCP gives a standardized way to expose tools, resources, and prompts."
+    },
+    {
+      "fromId": "impl_mcp_intro",
+      "toId": "paper_rag",
+      "relationType": "protocol_to_retrieval_foundation",
+      "confidence": 0.7,
+      "evidenceNote": "MCP resources can carry external data into model applications, echoing retrieval as a context supply lane."
+    },
+    {
+      "fromId": "paper_react",
+      "toId": "impl_mcp_intro",
+      "relationType": "tool_observation_to_runtime_context",
+      "confidence": 0.72,
+      "evidenceNote": "ReAct shows observations become new context; MCP standardizes tool/resource surfaces that can produce those observations."
+    },
+    {
+      "fromId": "tx_every_claude_code_builders",
+      "toId": "impl_claude_code_memory",
+      "relationType": "builder_context_to_memory_surface",
+      "confidence": 0.68,
+      "evidenceNote": "Builder transcript context can explain how reusable memory and workflow context are used in practice, pending exact quote review."
+    }
+  ]
+}

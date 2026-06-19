@@ -1,4 +1,5 @@
 import type { KnowledgeSourceRole } from '@/lib/knowledge-thread-fixtures/loop-engineering';
+import generatedThreadPresentations from '@/data/knowledge-threads/thread-presentations.generated.json';
 
 // 知识主题页「策展叙事层」的 seed。来源 / 边 / 状态来自 fixture 或 DB（KnowledgeThread*）；
 // 这里只放需要人工（或 LLM）策展的内容：一句话定义、循环讲解、判断点、角色说明等。
@@ -125,6 +126,104 @@ const THREAD_PRESENTATIONS: Record<string, ThreadPresentation> = {
       '团队能否把它接进现有研发流程。',
     ],
   },
+  'context-engineering': {
+    title: 'Context Engineering',
+    subtitle: '上下文工程',
+    valueProp:
+      'Context Engineering 不是把 prompt 写长，而是设计 agent 每一步能看到什么：指令、记忆、检索结果、工具说明、运行状态和验证反馈都要被当成运行时资源管理。',
+    problem:
+      '单次问答里，上下文常常只是一个提示词；长任务和 agent 工作流里，上下文会变成系统的燃料和负担。信息放错、放多、放旧，都会让 agent 迷路；信息切得准、更新得及时，agent 才能在多轮任务里保持目标、使用工具并接受验证。',
+    whyRead:
+      '这页用 Anthropic 的官方上下文工程文章、Claude Code memory、MCP、RAG、MemGPT 和 Lost in the Middle 等来源，把“上下文工程”从流行词拉回可验证的系统设计问题。',
+    roleInsights: {
+      signal: {
+        title: '实践者词汇',
+        body: '社区开始用 Context Engineering 描述一种比 prompt tips 更宽的工作：把信息供给、记忆、检索和工具边界一起设计。',
+        takeaway: '信号说明词在形成，但定义要回到官方材料和研究根基。',
+      },
+      official_definition: {
+        title: '官方边界',
+        body: 'Anthropic 的 agent 与 context engineering 材料把上下文放进模型、工具、工作流和状态共同组成的系统里。',
+        takeaway: '官方材料负责界定它不是单纯提示词优化。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'Every 的 Claude Code / Codex 访谈可补足团队真实使用 agent 时如何处理上下文、交接和工作流，但强引文仍要逐条回源。',
+        takeaway: '访谈只补实践语境，不替代定义。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'Lost in the Middle 说明长上下文有位置偏差，RAG 解释外部知识如何进入上下文，MemGPT 解释显式记忆管理为什么必要。',
+        takeaway: '更长上下文不等于更好上下文，工程重点是选、排、存、更新。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'Claude Code memory、slash commands 和 MCP 把上下文变成可配置的运行时机制，而不是藏在一次 prompt 里。',
+        takeaway: '能被写成文件、协议、工具和检查点，才算进入工程层。',
+      },
+    },
+    loopSteps: [
+      { title: '定义任务视野', body: '先判断 agent 当前这一步需要目标、约束、历史、外部事实、工具说明还是验证反馈。' },
+      { title: '组织信息来源', body: '把系统指令、memory、RAG、工具返回、用户偏好和状态文件分层，不让它们挤成一坨长 prompt。' },
+      { title: '控制上下文预算', body: '用检索、摘要、压缩、优先级和淘汰规则处理窗口限制，避免旧信息和噪声占位。' },
+      { title: '让工具生成新上下文', body: '工具调用、文件读取、测试结果和外部查询会把新事实带回来，下一轮要把它们放到正确位置。' },
+      { title: '用验证回路更新记忆', body: '把失败模式、完成条件和用户纠正写回可复用记忆，下一次任务从更准的上下文开始。' },
+    ],
+    readerCanJudge: [
+      '一个 agent 产品说自己有长上下文时，它到底有没有处理位置偏差、噪声和旧信息，而不是只把窗口做大。',
+      '它的 memory、retrieval、tools 和 instructions 是可管理的运行时机制，还是一次性塞进 prompt 的文本块。',
+      '系统有没有把验证结果和用户纠正写回可复用上下文，让下一轮任务真的变准。',
+    ],
+  },
+  mcp: {
+    title: 'Model Context Protocol',
+    subtitle: '模型上下文协议',
+    valueProp:
+      'MCP 不是又一个工具调用 demo，而是把 AI 应用、外部工具、数据源和资源放进统一 client-server 协议里，让 agent 能用一套可复用方式接入不同系统。',
+    problem:
+      'Agent 产品一旦进入真实工作流，就不能只靠每家自己写一套 function calling glue。工具权限、资源发现、prompt、数据连接和 SDK 都需要稳定边界，否则每接一个服务都要重新造集成层，也很难复用和审计。',
+    whyRead:
+      '这页先用官方 MCP 文档、协议仓库、TypeScript / Python SDK 和 Claude Code MCP 文档建立技术边界，再用 Toolformer 解释“模型用工具”为什么需要被工程化。当前 source pack 仍缺一线采用信号和 transcript 语境，所以只算初版，不算 ready。',
+    roleInsights: {
+      signal: {
+        title: '生态信号',
+        body: 'MCP 的价值要看有没有被真实客户端、服务器、SDK 和开发者工作流采用，单看协议发布不够。',
+        takeaway: '这一角色当前还薄，需要补社区采用、产品接入和实践复盘。',
+      },
+      official_definition: {
+        title: '协议定义',
+        body: '官方文档和 spec 负责定义 client、server、tools、resources、prompts 等基本对象，以及协议如何标准化上下文供给。',
+        takeaway: '先看协议对象和安全边界，再看某个客户端怎么用。',
+      },
+      transcript_context: {
+        title: '设计语境',
+        body: '访谈、演讲或长解释能补 MCP 为什么这样设计、想解决哪类集成碎片化问题。',
+        takeaway: '当前缺可引用 transcript，不能用二手描述替代。',
+      },
+      paper_foundation: {
+        title: '工具使用根基',
+        body: 'Toolformer 这类论文说明模型为什么需要外部工具，以及何时调用、怎么传参、怎么整合结果这些问题为何重要。',
+        takeaway: '论文解释需求，协议和 SDK 解释落地。',
+      },
+      implementation_signal: {
+        title: 'SDK 与实现',
+        body: 'TypeScript SDK、Python SDK 和 Claude Code MCP 文档说明 MCP 已经进入可实现、可集成的工程层。',
+        takeaway: '有 SDK 和产品接入，MCP 才不只是规范文本。',
+      },
+    },
+    loopSteps: [
+      { title: '先读协议对象', body: '从官方 intro 和 spec 里分清 client、server、tools、resources、prompts 分别承担什么。' },
+      { title: '看 SDK 怎么实现', body: '用 TypeScript / Python SDK 理解服务端暴露能力、客户端发现和调用能力的实际写法。' },
+      { title: '看产品怎么接入', body: 'Claude Code MCP 文档能说明协议如何进入真实开发者工作流，而不只停在示例。' },
+      { title: '回到工具使用问题', body: 'Toolformer 提供工具使用的研究背景，但不能替代 MCP 的协议定义。' },
+      { title: '补采用和语境', body: '进入 ready 前还要补一线采用信号和 transcript context，确认它为什么被采用、在哪里有边界。' },
+    ],
+    readerCanJudge: [
+      'MCP 解决的是工具和上下文接入的标准化问题，还是只是某个产品的插件机制。',
+      '一个 MCP 集成有没有清楚的权限、资源、工具和客户端边界。',
+      '当前 source pack 是否补齐 signal 和 transcript context；没补齐前只能当 thin 初版看。',
+    ],
+  },
   'ai-evals': {
     title: 'AI Evals',
     subtitle: 'AI 评测',
@@ -176,6 +275,8 @@ const THREAD_PRESENTATIONS: Record<string, ThreadPresentation> = {
   },
 };
 
+const GENERATED_THREAD_PRESENTATIONS = generatedThreadPresentations as unknown as Record<string, ThreadPresentation>;
+
 export function getThreadPresentationSeed(slug: string): ThreadPresentation | null {
-  return THREAD_PRESENTATIONS[slug] ?? null;
+  return THREAD_PRESENTATIONS[slug] ?? GENERATED_THREAD_PRESENTATIONS[slug] ?? null;
 }

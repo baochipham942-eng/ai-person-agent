@@ -252,11 +252,607 @@ const COMPANY_PRESENTATIONS: Record<string, CompanyPresentation> = {
     logoUrl: '/logos/openai.png',
     homepageUrl: 'https://openai.com',
   },
+
+  xai: {
+    heroDescription:
+      'xAI 的公司页先看 Grok 模型、Grok Build、Composer 和生产力插件怎样组成产品线，再看它和 Agentic Coding、Context Engineering 等主题的关系。',
+    headline: '四条产品线：Grok 模型、开发者代理平台、内容创作工具、办公场景插件；官方发布节奏是当前最主要的证据来源。',
+    strategy:
+      'xAI 当前对外展示的 AI 布局可以按四条线看：Grok 模型负责底层能力和云平台分发，Grok Build / Agent Dashboard 把模型带进多会话代理管理，Composer 面向内容生成与编辑，Grok for PowerPoint 则把能力嵌入办公软件。这个样稿只把官方新闻和产品发布当作策展线索，不把 dry-run 候选误写成已入库公司证据。',
+    products: [
+      {
+        name: 'Grok 模型系列',
+        summary: 'xAI 的核心模型产品线。Grok 4.3 进入 Amazon Bedrock，说明它正在走企业云分发路径。',
+        url: 'https://x.ai/news/grok-amazon-bedrock',
+      },
+      {
+        name: 'Grok Build / Agent Dashboard',
+        summary: '面向开发者和代理工作流的产品入口，用来管理多个编码会话，是观察 xAI 进入 agentic coding 的关键样本。',
+        url: 'https://x.ai/news/agent-dashboard',
+      },
+      {
+        name: 'Composer',
+        summary: '面向内容生成和编辑的产品线，用来观察 xAI 如何把模型能力包装成可直接使用的创作工具。',
+        url: 'https://x.ai/news/composer-2-5',
+      },
+      {
+        name: 'Grok for PowerPoint',
+        summary: '把 Grok 嵌入 Microsoft PowerPoint 的插件形态，代表模型能力进入办公软件的分发尝试。',
+        url: 'https://x.ai/news/introducing-powerpoint-addin',
+      },
+    ],
+    bets: [
+      {
+        title: '代理工作流',
+        body: 'Grok Build 和 Agent Dashboard 指向一个更像工作台的方向：让用户管理多个 AI 编码会话，而不是只和单个聊天入口交互。',
+      },
+      {
+        title: '平台分发',
+        body: 'Amazon Bedrock 和 PowerPoint 插件说明 xAI 正在通过云平台和办公软件扩大 Grok 的使用入口。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Grok 4.3 now available in Amazon Bedrock',
+        label: '云分发',
+        summary: '先读这条：它说明 Grok 模型进入 AWS 企业云入口，是判断 xAI 商业化分发路径的直接官方材料。',
+        url: 'https://x.ai/news/grok-amazon-bedrock',
+      },
+      {
+        title: 'Grok Build Agent Dashboard',
+        label: 'Agentic Coding',
+        summary: '观察 xAI 如何把编码代理从单次会话推进到多会话管理和工作台形态。',
+        url: 'https://x.ai/news/agent-dashboard',
+      },
+      {
+        title: 'Introducing PowerPoint Add-in',
+        label: '办公插件',
+        summary: '模型能力进入现有办公工具的入口，适合看产品分发和使用场景。',
+        url: 'https://x.ai/news/introducing-powerpoint-addin',
+      },
+      {
+        title: 'Composer 2.5',
+        label: '创作工具',
+        summary: '内容生成与编辑产品线的官方发布，帮助区分 xAI 的模型、代理和内容工具。',
+        url: 'https://x.ai/news/composer-2-5',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'xAI',
+        summary: '公司官网和产品入口。',
+        url: 'https://x.ai',
+      },
+      {
+        title: 'xAI News',
+        summary: '官方新闻和产品发布，当前 xAI 公司页样稿的主要来源。',
+        url: 'https://x.ai/news',
+      },
+    ],
+    flagshipKeywords: ['grok', 'agent dashboard', 'grok build', 'composer'],
+    homepageUrl: 'https://x.ai',
+  },
+  'alibaba-damo-academy': {
+    heroDescription:
+      'Alibaba DAMO Academy / Qwen 的公司页先看 Qwen 模型、具身智能和 agent 导航等官方发布怎样组成技术线索，再看它和 Agentic Coding、Context Engineering 的关系。',
+    headline: '四条线索：Qwen 模型、机器人操作、机器人导航、具身世界模型；当前证据以 Qwen 官方博客为主。',
+    strategy:
+      '这组 P0 来源显示阿里系 AI 布局正在把 Qwen 从通用模型扩展到具身智能和智能体任务：Qwen3.7 指向 agent 前沿模型，Qwen-RobotManip / RobotNav / RobotWorld 则把模型能力推向操作、导航和物理世界理解。',
+    products: [
+      {
+        name: 'Qwen3.7',
+        summary: '面向智能体能力的 Qwen 模型发布，是观察阿里模型线如何进入 agent 工作流的入口。',
+        url: 'https://qwen.ai/blog?id=qwen3.7',
+      },
+      {
+        name: 'Qwen-RobotManip',
+        summary: '机器人操作基础模型方向，强调通过对齐解锁规模化操作能力。',
+        url: 'https://qwen.ai/blog?id=qwen-robotmanip',
+      },
+      {
+        name: 'Qwen-RobotNav',
+        summary: '面向智能体导航系统的模型线索，用来观察模型如何进入导航和空间任务。',
+        url: 'https://qwen.ai/blog?id=qwen-robotnav',
+      },
+      {
+        name: 'Qwen-RobotWorld',
+        summary: '具身智能体世界模型线索，适合和 Agent Memory、Context Engineering 等主题后续交叉。',
+        url: 'https://qwen.ai/blog?id=qwen-robotworld',
+      },
+    ],
+    bets: [
+      {
+        title: '具身智能',
+        body: '连续的机器人操作、导航和世界模型发布说明 Qwen 正在被包装成具身智能底座，而不只是文本模型。',
+      },
+      {
+        title: 'Agent 模型能力',
+        body: 'Qwen3.7 的定位让它可以进入 agentic workflow 的能力对比，但还需要后续 source pack 证明真实采用。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Qwen-RobotManip',
+        label: '机器人操作',
+        summary: '先读这篇，理解 Qwen 如何把模型对齐和机器人操作任务连接起来。',
+        url: 'https://qwen.ai/blog?id=qwen-robotmanip',
+      },
+      {
+        title: 'Qwen-RobotNav',
+        label: '机器人导航',
+        summary: '用于观察智能体导航系统里的模型能力和任务边界。',
+        url: 'https://qwen.ai/blog?id=qwen-robotnav',
+      },
+      {
+        title: 'Qwen3.7',
+        label: 'Agent 模型',
+        summary: '用来判断 Qwen 在智能体能力上的官方叙事和产品节奏。',
+        url: 'https://qwen.ai/blog?id=qwen3.7',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Alibaba Cloud',
+        summary: '阿里云官网入口。',
+        url: 'https://www.alibabacloud.com',
+      },
+    ],
+    flagshipKeywords: ['qwen', 'robot', 'agent'],
+    homepageUrl: 'https://www.alibabacloud.com',
+  },
+  apple: {
+    heroDescription:
+      '苹果公司页先看 Apple Foundation Models、隐私保护机器学习和 Apple ML Research 的官方材料，再判断它在端侧 AI 与模型能力上的布局。',
+    headline: '三条线索：Apple Foundation Models、隐私保护机器学习、研究社区参与；当前源包偏研究和团队信号。',
+    strategy:
+      'Apple 的 P0 来源不像模型公司那样给出完整产品矩阵，更多是从 Apple Foundation Models、PPML 研讨会和 ICASSP 研究参与来观察它如何把模型能力放进隐私保护、端侧体验和开发者生态。',
+    products: [
+      {
+        name: 'Apple Foundation Models',
+        summary: 'Apple 官方机器学习研究发布，适合作为理解其基础模型能力和端侧 AI 路线的入口。',
+        url: 'https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models',
+      },
+      {
+        name: 'Privacy-Preserving Machine Learning',
+        summary: '隐私保护机器学习方向更像技术底座，不是独立产品，但能解释 Apple AI 布局的约束条件。',
+        url: 'https://machinelearning.apple.com/updates/ppml-2026',
+      },
+    ],
+    bets: [
+      {
+        title: '端侧与隐私约束',
+        body: 'Apple 的 AI 叙事绕不开端侧体验和隐私保护，机器学习研究材料比营销页面更能说明长期边界。',
+      },
+      {
+        title: '基础模型能力',
+        body: 'Apple Foundation Models 是当前最值得跟踪的官方入口，但还需要更多产品落地源才能把公司页做厚。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Introducing third generation of Apple Foundation Models',
+        label: '基础模型',
+        summary: '当前最直接的 Apple 模型能力官方材料。',
+        url: 'https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models',
+      },
+      {
+        title: 'Apple Privacy-Preserving Machine Learning Workshop 2026',
+        label: '隐私机器学习',
+        summary: '理解 Apple 为什么会把隐私保护作为 AI 技术路线的一部分。',
+        url: 'https://machinelearning.apple.com/updates/ppml-2026',
+      },
+      {
+        title: 'Apple at ICASSP 2026',
+        label: '研究社区',
+        summary: '研究参与信号，适合看 Apple ML 团队关注的技术方向。',
+        url: 'https://machinelearning.apple.com/updates/apple-at-icassp-2026',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Apple',
+        summary: '公司官网入口。',
+        url: 'https://www.apple.com',
+      },
+    ],
+    flagshipKeywords: ['foundation models', 'privacy', 'machine learning'],
+    homepageUrl: 'https://www.apple.com',
+  },
+  cloudflare: {
+    heroDescription:
+      'Cloudflare 的公司页先看 AI Gateway、AI 基础设施团队和安全测试工具，理解它如何把 AI 能力放进边缘网络、安全和成本控制。',
+    headline: '三条线索：AI Gateway 成本控制、Ensemble AI 团队、漏洞发现 harness；AI 基础设施和安全是主轴。',
+    strategy:
+      'Cloudflare 的 P0 来源显示它不是在做通用模型，而是在把 AI 放进网络和开发者基础设施：AI Gateway 控制模型调用成本，Ensemble AI 强化团队能力，漏洞发现 harness 则把 AI 安全和上下文绕过问题产品化。',
+    products: [
+      {
+        name: 'AI Gateway spend limits',
+        summary: '面向 AI 调用成本和网关治理的产品能力，适合观察 Cloudflare 如何卡住企业 AI 基础设施入口。',
+        url: 'https://blog.cloudflare.com/ai-gateway-spend-limits',
+      },
+      {
+        name: 'Vulnerability harness',
+        summary: '多阶段漏洞发现工具，能和 Agent Security、Context Engineering 后续主题交叉。',
+        url: 'https://blog.cloudflare.com/build-your-own-vulnerability-harness',
+      },
+    ],
+    bets: [
+      {
+        title: 'AI 基础设施',
+        body: 'Cloudflare 的优势不在模型本身，而在流量、网关、权限、成本和安全这些 AI 应用上线后的基础设施层。',
+      },
+      {
+        title: '安全与上下文攻击',
+        body: '漏洞发现 harness 把 adversarial review、context bypass 这些问题拉到工程实现层，值得进入 Agent Security 候选主题。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'AI Gateway spend limits',
+        label: 'AI 网关',
+        summary: '理解 Cloudflare 如何把 AI 调用成本和治理做成基础设施能力。',
+        url: 'https://blog.cloudflare.com/ai-gateway-spend-limits',
+      },
+      {
+        title: 'Build your own vulnerability harness',
+        label: '安全测试',
+        summary: '用于观察 Cloudflare 如何处理对抗性审查和上下文绕过。',
+        url: 'https://blog.cloudflare.com/build-your-own-vulnerability-harness',
+      },
+      {
+        title: 'Ensemble AI talent joins Cloudflare',
+        label: '团队信号',
+        summary: '团队扩张信号，说明 Cloudflare 在 AI 基础设施方向继续加码。',
+        url: 'https://blog.cloudflare.com/ensemble-ai-talent-joins-cloudflare',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Cloudflare',
+        summary: '公司官网入口。',
+        url: 'https://www.cloudflare.com',
+      },
+    ],
+    flagshipKeywords: ['ai gateway', 'security', 'harness'],
+    homepageUrl: 'https://www.cloudflare.com',
+  },
+  deepseek: {
+    heroDescription:
+      'DeepSeek 的公司页先用当前源包里的 Visual Primitive Thinking 官方仓库做技术入口，再等待更多模型、产品和团队来源把页面补厚。',
+    headline: '当前只有一条强技术线索：视觉基元思维；公司页先保持保守，不把薄源扩写成完整产品矩阵。',
+    strategy:
+      'DeepSeek 的 P0 公司源包目前很薄，只有 Visual Primitive Thinking 相关材料可以作为可追溯技术线索。因此这页先把它当作研究和多模态空间推理方向，不硬写完整产品布局。',
+    products: [
+      {
+        name: 'Visual Primitive Thinking',
+        summary: 'DeepSeek 团队围绕多模态空间推理提出的研究线索，当前更适合当技术主题入口，而不是商业产品。',
+        url: 'https://github.com/deepseek-ai/Thinking-with-Visual-Primitives',
+      },
+    ],
+    bets: [
+      {
+        title: '多模态空间推理',
+        body: '视觉基元思维材料指向多模态模型的空间指代表达能力，是当前唯一可稳妥落地的公司页线索。',
+      },
+      {
+        title: '保守补源',
+        body: 'DeepSeek 页面需要后续补模型发布、官方文档和开发者入口，不能靠二手融资或传闻把公司页写厚。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Thinking with Visual Primitives',
+        label: '多模态研究',
+        summary: '当前 DeepSeek P0 源包里唯一可直接用于公司页的技术材料。',
+        url: 'https://github.com/deepseek-ai/Thinking-with-Visual-Primitives',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'DeepSeek',
+        summary: '公司官网入口。',
+        url: 'https://www.deepseek.com',
+      },
+    ],
+    flagshipKeywords: ['deepseek', 'visual primitives', 'multimodal'],
+    homepageUrl: 'https://www.deepseek.com',
+  },
+  google: {
+    heroDescription:
+      'Google 的公司页先看 Colab CLI、ADK 和 Google Pay / Wallet MCP server，理解它如何把 AI agent 能力推向开发者工具和集成工作流。',
+    headline: '三条产品线索：Colab CLI、ADK、Google Pay / Wallet MCP server；重点是开发者工作流和 agent 集成。',
+    strategy:
+      '这组来源显示 Google 正在把 AI agent 能力放进开发者日常工具：Colab CLI 进入终端，ADK 扩到 Kotlin / Android，Google Pay & Wallet MCP server 则把协议化工具接入带到支付集成场景。',
+    products: [
+      {
+        name: 'Google Colab CLI',
+        summary: '把 Colab 工作流带进命令行，是 Google AI 开发者体验的一个新入口。',
+        url: 'https://developers.googleblog.com/introducing-the-google-colab-cli',
+      },
+      {
+        name: 'Agent Development Kit for Kotlin / Android',
+        summary: '把 ADK 带到 Android 和 Kotlin 生态，说明 agent 开发工具链正在跨平台扩展。',
+        url: 'https://developers.googleblog.com/adk-kotlin-android-building-ai-agents',
+      },
+      {
+        name: 'Google Pay & Wallet MCP server',
+        summary: '用 MCP server 加速支付和钱包集成，是协议层进入业务 API 的一个样本。',
+        url: 'https://developers.googleblog.com/supercharge-your-integration-workflow-with-the-google-pay-wallet-developer-mcp-server',
+      },
+    ],
+    bets: [
+      {
+        title: '开发者工具链',
+        body: 'Colab CLI 和 ADK 说明 Google 在把模型能力包装成开发者可复用的工具和 SDK。',
+      },
+      {
+        title: '协议化集成',
+        body: 'Google Pay & Wallet MCP server 可以作为 MCP 从协议走向真实业务 API 的公司样本。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Introducing the Google Colab CLI',
+        label: '开发者工具',
+        summary: '观察 Google 如何把 AI 开发体验带进命令行。',
+        url: 'https://developers.googleblog.com/introducing-the-google-colab-cli',
+      },
+      {
+        title: 'ADK Kotlin and Android 0.1.0',
+        label: 'Agent SDK',
+        summary: '理解 Google 的 agent 开发工具链如何扩到 Android 和 Kotlin。',
+        url: 'https://developers.googleblog.com/adk-kotlin-android-building-ai-agents',
+      },
+      {
+        title: 'Google Pay & Wallet Developer MCP server',
+        label: 'MCP',
+        summary: '一个业务 API 通过 MCP server 暴露给开发者工作流的直接样本。',
+        url: 'https://developers.googleblog.com/supercharge-your-integration-workflow-with-the-google-pay-wallet-developer-mcp-server',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Google',
+        summary: '公司官网入口。',
+        url: 'https://www.google.com',
+      },
+    ],
+    flagshipKeywords: ['colab', 'adk', 'mcp'],
+    homepageUrl: 'https://www.google.com',
+  },
+  'hugging-face': {
+    heroDescription:
+      'Hugging Face 的公司页先看 Hub 生态、机器人 SDK、评测工具和多模态研究材料，理解它如何作为开源 AI 基础设施连接模型、数据和应用。',
+    headline: '三条线索：Hub 到机器人硬件、模型评测循环、多模态运动预测；Hugging Face 的价值在生态和开源协作。',
+    strategy:
+      'Hugging Face 的 P0 来源不是单一产品发布，而是三个生态样本：Strands Robots SDK 把 Hub 连接到硬件，olmo-eval 支撑模型开发循环，MolmoMotion 展示多模态研究社区如何借平台发布和传播。',
+    products: [
+      {
+        name: 'Hugging Face Hub',
+        summary: '模型、数据集和应用共享的核心平台；当前源包里的机器人和评测材料都围绕 Hub 生态展开。',
+      },
+      {
+        name: 'Strands Robots SDK',
+        summary: '从 Hugging Face Hub 到物理机器人硬件的 SDK 样本。',
+        url: 'https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware',
+      },
+      {
+        name: 'olmo-eval',
+        summary: '面向模型开发循环的评测工作台，适合和 AI Evals 主题交叉。',
+        url: 'https://huggingface.co/blog/allenai/olmo-eval',
+      },
+    ],
+    bets: [
+      {
+        title: '开源模型生态',
+        body: 'Hugging Face 的公司价值更多在生态分发、协作和工具链，而不是单个闭源模型发布。',
+      },
+      {
+        title: '评测与具身智能',
+        body: 'olmo-eval 和 Strands Robots SDK 说明平台正在向评测循环和机器人应用延伸。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Strands Robots SDK',
+        label: '机器人 SDK',
+        summary: '观察 Hugging Face Hub 如何连接到物理机器人和硬件工作流。',
+        url: 'https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware',
+      },
+      {
+        title: 'olmo-eval',
+        label: 'AI Evals',
+        summary: '面向模型开发循环的评测工作台，适合进入 AI Evals 证据图谱。',
+        url: 'https://huggingface.co/blog/allenai/olmo-eval',
+      },
+      {
+        title: 'MolmoMotion',
+        label: '多模态研究',
+        summary: '语言引导 3D 运动预测模型，展示平台上的研究发布和传播形态。',
+        url: 'https://huggingface.co/blog/allenai/molmomotion',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Hugging Face',
+        summary: '平台和社区入口。',
+        url: 'https://huggingface.co',
+      },
+    ],
+    flagshipKeywords: ['hugging face hub', 'eval', 'robots'],
+    homepageUrl: 'https://huggingface.co',
+  },
+  minimax: {
+    heroDescription:
+      'MiniMax 的公司页先看 MiniMax M3 这一条官方模型材料，理解它在编码、长上下文和原生多模态上的产品叙事。',
+    headline: '当前核心线索是 MiniMax M3：前沿编码、100 万 token 上下文、原生多模态。',
+    strategy:
+      'MiniMax 的 P0 源包只有一条强来源，所以页面先保持收敛：MiniMax M3 同时覆盖编码、超长上下文和多模态，是后续连接 Agentic Coding、Context Engineering 的主要入口。',
+    products: [
+      {
+        name: 'MiniMax M3',
+        summary: '官方发布强调前沿编码、100 万 token 上下文和原生多模态，是当前最稳的公司页核心材料。',
+        url: 'https://www.minimax.io/blog/minimax-m3',
+      },
+    ],
+    bets: [
+      {
+        title: '长上下文与编码',
+        body: 'MiniMax M3 把编码能力和 100 万 token 上下文放在一起，适合后续和 Context Engineering / Agentic Coding 对照。',
+      },
+      {
+        title: '原生多模态',
+        body: '多模态能力是 MiniMax M3 的另一条叙事线，但还需要更多应用源来证明产品落地。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'MiniMax M3',
+        label: '模型发布',
+        summary: '当前 MiniMax 公司页最值得先读的官方材料。',
+        url: 'https://www.minimax.io/blog/minimax-m3',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'MiniMax',
+        summary: '公司官网入口。',
+        url: 'https://www.minimax.io',
+      },
+    ],
+    flagshipKeywords: ['minimax m3', 'coding', 'long context', 'multimodal'],
+    homepageUrl: 'https://www.minimax.io',
+  },
+  'mistral-ai': {
+    heroDescription:
+      'Mistral AI 的公司页先看 Search Toolkit、AI Now Summit 和工业 AI 科学投入，理解它在开发者工具、行业生态和应用落地上的布局。',
+    headline: '三条线索：Search Toolkit、AI Now Summit、工业 AI；Mistral 正在把模型公司叙事扩到工具和行业场景。',
+    strategy:
+      'Mistral AI 的 P0 来源显示它不只讲模型发布：Search Toolkit 是开发者能力，AI Now Summit 是生态和行业交流，加倍投入科学以赢得工业 AI 则说明它正在强调行业落地。',
+    products: [
+      {
+        name: 'Search Toolkit',
+        summary: '面向搜索和检索能力的工具发布，是观察 Mistral 开发者平台的入口。',
+        url: 'https://mistral.ai/news/search-toolkit',
+      },
+    ],
+    bets: [
+      {
+        title: '开发者工具',
+        body: 'Search Toolkit 说明 Mistral 在把模型能力包装成可集成工具，而不是只发布模型权重。',
+      },
+      {
+        title: '工业 AI',
+        body: '工业 AI 和科学投入材料说明 Mistral 正在把公司叙事推向行业应用。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Search Toolkit',
+        label: '开发者工具',
+        summary: '理解 Mistral 如何把搜索能力做成工具入口。',
+        url: 'https://mistral.ai/news/search-toolkit',
+      },
+      {
+        title: 'Science to win industrial AI',
+        label: '工业 AI',
+        summary: '看 Mistral 如何解释科学投入和工业 AI 的关系。',
+        url: 'https://mistral.ai/news/science-to-win-industrial-ai',
+      },
+      {
+        title: 'AI Now Summit 2026',
+        label: '生态信号',
+        summary: '行业生态和合作信号，适合作为公司页背景材料。',
+        url: 'https://mistral.ai/news/ai-now-summit-2026',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Mistral AI',
+        summary: '公司官网入口。',
+        url: 'https://mistral.ai',
+      },
+    ],
+    flagshipKeywords: ['mistral', 'search toolkit', 'industrial ai'],
+    homepageUrl: 'https://mistral.ai',
+  },
+  nvidia: {
+    heroDescription:
+      'NVIDIA 的公司页先看 RTX、AI 工厂、物理 AI 和主权 AI 这些官方来源，理解它如何把 GPU 公司优势包装成 AI 基础设施和产业落地。',
+    headline: '四条线索：RTX 生态、AI 工厂蓝图、物理 AI、主权 AI；NVIDIA 的公司页重点是基础设施和产业化。',
+    strategy:
+      'NVIDIA 的 P0 来源显示它在用硬件生态、工厂运营蓝图、LG AI 工厂合作和英国主权 AI 材料，把“算力公司”叙事推进到 AI 工厂、物理 AI 和国家级基础设施。',
+    products: [
+      {
+        name: 'RTX Spark',
+        summary: 'RTX 生态在 PC 房和游戏场景里的发布信号，用来观察 NVIDIA 如何维持本地算力和开发者入口。',
+        url: 'https://blogs.nvidia.com/blog/krafton-nc-t1-korea-gaming-pc-bang-rtx-spark',
+      },
+      {
+        name: 'Factory operations AI blueprint',
+        summary: '面向工厂运营的自主智能管理智能体蓝图，是 NVIDIA AI 工厂叙事的直接材料。',
+        url: 'https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brain',
+      },
+    ],
+    bets: [
+      {
+        title: 'AI 工厂',
+        body: '工厂运营蓝图和 LG 合作说明 NVIDIA 正在把 GPU、仿真和智能体打包成产业基础设施。',
+      },
+      {
+        title: '主权 AI',
+        body: '英国主权 AI 材料显示 NVIDIA 正在把算力和平台能力放进国家级 AI 战略。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Factory operations blueprint',
+        label: 'AI 工厂',
+        summary: '替代 Mimo 第一稿里过泛的 NVIDIA AI Blog 链接，直接锚定具体官方来源。',
+        url: 'https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brain',
+      },
+      {
+        title: 'NVIDIA and LG Group AI factory',
+        label: '物理 AI',
+        summary: '观察 NVIDIA 如何把 AI 工厂、物理 AI 和自动驾驶放进合作叙事。',
+        url: 'https://blogs.nvidia.com/blog/nvidia-and-lg-group-ai-factory',
+      },
+      {
+        title: 'UK sovereign AI advancements',
+        label: '主权 AI',
+        summary: '国家级 AI 基础设施和主权 AI 路线的官方材料。',
+        url: 'https://blogs.nvidia.com/blog/uk-sovereign-ai-advancements',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'NVIDIA',
+        summary: '公司官网入口。',
+        url: 'https://www.nvidia.com',
+      },
+    ],
+    flagshipKeywords: ['nvidia', 'ai factory', 'rtx', 'sovereign ai'],
+    homepageUrl: 'https://www.nvidia.com',
+  },
 };
 
 export function getCompanyPresentationSeed(name: string): CompanyPresentation | null {
-  return COMPANY_PRESENTATIONS[companyKey(name)] ?? null;
+  const key = companyKey(name);
+  const aliasKey = COMPANY_PRESENTATION_ALIASES[key];
+  return COMPANY_PRESENTATIONS[key] ?? (aliasKey ? COMPANY_PRESENTATIONS[aliasKey] : null) ?? null;
 }
+
+const COMPANY_PRESENTATION_ALIASES: Record<string, string> = {
+  '阿里巴巴': 'alibaba-damo-academy',
+  '阿里云': 'alibaba-damo-academy',
+  '通义千问': 'alibaba-damo-academy',
+  '苹果公司': 'apple',
+  '谷歌': 'google',
+  '深度求索': 'deepseek',
+  '杭州深度求索人工智能基础技术研究有限公司（深度求索-/-deepseek）': 'deepseek',
+  '英伟达': 'nvidia',
+  '稀宇科技': 'minimax',
+};
 
 /**
  * 解析公司页策展内容：优先用 seed，没有 seed 时从 DB intelligence 退化出一份

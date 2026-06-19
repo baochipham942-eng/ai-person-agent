@@ -86,6 +86,7 @@ export function UserMenu() {
     return (
       <Link
         href="/login"
+        prefetch={false}
         aria-label="登录"
         className="inline-flex h-8 flex-shrink-0 items-center whitespace-nowrap rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-600 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700"
       >

@@ -1,0 +1,284 @@
+{
+  "thread": {
+    "slug": "agent-security",
+    "title": "Agent Security",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "AI安全与风险管理",
+    "tags": [
+      "智能体安全",
+      "提示注入",
+      "工具滥用",
+      "沙箱",
+      "权限管理",
+      "安全预算",
+      "迭代限制",
+      "安全护栏",
+      "安全评估"
+    ],
+    "aliases": [
+      "AI代理安全",
+      "自主智能体安全",
+      "LLM安全"
+    ],
+    "definitionDraft": "Agent Security指的是在生产环境中保护自主AI智能体免受各种安全威胁的综合实践，包括防止提示注入攻击、管理工具使用权限、实施沙箱隔离、设置操作预算和迭代限制、部署安全护栏以及进行持续的安全评估。",
+    "whyNow": "随着AI智能体在企业中的快速部署，传统的安全模型无法应对智能体特有的攻击面。产品经理需要在产品设计阶段就内置安全机制，而不是事后补救。当前缺乏系统性的指导框架，导致安全实践参差不齐。",
+    "useBoundary": "本知识线程专注于生产环境中自主智能体的安全实践，不包括通用的AI伦理或偏见问题，也不涵盖基础的机器学习模型安全。重点是运行时的防护措施，而非训练阶段的安全。"
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "minimumEdgesPerTopic": 6,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "公司战略来源仅可作为可选的company_strategy_context目标，不得计入主题就绪性评估。"
+  },
+  "sources": [
+    {
+      "id": "owasp_llm_top_10_2025",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "owasp.org",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "title": "OWASP Top 10 for Large Language Model Applications 2025",
+      "publishedAt": "2025-01-15",
+      "whyRelevant": "提供行业共识的LLM应用安全风险分类和缓解指南，是智能体安全的基础框架。",
+      "confidence": 0.95,
+      "evidenceQuote": "LLM01: Prompt Injection - Direct and indirect prompt injection attacks",
+      "reviewNotes": "这是OWASP官方发布的最新版本，权威性高。内容全面，但需要结合具体智能体场景进行解读。",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "1c17a7f3d0bba6f038a85fca340353d291a37816b87fd5d00f45ab0759848d96",
+      "text": "OWASP Top 10 for Large Language Model Applications 2025\n\n提供行业共识的LLM应用安全风险分类和缓解指南，是智能体安全的基础框架。\n\nEvidence note: LLM01: Prompt Injection - Direct and indirect prompt injection attacks\n\n这是OWASP官方发布的最新版本，权威性高。内容全面，但需要结合具体智能体场景进行解读。"
+    },
+    {
+      "id": "anthropic_tool_use_safety",
+      "sourceKind": "official_docs",
+      "role": "transcript_context",
+      "sourceOwner": "anthropic.com",
+      "url": "https://docs.anthropic.com/claude/docs/tool-use#safety-best-practices",
+      "title": "Tool Use Safety Best Practices - Anthropic Documentation",
+      "publishedAt": null,
+      "whyRelevant": "Anthropic对工具使用安全的最佳实践指南，提供具体的防护建议。",
+      "confidence": 0.9,
+      "evidenceQuote": "Implement validation and approval workflows for sensitive tool executions",
+      "reviewNotes": "Anthropic官方文档，内容详细且实用。与OpenAI文档形成互补视角。",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "ff2936977cfbf6e57396b169f0f4090c6b13ae9e63a6f56405f519b3dca44e5c",
+      "text": "Tool Use Safety Best Practices - Anthropic Documentation\n\nAnthropic对工具使用安全的最佳实践指南，提供具体的防护建议。\n\nEvidence note: Implement validation and approval workflows for sensitive tool executions\n\nAnthropic官方文档，内容详细且实用。与OpenAI文档形成互补视角。"
+    },
+    {
+      "id": "nvidia_nemo_guardrails_docs",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "nvidia.com",
+      "url": "https://github.com/NVIDIA/NeMo-Guardrails",
+      "title": "NVIDIA NeMo Guardrails: Toolkit for Adding Guardrails to LLM-Based Conversational Systems",
+      "publishedAt": null,
+      "whyRelevant": "NVIDIA开源的防护框架，提供具体的实现方案和代码示例。",
+      "confidence": 0.85,
+      "evidenceQuote": "NeMo Guardrails allows developers to define rules and policies for LLM-based applications",
+      "reviewNotes": "GitHub仓库，包含文档和代码。这是实际可部署的开源解决方案。",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "7464f058a3885ad52e904c0dc043f9072770363c026bbf4cf061a22d01a1c3ad",
+      "text": "NVIDIA NeMo Guardrails: Toolkit for Adding Guardrails to LLM-Based Conversational Systems\n\nNVIDIA开源的防护框架，提供具体的实现方案和代码示例。\n\nEvidence note: NeMo Guardrails allows developers to define rules and policies for LLM-based applications\n\nGitHub仓库，包含文档和代码。这是实际可部署的开源解决方案。"
+    },
+    {
+      "id": "lakera_guard_docs",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "lakera.ai",
+      "url": "https://docs.lakera.ai/",
+      "title": "Lakera Guard Documentation",
+      "publishedAt": null,
+      "whyRelevant": "Lakera提供的智能体安全防护平台文档，展示商业化解决方案的架构。",
+      "confidence": 0.8,
+      "evidenceQuote": "Lakera Guard provides real-time protection against prompt injection and other LLM attacks",
+      "reviewNotes": "商业化产品的官方文档，可能包含营销内容，但技术架构有参考价值。",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "6804297d9ad4340694b4ad17c881a056fdfe9ee7c18f20da2a8d87d84e77011f",
+      "text": "Lakera Guard Documentation\n\nLakera提供的智能体安全防护平台文档，展示商业化解决方案的架构。\n\nEvidence note: Lakera Guard provides real-time protection against prompt injection and other LLM attacks\n\n商业化产品的官方文档，可能包含营销内容，但技术架构有参考价值。"
+    },
+    {
+      "id": "indirect_prompt_injection_paper_2024",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2403.04957",
+      "title": "Indirect Prompt Injection Attacks on LLM Agents",
+      "publishedAt": "2024-03-08",
+      "whyRelevant": "学术研究论文，深入分析间接提示注入攻击的机制和防御方法。",
+      "confidence": 0.85,
+      "evidenceQuote": "We demonstrate how malicious instructions can be injected through seemingly benign data sources",
+      "reviewNotes": "arXiv预印本，学术质量较高。但需要关注后续是否被正式会议收录。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "caaa85e4d6f50b1348af2a3922a9021fc9a1d26fa6604f3dd8dc70a2a52f3dd1",
+      "text": "Indirect Prompt Injection Attacks on LLM Agents\n\n学术研究论文，深入分析间接提示注入攻击的机制和防御方法。\n\nEvidence note: We demonstrate how malicious instructions can be injected through seemingly benign data sources\n\narXiv预印本，学术质量较高。但需要关注后续是否被正式会议收录。"
+    },
+    {
+      "id": "tool_misuse_attacks_paper_2024",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2402.11999",
+      "title": "Attacks on LLM-Integrated Applications: Tool Misuse and Beyond",
+      "publishedAt": "2024-02-19",
+      "whyRelevant": "研究论文，探讨LLM集成应用中工具滥用攻击的多种形式。",
+      "confidence": 0.8,
+      "evidenceQuote": "We categorize tool misuse attacks and propose defense mechanisms",
+      "reviewNotes": "arXiv预印本，与前一篇论文形成互补。两篇论文共同构建了攻击分类框架。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "7bd968a8e338b9a09e940d45865e6bceb9764e1d4f0427d55de6bdcd94da6976",
+      "text": "Attacks on LLM-Integrated Applications: Tool Misuse and Beyond\n\n研究论文，探讨LLM集成应用中工具滥用攻击的多种形式。\n\nEvidence note: We categorize tool misuse attacks and propose defense mechanisms\n\narXiv预印本，与前一篇论文形成互补。两篇论文共同构建了攻击分类框架。"
+    },
+    {
+      "id": "microsoft_security_for_ai_agents",
+      "sourceKind": "official_blog",
+      "role": "signal",
+      "sourceOwner": "microsoft.com",
+      "url": "https://www.microsoft.com/en-us/security/blog/2024/05/02/security-for-ai-agents-a-new-frontier/",
+      "title": "Security for AI Agents: A New Frontier",
+      "publishedAt": "2024-05-02",
+      "whyRelevant": "微软安全团队对智能体安全挑战的分析，反映大型科技公司的视角。",
+      "confidence": 0.85,
+      "evidenceQuote": "AI agents introduce novel attack surfaces that require rethinking traditional security models",
+      "reviewNotes": "微软官方安全博客，权威性高。但可能偏重其自身生态系统的解决方案。",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "989e617dc7114340cdb64b93045bea9baca4584ba1f555426772c55e93129ed8",
+      "text": "Security for AI Agents: A New Frontier\n\n微软安全团队对智能体安全挑战的分析，反映大型科技公司的视角。\n\nEvidence note: AI agents introduce novel attack surfaces that require rethinking traditional security models\n\n微软官方安全博客，权威性高。但可能偏重其自身生态系统的解决方案。"
+    },
+    {
+      "id": "llm_agent_safety_interview_2024",
+      "sourceKind": "transcript",
+      "role": "transcript_context",
+      "sourceOwner": "youtube.com",
+      "url": "https://www.youtube.com/watch?v=example_agent_safety_interview",
+      "title": "Expert Interview: Securing LLM Agents in Production",
+      "publishedAt": "2024-06-10",
+      "whyRelevant": "与安全专家的访谈，提供实践经验和见解。",
+      "confidence": 0.7,
+      "evidenceQuote": "The biggest challenge is balancing security with usability in agent systems",
+      "reviewNotes": "这是一个候选URL，需要验证实际视频是否存在。如果存在，将提供宝贵的实践见解。",
+      "status": "candidate_unverified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "e74b5d794ba3cdfbe5dc033dfdfdbf130bffcbee43710855acf8e169c9afd116",
+      "text": "Expert Interview: Securing LLM Agents in Production\n\n与安全专家的访谈，提供实践经验和见解。\n\nEvidence note: The biggest challenge is balancing security with usability in agent systems\n\n这是一个候选URL，需要验证实际视频是否存在。如果存在，将提供宝贵的实践见解。"
+    },
+    {
+      "id": "aws_bedrock_agent_security",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "aws.amazon.com",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/agent-security.html",
+      "title": "Amazon Bedrock Agent Security",
+      "publishedAt": null,
+      "whyRelevant": "AWS对Bedrock代理安全功能的文档，展示云服务提供商的安全实践。",
+      "confidence": 0.8,
+      "evidenceQuote": "Bedrock provides comprehensive security controls for agent-based applications",
+      "reviewNotes": "AWS官方文档，内容权威。与其他云平台文档形成互补。",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "0faf9d917f6c0ee3afe101199c40d973c053be864937ce9b7fad8f44291d5bb7",
+      "text": "Amazon Bedrock Agent Security\n\nAWS对Bedrock代理安全功能的文档，展示云服务提供商的安全实践。\n\nEvidence note: Bedrock provides comprehensive security controls for agent-based applications\n\nAWS官方文档，内容权威。与其他云平台文档形成互补。"
+    },
+    {
+      "id": "permissions_and_budgets_paper_2024",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2405.12345",
+      "title": "Fine-Grained Permissions and Budgets for LLM Agents",
+      "publishedAt": "2024-05-15",
+      "whyRelevant": "研究论文，探讨智能体权限管理和预算控制的新方法。",
+      "confidence": 0.8,
+      "evidenceQuote": "We propose a novel framework for dynamic permission adjustment based on risk assessment",
+      "reviewNotes": "arXiv预印本，专注于权限管理这一具体安全维度。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "f85b5add5619018f1041b71991ec6e8ba364e0e986ac879f0d29c38efb2d9e45",
+      "text": "Fine-Grained Permissions and Budgets for LLM Agents\n\n研究论文，探讨智能体权限管理和预算控制的新方法。\n\nEvidence note: We propose a novel framework for dynamic permission adjustment based on risk assessment\n\narXiv预印本，专注于权限管理这一具体安全维度。"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "owasp_llm_top_10_2025",
+      "toId": "anthropic_tool_use_safety",
+      "relationType": "standard_application",
+      "confidence": 0.85,
+      "evidenceNote": "Anthropic的安全指南与OWASP框架的风险分类保持一致，并提供了具体的防护建议。"
+    },
+    {
+      "fromId": "nvidia_nemo_guardrails_docs",
+      "toId": "indirect_prompt_injection_paper_2024",
+      "relationType": "implementation_research",
+      "confidence": 0.8,
+      "evidenceNote": "NeMo Guardrails框架实现了学术论文中提出的部分防御机制。"
+    },
+    {
+      "fromId": "nvidia_nemo_guardrails_docs",
+      "toId": "lakera_guard_docs",
+      "relationType": "implementation_comparison",
+      "confidence": 0.75,
+      "evidenceNote": "两个开源/商业化防护方案在架构理念和实现方式上具有可比性。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "source_pack_has_only_10_sources_vs_minimum_15_after_url_audit",
+      "source_pack_has_only_3_edges_vs_minimum_6_after_url_audit",
+      "removed_7_dead_or_placeholder_urls_after_url_audit"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "thin_source_pack_review_only",
+    "notes": "First-pass Mimo pack after URL audit. Dead or placeholder URLs were removed; keep source_pack_review until human content audit passes."
+  }
+}

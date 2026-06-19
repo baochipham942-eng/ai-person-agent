@@ -58,7 +58,7 @@ export function EntityPageNav({
       <SiteHeader current={null} maxWidth="6xl" />
       <div className="border-b border-stone-100 bg-white/70">
         <div className="mx-auto flex max-w-6xl items-center gap-1.5 px-4 py-2 text-xs text-stone-400 sm:px-6">
-          <Link href="/" className="font-medium text-stone-500 hover:text-orange-600">AI 人物库</Link>
+          <Link href="/" prefetch={false} className="font-medium text-stone-500 hover:text-orange-600">AI 人物库</Link>
           {sectionLabel && (
             <>
               <span>/</span>
@@ -283,7 +283,7 @@ export function CompanyLearningSection({
         <div className="text-xs font-semibold text-orange-600">最值得读</div>
         <h2 className="mt-1 text-xl font-semibold tracking-tight text-stone-950">官方博客与工程文章</h2>
         <p className="mt-1 max-w-2xl text-xs leading-5 text-stone-500">
-          这里放整页价值密度最高的官方内容：{organization} 自己怎么解释 Claude Code、agent、工具和上下文。先读这一篇，再按需展开。
+          这里放整页价值密度最高的官方内容：{organization} 自己怎么解释产品、模型、工具和工作流。先读这一篇，再按需展开。
         </p>
       </div>
       {officialLinks.length > 0 && (

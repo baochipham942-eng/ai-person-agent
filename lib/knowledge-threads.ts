@@ -12,6 +12,14 @@ import type {
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
 import agenticCodingSourcePack from '@/data/knowledge-threads/agentic-coding-sources.candidates.json';
 import aiEvalsSourcePack from '@/data/knowledge-threads/ai-evals-sources.candidates.json';
+import contextEngineeringSourcePack from '@/data/knowledge-threads/context-engineering-sources.candidates.json';
+import mcpSourcePack from '@/data/knowledge-threads/mcp-sources.candidates.json';
+import multiAgentOrchestrationSourcePack from '@/data/knowledge-threads/multi-agent-orchestration-sources.candidates.json';
+import agentSkillsSourcePack from '@/data/knowledge-threads/agent-skills-sources.candidates.json';
+import agentMemorySourcePack from '@/data/knowledge-threads/agent-memory-sources.candidates.json';
+import reasoningModelsSourcePack from '@/data/knowledge-threads/reasoning-models-sources.candidates.json';
+import agentSecuritySourcePack from '@/data/knowledge-threads/agent-security-sources.candidates.json';
+import computerUseSourcePack from '@/data/knowledge-threads/computer-use-sources.candidates.json';
 
 const REQUIRED_ROLES = [
   'signal',
@@ -24,6 +32,14 @@ const REQUIRED_ROLES = [
 const SOURCE_PACK_FIXTURES: SourcePackFixture[] = [
   agenticCodingSourcePack as SourcePackFixture,
   aiEvalsSourcePack as SourcePackFixture,
+  contextEngineeringSourcePack as SourcePackFixture,
+  mcpSourcePack as SourcePackFixture,
+  multiAgentOrchestrationSourcePack as unknown as SourcePackFixture,
+  agentSkillsSourcePack as unknown as SourcePackFixture,
+  agentMemorySourcePack as unknown as SourcePackFixture,
+  reasoningModelsSourcePack as unknown as SourcePackFixture,
+  agentSecuritySourcePack as unknown as SourcePackFixture,
+  computerUseSourcePack as unknown as SourcePackFixture,
 ];
 
 let knowledgeThreadStoreReadyPromise: Promise<boolean> | null = null;

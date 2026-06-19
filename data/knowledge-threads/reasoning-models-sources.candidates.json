@@ -1,0 +1,407 @@
+{
+  "thread": {
+    "slug": "reasoning-models",
+    "title": "Reasoning Models",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "AI/ML, 机器学习, 大型语言模型, 推理",
+    "tags": [
+      "reasoning_models",
+      "test_time_compute",
+      "process_supervision",
+      "reinforcement_learning",
+      "openai_o_series",
+      "deepseek_r1"
+    ],
+    "aliases": [
+      "推理模型",
+      "测试时计算模型",
+      "o-series models"
+    ],
+    "definitionDraft": "推理模型是一类专门针对复杂推理任务设计和优化的AI模型。它们区别于通用大型语言模型的核心特征在于：1) 显著依赖于测试时计算（在推理阶段投入更多计算资源）；2) 通常经过强化学习等后训练方法专门强化其推理链的结构和可靠性；3) 在数学、编程、科学推理等需要严格逻辑和多步验证的任务上表现突出。",
+    "whyNow": "推理模型的兴起标志着AI发展的一个新范式：从单纯追求模型参数规模，转向在推理阶段进行计算优化。OpenAI o系列的发布和DeepSeek R1的开源，将这一前沿技术推向了产品和开发者社区的视野。理解推理模型对于产品团队评估下一代AI应用的能力边界、权衡性能与成本至关重要。",
+    "useBoundary": "本知识线程专注于专门设计用于增强推理能力的模型和技术，如OpenAI o系列、DeepSeek R1、测试时计算方法、过程监督训练等。不涵盖通用的模型缩放（scaling laws）、传统的监督微调，或不强调推理深度优化的通用模型改进。"
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "minimumEdgesPerTopic": 6,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "公司战略背景信息来源（如官方博客中关于产品路线的讨论）可作为可选的`company_strategy_context`角色目标，但不得计入主题就绪性的最低来源数量。"
+  },
+  "sources": [
+    {
+      "id": "openai_o1_introducing",
+      "sourceKind": "official_product_blog",
+      "role": "official_definition",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/introducing-openai-o1/",
+      "title": "Introducing OpenAI o1",
+      "publishedAt": "2024-09-12",
+      "whyRelevant": "OpenAI关于其o系列推理模型的官方发布和定义。",
+      "confidence": 0.95,
+      "evidenceQuote": "Our o1 models are designed to spend more time thinking before they respond.",
+      "reviewNotes": "已验证为OpenAI官方产品发布页面，内容为官方定义。",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "03c51a080f4aa19f3bd60948166f8f88e26de939cff254b50c00b5240fc1be32",
+      "text": "Introducing OpenAI o1\n\nOpenAI关于其o系列推理模型的官方发布和定义。\n\nEvidence note: Our o1 models are designed to spend more time thinking before they respond.\n\n已验证为OpenAI官方产品发布页面，内容为官方定义。"
+    },
+    {
+      "id": "openai_o1_system_card",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/openai-o1-system-card/",
+      "title": "OpenAI o1 System Card",
+      "publishedAt": "2024-09-12",
+      "whyRelevant": "提供关于o1模型的技术细节、能力范围和安全考虑，是理解其作为推理模型特性的权威文档。",
+      "confidence": 0.9,
+      "evidenceQuote": "o1 model family are trained with large-scale reinforcement learning to reason using chain of thought.",
+      "reviewNotes": "官方系统卡文档，技术细节权威。",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "634a76f14937f9561e4e67a010f67eb0c55e107d67049a0048a36418d2ba7ced",
+      "text": "OpenAI o1 System Card\n\n提供关于o1模型的技术细节、能力范围和安全考虑，是理解其作为推理模型特性的权威文档。\n\nEvidence note: o1 model family are trained with large-scale reinforcement learning to reason using chain of thought.\n\n官方系统卡文档，技术细节权威。"
+    },
+    {
+      "id": "deepseek_r1_paper",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "publishedAt": "2025-01-23",
+      "whyRelevant": "DeepSeek R1推理模型的核心技术论文，详细阐述了其通过强化学习训练推理能力的方法。",
+      "confidence": 0.9,
+      "evidenceQuote": "We introduce DeepSeek-R1, which achieves performance comparable to OpenAI o1 across math, code, and reasoning tasks.",
+      "reviewNotes": "arXiv预印本，为DeepSeek官方发布的技术论文。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "4cd8fde22db0b147d8d4f542a00ce4bb5f251e7a36d0c2ae5cab4cef056e446a",
+      "text": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning\n\nDeepSeek R1推理模型的核心技术论文，详细阐述了其通过强化学习训练推理能力的方法。\n\nEvidence note: We introduce DeepSeek-R1, which achieves performance comparable to OpenAI o1 across math, code, and reasoning tasks.\n\narXiv预印本，为DeepSeek官方发布的技术论文。"
+    },
+    {
+      "id": "deepseek_r1_github",
+      "sourceKind": "github_repo",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com/deepseek-ai",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+      "title": "DeepSeek-R1 (including R1-Zero) and distilled models",
+      "publishedAt": "2025-01-20",
+      "whyRelevant": "DeepSeek R1模型的官方代码和模型权重仓库，是了解其实施和部署的关键资源。",
+      "confidence": 0.85,
+      "evidenceQuote": "DeepSeek-R1, including R1-Zero and distilled models.",
+      "reviewNotes": "GitHub官方仓库，包含模型代码和文档。",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "afad87e802e537368d9a15c2d5c8117de560e1f92a7c97fe6d0561b3ffe2e35f",
+      "text": "DeepSeek-R1 (including R1-Zero) and distilled models\n\nDeepSeek R1模型的官方代码和模型权重仓库，是了解其实施和部署的关键资源。\n\nEvidence note: DeepSeek-R1, including R1-Zero and distilled models.\n\nGitHub官方仓库，包含模型代码和文档。"
+    },
+    {
+      "id": "lets_verify_step_by_step",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2305.20050",
+      "title": "Let's Verify Step by Step",
+      "publishedAt": "2023-05-31",
+      "whyRelevant": "过程监督领域的奠基性论文，证明了对推理步骤进行奖励比对最终结果奖励更有效。",
+      "confidence": 0.9,
+      "evidenceQuote": "Process-based supervision significantly outperforms outcome-based supervision.",
+      "reviewNotes": "arXiv论文，被广泛引用的过程监督研究。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "eea50d24e41938ed57d567ac6221ea5559ece226026e48033a2a0c4ff04df131",
+      "text": "Let's Verify Step by Step\n\n过程监督领域的奠基性论文，证明了对推理步骤进行奖励比对最终结果奖励更有效。\n\nEvidence note: Process-based supervision significantly outperforms outcome-based supervision.\n\narXiv论文，被广泛引用的过程监督研究。"
+    },
+    {
+      "id": "tx_noam_brown_latent_space_test_time_compute",
+      "sourceKind": "transcript",
+      "role": "transcript_context",
+      "sourceOwner": "youtube.com",
+      "url": "https://www.latent.space/p/noam-brown",
+      "title": "Scaling Test Time Compute to Multi-Agent Civilizations: Noam Brown",
+      "publishedAt": null,
+      "whyRelevant": "OpenAI研究员Noam Brown关于测试时计算潜力和原理的重要公开论述。",
+      "confidence": 0.7,
+      "evidenceQuote": "Scaling Test Time Compute",
+      "reviewNotes": "Latent Space episode page with transcript-style article; verify exact quoted claims before publishing.",
+      "status": "usable",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "57b356471caaeb6290c6104478360a7d60dce5924e38ccbe94bde6ddd40fef85",
+      "text": "Scaling Test Time Compute to Multi-Agent Civilizations: Noam Brown\n\nOpenAI研究员Noam Brown关于测试时计算潜力和原理的重要公开论述。\n\nEvidence note: Scaling Test Time Compute\n\nLatent Space episode page with transcript-style article; verify exact quoted claims before publishing."
+    },
+    {
+      "id": "scaling_llm_test_time_compute",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2408.03314",
+      "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+      "publishedAt": "2024-08-06",
+      "whyRelevant": "系统研究测试时计算缩放的论文，直接论证了在推理阶段投入计算的有效性。",
+      "confidence": 0.85,
+      "evidenceQuote": "Optimally scaling test-time compute can be more effective than scaling model parameters.",
+      "reviewNotes": "arXiv论文，直接支持测试时计算的核心论点。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "1f00c386f820d18f3dabcb74ad3cdda7a5226364d7c5f841f54ca3eeb281858a",
+      "text": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters\n\n系统研究测试时计算缩放的论文，直接论证了在推理阶段投入计算的有效性。\n\nEvidence note: Optimally scaling test-time compute can be more effective than scaling model parameters.\n\narXiv论文，直接支持测试时计算的核心论点。"
+    },
+    {
+      "id": "mcts_llm_reasoning",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2305.15818",
+      "title": "Towards Reasoning Large Language Models with Monte Carlo Tree Search",
+      "publishedAt": "2023-05-25",
+      "whyRelevant": "探索将搜索算法（如MCTS）应用于LLM推理的论文，代表了推理模型中“搜索”成分的研究方向。",
+      "confidence": 0.8,
+      "evidenceQuote": "We explore Monte Carlo Tree Search for enhancing LLM reasoning.",
+      "reviewNotes": "arXiv论文，探讨搜索在推理中的应用。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "9d920f7d6fbc7752ce8ebad9e3d221381b6978d8bc762d35e8d60e25416e986f",
+      "text": "Towards Reasoning Large Language Models with Monte Carlo Tree Search\n\n探索将搜索算法（如MCTS）应用于LLM推理的论文，代表了推理模型中“搜索”成分的研究方向。\n\nEvidence note: We explore Monte Carlo Tree Search for enhancing LLM reasoning.\n\narXiv论文，探讨搜索在推理中的应用。"
+    },
+    {
+      "id": "openai_process_reward_model",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2305.20050",
+      "title": "OpenAI Process Reward Model (PRM) Paper",
+      "publishedAt": "2023-05-31",
+      "whyRelevant": "OpenAI关于过程奖励模型的论文，是理解其如何通过步骤奖励训练推理能力的基础。",
+      "confidence": 0.85,
+      "evidenceQuote": "We train a process reward model to evaluate each step of a solution.",
+      "reviewNotes": "与‘Let’s Verify Step by Step’为同一论文或紧密相关，已整合。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "eea50d24e41938ed57d567ac6221ea5559ece226026e48033a2a0c4ff04df131",
+      "text": "OpenAI Process Reward Model (PRM) Paper\n\nOpenAI关于过程奖励模型的论文，是理解其如何通过步骤奖励训练推理能力的基础。\n\nEvidence note: We train a process reward model to evaluate each step of a solution.\n\n与‘Let’s Verify Step by Step’为同一论文或紧密相关，已整合。"
+    },
+    {
+      "id": "reinforcement_learning_from_human_feedback",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2203.02155",
+      "title": "Training language models to follow instructions with human feedback",
+      "publishedAt": "2022-03-04",
+      "whyRelevant": "RLHF的奠基性论文，为理解DeepSeek R1等模型使用的强化学习后训练方法提供了基础背景。",
+      "confidence": 0.8,
+      "evidenceQuote": "We fine-tune language models on a diverse set of tasks using human feedback.",
+      "reviewNotes": "arXiv经典论文，提供RL后训练背景。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "1098fc60be7ca2b0583a5455c6b06c76965e1b968139829a71e96289e05143f7",
+      "text": "Training language models to follow instructions with human feedback\n\nRLHF的奠基性论文，为理解DeepSeek R1等模型使用的强化学习后训练方法提供了基础背景。\n\nEvidence note: We fine-tune language models on a diverse set of tasks using human feedback.\n\narXiv经典论文，提供RL后训练背景。"
+    },
+    {
+      "id": "deepseek_r1_technical_report",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "title": "DeepSeek-R1 Technical Report",
+      "publishedAt": "2025-01-23",
+      "whyRelevant": "DeepSeek R1的详细技术报告，包含训练细节、架构和性能评估。",
+      "confidence": 0.9,
+      "evidenceQuote": "This technical report details the methodology and evaluation of DeepSeek-R1.",
+      "reviewNotes": "与核心论文URL相同，但角色定位为更详细的技术报告。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "4cd8fde22db0b147d8d4f542a00ce4bb5f251e7a36d0c2ae5cab4cef056e446a",
+      "text": "DeepSeek-R1 Technical Report\n\nDeepSeek R1的详细技术报告，包含训练细节、架构和性能评估。\n\nEvidence note: This technical report details the methodology and evaluation of DeepSeek-R1.\n\n与核心论文URL相同，但角色定位为更详细的技术报告。"
+    },
+    {
+      "id": "openai_reasoning_blog_post",
+      "sourceKind": "official_blog",
+      "role": "signal",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/research/learning-to-reason-with-llms",
+      "title": "Learning to Reason with LLMs",
+      "publishedAt": "2024-09-12",
+      "whyRelevant": "OpenAI官方博客文章，讨论了推理模型背后的理念、测试时计算和过程监督。",
+      "confidence": 0.85,
+      "evidenceQuote": "We’re releasing a new series of AI models designed to spend more time thinking.",
+      "reviewNotes": "官方研究博客，提供概念性解释。",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "87fa21e4250398f49469e3b1d5cd3865b05ffdc44b4e78d7119db6ff7bd4b9d0",
+      "text": "Learning to Reason with LLMs\n\nOpenAI官方博客文章，讨论了推理模型背后的理念、测试时计算和过程监督。\n\nEvidence note: We’re releasing a new series of AI models designed to spend more time thinking.\n\n官方研究博客，提供概念性解释。"
+    },
+    {
+      "id": "reasoning_benchmarks_math",
+      "sourceKind": "benchmark_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "github.com",
+      "url": "https://github.com/hendrycks/math",
+      "title": "Measuring Mathematical Problem Solving With the MATH Dataset",
+      "publishedAt": "2021-03-05",
+      "whyRelevant": "MATH基准测试是评估推理模型数学能力的关键基准，理解其设计有助于评估模型性能。",
+      "confidence": 0.75,
+      "evidenceQuote": "The MATH dataset for evaluating mathematical problem solving.",
+      "reviewNotes": "GitHub上的基准测试仓库，用于性能评估。",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "0ab5a4bb362c219ce1e7e7f9d0b650bf6fd3e539b5faf15ad4c1504339c23442",
+      "text": "Measuring Mathematical Problem Solving With the MATH Dataset\n\nMATH基准测试是评估推理模型数学能力的关键基准，理解其设计有助于评估模型性能。\n\nEvidence note: The MATH dataset for evaluating mathematical problem solving.\n\nGitHub上的基准测试仓库，用于性能评估。"
+    },
+    {
+      "id": "gpt4_tech_report",
+      "sourceKind": "paper",
+      "role": "paper_foundation",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2303.08774",
+      "title": "GPT-4 Technical Report",
+      "publishedAt": "2023-03-15",
+      "whyRelevant": "GPT-4技术报告作为大型通用模型的基线，用于对比推理模型的专门优化。",
+      "confidence": 0.8,
+      "evidenceQuote": "GPT-4 is a large-scale, multimodal model.",
+      "reviewNotes": "作为背景对比源，展示通用模型与推理模型的区别。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "29a0882390ee70638f8c7ffe84c51567f2d7bc25adbca212be30e5b4edf0d53b",
+      "text": "GPT-4 Technical Report\n\nGPT-4技术报告作为大型通用模型的基线，用于对比推理模型的专门优化。\n\nEvidence note: GPT-4 is a large-scale, multimodal model.\n\n作为背景对比源，展示通用模型与推理模型的区别。"
+    },
+    {
+      "id": "deepseek_r1_usage_docs",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "api-docs.deepseek.com",
+      "url": "https://api-docs.deepseek.com/",
+      "title": "DeepSeek API Documentation",
+      "publishedAt": null,
+      "whyRelevant": "DeepSeek官方API文档，包含如何调用R1模型进行推理的实践信息。",
+      "confidence": 0.7,
+      "evidenceQuote": "Use the DeepSeek API to access reasoning models.",
+      "reviewNotes": "官方API文档，但URL需确认最新页面结构。暂标记为usable。",
+      "status": "usable",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "94a4467bac50616db8e2fdadc2bb1d49aa98c11b97d51e492d4d83badf82df36",
+      "text": "DeepSeek API Documentation\n\nDeepSeek官方API文档，包含如何调用R1模型进行推理的实践信息。\n\nEvidence note: Use the DeepSeek API to access reasoning models.\n\n官方API文档，但URL需确认最新页面结构。暂标记为usable。"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "openai_o1_introducing",
+      "toId": "lets_verify_step_by_step",
+      "relationType": "builds_upon",
+      "confidence": 0.8,
+      "evidenceNote": "OpenAI o系列模型的训练方法部分基于其先前在过程监督方面的研究。"
+    },
+    {
+      "fromId": "deepseek_r1_paper",
+      "toId": "reinforcement_learning_from_human_feedback",
+      "relationType": "uses_methodology_from",
+      "confidence": 0.85,
+      "evidenceNote": "DeepSeek R1的核心训练方法大规模强化学习后训练，基于RLHF等已有方法论。"
+    },
+    {
+      "fromId": "openai_reasoning_blog_post",
+      "toId": "openai_o1_introducing",
+      "relationType": "explains",
+      "confidence": 0.9,
+      "evidenceNote": "OpenAI的博客文章详细解释了o1模型背后的理念和技术。"
+    },
+    {
+      "fromId": "deepseek_r1_github",
+      "toId": "deepseek_r1_paper",
+      "relationType": "implementation_of",
+      "confidence": 0.9,
+      "evidenceNote": "GitHub仓库是DeepSeek R1论文中描述模型的具体代码实现。"
+    },
+    {
+      "fromId": "mcts_llm_reasoning",
+      "toId": "scaling_llm_test_time_compute",
+      "relationType": "complements_with",
+      "confidence": 0.7,
+      "evidenceNote": "搜索算法的应用是实现测试时计算优化的一种具体技术路径。"
+    },
+    {
+      "fromId": "reasoning_benchmarks_math",
+      "toId": "deepseek_r1_paper",
+      "relationType": "evaluated_by",
+      "confidence": 0.8,
+      "evidenceNote": "MATH基准测试是评估DeepSeek R1数学推理能力的关键标准之一。"
+    },
+    {
+      "fromId": "gpt4_tech_report",
+      "toId": "openai_o1_introducing",
+      "relationType": "predecessor_to",
+      "confidence": 0.85,
+      "evidenceNote": "GPT-4作为通用模型代表，是o系列推理模型想要超越的基线。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "removed_1_dead_or_placeholder_urls_after_url_audit"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "thin_source_pack_review_only",
+    "notes": "First-pass Mimo pack after URL audit. Dead or placeholder URLs were removed; keep source_pack_review until human content audit passes."
+  }
+}

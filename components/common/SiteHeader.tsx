@@ -30,7 +30,7 @@ export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilit
     <header className="glass-header sticky top-0 z-50 border-b border-subtle">
       <div className={`${WIDTH_CLASS[maxWidth]} mx-auto px-4 sm:px-6`}>
         <div className="grid min-h-14 grid-cols-1 gap-2 py-2 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-5">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5">
+          <Link href="/" prefetch={false} className="flex min-w-0 items-center gap-2.5">
             <span
               className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl shadow-sm"
               style={{ background: 'var(--gradient-primary)' }}
@@ -50,6 +50,7 @@ export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilit
                   <Link
                     key={item.key}
                     href={item.href}
+                    prefetch={false}
                     aria-current={isCurrent ? 'page' : undefined}
                     className={`flex-shrink-0 whitespace-nowrap py-1 font-medium transition-colors ${
                       isCurrent

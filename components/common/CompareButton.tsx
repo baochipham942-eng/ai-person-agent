@@ -58,6 +58,7 @@ export function CompareButton({ target, size = 'xs', className = '' }: CompareBu
       {ids.length >= 2 && (
         <Link
           href={compareHref}
+          prefetch={false}
           className={`${buttonSize} inline-flex items-center rounded-md bg-stone-900 font-medium text-white transition-colors hover:bg-orange-600`}
         >
           对比

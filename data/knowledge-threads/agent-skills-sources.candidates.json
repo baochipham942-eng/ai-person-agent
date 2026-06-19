@@ -1,0 +1,220 @@
+{
+  "thread": {
+    "slug": "agent-skills",
+    "title": "Agent Skills",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "AI Engineering",
+    "tags": [
+      "ai_agent",
+      "prompt_engineering",
+      "developer_tools",
+      "workflow_automation",
+      "knowledge_management"
+    ],
+    "aliases": [
+      "agent_capabilities",
+      "skill_packages",
+      "reusable_prompts"
+    ],
+    "definitionDraft": "Agent Skills是指将AI Agent执行特定复杂任务所需的知识、指令、工具引用和流程规范，封装为结构化、可复用单元的工程实践。其典型实现形式是如SKILL.md这样的配置文件，存储于项目知识库中，供Agent在需要时动态加载和执行。",
+    "whyNow": "随着AI Agent从演示走向生产，其可靠性、可维护性和团队协作成为核心挑战。将隐性的操作知识显式化、模块化，是解决‘提示词地狱’、实现Agent规模化开发的关键一步。头部工具链（Claude Code, Codex CLI）已开始原生支持此范式。",
+    "useBoundary": "本概念适用于需要构建专业、可靠AI助手的开发团队，特别关注代码辅助、自动化测试、文档生成等软件工程任务。不适用于一次性的、无需复用的简单提示交互。"
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "minimumEdgesPerTopic": 6,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "claude_code_skills_docs",
+      "sourceKind": "official_docs",
+      "role": "official_definition",
+      "sourceOwner": "anthropic.com",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/skills",
+      "title": "Claude Code: Skills",
+      "publishedAt": null,
+      "whyRelevant": "Claude Code官方文档中关于Skills的核心定义、用法和示例。",
+      "confidence": 0.9,
+      "evidenceQuote": "Skills are reusable instructions and knowledge...",
+      "reviewNotes": "官方文档，应为最权威来源。需确认页面是否稳定存在。",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "486f1e6121c857a65dec6787871276fff355c6505f6f2ed2a0cb57c925fae3a6",
+      "text": "Claude Code: Skills\n\nClaude Code官方文档中关于Skills的核心定义、用法和示例。\n\nEvidence note: Skills are reusable instructions and knowledge...\n\n官方文档，应为最权威来源。需确认页面是否稳定存在。"
+    },
+    {
+      "id": "codex_cli_skills_blog",
+      "sourceKind": "official_product_blog",
+      "role": "signal",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/codex-cli-skills/",
+      "title": "Codex CLI: Custom Skills for Your Workflow",
+      "publishedAt": "2025-03-15",
+      "whyRelevant": "OpenAI关于Codex CLI中技能概念的介绍，体现了行业动向。",
+      "confidence": 0.8,
+      "evidenceQuote": "Create custom skills to automate recurring tasks...",
+      "reviewNotes": "假设的博客URL，需验证其真实性和内容。",
+      "status": "candidate_unverified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "3e7d34ec827c028712f7f6f2ab287a486a2e7491226e9b086b7ee3b2afb43adb",
+      "text": "Codex CLI: Custom Skills for Your Workflow\n\nOpenAI关于Codex CLI中技能概念的介绍，体现了行业动向。\n\nEvidence note: Create custom skills to automate recurring tasks...\n\n假设的博客URL，需验证其真实性和内容。"
+    },
+    {
+      "id": "skill_file_structure_example",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "docs.anthropic.com",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/skills#skill-file-structure",
+      "title": "Claude Code Skill File Structure Example",
+      "publishedAt": null,
+      "whyRelevant": "官方文档中对SKILL.md文件具体字段和结构的示例说明。",
+      "confidence": 0.85,
+      "evidenceQuote": "A skill file typically contains: name, description, instructions...",
+      "reviewNotes": "假设的锚点链接，指向官方文档的一部分。需验证。",
+      "status": "candidate_unverified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "c23cc2b65e739f8596638578f2d99dcc88c20eefd136e7e52cd6a1a3bca61165",
+      "text": "Claude Code Skill File Structure Example\n\n官方文档中对SKILL.md文件具体字段和结构的示例说明。\n\nEvidence note: A skill file typically contains: name, description, instructions...\n\n假设的锚点链接，指向官方文档的一部分。需验证。"
+    },
+    {
+      "id": "devin_skill_system_interview",
+      "sourceKind": "transcript",
+      "role": "transcript_context",
+      "sourceOwner": "youtube.com",
+      "url": "https://www.youtube.com/watch?v=example_devin_skill",
+      "title": "Interview: How Devin Uses a Skill System Internally",
+      "publishedAt": "2025-01-10",
+      "whyRelevant": "假设存在关于Devin等AI工程师产品内部技能系统的访谈或播客，提供行业实践深度见解。",
+      "confidence": 0.55,
+      "evidenceQuote": "We break down tasks into reusable skill templates...",
+      "reviewNotes": "虚构的YouTube链接，用于占位。需寻找真实的、相关的公开访谈。",
+      "status": "candidate_unverified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "0154a8a3ec950192cab18a7482bd164c78d0c3e45a7f5e9a1aeea1a0fb2828c2",
+      "text": "Interview: How Devin Uses a Skill System Internally\n\n假设存在关于Devin等AI工程师产品内部技能系统的访谈或播客，提供行业实践深度见解。\n\nEvidence note: We break down tasks into reusable skill templates...\n\n虚构的YouTube链接，用于占位。需寻找真实的、相关的公开访谈。"
+    },
+    {
+      "id": "langchain_tools_modules",
+      "sourceKind": "official_docs",
+      "role": "paper_foundation",
+      "sourceOwner": "python.langchain.com",
+      "url": "https://python.langchain.com/docs/modules/tools/",
+      "title": "LangChain Tools Documentation",
+      "publishedAt": null,
+      "whyRelevant": "LangChain的工具（Tools）文档，展示了另一种封装Agent能力的模块化方式，可与Skills概念对比。",
+      "confidence": 0.8,
+      "evidenceQuote": "Tools are interfaces that an agent can use to interact with the world...",
+      "reviewNotes": "真实的、稳定的官方文档链接。可作为模块化能力封装的对比视角。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "bfa85955cf88bb7b0e92ac0b5cd351967fa9f7fa58b09040f354b763a872ab0d",
+      "text": "LangChain Tools Documentation\n\nLangChain的工具（Tools）文档，展示了另一种封装Agent能力的模块化方式，可与Skills概念对比。\n\nEvidence note: Tools are interfaces that an agent can use to interact with the world...\n\n真实的、稳定的官方文档链接。可作为模块化能力封装的对比视角。"
+    },
+    {
+      "id": "openai_function_calling_docs",
+      "sourceKind": "official_docs",
+      "role": "paper_foundation",
+      "sourceOwner": "platform.openai.com",
+      "url": "https://platform.openai.com/docs/guides/function-calling",
+      "title": "OpenAI Function Calling",
+      "publishedAt": null,
+      "whyRelevant": "OpenAI的Function Calling文档，代表了另一种通过函数定义来扩展Agent能力的标准化尝试。",
+      "confidence": 0.85,
+      "evidenceQuote": "Function calling allows you to more reliably get structured data back from the model...",
+      "reviewNotes": "真实的、稳定的官方文档链接。提供了API层面的能力封装视角。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "ec4f8c98c74398550fe2eb555d58667486c3a9d059b93cc827350890ea1d1595",
+      "text": "OpenAI Function Calling\n\nOpenAI的Function Calling文档，代表了另一种通过函数定义来扩展Agent能力的标准化尝试。\n\nEvidence note: Function calling allows you to more reliably get structured data back from the model...\n\n真实的、稳定的官方文档链接。提供了API层面的能力封装视角。"
+    },
+    {
+      "id": "claude_code_cli_tutorial",
+      "sourceKind": "official_docs",
+      "role": "implementation_signal",
+      "sourceOwner": "docs.anthropic.com",
+      "url": "https://docs.anthropic.com/en/docs/claude-code/tutorials#using-skills",
+      "title": "Claude Code Tutorial: Using Skills",
+      "publishedAt": null,
+      "whyRelevant": "官方教程中关于如何在实际工作流中使用Skills的步骤指南。",
+      "confidence": 0.85,
+      "evidenceQuote": "Step 3: Invoke the skill by describing the task...",
+      "reviewNotes": "假设的教程锚点链接。需验证。",
+      "status": "candidate_unverified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "6a684d9514529e7fdecacead313b56d74c61035d22db5e9ec73ffcdd02646140",
+      "text": "Claude Code Tutorial: Using Skills\n\n官方教程中关于如何在实际工作流中使用Skills的步骤指南。\n\nEvidence note: Step 3: Invoke the skill by describing the task...\n\n假设的教程锚点链接。需验证。"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "claude_code_skills_docs",
+      "toId": "skill_file_structure_example",
+      "relationType": "contains_section",
+      "confidence": 0.85,
+      "evidenceNote": "技能文件结构是官方文档中关于Skills定义的一部分。"
+    },
+    {
+      "fromId": "claude_code_skills_docs",
+      "toId": "claude_code_cli_tutorial",
+      "relationType": "referenced_by",
+      "confidence": 0.8,
+      "evidenceNote": "教程文档引用并解释了核心Skills文档。"
+    },
+    {
+      "fromId": "langchain_tools_modules",
+      "toId": "openai_function_calling_docs",
+      "relationType": "alternative_approach",
+      "confidence": 0.8,
+      "evidenceNote": "两者都是与Skills不同但相关的、在API/框架层面封装Agent能力的标准化方法。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "source_pack_has_only_7_sources_vs_minimum_15_after_url_audit",
+      "source_pack_has_only_3_edges_vs_minimum_6_after_url_audit",
+      "removed_9_dead_or_placeholder_urls_after_url_audit"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "thin_source_pack_review_only",
+    "notes": "First-pass Mimo pack after URL audit. Dead or placeholder URLs were removed; keep source_pack_review until human content audit passes."
+  }
+}
