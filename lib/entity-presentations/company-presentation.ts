@@ -1239,6 +1239,1293 @@ const COMPANY_PRESENTATIONS: Record<string, CompanyPresentation> = {
     flagshipKeywords: ['cuda', 'nim', 'dgx', 'blackwell', 'omniverse', 'rtx'],
     homepageUrl: 'https://www.nvidia.com',
   },
+  meta: {
+    heroDescription:
+      'Meta 的公司页先看 Llama 开源模型家族、Meta AI 助手、Meta Superintelligence Labs 与 FAIR 研究、PyTorch 与 AI 基础设施怎样组成 AI 产品线，再看它和开源模型、端侧与可穿戴 AI 等主题的关系。',
+    headline:
+      '四条产品线：Llama 开源模型家族、Meta AI 助手、Meta Superintelligence Labs 与 FAIR 研究、PyTorch 与 AI 基础设施；前沿模型研究是贯穿其中的底座。',
+    strategy:
+      'Meta 的 AI 布局可以按四条产品线看：Llama 是公开权重的开源模型家族，靠免费可商用授权撬动全球开发者生态，是 Meta AI 战略区别于闭源大厂的核心打法；Meta AI 助手把模型能力嵌进 WhatsApp、Instagram、Facebook、Messenger、独立 App 和 Ray-Ban 智能眼镜，依托数十亿用户的分发体量直达终端；Meta Superintelligence Labs 与 FAIR 负责前沿模型与基础研究，决定整套产品的能力上限；PyTorch 与 AI 基础设施则是 Meta 自家训练和推理的底座，也通过开源成为整个行业的事实标准框架。开源模型加平台级分发，是 Meta 把 AI 能力同时铺向开发者和消费者的战略支点。',
+    products: [
+      {
+        name: 'Llama 开源模型家族',
+        summary:
+          'Meta 公开权重、可商用授权的开源大模型家族（含 Llama 4 多模态系列），并通过 Llama API 让开发者直接托管调用，是 Meta AI 战略的能力底座，也是全球开源模型生态的事实参照。',
+        url: 'https://www.llama.com/',
+      },
+      {
+        name: 'Meta AI 助手',
+        summary:
+          '面向用户的 AI 助手，嵌入 WhatsApp、Instagram、Facebook、Messenger、独立 App、meta.ai 网页和 Ray-Ban Meta 智能眼镜，依托 Meta 旗下应用的数十亿用户体量，是模型能力直达终端用户的最大触点。',
+        url: 'https://www.meta.ai/',
+      },
+      {
+        name: 'Meta Superintelligence Labs 与 FAIR 研究',
+        summary:
+          'Meta 的前沿模型与基础研究组织，Meta Superintelligence Labs 聚焦下一代模型与智能体，FAIR（基础 AI 研究）承接长期开放研究与论文发布，共同决定 Llama 家族和助手产品的能力上限。',
+        url: 'https://ai.meta.com/research/',
+      },
+      {
+        name: 'PyTorch 与 AI 基础设施',
+        summary:
+          'PyTorch 是 Meta 创建、现由 PyTorch Foundation 托管的开源深度学习框架，已成为全行业训练和推理的事实标准；配合 Meta 自研的训练与推理基础设施，构成 Llama 和 Meta AI 的工程底座。',
+        url: 'https://ai.meta.com/tools/pytorch/',
+      },
+    ],
+    bets: [
+      {
+        title: '开源模型即护城河',
+        body: 'Meta 用公开权重、可商用的 Llama 撬动全球开发者生态，靠开源把行业标准拉到自己一侧，再用平台分发把势能转成产品。',
+      },
+      {
+        title: '平台级分发',
+        body: 'Meta AI 助手嵌进 WhatsApp、Instagram、Facebook、Messenger 和 Ray-Ban 眼镜，数十亿用户的分发体量是 Meta 区别于纯模型公司的根本优势。',
+      },
+      {
+        title: '可穿戴与端侧 AI',
+        body: 'Ray-Ban Meta 智能眼镜把 AI 助手带到第一人称视角，是 Meta 押注下一代 AI 交互入口、跳过手机屏幕的关键样本。',
+      },
+      {
+        title: '前沿研究底座',
+        body: 'Meta Superintelligence Labs 与 FAIR 的前沿模型和基础研究不单独成线，但决定 Llama 家族和助手产品的能力上限。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'AI at Meta Blog',
+        label: '官方博客',
+        summary: 'Meta AI 官方博客，模型发布、研究成果和工程实践的高密度入口，跟踪 Llama 与 Meta AI 动向从这里开始。',
+        url: 'https://ai.meta.com/blog/',
+      },
+      {
+        title: 'The Llama 4 herd: natively multimodal AI innovation',
+        label: 'Llama 模型',
+        summary: 'Llama 4 系列（Scout / Maverick 等）的官方发布长文，讲清原生多模态架构和长上下文能力，是理解 Llama 家族当前形态的第一手材料。',
+        url: 'https://ai.meta.com/blog/llama-4-multimodal-intelligence/',
+      },
+      {
+        title: 'Everything we announced at our first-ever LlamaCon',
+        label: '开发者大会',
+        summary: 'Meta 首届 LlamaCon 的官方汇总，讲 Llama API、开源生态和开发者工具方向，是理解 Meta 开源平台战略的关键材料。',
+        url: 'https://ai.meta.com/blog/llamacon-llama-news/',
+      },
+      {
+        title: 'Meta AI Research',
+        label: 'FAIR 研究',
+        summary: 'Meta 的 AI 研究门户（含 FAIR 与 Meta Superintelligence Labs 方向），理解前沿模型与基础研究的能力底座从这里开始。',
+        url: 'https://ai.meta.com/research/',
+      },
+      {
+        title: 'PyTorch',
+        label: 'AI 基础设施',
+        summary: 'Meta 创建的开源深度学习框架官方页，理解 Meta 与全行业训练推理底座从这里开始。',
+        url: 'https://ai.meta.com/tools/pytorch/',
+      },
+      {
+        title: 'Llama API 文档',
+        label: '开发者平台',
+        summary: 'Meta 托管的 Llama API 官方文档，含 chat completion、图像理解和工具调用，是开发者把 Llama 接入应用的入口。',
+        url: 'https://llama.developer.meta.com/',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'AI at Meta',
+        summary: 'Meta AI 官方门户，模型、产品和研究的统一入口。',
+        url: 'https://ai.meta.com/',
+      },
+      {
+        title: 'Llama',
+        summary: 'Llama 开源模型家族与 Llama API 的官方入口。',
+        url: 'https://www.llama.com/',
+      },
+      {
+        title: 'Meta AI',
+        summary: '面向用户的 Meta AI 助手网页入口。',
+        url: 'https://www.meta.ai/',
+      },
+      {
+        title: 'Meta Newsroom',
+        summary: 'Meta 官方新闻，用来跟踪 AI 产品与公司战略发布节奏。',
+        url: 'https://about.fb.com/news/',
+      },
+    ],
+    flagshipKeywords: ['llama', 'meta ai', 'pytorch', 'fair', 'superintelligence'],
+    homepageUrl: 'https://ai.meta.com',
+  },
+  microsoft: {
+    heroDescription:
+      'Microsoft 的公司页先看 Copilot 家族、Microsoft Foundry 企业 AI 平台、自研 MAI 模型和 GitHub Copilot 怎样组成 AI 产品线，再看它和 Agentic Coding、企业 AI 分发等主题的关系。',
+    headline:
+      '四条产品线：Copilot 家族、Microsoft Foundry 企业 AI 平台、自研 MAI 模型、GitHub Copilot；既分发 OpenAI 等外部模型，又自研模型并存是贯穿其中的底座。',
+    strategy:
+      'Microsoft 的 AI 布局可以按四条产品线看：Copilot 家族是面向用户和企业的应用入口（Microsoft 365 Copilot 嵌进 Word / Excel / Teams，消费版 Copilot 面向个人），Microsoft Foundry（2026 年初由 Azure AI Foundry 更名）是把 1,900+ 模型、Agent 编排和企业治理打包的开发者与企业平台，自研 MAI 模型是 2025 年底成立的 Superintelligence 团队的产物（MAI-1、MAI-Thinking、MAI-Code、MAI-Voice / Transcribe / Image），GitHub Copilot 则把模型带进真实软件工程的 agentic coding。Microsoft 不只押单一来源：它既通过 Foundry 和 Copilot 大规模分发 OpenAI、Anthropic 等外部模型，又用 MAI 自研模型逐步替换部分底层调用——分发外部前沿模型与自研模型并存，是它区别于纯模型公司的战略底座。',
+    products: [
+      {
+        name: 'Copilot 家族',
+        summary:
+          '面向用户和企业的应用入口：Microsoft 365 Copilot 把 AI 嵌进 Word、Excel、PowerPoint、Teams（Agent Mode 已成默认），消费版 Copilot 面向个人，另有 Security Copilot、Copilot Studio 等专项变体，是 Microsoft AI 能力触达终端用户的最大触点。',
+        url: 'https://www.microsoft.com/microsoft-copilot',
+      },
+      {
+        name: 'Microsoft Foundry',
+        summary:
+          '2026 年初由 Azure AI Foundry 更名的统一企业 AI 平台，提供 1,900+ 模型（OpenAI / Anthropic / Mistral / xAI / DeepSeek / 自研 MAI 等）、Agent 编排、工具目录、评估与企业治理，是 Microsoft 把模型和 agent 规模化分发进企业采购和 Azure 生态的主入口。',
+        url: 'https://azure.microsoft.com/products/ai-foundry',
+      },
+      {
+        name: '自研 MAI 模型',
+        summary:
+          'Microsoft AI 在 2025 年底成立 Superintelligence 团队后自研的模型族，含 MAI-1、推理模型 MAI-Thinking、编码模型 MAI-Code（已用于 GitHub / VS Code）和语音视觉的 MAI-Voice / MAI-Transcribe / MAI-Image，在 Microsoft Foundry 上提供，是它从依赖 OpenAI 走向自有模型能力的关键样本。',
+        url: 'https://microsoft.ai/',
+      },
+      {
+        name: 'GitHub Copilot',
+        summary:
+          '面向真实代码库的 AI 编程助手，覆盖编辑器、终端、GitHub 和 Chat，从结对补全演进到 agentic coding，是观察 Microsoft 在 Agentic Coding 落地的核心样本，也是 MAI-Code 等自研模型逐步接入的前沿场景。',
+        url: 'https://github.com/features/copilot',
+      },
+    ],
+    bets: [
+      {
+        title: '分发外部模型与自研并存',
+        body: 'Microsoft 既通过 Foundry 和 Copilot 大规模分发 OpenAI、Anthropic 等前沿模型，又自研 MAI 模型逐步替换部分底层调用，对冲对单一模型供应商的依赖。',
+      },
+      {
+        title: '企业 AI 分发',
+        body: 'Microsoft Foundry 把模型、Agent 构建工具和治理打包进企业采购和 Azure 生态，是 Microsoft 把 AI 能力扩成稳定企业业务的规模化渠道。',
+      },
+      {
+        title: 'Agentic Coding',
+        body: 'GitHub Copilot 从结对补全转向 agent 模式，并开始接入自研 MAI-Code 模型，是观察 Microsoft 在 agentic coding 上落地的关键窗口。',
+      },
+      {
+        title: '自研模型能力',
+        body: '2025 年底成立的 Superintelligence 团队和 MAI 模型族，决定 Microsoft 能否在前沿模型上建立不依赖外部供应商的自有能力底座。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Microsoft Foundry 文档',
+        label: '企业 AI 平台',
+        summary: '最值得先读的官方文档，讲清 Foundry 如何统一模型、Agent 编排、工具目录和企业治理，是理解 Microsoft 企业 AI 平台能力边界的起点。',
+        url: 'https://learn.microsoft.com/azure/ai-foundry/',
+      },
+      {
+        title: 'Microsoft AI 官方博客',
+        label: '自研模型',
+        summary: 'Microsoft AI（Mustafa Suleyman 团队）官方发布渠道，MAI-1、MAI-Thinking、MAI-Code、MAI-Voice 等自研模型的第一手发布材料都在这里。',
+        url: 'https://microsoft.ai/news/',
+      },
+      {
+        title: 'GitHub Copilot 文档',
+        label: 'Agentic Coding',
+        summary: 'GitHub Copilot 官方文档，确认补全、Chat、agent 模式和 CLI 的能力边界，是理解 Microsoft agentic coding 落地写法的入口。',
+        url: 'https://docs.github.com/copilot',
+      },
+      {
+        title: 'Microsoft 365 Copilot 文档',
+        label: '生产力 Copilot',
+        summary: '官方文档，讲清 Copilot 如何嵌进 Word、Excel、Teams 等场景和 Agent Mode 的工作方式，是理解 Copilot 家族落地的材料。',
+        url: 'https://learn.microsoft.com/microsoft-365-copilot/',
+      },
+      {
+        title: 'Azure AI Foundry Blog',
+        label: '平台工程',
+        summary: 'Foundry 团队的官方博客，模型上新（含 MAI 模型入驻 Foundry）、Agent 能力和平台更新的高密度长文都在这里。',
+        url: 'https://techcommunity.microsoft.com/category/azure-ai-foundry/blog/azure-ai-foundry-blog',
+      },
+      {
+        title: 'Microsoft Build 2026',
+        label: '产品发布',
+        summary: 'Microsoft 年度开发者大会官方页，集中发布 MAI 新模型、Copilot 和 Foundry 的产品节奏，适合跟踪 Microsoft AI 战略的最新信号。',
+        url: 'https://news.microsoft.com/build-2026/',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Microsoft Copilot',
+        summary: 'Copilot 家族产品页，看面向用户和企业的 AI 应用全貌。',
+        url: 'https://www.microsoft.com/microsoft-copilot',
+      },
+      {
+        title: 'Microsoft Foundry',
+        summary: '企业 AI 与 agent 平台（原 Azure AI Foundry），面向企业采购和 Azure 生态。',
+        url: 'https://azure.microsoft.com/products/ai-foundry',
+      },
+      {
+        title: 'Microsoft AI',
+        summary: 'Microsoft AI 团队官方门户，自研 MAI 模型和研究方向的入口。',
+        url: 'https://microsoft.ai/',
+      },
+      {
+        title: 'GitHub Copilot',
+        summary: 'GitHub Copilot 产品页，AI 编程助手的功能和定价入口。',
+        url: 'https://github.com/features/copilot',
+      },
+    ],
+    flagshipKeywords: ['copilot', 'microsoft foundry', 'mai', 'github copilot'],
+    homepageUrl: 'https://www.microsoft.com',
+  },
+  cohere: {
+    heroDescription:
+      'Cohere 的公司页先看 Command 模型家族、Embed / Rerank 检索栈、North 企业 agent 平台和企业私有化部署怎样组成 AI 产品线，再看它和 RAG、企业 Agent 等主题的关系。',
+    headline: '四条产品线：Command 模型家族、Embed / Rerank 检索栈、North 企业 agent 平台、企业级私有化部署；专注企业、可私有部署的安全 AI 是贯穿其中的底座。',
+    strategy:
+      'Cohere 是少数从一开始就只做企业 AI 的模型公司——不追消费级聊天产品，而是把模型、检索和 agent 平台都按企业采购、合规和数据主权的要求来设计。它的 AI 布局可以按四条产品线看：Command 模型家族（旗舰 Command A+，2026 年 5 月以 Apache 2.0 开源发布，主打 agentic、多语言和带引用的可控生成）是能力核心；Embed 和 Rerank 组成检索栈，专门把企业内部文档喂进 RAG 和 agent 工作流，提升检索准确率；North 是面向企业员工的 agent 平台，由 Command、Embed、Rerank 等驱动，把安全 agent、企业搜索和生成式 AI 装进一个工作台；私有化部署不单独成线，而是贯穿全部产品的底座——模型可以跑在客户自己的 VPC 或本地，连权重都能下载，这正是它区别于闭源大厂、主打“主权 AI”的战略支点。',
+    products: [
+      {
+        name: 'Command 模型家族',
+        summary:
+          'Cohere 面向企业的旗舰生成模型线，当前旗舰 Command A+ 于 2026 年 5 月以 Apache 2.0 开源发布，主打 agentic、多模态、多语言和原生引用生成，可私有或在云上 VPC 内部署，是整个产品矩阵的能力底座。',
+        url: 'https://cohere.com/command',
+      },
+      {
+        name: 'Embed / Rerank 检索栈',
+        summary:
+          'Cohere 的企业检索两件套：Embed（当前 Embed 4，多模态、100+ 语言）把文本和图像转成可语义检索的向量；Rerank 在 RAG 和 agent 流程里只放行最相关的文档，降低 token 与延迟、提升准确率，是企业搜索和 RAG 的核心组件。',
+        url: 'https://cohere.com/rerank',
+      },
+      {
+        name: 'North 企业 agent 平台',
+        summary:
+          '面向企业员工的安全 AI 工作台，由 Command、Compass、Embed、Rerank 驱动，把可定制 agent、企业搜索和生成式 AI 装进一处，让答案锚定在企业内部数据上，是 Cohere 模型能力直达企业一线的应用入口。',
+        url: 'https://cohere.com/north',
+      },
+      {
+        name: '企业级私有化部署',
+        summary:
+          'Cohere 把“模型留在客户自己的环境里”做成可交付能力：支持私有部署、跑在 hyperscaler 的 VPC 内、提供可下载权重和 Model Vault，面向金融、医疗、政府等受监管和主权 AI 场景，是它区别于闭源大厂的核心卖点。',
+        url: 'https://docs.cohere.com/docs/deployment-options',
+      },
+    ],
+    bets: [
+      {
+        title: '只做企业 AI',
+        body: 'Cohere 不做消费级聊天产品，模型、检索和 agent 平台全部按企业采购、合规和数据主权设计，靠垂直专注换取受监管行业的信任。',
+      },
+      {
+        title: '检索是护城河',
+        body: 'Embed 和 Rerank 把“让企业内部数据被准确检索”做成独立产品，RAG 和 agent 质量取决于检索质量，这是 Cohere 区别于纯模型公司的关键能力。',
+      },
+      {
+        title: '私有化与主权 AI',
+        body: '可私有部署、可下载权重、可跑在客户 VPC 内，Command A+ 以 Apache 2.0 开源，直指组织要直接掌控基础设施和模型行为的主权 AI 场景。',
+      },
+      {
+        title: 'North 把模型变成工作台',
+        body: 'North 把 Command、Embed、Rerank 包装成企业员工日常可用的 agent 平台，决定 Cohere 能否把模型能力扩成贴近业务的稳定收入，而不是停留在 API。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Cohere Documentation',
+        label: '开发者文档',
+        summary: '最值得先读的官方文档，覆盖 Command、Embed、Rerank、工具调用和部署选项，确认平台能力边界从这里开始。',
+        url: 'https://docs.cohere.com/',
+      },
+      {
+        title: 'Introducing Command A+',
+        label: '旗舰模型',
+        summary: 'Command A+ 的官方发布博客，讲清这款 Apache 2.0 开源、可在 2 张 H100 上跑的企业级 agentic 模型的能力与定位，是理解 Cohere 模型底座的第一手材料。',
+        url: 'https://cohere.com/blog/command-a-plus',
+      },
+      {
+        title: 'Rerank: Boost Enterprise Search and Retrieval',
+        label: '检索栈',
+        summary: 'Rerank 官方产品页，讲清它如何在 RAG 和 agent 流程里只放行最相关文档、降低 token 与延迟，是理解 Cohere 检索能力的入口。',
+        url: 'https://cohere.com/rerank',
+      },
+      {
+        title: 'Cohere Blog',
+        label: '官方博客',
+        summary: '模型发布、企业落地和工程实践的官方博客，跟踪 Command、North、Embed 等产品节奏的主入口。',
+        url: 'https://cohere.com/blog',
+      },
+      {
+        title: 'Cohere Labs',
+        label: '研究',
+        summary: 'Cohere 的研究部门，含多语言（Aya 家族）、AI 评测、开放科学社区和论文，理解公司长期技术底座从这里开始。',
+        url: 'https://cohere.com/research',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Cohere',
+        summary: '公司官网和产品入口。',
+        url: 'https://cohere.com',
+      },
+      {
+        title: 'Cohere Docs',
+        summary: 'Command、Embed、Rerank、工具调用和部署选项的官方文档入口。',
+        url: 'https://docs.cohere.com/',
+      },
+      {
+        title: 'Cohere Labs',
+        summary: '研究发布与开放科学社区，用来理解公司长期技术边界。',
+        url: 'https://cohere.com/research',
+      },
+    ],
+    flagshipKeywords: ['command', 'rerank', 'embed', 'north', 'rag'],
+    homepageUrl: 'https://cohere.com',
+  },
+  perplexity: {
+    heroDescription:
+      'Perplexity 的公司页先看答案引擎（AI 搜索 + Deep Research）、Comet AI 浏览器、企业版与 Spaces、Sonar / Search API 开发者平台怎样组成 AI 产品线，再看它和实时检索、Agentic 浏览等主题的关系。',
+    headline: '四条产品线：答案引擎（AI 搜索 + Deep Research）、Comet AI 浏览器、企业版与 Spaces、Sonar / Search API 开发者平台；带引用的实时检索是贯穿其中的底座。',
+    strategy:
+      'Perplexity 的定位是「答案引擎」——不返回一堆蓝色链接，而是直接给出带来源引用的答案，并把这套实时检索能力延伸成四条产品线。答案引擎是面向用户的核心入口，AI 搜索和 Deep Research 覆盖从快速问答到长篇研究报告；Comet AI 浏览器把答案引擎装进浏览器，让 AI 助手能跨标签页阅读、总结和自动执行任务；企业版与 Spaces 把检索能力带进组织——Internal Knowledge Search 让团队同时搜公网和内部文件，Spaces 是可定制的协作研究空间；Sonar / Search API 则把同一套带引用的实时检索做成开发者可调用的接口。它不自研前沿大模型，而是聚合 GPT、Claude、Gemini、Grok 等模型并叠加自有检索与排序，护城河在检索质量、引用可信度和分发入口，而非模型本身。',
+    products: [
+      {
+        name: '答案引擎（AI 搜索 + Deep Research）',
+        summary: 'Perplexity 的核心产品：输入问题直接返回带来源引用的答案，而非链接列表。覆盖快速问答、可选多模型推理，以及 Deep Research 自动跑多轮检索生成长篇研究报告，是公司能力直接触达个人和团队用户的主入口。',
+        url: 'https://www.perplexity.ai',
+      },
+      {
+        name: 'Comet AI 浏览器',
+        summary: 'Perplexity 自研的 AI 浏览器，把答案引擎和一个常驻 AI 助手装进浏览器本身，能跨标签页阅读、总结网页、整理邮件并自动执行多步任务。已在 Mac / Windows / iOS / Android 免费开放，是 Perplexity 从搜索框走向 Agentic 浏览入口的关键样本。',
+        url: 'https://www.perplexity.ai/comet',
+      },
+      {
+        name: '企业版与 Spaces',
+        summary: '面向组织的产品线。Internal Knowledge Search 让 Enterprise / Pro 用户同时检索公网与内部文件并带行内引用；Spaces 是可定制 AI 模型与指令的协作研究空间，配合管理控制台、审计日志和默认不用于训练的隐私保护，是 Perplexity 进入企业采购的规模化分发渠道。',
+        url: 'https://www.perplexity.ai/enterprise',
+      },
+      {
+        name: 'Sonar / Search API 开发者平台',
+        summary: '面向开发者的检索 API。Sonar 提供搜索增强、带行内引用的问答模型（OpenAI 兼容接口），Search API 返回原始排序的实时网页结果，另有 Agent / Embeddings API，是开发者把 Perplexity 的实时检索接进自有应用、也是其平台化收入的基础。',
+        url: 'https://docs.perplexity.ai/',
+      },
+    ],
+    bets: [
+      {
+        title: '答案而非链接',
+        body: 'Perplexity 押注「答案引擎」范式：用户要的是带可信来源的直接答案，而不是十条蓝链。引用质量和检索相关性是它区别于传统搜索的根本。',
+      },
+      {
+        title: '模型聚合 + 自有检索',
+        body: '它不自研前沿大模型，而是聚合 GPT、Claude、Gemini、Grok 等并叠加自有检索与排序层，护城河在检索、引用和分发入口，而非模型本身。',
+      },
+      {
+        title: 'Agentic 浏览入口',
+        body: 'Comet 把答案引擎装进浏览器并加入能自动执行任务的助手，是 Perplexity 从问答框争夺浏览器这一更大入口、走向 Agentic 工作流的关键一步。',
+      },
+      {
+        title: '检索能力平台化',
+        body: 'Sonar / Search API 把同一套带引用的实时检索做成开发者可调用的接口，决定 Perplexity 能否把消费级体验扩成稳定的平台业务。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Sonar API 文档总览',
+        label: 'API 平台',
+        summary: '最值得先读的开发者文档，讲清 Sonar、Search、Agent、Embeddings 四类 API 的能力、OpenAI 兼容接口和接入方式，是用好 Perplexity 检索能力的起点。',
+        url: 'https://docs.perplexity.ai/',
+      },
+      {
+        title: 'Sonar API 定价指南',
+        label: '定价',
+        summary: '官方定价页，讲清 Sonar / Sonar Pro 按 token 与按请求的计费阶梯、上下文档位与引用费用变化，是评估 API 成本的依据。',
+        url: 'https://docs.perplexity.ai/guides/pricing',
+      },
+      {
+        title: 'Introducing Comet: Browse at the speed of thought',
+        label: 'Comet 浏览器',
+        summary: 'Comet 的官方发布博客，讲清把答案引擎和常驻助手装进浏览器的产品理念，是理解 Perplexity Agentic 浏览方向的第一手材料。',
+        url: 'https://www.perplexity.ai/hub/blog/introducing-comet',
+      },
+      {
+        title: 'Introducing Internal Knowledge Search and Spaces',
+        label: '企业与协作',
+        summary: '官方博客，讲清 Internal Knowledge Search 如何让团队同时搜公网与内部文件、Spaces 如何做可定制协作研究空间，是理解 Perplexity 企业打法的入口。',
+        url: 'https://www.perplexity.ai/hub/blog/introducing-internal-knowledge-search-and-spaces',
+      },
+      {
+        title: 'Perplexity Hub（官方博客）',
+        label: '官方博客',
+        summary: '产品发布、功能更新和研究方法的官方博客主入口，跟踪答案引擎、Comet 和企业能力演进从这里开始。',
+        url: 'https://www.perplexity.ai/hub/blog',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Perplexity',
+        summary: '答案引擎主入口，直接体验 AI 搜索与 Deep Research。',
+        url: 'https://www.perplexity.ai',
+      },
+      {
+        title: 'Sonar API Docs',
+        summary: 'Sonar、Search、Agent、Embeddings 等开发者 API 的官方文档入口。',
+        url: 'https://docs.perplexity.ai/',
+      },
+      {
+        title: 'Perplexity Comet',
+        summary: 'Comet AI 浏览器的官方产品页与下载入口。',
+        url: 'https://www.perplexity.ai/comet',
+      },
+      {
+        title: 'Perplexity Enterprise',
+        summary: '企业版入口，含 Internal Knowledge Search、Spaces 与组织治理能力。',
+        url: 'https://www.perplexity.ai/enterprise',
+      },
+    ],
+    flagshipKeywords: ['perplexity', 'comet', 'sonar', 'answer engine'],
+    homepageUrl: 'https://www.perplexity.ai',
+  },
+  anysphere: {
+    heroDescription:
+      'Anysphere（Cursor 母公司）的公司页先看 Cursor 编辑器/agent、Composer 自研编码模型、Bugbot 代码审查和企业版怎样组成 AI 产品线，再看它和 Agentic Coding、Loop Engineering 等主题的关系。',
+    headline: '四条产品线：Cursor agent 工作台、Composer 自研编码模型、Bugbot 代码审查、Cursor 企业版；前沿编码模型研究是贯穿其中的底座。',
+    strategy:
+      'Anysphere（对外即 Cursor）把自己定位成「面向编程未来的应用研究实验室」，AI 布局可以按四条产品线看：Cursor 是面向开发者的 agent-first 工作台（编辑器 + 后台/并行 agent + Cursor SDK），Composer 是它自研、自训的编码模型（不再只租用第三方前沿模型，而是自己掌握 agent loop 的能力底座），Bugbot 把同一套模型能力延伸到 PR 自动代码审查，Cursor 企业版（含组织管理、SSO/SCIM、Privacy Mode、SOC 2）负责把产品规模化带进企业采购。它和 Agentic Coding 主题强相关——Cursor 是这条主题里最具代表性的「IDE 起家、再自研模型」的公司样本：从套壳 IDE 走向自有模型 + 自有 agent 闭环。',
+    products: [
+      {
+        name: 'Cursor',
+        summary: 'Anysphere 的旗舰产品，AI 编程 agent 与软件开发环境。从 AI 代码编辑器进化为 agent-first 工作台，支持后台 agent、并行 agent 执行、PR Review 和 Cursor SDK，是模型能力进入开发者日常工作流的最大触点。',
+        url: 'https://cursor.com',
+      },
+      {
+        name: 'Composer',
+        summary: 'Cursor/Anysphere 自研、自训的编码 agent 模型（当前为 Composer 2.5），专为长链路 agentic 编码任务优化，驱动 Cursor 的 agent loop。自有模型让 Anysphere 摆脱对第三方前沿模型的单一依赖，是它能力底座的关键一步。',
+        url: 'https://cursor.com/blog/composer-2-5',
+      },
+      {
+        name: 'Bugbot',
+        summary: '面向 Pull Request 的 AI 自动代码审查 agent。改用 Composer 2.5 驱动后审查更快、更省、查出的 bug 更多，把 Cursor 的模型能力从「写代码」延伸到「审代码」，覆盖软件工程 Loop 的验证环节。',
+        url: 'https://cursor.com/bugbot',
+      },
+      {
+        name: 'Cursor 企业版',
+        summary: '面向组织的规模化分发渠道，提供组织/团队管理、SAML SSO 与 SCIM、Privacy Mode 零数据保留、仓库/模型/MCP 白名单和 SOC 2 合规，是把 Cursor 从个人开发者带进企业采购和大型 monorepo 的入口。',
+        url: 'https://cursor.com/enterprise',
+      },
+    ],
+    bets: [
+      {
+        title: '从套壳到自有模型',
+        body: 'Composer 是 Anysphere 最关键的一步——一家 IDE 起家的公司自己训练编码模型，掌握 agent loop 的能力底座，而不是长期租用第三方前沿模型。',
+      },
+      {
+        title: 'Agentic Coding 闭环',
+        body: 'Cursor 的后台/并行 agent、Cursor SDK 和 Bugbot 把「写—跑—审」串成一个 agent 闭环，是观察 Agentic Coding 与 Loop Engineering 真实落地的核心窗口。',
+      },
+      {
+        title: '企业规模化',
+        body: '组织管理、SSO/SCIM、Privacy Mode 和 SOC 2 决定 Cursor 能否把个人开发者的高增长扩成稳定的企业业务，而不是停留在单点工具。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Introducing Composer 2.5',
+        label: 'Composer',
+        summary: '官方发布文，讲清 Composer 2.5 怎样针对长链路 agentic 编码做强化训练和工程优化，是理解 Anysphere 为什么要自研编码模型的最佳入口。',
+        url: 'https://cursor.com/blog/composer-2-5',
+      },
+      {
+        title: 'Meet the new Cursor',
+        label: 'Agent 工作台',
+        summary: 'Cursor 3 的发布文，把编辑器重新定位成「围绕 agent 构建软件的统一工作台」，是理解 agent-first 形态转变的关键材料。',
+        url: 'https://cursor.com/blog/meet-the-new-cursor',
+      },
+      {
+        title: 'Build programmatic agents with the Cursor SDK',
+        label: 'Cursor SDK',
+        summary: '介绍 Cursor SDK 如何把 Cursor 的 agent 能力开放成可编程接口，适合理解 Anysphere 怎样把工作台延伸成平台。',
+        url: 'https://cursor.com/blog/cursor-sdk',
+      },
+      {
+        title: 'Cursor Blog',
+        label: '工程实践',
+        summary: '官方博客，Composer、Bugbot、cloud agents 等产品与工程更新的第一来源，跟踪 Cursor 的 agentic 工程经验从这里开始。',
+        url: 'https://cursor.com/blog',
+      },
+      {
+        title: 'Cursor Docs',
+        label: '官方文档',
+        summary: 'Agent、Rules、MCP、Skills 与 CLI 的官方文档入口，确认产品功能边界和落地写法从这里开始。',
+        url: 'https://cursor.com/docs',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Cursor',
+        summary: '产品官网，Cursor 编辑器、agent 与下载入口。',
+        url: 'https://cursor.com',
+      },
+      {
+        title: 'Cursor Blog',
+        summary: '官方博客，Composer、Bugbot、cloud agents 等产品与工程更新的第一来源。',
+        url: 'https://cursor.com/blog',
+      },
+      {
+        title: 'Cursor Docs',
+        summary: 'Agent、Rules、MCP、Skills、CLI 与 SDK 的官方文档。',
+        url: 'https://cursor.com/docs',
+      },
+      {
+        title: 'Anysphere',
+        summary: '母公司站点，自我定位为「面向编程未来的应用研究实验室」，适合理解公司视角与招聘方向。',
+        url: 'https://anysphere.inc',
+      },
+    ],
+    flagshipKeywords: ['cursor', 'composer', 'bugbot', 'agentic'],
+    homepageUrl: 'https://cursor.com',
+  },
+  'thinking-machines-lab': {
+    heroDescription:
+      'Thinking Machines Lab（前 OpenAI CTO Mira Murati 创立）的公司页先看 Tinker 微调 API 和 Connectionism 研究博客这两条真实主线，再看它「让 AI 更可理解、可定制、人机协作」的使命怎样落进产品。这是一家年轻公司，产品线刻意保持克制。',
+    headline: '两条主线：Tinker 开放模型微调 API、Connectionism 研究博客；可定制、人机协作的前沿模型研究是贯穿其中的底座。',
+    strategy:
+      'Thinking Machines Lab 由前 OpenAI CTO Mira Murati 于 2025 年创立，团队来自 ChatGPT、Character.ai、Mistral、PyTorch 等项目，使命是让 AI 系统更可理解、可定制、更普遍有用。它信奉「科学共享」，研究与产品共同设计，并强调人机协作而非完全自主的系统。作为一家年轻公司，它目前只对外推出一条产品线 Tinker——把分布式 LoRA 微调封装成 API，让研究者掌控数据和算法、把基础设施交给平台；同时通过 Connectionism 博客高频公开技术成果。前沿模型研究不单独成线，而是这两者共同的能力底座。',
+    products: [
+      {
+        name: 'Tinker',
+        summary: '公司首个、也是目前唯一的对外产品：一个用 LoRA 高效微调开源大模型的 API，自动处理多 GPU 调度、资源分配和故障恢复，开发者只需掌控数据与算法。支持 Qwen、DeepSeek、GPT-OSS、Kimi 等开源模型，已被普林斯顿、斯坦福、伯克利和 Redwood Research 等团队用于研究。',
+        url: 'https://thinkingmachines.ai/tinker/',
+      },
+      {
+        name: 'Connectionism 研究博客',
+        summary: '官方研究博客，秉持「科学共享」高频发布技术长文、论文和代码，主题横跨内核数值、训练方法、推理可复现性到人机协作，是这家以研究驱动的公司对外输出能力的主要窗口。',
+        url: 'https://thinkingmachines.ai/blog/',
+      },
+    ],
+    bets: [
+      {
+        title: '可定制的开放模型微调',
+        body: 'Tinker 把分布式 LoRA 微调做成 API，让研究者和开发者在不管基础设施的前提下完全掌控数据与算法，是公司「让 AI 可定制」使命的第一个落地产品。',
+      },
+      {
+        title: '科学共享的研究文化',
+        body: 'Connectionism 博客高频公开技术成果与代码，既服务公众也反哺自身研究文化，是判断这家年轻公司技术方向的关键窗口。',
+      },
+      {
+        title: '人机协作而非完全自主',
+        body: '公司明确押注协作式 AI 系统而非全自主 agent，相关方向（如 Interaction Models）体现在研究博客中，是它区别于其他前沿实验室的定位。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Announcing Tinker',
+        label: 'Tinker 发布',
+        summary: '最值得先读的官方公告，讲清 Tinker 为什么把分布式 LoRA 微调做成 API、面向谁、解决什么问题，是理解这家公司首个产品的起点。',
+        url: 'https://thinkingmachines.ai/news/announcing-tinker/',
+      },
+      {
+        title: 'Tinker 官方文档',
+        label: 'Tinker 文档',
+        summary: 'Tinker API 的官方文档，含 forward_backward / optim_step / sample 等核心原语、支持的模型清单和接入流程，确认产品能力边界从这里开始。',
+        url: 'https://tinker-docs.thinkingmachines.ai/',
+      },
+      {
+        title: 'Tinker Cookbook',
+        label: '微调范例',
+        summary: 'GitHub 上的官方 cookbook，提供 SFT、RL 等真实微调范例和 renderer、超参工具等可复用模块，是上手 Tinker 最直接的高密度材料。',
+        url: 'https://github.com/thinking-machines-lab/tinker-cookbook',
+      },
+      {
+        title: 'Defeating Nondeterminism in LLM Inference',
+        label: '推理可复现性',
+        summary: 'Connectionism 首篇博客（Horace He 等），讲清 LLM 推理的随机性如何源自 GPU kernel 编排、又如何做到确定性输出，对企业可靠性和强化学习都有价值。',
+        url: 'https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/',
+      },
+      {
+        title: 'LoRA Without Regret',
+        label: '微调方法',
+        summary: 'John Schulman 等的研究长文，分析 LoRA 微调何时能逼近全参数微调，是理解 Tinker 为什么押注 LoRA 的方法论背景。',
+        url: 'https://thinkingmachines.ai/blog/lora-without-regret/',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Thinking Machines Lab',
+        summary: '公司官网入口，看使命、原则和团队。',
+        url: 'https://thinkingmachines.ai/',
+      },
+      {
+        title: 'Tinker',
+        summary: '公司首个产品 Tinker 的官方页面。',
+        url: 'https://thinkingmachines.ai/tinker/',
+      },
+      {
+        title: 'Connectionism',
+        summary: '官方研究博客，跟踪技术长文、论文和代码。',
+        url: 'https://thinkingmachines.ai/blog/',
+      },
+      {
+        title: 'Tinker Docs',
+        summary: 'Tinker API 的官方开发者文档入口。',
+        url: 'https://tinker-docs.thinkingmachines.ai/',
+      },
+    ],
+    flagshipKeywords: ['tinker', 'connectionism', 'lora', 'fine-tuning'],
+    homepageUrl: 'https://thinkingmachines.ai',
+  },
+  amazon: {
+    heroDescription:
+      'Amazon（含 AWS）的公司页先看 Amazon Bedrock 模型平台、Amazon Nova 自研模型家族、Amazon Q 企业与开发者助手和 AWS Trainium 自研 AI 芯片怎样组成 AI 产品线，再看它和 Agentic AI、AI 基础设施等主题的关系。',
+    headline: '四条产品线：Amazon Bedrock 模型平台、Amazon Nova 自研模型、Amazon Q 助手、AWS Trainium 自研芯片；遍布全球的云基础设施是贯穿其中的底座。',
+    strategy:
+      'Amazon 的 AI 布局不靠单一聊天产品，而是把企业上线 AI 真正需要的整条链路做成 AWS 上的产品线：Amazon Bedrock 是托管式模型平台，用一套 API 接入 Anthropic、OpenAI、Meta 等几十家厂商和 Amazon 自家模型，并通过 AgentCore 提供生产级 agent 运行时；Amazon Nova 是 Amazon 自研的多模态模型家族（Micro / Lite / Pro / Premier，加图像 Canvas、视频 Reel 和浏览器自动化 Nova Act），主打高性价比；Amazon Q 是面向企业的生成式助手，分 Q Business（连企业数据答问、出报告）和 Q Developer（云控制台与 AWS 体验里的开发与运维助手）；AWS Trainium / Inferentia 是自研训练与推理芯片，用更低的单位算力成本撑起前三条产品线，也对外租给 Anthropic 等大客户。Amazon 的护城河不在某个明星模型，而在「模型平台 + 自研模型 + 企业助手 + 自研算力」这套全栈基础设施。',
+    products: [
+      {
+        name: 'Amazon Bedrock',
+        summary: 'AWS 的托管式生成式 AI 平台，用一套统一 API 接入 Anthropic、OpenAI、Meta、Mistral 和 Amazon 自家 Nova 等几十个基础模型，并通过 AgentCore 提供生产级 agent 运行时、Guardrails 安全护栏和知识库检索，是 Amazon AI 战略的中枢和企业接入大模型的主入口。',
+        url: 'https://aws.amazon.com/bedrock/',
+      },
+      {
+        name: 'Amazon Nova',
+        summary: 'Amazon 自研的多模态模型家族，文本模型分 Micro / Lite / Pro / Premier，外加图像生成 Canvas、视频生成 Reel，以及面向浏览器 UI 自动化的 Nova Act，主打比同级模型显著更低的价格，是 Amazon 在 Bedrock 之上掌握自有模型能力的底座。',
+        url: 'https://aws.amazon.com/nova/',
+      },
+      {
+        name: 'Amazon Q',
+        summary: '面向企业的生成式 AI 助手，分 Q Business（连接 40+ 企业系统答问、出报告、办任务）和 Q Developer（在 AWS 控制台与 AWS 体验里做开发、排障与运维）。注：Q Developer 的 IDE 插件已宣布 2027 年 4 月停止支持，编码场景正由 Amazon 的 agentic IDE Kiro 承接，控制台与企业侧助手仍持续。',
+        url: 'https://aws.amazon.com/q/',
+      },
+      {
+        name: 'AWS Trainium / Inferentia 自研芯片',
+        summary: 'Amazon 自研的 AI 加速芯片，Trainium 面向模型训练、Inferentia 面向推理服务，以远低于同级 GPU 的单位成本提供算力，既支撑 Bedrock 与 Nova，也对外被 Anthropic 等大客户采用，是 Amazon 区别于纯软件 AI 公司的硬件底座。',
+        url: 'https://aws.amazon.com/ai/machine-learning/trainium/',
+      },
+    ],
+    bets: [
+      {
+        title: 'AI 应用的部署基础设施',
+        body: 'Amazon 的优势不在明星模型，而在企业把 AI 推上生产时需要的模型接入、agent 运行时、安全护栏和算力——这些都跑在 AWS 现成的全球云基础设施上。',
+      },
+      {
+        title: '模型中立的平台',
+        body: 'Bedrock 同时托管 Anthropic、OpenAI、Meta 与自家 Nova，Amazon 押注「不绑定单一模型」的平台位，让企业按场景在多模型间自由选择和切换。',
+      },
+      {
+        title: 'Agentic AI',
+        body: 'Bedrock AgentCore 加 Nova Act 把生产级 agent 的部署、浏览器自动化、会话隔离和可观测做成托管能力，是观察 Amazon 进入 Agentic AI 的核心样本。',
+      },
+      {
+        title: '自研算力降本',
+        body: 'Trainium / Inferentia 用自研芯片压低训练与推理成本，既给 Bedrock 和 Nova 让出价格空间，也成为 Anthropic 等大客户长期采购 AWS 算力的支点。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Amazon Bedrock 文档',
+        label: '模型平台',
+        summary: '最值得先读的官方文档，讲清如何用统一 API 接入多家基础模型、配置 AgentCore、知识库和 Guardrails，是理解 Amazon AI 平台能力边界的起点。',
+        url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html',
+      },
+      {
+        title: 'Introducing Amazon Nova foundation models',
+        label: '自研模型',
+        summary: 'AWS 官方发布博客，讲清 Nova 家族的分层（Micro / Lite / Pro / Premier）、多模态能力和价格定位，是理解 Amazon 为什么自研模型的第一手材料。',
+        url: 'https://aws.amazon.com/blogs/aws/introducing-amazon-nova-frontier-intelligence-and-industry-leading-price-performance/',
+      },
+      {
+        title: 'Amazon Bedrock AgentCore 文档',
+        label: 'Agent 运行时',
+        summary: '官方文档，讲清如何用任意框架和模型在 AgentCore 上构建、部署并运维生产级 agent（含 Browser、Memory、Identity 等模块），是理解 Amazon agentic 基础设施的入口。',
+        url: 'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html',
+      },
+      {
+        title: 'Amazon Nova Act 文档',
+        label: '浏览器 Agent',
+        summary: '官方文档，讲清 Nova Act 如何构建可靠的浏览器 UI 自动化 agent，并与 AgentCore Browser 配合，是理解 Amazon 在 computer-use 方向落地的材料。',
+        url: 'https://docs.aws.amazon.com/nova-act/latest/userguide/what-is-nova-act.html',
+      },
+      {
+        title: 'AWS Trainium',
+        label: '自研芯片',
+        summary: 'Trainium 训练芯片的官方产品页，讲清性能、性价比和被 Anthropic 等客户采用的情况，是理解 Amazon AI 硬件底座的入口。',
+        url: 'https://aws.amazon.com/ai/machine-learning/trainium/',
+      },
+      {
+        title: 'AWS Machine Learning Blog',
+        label: '官方博客',
+        summary: 'AWS 人工智能与机器学习官方博客，跟踪 Bedrock、Nova、AgentCore 等产品发布与工程实践的主入口。',
+        url: 'https://aws.amazon.com/blogs/machine-learning/',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'AWS AI',
+        summary: 'AWS 人工智能总入口，Bedrock、SageMaker、Q、AgentCore 等产品的统一门户。',
+        url: 'https://aws.amazon.com/ai/',
+      },
+      {
+        title: 'Amazon Bedrock',
+        summary: '模型平台官方产品页，确认接入模型、AgentCore 与定价从这里开始。',
+        url: 'https://aws.amazon.com/bedrock/',
+      },
+      {
+        title: 'Amazon Nova',
+        summary: 'Amazon 自研模型家族官方页，看模型分层、多模态能力和价格。',
+        url: 'https://aws.amazon.com/nova/',
+      },
+      {
+        title: 'Amazon Q',
+        summary: '面向企业的 AI 助手官方页（Q Business / Q Developer）。',
+        url: 'https://aws.amazon.com/q/',
+      },
+    ],
+    flagshipKeywords: ['bedrock', 'amazon nova', 'amazon q', 'agentcore', 'trainium'],
+    homepageUrl: 'https://aws.amazon.com/ai/',
+  },
+  'moonshot-ai': {
+    heroDescription:
+      '月之暗面 Moonshot AI（Kimi）的公司页先看 Kimi K2 模型家族、Kimi 助手应用、Kimi 开放平台 / API 和 Kimi Code 怎样组成 AI 产品线，再看它和 Agentic Coding、Context Engineering 等主题的关系。',
+    headline:
+      '四条产品线：Kimi K2 模型家族、Kimi 助手应用、Kimi 开放平台 / API、Kimi Code；开源权重的 agentic 模型是贯穿其中的底座。',
+    strategy:
+      '月之暗面的 AI 布局可以按四条产品线看：Kimi K2 系列（万亿参数 MoE，每 token 激活约 320 亿，多以开源权重发布）是面向开发者和企业的能力核心，主打长上下文、原生多模态和 agentic 能力；Kimi 助手应用（Web / App / 桌面端）是模型直接触达个人和团队用户的最大触点，覆盖长文档处理、深度研究和实时联网；Kimi 开放平台 / API 以 OpenAI / Anthropic 兼容接口把模型分发给开发者，是平台化收入和生态扩展的基础；Kimi Code 把 K2 的编码能力带进终端、IDE 和 CLI 的真实软件工程循环。以开源权重加高性价比 API 撬动规模化采用，是它区别于闭源大厂的底层打法。',
+    products: [
+      {
+        name: 'Kimi K2 模型家族',
+        summary:
+          '月之暗面的核心模型产品线，万亿参数 MoE 架构、每 token 激活约 320 亿参数，主打 256K 长上下文、原生多模态和 agentic 能力，多以开源权重发布（含 K2 Thinking、K2.5、K2.6 及面向编码的 K2.7 Code），是整个产品矩阵的能力底座。',
+        url: 'https://moonshotai.github.io/Kimi-K2/',
+      },
+      {
+        name: 'Kimi 助手应用',
+        summary:
+          '面向个人和团队的官方对话应用，提供 Web、移动 App 和 macOS / Windows 桌面端入口，覆盖长文档分析、深度研究、实时联网和多模态输入，是 Kimi 模型能力直达终端用户的最大触点。',
+        url: 'https://www.kimi.com',
+      },
+      {
+        name: 'Kimi 开放平台 / API',
+        summary:
+          '开发者把 Kimi 模型接入应用和业务流程的平台，提供 OpenAI / Anthropic 兼容接口、256K 上下文和工具调用（Function Calling），是月之暗面平台化收入和生态扩展的基础。',
+        url: 'https://platform.kimi.com',
+      },
+      {
+        name: 'Kimi Code',
+        summary:
+          '由 K2 编码模型驱动的 agentic coding 工具，覆盖终端、IDE 和 CLI，支持写代码、调试重构、代码库分析、shell 自动化和并行 subagent，并可接入 Claude Code / Cline / Roo Code 等客户端，是观察月之暗面进入 Agentic Coding 的核心样本。',
+        url: 'https://www.kimi.com/code',
+      },
+    ],
+    bets: [
+      {
+        title: '开源权重的 agentic 模型',
+        body: 'Kimi K2 系列以万亿参数 MoE 加开源权重撬动规模化采用，把长上下文、多模态和 agentic 能力做成可下载、可自部署的底座，是它最核心的差异化打法。',
+      },
+      {
+        title: 'Agentic Coding',
+        body: 'Kimi Code 和 K2.7 Code 把模型带进终端、IDE、CLI 和并行 subagent，并兼容 Claude Code / Cline 等客户端，是观察月之暗面在 Agentic Coding 上落地的关键窗口。',
+      },
+      {
+        title: '应用与平台双入口',
+        body: 'Kimi 助手应用抓个人和团队用户，开放平台 / API 抓开发者生态，两条入口共同决定模型能力能否扩成稳定业务。',
+      },
+    ],
+    learningResources: [
+      {
+        title: 'Kimi K2: Open Agentic Intelligence',
+        label: '模型技术页',
+        summary: '最值得先读的官方材料，讲清 K2 的 MoE 架构、训练方法和 agentic 设计理念，是理解月之暗面能力底座的入口。',
+        url: 'https://moonshotai.github.io/Kimi-K2/',
+      },
+      {
+        title: 'Kimi API 开放平台文档',
+        label: 'API 平台',
+        summary: '官方开发者文档，讲清模型清单（K2.5 / K2.6 / K2.7 Code）、256K 上下文、工具调用和接入方式，是用好 Kimi API 的起点。',
+        url: 'https://platform.kimi.com/docs',
+      },
+      {
+        title: 'Use Kimi K2.7 Code in Claude Code / Cline / Roo Code',
+        label: 'Agentic Coding',
+        summary: '官方讲如何把 K2.7 Code 接入主流 agentic coding 客户端，是理解 Kimi 编码能力如何落到真实开发循环的窗口。',
+        url: 'https://platform.kimi.com/docs/guide/agent-support',
+      },
+      {
+        title: 'Kimi Code Docs',
+        label: 'Kimi Code',
+        summary: 'Kimi Code 官方文档，讲清这套 agentic coding 工具在终端、IDE 和 CLI 的能力边界与安装方式。',
+        url: 'https://www.kimi.com/code/docs/en/',
+      },
+      {
+        title: 'MoonshotAI on GitHub',
+        label: '开源',
+        summary: '月之暗面在 GitHub 上的官方组织，集中放 K2 系列模型权重、技术报告和工程项目，是理解其开源底座的直接入口。',
+        url: 'https://github.com/MoonshotAI',
+      },
+      {
+        title: 'Kimi K2.5 on Hugging Face',
+        label: '开源权重',
+        summary: 'K2.5 的官方权重与模型卡，确认开源协议、参数规模和多模态能力从这里开始。',
+        url: 'https://huggingface.co/moonshotai/Kimi-K2.5',
+      },
+    ],
+    officialLinks: [
+      {
+        title: 'Moonshot AI',
+        summary: '公司官网和产品入口。',
+        url: 'https://www.moonshot.ai',
+      },
+      {
+        title: 'Kimi',
+        summary: '面向个人和团队的 Kimi 助手应用入口（Web / App / 桌面端）。',
+        url: 'https://www.kimi.com',
+      },
+      {
+        title: 'Kimi 开放平台',
+        summary: '开放平台与 API 控制台，注册 key、查模型和定价从这里开始（platform.moonshot.cn 已重定向至此）。',
+        url: 'https://platform.kimi.com',
+      },
+      {
+        title: 'MoonshotAI on GitHub',
+        summary: 'K2 系列模型权重、技术报告和开源项目的代码仓库。',
+        url: 'https://github.com/MoonshotAI',
+      },
+    ],
+    flagshipKeywords: ['月之暗面', 'kimi', 'kimi k2', 'kimi code', 'agentic'],
+    homepageUrl: 'https://www.moonshot.ai',
+  },
+  baidu: {
+    heroDescription:
+      '百度的公司页先看文心 ERNIE 模型家族、文心一言应用、百度智能云千帆平台和 Apollo 自动驾驶 / 萝卜快跑怎样组成 AI 产品线，再看它和 Agentic Coding、具身与物理 AI 等主题的关系。',
+    headline:
+      '四条产品线：文心 ERNIE 模型家族、文心一言应用、百度智能云千帆平台、Apollo 自动驾驶 / 萝卜快跑；全模态前沿模型研究是贯穿其中的底座。',
+    strategy:
+      '百度是少有的从自研模型一路打到物理世界落地的全栈玩家，AI 布局可以按四条产品线看：文心 ERNIE 模型家族（当前以原生全模态的 ERNIE 5.x 为旗舰，并开源了 ERNIE-Image 等模型）是所有产品的能力底座；文心一言是模型能力直达个人和团队用户的应用入口；百度智能云千帆是面向企业的一站式大模型与 Agent 开发平台，以模型即服务（MaaS）方式接入 ERNIE 全系列和 DeepSeek、Kimi 等第三方模型，也是文心快码 Comate 这类开发者工具的归属生态；Apollo 自动驾驶与萝卜快跑（Robotaxi）则把 AI 能力推向物理世界，是百度押注自动驾驶规模化商业落地的关键样本。全模态前沿模型研究不单独成线，而是决定这套全栈布局能力上限的底座。',
+    products: [
+      {
+        name: '文心 ERNIE 模型家族',
+        summary:
+          '百度自研的核心模型产品线，当前以原生全模态、万亿级参数的 ERNIE 5.x 为旗舰，覆盖语言、多模态、推理与文生图（已开源 ERNIE-Image）能力，是百度全栈 AI 产品的能力底座。',
+        url: 'https://yiyan.baidu.com',
+      },
+      {
+        name: '文心一言（ERNIE Bot）',
+        summary:
+          '面向个人和团队的对话应用入口（Web 与移动端），承接文心模型的对话、多模态和创作能力，是 ERNIE 能力直接触达终端用户的最大触点。',
+        url: 'https://yiyan.baidu.com',
+      },
+      {
+        name: '百度智能云千帆平台',
+        summary:
+          '以 Agent 为核心的企业级一站式大模型开发与应用平台，用 MaaS 方式提供 ERNIE 全系列和 DeepSeek、Kimi 等第三方模型，整合模型服务、Agent 引擎、工具与 MCP，也是文心快码 Comate 等开发者工具的归属生态，是百度面向企业规模化分发 AI 的主入口。',
+        url: 'https://cloud.baidu.com/product/wenxinworkshop',
+      },
+      {
+        name: 'Apollo 自动驾驶 / 萝卜快跑',
+        summary:
+          'Apollo 是百度的智能驾驶系统与汽车智能化平台，萝卜快跑（Robotaxi）是其面向终端用户的自动驾驶出行服务，已在多城运营、累计订单超千万单，是百度把 AI 推向物理世界、押注自动驾驶规模化商业落地的关键样本。',
+        url: 'https://apollo.auto',
+      },
+    ],
+    bets: [
+      {
+        title: '全栈 AI',
+        body: '百度同时握有自研模型（文心 ERNIE）、消费应用（文心一言）、企业平台（千帆）和物理世界落地（Apollo / 萝卜快跑），是少有的从研究到分发、再到物理世界全链路自有的玩家。',
+      },
+      {
+        title: '模型即服务与 Agent 平台',
+        body: '千帆把 ERNIE 全系列和第三方模型以 MaaS 方式打包成企业级 Agent 开发平台，决定百度能否把模型能力扩成稳定的云业务，而不是停留在模型发布本身。',
+      },
+      {
+        title: '物理 AI 与自动驾驶',
+        body: 'Apollo 和萝卜快跑把 AI 从软件推向出行场景，是百度押注 L4 自动驾驶规模化商业化、寻找模型之外第二增长曲线的关键样本。',
+      },
+      {
+        title: '研究作为能力底座',
+        body: '原生全模态的文心 ERNIE 前沿研究不单独成线，但它决定模型家族的能力上限和发布节奏，是其他三条产品线的共同底座。',
+      },
+    ],
+    learningResources: [
+      {
+        title: '千帆大模型平台文档',
+        label: 'MaaS 平台',
+        summary:
+          '最值得先读的官方文档，讲清 ERNIE 全系列模型服务、Agent 引擎、工具与 MCP 的能力边界和接入方式，是用好百度智能云大模型能力的起点。',
+        url: 'https://cloud.baidu.com/doc/qianfan/index.html',
+      },
+      {
+        title: '千帆 ModelBuilder API 文档',
+        label: 'API 接口',
+        summary:
+          'ERNIE 系列模型推理、对话、向量与多模态接口的官方 API 文档，确认模型清单、参数和接入方式从这里开始。',
+        url: 'https://cloud.baidu.com/doc/qianfan-api/index.html',
+      },
+      {
+        title: '文心快码 Comate 产品页',
+        label: 'Agentic Coding',
+        summary:
+          '官方介绍文心快码如何用 Multi-Agent 架构（Zulu / Plan / Architect）做端到端编码，是理解百度 ERNIE 能力如何落到真实开发循环的窗口。',
+        url: 'https://cloud.baidu.com/product/comate-public.html',
+      },
+      {
+        title: 'ERNIE 开源仓库',
+        label: '开源模型',
+        summary:
+          '百度文心大模型团队在 GitHub 上的官方组织，集中放 ERNIE 系列模型权重、技术报告和工程项目，是理解其模型底座和开源路线的直接入口。',
+        url: 'https://github.com/PaddlePaddle/ERNIE',
+      },
+      {
+        title: 'Apollo 智能驾驶解决方案',
+        label: '自动驾驶',
+        summary:
+          'Apollo 官方页，介绍智能驾驶系统、智能座舱和高精地图等汽车智能化产品，是理解百度物理 AI 产品线的入口。',
+        url: 'https://apollo.auto',
+      },
+    ],
+    officialLinks: [
+      {
+        title: '百度智能云',
+        summary: '千帆大模型平台、Comate 等企业级 AI 产品的官方门户。',
+        url: 'https://cloud.baidu.com',
+      },
+      {
+        title: '千帆大模型平台',
+        summary: 'ERNIE 全系列模型服务与 Agent 开发平台的官方产品页。',
+        url: 'https://cloud.baidu.com/product/wenxinworkshop',
+      },
+      {
+        title: '文心一言',
+        summary: '面向个人和团队的文心 ERNIE 对话应用入口。',
+        url: 'https://yiyan.baidu.com',
+      },
+      {
+        title: 'Apollo',
+        summary: '百度自动驾驶与汽车智能化的官方入口，含萝卜快跑 Robotaxi。',
+        url: 'https://apollo.auto',
+      },
+    ],
+    flagshipKeywords: ['文心', 'ernie', '百度', 'qianfan', '千帆', 'apollo', 'comate'],
+    homepageUrl: 'https://cloud.baidu.com',
+  },
+  'zhipu-ai': {
+    heroDescription:
+      '智谱 AI（Z.ai）的公司页先看 GLM 模型家族、智谱开放平台（bigmodel.cn / z.ai）、GLM Coding Plan 与 CodeGeeX、智谱清言与 AutoGLM 怎样组成 AI 产品线，再看它和 Agentic Coding、开源权重模型等主题的关系。',
+    headline:
+      '四条产品线：GLM 模型家族、智谱开放平台（MaaS）、GLM Coding Plan 与 CodeGeeX、智谱清言与 AutoGLM；坚持开源权重的前沿模型研究是贯穿其中的底座。',
+    strategy:
+      '智谱 AI 是清华系出身、2026 年初在港交所上市的中国大模型公司（国际品牌 Z.ai），布局可以按四条产品线看：GLM 模型家族（当前以 GLM-5 系列为旗舰，承接 GLM-4.x 一脉，多数以开源权重发布）是面向开发者和企业的能力核心；智谱开放平台（国内 bigmodel.cn、国际 z.ai）以模型即服务的方式提供 OpenAI / Anthropic 兼容接口，把 GLM 分发给开发者和企业；GLM Coding Plan 与 CodeGeeX 把模型带进真实软件工程的 agentic coding，用包月订阅和对 Claude Code、Cline 等主流编码工具的兼容撬动开发者规模；智谱清言（chatglm.cn）是面向个人用户的对话应用，AutoGLM 则把模型推向能自主操作手机和电脑界面、长程执行任务的智能体。坚持开源权重、用低价和兼容性拉动采用，是它区别于闭源大厂的底层打法。',
+    products: [
+      {
+        name: 'GLM 模型家族',
+        summary:
+          '智谱的核心模型产品线，覆盖语言、视觉（GLM-V）、推理和编码能力，当前以 GLM-5 系列为旗舰，承接 GLM-4.x 一脉，多数以开源权重（含 MIT 许可）发布并已衍生出庞大社区生态，是整个产品矩阵的能力底座。',
+        url: 'https://z.ai/blog',
+      },
+      {
+        name: '智谱开放平台（bigmodel.cn / z.ai）',
+        summary:
+          '一站式模型即服务（MaaS）平台，国内为 bigmodel.cn、国际为 z.ai，提供 GLM 全系列的官方 API 与 OpenAI / Anthropic 兼容接口，是 GLM 进入开发者和企业采购的规模化分发渠道。',
+        url: 'https://www.bigmodel.cn',
+      },
+      {
+        name: 'GLM Coding Plan 与 CodeGeeX',
+        summary:
+          '面向真实软件工程的 agentic coding 产品线：GLM Coding Plan 用包月订阅提供 GLM 编码模型的高额度访问，开箱兼容 Claude Code、Cline、OpenCode 等主流编码工具；CodeGeeX 是智谱自研的代码助手，二者共同把 GLM 带进开发循环，是观察 Agentic Coding 的核心样本。',
+        url: 'https://z.ai/subscribe',
+      },
+      {
+        name: '智谱清言与 AutoGLM',
+        summary:
+          '面向终端用户和智能体场景的入口：智谱清言（chatglm.cn）是承接 GLM 对话与多模态能力的消费级应用；AutoGLM 是能自主操作手机、电脑界面并长程执行任务的智能体（含 AutoGLM-Thinking、Rumination），把模型能力从对话推向自动化操作。',
+        url: 'https://chatglm.cn',
+      },
+    ],
+    bets: [
+      {
+        title: '开源权重与生态规模',
+        body: 'GLM 长期以开源权重发布，靠庞大的衍生模型和下载量构筑生态壁垒，再用开放平台和包月订阅把生态势能转化为商业分发。',
+      },
+      {
+        title: 'Agentic Coding',
+        body: 'GLM Coding Plan 用低价订阅加对 Claude Code 等工具的兼容，把开源编码模型直接送进开发者的真实工程循环，是智谱抢占 AI Coding 赛道的关键打法。',
+      },
+      {
+        title: '自主智能体',
+        body: 'AutoGLM 把模型从对话推向能操作手机和电脑界面、长程执行任务的智能体，是智谱押注 agent 落地、走向自动化操作的样本。',
+      },
+      {
+        title: '研究作为能力底座',
+        body: '坚持开源权重的前沿模型研究不单独成线，但它决定 GLM 家族的能力上限和发布节奏，是其他三条产品线的共同底座。',
+      },
+    ],
+    learningResources: [
+      {
+        title: '智谱开放平台文档（bigmodel.cn）',
+        label: 'MaaS 平台',
+        summary: '最值得先读的官方材料，讲清 GLM 全系列模型清单、API 接口、OpenAI / Anthropic 兼容方式和定价，是用好智谱模型的起点。',
+        url: 'https://docs.bigmodel.cn',
+      },
+      {
+        title: 'Z.ai API 文档',
+        label: '国际开发者平台',
+        summary: 'Z.ai 面向国际开发者的 API 文档，含 OpenAI 兼容与 Anthropic 兼容端点，确认接入方式从这里开始。',
+        url: 'https://docs.z.ai',
+      },
+      {
+        title: 'Z.ai Blog（GLM 模型发布）',
+        label: '模型发布',
+        summary: '智谱国际站的官方博客，集中发布 GLM-5 系列等模型的能力、基准和发布说明，是跟踪真实发布节奏的主入口。',
+        url: 'https://z.ai/blog',
+      },
+      {
+        title: 'zai-org on GitHub（开源权重与技术报告）',
+        label: '开源',
+        summary: '智谱在 GitHub 上的官方组织（前身 THUDM），集中放 GLM 模型权重、技术报告和 Open-AutoGLM 等工程项目，是理解其开源底座的直接入口。',
+        url: 'https://github.com/zai-org',
+      },
+      {
+        title: 'GLM Coding Plan 介绍',
+        label: 'Agentic Coding',
+        summary: '官方讲 GLM Coding Plan 如何用包月订阅提供编码模型访问、并兼容 Claude Code 等工具，是理解智谱编码能力如何落到真实开发循环的窗口。',
+        url: 'https://z.ai/subscribe',
+      },
+      {
+        title: 'CodeGeeX 官网',
+        label: '代码助手',
+        summary: '智谱自研代码助手 CodeGeeX 的官方入口，理解其在 IDE 内的补全、对话和 agent 能力边界从这里开始。',
+        url: 'https://codegeex.cn',
+      },
+    ],
+    officialLinks: [
+      {
+        title: '智谱 AI（z.ai）',
+        summary: '公司国际官网与产品入口（国际品牌 Z.ai）。',
+        url: 'https://z.ai',
+      },
+      {
+        title: '智谱开放平台（bigmodel.cn）',
+        summary: '国内模型即服务平台与开发者控制台，注册 key、查模型和定价从这里开始。',
+        url: 'https://www.bigmodel.cn',
+      },
+      {
+        title: '智谱清言（chatglm.cn）',
+        summary: '面向个人和团队的对话应用入口，直接体验最新 GLM 模型。',
+        url: 'https://chatglm.cn',
+      },
+      {
+        title: 'zai-org on GitHub',
+        summary: 'GLM 模型权重、技术报告和 Open-AutoGLM 等开源项目的代码仓库。',
+        url: 'https://github.com/zai-org',
+      },
+    ],
+    flagshipKeywords: ['glm', '智谱', 'zhipu', 'autoglm', 'codegeex', 'agentic'],
+    homepageUrl: 'https://z.ai',
+  },
+  tencent: {
+    heroDescription:
+      '腾讯的公司页先看混元 Hunyuan 模型家族、腾讯元宝助手、腾讯云企业 AI 平台（知识引擎 / 智能体 / TI）和混元在微信 / QQ / 腾讯文档里的嵌入怎样组成 AI 产品线，再看它和 Agentic Coding、多模态生成等主题的关系。',
+    headline:
+      '四条产品线：混元 Hunyuan 模型家族、腾讯元宝助手、腾讯云企业 AI 平台、混元嵌入腾讯生态；全链路自研多模态模型是贯穿其中的底座。',
+    strategy:
+      '腾讯的 AI 布局可以按四条产品线看：混元 Hunyuan 是全链路自研、覆盖文本 / 图像 / 视频 / 3D 的多模态模型家族，多数模态以开源权重发布；腾讯元宝是面向用户的 AI 助手，用「混元 + DeepSeek」双模聚合做对话、深度思考和多模态创作；腾讯云企业 AI 平台（大模型知识引擎 LKE、智能体开发平台 ADP、TI 机器学习平台）把混元和第三方模型以 RAG、工作流、Multi-agent 的方式接入企业采购；而混元嵌入微信、QQ、腾讯文档等自有场景，则是腾讯区别于纯模型公司、靠超级 App 流量直达数亿用户的最大分发优势。全链路自研模型不单独成线，而是这四条产品线的共同能力底座。',
+    products: [
+      {
+        name: '混元 Hunyuan 模型家族',
+        summary:
+          '腾讯全链路自研的通用与多模态大模型家族，覆盖文本、图像（HY Image，已开源）、视频、3D（HY 3D、混元 3D 世界模型）等模态，多数以开源权重发布并衍生出庞大社区生态，是腾讯全部 AI 产品的能力底座。',
+        url: 'https://cloud.tencent.com/product/hunyuan',
+      },
+      {
+        name: '腾讯元宝 Yuanbao',
+        summary:
+          '腾讯面向个人和团队的 AI 助手应用（App / 网页版），用「混元 + DeepSeek」双模聚合提供对话、深度思考、联网搜索、图像理解与生成，是混元能力直达终端用户的最大触点。',
+        url: 'https://yuanbao.tencent.com',
+      },
+      {
+        name: '腾讯云企业 AI 平台（知识引擎 / 智能体 / TI）',
+        summary:
+          '把混元和第三方模型带进企业采购的规模化分发渠道：大模型知识引擎 LKE 做企业知识问答与 RAG，智能体开发平台 ADP 提供 LLM+RAG / Workflow / Multi-agent 的低代码 agent 构建，TI 平台覆盖模型训练到部署的全流程。',
+        url: 'https://cloud.tencent.com/product/lke',
+      },
+      {
+        name: '混元嵌入腾讯生态（微信 / QQ / 腾讯文档）',
+        summary:
+          '把混元和元宝能力嵌进腾讯自有超级 App：元宝已作为联系人进入微信对话框、可解析公众号文章与文档，腾讯文档 AI 助手混用混元与 DeepSeek 做写作 / 阅读 / 数据助手，是腾讯靠场景流量直达数亿用户、区别于纯模型公司的分发优势。',
+        url: 'https://docs.qq.com',
+      },
+    ],
+    bets: [
+      {
+        title: '全链路自研多模态',
+        body: '混元从文本扩展到图像、视频、3D 乃至 3D 世界模型，全链路自研并多模态开源，决定腾讯 AI 产品矩阵的能力上限和发布节奏。',
+      },
+      {
+        title: '双模助手入口',
+        body: '腾讯元宝用「混元 + DeepSeek」双模聚合抓个人用户，靠模型灵活选择和深度思考能力争夺 AI 助手入口。',
+      },
+      {
+        title: '企业平台分发',
+        body: '知识引擎 LKE、智能体平台 ADP 和 TI 平台决定腾讯能否把模型能力扩成稳定的云业务，而不是停留在模型发布本身。',
+      },
+      {
+        title: '超级 App 场景流量',
+        body: '混元嵌进微信、QQ、腾讯文档，让腾讯能用现成的社交与办公场景直达数亿用户，是它区别于纯模型公司的根本优势。',
+      },
+    ],
+    learningResources: [
+      {
+        title: '腾讯混元大模型产品文档',
+        label: '混元模型',
+        summary:
+          '最值得先读的官方材料，讲清混元文本 / 图像 / 视频 / 3D 各模型清单、上下文长度、能力边界和接入方式，是理解腾讯 AI 能力底座的起点。',
+        url: 'https://cloud.tencent.com/document/product/1729',
+      },
+      {
+        title: '腾讯云大模型知识引擎 LKE 文档',
+        label: '知识引擎',
+        summary:
+          '官方讲解如何基于混元和企业私有数据搭建知识问答、RAG 与工作流应用，是理解腾讯企业级 AI 落地的关键文档。',
+        url: 'https://cloud.tencent.com/document/product/1759',
+      },
+      {
+        title: 'Tencent Hunyuan on GitHub',
+        label: '开源',
+        summary:
+          '腾讯混元在 GitHub 上的官方组织，集中放图像、视频、3D 等开源模型权重、技术报告和示例代码，是理解混元开源底座的直接入口。',
+        url: 'https://github.com/Tencent-Hunyuan',
+      },
+      {
+        title: '腾讯混元 AI 创作工作室',
+        label: '多模态创作',
+        summary:
+          '官方多模态创作平台，集中体验混元图像、视频、3D 生成能力，是理解混元多模态产品形态的直观入口。',
+        url: 'https://aistudio.tencent.com',
+      },
+    ],
+    officialLinks: [
+      {
+        title: '腾讯混元大模型',
+        summary: '腾讯云上的混元大模型产品页，看模型家族、能力和接入方式的全貌。',
+        url: 'https://cloud.tencent.com/product/hunyuan',
+      },
+      {
+        title: '腾讯元宝',
+        summary: '面向个人和团队的腾讯元宝 AI 助手入口，直接体验混元 + DeepSeek 双模能力。',
+        url: 'https://yuanbao.tencent.com',
+      },
+      {
+        title: 'Tencent Hy Research',
+        summary: '混元研究门户，用来理解混元模型的研究方向和能力演进。',
+        url: 'https://hunyuan.tencent.com',
+      },
+      {
+        title: '腾讯云 AI 与大模型',
+        summary: '腾讯云 AI 产品总入口，知识引擎 LKE、智能体平台 ADP、TI 平台的统一门户。',
+        url: 'https://cloud.tencent.com/solution/ai',
+      },
+    ],
+    flagshipKeywords: ['混元', 'hunyuan', '腾讯', '元宝', 'yuanbao'],
+    homepageUrl: 'https://cloud.tencent.com/product/hunyuan',
+  },
+  bytedance: {
+    heroDescription:
+      '字节跳动 ByteDance 的公司页先看豆包大模型与豆包助手、火山引擎（企业 MaaS）、扣子 Coze 和即梦 Jimeng 怎样组成 AI 产品线，再看它和 Agentic Coding、多模态生成等主题的关系。',
+    headline:
+      '四条产品线：豆包大模型与豆包助手、火山引擎（企业 MaaS）、扣子 Coze、即梦 Jimeng；Seed 团队的前沿模型研究是贯穿其中的底座。',
+    strategy:
+      '字节跳动的 AI 布局可以按四条产品线看：豆包大模型（Doubao-Seed 家族）是能力核心，配上豆包 App 这个面向消费者的 AI 助手入口；火山引擎是它的企业云，通过火山方舟（Ark）把豆包大模型以 MaaS 方式分发给企业客户，是商业化主战场；扣子 Coze 把模型能力封装成低代码的 agent / bot 与 AI 办公平台，降低应用搭建门槛；即梦 Jimeng 则承接图像与视频生成（含 Seedance 视频模型），是多模态能力的消费级出口。Seed 团队的前沿模型研究不单独成线，而是支撑这四条产品线的能力底座，也是火山引擎对外提供 MaaS 的来源。',
+    products: [
+      {
+        name: '豆包大模型与豆包助手',
+        summary:
+          '豆包大模型（当前为 Doubao-Seed 家族，含 Pro / Lite / Mini 与 Code 模型）是字节自研的核心模型线；豆包 App 是面向个人用户的 AI 智能助手，二者是字节 AI 能力直达企业和终端用户的最大触点。',
+        url: 'https://www.doubao.com/',
+      },
+      {
+        name: '火山引擎（企业 MaaS）',
+        summary:
+          '字节跳动的企业云平台，以火山方舟（Ark）一站式大模型服务把豆包大模型及多模态模型按 API 分发给企业客户，是字节 AI 规模化商业化和进入企业采购的主入口。',
+        url: 'https://www.volcengine.com/',
+      },
+      {
+        name: '扣子 Coze',
+        summary:
+          '低代码的 AI agent / bot 搭建与 AI 办公平台，让用户无需深度编码就能把模型能力组装成对话机器人、工作流和办公助手，是字节把模型能力平台化、降低应用门槛的关键一环。',
+        url: 'https://www.coze.cn/',
+      },
+      {
+        name: '即梦 Jimeng',
+        summary:
+          '面向创作者的一站式 AI 视觉创作平台，覆盖文生图、图像编辑、视频生成（含 Seedance 视频模型）和数字人，是字节多模态生成能力的消费级出口。',
+        url: 'https://jimeng.jianying.com/',
+      },
+    ],
+    bets: [
+      {
+        title: '企业 MaaS 商业化',
+        body: '火山引擎用火山方舟把豆包大模型以低价、易落地的 MaaS 方式推向企业，豆包日均 token 调用量两年增长千倍，是字节能否把模型能力扩成稳定云业务的关键。',
+      },
+      {
+        title: '消费级应用矩阵',
+        body: '豆包助手抓个人对话场景、即梦抓视觉创作、扣子抓低代码搭建，字节用自家庞大流量盘把模型能力直接铺到终端用户。',
+      },
+      {
+        title: '多模态生成',
+        body: '即梦与 Seedance / Seedream 系列把图像、视频生成做成独立产品线，是字节在文本之外扩展模型能力和商业面的方向。',
+      },
+      {
+        title: 'Seed 研究底座',
+        body: 'Seed 团队的语言、语音、视觉、世界模型研究不单独成线，但决定豆包家族的能力上限和发布节奏，也是火山引擎 MaaS 的能力来源。',
+      },
+    ],
+    learningResources: [
+      {
+        title: '火山引擎大模型服务文档',
+        label: 'MaaS 平台',
+        summary:
+          '最值得先读的官方材料，讲清火山方舟、豆包大模型清单、接入方式和定价，是理解字节如何把模型以 MaaS 方式分发给企业的起点。',
+        url: 'https://www.volcengine.com/docs/82379',
+      },
+      {
+        title: 'ByteDance Seed 官网',
+        label: 'Seed 研究',
+        summary: 'Seed 团队官网，集中呈现 LLM、语音、视觉、世界模型和 AI Infra 的研究方向，是理解字节模型能力底座的入口。',
+        url: 'https://seed.bytedance.com/',
+      },
+      {
+        title: 'ByteDance Seed 研究博客',
+        label: '研究博客',
+        summary: 'Seed 团队的官方博客，按时间发布模型、技术报告和研究进展（如 Seedance 等），适合跟踪字节真实的研究与发布节奏。',
+        url: 'https://seed.bytedance.com/en/blog',
+      },
+      {
+        title: 'ByteDance-Seed GitHub',
+        label: '开源仓库',
+        summary: 'Seed 团队在 GitHub 上的官方组织，集中放开源模型、代码和技术报告，是理解其研究落地的直接入口。',
+        url: 'https://github.com/ByteDance-Seed',
+      },
+      {
+        title: '扣子 Coze 开发者文档',
+        label: 'Agent 平台',
+        summary: '扣子官方文档，讲清如何用低代码方式搭建 bot、工作流和插件，是理解字节 agent / 应用搭建工具栈的入口。',
+        url: 'https://www.coze.cn/docs',
+      },
+    ],
+    officialLinks: [
+      {
+        title: '火山引擎',
+        summary: '字节跳动企业云与 MaaS 平台官网，火山方舟、豆包大模型 API 的统一入口。',
+        url: 'https://www.volcengine.com/',
+      },
+      {
+        title: '豆包',
+        summary: '面向个人用户的豆包 AI 智能助手入口。',
+        url: 'https://www.doubao.com/',
+      },
+      {
+        title: 'ByteDance Seed',
+        summary: 'Seed 团队官网，前沿模型研究和技术报告的官方入口。',
+        url: 'https://seed.bytedance.com/',
+      },
+      {
+        title: '扣子 Coze',
+        summary: '低代码 AI agent / bot 搭建与 AI 办公平台官网。',
+        url: 'https://www.coze.cn/',
+      },
+      {
+        title: '即梦 Jimeng',
+        summary: '一站式 AI 视觉创作平台（文生图、视频生成、数字人）官网。',
+        url: 'https://jimeng.jianying.com/',
+      },
+    ],
+    flagshipKeywords: ['豆包', 'doubao', '字节', '火山引擎', 'volcengine', 'coze', '即梦', 'seed'],
+    homepageUrl: 'https://www.volcengine.com/',
+  },
 };
 
 export function getCompanyPresentationSeed(name: string): CompanyPresentation | null {
@@ -1257,6 +2544,49 @@ const COMPANY_PRESENTATION_ALIASES: Record<string, string> = {
   '杭州深度求索人工智能基础技术研究有限公司（深度求索-/-deepseek）': 'deepseek',
   '英伟达': 'nvidia',
   '稀宇科技': 'minimax',
+  // Meta 家族
+  'meta-ai': 'meta',
+  'facebook': 'meta',
+  'facebook-ai-research-(fair)': 'meta',
+  'meta-superintelligence-labs': 'meta',
+  // Microsoft
+  '微软': 'microsoft',
+  '微软研究院': 'microsoft',
+  '微软人工智能': 'microsoft',
+  'microsoft-research': 'microsoft',
+  'microsoft-ai': 'microsoft',
+  'microsoft-research-asia': 'microsoft',
+  // Anysphere / Cursor
+  'anysphere-(cursor)': 'anysphere',
+  'cursor': 'anysphere',
+  // Thinking Machines Lab
+  'thinking-machines': 'thinking-machines-lab',
+  '思维机器实验室': 'thinking-machines-lab',
+  // Amazon
+  '亚马逊': 'amazon',
+  'amazon-web-services-(aws)': 'amazon',
+  'amazon-agi-team': 'amazon',
+  // 月之暗面 / Kimi
+  '月之暗面': 'moonshot-ai',
+  '月之暗面（moonshot-ai）': 'moonshot-ai',
+  '月之暗面-kimi': 'moonshot-ai',
+  'kimi': 'moonshot-ai',
+  // 百度
+  '百度': 'baidu',
+  '百度集团': 'baidu',
+  '百度商务搜索部': 'baidu',
+  'baidu-research-(ai-group)': 'baidu',
+  // 智谱
+  '智谱ai': 'zhipu-ai',
+  '智谱': 'zhipu-ai',
+  // 腾讯
+  '腾讯': 'tencent',
+  'tencent-cloud-ai': 'tencent',
+  '腾讯ai-lab': 'tencent',
+  // 字节跳动
+  '字节跳动': 'bytedance',
+  '字节': 'bytedance',
+  '豆包': 'bytedance',
 };
 
 /**
