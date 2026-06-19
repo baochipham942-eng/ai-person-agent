@@ -151,18 +151,25 @@ export async function fetchYoutubeTranscript(
                 return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
             }
 
-            // 429 / 402 / 403：实测 key 明明有额度也偶发 402/403，是瞬时节流/抖动，
-            // 一律退避重试同一个 key；首次打印真实响应体便于诊断。重试耗尽才换 key。
-            if (res.status === 429 || res.status === 402 || res.status === 403) {
-                if (rateLimitTries === 0) {
-                    const body = await res.text().catch(() => '');
-                    console.warn(`[supadata] ${url} -> HTTP ${res.status}（瞬时节流?重试）: ${body.slice(0, 140)}`);
-                }
+            // 403：单视频永久错误（年龄限制/禁止访问，需登录），不是额度/限流。
+            // 立即永久标记跳过，绝不重试/轮换——否则每个这种视频白耗 ~75s 还反复查。
+            if (res.status === 403) {
+                keyCursor = idx;
+                return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
+            }
+
+            // 429：限流（临时）→ 退避重试同一个 key
+            if (res.status === 429) {
                 rateLimitTries++;
-                if (rateLimitTries > maxRateLimit) { rotate = true; break; } // 这个 key 持续失败，换下一个
-                const backoff = Math.min(30000, 3000 * 2 ** (rateLimitTries - 1)); // 3s,6s,12s,24s,30s,30s
-                await sleep(backoff);
-                continue; // 重试同一个 key
+                if (rateLimitTries > maxRateLimit) { rotate = true; break; }
+                await sleep(Math.min(30000, 3000 * 2 ** (rateLimitTries - 1)));
+                continue;
+            }
+
+            // 402：该 key 需付费/额度问题 → 换下一个 key
+            if (res.status === 402) {
+                rotate = true;
+                break;
             }
 
             // 其他错误：留待重试
