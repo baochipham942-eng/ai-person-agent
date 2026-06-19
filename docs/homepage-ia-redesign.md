@@ -110,7 +110,9 @@ model ThreadPersonLink {
 待办推进（2026-06-19 完成）：
 1. ✅ Addy Osmani、Geoffrey Huntley、Phil Schmid 已入库（`scripts/enrich/add_thread_people.ts`，Wikidata 免费路径，无付费 API；无 Wikidata 命中走 TEMP qid，status=pending）。loop-engineering 现渲染 3/3 人。
 2. ✅ agentic-coding 补 Boris Cherny（推动者）；context-engineering 补 Phil Schmid（提出者）+ Andrej Karpathy（推动者）。审计 6/6 全匹配、0 待确认。
-3. 可选后续（付费 API，按需手动）：对新入库的 3 人跑 recrawl_robust / enrich_openalex / enrich_topics_highlights / fix_missing_avatars 补全头像、影响力分、话题（当前为 pending 稀疏档）。
+3. ✅ 已富集这 3 人（`scripts/enrich/enrich_thread_people.ts`，聚焦只打这 3 人控成本）：头像 unavatar 免费下载、bio 上下文用 **Tavily**（Exa 本月额度用完）、description/currentTitle/topics/highlights/roleCategory 用 DeepSeek 合成，status 置 `ready`（目录可见）、completeness=60。坑：Tavily key 在 `.env.local`，`dotenv/config` 默认只读 `.env`，须显式 `loadEnv({path:'.env.local'})` 否则 searchTavily 静默返回 0 条。
+   - 结果：Addy Osmani=Engineering Leader @ Google Chrome；Geoffrey Huntley=Independent Software Engineer（Ralph loop）；Phil Schmid=Staff Engineer DevEx/DevRel @ Google DeepMind。主题页带头像+职位渲染正确。
+   - 仍可选（付费）：recrawl_robust(Exa,额度恢复后)/enrich_openalex(学术指标,这3人非学者意义不大)/calculate_influence(影响力分)。
 
 ## 7. 验收
 
