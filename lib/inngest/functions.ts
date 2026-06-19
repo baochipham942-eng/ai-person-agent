@@ -3,6 +3,7 @@ import { prisma } from '@/lib/db/prisma';
 import type { Prisma } from '@prisma/client';
 import { searchPersonContent } from '@/lib/datasources/exa';
 import { getPersonXActivity } from '@/lib/datasources/grok';
+import { normalizeXHandle } from '@/lib/datasources/xai-x-search';
 import { getChannelVideos, searchYouTubeVideos } from '@/lib/datasources/youtube';
 import { getAuthorWorks, getAuthorByOrcid } from '@/lib/datasources/openalex';
 import { searchPodcasts } from '@/lib/datasources/itunes';
@@ -253,15 +254,14 @@ export const buildPersonJob = inngest.createFunction(
                         metadata: { sources: grokResult.sources, isOfficial: true },
                     }];
                 }
-                // 身份验证：非官方 X 帖子需要验证是否相关
-                // 如果是官方账号抓取 (xHandle 存在)，通常认为相关，但为了保险起见，
-                // 如果是自动搜索结果，必须验证。
-                // 鉴于用户反馈 Grok 有时会抓取无关内容，这里强制进行 isAboutPerson 检查
-                // 除非是极其确定的官方源 (summary case)
+                // 官方 handle 的帖子通常不会在正文里重复提到本人姓名；先按 author 绑定，
+                // 只有非目标作者才回落到人物文本匹配。
                 let validItems = items;
                 if (items.length > 0 && items[0].title !== `${searchName} on X`) {
                     validItems = items.filter(item => {
-                        // 构建完整的检查文本
+                        const author = typeof item.metadata.author === 'string' ? normalizeXHandle(item.metadata.author) : null;
+                        if (author && normalizeXHandle(xHandle)?.toLowerCase() === author.toLowerCase()) return true;
+
                         const textToCheck = `${item.title} ${item.text}`;
                         const isValid = isAboutPerson(textToCheck, personContext);
                         if (!isValid) {

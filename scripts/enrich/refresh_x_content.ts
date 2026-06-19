@@ -7,6 +7,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { PrismaClient } from '@prisma/client';
 import crypto from 'crypto';
+import { fetchXPostsWithXaiSearch } from '../../lib/datasources/xai-x-search';
 
 // 手动加载 .env 文件
 function loadEnv() {
@@ -34,9 +35,6 @@ loadEnv();
 
 const prisma = new PrismaClient();
 
-const XAI_API_URL = process.env.XAI_BASE_URL || 'https://api.x.ai/v1';
-const apiKey = process.env.XAI_API_KEY;
-
 interface XPost {
     id: string;
     text: string;
@@ -45,113 +43,19 @@ interface XPost {
     author?: string;
 }
 
-function parseXPostsFromContent(content: string): XPost[] {
-    const posts: XPost[] = [];
-    const lines = content.split('\n');
-    const urlRegex = /https:\/\/x\.com\/(\w+)\/status\/(\d+)/;
-
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        const urlMatch = line.match(urlRegex);
-
-        if (urlMatch) {
-            const url = urlMatch[0];
-            const author = urlMatch[1];
-            const postId = urlMatch[2];
-
-            let text = '';
-            let date = '';
-
-            // 检查当前行和前一行
-            const linesToCheck = [lines[i - 1], line].filter(Boolean);
-
-            for (const checkLine of linesToCheck) {
-                // 提取引号内的内容
-                const quoteMatch = checkLine.match(/"([^"]+)"/);
-                if (quoteMatch && !text) {
-                    text = quoteMatch[1];
-                }
-
-                // 提取日期
-                const dateMatch = checkLine.match(/\*\*([^*]+)\*\*/) ||
-                    checkLine.match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d+/i);
-                if (dateMatch && !date) {
-                    date = dateMatch[1] || dateMatch[0];
-                }
-
-                // 如果没有引号，尝试提取冒号后的内容
-                if (!text && checkLine.includes(':')) {
-                    const colonMatch = checkLine.match(/:\s*[""]?([^"""\n]+)[""]?\s*(?:\(|$)/);
-                    if (colonMatch) {
-                        text = colonMatch[1].trim();
-                    }
-                }
-            }
-
-            // 兜底：用前一行内容
-            if (!text) {
-                const prevLine = lines[i - 1] || '';
-                text = prevLine.replace(/^[-*]\s*/, '').replace(/\*\*[^*]+\*\*:?\s*/, '').trim();
-            }
-
-            posts.push({
-                id: postId,
-                text: text || '',
-                date: date || '',
-                url: url,
-                author: author,
-            });
-        }
-    }
-
-    return posts;
-}
-
 async function fetchXPosts(personName: string, xHandle?: string): Promise<XPost[]> {
-    if (!apiKey) {
+    if (!process.env.XAI_API_KEY) {
         console.error('XAI_API_KEY not configured');
         return [];
     }
 
-    const systemPrompt = xHandle
-        ? `You are a research assistant. Search for recent posts from @${xHandle} on X. List the most recent and relevant posts with their exact URLs. Format each post with date and quote, followed by the direct X link.`
-        : `You are a research assistant. Search for recent posts about "${personName}" on X. List the most relevant posts with their exact URLs. Format each post with date, content summary, and direct X link.`;
-
-    const userPrompt = xHandle
-        ? `Find the 15 most recent posts from @${xHandle} about their work and insights.`
-        : `Find 15 recent posts about: ${personName}`;
-
     try {
-        const response = await fetch(`${XAI_API_URL}/chat/completions`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`,
-            },
-            body: JSON.stringify({
-                model: 'grok-3',
-                messages: [
-                    { role: 'system', content: systemPrompt },
-                    { role: 'user', content: userPrompt },
-                ],
-                search_parameters: {
-                    mode: 'on',
-                    return_citations: true,
-                    max_search_results: 15,
-                    sources: ['x'],
-                },
-                temperature: 0.3,
-            }),
+        const result = await fetchXPostsWithXaiSearch({
+            query: personName,
+            maxResults: 15,
+            xHandle,
         });
-
-        if (!response.ok) {
-            console.error('Grok API error:', await response.text());
-            return [];
-        }
-
-        const data = await response.json();
-        const content = data.choices?.[0]?.message?.content || '';
-        return parseXPostsFromContent(content);
+        return result.posts;
     } catch (error) {
         console.error('Grok API failed:', error);
         return [];

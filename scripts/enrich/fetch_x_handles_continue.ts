@@ -3,10 +3,12 @@
  */
 
 import { PrismaClient } from '@prisma/client';
+import { extractXaiResponseText } from '../../lib/datasources/xai-x-search';
 
 const prisma = new PrismaClient();
 
 const XAI_API_URL = process.env.XAI_BASE_URL || 'https://api.x.ai/v1';
+const XAI_MODEL = process.env.XAI_X_SEARCH_MODEL || process.env.XAI_MODEL || 'grok-4.3';
 
 // 已经处理过的人（无X账号）
 const ALREADY_PROCESSED = [
@@ -41,23 +43,21 @@ If you cannot find their X account or they don't have one, return:
   "reason": "explanation"
 }`;
 
-        const response = await fetch(`${XAI_API_URL}/chat/completions`, {
+        const response = await fetch(`${XAI_API_URL.replace(/\/$/, '')}/responses`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-                model: 'grok-2-1212',
-                messages: [
-                    { role: 'system', content: 'You are a helpful assistant that finds official X/Twitter handles for notable people. Return ONLY valid JSON.' },
-                    { role: 'user', content: prompt },
+                model: XAI_MODEL,
+                input: [
+                    {
+                        role: 'user',
+                        content: `${prompt}\n\nUse X Search and web context when needed. Return ONLY valid JSON.`,
+                    },
                 ],
-                search_parameters: {
-                    mode: 'on',
-                    return_citations: false,
-                    sources: ['x', 'web'],
-                },
+                tools: [{ type: 'x_search' }],
                 temperature: 0.1,
             }),
         });
@@ -67,7 +67,7 @@ If you cannot find their X account or they don't have one, return:
         }
 
         const data = await response.json();
-        const content = data.choices?.[0]?.message?.content || '';
+        const content = extractXaiResponseText(data);
 
         const jsonStart = content.indexOf('{');
         const jsonEnd = content.lastIndexOf('}');

@@ -7,6 +7,8 @@
  * - 结构化 JSON 输出
  */
 
+import { fetchXPostsWithXaiSearch } from '@/lib/datasources/xai-x-search';
+
 // ============== 类型定义 ==============
 
 export interface XPost {
@@ -34,7 +36,7 @@ export interface XSearchConfig {
 const DEFAULT_CONFIG: Required<Omit<XSearchConfig, 'apiKey'>> & { apiKey?: string } = {
     apiKey: undefined,
     baseUrl: 'https://api.x.ai/v1',
-    model: 'grok-2-1212',
+    model: 'grok-4.3',
 };
 
 // ============== Skill 实现 ==============
@@ -68,91 +70,21 @@ export class XSearchSkill {
         }
 
         try {
-            const systemPrompt = options.xHandle
-                ? `You are an AI research assistant. Search for recent posts from @${options.xHandle} on X that are SPECIFICALLY about:
-- Artificial Intelligence, Machine Learning, Deep Learning
-- AI products, models, research (GPT, Claude, Gemini, LLMs, etc.)
-- AI companies and industry news
-- Technical insights
-
-IGNORE posts about policies, elections, or personal opinions unrelated to tech.
-
-CRITICAL: Return the result as a STRICT JSON object with a single key "posts", which is an array of objects. Each object MUST have:
-- "date": string (e.g. "2024-01-01")
-- "text": string (the exact full content of the tweet)
-- "url": string (the direct https://x.com link)
-
-Do not output any markdown formatting or explanations, just the raw JSON string.`
-                : `You are an AI research assistant. Search for recent posts about "${query}" on X related to AI/ML. Return the result as a STRICT JSON object with a "posts" array containing { "date", "text", "url" }.`;
-
-            const userPrompt = options.xHandle
-                ? `Find the ${options.maxResults || 10} most recent AI-related posts from @${options.xHandle}.`
-                : `Find ${options.maxResults || 10} recent AI-related posts about: ${query}`;
-
-            const response = await fetch(`${this.config.baseUrl}/chat/completions`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`,
-                },
-                body: JSON.stringify({
-                    model: this.config.model,
-                    messages: [
-                        { role: 'system', content: systemPrompt },
-                        { role: 'user', content: userPrompt },
-                    ],
-                    search_parameters: {
-                        mode: 'on',
-                        return_citations: true,
-                        max_search_results: options.maxResults || 10,
-                        sources: [{ type: 'x' }],
-                    },
-                    temperature: 0.1,
-                    response_format: { type: 'json_object' }
-                }),
+            const result = await fetchXPostsWithXaiSearch({
+                apiKey,
+                baseUrl: this.config.baseUrl,
+                model: this.config.model,
+                query,
+                maxResults: options.maxResults || 10,
+                xHandle: options.xHandle,
             });
 
-            if (!response.ok) {
-                console.error('[XSearch] API error:', await response.text());
-                return { summary: '', sources: [], posts: [] };
-            }
-
-            const data = await response.json();
-            const content = data.choices?.[0]?.message?.content || '';
-
-            let posts: XPost[] = [];
-            try {
-                const cleanContent = content.split('\n').filter((line: string) => !line.trim().startsWith('>')).join('\n');
-                const jsonStart = cleanContent.indexOf('{');
-                const jsonEnd = cleanContent.lastIndexOf('}');
-                if (jsonStart === -1) throw new Error('No JSON start found');
-
-                const jsonStr = cleanContent.substring(jsonStart, jsonEnd + 1);
-                const parsed = JSON.parse(jsonStr);
-
-                if (parsed.posts && Array.isArray(parsed.posts)) {
-                    posts = parsed.posts.map((p: any) => {
-                        const idMatch = (p.url || '').match(/status\/(\d+)/);
-                        const authorMatch = (p.url || '').match(/x\.com\/([^/]+)/);
-                        return {
-                            id: idMatch ? idMatch[1] : crypto.randomUUID(),
-                            text: p.text || '',
-                            date: p.date || '',
-                            url: p.url || '',
-                            author: authorMatch ? authorMatch[1] : options.xHandle,
-                        };
-                    });
-                }
-            } catch (e) {
-                console.error('[XSearch] Failed to parse JSON:', e);
-            }
-
-            const sources = posts.map(p => p.url).filter(Boolean);
+            const sources = result.posts.map(p => p.url).filter(Boolean);
 
             return {
-                summary: JSON.stringify(posts.slice(0, 3)),
+                summary: JSON.stringify(result.posts.slice(0, 3)),
                 sources,
-                posts,
+                posts: result.posts,
             };
         } catch (error) {
             console.error('[XSearch] Error:', error);
