@@ -22,6 +22,7 @@ loadEnv({ path: '.env' });
 loadEnv({ path: '.env.local' });
 
 import { prisma } from '../../lib/db/prisma';
+import { sha256 } from '../../lib/rawpool-identity';
 
 const ARTICLE_TYPES = ['official', 'personal_site', 'news', 'biography'];
 
@@ -32,6 +33,7 @@ interface Options {
     highScore: number;
     maxPerItem: number;
     types: string[]; // 'youtube_caption' | article sourceTypes
+    includeCompany: boolean; // 公司博客 CompanySource 是否也喂主题
     quiet: boolean;
 }
 function parseOptions(): Options {
@@ -44,6 +46,7 @@ function parseOptions(): Options {
         highScore: Number(valOf('--high-score') ?? 2.5),
         maxPerItem: Number(valOf('--max-per-item') ?? 2),
         types: (valOf('--types')?.split(',').map(s => s.trim()).filter(Boolean)) ?? ['youtube_caption', ...ARTICLE_TYPES],
+        includeCompany: !a.includes('--no-company'), // 默认含公司博客
         quiet: a.includes('--quiet'),
     };
 }
@@ -201,6 +204,57 @@ async function main() {
                 },
             });
         }
+    }
+
+    // ===== 公司博客 CompanySource → 镜像成 KnowledgeSource → 挂主题 =====
+    let companyLinked = 0, companyItems = 0;
+    if (opts.includeCompany) {
+        const orgs = await prisma.organization.findMany({ select: { id: true, name: true } });
+        const orgName = new Map(orgs.map(o => [o.id, o.name]));
+        const cs = await prisma.companySource.findMany({
+            where: { sourceKind: 'official_blog_article' },
+            select: { id: true, organizationId: true, title: true, url: true, text: true, publishedAt: true, summary: true, metadata: true },
+        });
+        const csKw = cs.filter(c => Array.isArray(metaRecord(c.metadata).keywords) && (metaRecord(c.metadata).keywords as unknown[]).length > 0);
+        console.log(`\n公司博客候选 ${cs.length}，已抽关键词 ${csKw.length}`);
+        for (const c of csKw.slice(0, opts.limit)) {
+            const m = metaRecord(c.metadata);
+            const terms = [...((m.keywords as string[]) ?? []), ...((m.contentTopics as string[]) ?? [])];
+            const scored = vocabs.map(v => ({ v, ...scoreMatch(terms, v) }))
+                .filter(x => x.phraseScore >= opts.minScore)
+                .sort((a, b) => (b.phraseScore + b.weakScore * 0.1) - (a.phraseScore + a.weakScore * 0.1))
+                .slice(0, opts.maxPerItem);
+            if (!scored.length) continue;
+            companyItems++;
+
+            // 镜像成 KnowledgeSource（thread 源表，按 urlHash 幂等）
+            let ksId: string | null = null;
+            if (opts.execute) {
+                const urlHash = sha256(c.url);
+                const ks = await prisma.knowledgeSource.upsert({
+                    where: { urlHash },
+                    create: { sourceKind: 'official_blog_article', sourceOwner: orgName.get(c.organizationId) ?? null, title: c.title, url: c.url, urlHash, text: c.text, publishedAt: c.publishedAt, metadata: { mirroredFromCompanySource: c.id } },
+                    update: { title: c.title, text: c.text },
+                });
+                ksId = ks.id;
+            }
+            for (const s of scored) {
+                const role = 'signal';
+                const excluded = s.phraseScore < opts.highScore;
+                if (excluded) lowConf++;
+                const relevanceScore = Math.min(0.92, 0.4 + 0.1 * s.phraseScore);
+                perThread.set(s.v.slug, (perThread.get(s.v.slug) ?? 0) + 1);
+                companyLinked++;
+                if (!opts.execute || !ksId) continue;
+                const linkMeta = { autoLinked: true, autoLinkScore: s.phraseScore, matchedTerms: s.matched, excludedFromTopicReadiness: excluded, fromCompanyBlog: true, linkedAt: new Date().toISOString() };
+                await prisma.knowledgeThreadSource.upsert({
+                    where: { threadId_sourceId_role: { threadId: s.v.id, sourceId: ksId, role } },
+                    create: { threadId: s.v.id, sourceId: ksId, role, relevanceScore, summary: c.summary ?? (typeof m.gist === 'string' ? m.gist : null), metadata: linkMeta },
+                    update: { relevanceScore, metadata: linkMeta },
+                });
+            }
+        }
+        console.log(`公司博客 ${companyItems} 篇${opts.execute ? '已' : '将'}挂载，共 ${companyLinked} 条关系`);
     }
 
     console.log(`📊 ${itemLinked} 条内容${opts.execute ? '已' : '将'}挂载，共 ${linkCount} 条挂载关系（低置信不计就绪度 ${lowConf}）`);
