@@ -48,6 +48,17 @@ function loadKeys(): string[] {
 // 模块级游标：在一次进程内跨调用记住"当前可用 key"，避免每条视频都从耗尽的 key 重试
 let keyCursor = 0;
 
+// 全局频率闸：Supadata Pro 限 10 请求/秒。所有对 Supadata 的请求（首发+202轮询+重试）
+// 都过这个闸，最小间隔 130ms ≈ 7.7 req/s，留安全余量避免 429。
+const MIN_REQUEST_INTERVAL_MS = 130;
+let lastRequestAt = 0;
+async function rateGate(): Promise<void> {
+    const now = Date.now();
+    const wait = lastRequestAt + MIN_REQUEST_INTERVAL_MS - now;
+    if (wait > 0) await sleep(wait);
+    lastRequestAt = Date.now();
+}
+
 interface FetchOptions {
     /** 偏好语言（如 'en'）；不传则取视频默认字幕 */
     lang?: string;
@@ -68,6 +79,7 @@ async function pollTranscriptJob(jobId: string, key: string, pollMs: number, max
         await sleep(pollMs);
         let res: Response;
         try {
+            await rateGate();
             res = await fetch(endpoint, { headers: { 'x-api-key': key } });
         } catch {
             continue; // 网络抖动，下一轮再试
@@ -103,7 +115,6 @@ export async function fetchYoutubeTranscript(
     if (options.lang) params.set('lang', options.lang);
     const endpoint = `${SUPADATA_BASE_URL}/transcript?${params}`;
 
-    let quotaExhausted = 0; // 仅统计真额度耗尽(402/403)的 key
     // 从当前游标开始，依次尝试每个 key
     for (let attempt = 0; attempt < keys.length; attempt++) {
         const idx = (keyCursor + attempt) % keys.length;
@@ -140,20 +151,18 @@ export async function fetchYoutubeTranscript(
                 return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
             }
 
-            // 429：限流（临时）→ 退避重试同一个 key，不算额度耗尽
-            if (res.status === 429) {
+            // 429 / 402 / 403：实测 key 明明有额度也偶发 402/403，是瞬时节流/抖动，
+            // 一律退避重试同一个 key；首次打印真实响应体便于诊断。重试耗尽才换 key。
+            if (res.status === 429 || res.status === 402 || res.status === 403) {
+                if (rateLimitTries === 0) {
+                    const body = await res.text().catch(() => '');
+                    console.warn(`[supadata] ${url} -> HTTP ${res.status}（瞬时节流?重试）: ${body.slice(0, 140)}`);
+                }
                 rateLimitTries++;
-                if (rateLimitTries > maxRateLimit) { rotate = true; break; } // 这个 key 持续限流，换下一个
-                const backoff = Math.min(60000, 4000 * 2 ** (rateLimitTries - 1)); // 4s,8s,16s,32s,60s,60s
+                if (rateLimitTries > maxRateLimit) { rotate = true; break; } // 这个 key 持续失败，换下一个
+                const backoff = Math.min(30000, 3000 * 2 ** (rateLimitTries - 1)); // 3s,6s,12s,24s,30s,30s
                 await sleep(backoff);
                 continue; // 重试同一个 key
-            }
-
-            // 402 / 403：真额度耗尽 → 换下一个 key
-            if (res.status === 402 || res.status === 403) {
-                quotaExhausted++;
-                rotate = true;
-                break;
             }
 
             // 其他错误：留待重试
@@ -163,13 +172,7 @@ export async function fetchYoutubeTranscript(
         }
     }
 
-    // 只有当所有 key 都真额度耗尽(402/403)才抛 Quota；否则是持续限流
-    if (quotaExhausted >= keys.length) {
-        throw new SupadataQuotaError(
-            `Supadata 全部 ${keys.length} 个 key 额度耗尽(402/403)。请补充 SUPADATA_API_KEYS 后重跑。`,
-        );
-    }
-    // 全程只遇到持续 429 限流：这条先放弃(留待重试)，不毒杀整批
+    // 所有 key 都重试耗尽：这条视频先跳过(留待重试)，绝不抛错毒杀整批
     return { text: '', lang: null, availableLangs: [], available: false, status: 'error' };
 }
 
@@ -177,6 +180,7 @@ async function fetchWithRetry(endpoint: string, key: string, retries: number): P
     let lastErr: unknown;
     for (let i = 0; i <= retries; i++) {
         try {
+            await rateGate();
             return await fetch(endpoint, { headers: { 'x-api-key': key } });
         } catch (err) {
             lastErr = err;
