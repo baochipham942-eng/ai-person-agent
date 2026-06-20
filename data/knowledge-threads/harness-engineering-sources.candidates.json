@@ -1,0 +1,437 @@
+{
+  "thread": {
+    "slug": "harness-engineering",
+    "title": "Harness Engineering (智能体脚手架)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "agentic_infrastructure",
+    "tags": [
+      "agent-harness",
+      "scaffolding",
+      "agent-loop",
+      "tool-design",
+      "agent-runtime"
+    ],
+    "aliases": [
+      "Harness Engineering",
+      "智能体脚手架",
+      "agent harness",
+      "agent scaffolding",
+      "the harness"
+    ],
+    "definitionDraft": "Harness Engineering is the practice of designing the runtime framework around an LLM — tool exposure and schemas, context plumbing, the agent main loop, permissions and sandboxing, sub-agent dispatch, error recovery and stopping conditions — i.e. how the model’s output actually touches the world.",
+    "whyNow": "Anthropic explicitly calls the Claude Agent SDK \"a general-purpose agent harness\" and argues that even a frontier model running across many context windows performs poorly without a well-designed harness; in 2026 \"agent harness engineering\" was named as its own discipline (O’Reilly Radar, awesome lists, vendor harness docs).",
+    "useBoundary": "Focus on the runtime framework/scaffolding layer around a model (loop, tools, context, guardrails, sub-agents). Distinct from loop-engineering (human-designed automation loops), context-engineering (what goes in the window), and agentic-coding (the coding capability itself)."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "ha_building_effective_agents",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "anthropic.com",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "title": "Building effective agents",
+      "publishedAt": "2024-12-19",
+      "whyRelevant": "提出 ACI（agent-computer interface）概念，主张投入做工具/动作空间设计如同做 HCI——harness 工具层奠基性论述。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Building effective agents\n\n提出 ACI（agent-computer interface）概念，主张投入做工具/动作空间设计如同做 HCI——harness 工具层奠基性论述。",
+      "urlHash": "ffc229d83891918f82064b92e6624a3de7bce686fc211cb123e4eb4a0cd488f1"
+    },
+    {
+      "id": "ha_harness_design",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "anthropic.com (Prithvi Rajasekaran)",
+      "url": "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+      "title": "Harness design for long-running application development",
+      "publishedAt": "2026-03-24",
+      "whyRelevant": "Anthropic 官方用 \"the harness\" 一词，讲 initializer agent / 上下文重置 / sprint contract。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Harness design for long-running application development\n\nAnthropic 官方用 \"the harness\" 一词，讲 initializer agent / 上下文重置 / sprint contract。",
+      "urlHash": "9fa759b72385cdecdf59660d48a3a9bd4f6f419e8a77026091818c594be75130"
+    },
+    {
+      "id": "ha_seeing_like_agent",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "claude.com (Thariq Shihipar)",
+      "url": "https://claude.com/blog/seeing-like-an-agent",
+      "title": "Seeing like an agent: how we design tools in Claude Code",
+      "publishedAt": "2026-03",
+      "whyRelevant": "Claude Code 团队讲如何设计 agent 动作空间：fewer tools beat more、渐进式披露。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Seeing like an agent: how we design tools in Claude Code\n\nClaude Code 团队讲如何设计 agent 动作空间：fewer tools beat more、渐进式披露。",
+      "urlHash": "893e490284c80558397b01af729bfdd127dcf556d975d2409520a27b55425d6e"
+    },
+    {
+      "id": "ha_openai_agents_sdk",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "openai.github.io",
+      "url": "https://openai.github.io/openai-agents-python/agents/",
+      "title": "OpenAI Agents SDK — Agents / Runner docs",
+      "publishedAt": "2025",
+      "whyRelevant": "四原语（Agents/Tools/Handoffs/Guardrails）+ Runner.run() 主循环，另一家对 harness 的官方框架化。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "OpenAI Agents SDK — Agents / Runner docs\n\n四原语（Agents/Tools/Handoffs/Guardrails）+ Runner.run() 主循环，另一家对 harness 的官方框架化。",
+      "urlHash": "3a0ed7c956fa0893ac230d35be1506b2fd89fe5b5165ff9d1f92cf07517ddb38"
+    },
+    {
+      "id": "ha_agent_sdk_overview",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "platform.claude.com",
+      "url": "https://platform.claude.com/docs/en/agent-sdk/overview",
+      "title": "Claude Agent SDK overview",
+      "publishedAt": "2026",
+      "whyRelevant": "官方称 Claude Agent SDK 为 \"general-purpose agent harness\"，agent loop/tools/context 暴露为 SDK。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Claude Agent SDK overview\n\n官方称 Claude Agent SDK 为 \"general-purpose agent harness\"，agent loop/tools/context 暴露为 SDK。",
+      "urlHash": "ab8062b62991ffcfb6ae133f197621c5ccdf0ad21d174326424539eb628848d9"
+    },
+    {
+      "id": "ha_swe_agent_aci_2024",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Yang, Jimenez, Press et al., Princeton, NeurIPS 2024)",
+      "url": "https://arxiv.org/abs/2405.15793",
+      "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+      "publishedAt": "2024-05",
+      "whyRelevant": "把\"interface 设计影响 agent 表现\"做成实证，正式提出 ACI——harness 工具接口最接近真论文的奠基工作。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Harness Engineering 无同名奠基论文，用 SWE-agent ACI 作工具层奠基代替（已核 2405.15793）。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering\n\n把\"interface 设计影响 agent 表现\"做成实证，正式提出 ACI——harness 工具接口最接近真论文的奠基工作。\n\nHarness Engineering 无同名奠基论文，用 SWE-agent ACI 作工具层奠基代替（已核 2405.15793）。",
+      "urlHash": "54b1ddaabf07edcee470bc553137a485a2b4c9c96855e0fe2eb9de9313928c46"
+    },
+    {
+      "id": "ha_react_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Yao et al., Princeton/Google)",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "publishedAt": "2022-10",
+      "whyRelevant": "reasoning+acting 交错范式，是几乎所有 agent 主循环（think→act→observe）的理论原型。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "作 agent 主循环理论原型代替缺失的 harness 奠基论文。",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "ReAct: Synergizing Reasoning and Acting in Language Models\n\nreasoning+acting 交错范式，是几乎所有 agent 主循环（think→act→observe）的理论原型。\n\n作 agent 主循环理论原型代替缺失的 harness 奠基论文。",
+      "urlHash": "7647307fe49844a005ca6dd6c2883016ab3bf2840918166c6764d65c199ffa37"
+    },
+    {
+      "id": "ha_claude_agent_sdk_repo",
+      "role": "implementation_signal",
+      "sourceKind": "official_docs",
+      "sourceOwner": "code.claude.com",
+      "url": "https://code.claude.com/docs/en/agent-sdk/overview",
+      "title": "Claude Agent SDK (docs)",
+      "publishedAt": "2026",
+      "whyRelevant": "开源可嵌入的 harness 实现：agent loop + 内置工具 + compaction 上下文管理，Python/TS 两版。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Claude Agent SDK (docs)\n\n开源可嵌入的 harness 实现：agent loop + 内置工具 + compaction 上下文管理，Python/TS 两版。",
+      "urlHash": "d69a094d34b18b2e552b9061a1285f07713719191effc4dd160b75ded66e5a51"
+    },
+    {
+      "id": "ha_openai_agents_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/openai",
+      "url": "https://github.com/openai/openai-agents-python",
+      "title": "openai/openai-agents-python",
+      "publishedAt": null,
+      "whyRelevant": "生产级开源 harness 实现，Pydantic 自动生成工具 schema、handoff 子代理派发。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "openai/openai-agents-python\n\n生产级开源 harness 实现，Pydantic 自动生成工具 schema、handoff 子代理派发。",
+      "urlHash": "82fcf33f253d184eb8a32cee0f9522cdccded8a2b00403f36f097d6749dbeec5"
+    },
+    {
+      "id": "ha_smolagents_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/huggingface",
+      "url": "https://github.com/huggingface/smolagents",
+      "title": "huggingface/smolagents",
+      "publishedAt": null,
+      "whyRelevant": "极简 code-agent harness，CodeAgent 用代码块表达动作；少量代码即完整 harness。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "huggingface/smolagents\n\n极简 code-agent harness，CodeAgent 用代码块表达动作；少量代码即完整 harness。",
+      "urlHash": "cce197194374b868aaf4070c8a523203192ec07e76da7d1cbfb2cb5d47b884f0"
+    },
+    {
+      "id": "ha_swe_agent_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/SWE-agent",
+      "url": "https://github.com/SWE-agent/SWE-agent",
+      "title": "SWE-agent/SWE-agent",
+      "publishedAt": null,
+      "whyRelevant": "ACI 论文参考实现，可配置 agent 的命令/文件编辑接口——harness 接口设计活样本。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "SWE-agent/SWE-agent\n\nACI 论文参考实现，可配置 agent 的命令/文件编辑接口——harness 接口设计活样本。",
+      "urlHash": "5bcded0c10e1cee3925da25a31376e4b89fe68593151ab8978c3b1c9f03f4283"
+    },
+    {
+      "id": "ha_boris_pragmatic_2026",
+      "role": "transcript_context",
+      "sourceKind": "newsletter",
+      "sourceOwner": "The Pragmatic Engineer (Gergely Orosz × Boris Cherny)",
+      "url": "https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny",
+      "title": "Building Claude Code with Boris Cherny",
+      "publishedAt": "2026-03",
+      "whyRelevant": "Claude Code 负责人谈 agent loop、并行 agent、确定性 review——harness 设计取舍一手访谈。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Building Claude Code with Boris Cherny\n\nClaude Code 负责人谈 agent loop、并行 agent、确定性 review——harness 设计取舍一手访谈。",
+      "urlHash": "806ebad008d3930ee8915beaef5a96f13de1c357ab61248548920e0911e40a11"
+    },
+    {
+      "id": "ha_every_claude_code_2026",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "Every (Boris Cherny / Cat Wu)",
+      "url": "https://every.to/podcast/how-to-use-claude-code-like-the-people-who-built-it",
+      "title": "How to Use Claude Code Like the People Who Built It",
+      "publishedAt": "2026",
+      "whyRelevant": "Claude Code 创建者讲 agent loop、保持 context 精简、真实验证——harness 实操语境。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "How to Use Claude Code Like the People Who Built It\n\nClaude Code 创建者讲 agent loop、保持 context 精简、真实验证——harness 实操语境。",
+      "urlHash": "211726ab457dbc9ec5cf869a4ec8968ac6a6a9176be5eb2ba8ab8b3b0da626a0"
+    },
+    {
+      "id": "ha_oreilly_harness_2026",
+      "role": "signal",
+      "sourceKind": "blog",
+      "sourceOwner": "oreilly.com/radar",
+      "url": "https://www.oreilly.com/radar/agent-harness-engineering/",
+      "title": "Agent Harness Engineering",
+      "publishedAt": "2026",
+      "whyRelevant": "把 harness 与 scaffolding 严格区分并系统命名为一门工程学科的代表性信号。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Agent Harness Engineering\n\n把 harness 与 scaffolding 严格区分并系统命名为一门工程学科的代表性信号。",
+      "urlHash": "c7635f369beacce63f37b58716418a889e51cff8d1da265aabcd0db0aebe95a1"
+    },
+    {
+      "id": "ha_awesome_harness_2026",
+      "role": "signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/ai-boost",
+      "url": "https://github.com/ai-boost/awesome-harness-engineering",
+      "title": "awesome-harness-engineering",
+      "publishedAt": null,
+      "whyRelevant": "专门聚合 harness 工程的 tools/patterns/evals/memory/MCP/permissions，证明已成独立领域。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "awesome-harness-engineering\n\n专门聚合 harness 工程的 tools/patterns/evals/memory/MCP/permissions，证明已成独立领域。",
+      "urlHash": "95e2f11879a290a0db8789be23fb2843cc6d8adcf2e0c2e9da8208ea59ace5a2"
+    },
+    {
+      "id": "ha_addy_osmani_2026",
+      "role": "signal",
+      "sourceKind": "blog",
+      "sourceOwner": "addyosmani.com (Addy Osmani)",
+      "url": "https://addyosmani.com/blog/agent-harness-engineering/",
+      "title": "Agent Harness Engineering",
+      "publishedAt": "2026",
+      "whyRelevant": "Google 工程师界定 harness=loop+tools+context+guardrails+tracing，传播度高的 signal。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Agent Harness Engineering\n\nGoogle 工程师界定 harness=loop+tools+context+guardrails+tracing，传播度高的 signal。",
+      "urlHash": "16336db7a9c5ca8fb83c3cdc39b61c96ae38c30934423885aaa1f7a81ae28440"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "ha_building_effective_agents",
+      "toId": "ha_swe_agent_aci_2024",
+      "relationType": "concept_shared",
+      "confidence": 0.8,
+      "evidenceNote": "Anthropic 的 ACI 一词与 SWE-agent 论文提出的 ACI 同名同源，工具接口设计是共同论点。"
+    },
+    {
+      "fromId": "ha_building_effective_agents",
+      "toId": "ha_seeing_like_agent",
+      "relationType": "elaborates",
+      "confidence": 0.8,
+      "evidenceNote": "前者提出\"像做 HCI 一样做 ACI\"，后者落到\"动作空间设计/fewer tools\"具体实践。"
+    },
+    {
+      "fromId": "ha_harness_design",
+      "toId": "ha_agent_sdk_overview",
+      "relationType": "same_owner_consistent",
+      "confidence": 0.85,
+      "evidenceNote": "同为 Anthropic，前者讲 harness 设计哲学，后者把同一套 harness 产品化为 SDK。"
+    },
+    {
+      "fromId": "ha_agent_sdk_overview",
+      "toId": "ha_openai_agents_sdk",
+      "relationType": "parallel_implementation",
+      "confidence": 0.8,
+      "evidenceNote": "两家用不同原语（compaction vs guardrails/handoffs）解同一问题：把模型包成可运行 agent 的 harness。"
+    },
+    {
+      "fromId": "ha_react_2022",
+      "toId": "ha_swe_agent_aci_2024",
+      "relationType": "foundation_of",
+      "confidence": 0.8,
+      "evidenceNote": "ReAct 奠定 think-act-observe 主循环，SWE-agent 在此循环上加专用 ACI 工具接口。"
+    },
+    {
+      "fromId": "ha_oreilly_harness_2026",
+      "toId": "ha_harness_design",
+      "relationType": "industrializes",
+      "confidence": 0.75,
+      "evidenceNote": "行业把 Anthropic 的一手实践抽象命名为 \"harness engineering\" 学科。"
+    },
+    {
+      "fromId": "ha_awesome_harness_2026",
+      "toId": "ha_openai_agents_repo",
+      "relationType": "aggregates",
+      "confidence": 0.75,
+      "evidenceNote": "社区列表把这些实现源聚合为同一领域的工具谱系，反向证明 harness 已成独立工程对象。"
+    },
+    {
+      "fromId": "ha_smolagents_repo",
+      "toId": "ha_building_effective_agents",
+      "relationType": "implements_pattern",
+      "confidence": 0.7,
+      "evidenceNote": "smolagents 的极简 code-agent harness 正是\"少而精工具+清晰动作空间\"主张的落地。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "ha_seeing_like_agent:source_pack_review",
+      "ha_boris_pragmatic_2026:source_pack_review",
+      "ha_every_claude_code_2026:source_pack_review",
+      "ha_addy_osmani_2026:source_pack_review"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 16 sources / 8 edges. NO arXiv paper named \"harness\" exists — paper_foundation honestly substituted with SWE-agent ACI (2405.15793, verified) + ReAct (2210.03629, verified). 4 sources at source_pack_review (seeing-like-agent, 2 Boris transcripts, Addy Osmani blog) pending fulltext capture. Roles all >=2."
+  }
+}

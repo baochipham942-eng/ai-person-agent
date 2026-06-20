@@ -1,0 +1,445 @@
+{
+  "thread": {
+    "slug": "autonomous-driving",
+    "title": "Autonomous Driving (智能驾驶)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "foundation_models",
+    "tags": [
+      "autonomous-driving",
+      "end-to-end",
+      "driving-world-model",
+      "vla-driving",
+      "self-driving"
+    ],
+    "aliases": [
+      "Autonomous Driving",
+      "智能驾驶",
+      "自动驾驶",
+      "end-to-end driving",
+      "self-driving"
+    ],
+    "definitionDraft": "Autonomous driving (AI view) uses a single/unified deep model to map raw sensor inputs end-to-end to vehicle planning and control, replacing the hand-written perception→prediction→planning→control pipeline. Three frontiers: end-to-end learning, generative driving world models, and VLA/large-model-driven driving.",
+    "whyNow": "Tesla FSD v12 replaced ~300k lines of C++ control code with neural networks (\"photons in, controls out\"); Wayve’s GAIA world models and Waymo’s EMMA push generative/VLM-driven driving. The end-to-end paradigm is Karpathy’s \"Software 2.0\" at its most thorough in driving.",
+    "useBoundary": "Focus on AI methodology frontiers in autonomous driving (end-to-end, driving world models, VLA-for-driving). Exclude general-purpose robotics/VLA (embodied-ai), whole-vehicle reviews and policy/regulation."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "ad_tesla_fsdv12_2024",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "electrek.co",
+      "url": "https://electrek.co/2024/03/12/tesla-pushes-new-fsd-beta-v12-update-no-new-note-but-musk-big-release/",
+      "title": "Tesla pushes FSD Beta v12, Musk \"big release\"",
+      "publishedAt": "2024-03-12",
+      "whyRelevant": "FSD v12 端到端转向的行业信号（30 万行 C++ → 神经网络）。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Tesla pushes FSD Beta v12, Musk \"big release\"\n\nFSD v12 端到端转向的行业信号（30 万行 C++ → 神经网络）。",
+      "urlHash": "bdbd90de5c3fb163cff7e79df0d993a737adbc29cae990ea6cec097b7d415cbe"
+    },
+    {
+      "id": "ad_waymo_emma_blog_2024",
+      "role": "signal",
+      "sourceKind": "official_blog",
+      "sourceOwner": "waymo.com",
+      "url": "https://waymo.com/blog/2024/10/introducing-emma/",
+      "title": "Introducing Waymo's EMMA",
+      "publishedAt": "2024-10",
+      "whyRelevant": "Waymo 用 Gemini 驱动端到端多模态驾驶模型的官方发布信号。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Introducing Waymo's EMMA\n\nWaymo 用 Gemini 驱动端到端多模态驾驶模型的官方发布信号。",
+      "urlHash": "8b2529ec4d5722ee1229559b93e2a1500215e1dbe3d0a5fb5210b9ef51181392"
+    },
+    {
+      "id": "ad_karpathy_warns_2025",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "electrek.co",
+      "url": "https://electrek.co/2025/06/21/tesla-former-head-ai-warns-against-believing-self-driving-solved/",
+      "title": "Tesla's Former Head of AI warns self-driving not solved",
+      "publishedAt": "2025-06-21",
+      "whyRelevant": "Karpathy 对端到端自动驾驶\"已解决\"论的怀疑式信号。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Tesla's Former Head of AI warns self-driving not solved\n\nKarpathy 对端到端自动驾驶\"已解决\"论的怀疑式信号。",
+      "urlHash": "dc51933d49ec1d2056b1ccad05ac9163c0a415b3dd3051bdc0d094c599cb667f"
+    },
+    {
+      "id": "ad_wayve_av20",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "wayve.ai",
+      "url": "https://wayve.ai/technology/av2-0/",
+      "title": "Wayve AV2.0 — Autonomy 2.0 data-driven approach",
+      "publishedAt": null,
+      "whyRelevant": "Wayve 官方对\"用单一端到端神经网络替代手写 AV 栈\"的定义页。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Wayve AV2.0 — Autonomy 2.0 data-driven approach\n\nWayve 官方对\"用单一端到端神经网络替代手写 AV 栈\"的定义页。",
+      "urlHash": "0602f47d3ea903b6009c7f1e770f58c9d386cc5e5d6ff1b4eaf14b125dbcd2f5"
+    },
+    {
+      "id": "ad_waymo_aiml_blog_2024",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "waymo.com",
+      "url": "https://waymo.com/blog/2024/10/ai-and-ml-at-waymo/",
+      "title": "Behind the Innovation: AI & ML at Waymo",
+      "publishedAt": "2024-10",
+      "whyRelevant": "Waymo 官方阐述其大规模 ML/VLM/生成式方法的技术博客。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Behind the Innovation: AI & ML at Waymo\n\nWaymo 官方阐述其大规模 ML/VLM/生成式方法的技术博客。",
+      "urlHash": "a4a875196bf7277d887f07e26d4c717921671330c03ff0d204bbc819fb058348"
+    },
+    {
+      "id": "ad_openpilot_repo",
+      "role": "official_definition",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/commaai",
+      "url": "https://github.com/commaai/openpilot",
+      "title": "commaai/openpilot",
+      "publishedAt": null,
+      "whyRelevant": "comma.ai 官方开源驾驶辅助系统，摄像头 AI 控转向/油门/刹车。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "commaai/openpilot\n\ncomma.ai 官方开源驾驶辅助系统，摄像头 AI 控转向/油门/刹车。",
+      "urlHash": "005bd9f29aff8832050b843a0d5451f4a91eae39424376761245670799a1450b"
+    },
+    {
+      "id": "ad_kendall_sequoia",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "Sequoia Capital",
+      "url": "https://www.sequoiacap.com/podcast/how-end-to-end-learning-created-autonomous-driving-2-0-wayve-ceo-alex-kendall/",
+      "title": "How End-to-End Learning Created AD 2.0: Alex Kendall (Wayve)",
+      "publishedAt": null,
+      "whyRelevant": "Wayve CEO Alex Kendall 谈端到端学习如何催生 AD 2.0。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "How End-to-End Learning Created AD 2.0: Alex Kendall (Wayve)\n\nWayve CEO Alex Kendall 谈端到端学习如何催生 AD 2.0。",
+      "urlHash": "b0ee393dbbff1f595d7b96d990bb70bd4a692756e168d90aca4ec122347ff603"
+    },
+    {
+      "id": "ad_ashok_cvpr_2023",
+      "role": "transcript_context",
+      "sourceKind": "video",
+      "sourceOwner": "YouTube (Tesla / CVPR WAD)",
+      "url": "https://www.youtube.com/watch?v=6x-Xb_uT7ts",
+      "title": "[CVPR’23 WAD] Keynote — Ashok Elluswamy, Tesla",
+      "publishedAt": "2023",
+      "whyRelevant": "Tesla Autopilot 负责人讲 Occupancy Networks 与生成式模型。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "[CVPR’23 WAD] Keynote — Ashok Elluswamy, Tesla\n\nTesla Autopilot 负责人讲 Occupancy Networks 与生成式模型。",
+      "urlHash": "57caa4a6d8c5ef163915250ce3cd4c5f0b55632a87677d61ecaf81b50af3d6aa"
+    },
+    {
+      "id": "ad_karpathy_software2_2017",
+      "role": "transcript_context",
+      "sourceKind": "blog",
+      "sourceOwner": "karpathy.medium.com (Andrej Karpathy)",
+      "url": "https://karpathy.medium.com/software-2-0-a64152b37c35",
+      "title": "Software 2.0",
+      "publishedAt": "2017-11",
+      "whyRelevant": "端到端范式思想源头：程序由数据编译而非手写。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Software 2.0\n\n端到端范式思想源头：程序由数据编译而非手写。",
+      "urlHash": "229f3ea9a3866dec88bcc1f0d7531d5f21cde2edaf287d9f67f03a2d00385064"
+    },
+    {
+      "id": "ad_uniad_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (OpenDriveLab/SenseTime)",
+      "url": "https://arxiv.org/abs/2212.10156",
+      "title": "Planning-oriented Autonomous Driving (UniAD)",
+      "publishedAt": "2022-12",
+      "whyRelevant": "CVPR 2023 best paper，规划导向的统一端到端框架。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Planning-oriented Autonomous Driving (UniAD)\n\nCVPR 2023 best paper，规划导向的统一端到端框架。",
+      "urlHash": "d662898339c24cdb0c56a9ef720f112c27a7f24680928493a90dd23c4a8912f8"
+    },
+    {
+      "id": "ad_gaia1_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Wayve)",
+      "url": "https://arxiv.org/abs/2309.17080",
+      "title": "GAIA-1: A Generative World Model for Autonomous Driving",
+      "publishedAt": "2023-09",
+      "whyRelevant": "驾驶生成式世界模型奠基作，video+text+action→真实驾驶场景。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "GAIA-1: A Generative World Model for Autonomous Driving\n\n驾驶生成式世界模型奠基作，video+text+action→真实驾驶场景。",
+      "urlHash": "8258e3595e4d215547879a79c5eded42455170abd870198bb2d047e2befb55d5"
+    },
+    {
+      "id": "ad_gaia2_2025",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Wayve)",
+      "url": "https://arxiv.org/abs/2503.20523",
+      "title": "GAIA-2: Controllable Multi-View Generative World Model",
+      "publishedAt": "2025-03",
+      "whyRelevant": "可控多视角驾驶世界模型，潜空间扩散 + 结构化条件。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "GAIA-2: Controllable Multi-View Generative World Model\n\n可控多视角驾驶世界模型，潜空间扩散 + 结构化条件。",
+      "urlHash": "086cbc4634cdd975e5c5a578d89eb3c13aed6c7e29dd60967f3ebb3546b4762f"
+    },
+    {
+      "id": "ad_e2e_survey_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (OpenDriveLab, Li Chen et al., T-PAMI 2024)",
+      "url": "https://arxiv.org/abs/2306.16927",
+      "title": "End-to-end Autonomous Driving: Challenges and Frontiers",
+      "publishedAt": "2023-06",
+      "whyRelevant": "端到端 AD 权威综述，270+ 论文，论证端到端相对模块化的可扩展性优势。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "End-to-end Autonomous Driving: Challenges and Frontiers\n\n端到端 AD 权威综述，270+ 论文，论证端到端相对模块化的可扩展性优势。",
+      "urlHash": "9590c4f1c56b3b78ffab9fe74405878466f5bdf9d3f81149f1d138ac5bc63848"
+    },
+    {
+      "id": "ad_drivevlm_2024",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (清华 MARS Lab / 理想)",
+      "url": "https://arxiv.org/abs/2402.12289",
+      "title": "DriveVLM: The Convergence of Autonomous Driving and Large VLMs",
+      "publishedAt": "2024-02",
+      "whyRelevant": "VLA 驾驶代表作，慢思考 VLM + 快系统双栈，已上量产车。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "DriveVLM: The Convergence of Autonomous Driving and Large VLMs\n\nVLA 驾驶代表作，慢思考 VLM + 快系统双栈，已上量产车。",
+      "urlHash": "a1c90ae7176856aea220e2fb713ae1a97cc5612aa60ca5b926047fefe47a9bac"
+    },
+    {
+      "id": "ad_carla_2017",
+      "role": "implementation_signal",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Dosovitskiy et al., Intel)",
+      "url": "https://arxiv.org/abs/1711.03938",
+      "title": "CARLA: An Open Urban Driving Simulator",
+      "publishedAt": "2017-11",
+      "whyRelevant": "开源城市驾驶仿真器，端到端模仿/强化学习训练基础设施。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "CARLA: An Open Urban Driving Simulator\n\n开源城市驾驶仿真器，端到端模仿/强化学习训练基础设施。",
+      "urlHash": "188ed9bdb304ea37321eec48342050f3ac412e5ea00b22808acbed6772ebf7d4"
+    },
+    {
+      "id": "ad_nuscenes_2019",
+      "role": "implementation_signal",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (nuTonomy/Motional)",
+      "url": "https://arxiv.org/abs/1903.11027",
+      "title": "nuScenes: A multimodal dataset for autonomous driving",
+      "publishedAt": "2019-03",
+      "whyRelevant": "全传感器套件多模态数据集，端到端规划标准 benchmark。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "nuScenes: A multimodal dataset for autonomous driving\n\n全传感器套件多模态数据集，端到端规划标准 benchmark。",
+      "urlHash": "b861a884c7467b937af89d488b1872913f5358bb0b71132a90da72bd98971245"
+    },
+    {
+      "id": "ad_uniad_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/OpenDriveLab",
+      "url": "https://github.com/OpenDriveLab/UniAD",
+      "title": "OpenDriveLab/UniAD",
+      "publishedAt": null,
+      "whyRelevant": "UniAD 官方开源代码，端到端规划导向框架可复现实现。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "OpenDriveLab/UniAD\n\nUniAD 官方开源代码，端到端规划导向框架可复现实现。",
+      "urlHash": "fa087c8c196374b82362927c22addebae339b88477212c2d78c1a900c2d2cf3d"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "ad_e2e_survey_2023",
+      "toId": "ad_uniad_2022",
+      "relationType": "cites_as_milestone",
+      "confidence": 0.85,
+      "evidenceNote": "综述把 UniAD 列为规划导向端到端范式的代表性里程碑。"
+    },
+    {
+      "fromId": "ad_uniad_2022",
+      "toId": "ad_nuscenes_2019",
+      "relationType": "evaluated_on",
+      "confidence": 0.85,
+      "evidenceNote": "UniAD 在 nuScenes benchmark 上实例化并验证全栈任务。"
+    },
+    {
+      "fromId": "ad_gaia2_2025",
+      "toId": "ad_gaia1_2023",
+      "relationType": "extends",
+      "confidence": 0.9,
+      "evidenceNote": "GAIA-2 在 GAIA-1 基础上加多视角一致性与结构化可控条件。"
+    },
+    {
+      "fromId": "ad_waymo_emma_blog_2024",
+      "toId": "ad_drivevlm_2024",
+      "relationType": "same_paradigm",
+      "confidence": 0.75,
+      "evidenceNote": "二者同属\"大模型驱动驾驶\"路线，用语言空间统一驾驶任务。"
+    },
+    {
+      "fromId": "ad_tesla_fsdv12_2024",
+      "toId": "ad_karpathy_software2_2017",
+      "relationType": "embodies",
+      "confidence": 0.8,
+      "evidenceNote": "FSD v12 把控制代码换成神经网络，是 Software 2.0 在驾驶的极致落地。"
+    },
+    {
+      "fromId": "ad_wayve_av20",
+      "toId": "ad_kendall_sequoia",
+      "relationType": "explains",
+      "confidence": 0.8,
+      "evidenceNote": "播客访谈展开解释 AV2.0 官方页背后的端到端学习方法论。"
+    },
+    {
+      "fromId": "ad_openpilot_repo",
+      "toId": "ad_carla_2017",
+      "relationType": "shares_domain",
+      "confidence": 0.7,
+      "evidenceNote": "二者同为端到端驾驶的开源/仿真基础设施（落地 vs 训练验证）。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 17 sources / 7 edges, all arXiv ids verified (2212.10156 UniAD, 2309.17080 GAIA-1, 2503.20523 GAIA-2, 2306.16927 e2e survey, 2402.12289 DriveVLM, 1711.03938 CARLA, 1903.11027 nuScenes). Boundary held vs embodied-ai. Roles all >=2."
+  }
+}

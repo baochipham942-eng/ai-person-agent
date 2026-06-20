@@ -1,0 +1,455 @@
+{
+  "thread": {
+    "slug": "embodied-ai",
+    "title": "Embodied AI / VLA (具身智能)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "foundation_models",
+    "tags": [
+      "embodied-ai",
+      "vla",
+      "robotics",
+      "robot-foundation-models",
+      "manipulation"
+    ],
+    "aliases": [
+      "Embodied AI",
+      "具身智能",
+      "VLA",
+      "Vision-Language-Action",
+      "视觉-语言-动作",
+      "robot foundation models"
+    ],
+    "definitionDraft": "Embodied AI / VLA brings the LLM/foundation-model paradigm into physical-world robot control: a single network sees images, hears natural-language instructions, and directly outputs robot actions, end-to-end fusing perception, understanding and execution.",
+    "whyNow": "Just as LLMs became foundation models for language, a general robot policy is becoming the robot foundation model for physical intelligence — one policy controls many robots and specializes to new tasks with little data. Three drivers: large cross-embodiment robot data (Open X-Embodiment), pretrained VLMs transferring web knowledge (RT-2), and a maturing open-source stack (Octo, OpenVLA, LeRobot, openpi).",
+    "useBoundary": "Focus on VLA models and robot foundation models for general manipulation/control. Exclude the specific autonomous-driving domain (autonomous-driving thread) and pure simulation/game RL agents."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "em_rt1_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Brohan et al., Google Robotics)",
+      "url": "https://arxiv.org/abs/2212.06817",
+      "title": "RT-1: Robotics Transformer for Real-World Control at Scale",
+      "publishedAt": "2022-12",
+      "whyRelevant": "VLA 路线奠基：35M Transformer，图+语言指令→离散化机械臂动作，3Hz 实时。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "RT-1: Robotics Transformer for Real-World Control at Scale\n\nVLA 路线奠基：35M Transformer，图+语言指令→离散化机械臂动作，3Hz 实时。",
+      "urlHash": "30356a41601d5fed409f6a77a8d4a8bc9e4b6d3198edad6d2111809994222319"
+    },
+    {
+      "id": "em_rt2_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Google DeepMind)",
+      "url": "https://arxiv.org/abs/2307.15818",
+      "title": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+      "publishedAt": "2023-07",
+      "whyRelevant": "\"VLA\"一词代表作，把动作当文本 token 生成，联合微调 VLM 得涌现泛化。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control\n\n\"VLA\"一词代表作，把动作当文本 token 生成，联合微调 VLM 得涌现泛化。",
+      "urlHash": "dd85391b5dd07c92c601c2f97c1e5416d428f5b450d2bf650b3a5e1b1013d4af"
+    },
+    {
+      "id": "em_openx_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (21 机构联合)",
+      "url": "https://arxiv.org/abs/2310.08864",
+      "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+      "publishedAt": "2023-10",
+      "whyRelevant": "跨本体大数据奠基：22 机器人/527 技能，RT-X 显示正向迁移（ICRA 2024）。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models\n\n跨本体大数据奠基：22 机器人/527 技能，RT-X 显示正向迁移（ICRA 2024）。",
+      "urlHash": "8c8776be39e66f2b333b642d0e18e1f357a50d344a906dc279b6d75c0cb04433"
+    },
+    {
+      "id": "em_octo_2024",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (UC Berkeley/Stanford/CMU/GDM)",
+      "url": "https://arxiv.org/abs/2405.12213",
+      "title": "Octo: An Open-Source Generalist Robot Policy",
+      "publishedAt": "2024-05",
+      "whyRelevant": "开源通用策略，Transformer+diffusion，800k OXE episodes 预训练。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Octo: An Open-Source Generalist Robot Policy\n\n开源通用策略，Transformer+diffusion，800k OXE episodes 预训练。",
+      "urlHash": "e0d9df6cd6d556170d3af18e0e614c9ebf21b7334306864f942a7c360bdb8315"
+    },
+    {
+      "id": "em_pi0_2024",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Physical Intelligence)",
+      "url": "https://arxiv.org/abs/2410.24164",
+      "title": "π0: A Vision-Language-Action Flow Model for General Robot Control",
+      "publishedAt": "2024-10",
+      "whyRelevant": "flow matching 接 PaliGemma，10000 小时数据，叠衣服等长程灵巧任务。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "π0: A Vision-Language-Action Flow Model for General Robot Control\n\nflow matching 接 PaliGemma，10000 小时数据，叠衣服等长程灵巧任务。",
+      "urlHash": "0dc8104041d504d33a8dc3384be26745e870385f093bcfff0ee6a1c6542d73bd"
+    },
+    {
+      "id": "em_openvla_2024",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Stanford/GDM/MIT/PI/Berkeley)",
+      "url": "https://arxiv.org/abs/2406.09246",
+      "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
+      "publishedAt": "2024-06",
+      "whyRelevant": "7B 开源 VLA，Llama2+DINOv2/SigLIP，970k 演示，超 RT-2-X 55B。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "OpenVLA: An Open-Source Vision-Language-Action Model\n\n7B 开源 VLA，Llama2+DINOv2/SigLIP，970k 演示，超 RT-2-X 55B。",
+      "urlHash": "65d07da8902e2b04fe0a67f303e5f34fa5b459a0b5a74e330ce3cf7aafb74990"
+    },
+    {
+      "id": "em_pi05_2025",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Physical Intelligence)",
+      "url": "https://arxiv.org/abs/2504.16054",
+      "title": "π0.5: a VLA Model with Open-World Generalization",
+      "publishedAt": "2025-04",
+      "whyRelevant": "进阶到全新未见家庭环境清理厨房/卧室，环境多样性是关键。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "π0.5: a VLA Model with Open-World Generalization\n\n进阶到全新未见家庭环境清理厨房/卧室，环境多样性是关键。",
+      "urlHash": "13b9eee42fc643c13017f1cc05dfcf61b7f0a3889eec612e08019c866977ba54"
+    },
+    {
+      "id": "em_rt2_blog_2023",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "deepmind.google",
+      "url": "https://deepmind.google/blog/rt-2-new-model-translates-vision-and-language-into-action/",
+      "title": "RT-2: New model translates vision and language into action",
+      "publishedAt": "2023-07",
+      "whyRelevant": "官方对 VLA 概念的权威表述与可视化解读。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "RT-2: New model translates vision and language into action\n\n官方对 VLA 概念的权威表述与可视化解读。",
+      "urlHash": "fc537a17db9ec3a825c227165d293a0a102557587185a680c15e31f308574892"
+    },
+    {
+      "id": "em_pi0_blog_2024",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "pi.website (Physical Intelligence)",
+      "url": "https://www.pi.website/blog/pi0",
+      "title": "π0: Our First Generalist Policy",
+      "publishedAt": "2024-10",
+      "whyRelevant": "官方提出\"机器人基础模型\"愿景，叠衣服/装纸箱 demo 一手定义。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "π0: Our First Generalist Policy\n\n官方提出\"机器人基础模型\"愿景，叠衣服/装纸箱 demo 一手定义。",
+      "urlHash": "c3cbf2f223112c1c2270f9bfe5bcdb913a1483b9319101bfbbadeda1d5c21cc1"
+    },
+    {
+      "id": "em_pi05_blog_2025",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "pi.website (Physical Intelligence)",
+      "url": "https://www.pi.website/blog/pi05",
+      "title": "A VLA with Open-World Generalization (π0.5)",
+      "publishedAt": "2025-04",
+      "whyRelevant": "官方阐释开放世界泛化目标与两阶段训练法。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "A VLA with Open-World Generalization (π0.5)\n\n官方阐释开放世界泛化目标与两阶段训练法。",
+      "urlHash": "8302416824fd4766e576dc77b7919bb5d5f3e57c31f858c24be2926f2f8e8f72"
+    },
+    {
+      "id": "em_gemini_robotics_blog_2025",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "deepmind.google",
+      "url": "https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/",
+      "title": "Introducing Gemini Robotics and Gemini Robotics-ER",
+      "publishedAt": "2025-03",
+      "whyRelevant": "大厂入场信号+官方定义：基于 Gemini 2.0 的 VLA + 具身推理 ER。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Introducing Gemini Robotics and Gemini Robotics-ER\n\n大厂入场信号+官方定义：基于 Gemini 2.0 的 VLA + 具身推理 ER。",
+      "urlHash": "d0f5ca5d8a303db9594cd119cd2bab233c475de68e6b319619cf04da8c1d4d09"
+    },
+    {
+      "id": "em_levine_twiml_2025",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "TWIML AI Podcast",
+      "url": "https://open.spotify.com/episode/6YgfanrTvBKpHVrAEueBnN",
+      "title": "π0: A Foundation Model for Robotics with Sergey Levine — TWIML #719",
+      "publishedAt": "2025-02",
+      "whyRelevant": "Levine 亲述 π0 架构（VLM+action expert）与预训练/后训练数据哲学。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "π0: A Foundation Model for Robotics with Sergey Levine — TWIML #719\n\nLevine 亲述 π0 架构（VLM+action expert）与预训练/后训练数据哲学。",
+      "urlHash": "09196b6686403c0f6ba999bdb0c781601aa516d62dbb8887b129807676b48cd5"
+    },
+    {
+      "id": "em_finn_iclr_2025",
+      "role": "transcript_context",
+      "sourceKind": "talk",
+      "sourceOwner": "ICLR 2025 (Chelsea Finn)",
+      "url": "https://iclr.cc/virtual/2025/10000222",
+      "title": "ICLR 2025 Invited Talk: Data-Driven Pre/Post-Training for Robot Foundation Models",
+      "publishedAt": "2025-04",
+      "whyRelevant": "Finn 受邀演讲，机器人基础模型的预训练 + 后训练配方。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "ICLR 2025 Invited Talk: Data-Driven Pre/Post-Training for Robot Foundation Models\n\nFinn 受邀演讲，机器人基础模型的预训练 + 后训练配方。",
+      "urlHash": "7818d3f68ee7c7438139023d1f6d30b46f30435e4076136cfb9181ef4cc8f4ed"
+    },
+    {
+      "id": "em_lerobot_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/huggingface",
+      "url": "https://github.com/huggingface/lerobot",
+      "title": "huggingface/lerobot",
+      "publishedAt": null,
+      "whyRelevant": "\"机器人界的 Transformers\"，PyTorch 模型/数据集/真机工具链。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "huggingface/lerobot\n\n\"机器人界的 Transformers\"，PyTorch 模型/数据集/真机工具链。",
+      "urlHash": "f41f68c5cf0cb6c7d54760e3c5ea99a2a966b3030fc4e04f1c8b9315d784b361"
+    },
+    {
+      "id": "em_openpi_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/Physical-Intelligence",
+      "url": "https://github.com/Physical-Intelligence/openpi",
+      "title": "Physical-Intelligence/openpi",
+      "publishedAt": "2025-02",
+      "whyRelevant": "官方开源 π0/π0.5 权重与微调代码，1-20 小时数据即可调到新任务。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Physical-Intelligence/openpi\n\n官方开源 π0/π0.5 权重与微调代码，1-20 小时数据即可调到新任务。",
+      "urlHash": "0130878e2cb85cf371f34e5dfff7a458ddfa6ac06561900611c8792350fd8679"
+    },
+    {
+      "id": "em_robotreport_pi0_2025",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "therobotreport.com",
+      "url": "https://www.therobotreport.com/physical-intelligence-open-sources-pi0-robotics-foundation-model/",
+      "title": "Physical Intelligence open-sources Pi0 robotics foundation model",
+      "publishedAt": "2025-02-07",
+      "whyRelevant": "行业媒体报道开源事件，类比开源 LLM 加速作用。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Physical Intelligence open-sources Pi0 robotics foundation model\n\n行业媒体报道开源事件，类比开源 LLM 加速作用。",
+      "urlHash": "d40e3c3b20d905009b5272f8632506441371135d212cbd820499dbe14a48efbc"
+    },
+    {
+      "id": "em_venturebeat_lerobot_2024",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "venturebeat.com",
+      "url": "https://venturebeat.com/automation/hugging-face-launches-lerobot-open-source-robotics-code-library",
+      "title": "Hugging Face launches LeRobot open source robotics code library",
+      "publishedAt": "2024-05",
+      "whyRelevant": "产业信号：HF 把\"democratize 机器人 AI\"作为战略叙事。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Hugging Face launches LeRobot open source robotics code library\n\n产业信号：HF 把\"democratize 机器人 AI\"作为战略叙事。",
+      "urlHash": "d00ff0577a8724820b9cda346a3816a22d23ca638b78f549c93004eb462a51bc"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "em_rt1_2022",
+      "toId": "em_rt2_2023",
+      "relationType": "extends",
+      "confidence": 0.9,
+      "evidenceNote": "RT-2 在 RT-1 的离散动作 token 思路上，叠加预训练 VLM 的网络知识迁移。"
+    },
+    {
+      "fromId": "em_openx_2023",
+      "toId": "em_rt2_2023",
+      "relationType": "provides_data_for",
+      "confidence": 0.85,
+      "evidenceNote": "OXE 的跨本体大数据训出 RT-2-X，OpenVLA 论文以 RT-2-X 为对比基线。"
+    },
+    {
+      "fromId": "em_openx_2023",
+      "toId": "em_octo_2024",
+      "relationType": "provides_data_for",
+      "confidence": 0.85,
+      "evidenceNote": "Octo 在 OXE 的 80 万 episodes 上预训练，是其数据底座。"
+    },
+    {
+      "fromId": "em_openvla_2024",
+      "toId": "em_rt2_blog_2023",
+      "relationType": "outperforms",
+      "confidence": 0.8,
+      "evidenceNote": "OpenVLA 7B 用 7 倍更少参数，任务成功率绝对值超 RT-2-X 55B。"
+    },
+    {
+      "fromId": "em_pi0_2024",
+      "toId": "em_pi0_blog_2024",
+      "relationType": "official_announcement_of",
+      "confidence": 0.9,
+      "evidenceNote": "官博是 π0 论文的一手发布与愿景陈述。"
+    },
+    {
+      "fromId": "em_pi0_2024",
+      "toId": "em_pi05_2025",
+      "relationType": "extends",
+      "confidence": 0.85,
+      "evidenceNote": "π0.5 在 π0 基础上换两阶段训练，目标从\"会做任务\"升级到\"泛化到全新家庭\"。"
+    },
+    {
+      "fromId": "em_pi0_2024",
+      "toId": "em_levine_twiml_2025",
+      "relationType": "authored_explains",
+      "confidence": 0.8,
+      "evidenceNote": "π0 论文一作 Levine 在播客口述同一模型的架构与训练哲学。"
+    },
+    {
+      "fromId": "em_openpi_repo",
+      "toId": "em_pi0_2024",
+      "relationType": "open_implements",
+      "confidence": 0.9,
+      "evidenceNote": "openpi 是 π0/π0.5 论文的官方开源权重与代码实现。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "em_venturebeat_lerobot_2024:source_pack_review"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 17 sources / 8 edges, all arXiv ids verified (2212.06817 RT-1, 2307.15818 RT-2, 2310.08864 Open X-Embodiment, 2405.12213 Octo, 2410.24164 π0, 2406.09246 OpenVLA, 2504.16054 π0.5). Boundary held vs autonomous-driving. Roles all >=2."
+  }
+}

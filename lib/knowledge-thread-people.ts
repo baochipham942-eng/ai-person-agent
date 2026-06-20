@@ -119,6 +119,298 @@ const CURATED_THREADS: CuratedThreadSeed[] = [
     ],
   },
   {
+    slug: 'rag',
+    title: 'Retrieval-Augmented Generation (RAG)',
+    whyNow:
+      '「长上下文 vs RAG」之争后共识是 RAG 没死而是进化——召回→重排→切块→引用→评估的工程链，仍是给模型接私有/实时数据的主路径。',
+    topics: ['AI 基础设施', 'Agent'],
+    priority: 78,
+    people: [
+      {
+        name: 'Patrick Lewis',
+        relation: 'proposer',
+        summary: 'RAG 原论文（2005.11401）一作，提出并命名「检索增强生成」，现在 Cohere。',
+        sourceIds: ['rag_lewis_2020', 'rag_lewis_mlst_2024'],
+      },
+      {
+        name: 'Douwe Kiela',
+        relation: 'proposer',
+        summary: 'RAG 原论文资深通讯作者，后续持续推动 RAG / contextual AI 方向。',
+        sourceIds: ['rag_lewis_2020'],
+      },
+      {
+        name: 'Omar Khattab',
+        relation: 'implementer',
+        summary: 'ColBERT（late interaction 召回）与 DSPy（声明式检索+生成管线）领头人，把召回器与可优化管线都奠基了。',
+        sourceIds: ['rag_colbert_2020', 'rag_dspy_paper', 'rag_dspy_repo'],
+      },
+      {
+        name: 'Jerry Liu',
+        relation: 'driver',
+        summary: 'LlamaIndex 创始 CEO，把 RAG 工程化为最主流框架之一，多档播客 / 演讲布道进阶 RAG。',
+        sourceIds: ['rag_jerryliu_latentspace_2023', 'rag_llamaindex_concepts'],
+      },
+      {
+        name: 'Harrison Chase',
+        relation: 'implementer',
+        summary: 'LangChain 创始人，RAG 编排与 retriever / 向量库集成生态的主要落地者。',
+        sourceIds: ['rag_langchain_repo'],
+      },
+    ],
+  },
+  {
+    slug: 'deep-research',
+    title: 'Deep Research',
+    whyNow:
+      'Google 2024.12 首发、OpenAI 2025.02 跟进后，Deep Research 一年内从写报告助手演进为「边查边推理、自主决定查多深」的自治调研 agent。',
+    topics: ['Agent', 'AI 基础设施'],
+    priority: 80,
+    people: [
+      {
+        name: 'Aravind Srinivas',
+        relation: 'driver',
+        summary: 'Perplexity 联创兼 CEO，「answer engine 而非 search engine」愿景的推手，Deep Research 品类最早的商业落地者之一。',
+        sourceIds: ['dr_srinivas_lex_2024'],
+      },
+      {
+        name: 'Shunyu Yao',
+        aliases: ['姚顺雨'],
+        relation: 'proposer',
+        summary: 'ReAct 一作，奠定调研 agent「边想边查边读」的推理-行动交错方法学。',
+        sourceIds: ['dr_react_2022'],
+      },
+      {
+        name: 'Ofir Press',
+        relation: 'proposer',
+        summary: 'Self-Ask 一作，提出自拆子问题法，是 Deep Research「规划→子查询」的直接学术前身。',
+        sourceIds: ['dr_selfask_2022'],
+      },
+      {
+        name: 'Jason Wei',
+        relation: 'driver',
+        summary: '主导 BrowseComp 浏览 agent 基准，为「调研做多深/多自主」提供量化标尺。',
+        sourceIds: ['dr_browsecomp_2025'],
+      },
+    ],
+  },
+  {
+    slug: 'model-training',
+    title: 'Model Training',
+    whyNow:
+      'Ilya 宣告「预训练见顶」后，重心从堆预训练数据转向后训练/RL，「怎么训」成为模型能力差异的主战场。',
+    topics: ['AI 基础设施', '大模型'],
+    priority: 82,
+    people: [
+      {
+        name: 'Jared Kaplan',
+        relation: 'proposer',
+        summary: 'Scaling Laws（2001.08361）一作，奠定预训练规模/算力/数据幂律框架，后为 Anthropic 联创。',
+        sourceIds: ['mt_kaplan_scaling_2020'],
+      },
+      {
+        name: 'John Schulman',
+        relation: 'proposer',
+        summary: '发明 PPO，主导 InstructGPT/ChatGPT 的 RLHF，后训练 RL 的关键奠基者。',
+        sourceIds: ['mt_ppo_2017', 'mt_instructgpt_2022'],
+      },
+      {
+        name: 'Nathan Lambert',
+        relation: 'driver',
+        summary: 'Ai2 后训练负责人，著《The RLHF Book》、主导 Tülu 3 与 RLVR，后训练领域最权威普及者。',
+        sourceIds: ['mt_tulu3_2024'],
+      },
+      {
+        name: 'Ilya Sutskever',
+        relation: 'driver',
+        summary: '深度学习/预训练范式核心推手，NeurIPS 2024 宣告「预训练见顶」，定调行业转向后训练。',
+        sourceIds: ['mt_ilya_neurips_2024'],
+      },
+    ],
+  },
+  {
+    slug: 'self-evolving-agents',
+    title: 'Self-Evolving Agents',
+    whyNow:
+      'Darwin Gödel Machine 让 agent 自我改写代码、SWE-bench 20%→50%，首次工程证明开放式递归自我改进对编码 agent 可实现。',
+    topics: ['Agent', '大模型'],
+    priority: 76,
+    people: [
+      {
+        name: 'Jeff Clune',
+        relation: 'driver',
+        summary: '自进化 agent 旗手，主导 ADAS、Darwin Gödel Machine、AI Scientist，提出 AI-GA 三支柱。',
+        sourceIds: ['se_dgm_2025', 'se_adas_2024', 'se_clune_talk'],
+      },
+      {
+        name: 'Noah Shinn',
+        relation: 'proposer',
+        summary: 'Reflexion 一作，确立「语言反思 + episodic memory」的运行时自我修正范式。',
+        sourceIds: ['se_reflexion_2023', 'se_reflexion_repo'],
+      },
+      {
+        name: 'Guanzhi Wang',
+        relation: 'proposer',
+        summary: 'Voyager 一作，建立「自动课程 + 可执行代码 skill library」的终身技能积累范式。',
+        sourceIds: ['se_voyager_2023', 'se_voyager_repo'],
+      },
+      {
+        name: 'Jürgen Schmidhuber',
+        relation: 'proposer',
+        summary: 'Gödel Machine（2003）理论奠基者，定义「自我改写代码做可证明改进」的源头概念。',
+        sourceIds: ['se_godel_machine_2003'],
+      },
+      {
+        name: 'Jim Fan',
+        aliases: ['范麟熙'],
+        relation: 'driver',
+        summary: '领导 Voyager/MineDojo，推动「foundation agent / 开放世界终身学习 agent」叙事。',
+        sourceIds: ['se_jimfan_grasp_2023'],
+      },
+    ],
+  },
+  {
+    slug: 'world-models',
+    title: 'World Models',
+    whyNow:
+      '世界模型成 2024–2026 产业主线，三派路线之争（Sora 世界模拟器 / LeCun JEPA / 李飞飞空间智能）同时推进。',
+    topics: ['大模型', 'AIGC/生成式媒体'],
+    priority: 84,
+    people: [
+      {
+        name: 'David Ha',
+        aliases: ['hardmaru'],
+        relation: 'proposer',
+        summary: '2018《World Models》共同作者，奠定「VAE+RNN 压缩表征 + 在梦中训练智能体」范式。',
+        sourceIds: ['wm_ha_2018', 'wm_hardmaru_repo'],
+      },
+      {
+        name: 'Yann LeCun',
+        relation: 'proposer',
+        summary: '提出 JEPA/自主机器智能蓝图，旗帜性反对纯自回归 LLM、倡导非生成式世界模型，2026 创 AMI Labs。',
+        sourceIds: ['wm_jepa_blog', 'wm_lecun_mit_2026'],
+      },
+      {
+        name: 'Demis Hassabis',
+        relation: 'driver',
+        summary: 'DeepMind CEO，主推 Genie 系列，定调「世界模型 + 自动化实验 = 通往 AGI 两大关键」。',
+        sourceIds: ['wm_genie3_blog_2025', 'wm_hassabis_decoder'],
+      },
+      {
+        name: 'Fei-Fei Li',
+        aliases: ['李飞飞'],
+        relation: 'driver',
+        summary: '创办 World Labs，提出「空间智能是 AI 下一前沿」，推出商用世界模型 Marble。',
+        sourceIds: ['wm_feifei_substack_2025', 'wm_worldlabs_about', 'wm_marble_worldlabs_2025'],
+      },
+    ],
+  },
+  {
+    slug: 'embodied-ai',
+    title: 'Embodied AI / VLA',
+    whyNow:
+      '通用机器人策略正成为「物理智能的基础模型」——一个 VLA 策略控制多种机器人、用少量数据特化新任务，开源生态（π0/OpenVLA/LeRobot）成熟。',
+    topics: ['具身智能', 'Agent'],
+    priority: 80,
+    people: [
+      {
+        name: 'Sergey Levine',
+        relation: 'driver',
+        summary: 'UC Berkeley 教授 / Physical Intelligence 联创，VLA 与机器人基础模型领军人，π0/π0.5 共同作者。',
+        sourceIds: ['em_pi0_2024', 'em_levine_twiml_2025'],
+      },
+      {
+        name: 'Chelsea Finn',
+        relation: 'driver',
+        summary: 'Stanford 教授 / Physical Intelligence 联创，π0 共同作者，meta-learning 学术根基，讲机器人基础模型预训练+后训练。',
+        sourceIds: ['em_pi0_2024', 'em_finn_iclr_2025'],
+      },
+      {
+        name: 'Anthony Brohan',
+        relation: 'proposer',
+        summary: 'RT-1 论文一作，奠定「Robotics Transformer」实时离散动作输出范式。',
+        sourceIds: ['em_rt1_2022'],
+      },
+      {
+        name: 'Karol Hausman',
+        relation: 'implementer',
+        summary: 'Physical Intelligence 联创（原 Google DeepMind），RT 系列与 OXE 时期机器人核心研究者。',
+        sourceIds: ['em_pi0_blog_2024'],
+      },
+    ],
+  },
+  {
+    slug: 'harness-engineering',
+    title: 'Harness Engineering',
+    whyNow:
+      '模型外面那层运行框架（loop+工具+上下文+权限+子代理）被独立命名为一门工程学科——Anthropic 称 Claude Agent SDK 为「general-purpose agent harness」。',
+    topics: ['Agent', 'AI 基础设施'],
+    priority: 79,
+    people: [
+      {
+        name: 'Boris Cherny',
+        aliases: ['bcherny'],
+        relation: 'driver',
+        summary: 'Claude Code 创建者/负责人，反复用 "the harness" 阐释 agent loop 与上下文管理为何决定 agent 强弱。',
+        sourceIds: ['ha_boris_pragmatic_2026', 'ha_every_claude_code_2026'],
+      },
+      {
+        name: 'Ofir Press',
+        relation: 'proposer',
+        summary: 'SWE-agent / ACI 论文资深作者，把「接口设计决定 agent 表现」做成实证研究，为 harness 工具层提供学术奠基。',
+        sourceIds: ['ha_swe_agent_aci_2024'],
+      },
+      {
+        name: 'John Yang',
+        aliases: ['john-b-yang'],
+        relation: 'implementer',
+        summary: 'SWE-agent 论文一作，ACI 与 SWE-agent 参考实现主要构建者，连接 harness 学术与开源实现。',
+        sourceIds: ['ha_swe_agent_aci_2024', 'ha_swe_agent_repo'],
+      },
+      {
+        name: 'Shunyu Yao',
+        aliases: ['姚顺雨'],
+        relation: 'proposer',
+        summary: 'ReAct 一作 + SWE-agent 合著，奠定 agent 主循环（reasoning+acting 交错）的理论范式，harness 控制流源头。',
+        sourceIds: ['ha_react_2022'],
+      },
+    ],
+  },
+  {
+    slug: 'autonomous-driving',
+    title: 'Autonomous Driving',
+    whyNow:
+      '端到端范式（Tesla FSD v12 把 30 万行 C++ 换成神经网络）+ 驾驶世界模型（GAIA）+ VLA 驱动驾驶，是 Software 2.0 在自动驾驶最彻底的落地。',
+    topics: ['具身智能', 'AI 产品化'],
+    priority: 81,
+    people: [
+      {
+        name: 'Andrej Karpathy',
+        relation: 'proposer',
+        summary: 'Tesla 前 AI 总监，「Software 2.0」思想源头 + 端到端视觉驾驶布道者，离任后仍对「自动驾驶已解决」持怀疑。',
+        sourceIds: ['ad_karpathy_software2_2017', 'ad_karpathy_warns_2025'],
+      },
+      {
+        name: 'Alex Kendall',
+        relation: 'driver',
+        summary: 'Wayve 联创兼 CEO，提出 AV2.0，用端到端深度学习 + 生成式世界模型（GAIA）重做自动驾驶。',
+        sourceIds: ['ad_wayve_av20', 'ad_kendall_sequoia'],
+      },
+      {
+        name: 'Ashok Elluswamy',
+        relation: 'implementer',
+        summary: 'Tesla Autopilot 软件负责人，主导 Occupancy Networks 与 FSD 端到端化的工程落地。',
+        sourceIds: ['ad_ashok_cvpr_2023'],
+      },
+      {
+        name: 'George Hotz',
+        aliases: ['geohot'],
+        relation: 'implementer',
+        summary: 'comma.ai 创始人，用开源 openpilot 证明低成本端到端驾驶可行，推动行业开放。',
+        sourceIds: ['ad_openpilot_repo'],
+      },
+    ],
+  },
+  {
     slug: 'context-engineering',
     title: 'Context Engineering',
     whyNow:

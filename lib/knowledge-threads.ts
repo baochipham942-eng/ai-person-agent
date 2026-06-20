@@ -21,6 +21,14 @@ import reasoningModelsSourcePack from '@/data/knowledge-threads/reasoning-models
 import agentSecuritySourcePack from '@/data/knowledge-threads/agent-security-sources.candidates.json';
 import computerUseSourcePack from '@/data/knowledge-threads/computer-use-sources.candidates.json';
 import generativeUiSourcePack from '@/data/knowledge-threads/generative-ui-sources.candidates.json';
+import ragSourcePack from '@/data/knowledge-threads/rag-sources.candidates.json';
+import deepResearchSourcePack from '@/data/knowledge-threads/deep-research-sources.candidates.json';
+import modelTrainingSourcePack from '@/data/knowledge-threads/model-training-sources.candidates.json';
+import selfEvolvingSourcePack from '@/data/knowledge-threads/self-evolving-agents-sources.candidates.json';
+import worldModelsSourcePack from '@/data/knowledge-threads/world-models-sources.candidates.json';
+import embodiedAiSourcePack from '@/data/knowledge-threads/embodied-ai-sources.candidates.json';
+import harnessEngineeringSourcePack from '@/data/knowledge-threads/harness-engineering-sources.candidates.json';
+import autonomousDrivingSourcePack from '@/data/knowledge-threads/autonomous-driving-sources.candidates.json';
 
 const REQUIRED_ROLES = [
   'signal',
@@ -42,11 +50,19 @@ const SOURCE_PACK_FIXTURES: SourcePackFixture[] = [
   agentSecuritySourcePack as unknown as SourcePackFixture,
   computerUseSourcePack as unknown as SourcePackFixture,
   generativeUiSourcePack as unknown as SourcePackFixture,
+  ragSourcePack as unknown as SourcePackFixture,
+  deepResearchSourcePack as unknown as SourcePackFixture,
+  modelTrainingSourcePack as unknown as SourcePackFixture,
+  selfEvolvingSourcePack as unknown as SourcePackFixture,
+  worldModelsSourcePack as unknown as SourcePackFixture,
+  embodiedAiSourcePack as unknown as SourcePackFixture,
+  harnessEngineeringSourcePack as unknown as SourcePackFixture,
+  autonomousDrivingSourcePack as unknown as SourcePackFixture,
 ];
 
 let knowledgeThreadStoreReadyPromise: Promise<boolean> | null = null;
 
-/** 11 个 source-pack 主题的 slug（注册表派生，落库/校验脚本复用，避免漂移） */
+/** source-pack 主题的 slug（注册表派生，落库/校验脚本复用，避免漂移） */
 export const SOURCE_PACK_SLUGS: string[] = SOURCE_PACK_FIXTURES.map(p => p.thread.slug);
 
 /** 返回 source-pack 原始数据（落库脚本复用，保证与站点渲染同一份数据） */
@@ -702,7 +718,13 @@ function toKnowledgeSourceRole(value: string): KnowledgeSourceRole {
 }
 
 function toKnowledgeThreadStatus(value: string): KnowledgeThreadStatus {
-  if (value === 'source_pack_review' || value === 'review_ready' || value === 'thin' || value === 'draft') {
+  if (
+    value === 'curated' ||
+    value === 'source_pack_review' ||
+    value === 'review_ready' ||
+    value === 'thin' ||
+    value === 'draft'
+  ) {
     return value;
   }
 

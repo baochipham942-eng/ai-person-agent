@@ -1,0 +1,454 @@
+{
+  "thread": {
+    "slug": "world-models",
+    "title": "World Models (世界模型)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "foundation_models",
+    "tags": [
+      "world-models",
+      "jepa",
+      "genie",
+      "world-simulator",
+      "spatial-intelligence"
+    ],
+    "aliases": [
+      "World Models",
+      "世界模型",
+      "JEPA",
+      "world simulator",
+      "spatial intelligence"
+    ],
+    "definitionDraft": "A world model learns an internal, compressed, predictable and interactive representation of an environment, used to simulate and predict how the world changes in response to actions — not merely to continue text or reconstruct pixels.",
+    "whyNow": "In 2024–2026 world models became an industry mainline: one camp pushes video generation toward “world simulators” (Sora), another argues autoregressive LLMs lack physics/causality and needs JEPA (LeCun), and a third pursues spatial intelligence / 3D world generation (Fei-Fei Li’s World Labs).",
+    "useBoundary": "Focus on whether a model builds a predictable internal representation of the world (JEPA, Genie, video-as-world-simulator, 3D world generation). Exclude pure video-generation aesthetics/quality."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "wm_ha_2018",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Ha & Schmidhuber)",
+      "url": "https://arxiv.org/abs/1803.10122",
+      "title": "World Models",
+      "publishedAt": "2018-03",
+      "whyRelevant": "奠基论文：VAE+RNN 学环境压缩时空表征，智能体在\"梦\"里训练再迁移。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "World Models\n\n奠基论文：VAE+RNN 学环境压缩时空表征，智能体在\"梦\"里训练再迁移。",
+      "urlHash": "21d0184555d4490bff49ca1d0ef111912467dbd0f7c0a4d0fc2841ab37ea1d21"
+    },
+    {
+      "id": "wm_genie_2024",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Bruce et al., Google DeepMind)",
+      "url": "https://arxiv.org/abs/2402.15391",
+      "title": "Genie: Generative Interactive Environments",
+      "publishedAt": "2024-02",
+      "whyRelevant": "11B 基础世界模型，从无标注网络视频学潜动作，逐帧可玩。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Genie: Generative Interactive Environments\n\n11B 基础世界模型，从无标注网络视频学潜动作，逐帧可玩。",
+      "urlHash": "9abc4cf2e547a5169329ea0ea99b1b6ed563c5c5657ba5b4b4367d10748035e7"
+    },
+    {
+      "id": "wm_dreamerv3_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Hafner et al.)",
+      "url": "https://arxiv.org/abs/2301.04104",
+      "title": "Mastering Diverse Domains through World Models (DreamerV3)",
+      "publishedAt": "2023-01",
+      "whyRelevant": "通用世界模型 RL 算法，首个从零在 Minecraft 挖到钻石。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Mastering Diverse Domains through World Models (DreamerV3)\n\n通用世界模型 RL 算法，首个从零在 Minecraft 挖到钻石。",
+      "urlHash": "2969433d69fc1f4a03870f2668a3663a794154f48c6865c8e3d1b67b9f288b06"
+    },
+    {
+      "id": "wm_ijepa_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Assran et al., Meta)",
+      "url": "https://arxiv.org/abs/2301.08243",
+      "title": "I-JEPA: Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture",
+      "publishedAt": "2023-01",
+      "whyRelevant": "JEPA 首个图像落地：在表征空间预测目标块，非生成式。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "I-JEPA: Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture\n\nJEPA 首个图像落地：在表征空间预测目标块，非生成式。",
+      "urlHash": "438c58d1b4f7997583317612a8bd0e6a3002a188da02190b988e26e19cd0eb97"
+    },
+    {
+      "id": "wm_vjepa2_2025",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Meta AI)",
+      "url": "https://arxiv.org/abs/2506.09985",
+      "title": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning",
+      "publishedAt": "2025-06",
+      "whyRelevant": "100 万小时视频预训练 + 机器人轨迹，做潜动作世界模型零样本机械臂规划。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning\n\n100 万小时视频预训练 + 机器人轨迹，做潜动作世界模型零样本机械臂规划。",
+      "urlHash": "aa6f4ec6d386cbb7b77d404f5bfe988d458172edb7b5d4c0905b33df97c82850"
+    },
+    {
+      "id": "wm_jepa_blog",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "ai.meta.com (Yann LeCun)",
+      "url": "https://ai.meta.com/blog/yann-lecun-ai-model-i-jepa/",
+      "title": "A Path Towards Autonomous Machine Intelligence (JEPA / I-JEPA)",
+      "publishedAt": "2023-06",
+      "whyRelevant": "LeCun 蓝图：JEPA 作为\"世界模型模块\"，在抽象嵌入空间预测而非重建像素。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "A Path Towards Autonomous Machine Intelligence (JEPA / I-JEPA)\n\nLeCun 蓝图：JEPA 作为\"世界模型模块\"，在抽象嵌入空间预测而非重建像素。",
+      "urlHash": "1b21ac1647d47114156a17669631167554c6687ed7baa4a7a238955d82d1e7e5"
+    },
+    {
+      "id": "wm_sora_simulator_2024",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/video-generation-models-as-world-simulators/",
+      "title": "Video generation models as world simulators (Sora 技术报告)",
+      "publishedAt": "2024-02",
+      "whyRelevant": "官方主张视频生成 scaling 是通向通用物理世界模拟器的路径。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Video generation models as world simulators (Sora 技术报告)\n\n官方主张视频生成 scaling 是通向通用物理世界模拟器的路径。",
+      "urlHash": "2e934302c61e88be910f66fa2a8f486fc5e7b416bccaf46623751d180e666c8d"
+    },
+    {
+      "id": "wm_genie3_blog_2025",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "deepmind.google",
+      "url": "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/",
+      "title": "Genie 3: A new frontier for world models",
+      "publishedAt": "2025-08",
+      "whyRelevant": "首个实时交互通用世界模型，720p/24fps、文本生成可导航 3D 世界。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Genie 3: A new frontier for world models\n\n首个实时交互通用世界模型，720p/24fps、文本生成可导航 3D 世界。",
+      "urlHash": "aa1c051af9216d9cd0d24db959f6842a6b9c27b9f370104c757a54c6ac279e0c"
+    },
+    {
+      "id": "wm_worldlabs_about",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "worldlabs.ai (Fei-Fei Li 等)",
+      "url": "https://www.worldlabs.ai/about",
+      "title": "World Labs — About / Spatial Intelligence",
+      "publishedAt": "2024",
+      "whyRelevant": "官方自述\"空间智能公司\"，构建感知/生成/推理/交互 3D 的大世界模型。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "World Labs — About / Spatial Intelligence\n\n官方自述\"空间智能公司\"，构建感知/生成/推理/交互 3D 的大世界模型。",
+      "urlHash": "bf922a62dd07672f50a5bab59f77efa77ad8a43e6bfff0af10281e2f967af49a"
+    },
+    {
+      "id": "wm_lecun_mit_2026",
+      "role": "transcript_context",
+      "sourceKind": "news",
+      "sourceOwner": "technologyreview.com",
+      "url": "https://www.technologyreview.com/2026/01/22/1131661/yann-lecuns-new-venture-ami-labs/",
+      "title": "LeCun: $1B to Replace LLMs—Why He Thinks They’re a Dead End",
+      "publishedAt": "2026-01-22",
+      "whyRelevant": "LeCun 离开 Meta 创办 AMI Labs，押注世界模型/JEPA 反对自回归 LLM。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "LeCun: $1B to Replace LLMs—Why He Thinks They’re a Dead End\n\nLeCun 离开 Meta 创办 AMI Labs，押注世界模型/JEPA 反对自回归 LLM。",
+      "urlHash": "ffbb88ee8b0d33f7727a66fa7ff2517f824a07b3a1fcf3715c4e0bfd234c0863"
+    },
+    {
+      "id": "wm_hassabis_decoder",
+      "role": "transcript_context",
+      "sourceKind": "news",
+      "sourceOwner": "the-decoder.com",
+      "url": "https://the-decoder.com/google-deepmind-ceo-demis-hassabi-says-world-models-are-making-progress-toward-agi/",
+      "title": "DeepMind CEO Hassabis: world models making progress toward AGI",
+      "publishedAt": "2025",
+      "whyRelevant": "Hassabis：LLM 缺物理/因果，世界模型 + 自动化实验是 AGI 两大关键。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "DeepMind CEO Hassabis: world models making progress toward AGI\n\nHassabis：LLM 缺物理/因果，世界模型 + 自动化实验是 AGI 两大关键。",
+      "urlHash": "fe8aec53c454ac3a38d89476deaec7c76e5c09bd3df2c3bd51ca2204f14ab464"
+    },
+    {
+      "id": "wm_feifei_substack_2025",
+      "role": "transcript_context",
+      "sourceKind": "blog",
+      "sourceOwner": "drfeifei.substack.com (Fei-Fei Li)",
+      "url": "https://drfeifei.substack.com/p/from-words-to-worlds-spatial-intelligence",
+      "title": "From Words to Worlds: Spatial Intelligence is AI’s Next Frontier",
+      "publishedAt": "2025-11",
+      "whyRelevant": "李飞飞亲笔：LLM\"博学但无身\"，世界模型须尊重几何物理、融合多模。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "From Words to Worlds: Spatial Intelligence is AI’s Next Frontier\n\n李飞飞亲笔：LLM\"博学但无身\"，世界模型须尊重几何物理、融合多模。",
+      "urlHash": "fe4155bdc9e68350b6781e67c9e6acd670bdf963bf364d4b8e607c353c18d9c7"
+    },
+    {
+      "id": "wm_marble_worldlabs_2025",
+      "role": "implementation_signal",
+      "sourceKind": "official_blog",
+      "sourceOwner": "worldlabs.ai",
+      "url": "https://www.worldlabs.ai/blog/marble-world-model",
+      "title": "Marble: A Multimodal World Model",
+      "publishedAt": "2025-11",
+      "whyRelevant": "首个商用世界模型产品：文本/图/视频/全景生成持久可下载 3D 环境。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Marble: A Multimodal World Model\n\n首个商用世界模型产品：文本/图/视频/全景生成持久可下载 3D 环境。",
+      "urlHash": "3325011d5982f3152eaec06058294c2037ecb826a5f90d16c1e023c08618432a"
+    },
+    {
+      "id": "wm_ijepa_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/facebookresearch",
+      "url": "https://github.com/facebookresearch/ijepa",
+      "title": "facebookresearch/ijepa",
+      "publishedAt": null,
+      "whyRelevant": "I-JEPA 官方实现，32×A100 训 ViT-Huge。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "facebookresearch/ijepa\n\nI-JEPA 官方实现，32×A100 训 ViT-Huge。",
+      "urlHash": "8efb9c7c5e87b7bd8d35a674a596b446df4869e0d5f13f17418b663337b53ad2"
+    },
+    {
+      "id": "wm_hardmaru_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/hardmaru",
+      "url": "https://github.com/hardmaru/WorldModelsExperiments",
+      "title": "hardmaru/WorldModelsExperiments",
+      "publishedAt": null,
+      "whyRelevant": "2018 World Models 官方实验代码（CarRacing/ViZDoom dream training）。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "hardmaru/WorldModelsExperiments\n\n2018 World Models 官方实验代码（CarRacing/ViZDoom dream training）。",
+      "urlHash": "39c8860bda7ade2b701a976510e9cea62114e66f3229c49f2bfcf0b9afc5d118"
+    },
+    {
+      "id": "wm_sora_survey_2024",
+      "role": "signal",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Zhu, Wang et al.)",
+      "url": "https://arxiv.org/abs/2405.03520",
+      "title": "Is Sora a World Simulator? A Comprehensive Survey on General World Models",
+      "publishedAt": "2024-05",
+      "whyRelevant": "综述：盘点视频/自动驾驶等通用世界模型全景，质询 Sora 是否真模拟物理。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Is Sora a World Simulator? A Comprehensive Survey on General World Models\n\n综述：盘点视频/自动驾驶等通用世界模型全景，质询 Sora 是否真模拟物理。",
+      "urlHash": "32af21e61fe2f8b26c0f3b60f9c1ee988b0580469898fa6efda26b648e6039af"
+    },
+    {
+      "id": "wm_genie3_techtalks_2025",
+      "role": "signal",
+      "sourceKind": "blog",
+      "sourceOwner": "bdtechtalks.com (Ben Dickson)",
+      "url": "https://bdtechtalks.com/2025/08/07/deepmind-genie-3/",
+      "title": "Genie 3: A new frontier (TechTalks 评测)",
+      "publishedAt": "2025-08-07",
+      "whyRelevant": "第三方解读 Genie 3 的承诺与局限（自回归架构、记忆一致性挑战）。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Genie 3: A new frontier (TechTalks 评测)\n\n第三方解读 Genie 3 的承诺与局限（自回归架构、记忆一致性挑战）。",
+      "urlHash": "c8c131bd943d2b86aa04c8fcb22934e43ba1aebbfc8bfbd351db78dc97f25a39"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "wm_ha_2018",
+      "toId": "wm_genie_2024",
+      "relationType": "foundation_extends",
+      "confidence": 0.85,
+      "evidenceNote": "Genie 把 Ha 的\"压缩时空表征+动态预测\"从单一 RL 环境推广到 11B 基础世界模型。"
+    },
+    {
+      "fromId": "wm_ha_2018",
+      "toId": "wm_dreamerv3_2023",
+      "relationType": "foundation_extends",
+      "confidence": 0.8,
+      "evidenceNote": "Dreamer 系列继承\"在想象/梦中训练策略\"思想，做成通用 RL 算法。"
+    },
+    {
+      "fromId": "wm_jepa_blog",
+      "toId": "wm_ijepa_2023",
+      "relationType": "proposes_implements",
+      "confidence": 0.85,
+      "evidenceNote": "LeCun 的 JEPA 蓝图由 I-JEPA 首次在图像上工程落地。"
+    },
+    {
+      "fromId": "wm_ijepa_2023",
+      "toId": "wm_vjepa2_2025",
+      "relationType": "extends_to_video",
+      "confidence": 0.85,
+      "evidenceNote": "从图像表征预测扩展到视频 + 机器人规划，成动作条件世界模型。"
+    },
+    {
+      "fromId": "wm_sora_simulator_2024",
+      "toId": "wm_sora_survey_2024",
+      "relationType": "claim_critiques",
+      "confidence": 0.8,
+      "evidenceNote": "综述直接质询 Sora 技报的\"世界模拟器\"主张，评估其物理理解程度。"
+    },
+    {
+      "fromId": "wm_sora_simulator_2024",
+      "toId": "wm_lecun_mit_2026",
+      "relationType": "paradigm_opposes",
+      "confidence": 0.75,
+      "evidenceNote": "Sora 代表生成式像素路线，LeCun 主张非生成式 JEPA，构成路线之争。"
+    },
+    {
+      "fromId": "wm_feifei_substack_2025",
+      "toId": "wm_marble_worldlabs_2025",
+      "relationType": "vision_realizes",
+      "confidence": 0.85,
+      "evidenceNote": "李飞飞的\"空间智能\"主张由 World Labs 的 Marble 产品落地为商用世界模型。"
+    },
+    {
+      "fromId": "wm_hassabis_decoder",
+      "toId": "wm_genie3_blog_2025",
+      "relationType": "leader_endorses_product",
+      "confidence": 0.8,
+      "evidenceNote": "Hassabis 把世界模型列为 AGI 关键，Genie 3 是 DeepMind 的旗舰实证。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "wm_hardmaru_repo:source_pack_review"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 17 sources / 8 edges, arXiv ids verified (1803.10122 World Models, 2402.15391 Genie, 2301.04104 DreamerV3, 2301.08243 I-JEPA, 2506.09985 V-JEPA 2, 2405.03520 Sora survey). hardmaru repo at source_pack_review. Roles all >=2."
+  }
+}

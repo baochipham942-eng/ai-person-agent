@@ -8,7 +8,6 @@ import type {
   KnowledgeSourceRole,
   KnowledgeThreadFixture,
   KnowledgeThreadSource,
-  KnowledgeThreadStatus,
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
 import type { ResolvedThreadPerson } from '@/lib/knowledge-thread-people';
 
@@ -51,13 +50,6 @@ const STATUS_STYLES: Record<KnowledgeThreadSource['status'], string> = {
   usable: 'bg-sky-50 text-sky-700 ring-sky-100',
   needs_capture: 'bg-amber-50 text-amber-700 ring-amber-100',
   thin: 'bg-stone-50 text-stone-500 ring-stone-100',
-};
-
-const THREAD_STATUS_LABELS: Record<KnowledgeThreadStatus, string> = {
-  source_pack_review: '来源包复核中',
-  review_ready: '可复核',
-  thin: '证据偏薄',
-  draft: '草稿',
 };
 
 const EDGE_LABELS: Record<string, string> = {
@@ -425,8 +417,7 @@ function DataNote({ thread, coverage }: { thread: KnowledgeThreadFixture; covera
   return (
     <section className="rounded-lg border border-stone-200 bg-stone-50 px-5 py-5">
       <SectionHeading title="数据说明" description="这页的来源覆盖与复核状态，仅用于判断证据成熟度。" />
-      <dl className="grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-4">
-        <Metric label="状态" value={THREAD_STATUS_LABELS[thread.status]} />
+      <dl className="grid grid-cols-3 gap-x-5 gap-y-3">
         <Metric label="可信度" value={`${Math.round(thread.confidence * 100)}%`} />
         <Metric label="来源" value={`${thread.sources.length} 条`} />
         <Metric label="最近复核" value={formatDate(thread.lastReviewedAt)} />

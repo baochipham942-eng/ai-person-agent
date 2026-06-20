@@ -4,18 +4,6 @@ import { CompareReportLauncher } from '@/components/compare/CompareReportLaunche
 import { comparePickSourceCount, type ComparePicks, type ComparePickReport } from '@/lib/compare-picks';
 import type { ThreadHubItem, ThreadsHub } from '@/lib/threads-hub';
 
-/** 就绪度徽标：内部心智，保持安静（stone 系），不喧宾夺主。 */
-const STATUS_CONFIG: Record<string, { label: string }> = {
-  review_ready: { label: '复核就绪' },
-  source_pack_review: { label: '待复核' },
-  thin: { label: '内容偏薄' },
-  draft: { label: '草稿' },
-};
-
-function statusLabel(status: string): string {
-  return STATUS_CONFIG[status]?.label ?? '整理中';
-}
-
 export function ThreadsHubView({ hub, comparePicks }: { hub: ThreadsHub; comparePicks: ComparePicks }) {
   const { items, total } = hub;
 
@@ -80,14 +68,11 @@ function ThreadCard({ item }: { item: ThreadHubItem }) {
       prefetch={false}
       className="flex h-full flex-col rounded-xl border border-stone-200 bg-white p-4 shadow-sm transition-colors hover:border-orange-200"
     >
-      <div className="flex items-start justify-between gap-2">
+      <div className="flex items-start gap-2">
         <h3 className="text-sm font-semibold tracking-tight text-stone-950">
           {item.title}
           {item.subtitle && <span className="ml-1.5 text-xs font-normal text-stone-400">{item.subtitle}</span>}
         </h3>
-        <span className="mt-0.5 flex-shrink-0 rounded-md bg-stone-100 px-1.5 py-0.5 text-[11px] font-medium text-stone-500">
-          {statusLabel(item.status)}
-        </span>
       </div>
 
       {item.blurb && <p className="mt-1.5 line-clamp-3 flex-1 text-xs leading-5 text-stone-500">{item.blurb}</p>}

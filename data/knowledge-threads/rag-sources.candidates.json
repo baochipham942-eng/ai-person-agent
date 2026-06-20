@@ -1,0 +1,454 @@
+{
+  "thread": {
+    "slug": "rag",
+    "title": "Retrieval-Augmented Generation (RAG)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "agentic_infrastructure",
+    "tags": [
+      "retrieval",
+      "rag",
+      "embeddings",
+      "reranking",
+      "grounding"
+    ],
+    "aliases": [
+      "Retrieval-Augmented Generation",
+      "RAG",
+      "检索增强生成",
+      "retrieval augmented generation"
+    ],
+    "definitionDraft": "Retrieval-Augmented Generation connects an LLM to an external non-parametric knowledge store: at generation time a retriever fetches relevant passages and feeds them as context, grounding the answer in citable sources rather than only the model’s parametric memory.",
+    "whyNow": "After the 2024–2025 “long context vs RAG” debate, the consensus is that RAG did not die but evolved—on production retrieval loads it is cheaper and lower-latency than stuffing everything into the window, and remains the main way to ground LLMs in private/real-time data without retraining.",
+    "useBoundary": "Focus on the retrieval engineering chain itself: recall (BM25/dense/hybrid), reranking, chunking, citation grounding and RAG evaluation. Exclude multi-hop autonomous research agents (that is the deep-research thread) and runtime context-window management (context-engineering)."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "rag_lewis_2020",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Lewis et al., FAIR/UCL)",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "publishedAt": "2020-05",
+      "whyRelevant": "RAG 原论文，提出并命名“检索增强生成”，在开放域 QA 上刷 SOTA。",
+      "confidence": 1,
+      "evidenceQuote": "A general-purpose fine-tuning recipe that combines pre-trained parametric memory with non-parametric memory for language generation.",
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks\n\nRAG 原论文，提出并命名“检索增强生成”，在开放域 QA 上刷 SOTA。\n\nEvidence note: A general-purpose fine-tuning recipe that combines pre-trained parametric memory with non-parametric memory for language generation.",
+      "urlHash": "02ad74cdb0c9081ff68958b3398f19f5b946b93f506093ac055d1205158730d7"
+    },
+    {
+      "id": "rag_dpr_2020",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Karpukhin et al., FAIR)",
+      "url": "https://arxiv.org/abs/2004.04906",
+      "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+      "publishedAt": "2020-04",
+      "whyRelevant": "dense 双编码器召回奠基，比 BM25 top-20 高 9–19%，是 RAG 召回支柱。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Dense Passage Retrieval for Open-Domain Question Answering\n\ndense 双编码器召回奠基，比 BM25 top-20 高 9–19%，是 RAG 召回支柱。",
+      "urlHash": "667a262cf6af36336bb2412173212f8c3761db0315112008119fe9aa39923b84"
+    },
+    {
+      "id": "rag_colbert_2020",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Khattab & Zaharia, Stanford)",
+      "url": "https://arxiv.org/abs/2004.12832",
+      "title": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+      "publishedAt": "2020-04",
+      "whyRelevant": "late interaction (MaxSim) 奠基，兼顾 BERT 表达力与可预计算，快两个数量级。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT\n\nlate interaction (MaxSim) 奠基，兼顾 BERT 表达力与可预计算，快两个数量级。",
+      "urlHash": "90e22e44d57e9cfb01375ee8d057fea09f871503eb2999169663f6b22b9e6d2d"
+    },
+    {
+      "id": "rag_ragas_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Es et al.)",
+      "url": "https://arxiv.org/abs/2309.15217",
+      "title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
+      "publishedAt": "2023-09",
+      "whyRelevant": "RAG 评估奠基：无参考的 faithfulness / context relevance 指标套件。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "RAGAS: Automated Evaluation of Retrieval Augmented Generation\n\nRAG 评估奠基：无参考的 faithfulness / context relevance 指标套件。",
+      "urlHash": "ec2d122a43eb963cc17041b238ba13d8a0991a099e05b49aa991f220a4aea96e"
+    },
+    {
+      "id": "rag_nvidia_def",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation/",
+      "title": "What Is Retrieval-Augmented Generation aka RAG",
+      "publishedAt": "2023",
+      "whyRelevant": "最广为引用的工业界 RAG 定义页，强调可引用来源 + 降幻觉。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "What Is Retrieval-Augmented Generation aka RAG\n\n最广为引用的工业界 RAG 定义页，强调可引用来源 + 降幻觉。",
+      "urlHash": "59c016a15499fdd49d723884da129464be04b5b0608d2cc8507d0df724b2cffa"
+    },
+    {
+      "id": "rag_survey_2023",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Gao et al.)",
+      "url": "https://arxiv.org/abs/2312.10997",
+      "title": "Retrieval-Augmented Generation for Large Language Models: A Survey",
+      "publishedAt": "2023-12",
+      "whyRelevant": "最权威 RAG 综述，提出 Naive / Advanced / Modular RAG 范式划分。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Retrieval-Augmented Generation for Large Language Models: A Survey\n\n最权威 RAG 综述，提出 Naive / Advanced / Modular RAG 范式划分。",
+      "urlHash": "2050d0539efac91400f815091a968d533a7b6af0365d01050d6e7645ad53cb3e"
+    },
+    {
+      "id": "rag_llamaindex_concepts",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "developers.llamaindex.ai",
+      "url": "https://developers.llamaindex.ai/python/framework/getting_started/concepts/",
+      "title": "LlamaIndex High-Level Concepts (RAG 定义)",
+      "publishedAt": "2024",
+      "whyRelevant": "官方文档定义 RAG 五步（加载→索引→存储→检索→生成），工程视角权威。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "LlamaIndex High-Level Concepts (RAG 定义)\n\n官方文档定义 RAG 五步（加载→索引→存储→检索→生成），工程视角权威。",
+      "urlHash": "e86a867d547ccd39d7f9f139288089a99d1c315fffae286ee288df12a6609fb2"
+    },
+    {
+      "id": "rag_colbert_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/stanford-futuredata",
+      "url": "https://github.com/stanford-futuredata/ColBERT",
+      "title": "stanford-futuredata/ColBERT",
+      "publishedAt": null,
+      "whyRelevant": "late interaction 检索器参考实现（含 RAGatouille 入口）。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "stanford-futuredata/ColBERT\n\nlate interaction 检索器参考实现（含 RAGatouille 入口）。",
+      "urlHash": "e191364c35cce9658d052d8c83c71c58845a5efe293f1b92f3fd934bf78778b9"
+    },
+    {
+      "id": "rag_dspy_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/stanfordnlp",
+      "url": "https://github.com/stanfordnlp/dspy",
+      "title": "stanfordnlp/dspy",
+      "publishedAt": null,
+      "whyRelevant": "“programming not prompting”，把检索+生成管线声明式编排并自动优化。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "stanfordnlp/dspy\n\n“programming not prompting”，把检索+生成管线声明式编排并自动优化。",
+      "urlHash": "a79ac563bcbf7f50ec08eb3e1dbb50f53a8ad1f7f8ef1dc5c21cabdb410bfe1c"
+    },
+    {
+      "id": "rag_langchain_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/langchain-ai",
+      "url": "https://github.com/langchain-ai/langchain",
+      "title": "langchain-ai/langchain",
+      "publishedAt": null,
+      "whyRelevant": "最主流 RAG 编排框架，retrievers / 向量库集成生态。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "langchain-ai/langchain\n\n最主流 RAG 编排框架，retrievers / 向量库集成生态。",
+      "urlHash": "c5a32632e586ab2c7c9c6b0311eaac2477d26a3be132e9c5b7f260a30728c0b7"
+    },
+    {
+      "id": "rag_cohere_rerank",
+      "role": "implementation_signal",
+      "sourceKind": "official_docs",
+      "sourceOwner": "docs.cohere.com",
+      "url": "https://docs.cohere.com/docs/rerank-overview",
+      "title": "Cohere Rerank Overview",
+      "publishedAt": "2024",
+      "whyRelevant": "商用 rerank 端点官方文档，召回后重排把 top-N 收敛到 top-K。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Cohere Rerank Overview\n\n商用 rerank 端点官方文档，召回后重排把 top-N 收敛到 top-K。",
+      "urlHash": "f436c82ee202753aeab18e0e86db1cc5de3e32b3512782e1d966a421f9bb67b6"
+    },
+    {
+      "id": "rag_dspy_paper",
+      "role": "implementation_signal",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Khattab et al.)",
+      "url": "https://arxiv.org/abs/2310.03714",
+      "title": "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+      "publishedAt": "2023-10",
+      "whyRelevant": "DSPy 方法论论文，把 RAG 管线作为可优化的文本变换图。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines\n\nDSPy 方法论论文，把 RAG 管线作为可优化的文本变换图。",
+      "urlHash": "68647c35a3ccd7ab13e45da1f8414c2005f081c0704f024818588ac30b8cfb4c"
+    },
+    {
+      "id": "rag_anthropic_contextual",
+      "role": "signal",
+      "sourceKind": "official_blog",
+      "sourceOwner": "anthropic.com",
+      "url": "https://www.anthropic.com/news/contextual-retrieval",
+      "title": "Introducing Contextual Retrieval",
+      "publishedAt": "2024-09",
+      "whyRelevant": "chunking 关键信号：上下文化 chunk + BM25 + rerank 叠加，top-20 失败率降 67%。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Introducing Contextual Retrieval\n\nchunking 关键信号：上下文化 chunk + BM25 + rerank 叠加，top-20 失败率降 67%。",
+      "urlHash": "e1c689c17d931261cf75ffa5e1049639e10f3be88fedbb388531b20d98b2ff22"
+    },
+    {
+      "id": "rag_longctx_vs_rag_2025",
+      "role": "signal",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2501.01880",
+      "title": "Long Context vs. RAG for LLMs: An Evaluation and Revisits",
+      "publishedAt": "2025-01",
+      "whyRelevant": "“长上下文 vs RAG”争论的实证再评估，标志 RAG 边界讨论。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "编号已核；作为边界讨论信号保留，结论性表述发布前再核。",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Long Context vs. RAG for LLMs: An Evaluation and Revisits\n\n“长上下文 vs RAG”争论的实证再评估，标志 RAG 边界讨论。\n\n编号已核；作为边界讨论信号保留，结论性表述发布前再核。",
+      "urlHash": "51bae9e081883d22eaa830062424ec454b203e97dcbab32228e7ae662d4441f5"
+    },
+    {
+      "id": "rag_lighton_not_dead_2025",
+      "role": "signal",
+      "sourceKind": "blog",
+      "sourceOwner": "lighton.ai",
+      "url": "https://lighton.ai/lighton-blogs/rag-is-dead-long-live-rag-retrieval-in-the-age-of-agents",
+      "title": "RAG is Dead, Long Live RAG: Retrieval in the Age of Agents",
+      "publishedAt": "2025",
+      "whyRelevant": "行业反驳“RAG 已死”的代表性讨论，agent 时代检索仍是核心。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "RAG is Dead, Long Live RAG: Retrieval in the Age of Agents\n\n行业反驳“RAG 已死”的代表性讨论，agent 时代检索仍是核心。",
+      "urlHash": "29e38ab01e330e442075572c401132ac433d0f6d03959d346d66d34ef15bedb6"
+    },
+    {
+      "id": "rag_lewis_mlst_2024",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "Machine Learning Street Talk",
+      "url": "https://podcasts.apple.com/mm/podcast/patrick-lewis-cohere-retrieval-augmented-generation/id1510472996?i=1000669735527",
+      "title": "Patrick Lewis (Cohere) — Retrieval Augmented Generation (MLST)",
+      "publishedAt": "2024-06",
+      "whyRelevant": "RAG 命名者本人讲 RAG 起源 / 命名 / 评估挑战。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Patrick Lewis (Cohere) — Retrieval Augmented Generation (MLST)\n\nRAG 命名者本人讲 RAG 起源 / 命名 / 评估挑战。",
+      "urlHash": "82eb39520878d88299706aa81a689dfe050e4bf1f8aa830b7eb476c27213998c"
+    },
+    {
+      "id": "rag_jerryliu_latentspace_2023",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "Latent Space (swyx)",
+      "url": "https://www.latent.space/p/llamaindex",
+      "title": "RAG Is A Hack — with Jerry Liu from LlamaIndex",
+      "publishedAt": "2023-10",
+      "whyRelevant": "LlamaIndex CEO 讲为何 RAG 是生产 AI 核心、“text 是通用接口”。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "RAG Is A Hack — with Jerry Liu from LlamaIndex\n\nLlamaIndex CEO 讲为何 RAG 是生产 AI 核心、“text 是通用接口”。",
+      "urlHash": "1430c50fd5e4620e022a6f3e3490671c1069447c5372e014e909fe4323f975ae"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "rag_dpr_2020",
+      "toId": "rag_lewis_2020",
+      "relationType": "foundation_dependency",
+      "confidence": 0.9,
+      "evidenceNote": "DPR 的 dense 双编码器正是 RAG 原论文采用的神经检索器，召回支撑生成。"
+    },
+    {
+      "fromId": "rag_colbert_2020",
+      "toId": "rag_cohere_rerank",
+      "relationType": "technique_lineage",
+      "confidence": 0.75,
+      "evidenceNote": "ColBERT 的 late interaction 细粒度打分是商用 rerank 重排环节的学术先驱。"
+    },
+    {
+      "fromId": "rag_anthropic_contextual",
+      "toId": "rag_cohere_rerank",
+      "relationType": "implements",
+      "confidence": 0.8,
+      "evidenceNote": "Anthropic Contextual Retrieval 实测里 rerank 环节直接用 Cohere reranker。"
+    },
+    {
+      "fromId": "rag_survey_2023",
+      "toId": "rag_lewis_2020",
+      "relationType": "surveys_extends",
+      "confidence": 0.85,
+      "evidenceNote": "综述把原论文的 Naive RAG 作为起点，归纳到 Advanced / Modular RAG 演进谱系。"
+    },
+    {
+      "fromId": "rag_lewis_mlst_2024",
+      "toId": "rag_lewis_2020",
+      "relationType": "author_explains",
+      "confidence": 0.85,
+      "evidenceNote": "原论文一作本人在访谈里讲 RAG 命名由来与评估挑战。"
+    },
+    {
+      "fromId": "rag_ragas_2023",
+      "toId": "rag_anthropic_contextual",
+      "relationType": "evaluates",
+      "confidence": 0.75,
+      "evidenceNote": "RAGAS 的 context relevance / faithfulness 指标正是 Anthropic 那类 chunking / 检索改进所需的量化评估。"
+    },
+    {
+      "fromId": "rag_longctx_vs_rag_2025",
+      "toId": "rag_lighton_not_dead_2025",
+      "relationType": "debates",
+      "confidence": 0.7,
+      "evidenceNote": "学术实证与行业博客就“长上下文能否取代 RAG”形成对话，结论都是 RAG 进化非消亡。"
+    },
+    {
+      "fromId": "rag_dspy_paper",
+      "toId": "rag_dspy_repo",
+      "relationType": "implements",
+      "confidence": 0.85,
+      "evidenceNote": "DSPy 论文方法论由同名开源仓库落地。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "rag_longctx_vs_rag_2025:source_pack_review",
+      "rag_lighton_not_dead_2025:source_pack_review"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 17 sources / 8 edges, all arXiv ids verified online (2005.11401=Lewis RAG, 2004.04906=DPR, 2004.12832=ColBERT, 2309.15217=RAGAS, 2312.10997=survey, 2310.03714=DSPy). 2 signal sources (long-ctx-vs-rag 2501.01880, LightOn) kept at source_pack_review pending exact-claim recheck. Roles all >=2."
+  }
+}

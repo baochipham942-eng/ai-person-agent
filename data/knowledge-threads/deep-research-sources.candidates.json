@@ -1,0 +1,447 @@
+{
+  "thread": {
+    "slug": "deep-research",
+    "title": "Deep Research (调研型 agent)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "agentic_infrastructure",
+    "tags": [
+      "deep-research",
+      "research-agent",
+      "agentic-search",
+      "browsing-agent",
+      "report-generation"
+    ],
+    "aliases": [
+      "Deep Research",
+      "深度研究",
+      "research agent",
+      "DeepSearch",
+      "DeepResearch"
+    ],
+    "definitionDraft": "Deep Research is a class of research agent: given a complex question, the agent autonomously runs a multi-hop loop of plan → iterative web search → read → cross-verify → synthesize a long, cited report, compressing hours of desk research into minutes.",
+    "whyNow": "After Google first shipped it (2024-12) and OpenAI followed (2025-02), Deep Research evolved within a year from a report-writing assistant into an autonomous agent that reasons while it searches and decides how deep to go — the first killer product form that fuses reasoning models with agentic search, and a yardstick (BrowseComp) for long-horizon agent autonomy.",
+    "useBoundary": "Focus on the autonomous multi-hop research loop of a single research task (plan/search/read/verify/synthesize). Exclude general multi-agent collaboration (multi-agent-orchestration) and code-writing agents (agentic-coding)."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "dr_google_deepest_2025",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "techcrunch.com",
+      "url": "https://techcrunch.com/2025/12/11/google-launched-its-deepest-ai-research-agent-yet-on-the-same-day-openai-dropped-gpt-5-2/",
+      "title": "Google launched its deepest AI research agent yet — same day OpenAI dropped GPT-5.2",
+      "publishedAt": "2025-12-11",
+      "whyRelevant": "Google 把 Deep Research 从写报告助手升级为自治研究 agent，巨头同日对垒的竞速信号。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Google launched its deepest AI research agent yet — same day OpenAI dropped GPT-5.2\n\nGoogle 把 Deep Research 从写报告助手升级为自治研究 agent，巨头同日对垒的竞速信号。",
+      "urlHash": "a9e7a2c118574f5531805db40ade09d745de681a3c03822920c1f7f68ced9080"
+    },
+    {
+      "id": "dr_google_max_vb_2026",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "venturebeat.com",
+      "url": "https://venturebeat.com/technology/googles-new-deep-research-and-deep-research-max-agents-can-search-the-web-and-your-private-data",
+      "title": "Google’s new Deep Research and Deep Research Max agents can search the web and your private data",
+      "publishedAt": "2026-04",
+      "whyRelevant": "Deep Research Max 可接 MCP、查私域数据、单任务 100+ 来源，\"整夜跑尽调\"形态成型。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Google’s new Deep Research and Deep Research Max agents can search the web and your private data\n\nDeep Research Max 可接 MCP、查私域数据、单任务 100+ 来源，\"整夜跑尽调\"形态成型。",
+      "urlHash": "8ada2f4f5483c22c6524614582450d066d5a0a5b2f010e3c145fd8bf0af01a58"
+    },
+    {
+      "id": "dr_gemini_first_2024",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "techcrunch.com",
+      "url": "https://techcrunch.com/2024/12/11/gemini-can-now-research-deeper/",
+      "title": "Gemini can now research deeper",
+      "publishedAt": "2024-12-11",
+      "whyRelevant": "Google 首推 Deep Research 品类的起点报道，确立\"agentic 规划 + 浏览\"范式。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Gemini can now research deeper\n\nGoogle 首推 Deep Research 品类的起点报道，确立\"agentic 规划 + 浏览\"范式。",
+      "urlHash": "e10bb668040caaf0860a5e1ea4c28d04f42ab9b1af8bc5e4eef5be02ae23e049"
+    },
+    {
+      "id": "dr_openai_intro",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/introducing-deep-research/",
+      "title": "Introducing deep research",
+      "publishedAt": "2025-02-02",
+      "whyRelevant": "OpenAI 官方发布页，给出权威定义：用 reasoning 综合在线信息完成多步研究。",
+      "confidence": 0.95,
+      "evidenceQuote": "An agent that uses reasoning to synthesize large amounts of online information and complete multi-step research tasks for you.",
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Introducing deep research\n\nOpenAI 官方发布页，给出权威定义：用 reasoning 综合在线信息完成多步研究。\n\nEvidence note: An agent that uses reasoning to synthesize large amounts of online information and complete multi-step research tasks for you.",
+      "urlHash": "8fec3ef3a97d447c9315b85527483dea64fc57018ac4a5491bd077f3db04d611"
+    },
+    {
+      "id": "dr_openai_systemcard",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "openai.com",
+      "url": "https://cdn.openai.com/deep-research-system-card.pdf",
+      "title": "Deep Research System Card",
+      "publishedAt": "2025-02-25",
+      "whyRelevant": "官方系统卡，载明模型基于 o3 早期版优化网页浏览、红队与风险缓解。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Deep Research System Card\n\n官方系统卡，载明模型基于 o3 早期版优化网页浏览、红队与风险缓解。",
+      "urlHash": "8c0f2ac253c46dd9ade7e79ca5ba05f3c1135f9b3b7301163c60ea1d9d5f4b13"
+    },
+    {
+      "id": "dr_google_blog_2024",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "blog.google",
+      "url": "https://blog.google/products/gemini/google-gemini-deep-research/",
+      "title": "Try Deep Research and our new experimental model in Gemini",
+      "publishedAt": "2024-12-11",
+      "whyRelevant": "Google 官方博客，阐述 agentic 规划系统把复杂查询拆成研究计划供用户改。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Try Deep Research and our new experimental model in Gemini\n\nGoogle 官方博客，阐述 agentic 规划系统把复杂查询拆成研究计划供用户改。",
+      "urlHash": "09ddeae52caf38f9c5e924d5157bbb0766275854d695e603c31546f2940949c3"
+    },
+    {
+      "id": "dr_anthropic_multiagent",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "anthropic.com",
+      "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+      "title": "How we built our multi-agent research system",
+      "publishedAt": "2025-06-13",
+      "whyRelevant": "Claude Research 调研产品的官方实现，orchestrator-worker 并行调研架构（比单 agent +90.2%）。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "How we built our multi-agent research system\n\nClaude Research 调研产品的官方实现，orchestrator-worker 并行调研架构（比单 agent +90.2%）。",
+      "urlHash": "a3afc1e8c7c23916e7f5233b4a378e5c105ae1e76050ec2d67149a1eb4a1c512"
+    },
+    {
+      "id": "dr_srinivas_lex_2024",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "Lex Fridman Podcast",
+      "url": "https://lexfridman.com/aravind-srinivas-transcript/",
+      "title": "Aravind Srinivas: Perplexity CEO on Future of AI, Search & the Internet (Lex Fridman #434)",
+      "publishedAt": "2024-06",
+      "whyRelevant": "Perplexity CEO 阐述\"answer engine 而非 search engine\"愿景——Deep Research 的产品哲学源头。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Aravind Srinivas: Perplexity CEO on Future of AI, Search & the Internet (Lex Fridman #434)\n\nPerplexity CEO 阐述\"answer engine 而非 search engine\"愿景——Deep Research 的产品哲学源头。",
+      "urlHash": "a3f1e25e56980dcf07b5a7aa099f5a5a930a37fdcb24986eb3676ff692d448da"
+    },
+    {
+      "id": "dr_perplexity_computer_2026",
+      "role": "transcript_context",
+      "sourceKind": "blog",
+      "sourceOwner": "perplexity.ai",
+      "url": "https://www.perplexity.ai/hub/blog/the-ai-is-the-computer",
+      "title": "The AI is the Computer (Aravind Srinivas)",
+      "publishedAt": "2026-03",
+      "whyRelevant": "Srinivas 阐述把 Deep Research 作为 Perplexity Computer 内的原生 skill。",
+      "confidence": 0.7,
+      "evidenceQuote": null,
+      "reviewNotes": "搜索见，未单独抓取确认正文与日期，发布前补抓。",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "The AI is the Computer (Aravind Srinivas)\n\nSrinivas 阐述把 Deep Research 作为 Perplexity Computer 内的原生 skill。\n\n搜索见，未单独抓取确认正文与日期，发布前补抓。",
+      "urlHash": "2a89868d18e7fb873777e4f0288f3c5ab0420bac31c98e7ce75ac82ac9ca791d"
+    },
+    {
+      "id": "dr_react_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Yao et al., ICLR 2023)",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "publishedAt": "2022-10",
+      "whyRelevant": "推理-行动交错范式奠基，Deep Research\"边想边搜边读\"循环的方法学源头。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "ReAct: Synergizing Reasoning and Acting in Language Models\n\n推理-行动交错范式奠基，Deep Research\"边想边搜边读\"循环的方法学源头。",
+      "urlHash": "7647307fe49844a005ca6dd6c2883016ab3bf2840918166c6764d65c199ffa37"
+    },
+    {
+      "id": "dr_selfask_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Press et al., EMNLP 2023 Findings)",
+      "url": "https://arxiv.org/abs/2210.03350",
+      "title": "Measuring and Narrowing the Compositionality Gap in Language Models (Self-Ask)",
+      "publishedAt": "2022-10",
+      "whyRelevant": "self-ask：把复杂问题自拆成子问题再答——多跳调研\"规划→子查询\"的直接前身。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Measuring and Narrowing the Compositionality Gap in Language Models (Self-Ask)\n\nself-ask：把复杂问题自拆成子问题再答——多跳调研\"规划→子查询\"的直接前身。",
+      "urlHash": "c3814cc588886286b549247639ea02141a9bd01ab822ecc2fd52d4c13cfbdb13"
+    },
+    {
+      "id": "dr_searcho1_2025",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (RUC-NLPIR, EMNLP 2025)",
+      "url": "https://arxiv.org/abs/2501.05366",
+      "title": "Search-o1: Agentic Search-Enhanced Large Reasoning Models",
+      "publishedAt": "2025-01",
+      "whyRelevant": "把 agentic RAG + Reason-in-Documents 嵌入推理链——Deep Research 的学术化骨架。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Search-o1: Agentic Search-Enhanced Large Reasoning Models\n\n把 agentic RAG + Reason-in-Documents 嵌入推理链——Deep Research 的学术化骨架。",
+      "urlHash": "83abcfee17e042454c33a3b161e28d5b0e7be06d2667d64f15e0cf8e7efcda7c"
+    },
+    {
+      "id": "dr_browsecomp_2025",
+      "role": "paper_foundation",
+      "sourceKind": "official_blog",
+      "sourceOwner": "openai.com (Wei et al.)",
+      "url": "https://openai.com/index/browsecomp/",
+      "title": "BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents",
+      "publishedAt": "2025-04",
+      "whyRelevant": "1266 题评测浏览 agent，Deep Research 达 51.5%——衡量\"查多深/多自主\"的标尺。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents\n\n1266 题评测浏览 agent，Deep Research 达 51.5%——衡量\"查多深/多自主\"的标尺。",
+      "urlHash": "785eca3e6476b4a3f084cd57c8a9a7a78d9569962f0002813feb2ff3b46e682b"
+    },
+    {
+      "id": "dr_gptresearcher_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/assafelovic",
+      "url": "https://github.com/assafelovic/gpt-researcher",
+      "title": "assafelovic/gpt-researcher",
+      "publishedAt": null,
+      "whyRelevant": "最流行的开源调研 agent，planner→executors→publisher 流水线，多源带引用长报告。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "assafelovic/gpt-researcher\n\n最流行的开源调研 agent，planner→executors→publisher 流水线，多源带引用长报告。",
+      "urlHash": "d2fc479804301a66d2d8b8cc9d9bbad15d76e7f5f58422212625c40c0e06c892"
+    },
+    {
+      "id": "dr_langchain_odr_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/langchain-ai",
+      "url": "https://github.com/langchain-ai/open_deep_research",
+      "title": "langchain-ai/open_deep_research",
+      "publishedAt": null,
+      "whyRelevant": "LangChain 官方开源 Deep Research agent，跨 LLM/搜索/MCP，登 Deep Research Bench。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "langchain-ai/open_deep_research\n\nLangChain 官方开源 Deep Research agent，跨 LLM/搜索/MCP，登 Deep Research Bench。",
+      "urlHash": "ca97ebd52438c31d8811f0ef5c3732ce9ecc1ad086e663277400422825ddd904"
+    },
+    {
+      "id": "dr_firecrawl_odr_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/nickscamara",
+      "url": "https://github.com/nickscamara/open-deep-research",
+      "title": "nickscamara/open-deep-research (Firecrawl 驱动)",
+      "publishedAt": null,
+      "whyRelevant": "用 Firecrawl 搜索+抽取喂推理模型的开源 Deep Research clone。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "nickscamara/open-deep-research (Firecrawl 驱动)\n\n用 Firecrawl 搜索+抽取喂推理模型的开源 Deep Research clone。",
+      "urlHash": "31a43fa99df85a77a24954e68d215d3c0aaef688c6873a1f12a43924eea68eeb"
+    },
+    {
+      "id": "dr_jina_deepresearch_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/jina-ai",
+      "url": "https://github.com/jina-ai/node-DeepResearch",
+      "title": "jina-ai/node-DeepResearch",
+      "publishedAt": null,
+      "whyRelevant": "Jina DeepSearch：search-read-reason 循环跑到找到答案或耗尽 token 预算。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "jina-ai/node-DeepResearch\n\nJina DeepSearch：search-read-reason 循环跑到找到答案或耗尽 token 预算。",
+      "urlHash": "86a592b5501d571cb30099b39265b1e7e7e411b6ada7a9c4ea0b3ab1a323996a"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "dr_react_2022",
+      "toId": "dr_searcho1_2025",
+      "relationType": "foundation_extends",
+      "confidence": 0.85,
+      "evidenceNote": "Search-o1 把 ReAct 的\"推理-行动交错\"专门用到大推理模型的自主补知识上。"
+    },
+    {
+      "fromId": "dr_selfask_2022",
+      "toId": "dr_openai_intro",
+      "relationType": "method_realized_in",
+      "confidence": 0.75,
+      "evidenceNote": "OpenAI Deep Research 的\"把问题拆成子任务再逐步研究\"正是 self-ask 思想的产品化。"
+    },
+    {
+      "fromId": "dr_browsecomp_2025",
+      "toId": "dr_openai_intro",
+      "relationType": "benchmark_evaluates",
+      "confidence": 0.9,
+      "evidenceNote": "BrowseComp 是 OpenAI 官方用来量化 Deep Research 浏览-检索能力的基准。"
+    },
+    {
+      "fromId": "dr_openai_intro",
+      "toId": "dr_google_blog_2024",
+      "relationType": "competitive_followup",
+      "confidence": 0.85,
+      "evidenceNote": "OpenAI 2025.02 发布是对 Google 2024.12 首推 Deep Research 品类的同台跟进。"
+    },
+    {
+      "fromId": "dr_anthropic_multiagent",
+      "toId": "dr_langchain_odr_repo",
+      "relationType": "architecture_mirrors",
+      "confidence": 0.75,
+      "evidenceNote": "Anthropic orchestrator-worker 并行 subagent 架构与 LangChain 开源实现的多 agent 设计互证。"
+    },
+    {
+      "fromId": "dr_searcho1_2025",
+      "toId": "dr_gptresearcher_repo",
+      "relationType": "concept_to_implementation",
+      "confidence": 0.75,
+      "evidenceNote": "Search-o1 的 agentic search 循环在 gpt-researcher 的 planner→executors→publisher 工程中落地。"
+    },
+    {
+      "fromId": "dr_gemini_first_2024",
+      "toId": "dr_google_max_vb_2026",
+      "relationType": "product_evolution",
+      "confidence": 0.85,
+      "evidenceNote": "同一产品线从 2024.12 写报告助手演进到 2026.04 整夜自治尽调，体现\"自治深度\"递进。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "dr_perplexity_computer_2026:source_pack_review"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 17 sources / 7 edges, arXiv ids verified (2210.03629=ReAct, 2210.03350=Self-Ask, 2501.05366=Search-o1). 1 transcript (perplexity computer blog) at source_pack_review pending fulltext capture. OpenAI urls fetched via firecrawl (corp policy blocked direct WebFetch). Roles all >=2."
+  }
+}

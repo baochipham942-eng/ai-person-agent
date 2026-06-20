@@ -24,7 +24,7 @@ import { searchTavily } from '../../lib/tavily-search';
 import { chatStructuredCompletion, type ChatMessage } from '../../lib/ai/deepseek';
 import { DIRECTORY_TOPICS, normalizeDirectoryTopic } from '../../lib/person-directory-config';
 
-const TARGET_NAMES = ['Charles Packer', 'Joon Sung Park', 'Taranjeet Singh', 'Barry Zhang', 'Mahesh Murag', 'Simon Willison', 'Kai Greshake', 'Tao Yu', 'Erik Schluntz'];
+const TARGET_NAMES = ['Patrick Lewis', 'Douwe Kiela', 'Ofir Press', 'Nathan Lambert', 'Jeff Clune', 'Noah Shinn', 'Guanzhi Wang', 'Jürgen Schmidhuber', 'Anthony Brohan', 'Karol Hausman', 'Alex Kendall', 'George Hotz'];
 const ROLE_CATEGORIES = ['researcher', 'founder', 'engineer', 'professor', 'evangelist'];
 
 interface OfficialLink {

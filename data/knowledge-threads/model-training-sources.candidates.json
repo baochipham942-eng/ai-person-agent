@@ -1,0 +1,456 @@
+{
+  "thread": {
+    "slug": "model-training",
+    "title": "Model Training (全链路)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "foundation_models",
+    "tags": [
+      "pretraining",
+      "post-training",
+      "rlhf",
+      "scaling-laws",
+      "alignment"
+    ],
+    "aliases": [
+      "Model Training",
+      "模型训练",
+      "pretraining",
+      "post-training",
+      "RLHF",
+      "scaling laws"
+    ],
+    "definitionDraft": "Full-stack model training is the complete pipeline that turns a large model from zero parameters into a usable assistant: pre-training (self-supervised next-token prediction governed by scaling laws) followed by post-training / alignment (SFT → RLHF → DPO → RLVR/GRPO).",
+    "whyNow": "After Ilya Sutskever declared at NeurIPS 2024 that \"pre-training as we know it will end\" (data is AI’s fossil fuel and has peaked), the industry’s center of gravity shifted from stacking pre-training data toward post-training / RL / test-time compute — making \"how you train\" the main battleground for capability differences.",
+    "useBoundary": "Focus on the training-side causes: how scaling laws set pre-training scale, how SFT/RLHF/RLVR/GRPO shape a base model into an assistant. Exclude test-time/inference-time methods themselves (reasoning-models thread)."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "mt_kaplan_scaling_2020",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Kaplan et al., OpenAI)",
+      "url": "https://arxiv.org/abs/2001.08361",
+      "title": "Scaling Laws for Neural Language Models",
+      "publishedAt": "2020-01",
+      "whyRelevant": "预训练 scaling laws 奠基：损失随规模/数据/算力呈幂律。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Scaling Laws for Neural Language Models\n\n预训练 scaling laws 奠基：损失随规模/数据/算力呈幂律。",
+      "urlHash": "85f66a6419d173a7d68d58f8c6f42fc89ccd78b56a6df1aa170728a54e94472e"
+    },
+    {
+      "id": "mt_chinchilla_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Hoffmann et al., DeepMind)",
+      "url": "https://arxiv.org/abs/2203.15556",
+      "title": "Training Compute-Optimal Large Language Models (Chinchilla)",
+      "publishedAt": "2022-03",
+      "whyRelevant": "修正 Kaplan：模型与 token 数应等比放大，多数模型欠训。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Training Compute-Optimal Large Language Models (Chinchilla)\n\n修正 Kaplan：模型与 token 数应等比放大，多数模型欠训。",
+      "urlHash": "46fd66187ec3e6aebdb57eb07d2959ed4b6821a43c0233ef37e643caa24bc634"
+    },
+    {
+      "id": "mt_instructgpt_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Ouyang et al., OpenAI)",
+      "url": "https://arxiv.org/abs/2203.02155",
+      "title": "Training language models to follow instructions with human feedback (InstructGPT)",
+      "publishedAt": "2022-03",
+      "whyRelevant": "RLHF 三步法（SFT + 奖励模型 + PPO）奠基，ChatGPT 前身。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Training language models to follow instructions with human feedback (InstructGPT)\n\nRLHF 三步法（SFT + 奖励模型 + PPO）奠基，ChatGPT 前身。",
+      "urlHash": "1098fc60be7ca2b0583a5455c6b06c76965e1b968139829a71e96289e05143f7"
+    },
+    {
+      "id": "mt_dpo_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Rafailov et al., Stanford)",
+      "url": "https://arxiv.org/abs/2305.18290",
+      "title": "Direct Preference Optimization (DPO)",
+      "publishedAt": "2023-05",
+      "whyRelevant": "免奖励模型直接优化偏好，把 RLHF 化简为分类损失。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Direct Preference Optimization (DPO)\n\n免奖励模型直接优化偏好，把 RLHF 化简为分类损失。",
+      "urlHash": "d5a5216fcde8733bf2dc925bdc1c591bc989e6e6fbc4df453dbfb659d1465171"
+    },
+    {
+      "id": "mt_grpo_deepseekmath_2024",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Shao et al., DeepSeek)",
+      "url": "https://arxiv.org/abs/2402.03300",
+      "title": "DeepSeekMath (GRPO 出处)",
+      "publishedAt": "2024-02",
+      "whyRelevant": "GRPO 算法首次提出，比 PPO 更省显存的组相对优化。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "DeepSeekMath (GRPO 出处)\n\nGRPO 算法首次提出，比 PPO 更省显存的组相对优化。",
+      "urlHash": "3e01248237a0b7ee1236eefdeea98de6ddeb45b021861896f3e916435f981b42"
+    },
+    {
+      "id": "mt_ppo_2017",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Schulman et al., OpenAI)",
+      "url": "https://arxiv.org/abs/1707.06347",
+      "title": "Proximal Policy Optimization Algorithms (PPO)",
+      "publishedAt": "2017-07",
+      "whyRelevant": "RLHF 默认 RL 算法的源头，后训练 RL 的底层引擎。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Proximal Policy Optimization Algorithms (PPO)\n\nRLHF 默认 RL 算法的源头，后训练 RL 的底层引擎。",
+      "urlHash": "40de426bfa4c85b7edae809adb7dd752f1b701faa504d7e964ecf1ae14935e52"
+    },
+    {
+      "id": "mt_deepseek_v3_2024",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (DeepSeek-AI)",
+      "url": "https://arxiv.org/abs/2412.19437",
+      "title": "DeepSeek-V3 Technical Report",
+      "publishedAt": "2024-12",
+      "whyRelevant": "671B MoE，14.8T token 预训练 + SFT + RL，全链路成本工程范本。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "DeepSeek-V3 Technical Report\n\n671B MoE，14.8T token 预训练 + SFT + RL，全链路成本工程范本。",
+      "urlHash": "de539966b9f54c2cdd8daa1891dde9d0c30a5ef629a3a04e2db0a83688bddc65"
+    },
+    {
+      "id": "mt_deepseek_r1_2025",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (DeepSeek-AI)",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via RL",
+      "publishedAt": "2025-01",
+      "whyRelevant": "纯 RL(GRPO) 即可涌现 CoT，训练侧造就推理能力。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via RL\n\n纯 RL(GRPO) 即可涌现 CoT，训练侧造就推理能力。",
+      "urlHash": "4cd8fde22db0b147d8d4f542a00ce4bb5f251e7a36d0c2ae5cab4cef056e446a"
+    },
+    {
+      "id": "mt_instructgpt_blog_2022",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "openai.com",
+      "url": "https://openai.com/index/instruction-following/",
+      "title": "Aligning language models to follow instructions (InstructGPT 官方博客)",
+      "publishedAt": "2022-01",
+      "whyRelevant": "RLHF 落地为 API 默认模型的官方说明。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Aligning language models to follow instructions (InstructGPT 官方博客)\n\nRLHF 落地为 API 默认模型的官方说明。",
+      "urlHash": "8a8adbe043cdfc2945f261ae0f8d91041b49c2f4d7af7e8508b87d297b5504de"
+    },
+    {
+      "id": "mt_llama3_2024",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Meta AI)",
+      "url": "https://arxiv.org/abs/2407.21783",
+      "title": "The Llama 3 Herd of Models",
+      "publishedAt": "2024-07",
+      "whyRelevant": "开放权重旗舰的预训练数据 + 后训练流程完整披露。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "The Llama 3 Herd of Models\n\n开放权重旗舰的预训练数据 + 后训练流程完整披露。",
+      "urlHash": "ea6afdae27cfb441680aa53f74a8ef9fcf484a82589f48878d8044c3385686f3"
+    },
+    {
+      "id": "mt_ilya_neurips_2024",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "techmeme.com (Ilya Sutskever @ NeurIPS 2024)",
+      "url": "https://www.techmeme.com/241213/p33",
+      "title": "Ilya Sutskever NeurIPS 2024: \"Pre-training as we know it will end\" (peak data)",
+      "publishedAt": "2024-12-13",
+      "whyRelevant": "预训练范式见顶信号，重心转向后训练/RL/推理时算力。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Ilya Sutskever NeurIPS 2024: \"Pre-training as we know it will end\" (peak data)\n\n预训练范式见顶信号，重心转向后训练/RL/推理时算力。",
+      "urlHash": "05ddf5f7edf132f8b7f992fa276893e27a6c36605f1ad8e328c7425be658caa9"
+    },
+    {
+      "id": "mt_tulu3_2024",
+      "role": "signal",
+      "sourceKind": "official_blog",
+      "sourceOwner": "allenai.org",
+      "url": "https://allenai.org/blog/tulu-3-technical",
+      "title": "Tülu 3: The next era in open post-training",
+      "publishedAt": "2024-11-21",
+      "whyRelevant": "全开源后训练四阶段配方 SFT→DPO→RLVR，开源后训练崛起的信号。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Tülu 3: The next era in open post-training\n\n全开源后训练四阶段配方 SFT→DPO→RLVR，开源后训练崛起的信号。",
+      "urlHash": "24aefc391976c235ba769d5a17f92a644c8149da858ef0b28ca7f1a0d52774d7"
+    },
+    {
+      "id": "mt_schulman_dwarkesh_2024",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "Dwarkesh Podcast",
+      "url": "https://www.dwarkesh.com/p/john-schulman",
+      "title": "John Schulman — Reasoning, RLHF & plan for 2027 AGI",
+      "publishedAt": "2024-05-15",
+      "whyRelevant": "PPO/RLHF 创造者亲述后训练如何\"驯服 shoggoth\"。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "永久链高置信，落盘前再 fetch 确认 200。",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "John Schulman — Reasoning, RLHF & plan for 2027 AGI\n\nPPO/RLHF 创造者亲述后训练如何\"驯服 shoggoth\"。\n\n永久链高置信，落盘前再 fetch 确认 200。",
+      "urlHash": "8e8dcf94ec6c09f4a2dfbba800eb57a6c4ae0e57b175bde11abc6d71c29b6bf1"
+    },
+    {
+      "id": "mt_karpathy_deepdive_2025",
+      "role": "transcript_context",
+      "sourceKind": "video",
+      "sourceOwner": "YouTube (Andrej Karpathy)",
+      "url": "https://www.youtube.com/watch?v=7xTGNNLPyMI",
+      "title": "Deep Dive into LLMs like ChatGPT",
+      "publishedAt": "2025-02-05",
+      "whyRelevant": "Base→SFT→RLHF 三阶段最权威科普，附 \"RLHF is just barely RL\" 论点。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "视频 ID 高置信，落盘前再确认在线。",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Deep Dive into LLMs like ChatGPT\n\nBase→SFT→RLHF 三阶段最权威科普，附 \"RLHF is just barely RL\" 论点。\n\n视频 ID 高置信，落盘前再确认在线。",
+      "urlHash": "5e8de1a6f5db3d250c58e2bfc4ac2c7f7051955b29e8e9df8ab07144b4c1fa9e"
+    },
+    {
+      "id": "mt_nanogpt_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/karpathy",
+      "url": "https://github.com/karpathy/nanoGPT",
+      "title": "karpathy/nanoGPT",
+      "publishedAt": null,
+      "whyRelevant": "~300 行复现 GPT-2 预训练，理解预训练循环的最小范本。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "karpathy/nanoGPT\n\n~300 行复现 GPT-2 预训练，理解预训练循环的最小范本。",
+      "urlHash": "39d104513439a1b8bce8927b8c368eb21f599ef6e6a42135e2150393a3c719dc"
+    },
+    {
+      "id": "mt_trl_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/huggingface",
+      "url": "https://github.com/huggingface/trl",
+      "title": "huggingface/trl — Transformer Reinforcement Learning",
+      "publishedAt": null,
+      "whyRelevant": "SFTTrainer/DPOTrainer/GRPOTrainer 一站式后训练栈。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "huggingface/trl — Transformer Reinforcement Learning\n\nSFTTrainer/DPOTrainer/GRPOTrainer 一站式后训练栈。",
+      "urlHash": "29825e1ad16188eb350f5761523cc903d6c79a330d426a05a124ea1bbdcd0f92"
+    },
+    {
+      "id": "mt_open_instruct_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/allenai",
+      "url": "https://github.com/allenai/open-instruct",
+      "title": "allenai/open-instruct (Tülu 3 训练代码库)",
+      "publishedAt": null,
+      "whyRelevant": "RLVR/DPO/SFT 全开源后训练实现，配 Tülu 3 论文。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "allenai/open-instruct (Tülu 3 训练代码库)\n\nRLVR/DPO/SFT 全开源后训练实现，配 Tülu 3 论文。",
+      "urlHash": "6fe1c45d4258f82197b59cd6997d936e1ef17b5bcabf4ef96a753f294a822816"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "mt_chinchilla_2022",
+      "toId": "mt_kaplan_scaling_2020",
+      "relationType": "corrects_refines",
+      "confidence": 0.9,
+      "evidenceNote": "Chinchilla 修正 Kaplan 的算力分配结论，指出模型与数据应等比放大。"
+    },
+    {
+      "fromId": "mt_instructgpt_2022",
+      "toId": "mt_ppo_2017",
+      "relationType": "builds_on",
+      "confidence": 0.9,
+      "evidenceNote": "InstructGPT 的 RLHF 第三步直接用 Schulman 的 PPO 做策略优化。"
+    },
+    {
+      "fromId": "mt_dpo_2023",
+      "toId": "mt_instructgpt_2022",
+      "relationType": "simplifies_alternative",
+      "confidence": 0.85,
+      "evidenceNote": "DPO 把 InstructGPT 的\"奖励模型+PPO\"两步化简为单一分类损失。"
+    },
+    {
+      "fromId": "mt_deepseek_r1_2025",
+      "toId": "mt_grpo_deepseekmath_2024",
+      "relationType": "builds_on",
+      "confidence": 0.9,
+      "evidenceNote": "R1 直接采用 DeepSeekMath 提出的 GRPO 作为 RL 框架。"
+    },
+    {
+      "fromId": "mt_deepseek_r1_2025",
+      "toId": "mt_deepseek_v3_2024",
+      "relationType": "builds_on",
+      "confidence": 0.9,
+      "evidenceNote": "R1 以 V3-Base 为底座做纯 RL 后训练。"
+    },
+    {
+      "fromId": "mt_trl_repo",
+      "toId": "mt_grpo_deepseekmath_2024",
+      "relationType": "implements",
+      "confidence": 0.85,
+      "evidenceNote": "TRL 的 GRPOTrainer 实现了 DeepSeek 提出、用于训 R1 的 GRPO。"
+    },
+    {
+      "fromId": "mt_tulu3_2024",
+      "toId": "mt_dpo_2023",
+      "relationType": "implements_extends",
+      "confidence": 0.8,
+      "evidenceNote": "Tülu 3 四阶段配方把 DPO 串进 SFT→DPO→RLVR 流水线。"
+    },
+    {
+      "fromId": "mt_ilya_neurips_2024",
+      "toId": "mt_chinchilla_2022",
+      "relationType": "challenges_context",
+      "confidence": 0.7,
+      "evidenceNote": "\"peak data\" 宣告 Chinchilla 式\"加数据加规模\"范式逼近天花板。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "mt_schulman_dwarkesh_2024:source_pack_review",
+      "mt_karpathy_deepdive_2025:source_pack_review"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 18 sources / 8 edges, all arXiv ids verified (2001.08361 Kaplan, 2203.15556 Chinchilla, 2203.02155 InstructGPT, 2305.18290 DPO, 2402.03300 GRPO, 1707.06347 PPO, 2412.19437 V3, 2501.12948 R1, 2407.21783 Llama3). 2 transcripts (Schulman/Karpathy) at source_pack_review pending re-fetch. Roles all >=2."
+  }
+}

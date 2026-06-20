@@ -567,6 +567,398 @@ const THREAD_PRESENTATIONS: Record<string, ThreadPresentation> = {
       '评测覆盖的是单轮输出，还是能评多步 agent 的完整轨迹和工具调用。',
     ],
   },
+  rag: {
+    title: 'Retrieval-Augmented Generation (RAG)',
+    subtitle: '检索增强生成',
+    valueProp:
+      'RAG 让大模型「开卷答题」——回答前先用检索器从外部知识库取回相关段落、作为上下文喂给模型，把幻觉换成可溯源的事实。它最早由 Lewis et al.（2005.11401, 2020）系统提出，定义为「结合参数化记忆与非参数化记忆的语言生成」，核心工程链是召回（BM25/dense/hybrid）→ 重排（rerank）→ 切块（chunking）→ 引用 grounding → 评估。',
+    problem:
+      '把外部知识接进 LLM 不是「塞进 prompt」那么简单：召回不准、chunk 切坏、重排缺位、没有引用与评估，都会让答案漂移或幻觉。2024–2025 的「长上下文是否取代 RAG」之争后，业界共识是 RAG 没死而是进化——在生产检索负载上比堆长上下文更省更快，仍是给模型接私有/实时数据的主路径。要分清它和「上下文工程」（运行时窗口里塞什么）、「深度研究」（多跳自主调研）是不同的层。',
+    whyRead:
+      '这页用 RAG 原论文、DPR/ColBERT 召回奠基、RAG 综述与 RAGAS 评估、Anthropic Contextual Retrieval、LlamaIndex/DSPy/LangChain/Cohere 工程入口，把 RAG 钉在一手来源上，帮你分清真有「召回→重排→切块→引用→评估」完整链路的做法，和只会接一条基础 retriever 的 demo。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'Anthropic Contextual Retrieval 把上下文化 chunk + BM25 + rerank 叠加，top-20 失败率降 67%；「长上下文 vs RAG」之争与「RAG 已死/未死」讨论标记了这条线的边界在被重新划定。',
+        takeaway: '信号说方向，结论要回到召回/重排/评估的真实做法。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'NVIDIA 给出最广引用的工业界定义（可引用来源 + 降幻觉）；RAG 综述（2312.10997）划分 Naive/Advanced/Modular RAG；LlamaIndex 文档定义 RAG 五步。',
+        takeaway: '看它讲的是完整检索链路，还是停在「接个向量库」。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'RAG 命名者 Patrick Lewis（MLST）讲 RAG 起源与评估挑战；Jerry Liu（Latent Space）讲为何 RAG 是生产 AI 核心、「text 是通用接口」。',
+        takeaway: '访谈补动机，不替代对工程链路的判断。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'RAG 原论文（2005.11401）参数化+非参数化记忆结合；DPR（2004.04906）dense 召回；ColBERT（2004.12832）late interaction；RAGAS（2309.15217）无参考评估。',
+        takeaway: '看清它的召回/重排/评估属于哪条谱系，别把「接 retriever」当 RAG 全部。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'ColBERT / DSPy（Stanford）、LangChain 编排、Cohere Rerank 端点是把召回、声明式管线、重排落到可复用实现的入口。',
+        takeaway: '有召回器 + 重排 + 可优化管线，才算真落地。',
+      },
+    },
+    loopSteps: [
+      { title: '召回', body: '用 BM25（稀疏）、dense 向量或 hybrid 检索，从知识库取回候选段落——召回不准，后面全白搭。' },
+      { title: '重排', body: '用 reranker（如 Cohere Rerank、ColBERT late interaction）把 top-N 候选收敛到真正相关的 top-K。' },
+      { title: '切块', body: 'chunking 策略决定证据粒度；上下文化 chunk（Contextual Retrieval）能显著降低召回失败率。' },
+      { title: '引用 grounding', body: '把检索到的段落作为上下文喂给模型，并让答案绑定可溯源的引用，而不是凭参数记忆作答。' },
+      { title: '评估回归', body: '用 RAGAS 等做 faithfulness / context relevance 评估，把「检索准不准、答得实不实」变成可回归指标。' },
+    ],
+    readerCanJudge: [
+      '它讲的是完整检索链路（召回→重排→切块→引用→评估），还是只接了一条基础 retriever。',
+      '它有没有处理 chunking 与重排——这两环常被跳过，却是召回质量的关键。',
+      '它有没有 RAG 评估（faithfulness/上下文相关性），还是只靠「看起来答对了」。',
+    ],
+  },
+  'deep-research': {
+    title: 'Deep Research',
+    subtitle: '深度研究',
+    valueProp:
+      'Deep Research 是一类「调研型 agent」：给一个复杂问题，AI 自己规划、反复联网搜读、交叉验证，最后产出一份带引用的长报告——把数小时的桌面调研压成几分钟。OpenAI 官方定义是「用 reasoning 综合海量在线信息、替你完成多步研究任务的 agent」。',
+    problem:
+      'Google 2024.12 首发、OpenAI 2025.02 跟进后，Deep Research 在一年内从「会写报告的助手」演进为「能边查边推理、自主决定查多深」的自治 agent。它是把「推理模型 + agentic 搜索」两条线收口的第一个杀手级产品形态，也是检验 agent 长程自治能力的标尺（BrowseComp）。要和「多智能体编排」（多 agent 协作）、「智能体写代码」（写码 agent）分清——它是单一调研任务的深度。',
+    whyRead:
+      '这页用 OpenAI/Google 官方发布与系统卡、Anthropic 多 agent 调研工程博客、ReAct/Self-Ask/Search-o1 奠基论文、BrowseComp 基准，以及 gpt-researcher/open_deep_research 等开源实现，把 Deep Research 钉在一手来源上，帮你分清真有「规划→搜→读→验证→综合」自治循环的产品，和只会拼几条搜索结果的。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'Google 把 Deep Research 从写报告助手升级为整夜自治尽调（Deep Research Max 单任务 100+ 来源），巨头同台竞速本身是最强信号。',
+        takeaway: '信号说趋势，结论要回到自治循环的真实做法。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'OpenAI 定义为「用 reasoning 综合在线信息完成多步研究的 agent」；Google 强调 agentic 规划把复杂查询拆成研究计划；Anthropic 公开 orchestrator-worker 调研架构。',
+        takeaway: '看它讲不讲清规划+自主浏览+综合，而非只说「会搜资料」。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'Perplexity CEO Aravind Srinivas 讲「answer engine 而非 search engine」的产品哲学，是 Deep Research 的愿景源头。',
+        takeaway: '访谈补动机，不替代对自治循环的判断。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'ReAct（2210.03629）推理-行动交错、Self-Ask（2210.03350）子问题自拆、Search-o1（2501.05366）agentic 搜索嵌入推理链、BrowseComp 浏览基准。',
+        takeaway: '看清它的自治循环属于哪条谱系，别把单次搜索当 Deep Research。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'gpt-researcher（planner→executors→publisher）、LangChain open_deep_research、Jina DeepSearch 是把自治调研循环落到可复用实现的入口。',
+        takeaway: '能多跳搜读、带引用产报告，才算真落地。',
+      },
+    },
+    loopSteps: [
+      { title: '规划', body: 'agent 把复杂问题拆成研究计划/子问题（self-ask），而不是一次搜索就答。' },
+      { title: '迭代搜索', body: '按计划反复联网检索，边查边决定下一步查什么（ReAct 式推理-行动交错）。' },
+      { title: '阅读与抽取', body: '打开网页、读全文、抽取证据，而不是只看搜索摘要。' },
+      { title: '交叉验证', body: '对照多个来源核实，发现冲突就再查，逼近可靠结论。' },
+      { title: '综合带引用报告', body: '把证据综合成结构化长报告，每条结论绑定可溯源引用。' },
+    ],
+    readerCanJudge: [
+      '它是真·多跳自治调研（规划→搜→读→验证→综合），还是一次搜索拼几条结果。',
+      '它会不会边查边推理、自主决定查多深，还是固定步数的模板。',
+      '产出有没有可溯源引用和交叉验证，还是无源的长文。',
+    ],
+  },
+  'model-training': {
+    title: 'Model Training',
+    subtitle: '模型训练',
+    valueProp:
+      '模型训练讲的是一个基础模型怎么从零被预训练出来、再被 SFT/RLHF/RLVR 调教成有用助手的全链路：预训练（自监督下一词预测，规模由 scaling laws 支配）→ 后训练/对齐（SFT → RLHF → DPO → RLVR/GRPO）。InstructGPT 证明 1.3B 经 RLHF 的模型输出比 175B 的 GPT-3 更受偏好。',
+    problem:
+      '当 Ilya Sutskever 在 NeurIPS 2024 宣告「我们所知的预训练将终结」（数据是 AI 的化石燃料、已达峰值），行业重心从「堆预训练数据」转向「后训练/RL/推理时算力」，「怎么训」成了模型能力差异的主战场。要和「推理模型」分清——那条讲推理时算力这个结果，这条讲训练侧成因（GRPO 怎么训出 R1、scaling law 怎么定预训练规模）。',
+    whyRead:
+      '这页用 Scaling Laws/Chinchilla/InstructGPT/DPO/GRPO/PPO 奠基论文、DeepSeek-V3/R1 与 Llama 3 技术报告、Tülu 3 开源后训练配方、Schulman/Karpathy 的讲解，以及 nanoGPT/TRL/open-instruct 训练栈，把全链路训练钉在一手来源上。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'Ilya「预训练见顶」宣告 + Tülu 3 开源后训练四阶段配方，标记重心从预训练转向后训练/RL。',
+        takeaway: '信号说方向在转，结论要回到训练方法的真实差异。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'DeepSeek-V3（671B MoE 全链路）、DeepSeek-R1（纯 RL 涌现推理）、InstructGPT 官方博客、Llama 3 报告披露真实预训练+后训练流程。',
+        takeaway: '看它讲的是哪一段训练，别把「微调」当全链路。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'PPO/RLHF 创造者 John Schulman 亲述后训练；Karpathy 用 Base→SFT→RLHF 三阶段框架权威科普。',
+        takeaway: '访谈补直觉，不替代对论文方法的核对。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'Scaling Laws（2001.08361）/ Chinchilla（2203.15556）定预训练规模；InstructGPT（2203.02155）RLHF 奠基；DPO（2305.18290）化简；GRPO（2402.03300）省显存 RL；PPO（1707.06347）底层引擎。',
+        takeaway: '看清预训练 scaling 与后训练 RL 这两条主线的真实谱系。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'nanoGPT（预训练最小范本）、TRL（SFT/DPO/GRPO 一站式）、open-instruct（Tülu 3 全开源后训练）是把训练落到可跑代码的入口。',
+        takeaway: '能跑通预训练循环和后训练栈，才算真落地。',
+      },
+    },
+    loopSteps: [
+      { title: '预训练', body: '在海量文本上自监督下一词预测，规模由 scaling laws / Chinchilla 决定模型与数据的等比配比。' },
+      { title: 'SFT 监督微调', body: '用人工示范数据让基础模型学会「听话」做任务，是后训练第一步。' },
+      { title: 'RLHF / 偏好对齐', body: '用人类偏好训奖励模型 + PPO 优化（InstructGPT），或 DPO 直接优化偏好免奖励模型。' },
+      { title: 'RLVR / GRPO', body: '用可验证奖励做 RL（GRPO），DeepSeek-R1 证明纯 RL 即可涌现推理能力。' },
+      { title: '评估与迭代', body: '在 benchmark 上度量能力与对齐，回到配方某一环继续调。' },
+    ],
+    readerCanJudge: [
+      '它讲的是全链路（预训练 scaling + 后训练 RL），还是只说了「微调」一段。',
+      '它的后训练用的是 RLHF/DPO/GRPO 哪条路线，取舍清不清楚。',
+      '能力主张有没有真实技术报告和可复现训练栈支撑，还是只有发布稿口径。',
+    ],
+  },
+  'self-evolving-agents': {
+    title: 'Self-Evolving Agents',
+    subtitle: '自进化智能体',
+    valueProp:
+      '自进化 agent 系统让 AI 在跑任务的过程中自己反思、攒技能、改代码，越用越强——而不是出厂即定型。改进发生在权重之外：语言反思修正行为（Reflexion）、积累可复用技能库（Voyager）、乃至自动改写自己的提示、工具与代码（Darwin Gödel Machine）。',
+    problem:
+      '现有 agent 多依赖人工配置、部署后保持静态，限制了对动态环境的适应。2025 年 Darwin Gödel Machine 让 agent 自我改写代码、SWE-bench 从 20% 升到 50%，首次工程证明「开放式递归自我改进」对编码 agent 可实现。要和「循环工程」分清——那是人设计自动循环跑任务，这条是 agent 改自己；也和「模型训练」的训练侧 self-reward 分清——这条是运行时、权重之外的自我改进。',
+    whyRead:
+      '这页用 Reflexion / Voyager / STaR / Self-Refine 奠基论文、Darwin Gödel Machine 与 ADAS、两篇自进化 agent 综述、Jeff Clune 讲座，以及官方开源实现，把这个高度前沿、最容易出假源的主题钉在逐条核对过的一手来源上。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'MIT Tech Review 把「AI 自我改进」列为 2025 定义性方向；Sakana 的 Darwin Gödel Machine 给出 SWE-bench 20%→50% 的自我改进硬证据。',
+        takeaway: '信号说方向，结论要回到自我改进发生在哪一层（反思/技能/改码）。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'Darwin Gödel Machine 定义「维护变体谱系、经验证改进的自改代码 agent」；ADAS 定义「meta agent 编程出更强 agent」；两篇综述给出统一的反馈闭环框架。',
+        takeaway: '看它的自我改进是有验证闭环，还是只喊「会进化」。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'Jeff Clune（DGM/ADAS/AI Scientist 作者）讲开放式算法三支柱；Jim Fan（Voyager 团队）讲终身学习 agent 如何自我改进。',
+        takeaway: '一手作者讲动机，不替代对验证机制的判断。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'Reflexion（2303.11366）语言反思、Voyager（2305.16291）技能积累、STaR（2203.14465）自举推理、Self-Refine（2303.17651）自我精炼、Gödel Machine（Schmidhuber）理论谱系。',
+        takeaway: '看清它属于反思/技能/改码哪条谱系，别把一次 self-refine 当递归自我改进。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'noahshinn/reflexion、MineDojo/Voyager、jennyzzt/dgm 官方开源，是把自我改进机制落到可运行实现的入口。',
+        takeaway: '有可跑的自反思/技能库/自改码实现，才算真落地。',
+      },
+    },
+    loopSteps: [
+      { title: '执行与观察', body: 'agent 跑任务，从环境反馈/测试结果里拿到「这次做得怎样」的信号。' },
+      { title: '自我反思', body: '用语言把失败原因写进 episodic memory（Reflexion），不更新权重就改进下一轮决策。' },
+      { title: '技能积累', body: '把验证成功的行为固化成可复用 skill（Voyager 的代码 skill library），越攒越强。' },
+      { title: '自改提示/工具/代码', body: '更激进的形态（DGM）让 agent 改写自己的提示、工具乃至代码，经验证才保留。' },
+      { title: '验证留存', body: '所有自我改进都要经验证（测试/基准）才纳入，避免越改越坏——这是和空话的分界线。' },
+    ],
+    readerCanJudge: [
+      '它的自我改进发生在哪一层——语言反思、技能积累，还是真的自改代码，验证闭环清不清楚。',
+      '是 agent 改自己（自进化），还是人设计的自动循环（loop-engineering），两者差一层。',
+      '引用的论文/仓库是真实可核（Reflexion 2303.11366、Voyager 2305.16291、DGM 2505.22954），还是凭空捏的 arXiv。',
+    ],
+  },
+  'world-models': {
+    title: 'World Models',
+    subtitle: '世界模型',
+    valueProp:
+      '世界模型让 AI 在脑内建一个可预测、可交互的「世界」——不是续写文字，而是模拟「做这个动作世界会怎样」。技术起点是 Ha & Schmidhuber 2018：用无监督方式学环境的压缩时空表征，智能体甚至能完全在自己「做的梦」里训练策略再迁移回真实环境。',
+    problem:
+      '2024–2026 世界模型成为产业主线，且分成三派路线之争：一派把视频生成推到「世界模拟器」（Sora）；一派认为纯自回归 LLM 缺物理/因果/空间理解、必须另起炉灶走 JEPA（LeCun，2026 离 Meta 创 AMI Labs 押注于此）；第三派是李飞飞的空间智能/3D 世界生成（World Labs）。这页帮你分清这三条路线，而不是把「会生成视频」就当世界模型。',
+    whyRead:
+      '这页用 Ha & Schmidhuber 奠基论文、Genie / DreamerV3 / I-JEPA / V-JEPA 2 论文、Sora 世界模拟器技报与 Genie 3 / World Labs 官方、LeCun/Hassabis/李飞飞的一手论述，把世界模型从流行词拉回三条可验证的技术路线。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: '「Is Sora a World Simulator?」综述质询视频生成是否真模拟物理；Genie 3 第三方评测点出自回归架构的记忆一致性挑战——边界正在被重新划定。',
+        takeaway: '信号说热度，结论要回到"有没有可预测的内部表征"。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'LeCun 的 JEPA 蓝图（嵌入空间预测非重建像素）、OpenAI「视频生成即世界模拟器」、Genie 3 实时交互世界、World Labs 空间智能——四种官方定义代表不同路线。',
+        takeaway: '看它走的是生成式像素、非生成式 JEPA，还是 3D 空间智能。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'LeCun 反自回归 LLM、押注世界模型；Hassabis 称世界模型 + 自动化实验是 AGI 两大关键；李飞飞亲笔讲空间智能是下一前沿。',
+        takeaway: '三位领军人的路线分歧本身是判断世界模型的关键。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'World Models（1803.10122）压缩时空表征 + 梦中训练、Genie（2402.15391）潜动作可玩、DreamerV3（2301.04104）通用 RL、I-JEPA（2301.08243）/ V-JEPA 2（2506.09985）非生成式预测。',
+        takeaway: '看清它属于生成式还是 JEPA 谱系，别把视频生成等同世界模型。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'World Labs 的 Marble（首个商用世界模型，生成持久可下载 3D 环境）、facebookresearch/ijepa、hardmaru 的 World Models 实验代码是可上手的入口。',
+        takeaway: '能生成可交互/可预测的环境，才算从论文走进产品。',
+      },
+    },
+    loopSteps: [
+      { title: '感知压缩', body: '把高维观测（像素/视频）压成低维的世界内部表征（VAE/编码器），抓住动态本质。' },
+      { title: '预测动态', body: '在表征空间预测「下一步世界会怎样」——生成式重建像素，或 JEPA 式只在嵌入空间预测。' },
+      { title: '想象/模拟', body: '用世界模型在脑内「做梦」推演不同动作的后果，而不必真在环境里试错。' },
+      { title: '规划与决策', body: '基于想象的推演做规划（Dreamer 在梦里训策略、V-JEPA 2 零样本机械臂规划）。' },
+      { title: '交互生成', body: '更进一步生成可导航、可交互、记忆一致的世界（Genie 3、World Labs Marble）。' },
+    ],
+    readerCanJudge: [
+      '它建的是有可预测内部表征的世界模型，还是只会生成好看视频。',
+      '它走的是生成式像素路线（Sora/Genie）、非生成式 JEPA，还是 3D 空间智能——三条路线取舍清不清楚。',
+      '引用的论文是真实可核（World Models 1803.10122、Genie 2402.15391、I-JEPA 2301.08243），还是套壳。',
+    ],
+  },
+  'embodied-ai': {
+    title: 'Embodied AI / VLA',
+    subtitle: '具身智能',
+    valueProp:
+      '具身智能 / VLA（视觉-语言-动作）把大模型搬进机器人身体：一个网络同时看图、听自然语言指令、直接输出机器人动作，端到端打通「感知—理解—执行」。代表作 RT-2、π0（Physical Intelligence）、Open X-Embodiment。',
+    problem:
+      '正如 LLM 成为语言的基础模型，「通用机器人策略将成为物理智能的机器人基础模型」——一个策略控制多种机器人、用少量数据特化到新任务。三大推动力：大规模跨本体机器人数据（Open X-Embodiment）、预训练 VLM 迁移网络知识到机器人（RT-2 涌现零样本泛化）、开源生态成熟（Octo/OpenVLA/LeRobot/openpi）。要和「智能驾驶」分清——那是自动驾驶这个具体领域，这条是通用机器人操作。',
+    whyRead:
+      '这页用 RT-1/RT-2/Open X-Embodiment/Octo/OpenVLA/π0/π0.5 论文、DeepMind 与 Physical Intelligence 官方博客、Levine/Finn 演讲，以及 LeRobot/openpi 开源栈，把具身智能钉在一手来源上，帮你判断当前机器人基础模型的真实能力边界。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'Physical Intelligence 开源 π0 被类比为「开源 LLM 加速作用」；HF LeRobot 把「democratize 机器人 AI」做成战略叙事——开源生态成熟本身是信号。',
+        takeaway: '信号说趋势，能力边界要看真实任务与数据规模。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'DeepMind RT-2 官方把 VLA 定义为「把动作当文本 token 生成」；Physical Intelligence π0 官方提出「机器人基础模型」愿景；Gemini Robotics 是大厂入场。',
+        takeaway: '看它讲的是真 VLA（看图听话出动作），还是纯仿真 demo。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'Sergey Levine（TWIML）亲述 π0 架构与数据哲学；Chelsea Finn（ICLR 2025）讲机器人基础模型的预训练 + 后训练配方。',
+        takeaway: '一手作者讲方法，补足论文的设计动机。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'RT-1（2212.06817）实时离散动作、RT-2（2307.15818）VLM 知识迁移、Open X-Embodiment（2310.08864）跨本体数据、Octo/OpenVLA 开源、π0/π0.5 灵巧操作与开放世界泛化。',
+        takeaway: '看清它属于哪条 VLA 谱系，以及训练数据规模与本体覆盖。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'huggingface/lerobot（机器人界的 Transformers）、Physical-Intelligence/openpi（π0 官方权重，1-20 小时数据即可调新任务）是可上手的入口。',
+        takeaway: '有开源权重 + 真机工具链，才算从论文走进可复现。',
+      },
+    },
+    loopSteps: [
+      { title: '看（Vision）', body: '模型接收摄像头图像，理解场景、物体与机器人状态。' },
+      { title: '听（Language）', body: '接收自然语言指令（「把杯子放进抽屉」），理解任务意图。' },
+      { title: '出动作（Action）', body: '一个网络直接输出机器人动作 token / 连续控制（flow matching），端到端不分模块。' },
+      { title: '跨本体迁移', body: '在 Open X-Embodiment 这类跨机器人大数据上预训练，一个策略控制多种机器人。' },
+      { title: '少样本特化', body: '用少量新任务演示数据微调（openpi 1-20 小时）就特化到新任务/新环境。' },
+    ],
+    readerCanJudge: [
+      '它是真 VLA（一个网络看图+听话+出动作），还是感知/规划/控制还在分模块手写。',
+      '它的训练数据是跨本体大规模（Open X-Embodiment 级），还是单机单任务。',
+      '引用的论文是真实可核（RT-2 2307.15818、π0 2410.24164、OpenVLA 2406.09246），还是套壳。',
+    ],
+  },
+  'harness-engineering': {
+    title: 'Harness Engineering',
+    subtitle: '智能体脚手架',
+    valueProp:
+      '模型外面那层运行框架——工具暴露、上下文管线、agent 主循环、权限沙箱、子代理派发——决定了同一个模型实际能干多强的活。Anthropic 把 Claude Agent SDK 称为「general-purpose agent harness」，并指出即便前沿模型跨多个上下文窗口运行，没有精心设计的 harness 也会表现不佳。',
+    problem:
+      'Harness 管的不是「模型说什么」，而是「模型说的话能碰到什么、怎么碰」。2026 年这一层被独立命名为一门工程学科。它和相邻概念差一层：loop-engineering 是人设计的自动循环（外层自动化），context-engineering 是窗口里放什么（信息策略），agentic-coding 是写码这个能力——而 harness 是承载它们的运行时框架本身。',
+    whyRead:
+      '这页用 Anthropic「Building effective agents / Harness design」工程博客、Claude/OpenAI Agents SDK 官方文档、SWE-agent 的 ACI 论文与 ReAct，以及 smolagents/SWE-agent 开源实现，把 harness 钉在一手来源上。诚实说明：harness 没有同名经典论文，paper 层用 ACI/ReAct 这两篇真论文作奠基代替。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'O’Reilly Radar 把 harness 与 scaffolding 严格区分并命名为工程学科；awesome-harness-engineering 列表聚合 tools/patterns/evals/permissions，证明已成独立领域。',
+        takeaway: '它已是一层独立工程对象，不是某个产品的内部细节。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'Anthropic「Building effective agents」提出 ACI、「Harness design」讲长跑 agent 脚手架；Claude/OpenAI Agents SDK 把 agent loop/tools/handoffs/guardrails 框架化。',
+        takeaway: '看它讲的是 loop+tools+context+权限这一整层，还是只说「接了几个工具」。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'Boris Cherny（Pragmatic Engineer / Every）讲 Claude Code 的 agent loop、并行 agent、保持 context 精简、确定性 review——harness 设计取舍的一手。',
+        takeaway: '一手访谈补「为什么这样设计 harness」。',
+      },
+      paper_foundation: {
+        title: '论文根基（诚实代替）',
+        body: 'Harness 无同名奠基论文，用最贴近的两篇真论文：SWE-agent 的 ACI（2405.15793，实证「接口设计决定 agent 强弱」）与 ReAct（2210.03629，agent 主循环理论原型）。',
+        takeaway: '工程概念用工程一手源 + ACI/ReAct 奠基，不硬凑同名论文。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'Claude Agent SDK、openai/openai-agents-python、huggingface/smolagents、SWE-agent 是可嵌入/可读的 harness 实现，覆盖 loop、工具 schema、沙箱、子代理派发。',
+        takeaway: '有可跑的 agent loop + 工具/沙箱实现，才算落地。',
+      },
+    },
+    loopSteps: [
+      { title: '工具暴露', body: '设计 agent 能调的工具与 schema（fewer tools beat more、渐进式披露），这是 harness 的动作空间。' },
+      { title: '上下文管线', body: '管理往窗口放什么、何时压缩/重置（compaction、initializer agent），让长跑 agent 不迷路。' },
+      { title: '主循环控制', body: '驱动 think→act→observe 循环（ReAct 原型），决定何时继续、何时停。' },
+      { title: '权限与沙箱', body: '用 guardrails、沙箱执行、egress 控制，约束 agent 动作的安全边界。' },
+      { title: '子代理派发', body: 'orchestrator 把任务派给子代理（handoffs），并回收聚合结果。' },
+    ],
+    readerCanJudge: [
+      '它讲的是整层 harness（loop+工具+上下文+权限+子代理），还是只接了几个工具。',
+      '它和 loop-engineering/context-engineering 分得清吗——harness 是承载它们的运行时框架。',
+      '它的工具/沙箱/主循环有没有真实可跑实现，还是只有概念图。',
+    ],
+  },
+  'autonomous-driving': {
+    title: 'Autonomous Driving',
+    subtitle: '智能驾驶',
+    valueProp:
+      '智能驾驶（AI 视角）让汽车用一个端到端神经网络「看像素、出方向盘」，把开车从写规则变成从海量驾驶数据里学出来的事。Tesla FSD v12 把约 30 万行 C++ 控制代码换成神经网络（「photons in, controls out」），是 Karpathy「Software 2.0」在驾驶领域最彻底的落地。',
+    problem:
+      '方法论核心有三：①端到端学习——传感器输入直接出控制，取代「感知→预测→规划→控制」手写 pipeline；②生成式世界模型——GAIA-1/2 学驾驶场景动态做仿真与预测；③VLA / 大模型驱动——让驾驶决策可解释、可自然语言交互（Waymo EMMA、DriveVLM）。要和「具身智能」分清——那是通用机器人 VLA，这条聚焦自动驾驶这个具体领域。',
+    whyRead:
+      '这页用 UniAD（CVPR 2023 best paper）、GAIA-1/2 驾驶世界模型、端到端 AD 权威综述、DriveVLM，Wayve/Waymo/comma.ai 官方，以及 Karpathy/Kendall/Ashok 的一手论述，把智能驾驶从整车宣传拉回端到端这条 AI 主线。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'Tesla FSD v12 端到端转向、Waymo EMMA 用 Gemini 驱动；同时 Karpathy 公开警告「自动驾驶未解决」——热度与审慎并存。',
+        takeaway: '信号说范式成立，落地程度要看基准与真实里程。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: 'Wayve AV2.0 定义「用单一端到端神经网络替代手写 AV 栈」；Waymo 阐述大规模 ML/VLM/生成式方法；comma.ai openpilot 是开源落地。',
+        takeaway: '看它走的是端到端学习，还是模块化 pipeline 套个 AI 壳。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'Alex Kendall（Wayve）讲端到端学习如何催生 AD 2.0；Ashok Elluswamy（Tesla）讲 Occupancy Networks；Karpathy 的 Software 2.0 是思想源头。',
+        takeaway: '一手论述补端到端范式的动机与取舍。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'UniAD（2212.10156）规划导向统一端到端、GAIA-1/2（2309.17080/2503.20523）驾驶世界模型、端到端综述（2306.16927，270+ 论文）、DriveVLM（2402.12289）VLA 驾驶。',
+        takeaway: '看清它属于端到端/世界模型/VLA 哪条线，及在 nuScenes 等基准上的表现。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'CARLA（开源仿真器）、nuScenes（多模态数据集/基准）、OpenDriveLab/UniAD（端到端代码）是训练与验证端到端驾驶的基础设施。',
+        takeaway: '有可复现代码 + 标准基准，才算从论文走向工程。',
+      },
+    },
+    loopSteps: [
+      { title: '传感器输入', body: '摄像头像素、激光雷达等原始多模态输入进入统一模型，而非分模块预处理。' },
+      { title: '端到端表征', body: '一个网络学场景表征（栅格化或矢量化），取代手写感知/预测/规划串联。' },
+      { title: '世界模型预测', body: '生成式世界模型（GAIA）推演场景未来动态，做仿真与长尾覆盖。' },
+      { title: '规划与控制', body: '规划导向地直接输出轨迹/控制（UniAD），或用 VLM 慢思考 + 快系统双栈（DriveVLM）。' },
+      { title: '数据闭环', body: '从海量真实驾驶数据持续学习（Software 2.0），仿真（CARLA）+ 真车里程迭代。' },
+    ],
+    readerCanJudge: [
+      '它是真端到端（传感器直接出控制），还是模块化 pipeline 加了个神经网络模块。',
+      '它走的是端到端/驾驶世界模型/VLA 哪条线，在 nuScenes 等基准上有没有硬数字。',
+      '引用的论文是真实可核（UniAD 2212.10156、GAIA-1 2309.17080、DriveVLM 2402.12289），还是套壳。',
+    ],
+  },
   'generative-ui': {
     title: 'Generative UI / AI Artifacts',
     subtitle: '生成式界面 / AI 工件',

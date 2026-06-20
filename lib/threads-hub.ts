@@ -27,12 +27,13 @@ export interface ThreadsHub {
 /** loop-engineering 是静态 fixture，不在 source-pack 注册表里，单独并入。 */
 const STATIC_SLUGS = ['loop-engineering'];
 
-/** 成熟度排序：复核就绪 > 待复核 > 偏薄/草稿。 */
+/** 成熟度排序：已定稿 > 复核就绪 > 待复核 > 偏薄/草稿。 */
 const STATUS_MATURITY: Record<string, number> = {
-  review_ready: 0,
-  source_pack_review: 1,
-  thin: 2,
-  draft: 3,
+  curated: 0,
+  review_ready: 1,
+  source_pack_review: 2,
+  thin: 3,
+  draft: 4,
 };
 
 function maturityRank(status: string): number {

@@ -1,0 +1,453 @@
+{
+  "thread": {
+    "slug": "self-evolving-agents",
+    "title": "Self-Evolving Agents (自进化 agent 系统)",
+    "status": "curated",
+    "updatedAt": "2026-06-21",
+    "category": "agentic_infrastructure",
+    "tags": [
+      "self-improvement",
+      "self-evolving",
+      "reflexion",
+      "self-refine",
+      "open-ended"
+    ],
+    "aliases": [
+      "Self-Evolving Agents",
+      "自进化智能体",
+      "self-improving agents",
+      "recursive self-improvement"
+    ],
+    "definitionDraft": "Self-evolving agents improve themselves after deployment based on interaction data and environment feedback, rather than staying static with pre-deployment human configuration — improving above the weights via verbal reflection, accumulated skills/memory, or rewriting their own prompts, tools and code.",
+    "whyNow": "In 2025 the Darwin Gödel Machine let an agent rewrite its own code and lifted SWE-bench from 20% to 50%, the first engineering proof that open-ended recursive self-improvement is achievable for coding agents; MIT Technology Review listed \"AI learning to improve itself\" as a defining 2025 direction.",
+    "useBoundary": "Focus on agents that improve themselves at runtime (self-reflection, skill/memory accumulation, self-modifying code). Exclude training-side self-reward/self-distillation (model-training) and human-designed automation loops (loop-engineering)."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "se_reflexion_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Shinn et al., NeurIPS 2023)",
+      "url": "https://arxiv.org/abs/2303.11366",
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "publishedAt": "2023-03",
+      "whyRelevant": "自我反思修正奠基：用语言反馈写进 episodic memory，不更新权重就提升下一轮决策。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Reflexion: Language Agents with Verbal Reinforcement Learning\n\n自我反思修正奠基：用语言反馈写进 episodic memory，不更新权重就提升下一轮决策。",
+      "urlHash": "1df60a1d4afe4bf031c0e7819769524d05307e4be59fc73940fe967e12af7a3f"
+    },
+    {
+      "id": "se_voyager_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Wang et al., NVIDIA/Caltech)",
+      "url": "https://arxiv.org/abs/2305.16291",
+      "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "publishedAt": "2023-05",
+      "whyRelevant": "技能/记忆积累标杆：自动课程 + 不断增长的可执行代码 skill library + 迭代自我验证。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Voyager: An Open-Ended Embodied Agent with Large Language Models\n\n技能/记忆积累标杆：自动课程 + 不断增长的可执行代码 skill library + 迭代自我验证。",
+      "urlHash": "8136d37a5eaa2d2f7c2292e7b8dd84e1aea5ef07ddae6eaa47bb6af5052a57c8"
+    },
+    {
+      "id": "se_star_2022",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Zelikman et al.)",
+      "url": "https://arxiv.org/abs/2203.14465",
+      "title": "STaR: Bootstrapping Reasoning With Reasoning",
+      "publishedAt": "2022-03",
+      "whyRelevant": "自举推理早期范式：用自己生成的正确 rationale 反哺自身，奠定\"自我提升\"循环。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "STaR: Bootstrapping Reasoning With Reasoning\n\n自举推理早期范式：用自己生成的正确 rationale 反哺自身，奠定\"自我提升\"循环。",
+      "urlHash": "c54cf2a63b9c1ddcaf5157eff258743c0101315042c34ff3096842e83d04a852"
+    },
+    {
+      "id": "se_self_refine_2023",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Madaan et al.)",
+      "url": "https://arxiv.org/abs/2303.17651",
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "publishedAt": "2023-03",
+      "whyRelevant": "同一 LLM 充当生成者/反馈者/精炼者，无需训练即迭代自我修正。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Self-Refine: Iterative Refinement with Self-Feedback\n\n同一 LLM 充当生成者/反馈者/精炼者，无需训练即迭代自我修正。",
+      "urlHash": "5ef9bdcc0ba68615d547fe99e2b0383817a3a446140984d07f4e7fe2bfe109a5"
+    },
+    {
+      "id": "se_godel_machine_2003",
+      "role": "paper_foundation",
+      "sourceKind": "academic_page",
+      "sourceOwner": "people.idsia.ch (Jürgen Schmidhuber)",
+      "url": "https://people.idsia.ch/~juergen/gmweb2/gmweb2.html",
+      "title": "Gödel Machines: Self-Referential Universal Problem Solvers",
+      "publishedAt": "2003",
+      "whyRelevant": "自我改写代码做\"可证明有益\"改进的理论谱系起点，DGM 谱系命名来源。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Gödel Machines: Self-Referential Universal Problem Solvers\n\n自我改写代码做\"可证明有益\"改进的理论谱系起点，DGM 谱系命名来源。",
+      "urlHash": "236bedb5062d8515ca789e95285fcb0eca36750a3096c4604766bcec401d51a0"
+    },
+    {
+      "id": "se_dgm_2025",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Zhang, Hu, Lu, Lange, Clune — Sakana/UBC)",
+      "url": "https://arxiv.org/abs/2505.22954",
+      "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
+      "publishedAt": "2025-05",
+      "whyRelevant": "自改代码 agent 代表定义：维护变体谱系、经验证改进，SWE-bench 20%→50%。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents\n\n自改代码 agent 代表定义：维护变体谱系、经验证改进，SWE-bench 20%→50%。",
+      "urlHash": "f9ee97bf60c79663e4c38839ae7afe4c6892a93a2910b8c06921fbede28b361e"
+    },
+    {
+      "id": "se_adas_2024",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Hu, Lu, Clune)",
+      "url": "https://arxiv.org/abs/2408.08435",
+      "title": "Automated Design of Agentic Systems (ADAS / Meta Agent Search)",
+      "publishedAt": "2024-08",
+      "whyRelevant": "自动 agent 设计：meta agent 在不断扩张的归档上编程出更强 agent。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Automated Design of Agentic Systems (ADAS / Meta Agent Search)\n\n自动 agent 设计：meta agent 在不断扩张的归档上编程出更强 agent。",
+      "urlHash": "bf0b34f8ced5d15e7e905e47a710b55bcd44726620b22a3477b3a4de4668db48"
+    },
+    {
+      "id": "se_survey_comprehensive_2025",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org (Fang et al., EvoAgentX)",
+      "url": "https://arxiv.org/abs/2508.07407",
+      "title": "A Comprehensive Survey of Self-Evolving AI Agents",
+      "publishedAt": "2025-08",
+      "whyRelevant": "统一概念框架，把自进化 agent 抽象成一个反馈闭环，本主题的定义性综述。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "A Comprehensive Survey of Self-Evolving AI Agents\n\n统一概念框架，把自进化 agent 抽象成一个反馈闭环，本主题的定义性综述。",
+      "urlHash": "ccd49351f37823febb6b199b92a9054b87bd2df153ab7fd3e02a2c69b7191849"
+    },
+    {
+      "id": "se_survey_selfevolving_2025",
+      "role": "official_definition",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2507.21046",
+      "title": "A Survey of Self-Evolving Agents: What/When/How/Where to Evolve",
+      "publishedAt": "2025-07",
+      "whyRelevant": "系统梳理\"何处可进化\"分类法，给出 2022–2025 演化版图。",
+      "confidence": 1,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "A Survey of Self-Evolving Agents: What/When/How/Where to Evolve\n\n系统梳理\"何处可进化\"分类法，给出 2022–2025 演化版图。",
+      "urlHash": "c664eb699751d6d50619d227830b2a76643e87f5fbe0691e36edf71858341f70"
+    },
+    {
+      "id": "se_clune_talk",
+      "role": "transcript_context",
+      "sourceKind": "video",
+      "sourceOwner": "YouTube (Jeff Clune)",
+      "url": "https://www.youtube.com/watch?v=tP5AB5GgZAE",
+      "title": "Jeff Clune — Open-Ended and AI-Generating Algorithms in the Era of Foundation Models",
+      "publishedAt": "2025-05",
+      "whyRelevant": "DGM/ADAS/AI Scientist 第一人称讲解自我改进 agent 与开放式算法三支柱。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Jeff Clune — Open-Ended and AI-Generating Algorithms in the Era of Foundation Models\n\nDGM/ADAS/AI Scientist 第一人称讲解自我改进 agent 与开放式算法三支柱。",
+      "urlHash": "f4280f8f72ba8544d189d1eee6155f97723d8f4713f8cdabadcef209b1c20a6c"
+    },
+    {
+      "id": "se_jimfan_grasp_2023",
+      "role": "transcript_context",
+      "sourceKind": "talk",
+      "sourceOwner": "UPenn GRASP (Jim Fan)",
+      "url": "https://www.grasp.upenn.edu/events/fall-2023-grasp-sfi-jim-fan/",
+      "title": "Jim Fan — Generalist Agents in Open-Ended Worlds",
+      "publishedAt": "2023",
+      "whyRelevant": "Voyager 团队负责人讲终身学习 agent 如何在情境中自我改进。",
+      "confidence": 0.85,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Jim Fan — Generalist Agents in Open-Ended Worlds\n\nVoyager 团队负责人讲终身学习 agent 如何在情境中自我改进。",
+      "urlHash": "559a21e08c064c7b1478c0bf9838cc40303319e64de6631426b3f6d1917f94e9"
+    },
+    {
+      "id": "se_mit_techreview_2025",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "technologyreview.com (Grace Huckins)",
+      "url": "https://www.technologyreview.com/2025/08/06/1121193/five-ways-that-ai-is-learning-to-improve-itself/",
+      "title": "Five ways that AI is learning to improve itself",
+      "publishedAt": "2025-08-06",
+      "whyRelevant": "权威媒体把\"AI 自我改进\"作为趋势，点名 DGM/AI Scientist/AlphaEvolve。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Five ways that AI is learning to improve itself\n\n权威媒体把\"AI 自我改进\"作为趋势，点名 DGM/AI Scientist/AlphaEvolve。",
+      "urlHash": "867b4cb0c1f32412402a15653fff3bb4fb1aeebaab2db0024f2914917c0efea6"
+    },
+    {
+      "id": "se_sakana_dgm_blog_2025",
+      "role": "signal",
+      "sourceKind": "official_blog",
+      "sourceOwner": "sakana.ai",
+      "url": "https://sakana.ai/dgm/",
+      "title": "The Darwin Gödel Machine: AI that improves itself by rewriting its own code",
+      "publishedAt": "2025-05",
+      "whyRelevant": "第一手发布稿，给出 SWE-bench 20%→50%、Polyglot 14.2%→30.7% 的自我改进证据。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "The Darwin Gödel Machine: AI that improves itself by rewriting its own code\n\n第一手发布稿，给出 SWE-bench 20%→50%、Polyglot 14.2%→30.7% 的自我改进证据。",
+      "urlHash": "069db046b5cfeba7c69681790f23a4d6badd2b8cd312ab5fcb6c47758be5b8f3"
+    },
+    {
+      "id": "se_decoder_dgm_2025",
+      "role": "signal",
+      "sourceKind": "news",
+      "sourceOwner": "the-decoder.com",
+      "url": "https://the-decoder.com/sakana-ais-darwin-godel-machine-evolves-by-rewriting-its-own-code-to-boost-performance/",
+      "title": "Sakana AI’s Darwin-Gödel Machine evolves by rewriting its own code",
+      "publishedAt": "2025",
+      "whyRelevant": "科技媒体对 DGM 的独立报道，佐证主题的行业关注度。",
+      "confidence": 0.8,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Sakana AI’s Darwin-Gödel Machine evolves by rewriting its own code\n\n科技媒体对 DGM 的独立报道，佐证主题的行业关注度。",
+      "urlHash": "260a1af0192ec4f64186299262f6e1661a7b4cd3593f0c1074fb3bbacfae6f13"
+    },
+    {
+      "id": "se_reflexion_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/noahshinn",
+      "url": "https://github.com/noahshinn/reflexion",
+      "title": "noahshinn/reflexion",
+      "publishedAt": null,
+      "whyRelevant": "Reflexion 官方代码，自我反思 agent 的可运行实现。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "noahshinn/reflexion\n\nReflexion 官方代码，自我反思 agent 的可运行实现。",
+      "urlHash": "147eb673155c806d45e921069a4f77aee0a1f0b26ea19ea94b5f8421eed5db6f"
+    },
+    {
+      "id": "se_voyager_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/MineDojo",
+      "url": "https://github.com/MineDojo/Voyager",
+      "title": "MineDojo/Voyager",
+      "publishedAt": null,
+      "whyRelevant": "Voyager 官方代码，含自动课程 + skill library 全链路实现。",
+      "confidence": 0.95,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "MineDojo/Voyager\n\nVoyager 官方代码，含自动课程 + skill library 全链路实现。",
+      "urlHash": "3df3d69f4f6042ae5edf05905c964d665604bada0b83f48f19590f7671f099f4"
+    },
+    {
+      "id": "se_dgm_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/jennyzzt",
+      "url": "https://github.com/jennyzzt/dgm",
+      "title": "jennyzzt/dgm (Darwin Gödel Machine)",
+      "publishedAt": null,
+      "whyRelevant": "DGM 官方开源，自改代码 agent 的种群进化实现。",
+      "confidence": 0.9,
+      "evidenceQuote": null,
+      "reviewNotes": "Verified online during deep-core research.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "jennyzzt/dgm (Darwin Gödel Machine)\n\nDGM 官方开源，自改代码 agent 的种群进化实现。",
+      "urlHash": "d9d91ddaaf0e9270694d65920d273fe805ce5fef00ca125b1e385aec923a117e"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "se_dgm_2025",
+      "toId": "se_godel_machine_2003",
+      "relationType": "inspired_by",
+      "confidence": 0.85,
+      "evidenceNote": "DGM 以 Schmidhuber 的 Gödel Machine 为理论谱系与命名来源，改用经验验证替代形式化证明。"
+    },
+    {
+      "fromId": "se_dgm_2025",
+      "toId": "se_adas_2024",
+      "relationType": "builds_on",
+      "confidence": 0.85,
+      "evidenceNote": "同作者线（Hu/Lu/Clune），DGM 把 ADAS 的\"meta agent 编程出新 agent\"推进到 agent 自改自身代码。"
+    },
+    {
+      "fromId": "se_survey_comprehensive_2025",
+      "toId": "se_reflexion_2023",
+      "relationType": "cites_as_foundation",
+      "confidence": 0.8,
+      "evidenceNote": "综述把 Reflexion 列为自进化反馈闭环的奠基范式之一。"
+    },
+    {
+      "fromId": "se_survey_comprehensive_2025",
+      "toId": "se_voyager_2023",
+      "relationType": "cites_as_foundation",
+      "confidence": 0.8,
+      "evidenceNote": "综述把 Voyager 的 skill library 作为\"技能积累\"维度的代表。"
+    },
+    {
+      "fromId": "se_reflexion_2023",
+      "toId": "se_star_2022",
+      "relationType": "extends",
+      "confidence": 0.75,
+      "evidenceNote": "Reflexion 把 STaR\"从自身正确输出学习\"从训练侧推广到推理时的语言反馈循环。"
+    },
+    {
+      "fromId": "se_voyager_2023",
+      "toId": "se_self_refine_2023",
+      "relationType": "shares_mechanism",
+      "confidence": 0.7,
+      "evidenceNote": "两者都用\"同一 LLM 自我验证/自我反馈再精炼\"的无训练迭代机制。"
+    },
+    {
+      "fromId": "se_mit_techreview_2025",
+      "toId": "se_sakana_dgm_blog_2025",
+      "relationType": "reports_on",
+      "confidence": 0.85,
+      "evidenceNote": "权威媒体报道直接以 DGM 为\"AI 自我改进\"的代表案例。"
+    },
+    {
+      "fromId": "se_dgm_repo",
+      "toId": "se_dgm_2025",
+      "relationType": "open_implements",
+      "confidence": 0.9,
+      "evidenceNote": "jennyzzt/dgm 是 DGM 论文的官方开源实现。"
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "se_decoder_dgm_2025:source_pack_review"
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "curated",
+    "notes": "Deep-core 2026-06-21: 17 sources / 8 edges, arXiv ids verified (2303.11366 Reflexion, 2305.16291 Voyager, 2203.14465 STaR, 2303.17651 Self-Refine, 2505.22954 DGM, 2408.08435 ADAS, 2508.07407 + 2507.21046 surveys). Schmidhuber Gödel Machine via IDSIA official page. Roles all >=2."
+  }
+}
