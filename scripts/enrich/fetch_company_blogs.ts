@@ -41,6 +41,14 @@ function parseOptions(): Options {
 
 const norm = (s: string) => (s || '').toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, ' ').trim();
 
+// 标题黑名单：明显垂类应用，标题就能判，直接跳过不抓（省 Jina/DeepSeek）
+const NICHE_TITLE_RE = /\b(clinical|medical|healthcare|patient|diagnos|genomic|genome|protein|molecul|drug discovery|biomedical|climate|weather|meteorolog|materials science|semiconductor|wafer|lithograph|chemistry|astronom|geospatial|agricultur)\b/i;
+// HuggingFace 社区文 URL 形如 /blog/<user>/<slug>（两段）；官方 /blog/<slug>（一段）
+function isHfOfficial(url: string): boolean {
+    const m = url.match(/huggingface\.co\/blog\/([^/?#]+)(\/([^/?#]+))?/i);
+    return !!m && !m[3]; // 只有一段=官方
+}
+
 async function resolveOrCreateOrg(name: string, execute: boolean): Promise<string | null> {
     const orgs = await prisma.organization.findMany({ select: { id: true, name: true, aliases: true } });
     const hit = orgs.find(o => norm(o.name) === norm(name) || (o.aliases || []).some(al => norm(al) === norm(name)));
@@ -112,12 +120,17 @@ async function main() {
         } catch (e) {
             console.warn(`   [${cfg.name}] 取列表失败: ${(e as Error).message.slice(0, 100)}`);
         }
+        // HuggingFace 只留官方文，滤掉社区文
+        if (cfg.name === 'Hugging Face') items = items.filter(it => isHfOfficial(it.url));
+        // 标题黑名单：明显垂类直接剔除（不抓）
+        let nicheTitleSkipped = 0;
+        items = items.filter(it => { if (NICHE_TITLE_RE.test(it.title)) { nicheTitleSkipped++; return false; } return true; });
         items = items.slice(0, opts.perCompany);
-        console.log(`【${cfg.name}】(${cfg.method}) 列表 ${items.length} 篇 → org=${cfg.org}`);
+        console.log(`【${cfg.name}】(${cfg.method}) 列表 ${items.length} 篇${nicheTitleSkipped ? `（标题剔垂类 ${nicheTitleSkipped}）` : ''} → org=${cfg.org}`);
         if (!opts.execute) { totalNew += items.length; continue; }
         if (!orgId || orgId === 'DRY-NEW') continue;
 
-        let companyNew = 0;
+        let companyNew = 0, nicheSkipped = 0;
         for (const it of items) {
             const urlHash = sha256(it.url);
             const exists = await prisma.companySource.findUnique({ where: { urlHash }, select: { id: true } });
@@ -126,9 +139,12 @@ async function main() {
             const art = await fetchArticleText(it.url, { maxChars: 15000 });
             if (!art.ok || art.text.length < 200) { totalSkip++; continue; }
 
-            let kw = { keywords: [] as string[], entities: [] as string[], topics: [] as string[], gist: '' };
+            let kw = { keywords: [] as string[], entities: [] as string[], topics: [] as string[], gist: '', isCoreAI: true, domain: 'general-ai' };
             try { kw = await extractContentKeywords(it.title, art.text, { contentType: `${cfg.name} 官方博客文章` }); }
             catch { /* 抽词失败仍落正文 */ }
+
+            // 领域过滤：非通用 AI 知识（垂类/营销/无关）跳过不入库
+            if (!kw.isCoreAI) { nicheSkipped++; totalSkip++; continue; }
 
             try {
                 await prisma.companySource.create({
@@ -144,7 +160,7 @@ async function main() {
                         summary: kw.gist || null,
                         publishedAt: it.publishedAt,
                         fetchedAt: new Date(),
-                        metadata: { keywords: kw.keywords, entities: kw.entities, contentTopics: kw.topics, fullTextSource: 'jina', blogSource: cfg.name },
+                        metadata: { keywords: kw.keywords, entities: kw.entities, contentTopics: kw.topics, domain: kw.domain, fullTextSource: 'jina', blogSource: cfg.name },
                     },
                 });
                 companyNew++; totalNew++;
@@ -152,7 +168,7 @@ async function main() {
                 console.warn(`   [${cfg.name}] 落库失败 ${it.url}: ${(e as Error).message.slice(0, 80)}`);
             }
         }
-        if (companyNew && !opts.quiet) console.log(`   ✓ 新增 ${companyNew} 篇`);
+        if ((companyNew || nicheSkipped) && !opts.quiet) console.log(`   ✓ 新增 ${companyNew} 篇${nicheSkipped ? `，领域过滤剔除 ${nicheSkipped}` : ''}`);
     }
 
     console.log(`\n📊 ${opts.execute ? '已新增' : '将抓取'} ${totalNew} 篇${opts.execute ? `，跳过(已有/太薄) ${totalSkip}` : ''}`);

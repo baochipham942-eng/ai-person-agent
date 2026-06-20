@@ -10,6 +10,8 @@
  *   bun scripts/enrich/fetch_youtube_captions.ts --execute            # 真写库（A+B）
  *   bun scripts/enrich/fetch_youtube_captions.ts --backfill-only --execute
  *   bun scripts/enrich/fetch_youtube_captions.ts --fetch-only --execute --max-supadata 30
+ *   bun scripts/enrich/fetch_youtube_captions.ts --fetch-only --skip-keywords --execute
+ *   bun scripts/enrich/fetch_youtube_captions.ts --fetch-only --skip-keywords --execute --shards 4 --shard-index 0
  *   bun scripts/enrich/fetch_youtube_captions.ts --person "Andrej Karpathy" --execute
  *   选项：--limit N（每阶段处理上限）--max-supadata N（Supadata 调用上限，护额度，默认 50）
  *        --lang en --quiet
@@ -38,6 +40,9 @@ interface Options {
     maxSupadata: number;
     lang?: string;
     person?: string;
+    skipKeywords: boolean;
+    shards: number;
+    shardIndex: number;
     quiet: boolean;
 }
 
@@ -55,6 +60,9 @@ function parseOptions(): Options {
         maxSupadata: Number(valOf('--max-supadata') ?? 50),
         lang: valOf('--lang'),
         person: valOf('--person'),
+        skipKeywords: a.includes('--skip-keywords'),
+        shards: Math.max(1, Number(valOf('--shards') ?? 1)),
+        shardIndex: Math.max(0, Number(valOf('--shard-index') ?? 0)),
         quiet: a.includes('--quiet'),
     };
 }
@@ -85,6 +93,14 @@ function videoIdOf(row: { metadata: unknown; url: string }): string {
     return m?.[1] ?? '';
 }
 
+function stableShard(value: string, shards: number): number {
+    let hash = 0;
+    for (let i = 0; i < value.length; i++) {
+        hash = (hash * 31 + value.charCodeAt(i)) >>> 0;
+    }
+    return hash % shards;
+}
+
 async function resolvePersonId(name: string): Promise<string | null> {
     const p = await prisma.people.findFirst({
         where: { OR: [{ id: name }, { name }, { aliases: { has: name } }] },
@@ -99,6 +115,10 @@ function log(quiet: boolean, msg: string) {
 
 async function main() {
     const opts = parseOptions();
+    if (opts.shardIndex >= opts.shards) {
+        console.error(`--shard-index 必须小于 --shards（当前 ${opts.shardIndex}/${opts.shards}）`);
+        process.exit(1);
+    }
     const personFilter = opts.person ? await resolvePersonId(opts.person) : null;
     if (opts.person && !personFilter) {
         console.error(`找不到人物：${opts.person}`);
@@ -109,7 +129,8 @@ async function main() {
     console.log(
         `模式: ${opts.execute ? 'EXECUTE(写库)' : 'DRY-RUN'} | ` +
         `${opts.backfillOnly ? '仅backfill' : opts.fetchOnly ? '仅fetch-new' : 'backfill+fetch-new'} | ` +
-        `Supadata上限=${opts.maxSupadata}${personFilter ? ` | 人物=${opts.person}` : ''}\n`,
+        `Supadata上限=${opts.maxSupadata}${personFilter ? ` | 人物=${opts.person}` : ''}` +
+        `${opts.shards > 1 ? ` | shard=${opts.shardIndex}/${opts.shards}` : ''}\n`,
     );
 
     const baseWhere = {
@@ -161,7 +182,7 @@ async function main() {
             all.filter(isCaption).map(r => `${r.personId}:${videoIdOf(r)}`),
         );
         let skippedMarked = 0;
-        const videosMissing = all.filter(r => {
+        let videosMissing = all.filter(r => {
             if (isCaption(r)) return false;
             const vid = videoIdOf(r);
             if (!vid) return false;
@@ -170,6 +191,9 @@ async function main() {
             if (metaRecord(r.metadata).captionFetchStatus === 'none') { skippedMarked++; return false; }
             return true;
         });
+        if (opts.shards > 1) {
+            videosMissing = videosMissing.filter(r => stableShard(`${r.personId}:${videoIdOf(r)}`, opts.shards) === opts.shardIndex);
+        }
         log(opts.quiet, `[B] 视频总数 ${all.filter(r => !isCaption(r)).length}，缺字幕 ${videosMissing.length} 个（另 ${skippedMarked} 个已确认无字幕跳过）`);
 
         const budget = Math.min(videosMissing.length, opts.limit, opts.maxSupadata);
@@ -212,10 +236,12 @@ async function main() {
 
             // 抽关键词
             let kw = { keywords: [] as string[], entities: [] as string[], topics: [] as string[], gist: '' };
-            try {
-                kw = await extractContentKeywords(v.title, transcript.text, { contentType: 'YouTube 访谈/分享字幕' });
-            } catch (e) {
-                console.warn(`  [B] 关键词提取失败（仍落字幕）${v.url}: ${(e as Error).message.slice(0, 80)}`);
+            if (!opts.skipKeywords) {
+                try {
+                    kw = await extractContentKeywords(v.title, transcript.text, { contentType: 'YouTube 访谈/分享字幕' });
+                } catch (e) {
+                    console.warn(`  [B] 关键词提取失败（仍落字幕）${v.url}: ${(e as Error).message.slice(0, 80)}`);
+                }
             }
 
             const captionMeta = {

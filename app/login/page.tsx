@@ -6,6 +6,7 @@ import { signIn } from 'next-auth/react';
 import { Button, Input, Message, Avatar } from '@arco-design/web-react';
 import { IconUser, IconLock, IconSafe } from '@arco-design/web-react/icon';
 import { useRouter } from 'next/navigation';
+import { clearUserSessionCache, ensureUserSession } from '@/components/common/userSessionClient';
 
 type RegisterResult = Awaited<ReturnType<typeof registerUser>>;
 type PasswordResetRequestResult = Awaited<ReturnType<typeof requestPasswordReset>>;
@@ -89,6 +90,7 @@ export default function LoginPage() {
         Message.error(formatLoginError(result.error));
       } else if (result?.ok) {
         await saveQuickLoginProfile();
+        await refreshUserSessionAfterAuth();
         Message.success('登录成功');
         router.push('/');
       } else {
@@ -116,20 +118,24 @@ export default function LoginPage() {
         Message.error('快捷登录已过期，请重新登录');
         setQuickUser(null);
         localStorage.removeItem('quick_login_info');
+        clearUserSessionCache();
         setView('LOGIN');
       } else if (result?.ok) {
+        await refreshUserSessionAfterAuth();
         Message.success('登录成功');
         router.push('/');
       } else {
         Message.error('快捷登录已过期，请重新登录');
         setQuickUser(null);
         localStorage.removeItem('quick_login_info');
+        clearUserSessionCache();
         setView('LOGIN');
       }
     } catch {
       Message.error('快捷登录已过期，请重新登录');
       setQuickUser(null);
       localStorage.removeItem('quick_login_info');
+      clearUserSessionCache();
       setView('LOGIN');
     } finally {
       setIsLoggingIn(false);
@@ -207,6 +213,7 @@ export default function LoginPage() {
 
           if (loginResult?.ok) {
             await saveQuickLoginProfile();
+            await refreshUserSessionAfterAuth();
             router.push('/');
             return;
           }
@@ -298,6 +305,14 @@ export default function LoginPage() {
       }
     } catch {
       // Quick login is a convenience. A failure here should not block login.
+    }
+  }
+
+  async function refreshUserSessionAfterAuth() {
+    try {
+      await ensureUserSession({ force: true });
+    } catch {
+      clearUserSessionCache();
     }
   }
 

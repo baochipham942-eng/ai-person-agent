@@ -45,7 +45,7 @@ const KIND_META: Record<FeaturedCardKind, { label: string; dot: string; text: st
   podcast: { label: '播客', dot: 'bg-violet-500', text: 'text-violet-600' },
 };
 
-export function WeeklyPicksStream({ topic, organization, initialCards, className = 'mb-4' }: WeeklyPicksStreamProps) {
+export function WeeklyPicksStream({ topic, organization, initialCards, className = 'mb-3' }: WeeklyPicksStreamProps) {
   const hasInitial = initialCards !== undefined;
   const apiUrl = useMemo(() => {
     const params = new URLSearchParams();
@@ -76,9 +76,9 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
       </div>
 
       {showLoading ? (
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6">
           {[...Array(3)].map((_, index) => (
-            <li key={index} className="h-36 animate-pulse rounded-xl border border-stone-100 bg-stone-50" />
+            <li key={index} className="h-36 w-[82vw] flex-none snap-start animate-pulse rounded-xl border border-stone-100 bg-stone-50 sm:w-[22rem] lg:w-[24rem]" />
           ))}
         </ul>
       ) : error && cards.length === 0 ? (
@@ -90,9 +90,9 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
           本周暂时没有可展示的推荐。
         </div>
       ) : (
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6">
           {cards.map(card => (
-            <li key={card.id}>
+            <li key={card.id} className="w-[82vw] flex-none snap-start sm:w-[22rem] lg:w-[24rem]">
               <FeaturedCardView card={card} />
             </li>
           ))}
@@ -105,7 +105,7 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
 function FeaturedCardView({ card }: { card: FeaturedCard }) {
   const meta = KIND_META[card.kind];
   const className =
-    'flex h-full flex-col rounded-xl border border-stone-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40';
+    'flex h-36 flex-col overflow-hidden rounded-xl border border-stone-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40';
   const body = <FeaturedCardBody card={card} meta={meta} />;
 
   if (card.external) {
@@ -140,7 +140,7 @@ function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KI
             )}
           </div>
         </div>
-        <p className="mt-2 line-clamp-3 flex-1 text-xs leading-5 text-stone-600">
+        <p className="mt-2 line-clamp-2 flex-1 text-xs leading-5 text-stone-600">
           <span className="font-medium text-stone-950">本周看点：</span>
           {card.whyNow}
         </p>
@@ -152,7 +152,7 @@ function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KI
   return (
     <>
       {card.kind === 'video' && card.thumbnailUrl && (
-        <div className="relative mb-2.5 aspect-video w-full overflow-hidden rounded-lg bg-stone-100">
+        <div className="relative mb-2 h-12 w-full overflow-hidden rounded-lg bg-stone-100">
           {/* 用原生 img 避免把 img.youtube.com 加进 next.config remotePatterns */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={card.thumbnailUrl} alt={card.title} loading="lazy" className="h-full w-full object-cover" />
@@ -174,7 +174,7 @@ function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KI
         )}
       </div>
 
-      <h3 className="mt-1.5 line-clamp-2 text-sm font-semibold tracking-tight text-stone-950">{card.title}</h3>
+      <h3 className="mt-1.5 line-clamp-1 text-sm font-semibold tracking-tight text-stone-950">{card.title}</h3>
       <p className="mt-1 line-clamp-2 flex-1 text-xs leading-5 text-stone-600">
         <span className="font-medium text-stone-950">推荐理由：</span>
         {card.whyNow}
@@ -197,16 +197,22 @@ function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KI
 
 function Topics({ topics }: { topics: string[] }) {
   if (topics.length === 0) return null;
+  const visibleTopics = topics.slice(0, 3);
   return (
-    <div className="mt-2 flex flex-wrap gap-1">
-      {topics.map(topic => (
+    <div className="mt-auto flex min-h-5 gap-1 overflow-hidden pt-2">
+      {visibleTopics.map(topic => (
         <span
           key={topic}
-          className="inline-flex items-center rounded-md bg-stone-100 px-1.5 py-0.5 text-[11px] font-medium text-stone-600"
+          className="inline-flex max-w-[8rem] flex-shrink-0 items-center truncate rounded-md bg-stone-100 px-1.5 py-0.5 text-[11px] font-medium text-stone-600"
         >
           {topic}
         </span>
       ))}
+      {topics.length > visibleTopics.length && (
+        <span className="inline-flex flex-shrink-0 items-center rounded-md bg-stone-50 px-1.5 py-0.5 text-[11px] font-medium text-stone-400">
+          +{topics.length - visibleTopics.length}
+        </span>
+      )}
     </div>
   );
 }

@@ -18,6 +18,12 @@ export const ContentKeywordsSchema = z.object({
     topics: z.array(z.string()).max(12).default([]),
     // 一句话主旨（中文），便于人看
     gist: z.string().max(400).default(''),
+    // 是否「通用 AI/ML 知识」（值得 AI 从业者读的方法/技术/产品讲解）。
+    // false = 垂类应用(医疗/生物/气候/材料/芯片硬件等)、纯营销公关、与 AI 知识无关
+    isCoreAI: z.boolean().default(true),
+    // 领域标签：general-ai / agents / rag / llm / multimodal / gui / reasoning / training /
+    //          healthcare / biology / climate / hardware / robotics / marketing / other
+    domain: z.string().max(40).default('general-ai'),
 });
 
 export type ContentKeywords = z.infer<typeof ContentKeywordsSchema>;
@@ -61,7 +67,10 @@ export async function extractContentKeywords(
                 '你是 AI 行业内容分析助手。从给定标题与正文中提取用于知识图谱检索的结构化标签。' +
                 '要求：keywords/topics 必须落到工业界公认的概念名（如 "agentic coding"、"retrieval-augmented generation"、"mixture of experts"），' +
                 '不要用泛词（如 "AI"、"技术"、"未来"）。entities 只填确切出现的人名/公司/产品/模型名。' +
-                'topics 比 keywords 更粗粒度、更接近话题标签。所有标签用英文小写（专有名词保留原写法），gist 用中文。',
+                'topics 比 keywords 更粗粒度、更接近话题标签。所有标签用英文小写（专有名词保留原写法），gist 用中文。' +
+                'isCoreAI：判断这篇是否「通用 AI/ML 知识」——讲方法/模型/技术/产品/agent/rag/gui/推理/训练等、值得 AI 从业者读的内容=true；' +
+                '若是垂直行业应用(医疗诊断/生物制药/气候/材料科学/纯芯片硬件)、纯营销公关招聘、或与 AI 无关=false。' +
+                'domain：给一个领域标签（general-ai/agents/rag/llm/multimodal/gui/reasoning/training/healthcare/biology/climate/hardware/robotics/marketing/other 之一）。',
         },
         {
             role: 'user',
@@ -82,5 +91,7 @@ export async function extractContentKeywords(
         entities: norm(data.entities),
         topics: norm(data.topics),
         gist: data.gist?.trim() ?? '',
+        isCoreAI: data.isCoreAI ?? true,
+        domain: data.domain?.trim() || 'general-ai',
     };
 }

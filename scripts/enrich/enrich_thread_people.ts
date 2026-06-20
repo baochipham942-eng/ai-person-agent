@@ -24,7 +24,7 @@ import { searchTavily } from '../../lib/tavily-search';
 import { chatStructuredCompletion, type ChatMessage } from '../../lib/ai/deepseek';
 import { DIRECTORY_TOPICS, normalizeDirectoryTopic } from '../../lib/person-directory-config';
 
-const TARGET_NAMES = ['Addy Osmani', 'Geoffrey Huntley', 'Phil Schmid'];
+const TARGET_NAMES = ['Geoffrey Litt', 'Haijun Xia', 'Yaniv Leviathan', 'Guillermo Rauch'];
 const ROLE_CATEGORIES = ['researcher', 'founder', 'engineer', 'professor', 'evangelist'];
 
 interface OfficialLink {

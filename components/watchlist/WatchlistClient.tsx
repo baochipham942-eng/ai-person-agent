@@ -5,12 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ActivityEventList } from '@/components/activity/ActivityEventList';
 import { FollowButton } from '@/components/common/FollowButton';
+import { useUserSession } from '@/components/common/userSessionClient';
 import { NewsletterSettings } from '@/components/newsletter/NewsletterSettings';
 import type { ActivityEvent } from '@/lib/activity';
 import {
   WATCHLIST_CHANGED_EVENT,
   emptyWatchlist,
   mergeWatchlists,
+  normalizeWatchlist,
   readLocalWatchlist,
   writeLocalWatchlist,
   type WatchTarget,
@@ -34,85 +36,101 @@ interface WatchlistSummary {
 }
 
 export function WatchlistClient() {
+  const session = useUserSession();
   const [watchlist, setWatchlist] = useState<WatchlistSnapshot>(emptyWatchlist());
   const [summary, setSummary] = useState<WatchlistSummary>({ people: [], events: [] });
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const totalCount = watchlistItemCount(watchlist);
   const hasItems = totalCount > 0;
   const isAuthenticated = authenticated === true;
 
-  const loadWatchlist = useCallback(async () => {
-    setLoading(true);
+  const loadWatchlist = useCallback((sessionStatus: typeof session.status) => {
+    let cancelled = false;
     const localWatchlist = readLocalWatchlist();
     let nextWatchlist = localWatchlist;
-    let isAuthenticated = false;
 
     setWatchlist(localWatchlist);
-    setSummary({ people: [], events: [] });
 
-    try {
-      const response = await fetch('/api/user/watchlist', {
-        cache: 'no-store',
-      });
-      if (response.ok) {
-        const result = await response.json();
-        isAuthenticated = Boolean(result.authenticated);
-        if (isAuthenticated && result.watchlist) {
-          if (watchlistItemCount(localWatchlist) === 0) {
-            nextWatchlist = result.watchlist;
-          } else {
-            const mergeResponse = await fetch('/api/user/watchlist', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ watchlist: localWatchlist }),
-            });
-            if (mergeResponse.ok) {
-              const mergeResult = await mergeResponse.json();
-              nextWatchlist = mergeWatchlists(localWatchlist, mergeResult.watchlist);
-            } else {
-              nextWatchlist = mergeWatchlists(localWatchlist, result.watchlist);
-            }
-          }
-        }
+    async function finishWithSummary(targetWatchlist: WatchlistSnapshot) {
+      if (watchlistItemCount(targetWatchlist) === 0) {
+        if (cancelled) return;
+        setSummary({ people: [], events: [] });
+        setLoading(false);
+        return;
       }
-    } catch {
-      isAuthenticated = false;
+
+      if (!cancelled) setLoading(true);
+      try {
+        const nextSummary = await fetchSummary(targetWatchlist);
+        if (!cancelled) setSummary(nextSummary);
+      } catch {
+        if (!cancelled) setSummary({ people: [], events: [] });
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     }
 
-    writeLocalWatchlist(nextWatchlist, { notify: false });
-    setWatchlist(nextWatchlist);
-    setAuthenticated(isAuthenticated);
-
-    if (watchlistItemCount(nextWatchlist) === 0) {
-      setSummary({ people: [], events: [] });
-      setLoading(false);
-      return;
+    if (sessionStatus === 'unknown' || sessionStatus === 'loading') {
+      setAuthenticated(null);
+      void finishWithSummary(localWatchlist);
+      return () => {
+        cancelled = true;
+      };
     }
 
-    try {
-      const nextSummary = await fetchSummary(nextWatchlist);
-      setSummary(nextSummary);
-    } finally {
-      setLoading(false);
+    if (sessionStatus === 'unauthenticated') {
+      setAuthenticated(false);
+      void finishWithSummary(localWatchlist);
+      return () => {
+        cancelled = true;
+      };
     }
+
+    setAuthenticated(true);
+    setLoading(true);
+    void loadAccountWatchlist(localWatchlist)
+      .then(result => {
+        if (cancelled) return;
+        nextWatchlist = result.watchlist;
+        writeLocalWatchlist(nextWatchlist, { notify: false });
+        setWatchlist(nextWatchlist);
+        setAuthenticated(result.authenticated);
+        return finishWithSummary(nextWatchlist);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setAuthenticated(true);
+        return finishWithSummary(localWatchlist);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
-    loadWatchlist();
+    return loadWatchlist(session.status);
+  }, [loadWatchlist, session.status]);
+
+  useEffect(() => {
     const handleChange = () => {
       const next = readLocalWatchlist();
       setWatchlist(next);
       if (watchlistItemCount(next) === 0) {
         setSummary({ people: [], events: [] });
+        setLoading(false);
         return;
       }
-      void fetchSummary(next).then(setSummary);
+      setLoading(true);
+      void fetchSummary(next)
+        .then(setSummary)
+        .finally(() => setLoading(false));
     };
     window.addEventListener(WATCHLIST_CHANGED_EVENT, handleChange);
     return () => window.removeEventListener(WATCHLIST_CHANGED_EVENT, handleChange);
-  }, [loadWatchlist]);
+  }, []);
 
   const personTargets = useMemo(() => {
     const byId = new Map(summary.people.map(person => [person.id, person]));
@@ -196,6 +214,50 @@ async function fetchSummary(watchlist: WatchlistSnapshot): Promise<WatchlistSumm
   return {
     people: result.people || [],
     events: result.events || [],
+  };
+}
+
+async function loadAccountWatchlist(localWatchlist: WatchlistSnapshot): Promise<{
+  authenticated: boolean;
+  watchlist: WatchlistSnapshot;
+}> {
+  const response = await fetch('/api/user/watchlist', {
+    cache: 'no-store',
+  });
+  if (!response.ok) {
+    return {
+      authenticated: response.status === 401 ? false : true,
+      watchlist: localWatchlist,
+    };
+  }
+
+  const result = await response.json();
+  const authenticated = Boolean(result.authenticated);
+  if (!authenticated || !result.watchlist) {
+    return { authenticated: false, watchlist: localWatchlist };
+  }
+
+  const accountWatchlist = normalizeWatchlist(result.watchlist);
+  if (watchlistItemCount(localWatchlist) === 0) {
+    return { authenticated: true, watchlist: accountWatchlist };
+  }
+
+  const mergeResponse = await fetch('/api/user/watchlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ watchlist: localWatchlist }),
+  });
+  if (!mergeResponse.ok) {
+    return {
+      authenticated: true,
+      watchlist: mergeWatchlists(localWatchlist, accountWatchlist),
+    };
+  }
+
+  const mergeResult = await mergeResponse.json();
+  return {
+    authenticated: true,
+    watchlist: mergeWatchlists(localWatchlist, normalizeWatchlist(mergeResult.watchlist)),
   };
 }
 
@@ -290,6 +352,7 @@ function TargetWatchCard({ target }: { target: WatchTarget }) {
 
 function EmptyState({ authenticated, loading }: { authenticated: boolean | null; loading: boolean }) {
   const isAuthenticated = authenticated === true;
+  const loadingText = isAuthenticated ? '正在读取账号关注内容。' : '正在读取本地关注内容。';
 
   return (
     <section className="rounded-xl border border-stone-200 bg-white px-5 py-12 text-center shadow-sm">
@@ -298,7 +361,7 @@ function EmptyState({ authenticated, loading }: { authenticated: boolean | null;
       </h2>
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-stone-500">
         {loading
-          ? '正在合并本地和账号里的关注内容。'
+          ? loadingText
           : isAuthenticated
             ? '先回到人物库关注人物、话题或机构。'
             : '注册后可以把关注保存到账号里，后续再开启每周提醒。'}

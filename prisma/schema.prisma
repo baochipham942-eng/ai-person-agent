@@ -302,6 +302,7 @@ model People {
   @@index([status])
   @@index([influenceScore])
   @@index([roleCategory])
+  @@index([status, influenceScore])
 }
 
 model Organization {
@@ -348,6 +349,8 @@ model CompanySource {
   @@index([sourceKind])
   @@index([publishedAt])
   @@index([fetchedAt])
+  @@index([organizationId, publishedAt])
+  @@index([sourceKind, publishedAt])
 }
 
 model CompanyThreadLink {
@@ -438,6 +441,9 @@ model RawPoolItem {
 
   @@index([personId])
   @@index([sourceType])
+  @@index([personId, sourceType, publishedAt])
+  @@index([personId, publishedAt])
+  @@index([fetchStatus, fetchedAt])
 }
 
 model KnowledgeThread {
@@ -483,6 +489,7 @@ model KnowledgeSource {
   @@index([sourceOwner])
   @@index([publishedAt])
   @@index([fetchedAt])
+  @@index([sourceKind, publishedAt])
 }
 
 model KnowledgeThreadSource {
@@ -508,6 +515,7 @@ model KnowledgeThreadSource {
   @@index([rawPoolItemId])
   @@index([role])
   @@index([relevanceScore])
+  @@index([threadId, relevanceScore, createdAt])
 }
 
 model KnowledgeThreadEdge {
@@ -529,6 +537,7 @@ model KnowledgeThreadEdge {
   @@index([toSourceId])
   @@index([relationType])
   @@index([confidence])
+  @@index([threadId, confidence, createdAt])
 }
 
 model ActivityEvent {
@@ -560,6 +569,74 @@ model ActivityEvent {
   @@index([reviewStatus])
   @@index([occurredAt])
   @@index([detectedAt])
+  @@index([personId, occurredAt])
+  @@index([reviewStatus, occurredAt])
+  @@index([sourceType, occurredAt])
+}
+
+model SearchDocument {
+  id             String         @id @default(cuid())
+  objectType     String
+  objectId       String
+  canonicalKey   String         @unique
+  personId       String?
+  threadId       String?
+  organizationId String?
+  sourceType     String?
+  title          String
+  summary        String?
+  text           String
+  url            String?
+  topics         String[]       @default([])
+  organizations  String[]       @default([])
+  publishedAt    DateTime?
+  fetchedAt      DateTime?
+  textHash       String
+  embeddingStatus String        @default("pending")
+  metadata       Json?
+  searchVector   Unsupported("tsvector")?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  chunks         ContentChunk[]
+
+  @@unique([objectType, objectId])
+  @@index([objectType])
+  @@index([personId])
+  @@index([threadId])
+  @@index([organizationId])
+  @@index([sourceType])
+  @@index([publishedAt])
+  @@index([fetchedAt])
+  @@index([embeddingStatus])
+  @@index([objectType, publishedAt])
+  @@index([personId, publishedAt])
+  @@index([threadId, publishedAt])
+}
+
+model ContentChunk {
+  id                String         @id @default(cuid())
+  documentId        String
+  objectType        String
+  objectId          String
+  chunkIndex        Int
+  title             String
+  text              String
+  tokenEstimate     Int            @default(0)
+  textHash          String
+  embedding         Unsupported("vector(512)")?
+  embeddingModel    String?
+  embeddingUpdatedAt DateTime?
+  metadata          Json?
+  searchVector      Unsupported("tsvector")?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  document          SearchDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, chunkIndex])
+  @@index([documentId])
+  @@index([objectType, objectId])
+  @@index([embeddingModel])
+  @@index([textHash])
 }
 
 model SearchSession {
@@ -695,6 +772,9 @@ model PersonRelation {
   @@index([personId])
   @@index([relatedPersonId])
   @@index([reviewStatus])
+  @@index([personId, reviewStatus, confidence])
+  @@index([relatedPersonId, reviewStatus, confidence])
+  @@index([reviewStatus, createdAt])
 }
 
 // 课程表 - 记录人物开设/主讲的公开课程

@@ -14,39 +14,52 @@ import { prisma } from '../../lib/db/prisma';
 import { searchWikidata, getWikidataEntityWithTranslation } from '../../lib/datasources/wikidata';
 import { downloadAndStoreAvatar } from '../../lib/storage/avatarStorage';
 
+// 当前批次：generative-ui（生成式界面 / AI Artifacts）主题的锚定人物。
+// 上一批（Addy Osmani / Geoffrey Huntley / Phil Schmid）已入库，脚本对已存在者自动跳过。
 const THREAD_PEOPLE = [
   {
-    name: 'Addy Osmani',
-    aliases: ['addyosmani'],
-    searchHint: 'Addy Osmani Google Chrome engineer',
+    name: 'Geoffrey Litt',
+    aliases: ['geoffreylitt'],
+    searchHint: 'Geoffrey Litt malleable software researcher Ink and Switch',
+    organization: ['Ink & Switch'],
+    occupation: ['researcher', 'computer scientist'],
+    xHandle: 'geoffreylitt',
+    githubHandle: 'geoffreylitt',
+    whyImportant:
+      'Ink & Switch 研究员、MIT 博士；2023 年《Malleable software in the age of LLMs》提出「用户用自然语言重塑软件本身」，是 AI Artifacts 与可塑界面（generative UI）的思想源头。',
+  },
+  {
+    name: 'Haijun Xia',
+    aliases: ['haijunxia'],
+    searchHint: 'Haijun Xia UC San Diego HCI assistant professor',
+    organization: ['UC San Diego'],
+    occupation: ['professor', 'HCI researcher'],
+    xHandle: null,
+    githubHandle: null,
+    whyImportant:
+      'UC San Diego 人机交互助理教授；CHI 2025 task-driven 可塑界面与渐进式 UI 生成两篇论文的核心作者，把「说着话捏出软件」从口号形式化成可控的研究方法。',
+  },
+  {
+    name: 'Yaniv Leviathan',
+    aliases: ['yanivleviathan'],
+    searchHint: 'Yaniv Leviathan Google distinguished engineer',
     organization: ['Google'],
-    occupation: ['software engineer', 'author'],
-    xHandle: 'addyosmani',
-    githubHandle: 'addyosmani',
+    occupation: ['engineer', 'researcher'],
+    xHandle: null,
+    githubHandle: null,
     whyImportant:
-      'Google Chrome 工程负责人、知名前端布道者与作者；命名并定义 “Loop Engineering”——不再当那个手动 prompt agent 的人，而是设计替你 prompt 的外层系统。',
+      'Google 杰出工程师；《Generative UI: LLMs are Effective UI Generators》主作者，用实验证明现代 LLM 能为几乎任意 prompt 稳健生成高质量界面，把生成式 UI 从产品宣称拉回可测能力。',
   },
   {
-    name: 'Geoffrey Huntley',
-    aliases: ['ghuntley'],
-    searchHint: 'Geoffrey Huntley software engineer Ralph',
-    organization: [],
-    occupation: ['software engineer'],
-    xHandle: 'GeoffreyHuntley',
-    githubHandle: 'ghuntley',
+    name: 'Guillermo Rauch',
+    aliases: ['rauchg', 'rauch'],
+    searchHint: 'Guillermo Rauch Vercel CEO Next.js',
+    organization: ['Vercel'],
+    occupation: ['entrepreneur', 'software engineer'],
+    xHandle: 'rauchg',
+    githubHandle: 'rauchg',
     whyImportant:
-      '独立工程师，提出 “Ralph loop”：反复喂同一 prompt、每轮清空上下文、靠磁盘状态文件记忆，证明只要持久化加可验证停止条件即可，是 /goal 等自主循环的技术原型。',
-  },
-  {
-    name: 'Phil Schmid',
-    aliases: ['Philipp Schmid', 'philschmid'],
-    searchHint: 'Philipp Schmid AI Google DeepMind Hugging Face',
-    organization: ['Google DeepMind', 'Hugging Face'],
-    occupation: ['AI engineer', 'developer advocate'],
-    xHandle: '_philschmid',
-    githubHandle: 'philschmid',
-    whyImportant:
-      '前 Hugging Face、现 Google DeepMind 技术布道者；撰写定义性博客《The New Skill in AI is Not Prompting, It is Context Engineering》，把「上下文工程」讲清成一项可操作的工程技能。',
+      'Vercel 创始人兼 CEO；推动 v0 与 AI SDK 生成式 UI，把「agent 就是前端」做成被数百万开发者使用的工具栈。',
   },
 ];
 

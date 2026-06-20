@@ -48,3 +48,6 @@ next-env.d.ts
 
 # generated audit artifacts
 /docs/audit-2026-06/data/
+/data/audit/
+/docs/page-drafts/
+/scripts/audit/backups/

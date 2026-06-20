@@ -1,7 +1,7 @@
 /**
  * Organization 梳理执行（dry-run 默认，--execute 才写库）
  *
- * 决策（林晨拍板）：DeepMind 独立保留 / 噪声删除 / 合并旧名存进 aliases
+ * 决策（产品负责人拍板）：DeepMind 独立保留 / 噪声删除 / 合并旧名存进 aliases
  *
  * 步骤：备份 → ① type 重分类(学术机构) → ② 合并重复簇(旧名进 aliases) → ③ 删噪声
  * 全程可逆：执行前把全部 Organization 导出到 backups/org-backup-<ts>.json

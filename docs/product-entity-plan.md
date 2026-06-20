@@ -1,6 +1,6 @@
 # 落地方案：作品/产品实体（含模型子类型）
 
-> 状态：待林晨拍板 · 作者：劳拉 · 日期：2026-06-19
+> 状态：待产品负责人拍板 · 作者：劳拉 · 日期：2026-06-19
 > 关联：`docs/homepage-ia-redesign.md`（人↔主题边已落地）；实体页模板原则见 `lib/entity-presentations/README.md`
 
 ## 0. 一句话目标
@@ -80,17 +80,17 @@ model ProductContributor {
 - **主题页**：新增「这个主题催生的作品」（按 threadSlugs 反查）。
 - **主页（可选）**：作品 facet / 热门作品流，二期再说。
 
-## 6. 待林晨拍板的决策点
+## 6. 待产品负责人拍板的决策点
 
 1. **模型是否并入 Product**：建议 ✅ 并入（type=model），不另立实体。
 2. **归并粒度**：`GPT-4`/`GPT4` 必并；`GPT-3`/`GPT-4`/`o1` 是否并成"GPT/OpenAI 模型系列"还是各自独立？建议**各自独立**（它们是不同产品），只并大小写/连字符变体，其余进 review 清单人工定。
 3. **贡献者 role**：能否从现有数据推断 creator/lead？JSON 无 role。建议默认全 contributor，仅当该人是该 org 的 founder/CEO 时标 creator；更细留后续策展。
-4. **先做哪个**：✅ 林晨拍板**先 Course 热身再上 Product**。Course 热身已实现（2026-06-19）：`lib/courses.ts` + `/courses` 聚合页（按方向/难度/类型筛选，课程卡链讲师）+ 话题页「想系统学 X?」课程横切 + SiteHeader 加「AI 课程」导航。tsc 0 error，dev 渲染正确。Course 是 1:N（每课属一个讲师），课程链外部平台故不建内部详情页。**Product 实体待启动（本方案主体）。**
+4. **先做哪个**：✅ 产品负责人拍板**先 Course 热身再上 Product**。Course 热身已实现（2026-06-19）：`lib/courses.ts` + `/courses` 聚合页（按方向/难度/类型筛选，课程卡链讲师）+ 话题页「想系统学 X?」课程横切 + SiteHeader 加「AI 课程」导航。tsc 0 error，dev 渲染正确。Course 是 1:N（每课属一个讲师），课程链外部平台故不建内部详情页。**Product 实体待启动（本方案主体）。**
 5. **生产库写入**：回填是 prod Neon 写操作（加 Product/ProductContributor 表 + 数据）。按惯例我写好 migration+脚本+`--dry-run`，执行那一步你授权再跑。
 
 ## 6.5 落地结果（2026-06-19，一期完成）
 
-**关键修正（林晨两轮拍板）**：GPT-4/Claude 3 是模型不是"产品"——
+**关键修正（产品负责人两轮拍板）**：GPT-4/Claude 3 是模型不是"产品"——
 - 实体用户可见一律「作品/成果」，按 `type` 区分 模型/产品/工具/框架/架构/实验室/基准；模型永不标"产品"。
 - **模型收敛到系列**：GPT-1..5→「GPT」、Claude 各版本→「Claude」、o1/o3→「o 系列」等，避免版本噪音（Altman 页面不再被 GPT-1..5 刷屏）。
 - **CEO/founder（roleCategory=founder）不进作品贡献者主区**，关系走公司边（回填跳过 180 次）。

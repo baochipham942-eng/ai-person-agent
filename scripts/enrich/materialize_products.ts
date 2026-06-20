@@ -2,7 +2,7 @@
  * 作品/成果实体回填：把散落在 People.products JSON 里、跨人重复的"作品"提炼成 Product 实体
  * （表名 Product 是内部叫法；用户可见一律「作品/成果」，模型永不标成"产品"）。
  *
- * 两条关键规则（林晨拍板）：
+ * 两条关键规则（产品负责人拍板）：
  *  1. 模型收敛到系列：GPT-1/2/3/4/4o/5 → 一个「GPT」；Claude 各版本 → 「Claude」；o1/o3 → 「o 系列」。
  *     避免 Altman 页面被 GPT-1..5 刷屏。type=model。
  *  2. CEO/founder 不进作品贡献者主区：roleCategory==='founder' 的人不建 ProductContributor，

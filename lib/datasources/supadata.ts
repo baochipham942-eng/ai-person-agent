@@ -64,6 +64,8 @@ interface FetchOptions {
     lang?: string;
     /** 单 key 网络错误重试次数 */
     retries?: number;
+    /** 单次 Supadata HTTP 请求超时 ms（默认 30000，可用 SUPADATA_REQUEST_TIMEOUT_MS 覆盖） */
+    requestTimeoutMs?: number;
     /** 异步任务轮询间隔 ms（默认 4000） */
     jobPollMs?: number;
     /** 异步任务最大轮询次数（默认 15，约 1 分钟） */
@@ -72,15 +74,20 @@ interface FetchOptions {
     rateLimitRetries?: number;
 }
 
+function requestTimeoutMs(options: Pick<FetchOptions, 'requestTimeoutMs'> = {}): number {
+    const fromEnv = Number(process.env.SUPADATA_REQUEST_TIMEOUT_MS || 0);
+    return options.requestTimeoutMs ?? (Number.isFinite(fromEnv) && fromEnv > 0 ? fromEnv : 30000);
+}
+
 /** 轮询 Supadata 异步任务（202 返回的 jobId）直到 completed/failed/超时 */
-async function pollTranscriptJob(jobId: string, key: string, pollMs: number, maxPolls: number): Promise<TranscriptResult> {
+async function pollTranscriptJob(jobId: string, key: string, pollMs: number, maxPolls: number, timeoutMs: number): Promise<TranscriptResult> {
     const endpoint = `${SUPADATA_BASE_URL}/transcript/${jobId}`;
     for (let i = 0; i < maxPolls; i++) {
         await sleep(pollMs);
         let res: Response;
         try {
             await rateGate();
-            res = await fetch(endpoint, { headers: { 'x-api-key': key } });
+            res = await fetch(endpoint, { headers: { 'x-api-key': key }, signal: AbortSignal.timeout(timeoutMs) });
         } catch {
             continue; // 网络抖动，下一轮再试
         }
@@ -126,7 +133,7 @@ export async function fetchYoutubeTranscript(
         let rotate = false;
 
         while (!rotate) {
-            const res = await fetchWithRetry(endpoint, key, options.retries ?? 2);
+            const res = await fetchWithRetry(endpoint, key, options.retries ?? 2, requestTimeoutMs(options));
 
             if (res.status === 200) {
                 keyCursor = idx;
@@ -140,7 +147,7 @@ export async function fetchYoutubeTranscript(
                 const data = await res.json().catch(() => null);
                 const jobId = data && typeof data === 'object' ? (data as Record<string, unknown>).jobId : null;
                 if (typeof jobId === 'string' && jobId) {
-                    return await pollTranscriptJob(jobId, key, options.jobPollMs ?? 3000, options.jobMaxPolls ?? 8);
+                    return await pollTranscriptJob(jobId, key, options.jobPollMs ?? 3000, options.jobMaxPolls ?? 8, requestTimeoutMs(options));
                 }
                 return { text: '', lang: null, availableLangs: [], available: false, status: 'none' };
             }
@@ -183,12 +190,12 @@ export async function fetchYoutubeTranscript(
     return { text: '', lang: null, availableLangs: [], available: false, status: 'error' };
 }
 
-async function fetchWithRetry(endpoint: string, key: string, retries: number): Promise<Response> {
+async function fetchWithRetry(endpoint: string, key: string, retries: number, timeoutMs: number): Promise<Response> {
     let lastErr: unknown;
     for (let i = 0; i <= retries; i++) {
         try {
             await rateGate();
-            return await fetch(endpoint, { headers: { 'x-api-key': key } });
+            return await fetch(endpoint, { headers: { 'x-api-key': key }, signal: AbortSignal.timeout(timeoutMs) });
         } catch (err) {
             lastErr = err;
             // 网络抖动指数退避

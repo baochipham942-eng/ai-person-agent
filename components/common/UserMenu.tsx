@@ -5,53 +5,31 @@ import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useEffect, useRef, useState } from 'react';
 import {
+  clearUserSessionCache,
+  useUserSession,
+  type MenuDisplayUser,
+} from '@/components/common/userSessionClient';
+import {
   ADMIN_WORKSPACE_NAV_ITEMS,
   USER_WORKSPACE_NAV_ITEMS,
   type IdentityNavItem,
 } from '@/components/common/identityNavigation';
 
-interface MenuUser {
-  username: string;
-  email: string | null;
-  nickname: string | null;
-  displayName: string | null;
-  avatar: string | null;
-  role: 'USER' | 'ADMIN';
-  status: string;
-}
-
-interface UserMeResponse {
-  authenticated: boolean;
-  user: MenuUser | null;
-}
-
-const MENU_USER_CACHE_TTL_MS = 30_000;
 const USER_ACCOUNT_MENU_ITEMS = USER_WORKSPACE_NAV_ITEMS.filter(item => item.href !== '/compare');
 
-let cachedMenuUser: MenuUser | undefined;
-let cachedMenuUserAt = 0;
-let menuUserRequest: Promise<MenuUser | null> | null = null;
-
 export function UserMenu() {
-  const initialUser = readCachedMenuUser();
-  const [user, setUser] = useState<MenuUser | null>(initialUser ?? null);
-  const [loading, setLoading] = useState(!initialUser);
+  const session = useUserSession();
+  const user = session.status === 'authenticated' ? session.user : null;
+  const displayUser = user ?? (session.status === 'unknown' || session.status === 'loading' ? session.displayUser : null);
+  const loading = session.status === 'unknown' || session.status === 'loading';
+  const canOpenMenu = Boolean(user);
   const [open, setOpen] = useState(false);
   const [failedAvatarSrc, setFailedAvatarSrc] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let active = true;
-
-    void requestMenuUser().then(result => {
-      if (!active) return;
-      setUser(result);
-      setLoading(false);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
+    if (!canOpenMenu) setOpen(false);
+  }, [canOpenMenu]);
 
   useEffect(() => {
     if (!open) return;
@@ -72,7 +50,7 @@ export function UserMenu() {
     };
   }, [open]);
 
-  if (!user) {
+  if (!displayUser) {
     if (loading) {
       return (
         <div
@@ -95,17 +73,21 @@ export function UserMenu() {
     );
   }
 
-  const label = displayName(user);
+  const label = displayName(displayUser);
   const initial = avatarInitial(label);
-  const avatarSrc = user.avatar && failedAvatarSrc !== user.avatar ? user.avatar : null;
+  const avatarSrc = displayUser.avatar && failedAvatarSrc !== displayUser.avatar ? displayUser.avatar : null;
 
   return (
     <div ref={rootRef} className="relative flex-shrink-0">
       <button
         type="button"
-        onClick={() => setOpen(current => !current)}
+        onClick={() => {
+          if (canOpenMenu) setOpen(current => !current);
+        }}
         aria-haspopup="menu"
-        aria-expanded={open}
+        aria-expanded={canOpenMenu ? open : false}
+        aria-busy={!canOpenMenu && loading ? true : undefined}
+        aria-label={canOpenMenu ? label : '读取账号状态'}
         className={`flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-stone-200 text-xs font-semibold shadow-sm transition hover:border-orange-200 ${
           avatarSrc ? 'bg-white text-stone-700 hover:bg-orange-50 hover:text-orange-700' : 'text-white'
         }`}
@@ -119,7 +101,7 @@ export function UserMenu() {
         )}
       </button>
 
-      {open && (
+      {open && user && (
         <div
           role="menu"
           className="absolute right-0 top-10 z-50 max-h-[80vh] w-64 overflow-y-auto rounded-xl border border-stone-200 bg-white text-sm shadow-lg"
@@ -142,8 +124,7 @@ export function UserMenu() {
             <button
               type="button"
               onClick={() => {
-                cachedMenuUser = undefined;
-                cachedMenuUserAt = 0;
+                clearUserSessionCache();
                 void signOut({ callbackUrl: '/' });
               }}
               className="flex h-9 w-full items-center rounded-lg px-2 text-left text-xs font-medium text-rose-600 transition hover:bg-rose-50"
@@ -179,45 +160,7 @@ function MenuSection({ items, onSelect }: { items: IdentityNavItem[]; onSelect: 
   );
 }
 
-function readCachedMenuUser(): MenuUser | undefined {
-  if (!cachedMenuUser) return undefined;
-  if (Date.now() - cachedMenuUserAt > MENU_USER_CACHE_TTL_MS) return undefined;
-  return cachedMenuUser;
-}
-
-async function requestMenuUser(): Promise<MenuUser | null> {
-  const cached = readCachedMenuUser();
-  if (cached) return cached;
-
-  if (!menuUserRequest) {
-    menuUserRequest = fetchMenuUser().finally(() => {
-      menuUserRequest = null;
-    });
-  }
-
-  return menuUserRequest;
-}
-
-async function fetchMenuUser(): Promise<MenuUser | null> {
-  try {
-    const response = await fetch('/api/user/me', { cache: 'no-store' });
-    if (!response.ok) return null;
-    const result = await response.json() as UserMeResponse;
-    const nextUser = result.authenticated ? result.user : null;
-    if (nextUser) {
-      cachedMenuUser = nextUser;
-      cachedMenuUserAt = Date.now();
-    } else {
-      cachedMenuUser = undefined;
-      cachedMenuUserAt = 0;
-    }
-    return nextUser;
-  } catch {
-    return null;
-  }
-}
-
-function displayName(user: MenuUser): string {
+function displayName(user: MenuDisplayUser): string {
   return user.displayName || user.nickname || user.username || '账号';
 }
 

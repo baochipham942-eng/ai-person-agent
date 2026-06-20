@@ -28,6 +28,7 @@ export const COMPANY_BLOGS: CompanyBlog[] = [
     { name: 'Stability AI', org: 'Stability AI', method: 'rss', url: 'https://stability.ai/news-updates?format=rss' },
     // Tier 2/3：无 RSS，Jina 渲染列表页 + 正则提链
     { name: 'Anthropic', org: 'Anthropic', method: 'scrape', url: 'https://www.anthropic.com/news', linkPattern: /\/news\/[a-z0-9][a-z0-9-]{3,}/gi },
+    { name: 'Anthropic Research', org: 'Anthropic', method: 'scrape', url: 'https://www.anthropic.com/research', linkPattern: /\/research\/[a-z0-9][a-z0-9-]{3,}/gi },
     { name: 'Cohere', org: 'Cohere', method: 'scrape', url: 'https://cohere.com/blog', linkPattern: /\/blog\/[a-z0-9][a-z0-9-]{3,}/gi },
     { name: 'Perplexity', org: 'Perplexity', method: 'scrape', url: 'https://www.perplexity.ai/hub/blog', linkPattern: /\/hub\/blog\/[a-z0-9][a-z0-9-]{3,}/gi },
     { name: 'Runway', org: 'Runway', method: 'scrape', url: 'https://runwayml.com/news', linkPattern: /\/news\/[a-z0-9][a-z0-9-]{3,}/gi },

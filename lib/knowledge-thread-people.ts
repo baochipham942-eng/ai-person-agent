@@ -131,6 +131,54 @@ const CURATED_THREADS: CuratedThreadSeed[] = [
       },
     ],
   },
+  {
+    slug: 'generative-ui',
+    title: 'Generative UI / AI Artifacts',
+    whyNow:
+      '模型的产出从「一段文本」变成「能跑、能分享的软件」——Claude Artifacts 把产出固化成可调 API 的微应用，Vercel v0 / AI SDK 让 agent 直接生成界面，连非程序员都能一句话造工具。',
+    topics: ['AIGC/生成式媒体', 'AI 产品化', 'AI Coding'],
+    priority: 70,
+    people: [
+      {
+        name: 'Geoffrey Litt',
+        aliases: ['geoffreylitt'],
+        relation: 'proposer',
+        summary:
+          '2023 年《Malleable software in the age of LLMs》提出「用户用自然语言重塑软件本身」，是 artifacts-as-apps 与可塑界面的思想源头。',
+        sourceIds: ['genui_litt_malleable_software'],
+      },
+      {
+        name: 'Haijun Xia',
+        relation: 'proposer',
+        summary:
+          'CHI 2025 task-driven 可塑界面 + 渐进式 UI 生成两篇论文的核心作者，把「说着话捏出软件」从口号形式化成可控的研究方法。',
+        sourceIds: ['genui_paper_chi2025_malleable', 'genui_paper_gradual_generation_malleable'],
+      },
+      {
+        name: 'Yaniv Leviathan',
+        relation: 'proposer',
+        summary:
+          'Google《Generative UI: LLMs are Effective UI Generators》主作者，用实验证明现代 LLM 能为几乎任意 prompt 稳健生成高质量界面。',
+        sourceIds: ['genui_paper_llms_effective_ui_generators'],
+      },
+      {
+        name: 'Boris Cherny',
+        aliases: ['bcherny'],
+        relation: 'driver',
+        summary:
+          'Claude Code 创建者，把 Artifacts 做成日常用的运行态工件（代码可视化、系统图、共享仪表盘），是「产出即可运行软件」的产品推动者。',
+        sourceIds: ['genui_cherny_artifacts_firsthand', 'genui_anthropic_claude_powered_artifacts'],
+      },
+      {
+        name: 'Guillermo Rauch',
+        aliases: ['rauch'],
+        relation: 'implementer',
+        summary:
+          'Vercel CEO，v0 与 AI SDK 生成式 UI 的推动者，把「agent 就是前端」做成被数百万开发者使用的工具栈。',
+        sourceIds: ['genui_vercel_announcing_v0', 'genui_vercel_ai_sdk_3_genui'],
+      },
+    ],
+  },
 ];
 
 function getCuratedThread(slug: string): CuratedThreadSeed | null {

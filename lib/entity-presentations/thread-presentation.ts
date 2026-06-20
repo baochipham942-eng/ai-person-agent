@@ -273,6 +273,55 @@ const THREAD_PRESENTATIONS: Record<string, ThreadPresentation> = {
       '评测覆盖的是单轮输出，还是能评多步 agent 的完整轨迹和工具调用。',
     ],
   },
+  'generative-ui': {
+    title: 'Generative UI / AI Artifacts',
+    subtitle: '生成式界面 / AI 工件',
+    valueProp:
+      'Generative UI 不是让 AI 多吐点文字，而是让模型的产出从「一段文本」变成「一个能跑、能分享的软件」——界面本身被实时生成（Vercel v0 / AI SDK），产出被钉成可持久、能调 API 和 MCP 的微应用（Claude Artifacts），连不写代码的人都能描述一句话就造出一个工具。',
+    problem:
+      '到 2026，瓶颈从「模型会不会写代码」挪到「用户最后到底拿到什么」。两条要分清：一条是 Generative UI——agent 直接生成界面、把 React 组件而不是纯文本流回来，"agent 就是前端"；另一条是 Artifacts——把聊天产出固化成可分享、能在里面跑 AI 的一次性软件。它和 Agentic Coding 是兄弟但不同：后者是 AI 当开发者钻进真实仓库改代码、接受验证；这一条的产出直接面向终端用户，常常由非程序员驱动。',
+    whyRead:
+      '这页用 Anthropic 的 build/claude-powered artifacts、Vercel v0 与 AI SDK 生成式 UI、Geoffrey Litt 的 malleable software、CHI 2025 与几篇 2026 arXiv 论文，把「AI 产出变成可运行界面」从流行词拉回可验证的产品与研究问题，帮你分清真有运行态软件的产品和只会贴一张静态截图的。',
+    roleInsights: {
+      signal: {
+        title: '一线信号',
+        body: 'InfoWorld「agent 就是前端」、Geoffrey Litt 的 malleable software 把关注点从「写个好 prompt」推向「让用户用自然语言不断重塑软件本身」。',
+        takeaway: '信号说方向在变，结论要回到官方产品定义和研究根基。',
+      },
+      official_definition: {
+        title: '官方定义',
+        body: '看产品到底把产出做成了什么：Claude Artifacts 能不能持久化、分享、在里面直接调 API/MCP（按用户账号计费）；v0 / AI SDK 是不是真把模型输出当成可流式的 React 组件，而不是纯文本。',
+        takeaway: '能产出运行态、可分享的软件，才算进入这条线，而不是又一个聊天框。',
+      },
+      transcript_context: {
+        title: '访谈语境',
+        body: 'Boris Cherny 讲 Artifacts 的真实用法（代码可视化、系统图、动画预览、团队共享仪表盘），补足团队为什么把产出做成可运行工件。',
+        takeaway: '访谈补动机，引文须回原始视频逐字稿核对，不用二手转述替代。',
+      },
+      paper_foundation: {
+        title: '论文根基',
+        body: 'CHI 2025 把 prompt 驱动的可塑界面形式化，「LLMs are Effective UI Generators」证明能力真实，AlignUI / 渐进式生成讲怎么让生成的界面可控、少出错。',
+        takeaway: '论文回答「能不能、可不可靠」，别把产品发布当能力证明。',
+      },
+      implementation_signal: {
+        title: '工程落地',
+        body: 'vercel/ai 的 streamUI、RSC 生成式 UI 参考实现、Thesys C1 第二家独立厂商，说明生成式 UI 是可实现、跨厂商的工具栈，不是单家功能。',
+        takeaway: '有 SDK、参考实现和多家厂商，这条线才不只是 demo。',
+      },
+    },
+    loopSteps: [
+      { title: '描述意图', body: '用户用自然语言说要什么——一个仪表盘、一个抽认卡生成器、一张图表，而不是先去搭脚手架写代码。' },
+      { title: '模型生成界面', body: '模型把产出当成可运行的东西：流式回 React 组件（生成式 UI），或固化成一个 Artifact，而不是只回一段文本。' },
+      { title: '渲染成可运行软件', body: '产出在侧栏 / 页面里直接跑起来，可交互、可预览，必要时在里面调 API 或 MCP，变成真正的微应用。' },
+      { title: '分享与复用', body: 'Artifact 可持久化、可分享，别人用自己的账号鉴权和计费，无需管理 API key——一次性工具也值得造和传。' },
+      { title: '对话式重塑', body: '用户继续用自然语言改它——调样式、加功能、换数据，软件被「说着话」捏成自己要的样子（malleable software）。' },
+    ],
+    readerCanJudge: [
+      '这个产品的产出到底能不能跑、能不能分享，还是只生成一张静态截图或一段代码文本。',
+      '它说的是 Generative UI（运行时生成界面）还是 Artifacts（固化成可分享微应用）——两者都属这条线但解决的环节不同。',
+      '生成的界面有没有可控性和可靠性兜底（结构化组件、减少语法错误），还是一锤子黑箱、改一点就崩。',
+    ],
+  },
 };
 
 const GENERATED_THREAD_PRESENTATIONS = generatedThreadPresentations as unknown as Record<string, ThreadPresentation>;
