@@ -384,7 +384,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialWeekly
           initialCards={shouldUseInitialWeeklyPicks ? initialWeeklyPicks : undefined}
         />
         <section className="min-w-0">
-          <div className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
+          <div className="mb-4">
             <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-5 gap-y-3">
               <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">
                 <span className="flex-shrink-0 text-[11px] font-medium text-stone-400">筛选</span>

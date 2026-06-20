@@ -77,7 +77,7 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
       </div>
 
       {showLoading ? (
-        <ul className="scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6">
+        <ul className="scrollbar-hide -mr-4 flex snap-x snap-mandatory gap-3 overflow-x-auto pr-4 pb-1 sm:-mr-6 sm:pr-6">
           {[...Array(3)].map((_, index) => (
             <li key={index} className="h-52 w-[82vw] flex-none snap-start animate-pulse rounded-xl border border-stone-100 bg-stone-50 sm:w-[22rem] lg:w-[24rem]" />
           ))}
@@ -91,7 +91,7 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
           本周暂时没有可展示的推荐。
         </div>
       ) : (
-        <ul className="scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6">
+        <ul className="scrollbar-hide -mr-4 flex snap-x snap-mandatory gap-3 overflow-x-auto pr-4 pb-1 sm:-mr-6 sm:pr-6">
           {cards.map(card => (
             <li key={card.id} className="w-[82vw] flex-none snap-start sm:w-[22rem] lg:w-[24rem]">
               <FeaturedCardView card={card} />
@@ -105,7 +105,7 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
 
 function FeaturedCardView({ card }: { card: FeaturedCard }) {
   const meta = KIND_META[card.kind];
-  const className = featuredCardClassName(card);
+  const className = featuredCardClassName();
   const body = <FeaturedCardBody card={card} meta={meta} />;
 
   if (card.external) {
@@ -122,82 +122,58 @@ function FeaturedCardView({ card }: { card: FeaturedCard }) {
   );
 }
 
-function featuredCardClassName(card: FeaturedCard): string {
-  const base =
-    'flex flex-col rounded-xl border border-stone-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40';
-  if (card.kind === 'video') return `${base} min-h-[22rem]`;
-  if (card.kind === 'article') return `${base} min-h-40`;
-  return `${base} min-h-48`;
+function featuredCardClassName(): string {
+  // 所有类型卡片统一：等高填满（h-full 配合 ul 的 items-stretch）+ 一致的内边距与悬停态。
+  return 'flex h-full min-h-[11.5rem] flex-col rounded-xl border border-stone-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40';
 }
 
 function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KIND_META)[FeaturedCardKind] }) {
-  // 人物卡：头像主导的纵向布局
-  if (card.kind === 'person') {
-    return (
-      <>
-        <div className={`flex items-center gap-1.5 text-[11px] font-medium ${meta.text}`}>
-          <span className={`h-1.5 w-1.5 rounded-full ${meta.dot}`} />
-          {meta.label}
-        </div>
-        <div className="mt-2 flex items-center gap-2.5">
-          <PersonAvatar name={card.person?.name ?? card.title} avatarUrl={card.person?.avatarUrl ?? null} size={40} />
-          <div className="min-w-0">
-            <h3 className="truncate text-sm font-semibold tracking-tight text-stone-950">{card.title}</h3>
-            {card.person?.currentTitle && (
-              <p className="truncate text-[11px] text-stone-500">{card.person.currentTitle}</p>
-            )}
-          </div>
-        </div>
-        <p className="mt-2 line-clamp-2 text-xs leading-5 text-stone-600">
-          <span className="font-medium text-stone-950">本周看点：</span>
-          {card.whyNow}
-        </p>
-        <Topics topics={card.topics} />
-      </>
-    );
-  }
+  // 统一结构（所有类型一致）：眉标 → 媒体+标题+副标题 → 推荐理由 → 话题页脚。
+  const subtitle =
+    card.kind === 'person' ? card.person?.currentTitle ?? null : card.note ?? card.person?.name ?? null;
 
   return (
     <>
-      {card.kind === 'video' && card.thumbnailUrl && (
-        <div className="relative mb-2 aspect-video w-full overflow-hidden rounded-lg bg-stone-100">
-          {/* 用原生 img 避免把 img.youtube.com 加进 next.config remotePatterns */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={card.thumbnailUrl} alt={card.title} loading="lazy" className="h-full w-full object-cover" />
-          <span className="absolute inset-0 flex items-center justify-center">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white">
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-          </span>
-        </div>
-      )}
-
+      {/* 眉标 */}
       <div className={`flex items-center gap-1.5 text-[11px] font-medium ${meta.text}`}>
         <span className={`h-1.5 w-1.5 rounded-full ${meta.dot}`} />
         {meta.label}
-        {card.sourceLabel && card.kind !== 'thread' && (
+        {card.sourceLabel && card.kind !== 'thread' && card.kind !== 'person' && (
           <span className="font-normal text-stone-400">· {card.sourceLabel}</span>
         )}
       </div>
 
-      <h3 className="mt-1.5 line-clamp-2 text-sm font-semibold tracking-tight text-stone-950">{card.title}</h3>
-      <p className="mt-1 line-clamp-2 text-xs leading-5 text-stone-600">
+      {/* 媒体 + 标题 + 副标题 */}
+      <div className="mt-2 flex items-start gap-2.5">
+        {card.kind === 'person' ? (
+          <PersonAvatar name={card.person?.name ?? card.title} avatarUrl={card.person?.avatarUrl ?? null} size={40} />
+        ) : card.kind === 'video' && card.thumbnailUrl ? (
+          <span className="relative h-12 w-[4.5rem] flex-shrink-0 overflow-hidden rounded-md bg-stone-100">
+            {/* 用原生 img 避免把 img.youtube.com 加进 next.config remotePatterns */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={card.thumbnailUrl} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-black/55 text-white">
+                <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </span>
+          </span>
+        ) : null}
+        <div className="min-w-0 flex-1">
+          <h3 className="line-clamp-2 text-sm font-semibold tracking-tight text-stone-950">{card.title}</h3>
+          {subtitle && <p className="mt-0.5 line-clamp-1 text-[11px] text-stone-500">{subtitle}</p>}
+        </div>
+      </div>
+
+      {/* 推荐理由（flex-1 把话题压到底部对齐） */}
+      <p className="mt-2 line-clamp-2 flex-1 text-xs leading-5 text-stone-600">
         <span className="font-medium text-stone-950">推荐理由：</span>
         {card.whyNow}
       </p>
 
-      {card.person && (
-        <div className="mt-2 flex items-center gap-1.5 text-[11px] text-stone-500">
-          <PersonAvatar name={card.person.name} avatarUrl={card.person.avatarUrl} size={18} />
-          <span className="min-w-0 truncate">{card.person.name}</span>
-        </div>
-      )}
-      {!card.person && card.note && (
-        <div className="mt-2 truncate text-[11px] text-stone-500">{card.note}</div>
-      )}
-
+      {/* 话题页脚（所有类型一致） */}
       <Topics topics={card.topics} />
     </>
   );

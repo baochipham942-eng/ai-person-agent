@@ -114,7 +114,7 @@ async function resolvePinnedCards(): Promise<FeaturedCard[]> {
   const persons = refIds.length > 0
     ? await prisma.people.findMany({
         where: { id: { in: refIds } },
-        select: { id: true, name: true, avatarUrl: true, currentTitle: true },
+        select: { id: true, name: true, avatarUrl: true, currentTitle: true, topics: true },
       })
     : [];
   const personMap = new Map(persons.map(person => [person.id, person]));
@@ -132,6 +132,7 @@ async function resolvePinnedCards(): Promise<FeaturedCard[]> {
         href: `/person/${person.id}`,
         external: false,
         whyNow: seed.whyNow,
+        topics: person.topics,
       }));
     } else if (seed.inline) {
       cards.push(buildPersonCard({
