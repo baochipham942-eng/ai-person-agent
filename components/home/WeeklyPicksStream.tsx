@@ -8,7 +8,7 @@ import type { FeaturedCard, FeaturedCardKind } from '@/lib/home/featured-cards';
 
 /**
  * 首页「本周推荐」——合并原「当期主题」+「本周推荐（活动轮播）」为一条异质精选流。
- * 一张卡可以是：人物 / 知识主题 / 视频 / 论文 / 新闻 / 播客，每张都带一句推荐理由。
+ * 一张卡可以是：人物 / 知识主题 / 视频 / 论文 / 新闻 / 推文 / 播客，每张都带一句推荐理由。
  * 默认服务端渲染（含 pin），筛选 topic/org 时按 /api/weekly-picks 重取（不含 pin）。
  */
 interface WeeklyPicksStreamProps {
@@ -42,6 +42,7 @@ const KIND_META: Record<FeaturedCardKind, { label: string; dot: string; text: st
   video: { label: '视频', dot: 'bg-rose-500', text: 'text-rose-600' },
   paper: { label: '论文', dot: 'bg-sky-500', text: 'text-sky-600' },
   article: { label: '新闻', dot: 'bg-stone-400', text: 'text-stone-500' },
+  x_post: { label: '推文', dot: 'bg-stone-900', text: 'text-stone-700' },
   podcast: { label: '播客', dot: 'bg-violet-500', text: 'text-violet-600' },
 };
 
@@ -78,7 +79,7 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
       {showLoading ? (
         <ul className="scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6">
           {[...Array(3)].map((_, index) => (
-            <li key={index} className="h-36 w-[82vw] flex-none snap-start animate-pulse rounded-xl border border-stone-100 bg-stone-50 sm:w-[22rem] lg:w-[24rem]" />
+            <li key={index} className="h-52 w-[82vw] flex-none snap-start animate-pulse rounded-xl border border-stone-100 bg-stone-50 sm:w-[22rem] lg:w-[24rem]" />
           ))}
         </ul>
       ) : error && cards.length === 0 ? (
@@ -104,8 +105,7 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
 
 function FeaturedCardView({ card }: { card: FeaturedCard }) {
   const meta = KIND_META[card.kind];
-  const className =
-    'flex h-36 flex-col overflow-hidden rounded-xl border border-stone-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40';
+  const className = featuredCardClassName(card);
   const body = <FeaturedCardBody card={card} meta={meta} />;
 
   if (card.external) {
@@ -120,6 +120,14 @@ function FeaturedCardView({ card }: { card: FeaturedCard }) {
       {body}
     </Link>
   );
+}
+
+function featuredCardClassName(card: FeaturedCard): string {
+  const base =
+    'flex flex-col rounded-xl border border-stone-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40';
+  if (card.kind === 'video') return `${base} min-h-[22rem]`;
+  if (card.kind === 'article') return `${base} min-h-40`;
+  return `${base} min-h-48`;
 }
 
 function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KIND_META)[FeaturedCardKind] }) {
@@ -140,7 +148,7 @@ function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KI
             )}
           </div>
         </div>
-        <p className="mt-2 line-clamp-2 flex-1 text-xs leading-5 text-stone-600">
+        <p className="mt-2 line-clamp-2 text-xs leading-5 text-stone-600">
           <span className="font-medium text-stone-950">本周看点：</span>
           {card.whyNow}
         </p>
@@ -152,7 +160,7 @@ function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KI
   return (
     <>
       {card.kind === 'video' && card.thumbnailUrl && (
-        <div className="relative mb-2 h-12 w-full overflow-hidden rounded-lg bg-stone-100">
+        <div className="relative mb-2 aspect-video w-full overflow-hidden rounded-lg bg-stone-100">
           {/* 用原生 img 避免把 img.youtube.com 加进 next.config remotePatterns */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={card.thumbnailUrl} alt={card.title} loading="lazy" className="h-full w-full object-cover" />
@@ -174,8 +182,8 @@ function FeaturedCardBody({ card, meta }: { card: FeaturedCard; meta: (typeof KI
         )}
       </div>
 
-      <h3 className="mt-1.5 line-clamp-1 text-sm font-semibold tracking-tight text-stone-950">{card.title}</h3>
-      <p className="mt-1 line-clamp-2 flex-1 text-xs leading-5 text-stone-600">
+      <h3 className="mt-1.5 line-clamp-2 text-sm font-semibold tracking-tight text-stone-950">{card.title}</h3>
+      <p className="mt-1 line-clamp-2 text-xs leading-5 text-stone-600">
         <span className="font-medium text-stone-950">推荐理由：</span>
         {card.whyNow}
       </p>
@@ -199,7 +207,7 @@ function Topics({ topics }: { topics: string[] }) {
   if (topics.length === 0) return null;
   const visibleTopics = topics.slice(0, 3);
   return (
-    <div className="mt-auto flex min-h-5 gap-1 overflow-hidden pt-2">
+    <div className="mt-3 flex min-h-5 gap-1 overflow-hidden">
       {visibleTopics.map(topic => (
         <span
           key={topic}

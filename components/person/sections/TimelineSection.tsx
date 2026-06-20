@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getTimelineRoleCategory } from '@/lib/person-role-kind';
 
 interface PersonRole {
   id: string;
@@ -20,30 +21,6 @@ interface PersonRole {
 interface TimelineSectionProps {
   personRoles: PersonRole[];
   qid?: string;
-}
-
-// 分类关键词
-const EDUCATION_KEYWORDS = ['university', 'college', 'school', 'academy', 'institute'];
-const INVESTMENT_KEYWORDS = ['partner', 'investor', 'venture', 'capital', 'fund', 'angel', 'board member', 'advisor', 'co-chair', 'chairman'];
-const INVESTMENT_ORGS = ['y combinator'];
-
-function categorizeRole(role: PersonRole): 'career' | 'education' | 'investment' {
-  const orgType = role.organizationType?.toLowerCase() || '';
-  const orgName = role.organizationName?.toLowerCase() || '';
-  const roleTitle = role.role?.toLowerCase() || '';
-
-  // 教育
-  if (EDUCATION_KEYWORDS.some(k => orgType.includes(k))) {
-    return 'education';
-  }
-
-  // 投资
-  if (INVESTMENT_KEYWORDS.some(k => roleTitle.includes(k)) ||
-      INVESTMENT_ORGS.some(o => orgName.includes(o))) {
-    return 'investment';
-  }
-
-  return 'career';
 }
 
 function formatDate(dateStr: string | null | undefined): string {
@@ -202,7 +179,7 @@ export function TimelineSection({ personRoles, qid }: TimelineSectionProps) {
 
   // 分类角色
   const categorized = personRoles.reduce((acc, role) => {
-    const category = categorizeRole(role);
+    const category = getTimelineRoleCategory(role);
     if (!acc[category]) acc[category] = [];
     acc[category].push(role);
     return acc;
@@ -220,6 +197,7 @@ export function TimelineSection({ personRoles, qid }: TimelineSectionProps) {
   const sections = [
     { key: 'career', title: '职业经历', icon: '💼', roles: categorized.career || [] },
     { key: 'investment', title: '投资经历', icon: '💰', roles: categorized.investment || [] },
+    { key: 'affiliation', title: '顾问/董事/项目', icon: '🤝', roles: categorized.affiliation || [] },
     { key: 'education', title: '教育背景', icon: '🎓', roles: categorized.education || [] },
   ];
 

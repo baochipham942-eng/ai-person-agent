@@ -1,9 +1,9 @@
 # Card Reaggregation Apply
 
-Generated at: 2026-06-18T09:37:20.574Z
+Generated at: 2026-06-20T05:41:12.310Z
 Mode: dry-run
 Strategy: archive-active
-Generation ID: card-reaggregation:2026-06-18T09:37:12.399Z
+Generation ID: card-reaggregation:2026-06-20T05:41:04.419Z
 Plan: docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan.json
 Review: docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation_plan_mimo_review.json
 
@@ -13,7 +13,7 @@ Review: docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation
 | --- | --- |
 | people considered | 5 |
 | people eligible | 5 |
-| current active cards | 27 |
+| current active cards | 24 |
 | replacement cards | 24 |
 | skipped people | 0 |
 
@@ -23,7 +23,7 @@ Review: docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation
 | --- | --- | --- | --- | --- |
 | Yoshua Bengio | ready | 5 | 5 |  |
 | 周明 | active | 3 | 3 |  |
-| 杨植麟 | active | 8 | 5 |  |
+| 杨植麟 | active | 5 | 5 |  |
 | 闫俊杰 | active | 6 | 6 |  |
 | 亚历克·拉德福德 | ready | 5 | 5 |  |
 
@@ -74,3 +74,4 @@ Review: docs/audit-2026-06/data/exa_source_quality_review_dir/card_reaggregation
 - Execute mode requires --person and archives that person's current active Card rows by default.
 - Use --strategy=hard-delete only for one-off legacy repair with a reviewed archive.
 - Archive JSON contains the current cards, replacement cards, strategy, and generation ID for rollback/review.
+

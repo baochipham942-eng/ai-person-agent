@@ -60,7 +60,7 @@ const DEFAULT_LIMIT = 8;
 const MIN_LIMIT = 3;
 const MAX_LIMIT = 10;
 /** 配额必保类型：池里有就至少各进 1 张（覆盖实时信号 video/paper/article + 一条策展主题）。 */
-const PRIORITY_KINDS: FeaturedCardKind[] = ['video', 'paper', 'article', 'thread'];
+const PRIORITY_KINDS: FeaturedCardKind[] = ['video', 'x_post', 'paper', 'article', 'thread'];
 
 /**
  * 单类型上限。主题是常青策展内容，在"本周"语境里压到最多 2 张，
@@ -85,20 +85,21 @@ export async function resolveWeeklyPicks(params: ResolveWeeklyPicksParams = {}):
 
   // 视频必须单独成桶：fetchActivityEvents 内部质量排序把视频压到最底，
   // 若和论文/播客合桶，视频会在内部 slice 阶段被挤掉（用户明确要的高密度视频就没了）。
-  // 论文+播客合桶、文章单独桶（含公司源）。每桶独立兜底，单桶超时不拖垮整块。
-  const fetchBucket = (eventTypes: ActivityEventType[], limit: number) =>
-    fetchActivityEvents({ topic: params.topic, organization: params.organization, eventTypes, limit, days: 30, includeRelations: false })
+  // 论文+播客合桶、文章单独桶（含公司源）、X 推文单独桶。每桶独立兜底，单桶超时不拖垮整块。
+  const fetchBucket = (eventTypes: ActivityEventType[] | undefined, limit: number, sourceTypes?: string[]) =>
+    fetchActivityEvents({ topic: params.topic, organization: params.organization, eventTypes, sourceTypes, limit, days: 30, includeRelations: false })
       .catch(error => {
-        console.error('weekly-picks bucket failed:', eventTypes, error);
+        console.error('weekly-picks bucket failed:', { eventTypes, sourceTypes }, error);
         return [];
       });
 
-  const [videoEvents, paperPodcastEvents, articleEvents] = await Promise.all([
+  const [videoEvents, xPostEvents, paperPodcastEvents, articleEvents] = await Promise.all([
     fetchBucket(['video'], 6),
+    fetchBucket(undefined, 6, ['x']),
     fetchBucket(['paper', 'podcast'], 8),
-    fetchBucket(['article'], 8),
+    fetchBucket(['article'], 8, ['exa', 'company_source']),
   ]);
-  const activityCards = [...videoEvents, ...paperPodcastEvents, ...articleEvents]
+  const activityCards = [...videoEvents, ...xPostEvents, ...paperPodcastEvents, ...articleEvents]
     .map(activityToFeaturedCard)
     .filter((card): card is FeaturedCard => Boolean(card));
 

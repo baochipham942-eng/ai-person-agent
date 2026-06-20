@@ -1,14 +1,39 @@
 import 'dotenv/config';
+import fs from 'node:fs';
+import path from 'node:path';
 import { PrismaClient } from '@prisma/client';
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { PrismaNeon } from '@prisma/adapter-neon';
 import ws from 'ws';
+import { isAcademicLikeOrganization, isPrimaryEmploymentRole, normalizeEmployerName } from '../../lib/person-role-kind';
 
 neonConfig.webSocketConstructor = ws;
 const connectionString = process.env.DATABASE_URL!;
+const REVIEW_QUEUE = path.join(process.cwd(), 'data/audit/concurrent-roles-review.json');
 
-function isStudentRole(role: string | null | undefined): boolean {
-  return Boolean(role && role.toLowerCase().includes('student'));
+interface ReviewRoleEntry { roleId: string; idx: number }
+interface ReviewVerdict { status: string; confidence: number }
+interface ReviewItem {
+  personId: string;
+  roles?: ReviewRoleEntry[];
+  verdicts?: Record<string, ReviewVerdict>;
+}
+
+function loadReviewMap(): Record<string, ReviewItem> {
+  if (!fs.existsSync(REVIEW_QUEUE)) return {};
+  try {
+    const items = JSON.parse(fs.readFileSync(REVIEW_QUEUE, 'utf8')) as ReviewItem[];
+    return Object.fromEntries(items.map((item) => [item.personId, item]));
+  } catch {
+    return {};
+  }
+}
+
+function reviewVerdictForRole(review: ReviewItem | undefined, roleId: string): ReviewVerdict | null {
+  if (!review?.roles || !review.verdicts) return null;
+  const role = review.roles.find((entry) => entry.roleId === roleId);
+  if (!role) return null;
+  return review.verdicts[String(role.idx)] || null;
 }
 
 async function main() {
@@ -39,20 +64,22 @@ async function main() {
       },
     });
 
+    type HitRole = { id: string; role: string; org: string; orgType: string; start: Date | null; conf: number | null };
     type Hit = {
       id: string;
       name: string;
       currentCount: number;
       orgs: string[];
-      roles: { role: string; org: string; orgType: string; start: Date | null; conf: number | null }[];
+      roles: HitRole[];
     };
 
+    const reviewMap = loadReviewMap();
     const hits: Hit[] = [];
 
     for (const p of people) {
-      // “当前”角色 = endDate 为空 + 非学生（与 PersonHeader.generateCurrentTitle 一致）
+      // “当前雇主”只统计主雇佣关系，排除董事/顾问/课程/项目等并行头衔。
       const current = (p.roles || []).filter(
-        (r) => !r.endDate && !isStudentRole(r.role)
+        (r) => !r.endDate && isPrimaryEmploymentRole(r)
       );
       // 按组织名去重（同公司多条算一个雇主）
       const orgNames = Array.from(
@@ -65,6 +92,7 @@ async function main() {
           currentCount: current.length,
           orgs: orgNames,
           roles: current.map((r) => ({
+            id: r.id,
             role: r.roleZh || r.role,
             org: r.organization?.nameZh || r.organization?.name || '(unknown)',
             orgType: r.organization?.type || '?',
@@ -93,26 +121,11 @@ async function main() {
     }
 
     // ---- 按根因分桶 ----
-    const normOrg = (s: string) =>
-      s
-        .toLowerCase()
-        .replace(/\(.*?\)|（.*?）/g, '')
-        .replace(/\b(inc|ltd|llc|corp|co|company|的)\b|\.|,|，|inc\.|公司|集团|，/g, '')
-        .replace(/[^a-z0-9一-龥]/g, '')
-        .trim();
-
-    // 学术/教育/学位机构（含高中、学位条目），这类“当前”角色多为合法并行或教育残留，不是“同时两份公司工作”的 bug
-    const isAcademic = (name: string, type: string) =>
-      type === 'university' ||
-      /universit|institute|college|école|school|academy|大学|学院|研究院|研究所|学位|中学|高级中学|laborator|cifar|vector institute|高等研究|symphony|baptist/i.test(
-        name
-      );
-
     // 把当前雇主按规范名合并成“去重后实体”
     function distinctEmployers(h: Hit) {
       const groups: { norm: string; names: string[]; academic: boolean }[] = [];
       for (const r of h.roles) {
-        const n = normOrg(r.org) || normOrg(r.role);
+        const n = normalizeEmployerName(r.org) || normalizeEmployerName(r.role);
         // 名字互相包含也算同一实体
         let g = groups.find(
           (x) => x.norm === n || x.norm.includes(n) || n.includes(x.norm)
@@ -122,32 +135,47 @@ async function main() {
           groups.push(g);
         }
         if (!g.names.includes(r.org)) g.names.push(r.org);
-        if (!isAcademic(r.org, r.orgType)) g.academic = false;
+        if (r.orgType === 'company' && !isAcademicLikeOrganization({ organizationName: r.org, organizationType: r.orgType })) g.academic = false;
       }
       return groups;
     }
 
     const bucketA: Hit[] = []; // 纯重复组织（去重后只剩 1 个雇主）
     const bucketB: Hit[] = []; // 合法并行（去重后 ≥2 个，但全是学术机构）
-    const bucketC: Hit[] = []; // 疑似过期旧职位（去重后 ≥2 个，且含公司类，最像 Boris 的真 bug）
+    const bucketC: Hit[] = []; // 仍需核验的多公司当前雇主
+    const bucketD: Hit[] = []; // 已有 review 证据确认的真实并行
 
     for (const h of hits) {
       const emps = distinctEmployers(h);
       const companyEmps = emps.filter((e) => !e.academic);
       if (emps.length < 2) bucketA.push(h);
-      else if (companyEmps.length >= 2) bucketC.push(h); // ≥2 个非学术公司同时“在职” = 最像 Boris 的真 bug
+      else if (companyEmps.length >= 2 && hasVerifiedCurrentParallel(h)) bucketD.push(h);
+      else if (companyEmps.length >= 2) bucketC.push(h);
       else bucketB.push(h); // 其余：含学术机构的并行 / 教育残留，多为合法或属其他 bug 类
+    }
+    function hasVerifiedCurrentParallel(h: Hit) {
+      const review = reviewMap[h.id];
+      const companyRoles = h.roles.filter(
+        (r) => r.orgType === 'company' && !isAcademicLikeOrganization({ organizationName: r.org, organizationType: r.orgType })
+      );
+      const companyGroups = new Set(companyRoles.map((r) => normalizeEmployerName(r.org)));
+      return companyGroups.size >= 2 && companyRoles.every((role) => {
+        const verdict = reviewVerdictForRole(review, role.id);
+        return verdict?.status === 'current' && verdict.confidence >= 0.8;
+      });
     }
     // bucketC 内按非学术公司雇主数排序
     const compCount = (h: Hit) =>
       distinctEmployers(h).filter((e) => !e.academic).length;
     bucketC.sort((a, b) => compCount(b) - compCount(a));
+    bucketD.sort((a, b) => compCount(b) - compCount(a));
 
     console.log('\n' + '='.repeat(80));
     console.log('\n按根因分桶：');
     console.log(`  A. 纯重复组织(去重后仅 1 雇主，显示重影非职位错)        : ${bucketA.length} 人`);
     console.log(`  B. 含学术并行/教育残留(可能合法或属其它 bug，需另议) : ${bucketB.length} 人`);
-    console.log(`  C. ≥2 个公司同时“在职”(最像 Boris 真 bug，高置信)   : ${bucketC.length} 人`);
+    console.log(`  C. ≥2 个公司同时“在职”(仍需核验/修正)              : ${bucketC.length} 人`);
+    console.log(`  D. 已核实真实并行(不应算数据问题)                 : ${bucketD.length} 人`);
 
     const fmtC = (h: Hit) => {
       const comps = distinctEmployers(h)
@@ -158,6 +186,8 @@ async function main() {
     const fmt = (h: Hit) => `  - ${h.name}: ${h.orgs.join(' | ')}`;
     console.log('\n--- Bucket C（最该修，需逐人核实，Boris 在此；只列非学术公司雇主）---');
     console.log(bucketC.map(fmtC).join('\n'));
+    console.log('\n--- Bucket D（已有 review 证据确认真实并行；只列非学术公司雇主）---');
+    console.log(bucketD.map(fmtC).join('\n'));
     console.log('\n--- Bucket A（组织去重即可消除）---');
     console.log(bucketA.map(fmt).join('\n'));
   } catch (err: any) {

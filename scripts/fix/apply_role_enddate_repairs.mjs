@@ -23,12 +23,16 @@ function getArg(name) {
   return process.argv.find((arg) => arg.startsWith(prefix))?.slice(prefix.length);
 }
 
+function resolvePath(value) {
+  return path.isAbsolute(value) ? value : path.join(process.cwd(), value);
+}
+
 function toDate(value) {
   return value ? new Date(value) : null;
 }
 
 async function main() {
-  const payload = JSON.parse(fs.readFileSync(path.join(process.cwd(), INPUT), 'utf8'));
+  const payload = JSON.parse(fs.readFileSync(resolvePath(INPUT), 'utf8'));
   const log = [];
   console.log(`Role endDate repair mode: ${EXECUTE ? 'execute' : 'dry-run'} | roles=${payload.roles.length}`);
 
@@ -98,7 +102,9 @@ async function main() {
     mismatched: log.filter(row => row.action === 'identity_mismatch').length,
   };
 
-  fs.writeFileSync(path.join(process.cwd(), OUT), `${JSON.stringify({ summary, log }, null, 2)}\n`);
+  const outPath = resolvePath(OUT);
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, `${JSON.stringify({ summary, log }, null, 2)}\n`);
   console.log(JSON.stringify(summary, null, 2));
   console.log(`Log written: ${OUT}`);
 }

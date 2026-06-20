@@ -45,9 +45,11 @@ export interface FetchActivityParams {
   includeRelations?: boolean;
   /** 只返回这些事件类型（用于首页本周推荐按类型分桶取候选）。空/未传=不限类型。 */
   eventTypes?: ActivityEventType[];
+  /** 只返回这些来源类型；用于首页把 X 推文独立成桶，避免被普通 article 池挤掉。 */
+  sourceTypes?: string[];
 }
 
-const ACTIVITY_SOURCE_TYPES = ['openalex', 'github', 'youtube', 'exa', 'podcast', 'career'];
+const ACTIVITY_SOURCE_TYPES = ['openalex', 'github', 'youtube', 'exa', 'x', 'podcast', 'career'];
 const DEFAULT_ACTIVITY_REVIEW_STATUSES = ['auto', 'confirmed', 'trusted'];
 const LOW_SIGNAL_SOURCE_KINDS = new Set(['youtube_caption']);
 const FIRST_PARTY_DOMAINS = new Set([
@@ -125,6 +127,7 @@ const SOURCE_TYPE_LABELS: Record<string, { eventType: ActivityEventType; sourceL
   youtube: { eventType: 'video', sourceLabel: 'YouTube' },
   exa: { eventType: 'article', sourceLabel: 'Web' },
   company_source: { eventType: 'article', sourceLabel: '官方公司源' },
+  x: { eventType: 'article', sourceLabel: 'X' },
   podcast: { eventType: 'podcast', sourceLabel: 'Podcast' },
   career: { eventType: 'role_change', sourceLabel: 'Career' },
   relation: { eventType: 'relation_change', sourceLabel: '关系证据' },
@@ -458,6 +461,10 @@ function buildPersistedActivityWhere(params: FetchActivityParams, since: Date): 
     filters.push({ eventType: { in: params.eventTypes } });
   }
 
+  if (params.sourceTypes && params.sourceTypes.length > 0) {
+    filters.push({ sourceType: { in: params.sourceTypes } });
+  }
+
   if (params.personId) {
     filters.push({ personId: params.personId });
   }
@@ -499,7 +506,7 @@ function buildActivityWhere(params: FetchActivityParams, since: Date): Prisma.Ra
 
   return {
     ...(params.personId && { personId: params.personId }),
-    sourceType: { in: ACTIVITY_SOURCE_TYPES },
+    sourceType: { in: params.sourceTypes && params.sourceTypes.length > 0 ? params.sourceTypes : ACTIVITY_SOURCE_TYPES },
     fetchStatus: 'success',
     url: { not: '' },
     title: { not: '' },
@@ -513,6 +520,7 @@ function buildActivityWhere(params: FetchActivityParams, since: Date): Prisma.Ra
 
 function buildCompanySourceActivityWhere(params: FetchActivityParams, since: Date): Prisma.CompanySourceWhereInput | null {
   if (params.personId) return null;
+  if (params.sourceTypes && !params.sourceTypes.includes('company_source')) return null;
   if (params.topic && !params.organization) return null;
 
   const filters: Prisma.CompanySourceWhereInput[] = [

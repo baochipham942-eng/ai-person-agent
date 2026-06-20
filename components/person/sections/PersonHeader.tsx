@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { buildOrganizationHref, buildTopicHref, getDirectoryTopicColor } from '@/lib/person-directory-config';
+import { isPrimaryEmploymentRole, isStudentRoleTitle } from '@/lib/person-role-kind';
 
 interface OfficialLink {
   type: string;
@@ -240,10 +241,6 @@ function formatYear(dateStr: string | null | undefined): string {
   }
 }
 
-function isStudentRole(role: string | null | undefined): boolean {
-  return Boolean(role && role.toLowerCase().includes('student'));
-}
-
 function isLowConfidenceRole(role: PersonRole): boolean {
   return typeof role.confidence === 'number' && role.confidence < 0.75;
 }
@@ -268,12 +265,12 @@ export function PersonHeader({ person }: PersonHeaderProps) {
   };
 
   const generateCurrentTitle = () => {
-    if (person.currentTitle && !isStudentRole(person.currentTitle)) {
+    if (person.currentTitle && !isStudentRoleTitle(person.currentTitle)) {
       return person.currentTitle;
     }
 
     const currentRoles = (person.personRoles || [])
-      .filter(role => !role.endDate && !isStudentRole(role.role) && isTrustedRole(role))
+      .filter(role => !role.endDate && isPrimaryEmploymentRole(role) && isTrustedRole(role))
       .sort((a, b) => {
         const aDate = a.startDate || '0000';
         const bDate = b.startDate || '0000';
@@ -296,7 +293,7 @@ export function PersonHeader({ person }: PersonHeaderProps) {
   const currentTitle = generateCurrentTitle();
 
   const timelineRoles = (person.personRoles || [])
-    .filter(role => !isStudentRole(role.role))
+    .filter(role => !isStudentRoleTitle(role.role))
     .sort((a, b) => {
       const aDate = a.startDate || '0000';
       const bDate = b.startDate || '0000';

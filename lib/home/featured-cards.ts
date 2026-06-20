@@ -9,7 +9,7 @@
 import type { ActivityEvent, ActivityEventType } from '@/lib/activity';
 import type { FeaturedThread } from '@/lib/knowledge-thread-people';
 
-export type FeaturedCardKind = 'thread' | 'video' | 'paper' | 'article' | 'podcast' | 'person';
+export type FeaturedCardKind = 'thread' | 'video' | 'paper' | 'article' | 'x_post' | 'podcast' | 'person';
 
 export interface FeaturedCardPerson {
   id: string | null; // 库内人物 id；null = inline 策展人物（链接走外部）
@@ -45,6 +45,7 @@ const KIND_BASE_SCORE: Record<FeaturedCardKind, number> = {
   person: 100, // pin 人物天然置顶（另有 pinned 标记兜底）
   thread: 62,
   video: 56,
+  x_post: 50,
   paper: 52,
   article: 42,
   podcast: 38,
@@ -79,7 +80,7 @@ export function threadToFeaturedCard(thread: FeaturedThread): FeaturedCard {
 }
 
 export function activityToFeaturedCard(event: ActivityEvent): FeaturedCard | null {
-  const kind = ACTIVITY_KIND_MAP[event.eventType];
+  const kind = event.sourceType === 'x' ? 'x_post' : ACTIVITY_KIND_MAP[event.eventType];
   if (!kind) return null; // 丢弃 github / role_change / relation_change
   if (!event.importanceReason || !event.importanceReason.trim()) return null; // 无推荐理由不进流
   if (!event.title.trim() || !event.url.trim()) return null;

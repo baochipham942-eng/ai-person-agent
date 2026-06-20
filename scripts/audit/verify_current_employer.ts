@@ -22,8 +22,9 @@ import { z } from 'zod';
 import { prisma } from '../../lib/db/prisma';
 import { searchTavily } from '../../lib/tavily-search';
 import { generateStructured } from '../../lib/ai/provider';
+import { isAcademicLikeOrganization, isPrimaryEmploymentRole, normalizeEmployerName } from '../../lib/person-role-kind';
 
-const TODAY = '2026-06-19';
+const TODAY = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' });
 const OUT = path.join(process.cwd(), 'data/audit/concurrent-roles-review.json');
 
 const args = process.argv.slice(2);
@@ -33,14 +34,56 @@ const names = args.includes('--names') ? args[args.indexOf('--names') + 1].split
 const deep = args.includes('--deep');
 const force = args.includes('--force');
 
-const isStudentRole = (r?: string | null) => Boolean(r && r.toLowerCase().includes('student'));
-const isAcademic = (name: string, type: string) =>
-  type === 'university' ||
-  /universit|institute|college|école|school|academy|大学|学院|研究院|研究所|学位|中学|高级中学|laborator|cifar|vector institute|高等研究|symphony|baptist/i.test(
-    name
-  );
-const normLoose = (s: string) =>
-  s.toLowerCase().replace(/\(.*?\)|（.*?）/g, '').replace(/\b(inc|ltd|llc|corp|co|company)\b\.?/g, '').replace(/[^a-z0-9一-龥]/g, '').trim();
+function distinctNormalizedEmployerNames(names: string[]): string[] {
+  const groups: string[] = [];
+  for (const raw of names) {
+    const norm = normalizeEmployerName(raw);
+    if (!norm) continue;
+    if (!groups.some((g) => g === norm || g.includes(norm) || norm.includes(g))) {
+      groups.push(norm);
+    }
+  }
+  return groups;
+}
+
+function verdictForRole(review: ReviewItem | undefined, roleId: string): Verdict | null {
+  if (!review?.roles || !review.verdicts) return null;
+  const role = review.roles.find((entry) => entry.roleId === roleId);
+  if (!role) return null;
+  return review.verdicts[String(role.idx)] || null;
+}
+
+function hasVerifiedCurrentParallel(review: ReviewItem | undefined, roles: { id: string }[]): boolean {
+  if (roles.length < 2) return false;
+  return roles.every((role) => {
+    const verdict = verdictForRole(review, role.id);
+    return verdict?.status === 'current' && verdict.confidence >= 0.8;
+  });
+}
+
+function buildSearchQueries(candidate: Candidate): string[] {
+  const orgNames = [...new Set(candidate.roles.map((role) => role.org))].slice(0, 6).join(' ');
+  return uniqueValues([
+    ...candidate.roles.map((role) => `${candidate.name} "${role.org}" "${role.role}" current role 2025 2026`),
+    ...candidate.roles.map((role) => `${candidate.name} "${role.org}" CEO founder company profile`),
+    `${candidate.name} ${orgNames} current role 2025 2026 left joined`,
+  ]);
+}
+
+function uniqueValues(values: string[]): string[] {
+  return [...new Set(values.map((value) => value.trim()).filter(Boolean))];
+}
+
+function dedupeHits<T extends { url: string }>(hits: T[]): T[] {
+  const seen = new Set<string>();
+  const deduped: T[] = [];
+  for (const hit of hits) {
+    if (seen.has(hit.url)) continue;
+    seen.add(hit.url);
+    deduped.push(hit);
+  }
+  return deduped;
+}
 
 interface RoleEntry {
   roleId: string;
@@ -50,6 +93,7 @@ interface RoleEntry {
   orgType: string;
   startDate: string | null;
 }
+interface Candidate { personId: string; name: string; description: string | null; roles: RoleEntry[] }
 interface Verdict { status: string; endApprox: string | null; confidence: number; note: string }
 interface ReviewItem {
   personId: string;
@@ -89,6 +133,7 @@ function save(map: Record<string, ReviewItem>) {
 }
 
 async function main() {
+  const map = loadExisting();
   const people = await prisma.people.findMany({
     select: {
       id: true,
@@ -107,13 +152,16 @@ async function main() {
     },
   });
 
-  type Cand = { personId: string; name: string; description: string | null; roles: RoleEntry[] };
-  const candidates: Cand[] = [];
+  const candidates: Candidate[] = [];
   for (const p of people) {
-    const current = (p.roles || []).filter((r) => !r.endDate && !isStudentRole(r.role));
-    const companyRoles = current.filter((r) => !isAcademic(r.organization?.name || '', r.organization?.type || ''));
-    const distinctCompany = new Set(companyRoles.map((r) => normLoose(r.organization?.name || '')));
-    if (distinctCompany.size < 2) continue;
+    const current = (p.roles || []).filter((r) => !r.endDate && isPrimaryEmploymentRole(r));
+    const companyRoles = current.filter((r) =>
+      r.organization?.type === 'company' &&
+      !isAcademicLikeOrganization({ organizationName: r.organization?.name, organizationType: r.organization?.type })
+    );
+    const distinctCompany = distinctNormalizedEmployerNames(companyRoles.map((r) => r.organization?.name || ''));
+    if (distinctCompany.length < 2) continue;
+    if (!force && hasVerifiedCurrentParallel(map[p.id], companyRoles)) continue;
     const roles: RoleEntry[] = current.map((r, i) => ({
       roleId: r.id,
       idx: i,
@@ -130,7 +178,6 @@ async function main() {
   if (names) pool = pool.filter((c) => names.some((n) => c.name.includes(n)));
   console.log(`C 桶候选 ${candidates.length} 人，本次处理 ${Math.min(pool.length, limit)} 人\n`);
 
-  const map = loadExisting();
   let done = 0;
 
   for (const c of pool) {
@@ -140,9 +187,16 @@ async function main() {
 
     try {
       // 1) 取证
-      const orgNames = [...new Set(c.roles.map((r) => r.org))].slice(0, 6).join(' ');
-      const query = `${c.name} ${orgNames} current role 2025 2026 left joined`;
-      const hits = await searchTavily(query, { maxResults: deep ? 8 : 6, rawContent: 'text', searchDepth: deep ? 'advanced' : undefined });
+      const queries = buildSearchQueries(c);
+      const hits = dedupeHits(
+        (await Promise.all(queries.map((query) =>
+          searchTavily(query, {
+            maxResults: deep ? 4 : 3,
+            rawContent: 'text',
+            searchDepth: deep ? 'advanced' : undefined,
+          })
+        ))).flat()
+      ).slice(0, deep ? 12 : 8);
       const sources = hits.map((h: any) => ({
         title: h.title || '',
         url: h.url || '',
