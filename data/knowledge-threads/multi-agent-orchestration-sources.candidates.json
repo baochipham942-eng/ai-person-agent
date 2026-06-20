@@ -1,7 +1,7 @@
 {
   "thread": {
     "status": "source_pack_review",
-    "updatedAt": "2026-06-19",
+    "updatedAt": "2026-06-20",
     "slug": "multi-agent-orchestration",
     "title": "Multi-Agent Orchestration",
     "definitionDraft": "当前，构建单一智能体已相对成熟，但当任务复杂度提升，需要多个智能体协作时，开发者面临严峻挑战：如何设计有效的任务分配、调度与协调机制？如何管理共享状态以避免冲突？如何评估协作效果？这些问题分散在论文、博客、演讲和开源项目中，缺乏一个整合的视角来指导实践。",
@@ -36,7 +36,7 @@
       "sourceOwner": "Steve Yegge",
       "url": "https://steve-yegge.medium.com/welcome-to-gas-town-4f25ee16dd04",
       "title": "Welcome to Gas Town",
-      "publishedAt": "2025-05-15",
+      "publishedAt": "2026-01-01",
       "whyRelevant": "提出了一个关于未来软件开发由大量微小、专门化的AI智能体（‘gas’）协作完成的激进愿景，为多智能体编排提供了宏观背景和需求信号。",
       "confidence": 0.8,
       "evidenceQuote": "Kubernetes, but for agents",
@@ -56,7 +56,7 @@
       "sourceOwner": "Anthropic",
       "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
       "title": "How we built our multi-agent research system",
-      "publishedAt": "2025-11-01",
+      "publishedAt": "2025-06-13",
       "whyRelevant": "作为顶尖AI实验室，Anthropic对多智能体系统的官方立场、架构原则和安全考量的阐述，是理解该领域权威定义的基石。",
       "confidence": 0.95,
       "evidenceQuote": "multi-agent research system",
@@ -75,39 +75,39 @@
       "role": "implementation_signal",
       "sourceOwner": "github.com/openai",
       "url": "https://github.com/openai/swarm",
-      "title": "openai/swarm",
+      "title": "openai/swarm (Experimental, deprecated)",
       "publishedAt": "2024-11-20",
-      "whyRelevant": "OpenAI推出的Swarm框架是探索多智能体编排的里程碑事件，其设计理念（轻量、无状态、易用）代表了官方对该领域的一种实践路径定义。",
+      "whyRelevant": "OpenAI 的 Swarm 框架是探索多智能体编排的里程碑，其“轻量、无状态、handoff 路由”设计理念影响深远。已废弃，被生产级的 OpenAI Agents SDK 取代——作为编排理念演进的历史/教学起点而非现状实现保留。",
       "confidence": 0.9,
       "evidenceQuote": "educational framework exploring ergonomic, lightweight multi-agent orchestration",
-      "reviewNotes": "GitHub repo, not an official product announcement; keep as implementation signal only.",
+      "reviewNotes": "已 web 核实：repo 顶部明确标注 deprecated，官方推荐迁移到 OpenAI Agents SDK。原源包重复出现两条 swarm，已合并为此一条。",
       "status": "usable",
       "metadata": {
         "role": "implementation_signal",
         "textStatus": "available"
       },
       "urlHash": "eca37678e973eb38a0a9505647475f5e1708a56899c0f2cdcc1e923d187875bd",
-      "text": "openai/swarm\n\nOpenAI推出的Swarm框架是探索多智能体编排的里程碑事件，其设计理念（轻量、无状态、易用）代表了官方对该领域的一种实践路径定义。\n\nEvidence note: educational framework exploring ergonomic, lightweight multi-agent orchestration\n\nGitHub repo, not an official product announcement; keep as implementation signal only."
+      "text": "openai/swarm (Experimental, deprecated)\n\nOpenAI 的 Swarm 框架是探索多智能体编排的里程碑，其“轻量、无状态、handoff 路由”设计理念影响深远。已废弃，被生产级的 OpenAI Agents SDK 取代——作为编排理念演进的历史/教学起点而非现状实现保留。\n\nEvidence note: educational framework exploring ergonomic, lightweight multi-agent orchestration\n\n已 web 核实：repo 顶部明确标注 deprecated，官方推荐迁移到 OpenAI Agents SDK。原源包重复出现两条 swarm，已合并为此一条。"
     },
     {
       "id": "langgraph_introduction_doc",
       "sourceKind": "official_documentation",
       "role": "official_definition",
       "sourceOwner": "LangChain",
-      "url": "https://langchain-ai.github.io/langgraph/",
-      "title": "LangGraph Documentation",
-      "publishedAt": "2024-06-01",
-      "whyRelevant": "LangGraph是当前最流行的多智能体编排框架之一，其官方文档详细定义了基于图的编排模型、状态管理和循环执行机制。",
+      "url": "https://docs.langchain.com/oss/python/langchain/multi-agent",
+      "title": "Multi-agent systems — LangChain / LangGraph Docs",
+      "publishedAt": "2025-01-01",
+      "whyRelevant": "LangChain/LangGraph 官方多智能体文档，明确归纳了五种编排架构（subagents、handoffs、skills、router、custom workflow），是当前业界最权威的编排模式谱系，并诚实指出并非所有复杂任务都需要多智能体。",
       "confidence": 0.9,
-      "evidenceQuote": "LangGraph extends LangChain with the ability to create cyclic graphs, essential for most agentic architectures. It models workflows as state machines.",
-      "reviewNotes": "文档是理解LangGraph设计原理和API的权威来源。注意其与LangChain生态的深度集成。",
+      "evidenceQuote": "Multi-agent systems coordinate specialized components to tackle complex workflows. Common architectures include subagents, handoffs, skills, router, and custom workflow.",
+      "reviewNotes": "替换已失效的旧 doc（langchain-ai.github.io/langgraph 现 301 重定向、内容不可达）。已 web 核实新地址返回 200 且讲编排模式谱系。",
       "status": "published",
       "metadata": {
         "role": "official_definition",
         "textStatus": "available"
       },
-      "urlHash": "e95d095a49704b173722939525e5a02ee4978fba8313ece5c2afbb4389f7d9b7",
-      "text": "LangGraph Documentation\n\nLangGraph是当前最流行的多智能体编排框架之一，其官方文档详细定义了基于图的编排模型、状态管理和循环执行机制。\n\nEvidence note: LangGraph extends LangChain with the ability to create cyclic graphs, essential for most agentic architectures. It models workflows as state machines.\n\n文档是理解LangGraph设计原理和API的权威来源。注意其与LangChain生态的深度集成。"
+      "urlHash": "3e205dc8f3ab81b0a86e5aa0a077c8352335d62a09f4c7522aab5add44164b95",
+      "text": "Multi-agent systems — LangChain / LangGraph Docs\n\nLangChain/LangGraph 官方多智能体文档，明确归纳了五种编排架构（subagents、handoffs、skills、router、custom workflow），是当前业界最权威的编排模式谱系，并诚实指出并非所有复杂任务都需要多智能体。\n\nEvidence note: Multi-agent systems coordinate specialized components to tackle complex workflows. Common architectures include subagents, handoffs, skills, router, and custom workflow.\n\n替换已失效的旧 doc（langchain-ai.github.io/langgraph 现 301 重定向、内容不可达）。已 web 核实新地址返回 200 且讲编排模式谱系。"
     },
     {
       "id": "autogen_microsoft_intro",
@@ -120,7 +120,7 @@
       "whyRelevant": "微软开源的AutoGen框架，其核心思想是将多智能体协作建模为对话，为编排模式提供了另一种官方定义和实践方案。",
       "confidence": 0.85,
       "evidenceQuote": "AutoGen is a framework that enables development of LLM applications using multiple agents that can converse with each other to solve tasks.",
-      "reviewNotes": "GitHub仓库的README是了解其核心理念和主要功能的快速入口。后续有众多版本迭代和社区贡献。",
+      "reviewNotes": "GitHub仓库的README是了解其核心理念和主要功能的快速入口。AutoGen 已迭代至 v0.4 事件驱动架构，并与 Semantic Kernel 融合为 Microsoft Agent Framework。原源包重复出现两条 autogen repo，已合并为此一条。",
       "status": "published",
       "metadata": {
         "role": "official_definition",
@@ -154,20 +154,20 @@
       "sourceKind": "research_paper",
       "role": "paper_foundation",
       "sourceOwner": "Academic",
-      "url": "https://arxiv.org/abs/2310.12150",
-      "title": "A Survey on Large Language Model based Autonomous Agents",
-      "publishedAt": "2023-10-18",
-      "whyRelevant": "这篇综述论文系统梳理了基于LLM的自主智能体研究，其中专门章节讨论了多智能体协作，为整个领域提供了学术框架和分类法。",
+      "url": "https://arxiv.org/abs/2501.06322",
+      "title": "Multi-Agent Collaboration Mechanisms: A Survey of LLMs",
+      "publishedAt": "2025-01-10",
+      "whyRelevant": "这篇2025年综述专门梳理了基于LLM的多智能体协作机制（协作目标、协作类型、协作结构与协调策略），直接对应编排主题的核心问题：任务分配、通信拓扑与冲突协调，是领域分类法的权威学术起点。",
       "confidence": 0.9,
-      "evidenceQuote": "Multi-agent collaboration among autonomous agents is a key approach to handling complex tasks, where agents can specialize, debate, and reach consensus.",
-      "reviewNotes": "虽然论文发布于2023年，但其提供的分类和基础问题定义仍然高度相关。是理解领域发展的优秀起点。",
+      "evidenceQuote": "We provide a structured survey of LLM-based multi-agent collaboration mechanisms, characterizing them by actors, collaboration types, structures, strategies, and coordination protocols.",
+      "reviewNotes": "替换原张冠李戴的 arXiv:2310.12150（该编号实为一篇 RAG 长文问答论文，与多智能体无关）。本编号是真实的多智能体协作机制综述，更新更对题。",
       "status": "published",
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "available"
       },
-      "urlHash": "6c1ee5d3d0e872ef2cccb127871b363636ef9868bcf3ad8c277c20e641407782",
-      "text": "A Survey on Large Language Model based Autonomous Agents\n\n这篇综述论文系统梳理了基于LLM的自主智能体研究，其中专门章节讨论了多智能体协作，为整个领域提供了学术框架和分类法。\n\nEvidence note: Multi-agent collaboration among autonomous agents is a key approach to handling complex tasks, where agents can specialize, debate, and reach consensus.\n\n虽然论文发布于2023年，但其提供的分类和基础问题定义仍然高度相关。是理解领域发展的优秀起点。"
+      "urlHash": "cb5902eea2e89aa1a35ad353cfa3d2e20ce2eecbfd9f65335b08152fe7c7c5ae",
+      "text": "Multi-Agent Collaboration Mechanisms: A Survey of LLMs\n\n这篇2025年综述专门梳理了基于LLM的多智能体协作机制（协作目标、协作类型、协作结构与协调策略），直接对应编排主题的核心问题：任务分配、通信拓扑与冲突协调，是领域分类法的权威学术起点。\n\nEvidence note: We provide a structured survey of LLM-based multi-agent collaboration mechanisms, characterizing them by actors, collaboration types, structures, strategies, and coordination protocols.\n\n替换原张冠李戴的 arXiv:2310.12150（该编号实为一篇 RAG 长文问答论文，与多智能体无关）。本编号是真实的多智能体协作机制综述，更新更对题。"
     },
     {
       "id": "mas_frameworks_comparison_paper",
@@ -175,19 +175,19 @@
       "role": "paper_foundation",
       "sourceOwner": "Academic",
       "url": "https://arxiv.org/abs/2402.01680",
-      "title": "A Survey on Multi-Agent Systems: Modeling, Planning, and Applications",
-      "publishedAt": "2024-02-02",
-      "whyRelevant": "聚焦于多智能体系统本身的综述，涵盖了建模、规划和应用，为编排问题的理论背景（如任务分配、协商协议）提供了坚实基础。",
+      "title": "Large Language Model based Multi-Agents: A Survey of Progress and Challenges",
+      "publishedAt": "2024-01-21",
+      "whyRelevant": "Guo 等人系统综述了基于 LLM 的多智能体系统：智能体如何被刻画、如何在环境中交互、如何协作与协调，并梳理了通信结构与挑战，为编排问题（任务分解、通信拓扑、冲突协调）提供学术基础。",
       "confidence": 0.85,
-      "evidenceQuote": "Effective orchestration in multi-agent systems requires careful consideration of communication topologies, task decomposition methods, and conflict resolution mechanisms.",
-      "reviewNotes": "该论文提供了更传统的多智能体系统（MAS）视角，有助于与基于LLM的新范式进行对比思考。",
+      "evidenceQuote": "We discuss LLM-based multi-agent systems in terms of the agents-environment interface, agent profiling, agent communication, and agent capabilities acquisition.",
+      "reviewNotes": "修正原元数据张冠李戴：arXiv:2402.01680 实为 Guo et al. 的《LLM based Multi-Agents: A Survey of Progress and Challenges》，原 title/quote 为臆造，已按真实论文改正。",
       "status": "published",
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "available"
       },
       "urlHash": "7b26b6583a9f3ae64a9dc3b624655d0c0b734befc5e250759715ba08aa5e2a04",
-      "text": "A Survey on Multi-Agent Systems: Modeling, Planning, and Applications\n\n聚焦于多智能体系统本身的综述，涵盖了建模、规划和应用，为编排问题的理论背景（如任务分配、协商协议）提供了坚实基础。\n\nEvidence note: Effective orchestration in multi-agent systems requires careful consideration of communication topologies, task decomposition methods, and conflict resolution mechanisms.\n\n该论文提供了更传统的多智能体系统（MAS）视角，有助于与基于LLM的新范式进行对比思考。"
+      "text": "Large Language Model based Multi-Agents: A Survey of Progress and Challenges\n\nGuo 等人系统综述了基于 LLM 的多智能体系统：智能体如何被刻画、如何在环境中交互、如何协作与协调，并梳理了通信结构与挑战，为编排问题（任务分解、通信拓扑、冲突协调）提供学术基础。\n\nEvidence note: We discuss LLM-based multi-agent systems in terms of the agents-environment interface, agent profiling, agent communication, and agent capabilities acquisition.\n\n修正原元数据张冠李戴：arXiv:2402.01680 实为 Guo et al. 的《LLM based Multi-Agents: A Survey of Progress and Challenges》，原 title/quote 为臆造，已按真实论文改正。"
     },
     {
       "id": "tx_software_daily_gas_town_steve_yegge",
@@ -197,10 +197,10 @@
       "url": "https://softwareengineeringdaily.com/2026/02/12/gas-town-beads-and-the-rise-of-agentic-development-with-steve-yegge/",
       "title": "Gas Town, Beads, and the Rise of Agentic Development with Steve Yegge",
       "publishedAt": "2025-07-10",
-      "whyRelevant": "据传，此播客转录汇集了来自不同公司的开发者，讨论了编排框架的实际痛点、调试噩梦以及对统一标准的需求。",
+      "whyRelevant": "Software Engineering Daily 对 Steve Yegge 的访谈，围绕 Gas Town、Beads 与 agentic 开发，提供了 Gas Town 编排愿景的口头语境，是同名博客信号的有声补充。",
       "confidence": 0.6,
       "evidenceQuote": "full agent orchestration",
-      "reviewNotes": "Episode page found via web search; verify transcript availability before using exact quotations.",
+      "reviewNotes": "Episode page found via web search; verify transcript availability before using exact quotations. 已去除原 whyRelevant 中“据传…来自不同公司开发者”的臆测描述（实为 Yegge 个人访谈）。",
       "status": "candidate_unverified",
       "metadata": {
         "role": "transcript_context",
@@ -230,26 +230,6 @@
       "text": "LangGraph Source Code\n\n框架的源代码是最终的实现真理。通过分析代码，可以验证文档中的设计理念，并发现未公开的细节、约束和优化。\n\nEvidence note: See the implementation of `StateGraph`, `CheckpointSaver`, and `MessageGraph` classes for concrete patterns of state management and agent invocation.\n\n直接分析代码库是评估框架成熟度、代码质量和架构灵活性的最佳方式。需要投入时间阅读关键模块。"
     },
     {
-      "id": "autogen_github_repo",
-      "sourceKind": "code_repository",
-      "role": "implementation_signal",
-      "sourceOwner": "Microsoft",
-      "url": "https://github.com/microsoft/autogen",
-      "title": "AutoGen Source Code",
-      "publishedAt": "2023-09-25",
-      "whyRelevant": "AutoGen的源代码实现了其“多智能体对话”的核心理念。分析其实现可以了解如何将对话管理、工具调用和人类反馈集成到编排中。",
-      "confidence": 0.9,
-      "evidenceQuote": "Examine the `AssistantAgent`, `UserProxyAgent`, and `GroupChat` classes to understand the conversation-based orchestration pattern.",
-      "reviewNotes": "该仓库更新活跃，包含大量示例。是研究对话式编排模式的绝佳实践案例。",
-      "status": "published",
-      "metadata": {
-        "role": "implementation_signal",
-        "textStatus": "available"
-      },
-      "urlHash": "d807807ac58742dd264bf1e90085cab2dcab2882313d506f74fcd17dca632abd",
-      "text": "AutoGen Source Code\n\nAutoGen的源代码实现了其“多智能体对话”的核心理念。分析其实现可以了解如何将对话管理、工具调用和人类反馈集成到编排中。\n\nEvidence note: Examine the `AssistantAgent`, `UserProxyAgent`, and `GroupChat` classes to understand the conversation-based orchestration pattern.\n\n该仓库更新活跃，包含大量示例。是研究对话式编排模式的绝佳实践案例。"
-    },
-    {
       "id": "crewai_github_repo",
       "sourceKind": "code_repository",
       "role": "implementation_signal",
@@ -270,26 +250,6 @@
       "text": "CrewAI Source Code\n\nCrewAI的代码库体现了其角色扮演和任务委托的抽象。通过代码可以理解其“角色”、“目标”、“任务”是如何在底层实现和调度的。\n\nEvidence note: Look into the `Crew`, `Agent`, and `Task` classes to see how role definitions and task delegation are implemented.\n\n框架代码相对清晰，适合理解其高层抽象背后的工程实现。"
     },
     {
-      "id": "openai_swarm_github_repo",
-      "sourceKind": "code_repository",
-      "role": "implementation_signal",
-      "sourceOwner": "OpenAI",
-      "url": "https://github.com/openai/swarm",
-      "title": "Swarm (Experimental) Source Code",
-      "publishedAt": "2024-11-20",
-      "whyRelevant": "OpenAI的实验性框架Swarm，其代码库直接展示了“轻量级、无状态”编排理念的具体实现，是研究函数调用和路由模式的宝贵资源。",
-      "confidence": 0.8,
-      "evidenceQuote": "Study the `run_demo_loop` function and `Agent` class to see the minimalist approach to agent coordination via function calls.",
-      "reviewNotes": "明确标注为实验性，代码简洁，适合作为理解基础编排机制的教学案例。但其生产适用性需额外评估。",
-      "status": "published",
-      "metadata": {
-        "role": "implementation_signal",
-        "textStatus": "available"
-      },
-      "urlHash": "eca37678e973eb38a0a9505647475f5e1708a56899c0f2cdcc1e923d187875bd",
-      "text": "Swarm (Experimental) Source Code\n\nOpenAI的实验性框架Swarm，其代码库直接展示了“轻量级、无状态”编排理念的具体实现，是研究函数调用和路由模式的宝贵资源。\n\nEvidence note: Study the `run_demo_loop` function and `Agent` class to see the minimalist approach to agent coordination via function calls.\n\n明确标注为实验性，代码简洁，适合作为理解基础编排机制的教学案例。但其生产适用性需额外评估。"
-    },
-    {
       "id": "microsoft_autogen_blog_post",
       "sourceKind": "blog_post",
       "role": "signal",
@@ -308,6 +268,46 @@
       },
       "urlHash": "e9e6d6c39a8f4d41b6041a0facf285286f454f3bfaca0a538f7560ef2b159817",
       "text": "AutoGen: Unlocking the Potential of Multi-Agent AI\n\n来自微软研究的官方博客，阐述了AutoGen背后的愿景、应用场景和早期采用案例，是重要的行业信号，表明大型科技公司对该方向的战略投入。\n\nEvidence note: We believe multi-agent frameworks like AutoGen will become a cornerstone for building complex, adaptable AI applications that can handle real-world ambiguity.\n\n这是比GitHub README更面向业务的阐述，有助于理解技术背后的战略思考和期望解决的问题域。"
+    },
+    {
+      "id": "cognition_dont_build_multi_agents",
+      "sourceKind": "blog_post",
+      "role": "signal",
+      "sourceOwner": "Cognition",
+      "url": "https://cognition.ai/blog/dont-build-multi-agents",
+      "title": "Don't Build Multi-Agents",
+      "publishedAt": "2025-06-12",
+      "whyRelevant": "Cognition（Devin 团队）Walden Yan 的审慎反命题：并行多智能体因上下文割裂、决策冲突而脆弱，主张写操作保持单线程、用 context engineering 而非堆 agent。与 Anthropic 的并行 orchestrator-worker 构成 2025 年最著名的“智能体架构之争”，是本主题不可或缺的张力来源。",
+      "confidence": 0.9,
+      "evidenceQuote": "Actions carry implicit decisions, and conflicting decisions carry bad results. Multi-agent systems split context and break too easily.",
+      "reviewNotes": "已 web 核实可达。新增以补足主题现状张力，避免只罗列框架而无概念辩论。",
+      "status": "usable",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "available"
+      },
+      "urlHash": "08ba861ce042af8e592ab54f968dd179884a7c49d31a975834e1ce22c22318b4",
+      "text": "Don't Build Multi-Agents\n\nCognition（Devin 团队）Walden Yan 的审慎反命题：并行多智能体因上下文割裂、决策冲突而脆弱，主张写操作保持单线程、用 context engineering 而非堆 agent。与 Anthropic 的并行 orchestrator-worker 构成 2025 年最著名的“智能体架构之争”，是本主题不可或缺的张力来源。\n\nEvidence note: Actions carry implicit decisions, and conflicting decisions carry bad results. Multi-agent systems split context and break too easily.\n\n已 web 核实可达。新增以补足主题现状张力，避免只罗列框架而无概念辩论。"
+    },
+    {
+      "id": "openai_agents_sdk_docs",
+      "sourceKind": "official_documentation",
+      "role": "official_definition",
+      "sourceOwner": "OpenAI",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "title": "OpenAI Agents SDK",
+      "publishedAt": "2025-03-11",
+      "whyRelevant": "OpenAI 生产级多智能体框架，是实验性 Swarm 的正式继任者。以 handoffs（控制权显式移交）、manager（子 agent 当工具调）两大编排模式为核心，配 guardrails 与 tracing，是当前 OpenAI 官方对多智能体编排的权威定义与实现现状。",
+      "confidence": 0.92,
+      "evidenceQuote": "Handoffs are a powerful feature to coordinate and delegate work across multiple agents.",
+      "reviewNotes": "已 web 核实 200。新增以替换废弃 Swarm 的现状定位，补 official_definition 现状权威源。",
+      "status": "usable",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "available"
+      },
+      "urlHash": "52c5efffa5b82018e3a825c556db6c15f8cc611d120496284f74cfc3d0fb9ece",
+      "text": "OpenAI Agents SDK\n\nOpenAI 生产级多智能体框架，是实验性 Swarm 的正式继任者。以 handoffs（控制权显式移交）、manager（子 agent 当工具调）两大编排模式为核心，配 guardrails 与 tracing，是当前 OpenAI 官方对多智能体编排的权威定义与实现现状。\n\nEvidence note: Handoffs are a powerful feature to coordinate and delegate work across multiple agents.\n\n已 web 核实 200。新增以替换废弃 Swarm 的现状定位，补 official_definition 现状权威源。"
     }
   ],
   "edges": [
@@ -331,13 +331,6 @@
       "relationType": "docs_to_implementation_surface",
       "confidence": 0.84,
       "evidenceNote": "LangGraph docs connect directly to its open implementation surface."
-    },
-    {
-      "fromId": "autogen_microsoft_intro",
-      "toId": "autogen_github_repo",
-      "relationType": "framework_definition_to_repo",
-      "confidence": 0.86,
-      "evidenceNote": "AutoGen repo implements the multi-agent conversation framework described in its project materials."
     },
     {
       "fromId": "crewai_crew_ai_docs",
@@ -366,6 +359,18 @@
       "relationType": "transcript_context_to_signal",
       "confidence": 0.66,
       "evidenceNote": "The episode page provides spoken context around the Gas Town framing; the essay remains the stronger written signal."
+    },
+    {
+      "fromId": "cognition_dont_build_multi_agents",
+      "toId": "anthropic_multi_agent_research",
+      "relationType": "architecture_debate_counterpoint",
+      "evidenceNote": "Cognition 单线程审慎派 vs Anthropic 并行 orchestrator-worker，构成智能体架构之争"
+    },
+    {
+      "fromId": "openai_swarm_github_repo_definition",
+      "toId": "openai_agents_sdk_docs",
+      "relationType": "deprecated_to_successor",
+      "evidenceNote": "Swarm 已废弃，Agents SDK 为生产级继任"
     }
   ],
   "review": {

@@ -150,17 +150,97 @@
       "url": "https://arxiv.org/abs/2302.04761",
       "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
       "publishedAt": "2023-02-09",
-      "whyRelevant": "Tool-use foundation paper demonstrating why a protocolized tool layer matters for LLMs.",
-      "confidence": 0.9,
+      "whyRelevant": "松散动机关联（loose motivational link）：Toolformer 是『模型自学用工具』的训练方法，与 MCP（运行时集成协议）只有『为什么模型需要外部工具』这一层松散动机联系，并非 MCP 的直接思想源头。保留作背景，已降权。",
+      "confidence": 0.55,
       "evidenceQuote": "We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best integrate the results.",
-      "reviewNotes": "URL provided in seed. Key foundational paper for tool-use research.",
+      "reviewNotes": "URL provided in seed. Tool-use research background only; loose motivational link to MCP, confidence downgraded 0.9->0.55 per source-pack audit (2026-06-20).",
       "status": "verified",
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "review_summary_not_fulltext"
       },
-      "text": "Toolformer: Language Models Can Teach Themselves to Use Tools\n\nTool-use foundation paper demonstrating why a protocolized tool layer matters for LLMs.\n\nEvidence note: We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best integrate the results.\n\nURL provided in seed. Key foundational paper for tool-use research.",
+      "text": "Toolformer: Language Models Can Teach Themselves to Use Tools\n\n松散动机关联：Toolformer 是模型自学用工具的训练方法，与 MCP（运行时集成协议）仅有为什么模型需要外部工具这一层松散动机联系，并非 MCP 直接思想源头。保留作背景，已降权。\n\nEvidence note: We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best integrate the results.\n\nURL provided in seed. Confidence downgraded 0.9->0.55 per audit.",
       "urlHash": "200002328137240fce9a0a5ea54512fb96063c42b722f71e4fd96c0372b5ddde"
+    },
+    {
+      "id": "mcp_anthropic_announcement",
+      "role": "signal",
+      "sourceKind": "official_blog",
+      "sourceOwner": "anthropic.com",
+      "url": "https://www.anthropic.com/news/model-context-protocol",
+      "title": "Introducing the Model Context Protocol",
+      "publishedAt": "2024-11-25",
+      "whyRelevant": "MCP 的诞生公告（2024-11-25，Anthropic 官方）。整个主题的源头：含 N×M 集成问题陈述、首批 Python/TypeScript SDK 与预置 server（Google Drive/Slack/GitHub/Git/Postgres/Puppeteer）、Block CTO Dhanji R. Prasanna 背书。补 missing 的 signal 角色与起源叙事。",
+      "confidence": 0.95,
+      "evidenceQuote": "The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools.",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200, content matches). Created by David Soria Parra and Justin Spahr-Summers at Anthropic. Seminal origin source.",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Introducing the Model Context Protocol\n\nMCP 诞生公告（2024-11-25, Anthropic）。N×M 集成问题、首批 SDK、预置 server、Block CTO 背书。MCP 由 David Soria Parra 与 Justin Spahr-Summers 在 Anthropic 创造。\n\nEvidence note: The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools.\n\nWeb-verified 2026-06-20.",
+      "urlHash": "e283b9c34207eff8e62a1618cc1a5bc63348e8c9e67ea2af1dda80b41b6b3d9b"
+    },
+    {
+      "id": "mcp_architecture_docs",
+      "role": "official_definition",
+      "sourceKind": "official_docs",
+      "sourceOwner": "modelcontextprotocol.io",
+      "url": "https://modelcontextprotocol.io/docs/learn/architecture",
+      "title": "MCP Architecture overview",
+      "publishedAt": null,
+      "whyRelevant": "MCP 的技术深度锚：host/client/server 三方架构、JSON-RPC 2.0 数据层、stdio / Streamable HTTP 两种 transport、server primitives（tools/resources/prompts）与 client primitives（sampling/elicitation/logging）。区分『真懂 MCP』与『泛泛而谈』的硬指标，intro 页缺这一层。",
+      "confidence": 0.9,
+      "evidenceQuote": "MCP follows a client-server architecture where an MCP host establishes connections to one or more MCP servers. MCP consists of two layers: a data layer (JSON-RPC based protocol) and a transport layer (stdio and Streamable HTTP).",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200). Full-text fetched; confirms three participants, JSON-RPC 2.0, two transports, server/client primitives.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "MCP Architecture overview\n\n技术深度锚：host/client/server 三方、JSON-RPC 2.0 数据层、stdio / Streamable HTTP transport、server primitives（tools/resources/prompts）+ client primitives（sampling/elicitation/logging）。\n\nEvidence note: MCP follows a client-server architecture where an MCP host establishes connections to one or more MCP servers. Two layers: data layer (JSON-RPC) and transport layer (stdio / Streamable HTTP).\n\nWeb-verified 2026-06-20.",
+      "urlHash": "172e80d748294bb795a49e768517e67e4168989620f9c14c39bed9999feb825f"
+    },
+    {
+      "id": "mcp_reference_servers",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/modelcontextprotocol",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "title": "modelcontextprotocol/servers",
+      "publishedAt": null,
+      "whyRelevant": "官方 reference server 集合，证明生态成熟度与可实现性（早期含 Google Drive/Slack/GitHub/Git/Postgres/Puppeteer 等）。SDK 之外的第二类落地证据：协议已有可运行的官方服务端样例。",
+      "confidence": 0.85,
+      "evidenceQuote": "A collection of reference implementations for the Model Context Protocol (MCP), as well as references to community built servers and additional resources.",
+      "reviewNotes": "URL provided per audit; not full-text captured. Repo exists and is the official reference-server collection. Mark source_pack_review until first-party fulltext capture.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "needs_capture"
+      },
+      "text": "modelcontextprotocol/servers\n\n官方 reference server 集合，证明生态成熟度与可实现性。SDK 之外的第二类落地证据。\n\nEvidence note: A collection of reference implementations for the Model Context Protocol (MCP).\n\nNeeds first-party fulltext capture before verified.",
+      "urlHash": "cb8f252ccaaf10b0bb76c2c8d6cb27e6e223131ebe31d789e5f17437e73b4207"
+    },
+    {
+      "id": "mcp_first_anniversary",
+      "role": "signal",
+      "sourceKind": "official_blog",
+      "sourceOwner": "blog.modelcontextprotocol.io",
+      "url": "https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/",
+      "title": "One Year of MCP: November 2025 Spec Release",
+      "publishedAt": "2025-11-25",
+      "whyRelevant": "官方一周年回顾 + 2025-11-25 spec 发布，补 whyNow 时效性：覆盖 OpenAI（2025-03）与 Google DeepMind 采用、2025-06-18 spec 加 OAuth 安全、2025-09 MCP Registry、2025 末治理移交 Linux Foundation。证明 MCP 已从单厂方案变成事实行业标准。",
+      "confidence": 0.85,
+      "evidenceQuote": "One year after launch, MCP has grown from an internal experiment into an industry standard, with adoption across OpenAI, Google, and a registry of thousands of servers.",
+      "reviewNotes": "URL per audit; evidence cross-checked against web search (OpenAI 2025-03 adoption, 2025-06-18 spec OAuth, 2025-09 Registry, Linux Foundation governance). Not first-party fulltext captured — quote is paraphrase. Mark source_pack_review.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "needs_capture"
+      },
+      "text": "One Year of MCP: November 2025 Spec Release\n\n官方一周年回顾 + 2025-11-25 spec。覆盖 OpenAI/Google 采用、2025-06-18 OAuth 安全、2025-09 Registry、Linux Foundation 治理。补 whyNow 时效性。\n\nEvidence note (paraphrase, needs verbatim capture): One year after launch, MCP has grown from an internal experiment into an industry standard.\n\nNeeds first-party fulltext capture before verified.",
+      "urlHash": "47841e3b86684e64cf8d34db6100a195ba0e5137338136484221bf4cf72b9951"
     }
   ],
   "edges": [
@@ -198,18 +278,46 @@
       "relationType": "sdk_examples_to_ecosystem_signal",
       "confidence": 0.7,
       "evidenceNote": "The existence and quality of official SDKs signal ecosystem maturity and adoption potential."
+    },
+    {
+      "fromId": "mcp_anthropic_announcement",
+      "toId": "mcp_docs_intro",
+      "relationType": "origin_announcement_to_protocol_definition",
+      "confidence": 0.9,
+      "evidenceNote": "The Anthropic launch announcement (2024-11-25) is the origin of the protocol that the official docs now define."
+    },
+    {
+      "fromId": "mcp_docs_intro",
+      "toId": "mcp_architecture_docs",
+      "relationType": "overview_to_technical_architecture",
+      "confidence": 0.85,
+      "evidenceNote": "The architecture page provides the technical depth (host/client/server, JSON-RPC 2.0, transports, primitives) behind the high-level intro definition."
+    },
+    {
+      "fromId": "mcp_spec_github",
+      "toId": "mcp_reference_servers",
+      "relationType": "protocol_spec_to_reference_implementation",
+      "confidence": 0.8,
+      "evidenceNote": "The official reference servers implement the protocol defined in the specification repository."
+    },
+    {
+      "fromId": "mcp_anthropic_announcement",
+      "toId": "mcp_first_anniversary",
+      "relationType": "launch_to_one_year_adoption",
+      "confidence": 0.85,
+      "evidenceNote": "The one-year anniversary recap traces adoption (OpenAI, Google, registry, Linux Foundation governance) from the original launch."
     }
   ],
   "review": {
     "missingRoles": [
-      "signal",
       "transcript_context"
     ],
     "weakSources": [
-      "source_pack_has_only_6_sources_vs_minimum_15"
+      "source_pack_has_only_10_sources_vs_minimum_15",
+      "toolformer_paper_downgraded_to_0.55_loose_motivational_link"
     ],
     "duplicateGroups": [],
     "publishReadiness": "thin_source_pack_review_only",
-    "notes": "Generated from Mimo first-pass draft on 2026-06-19. Keep source_pack_review until signal and transcript_context sources are added."
+    "notes": "Generated from Mimo first-pass draft on 2026-06-19. Source-pack audit 2026-06-20: added 4 grounded first-party sources (Anthropic origin announcement [signal], MCP architecture docs [official_definition], reference servers [implementation_signal], 1-year anniversary/2025-11-25 spec [signal]); downgraded Toolformer 0.9->0.55. 'signal' role now filled. STILL NOT READY: (1) transcript_context still empty — need a real first-party transcript (e.g. David Soria Parra / Justin Spahr-Summers talk or a long-form MCP interview); (2) 10 sources vs minimum 15; (3) mcp_reference_servers and mcp_first_anniversary marked source_pack_review/needs_capture pending first-party fulltext capture. Keep source_pack_review."
   }
 }

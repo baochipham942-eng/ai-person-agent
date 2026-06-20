@@ -51,15 +51,17 @@
       "sourceOwner": "infoworld.com",
       "url": "https://www.infoworld.com/article/4110010/generative-ui-the-ai-agent-is-the-front-end.html",
       "title": "Generative UI: The AI agent is the front end",
-      "publishedAt": null,
+      "publishedAt": "2026-01-07",
+      "author": "Matthew Tyson",
       "whyRelevant": "Names the core thesis of the thread: the interface itself is generated at runtime by the agent, not pre-built. Frames generative UI as a distinct shift from chatbots.",
       "confidence": 0.75,
       "evidenceQuote": "Generative UI lets LLMs move beyond plaintext and markdown chatbots to rich, component-based interfaces — the agent becomes the front end.",
-      "reviewNotes": "Practitioner/industry framing source. Verify exact publish date and pull a precise quote before publish.",
+      "reviewNotes": "Verified 2026-06-20: article live, author Matthew Tyson, published 2026-01-07. Core thesis ('agents paint the screen with interactive UI components on demand; the chat interface becomes the front end') confirmed.",
       "status": "source_pack_review",
       "metadata": {
         "role": "signal",
-        "textStatus": "review_summary_not_fulltext"
+        "textStatus": "review_summary_not_fulltext",
+        "author": "Matthew Tyson"
       },
       "text": "Generative UI: The AI agent is the front end\n\nNames the core thesis: the interface is generated at runtime by the agent, not pre-built.\n\nEvidence note: Generative UI lets LLMs move beyond plaintext and markdown chatbots to rich, component-based interfaces.\n\nVerify exact publish date and pull a precise quote before publish.",
       "urlHash": "a68c1228dc25566e506b49aeacd14651886a8f6e335ae5f3b4609017c24d1792"
@@ -183,6 +185,28 @@
       },
       "text": "Introducing AI SDK 3.0 with Generative UI support\n\nGenerative UI as runtime mechanism: stream React components from the model.\n\nEvidence note: AI SDK 3.0 streams React Server Components from the model, giving LLMs component-based interfaces.\n\nOfficial Vercel blog.",
       "urlHash": "f8ca878d03c53828c61ac4af4869377ce40101fadb131489f71a698fac00000c"
+    },
+    {
+      "id": "genui_google_research_genui_blog",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "research.google",
+      "url": "https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/",
+      "title": "Generative UI: A rich, custom, visual interactive user experience for any prompt",
+      "publishedAt": "2025-11-18",
+      "whyRelevant": "Google Research's official, first-party definition of generative UI and the announcement that owns the arXiv paper 'LLMs are Effective UI Generators'. Closes the gap where Google — the third major pole next to Anthropic and Vercel — was present only via a paper, not an official definition. Also names the product landing surfaces (Gemini app 'dynamic view', Google Search AI Mode).",
+      "confidence": 0.85,
+      "evidenceQuote": "An AI model generates not only content but an entire user experience — dynamically creating immersive visual experiences and interactive interfaces such as web pages, games, tools, and applications.",
+      "reviewNotes": "Verified 2026-06-20: page live, published 2025-11-18, official owner of arXiv 2604.09577. Defines generative UI and announces Gemini 'dynamic view' / Search AI Mode rollout; interfaces strongly preferred by human raters over standard LLM outputs.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext",
+        "paper": "https://arxiv.org/abs/2604.09577",
+        "productSurfaces": "Gemini app dynamic view; Google Search AI Mode"
+      },
+      "text": "Generative UI: A rich, custom, visual interactive user experience for any prompt\n\nGoogle Research's official definition of generative UI and the owner of the arXiv 'LLMs are Effective UI Generators' paper.\n\nEvidence note: an AI model generates not only content but an entire user experience — dynamically creating immersive visual experiences and interactive interfaces (web pages, games, tools, applications). Rolling out in the Gemini app 'dynamic view' and Google Search AI Mode.\n\nVerified: page live, 2025-11-18, official owner of arXiv 2604.09577.",
+      "urlHash": "5fa35fb593da7b17a9ce5a00e22b82159086748091ee47a882c64e09de288826"
     },
     {
       "id": "genui_cherny_artifacts_firsthand",
@@ -389,6 +413,13 @@
       "evidenceNote": "The research claim that LLMs are effective UI generators is borne out in production by v0 generating usable frontend from prompts."
     },
     {
+      "fromId": "genui_google_research_genui_blog",
+      "toId": "genui_paper_llms_effective_ui_generators",
+      "relationType": "official_definition_to_research_evidence",
+      "confidence": 0.85,
+      "evidenceNote": "Google Research's official generative-UI announcement is backed by its own arXiv paper 'LLMs are Effective UI Generators' — the official definition and the measured research evidence are the same team's work."
+    },
+    {
       "fromId": "genui_anthropic_build_artifacts",
       "toId": "genui_anthropic_claude_powered_artifacts",
       "relationType": "feature_evolution_static_to_app",
@@ -438,6 +469,6 @@
     ],
     "duplicateGroups": [],
     "publishReadiness": "review_ready",
-    "notes": "Hand-built grounded pack on 2026-06-19 (web-verified, not generated). 16 sources across all 5 required roles, 8 edges. Anthropic Artifacts + Vercel generative UI are the two grounded poles; Geoffrey Litt / CHI 2025 anchor the malleable-software lineage. 2026-06-19 follow-up rounds verified the load-bearing sources against live pages and upgraded them to status=verified: arXiv 2604.09577 (Leviathan/Matias et al., Google), 2601.17975 (Min/Jiang/Huang/Xia), 2601.17614 AlignUI (Liu/Sra/Xiao), CHI 2025 via arXiv mirror 2503.04084 (Cao/Jiang/Xia, DOI 10.1145/3706598.3713285), the AI SDK Generative UI docs, and the transcript_context (Boris Cherny's firsthand X statement + Lenny's Podcast 19 Feb 2026). All quotes corrected to the real abstracts/statements. 13/16 verified; remaining 3 are deliberately-kept lower-confidence breadth signals."
+    "notes": "Hand-built grounded pack on 2026-06-19 (web-verified, not generated). 17 sources across all 5 required roles, 9 edges. Anthropic Artifacts + Vercel generative UI + Google Research generative UI are the three grounded poles; Geoffrey Litt / CHI 2025 anchor the malleable-software lineage. 2026-06-19 follow-up rounds verified the load-bearing sources against live pages and upgraded them to status=verified: arXiv 2604.09577 (Leviathan/Matias et al., Google), 2601.17975 (Min/Jiang/Huang/Xia), 2601.17614 AlignUI (Liu/Sra/Xiao), CHI 2025 via arXiv mirror 2503.04084 (Cao/Jiang/Xia, DOI 10.1145/3706598.3713285), the AI SDK Generative UI docs, and the transcript_context (Boris Cherny's firsthand X statement + Lenny's Podcast 19 Feb 2026). 2026-06-20 deep-core follow-up added the Google Research official generative-UI blog (2025-11-18, verified) to close the Google official_definition gap (previously only present via arXiv) and edge it to its own paper; also backfilled the InfoWorld source's publishedAt=2026-01-07 / author=Matthew Tyson. All quotes corrected to the real abstracts/statements. 14/17 verified; remaining 3 are deliberately-kept lower-confidence breadth signals."
   }
 }

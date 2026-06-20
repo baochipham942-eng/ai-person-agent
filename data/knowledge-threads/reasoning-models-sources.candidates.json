@@ -3,7 +3,7 @@
     "slug": "reasoning-models",
     "title": "Reasoning Models",
     "status": "source_pack_review",
-    "updatedAt": "2026-06-19",
+    "updatedAt": "2026-06-20",
     "category": "AI/ML, 机器学习, 大型语言模型, 推理",
     "tags": [
       "reasoning_models",
@@ -48,20 +48,20 @@
       "sourceKind": "official_product_blog",
       "role": "official_definition",
       "sourceOwner": "openai.com",
-      "url": "https://openai.com/index/introducing-openai-o1/",
-      "title": "Introducing OpenAI o1",
+      "url": "https://openai.com/index/introducing-openai-o1-preview/",
+      "title": "Introducing OpenAI o1-preview",
       "publishedAt": "2024-09-12",
       "whyRelevant": "OpenAI关于其o系列推理模型的官方发布和定义。",
       "confidence": 0.95,
       "evidenceQuote": "Our o1 models are designed to spend more time thinking before they respond.",
-      "reviewNotes": "已验证为OpenAI官方产品发布页面，内容为官方定义。",
+      "reviewNotes": "URL 路径已修正为 /index/introducing-openai-o1-preview/（原 /index/introducing-openai-o1/ 路径已失效）。OpenAI 官方产品发布页面，内容为官方定义。",
       "status": "verified",
       "metadata": {
         "role": "official_definition",
         "textStatus": "review_summary_not_fulltext"
       },
-      "urlHash": "03c51a080f4aa19f3bd60948166f8f88e26de939cff254b50c00b5240fc1be32",
-      "text": "Introducing OpenAI o1\n\nOpenAI关于其o系列推理模型的官方发布和定义。\n\nEvidence note: Our o1 models are designed to spend more time thinking before they respond.\n\n已验证为OpenAI官方产品发布页面，内容为官方定义。"
+      "urlHash": "e108a617cf6bc64f1da8586db10d94e03f3eb8bd2e03f4a19068c799628c1884",
+      "text": "Introducing OpenAI o1-preview\n\nOpenAI关于其o系列推理模型的官方发布和定义。\n\nEvidence note: Our o1 models are designed to spend more time thinking before they respond.\n\nOpenAI 官方产品发布页面，内容为官方定义。"
     },
     {
       "id": "openai_o1_system_card",
@@ -74,7 +74,7 @@
       "whyRelevant": "提供关于o1模型的技术细节、能力范围和安全考虑，是理解其作为推理模型特性的权威文档。",
       "confidence": 0.9,
       "evidenceQuote": "o1 model family are trained with large-scale reinforcement learning to reason using chain of thought.",
-      "reviewNotes": "官方系统卡文档，技术细节权威。",
+      "reviewNotes": "官方系统卡文档，技术细节权威。arXiv 镜像可用：https://arxiv.org/abs/2412.16720 （便于 curl 抓取，主 URL 因反爬对脚本返回 403 但页面真实存在）。",
       "status": "verified",
       "metadata": {
         "role": "official_definition",
@@ -91,10 +91,10 @@
       "url": "https://arxiv.org/abs/2501.12948",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
       "publishedAt": "2025-01-23",
-      "whyRelevant": "DeepSeek R1推理模型的核心技术论文，详细阐述了其通过强化学习训练推理能力的方法。",
+      "whyRelevant": "DeepSeek R1推理模型的核心技术论文/技术报告，详细阐述了其通过强化学习训练推理能力的方法、训练细节、架构和性能评估。",
       "confidence": 0.9,
       "evidenceQuote": "We introduce DeepSeek-R1, which achieves performance comparable to OpenAI o1 across math, code, and reasoning tasks.",
-      "reviewNotes": "arXiv预印本，为DeepSeek官方发布的技术论文。",
+      "reviewNotes": "arXiv预印本，为DeepSeek官方发布的技术论文（即技术报告）。已合并原 deepseek_r1_technical_report 重复条（同为 arXiv:2501.12948）。",
       "status": "verified",
       "metadata": {
         "role": "paper_foundation",
@@ -184,44 +184,24 @@
       "text": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters\n\n系统研究测试时计算缩放的论文，直接论证了在推理阶段投入计算的有效性。\n\nEvidence note: Optimally scaling test-time compute can be more effective than scaling model parameters.\n\narXiv论文，直接支持测试时计算的核心论点。"
     },
     {
-      "id": "mcts_llm_reasoning",
+      "id": "tree_search_llm_reasoning",
       "sourceKind": "paper",
       "role": "paper_foundation",
       "sourceOwner": "arxiv.org",
-      "url": "https://arxiv.org/abs/2305.15818",
-      "title": "Towards Reasoning Large Language Models with Monte Carlo Tree Search",
-      "publishedAt": "2023-05-25",
-      "whyRelevant": "探索将搜索算法（如MCTS）应用于LLM推理的论文，代表了推理模型中“搜索”成分的研究方向。",
+      "url": "https://arxiv.org/abs/2309.17179",
+      "title": "Alphazero-like Tree-Search can Guide Large Language Model Decoding and Training",
+      "publishedAt": "2023-09-29",
+      "whyRelevant": "将 AlphaZero 式树搜索（TS-LLM）用于引导 LLM 解码与训练的论文，代表了推理模型中“搜索 / 测试时搜索”成分的研究方向。",
       "confidence": 0.8,
-      "evidenceQuote": "We explore Monte Carlo Tree Search for enhancing LLM reasoning.",
-      "reviewNotes": "arXiv论文，探讨搜索在推理中的应用。",
+      "evidenceQuote": "TS-LLM can guide LLMs during both inference and training, iteratively improving the LLM, handling reasoning tasks with search depth up to 64.",
+      "reviewNotes": "arXiv论文（ICML 2024）。已替换原 mcts_llm_reasoning 错挂条目——原 arXiv:2305.15818 经核实实为《Small Bots, Big Impact: …Optional Prisoner's Dilemma》博弈论论文，与 LLM 推理/MCTS 无关，属张冠李戴。本条为正确的搜索引导推理代表作。",
       "status": "verified",
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "review_summary_not_fulltext"
       },
-      "urlHash": "9d920f7d6fbc7752ce8ebad9e3d221381b6978d8bc762d35e8d60e25416e986f",
-      "text": "Towards Reasoning Large Language Models with Monte Carlo Tree Search\n\n探索将搜索算法（如MCTS）应用于LLM推理的论文，代表了推理模型中“搜索”成分的研究方向。\n\nEvidence note: We explore Monte Carlo Tree Search for enhancing LLM reasoning.\n\narXiv论文，探讨搜索在推理中的应用。"
-    },
-    {
-      "id": "openai_process_reward_model",
-      "sourceKind": "paper",
-      "role": "paper_foundation",
-      "sourceOwner": "arxiv.org",
-      "url": "https://arxiv.org/abs/2305.20050",
-      "title": "OpenAI Process Reward Model (PRM) Paper",
-      "publishedAt": "2023-05-31",
-      "whyRelevant": "OpenAI关于过程奖励模型的论文，是理解其如何通过步骤奖励训练推理能力的基础。",
-      "confidence": 0.85,
-      "evidenceQuote": "We train a process reward model to evaluate each step of a solution.",
-      "reviewNotes": "与‘Let’s Verify Step by Step’为同一论文或紧密相关，已整合。",
-      "status": "verified",
-      "metadata": {
-        "role": "paper_foundation",
-        "textStatus": "review_summary_not_fulltext"
-      },
-      "urlHash": "eea50d24e41938ed57d567ac6221ea5559ece226026e48033a2a0c4ff04df131",
-      "text": "OpenAI Process Reward Model (PRM) Paper\n\nOpenAI关于过程奖励模型的论文，是理解其如何通过步骤奖励训练推理能力的基础。\n\nEvidence note: We train a process reward model to evaluate each step of a solution.\n\n与‘Let’s Verify Step by Step’为同一论文或紧密相关，已整合。"
+      "urlHash": "cb13715e2b0ff3e9270b2bacf8b055989d751d24faefa0a2494978d0c53765d6",
+      "text": "Alphazero-like Tree-Search can Guide Large Language Model Decoding and Training\n\n将 AlphaZero 式树搜索（TS-LLM）用于引导 LLM 解码与训练的论文，代表了推理模型中“搜索 / 测试时搜索”成分的研究方向。\n\nEvidence note: TS-LLM can guide LLMs during both inference and training, iteratively improving the LLM, handling reasoning tasks with search depth up to 64.\n\narXiv论文（ICML 2024），替换原错挂的囚徒困境博弈论论文。"
     },
     {
       "id": "reinforcement_learning_from_human_feedback",
@@ -244,43 +224,23 @@
       "text": "Training language models to follow instructions with human feedback\n\nRLHF的奠基性论文，为理解DeepSeek R1等模型使用的强化学习后训练方法提供了基础背景。\n\nEvidence note: We fine-tune language models on a diverse set of tasks using human feedback.\n\narXiv经典论文，提供RL后训练背景。"
     },
     {
-      "id": "deepseek_r1_technical_report",
-      "sourceKind": "paper",
-      "role": "paper_foundation",
-      "sourceOwner": "arxiv.org",
-      "url": "https://arxiv.org/abs/2501.12948",
-      "title": "DeepSeek-R1 Technical Report",
-      "publishedAt": "2025-01-23",
-      "whyRelevant": "DeepSeek R1的详细技术报告，包含训练细节、架构和性能评估。",
-      "confidence": 0.9,
-      "evidenceQuote": "This technical report details the methodology and evaluation of DeepSeek-R1.",
-      "reviewNotes": "与核心论文URL相同，但角色定位为更详细的技术报告。",
-      "status": "verified",
-      "metadata": {
-        "role": "paper_foundation",
-        "textStatus": "review_summary_not_fulltext"
-      },
-      "urlHash": "4cd8fde22db0b147d8d4f542a00ce4bb5f251e7a36d0c2ae5cab4cef056e446a",
-      "text": "DeepSeek-R1 Technical Report\n\nDeepSeek R1的详细技术报告，包含训练细节、架构和性能评估。\n\nEvidence note: This technical report details the methodology and evaluation of DeepSeek-R1.\n\n与核心论文URL相同，但角色定位为更详细的技术报告。"
-    },
-    {
       "id": "openai_reasoning_blog_post",
       "sourceKind": "official_blog",
       "role": "signal",
       "sourceOwner": "openai.com",
-      "url": "https://openai.com/research/learning-to-reason-with-llms",
+      "url": "https://openai.com/index/learning-to-reason-with-llms/",
       "title": "Learning to Reason with LLMs",
       "publishedAt": "2024-09-12",
       "whyRelevant": "OpenAI官方博客文章，讨论了推理模型背后的理念、测试时计算和过程监督。",
       "confidence": 0.85,
       "evidenceQuote": "We’re releasing a new series of AI models designed to spend more time thinking.",
-      "reviewNotes": "官方研究博客，提供概念性解释。",
+      "reviewNotes": "URL 路径已修正为 /index/learning-to-reason-with-llms/（原 /research/ 路径已失效）。OpenAI 官方研究博客，提供概念性解释。",
       "status": "verified",
       "metadata": {
         "role": "signal",
         "textStatus": "review_summary_not_fulltext"
       },
-      "urlHash": "87fa21e4250398f49469e3b1d5cd3865b05ffdc44b4e78d7119db6ff7bd4b9d0",
+      "urlHash": "9edf2bd5938d8386295bda6c902ba16b962a3c1d46d1df325ea5540e9ce0d7e7",
       "text": "Learning to Reason with LLMs\n\nOpenAI官方博客文章，讨论了推理模型背后的理念、测试时计算和过程监督。\n\nEvidence note: We’re releasing a new series of AI models designed to spend more time thinking.\n\n官方研究博客，提供概念性解释。"
     },
     {
@@ -322,6 +282,46 @@
       },
       "urlHash": "29a0882390ee70638f8c7ffe84c51567f2d7bc25adbca212be30e5b4edf0d53b",
       "text": "GPT-4 Technical Report\n\nGPT-4技术报告作为大型通用模型的基线，用于对比推理模型的专门优化。\n\nEvidence note: GPT-4 is a large-scale, multimodal model.\n\n作为背景对比源，展示通用模型与推理模型的区别。"
+    },
+    {
+      "id": "arc_agi_o3_breakthrough",
+      "sourceKind": "official_blog",
+      "role": "signal",
+      "sourceOwner": "arcprize.org",
+      "url": "https://arcprize.org/blog/oai-o3-pub-breakthrough",
+      "title": "OpenAI o3 Breakthrough High Score on ARC-AGI-Pub",
+      "publishedAt": "2024-12-20",
+      "whyRelevant": "ARC Prize 官方公布 OpenAI o3 在 ARC-AGI 上的突破性得分，是 2024Q4–2025 推理模型范式跃迁的标志性一线现状信号。",
+      "confidence": 0.85,
+      "evidenceQuote": "OpenAI's new o3 system scored a breakthrough 75.7% on the ARC-AGI Semi-Private Evaluation, a significant step-function increase driven by test-time reasoning.",
+      "reviewNotes": "ARC Prize 官方博客，2024-12-20 公布，HTTP 200 已核实。代表推理模型在 2025 现状的关键里程碑信号。",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "457fa3b0b79d8812d465070b969e5ff872c2b8abe8f96ae469b111e04c279f36",
+      "text": "OpenAI o3 Breakthrough High Score on ARC-AGI-Pub\n\nARC Prize 官方公布 OpenAI o3 在 ARC-AGI 上的突破性得分，是 2024Q4–2025 推理模型范式跃迁的标志性一线现状信号。\n\nEvidence note: o3 通过测试时推理在 ARC-AGI 上取得阶跃式提升（半私有评测 75.7%）。\n\nARC Prize 官方博客，2024-12-20，已核实 HTTP 200。"
+    },
+    {
+      "id": "qwq_32b_open_reasoning",
+      "sourceKind": "official_blog",
+      "role": "signal",
+      "sourceOwner": "qwenlm.github.io",
+      "url": "https://qwenlm.github.io/blog/qwq-32b/",
+      "title": "QwQ-32B: Embracing the Power of Reinforcement Learning",
+      "publishedAt": "2025-03-06",
+      "whyRelevant": "阿里 Qwen 团队官方发布的 320 亿参数开源推理模型，证明 2025 年开源推理模型经 RL 可逼近 DeepSeek-R1 等更大模型，是开源推理生态扩张的现状信号。",
+      "confidence": 0.85,
+      "evidenceQuote": "QwQ-32B, a model with 32 billion parameters that achieves performance comparable to DeepSeek-R1, which boasts 671 billion parameters, via scaled reinforcement learning.",
+      "reviewNotes": "Qwen 官方博客，2025-03-06 发布，HTTP 200 已核实。补充 2025 开源推理模型现状信号。",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "e4f2769e35e0d4258db229c9e4578f4c33dee785954d3a547d5b8c1d85fe39d0",
+      "text": "QwQ-32B: Embracing the Power of Reinforcement Learning\n\n阿里 Qwen 团队官方发布的 320 亿参数开源推理模型，证明 2025 年开源推理模型经 RL 可逼近 DeepSeek-R1 等更大模型。\n\nEvidence note: QwQ-32B（320亿参数）经规模化强化学习达到与 DeepSeek-R1（6710亿参数）相当的性能。\n\nQwen 官方博客，2025-03-06，已核实 HTTP 200。"
     },
     {
       "id": "deepseek_r1_usage_docs",
@@ -374,11 +374,11 @@
       "evidenceNote": "GitHub仓库是DeepSeek R1论文中描述模型的具体代码实现。"
     },
     {
-      "fromId": "mcts_llm_reasoning",
+      "fromId": "tree_search_llm_reasoning",
       "toId": "scaling_llm_test_time_compute",
       "relationType": "complements_with",
       "confidence": 0.7,
-      "evidenceNote": "搜索算法的应用是实现测试时计算优化的一种具体技术路径。"
+      "evidenceNote": "AlphaZero 式树搜索（TS-LLM）是实现测试时计算优化的一种具体技术路径。"
     },
     {
       "fromId": "reasoning_benchmarks_math",
@@ -393,6 +393,20 @@
       "relationType": "predecessor_to",
       "confidence": 0.85,
       "evidenceNote": "GPT-4作为通用模型代表，是o系列推理模型想要超越的基线。"
+    },
+    {
+      "fromId": "arc_agi_o3_breakthrough",
+      "toId": "openai_o1_introducing",
+      "relationType": "extends",
+      "confidence": 0.85,
+      "evidenceNote": "o3 在 ARC-AGI 上的突破是 o 系列推理模型范式（测试时推理）的延续与放大。"
+    },
+    {
+      "fromId": "qwq_32b_open_reasoning",
+      "toId": "deepseek_r1_paper",
+      "relationType": "complements_with",
+      "confidence": 0.8,
+      "evidenceNote": "QwQ-32B 与 DeepSeek-R1 同属经强化学习训练的开源推理模型，共同构成 2025 开源推理生态。"
     }
   ],
   "review": {
@@ -402,6 +416,6 @@
     ],
     "duplicateGroups": [],
     "publishReadiness": "thin_source_pack_review_only",
-    "notes": "First-pass Mimo pack after URL audit. Dead or placeholder URLs were removed; keep source_pack_review until human content audit passes."
+    "notes": "First-pass Mimo pack after URL audit. 2026-06-20 人工深核修复：(1) 修张冠李戴——原 mcts_llm_reasoning(arXiv:2305.15818) 实为囚徒困境博弈论论文，已替换为 tree_search_llm_reasoning(arXiv:2309.17179 TS-LLM, AlphaZero-like Tree-Search, ICML 2024)；(2) 合并/删除重复——deepseek_r1_technical_report 并入 deepseek_r1_paper(同 arXiv:2501.12948)，删除 openai_process_reward_model(与 lets_verify_step_by_step 同 arXiv:2305.20050)；(3) 修两条 OpenAI URL 失效路径——introducing-openai-o1→introducing-openai-o1-preview、/research/learning-to-reason-with-llms→/index/learning-to-reason-with-llms/，并为 o1 system card 补 arXiv:2412.16720 镜像；(4) 补 2 条 2025–2026 现状 signal 源——arc_agi_o3_breakthrough(o3 ARC-AGI 突破)、qwq_32b_open_reasoning(QwQ-32B 开源推理)。去重后独立来源仍未达 minimumSourceCount=15，keep source_pack_review until human content audit passes."
   }
 }

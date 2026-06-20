@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { CompareNavLink } from '@/components/common/CompareNavLink';
 import { UserMenu } from '@/components/common/UserMenu';
 
-type SiteHeaderCurrent = 'home' | 'organizations' | 'contentSearch' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist' | 'courses';
+type SiteHeaderCurrent = 'home' | 'organizations' | 'contentSearch' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist' | 'courses' | 'threads';
 type SiteHeaderWidth = '5xl' | '6xl' | '7xl';
 
 interface SiteHeaderProps {
@@ -13,16 +13,16 @@ interface SiteHeaderProps {
   utilitySlot?: ReactNode;
 }
 
+/**
+ * 主导航 = 浏览实体（全是「看什么」，互相平行）。
+ * 工具（搜索/对比）退到右侧工具区；保存的对比报告在用户菜单里。
+ */
 const PRIMARY_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
-  { key: 'home', href: '/', label: '推荐人物' },
+  { key: 'home', href: '/', label: '人物' },
   { key: 'organizations', href: '/org', label: '公司' },
-  { key: 'contentSearch', href: '/content-search', label: '内容搜索' },
+  { key: 'threads', href: '/threads', label: '知识主题' },
+  { key: 'courses', href: '/courses', label: '课程' },
   { key: 'digest', href: '/digest', label: '本周动态' },
-];
-
-const MORE_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
-  { key: 'courses', href: '/courses', label: 'AI 课程' },
-  { key: 'compareReports', href: '/compare/reports', label: '人物对比' },
 ];
 
 const WIDTH_CLASS: Record<SiteHeaderWidth, string> = {
@@ -32,8 +32,6 @@ const WIDTH_CLASS: Record<SiteHeaderWidth, string> = {
 };
 
 export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilitySlot }: SiteHeaderProps) {
-  const moreIsCurrent = MORE_NAV_ITEMS.some(item => item.key === current);
-
   return (
     <header className="glass-header sticky top-0 z-50 border-b border-subtle">
       <div className={`${WIDTH_CLASS[maxWidth]} mx-auto px-4 sm:px-6`}>
@@ -70,49 +68,28 @@ export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilit
                   </Link>
                 );
               })}
-              <details className="group relative flex-shrink-0">
-                <summary
-                  aria-current={moreIsCurrent ? 'page' : undefined}
-                  className={`site-header-more-summary flex cursor-pointer items-center gap-1 whitespace-nowrap py-1 font-medium transition-colors ${
-                    moreIsCurrent ? 'text-stone-950' : 'text-stone-500 hover:text-orange-600'
-                  }`}
-                >
-                  更多
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 20 20"
-                    className="h-3.5 w-3.5 transition-transform group-open:rotate-180"
-                    fill="currentColor"
-                  >
-                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-                  </svg>
-                </summary>
-                <div className="absolute left-1/2 top-8 z-50 w-36 -translate-x-1/2 rounded-xl border border-stone-200 bg-white p-1.5 shadow-lg">
-                  {MORE_NAV_ITEMS.map(item => {
-                    const isCurrent = current === item.key;
-                    return (
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        prefetch={false}
-                        aria-current={isCurrent ? 'page' : undefined}
-                        className={`flex h-8 items-center rounded-lg px-2.5 text-xs font-medium transition-colors ${
-                          isCurrent
-                            ? 'bg-stone-50 text-stone-950'
-                            : 'text-stone-600 hover:bg-orange-50 hover:text-orange-700'
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </details>
             </nav>
 
             <div className="flex min-w-0 flex-shrink-0 items-center justify-center gap-2 md:justify-end">
               <div className="flex min-w-0 items-center justify-end gap-2 overflow-visible">
                 {utilitySlot}
+                <Link
+                  href="/content-search"
+                  prefetch={false}
+                  aria-label="内容搜索"
+                  aria-current={current === 'contentSearch' ? 'page' : undefined}
+                  className={`inline-flex h-8 flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
+                    current === 'contentSearch'
+                      ? 'border-stone-900 bg-stone-50 text-stone-950'
+                      : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
+                  }`}
+                >
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5">
+                    <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.6" />
+                    <path d="m17 17-3.2-3.2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                  </svg>
+                  <span className="hidden sm:inline">搜索</span>
+                </Link>
                 <CompareNavLink isCurrent={current === 'myCompare'} />
               </div>
               <UserMenu />
