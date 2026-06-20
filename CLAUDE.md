@@ -249,6 +249,23 @@ createdAt, updatedAt
 ```
 > 动态流持久化事件。默认发布侧只展示可信状态和足够置信度的事件。
 
+### SearchDocument / ContentChunk
+```
+SearchDocument:
+id, objectType, objectId, canonicalKey (唯一),
+personId, threadId, organizationId, sourceType,
+title, summary, text, url, topics[], organizations[],
+publishedAt, fetchedAt, textHash, embeddingStatus,
+metadata (JSON), searchVector, createdAt, updatedAt
+
+ContentChunk:
+id, documentId, objectType, objectId, chunkIndex,
+title, text, tokenEstimate, textHash,
+embedding, embeddingModel, embeddingUpdatedAt,
+metadata (JSON), searchVector, createdAt, updatedAt
+```
+> 内容搜索索引层。`SearchDocument` 绑定可检索对象，`ContentChunk` 承载分块全文、FTS 与向量检索。
+
 ### Course
 ```
 id, personId, title, titleZh, platform, url, urlHash,
