@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
 import {
   ActivitySection,
+  buildCompanyArticleSections,
   CompanyEvidenceSection,
   CompanyLearningSection,
   CompanyOverviewSection,
@@ -14,7 +15,7 @@ import {
   TopPeopleSection,
   WorksSection,
 } from '@/components/entity/EntityPageBlocks';
-import { buildEmptyCompanyIntelligence, fetchOrganizationPageData } from '@/lib/entity-pages';
+import { buildEmptyCompanyIntelligence, fetchOrganizationPageData, type OrganizationRolePerson } from '@/lib/entity-pages';
 import { resolveCompanyPresentation } from '@/lib/entity-presentations/company-presentation';
 import {
   buildDirectoryHref,
@@ -30,7 +31,7 @@ export const revalidate = 300;
 
 const loadOrganizationPageData = unstable_cache(
   async (organization: string) => fetchOrganizationPageData(organization),
-  ['organization-page-data-v6'],
+  ['organization-page-data-v7'],
   { revalidate: 300 }
 );
 
@@ -51,9 +52,26 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
   const companyIntelligence = data.companyIntelligence ?? buildEmptyCompanyIntelligence();
   const displayName = companyIntelligence.displayName || organization;
   const presentation = resolveCompanyPresentation(displayName, companyIntelligence);
-  const coreProductCount = presentation.products.length;
-  const learningResourceCount = presentation.learningResources.length;
+  const coreProductCount = presentation.products.length || companyIntelligence.products.length;
+  // 「官方好文」= 策展精选 + 抓取入库的官方博客去重后的真实总数（之前只数了硬编码 seed，
+  // 导致抓了 57 篇博客却只显示 4-5 的计数错位）。
+  const officialArticleCount = buildCompanyArticleSections(displayName, companyIntelligence).totalCount;
   const rankedPeople = rankPeopleForCompany(data.people, presentation.flagshipKeywords);
+  // 仅靠 organization[] 关联、没有 PersonRole 履历的相关成员：他们进不了履历花名册，
+  // 又可能排在关键人物 top9 之外，单独成组兜底展示（已离职的不带进来）。
+  const rosterPersonIds = new Set([...data.currentPeople, ...data.alumniPeople].map(person => person.personId));
+  const topPeopleIds = new Set(rankedPeople.slice(0, TOP_PEOPLE_LIMIT).map(person => person.id));
+  const otherMembers = rankedPeople
+    .filter(person => !topPeopleIds.has(person.id) && !rosterPersonIds.has(person.id))
+    .filter(person => person.organizationMatch && person.organizationMatch.status !== 'past')
+    .slice(0, 16)
+    .map(toRosterPerson);
+  const hasReferenceContent =
+    companyIntelligence.relatedThreads.length > 0 ||
+    data.relatedTopics.length > 0 ||
+    companyIntelligence.evidence.length > 0 ||
+    data.activity.length > 0 ||
+    data.works.length > 0;
   // DB intelligence 优先；没有时回退到公司 seed 里的 logo / 官网。
   const logoUrl = companyIntelligence.logoUrl ?? presentation.logoUrl ?? null;
   const homepageUrl = companyIntelligence.homepageUrl ?? presentation.homepageUrl ?? null;
@@ -76,9 +94,9 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
             homepageUrl ? { label: '官网', value: homepageUrl.replace(/^https?:\/\//, '') } : null,
           ].filter((item): item is { label: string; value: string } => Boolean(item))}
           stats={[
-            { label: '关键人物', value: data.people.length },
+            { label: '关键人物', value: data.totalPeople },
             { label: '核心产品', value: coreProductCount },
-            { label: '官方好文', value: learningResourceCount },
+            { label: '官方好文', value: officialArticleCount },
             { label: '来源材料', value: companyIntelligence.coverage.evidenceCount },
           ]}
           primaryAction={{
@@ -103,22 +121,25 @@ export default async function OrganizationPage({ params }: OrganizationPageProps
               description="按公司相关性排序：现任成员、创始团队和旗舰产品贡献者优先，再看综合影响力。"
             />
           )}
-          {(data.currentPeople.length > 0 || data.alumniPeople.length > 0) && (
+          {(data.currentPeople.length > 0 || data.alumniPeople.length > 0 || otherMembers.length > 0) && (
             <OrganizationRosterSection
               current={data.currentPeople}
               alumni={data.alumniPeople}
+              others={otherMembers}
               excludeIds={rankedPeople.slice(0, TOP_PEOPLE_LIMIT).map(person => person.id)}
             />
           )}
         </div>
 
-        {/* 参考与来源：支撑上方判断的证据、主题与动态，按需展开 */}
-        <ReferenceTier>
-          <RelatedThreadsSection threads={companyIntelligence.relatedThreads} topics={data.relatedTopics} />
-          <CompanyEvidenceSection intelligence={companyIntelligence} />
-          {data.activity.length > 0 && <ActivitySection events={data.activity} title={`${displayName} 最近动态`} />}
-          {data.works.length > 0 && <WorksSection works={data.works} />}
-        </ReferenceTier>
+        {/* 参考与来源：支撑上方判断的证据、主题与动态，按需展开；全空则整块不渲染 */}
+        {hasReferenceContent && (
+          <ReferenceTier>
+            <RelatedThreadsSection threads={companyIntelligence.relatedThreads} topics={data.relatedTopics} />
+            <CompanyEvidenceSection intelligence={companyIntelligence} />
+            {data.activity.length > 0 && <ActivitySection events={data.activity} title={`${displayName} 最近动态`} />}
+            {data.works.length > 0 && <WorksSection works={data.works} />}
+          </ReferenceTier>
+        )}
       </main>
     </div>
   );
@@ -130,6 +151,22 @@ function decodeRouteParam(value: string): string {
   } catch {
     return value;
   }
+}
+
+// 把目录人物（只有 organization[] 关联、无 PersonRole）转成花名册条目，
+// 履历日期未知就留空，role 用其归属关系或当前职位兜底。
+function toRosterPerson(person: DirectoryPerson): OrganizationRolePerson {
+  const match = person.organizationMatch;
+  return {
+    personId: person.id,
+    name: person.name,
+    avatarUrl: person.avatarUrl,
+    currentTitle: person.currentTitle,
+    role: match?.role || person.currentTitle || '相关成员',
+    startYear: match?.startYear ?? null,
+    endYear: match?.endYear ?? null,
+    confidence: match?.confidence ?? null,
+  };
 }
 
 function companyRelevanceScore(person: DirectoryPerson, flagshipKeywords: string[]): number {

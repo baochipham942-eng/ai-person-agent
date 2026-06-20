@@ -88,6 +88,15 @@ export interface CompanyProductItem {
   url?: string;
 }
 
+export interface CompanyArticleItem {
+  id: string;
+  title: string;
+  url: string;
+  summary: string | null;
+  sourceType: string;
+  publishedAt: string | null;
+}
+
 export interface CompanyThreadEvidenceSource {
   id: string;
   role: CompanyEvidenceRole;
@@ -112,6 +121,8 @@ export interface CompanyPageIntelligence {
   positioning: string | null;
   aiStrategySummary: string | null;
   products: CompanyProductItem[];
+  /** 抓取入库的官方博客 / 工程文章 / RSS 文章（驱动「官方博客与工程文章」区块的完整列表）。 */
+  officialArticles: CompanyArticleItem[];
   evidence: CompanyEvidenceItem[];
   relatedThreads: CompanyThreadLink[];
   sourceMode: 'empty' | 'fixture' | 'dry_run' | 'db';
@@ -209,7 +220,9 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
   const roleWhere = buildOrganizationRoleWhere(aliases);
 
   const [directory, activity, roles, companyIntelligence] = await Promise.all([
-    fetchPersonDirectory({ page: 1, limit: 12, organization, sortBy: 'influenceScore' }),
+    // 取较大候选池（而非 12），让公司相关性重排真正生效——否则高影响力的离职者会占满
+    // 前 12，导致中等影响力的现任 / 旗舰贡献者根本进不了池子被重排上来。
+    fetchPersonDirectory({ page: 1, limit: 48, organization, sortBy: 'influenceScore' }),
     fetchActivityEvents({ organization, limit: 8, days: COVERAGE_DAYS, includeRelations: false }),
     prisma.personRole.findMany({
       where: roleWhere,
@@ -229,14 +242,27 @@ export async function fetchOrganizationPageData(organization: string): Promise<O
         },
       },
       orderBy: [{ endDate: 'asc' }, { startDate: 'desc' }],
-      take: 64,
+      take: 256,
     }),
     fetchCompanyPageIntelligence(organization, aliases),
   ]);
   const works = await fetchEntityWorksForPeople(directory.data.map(person => person.id), Math.max(8, ORGANIZATION_COVERAGE_THRESHOLDS.works));
 
-  const uniqueCurrent = uniqueRolePeople(roles.filter(role => !role.endDate), 8);
-  const uniqueAlumni = uniqueRolePeople(roles.filter(role => role.endDate), 8);
+  // 花名册不要把现任截断：现任全展示，离职取前 24。
+  // 但「无 endDate 的泛化 Member 履历」是 recrawl 入库的关联噪声（122 条，无起止日期），
+  // 当此人 currentTitle 明确写在「别的公司 @」时，不能当成本公司在职——降到「前成员」。
+  // 只对泛化 Member 生效，真实职称(CEO/教授/研究员)即使并任他处也保留为现任，避免误伤并任学者。
+  const activeRoles = roles.filter(role => !role.endDate);
+  const staleAffiliationRoles = activeRoles.filter(role => isStaleAffiliationRole(role, aliases));
+  const staleAffiliationIds = new Set(staleAffiliationRoles.map(role => role.person.id));
+  const uniqueCurrent = uniqueRolePeople(
+    activeRoles.filter(role => !staleAffiliationIds.has(role.person.id)),
+    64
+  );
+  const uniqueAlumni = uniqueRolePeople(
+    [...roles.filter(role => role.endDate), ...staleAffiliationRoles],
+    24
+  );
 
   return {
     organization,
@@ -269,6 +295,7 @@ export function buildEmptyCompanyIntelligence(): CompanyPageIntelligence {
     positioning: null,
     aiStrategySummary: null,
     products: [],
+    officialArticles: [],
     evidence: [],
     relatedThreads: [],
     displayName: null,
@@ -302,7 +329,7 @@ async function fetchCompanyIntelligenceFromDb(organization: string, aliases: str
         description: true,
         companySources: {
           orderBy: [{ publishedAt: 'desc' }, { createdAt: 'desc' }],
-          take: 32,
+          take: 150,
         },
         companyThreadLinks: {
           orderBy: [{ threadSlug: 'asc' }, { createdAt: 'asc' }],
@@ -347,6 +374,16 @@ async function fetchCompanyIntelligenceFromDb(organization: string, aliases: str
       };
     });
     const productSources = row.companySources.filter(source => source.role === 'product_release').slice(0, 6);
+    const officialArticles = row.companySources
+      .filter(isCompanyArticleSource)
+      .map(source => ({
+        id: source.id,
+        title: source.title,
+        url: source.url,
+        summary: source.summary || null,
+        sourceType: source.sourceKind,
+        publishedAt: source.publishedAt ? source.publishedAt.toISOString().slice(0, 10) : null,
+      }));
     const displayName = row.nameZh || row.name || organization;
     const homepageUrl = deriveCompanyHomepage(row.description, row.companySources.map(source => source.url));
 
@@ -361,6 +398,7 @@ async function fetchCompanyIntelligenceFromDb(organization: string, aliases: str
         summary: source.summary || source.title,
         url: source.url,
       })),
+      officialArticles,
       evidence,
       relatedThreads,
       sourceMode: 'db',
@@ -422,6 +460,7 @@ function buildAnthropicFixtureIntelligence(): CompanyPageIntelligence {
         url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
       },
     ],
+    officialArticles: [],
     evidence,
     relatedThreads,
     sourceMode: 'dry_run',
@@ -478,6 +517,20 @@ function hostnameFromUrl(value: string): string | null {
   } catch {
     return null;
   }
+}
+
+// 抓取入库的官方博客 / 工程文章 / RSS 文章：role="blog" 或 sourceKind 标记为官方文章类。
+// 这些是公司页「官方博客与工程文章」区块的完整数据源，独立于 5 类公司证据 role。
+const COMPANY_ARTICLE_SOURCE_KINDS = new Set([
+  'official_blog_article',
+  'official_rss_article',
+  'engineering_blog_article',
+  'blog_article',
+]);
+
+function isCompanyArticleSource(source: { role: string; sourceKind: string; url: string; title: string }): boolean {
+  if (!source.url || !source.title) return false;
+  return source.role === 'blog' || COMPANY_ARTICLE_SOURCE_KINDS.has(source.sourceKind);
 }
 
 function isCompanyEvidenceRole(value: string): value is CompanyEvidenceRole {
@@ -651,6 +704,40 @@ function toEntityWork(row: {
     publishedAt: (row.publishedAt ?? row.fetchedAt).toISOString(),
     metricLabel: buildWorkMetric(type, metadata),
   };
+}
+
+// 泛化关联职位：recrawl 入库的 "Member" / "成员" 这类无内容头衔，不代表已验证的在职雇佣。
+const GENERIC_AFFILIATION_ROLES = new Set(['member', 'members', 'affiliate', 'affiliated', 'associate member', 'fellow', '成员', '会员', '附属']);
+
+function isGenericAffiliationRole(role: string | null, roleZh: string | null): boolean {
+  const normalized = (role || '').trim().toLowerCase();
+  const normalizedZh = (roleZh || '').trim();
+  return GENERIC_AFFILIATION_ROLES.has(normalized) || normalizedZh === '成员' || normalizedZh === '会员';
+}
+
+// currentTitle 里「@ 公司」段落是否全都不是本公司（即此人当前主职在别处）。
+function currentTitleNamesDifferentOrganization(currentTitle: string | null, aliases: string[]): boolean {
+  if (!currentTitle || !currentTitle.includes('@')) return false;
+  const segments = currentTitle
+    .split('@')
+    .slice(1)
+    .map(segment => segment.split(/[/;,，；、]/)[0].trim().toLowerCase())
+    .filter(Boolean);
+  if (segments.length === 0) return false;
+  const normalizedAliases = aliases.map(alias => alias.trim().toLowerCase()).filter(Boolean);
+  const anyMatchesOrg = segments.some(segment =>
+    normalizedAliases.some(alias => segment.includes(alias) || alias.includes(segment))
+  );
+  return !anyMatchesOrg;
+}
+
+// 仅当「泛化 Member 履历」且「currentTitle 明确写在别的公司」时，判定为过期关联（降到前成员）。
+function isStaleAffiliationRole(
+  role: { role: string; roleZh: string | null; person: { currentTitle: string | null } },
+  aliases: string[]
+): boolean {
+  if (!isGenericAffiliationRole(role.role, role.roleZh)) return false;
+  return currentTitleNamesDifferentOrganization(role.person.currentTitle, aliases);
 }
 
 function uniqueRolePeople(rows: Array<{

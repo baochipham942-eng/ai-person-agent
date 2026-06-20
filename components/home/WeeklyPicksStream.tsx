@@ -38,6 +38,8 @@ const fetcher = async (url: string): Promise<WeeklyPicksResponse> => {
 
 const KIND_META: Record<FeaturedCardKind, { label: string; dot: string; text: string }> = {
   person: { label: '人物', dot: 'bg-amber-500', text: 'text-amber-600' },
+  company: { label: '公司', dot: 'bg-blue-600', text: 'text-blue-700' },
+  compare: { label: '人物对比', dot: 'bg-emerald-600', text: 'text-emerald-700' },
   thread: { label: '知识主题', dot: 'bg-orange-500', text: 'text-orange-600' },
   video: { label: '视频', dot: 'bg-rose-500', text: 'text-rose-600' },
   paper: { label: '论文', dot: 'bg-sky-500', text: 'text-sky-600' },

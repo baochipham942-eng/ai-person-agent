@@ -196,7 +196,7 @@ export const DIRECTORY_ORGANIZATION_ALIASES: Record<string, string[]> = {
   xAI: ['xAI', 'X.AI'],
   Perplexity: ['Perplexity', 'Perplexity AI'],
   Stanford: ['Stanford', '斯坦福大学', 'Stanford University'],
-  MIT: ['MIT', '麻省理工学院', 'Massachusetts Institute of Technology', '思维机器实验室'],
+  MIT: ['MIT', '麻省理工学院', 'Massachusetts Institute of Technology'],
   Berkeley: ['Berkeley', 'UC Berkeley', '加州大学伯克利分校'],
   CMU: ['CMU', '卡内基梅隆大学', 'Carnegie Mellon University'],
   清华大学: ['清华大学', 'Tsinghua', 'Tsinghua University', '清华大学 NLP', '清华大学、智谱AI', '清华大学、生数科技'],

@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { CompareNavLink } from '@/components/common/CompareNavLink';
 import { UserMenu } from '@/components/common/UserMenu';
 
 type SiteHeaderCurrent = 'home' | 'organizations' | 'contentSearch' | 'compareReports' | 'myCompare' | 'graph' | 'digest' | 'watchlist' | 'courses' | 'threads';
@@ -75,7 +74,7 @@ export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilit
                 <Link
                   href="/content-search"
                   prefetch={false}
-                  aria-label="内容搜索"
+                  aria-label="全局搜索"
                   aria-current={current === 'contentSearch' ? 'page' : undefined}
                   className={`inline-flex h-8 flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
                     current === 'contentSearch'
@@ -87,9 +86,8 @@ export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilit
                     <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.6" />
                     <path d="m17 17-3.2-3.2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                   </svg>
-                  <span className="hidden sm:inline">搜索</span>
+                  <span className="hidden sm:inline">全局搜索</span>
                 </Link>
-                <CompareNavLink isCurrent={current === 'myCompare'} />
               </div>
               <UserMenu />
             </div>

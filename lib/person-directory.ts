@@ -61,6 +61,9 @@ export async function fetchPersonDirectory(params: {
   if (organization) {
     where.OR = [
       { roles: { some: organizationRoleWhere } },
+      // 有些人的公司归属只写在 People.organization[] 数组里（没有 PersonRole 记录），
+      // 不加这个分支他们会从公司页彻底消失（如 Anthropic 的 Sam McCandlish / Sam Bowman）。
+      { organization: { hasSome: organizationAliases } },
       ...organizationAliases.map(alias => ({
         currentTitle: { contains: alias, mode: 'insensitive' as const },
       })),
@@ -226,13 +229,14 @@ function buildOrganizationMatch(params: {
     })[0];
 
   if (matchingRole) {
+    // 有一条「无 endDate」的在职履历就算现任——不要再额外要求 currentTitle 文本里含公司名，
+    // 否则大量职称写成「Research Scientist」的现任会被判成 'role'（非现任），拿不到公司页排序加权，
+    // 被高影响力的离职者盖过去（Issue：在职排名低于离职）。仅当职称明确写「前任」或「@其它公司」才降级。
     const status = matchingRole.endDate
       ? 'past'
       : titleHasFormerTenure || currentTitleConflictsWithOrganization
         ? 'past'
-        : currentTitleMatchesOrganization
-        ? 'current'
-        : 'role';
+        : 'current';
 
     return {
       organization: matchingRole.organization.nameZh || matchingRole.organization.name || params.requestedOrganization,

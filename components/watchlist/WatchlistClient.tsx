@@ -166,7 +166,10 @@ export function WatchlistClient() {
       </section>
 
       {!hasItems ? (
-        <EmptyState authenticated={authenticated} loading={loading} />
+        <>
+          <EmptyState authenticated={authenticated} loading={loading} />
+          <AccountPanel authenticated={authenticated} loading={loading} compact />
+        </>
       ) : (
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="space-y-8">

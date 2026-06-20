@@ -13,6 +13,7 @@ import {
   buildTopicHref,
 } from '@/lib/person-directory-config';
 import type {
+  CompanyArticleItem,
   CompanyEvidenceItem,
   CompanyEvidenceRole,
   CompanyPageIntelligence,
@@ -24,6 +25,7 @@ import type {
 } from '@/lib/entity-pages';
 import {
   resolveCompanyPresentation,
+  type CompanyLearningResource,
   type CompanyOfficialLink,
 } from '@/lib/entity-presentations/company-presentation';
 
@@ -185,7 +187,9 @@ export function CompanyOverviewSection({
 }) {
   const presentation = resolveCompanyPresentation(organization, intelligence);
   const products = presentation.products.length > 0 ? presentation.products : intelligence.products;
-  const hasOverview = Boolean(presentation.strategy || products.length > 0 || presentation.bets.length > 0);
+  const headline = presentation.headline || intelligence.positioning;
+  // 真的没内容（无标题/无战略/无产品线）就不渲染这个模块，而不是显示「整理中」占位。
+  if (!headline && !presentation.strategy && products.length === 0) return null;
 
   return (
     <section>
@@ -193,43 +197,35 @@ export function CompanyOverviewSection({
       <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-5">
         <div>
           <div className="text-xs font-medium text-stone-500">{intelligence.displayName || organization}</div>
-          <h2 className="mt-1 text-base font-semibold text-stone-950">
-            {presentation.headline || intelligence.positioning || '公司产品线仍在整理中'}
-          </h2>
+          {headline && <h2 className="mt-1 text-base font-semibold text-stone-950">{headline}</h2>}
           {presentation.strategy && (
             <p className="mt-2 text-sm leading-6 text-stone-600">{presentation.strategy}</p>
           )}
         </div>
 
-        {hasOverview ? (
-          <>
-            {products.length > 0 && (
-              <div className="mt-4">
-                <div className="mb-2 text-xs font-medium text-stone-500">核心产品线</div>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {products.map(product => (
-                    <article key={product.name} className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-3">
-                      {product.url ? (
-                        <a
-                          href={product.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-sm font-semibold text-stone-950 hover:text-orange-600"
-                        >
-                          {product.name}
-                        </a>
-                      ) : (
-                        <div className="text-sm font-semibold text-stone-950">{product.name}</div>
-                      )}
-                      <p className="mt-1 text-xs leading-5 text-stone-500">{product.summary}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            )}
-          </>
-        ) : (
-          <EmptyPanel text="公司产品线还没整理到可展示状态。" />
+        {products.length > 0 && (
+          <div className="mt-4">
+            <div className="mb-2 text-xs font-medium text-stone-500">核心产品线</div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {products.map(product => (
+                <article key={product.name} className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-3">
+                  {product.url ? (
+                    <a
+                      href={product.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm font-semibold text-stone-950 hover:text-orange-600"
+                    >
+                      {product.name}
+                    </a>
+                  ) : (
+                    <div className="text-sm font-semibold text-stone-950">{product.name}</div>
+                  )}
+                  <p className="mt-1 text-xs leading-5 text-stone-500">{product.summary}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </section>
@@ -238,31 +234,53 @@ export function CompanyOverviewSection({
 
 export function CompanyEvidenceSection({ intelligence }: { intelligence: CompanyPageIntelligence }) {
   const groupedEvidence = groupCompanyEvidence(intelligence.evidence);
+  // 没有公司级证据就不渲染这个模块（不展示空占位）。
+  if (groupedEvidence.length === 0) return null;
 
   return (
     <section>
       <SectionTitle title="来源与依据" description="这些官方新闻、文档、融资和合作材料用于支撑上面的公司判断。" />
-      {intelligence.evidence.length > 0 ? (
-        <div className="space-y-3">
-          {groupedEvidence.map(group => (
-            <article key={group.role} className="rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm">
-              <div className="mb-3 flex items-center justify-between gap-3">
-                <h2 className="text-sm font-semibold text-stone-950">{COMPANY_EVIDENCE_ROLE_LABELS[group.role]}</h2>
-                <span className="text-xs font-medium text-stone-400">{group.items.length}</span>
-              </div>
-              <div className="divide-y divide-stone-100">
-                {group.items.map(item => (
-                  <CompanyEvidenceRow key={item.id} item={item} />
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <EmptyPanel text="公司级证据尚未入库。不会用人物动态、论文、项目或履历记录顶替公司证据。" />
-      )}
+      <div className="space-y-3">
+        {groupedEvidence.map(group => (
+          <article key={group.role} className="rounded-xl border border-stone-200 bg-white px-4 py-4 shadow-sm">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <h2 className="text-sm font-semibold text-stone-950">{COMPANY_EVIDENCE_ROLE_LABELS[group.role]}</h2>
+              <span className="text-xs font-medium text-stone-400">{group.items.length}</span>
+            </div>
+            <div className="divide-y divide-stone-100">
+              {group.items.map(item => (
+                <CompanyEvidenceRow key={item.id} item={item} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
+}
+
+function normalizeArticleUrl(url: string): string {
+  return url.trim().replace(/[#?].*$/, '').replace(/\/+$/, '').toLowerCase();
+}
+
+// 合并「手工策展的精选文章」和「抓取入库的官方博客」：策展条目优先且去重，
+// 抓取的博客补在后面，供「官方博客与工程文章」区块完整展示，并驱动 hero 的「官方好文」计数。
+export function buildCompanyArticleSections(
+  organization: string,
+  intelligence: CompanyPageIntelligence
+): { curated: CompanyLearningResource[]; moreArticles: CompanyArticleItem[]; totalCount: number } {
+  const presentation = resolveCompanyPresentation(organization, intelligence);
+  const curated = presentation.learningResources;
+  const seen = new Set(curated.map(resource => normalizeArticleUrl(resource.url)));
+  const moreArticles: CompanyArticleItem[] = [];
+  for (const article of intelligence.officialArticles) {
+    if (!article.url || !article.title) continue;
+    const key = normalizeArticleUrl(article.url);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    moreArticles.push(article);
+  }
+  return { curated, moreArticles, totalCount: seen.size };
 }
 
 export function CompanyLearningSection({
@@ -272,10 +290,11 @@ export function CompanyLearningSection({
   organization: string;
   intelligence: CompanyPageIntelligence;
 }) {
-  const presentation = resolveCompanyPresentation(organization, intelligence);
   const officialLinks = getCompanyOfficialLinks(organization, intelligence);
-  const [primary, ...secondary] = presentation.learningResources;
-  if (!primary && officialLinks.length === 0) return null;
+  const { curated, moreArticles } = buildCompanyArticleSections(organization, intelligence);
+  const [primary, ...secondary] = curated;
+  const displayMore = moreArticles.slice(0, 30);
+  if (!primary && officialLinks.length === 0 && displayMore.length === 0) return null;
 
   return (
     <section className="rounded-2xl border border-orange-100 bg-orange-50/40 px-4 py-5 sm:px-5">
@@ -339,6 +358,32 @@ export function CompanyLearningSection({
           ))}
         </div>
       )}
+
+      {displayMore.length > 0 && (
+        <div className="mt-5 border-t border-orange-100 pt-4">
+          <div className="mb-2 flex items-baseline justify-between gap-2">
+            <span className="text-xs font-semibold text-stone-600">更多官方文章</span>
+            <span className="text-[11px] text-stone-400">抓取入库，共 {moreArticles.length} 篇</span>
+          </div>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {displayMore.map(article => (
+              <a
+                key={article.id}
+                href={article.url}
+                target="_blank"
+                rel="noreferrer"
+                title={article.summary || article.title}
+                className="flex flex-col rounded-lg border border-stone-100 bg-white px-3 py-2.5 shadow-sm transition-colors hover:border-orange-200 hover:bg-orange-50/40"
+              >
+                <h4 className="line-clamp-2 text-xs font-semibold leading-5 text-stone-900">{article.title}</h4>
+                {article.publishedAt && (
+                  <span className="mt-1 text-[10px] text-stone-400">{article.publishedAt}</span>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -352,6 +397,8 @@ export function RelatedThreadsSection({
 }) {
   const hasThreads = threads.length > 0;
   const hasTopics = topics.length > 0;
+  // 主题和话题都没有就不渲染这个模块（不展示空占位）。
+  if (!hasThreads && !hasTopics) return null;
 
   return (
     <section>
@@ -757,16 +804,22 @@ export function OrganizationRoleSection({
 export function OrganizationRosterSection({
   current,
   alumni,
+  others = [],
   excludeIds = [],
 }: {
   current: OrganizationRolePerson[];
   alumni: OrganizationRolePerson[];
+  // 仅靠 People.organization[] 关联、没有履历(PersonRole)记录的相关成员，
+  // 在职 / 离职无法判定，单独成组诚实展示，避免他们整个从公司页消失。
+  others?: OrganizationRolePerson[];
   excludeIds?: string[];
 }) {
   const exclude = new Set(excludeIds);
   const restCurrent = current.filter(person => !exclude.has(person.personId));
   const restAlumni = alumni.filter(person => !exclude.has(person.personId));
-  if (restCurrent.length === 0 && restAlumni.length === 0) return null;
+  const shown = new Set([...restCurrent, ...restAlumni].map(person => person.personId));
+  const restOthers = others.filter(person => !exclude.has(person.personId) && !shown.has(person.personId));
+  if (restCurrent.length === 0 && restAlumni.length === 0 && restOthers.length === 0) return null;
 
   return (
     <section>
@@ -777,6 +830,7 @@ export function OrganizationRosterSection({
       <div className="space-y-5">
         {restCurrent.length > 0 && <RosterGroup label="在职" people={restCurrent} />}
         {restAlumni.length > 0 && <RosterGroup label="已离职 / 前成员" people={restAlumni} />}
+        {restOthers.length > 0 && <RosterGroup label="相关成员（履历待补全）" people={restOthers} />}
       </div>
     </section>
   );

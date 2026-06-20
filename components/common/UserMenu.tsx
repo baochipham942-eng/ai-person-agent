@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import {
   clearUserSessionCache,
   useUserSession,
@@ -14,7 +14,16 @@ import {
   USER_WORKSPACE_NAV_ITEMS,
   type IdentityNavItem,
 } from '@/components/common/identityNavigation';
+import {
+  MAX_COMPARE_PEOPLE,
+  buildCompareHref,
+  decodeCompareIdsSnapshot,
+  getCompareIdsSnapshot,
+  getEmptyCompareIdsSnapshot,
+  subscribeCompareIds,
+} from '@/components/common/compareSelection';
 
+// 我的对比已从顶栏移入此折叠菜单，故不再过滤 /compare 之外的项；compare 作为带数量徽标的专用项单独渲染。
 const USER_ACCOUNT_MENU_ITEMS = USER_WORKSPACE_NAV_ITEMS.filter(item => item.href !== '/compare');
 
 export function UserMenu() {
@@ -111,7 +120,10 @@ export function UserMenu() {
             <div className="mt-0.5 truncate text-xs text-stone-500">{user.email || user.username}</div>
           </div>
 
-          <MenuSection items={USER_ACCOUNT_MENU_ITEMS} onSelect={() => setOpen(false)} />
+          <div className="p-2">
+            <CompareMenuLink onSelect={() => setOpen(false)} />
+            <MenuLinks items={USER_ACCOUNT_MENU_ITEMS} onSelect={() => setOpen(false)} />
+          </div>
 
           {user.role === 'ADMIN' && (
             <div className="border-t border-stone-100">
@@ -139,10 +151,18 @@ export function UserMenu() {
 }
 
 function MenuSection({ items, onSelect }: { items: IdentityNavItem[]; onSelect: () => void }) {
+  return (
+    <div className="p-2">
+      <MenuLinks items={items} onSelect={onSelect} />
+    </div>
+  );
+}
+
+function MenuLinks({ items, onSelect }: { items: IdentityNavItem[]; onSelect: () => void }) {
   const router = useRouter();
 
   return (
-    <div className="p-2">
+    <>
       {items.map(item => (
         <Link
           key={item.href}
@@ -156,7 +176,30 @@ function MenuSection({ items, onSelect }: { items: IdentityNavItem[]; onSelect: 
           {item.label}
         </Link>
       ))}
-    </div>
+    </>
+  );
+}
+
+function CompareMenuLink({ onSelect }: { onSelect: () => void }) {
+  const router = useRouter();
+  const idsSnapshot = useSyncExternalStore(subscribeCompareIds, getCompareIdsSnapshot, getEmptyCompareIdsSnapshot);
+  const ids = useMemo(() => decodeCompareIdsSnapshot(idsSnapshot), [idsSnapshot]);
+  const href = useMemo(() => buildCompareHref(ids), [ids]);
+
+  return (
+    <Link
+      href={href}
+      prefetch={false}
+      role="menuitem"
+      onMouseEnter={() => router.prefetch('/compare')}
+      onClick={onSelect}
+      className="flex h-9 items-center justify-between gap-2 rounded-lg px-2 text-xs font-medium text-stone-700 transition hover:bg-orange-50 hover:text-orange-700"
+    >
+      <span>我的对比</span>
+      <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] text-stone-500">
+        {ids.length}/{MAX_COMPARE_PEOPLE}
+      </span>
+    </Link>
   );
 }
 

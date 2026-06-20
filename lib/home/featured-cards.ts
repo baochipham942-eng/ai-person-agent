@@ -9,7 +9,7 @@
 import type { ActivityEvent, ActivityEventType } from '@/lib/activity';
 import type { FeaturedThread } from '@/lib/knowledge-thread-people';
 
-export type FeaturedCardKind = 'thread' | 'video' | 'paper' | 'article' | 'x_post' | 'podcast' | 'person';
+export type FeaturedCardKind = 'thread' | 'video' | 'paper' | 'article' | 'x_post' | 'podcast' | 'person' | 'company' | 'compare';
 
 export interface FeaturedCardPerson {
   id: string | null; // 库内人物 id；null = inline 策展人物（链接走外部）
@@ -43,6 +43,8 @@ export interface FeaturedCard {
 /** 本层重算的类型基础分——视频不再像全局排序那样垫底，确保高密度视频能露出。 */
 const KIND_BASE_SCORE: Record<FeaturedCardKind, number> = {
   person: 100, // pin 人物天然置顶（另有 pinned 标记兜底）
+  company: 98, // 策展公司卡，pin 置顶
+  compare: 96, // 策展人物对比卡，pin 置顶
   thread: 62,
   video: 56,
   x_post: 50,
@@ -141,6 +143,105 @@ export function buildPersonCard(input: PersonCardInput): FeaturedCard {
     note: input.currentTitle,
     pinned: true,
     rankScore: KIND_BASE_SCORE.person,
+  };
+}
+
+export interface XPostCardInput {
+  author: string;
+  authorTitle?: string | null;
+  authorAvatarUrl?: string | null;
+  authorId?: string | null;
+  text: string;
+  url: string;
+  whyNow: string;
+  topics?: string[];
+}
+
+/** 策展推文卡（pin）：和池子里自动选出的 x_post 同结构，但内容由本周精选注册表手工指定。 */
+export function buildXPostCard(input: XPostCardInput): FeaturedCard {
+  return {
+    kind: 'x_post',
+    id: `x_post:${input.url}`,
+    title: input.text,
+    whyNow: input.whyNow,
+    href: input.url,
+    external: true,
+    person: {
+      id: input.authorId ?? null,
+      name: input.author,
+      avatarUrl: input.authorAvatarUrl ?? null,
+      currentTitle: input.authorTitle ?? null,
+    },
+    topics: (input.topics ?? []).slice(0, 3),
+    occurredAt: null,
+    sourceLabel: 'X',
+    thumbnailUrl: null,
+    note: null,
+    pinned: true,
+    rankScore: KIND_BASE_SCORE.x_post,
+  };
+}
+
+export interface CompanyCardInput {
+  /** 公司名（用于 /org slug，须与 People.organization 值一致） */
+  org: string;
+  /** 卡片标题，默认用公司名 */
+  displayTitle?: string;
+  subtitle?: string | null;
+  href?: string;
+  whyNow: string;
+  topics?: string[];
+}
+
+/** 策展公司推荐卡（pin）：链接到 /org/<公司名> 实体页。 */
+export function buildCompanyCard(input: CompanyCardInput): FeaturedCard {
+  return {
+    kind: 'company',
+    id: `company:${input.org}`,
+    title: input.displayTitle ?? input.org,
+    whyNow: input.whyNow,
+    href: input.href ?? `/org/${encodeURIComponent(input.org)}`,
+    external: false,
+    person: null,
+    topics: (input.topics ?? []).slice(0, 3),
+    occurredAt: null,
+    sourceLabel: null,
+    thumbnailUrl: null,
+    note: input.subtitle ?? null,
+    pinned: true,
+    rankScore: KIND_BASE_SCORE.company,
+  };
+}
+
+export interface CompareCardInput {
+  title: string;
+  subtitle?: string | null;
+  peopleIds: string[];
+  topic?: string | null;
+  whyNow: string;
+  topics?: string[];
+}
+
+/** 策展人物对比卡（pin）：链接到 /compare?people=a,b 预置对比。 */
+export function buildCompareCard(input: CompareCardInput): FeaturedCard {
+  const params = new URLSearchParams();
+  params.set('people', input.peopleIds.join(','));
+  if (input.topic) params.set('topic', input.topic);
+  return {
+    kind: 'compare',
+    id: `compare:${input.peopleIds.join('+')}`,
+    title: input.title,
+    whyNow: input.whyNow,
+    href: `/compare?${params.toString()}`,
+    external: false,
+    person: null,
+    topics: (input.topics ?? []).slice(0, 3),
+    occurredAt: null,
+    sourceLabel: null,
+    thumbnailUrl: null,
+    note: input.subtitle ?? null,
+    pinned: true,
+    rankScore: KIND_BASE_SCORE.compare,
   };
 }
 
