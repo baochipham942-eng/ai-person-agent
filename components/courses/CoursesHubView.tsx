@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ExternalClickableCard } from '@/components/common/ExternalClickableCard';
 import type { CourseHubItem, CoursesHub } from '@/lib/courses';
 
 const PLATFORM_CONFIG: Record<string, { label: string; color: string }> = {
@@ -188,7 +189,11 @@ function CourseCard({ course }: { course: CourseHubItem }) {
   const level = course.level ? LEVEL_CONFIG[course.level] : null;
 
   return (
-    <div className="flex h-full flex-col rounded-xl border border-stone-200 bg-white p-4 shadow-sm transition-colors hover:border-orange-200">
+    <ExternalClickableCard
+      href={course.url}
+      ariaLabel={`打开课程 ${course.titleZh || course.title}`}
+      className="flex h-full cursor-pointer flex-col rounded-xl border border-stone-200 bg-white p-4 shadow-sm transition-colors hover:border-orange-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2"
+    >
       <div className="flex flex-wrap items-center gap-1.5">
         <span className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-medium ${platform.color}`}>
           {platform.label}
@@ -235,6 +240,6 @@ function CourseCard({ course }: { course: CourseHubItem }) {
         )}
         {course.duration && <span className="flex-shrink-0 text-[11px] text-stone-400">{course.duration}</span>}
       </div>
-    </div>
+    </ExternalClickableCard>
   );
 }

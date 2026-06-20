@@ -2,7 +2,7 @@
   "thread": {
     "slug": "agent-memory",
     "title": "Agent Memory",
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-19",
     "category": "AI Agent Architecture",
     "tags": [

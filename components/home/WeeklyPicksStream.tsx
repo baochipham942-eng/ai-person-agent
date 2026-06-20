@@ -69,11 +69,19 @@ export function WeeklyPicksStream({ topic, organization, initialCards, className
 
   return (
     <section className={className} aria-label="本周推荐">
-      <div className="mb-2 flex items-end justify-between">
-        <div>
+      <div className="mb-2 flex items-end justify-between gap-3">
+        <div className="min-w-0">
           <h2 className="text-base font-semibold tracking-tight text-stone-900">本周推荐{scopeLabel}</h2>
           <p className="text-xs text-stone-500">AI 圈最近最值得看的人、主题与动态。</p>
         </div>
+        <Link
+          href="/digest"
+          prefetch={false}
+          className="inline-flex flex-shrink-0 items-center gap-0.5 whitespace-nowrap rounded-lg px-2 py-1 text-xs font-medium text-stone-500 transition-colors hover:bg-orange-50 hover:text-orange-700"
+        >
+          更多
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
 
       {showLoading ? (

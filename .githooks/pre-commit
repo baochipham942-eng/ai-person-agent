@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# 占位/捏造 URL 守卫：暂存了知识主题来源包时，拦截 example_ / example.com / placeholder 等假链
+if git diff --cached --name-only | grep -q "data/knowledge-threads/.*\.candidates\.json"; then
+  if ! node scripts/knowledge/check_placeholder_urls.mjs; then
+    echo ""
+    echo "❌ 提交被拦截：来源包含占位/捏造 URL（见上）。用真实可核实的来源替换后再提交。"
+    exit 1
+  fi
+fi
+
 # 检查 prisma schema 是否有变更
 if git diff --cached --name-only | grep -q "prisma/schema.prisma"; then
   echo ""

@@ -2,7 +2,7 @@
   "thread": {
     "slug": "context-engineering",
     "title": "Context Engineering",
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-19",
     "category": "agentic_system_design",
     "tags": [
@@ -58,7 +58,8 @@
       "metadata": {
         "role": "signal",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "694e532ce687dfd82ad74ae6a815f8d4f8d0c1e20f49a890fb603557494d2ff7"
     },
     {
       "id": "sig_karpathy_context_engineering",
@@ -114,7 +115,8 @@
       "metadata": {
         "role": "official_definition",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "c49db9436032747c3a4879e5dcb89a66a90c48048fbbb86f741d5020082f81a8"
     },
     {
       "id": "off_anthropic_building_effective_agents",
@@ -132,7 +134,8 @@
       "metadata": {
         "role": "official_definition",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "ffc229d83891918f82064b92e6624a3de7bce686fc211cb123e4eb4a0cd488f1"
     },
     {
       "id": "off_anthropic_effective_context_engineering",
@@ -150,7 +153,8 @@
       "metadata": {
         "role": "official_definition",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "126e07cf0d684e0333f96055fcdc89f9dc6635d73bd317d2bdd91a66b1fc7b02"
     },
     {
       "id": "tx_every_claude_code_builders",
@@ -168,7 +172,8 @@
       "metadata": {
         "role": "transcript_context",
         "textStatus": "transcript_accessible_html"
-      }
+      },
+      "urlHash": "fe31359a0316428e1b4fe15a8fd27d408a484b2a1270b373a9d729a4fdbdb699"
     },
     {
       "id": "tx_every_openai_codex_team",
@@ -186,7 +191,8 @@
       "metadata": {
         "role": "transcript_context",
         "textStatus": "transcript_accessible_html"
-      }
+      },
+      "urlHash": "7a5515e0e00a10a0fc4335c0f0a53ac63151e6eb25729f7b69d1b3f8cbd5f5c8"
     },
     {
       "id": "paper_lost_in_the_middle",
@@ -204,7 +210,8 @@
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "6ee83218472b4aa1478e6fa41624afe0d9061d4447d324699ca4bb5883f0fbef"
     },
     {
       "id": "paper_rag",
@@ -222,7 +229,8 @@
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "02ad74cdb0c9081ff68958b3398f19f5b946b93f506093ac055d1205158730d7"
     },
     {
       "id": "paper_memgpt",
@@ -240,7 +248,8 @@
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "26e7ae529ac5e81bc7e010f6e7bfd8d72689fb0249bc9a424f718ab7bc4c2df7"
     },
     {
       "id": "paper_react",
@@ -258,7 +267,8 @@
       "metadata": {
         "role": "paper_foundation",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "7647307fe49844a005ca6dd6c2883016ab3bf2840918166c6764d65c199ffa37"
     },
     {
       "id": "impl_claude_code_memory",
@@ -276,7 +286,8 @@
       "metadata": {
         "role": "implementation_signal",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "f1c064262dc87f8c9dd718b08754fbe0cf7c81670e65e46ababe1cbae7f782ab"
     },
     {
       "id": "impl_claude_code_slash_commands",
@@ -313,7 +324,8 @@
       "metadata": {
         "role": "implementation_signal",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "f2490090eaecafe829b4340ee7c91cfe3f5de1e7563870127d7a56766e340d94"
     },
     {
       "id": "impl_mcp_typescript_sdk",
@@ -331,7 +343,8 @@
       "metadata": {
         "role": "implementation_signal",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "f7fb7d70e0ff6a4e7a73f06ab6611f114f925c625fcbd6be38e12239d0145042"
     },
     {
       "id": "impl_mcp_python_sdk",
@@ -349,7 +362,8 @@
       "metadata": {
         "role": "implementation_signal",
         "textStatus": "review_summary_not_fulltext"
-      }
+      },
+      "urlHash": "b275ec28fddd14c2c0674fab334689bc3766e24c04eecf2a3434e5265ed473d0"
     }
   ],
   "edges": [

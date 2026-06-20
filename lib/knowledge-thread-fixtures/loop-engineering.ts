@@ -93,8 +93,8 @@ export const loopEngineeringThread: KnowledgeThreadFixture = {
   whyNow:
     'Claude Code 官方材料、Boris Cherny 的工作流信号、SWE-bench / SWE-agent 论文和 hooks / MCP / GitHub Action 等实现入口同时成熟，已经足够支撑一个窄主题证据页。',
   confidence: 0.82,
-  lastReviewedAt: '2026-06-18',
-  status: 'source_pack_review',
+  lastReviewedAt: '2026-06-20',
+  status: 'review_ready',
   readinessNote:
     'S1 来源包已覆盖五类必备证据角色，共 22 条 topic candidates。X 和 transcript 来源仍保留复核提示；company strategy 只做回链，不计入主题页 ready。',
   definition:

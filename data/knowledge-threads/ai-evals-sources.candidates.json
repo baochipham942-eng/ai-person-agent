@@ -2,17 +2,35 @@
   "thread": {
     "slug": "ai-evals",
     "title": "AI Evals",
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-19",
     "category": "evaluation",
-    "tags": ["evals", "llm_as_a_judge", "agent_as_a_judge", "verification", "observability"],
-    "aliases": ["AI evaluation", "LLM evals", "agent evaluation", "LLM-as-a-judge", "eval-driven development"],
+    "tags": [
+      "evals",
+      "llm_as_a_judge",
+      "agent_as_a_judge",
+      "verification",
+      "observability"
+    ],
+    "aliases": [
+      "AI evaluation",
+      "LLM evals",
+      "agent evaluation",
+      "LLM-as-a-judge",
+      "eval-driven development"
+    ],
     "definitionDraft": "把 AI 模型和 agent 的输出质量、安全性和“是否真的完成任务”变成可测量、可回归的工程实践，覆盖离线评测集、LLM-as-a-judge、agent-as-a-judge 和线上 trace 评估。",
     "whyNow": "随着 AI 产品大量上线，瓶颈从“能不能做”转向“怎么知道它真的做对了”；evals 被称作 AI 时代的单元测试，LLM-as-a-judge 让无标注也能打分，agent-as-a-judge 把评测推进到多步 agent 轨迹。",
     "useBoundary": "Evidence pack only；不写生产 DB、不发布、不动 schema/路由、不调付费 API。财务/IR 材料只作 company_strategy_context，不计入主题就绪。"
   },
   "sourceRequirements": {
-    "requiredRoles": ["signal", "official_definition", "transcript_context", "paper_foundation", "implementation_signal"]
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ]
   },
   "sources": [
     {
@@ -27,7 +45,8 @@
       "whyRelevant": "实践者把“建一套评测系统”讲成做好 AI 产品的核心路径——快速迭代靠的是可量化的 eval，而不是凭感觉抽查。",
       "reviewNotes": "信号类：提示“评测驱动”方向，结论仍要回到方法论文和产品定义。",
       "confidence": 0.85,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "877847e493edcaeef99f204c17fbbc4908c627373abc4f60a8b7f1cdf2a4638b"
     },
     {
       "id": "sig_cameron_agent_evaluation_guide",
@@ -41,7 +60,8 @@
       "whyRelevant": "系统讲 agent 为什么因为复杂和自主性更难评，怎么从单轮指标走向多步轨迹评估。",
       "reviewNotes": "信号类：把零散的 agent 评测经验整理成一条线，可用作读者入口。",
       "confidence": 0.82,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "69db64ea3eb32358b62877e7412af2e130c606c86950b160aa7cf8d84555657a"
     },
     {
       "id": "sig_galileo_eval_platforms_2026",
@@ -55,7 +75,8 @@
       "whyRelevant": "行业信号：2026 评测平台井喷（Galileo、LangSmith、Arize、Langfuse 等），说明 eval 已从脚本走向产品化基础设施。",
       "reviewNotes": "信号类：厂商视角的 landscape，采用度信号，不作为方法定义。",
       "confidence": 0.68,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "79eb3c456c8ebe44c7e7792be1ee4f6008a3876e5c2f72eba2889f230f34dd17"
     },
     {
       "id": "off_openai_evals_guide",
@@ -69,7 +90,8 @@
       "whyRelevant": "官方对“eval 是什么”的定义和如何在平台上建评测集、跑评分的入口。",
       "reviewNotes": "官方原语：发布前确认 docs 路径与 fetchedAt；docs 会更新。",
       "confidence": 0.9,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "a01937402c353c779a71d28318095c06b22c97741dd5a3ce3072d574ae238c26"
     },
     {
       "id": "off_langfuse_llm_as_a_judge",
@@ -83,7 +105,8 @@
       "whyRelevant": "把 LLM-as-a-judge 作为产品化方法定义清楚：无标注也能在线打分和监控。",
       "reviewNotes": "官方原语（厂商）：方法定义可用，注意区分通用方法与该平台具体实现。",
       "confidence": 0.88,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "9d6b76990d8898c668a236b6690ba804f80c1ffb2d2b9d6f5faa429e39841901"
     },
     {
       "id": "off_langsmith_evaluation_concepts",
@@ -97,7 +120,8 @@
       "whyRelevant": "界定 dataset / evaluator / experiment 这套评测词汇，是理解评测平台共同结构的入口。",
       "reviewNotes": "官方原语（厂商）：URL 已从 docs.smith.langchain.com 迁至 docs.langchain.com/langsmith/evaluation（308），dataset/evaluator/experiment 三词仍在。",
       "confidence": 0.84,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "1cb888b65fa5408a4e2292c10a7d6889f84d326b676e1133098ed18b8545c9cf"
     },
     {
       "id": "tx_agent_as_judge_deep_dive",
@@ -111,7 +135,8 @@
       "whyRelevant": "视频深讲 agent-as-judge 范式，补论文之外的动机和直觉，解释为什么单轮打分评不了多步 agent。",
       "reviewNotes": "访谈语境：发布前需抽取逐字稿原文；当前只作语境，不抽强引文。",
       "confidence": 0.66,
-      "status": "needs_capture"
+      "status": "needs_capture",
+      "urlHash": "277757607e64762bc8912ec98f3e0d6d6115959274e44dfacb3679bfe58c00df"
     },
     {
       "id": "tx_langfuse_evaluate_llm_agents",
@@ -125,7 +150,8 @@
       "whyRelevant": "长篇走读，先建“评什么、怎么评 agent”的心智模型，再落到代码，补足方法到落地之间的语境。",
       "reviewNotes": "访谈语境（走读型）：偏实践讲解，可用作语境过渡。",
       "confidence": 0.7,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "7a8ddebab9a6e93791e65d9feeb5ac90c7d9cbf55ec98c3a605d2baffbd059c1"
     },
     {
       "id": "paper_llm_as_a_judge_mtbench",
@@ -139,7 +165,8 @@
       "whyRelevant": "LLM-as-a-judge 的奠基论文，也系统揭示 judge 的位置偏置、冗长偏置等失效模式，是这个主题的方法根基。",
       "reviewNotes": "论文根基：方法 + 偏置边界都在这里，建页时优先引。",
       "confidence": 0.95,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "16e11e26be5b54ef41e8d27755f134da6095dcf8a11e019ceddd8eb00af81fd7"
     },
     {
       "id": "paper_agent_as_a_judge",
@@ -153,7 +180,8 @@
       "whyRelevant": "把 LLM-as-a-judge 延伸到 agent-as-a-judge：用 agent 评 agent，能看中间步骤而不只是最终答案。",
       "reviewNotes": "论文根基：与 LLM-as-judge 论文构成谱系，建页时连边。",
       "confidence": 0.9,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "8dff3cf0e86595fdc4c1c4f1cda74998d5be3de3dd7e7d3953260ae6d284fd8d"
     },
     {
       "id": "paper_g_eval",
@@ -167,7 +195,8 @@
       "whyRelevant": "用 CoT + 打分表让 LLM 评分更贴近人类判断，是很多产品里 LLM-as-judge 评分器的方法源头。",
       "reviewNotes": "论文根基：解释“判官”怎么打分才靠谱。",
       "confidence": 0.88,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "56467c58c831bb628758b64d63e6892a4f0a20af94ffd124cfef69365a9cd6a7"
     },
     {
       "id": "paper_who_validates_validators",
@@ -181,7 +210,8 @@
       "whyRelevant": "点破核心难题：judge 本身也要被校准对齐人类偏好，否则评测只是把判断外包给另一个没被验证的模型。",
       "reviewNotes": "论文根基：回答“谁来验证判官”，是把 eval 当严肃工程的关键一篇。",
       "confidence": 0.85,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "82a2f116b90287b52a347fc5b89e43e61d17b49257489f08f60ba65b86b33f46"
     },
     {
       "id": "impl_openai_evals_framework",
@@ -195,7 +225,8 @@
       "whyRelevant": "把评测做成可注册、可复用的代码框架，是“eval 即工程”落地的早期标杆。",
       "reviewNotes": "工程落地：开源框架 + benchmark 注册表。",
       "confidence": 0.88,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "3140024ab7c63679ffe58a55c873f3c3d068fa2e244d3f4f4d2bbe5789af368e"
     },
     {
       "id": "impl_promptfoo_evaluate_coding_agents",
@@ -209,7 +240,8 @@
       "whyRelevant": "把评测直接套到 Codex / Claude 等 coding agent 上（断言、沙箱、tracing），是 AI Evals 与 Agentic Coding / Loop Engineering 的交叉落地点。",
       "reviewNotes": "工程落地：连接评测与编码 agent，建页时与 agentic-coding / loop-engineering 互链。",
       "confidence": 0.85,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "b722061dfd53446725f76e317d4cc5573f4a61d75de1e0502571f893772a52c9"
     },
     {
       "id": "impl_arize_phoenix",
@@ -223,7 +255,8 @@
       "whyRelevant": "把线上 trace 和离线评测连起来，说明评测不只是上线前的事，也是持续监控的一部分。",
       "reviewNotes": "工程落地：observability + eval 一体，发布前确认仓库与 docs 版本。",
       "confidence": 0.82,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "1db29eb9ab4f9cb8733fb063e5315c33f8d74dcf7145225995c9a30df820041b"
     },
     {
       "id": "impl_langfuse_automated_evaluations",
@@ -237,7 +270,8 @@
       "whyRelevant": "把 LLM-as-a-judge 接成自动化、可回归的评测流水线，是从“跑一次”到“持续评”的工程证据。",
       "reviewNotes": "工程落地：自动化评测流水线落地写法。",
       "confidence": 0.84,
-      "status": "usable"
+      "status": "usable",
+      "urlHash": "b8342a3b9fd9ec515841f707e08c4c000001de819105a6a5cf967fc114d477bd"
     }
   ],
   "edges": [

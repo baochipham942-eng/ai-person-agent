@@ -2,7 +2,7 @@
   "thread": {
     "slug": "mcp",
     "title": "Model Context Protocol (MCP)",
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-19",
     "category": "agentic_infrastructure",
     "tags": [
@@ -241,6 +241,26 @@
       },
       "text": "One Year of MCP: November 2025 Spec Release\n\n官方一周年回顾 + 2025-11-25 spec。覆盖 OpenAI/Google 采用、2025-06-18 OAuth 安全、2025-09 Registry、Linux Foundation 治理。补 whyNow 时效性。\n\nEvidence note (paraphrase, needs verbatim capture): One year after launch, MCP has grown from an internal experiment into an industry standard.\n\nNeeds first-party fulltext capture before verified.",
       "urlHash": "47841e3b86684e64cf8d34db6100a195ba0e5137338136484221bf4cf72b9951"
+    },
+    {
+      "id": "mcp_creators_latentspace",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "latent.space",
+      "url": "https://www.latent.space/p/mcp",
+      "title": "The Creators of Model Context Protocol",
+      "publishedAt": "2025-04-03",
+      "whyRelevant": "MCP 两位创造者 David Soria Parra 与 Justin Spahr-Summers 在 Latent Space 的长访谈（主持 swyx / Alessio，2025-04-03）。补 missing 的 transcript_context 角色：讲清 MCP 的设计动机（M×N 集成问题）、与 OpenAPI 的对比、server 实现策略，以及 stateless HTTP / OAuth 授权等路线图。",
+      "confidence": 0.9,
+      "evidenceQuote": "MCP is kind of like the USB-C port of AI applications and that it's meant to be this universal connector to a whole ecosystem.",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200, transcript confirmed). Guests David Soria Parra & Justin Spahr-Summers (Anthropic, MCP creators); hosts swyx & Alessio. Long-form origin/design interview supplying the transcript_context role.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "The Creators of Model Context Protocol — Latent Space 访谈（2025-04-03）。MCP 创造者 David Soria Parra 与 Justin Spahr-Summers 讲述起源与设计：M×N 集成问题、与 OpenAPI 的对比、server 实现、stateless HTTP 与 OAuth 路线图。\n\nEvidence note: \"MCP is kind of like the USB-C port of AI applications ... a universal connector to a whole ecosystem.\"\n\nWeb-verified 2026-06-20.",
+      "urlHash": "f2e12d02394593610f0bf3e4f9cc1ea15f1cb4ed0f8473038d1c6fceccd038e9"
     }
   ],
   "edges": [
@@ -306,6 +326,13 @@
       "relationType": "launch_to_one_year_adoption",
       "confidence": 0.85,
       "evidenceNote": "The one-year anniversary recap traces adoption (OpenAI, Google, registry, Linux Foundation governance) from the original launch."
+    },
+    {
+      "fromId": "mcp_creators_latentspace",
+      "toId": "mcp_anthropic_announcement",
+      "relationType": "transcript_context_to_origin_announcement",
+      "confidence": 0.85,
+      "evidenceNote": "创造者访谈展开了官方诞生公告背后的起源与设计动机，二者互证 MCP 的问题陈述与目标。"
     }
   ],
   "review": {

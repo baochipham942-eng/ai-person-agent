@@ -23,6 +23,7 @@
     "test:search-index": "npx tsx --test scripts/test/search-index.test.ts",
     "knowledge:preflight": "node scripts/knowledge/preflight_thread_pack.mjs",
     "knowledge:materialize": "node scripts/knowledge/materialize_thread_pack.mjs",
+    "knowledge:check-urls": "node scripts/knowledge/check_placeholder_urls.mjs",
     "company:preflight": "node scripts/company/preflight_company_sources.mjs",
     "company:materialize": "node scripts/company/materialize_company_sources.mjs",
     "audit:content-guard": "node scripts/audit/check_content_review_guardrails.mjs",

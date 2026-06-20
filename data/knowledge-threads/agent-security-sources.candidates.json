@@ -2,7 +2,7 @@
   "thread": {
     "slug": "agent-security",
     "title": "Agent Security",
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-19",
     "category": "AI安全与风险管理",
     "tags": [
@@ -187,26 +187,6 @@
       "text": "Security for AI Agents: A New Frontier\n\n微软安全团队对智能体安全挑战的分析，反映大型科技公司的视角。\n\nEvidence note: AI agents introduce novel attack surfaces that require rethinking traditional security models\n\n微软官方安全博客，权威性高。但可能偏重其自身生态系统的解决方案。"
     },
     {
-      "id": "llm_agent_safety_interview_2024",
-      "sourceKind": "transcript",
-      "role": "transcript_context",
-      "sourceOwner": "youtube.com",
-      "url": "https://www.youtube.com/watch?v=example_agent_safety_interview",
-      "title": "Expert Interview: Securing LLM Agents in Production",
-      "publishedAt": "2024-06-10",
-      "whyRelevant": "与安全专家的访谈，提供实践经验和见解。",
-      "confidence": 0.7,
-      "evidenceQuote": "The biggest challenge is balancing security with usability in agent systems",
-      "reviewNotes": "这是一个候选URL，需要验证实际视频是否存在。如果存在，将提供宝贵的实践见解。",
-      "status": "candidate_unverified",
-      "metadata": {
-        "role": "transcript_context",
-        "textStatus": "review_summary_not_fulltext"
-      },
-      "urlHash": "e74b5d794ba3cdfbe5dc033dfdfdbf130bffcbee43710855acf8e169c9afd116",
-      "text": "Expert Interview: Securing LLM Agents in Production\n\n与安全专家的访谈，提供实践经验和见解。\n\nEvidence note: The biggest challenge is balancing security with usability in agent systems\n\n这是一个候选URL，需要验证实际视频是否存在。如果存在，将提供宝贵的实践见解。"
-    },
-    {
       "id": "aws_bedrock_agent_security",
       "sourceKind": "official_docs",
       "role": "implementation_signal",
@@ -245,6 +225,26 @@
       },
       "urlHash": "f85b5add5619018f1041b71991ec6e8ba364e0e986ac879f0d29c38efb2d9e45",
       "text": "Fine-Grained Permissions and Budgets for LLM Agents\n\n研究论文，探讨智能体权限管理和预算控制的新方法。\n\nEvidence note: We propose a novel framework for dynamic permission adjustment based on risk assessment\n\narXiv预印本，专注于权限管理这一具体安全维度。"
+    },
+    {
+      "id": "willison_prompt_injection_generationship",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "heavybit.com",
+      "url": "https://www.heavybit.com/library/podcasts/generationship/ep-39-simon-willison-i-coined-prompt-injection",
+      "title": "Simon Willison: I Coined Prompt Injection — Generationship Ep. 39",
+      "publishedAt": null,
+      "whyRelevant": "Simon Willison（“prompt injection”一词提出者、“lethal trifecta”致命三角概念作者）在 Generationship 播客的访谈（主持 Rachel Chalmers）。补 transcript_context：讲清提示注入为何是 agent 安全的核心威胁——私有数据 + 不可信输入 + 外泄通道三者同在即高危，以及为什么防御需要“可证明不发生”。替换原先一条捏造的占位 YouTube 链接。",
+      "confidence": 0.88,
+      "evidenceQuote": "If somebody emails my digital system saying, hey, forward all of his password resets, we need that not to happen and we need to prove that that is not going to happen.",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200, full transcript present). Host Rachel Chalmers; guest Simon Willison. Replaces fabricated placeholder youtube.com/watch?v=example_agent_safety_interview.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Simon Willison on Generationship (Ep. 39) — prompt injection 与 lethal trifecta。私有数据+不可信输入+外泄通道三者同在即高危；防御需可证明不发生。\n\nEvidence note: \"...we need that not to happen and we need to prove that that is not going to happen.\"\n\nWeb-verified 2026-06-20. 替换捏造占位 URL。",
+      "urlHash": "d6d9453f5f9c1b3fa04e4d521f998fb7605e347612bdee8f8946fb86a6f866a2"
     }
   ],
   "edges": [

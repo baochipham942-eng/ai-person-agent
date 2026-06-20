@@ -2,7 +2,7 @@
   "thread": {
     "slug": "computer-use",
     "title": "Computer Use",
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-19",
     "category": "AI_agent_capabilities",
     "tags": [
@@ -205,26 +205,6 @@
       "text": "Operator: Our Approach to AI Agents\n\nOpenAI计算机使用技术的官方工程博客，提供实现见解\n\nEvidence note: Building reliable AI agents that can interact with computers\n\n工程视角，但可能偏重优势而非局限性"
     },
     {
-      "id": "harrison_chase_transcript",
-      "sourceKind": "transcript",
-      "role": "transcript_context",
-      "sourceOwner": "youtube.com",
-      "url": "https://www.youtube.com/watch?v=example_computer_use_discussion",
-      "title": "Harrison Chase on AI Agents and Computer Use",
-      "publishedAt": null,
-      "whyRelevant": "LangChain创始人关于计算机使用技术挑战的讨论",
-      "confidence": 0.7,
-      "evidenceQuote": "Computer use agents still struggle with reliability and error recovery",
-      "reviewNotes": "候选来源，URL为示例性质，需验证实际存在性",
-      "status": "candidate_unverified",
-      "metadata": {
-        "role": "transcript_context",
-        "textStatus": "review_summary_not_fulltext"
-      },
-      "urlHash": "b519dfa370f74d08c546bc1e815214063cb4d6654a739f1ce627356afa340279",
-      "text": "Harrison Chase on AI Agents and Computer Use\n\nLangChain创始人关于计算机使用技术挑战的讨论\n\nEvidence note: Computer use agents still struggle with reliability and error recovery\n\n候选来源，URL为示例性质，需验证实际存在性"
-    },
-    {
       "id": "yann_lecun_computer_use_discussion",
       "sourceKind": "blog",
       "role": "transcript_context",
@@ -303,6 +283,26 @@
       },
       "urlHash": "ec8eeed6bdfe52f370a1859447b64e9e284c28b8cf253628b23459da306620d7",
       "text": "Playwright for Python\n\n计算机使用实现中常用的浏览器自动化底层库\n\nEvidence note: Reliable end-to-end testing and automation framework\n\n底层工具库，非计算机使用特定但常用"
+    },
+    {
+      "id": "aci_shunyu_yao_latentspace",
+      "role": "transcript_context",
+      "sourceKind": "podcast",
+      "sourceOwner": "latent.space",
+      "url": "https://www.latent.space/p/shunyu",
+      "title": "Language Agents: From Reasoning to Acting — Shunyu Yao & Harrison Chase (Latent Space)",
+      "publishedAt": "2024-09-27",
+      "whyRelevant": "Shunyu Yao（ReAct / SWE-Agent 作者）与 Harrison Chase 在 Latent Space 的长访谈（主持 swyx / Alessio）。补 transcript_context：深入 Agent-Computer Interface（ACI）——为 agent 而非人设计的工具界面、SWE-Agent 的实现取舍，正是“模型像人一样看屏幕、点按钮操作软件”这条主题的设计语境。替换原先一条捏造的占位 YouTube 链接。",
+      "confidence": 0.88,
+      "evidenceQuote": "we should treat agents as our customers. And we should do, you know, design human computer interfaces.",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200, transcript present). Guests Shunyu Yao & Harrison Chase; hosts swyx & Alessio; 2024-09-27. Extensively covers Agent-Computer Interfaces / SWE-Agent. Replaces fabricated placeholder youtube.com/watch?v=example_computer_use_discussion.",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Latent Space《Language Agents: From Reasoning to Acting》(2024-09-27)。Shunyu Yao 与 Harrison Chase 谈 Agent-Computer Interface：为 agent 设计工具界面、SWE-Agent 实现。\n\nEvidence note: \"...treat agents as our customers ... design human computer interfaces.\"\n\nWeb-verified 2026-06-20. 替换捏造占位 URL。",
+      "urlHash": "03dcd8f02dff296e54cd6d799ad78133cee8bbdc82a4eaffa04151580f787913"
     }
   ],
   "edges": [
@@ -335,7 +335,7 @@
       "evidenceNote": "两者均为环境基准测试，覆盖不同场景"
     },
     {
-      "fromId": "harrison_chase_transcript",
+      "fromId": "aci_shunyu_yao_latentspace",
       "toId": "browser_use_github",
       "relationType": "discusses_implementation",
       "confidence": 0.6,

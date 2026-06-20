@@ -2,7 +2,7 @@
   "thread": {
     "slug": "agent-skills",
     "title": "Agent Skills",
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-19",
     "category": "AI Engineering",
     "tags": [
@@ -103,26 +103,6 @@
       "text": "Claude Code Skill File Structure Example\n\n官方文档中对SKILL.md文件具体字段和结构的示例说明。\n\nEvidence note: A skill file typically contains: name, description, instructions...\n\n假设的锚点链接，指向官方文档的一部分。需验证。"
     },
     {
-      "id": "devin_skill_system_interview",
-      "sourceKind": "transcript",
-      "role": "transcript_context",
-      "sourceOwner": "youtube.com",
-      "url": "https://www.youtube.com/watch?v=example_devin_skill",
-      "title": "Interview: How Devin Uses a Skill System Internally",
-      "publishedAt": "2025-01-10",
-      "whyRelevant": "假设存在关于Devin等AI工程师产品内部技能系统的访谈或播客，提供行业实践深度见解。",
-      "confidence": 0.55,
-      "evidenceQuote": "We break down tasks into reusable skill templates...",
-      "reviewNotes": "虚构的YouTube链接，用于占位。需寻找真实的、相关的公开访谈。",
-      "status": "candidate_unverified",
-      "metadata": {
-        "role": "transcript_context",
-        "textStatus": "review_summary_not_fulltext"
-      },
-      "urlHash": "0154a8a3ec950192cab18a7482bd164c78d0c3e45a7f5e9a1aeea1a0fb2828c2",
-      "text": "Interview: How Devin Uses a Skill System Internally\n\n假设存在关于Devin等AI工程师产品内部技能系统的访谈或播客，提供行业实践深度见解。\n\nEvidence note: We break down tasks into reusable skill templates...\n\n虚构的YouTube链接，用于占位。需寻找真实的、相关的公开访谈。"
-    },
-    {
       "id": "langchain_tools_modules",
       "sourceKind": "official_docs",
       "role": "paper_foundation",
@@ -181,6 +161,132 @@
       },
       "urlHash": "6a684d9514529e7fdecacead313b56d74c61035d22db5e9ec73ffcdd02646140",
       "text": "Claude Code Tutorial: Using Skills\n\n官方教程中关于如何在实际工作流中使用Skills的步骤指南。\n\nEvidence note: Step 3: Invoke the skill by describing the task...\n\n假设的教程锚点链接。需验证。"
+    },
+    {
+      "sourceKind": "official_blog",
+      "sourceOwner": "anthropic.com",
+      "publishedAt": "2025-10-16",
+      "confidence": 0.95,
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "2e50ab69ebea3b2c9412dd48bc4f7b1e0f238a0054a9dc30e3077848c2809267",
+      "id": "anthropic_skills_engineering",
+      "role": "official_definition",
+      "owner": "anthropic.com",
+      "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
+      "title": "Equipping agents for the real world with Agent Skills",
+      "whyRelevant": "Anthropic 工程团队对 Agent Skills 的官方定义文：Skills = 含指令/脚本/资源的有组织文件夹，agent 可按需动态发现并加载，做特定任务更专业。补强 official_definition 角色。",
+      "evidenceQuote": "organized folders of instructions, scripts, and resources that agents can discover and load dynamically to perform better at specific tasks",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200). Anthropic engineering, 2025-10-16.",
+      "status": "verified",
+      "text": "Anthropic《Equipping agents for the real world with Agent Skills》(2025-10-16)。Skills=有组织文件夹(指令/脚本/资源)，agent 动态发现加载。Web-verified 2026-06-20."
+    },
+    {
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/anthropics",
+      "publishedAt": "2025-09-22",
+      "confidence": 0.95,
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "82a901da1b9bedec6f38670bb587455ddbcbae1f72df25bcb5a6b8c95709a39b",
+      "id": "anthropics_skills_github",
+      "role": "implementation_signal",
+      "owner": "github.com/anthropics",
+      "url": "https://github.com/anthropics/skills",
+      "title": "anthropics/skills — Public repository for Agent Skills",
+      "whyRelevant": "Agent Skills 官方公开仓库（SKILL.md 规范 + 示例 skills，从创意到测试到企业流程）。最硬的工程落地入口。补强 implementation_signal。",
+      "evidenceQuote": "Public repository for Agent Skills",
+      "reviewNotes": "Verified via gh 2026-06-20: created 2025-09-22, 153k+ stars, owner anthropics. Real official repo.",
+      "status": "verified",
+      "text": "anthropics/skills 官方仓库(2025-09-22建,153k+星)。SKILL.md 规范+示例。gh-verified 2026-06-20."
+    },
+    {
+      "sourceKind": "talk",
+      "sourceOwner": "AI Engineer (YouTube)",
+      "publishedAt": "2025-11-01",
+      "confidence": 0.8,
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "7329d31cc78727cc20207d9c2e2c930b5848e9aa72dd790ee004ac3d1a7c76fb",
+      "id": "skills_creators_talk_aiengineer",
+      "role": "transcript_context",
+      "owner": "AI Engineer (YouTube)",
+      "url": "https://www.youtube.com/watch?v=CEvIs9y1uog",
+      "title": "Don't Build Agents, Build Skills Instead — Barry Zhang & Mahesh Murag, Anthropic",
+      "whyRelevant": "Agent Skills 两位创造者 Barry Zhang & Mahesh Murag 在 AI Engineer Code Summit(2025-11) 的演讲。补 missing 的 transcript_context：讲清为什么“别堆 agent、改建 skill”、skill 如何用一个 markdown + 少量 frontmatter 封装领域专长。",
+      "evidenceQuote": "Don't build agents, build skills instead.",
+      "reviewNotes": "Title & speakers (Barry Zhang & Mahesh Murag, Agent Skills creators) confirmed via web search 2026-06-20; AI Engineer Code Summit talk. Full transcript not directly fetched (YouTube returns 403 to crawler) — status kept usable, not verified.",
+      "status": "usable",
+      "text": "AI Engineer 演讲《Don't Build Agents, Build Skills Instead》— Barry Zhang & Mahesh Murag(Anthropic, Skills 创造者)。为何改建 skill、一个 markdown+frontmatter 封装专长。Search-confirmed 2026-06-20，未抓全文。"
+    },
+    {
+      "sourceKind": "news",
+      "sourceOwner": "siliconangle.com",
+      "publishedAt": "2025-10-16",
+      "confidence": 0.85,
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "569e6d0ad1dd50562171cfcd6b0ff8ded8c07d3db98a86a1190dbe4771beb802",
+      "id": "siliconangle_skills_launch",
+      "role": "signal",
+      "owner": "siliconangle.com",
+      "url": "https://siliconangle.com/2025/10/16/anthropics-skills-claude-helps-ai-agents-perform-certain-tasks-better/",
+      "title": "Anthropic’s Skills for Claude helps AI agents perform certain tasks better than before",
+      "whyRelevant": "Skills 发布的一线媒体信号(2025-10-16)：面向 Pro/Team/Max/Enterprise，让 agent 取用专门指令与资源把特定任务做得更好。",
+      "evidenceQuote": "Anthropic released Skills for Claude, a feature enabling AI agents to access specialized instructions and resources for performing specific tasks more effectively.",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200, 2025-10-16).",
+      "status": "verified",
+      "text": "SiliconANGLE(2025-10-16)：Anthropic 发布 Skills for Claude，agent 取用专门指令/资源。Web-verified 2026-06-20."
+    },
+    {
+      "sourceKind": "news",
+      "sourceOwner": "thenewstack.io",
+      "publishedAt": null,
+      "confidence": 0.8,
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "5c6b57ed9d65d25a0ec8a7cbe0cbaa89faa01cca4f6edbe2776eb818c22ac645",
+      "id": "thenewstack_skills_standard",
+      "role": "signal",
+      "owner": "thenewstack.io",
+      "url": "https://thenewstack.io/agent-skills-anthropics-next-bid-to-define-ai-standards/",
+      "title": "Agent Skills: Anthropic’s Next Bid to Define AI Standards",
+      "whyRelevant": "行业视角信号：把 Agent Skills 放在 Anthropic“定义 AI 标准”(继 MCP 之后)的脉络里看，解释开放格式与生态采纳意图。",
+      "evidenceQuote": "Agent Skills: Anthropic’s Next Bid to Define AI Standards",
+      "reviewNotes": "URL web-verified 2026-06-20 (HTTP 200, title confirmed; publish date not extracted) — status usable.",
+      "status": "usable",
+      "text": "The New Stack《Agent Skills: Anthropic’s Next Bid to Define AI Standards》。把 Skills 放进 Anthropic 定义标准(继 MCP)的脉络。Title web-verified 2026-06-20."
+    },
+    {
+      "sourceKind": "news",
+      "sourceOwner": "aibusiness.com",
+      "publishedAt": null,
+      "confidence": 0.78,
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "urlHash": "9c145dfad260f391d5c0b2632add699f30a16ca16b38d86b676ce2c88bc4eba8",
+      "id": "aibusiness_skills_open_standard",
+      "role": "signal",
+      "owner": "aibusiness.com",
+      "url": "https://aibusiness.com/foundation-models/anthropic-launches-skills-open-standard-claude",
+      "title": "Anthropic Launches Skills Open Standard for Claude",
+      "whyRelevant": "信号：Skills 升级为开放标准、可创建/部署/分享/发现，并接入 Notion/Canva/Figma/Atlassian 等工作工具。",
+      "evidenceQuote": "Anthropic Launches Skills Open Standard for Claude",
+      "reviewNotes": "URL from web search 2026-06-20 (title indexed); not deep-fetched — status usable.",
+      "status": "usable",
+      "text": "AI Business《Anthropic Launches Skills Open Standard for Claude》。Skills 成开放标准，接入主流工作工具。Search-indexed 2026-06-20."
     }
   ],
   "edges": [
@@ -204,6 +310,34 @@
       "relationType": "alternative_approach",
       "confidence": 0.8,
       "evidenceNote": "两者都是与Skills不同但相关的、在API/框架层面封装Agent能力的标准化方法。"
+    },
+    {
+      "fromId": "anthropic_skills_engineering",
+      "toId": "anthropics_skills_github",
+      "relationType": "definition_to_reference_implementation",
+      "confidence": 0.85,
+      "evidenceNote": "官方定义文描述的 SKILL.md 格式由官方仓库给出规范与示例实现，二者互证。"
+    },
+    {
+      "fromId": "skills_creators_talk_aiengineer",
+      "toId": "anthropic_skills_engineering",
+      "relationType": "talk_to_official_definition",
+      "confidence": 0.8,
+      "evidenceNote": "创造者演讲展开了官方定义文背后的动机（别堆 agent、改建 skill）。"
+    },
+    {
+      "fromId": "siliconangle_skills_launch",
+      "toId": "claude_code_skills_docs",
+      "relationType": "news_signal_to_official_docs",
+      "confidence": 0.8,
+      "evidenceNote": "发布新闻信号指向官方 skills 文档作为权威边界。"
+    },
+    {
+      "fromId": "anthropics_skills_github",
+      "toId": "skill_file_structure_example",
+      "relationType": "repo_to_file_structure",
+      "confidence": 0.8,
+      "evidenceNote": "官方仓库的 SKILL.md 规范对应文档里的文件结构说明。"
     }
   ],
   "review": {

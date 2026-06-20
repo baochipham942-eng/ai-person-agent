@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { AvatarImage } from '@/components/common/AvatarImage';
 import {
   getThreadPresentationSeed,
   type ThreadPresentation,
@@ -283,16 +284,14 @@ function ThreadKeyPeopleSection({ people }: { people: ResolvedThreadPerson[] }) 
 }
 
 function ThreadPersonCard({ person }: { person: ResolvedThreadPerson }) {
-  const initials = person.name.slice(0, 1).toUpperCase();
   const inner = (
     <div className="flex h-full items-start gap-3 rounded-lg border border-stone-200 bg-stone-50/60 px-4 py-3 transition-colors hover:border-orange-200 hover:bg-orange-50/50">
       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-stone-200 bg-white text-sm font-semibold text-stone-500">
-        {person.avatarUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={person.avatarUrl} alt={person.name} className="h-full w-full object-cover" />
-        ) : (
-          <span>{initials}</span>
-        )}
+        <AvatarImage
+          src={person.avatarUrl}
+          name={person.name}
+          fallbackClassName="flex h-full w-full items-center justify-center text-sm font-semibold text-stone-500"
+        />
       </div>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-1.5">

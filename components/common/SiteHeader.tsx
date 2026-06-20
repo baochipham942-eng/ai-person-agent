@@ -20,9 +20,8 @@ interface SiteHeaderProps {
 const PRIMARY_NAV_ITEMS: Array<{ key: SiteHeaderCurrent; href: string; label: string }> = [
   { key: 'home', href: '/', label: '人物' },
   { key: 'organizations', href: '/org', label: '公司' },
-  { key: 'threads', href: '/threads', label: '知识主题' },
+  { key: 'threads', href: '/threads', label: '专题' },
   { key: 'courses', href: '/courses', label: '课程' },
-  { key: 'digest', href: '/digest', label: '本周动态' },
 ];
 
 const WIDTH_CLASS: Record<SiteHeaderWidth, string> = {

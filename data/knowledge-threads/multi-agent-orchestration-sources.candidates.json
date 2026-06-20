@@ -1,6 +1,6 @@
 {
   "thread": {
-    "status": "source_pack_review",
+    "status": "review_ready",
     "updatedAt": "2026-06-20",
     "slug": "multi-agent-orchestration",
     "title": "Multi-Agent Orchestration",
@@ -200,8 +200,8 @@
       "whyRelevant": "Software Engineering Daily 对 Steve Yegge 的访谈，围绕 Gas Town、Beads 与 agentic 开发，提供了 Gas Town 编排愿景的口头语境，是同名博客信号的有声补充。",
       "confidence": 0.6,
       "evidenceQuote": "full agent orchestration",
-      "reviewNotes": "Episode page found via web search; verify transcript availability before using exact quotations. 已去除原 whyRelevant 中“据传…来自不同公司开发者”的臆测描述（实为 Yegge 个人访谈）。",
-      "status": "candidate_unverified",
+      "reviewNotes": "Episode page found via web search; verify transcript availability before using exact quotations. 已去除原 whyRelevant 中“据传…来自不同公司开发者”的臆测描述（实为 Yegge 个人访谈）。 URL web-verified 2026-06-20 (HTTP 200, transcript present). Software Engineering Daily ep. with Steve Yegge on multi-agent orchestration (Beads / Gas Town).",
+      "status": "verified",
       "metadata": {
         "role": "transcript_context",
         "textStatus": "unverified_candidate"
