@@ -10,7 +10,11 @@ import {
   TopPeopleSection,
   WorksSection,
 } from '@/components/entity/EntityPageBlocks';
+import { CurrentThreadsStream } from '@/components/home/CurrentThreadsStream';
+import { CoursesStrip } from '@/components/courses/CoursesHubView';
 import { fetchTopicPageData } from '@/lib/entity-pages';
+import { listThreadsForTopic } from '@/lib/knowledge-thread-people';
+import { listCoursesForTopic } from '@/lib/courses';
 import {
   buildDirectoryHref,
   buildTopicHref,
@@ -43,6 +47,8 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const { slug } = await params;
   const topic = normalizeDirectoryTopic(decodeRouteParam(slug));
   const data = await loadTopicPageData(topic);
+  const topicThreads = listThreadsForTopic(topic);
+  const topicCourses = await listCoursesForTopic(topic, 6).catch(() => []);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -72,8 +78,24 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
           <div className="space-y-8">
+            {topicThreads.length > 0 && (
+              <CurrentThreadsStream
+                threads={topicThreads}
+                title={`${topic} 的当期主题脉络`}
+                subtitle="这个方向最近正在成形的知识主题，以及谁在定义它。"
+                className=""
+              />
+            )}
             <TopPeopleSection people={data.people} />
             <ActivitySection events={data.activity} title={`${topic} 最近动态`} />
+            {topicCourses.length > 0 && (
+              <CoursesStrip
+                courses={topicCourses}
+                title={`想系统学 ${topic}?`}
+                subtitle="这个方向值得先学的几门课，点开直达课程平台。"
+                moreHref={`/courses?topic=${encodeURIComponent(topic)}`}
+              />
+            )}
             <WorksSection works={data.works} />
           </div>
 

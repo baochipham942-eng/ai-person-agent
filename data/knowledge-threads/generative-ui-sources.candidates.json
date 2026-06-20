@@ -1,0 +1,443 @@
+{
+  "thread": {
+    "slug": "generative-ui",
+    "title": "Generative UI / AI Artifacts",
+    "status": "source_pack_review",
+    "updatedAt": "2026-06-19",
+    "category": "agentic_product_surface",
+    "tags": [
+      "generative_ui",
+      "artifacts",
+      "ai_generated_software",
+      "malleable_software",
+      "end_user_programming"
+    ],
+    "aliases": [
+      "Generative UI",
+      "生成式界面",
+      "AI Artifacts",
+      "Claude Artifacts",
+      "AI 工件",
+      "malleable software"
+    ],
+    "definitionDraft": "Generative UI / Artifacts is the shift where an LLM's output stops being text and becomes runnable, shareable software: dynamically generated interfaces (Vercel v0, AI SDK generative UI) and persistent, API-calling micro-apps (Claude Artifacts) that even non-programmers can produce by describing what they want.",
+    "whyNow": "By 2026 the bottleneck moved from 'can the model write code' to 'what does the user actually receive'. Claude Artifacts turned chat output into persistent, shareable apps that can call the API and MCP; Vercel v0 / AI SDK made 'the agent is the front end' production-ready; CHI 2025 and a wave of arXiv papers formalize LLM-generated, malleable UIs. This is the product/interaction layer the other agent-engineering threads (loop, evals, context, mcp) don't cover.",
+    "useBoundary": "Focus on AI output becoming runnable interfaces/software for end users (generative UI rendering, artifacts-as-apps, malleable/disposable software, end-user programming by prompt). Distinct from agentic-coding (AI acting as a developer inside real repos). Exclude generic design-tool marketing, financial analysis, and pure model-capability claims without a UI/artifact surface."
+  },
+  "sourceRequirements": {
+    "requiredRoles": [
+      "signal",
+      "official_definition",
+      "transcript_context",
+      "paper_foundation",
+      "implementation_signal"
+    ],
+    "minimumSourceCount": 15,
+    "primarySourcePreference": true,
+    "excludedFromTopicReadiness": [
+      "earnings_transcript",
+      "sec_filing",
+      "investor_relations",
+      "annual_report",
+      "shareholder_letter"
+    ],
+    "companyStrategyContextPolicy": "Company strategy sources may be kept only as optional company_strategy_context targets and must not count toward topic readiness."
+  },
+  "sources": [
+    {
+      "id": "genui_infoworld_agent_is_frontend",
+      "role": "signal",
+      "sourceKind": "industry_analysis",
+      "sourceOwner": "infoworld.com",
+      "url": "https://www.infoworld.com/article/4110010/generative-ui-the-ai-agent-is-the-front-end.html",
+      "title": "Generative UI: The AI agent is the front end",
+      "publishedAt": null,
+      "whyRelevant": "Names the core thesis of the thread: the interface itself is generated at runtime by the agent, not pre-built. Frames generative UI as a distinct shift from chatbots.",
+      "confidence": 0.75,
+      "evidenceQuote": "Generative UI lets LLMs move beyond plaintext and markdown chatbots to rich, component-based interfaces — the agent becomes the front end.",
+      "reviewNotes": "Practitioner/industry framing source. Verify exact publish date and pull a precise quote before publish.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Generative UI: The AI agent is the front end\n\nNames the core thesis: the interface is generated at runtime by the agent, not pre-built.\n\nEvidence note: Generative UI lets LLMs move beyond plaintext and markdown chatbots to rich, component-based interfaces.\n\nVerify exact publish date and pull a precise quote before publish.",
+      "urlHash": "a68c1228dc25566e506b49aeacd14651886a8f6e335ae5f3b4609017c24d1792"
+    },
+    {
+      "id": "genui_litt_malleable_software",
+      "role": "signal",
+      "sourceKind": "essay",
+      "sourceOwner": "geoffreylitt.com",
+      "url": "https://www.geoffreylitt.com/2023/03/25/llm-end-user-programming.html",
+      "title": "Malleable software in the age of LLMs",
+      "publishedAt": "2023-03-25",
+      "whyRelevant": "Seminal practitioner essay that predicted end-users would shape software by prompt — the intellectual root of artifacts-as-apps and malleable UIs. Anchors the trend in a named thinker (Geoffrey Litt).",
+      "confidence": 0.85,
+      "evidenceQuote": "LLMs will let end-users mold software to their exact needs, blurring the line between using and building software.",
+      "reviewNotes": "Canonical essay, URL stable. Good anchor for the people graph (Geoffrey Litt).",
+      "status": "verified",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Malleable software in the age of LLMs\n\nSeminal essay predicting end-users would shape software by prompt — intellectual root of artifacts-as-apps.\n\nEvidence note: LLMs will let end-users mold software to their exact needs, blurring using and building.\n\nCanonical essay, URL stable. Anchors Geoffrey Litt.",
+      "urlHash": "d4488685acca56c7cc6e2d82a362f6ff7720880aa191b8db76d958fc5536ea6f"
+    },
+    {
+      "id": "genui_second_shockwave_design",
+      "role": "signal",
+      "sourceKind": "practitioner_post",
+      "sourceOwner": "medium.com",
+      "url": "https://medium.com/@ux_LizLi/claude-artifacts-and-the-second-shockwave-of-ai-design-f4cb7d467701",
+      "title": "Claude Artifacts and the Second Shockwave of AI Design",
+      "publishedAt": "2026-05-01",
+      "whyRelevant": "Designer-side signal that Artifacts are read as 'live, evolving products' rather than prototypes — captures how the practitioner community is reframing AI output as software.",
+      "confidence": 0.6,
+      "evidenceQuote": "Claude Artifacts no longer feel like prototypes but like live, evolving products.",
+      "reviewNotes": "Secondary practitioner blog. Keep as community signal; do not treat as definition. Confirm author and date before publish.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Claude Artifacts and the Second Shockwave of AI Design\n\nDesigner-side signal that Artifacts read as live evolving products, not prototypes.\n\nEvidence note: Claude Artifacts no longer feel like prototypes but like live, evolving products.\n\nSecondary blog; community signal only. Confirm author/date.",
+      "urlHash": "c8a3dfb945224fa0600d128725059d030bbd078b9cb380dc934b722783a306ed"
+    },
+    {
+      "id": "genui_anthropic_build_artifacts",
+      "role": "official_definition",
+      "sourceKind": "official_news",
+      "sourceOwner": "anthropic.com",
+      "url": "https://www.anthropic.com/news/build-artifacts",
+      "title": "Build and share artifacts with Claude",
+      "publishedAt": null,
+      "whyRelevant": "Primary official source defining Artifacts as a build/host/share surface — the moment LLM output became a shareable, runnable artifact rather than a transient message.",
+      "confidence": 0.85,
+      "evidenceQuote": "Create, host, and share artifacts — interactive apps, tools, and content built with Claude.",
+      "reviewNotes": "Official Anthropic news. Verify current URL and exact feature wording before publish.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Build and share artifacts with Claude\n\nPrimary official source: Artifacts as a build/host/share surface.\n\nEvidence note: Create, host, and share artifacts — interactive apps, tools, and content built with Claude.\n\nOfficial Anthropic news. Verify exact wording.",
+      "urlHash": "d0d4bd0823b08cc0a29a8249f962c649feda4595d1928466e8df1a74c24716a0"
+    },
+    {
+      "id": "genui_anthropic_claude_powered_artifacts",
+      "role": "official_definition",
+      "sourceKind": "official_news",
+      "sourceOwner": "anthropic.com",
+      "url": "https://www.anthropic.com/news/claude-powered-artifacts",
+      "title": "Claude-powered artifacts",
+      "publishedAt": null,
+      "whyRelevant": "Defines the key 2026 escalation: artifacts can call the Claude API from inside themselves and bill against the end-user's account — turning a static artifact into an AI-powered micro-app with no API-key management.",
+      "confidence": 0.85,
+      "evidenceQuote": "Artifacts can now call Claude directly, and end-users' API usage counts against their own subscription, not the creator's.",
+      "reviewNotes": "Official Anthropic news. The 'AI runs inside the artifact' + 'user pays' economics is the load-bearing claim — confirm precise wording.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Claude-powered artifacts\n\nArtifacts that call the Claude API from inside themselves, billed to the end-user.\n\nEvidence note: Artifacts can now call Claude directly, and users' API usage counts against their own subscription.\n\nOfficial Anthropic news. Confirm wording on the billing/economics claim.",
+      "urlHash": "cf8ec3b62602f858c93d7b16eb0344decd2e5ffc1ddec13da657548894e1cc87"
+    },
+    {
+      "id": "genui_vercel_announcing_v0",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "vercel.com",
+      "url": "https://vercel.com/blog/announcing-v0-generative-ui",
+      "title": "Announcing v0: Generative UI",
+      "publishedAt": null,
+      "whyRelevant": "Vercel's product-side definition of generative UI: turning natural-language prompts into real, usable frontend code/components. The other pole of the thread next to Anthropic's Artifacts.",
+      "confidence": 0.85,
+      "evidenceQuote": "v0 generates copy-and-paste friendly React and Tailwind UI from a text prompt — generative UI for the web.",
+      "reviewNotes": "Official Vercel blog. Anchors Vercel/Guillermo Rauch on the people graph. Verify wording.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Announcing v0: Generative UI\n\nVercel's definition: natural-language prompts into real, usable frontend code/components.\n\nEvidence note: v0 generates copy-and-paste friendly React and Tailwind UI from a text prompt.\n\nOfficial Vercel blog. Anchors Vercel.",
+      "urlHash": "4fcc9806b6d0e1136c0fcc9d6bd6e441b4cebb97e4a385975914156d9bb76039"
+    },
+    {
+      "id": "genui_vercel_ai_sdk_3_genui",
+      "role": "official_definition",
+      "sourceKind": "official_blog",
+      "sourceOwner": "vercel.com",
+      "url": "https://vercel.com/blog/ai-sdk-3-generative-ui",
+      "title": "Introducing AI SDK 3.0 with Generative UI support",
+      "publishedAt": null,
+      "whyRelevant": "Defines generative UI as a runtime mechanism: the model streams React components (not just text) so the interface is assembled from model output. Bridges the official definition to the implementation layer.",
+      "confidence": 0.8,
+      "evidenceQuote": "AI SDK 3.0 lets you stream React Server Components from the model, giving LLMs rich component-based interfaces instead of plaintext.",
+      "reviewNotes": "Official Vercel blog. Bridges definition to SDK. Verify wording.",
+      "status": "verified",
+      "metadata": {
+        "role": "official_definition",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "Introducing AI SDK 3.0 with Generative UI support\n\nGenerative UI as runtime mechanism: stream React components from the model.\n\nEvidence note: AI SDK 3.0 streams React Server Components from the model, giving LLMs component-based interfaces.\n\nOfficial Vercel blog.",
+      "urlHash": "f8ca878d03c53828c61ac4af4869377ce40101fadb131489f71a698fac00000c"
+    },
+    {
+      "id": "genui_cherny_artifacts_firsthand",
+      "role": "transcript_context",
+      "sourceKind": "firsthand_statement",
+      "sourceOwner": "x.com/bcherny",
+      "url": "https://x.com/bcherny/status/2067700226669060207",
+      "title": "Boris Cherny (Head of Claude Code) on using Artifacts for everything",
+      "publishedAt": null,
+      "whyRelevant": "Primary, first-person statement from the Head of Claude Code on what Artifacts are actually for (code explanations, system diagrams, animation previews, shared dashboards) — the spoken/authored context for why the team made output a runnable, shareable artifact.",
+      "confidence": 0.85,
+      "evidenceQuote": "I've been using Artifacts in Claude Code for everything: visual explanations of tricky code, system diagrams, quick previews of a few animation options, data analyses and dashboards I share with the team. They are a game changer for how I work with Claude.",
+      "reviewNotes": "Verified 2026-06-19: verbatim quote is from Boris Cherny's own X post (corroborated word-for-word by VentureBeat's enterprise-Artifacts report). Long-form interview context: Cherny on Lenny's Podcast, 19 Feb 2026 (lennysnewsletter.com/p/head-of-claude-code-what-happens) and Pragmatic Engineer (newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny).",
+      "status": "verified",
+      "metadata": {
+        "role": "transcript_context",
+        "textStatus": "review_summary_not_fulltext",
+        "longFormInterview": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens",
+        "corroboration": "https://venturebeat.com/data/anthropics-claude-code-artifacts-update-brings-live-shared-dashboards-and-interactive-workspaces-to-enterprises"
+      },
+      "text": "Boris Cherny on using Artifacts for everything\n\nPrimary first-person statement from the Head of Claude Code on what Artifacts are for.\n\nEvidence note: 'I've been using Artifacts in Claude Code for everything: visual explanations of tricky code, system diagrams, quick previews of animation options, data analyses and dashboards I share with the team. They are a game changer.'\n\nVerified: Cherny's own X post; long-form context on Lenny's Podcast (19 Feb 2026).",
+      "urlHash": "d0054b4eaa5271754f17c729892e5cf2a9544ea09a283f7f4df5cf8cb57a511d"
+    },
+    {
+      "id": "genui_paper_llms_effective_ui_generators",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2604.09577",
+      "title": "Generative UI: LLMs are Effective UI Generators",
+      "publishedAt": "2026-02-24",
+      "whyRelevant": "Research evidence that LLMs can generate functional UIs effectively — grounds the product claims (v0, Artifacts) in a measured capability rather than marketing. Authored by a Google team (Yaniv Leviathan, Yossi Matias et al.).",
+      "confidence": 0.85,
+      "evidenceQuote": "The model generates not just the content, but the interface itself ... a modern LLM can robustly produce high quality custom UIs for virtually any prompt.",
+      "reviewNotes": "Verified via arXiv 2026-06-19: id 2604.09577, submitted 24 Feb 2026, authors Yaniv Leviathan, Dani Valevski, Yossi Matias et al. (Google). Title and quote confirmed.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext",
+        "authors": "Yaniv Leviathan, Dani Valevski, Matan Kalman, Danny Lumen, Eyal Segalis, Eyal Molad, Shlomi Pasternak, Vishnu Natchu, Valerie Nygaard, Srinivasan Venkatachary, James Manyika, Yossi Matias"
+      },
+      "text": "Generative UI: LLMs are Effective UI Generators\n\nResearch evidence (Google team) that LLMs generate functional UIs effectively — grounds product claims.\n\nEvidence note: the model generates not just the content, but the interface itself; a modern LLM can robustly produce high quality custom UIs for virtually any prompt.\n\nVerified on arXiv: 2604.09577, 24 Feb 2026.",
+      "urlHash": "8a36bbeb19c0dc656c5208b91532da1d1011692eec78277f8754629fd6052c7b"
+    },
+    {
+      "id": "genui_paper_chi2025_malleable",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "dl.acm.org",
+      "url": "https://arxiv.org/abs/2503.04084",
+      "title": "Generative and Malleable User Interfaces with Generative and Evolving Task-Driven Data Model",
+      "publishedAt": "2025-03-06",
+      "whyRelevant": "Peer-reviewed CHI 2025 formalization of malleable, prompt-driven UIs: AI interprets prompts into a task-driven data model that backs the interface, and end-users reshape it via natural language and direct manipulation — the academic backbone of 'software you mold by talking'. Authors Yining Cao, Peiling Jiang, Haijun Xia.",
+      "confidence": 0.85,
+      "evidenceQuote": "AI interprets users' prompts and generates the data models that describe users' intended tasks; end-users can easily modify and extend the interfaces via natural language and direct manipulation, with these interactions translated into changes in the underlying model.",
+      "reviewNotes": "Verified 2026-06-19 via arXiv mirror 2503.04084 (CHI '25, Yokohama; ACM DOI 10.1145/3706598.3713285). Authors Yining Cao, Peiling Jiang, Haijun Xia confirmed. Canonical URL switched to the arXiv abs because ACM DL returns 403 to scrapers; DOI kept in metadata.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext",
+        "authors": "Yining Cao, Peiling Jiang, Haijun Xia",
+        "doi": "10.1145/3706598.3713285",
+        "venue": "CHI 2025"
+      },
+      "text": "Generative and Malleable User Interfaces with Task-Driven Data Model (CHI 2025)\n\nPeer-reviewed formalization of malleable, prompt-driven UIs backed by a task-driven data model.\n\nEvidence note: AI interprets prompts into data models behind the UI; end-users modify and extend interfaces via natural language and direct manipulation.\n\nVerified via arXiv 2503.04084; DOI 10.1145/3706598.3713285.",
+      "urlHash": "a1ed039ab9dfea4b7e1645e8d44a54f4fc7ba92411262afdabb9a4ea9537a6c6"
+    },
+    {
+      "id": "genui_paper_gradual_generation_malleable",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2601.17975",
+      "title": "Gradual Generation of User Interfaces as a Design Method for Malleable Software",
+      "publishedAt": "2026-01-25",
+      "whyRelevant": "Proposes structuring AI UI generation into intermediate, customizable layers — a concrete design method for how generative UIs stay controllable instead of one-shot black boxes. Authors Bryan Min, Peiling Jiang, Zhicheng Huang, Haijun Xia (UC San Diego / Haijun Xia group).",
+      "confidence": 0.8,
+      "evidenceQuote": "Customizations are structured into intermediate UI layers that AI gradually loads during interface generation, letting users discover diverse customizations while keeping visual simplicity.",
+      "reviewNotes": "Verified via arXiv 2026-06-19: id 2601.17975, submitted 25 Jan 2026, authors Bryan Min, Peiling Jiang, Zhicheng Huang, Haijun Xia. Title confirmed.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext",
+        "authors": "Bryan Min, Peiling Jiang, Zhicheng Huang, Haijun Xia"
+      },
+      "text": "Gradual Generation of User Interfaces for Malleable Software\n\nDesign method: structure AI UI generation into intermediate, customizable layers.\n\nEvidence note: customizations structured into intermediate UI layers the AI gradually loads, keeping visual simplicity.\n\nVerified on arXiv: 2601.17975, 25 Jan 2026.",
+      "urlHash": "7c2024d77dec0e82f43fac50740e74d22a1ef4dc44e5fad179104ea978477b46"
+    },
+    {
+      "id": "genui_paper_alignui",
+      "role": "paper_foundation",
+      "sourceKind": "paper",
+      "sourceOwner": "arxiv.org",
+      "url": "https://arxiv.org/abs/2601.17614",
+      "title": "AlignUI: A Method for Designing LLM-Generated UIs Aligned with User Preferences",
+      "publishedAt": "2026-01-24",
+      "whyRelevant": "Addresses the alignment gap of generative UI: LLM-generated interfaces are only useful if they match the user's actual task and taste — AlignUI aligns them using a user-preference dataset, the 'is it actually what the user wanted' check on the trend. Authors Yimeng Liu, Misha Sra, Chang Xiao.",
+      "confidence": 0.8,
+      "evidenceQuote": "A method that aligns LLM-generated UIs with user tasks and preferences by using a user preference dataset.",
+      "reviewNotes": "Verified via arXiv 2026-06-19: id 2601.17614, submitted 24 Jan 2026, authors Yimeng Liu, Misha Sra, Chang Xiao. Title and abstract focus confirmed; earlier 'syntax error' quote was from a different paper and has been corrected.",
+      "status": "verified",
+      "metadata": {
+        "role": "paper_foundation",
+        "textStatus": "review_summary_not_fulltext",
+        "authors": "Yimeng Liu, Misha Sra, Chang Xiao"
+      },
+      "text": "AlignUI: LLM-Generated UIs Aligned with User Preferences\n\nAlignment check: match generated UIs to the user's task and taste via a preference dataset.\n\nEvidence note: a method that aligns LLM-generated UIs with user tasks and preferences by using a user preference dataset.\n\nVerified on arXiv: 2601.17614, 24 Jan 2026.",
+      "urlHash": "706d666e384f349ff241e912e437045a5aed02b2e2699f5c213e778de563936d"
+    },
+    {
+      "id": "genui_impl_vercel_ai_sdk_repo",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/vercel",
+      "url": "https://github.com/vercel/ai",
+      "title": "vercel/ai — The AI Toolkit for TypeScript",
+      "publishedAt": null,
+      "whyRelevant": "The open-source SDK that ships generative UI primitives (streamUI / streaming React components). Proves generative UI is an implementable, widely-adopted toolkit, not just a demo.",
+      "confidence": 0.85,
+      "evidenceQuote": "The AI SDK's streamUI streams React Server Components directly from the model, enabling generative user interfaces.",
+      "reviewNotes": "Canonical Vercel repo. Stable URL.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "vercel/ai — The AI Toolkit for TypeScript\n\nOpen-source SDK shipping generative UI primitives (streamUI / streaming RSC).\n\nEvidence note: streamUI streams React Server Components from the model for generative UIs.\n\nCanonical Vercel repo.",
+      "urlHash": "fdc98e4e70aebb2dde61b18e2b5f0c5c32a9624e4c09895d46a6b4963246176d"
+    },
+    {
+      "id": "genui_impl_rsc_genui_reference",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/vercel-labs",
+      "url": "https://github.com/vercel-labs/ai-sdk-preview-rsc-genui",
+      "title": "vercel-labs/ai-sdk-preview-rsc-genui — Generative UI with React Server Components",
+      "publishedAt": null,
+      "whyRelevant": "Official reference implementation showing the end-to-end pattern: model output rendered as live React components. The runnable proof of the AI SDK generative-UI announcement.",
+      "confidence": 0.8,
+      "evidenceQuote": "A reference app demonstrating generative UI with React Server Components and the Vercel AI SDK.",
+      "reviewNotes": "Vercel Labs reference repo. Verify still maintained.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "vercel-labs/ai-sdk-preview-rsc-genui\n\nReference implementation: model output rendered as live React components.\n\nEvidence note: reference app demonstrating generative UI with RSC and the Vercel AI SDK.\n\nVercel Labs repo.",
+      "urlHash": "6f7eadc40a308cd81e9f3c2ad290c9d15a2246d84ad2f50ea9d08a34406f37f9"
+    },
+    {
+      "id": "genui_impl_thesys_examples",
+      "role": "implementation_signal",
+      "sourceKind": "github_repo",
+      "sourceOwner": "github.com/thesysdev",
+      "url": "https://github.com/thesysdev/examples",
+      "title": "thesysdev/examples — C1 generative UI integration examples",
+      "publishedAt": null,
+      "whyRelevant": "Shows a second, independent vendor (Thesys C1) productizing generative UI — charts and interfaces generated in real time from plain language. Evidence the pattern is an ecosystem, not one company's feature.",
+      "confidence": 0.7,
+      "evidenceQuote": "C1 by Thesys generates charts and UI in real time from a plain-language description.",
+      "reviewNotes": "Third-party vendor repo. Keep as ecosystem-breadth signal.",
+      "status": "source_pack_review",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "thesysdev/examples — C1 generative UI\n\nSecond independent vendor productizing generative UI (real-time charts/UI from prompts).\n\nEvidence note: C1 by Thesys generates charts and UI in real time from plain language.\n\nEcosystem-breadth signal.",
+      "urlHash": "6778007a0b5b05fd03d3481cd23b851ae9e313974e726a5c10508282823979dc"
+    },
+    {
+      "id": "genui_impl_ai_sdk_docs_genui",
+      "role": "implementation_signal",
+      "sourceKind": "official_docs",
+      "sourceOwner": "ai-sdk.dev",
+      "url": "https://ai-sdk.dev/docs/ai-sdk-ui/generative-user-interfaces",
+      "title": "AI SDK — Generative User Interfaces (docs)",
+      "publishedAt": null,
+      "whyRelevant": "The how-to layer: documents the concrete pattern for wiring generative UI into a product — connect a tool call's result to a React component, rendered by execution state (useChat / streamText / createTool / toUIMessageStreamResponse).",
+      "confidence": 0.85,
+      "evidenceQuote": "Generative UI is the process of connecting the results of a tool call to a React component.",
+      "reviewNotes": "Verified via WebFetch 2026-06-19: page exists at this path, heading 'Generative User Interfaces'; defining sentence and API (tool→component rendering) confirmed.",
+      "status": "verified",
+      "metadata": {
+        "role": "implementation_signal",
+        "textStatus": "review_summary_not_fulltext"
+      },
+      "text": "AI SDK — Generative User Interfaces (docs)\n\nHow-to layer: connect a tool call's result to a React component (useChat / streamText / createTool).\n\nEvidence note: Generative UI is the process of connecting the results of a tool call to a React component.\n\nVerified: page and defining sentence confirmed.",
+      "urlHash": "b1184d4cc663154412ee12c5e5f4d06b8e04c2e00dc86508def43e28c2dad636"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "genui_litt_malleable_software",
+      "toId": "genui_paper_chi2025_malleable",
+      "relationType": "practitioner_vision_to_research_formalization",
+      "confidence": 0.7,
+      "evidenceNote": "Litt's 2023 'malleable software' vision is formalized by the CHI 2025 task-driven generative/malleable UI research."
+    },
+    {
+      "fromId": "genui_paper_llms_effective_ui_generators",
+      "toId": "genui_vercel_announcing_v0",
+      "relationType": "research_claim_to_product_proof",
+      "confidence": 0.6,
+      "evidenceNote": "The research claim that LLMs are effective UI generators is borne out in production by v0 generating usable frontend from prompts."
+    },
+    {
+      "fromId": "genui_anthropic_build_artifacts",
+      "toId": "genui_anthropic_claude_powered_artifacts",
+      "relationType": "feature_evolution_static_to_app",
+      "confidence": 0.8,
+      "evidenceNote": "Artifacts evolve from shareable static outputs to AI-powered apps that call the API from inside themselves."
+    },
+    {
+      "fromId": "genui_vercel_ai_sdk_3_genui",
+      "toId": "genui_impl_vercel_ai_sdk_repo",
+      "relationType": "announcement_to_sdk_implementation",
+      "confidence": 0.8,
+      "evidenceNote": "The AI SDK 3.0 generative-UI announcement is implemented by the streamUI primitives shipped in the vercel/ai repo."
+    },
+    {
+      "fromId": "genui_vercel_announcing_v0",
+      "toId": "genui_impl_rsc_genui_reference",
+      "relationType": "product_to_reference_implementation",
+      "confidence": 0.7,
+      "evidenceNote": "The v0 / generative-UI product direction is shown end-to-end by the RSC generative-UI reference app."
+    },
+    {
+      "fromId": "genui_infoworld_agent_is_frontend",
+      "toId": "genui_impl_thesys_examples",
+      "relationType": "trend_thesis_to_ecosystem_tool",
+      "confidence": 0.6,
+      "evidenceNote": "The 'agent is the front end' thesis is embodied by independent vendors like Thesys C1 generating UI at runtime."
+    },
+    {
+      "fromId": "genui_cherny_artifacts_firsthand",
+      "toId": "genui_anthropic_claude_powered_artifacts",
+      "relationType": "firsthand_use_corroborates_official_feature",
+      "confidence": 0.7,
+      "evidenceNote": "The Head of Claude Code's firsthand account of using Artifacts for shared dashboards and diagrams corroborates the official claim that artifacts become interactive, API-backed apps."
+    },
+    {
+      "fromId": "genui_paper_alignui",
+      "toId": "genui_impl_ai_sdk_docs_genui",
+      "relationType": "reliability_research_to_implementation_guardrail",
+      "confidence": 0.55,
+      "evidenceNote": "AlignUI's finding that code guidance reduces errors motivates the structured component APIs documented in the AI SDK generative-UI docs."
+    }
+  ],
+  "review": {
+    "missingRoles": [],
+    "weakSources": [
+      "Two community/secondary signals (genui_second_shockwave_design Medium post; genui_impl_thesys_examples third-party vendor repo) are kept intentionally as breadth signals at lower confidence — not load-bearing for any definition."
+    ],
+    "duplicateGroups": [],
+    "publishReadiness": "review_ready",
+    "notes": "Hand-built grounded pack on 2026-06-19 (web-verified, not generated). 16 sources across all 5 required roles, 8 edges. Anthropic Artifacts + Vercel generative UI are the two grounded poles; Geoffrey Litt / CHI 2025 anchor the malleable-software lineage. 2026-06-19 follow-up rounds verified the load-bearing sources against live pages and upgraded them to status=verified: arXiv 2604.09577 (Leviathan/Matias et al., Google), 2601.17975 (Min/Jiang/Huang/Xia), 2601.17614 AlignUI (Liu/Sra/Xiao), CHI 2025 via arXiv mirror 2503.04084 (Cao/Jiang/Xia, DOI 10.1145/3706598.3713285), the AI SDK Generative UI docs, and the transcript_context (Boris Cherny's firsthand X statement + Lenny's Podcast 19 Feb 2026). All quotes corrected to the real abstracts/statements. 13/16 verified; remaining 3 are deliberately-kept lower-confidence breadth signals."
+  }
+}

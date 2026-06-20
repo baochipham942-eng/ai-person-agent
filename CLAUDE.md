@@ -249,6 +249,23 @@ createdAt, updatedAt
 ```
 > 动态流持久化事件。默认发布侧只展示可信状态和足够置信度的事件。
 
+### SearchDocument / ContentChunk
+```
+SearchDocument:
+id, objectType, objectId, canonicalKey (唯一),
+personId, threadId, organizationId, sourceType,
+title, summary, text, url, topics[], organizations[],
+publishedAt, fetchedAt, textHash, embeddingStatus,
+metadata (JSON), searchVector, createdAt, updatedAt
+
+ContentChunk:
+id, documentId, objectType, objectId, chunkIndex,
+title, text, tokenEstimate, textHash,
+embedding, embeddingModel, embeddingUpdatedAt,
+metadata (JSON), searchVector, createdAt, updatedAt
+```
+> 内容搜索索引层。`SearchDocument` 绑定可检索对象，`ContentChunk` 承载分块全文、FTS 与向量检索。
+
 ### Course
 ```
 id, personId, title, titleZh, platform, url, urlHash,
@@ -451,3 +468,20 @@ agent-browser --session s1 open url   # 命名会话（支持并行）
 - `PROJECT_CONSTITUTION.md` - Architecture, deployment, error book
 - `workflow_documentation.md` - Data flows, APIs, KPIs
 - `README.md` - Setup guide (Chinese)
+
+## 错题本 / SOP
+
+### 新增知识主题（/threads/[slug]）= 三层加 seed，不碰组件
+实体页分「结构数据（DB/fixture 驱动）」和「策展叙事（seed）」两层，组件是纯渲染。新增一个主题只动数据/seed：
+1. **来源数据**：`data/knowledge-threads/<slug>-sources.candidates.json`（≥15 源、5 角色齐 `signal/official_definition/transcript_context/paper_foundation/implementation_signal`、≥6 互证边）→ import 进 `lib/knowledge-threads.ts` 的 `SOURCE_PACK_FIXTURES`（路由/列表自动派生，无额外白名单）。`urlHash = sha256(url)`（`printf '%s' "$url" | shasum -a 256`）。
+2. **策展叙事**：`lib/entity-presentations/thread-presentation.ts` 的 `THREAD_PRESENTATIONS` 加一条（手写质量优于 generated fallback）。
+3. **人物关联**：`lib/knowledge-thread-people.ts` 的 `CURATED_THREADS` 加一条，每人回链到 fixture 真实 source id。
+- **通用原则（被产品负责人抓过）**：概念必须 grounded 在真实来源、web 核实后再写，不套壳；裸词/流行词要落到工业界公认概念名（如 "artifact" → `generative-ui` Generative UI / AI Artifacts）。来源 `status` 诚实标注，URL/编号没把握的标 `source_pack_review`/`needs_capture` + reviewNote「发布前复核」，不冒充 `verified`。
+- 验收：`bunx tsc --noEmit` 零错误 + dev server（4101）`curl /threads/<slug>` HTTP 200 + grep 渲染标记。
+
+### 主题关键人物入库 = 走 thread-people 专用脚本，天然规避 Exa
+人物 ↔ 主题 resolver 只渲染**匹配到 People 库**的人，未匹配的进 unmatched review 队列（**不自动建占位人物**）。要让锚定人物进主区就得入库：
+- `scripts/enrich/add_thread_people.ts`（base）：Wikidata（免费）+ 头像，**零付费 API**；无 Wikidata 命中时建 `TEMP-*` qid 兜底（正常退路，非报错）。
+- `scripts/enrich/enrich_thread_people.ts`（富集）：**Tavily**（`.env.local` 的 `TAVILY_API_KEYS`，按名单 `status=pending` 精确锁定控成本）+ unavatar.io 头像（免费，仅当人物有 X/GitHub handle）+ DeepSeek 合成 description/title/topics。
+- **通用原则**：**Exa 没额度时不用慌**——thread-people 入库路径本就不依赖 Exa（base 走 Wikidata，富集走 Tavily）。需要联网搜索且 Exa 额度耗尽，优先 `lib/tavily-search.ts`。两个脚本按批次替换 `THREAD_PEOPLE`/`TARGET_NAMES`，对已存在者幂等跳过。
+- **Neon 坑**：脚本中途 `ECONNRESET` / WebSocket TLS 断开是 Neon 冷启动波动 → 先 `prisma.people.count()` 唤醒 DB 再重跑；富集脚本按 `status=pending` 锁定，重跑只补未完成的人，安全幂等。

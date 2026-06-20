@@ -296,11 +296,13 @@ model People {
   advisedRoles         PersonRole[]             @relation("RoleAdvisor") // 作为导师的履历记录
   courses              Course[] // 开设/主讲的课程
   influenceScoreAudits InfluenceScoreAuditLog[]
+  productContributions ProductContributor[] // 参与的作品/产品
 
   @@index([name])
   @@index([status])
   @@index([influenceScore])
   @@index([roleCategory])
+  @@index([status, influenceScore])
 }
 
 model Organization {
@@ -310,6 +312,7 @@ model Organization {
   type               String
   wikidataQid        String?             @unique
   description        String?
+  aliases            String[]            @default([]) // 合并旧名/别名，防止重新碎片化
   roles              PersonRole[]
   companySources     CompanySource[]
   companyThreadLinks CompanyThreadLink[]
@@ -346,6 +349,8 @@ model CompanySource {
   @@index([sourceKind])
   @@index([publishedAt])
   @@index([fetchedAt])
+  @@index([organizationId, publishedAt])
+  @@index([sourceKind, publishedAt])
 }
 
 model CompanyThreadLink {
@@ -436,6 +441,9 @@ model RawPoolItem {
 
   @@index([personId])
   @@index([sourceType])
+  @@index([personId, sourceType, publishedAt])
+  @@index([personId, publishedAt])
+  @@index([fetchStatus, fetchedAt])
 }
 
 model KnowledgeThread {
@@ -481,6 +489,7 @@ model KnowledgeSource {
   @@index([sourceOwner])
   @@index([publishedAt])
   @@index([fetchedAt])
+  @@index([sourceKind, publishedAt])
 }
 
 model KnowledgeThreadSource {
@@ -506,6 +515,7 @@ model KnowledgeThreadSource {
   @@index([rawPoolItemId])
   @@index([role])
   @@index([relevanceScore])
+  @@index([threadId, relevanceScore, createdAt])
 }
 
 model KnowledgeThreadEdge {
@@ -527,6 +537,7 @@ model KnowledgeThreadEdge {
   @@index([toSourceId])
   @@index([relationType])
   @@index([confidence])
+  @@index([threadId, confidence, createdAt])
 }
 
 model ActivityEvent {
@@ -558,6 +569,74 @@ model ActivityEvent {
   @@index([reviewStatus])
   @@index([occurredAt])
   @@index([detectedAt])
+  @@index([personId, occurredAt])
+  @@index([reviewStatus, occurredAt])
+  @@index([sourceType, occurredAt])
+}
+
+model SearchDocument {
+  id             String         @id @default(cuid())
+  objectType     String
+  objectId       String
+  canonicalKey   String         @unique
+  personId       String?
+  threadId       String?
+  organizationId String?
+  sourceType     String?
+  title          String
+  summary        String?
+  text           String
+  url            String?
+  topics         String[]       @default([])
+  organizations  String[]       @default([])
+  publishedAt    DateTime?
+  fetchedAt      DateTime?
+  textHash       String
+  embeddingStatus String        @default("pending")
+  metadata       Json?
+  searchVector   Unsupported("tsvector")?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  chunks         ContentChunk[]
+
+  @@unique([objectType, objectId])
+  @@index([objectType])
+  @@index([personId])
+  @@index([threadId])
+  @@index([organizationId])
+  @@index([sourceType])
+  @@index([publishedAt])
+  @@index([fetchedAt])
+  @@index([embeddingStatus])
+  @@index([objectType, publishedAt])
+  @@index([personId, publishedAt])
+  @@index([threadId, publishedAt])
+}
+
+model ContentChunk {
+  id                String         @id @default(cuid())
+  documentId        String
+  objectType        String
+  objectId          String
+  chunkIndex        Int
+  title             String
+  text              String
+  tokenEstimate     Int            @default(0)
+  textHash          String
+  embedding         Unsupported("vector(512)")?
+  embeddingModel    String?
+  embeddingUpdatedAt DateTime?
+  metadata          Json?
+  searchVector      Unsupported("tsvector")?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  document          SearchDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, chunkIndex])
+  @@index([documentId])
+  @@index([objectType, objectId])
+  @@index([embeddingModel])
+  @@index([textHash])
 }
 
 model SearchSession {
@@ -693,6 +772,9 @@ model PersonRelation {
   @@index([personId])
   @@index([relatedPersonId])
   @@index([reviewStatus])
+  @@index([personId, reviewStatus, confidence])
+  @@index([relatedPersonId, reviewStatus, confidence])
+  @@index([reviewStatus, createdAt])
 }
 
 // 课程表 - 记录人物开设/主讲的公开课程
@@ -791,4 +873,45 @@ model InfluenceScoreAuditLog {
   @@index([scoreVersion])
   @@index([status])
   @@index([createdAt])
+}
+
+// 作品/产品实体：把散落在 People.products JSON 里、跨人重复的产品提炼成第一类实体。
+// 一次连通 人(贡献者) / 公司(主理方) / 主题 / 话题。模型用 type=model 子类型表达，不另立实体。
+model Product {
+  id               String               @id @default(cuid())
+  slug             String               @unique
+  name             String
+  aliases          String[]             @default([])
+  type             String // model | app | tool | framework | architecture | lab | dataset | benchmark | other
+  category         String?
+  description      String?
+  url              String?
+  iconUrl          String?
+  firstYear        Int?
+  organizationId   String? // 主理公司（解析 org 名匹配 Organization）
+  organizationName String? // 冗余展示，匹配不到时回退
+  topics           String[]             @default([])
+  threadSlugs      String[]             @default([]) // 关联主题（策展补）
+  priorityScore    Float                @default(0)
+  status           String               @default("active")
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+  contributors     ProductContributor[]
+
+  @@index([type])
+  @@index([organizationId])
+  @@index([priorityScore])
+}
+
+model ProductContributor {
+  id        String  @id @default(cuid())
+  productId String
+  personId  String
+  role      String  @default("contributor") // creator | lead | contributor
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  person    People  @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, personId])
+  @@index([productId])
+  @@index([personId])
 }

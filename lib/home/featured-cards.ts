@@ -1,0 +1,177 @@
+/**
+ * 首页「本周推荐」异质卡片统一类型 + 适配层。
+ *
+ * 设计原则（对齐实体页"组件纯渲染、加数据不碰组件"）：
+ *  - 不同数据源（策展主题 / ActivityEvent / 策展人物）统一映射成 `FeaturedCard`，组件只认这一种结构。
+ *  - `whyNow`（推荐理由）是异质流不塌成大杂烩的护栏：适配器拿不到推荐理由就返回 null，不进流。
+ *  - 排序权重在本层重算（`rankScore`），不改全局 activityQualityScore（那个还服务 /digest 和人物页）。
+ */
+import type { ActivityEvent, ActivityEventType } from '@/lib/activity';
+import type { FeaturedThread } from '@/lib/knowledge-thread-people';
+
+export type FeaturedCardKind = 'thread' | 'video' | 'paper' | 'article' | 'podcast' | 'person';
+
+export interface FeaturedCardPerson {
+  id: string | null; // 库内人物 id；null = inline 策展人物（链接走外部）
+  name: string;
+  avatarUrl: string | null;
+  currentTitle: string | null;
+}
+
+export interface FeaturedCard {
+  kind: FeaturedCardKind;
+  /** 去重 + React key */
+  id: string;
+  title: string;
+  /** 推荐理由，必填非空——空则不进流 */
+  whyNow: string;
+  href: string;
+  /** 是否新窗口打开（外链 true，站内 false） */
+  external: boolean;
+  person: FeaturedCardPerson | null;
+  topics: string[];
+  occurredAt: string | null;
+  sourceLabel: string | null;
+  /** 视频缩略图（YouTube 由 url 推导）；其它类型为 null */
+  thumbnailUrl: string | null;
+  /** 附注，如主题的"关键人物 · A · B" */
+  note: string | null;
+  pinned: boolean;
+  rankScore: number;
+}
+
+/** 本层重算的类型基础分——视频不再像全局排序那样垫底，确保高密度视频能露出。 */
+const KIND_BASE_SCORE: Record<FeaturedCardKind, number> = {
+  person: 100, // pin 人物天然置顶（另有 pinned 标记兜底）
+  thread: 62,
+  video: 56,
+  paper: 52,
+  article: 42,
+  podcast: 38,
+};
+
+/** ActivityEvent.eventType → 卡片 kind；不在表里的（github/role_change/relation_change）不进本周推荐主流。 */
+const ACTIVITY_KIND_MAP: Partial<Record<ActivityEventType, FeaturedCardKind>> = {
+  video: 'video',
+  paper: 'paper',
+  article: 'article',
+  podcast: 'podcast',
+};
+
+export function threadToFeaturedCard(thread: FeaturedThread): FeaturedCard {
+  const note = thread.peopleNames.length > 0 ? `关键人物 · ${thread.peopleNames.slice(0, 3).join(' · ')}` : null;
+  return {
+    kind: 'thread',
+    id: `thread:${thread.slug}`,
+    title: thread.title,
+    whyNow: thread.whyNow,
+    href: `/threads/${thread.slug}`,
+    external: false,
+    person: null,
+    topics: thread.topics.slice(0, 3),
+    occurredAt: null,
+    sourceLabel: '知识主题',
+    thumbnailUrl: null,
+    note,
+    pinned: false,
+    rankScore: KIND_BASE_SCORE.thread + Math.min(thread.priority, 30),
+  };
+}
+
+export function activityToFeaturedCard(event: ActivityEvent): FeaturedCard | null {
+  const kind = ACTIVITY_KIND_MAP[event.eventType];
+  if (!kind) return null; // 丢弃 github / role_change / relation_change
+  if (!event.importanceReason || !event.importanceReason.trim()) return null; // 无推荐理由不进流
+  if (!event.title.trim() || !event.url.trim()) return null;
+
+  // 公司源事件 personId 形如 "company:<orgId>"，无内部人物页，不挂人物 chip
+  const isCompanyAttributed = event.personId.startsWith('company:');
+  const person: FeaturedCardPerson | null = isCompanyAttributed
+    ? null
+    : {
+        id: event.personId,
+        name: event.personName,
+        avatarUrl: event.personAvatarUrl,
+        currentTitle: event.personCurrentTitle,
+      };
+
+  return {
+    kind,
+    id: `activity:${event.id}`,
+    title: event.title,
+    whyNow: event.importanceReason,
+    href: event.url,
+    external: true,
+    person,
+    topics: event.topics.slice(0, 3),
+    occurredAt: event.occurredAt,
+    sourceLabel: event.sourceLabel,
+    thumbnailUrl: kind === 'video' ? youtubeThumbnail(event.url) : null,
+    note: null,
+    pinned: false,
+    rankScore: KIND_BASE_SCORE[kind] + recencyScore(event.occurredAt) + Math.round(event.confidence * 8),
+  };
+}
+
+export interface PersonCardInput {
+  id: string | null;
+  name: string;
+  avatarUrl: string | null;
+  currentTitle: string | null;
+  href: string;
+  external: boolean;
+  whyNow: string;
+  topics?: string[];
+}
+
+export function buildPersonCard(input: PersonCardInput): FeaturedCard {
+  return {
+    kind: 'person',
+    id: `person:${input.id ?? input.name}`,
+    title: input.name,
+    whyNow: input.whyNow,
+    href: input.href,
+    external: input.external,
+    person: { id: input.id, name: input.name, avatarUrl: input.avatarUrl, currentTitle: input.currentTitle },
+    topics: (input.topics ?? []).slice(0, 3),
+    occurredAt: null,
+    sourceLabel: '人物',
+    thumbnailUrl: null,
+    note: input.currentTitle,
+    pinned: true,
+    rankScore: KIND_BASE_SCORE.person,
+  };
+}
+
+/** 从 YouTube watch / youtu.be URL 推导缩略图，无需额外字段或 API。 */
+export function youtubeThumbnail(url: string): string | null {
+  const id = youtubeVideoId(url);
+  return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
+}
+
+function youtubeVideoId(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^www\./, '');
+    if (host === 'youtu.be') {
+      const id = parsed.pathname.split('/').filter(Boolean)[0];
+      return id || null;
+    }
+    if (host === 'youtube.com' || host === 'm.youtube.com') {
+      const v = parsed.searchParams.get('v');
+      if (v) return v;
+      const parts = parsed.pathname.split('/').filter(Boolean);
+      // /shorts/<id> 或 /embed/<id>
+      if ((parts[0] === 'shorts' || parts[0] === 'embed') && parts[1]) return parts[1];
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function recencyScore(occurredAt: string | null): number {
+  if (!occurredAt) return 0;
+  const ageDays = Math.max(0, (Date.now() - new Date(occurredAt).getTime()) / 86_400_000);
+  return Math.max(0, 14 - Math.min(14, ageDays * 2));
+}

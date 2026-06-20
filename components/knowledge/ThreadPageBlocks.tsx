@@ -9,6 +9,7 @@ import type {
   KnowledgeThreadSource,
   KnowledgeThreadStatus,
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
+import type { ResolvedThreadPerson } from '@/lib/knowledge-thread-people';
 
 const ROLE_ORDER: KnowledgeSourceRole[] = [
   'signal',
@@ -96,21 +97,25 @@ const COPY_REPLACEMENTS: Array<[RegExp, string]> = [
 
 interface ThreadPageBlocksProps {
   thread: KnowledgeThreadFixture;
+  /** 已解析的关键人物（从 lib/knowledge-thread-people 由服务端只读查 People 得到） */
+  people?: ResolvedThreadPerson[];
 }
 
-export function ThreadPageBlocks({ thread }: ThreadPageBlocksProps) {
+export function ThreadPageBlocks({ thread, people = [] }: ThreadPageBlocksProps) {
   const presentation = getThreadPresentation(thread);
   const sourcesById = new Map(thread.sources.map(source => [source.id, source]));
   const roleStats = getRoleStats(thread);
   const coverage = getCoverage(thread, roleStats);
+  const hasPeople = people.length > 0;
 
   return (
     <main className="mx-auto w-full max-w-6xl min-w-0 space-y-6 px-4 py-6 sm:px-6">
       <ThreadHero thread={thread} presentation={presentation} />
-      <ThreadPageNav />
+      <ThreadPageNav hasPeople={hasPeople} />
 
       <div className="space-y-6">
         <ExplanationBlock presentation={presentation} />
+        {hasPeople && <ThreadKeyPeopleSection people={people} />}
         <KeyMaterialsBlock roleStats={roleStats} presentation={presentation} />
         <ThreadReferenceTier thread={thread} sourcesById={sourcesById} coverage={coverage} />
       </div>
@@ -174,10 +179,11 @@ function ThreadHero({
   );
 }
 
-function ThreadPageNav() {
+function ThreadPageNav({ hasPeople }: { hasPeople: boolean }) {
   const items = [
     { href: '#overview', label: '概览' },
     { href: '#content', label: '完整循环' },
+    ...(hasPeople ? [{ href: '#people', label: '关键人物' }] : []),
     { href: '#evidence', label: '关键材料' },
     { href: '#reference', label: '参考与来源' },
   ];
@@ -248,6 +254,69 @@ function ExplanationBlock({ presentation }: { presentation: ThreadPresentation }
       </div>
     </section>
   );
+}
+
+// 关键人物：把主题里「谁提出 / 推动 / 落地 / 质疑」前置，紧跟完整循环之后、关键材料之前。
+// 人是主角，证据是参考——所以人物区在材料区之前。
+function ThreadKeyPeopleSection({ people }: { people: ResolvedThreadPerson[] }) {
+  return (
+    <section
+      id="people"
+      className="min-w-0 scroll-mt-24 rounded-lg border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7 sm:py-7"
+    >
+      <div className="mb-4">
+        <div className="text-xs font-semibold text-orange-600">关键人物</div>
+        <h2 className="mt-1 text-xl font-semibold tracking-tight text-stone-950">谁在定义这个主题</h2>
+        <p className="mt-1 max-w-3xl text-xs leading-5 text-stone-500">
+          按在这个主题里扮演的角色分组——提出、推动、落地、质疑。点开人物看完整档案。
+        </p>
+      </div>
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {people.map(person => (
+          <li key={`${person.relation}-${person.name}`}>
+            <ThreadPersonCard person={person} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function ThreadPersonCard({ person }: { person: ResolvedThreadPerson }) {
+  const initials = person.name.slice(0, 1).toUpperCase();
+  const inner = (
+    <div className="flex h-full items-start gap-3 rounded-lg border border-stone-200 bg-stone-50/60 px-4 py-3 transition-colors hover:border-orange-200 hover:bg-orange-50/50">
+      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-stone-200 bg-white text-sm font-semibold text-stone-500">
+        {person.avatarUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={person.avatarUrl} alt={person.name} className="h-full w-full object-cover" />
+        ) : (
+          <span>{initials}</span>
+        )}
+      </div>
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="truncate text-sm font-semibold text-stone-900">{person.name}</span>
+          <span className="inline-flex items-center rounded-full bg-orange-100 px-1.5 py-0.5 text-[11px] font-medium text-orange-700">
+            {person.relationLabel}
+          </span>
+        </div>
+        {person.currentTitle && (
+          <div className="mt-0.5 truncate text-xs text-stone-500">{person.currentTitle}</div>
+        )}
+        <p className="mt-1 text-xs leading-5 text-stone-600">{person.summary}</p>
+      </div>
+    </div>
+  );
+
+  if (person.id) {
+    return (
+      <Link href={`/person/${person.id}`} prefetch={false} className="block h-full">
+        {inner}
+      </Link>
+    );
+  }
+  return inner;
 }
 
 // 关键材料按角色分组展示：每组配一行「为什么它和这个主题相关」的说明，

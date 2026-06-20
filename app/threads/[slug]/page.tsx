@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { MissingThreadState, ThreadPageBlocks } from '@/components/knowledge/ThreadPageBlocks';
 import { fetchKnowledgeThreadPage, listStaticKnowledgeThreadSlugs } from '@/lib/knowledge-threads';
+import { resolveThreadPeople } from '@/lib/knowledge-thread-people';
 import { buildDirectoryHref } from '@/lib/person-directory-config';
 
 interface ThreadPageProps {
@@ -37,6 +38,9 @@ export default async function ThreadPage({ params }: ThreadPageProps) {
   const { slug } = await params;
   const decodedSlug = decodeRouteParam(slug);
   const thread = await fetchKnowledgeThreadPage(decodedSlug);
+  const { matched: threadPeople } = thread
+    ? await resolveThreadPeople(thread.slug)
+    : { matched: [] };
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -52,7 +56,7 @@ export default async function ThreadPage({ params }: ThreadPageProps) {
           <span className="truncate text-stone-500">{thread?.title || decodedSlug}</span>
         </div>
       </div>
-      {thread ? <ThreadPageBlocks thread={thread} /> : <MissingThreadState slug={decodedSlug} />}
+      {thread ? <ThreadPageBlocks thread={thread} people={threadPeople} /> : <MissingThreadState slug={decodedSlug} />}
     </div>
   );
 }

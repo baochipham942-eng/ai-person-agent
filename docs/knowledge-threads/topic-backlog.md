@@ -5,7 +5,7 @@
 这是知识主题页（`/threads/[slug]`）的**候选主题清单**，按"今年（2026）真实在讨论 + 离现有主题集群的远近"排序。
 每条都已做过 web 核实（grounded），但**锚定人物/公司、来源 URL 仍需建页时逐条复核**。
 
-> 内容纪律（被林晨抓过）：建页前先核概念真伪，别套壳；论文/谱系类来源要说清"为什么和这个主题相关"；新增来源 `status` 诚实标注，不冒充 `verified`。详见 README。
+> 内容纪律（被产品负责人抓过）：建页前先核概念真伪，别套壳；论文/谱系类来源要说清"为什么和这个主题相关"；新增来源 `status` 诚实标注，不冒充 `verified`。详见 README。
 
 ## 已落地 / 在队
 
@@ -16,6 +16,7 @@
 | `ai-evals` | ✅ 已建（presentation + source pack，16 源/5 角色/7 边，status=source_pack_review）| 第二个完整建页样板；LLM-as-judge → Agent-as-judge → EvalGen 谱系 |
 | `context-engineering` | 🟡 已在 `batch-thread-seeds.md` 选中，未建 | 方法层，2026 最火之一 |
 | `mcp` | 🟡 已在 batch 选中，未建 | 协议/生态层 |
+| `generative-ui` | ✅ 已建（hand-built source pack 16 源/5 角色/8 边 + 策展 presentation seed，status=source_pack_review）| **产出/交互层**，补现有集群空白：AI 产出从文本变成可运行界面/软件。两极=Claude Artifacts + Vercel v0/AI SDK 生成式 UI；malleable software 谱系（Geoffrey Litt → CHI 2025）。区别于 agentic-coding（AI 当开发者进真实仓库）|
 
 ---
 

@@ -8,10 +8,11 @@ import {
   type DirectoryResponse,
 } from '@/lib/person-directory-config';
 import { fetchPersonDirectory } from '@/lib/person-directory';
-import { fetchActivityEvents, type ActivityEvent } from '@/lib/activity';
+import { resolveWeeklyPicks } from '@/lib/home/weekly-picks';
+import type { FeaturedCard } from '@/lib/home/featured-cards';
 
 const INITIAL_DIRECTORY_TIMEOUT_MS = 6000;
-const INITIAL_ACTIVITY_TIMEOUT_MS = 6000;
+const INITIAL_WEEKLY_PICKS_TIMEOUT_MS = 7000;
 const FALLBACK_DIRECTORY_PEOPLE: DirectoryPerson[] = [
   {
     id: 'cmjtsvcil00003esttihbrsjm',
@@ -172,9 +173,9 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     search: initialFilters.search,
     sortBy: initialFilters.sortBy,
   };
-  const [initialData, initialActivity] = await Promise.all([
+  const [initialData, initialWeeklyPicks] = await Promise.all([
     fetchInitialDirectory(directoryParams),
-    fetchInitialActivity({
+    fetchInitialWeeklyPicks({
       topic: initialFilters.topic,
       organization: initialFilters.organization,
     }),
@@ -185,7 +186,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <ResearcherDirectory
         initialData={initialData}
         initialFilters={initialFilters}
-        initialActivity={initialActivity}
+        initialWeeklyPicks={initialWeeklyPicks}
       />
     </Suspense>
   );
@@ -204,25 +205,22 @@ async function fetchInitialDirectory(params: Parameters<typeof fetchPersonDirect
   return Promise.race([directoryPromise, timeoutPromise]);
 }
 
-async function fetchInitialActivity(params: {
+async function fetchInitialWeeklyPicks(params: {
   topic?: string | null;
   organization?: string | null;
-}): Promise<ActivityEvent[]> {
-  const activityPromise = fetchActivityEvents({
+}): Promise<FeaturedCard[]> {
+  const picksPromise = resolveWeeklyPicks({
     topic: params.topic,
     organization: params.organization,
-    limit: 5,
-    days: 7,
-    includeRelations: false,
   }).catch(error => {
-    console.error('Failed to fetch initial activity:', error);
-    return [];
+    console.error('Failed to resolve initial weekly picks:', error);
+    return [] as FeaturedCard[];
   });
-  const timeoutPromise = new Promise<ActivityEvent[]>(resolve => {
-    setTimeout(() => resolve([]), INITIAL_ACTIVITY_TIMEOUT_MS);
+  const timeoutPromise = new Promise<FeaturedCard[]>(resolve => {
+    setTimeout(() => resolve([]), INITIAL_WEEKLY_PICKS_TIMEOUT_MS);
   });
 
-  return Promise.race([activityPromise, timeoutPromise]);
+  return Promise.race([picksPromise, timeoutPromise]);
 }
 
 function createDirectoryFallback(): DirectoryResponse {

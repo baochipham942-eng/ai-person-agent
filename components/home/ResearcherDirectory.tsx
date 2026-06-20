@@ -4,8 +4,8 @@ import { useEffect, useState, useRef, useCallback, useMemo, memo } from 'react';
 import useSWR, { preload } from 'swr';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { ResearcherCard, SharedSvgDefs } from './ResearcherCard';
-import { ActivityFeed } from './ActivityFeed';
-import type { ActivityEvent } from '@/lib/activity';
+import { WeeklyPicksStream } from './WeeklyPicksStream';
+import type { FeaturedCard } from '@/lib/home/featured-cards';
 import {
   DIRECTORY_ORGANIZATION_GROUPS,
   DIRECTORY_ROLES,
@@ -59,10 +59,10 @@ const FILTER_MODES: Array<{ key: DirectoryViewMode; label: string }> = [
 interface ResearcherDirectoryProps {
   initialData: DirectoryResponse;
   initialFilters: DirectoryFilters;
-  initialActivity?: ActivityEvent[];
+  initialWeeklyPicks?: FeaturedCard[];
 }
 
-export function ResearcherDirectory({ initialData, initialFilters, initialActivity }: ResearcherDirectoryProps) {
+export function ResearcherDirectory({ initialData, initialFilters, initialWeeklyPicks }: ResearcherDirectoryProps) {
   const [filters, setFilters] = useState<DirectoryFilters>(initialFilters);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(initialFilters.search);
@@ -295,7 +295,7 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
   const loading = (isLoading || isFallbackData) && page === 1 && allPeople.length === 0;
   const loadingMore = isValidating && page > 1;
   const hasLoadError = Boolean(error && allPeople.length === 0);
-  const shouldUseInitialActivity = selectedTopic === initialFilters.topic && selectedOrg === initialFilters.organization;
+  const shouldUseInitialWeeklyPicks = selectedTopic === initialFilters.topic && selectedOrg === initialFilters.organization;
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -306,47 +306,13 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
         current="home"
         maxWidth="7xl"
         utilitySlot={
-          searchOpen ? (
-            <div className="relative w-56 max-w-[calc(100vw-6rem)] flex-shrink-0 sm:w-64 lg:w-72">
-              <input
-                id="home-directory-search"
-                ref={searchInputRef}
-                type="text"
-                placeholder="搜索人物、公司或话题..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-8 w-full rounded-lg border border-orange-200 bg-white px-3 pl-8 pr-8 text-xs text-stone-900 shadow-sm transition-all placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
-              />
-              <svg
-                aria-hidden="true"
-                className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-orange-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
-              </svg>
-              <button
-                type="button"
-                aria-label={searchQuery ? '清除搜索' : '关闭搜索'}
-                onClick={() => {
-                  if (searchQuery) {
-                    setSearchQuery('');
-                    return;
-                  }
-                  setSearchOpen(false);
-                }}
-                className="absolute right-1.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-md text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
-              >
-                ×
-              </button>
-            </div>
-          ) : (
+          <div className="relative flex-shrink-0">
             <button
               type="button"
+              aria-label="搜索人物、公司或话题"
               aria-expanded={searchOpen}
               aria-controls="home-directory-search"
-              onClick={() => setSearchOpen(true)}
+              onClick={() => setSearchOpen(current => !current)}
               className={`inline-flex h-8 flex-shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
                 debouncedSearch
                   ? 'border-orange-200 bg-orange-50 text-orange-700'
@@ -362,22 +328,62 @@ export function ResearcherDirectory({ initialData, initialFilters, initialActivi
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
               </svg>
-              搜索
+              <span className="hidden sm:inline">{debouncedSearch ? '已筛选' : '搜索'}</span>
             </button>
-          )
+
+            {searchOpen && (
+              <div className="fixed left-4 right-4 top-36 z-50 w-auto rounded-xl border border-stone-200 bg-white p-2 shadow-lg sm:absolute sm:left-auto sm:right-0 sm:top-10 sm:w-[min(24rem,calc(100vw-2rem))]">
+                <div className="relative">
+                  <input
+                    id="home-directory-search"
+                    ref={searchInputRef}
+                    type="text"
+                    placeholder="搜索人物、公司或话题..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Escape') setSearchOpen(false);
+                    }}
+                    className="h-9 w-full rounded-lg border border-orange-200 bg-white px-3 pl-8 pr-8 text-sm text-stone-900 shadow-sm transition-all placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.15a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+                  </svg>
+                  <button
+                    type="button"
+                    aria-label={searchQuery ? '清除搜索' : '关闭搜索'}
+                    onClick={() => {
+                      if (searchQuery) {
+                        setSearchQuery('');
+                        return;
+                      }
+                      setSearchOpen(false);
+                    }}
+                    className="absolute right-2 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-md text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         }
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
+        <h1 className="sr-only">AI 人物库</h1>
+        <WeeklyPicksStream
+          topic={selectedTopic}
+          organization={selectedOrg}
+          initialCards={shouldUseInitialWeeklyPicks ? initialWeeklyPicks : undefined}
+        />
         <section className="min-w-0">
-          <div className="mb-3 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
-            <ActivityFeed
-              topic={selectedTopic}
-              organization={selectedOrg}
-              initialEvents={shouldUseInitialActivity ? initialActivity : undefined}
-            />
-          </div>
-
           <div className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3 shadow-sm">
             <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-5 gap-y-3">
               <div className="flex min-w-0 items-center gap-2 overflow-x-auto scrollbar-hide">

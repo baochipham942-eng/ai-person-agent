@@ -56,6 +56,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'i.ytimg.com',
       },
+      {
+        // 公司目录 logo（Google favicon 服务，按官网域名取）
+        protocol: 'https',
+        hostname: 'www.google.com',
+      },
     ],
   },
 };

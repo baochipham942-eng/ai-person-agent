@@ -98,6 +98,20 @@ body {
   border-color: rgba(0, 0, 0, 0.04);
 }
 
+.site-header-more-summary {
+  display: flex;
+  list-style: none;
+}
+
+.site-header-more-summary::marker {
+  color: transparent;
+  font-size: 0;
+}
+
+.site-header-more-summary::-webkit-details-marker {
+  display: none;
+}
+
 /* 渐变背景容器 */
 .gradient-bg {
   background: var(--gradient-primary);

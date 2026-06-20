@@ -30,6 +30,11 @@ export function RecentActivity({ personId }: RecentActivityProps) {
     }
   );
   const events = data?.data || [];
+  const settled = isVisible && !isLoading;
+
+  // 加载完成后无内容（空或失败）→ 整块隐藏，不占一张空卡（次要动态流，没有就别占位）。
+  // 仍保留加载中的骨架，让 sectionRef 进入视口触发拉取后再决定去留。
+  if (settled && (error || events.length === 0)) return null;
 
   return (
     <section ref={sectionRef} className="card-base overflow-hidden">
@@ -42,22 +47,14 @@ export function RecentActivity({ personId }: RecentActivityProps) {
       </div>
 
       <div className="p-5">
-        {error ? (
-          <div className="rounded-xl border border-stone-200 bg-white px-4 py-4 text-xs text-stone-500">
-            最近变化暂时加载失败，其他资料仍可查看。
-          </div>
-        ) : !isVisible || isLoading ? (
+        {!isVisible || isLoading ? (
           <div className="grid gap-2">
-            {[0, 1, 2].map(index => (
-              <div key={index} className="h-16 animate-pulse rounded-xl bg-stone-50 ring-1 ring-stone-100" />
+            {[0, 1].map(index => (
+              <div key={index} className="h-14 animate-pulse rounded-xl bg-stone-50 ring-1 ring-stone-100" />
             ))}
           </div>
         ) : (
-          <ActivityEventList
-            events={events}
-            emptyText="暂无可展示的近期变化"
-            showPerson={false}
-          />
+          <ActivityEventList events={events} showPerson={false} />
         )}
       </div>
     </section>

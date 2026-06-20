@@ -43,6 +43,8 @@ export interface FetchActivityParams {
   limit?: number;
   days?: number;
   includeRelations?: boolean;
+  /** 只返回这些事件类型（用于首页本周推荐按类型分桶取候选）。空/未传=不限类型。 */
+  eventTypes?: ActivityEventType[];
 }
 
 const ACTIVITY_SOURCE_TYPES = ['openalex', 'github', 'youtube', 'exa', 'podcast', 'career'];
@@ -142,17 +144,24 @@ export async function fetchActivityEvents(params: FetchActivityParams = {}): Pro
     }),
     params.includeRelations === false ? Promise.resolve([]) : fetchRelationActivityEvents(params, since, limit),
   ]);
-  const companySourceEvents = await fetchCompanySourceActivityEvents(params, since, limit).catch(error => {
-    if (isMissingCompanySourceStore(error)) return [];
-    throw error;
-  });
+  // 公司源事件只产出 article 类型；当调用方按类型分桶且不要 article 时跳过这次查询（省 Neon 往返）。
+  const wantsArticle = !params.eventTypes || params.eventTypes.length === 0 || params.eventTypes.includes('article');
+  const companySourceEvents = wantsArticle
+    ? await fetchCompanySourceActivityEvents(params, since, limit).catch(error => {
+        if (isMissingCompanySourceStore(error)) return [];
+        throw error;
+      })
+    : [];
+
+  const typeFilter = params.eventTypes && params.eventTypes.length > 0 ? new Set(params.eventTypes) : null;
+  const matchesType = (event: ActivityEvent) => !typeFilter || typeFilter.has(event.eventType);
 
   if (persistedEvents && persistedEvents.length > 0) {
-    return mergeActivityEvents([...persistedEvents, ...companySourceEvents, ...relationEvents], limit);
+    return mergeActivityEvents([...persistedEvents, ...companySourceEvents, ...relationEvents].filter(matchesType), limit);
   }
 
   const rawEvents = await fetchRawPoolActivityEvents(params, since, limit);
-  return mergeActivityEvents([...rawEvents, ...companySourceEvents, ...relationEvents], limit);
+  return mergeActivityEvents([...rawEvents, ...companySourceEvents, ...relationEvents].filter(matchesType), limit);
 }
 
 async function fetchPersistedActivityEvents(
@@ -444,6 +453,10 @@ function buildPersistedActivityWhere(params: FetchActivityParams, since: Date): 
     { url: { not: '' } },
     { title: { not: '' } },
   ];
+
+  if (params.eventTypes && params.eventTypes.length > 0) {
+    filters.push({ eventType: { in: params.eventTypes } });
+  }
 
   if (params.personId) {
     filters.push({ personId: params.personId });

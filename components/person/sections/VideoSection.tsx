@@ -29,6 +29,8 @@ interface RawPoolItem {
 interface VideoSectionProps {
   personId: string;
   videoCount?: number;
+  /** 作为「成果与资料」tab 内嵌渲染时为 true：去掉外层卡片外壳，避免卡中卡 */
+  bare?: boolean;
 }
 
 type VideoCategory = 'all' | 'self_talk' | 'interview' | 'analysis';
@@ -72,7 +74,7 @@ function formatDate(dateStr: string | null): string {
   }
 }
 
-export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
+export function VideoSection({ personId, videoCount = 0, bare = false }: VideoSectionProps) {
   const { sectionRef, isVisible } = useSectionVisibility<HTMLElement>();
   const [videos, setVideos] = useState<RawPoolItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -119,18 +121,20 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
     : videos.filter(v => v.metadata?.videoCategory === filter);
 
   return (
-    <section ref={sectionRef} className="card-base overflow-hidden">
+    <section ref={sectionRef} className={bare ? '' : 'card-base overflow-hidden'}>
       {/* 标题栏 */}
-      <div className="px-5 py-3 border-b border-stone-100">
-        <div className="flex items-center gap-2">
-          <span className="text-base">🎬</span>
-          <h2 className="text-sm font-medium text-stone-900">视频与访谈</h2>
-          <span className="text-xs text-stone-400">({videoCount})</span>
-        </div>
+      <div className={bare ? 'pb-2' : 'px-5 py-3 border-b border-stone-100'}>
+        {!bare && (
+          <div className="flex items-center gap-2">
+            <span className="text-base">🎬</span>
+            <h2 className="text-sm font-medium text-stone-900">视频与访谈</h2>
+            <span className="text-xs text-stone-400">({videoCount})</span>
+          </div>
+        )}
 
         {/* 分类筛选 */}
         {videos.length > 0 && (
-          <div className="flex gap-1.5 mt-3">
+          <div className={`flex gap-1.5 ${bare ? '' : 'mt-3'}`}>
             {Object.entries(CATEGORY_CONFIG).map(([key, { label }]) => (
               <button
                 key={key}
@@ -149,7 +153,7 @@ export function VideoSection({ personId, videoCount = 0 }: VideoSectionProps) {
       </div>
 
       {/* 内容区域 */}
-      <div className="p-5">
+      <div className={bare ? '' : 'p-5'}>
         {!isVisible || loading ? (
           <div className="flex items-center justify-center py-8">
             <div className="w-6 h-6 rounded-full animate-spin" style={{ border: '2px solid transparent', borderTopColor: '#f97316', borderRightColor: '#ec4899' }}></div>
