@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ArcoReactRootBridge } from "@/components/common/ArcoReactRootBridge";
-import "@arco-design/web-react/dist/css/arco.css";
+// Arco CSS 现由 globals.css 以 layer(arco) 引入（低优先级），避免其无-layer reset 压过 Tailwind 工具类
 import "./globals.css";
 
 export const metadata: Metadata = {

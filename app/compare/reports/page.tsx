@@ -163,7 +163,11 @@ function PersonAvatar({ person }: { person: PersonPreview }) {
 
 function sourceCountFromSnapshot(value: unknown): number {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return 0;
-  const count = (value as { evidenceCount?: unknown }).evidenceCount;
+  // 显示真实资料数（localSourceCount）；evidenceCount 是截断到 36 的可展开证据，当「资料数」会误导。
+  const snapshot = value as { localSourceCount?: unknown; evidenceCount?: unknown };
+  const local = snapshot.localSourceCount;
+  if (typeof local === 'number' && Number.isFinite(local) && local > 0) return local;
+  const count = snapshot.evidenceCount;
   return typeof count === 'number' && Number.isFinite(count) ? count : 0;
 }
 

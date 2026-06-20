@@ -1,3 +1,8 @@
+/* Arco 的全局 reset（如 a{background:transparent}）原为无 layer，会压过 Tailwind v4 的 layer 工具类，
+   导致 <a> 上的 bg-* 失效（按钮背景丢失）。放进最低优先级的 arco layer，让 Tailwind 工具类赢回来。
+   自定义 CSS（本文件下方）仍无 layer = 最高优先级，不受影响。 */
+@layer arco;
+@import "@arco-design/web-react/dist/css/arco.css" layer(arco);
 @import "tailwindcss";
 
 :root {

@@ -81,6 +81,11 @@ export async function fetchComparePicks(): Promise<ComparePicks> {
 
 export function comparePickSourceCount(value: unknown): number {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return 0;
-  const count = (value as { evidenceCount?: unknown }).evidenceCount;
-  return typeof count === 'number' && Number.isFinite(count) ? count : 0;
+  // 显示真实可用资料数（localSourceCount）。evidenceCount 是按 36 截断后的「可展开证据」，
+  // 几乎所有报告都顶格到 36，当作「资料数」会误导，故优先用 localSourceCount。
+  const snapshot = value as { localSourceCount?: unknown; evidenceCount?: unknown };
+  const local = snapshot.localSourceCount;
+  if (typeof local === 'number' && Number.isFinite(local) && local > 0) return local;
+  const evidence = snapshot.evidenceCount;
+  return typeof evidence === 'number' && Number.isFinite(evidence) ? evidence : 0;
 }
