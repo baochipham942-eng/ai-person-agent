@@ -75,18 +75,18 @@ export function SiteHeader({ current = null, maxWidth = '6xl', statsSlot, utilit
                   href="/content-search"
                   prefetch={false}
                   aria-label="全局搜索"
+                  title="全局搜索"
                   aria-current={current === 'contentSearch' ? 'page' : undefined}
-                  className={`inline-flex h-8 flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 text-xs font-medium shadow-sm transition-colors ${
+                  className={`inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border shadow-sm transition-colors ${
                     current === 'contentSearch'
                       ? 'border-stone-900 bg-stone-50 text-stone-950'
                       : 'border-stone-200 bg-white text-stone-600 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700'
                   }`}
                 >
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">
                     <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.6" />
                     <path d="m17 17-3.2-3.2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                   </svg>
-                  <span className="hidden sm:inline">全局搜索</span>
                 </Link>
               </div>
               <UserMenu />

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button, Message } from '@arco-design/web-react';
 import { useRouter } from 'next/navigation';
+import type { PipelineMeta } from '@/lib/admin/pipelines/types';
 
 interface PersonOption {
   id: string;
@@ -12,9 +13,9 @@ interface PersonOption {
 
 interface MaintenanceScheduleClientProps {
   people: PersonOption[];
+  pipelines: PipelineMeta[];
 }
 
-type MaintenanceKind = 'single_person_refresh' | 'multi_person_refresh' | 'all_people_refresh';
 type RefreshMode = 'incremental' | 'force';
 type SourceType = 'exa' | 'grok' | 'youtube' | 'openalex' | 'podcast' | 'github' | 'career';
 
@@ -28,10 +29,17 @@ const SOURCE_OPTIONS: Array<{ value: SourceType; label: string }> = [
   { value: 'career', label: 'Career' },
 ];
 
-export default function MaintenanceScheduleClient({ people }: MaintenanceScheduleClientProps) {
+export default function MaintenanceScheduleClient({ people, pipelines }: MaintenanceScheduleClientProps) {
   const router = useRouter();
+  // 定时不支持 new_person_build（一次性建人物不该重复跑）。
+  const schedulablePerson = pipelines.filter(p => p.category === 'person' && p.kind !== 'new_person_build');
+  const schedulableContent = pipelines.filter(p => p.category === 'content');
+  const defaultKind = schedulablePerson.some(p => p.kind === 'all_people_refresh')
+    ? 'all_people_refresh'
+    : (schedulablePerson[0]?.kind || schedulableContent[0]?.kind || '');
   const [name, setName] = useState('');
-  const [kind, setKind] = useState<MaintenanceKind>('all_people_refresh');
+  const [kind, setKind] = useState<string>(defaultKind);
+  const [contentOptions, setContentOptions] = useState<Record<string, string>>({});
   const [personId, setPersonId] = useState(people[0]?.id || '');
   const [personIds, setPersonIds] = useState('');
   const [selectedPersonIds, setSelectedPersonIds] = useState<string[]>([]);
@@ -45,15 +53,24 @@ export default function MaintenanceScheduleClient({ people }: MaintenanceSchedul
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const currentPipeline = pipelines.find(p => p.kind === kind);
+  const isContent = currentPipeline?.category === 'content';
+
   async function createSchedule(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
 
-    const targetPersonIds = kind === 'single_person_refresh'
-      ? [personId]
-      : kind === 'multi_person_refresh'
-        ? uniqueStrings([...selectedPersonIds, ...personIds.split(/[\s,]+/)])
-        : [];
+    const targetPersonIds = isContent
+      ? []
+      : kind === 'single_person_refresh'
+        ? [personId]
+        : kind === 'multi_person_refresh'
+          ? uniqueStrings([...selectedPersonIds, ...personIds.split(/[\s,]+/)])
+          : [];
+
+    const options = isContent
+      ? coerceContentOptions(currentPipeline, contentOptions)
+      : { status, limit: Number(limit), search, refreshMode, sourceTypes };
 
     try {
       const response = await fetch('/api/admin/maintenance/schedules', {
@@ -66,13 +83,7 @@ export default function MaintenanceScheduleClient({ people }: MaintenanceSchedul
           enabled,
           intervalHours: Number(intervalHours),
           targetPersonIds,
-          options: {
-            status,
-            limit: Number(limit),
-            search,
-            refreshMode,
-            sourceTypes,
-          },
+          options,
         }),
       });
 
@@ -118,10 +129,15 @@ export default function MaintenanceScheduleClient({ people }: MaintenanceSchedul
           </label>
           <label className="grid gap-1 text-xs text-stone-500">
             任务类型
-            <select value={kind} onChange={event => setKind(event.target.value as MaintenanceKind)} className="h-10 rounded-md border border-stone-200 bg-white px-3 text-sm text-stone-900">
-              <option value="all_people_refresh">全站批量更新</option>
-              <option value="single_person_refresh">单人物更新</option>
-              <option value="multi_person_refresh">多人物列表更新</option>
+            <select value={kind} onChange={event => setKind(event.target.value)} className="h-10 rounded-md border border-stone-200 bg-white px-3 text-sm text-stone-900">
+              <optgroup label="人物维护">
+                {schedulablePerson.map(p => <option key={p.kind} value={p.kind}>{p.label}</option>)}
+              </optgroup>
+              {schedulableContent.length > 0 && (
+                <optgroup label="内容管线">
+                  {schedulableContent.map(p => <option key={p.kind} value={p.kind}>{p.label}</option>)}
+                </optgroup>
+              )}
             </select>
           </label>
           <label className="grid gap-1 text-xs text-stone-500">
@@ -138,30 +154,62 @@ export default function MaintenanceScheduleClient({ people }: MaintenanceSchedul
         </div>
 
         <div className="grid gap-3 md:grid-cols-3">
-          <label className="grid gap-1 text-xs text-stone-500">
-            刷新强度
-            <select value={refreshMode} onChange={event => setRefreshMode(event.target.value as RefreshMode)} className="h-10 rounded-md border border-stone-200 bg-white px-3 text-sm text-stone-900">
-              <option value="incremental">增量刷新</option>
-              <option value="force">强制重拉</option>
-            </select>
-          </label>
-          <label className="grid gap-1 text-xs text-stone-500">
-            状态筛选
-            <select value={status} onChange={event => setStatus(event.target.value)} className="h-10 rounded-md border border-stone-200 bg-white px-3 text-sm text-stone-900">
-              <option value="all">全部</option>
-              <option value="pending">pending</option>
-              <option value="partial">partial</option>
-              <option value="error">error</option>
-              <option value="ready">ready</option>
-              <option value="active">active</option>
-              <option value="building">building</option>
-            </select>
-          </label>
+          {!isContent && (
+            <label className="grid gap-1 text-xs text-stone-500">
+              刷新强度
+              <select value={refreshMode} onChange={event => setRefreshMode(event.target.value as RefreshMode)} className="h-10 rounded-md border border-stone-200 bg-white px-3 text-sm text-stone-900">
+                <option value="incremental">增量刷新</option>
+                <option value="force">强制重拉</option>
+              </select>
+            </label>
+          )}
+          {!isContent && (
+            <label className="grid gap-1 text-xs text-stone-500">
+              状态筛选
+              <select value={status} onChange={event => setStatus(event.target.value)} className="h-10 rounded-md border border-stone-200 bg-white px-3 text-sm text-stone-900">
+                <option value="all">全部</option>
+                <option value="pending">pending</option>
+                <option value="partial">partial</option>
+                <option value="error">error</option>
+                <option value="ready">ready</option>
+                <option value="active">active</option>
+                <option value="building">building</option>
+              </select>
+            </label>
+          )}
           <label className="flex items-end gap-2 text-xs text-stone-600">
             <input type="checkbox" checked={enabled} onChange={event => setEnabled(event.target.checked)} className="mb-3.5 h-4 w-4 accent-orange-500" />
             <span className="pb-3">创建后启用</span>
           </label>
         </div>
+
+        {isContent && currentPipeline && currentPipeline.optionFields.length > 0 && (
+          <div className="grid gap-3 md:grid-cols-2">
+            {currentPipeline.optionFields.map(field => (
+              <label key={field.key} className="grid gap-1 text-xs text-stone-500">
+                {field.label}
+                {field.type === 'textarea' ? (
+                  <textarea
+                    rows={3}
+                    placeholder={field.placeholder}
+                    value={contentOptions[field.key] ?? String(field.defaultValue ?? '')}
+                    onChange={e => setContentOptions(o => ({ ...o, [field.key]: e.target.value }))}
+                    className="rounded-md border border-stone-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none focus:border-orange-300"
+                  />
+                ) : (
+                  <input
+                    type={field.type === 'number' ? 'number' : 'text'}
+                    placeholder={field.placeholder}
+                    value={contentOptions[field.key] ?? String(field.defaultValue ?? '')}
+                    onChange={e => setContentOptions(o => ({ ...o, [field.key]: e.target.value }))}
+                    className="h-10 rounded-md border border-stone-200 bg-white px-3 text-sm text-stone-900 outline-none focus:border-orange-300"
+                  />
+                )}
+                {field.help && <span className="text-stone-400">{field.help}</span>}
+              </label>
+            ))}
+          </div>
+        )}
 
         {kind === 'single_person_refresh' && (
           <label className="grid gap-1 text-xs text-stone-500">
@@ -235,6 +283,7 @@ export default function MaintenanceScheduleClient({ people }: MaintenanceSchedul
           </div>
         )}
 
+        {!isContent && (
         <div className="grid gap-2">
           <div className="text-xs text-stone-500">媒体渠道</div>
           <div className="flex flex-wrap gap-2">
@@ -259,6 +308,7 @@ export default function MaintenanceScheduleClient({ people }: MaintenanceSchedul
             })}
           </div>
         </div>
+        )}
 
         <Button type="primary" htmlType="submit" loading={loading} className="w-fit">
           {loading ? '创建中...' : '创建定时任务'}
@@ -270,4 +320,20 @@ export default function MaintenanceScheduleClient({ people }: MaintenanceSchedul
 
 function uniqueStrings(values: string[]): string[] {
   return [...new Set(values.map(value => value.trim()).filter(Boolean))];
+}
+
+/** content 表单值按 optionFields 类型转换：number 转数字、text 保留非空 trim。 */
+function coerceContentOptions(pipeline: PipelineMeta | undefined, raw: Record<string, string>): Record<string, unknown> {
+  if (!pipeline) return {};
+  const out: Record<string, unknown> = {};
+  for (const field of pipeline.optionFields) {
+    const value = raw[field.key] ?? (field.defaultValue !== undefined ? String(field.defaultValue) : '');
+    const trimmed = value.trim();
+    if (field.type === 'number') {
+      if (trimmed !== '') out[field.key] = Number(trimmed);
+    } else if (trimmed !== '') {
+      out[field.key] = trimmed;
+    }
+  }
+  return out;
 }

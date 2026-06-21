@@ -29,6 +29,16 @@ const OPENALEX_API_URL = 'https://api.openalex.org';
 
 // OpenAlex 免费 API，建议添加 polite pool email
 const POLITE_EMAIL = 'ai-person-agent@example.com';
+/**
+ * 给 URLSearchParams 补 api_key（若配置），所有 OpenAlex 请求统一带上。
+ * 注意：在**调用时**读 `process.env.OPENALEX_API_KEY`，不要提到模块顶层常量——
+ * ES import 会在脚本 `loadEnv('.env.local')` 之前执行，顶层求值会拿到 undefined。
+ */
+function withApiKey(params: URLSearchParams): URLSearchParams {
+  const key = process.env.OPENALEX_API_KEY;
+  if (key) params.set('api_key', key);
+  return params;
+}
 
 /**
  * 搜索 OpenAlex 作者
@@ -42,7 +52,7 @@ export async function searchOpenAlexAuthor(name: string): Promise<OpenAlexAuthor
             mailto: POLITE_EMAIL,
         });
 
-        const url = `${OPENALEX_API_URL}/authors?${params}`;
+        const url = `${OPENALEX_API_URL}/authors?${withApiKey(params)}`;
 
         const response = await fetch(url);
 
@@ -100,7 +110,7 @@ export async function getAuthorWorks(
             mailto: POLITE_EMAIL,
         });
 
-        const url = `${OPENALEX_API_URL}/works?${params}`;
+        const url = `${OPENALEX_API_URL}/works?${withApiKey(params)}`;
 
         const response = await fetch(url);
 
@@ -142,7 +152,7 @@ export async function getAuthorByOrcid(orcid: string): Promise<OpenAlexAuthor | 
     try {
         const cleanOrcid = orcid.replace('https://orcid.org/', '');
         const response = await fetch(
-            `${OPENALEX_API_URL}/authors/orcid:${cleanOrcid}?mailto=${POLITE_EMAIL}`
+            `${OPENALEX_API_URL}/authors/orcid:${cleanOrcid}?${withApiKey(new URLSearchParams({ mailto: POLITE_EMAIL }))}`
         );
 
         if (!response.ok) {

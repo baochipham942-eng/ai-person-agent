@@ -1,6 +1,8 @@
 import { config as loadEnv } from 'dotenv';
+// override:true —— 让 people 项目 .env.local 的 key 优先于 shell 全局 OPENAI_API_KEY，
+// 否则 ~/.zshrc / ~/.code-agent/.env 里的全局(可能失效)key 会暗中盖过本项目 key，导致 401。
 loadEnv({ path: '.env' });
-loadEnv({ path: '.env.local' });
+loadEnv({ path: '.env.local', override: true });
 
 import { Prisma } from '@prisma/client';
 import { prisma } from '../../lib/db/prisma';
