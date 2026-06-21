@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { prisma } from '@/lib/db/prisma';
 import { ensurePipelinesRegistered } from '@/lib/admin/pipelines';
 import { listPipelines } from '@/lib/admin/pipelines/registry';
+import { getDatasourceHealth } from '@/lib/admin/datasource-health';
 import CancelJobButton from './CancelJobButton';
 import MaintenanceClient from './MaintenanceClient';
 import MaintenanceScheduleClient from './MaintenanceScheduleClient';
@@ -140,6 +141,7 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
     optionFields: p.optionFields ?? [],
   }));
   const kindLabel = (kind: string) => pipelines.find(p => p.kind === kind)?.label || KIND_LABELS[kind] || kind;
+  const health = await getDatasourceHealth();
 
   return (
     <main className="min-h-screen bg-stone-50 px-4 py-6 text-stone-900 sm:px-6">
@@ -153,6 +155,24 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
             从后台触发新人物构建、全站批量更新、多人物列表更新和单人物更新。每次执行都会记录任务、进度和日志。
           </p>
         </header>
+
+        <section className="rounded-lg border border-stone-200 bg-white p-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-stone-950">数据源健康</h2>
+            <div className="text-xs text-stone-400">最近 50 个任务的运行结果与额度信号</div>
+          </div>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {health.length === 0 ? (
+              <p className="text-xs text-stone-400">暂无任务记录</p>
+            ) : health.map(row => (
+              <div key={row.kind} className="rounded-md border border-stone-100 bg-stone-50 px-3 py-2 text-xs">
+                <div className="font-medium text-stone-700">{kindLabel(row.kind)}</div>
+                <div className="mt-1 text-stone-500">完成 {row.completed} · 失败 {row.failed} · 运行中 {row.running}</div>
+                {row.quotaSignals > 0 && <div className="mt-1 font-medium text-amber-600">⚠ 额度/限流信号 {row.quotaSignals}</div>}
+              </div>
+            ))}
+          </div>
+        </section>
 
         <MaintenanceClient people={people} pipelines={pipelines} />
 
