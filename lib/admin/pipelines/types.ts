@@ -35,6 +35,14 @@ export interface PipelineContext {
   isCancelled(): Promise<boolean>;
 }
 
+/** 下发给前端的 pipeline 元数据（不含 run/validate 函数）。 */
+export interface PipelineMeta {
+  kind: string;
+  label: string;
+  category: PipelineCategory;
+  optionFields: PipelineOptionField[];
+}
+
 export interface MaintenancePipeline {
   kind: string;
   label: string;

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { prisma } from '@/lib/db/prisma';
+import { ensurePipelinesRegistered } from '@/lib/admin/pipelines';
+import { listPipelines } from '@/lib/admin/pipelines/registry';
 import CancelJobButton from './CancelJobButton';
 import MaintenanceClient from './MaintenanceClient';
 import MaintenanceScheduleClient from './MaintenanceScheduleClient';
@@ -130,6 +132,15 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
   const statusCounts = Object.fromEntries(statusGroups.map(group => [group.status, group._count.status]));
   const totalJobCount = statusGroups.reduce((sum, group) => sum + group._count.status, 0);
 
+  ensurePipelinesRegistered();
+  const pipelines = listPipelines().map(p => ({
+    kind: p.kind,
+    label: p.label,
+    category: p.category,
+    optionFields: p.optionFields ?? [],
+  }));
+  const kindLabel = (kind: string) => pipelines.find(p => p.kind === kind)?.label || KIND_LABELS[kind] || kind;
+
   return (
     <main className="min-h-screen bg-stone-50 px-4 py-6 text-stone-900 sm:px-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-5">
@@ -143,9 +154,9 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
           </p>
         </header>
 
-        <MaintenanceClient people={people} />
+        <MaintenanceClient people={people} pipelines={pipelines} />
 
-        <MaintenanceScheduleClient people={people} />
+        <MaintenanceScheduleClient people={people} pipelines={pipelines} />
 
         <section className="grid gap-3">
           <div className="flex items-center justify-between">
@@ -166,7 +177,7 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
                     </span>
                   </div>
                   <p className="mt-1 text-xs leading-5 text-stone-500">
-                    {KIND_LABELS[schedule.kind] || schedule.kind} · 每 {schedule.intervalHours} 小时 · 创建者 {formatUser(schedule.createdBy)}
+                    {kindLabel(schedule.kind)} · 每 {schedule.intervalHours} 小时 · 创建者 {formatUser(schedule.createdBy)}
                   </p>
                   <div className="mt-3 grid gap-2 text-xs leading-5 text-stone-500 md:grid-cols-2">
                     <div className="rounded-md bg-stone-50 px-3 py-2">下次运行 {formatMaybeDateTime(schedule.nextRunAt)}</div>
@@ -219,7 +230,7 @@ export default async function AdminMaintenancePage({ searchParams }: AdminMainte
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <Link href={`/admin/maintenance/jobs/${job.id}`} className="text-sm font-semibold text-stone-950 hover:text-orange-700">
-                      {KIND_LABELS[job.kind] || job.kind}
+                      {kindLabel(job.kind)}
                     </Link>
                     <span className={`rounded-full border px-2 py-0.5 text-[11px] font-medium ${STATUS_STYLES[job.status] || STATUS_STYLES.queued}`}>
                       {job.status}
