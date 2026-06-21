@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 import { requireAdminOrResponse } from '@/lib/auth/permissions';
 import { prisma } from '@/lib/db/prisma';
+import { createAndQueueMaintenanceJob } from '@/lib/admin/maintenance';
+import { getPipeline } from '@/lib/admin/pipelines/registry';
+import { ensurePipelinesRegistered } from '@/lib/admin/pipelines';
 import {
-  createAndQueueMaintenanceJob,
   MAINTENANCE_SOURCE_TYPES,
-  type MaintenanceKind,
   type MaintenanceRefreshMode,
   type MaintenanceSourceType,
-} from '@/lib/admin/maintenance';
+} from '@/lib/admin/pipelines/person';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,30 +46,24 @@ export async function POST(request: Request) {
   if (response) return response;
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  ensurePipelinesRegistered();
   const body = await request.json().catch(() => null) as Record<string, unknown> | null;
   const kind = typeof body?.kind === 'string' ? body.kind : '';
-  if (!isMaintenanceKind(kind)) {
+  const pipeline = getPipeline(kind);
+  if (!pipeline) {
     return NextResponse.json({ error: 'Unsupported maintenance kind' }, { status: 400 });
   }
 
   const targetPersonIds = normalizePersonIds(body?.targetPersonIds);
   const dryRun = body?.dryRun !== false;
-  const options = sanitizeOptions(body?.options);
+  // person 走原 sanitize（保回归）；content 透传 options（由各 pipeline run 自行 coerce）。
+  const options: Record<string, unknown> = pipeline.category === 'person'
+    ? sanitizeOptions(body?.options)
+    : (isRecord(body?.options) ? body.options : {});
 
-  if (kind === 'new_person_build' && normalizeQids(options.targetQids).length === 0) {
-    return NextResponse.json({ error: '请填写至少一个 Wikidata QID' }, { status: 400 });
-  }
-
-  if (kind === 'single_person_refresh' && targetPersonIds.length === 0) {
-    return NextResponse.json({ error: '请选择一个人物' }, { status: 400 });
-  }
-
-  if (kind === 'multi_person_refresh' && targetPersonIds.length === 0) {
-    return NextResponse.json({ error: '请填写至少一个人物 ID' }, { status: 400 });
-  }
-
-  if (options.refreshMode === 'rebuild' && options.sourceTypes.length > 0) {
-    return NextResponse.json({ error: '清空重建模式不支持单独选择媒体渠道，请使用全部来源' }, { status: 400 });
+  const validationError = pipeline.validate?.({ dryRun, targetPersonIds, options });
+  if (validationError) {
+    return NextResponse.json({ error: validationError }, { status: 400 });
   }
 
   const jobId = await createAndQueueMaintenanceJob({
@@ -80,10 +75,6 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json({ success: true, jobId }, { status: 201 });
-}
-
-function isMaintenanceKind(value: string): value is MaintenanceKind {
-  return value === 'new_person_build' || value === 'single_person_refresh' || value === 'multi_person_refresh' || value === 'all_people_refresh';
 }
 
 function normalizePersonIds(value: unknown): string[] {
