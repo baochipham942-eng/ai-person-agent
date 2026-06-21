@@ -10,6 +10,7 @@ import {
   type SearchDocumentRecord,
   type SearchObjectType,
 } from '../../lib/search/search-index';
+import { sanitizeIndexedText } from '../../lib/search/sanitize-content';
 
 type SourceName = SearchObjectType;
 
@@ -166,14 +167,18 @@ async function loadRawPoolDocuments(limit: number) {
   return {
     scanned: rows.length,
     documents: rows
-      .map(row => buildSearchDocumentRecord({
+      .map(row => {
+        // 剥离历史「来源替换/引用补救」运行留下的策展脚手架，避免污染 FTS/embedding/chunk。
+        const cleanText = sanitizeIndexedText(row.text);
+        const cleanGist = sanitizeIndexedText(textValue(row.metadata, 'gist'));
+        return buildSearchDocumentRecord({
         objectType: 'raw_pool_item',
         objectId: row.id,
         personId: row.personId,
         sourceType: row.sourceType,
         title: row.title,
-        summary: textValue(row.metadata, 'gist') || firstText(row.text, 240),
-        text: row.text,
+        summary: cleanGist || firstText(cleanText, 240),
+        text: cleanText,
         url: row.url,
         topics: uniqueStrings([...row.person.topics, ...arrayValue(row.metadata, 'contentTopics'), ...arrayValue(row.metadata, 'keywords')]),
         organizations: row.person.organization,
@@ -184,7 +189,8 @@ async function loadRawPoolDocuments(limit: number) {
           sourceKind: textValue(row.metadata, 'sourceKind'),
           isOfficial: booleanValue(row.metadata, 'isOfficial'),
         },
-      }))
+        });
+      })
       .filter((doc): doc is SearchDocumentRecord => Boolean(doc)),
   };
 }
@@ -442,7 +448,7 @@ async function upsertSearchDocument(doc: SearchDocumentRecord) {
         })),
       });
     }
-  });
+  }, { maxWait: 15000, timeout: 30000 }); // Neon WebSocket 延迟下默认 5s interactive tx 会 P2028 超时
 }
 
 async function createSearchDocuments(docs: SearchDocumentRecord[], batchSize: number) {
