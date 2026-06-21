@@ -13,6 +13,14 @@ export interface CompanyBlog {
     method: 'rss' | 'scrape';
     url: string;
     linkPattern?: RegExp; // scrape 时提取文章链接
+    // 单篇正文抓取策略：'jina'(默认，经 r.jina.ai) / 'html'(直连 fetch + HTML 抽取)。
+    // HF 被 r.jina.ai 封禁(451)，走免费直连 HTML；其余源保持 Jina。
+    articleFetch?: 'jina' | 'html';
+}
+
+/** 单篇正文抓取策略，缺省 'jina' */
+export function pickArticleFetch(cfg: CompanyBlog): 'jina' | 'html' {
+    return cfg.articleFetch ?? 'jina';
 }
 
 export const COMPANY_BLOGS: CompanyBlog[] = [
@@ -21,7 +29,7 @@ export const COMPANY_BLOGS: CompanyBlog[] = [
     { name: 'Microsoft Research', org: 'Microsoft', method: 'rss', url: 'https://www.microsoft.com/en-us/research/feed/' },
     { name: 'Google Research', org: 'Google', method: 'rss', url: 'https://research.google/blog/rss/' },
     { name: 'Google DeepMind', org: 'Google DeepMind', method: 'rss', url: 'https://deepmind.google/blog/rss.xml' },
-    { name: 'Hugging Face', org: 'Hugging Face', method: 'rss', url: 'https://huggingface.co/blog/feed.xml' },
+    { name: 'Hugging Face', org: 'Hugging Face', method: 'rss', url: 'https://huggingface.co/blog/feed.xml', articleFetch: 'html' },
     { name: 'Mistral AI', org: 'Mistral AI', method: 'rss', url: 'https://mistral.ai/rss.xml' },
     { name: 'Together AI', org: 'Together AI', method: 'rss', url: 'https://www.together.ai/blog/rss.xml' },
     { name: 'NVIDIA', org: 'NVIDIA', method: 'rss', url: 'https://developer.nvidia.com/blog/feed/' },

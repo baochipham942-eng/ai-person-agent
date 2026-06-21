@@ -4,9 +4,10 @@
  */
 import { prisma } from '@/lib/db/prisma';
 import { sha256 } from '@/lib/rawpool-identity';
-import { fetchArticleText } from '@/lib/datasources/jina-reader';
+import { fetchArticleText, type ArticleText } from '@/lib/datasources/jina-reader';
+import { fetchArticleHtml } from '@/lib/datasources/html-reader';
 import { extractContentKeywords } from '@/lib/ai/extract-keywords';
-import { COMPANY_BLOGS, parseFeed, type CompanyBlog, type FeedItem } from '@/lib/datasources/company-blogs';
+import { COMPANY_BLOGS, parseFeed, pickArticleFetch, type CompanyBlog, type FeedItem } from '@/lib/datasources/company-blogs';
 import { makeLogger, type PipelineRunHooks } from './hooks';
 
 export interface CompanyBlogsOptions {
@@ -25,6 +26,21 @@ const NICHE_TITLE_RE = /\b(clinical|medical|healthcare|patient|diagnos|genomic|g
 function isHfOfficial(url: string): boolean {
   const m = url.match(/huggingface\.co\/blog\/([^/?#]+)(\/([^/?#]+))?/i);
   return !!m && !m[3];
+}
+
+/**
+ * 单篇正文抓取派发：html 源(HF)先免费直连，正文太薄/失败则回退带 key 的 Jina(实测能解 HF 451)；
+ * 其余源直接走 Jina。返回正文 + fullTextSource 标记(便于区分入库来源)。
+ */
+async function fetchArticleBody(cfg: CompanyBlog, url: string): Promise<{ art: ArticleText; fullTextSource: string }> {
+  if (pickArticleFetch(cfg) === 'html') {
+    const direct = await fetchArticleHtml(url, { maxChars: 15000 });
+    if (direct.ok && direct.text.length >= 200) return { art: direct, fullTextSource: 'html-direct' };
+    const viaJina = await fetchArticleText(url, { maxChars: 15000 });
+    return { art: viaJina, fullTextSource: 'jina-fallback' };
+  }
+  const art = await fetchArticleText(url, { maxChars: 15000 });
+  return { art, fullTextSource: 'jina' };
 }
 
 async function resolveOrCreateOrg(name: string, execute: boolean, log: (msg: string) => void): Promise<string | null> {
@@ -112,7 +128,7 @@ export async function runCompanyBlogs(opts: CompanyBlogsOptions, hooks: Pipeline
       const exists = await prisma.companySource.findUnique({ where: { urlHash }, select: { id: true } });
       if (exists) { totalSkip++; continue; }
 
-      const art = await fetchArticleText(it.url, { maxChars: 15000 });
+      const { art, fullTextSource } = await fetchArticleBody(cfg, it.url);
       if (!art.ok || art.text.length < 200) { totalSkip++; continue; }
 
       let kw = { keywords: [] as string[], entities: [] as string[], topics: [] as string[], gist: '', isCoreAI: true, domain: 'general-ai' };
@@ -135,7 +151,7 @@ export async function runCompanyBlogs(opts: CompanyBlogsOptions, hooks: Pipeline
             summary: kw.gist || null,
             publishedAt: it.publishedAt,
             fetchedAt: new Date(),
-            metadata: { keywords: kw.keywords, entities: kw.entities, contentTopics: kw.topics, domain: kw.domain, fullTextSource: 'jina', blogSource: cfg.name },
+            metadata: { keywords: kw.keywords, entities: kw.entities, contentTopics: kw.topics, domain: kw.domain, fullTextSource, blogSource: cfg.name },
           },
         });
         companyNew++; totalNew++;
