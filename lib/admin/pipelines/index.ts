@@ -1,6 +1,6 @@
 import './person';
+import './content/company-blogs';
 // content pipelines 在 Phase D 逐条解开注释：
-// import './content/company-blogs';
 // import './content/youtube-captions';
 // import './content/threads-link';
 // import './content/openalex-papers';
