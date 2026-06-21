@@ -189,3 +189,22 @@ const finalQid = qid || `TEMP-${person.name.replace(/\s+/g, '-').toLowerCase()}-
 ```
 注意：临时 QID 后续可通过 `recrawl_robust.ts` 更新为真实 QID。
 
+
+### 4.8 内容采集额度 vs 限流误判（supadata / Exa / OpenAlex）
+
+**问题**：抓取脚本把「限流」误判成「额度耗尽」，要么疯狂重试烧额度，要么过早放弃。
+**修复**（散在 commit `c0f322b6`/`f9c4b2d9`/`a5fe7709`/`4461c3d0`/`ee5b9573`）：
+- **supadata**：区分 `429 限流`（重试）与 `402/403 额度耗尽/永久错误`（立即跳过不重试）。403=单视频永久错误（年龄限制/禁止）立即跳过。全局频率闸 `<10 req/s`。瞬时错误统一重试。202 异步任务要轮询。无字幕视频永久标记，防重复扣额度。
+- **Exa 额度耗尽**：博客全文改用 **Jina Reader** 重抓；联网搜索改用 **Tavily**（`lib/tavily-search.ts`）。
+- **OpenAlex**：按 UTC 午夜重置 budget；优先 `person.openalexId` 抓论文（免同名消歧）。
+
+### 4.9 搜索 embedding 凭证
+
+**问题**：`scripts/search/embed_content_chunks.ts` 报 401/PERMISSION_DENIED，向量生不出来。
+**根因**：`~/.zshrc` 的 `sk-2769` 中转站 key 已失效；Gemini/Google key 无 embedding 权限。
+**修复**：有效 OpenAI key（`sk-proj-` 原生）在 **mental-health-agent 的 `.env.local`**。复制进 person-agent `.env.local` + `SEARCH_EMBEDDING_PROVIDER=openai`；Clash TUN 直连 api.openai.com，embed 不用设 proxy。`search:materialize`（免费 FTS）与 `search:embed`（付费向量）是独立两步。
+
+### 4.10 生产库批量写被 auto-mode 拦
+
+**问题**：INSERT/UPDATE/DELETE（尤其删除/覆盖）被 auto-mode classifier 拦。
+**修复**：需对**具体写动作**明确放行（光对方案点头不够），或用 `!` 自跑。身份批量写必须先 dry-run 过目。详见 `docs/architecture/ENRICHMENT_AND_IDENTITY.md`。

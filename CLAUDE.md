@@ -465,9 +465,15 @@ agent-browser --session s1 open url   # 命名会话（支持并行）
 详细文档: `.claude/skills/agent-browser/SKILL.md`
 
 ## Documentation
-- `PROJECT_CONSTITUTION.md` - Architecture, deployment, error book
+- **`docs/ARCHITECTURE.md`** - 架构契约总索引（改对应系统前必读）
+  - `docs/architecture/KNOWLEDGE_THREADS.md` - 知识主题：候选 JSON↔DB 分叉、三层注册、生成器、反假源纪律
+  - `docs/architecture/ENTITY_PAGES.md` - 实体页模板：8 原则 + 结构数据/策展叙事两层
+  - `docs/architecture/DATA_MODEL.md` - 5 实体 + 6 关系边 + 分类法（模型收敛系列）
+  - `docs/architecture/ENRICHMENT_AND_IDENTITY.md` - 富集/入库/身份消歧硬规则 + 成本/写闸
+- `PROJECT_CONSTITUTION.md` - 基础设施/部署 + §4 错题本
 - `workflow_documentation.md` - Data flows, APIs, KPIs
 - `README.md` - Setup guide (Chinese)
+- `docs/archive/` - 已归档的 dated 计划（point-in-time，非 durable 参考）
 
 ## 错题本 / SOP
 
