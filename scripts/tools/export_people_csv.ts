@@ -8,7 +8,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 neonConfig.webSocketConstructor = ws;
-const connectionString = process.env.DATABASE_URL || "postgresql://neondb_owner:npg_yJ05EdKOxWlQ@ep-purple-leaf-a11okpqu-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require";
+const connectionString = process.env.DATABASE_URL!;
 
 function escapeCsv(field: any): string {
     if (field === null || field === undefined) return '';

@@ -5,7 +5,7 @@ import * as fs from 'fs';
 const neonPrisma = new PrismaClient({
     datasources: {
         db: {
-            url: 'postgresql://neondb_owner:npg_yJ05EdKOxWlQ@ep-purple-leaf-a11okpqu-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require'
+            url: process.env.DATABASE_URL!
         }
     }
 });

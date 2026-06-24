@@ -16,7 +16,7 @@ async function main() {
     console.log('DB URL (prefix):', process.env.DATABASE_URL?.substring(0, 30));
 
     // Force hardcoded URL to ensure correct connection
-    const connectionString = "postgresql://neondb_owner:npg_yJ05EdKOxWlQ@ep-purple-leaf-a11okpqu-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require";
+    const connectionString = process.env.DATABASE_URL!;
     const pool = new Pool({ connectionString });
     const adapter = new PrismaNeon(pool);
     const prisma = new PrismaClient({ adapter });

@@ -66,7 +66,10 @@ export async function requireAdminOrResponse() {
 
 export async function requireAdminOrSecretResponse(request: Request) {
   const authHeader = request.headers.get('authorization');
-  if (process.env.AUTH_SECRET && authHeader === `Bearer ${process.env.AUTH_SECRET}`) {
+  const adminApiSecret = process.env.ADMIN_API_SECRET
+    || (process.env.NODE_ENV !== 'production' ? process.env.AUTH_SECRET : undefined);
+
+  if (adminApiSecret && authHeader === `Bearer ${adminApiSecret}`) {
     return { user: null, response: null };
   }
 

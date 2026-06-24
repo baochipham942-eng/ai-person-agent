@@ -49,6 +49,7 @@
     "ops:launch-gate": "node scripts/ops/launch_gate.mjs",
     "ops:production-launch-gate": "node scripts/ops/production_launch_gate.mjs",
     "ops:production-rollout": "node scripts/ops/production_rollout.mjs",
+    "security:footprint": "node scripts/security/check-secret-footprint.mjs",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",

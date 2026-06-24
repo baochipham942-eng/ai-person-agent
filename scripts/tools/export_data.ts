@@ -5,7 +5,7 @@ import * as fs from 'fs';
 const localPrisma = new PrismaClient({
     datasources: {
         db: {
-            url: 'postgresql://linchen@localhost:5432/ai_person'
+            url: process.env.DATABASE_URL!
         }
     }
 });
