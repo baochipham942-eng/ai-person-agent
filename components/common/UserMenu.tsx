@@ -32,23 +32,21 @@ export function UserMenu() {
   const displayUser = user ?? (session.status === 'unknown' || session.status === 'loading' ? session.displayUser : null);
   const loading = session.status === 'unknown' || session.status === 'loading';
   const canOpenMenu = Boolean(user);
-  const [open, setOpen] = useState(false);
+  const userKey = user ? user.username || user.email || 'authenticated-user' : null;
+  const [openUserKey, setOpenUserKey] = useState<string | null>(null);
+  const open = canOpenMenu && openUserKey === userKey;
   const [failedAvatarSrc, setFailedAvatarSrc] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!canOpenMenu) setOpen(false);
-  }, [canOpenMenu]);
 
   useEffect(() => {
     if (!open) return;
 
     function onPointerDown(event: PointerEvent) {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+      if (!rootRef.current?.contains(event.target as Node)) setOpenUserKey(null);
     }
 
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') setOpen(false);
+      if (event.key === 'Escape') setOpenUserKey(null);
     }
 
     document.addEventListener('pointerdown', onPointerDown);
@@ -91,7 +89,7 @@ export function UserMenu() {
       <button
         type="button"
         onClick={() => {
-          if (canOpenMenu) setOpen(current => !current);
+          if (canOpenMenu) setOpenUserKey(current => (current === userKey ? null : userKey));
         }}
         aria-haspopup="menu"
         aria-expanded={canOpenMenu ? open : false}
@@ -121,14 +119,14 @@ export function UserMenu() {
           </div>
 
           <div className="p-2">
-            <CompareMenuLink onSelect={() => setOpen(false)} />
-            <MenuLinks items={USER_ACCOUNT_MENU_ITEMS} onSelect={() => setOpen(false)} />
+            <CompareMenuLink onSelect={() => setOpenUserKey(null)} />
+            <MenuLinks items={USER_ACCOUNT_MENU_ITEMS} onSelect={() => setOpenUserKey(null)} />
           </div>
 
           {user.role === 'ADMIN' && (
             <div className="border-t border-stone-100">
               <div className="px-4 pt-3 text-[11px] font-medium uppercase tracking-wide text-stone-400">管理员</div>
-              <MenuSection items={ADMIN_WORKSPACE_NAV_ITEMS} onSelect={() => setOpen(false)} />
+              <MenuSection items={ADMIN_WORKSPACE_NAV_ITEMS} onSelect={() => setOpenUserKey(null)} />
             </div>
           )}
 

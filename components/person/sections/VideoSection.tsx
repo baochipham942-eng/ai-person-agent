@@ -174,6 +174,7 @@ export function VideoSection({ personId, videoCount = 0, bare = false }: VideoSe
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {(showAll ? filteredVideos : filteredVideos.slice(0, INITIAL_DISPLAY_COUNT)).map(video => {
               const videoId = video.metadata?.videoId || extractVideoId(video.url);
+              const workspaceHref = `/source/youtube/${video.id}`;
               const thumbnailUrl = video.metadata?.thumbnailUrl ||
                 (videoId ? `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg` : null);
               const category = video.metadata?.videoCategory as VideoCategory | undefined;
@@ -186,8 +187,16 @@ export function VideoSection({ personId, videoCount = 0, bare = false }: VideoSe
                   onClick={(e) => {
                     // 如果点击的是链接，不触发卡片导航
                     if ((e.target as HTMLElement).closest('a')) return;
-                    window.open(video.url, '_blank', 'noopener,noreferrer');
+                    window.location.href = workspaceHref;
                   }}
+                  onKeyDown={(event) => {
+                    if (event.key !== 'Enter' && event.key !== ' ') return;
+                    if ((event.target as HTMLElement).closest('a')) return;
+                    event.preventDefault();
+                    window.location.href = workspaceHref;
+                  }}
+                  role="link"
+                  tabIndex={0}
                   className="group block rounded-xl overflow-hidden bg-stone-50 hover:shadow-md transition-all border border-transparent hover:border-orange-100 cursor-pointer"
                 >
                   {/* 缩略图 */}
@@ -264,6 +273,17 @@ export function VideoSection({ personId, videoCount = 0, bare = false }: VideoSe
                         ))}
                       </div>
                     )}
+                    <div className="mt-3 flex items-center justify-between gap-2 border-t border-stone-100 pt-2">
+                      <span className="text-xs font-medium text-orange-600">站内阅读字幕</span>
+                      <a
+                        href={video.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-medium text-stone-400 transition-colors hover:text-orange-600"
+                      >
+                        YouTube ↗
+                      </a>
+                    </div>
                   </div>
                 </div>
               );

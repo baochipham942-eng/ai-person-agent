@@ -121,6 +121,7 @@ SLEEP_MAX="\${YTCAP_SLEEP_MAX:-15}"
 COMMAND_TIMEOUT_MS="\${YTCAP_COMMAND_TIMEOUT_MS:-60000}"
 FALLBACK_TIMEOUT_MS="\${YTCAP_FALLBACK_TIMEOUT_MS:-30000}"
 OUT_DIR="\${YTCAP_OUT_DIR:-$SCRIPT_DIR/output}"
+SUB_LANGS="\${YTCAP_SUB_LANGS:-en,en-orig,en.*,zh,zh-Hans,zh-Hant,zh-CN,zh-TW,zh.*}"
 PROVIDER_DIR="$SCRIPT_DIR/bgutil-ytdlp-pot-provider"
 LOG_DIR="$OUT_DIR/logs"
 mkdir -p "$LOG_DIR"
@@ -182,6 +183,7 @@ ARGS=(
   "--sleep-max=$SLEEP_MAX"
   "--command-timeout-ms=$COMMAND_TIMEOUT_MS"
   "--fallback-timeout-ms=$FALLBACK_TIMEOUT_MS"
+  "--sub-langs=$SUB_LANGS"
   "--yt-dlp-bin=$YTDLP_BIN"
   "--po-provider-base-url=http://127.0.0.1:$PORT"
   "--no-stop-on-timeout"
@@ -256,6 +258,7 @@ Use \`firefox\` instead of \`chrome\` if your YouTube session is in Firefox.
 \`\`\`bash
 YTCAP_SLEEP_MIN=10 YTCAP_SLEEP_MAX=25 ./run_youtube_caption_worker.sh
 YTCAP_PORT=4417 ./run_youtube_caption_worker.sh
+YTCAP_SUB_LANGS=zh,zh-Hans,zh-Hant,zh.* ./run_youtube_caption_worker.sh
 \`\`\`
 
 ## Remaining set

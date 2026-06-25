@@ -214,8 +214,17 @@ generationId, isActive, archivedAt, createdAt, updatedAt
 ```
 id, personId, sourceType, url, urlHash, contentHash,
 title, text, publishedAt, metadata (JSON),
-fetchStatus, errorCode, fetchedAt, processed
+fetchStatus, errorCode, fetchedAt, processed,
+captionTranscripts[], videoTranscripts[]
 ```
+
+### YouTubeTranscript
+```
+id, personId, videoId, url, lang, segmentsText,
+segmentCount, durationMs, source, fetchedAt,
+captionItemId, sourceItemId, createdAt, updatedAt
+```
+> YouTube 字幕采用紧凑存储：一条 `personId + videoId` 对应一行，`segmentsText` 用 tab 分隔保存带毫秒时间戳的字幕片段。
 
 ### KnowledgeThread / KnowledgeSource
 ```

@@ -66,7 +66,7 @@
 4. 本机执行第一批：`npm run youtube:caption-fetch -- --batch=local --execute --no-stop-on-timeout`
 5. 龙虾执行第二批时复制 `exports/youtube-captions/plans/lobster_video_ids.txt`，再跑：`npm run youtube:caption-fetch -- --ids-file=lobster_video_ids.txt --batch=lobster --execute --no-stop-on-timeout`
 
-当前默认只抓 `en,en.*`，先减少请求数和 429 风险。需要中文字幕时再显式传 `--sub-langs=zh,zh.*,en,en.*`。
+当前默认只抓英文和中文：`en,en-orig,en.*,zh,zh-Hans,zh-Hant,zh-CN,zh-TW,zh.*`。不要传 `all`，它会拉到大量无关字幕轨，容易触发 429。
 
 抓取脚本会先读 YouTube watch page 的 captionTracks：没有字幕轨就直接记 `no_caption_track`；有目标字幕轨时，默认优先走 timedtext + 本地 PO provider 写 VTT，yt-dlp 作为兜底路径。
 

@@ -164,29 +164,29 @@ model QuickLoginDevice {
 }
 
 model MaintenanceJob {
-  id              String              @id @default(cuid())
-  kind            String
-  status          String              @default("queued")
-  dryRun          Boolean             @default(true)
-  triggerSource   String              @default("manual")
-  requestedById   String?
-  sourceJobId     String?
-  retryCount      Int                 @default(0)
-  targetPersonIds String[]            @default([])
-  options         Json                @default("{}")
-  command         String?
-  progressTotal   Int                 @default(0)
-  progressDone    Int                 @default(0)
-  errorMessage    String?
-  startedAt       DateTime?
-  completedAt     DateTime?
+  id                String              @id @default(cuid())
+  kind              String
+  status            String              @default("queued")
+  dryRun            Boolean             @default(true)
+  triggerSource     String              @default("manual")
+  requestedById     String?
+  sourceJobId       String?
+  retryCount        Int                 @default(0)
+  targetPersonIds   String[]            @default([])
+  options           Json                @default("{}")
+  command           String?
+  progressTotal     Int                 @default(0)
+  progressDone      Int                 @default(0)
+  errorMessage      String?
+  startedAt         DateTime?
+  completedAt       DateTime?
   cancelRequestedAt DateTime?
   canceledById      String?
   cancelReason      String?
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
-  requestedBy     User?               @relation(fields: [requestedById], references: [id], onDelete: SetNull)
-  logs            MaintenanceJobLog[]
+  requestedBy       User?               @relation(fields: [requestedById], references: [id], onDelete: SetNull)
+  logs              MaintenanceJobLog[]
 
   @@index([kind])
   @@index([status])
@@ -212,22 +212,22 @@ model MaintenanceJobLog {
 }
 
 model MaintenanceSchedule {
-  id              String   @id @default(cuid())
+  id              String    @id @default(cuid())
   name            String
-  enabled         Boolean  @default(false)
+  enabled         Boolean   @default(false)
   kind            String
-  dryRun          Boolean  @default(true)
-  targetPersonIds String[] @default([])
-  options         Json     @default("{}")
-  intervalHours   Int      @default(24)
+  dryRun          Boolean   @default(true)
+  targetPersonIds String[]  @default([])
+  options         Json      @default("{}")
+  intervalHours   Int       @default(24)
   nextRunAt       DateTime?
   lastRunAt       DateTime?
   lastJobId       String?
-  runCount        Int      @default(0)
+  runCount        Int       @default(0)
   createdById     String?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  createdBy       User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  createdBy       User?     @relation(fields: [createdById], references: [id], onDelete: SetNull)
 
   @@index([enabled, nextRunAt])
   @@index([kind])
@@ -289,6 +289,7 @@ model People {
   roles                PersonRole[]
   rawPoolItems         RawPoolItem[]
   activityEvents       ActivityEvent[]
+  youtubeTranscripts   YouTubeTranscript[]
   searchSessions       SearchSession[]
   pageViews            PageView[]
   relations            PersonRelation[]         @relation("PersonRelations")
@@ -421,29 +422,58 @@ model Card {
 }
 
 model RawPoolItem {
-  id            String         @id @default(cuid())
-  personId      String
-  sourceType    String
-  url           String
-  urlHash       String         @unique
-  contentHash   String
-  title         String
-  text          String
-  publishedAt   DateTime?
-  metadata      Json?
-  fetchStatus   String         @default("success")
-  errorCode     String?
-  fetchedAt     DateTime       @default(now())
-  processed     Boolean        @default(false)
-  person        People         @relation(fields: [personId], references: [id], onDelete: Cascade)
-  activityEvent ActivityEvent?
+  id                     String                  @id @default(cuid())
+  personId               String
+  sourceType             String
+  url                    String
+  urlHash                String                  @unique
+  contentHash            String
+  title                  String
+  text                   String
+  publishedAt            DateTime?
+  metadata               Json?
+  fetchStatus            String                  @default("success")
+  errorCode              String?
+  fetchedAt              DateTime                @default(now())
+  processed              Boolean                 @default(false)
+  person                 People                  @relation(fields: [personId], references: [id], onDelete: Cascade)
+  activityEvent          ActivityEvent?
   knowledgeThreadSources KnowledgeThreadSource[]
+  captionTranscripts     YouTubeTranscript[]     @relation("CaptionTranscripts")
+  videoTranscripts       YouTubeTranscript[]     @relation("VideoTranscripts")
 
   @@index([personId])
   @@index([sourceType])
   @@index([personId, sourceType, publishedAt])
   @@index([personId, publishedAt])
   @@index([fetchStatus, fetchedAt])
+}
+
+model YouTubeTranscript {
+  id            String       @id @default(cuid())
+  personId      String
+  videoId       String
+  url           String
+  lang          String?
+  segmentsText  String       @db.Text
+  segmentCount  Int
+  durationMs    Int?
+  source        String       @default("supadata")
+  fetchedAt     DateTime     @default(now())
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  person        People       @relation(fields: [personId], references: [id], onDelete: Cascade)
+  captionItemId String?
+  captionItem   RawPoolItem? @relation("CaptionTranscripts", fields: [captionItemId], references: [id], onDelete: SetNull)
+  sourceItemId  String?
+  sourceItem    RawPoolItem? @relation("VideoTranscripts", fields: [sourceItemId], references: [id], onDelete: SetNull)
+
+  @@unique([personId, videoId])
+  @@index([personId])
+  @@index([videoId])
+  @@index([captionItemId])
+  @@index([sourceItemId])
+  @@index([fetchedAt])
 }
 
 model KnowledgeThread {
@@ -482,8 +512,8 @@ model KnowledgeSource {
   fetchedAt     DateTime                @default(now())
   metadata      Json?
   threadSources KnowledgeThreadSource[]
-  outgoingEdges KnowledgeThreadEdge[]    @relation("KnowledgeEdgeFromSource")
-  incomingEdges KnowledgeThreadEdge[]    @relation("KnowledgeEdgeToSource")
+  outgoingEdges KnowledgeThreadEdge[]   @relation("KnowledgeEdgeFromSource")
+  incomingEdges KnowledgeThreadEdge[]   @relation("KnowledgeEdgeToSource")
 
   @@index([sourceKind])
   @@index([sourceOwner])
@@ -575,29 +605,29 @@ model ActivityEvent {
 }
 
 model SearchDocument {
-  id             String         @id @default(cuid())
-  objectType     String
-  objectId       String
-  canonicalKey   String         @unique
-  personId       String?
-  threadId       String?
-  organizationId String?
-  sourceType     String?
-  title          String
-  summary        String?
-  text           String
-  url            String?
-  topics         String[]       @default([])
-  organizations  String[]       @default([])
-  publishedAt    DateTime?
-  fetchedAt      DateTime?
-  textHash       String
-  embeddingStatus String        @default("pending")
-  metadata       Json?
-  searchVector   Unsupported("tsvector")?
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
-  chunks         ContentChunk[]
+  id              String                   @id @default(cuid())
+  objectType      String
+  objectId        String
+  canonicalKey    String                   @unique
+  personId        String?
+  threadId        String?
+  organizationId  String?
+  sourceType      String?
+  title           String
+  summary         String?
+  text            String
+  url             String?
+  topics          String[]                 @default([])
+  organizations   String[]                 @default([])
+  publishedAt     DateTime?
+  fetchedAt       DateTime?
+  textHash        String
+  embeddingStatus String                   @default("pending")
+  metadata        Json?
+  searchVector    Unsupported("tsvector")?
+  createdAt       DateTime                 @default(now())
+  updatedAt       DateTime                 @updatedAt
+  chunks          ContentChunk[]
 
   @@unique([objectType, objectId])
   @@index([objectType])
@@ -614,23 +644,23 @@ model SearchDocument {
 }
 
 model ContentChunk {
-  id                String         @id @default(cuid())
-  documentId        String
-  objectType        String
-  objectId          String
-  chunkIndex        Int
-  title             String
-  text              String
-  tokenEstimate     Int            @default(0)
-  textHash          String
-  embedding         Unsupported("vector(512)")?
-  embeddingModel    String?
+  id                 String                      @id @default(cuid())
+  documentId         String
+  objectType         String
+  objectId           String
+  chunkIndex         Int
+  title              String
+  text               String
+  tokenEstimate      Int                         @default(0)
+  textHash           String
+  embedding          Unsupported("vector(512)")?
+  embeddingModel     String?
   embeddingUpdatedAt DateTime?
-  metadata          Json?
-  searchVector      Unsupported("tsvector")?
-  createdAt         DateTime       @default(now())
-  updatedAt         DateTime       @updatedAt
-  document          SearchDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  metadata           Json?
+  searchVector       Unsupported("tsvector")?
+  createdAt          DateTime                    @default(now())
+  updatedAt          DateTime                    @updatedAt
+  document           SearchDocument              @relation(fields: [documentId], references: [id], onDelete: Cascade)
 
   @@unique([documentId, chunkIndex])
   @@index([documentId])

@@ -31,10 +31,19 @@ export interface TranscriptResult {
     text: string;
     lang: string | null;
     availableLangs: string[];
+    segments?: TranscriptSegment[];
     /** 命中字幕时为 true；视频无字幕/失败时为 false */
     available: boolean;
     /** 细分状态，供调用方决定是否永久标记跳过（none）还是重试（timeout/error） */
     status: TranscriptStatus;
+}
+
+export interface TranscriptSegment {
+    text: string;
+    /** Supadata transcript offsets are milliseconds when text=false. */
+    offset: number;
+    duration: number | null;
+    lang?: string | null;
 }
 
 function loadKeys(): string[] {
@@ -62,6 +71,8 @@ async function rateGate(): Promise<void> {
 interface FetchOptions {
     /** 偏好语言（如 'en'）；不传则取视频默认字幕 */
     lang?: string;
+    /** Supadata transcript mode: native only, generated only, or auto fallback. */
+    mode?: 'native' | 'generate' | 'auto';
     /** 单 key 网络错误重试次数 */
     retries?: number;
     /** 单次 Supadata HTTP 请求超时 ms（默认 30000，可用 SUPADATA_REQUEST_TIMEOUT_MS 覆盖） */
@@ -112,14 +123,30 @@ export async function fetchYoutubeTranscript(
     videoUrlOrId: string,
     options: FetchOptions = {},
 ): Promise<TranscriptResult> {
+    return fetchYoutubeTranscriptInternal(videoUrlOrId, options, true);
+}
+
+export async function fetchYoutubeTranscriptSegments(
+    videoUrlOrId: string,
+    options: FetchOptions = {},
+): Promise<TranscriptResult> {
+    return fetchYoutubeTranscriptInternal(videoUrlOrId, options, false);
+}
+
+async function fetchYoutubeTranscriptInternal(
+    videoUrlOrId: string,
+    options: FetchOptions,
+    textOnly: boolean,
+): Promise<TranscriptResult> {
     const keys = loadKeys();
     if (keys.length === 0) {
         throw new Error('SUPADATA_API_KEYS 未配置（.env.local）');
     }
 
     const url = normalizeVideoUrl(videoUrlOrId);
-    const params = new URLSearchParams({ url, text: 'true' });
+    const params = new URLSearchParams({ url, text: textOnly ? 'true' : 'false' });
     if (options.lang) params.set('lang', options.lang);
+    if (options.mode) params.set('mode', options.mode);
     const endpoint = `${SUPADATA_BASE_URL}/transcript?${params}`;
 
     // 从当前游标开始，依次尝试每个 key
@@ -212,19 +239,41 @@ function parseTranscript(data: unknown): TranscriptResult {
     const obj = data as Record<string, unknown>;
     const content = obj.content;
     let text = '';
+    let segments: TranscriptSegment[] | undefined;
     if (typeof content === 'string') {
         text = content;
     } else if (Array.isArray(content)) {
-        text = content
-            .map(seg => (seg && typeof seg === 'object' ? String((seg as Record<string, unknown>).text ?? '') : ''))
-            .join(' ');
+        segments = content
+            .map(parseSegment)
+            .filter((seg): seg is TranscriptSegment => Boolean(seg));
+        text = segments.map(seg => seg.text).join(' ');
     }
     text = text.replace(/\s+/g, ' ').trim();
     const lang = typeof obj.lang === 'string' ? obj.lang : null;
     const availableLangs = Array.isArray(obj.availableLangs)
         ? obj.availableLangs.filter((l): l is string => typeof l === 'string')
         : [];
-    return { text, lang, availableLangs, available: text.length > 0, status: text.length > 0 ? 'ok' : 'none' };
+    return { text, lang, availableLangs, segments, available: text.length > 0, status: text.length > 0 ? 'ok' : 'none' };
+}
+
+function parseSegment(value: unknown): TranscriptSegment | null {
+    if (!value || typeof value !== 'object') return null;
+    const obj = value as Record<string, unknown>;
+    const text = String(obj.text ?? '').replace(/\s+/g, ' ').trim();
+    if (!text) return null;
+    const offset = readMs(obj.offset);
+    if (offset === null) return null;
+    return {
+        text,
+        offset,
+        duration: readMs(obj.duration),
+        lang: typeof obj.lang === 'string' ? obj.lang : null,
+    };
+}
+
+function readMs(value: unknown): number | null {
+    if (typeof value !== 'number' || !Number.isFinite(value)) return null;
+    return Math.max(0, Math.round(value));
 }
 
 function normalizeVideoUrl(videoUrlOrId: string): string {

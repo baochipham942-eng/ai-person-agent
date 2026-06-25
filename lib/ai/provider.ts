@@ -112,6 +112,7 @@ export async function generate(
             const result = await generateText({
                 model: getModel(name),
                 messages: messages.map(m => ({ role: m.role, content: m.content })),
+                allowSystemInMessages: true,
                 temperature: options.temperature ?? 0.7,
                 maxOutputTokens: options.maxTokens ?? 2000,
                 abortSignal: AbortSignal.timeout(requestTimeoutMs(options)),
@@ -173,6 +174,7 @@ export async function generateStructured<T>(
             const result = await generateText({
                 model: getModel(name),
                 messages: baseMessages.map(m => ({ role: m.role, content: m.content })),
+                allowSystemInMessages: true,
                 temperature: options.temperature ?? 0.3,
                 maxOutputTokens: options.maxTokens ?? 2000,
                 providerOptions: { openai: { response_format: { type: 'json_object' } } },
@@ -191,6 +193,7 @@ export async function generateStructured<T>(
                         { role: 'assistant' as const, content: result.text },
                         { role: 'user' as const, content: `上面的 JSON 校验失败: ${(parseErr as Error).message?.slice(0, 300)}。请修正后只输出有效 JSON。` },
                     ],
+                    allowSystemInMessages: true,
                     temperature: 0,
                     maxOutputTokens: options.maxTokens ?? 2000,
                     providerOptions: { openai: { response_format: { type: 'json_object' } } },

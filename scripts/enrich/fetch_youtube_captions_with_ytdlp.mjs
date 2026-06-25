@@ -4,6 +4,7 @@ import { spawnSync } from 'node:child_process';
 
 const DEFAULT_PLAN = 'exports/youtube-captions/plans/youtube_caption_plan.json';
 const DEFAULT_OUT_DIR = 'exports/youtube-captions/subtitles';
+const DEFAULT_SUB_LANGS = 'en,en-orig,en.*,zh,zh-Hans,zh-Hant,zh-CN,zh-TW,zh.*';
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
@@ -631,7 +632,7 @@ function parseArgs(args) {
     batch: 'local',
     outDir: DEFAULT_OUT_DIR,
     archive: null,
-    subLangs: 'en,en.*',
+    subLangs: DEFAULT_SUB_LANGS,
     subFormat: 'vtt/best',
     ytDlpBin: 'yt-dlp',
     cookiesFromBrowser: '',

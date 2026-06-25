@@ -17,6 +17,7 @@
     "youtube:caption-plan": "node scripts/enrich/plan_youtube_caption_batches.mjs",
     "youtube:caption-fetch": "node scripts/enrich/fetch_youtube_captions_with_ytdlp.mjs",
     "youtube:caption-import": "node scripts/enrich/import_youtube_captions_to_rawpool.mjs",
+    "youtube:caption-segments": "npx tsx scripts/enrich/backfill_youtube_caption_segments.ts",
     "search:materialize": "npx tsx scripts/search/materialize_search_index.ts",
     "search:embed": "npx tsx scripts/search/embed_content_chunks.ts",
     "search:status": "npx tsx scripts/search/check_search_readiness.ts",

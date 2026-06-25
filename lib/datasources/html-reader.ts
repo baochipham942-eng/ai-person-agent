@@ -67,7 +67,7 @@ function pickContainer(html: string): string {
  */
 export function extractArticleText(html: string): string {
   if (!html || !html.trim()) return '';
-  let h = html
+  const h = html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<noscript[\s\S]*?<\/noscript>/gi, ' ');

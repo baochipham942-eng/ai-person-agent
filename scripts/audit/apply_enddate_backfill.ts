@@ -78,7 +78,7 @@ async function main() {
       const override = OVERRIDES[r.roleId];
       if (override === 'SKIP') { suspicious.push(`  [手工跳过] ${tag}`); continue; }
 
-      let endDate = override ? endApproxToDate(override) : endApproxToDate(v.endApprox);
+      const endDate = override ? endApproxToDate(override) : endApproxToDate(v.endApprox);
       const startD = r.startDate ? new Date(r.startDate) : null;
 
       if (!endDate) { suspicious.push(`  [无离职日期] ${tag}  endApprox=${v.endApprox}`); continue; }
