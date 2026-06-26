@@ -17,6 +17,7 @@ export type ActivityEventType =
 
 export interface ActivityEvent {
   id: string;
+  sourceItemId: string | null;
   personId: string;
   personName: string;
   personAvatarUrl: string | null;
@@ -180,6 +181,7 @@ async function fetchPersistedActivityEvents(
     where,
     select: {
       id: true,
+      sourceItemId: true,
       personId: true,
       eventType: true,
       sourceType: true,
@@ -236,6 +238,7 @@ async function fetchPersistedActivityEvents(
 
       return {
         id: row.id,
+        sourceItemId: row.sourceItemId,
         personId: row.personId,
         personName: row.person.name,
         personAvatarUrl: row.person.avatarUrl,
@@ -629,6 +632,7 @@ function toActivityEvent(row: {
 
   return {
     id: row.id,
+    sourceItemId: row.id,
     personId: row.person.id,
     personName: row.person.name,
     personAvatarUrl: row.person.avatarUrl,
@@ -684,6 +688,7 @@ function toRelationActivityEvent(row: {
 
   return {
     id: `relation:${row.id}:${focus.id}`,
+    sourceItemId: null,
     personId: focus.id,
     personName: focus.name,
     personAvatarUrl: focus.avatarUrl,
@@ -740,6 +745,7 @@ function toCompanySourceActivityEvent(row: {
 
   return {
     id: `company-source:${row.id}`,
+    sourceItemId: null,
     personId: `company:${row.organization.id}`,
     personName: organizationName,
     personAvatarUrl: null,

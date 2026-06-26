@@ -86,6 +86,7 @@ export function activityToFeaturedCard(event: ActivityEvent): FeaturedCard | nul
   if (!kind) return null; // 丢弃 github / role_change / relation_change
   if (!event.importanceReason || !event.importanceReason.trim()) return null; // 无推荐理由不进流
   if (!event.title.trim() || !event.url.trim()) return null;
+  const internalHref = internalYoutubeSourceHref(event, kind);
 
   // 公司源事件 personId 形如 "company:<orgId>"，无内部人物页，不挂人物 chip
   const isCompanyAttributed = event.personId.startsWith('company:');
@@ -103,8 +104,8 @@ export function activityToFeaturedCard(event: ActivityEvent): FeaturedCard | nul
     id: `activity:${event.id}`,
     title: event.title,
     whyNow: event.importanceReason,
-    href: event.url,
-    external: true,
+    href: internalHref ?? event.url,
+    external: internalHref ? false : true,
     person,
     topics: event.topics.slice(0, 3),
     occurredAt: event.occurredAt,
@@ -114,6 +115,13 @@ export function activityToFeaturedCard(event: ActivityEvent): FeaturedCard | nul
     pinned: false,
     rankScore: KIND_BASE_SCORE[kind] + recencyScore(event.occurredAt) + Math.round(event.confidence * 8),
   };
+}
+
+function internalYoutubeSourceHref(event: ActivityEvent, kind: FeaturedCardKind): string | null {
+  if (kind !== 'video') return null;
+  if (event.sourceType !== 'youtube') return null;
+  if (!event.sourceItemId) return null;
+  return `/source/youtube/${event.sourceItemId}`;
 }
 
 export interface PersonCardInput {
