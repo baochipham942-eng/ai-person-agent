@@ -9,7 +9,6 @@ import {
   asRecord,
   normalizeComparablePaperUrl,
   normalizePaperTitleKey,
-  readNumber,
 } from './utils';
 
 export async function getPaperRelatedWorks(
