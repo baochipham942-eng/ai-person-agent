@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { AvatarImage } from '@/components/common/AvatarImage';
 import {
   getThreadPresentationSeed,
@@ -41,6 +42,7 @@ const ROLE_SOURCE_FALLBACK: Record<KnowledgeSourceRole, string> = {
 const STATUS_LABELS: Record<KnowledgeThreadSource['status'], string> = {
   verified: '已核',
   usable: '可用',
+  needs_review: '待复核',
   needs_capture: '待补原文',
   thin: '偏薄',
 };
@@ -48,8 +50,28 @@ const STATUS_LABELS: Record<KnowledgeThreadSource['status'], string> = {
 const STATUS_STYLES: Record<KnowledgeThreadSource['status'], string> = {
   verified: 'bg-emerald-50 text-emerald-700 ring-emerald-100',
   usable: 'bg-sky-50 text-sky-700 ring-sky-100',
+  needs_review: 'bg-amber-50 text-amber-700 ring-amber-100',
   needs_capture: 'bg-amber-50 text-amber-700 ring-amber-100',
   thin: 'bg-stone-50 text-stone-500 ring-stone-100',
+};
+
+type ThreadPaperReferenceEvidence = NonNullable<KnowledgeThreadSource['paperReferenceEvidence']>;
+type ThreadPaperReferenceItem = ThreadPaperReferenceEvidence['items'][number];
+type ThreadPaperEvidencePaper = NonNullable<KnowledgeThreadFixture['paperEvidenceChain']>['papers'][number];
+type ThreadPaperEvidenceClaim = NonNullable<ThreadPaperEvidencePaper['claims']>[number];
+
+const PAPER_REFERENCE_STATUS_LABELS: Record<ThreadPaperReferenceEvidence['status'], string> = {
+  ready: '已缓存',
+  empty: '暂无引用',
+  failed: '待复核',
+  stale: '待刷新',
+};
+
+const PAPER_REFERENCE_STATUS_STYLES: Record<ThreadPaperReferenceEvidence['status'], string> = {
+  ready: 'bg-emerald-50 text-emerald-700 ring-emerald-100',
+  empty: 'bg-stone-50 text-stone-500 ring-stone-100',
+  failed: 'bg-amber-50 text-amber-700 ring-amber-100',
+  stale: 'bg-amber-50 text-amber-700 ring-amber-100',
 };
 
 const EDGE_LABELS: Record<string, string> = {
@@ -100,16 +122,20 @@ export function ThreadPageBlocks({ thread, people = [] }: ThreadPageBlocksProps)
   const roleStats = getRoleStats(thread);
   const coverage = getCoverage(thread, roleStats);
   const hasPeople = people.length > 0;
+  const hasPaperEvidenceChain = hasUsefulPaperEvidenceChain(thread.paperEvidenceChain);
 
   return (
     <main className="mx-auto w-full max-w-6xl min-w-0 space-y-6 px-4 py-6 sm:px-6">
       <ThreadHero thread={thread} presentation={presentation} />
-      <ThreadPageNav hasPeople={hasPeople} />
+      <ThreadPageNav hasPeople={hasPeople} hasPaperEvidenceChain={hasPaperEvidenceChain} />
 
       <div className="space-y-6">
         <ExplanationBlock presentation={presentation} />
         {hasPeople && <ThreadKeyPeopleSection people={people} />}
         <KeyMaterialsBlock roleStats={roleStats} presentation={presentation} />
+        {hasPaperEvidenceChain && thread.paperEvidenceChain && (
+          <PaperEvidenceChainBlock chain={thread.paperEvidenceChain} />
+        )}
         <ThreadReferenceTier thread={thread} sourcesById={sourcesById} coverage={coverage} />
       </div>
     </main>
@@ -172,12 +198,19 @@ function ThreadHero({
   );
 }
 
-function ThreadPageNav({ hasPeople }: { hasPeople: boolean }) {
+function ThreadPageNav({
+  hasPeople,
+  hasPaperEvidenceChain,
+}: {
+  hasPeople: boolean;
+  hasPaperEvidenceChain: boolean;
+}) {
   const items = [
     { href: '#overview', label: '概览' },
     { href: '#content', label: '完整循环' },
     ...(hasPeople ? [{ href: '#people', label: '关键人物' }] : []),
     { href: '#evidence', label: '关键材料' },
+    ...(hasPaperEvidenceChain ? [{ href: '#paper-chain', label: '论文链' }] : []),
     { href: '#reference', label: '参考与来源' },
   ];
 
@@ -389,6 +422,246 @@ function KeyMaterialsBlock({
   );
 }
 
+type PaperEvidenceChain = NonNullable<KnowledgeThreadFixture['paperEvidenceChain']>;
+
+function PaperEvidenceChainBlock({ chain }: { chain: PaperEvidenceChain }) {
+  const papers = chain.papers.slice(0, 6);
+  const reviewPapers = (chain.reviewPapers || []).slice(0, 6);
+  const works = chain.works.slice(0, 6);
+  const implementations = chain.implementations.slice(0, 6);
+  const contextSources = chain.contextSources.slice(0, 4);
+
+  return (
+    <section
+      id="paper-chain"
+      data-thread-paper-evidence-chain
+      className="min-w-0 scroll-mt-24 rounded-lg border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-7 sm:py-7"
+    >
+      <SectionHeading
+        title="论文证据链"
+        description="把这个主题里的论文根基、对应作品、实现代码和相关语境放在同一屏，方便核对来源。"
+      />
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.95fr)_minmax(0,0.95fr)]">
+        <EvidenceChainColumn title="论文根基" count={papers.length}>
+          {papers.map(paper => (
+            <article
+              key={paper.id}
+              data-thread-paper-evidence-paper
+              className="border-t border-stone-100 py-3 first:border-t-0 first:pt-0 last:pb-0"
+            >
+              <div className="flex flex-wrap items-center gap-2 text-[11px] text-stone-400">
+                <span className="rounded-md bg-orange-50 px-1.5 py-0.5 font-medium text-orange-700 ring-1 ring-orange-100">
+                  {paper.sourceKind}
+                </span>
+                <StatusPill status={paper.status} />
+                <span>{Math.round(paper.confidence * 100)}%</span>
+              </div>
+              <Link
+                href={paper.href}
+                prefetch={false}
+                data-thread-paper-evidence-link
+                className="mt-2 block break-words text-sm font-semibold leading-5 text-stone-950 hover:text-orange-600"
+              >
+                {paper.title}
+              </Link>
+              <p className="mt-1 line-clamp-3 break-words text-xs leading-5 text-stone-600">{paper.summary}</p>
+              {paper.claims && paper.claims.length > 0 && (
+                <PaperClaimCitations paper={paper} />
+              )}
+              {paper.externalUrl && (
+                <a
+                  href={paper.externalUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex text-[11px] font-medium text-stone-500 hover:text-orange-600"
+                >
+                  原始页面
+                </a>
+              )}
+            </article>
+          ))}
+        </EvidenceChainColumn>
+
+        <EvidenceChainColumn title="对应作品" count={works.length}>
+          {works.map(work => (
+            <article
+              key={`${work.slug}-${work.paperId}`}
+              data-thread-paper-evidence-work
+              className="border-t border-stone-100 py-3 first:border-t-0 first:pt-0 last:pb-0"
+            >
+              <div className="flex flex-wrap items-center gap-2 text-[11px] text-stone-400">
+                <span>{work.typeLabel}</span>
+                {work.organizationName && <span>{work.organizationName}</span>}
+                <span>{Math.round(work.confidence * 100)}%</span>
+              </div>
+              <Link
+                href={work.href}
+                prefetch={false}
+                data-thread-paper-evidence-link
+                className="mt-2 block break-words text-sm font-semibold leading-5 text-stone-950 hover:text-orange-600"
+              >
+                {work.name}
+              </Link>
+              <p className="mt-1 line-clamp-3 break-words text-xs leading-5 text-stone-600">{work.matchReason}</p>
+            </article>
+          ))}
+        </EvidenceChainColumn>
+
+        <EvidenceChainColumn title="实现代码" count={implementations.length}>
+          {implementations.map(implementation => (
+            <article
+              key={implementation.id}
+              data-thread-paper-evidence-implementation
+              className="border-t border-stone-100 py-3 first:border-t-0 first:pt-0 last:pb-0"
+            >
+              <div className="flex flex-wrap items-center gap-2 text-[11px] text-stone-400">
+                <span>{implementation.productName}</span>
+                <span>{Math.round(implementation.confidence * 100)}%</span>
+              </div>
+              <a
+                href={implementation.href}
+                target="_blank"
+                rel="noreferrer"
+                data-thread-paper-evidence-link
+                className="mt-2 block break-words text-sm font-semibold leading-5 text-stone-950 hover:text-orange-600"
+              >
+                {implementation.title}
+              </a>
+              <p className="mt-1 line-clamp-3 break-words text-xs leading-5 text-stone-600">
+                {implementation.summary || implementation.matchReason}
+              </p>
+            </article>
+          ))}
+        </EvidenceChainColumn>
+      </div>
+
+      {reviewPapers.length > 0 && (
+        <div className="mt-5 rounded-lg border border-amber-100 bg-amber-50/45 px-4" data-thread-paper-review-queue>
+          <div className="border-b border-amber-100 py-3">
+            <div className="text-xs font-semibold text-amber-700">待复核论文</div>
+            <p className="mt-1 text-[11px] leading-5 text-amber-700">
+              这些论文关系会保留为线索，但不会计入主题 ready，也不会参与作品/代码证据链。
+            </p>
+          </div>
+          <div className="divide-y divide-amber-100">
+            {reviewPapers.map(paper => (
+              <article key={paper.id} className="py-3 first:pt-0 last:pb-0" data-thread-paper-review-item>
+                <div className="flex flex-wrap items-center gap-2 text-[11px] text-amber-700">
+                  <StatusPill status={paper.status} />
+                  <span>{Math.round(paper.confidence * 100)}%</span>
+                  {paper.reviewReason && <span>{paper.reviewReason}</span>}
+                </div>
+                <Link
+                  href={paper.href}
+                  prefetch={false}
+                  className="mt-2 block break-words text-sm font-semibold leading-5 text-stone-950 hover:text-orange-600"
+                  data-thread-paper-review-link
+                >
+                  {paper.title}
+                </Link>
+                <p className="mt-1 line-clamp-2 break-words text-xs leading-5 text-stone-600">{paper.summary}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {contextSources.length > 0 && (
+        <div className="mt-5 rounded-lg border border-stone-100 px-4">
+          <div className="border-b border-stone-100 py-3">
+            <div className="text-xs font-semibold text-stone-500">相关语境</div>
+            <p className="mt-1 text-[11px] leading-5 text-stone-400">官方材料、访谈和一线信号用于解释这些论文为什么属于这个主题。</p>
+          </div>
+          <div className="divide-y divide-stone-100">
+            {contextSources.map(source => (
+              <div key={source.id} data-thread-paper-evidence-context>
+                <SourceEvidenceRow source={source} roleLabel={ROLE_LABELS[source.role]} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function PaperClaimCitations({ paper }: { paper: ThreadPaperEvidencePaper }) {
+  const claims = (paper.claims || []).slice(0, 4);
+  if (claims.length === 0) return null;
+
+  return (
+    <div className="mt-3 rounded-lg border border-orange-100 bg-orange-50/35 px-2.5 py-2" data-thread-paper-claim-citations>
+      <div className="mb-1.5 text-[11px] font-semibold text-orange-700">论文 claim citations</div>
+      <div className="space-y-1.5">
+        {claims.map(claim => (
+          <Link
+            key={claim.id}
+            href={claim.href}
+            prefetch={false}
+            className="block rounded-md bg-white/80 px-2 py-1.5 text-[11px] leading-5 text-stone-600 transition hover:bg-white hover:text-orange-700"
+            data-thread-paper-claim-citation
+            data-section-type={claim.sectionType}
+            data-anchor-kind={claim.anchorKind}
+            data-page-number={claim.pageNumber ?? undefined}
+            data-chunk-index={claim.chunkIndex ?? undefined}
+          >
+            <PaperClaimCitationBody claim={claim} />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PaperClaimCitationBody({ claim }: { claim: ThreadPaperEvidenceClaim }) {
+  return (
+    <>
+      <span className="mb-0.5 inline-flex rounded-md bg-orange-50 px-1.5 py-0.5 font-medium text-orange-700 ring-1 ring-orange-100">
+        {claim.label}
+      </span>
+      <span className="mb-1 flex flex-wrap items-center gap-1.5 text-[10px] text-stone-400">
+        <span>{claim.anchorKind === 'paper_chunk' ? 'Paper chunk' : 'Guide'}</span>
+        {claim.pageNumber && <span>p.{claim.pageNumber}</span>}
+        {typeof claim.chunkIndex === 'number' && <span>chunk {claim.chunkIndex}</span>}
+        {claim.sectionTitle && <span className="line-clamp-1">{claim.sectionTitle}</span>}
+      </span>
+      <span className="block line-clamp-2">{claim.body}</span>
+      {claim.sourceQuote && (
+        <span
+          className="mt-1 block line-clamp-2 border-l-2 border-orange-100 pl-2 text-[10px] leading-4 text-stone-400"
+          data-thread-paper-claim-source-quote
+        >
+          原文: {claim.sourceQuote}
+        </span>
+      )}
+    </>
+  );
+}
+
+function EvidenceChainColumn({
+  title,
+  count,
+  children,
+}: {
+  title: string;
+  count: number;
+  children: ReactNode;
+}) {
+  return (
+    <div className="min-w-0 rounded-lg border border-stone-100 bg-stone-50/40 px-4 py-4">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <h3 className="text-sm font-semibold text-stone-900">{title}</h3>
+        <span className="text-[11px] text-stone-400">{count} 条</span>
+      </div>
+      {count > 0 ? (
+        <div>{children}</div>
+      ) : (
+        <ThinNotice text="这一类证据还没有可展示来源。" />
+      )}
+    </div>
+  );
+}
+
 function ThreadReferenceTier({
   thread,
   sourcesById,
@@ -507,8 +780,100 @@ function SourceEvidenceRow({ source, roleLabel }: { source: KnowledgeThreadSourc
       </div>
       <p className="mt-2 break-words text-sm leading-6 text-stone-700">{body}</p>
       {note !== body && <p className="mt-2 break-words text-xs leading-5 text-stone-500">{note}</p>}
+      {source.paperReferenceEvidence && (
+        <PaperReferenceEvidenceBlock evidence={source.paperReferenceEvidence} />
+      )}
     </article>
   );
+}
+
+function PaperReferenceEvidenceBlock({ evidence }: { evidence: ThreadPaperReferenceEvidence }) {
+  return (
+    <div
+      data-thread-paper-reference-evidence
+      data-thread-paper-reference-status={evidence.status}
+      className="mt-3 rounded-lg border border-stone-100 bg-stone-50/70 px-3 py-3"
+    >
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="text-xs font-semibold text-stone-800">引用网络</div>
+        <div className="flex flex-wrap items-center gap-2 text-[11px]">
+          <span className={`rounded-md px-1.5 py-0.5 font-medium ring-1 ${PAPER_REFERENCE_STATUS_STYLES[evidence.status]}`}>
+            {PAPER_REFERENCE_STATUS_LABELS[evidence.status]}
+          </span>
+          <span className="text-stone-500">{paperReferenceStatusText(evidence)}</span>
+        </div>
+      </div>
+
+      {evidence.items.length > 0 ? (
+        <ul className="mt-2 divide-y divide-stone-100">
+          {evidence.items.map(item => (
+            <li key={item.href} data-thread-paper-reference-item className="py-2 first:pt-0 last:pb-0">
+              <PaperReferenceLink item={item} />
+              <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-stone-400">
+                {paperReferenceMeta(item) && <span>{paperReferenceMeta(item)}</span>}
+                {item.isInternal && (
+                  <span className="rounded-md bg-orange-50 px-1.5 py-0.5 font-medium text-orange-700 ring-1 ring-orange-100">
+                    站内论文
+                  </span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-2 text-xs leading-5 text-stone-500">
+          {evidence.message || 'OpenAlex 暂无 referenced works，先保留为引用空集。'}
+        </p>
+      )}
+      {evidence.openalexWorkTitle && evidence.status !== 'ready' && (
+        <p className="mt-2 border-t border-stone-100 pt-2 text-[11px] leading-5 text-stone-400">
+          OpenAlex 匹配：{evidence.openalexWorkTitle}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function PaperReferenceLink({ item }: { item: ThreadPaperReferenceItem }) {
+  const className = 'block break-words text-xs font-medium leading-5 text-stone-800 hover:text-orange-600';
+  if (item.isInternal) {
+    return (
+      <Link
+        href={item.href}
+        prefetch={false}
+        data-thread-paper-reference-link
+        className={className}
+      >
+        {item.title}
+      </Link>
+    );
+  }
+  return (
+    <a
+      href={item.href}
+      target="_blank"
+      rel="noreferrer"
+      data-thread-paper-reference-link
+      className={className}
+    >
+      {item.title}
+    </a>
+  );
+}
+
+function paperReferenceStatusText(evidence: ThreadPaperReferenceEvidence): string {
+  if (evidence.status === 'failed') return evidence.message || 'OpenAlex work 匹配待复核';
+  if (evidence.status === 'stale') return `${evidence.referenceCount}/${evidence.referencesTotal} 条缓存待刷新`;
+  if (evidence.status === 'empty') return evidence.message || 'OpenAlex 暂无 referenced works';
+  return `${evidence.referenceCount}/${evidence.referencesTotal} 条已缓存`;
+}
+
+function paperReferenceMeta(item: ThreadPaperReferenceItem): string {
+  return [
+    item.year ? String(item.year) : '',
+    item.venue || '',
+    typeof item.citationCount === 'number' ? `引用 ${item.citationCount} 次` : '',
+  ].filter(Boolean).join(' · ');
 }
 
 function Metric({ label, value, wide = false }: { label: string; value: string | number; wide?: boolean }) {
@@ -604,6 +969,17 @@ function getCoverage(thread: KnowledgeThreadFixture, roleStats: RoleStat[]): Cov
   return { missingRoles };
 }
 
+function hasUsefulPaperEvidenceChain(chain: KnowledgeThreadFixture['paperEvidenceChain'] | undefined): boolean {
+  return Boolean(
+    chain &&
+      (chain.papers.length > 0 ||
+        (chain.reviewPapers || []).length > 0 ||
+        chain.works.length > 0 ||
+        chain.implementations.length > 0 ||
+        chain.contextSources.length > 0),
+  );
+}
+
 function compareSourcesForReading(left: KnowledgeThreadSource, right: KnowledgeThreadSource): number {
   const statusDelta = sourceStatusRank(right.status) - sourceStatusRank(left.status);
   if (statusDelta !== 0) return statusDelta;
@@ -616,6 +992,7 @@ function sourceStatusRank(status: KnowledgeThreadSource['status']): number {
   return {
     verified: 4,
     usable: 3,
+    needs_review: 2,
     needs_capture: 2,
     thin: 1,
   }[status];

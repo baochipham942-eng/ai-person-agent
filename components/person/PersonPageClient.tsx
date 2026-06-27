@@ -107,6 +107,14 @@ interface Paper {
   metadata: {
     venue?: string;
     citedByCount?: number;
+    authors?: string[];
+    paperEvidence?: {
+      sourceRelation?: 'source_owner' | 'confirmed_review' | 'source_and_confirmed_review';
+      confirmedForPerson?: boolean;
+      confirmedPeopleCount?: number;
+      needsReviewCount?: number;
+      openalexAuthorshipCount?: number;
+    };
   };
 }
 

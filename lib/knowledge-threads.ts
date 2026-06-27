@@ -5,11 +5,14 @@ import {
 import type {
   KnowledgeActionKind,
   KnowledgeLinkKind,
+  KnowledgeThreadPaperEvidenceClaim,
   KnowledgeSourceRole,
+  KnowledgeThreadPaperEvidenceChain,
   KnowledgeThreadFixture,
   KnowledgeThreadSource,
   KnowledgeThreadStatus,
 } from '@/lib/knowledge-thread-fixtures/loop-engineering';
+import { workTypeLabel } from '@/lib/work-taxonomy';
 import agenticCodingSourcePack from '@/data/knowledge-threads/agentic-coding-sources.candidates.json';
 import aiEvalsSourcePack from '@/data/knowledge-threads/ai-evals-sources.candidates.json';
 import contextEngineeringSourcePack from '@/data/knowledge-threads/context-engineering-sources.candidates.json';
@@ -37,6 +40,86 @@ const REQUIRED_ROLES = [
   'paper_foundation',
   'implementation_signal',
 ] as const;
+const PUBLISHABLE_PRODUCT_EVIDENCE_STATUSES = ['auto', 'confirmed'];
+const PAPER_REFERENCE_CACHE_VERSION = 'paper-references-v3';
+type KnowledgeThreadPaperReferenceItem = NonNullable<KnowledgeThreadSource['paperReferenceEvidence']>['items'][number];
+type PaperClaimSectionType = KnowledgeThreadPaperEvidenceClaim['sectionType'];
+type PaperAnchorSectionType = PaperClaimSectionType | 'abstract';
+interface PaperClaimField {
+  key: string;
+  label: string;
+  sectionType: PaperClaimSectionType;
+  hash: string;
+  anchorSectionTypes: PaperAnchorSectionType[];
+  matchingHints: string[];
+}
+interface PaperClaimGrounding {
+  pageNumber: number | null;
+  sectionTitle: string | null;
+  sectionAnchor: string | null;
+  chunkIndex: number | null;
+  sourceQuote: string | null;
+}
+interface PaperClaimGroundingChunk {
+  chunkIndex: number;
+  pageNumber: number | null;
+  text: string;
+}
+interface PaperClaimGroundingSection {
+  id: string;
+  sectionType: string;
+  title: string;
+  pageStart: number | null;
+  chunks: PaperClaimGroundingChunk[];
+}
+interface PaperClaimGroundingCandidate {
+  section: PaperClaimGroundingSection;
+  chunk: PaperClaimGroundingChunk | null;
+}
+type PaperClaimGroundingMap = Map<string, Map<string, PaperClaimGrounding>>;
+
+const PAPER_CLAIM_FIELDS: PaperClaimField[] = [
+  {
+    key: 'novelty',
+    label: '新意',
+    sectionType: 'result',
+    hash: '#paper-guide-novelty',
+    anchorSectionTypes: ['result', 'method'],
+    matchingHints: ['late interaction', 'novelty', 'contribution', 'efficiency', 'contextualization', 'reconcile', 'BERT'],
+  },
+  {
+    key: 'method',
+    label: '方法',
+    sectionType: 'method',
+    hash: '#paper-guide-method',
+    anchorSectionTypes: ['method'],
+    matchingHints: ['method', 'architecture', 'BERT', 'MaxSim', 'query', 'document', 'relevance', 'encode', 'index'],
+  },
+  {
+    key: 'experiments',
+    label: '实验',
+    sectionType: 'experiment',
+    hash: '#paper-guide-experiments',
+    anchorSectionTypes: ['experiment', 'result'],
+    matchingHints: ['experiment', 'evaluation', 'results', 'MRR', 'latency', 'benchmark', 'dataset', 'ablation'],
+  },
+  {
+    key: 'limitations',
+    label: '局限',
+    sectionType: 'limitation',
+    hash: '#paper-guide-limitations',
+    anchorSectionTypes: ['limitation'],
+    matchingHints: ['limitation', 'future work', 'leave', 'cost', 'memory', 'storage', 'scales'],
+  },
+  {
+    key: 'problem',
+    label: '问题',
+    sectionType: 'problem',
+    hash: '#paper-guide-problem',
+    anchorSectionTypes: ['problem', 'abstract'],
+    matchingHints: ['problem', 'motivation', 'traditional', 'all-to-all', 'interaction', 'expensive', 'latency', 'query', 'document'],
+  },
+];
 
 const SOURCE_PACK_FIXTURES: SourcePackFixture[] = [
   agenticCodingSourcePack as SourcePackFixture,
@@ -229,7 +312,7 @@ export async function fetchKnowledgeThread(
       sourceWeight: source.sourceWeight,
       evidenceQuote: source.evidenceQuote,
       summary: source.summary,
-      metadata: mergeMetadata(canonicalSource?.metadata, source.metadata),
+      metadata: mergeSourceMetadata(canonicalSource?.metadata, rawPoolItem?.metadata, source.metadata),
     };
   });
 
@@ -271,11 +354,12 @@ export async function fetchKnowledgeThreadPage(slug: string): Promise<KnowledgeT
   if (!readModel) return null;
 
   const fixture = getStaticKnowledgeThreadFixture(readModel.thread.slug);
+  const paperEvidenceChain = readModel.thread.isFixture ? undefined : await buildKnowledgeThreadPaperEvidenceChain(readModel);
   if (readModel.thread.isFixture) {
     return fixture ?? getSourcePackFixture(readModel.thread.slug) ?? readModelToFixture(readModel);
   }
-  if (fixture) return mergeReadModelWithFixture(readModel, fixture);
-  return readModelToFixture(readModel);
+  if (fixture) return mergeReadModelWithFixture(readModel, fixture, paperEvidenceChain);
+  return readModelToFixture(readModel, paperEvidenceChain);
 }
 
 function findKnowledgeThreadBySlug(slug: string) {
@@ -392,13 +476,8 @@ function buildReadModel({
   sources,
   edges,
 }: Omit<KnowledgeThreadReadModel, 'coverage'>): KnowledgeThreadReadModel {
-  // 自动挂载的内容源（字幕/博客）若被标记 excludedFromTopicReadiness，
-  // 仍正常展示，但不计入 required-role 覆盖，避免低置信自动源虚假"凑齐"就绪度。
-  const countsTowardReadiness = (source: KnowledgeThreadReadSource) => {
-    const link = isRecord(source.metadata) && isRecord(source.metadata.threadLink) ? source.metadata.threadLink : null;
-    return !(link && link.excludedFromTopicReadiness === true);
-  };
-  const roles = Array.from(new Set(sources.filter(countsTowardReadiness).map(source => source.role))).sort();
+  // 自动挂载的来源若仍处于待复核，继续展示为线索，但不计入 required-role 覆盖。
+  const roles = Array.from(new Set(sources.filter(isKnowledgeThreadReadSourceReady).map(source => source.role))).sort();
   const missingRequiredRoles = REQUIRED_ROLES.filter(role => !roles.includes(role));
 
   return {
@@ -418,12 +497,21 @@ function normalizeSlug(slug: string): string {
   return slug.trim().toLowerCase();
 }
 
-function mergeMetadata(sourceMetadata: unknown, linkMetadata: unknown): unknown {
-  if (!isRecord(sourceMetadata)) return linkMetadata ?? sourceMetadata ?? null;
-  if (!isRecord(linkMetadata)) return sourceMetadata;
+function mergeSourceMetadata(sourceMetadata: unknown, rawPoolItemMetadata: unknown, linkMetadata: unknown): unknown {
+  const sourceRecord = isRecord(sourceMetadata) ? sourceMetadata : {};
+  const rawRecord = isRecord(rawPoolItemMetadata) ? rawPoolItemMetadata : {};
+  const linkRecord = isRecord(linkMetadata) ? linkMetadata : {};
+  if (
+    Object.keys(sourceRecord).length === 0
+    && Object.keys(rawRecord).length === 0
+    && Object.keys(linkRecord).length === 0
+  ) {
+    return linkMetadata ?? rawPoolItemMetadata ?? sourceMetadata ?? null;
+  }
   return {
-    ...sourceMetadata,
-    threadLink: linkMetadata,
+    ...sourceRecord,
+    ...rawRecord,
+    threadLink: linkRecord,
   };
 }
 
@@ -442,9 +530,30 @@ function isMissingKnowledgeThreadStoreError(error: unknown): boolean {
     || message.includes('KnowledgeThreadEdge');
 }
 
+function isMissingProductEvidenceSourceStoreError(error: unknown): boolean {
+  if (!isRecord(error)) return false;
+  const code = typeof error.code === 'string' ? error.code : '';
+  const message = typeof error.message === 'string' ? error.message : '';
+  return code === 'P2021'
+    || code === 'P2022'
+    || message.includes('ProductEvidenceSource');
+}
+
+function isMissingPaperDocumentStoreError(error: unknown): boolean {
+  if (!isRecord(error)) return false;
+  const code = typeof error.code === 'string' ? error.code : '';
+  const message = typeof error.message === 'string' ? error.message : '';
+  return code === 'P2021'
+    || code === 'P2022'
+    || message.includes('PaperDocument')
+    || message.includes('PaperSection')
+    || message.includes('PaperChunk');
+}
+
 function mergeReadModelWithFixture(
   readModel: KnowledgeThreadReadModel,
   fixture: KnowledgeThreadFixture,
+  paperEvidenceChain?: KnowledgeThreadPaperEvidenceChain,
 ): KnowledgeThreadFixture {
   return {
     ...fixture,
@@ -463,10 +572,14 @@ function mergeReadModelWithFixture(
       confidence: edge.confidence,
       evidenceNote: edge.evidenceNote || '',
     })),
+    paperEvidenceChain,
   };
 }
 
-function readModelToFixture(readModel: KnowledgeThreadReadModel): KnowledgeThreadFixture {
+function readModelToFixture(
+  readModel: KnowledgeThreadReadModel,
+  paperEvidenceChain?: KnowledgeThreadPaperEvidenceChain,
+): KnowledgeThreadFixture {
   return {
     slug: readModel.thread.slug,
     title: readModel.thread.title,
@@ -493,12 +606,385 @@ function readModelToFixture(readModel: KnowledgeThreadReadModel): KnowledgeThrea
     })),
     actions: [],
     relatedLinks: [],
+    paperEvidenceChain,
   };
+}
+
+async function buildKnowledgeThreadPaperEvidenceChain(
+  readModel: KnowledgeThreadReadModel,
+): Promise<KnowledgeThreadPaperEvidenceChain | undefined> {
+  const paperSources = readModel.sources
+    .filter(source => source.role === 'paper_foundation' && source.rawPoolItemId)
+    .sort((left, right) => right.relevanceScore - left.relevanceScore);
+  if (paperSources.length === 0) return undefined;
+
+  const readyPaperSources = paperSources.filter(isKnowledgeThreadReadSourceReady);
+  const reviewPaperSources = paperSources.filter(source => !isKnowledgeThreadReadSourceReady(source));
+  const visibleReadyPaperSources = readyPaperSources.slice(0, 8);
+  const claimGroundings = await loadPaperClaimGroundings(visibleReadyPaperSources);
+  const toPaperEvidence = (source: KnowledgeThreadReadSource, includeClaims: boolean) => {
+    const status = knowledgeThreadSourceStatus(isRecord(source.metadata) ? source.metadata : {});
+    const grounding = source.rawPoolItemId ? claimGroundings.get(source.rawPoolItemId) : undefined;
+    return {
+      id: source.rawPoolItemId!,
+      sourceId: source.id,
+      title: source.title,
+      href: `/source/paper/${source.rawPoolItemId}`,
+      externalUrl: source.url || undefined,
+      sourceKind: source.sourceKind,
+      summary: source.summary || firstText(source.text, 180),
+      evidenceQuote: source.evidenceQuote || undefined,
+      confidence: source.relevanceScore,
+      status,
+      reviewReason: paperThreadReviewReason(source.metadata),
+      claims: includeClaims ? buildPaperClaimCitations(source, grounding) : [],
+    };
+  };
+  const papers = visibleReadyPaperSources.map(source => toPaperEvidence(source, true));
+  const reviewPapers = reviewPaperSources.slice(0, 8).map(source => toPaperEvidence(source, false));
+  const paperIds = papers.map(paper => paper.id);
+  const contextSources = readModel.sources
+    .filter(source => (
+      (source.role === 'official_definition' || source.role === 'transcript_context' || source.role === 'signal')
+      && isKnowledgeThreadReadSourceReady(source)
+    ))
+    .sort((left, right) => right.relevanceScore - left.relevanceScore)
+    .slice(0, 6)
+    .map(sourceToPageSource);
+
+  const { works, implementations: productImplementations } = await listProductEvidenceForThreadPapers(paperIds);
+  const threadImplementations = buildThreadImplementationSignalEvidence(readModel);
+  return {
+    papers,
+    reviewPapers,
+    works,
+    implementations: mergePaperEvidenceImplementations(productImplementations, threadImplementations),
+    contextSources,
+  };
+}
+
+async function loadPaperClaimGroundings(sources: KnowledgeThreadReadSource[]): Promise<PaperClaimGroundingMap> {
+  const sourcesById = new Map(sources.flatMap(source => (
+    source.rawPoolItemId ? [[source.rawPoolItemId, source]] : []
+  )));
+  const sourceItemIds = [...sourcesById.keys()];
+  if (sourceItemIds.length === 0) return new Map();
+  try {
+    const documents = await prisma.paperDocument.findMany({
+      where: { sourceItemId: { in: sourceItemIds } },
+      select: {
+        sourceItemId: true,
+        sections: {
+          orderBy: { orderIndex: 'asc' },
+          select: {
+            id: true,
+            sectionType: true,
+            title: true,
+            pageStart: true,
+            chunks: {
+              orderBy: { chunkIndex: 'asc' },
+              select: {
+                chunkIndex: true,
+                pageNumber: true,
+                text: true,
+              },
+            },
+          },
+        },
+      },
+    });
+    const result: PaperClaimGroundingMap = new Map();
+    for (const document of documents) {
+      if (!document.sourceItemId) continue;
+      const source = sourcesById.get(document.sourceItemId);
+      if (!source) continue;
+      const byClaim = new Map<string, PaperClaimGrounding>();
+      for (const field of PAPER_CLAIM_FIELDS) {
+        const body = paperGuideClaimBody(source, field.key);
+        if (!isUsefulPaperClaim(body)) continue;
+        const grounded = selectBestPaperClaimGrounding(field, body, document.sections);
+        if (!grounded) continue;
+        const { section, chunk } = grounded;
+        byClaim.set(field.key, {
+          pageNumber: chunk?.pageNumber ?? section.pageStart ?? null,
+          sectionTitle: section.title || null,
+          sectionAnchor: paperSectionAnchorId(section.id),
+          chunkIndex: chunk?.chunkIndex ?? null,
+          sourceQuote: chunk?.text ? firstText(chunk.text, 260) : null,
+        });
+      }
+      result.set(document.sourceItemId, byClaim);
+    }
+    return result;
+  } catch (error) {
+    if (isMissingPaperDocumentStoreError(error)) return new Map();
+    throw error;
+  }
+}
+
+function selectBestPaperClaimGrounding(
+  field: PaperClaimField,
+  claimBody: string,
+  sections: PaperClaimGroundingSection[],
+) {
+  const candidateSections = sections.filter(section => (
+    field.anchorSectionTypes.includes(section.sectionType as PaperAnchorSectionType)
+  ));
+  if (candidateSections.length === 0) return null;
+
+  const candidates: PaperClaimGroundingCandidate[] = [];
+  for (const section of candidateSections) {
+    if (section.chunks.length === 0) {
+      candidates.push({ section, chunk: null });
+      continue;
+    }
+    for (const chunk of section.chunks) {
+      candidates.push({ section, chunk });
+    }
+  }
+  if (candidates.length === 0) return null;
+
+  return candidates
+    .map(candidate => ({
+      ...candidate,
+      score: paperClaimMatchScore(field, claimBody, candidate.chunk?.text || candidate.section.title),
+    }))
+    .sort((left, right) => (
+      right.score - left.score
+      || (left.chunk?.chunkIndex ?? Number.MAX_SAFE_INTEGER) - (right.chunk?.chunkIndex ?? Number.MAX_SAFE_INTEGER)
+      || (left.section.pageStart ?? Number.MAX_SAFE_INTEGER) - (right.section.pageStart ?? Number.MAX_SAFE_INTEGER)
+    ))[0];
+}
+
+function paperClaimMatchScore(field: PaperClaimField, claimBody: string, chunkText: string): number {
+  const queryTokens = new Set([
+    ...paperClaimMatchTokens(claimBody),
+    ...field.matchingHints.flatMap(paperClaimMatchTokens),
+  ]);
+  const chunkTokens = new Set(paperClaimMatchTokens(chunkText));
+  if (queryTokens.size === 0 || chunkTokens.size === 0) return 0;
+
+  let overlapScore = 0;
+  for (const token of queryTokens) {
+    if (chunkTokens.has(token)) overlapScore += token.length >= 5 ? 2 : 1;
+  }
+  const normalizedChunk = normalizePaperClaimMatchText(chunkText);
+  const phraseBonus = field.matchingHints.reduce((sum, hint) => (
+    normalizedChunk.includes(normalizePaperClaimMatchText(hint)) ? sum + 0.15 : sum
+  ), 0);
+  return overlapScore / Math.sqrt(queryTokens.size * chunkTokens.size) + phraseBonus;
+}
+
+function paperClaimMatchTokens(value: string): string[] {
+  return [...new Set((normalizePaperClaimMatchText(value).match(/[a-z0-9][a-z0-9]+/g) || [])
+    .map(token => (token.length > 4 && token.endsWith('s') ? token.slice(0, -1) : token))
+    .filter(token => !PAPER_CLAIM_STOP_WORDS.has(token)))];
+}
+
+function normalizePaperClaimMatchText(value: string): string {
+  return value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const PAPER_CLAIM_STOP_WORDS = new Set([
+  'the',
+  'and',
+  'for',
+  'with',
+  'that',
+  'this',
+  'from',
+  'using',
+  'into',
+  'then',
+  'than',
+  'only',
+]);
+
+function buildPaperClaimCitations(
+  source: KnowledgeThreadReadSource,
+  groundingByClaim: Map<string, PaperClaimGrounding> | undefined,
+): KnowledgeThreadPaperEvidenceClaim[] {
+  if (!source.rawPoolItemId) return [];
+  const baseHref = `/source/paper/${source.rawPoolItemId}`;
+
+  return PAPER_CLAIM_FIELDS
+    .flatMap(field => {
+      const body = paperGuideClaimBody(source, field.key);
+      if (!isUsefulPaperClaim(body)) return [];
+      const grounding = groundingByClaim?.get(field.key);
+      const pageQuery = grounding?.pageNumber ? `?page=${grounding.pageNumber}` : '';
+      const sectionHash = grounding?.sectionAnchor ? `#${grounding.sectionAnchor}` : field.hash;
+      const claim: KnowledgeThreadPaperEvidenceClaim = {
+        id: `${source.rawPoolItemId}:${field.key}`,
+        label: field.label,
+        body: firstText(body, 220),
+        href: `${baseHref}${pageQuery}${sectionHash}`,
+        sectionType: field.sectionType,
+        anchorKind: grounding ? 'paper_chunk' : 'guide',
+      };
+      if (grounding?.pageNumber) claim.pageNumber = grounding.pageNumber;
+      if (grounding?.sectionTitle) claim.sectionTitle = grounding.sectionTitle;
+      if (typeof grounding?.chunkIndex === 'number') claim.chunkIndex = grounding.chunkIndex;
+      if (grounding?.sourceQuote) claim.sourceQuote = grounding.sourceQuote;
+      return [claim];
+    })
+    .slice(0, 4);
+}
+
+function paperGuideClaimBody(source: KnowledgeThreadReadSource, key: string): string {
+  const metadata = isRecord(source.metadata) ? source.metadata : {};
+  const guideCache = isRecord(metadata.paperGuide) ? metadata.paperGuide : {};
+  const guide = isRecord(guideCache.guide) ? guideCache.guide : {};
+  return stringValue(guide[key]);
+}
+
+function isUsefulPaperClaim(value: string): boolean {
+  if (value.length < 20) return false;
+  return !/摘要未提供|摘要未明确|未提供足够信息|not enough information|insufficient/i.test(value);
+}
+
+function buildThreadImplementationSignalEvidence(readModel: KnowledgeThreadReadModel): KnowledgeThreadPaperEvidenceChain['implementations'] {
+  return readModel.sources
+    .filter(source => source.role === 'implementation_signal' && source.url && isKnowledgeThreadReadSourceReady(source))
+    .sort((left, right) => right.relevanceScore - left.relevanceScore)
+    .slice(0, 8)
+    .map(source => ({
+      id: source.id,
+      title: source.title,
+      href: source.url,
+      productSlug: readModel.thread.slug,
+      productName: readModel.thread.title,
+      matchReason: 'thread_implementation_signal',
+      confidence: source.relevanceScore,
+      summary: source.summary || firstText(source.text, 180),
+    }));
+}
+
+function mergePaperEvidenceImplementations(
+  primary: KnowledgeThreadPaperEvidenceChain['implementations'],
+  fallback: KnowledgeThreadPaperEvidenceChain['implementations'],
+): KnowledgeThreadPaperEvidenceChain['implementations'] {
+  const seen = new Set<string>();
+  return [...primary, ...fallback].filter(item => {
+    const key = item.href || item.id;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, 8);
+}
+
+async function listProductEvidenceForThreadPapers(paperIds: string[]): Promise<Pick<KnowledgeThreadPaperEvidenceChain, 'works' | 'implementations'>> {
+  if (paperIds.length === 0) return { works: [], implementations: [] };
+  try {
+    const paperLinks = await prisma.productEvidenceSource.findMany({
+      where: {
+        rawPoolItemId: { in: paperIds },
+        role: 'paper_foundation',
+        reviewStatus: { in: PUBLISHABLE_PRODUCT_EVIDENCE_STATUSES },
+      },
+      select: {
+        rawPoolItemId: true,
+        matchReason: true,
+        confidence: true,
+        product: {
+          select: {
+            id: true,
+            slug: true,
+            name: true,
+            type: true,
+            organizationName: true,
+          },
+        },
+      },
+      orderBy: [
+        { confidence: 'desc' },
+        { updatedAt: 'desc' },
+      ],
+      take: 12,
+    });
+    const productIds = [...new Set(paperLinks.map(link => link.product.id))];
+    const implementationLinks = productIds.length === 0 ? [] : await prisma.productEvidenceSource.findMany({
+      where: {
+        productId: { in: productIds },
+        role: 'implementation_source',
+        reviewStatus: { in: PUBLISHABLE_PRODUCT_EVIDENCE_STATUSES },
+      },
+      select: {
+        matchReason: true,
+        confidence: true,
+        summary: true,
+        product: {
+          select: {
+            slug: true,
+            name: true,
+          },
+        },
+        rawPoolItem: {
+          select: {
+            id: true,
+            title: true,
+            url: true,
+            text: true,
+          },
+        },
+      },
+      orderBy: [
+        { confidence: 'desc' },
+        { updatedAt: 'desc' },
+      ],
+      take: 12,
+    });
+
+    const seenWorks = new Set<string>();
+    const works = paperLinks.flatMap(link => {
+      if (seenWorks.has(link.product.slug)) return [];
+      seenWorks.add(link.product.slug);
+      return [{
+        slug: link.product.slug,
+        name: link.product.name,
+        href: `/work/${link.product.slug}`,
+        typeLabel: workTypeLabel(link.product.type),
+        organizationName: link.product.organizationName || undefined,
+        paperId: link.rawPoolItemId,
+        matchReason: link.matchReason,
+        confidence: link.confidence,
+      }];
+    });
+
+    const seenImplementations = new Set<string>();
+    const implementations = implementationLinks.flatMap(link => {
+      if (seenImplementations.has(link.rawPoolItem.id)) return [];
+      seenImplementations.add(link.rawPoolItem.id);
+      return [{
+        id: link.rawPoolItem.id,
+        title: link.rawPoolItem.title,
+        href: link.rawPoolItem.url,
+        productSlug: link.product.slug,
+        productName: link.product.name,
+        matchReason: link.matchReason,
+        confidence: link.confidence,
+        summary: link.summary || firstText(link.rawPoolItem.text, 180),
+      }];
+    });
+
+    return { works, implementations };
+  } catch (error) {
+    if (isMissingProductEvidenceSourceStoreError(error)) return { works: [], implementations: [] };
+    throw error;
+  }
 }
 
 function sourceToPageSource(source: KnowledgeThreadReadSource): KnowledgeThreadSource {
   const metadata = isRecord(source.metadata) ? source.metadata : {};
   const threadLink = isRecord(metadata.threadLink) ? metadata.threadLink : {};
+  const status = knowledgeThreadSourceStatus(metadata);
+  const paperReferenceEvidence = buildThreadPaperReferenceEvidence(metadata);
   return {
     id: source.id,
     role: source.role as KnowledgeSourceRole,
@@ -514,22 +1000,134 @@ function sourceToPageSource(source: KnowledgeThreadReadSource): KnowledgeThreadS
       || firstText(source.text, 180),
     evidenceQuote: source.evidenceQuote || undefined,
     confidence: source.relevanceScore,
-    status: normalizedSourceStatus(threadLink.status),
+    status,
+    paperReferenceEvidence,
   };
 }
 
-function normalizedSourceStatus(value: unknown): KnowledgeThreadSource['status'] {
-  if (value === 'verified' || value === 'usable' || value === 'needs_capture' || value === 'thin') return value;
+function buildThreadPaperReferenceEvidence(metadata: Record<string, unknown>): KnowledgeThreadSource['paperReferenceEvidence'] {
+  const referencesCache = isRecord(metadata.paperReferences) ? metadata.paperReferences : {};
+  const cacheVersion = stringValue(referencesCache.version);
+  if (!cacheVersion) return undefined;
+
+  const titleMismatch = referencesCache.titleMismatch === true;
+  const references = arrayValue(referencesCache.references)
+    .map(toThreadPaperReferenceItem)
+    .filter((item): item is NonNullable<ReturnType<typeof toThreadPaperReferenceItem>> => Boolean(item));
+  const referencesTotal = numberValue(referencesCache.referencesTotal) ?? references.length;
+  const status = titleMismatch
+    ? 'failed'
+    : cacheVersion !== PAPER_REFERENCE_CACHE_VERSION
+    ? 'stale'
+    : references.length > 0
+    ? 'ready'
+    : 'empty';
+
+  return {
+    status,
+    cacheVersion,
+    fetchedAt: stringValue(referencesCache.fetchedAt) || undefined,
+    referencesTotal,
+    referenceCount: references.length,
+    message: stringValue(referencesCache.message) || undefined,
+    openalexWorkTitle: stringValue(referencesCache.openalexWorkTitle) || undefined,
+    titleSimilarity: numberValue(referencesCache.titleSimilarity),
+    items: references.slice(0, 3),
+  };
+}
+
+function toThreadPaperReferenceItem(value: unknown): KnowledgeThreadPaperReferenceItem | null {
+  if (!isRecord(value)) return null;
+  const title = stringValue(value.title);
+  const openalexUrl = stringValue(value.openalexUrl);
+  const doi = stringValue(value.doi);
+  const landingPageUrl = stringValue(value.landingPageUrl);
+  const sourceHref = stringValue(value.sourceHref);
+  const sourceItemId = stringValue(value.sourceItemId);
+  const href = sourceHref
+    || (sourceItemId ? `/source/paper/${sourceItemId}` : '')
+    || (doi ? `https://doi.org/${doi}` : '')
+    || landingPageUrl
+    || openalexUrl;
+  if (!title || !href) return null;
+
+  return {
+    title,
+    href,
+    isInternal: href.startsWith('/source/paper/'),
+    year: numberValue(value.year),
+    venue: stringValue(value.venue) || undefined,
+    citationCount: numberValue(value.citationCount),
+  };
+}
+
+function isKnowledgeThreadReadSourceReady(source: KnowledgeThreadReadSource): boolean {
+  const metadata = isRecord(source.metadata) ? source.metadata : {};
+  const status = knowledgeThreadSourceStatus(metadata);
+  return status === 'verified' || status === 'usable';
+}
+
+function knowledgeThreadSourceStatus(metadata: Record<string, unknown>): KnowledgeThreadSource['status'] {
+  const threadLink = isRecord(metadata.threadLink) ? metadata.threadLink : {};
+  const explicitStatus = normalizedSourceStatus(
+    threadLink.status
+      ?? threadLink.reviewStatus
+      ?? metadata.status
+      ?? metadata.reviewStatus,
+  );
+  if (explicitStatus) return explicitStatus;
+
+  if (threadLink.excludedFromTopicReadiness === true) return 'needs_review';
+  if (threadLink.autoLinked === true && !isStrongPaperThreadMatchReason(stringValue(threadLink.matchReason))) {
+    return 'needs_review';
+  }
+
   return 'verified';
+}
+
+function normalizedSourceStatus(value: unknown): KnowledgeThreadSource['status'] | null {
+  if (value === 'verified' || value === 'usable' || value === 'needs_review' || value === 'needs_capture' || value === 'thin') return value;
+  if (value === 'confirmed') return 'verified';
+  if (value === 'rejected') return 'thin';
+  if (value === 'auto') return null;
+  return null;
+}
+
+function paperThreadReviewReason(metadata: unknown): string | undefined {
+  if (!isRecord(metadata)) return undefined;
+  const threadLink = isRecord(metadata.threadLink) ? metadata.threadLink : {};
+  if (threadLink.excludedFromTopicReadiness === true) return '待复核：这条论文来源不计入主题 ready。';
+  const matchReason = stringValue(threadLink.matchReason);
+  if (threadLink.autoLinked === true && !isStrongPaperThreadMatchReason(matchReason)) {
+    return matchReason ? `待复核：${matchReason} 不是强身份匹配。` : '待复核：自动绑定来源缺少强身份匹配。';
+  }
+  return undefined;
+}
+
+function isStrongPaperThreadMatchReason(value: string): boolean {
+  return value.includes('DOI') || value.includes('arXiv') || value.includes('URL');
 }
 
 function stringValue(value: unknown): string {
   return typeof value === 'string' ? value : '';
 }
 
+function arrayValue(value: unknown): unknown[] {
+  return Array.isArray(value) ? value : [];
+}
+
+function numberValue(value: unknown): number | undefined {
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+}
+
 function firstText(value: string, length: number): string {
   const text = value.replace(/\s+/g, ' ').trim();
   return text.length <= length ? text : `${text.slice(0, length - 1)}...`;
+}
+
+function paperSectionAnchorId(value: string): string {
+  const normalized = value.replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
+  return normalized.startsWith('paper-section-') ? normalized : `paper-section-${normalized}`;
 }
 
 function toFiniteNumber(value: unknown, fallback: number): number {
@@ -585,7 +1183,7 @@ export function getSourcePackFixture(slug: string): KnowledgeThreadFixture | nul
     evidenceNote: source.reviewNotes || source.evidenceQuote || source.whyRelevant || firstText(source.text || '', 180),
     evidenceQuote: source.evidenceQuote || undefined,
     confidence: toFiniteNumber(source.confidence, 0.8),
-    status: normalizedSourceStatus(source.status),
+    status: normalizedSourceStatus(source.status) ?? 'verified',
   }));
 
   return {

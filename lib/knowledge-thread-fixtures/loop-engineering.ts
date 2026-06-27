@@ -23,7 +23,29 @@ export interface KnowledgeThreadSource {
   evidenceNote: string;
   evidenceQuote?: string;
   confidence: number;
-  status: 'verified' | 'usable' | 'needs_capture' | 'thin';
+  status: 'verified' | 'usable' | 'needs_review' | 'needs_capture' | 'thin';
+  paperReferenceEvidence?: KnowledgeThreadPaperReferenceEvidence;
+}
+
+export interface KnowledgeThreadPaperReferenceEvidence {
+  status: 'ready' | 'empty' | 'failed' | 'stale';
+  cacheVersion?: string;
+  fetchedAt?: string;
+  referencesTotal: number;
+  referenceCount: number;
+  message?: string;
+  openalexWorkTitle?: string;
+  titleSimilarity?: number;
+  items: KnowledgeThreadPaperReferenceItem[];
+}
+
+export interface KnowledgeThreadPaperReferenceItem {
+  title: string;
+  href: string;
+  isInternal: boolean;
+  year?: number;
+  venue?: string;
+  citationCount?: number;
 }
 
 export interface KnowledgeThreadTimelineItem {
@@ -65,6 +87,64 @@ export interface KnowledgeThreadRelatedLink {
   sourceIds: string[];
 }
 
+export interface KnowledgeThreadPaperEvidencePaper {
+  id: string;
+  sourceId: string;
+  title: string;
+  href: string;
+  externalUrl?: string;
+  sourceKind: string;
+  summary: string;
+  evidenceQuote?: string;
+  confidence: number;
+  status: KnowledgeThreadSource['status'];
+  reviewReason?: string;
+  claims?: KnowledgeThreadPaperEvidenceClaim[];
+}
+
+export interface KnowledgeThreadPaperEvidenceClaim {
+  id: string;
+  label: string;
+  body: string;
+  sourceQuote?: string;
+  href: string;
+  sectionType: 'problem' | 'method' | 'experiment' | 'result' | 'limitation' | 'other';
+  anchorKind: 'paper_chunk' | 'guide';
+  pageNumber?: number;
+  sectionTitle?: string;
+  chunkIndex?: number;
+}
+
+export interface KnowledgeThreadPaperEvidenceWork {
+  slug: string;
+  name: string;
+  href: string;
+  typeLabel: string;
+  organizationName?: string;
+  paperId: string;
+  matchReason: string;
+  confidence: number;
+}
+
+export interface KnowledgeThreadPaperEvidenceImplementation {
+  id: string;
+  title: string;
+  href: string;
+  productSlug: string;
+  productName: string;
+  matchReason: string;
+  confidence: number;
+  summary: string;
+}
+
+export interface KnowledgeThreadPaperEvidenceChain {
+  papers: KnowledgeThreadPaperEvidencePaper[];
+  reviewPapers: KnowledgeThreadPaperEvidencePaper[];
+  works: KnowledgeThreadPaperEvidenceWork[];
+  implementations: KnowledgeThreadPaperEvidenceImplementation[];
+  contextSources: KnowledgeThreadSource[];
+}
+
 export interface KnowledgeThreadFixture {
   slug: string;
   title: string;
@@ -83,6 +163,7 @@ export interface KnowledgeThreadFixture {
   actions: KnowledgeThreadAction[];
   relatedLinks: KnowledgeThreadRelatedLink[];
   companyStrategyContext?: KnowledgeThreadCompanyContext;
+  paperEvidenceChain?: KnowledgeThreadPaperEvidenceChain;
 }
 
 export const loopEngineeringThread: KnowledgeThreadFixture = {

@@ -36,6 +36,13 @@ interface Paper {
     venue?: string;
     citedByCount?: number;
     authors?: string[];
+    paperEvidence?: {
+      sourceRelation?: 'source_owner' | 'confirmed_review' | 'source_and_confirmed_review';
+      confirmedForPerson?: boolean;
+      confirmedPeopleCount?: number;
+      needsReviewCount?: number;
+      openalexAuthorshipCount?: number;
+    };
   };
 }
 
@@ -141,6 +148,39 @@ function getRankLabel(rank: number): string {
 
 function getTopicIcon(topic: string): string {
   return getDirectoryTopicIcon(topic);
+}
+
+function PersonPaperEvidenceBadges({ evidence }: { evidence: NonNullable<Paper['metadata']['paperEvidence']> }) {
+  const badges = [
+    evidence.confirmedForPerson
+      ? { key: 'confirmed', label: 'PaperEntityReview 已确认', className: 'bg-emerald-50 text-emerald-700 border-emerald-100' }
+      : null,
+    evidence.sourceRelation === 'confirmed_review'
+      ? { key: 'review-source', label: '复核绑定论文', className: 'bg-blue-50 text-blue-700 border-blue-100' }
+      : null,
+    evidence.openalexAuthorshipCount
+      ? { key: 'authorships', label: `${evidence.openalexAuthorshipCount} 位 OpenAlex 作者`, className: 'bg-stone-50 text-stone-600 border-stone-100' }
+      : null,
+    evidence.needsReviewCount
+      ? { key: 'review', label: `${evidence.needsReviewCount} 条待复核`, className: 'bg-amber-50 text-amber-700 border-amber-100' }
+      : null,
+  ].filter((badge): badge is { key: string; label: string; className: string } => Boolean(badge));
+
+  if (badges.length === 0) return null;
+
+  return (
+    <div className="mt-2 flex flex-wrap gap-1.5" data-person-paper-evidence>
+      {badges.map(badge => (
+        <span
+          key={badge.key}
+          className={`rounded-md border px-1.5 py-0.5 text-[10px] font-medium ${badge.className}`}
+          data-person-paper-evidence-badge={badge.key}
+        >
+          {badge.label}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 // 从 URL 获取 Google Favicon
@@ -600,11 +640,10 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
         {activeTab === 'papers' && hasPapers && (
           <div className="space-y-3">
             {(showAllPapers ? papers! : papers!.slice(0, 2)).map((paper) => (
-              <a
+              <Link
                 key={paper.id}
-                href={paper.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/source/paper/${paper.id}`}
+                prefetch={false}
                 className="block p-4 bg-stone-50 hover:bg-emerald-50/50 rounded-xl transition-all hover:shadow-sm group"
               >
                 <div className="flex gap-3">
@@ -643,13 +682,16 @@ export function FeaturedWorks({ products, papers, topics, topicRanks, topicDetai
                         </span>
                       )}
                     </div>
+                    {paper.metadata?.paperEvidence && (
+                      <PersonPaperEvidenceBadges evidence={paper.metadata.paperEvidence} />
+                    )}
                     {/* 链接提示 */}
                     <p className="text-xs text-blue-500 mt-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      🔗 查看论文 →
+                      🔗 站内导读 →
                     </p>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
 
             {/* 展开/收起按钮 */}

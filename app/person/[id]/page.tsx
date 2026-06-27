@@ -101,7 +101,7 @@ export default async function PersonPage({ params, searchParams }: PersonPagePro
 
 const fetchCachedPersonPageData = unstable_cache(
     fetchPersonPageData,
-    ['person-page-data-v1'],
+    ['person-page-data-v2'],
     { revalidate: 3600 }
 );
 
@@ -234,16 +234,35 @@ async function fetchPersonPageData(id: string) {
         // 论文数据（前10篇）
         prisma.rawPoolItem.findMany({
             where: {
-                personId: id,
                 sourceType: 'openalex',
+                OR: [
+                    { personId: id },
+                    {
+                        paperEntityReviews: {
+                            some: {
+                                confirmedPersonId: id,
+                                reviewStatus: 'confirmed',
+                            },
+                        },
+                    },
+                ],
             },
             select: {
                 id: true,
+                personId: true,
                 title: true,
                 text: true,
                 url: true,
                 publishedAt: true,
                 metadata: true,
+                paperEntityReviews: {
+                    select: {
+                        entityKind: true,
+                        mentionType: true,
+                        reviewStatus: true,
+                        confirmedPersonId: true,
+                    },
+                },
             },
             orderBy: { fetchedAt: 'desc' },
             take: 10,
@@ -303,7 +322,10 @@ async function fetchPersonPageData(id: string) {
             text: p.text,
             url: p.url,
             publishedAt: p.publishedAt?.toISOString() || null,
-            metadata: normalizeMetadata(p.metadata),
+            metadata: {
+                ...normalizeMetadata(p.metadata),
+                paperEvidence: buildPersonPaperEvidence(p, id),
+            },
         })),
         // 不再传递 rawPoolItems，改为客户端懒加载
         rawPoolItems: [], // 空数组，客户端会按需加载
@@ -363,6 +385,46 @@ async function fetchPersonPageData(id: string) {
                 };
             }),
         ],
+    };
+}
+
+function buildPersonPaperEvidence(
+    paper: {
+        personId: string;
+        metadata: unknown;
+        paperEntityReviews: Array<{
+            entityKind: string;
+            mentionType: string;
+            reviewStatus: string;
+            confirmedPersonId: string | null;
+        }>;
+    },
+    personId: string,
+) {
+    const metadata = normalizeMetadata(paper.metadata);
+    const openalexAuthorships = Array.isArray(metadata.openalexAuthorships) ? metadata.openalexAuthorships : [];
+    const confirmedForPerson = paper.paperEntityReviews.some(review => (
+        review.confirmedPersonId === personId
+        && review.reviewStatus === 'confirmed'
+        && review.entityKind === 'person'
+    ));
+    const needsReviewCount = paper.paperEntityReviews.filter(review => review.reviewStatus === 'needs_review').length;
+    const confirmedPeopleCount = paper.paperEntityReviews.filter(review => (
+        review.entityKind === 'person' && review.reviewStatus === 'confirmed'
+    )).length;
+    const sourceRelation: 'source_owner' | 'confirmed_review' | 'source_and_confirmed_review' =
+        paper.personId === personId && confirmedForPerson
+            ? 'source_and_confirmed_review'
+            : confirmedForPerson
+                ? 'confirmed_review'
+                : 'source_owner';
+
+    return {
+        sourceRelation,
+        confirmedForPerson,
+        confirmedPeopleCount,
+        needsReviewCount,
+        openalexAuthorshipCount: openalexAuthorships.length,
     };
 }
 
