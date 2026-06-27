@@ -18,7 +18,7 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { generateText, type LanguageModel } from 'ai';
 import type { ZodType } from 'zod';
 
-export type ProviderName = 'deepseek' | 'gemini' | 'grok';
+export type ProviderName = 'deepseek' | 'gemini' | 'grok' | 'mimo' | 'minimax';
 
 export interface ChatMessage {
     role: 'system' | 'user' | 'assistant';
@@ -40,6 +40,10 @@ export interface LlmUsage {
 }
 
 const DEFAULT_CHAIN: ProviderName[] = ['deepseek', 'gemini'];
+const DEFAULT_MIMO_BASE_URL = 'https://token-plan-sgp.xiaomimimo.com/v1';
+const DEFAULT_MIMO_MODEL = 'mimo-v2.5-pro';
+const DEFAULT_MINIMAX_BASE_URL = 'https://api.minimaxi.com/v1';
+const DEFAULT_MINIMAX_MODEL = 'MiniMax-M2.7';
 type GenerateTextParams = Parameters<typeof generateText>[0];
 
 function requestTimeoutMs(options: GenerateOptions): number {
@@ -77,6 +81,20 @@ function getModel(name: ProviderName): LanguageModel {
                 baseURL: relay,
             }).chat(process.env.GROK_RELAY_MODEL || 'grok-4.3-medium');
             break;
+        case 'mimo':
+            model = createOpenAI({
+                apiKey: process.env.XIAOMI_API_KEY,
+                baseURL: process.env.XIAOMI_API_URL || process.env.XIAOMI_BASE_URL || DEFAULT_MIMO_BASE_URL,
+                name: 'mimo',
+            }).chat(process.env.MIMO_MODEL || DEFAULT_MIMO_MODEL);
+            break;
+        case 'minimax':
+            model = createOpenAI({
+                apiKey: process.env.MINIMAX_API_KEY,
+                baseURL: process.env.MINIMAX_API_URL || process.env.MINIMAX_BASE_URL || DEFAULT_MINIMAX_BASE_URL,
+                name: 'minimax',
+            }).chat(process.env.MINIMAX_MODEL || process.env.MINIMAX_TOPIC_MODEL || DEFAULT_MINIMAX_MODEL);
+            break;
         default:
             throw new Error(`Unknown provider: ${name}`);
     }
@@ -90,6 +108,8 @@ function isConfigured(name: ProviderName): boolean {
         case 'deepseek': return !!process.env.DEEPSEEK_API_KEY;
         case 'gemini': return !!process.env.GEMINI_API_KEY && !!process.env.RELAY_BASE_URL;
         case 'grok': return !!process.env.GROK_RELAY_API_KEY && !!process.env.RELAY_BASE_URL;
+        case 'mimo': return !!process.env.XIAOMI_API_KEY;
+        case 'minimax': return !!process.env.MINIMAX_API_KEY;
         default: return false;
     }
 }
@@ -109,7 +129,7 @@ export async function generate(
 ): Promise<{ text: string; provider: ProviderName; usage?: LlmUsage }> {
     const chain = (options.chain || DEFAULT_CHAIN).filter(isConfigured);
     if (chain.length === 0) {
-        throw new Error('No LLM provider configured (check DEEPSEEK_API_KEY / GEMINI_API_KEY / RELAY_BASE_URL)');
+        throw new Error('No LLM provider configured (check DEEPSEEK_API_KEY / GEMINI_API_KEY / RELAY_BASE_URL / XIAOMI_API_KEY / MINIMAX_API_KEY)');
     }
 
     let lastErr: unknown;

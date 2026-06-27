@@ -3,6 +3,35 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const paperSourcePath = new URL('../../lib/paper-source.ts', import.meta.url);
+const paperSourceImplementationPaths = [
+  '../../lib/paper-source.ts',
+  '../../lib/paper-source/constants.ts',
+  '../../lib/paper-source/schemas.ts',
+  '../../lib/paper-source/types.ts',
+  '../../lib/paper-source/view-model.ts',
+  '../../lib/paper-source/llm.ts',
+  '../../lib/paper-source/pdf-resolve.ts',
+  '../../lib/paper-source/guide.ts',
+  '../../lib/paper-source/translation.ts',
+  '../../lib/paper-source/pdf-extract.ts',
+  '../../lib/paper-source/materialization.ts',
+  '../../lib/paper-source/figures.ts',
+  '../../lib/paper-source/structure.ts',
+  '../../lib/paper-source/section-utils.ts',
+  '../../lib/paper-source/chat.ts',
+  '../../lib/paper-source/references.ts',
+  '../../lib/paper-source/related-threads.ts',
+  '../../lib/paper-source/related-works.ts',
+  '../../lib/paper-source/entity-review.ts',
+  '../../lib/paper-source/semantic-reader.ts',
+  '../../lib/paper-source/notes.ts',
+  '../../lib/paper-source/source.ts',
+  '../../lib/paper-source/openalex.ts',
+  '../../lib/paper-source/identity.ts',
+  '../../lib/paper-source/metadata.ts',
+  '../../lib/paper-source/storage.ts',
+  '../../lib/paper-source/utils.ts',
+].map(item => new URL(item, import.meta.url));
 const paperWorkspacePath = new URL('../../components/source/PaperSourceWorkspace.tsx', import.meta.url);
 const paperPagePath = new URL('../../app/source/paper/[id]/page.tsx', import.meta.url);
 const paperPdfRoutePath = new URL('../../app/api/source/paper/[id]/pdf/route.ts', import.meta.url);
@@ -32,6 +61,11 @@ const prismaSchemaPath = new URL('../../prisma/schema.prisma', import.meta.url);
 const featuredCardsPath = new URL('../../lib/home/featured-cards.ts', import.meta.url);
 const featuredWorksPath = new URL('../../components/person/sections/FeaturedWorks.tsx', import.meta.url);
 const personPagePath = new URL('../../app/person/[id]/page.tsx', import.meta.url);
+
+async function readPaperSourceImplementationText() {
+  const parts = await Promise.all(paperSourceImplementationPaths.map(file => readFile(file, 'utf8')));
+  return parts.join('\n\n');
+}
 
 function sampleGuide() {
   return {
@@ -73,6 +107,13 @@ test('paper source helpers derive arXiv PDFs and validate guide cache keys', asy
   assert.equal(paperSource.classifyPaperSectionType('A BSTRACT We introduce a new training recipe.'), 'abstract');
   assert.equal(paperSource.PAPER_CHAT_PROMPT_VERSION, 'paper-chat-v4');
   assert.equal(paperSource.PAPER_REFERENCES_CACHE_VERSION, 'paper-references-v3');
+  const previousPaperLlmChain = process.env.PAPER_LLM_CHAIN;
+  delete process.env.PAPER_LLM_CHAIN;
+  assert.deepEqual(paperSource.paperLlmChain(), ['mimo', 'minimax']);
+  process.env.PAPER_LLM_CHAIN = 'minimax,mimo';
+  assert.deepEqual(paperSource.paperLlmChain(), ['minimax', 'mimo']);
+  if (previousPaperLlmChain === undefined) delete process.env.PAPER_LLM_CHAIN;
+  else process.env.PAPER_LLM_CHAIN = previousPaperLlmChain;
   assert.equal(
     paperSource.comparePaperTitles('Transformer-XL', 'Transformer-XL: Attentive Language Models beyond a Fixed-Length Context') >= 0.85,
     true,
@@ -248,9 +289,9 @@ test('paper source helpers derive arXiv PDFs and validate guide cache keys', asy
   assert.ok(semanticReader.readingPath.some(step => step.kind === 'section' && step.sectionType === 'method'));
 });
 
-test('paper source server path resolves PDFs, caches DeepSeek guide, and streams PDF through site API', async () => {
+test('paper source server path resolves PDFs, caches LLM guide, and streams PDF through site API', async () => {
   const [paperSource, pdfRoute, guideRoute, translateRoute, chatRoute, notesRoute, materializeScript, referenceMaterializeScript] = await Promise.all([
-    readFile(paperSourcePath, 'utf8'),
+    readPaperSourceImplementationText(),
     readFile(paperPdfRoutePath, 'utf8'),
     readFile(paperGuideRoutePath, 'utf8'),
     readFile(paperTranslateRoutePath, 'utf8'),
@@ -272,7 +313,8 @@ test('paper source server path resolves PDFs, caches DeepSeek guide, and streams
   assert.match(paperSource, /options\.generateGuide === false \? getCachedOrFallbackPaperGuide/);
   assert.match(paperSource, /export async function getOrCreatePaperGuideViewModel/);
   assert.match(paperSource, /generateStructured/);
-  assert.match(paperSource, /chain: \['deepseek'\]/);
+  assert.match(paperSource, /chain: paperLlmChain\(\)/);
+  assert.match(paperSource, /DEFAULT_PAPER_LLM_CHAIN: ProviderName\[\] = \['mimo', 'minimax'\]/);
   assert.match(paperSource, /prisma\.people\.count\(\)/);
   assert.match(paperSource, /PAPER_PAGE_TEXT_CACHE_VERSION/);
   assert.match(paperSource, /PAPER_TRANSLATION_PROMPT_VERSION/);
