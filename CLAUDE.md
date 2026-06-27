@@ -275,6 +275,47 @@ metadata (JSON), searchVector, createdAt, updatedAt
 ```
 > 内容搜索索引层。`SearchDocument` 绑定可检索对象，`ContentChunk` 承载分块全文、FTS 与向量检索。
 
+### Paper Source Workspace
+```
+PaperDocument:
+id, sourceItemId (唯一), openalexId, doi, title, abstract,
+pdfUrl, landingPageUrl, authors (JSON), venue, citationCount,
+status, parseVersion, pageCount, textHash, parseError, parsedAt,
+metadata (JSON), createdAt, updatedAt,
+sourceItem, sections[], chunks[], figures[]
+
+PaperSection:
+id, paperId, sectionType, title, text, pageStart, pageEnd,
+orderIndex, createdAt, updatedAt, paper, chunks[]
+
+PaperChunk:
+id, paperId, sectionId, text, pageNumber, chunkIndex,
+anchorHint (JSON), embeddingId, tokenEstimate, textHash,
+createdAt, updatedAt, paper, section
+
+PaperFigure:
+id, paperId, label, caption, pageNumber, bbox (JSON),
+imagePath, orderIndex, createdAt, updatedAt, paper
+
+PaperEntityReview:
+id, sourceItemId, entityName, entityKind (person|organization),
+mentionType (author|affiliation|text_mention), matchReason, confidence,
+candidatePeople (JSON), candidateOrganizations (JSON),
+reviewStatus (needs_review|confirmed|rejected),
+confirmedPersonId, confirmedOrganizationId, evidenceQuote,
+metadata (JSON), createdAt, updatedAt,
+sourceItem, confirmedPerson, confirmedOrganization
+
+ProductEvidenceSource:
+id, productId, rawPoolItemId,
+role (paper_foundation|implementation_source|benchmark_source|docs_source),
+matchReason, confidence, summary, evidenceQuote,
+reviewStatus (auto|confirmed|rejected|needs_review),
+metadata (JSON), createdAt, updatedAt, product, rawPoolItem
+```
+> Paper Source Workspace 的全文结构化与证据图谱层。`PaperDocument.status` 承载 `metadata_only -> pdf_fetch_pending -> pdf_fetched -> parse_pending -> parsed -> ai_summary_pending -> ready` 状态机；失败态包括 `pdf_fetch_failed`、`parse_failed`、`ai_summary_failed`。
+⚠️ **人工确认边界**：`PaperEntityReview.reviewStatus=needs_review` 和 `ProductEvidenceSource.reviewStatus=needs_review` 只进入复核队列，不自动写成人物、组织或产品事实，也不进入发布证据图谱。
+
 ### Course
 ```
 id, personId, title, titleZh, platform, url, urlHash,
