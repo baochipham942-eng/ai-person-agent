@@ -33,6 +33,12 @@ export interface GenerateOptions {
     timeoutMs?: number;
 }
 
+export interface LlmUsage {
+    inputTokens?: number;
+    outputTokens?: number;
+    totalTokens?: number;
+}
+
 const DEFAULT_CHAIN: ProviderName[] = ['deepseek', 'gemini'];
 type GenerateTextParams = Parameters<typeof generateText>[0];
 
@@ -100,7 +106,7 @@ export function _resetModelsCache() { _models = {}; }
 export async function generate(
     messages: ChatMessage[],
     options: GenerateOptions = {}
-): Promise<{ text: string; provider: ProviderName }> {
+): Promise<{ text: string; provider: ProviderName; usage?: LlmUsage }> {
     const chain = (options.chain || DEFAULT_CHAIN).filter(isConfigured);
     if (chain.length === 0) {
         throw new Error('No LLM provider configured (check DEEPSEEK_API_KEY / GEMINI_API_KEY / RELAY_BASE_URL)');
@@ -117,7 +123,7 @@ export async function generate(
                 maxOutputTokens: options.maxTokens ?? 2000,
                 abortSignal: AbortSignal.timeout(requestTimeoutMs(options)),
             } as GenerateTextParams);
-            return { text: result.text, provider: name };
+            return { text: result.text, provider: name, usage: normalizeUsage(result.totalUsage || result.usage) };
         } catch (e) {
             lastErr = e;
             console.warn(`[provider] ${name} failed, ${chain.indexOf(name) < chain.length - 1 ? 'falling back' : 'no more fallback'}: ${(e as Error).message?.slice(0, 120)}`);
@@ -156,7 +162,7 @@ export async function generateStructured<T>(
     messages: ChatMessage[],
     schema: ZodType<T>,
     options: GenerateOptions = {}
-): Promise<{ data: T; provider: ProviderName }> {
+): Promise<{ data: T; provider: ProviderName; usage?: LlmUsage }> {
     const chain = (options.chain || DEFAULT_CHAIN).filter(isConfigured);
     if (chain.length === 0) {
         throw new Error('No LLM provider configured');
@@ -183,7 +189,7 @@ export async function generateStructured<T>(
 
             // 第一次尝试解析 + 校验
             try {
-                return { data: schema.parse(extractJson(result.text)), provider: name };
+                return { data: schema.parse(extractJson(result.text)), provider: name, usage: normalizeUsage(result.totalUsage || result.usage) };
             } catch (parseErr) {
                 // 一轮修复重试: 把错误反馈给模型
                 const repair = await generateText({
@@ -199,7 +205,13 @@ export async function generateStructured<T>(
                     providerOptions: { openai: { response_format: { type: 'json_object' } } },
                     abortSignal: AbortSignal.timeout(requestTimeoutMs(options)),
                 } as GenerateTextParams);
-                return { data: schema.parse(extractJson(repair.text)), provider: name };
+                const firstUsage = normalizeUsage(result.totalUsage || result.usage);
+                const repairUsage = normalizeUsage(repair.totalUsage || repair.usage);
+                return {
+                    data: schema.parse(extractJson(repair.text)),
+                    provider: name,
+                    usage: sumUsage(firstUsage, repairUsage),
+                };
             }
         } catch (e) {
             lastErr = e;
@@ -207,6 +219,35 @@ export async function generateStructured<T>(
         }
     }
     throw new Error(`All providers [${chain.join(', ')}] failed for structured output. Last: ${(lastErr as Error)?.message}`);
+}
+
+function normalizeUsage(usage: unknown): LlmUsage | undefined {
+    if (!usage || typeof usage !== 'object') return undefined;
+    const record = usage as Record<string, unknown>;
+    const inputTokens = numberOrUndefined(record.inputTokens);
+    const outputTokens = numberOrUndefined(record.outputTokens);
+    const totalTokens = numberOrUndefined(record.totalTokens);
+    if (inputTokens === undefined && outputTokens === undefined && totalTokens === undefined) return undefined;
+    return { inputTokens, outputTokens, totalTokens };
+}
+
+function sumUsage(left?: LlmUsage, right?: LlmUsage): LlmUsage | undefined {
+    if (!left) return right;
+    if (!right) return left;
+    return {
+        inputTokens: sumOptional(left.inputTokens, right.inputTokens),
+        outputTokens: sumOptional(left.outputTokens, right.outputTokens),
+        totalTokens: sumOptional(left.totalTokens, right.totalTokens),
+    };
+}
+
+function sumOptional(left?: number, right?: number): number | undefined {
+    if (left === undefined && right === undefined) return undefined;
+    return (left ?? 0) + (right ?? 0);
+}
+
+function numberOrUndefined(value: unknown): number | undefined {
+    return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
 }
 
 // ============== 向后兼容层 (deepseek.ts 的旧签名) ==============

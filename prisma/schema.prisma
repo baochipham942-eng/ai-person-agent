@@ -288,6 +288,7 @@ model People {
   cards                Card[]
   roles                PersonRole[]
   rawPoolItems         RawPoolItem[]
+  paperEntityReviews   PaperEntityReview[]
   activityEvents       ActivityEvent[]
   youtubeTranscripts   YouTubeTranscript[]
   searchSessions       SearchSession[]
@@ -317,6 +318,7 @@ model Organization {
   roles              PersonRole[]
   companySources     CompanySource[]
   companyThreadLinks CompanyThreadLink[]
+  paperEntityReviews PaperEntityReview[]
 
   @@index([name])
   @@index([wikidataQid])
@@ -439,6 +441,9 @@ model RawPoolItem {
   person                 People                  @relation(fields: [personId], references: [id], onDelete: Cascade)
   activityEvent          ActivityEvent?
   knowledgeThreadSources KnowledgeThreadSource[]
+  paperDocument          PaperDocument?
+  paperEntityReviews     PaperEntityReview[]
+  productEvidenceSources ProductEvidenceSource[]
   captionTranscripts     YouTubeTranscript[]     @relation("CaptionTranscripts")
   videoTranscripts       YouTubeTranscript[]     @relation("VideoTranscripts")
 
@@ -447,6 +452,129 @@ model RawPoolItem {
   @@index([personId, sourceType, publishedAt])
   @@index([personId, publishedAt])
   @@index([fetchStatus, fetchedAt])
+}
+
+model PaperDocument {
+  id             String         @id @default(cuid())
+  sourceItemId   String?        @unique
+  openalexId     String?
+  doi            String?
+  title          String
+  abstract       String?
+  pdfUrl         String?
+  landingPageUrl String?
+  authors        Json?
+  venue          String?
+  citationCount  Int            @default(0)
+  status         String         @default("metadata_only")
+  parseVersion   String?
+  pageCount      Int?
+  textHash       String?
+  parseError     String?
+  parsedAt       DateTime?
+  metadata       Json?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  sourceItem     RawPoolItem?   @relation(fields: [sourceItemId], references: [id], onDelete: SetNull)
+  sections       PaperSection[]
+  chunks         PaperChunk[]
+  figures        PaperFigure[]
+
+  @@index([openalexId])
+  @@index([doi])
+  @@index([status])
+  @@index([parsedAt])
+}
+
+model PaperSection {
+  id          String        @id @default(cuid())
+  paperId     String
+  sectionType String
+  title       String
+  text        String
+  pageStart   Int?
+  pageEnd     Int?
+  orderIndex  Int
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  paper       PaperDocument @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  chunks      PaperChunk[]
+
+  @@unique([paperId, orderIndex])
+  @@index([paperId])
+  @@index([sectionType])
+  @@index([paperId, sectionType])
+}
+
+model PaperChunk {
+  id            String        @id @default(cuid())
+  paperId       String
+  sectionId     String?
+  text          String
+  pageNumber    Int?
+  chunkIndex    Int
+  anchorHint    Json?
+  embeddingId   String?
+  tokenEstimate Int           @default(0)
+  textHash      String
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  paper         PaperDocument @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  section       PaperSection? @relation(fields: [sectionId], references: [id], onDelete: SetNull)
+
+  @@unique([paperId, chunkIndex])
+  @@index([paperId])
+  @@index([sectionId])
+  @@index([pageNumber])
+  @@index([textHash])
+}
+
+model PaperFigure {
+  id         String        @id @default(cuid())
+  paperId    String
+  label      String
+  caption    String?
+  pageNumber Int?
+  bbox       Json?
+  imagePath  String?
+  orderIndex Int
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  paper      PaperDocument @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@unique([paperId, orderIndex])
+  @@index([paperId])
+  @@index([pageNumber])
+}
+
+model PaperEntityReview {
+  id                      String        @id @default(cuid())
+  sourceItemId            String
+  entityName              String
+  entityKind              String // person | organization
+  mentionType             String // author | affiliation | text_mention
+  matchReason             String
+  confidence              Float         @default(0.6)
+  candidatePeople         Json?
+  candidateOrganizations  Json?
+  reviewStatus            String        @default("needs_review") // needs_review | confirmed | rejected
+  confirmedPersonId       String?
+  confirmedOrganizationId String?
+  evidenceQuote           String?
+  metadata                Json?
+  createdAt               DateTime      @default(now())
+  updatedAt               DateTime      @updatedAt
+  sourceItem              RawPoolItem   @relation(fields: [sourceItemId], references: [id], onDelete: Cascade)
+  confirmedPerson         People?       @relation(fields: [confirmedPersonId], references: [id], onDelete: SetNull)
+  confirmedOrganization   Organization? @relation(fields: [confirmedOrganizationId], references: [id], onDelete: SetNull)
+
+  @@unique([sourceItemId, entityKind, mentionType, entityName])
+  @@index([sourceItemId])
+  @@index([entityKind])
+  @@index([reviewStatus])
+  @@index([confirmedPersonId])
+  @@index([confirmedOrganizationId])
+  @@index([entityKind, reviewStatus, confidence])
 }
 
 model YouTubeTranscript {
@@ -927,6 +1055,7 @@ model Product {
   createdAt        DateTime             @default(now())
   updatedAt        DateTime             @updatedAt
   contributors     ProductContributor[]
+  evidenceSources  ProductEvidenceSource[]
 
   @@index([type])
   @@index([organizationId])
@@ -944,4 +1073,27 @@ model ProductContributor {
   @@unique([productId, personId])
   @@index([productId])
   @@index([personId])
+}
+
+model ProductEvidenceSource {
+  id            String      @id @default(cuid())
+  productId     String
+  rawPoolItemId String
+  role          String // paper_foundation | implementation_source | benchmark_source | docs_source
+  matchReason   String
+  confidence    Float       @default(0.8)
+  summary       String?
+  evidenceQuote String?
+  reviewStatus  String      @default("auto") // auto | confirmed | rejected | needs_review
+  metadata      Json?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  product       Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  rawPoolItem   RawPoolItem @relation(fields: [rawPoolItemId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, rawPoolItemId, role])
+  @@index([productId])
+  @@index([rawPoolItemId])
+  @@index([role])
+  @@index([reviewStatus])
 }

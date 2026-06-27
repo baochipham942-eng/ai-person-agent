@@ -54,3 +54,6 @@ next-env.d.ts
 /data/audit/
 /docs/page-drafts/
 /scripts/audit/backups/
+
+# product plans/specs stay out of git (PRD/plans/research are private)
+/docs/paper-source-workspace-plan.md
