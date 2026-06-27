@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/auth';
 import { getOrCreatePaperGuideViewModel } from '@/lib/paper-source';
 
 export const runtime = 'nodejs';
@@ -8,6 +9,12 @@ export async function POST(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  // 生成（调用 LLM + 写缓存）仅限登录用户，匿名访问不触发付费生成。
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: '请先登录' }, { status: 401 });
+  }
+
   const { id } = await params;
 
   try {

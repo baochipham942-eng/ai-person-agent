@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { auth } from '@/auth';
 import { translatePaperToChinese } from '@/lib/paper-source';
 
 export const runtime = 'nodejs';
@@ -14,6 +15,12 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  // 翻译（调用 LLM + 写缓存）仅限登录用户。
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: '请先登录' }, { status: 401 });
+  }
+
   const { id } = await params;
   const body = RequestSchema.safeParse(await request.json().catch(() => null));
   if (!body.success) {

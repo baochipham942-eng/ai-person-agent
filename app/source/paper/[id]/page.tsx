@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { auth } from '@/auth';
 import { SiteHeader } from '@/components/common/SiteHeader';
 import { PaperSourceWorkspace } from '@/components/source/PaperSourceWorkspace';
 import { prisma } from '@/lib/db/prisma';
@@ -28,8 +29,12 @@ export async function generateMetadata({ params }: PaperSourcePageProps): Promis
 
 export default async function PaperSourcePage({ params }: PaperSourcePageProps) {
   const { id } = await params;
-  const viewModel = await getPaperSourceViewModel(id, { generateGuide: false });
+  const [viewModel, session] = await Promise.all([
+    getPaperSourceViewModel(id, { generateGuide: false }),
+    auth(),
+  ]);
   if (!viewModel) notFound();
+  const isAuthenticated = Boolean(session?.user?.id);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -47,7 +52,7 @@ export default async function PaperSourcePage({ params }: PaperSourcePageProps) 
           <span className="truncate text-stone-500">论文资料</span>
         </div>
       </div>
-      <PaperSourceWorkspace viewModel={viewModel} />
+      <PaperSourceWorkspace viewModel={viewModel} isAuthenticated={isAuthenticated} />
     </div>
   );
 }

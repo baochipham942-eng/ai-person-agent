@@ -14,6 +14,7 @@ import type {
 
 interface PaperSourceWorkspaceProps {
   viewModel: PaperSourceViewModel;
+  isAuthenticated: boolean;
 }
 
 type WorkspaceTab = 'guide' | 'translation' | 'chat' | 'notes';
@@ -134,7 +135,7 @@ const SECTION_LABELS: Record<PaperGuideSectionType, string> = {
   other: 'Reading',
 };
 
-export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourceWorkspaceProps) {
+export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthenticated }: PaperSourceWorkspaceProps) {
   const [viewModel, setViewModel] = useState(initialViewModel);
   const [activeTab, setActiveTab] = useState<WorkspaceTab>('guide');
   const [pageNumber, setPageNumber] = useState(1);
@@ -181,17 +182,12 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
     guideRefreshSourceRef.current = null;
   }, [initialViewModel]);
 
-  useEffect(() => {
-    if (activeTab !== 'guide') return;
-    if (viewModel.guide.status === 'ready') {
-      setGuideRefreshState('ready');
-      setGuideRefreshError(null);
-      return;
-    }
+  // 导读生成只在登录用户主动点击时触发，不再随页面/标签自动调用付费模型。
+  function generateGuide() {
+    if (!isAuthenticated) return;
     if (guideRefreshState === 'loading') return;
-    if (guideRefreshSourceRef.current === viewModel.source.id) return;
+    if (viewModel.guide.status === 'ready') return;
 
-    let cancelled = false;
     guideRefreshSourceRef.current = viewModel.source.id;
     setGuideRefreshState('loading');
     setGuideRefreshError(null);
@@ -204,27 +200,24 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
         const payload = await response.json().catch(() => null) as { viewModel?: PaperSourceViewModel; error?: string } | null;
         if (!response.ok) throw new Error(payload?.error || 'paper_guide_failed');
         if (!payload?.viewModel) throw new Error('paper_guide_empty_response');
-        if (!cancelled) {
-          setViewModel(payload.viewModel);
-          setGuideRefreshState('ready');
-          setGuideRefreshError(null);
-        }
+        setViewModel(payload.viewModel);
+        setGuideRefreshState('ready');
+        setGuideRefreshError(null);
       })
       .catch(error => {
-        if (!cancelled) {
-          setGuideRefreshState('error');
-          setGuideRefreshError(error instanceof Error ? error.message : 'paper_guide_failed');
-        }
+        setGuideRefreshState('error');
+        setGuideRefreshError(error instanceof Error ? error.message : 'paper_guide_failed');
       });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [activeTab, guideRefreshState, viewModel.guide.status, viewModel.source.id]);
+  }
 
   const hasPdf = Boolean(viewModel.paper.pdfProxyUrl);
-  const readingPath = viewModel.guide.data.readingPath;
   const structureSections = viewModel.structure.sections;
+  const hasEvidence =
+    viewModel.paper.authorPeople.length > 0 ||
+    viewModel.paper.authorReviewCandidates.length > 0 ||
+    viewModel.entityReviewQueue.length > 0 ||
+    viewModel.relatedWorks.length > 0 ||
+    viewModel.relatedThreads.length > 0;
   const skimmingAssist = viewModel.semanticReader.skimmingAssist;
   const figures = viewModel.semanticReader.figures;
   const semanticReadingPath = viewModel.semanticReader.readingPath;
@@ -244,13 +237,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
     if (viewModel.structure.source !== 'paper_document') return '等待结构化';
     return `${viewModel.structure.sectionCount} sections · ${viewModel.structure.chunkCount} chunks`;
   }, [viewModel.structure.chunkCount, viewModel.structure.sectionCount, viewModel.structure.source]);
-  const sectionByType = useMemo(() => {
-    const map = new Map<PaperGuideSectionType, (typeof structureSections)[number]>();
-    for (const section of structureSections) {
-      if (!map.has(section.sectionType) && section.pageStart) map.set(section.sectionType, section);
-    }
-    return map;
-  }, [structureSections]);
   const guideAnchors = useMemo<Record<GuideAnchorKey, GuideAnchorTarget | null>>(() => {
     const fromSkim = (role: PaperSkimmingAssistItem['role']): GuideAnchorTarget | null => {
       const item = skimmingAssist.find(candidate => candidate.role === role && candidate.pageNumber);
@@ -725,7 +711,7 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
 
   return (
     <main
-      className="mx-auto grid w-full max-w-[1480px] gap-5 px-4 py-5 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px]"
+      className="mx-auto w-full max-w-[1480px] px-4 py-5 sm:px-6"
       data-paper-source-workspace
       data-paper-id={viewModel.source.id}
       data-paper-has-pdf={hasPdf ? 'true' : 'false'}
@@ -733,6 +719,7 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
       data-paper-guide-cache-hit={viewModel.guide.cacheHit ? 'true' : 'false'}
       data-paper-guide-refresh-state={guideRefreshState}
     >
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_440px]" data-paper-reading-area>
       <section className="min-w-0 space-y-4">
         <section className="rounded-2xl border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -921,38 +908,17 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
           </section>
         )}
 
+        {structureSections.length > 0 && (
         <section className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-5">
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <div className="text-xs font-semibold text-sky-600">论文结构</div>
-              <h2 className="mt-1 text-lg font-semibold tracking-tight text-stone-950">阅读顺序</h2>
+              <h2 className="mt-1 text-lg font-semibold tracking-tight text-stone-950">章节导航</h2>
             </div>
             <div className="flex flex-wrap gap-1.5">
               <span className="w-fit rounded-md bg-stone-100 px-2 py-1 text-xs text-stone-500">{guideMeta}</span>
               <span className="w-fit rounded-md bg-sky-50 px-2 py-1 text-xs text-sky-700">{structureMeta}</span>
             </div>
-          </div>
-          <div className="grid gap-2 md:grid-cols-2" data-paper-reading-path>
-            {readingPath.map((item, index) => (
-              <div key={`${item.sectionType}-${index}`} className="rounded-xl border border-stone-200 bg-stone-50/70 px-3 py-3">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-semibold uppercase tracking-wide text-sky-600">{SECTION_LABELS[item.sectionType]}</span>
-                  <span className="font-mono text-[11px] text-stone-400">{String(index + 1).padStart(2, '0')}</span>
-                </div>
-                <div className="mt-1 text-sm font-semibold text-stone-950">{item.title}</div>
-                <p className="mt-1 text-xs leading-5 text-stone-500">{item.why}</p>
-                {sectionByType.get(item.sectionType)?.pageStart && (
-                  <button
-                    type="button"
-                    onClick={() => jumpToSection(sectionByType.get(item.sectionType)!)}
-                    className="mt-2 inline-flex h-7 items-center rounded-md border border-sky-100 bg-white px-2 text-[11px] font-medium text-sky-700 hover:border-orange-200 hover:text-orange-700"
-                    data-paper-section-anchor
-                  >
-                    跳到 p.{sectionByType.get(item.sectionType)!.pageStart}
-                  </button>
-                )}
-              </div>
-            ))}
           </div>
           {viewModel.structure.source === 'paper_document' && structureSections.length > 0 && (
             <div className="mt-4 border-t border-stone-100 pt-4" data-paper-structure-timeline>
@@ -1002,10 +968,11 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
             </div>
           )}
         </section>
+        )}
       </section>
 
       <aside className="min-w-0 lg:sticky lg:top-[4.5rem] lg:h-[calc(100vh-5.5rem)]">
-        <section className="flex h-[78vh] min-h-[620px] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm lg:h-full">
+        <section className="flex max-h-[78vh] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm lg:h-full lg:max-h-none">
           <div className="border-b border-stone-100 px-3 py-3">
             <div className="grid grid-cols-4 gap-1 rounded-xl bg-stone-100 p-1">
               <TabButton active={activeTab === 'guide'} onClick={() => setActiveTab('guide')}>导读</TabButton>
@@ -1017,6 +984,32 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
 
           {activeTab === 'guide' ? (
             <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4" data-paper-guide-tab>
+              {viewModel.guide.status !== 'ready' && (
+                <div className="mb-4 rounded-xl border border-orange-100 bg-orange-50/50 px-3 py-3" data-paper-guide-generate-cta>
+                  <p className="text-xs leading-5 text-stone-600">
+                    当前为基于摘要的初步导读。完整 AI 导读由 DeepSeek 生成，按需触发。
+                  </p>
+                  {isAuthenticated ? (
+                    <button
+                      type="button"
+                      onClick={generateGuide}
+                      disabled={guideRefreshState === 'loading'}
+                      className="mt-2 inline-flex h-8 items-center rounded-md border border-orange-200 bg-white px-3 text-xs font-medium text-orange-700 transition hover:border-orange-300 disabled:cursor-not-allowed disabled:text-stone-400"
+                      data-paper-guide-generate
+                    >
+                      {guideRefreshState === 'loading' ? '生成中…' : '生成完整 AI 导读'}
+                    </button>
+                  ) : (
+                    <a
+                      href="/login"
+                      className="mt-2 inline-flex h-8 items-center rounded-md border border-orange-200 bg-white px-3 text-xs font-medium text-orange-700 transition hover:border-orange-300"
+                      data-paper-guide-login
+                    >
+                      登录后可生成完整 AI 导读
+                    </a>
+                  )}
+                </div>
+              )}
               <div id="paper-guide-summary" className="mb-4 rounded-xl border border-stone-200 bg-stone-50/80 px-3 py-3">
                 <div className="text-xs font-medium text-stone-400">一句话结论</div>
                 <p className="mt-1 text-sm font-semibold leading-6 text-stone-950">{viewModel.guide.data.summary}</p>
@@ -1061,13 +1054,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
                 cards={citationCards}
                 status={viewModel.semanticReader.referenceStatus}
               />
-              <PaperPeoplePanel
-                people={viewModel.paper.authorPeople}
-                reviewCandidates={viewModel.paper.authorReviewCandidates}
-                entityReviewQueue={viewModel.entityReviewQueue}
-              />
-              <RelatedWorksPanel works={viewModel.relatedWorks} />
-              <RelatedThreadsPanel threads={viewModel.relatedThreads} />
               <GuideBlock id="paper-guide-problem" title="研究问题" body={viewModel.guide.data.problem} anchor={guideAnchors.problem} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
               <GuideBlock id="paper-guide-novelty" title="新意" body={viewModel.guide.data.novelty} anchor={guideAnchors.novelty} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
               <GuideBlock id="paper-guide-method" title="方法" body={viewModel.guide.data.method} anchor={guideAnchors.method} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
@@ -1104,46 +1090,78 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel }: PaperSourc
               )}
             </div>
           ) : activeTab === 'translation' ? (
-            <TranslationPanel
-              state={translationState}
-              scopeLabel={translationScopeLabel}
-              onTranslate={requestTranslation}
-            />
+            isAuthenticated ? (
+              <TranslationPanel
+                state={translationState}
+                scopeLabel={translationScopeLabel}
+                onTranslate={requestTranslation}
+              />
+            ) : (
+              <PaperLoginGate feature="翻译" />
+            )
           ) : activeTab === 'chat' ? (
-            <PaperChatPanel
-              title={viewModel.source.title}
-              chunkCount={viewModel.structure.chunkCount}
-              messages={chatMessages}
-              pending={chatPending}
-              error={chatError}
-              input={chatInput}
-              relatedContext={chatRelatedContext}
-              onInputChange={setChatInput}
-              onSubmit={sendChatQuestion}
-              onCitationClick={jumpToCitation}
-              onCitationPreview={citation => activateReaderAnchor(previewForCitation(citation))}
-              onSuggestedQuestion={applySuggestedQuestion}
-              scrollRef={chatScrollRef}
-            />
+            isAuthenticated ? (
+              <PaperChatPanel
+                title={viewModel.source.title}
+                chunkCount={viewModel.structure.chunkCount}
+                messages={chatMessages}
+                pending={chatPending}
+                error={chatError}
+                input={chatInput}
+                relatedContext={chatRelatedContext}
+                onInputChange={setChatInput}
+                onSubmit={sendChatQuestion}
+                onCitationClick={jumpToCitation}
+                onCitationPreview={citation => activateReaderAnchor(previewForCitation(citation))}
+                onSuggestedQuestion={applySuggestedQuestion}
+                scrollRef={chatScrollRef}
+              />
+            ) : (
+              <PaperLoginGate feature="Chat 问答" />
+            )
           ) : (
-            <PaperNotesPanel
-              notes={notes}
-              body={noteBody}
-              quote={noteQuote}
-              pending={notePending}
-              error={noteError}
-              pageNumber={hasPdf ? pageNumber : null}
-              section={currentPageSection}
-              hasPdf={hasPdf}
-              onBodyChange={setNoteBody}
-              onQuoteChange={setNoteQuote}
-              onSubmit={createNote}
-              onJump={jumpToNote}
-              onDelete={deleteNote}
-            />
+            isAuthenticated ? (
+              <PaperNotesPanel
+                notes={notes}
+                body={noteBody}
+                quote={noteQuote}
+                pending={notePending}
+                error={noteError}
+                pageNumber={hasPdf ? pageNumber : null}
+                section={currentPageSection}
+                hasPdf={hasPdf}
+                onBodyChange={setNoteBody}
+                onQuoteChange={setNoteQuote}
+                onSubmit={createNote}
+                onJump={jumpToNote}
+                onDelete={deleteNote}
+              />
+            ) : (
+              <PaperLoginGate feature="笔记" />
+            )
           )}
         </section>
       </aside>
+      </div>
+      {hasEvidence && (
+        <section className="mt-6 border-t border-stone-100 pt-6" data-paper-evidence-graph>
+          <div className="mb-3">
+            <h2 className="text-lg font-semibold tracking-tight text-stone-950">关联与证据</h2>
+            <p className="mt-0.5 text-xs text-stone-400">
+              论文之外的延伸——作者、相关工作与主题，供探索，不影响上方阅读。
+            </p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+            <PaperPeoplePanel
+              people={viewModel.paper.authorPeople}
+              reviewCandidates={viewModel.paper.authorReviewCandidates}
+              entityReviewQueue={viewModel.entityReviewQueue}
+            />
+            <RelatedWorksPanel works={viewModel.relatedWorks} />
+            <RelatedThreadsPanel threads={viewModel.relatedThreads} />
+          </div>
+        </section>
+      )}
     </main>
   );
 }
@@ -1159,6 +1177,23 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
     >
       {children}
     </button>
+  );
+}
+
+function PaperLoginGate({ feature }: { feature: string }) {
+  return (
+    <div className="flex min-h-0 flex-1 flex-col items-center justify-center px-6 py-10 text-center" data-paper-login-gate>
+      <p className="text-sm font-medium text-stone-700">登录后可使用{feature}</p>
+      <p className="mt-1 text-xs leading-5 text-stone-400">
+        {feature}由模型按需生成，仅向登录用户开放。
+      </p>
+      <a
+        href="/login"
+        className="mt-3 inline-flex h-8 items-center rounded-md border border-orange-200 bg-white px-3 text-xs font-medium text-orange-700 transition hover:border-orange-300"
+      >
+        去登录
+      </a>
+    </div>
   );
 }
 
