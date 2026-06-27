@@ -12,10 +12,10 @@
  * loop-engineering 是静态 TS fixture（非 source-pack），不在落库范围，保持原样。
  *
  * 用法：
- *   npx tsx scripts/threads/seed_threads_to_db.ts --verify        # 只对比，不写（若库已空则提示先 seed）
- *   npx tsx scripts/threads/seed_threads_to_db.ts --execute       # 落库
- *   npx tsx scripts/threads/seed_threads_to_db.ts --execute --verify
- *   npx tsx scripts/threads/seed_threads_to_db.ts --teardown --execute
+ *   bunx tsx scripts/threads/seed_threads_to_db.ts --verify
+ *   bunx tsx scripts/threads/seed_threads_to_db.ts --execute --allow-remote-dev --allow-vercel-env
+ *   bunx tsx scripts/threads/seed_threads_to_db.ts --only=rag,deep-research --execute --allow-remote-dev --allow-vercel-env --verify
+ *   bunx tsx scripts/threads/seed_threads_to_db.ts --only=rag --teardown --execute --allow-remote-dev --allow-vercel-env
  */
 
 import { config as loadEnv } from 'dotenv';
@@ -26,10 +26,25 @@ import { prisma } from '../../lib/db/prisma';
 import { sha256 } from '../../lib/rawpool-identity';
 import { getSourcePackFixture, fetchKnowledgeThreadPage, SOURCE_PACK_SLUGS, getSourcePacks } from '../../lib/knowledge-threads';
 
-interface Options { execute: boolean; verify: boolean; teardown: boolean; }
+interface Options {
+    execute: boolean;
+    verify: boolean;
+    teardown: boolean;
+    onlySlugs: string[];
+    allowRemoteDev: boolean;
+    allowVercelEnv: boolean;
+}
 function parseOptions(): Options {
     const a = process.argv.slice(2);
-    return { execute: a.includes('--execute'), verify: a.includes('--verify'), teardown: a.includes('--teardown') };
+    const valOf = (f: string) => { const i = a.findIndex(arg => arg === f || arg.startsWith(`${f}=`)); return i >= 0 ? a[i].includes('=') ? a[i].slice(f.length + 1) : a[i + 1] : undefined; };
+    return {
+        execute: a.includes('--execute'),
+        verify: a.includes('--verify'),
+        teardown: a.includes('--teardown'),
+        onlySlugs: (valOf('--only') || '').split(',').map(s => s.trim()).filter(Boolean),
+        allowRemoteDev: a.includes('--allow-remote-dev'),
+        allowVercelEnv: a.includes('--allow-vercel-env'),
+    };
 }
 
 function firstText(value: string, length: number): string {
@@ -45,21 +60,26 @@ function fixtureSummary(s: any): string {
     return s.whyRelevant || firstText(s.text || '', 180);
 }
 
-async function teardown() {
-    const slugs = SOURCE_PACK_SLUGS;
+async function teardown(slugs: string[]) {
     const threads = await prisma.knowledgeThread.findMany({ where: { slug: { in: slugs } }, select: { id: true } });
     const threadIds = threads.map(t => t.id);
+    const sourceLinks = await prisma.knowledgeThreadSource.findMany({
+        where: { threadId: { in: threadIds }, sourceId: { not: null } },
+        select: { sourceId: true },
+    });
+    const sourceIds = sourceLinks.map(link => link.sourceId).filter((id): id is string => Boolean(id));
 
     const e = await prisma.knowledgeThreadEdge.deleteMany({ where: { threadId: { in: threadIds } } });
     const ts = await prisma.knowledgeThreadSource.deleteMany({ where: { threadId: { in: threadIds } } });
     const t = await prisma.knowledgeThread.deleteMany({ where: { id: { in: threadIds } } });
-    // 按 seededFrom 标记删源，兼容新旧 urlHash 方案
-    const ks = await prisma.knowledgeSource.deleteMany({ where: { metadata: { path: ['seededFrom'], equals: 'fixture' } } });
+    const ks = sourceIds.length > 0
+        ? await prisma.knowledgeSource.deleteMany({ where: { id: { in: sourceIds }, metadata: { path: ['seededFrom'], equals: 'fixture' } } })
+        : { count: 0 };
     console.log(`teardown: edges ${e.count}, threadSources ${ts.count}, threads ${t.count}, sources ${ks.count}`);
 }
 
-async function seed() {
-    const packs = getSourcePacks();
+async function seed(slugs: string[]) {
+    const packs = getSourcePacks().filter(pack => slugs.includes(pack.thread.slug));
     for (const pack of packs) {
         const t = pack.thread;
         const thread = await prisma.knowledgeThread.upsert({
@@ -145,10 +165,10 @@ async function seed() {
     }
 }
 
-async function verify() {
+async function verify(slugs: string[]) {
     console.log('\n=== Parity 校验：fixture 渲染 vs DB 渲染 ===');
     let allOk = true;
-    for (const slug of SOURCE_PACK_SLUGS) {
+    for (const slug of slugs) {
         const fixturePage = getSourcePackFixture(slug);
         const dbPage = await fetchKnowledgeThreadPage(slug);
         if (!fixturePage || !dbPage) { console.log(`  ⚠️ ${slug}: 缺页 fixture=${!!fixturePage} db=${!!dbPage}`); allOk = false; continue; }
@@ -184,20 +204,64 @@ async function verify() {
 
 async function main() {
     const opts = parseOptions();
+    const selectedSlugs = resolveSelectedSlugs(opts.onlySlugs);
+    if (opts.execute) assertWritableDb(getDbInfo(), opts);
     if (opts.teardown) {
         if (!opts.execute) { console.log('teardown 需要 --execute'); process.exit(1); }
-        await teardown();
+        await teardown(selectedSlugs);
         await prisma.$disconnect(); process.exit(0);
     }
     if (opts.execute) {
-        console.log('=== 落库 11 个 source-pack 主题 ===');
-        await seed();
+        console.log(`=== 落库 ${selectedSlugs.length} 个 source-pack 主题 ===`);
+        await seed(selectedSlugs);
     } else if (!opts.verify) {
-        console.log('dry-run：加 --execute 落库，或 --verify 校验。当前不做任何写入。');
+        console.log(`dry-run：选中 ${selectedSlugs.length} 个主题，当前不做任何写入。加 --execute 落库，或 --verify 校验。`);
+        console.log(JSON.stringify({ selectedSlugs }, null, 2));
     }
-    if (opts.verify) await verify();
+    if (opts.verify) {
+        const ok = await verify(selectedSlugs);
+        if (!ok) process.exitCode = 1;
+    }
     await prisma.$disconnect();
-    process.exit(0);
+    if (!process.exitCode) process.exit(0);
 }
 
 main().catch(async e => { console.error('失败:', e); await prisma.$disconnect(); process.exit(1); });
+
+function resolveSelectedSlugs(onlySlugs: string[]): string[] {
+    const allowed = new Set(SOURCE_PACK_SLUGS);
+    const selected = onlySlugs.length > 0 ? onlySlugs : SOURCE_PACK_SLUGS;
+    const unknown = selected.filter(slug => !allowed.has(slug));
+    if (unknown.length > 0) throw new Error(`Unknown source-pack slug(s): ${unknown.join(', ')}`);
+    return [...new Set(selected)];
+}
+
+function getDbInfo() {
+    const connectionString = process.env.DATABASE_URL;
+    if (!connectionString) return { configured: false, host: null, database: null, local: false, vercel: Boolean(process.env.VERCEL) };
+    try {
+        const url = new URL(connectionString);
+        return {
+            configured: true,
+            host: url.hostname,
+            database: url.pathname.replace(/^\//, '') || null,
+            local: ['localhost', '127.0.0.1', '::1'].includes(url.hostname),
+            vercel: Boolean(process.env.VERCEL),
+        };
+    } catch {
+        return { configured: true, host: 'unparseable', database: null, local: false, vercel: Boolean(process.env.VERCEL) };
+    }
+}
+
+function assertWritableDb(db: ReturnType<typeof getDbInfo>, options: Options) {
+    if (!db.configured) throw new Error('DATABASE_URL is not configured.');
+    if (process.env.NODE_ENV === 'production') {
+        throw new Error('Refusing to write while NODE_ENV=production.');
+    }
+    if (process.env.VERCEL && !options.allowVercelEnv) {
+        throw new Error('Refusing to write while VERCEL is set. Re-run with --allow-vercel-env after confirming this is the intended dev shell.');
+    }
+    if (!db.local && !options.allowRemoteDev) {
+        throw new Error(`Refusing to write to remote database host "${db.host}". Re-run with --allow-remote-dev after confirming this is a dev database.`);
+    }
+}
