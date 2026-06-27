@@ -212,14 +212,19 @@ async function persistPaperChatCache(
     },
   });
 
-  await mergePaperMetadata(sourceId, {
-    paperChatCache: {
-      ...cache.existingCache,
-      version: PAPER_CHAT_PROMPT_VERSION,
-      updatedAt: generatedAt,
-      items: nextItems,
-    },
-  });
+  // 缓存写失败（如 Neon 存储满拒写）不应让 Chat 回答失败：写不进就不缓存。
+  try {
+    await mergePaperMetadata(sourceId, {
+      paperChatCache: {
+        ...cache.existingCache,
+        version: PAPER_CHAT_PROMPT_VERSION,
+        updatedAt: generatedAt,
+        items: nextItems,
+      },
+    });
+  } catch {
+    // 缓存不可用，Chat 回答仍然有效，只是下次相同问题会重新生成。
+  }
 }
 
 function trimPaperChatCacheItems(items: Record<string, unknown>): Record<string, unknown> {

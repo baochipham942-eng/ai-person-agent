@@ -78,33 +78,14 @@ export async function getOrCreatePaperGuide(source: PaperSourceRecord): Promise<
     };
   }
 
+  let result;
   try {
-    const result = await generateStructured(buildGuideMessages(source, metadata, abstract), PaperGuideSchema, {
+    result = await generateStructured(buildGuideMessages(source, metadata, abstract), PaperGuideSchema, {
       chain: paperLlmChain(),
       temperature: 0.1,
       maxTokens: 1600,
       timeoutMs: 60_000,
     });
-    const generatedAt = new Date().toISOString();
-    await mergePaperMetadata(source.id, {
-      paperGuide: {
-        promptVersion: PAPER_GUIDE_PROMPT_VERSION,
-        abstractHash,
-        generatedAt,
-        provider: result.provider,
-        usage: result.usage,
-        guide: result.data,
-      },
-    });
-    return {
-      status: 'ready',
-      cacheHit: false,
-      generatedAt,
-      provider: result.provider,
-      usage: result.usage,
-      message: null,
-      data: result.data,
-    };
   } catch (error) {
     return {
       status: 'fallback',
@@ -115,6 +96,32 @@ export async function getOrCreatePaperGuide(source: PaperSourceRecord): Promise<
       data: fallbackGuide(source, metadata, abstract),
     };
   }
+
+  const generatedAt = new Date().toISOString();
+  // 缓存写失败（如 Neon 存储满拒写）不应丢弃已生成的真导读：写不进就不缓存，照常返回。
+  try {
+    await mergePaperMetadata(source.id, {
+      paperGuide: {
+        promptVersion: PAPER_GUIDE_PROMPT_VERSION,
+        abstractHash,
+        generatedAt,
+        provider: result.provider,
+        usage: result.usage,
+        guide: result.data,
+      },
+    });
+  } catch {
+    // 缓存不可用，导读仍然有效，只是下次访问会重新生成。
+  }
+  return {
+    status: 'ready',
+    cacheHit: false,
+    generatedAt,
+    provider: result.provider,
+    usage: result.usage,
+    message: null,
+    data: result.data,
+  };
 }
 
 function buildGuideMessages(source: PaperSourceRecord, metadata: Record<string, unknown>, abstract: string) {

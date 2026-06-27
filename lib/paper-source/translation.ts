@@ -91,27 +91,32 @@ export async function translatePaperToChinese(input: {
   const translation = cleanText(result.text);
   if (!translation) throw new Error('paper_translation_empty');
 
-  await mergePaperMetadata(source.id, {
-    paperTranslations: {
-      ...translationCache,
-      version: PAPER_TRANSLATION_PROMPT_VERSION,
-      updatedAt: translatedAt,
-      items: {
-        ...cachedItems,
-        [cacheKey]: {
-          promptVersion: PAPER_TRANSLATION_PROMPT_VERSION,
-          scope,
-          pageNumber,
-          textHash,
-          translatedAt,
-          provider: result.provider,
-          usage: result.usage,
-          sourceTextChars: trimmedSource.length,
-          translation,
+  // 缓存写失败（如 Neon 存储满拒写）不应丢弃已生成的翻译：写不进就不缓存，照常返回。
+  try {
+    await mergePaperMetadata(source.id, {
+      paperTranslations: {
+        ...translationCache,
+        version: PAPER_TRANSLATION_PROMPT_VERSION,
+        updatedAt: translatedAt,
+        items: {
+          ...cachedItems,
+          [cacheKey]: {
+            promptVersion: PAPER_TRANSLATION_PROMPT_VERSION,
+            scope,
+            pageNumber,
+            textHash,
+            translatedAt,
+            provider: result.provider,
+            usage: result.usage,
+            sourceTextChars: trimmedSource.length,
+            translation,
+          },
         },
       },
-    },
-  });
+    });
+  } catch {
+    // 缓存不可用，翻译仍然有效，只是下次访问会重新生成。
+  }
 
   return {
     scope,
@@ -169,18 +174,23 @@ export async function getOrExtractPaperPageText(source: PaperSourceRecord, reque
     extractedAt,
   };
 
-  await mergePaperMetadata(source.id, {
-    paperTextCache: {
-      ...textCache,
-      version: PAPER_PAGE_TEXT_CACHE_VERSION,
-      pdfUrlHash,
-      updatedAt: extractedAt,
-      pages: {
-        ...cachedPages,
-        [String(extracted.pageNumber)]: entry,
+  // 缓存写失败（如 Neon 存储满拒写）不应丢弃已提取的页文本。
+  try {
+    await mergePaperMetadata(source.id, {
+      paperTextCache: {
+        ...textCache,
+        version: PAPER_PAGE_TEXT_CACHE_VERSION,
+        pdfUrlHash,
+        updatedAt: extractedAt,
+        pages: {
+          ...cachedPages,
+          [String(extracted.pageNumber)]: entry,
+        },
       },
-    },
-  });
+    });
+  } catch {
+    // 缓存不可用，页文本仍然有效，只是下次访问会重新提取。
+  }
 
   return {
     ...entry,
