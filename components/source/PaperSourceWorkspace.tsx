@@ -1066,7 +1066,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                   figures={figures}
                   activeFigure={activeFigure}
                   hasPdf={hasPdf}
-                  pdfProxyUrl={viewModel.paper.pdfProxyUrl}
                   onJump={jumpToFigure}
                   onNote={seedNoteFromFigure}
                   onPreview={figure => activateReaderAnchor(previewForFigure(figure))}
@@ -1433,7 +1432,6 @@ function FigureCarouselPanel({
   figures,
   activeFigure,
   hasPdf,
-  pdfProxyUrl,
   onJump,
   onNote,
   onPreview,
@@ -1442,7 +1440,6 @@ function FigureCarouselPanel({
   figures: PaperFigureCard[];
   activeFigure: PaperFigureCard | null;
   hasPdf: boolean;
-  pdfProxyUrl: string | null;
   onJump: (item: PaperFigureCard) => void;
   onNote: (item: PaperFigureCard) => void;
   onPreview: (item: PaperFigureCard) => void;
@@ -1450,14 +1447,9 @@ function FigureCarouselPanel({
 }) {
   return (
     <section className="mb-4 rounded-xl border border-stone-200 bg-white px-3 py-3" data-paper-figure-carousel>
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <div className="text-xs font-semibold text-stone-700">图表速览</div>
-          <div className="mt-0.5 text-[11px] text-stone-500">Figures / Tables</div>
-        </div>
-        <span className="rounded-md bg-stone-100 px-2 py-1 text-[11px] text-stone-500">
-          {figures.length} items
-        </span>
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <div className="text-xs font-semibold text-stone-700">图表速览</div>
+        <span className="rounded-md bg-stone-100 px-2 py-1 text-[11px] text-stone-500">{figures.length}</span>
       </div>
 
       {figures.length === 0 ? (
@@ -1465,109 +1457,55 @@ function FigureCarouselPanel({
           暂未从已解析页识别到图表 caption。
         </div>
       ) : (
-        <>
-          <div className="flex snap-x gap-2 overflow-x-auto pb-1" data-paper-figure-list>
-            {figures.map(figure => (
-              <article
-                key={figure.id}
-                className={`min-w-[260px] snap-start rounded-lg border px-3 py-2 transition ${
-                  activeFigure?.id === figure.id || activeAnchorId === readerAnchorKey('figure', figure.id)
-                    ? 'border-orange-100 bg-orange-50/50'
-                    : 'border-stone-100 bg-stone-50/80 hover:border-orange-100 hover:bg-white'
-                }`}
-                onMouseEnter={() => onPreview(figure)}
-                onFocus={() => onPreview(figure)}
-                data-paper-figure-card
-                data-paper-figure-active={activeFigure?.id === figure.id ? 'true' : 'false'}
-                data-paper-figure-role={figure.evidenceRole}
-                data-page-number={figure.pageNumber ?? undefined}
-                data-paper-figure-preview
-                data-paper-active-anchor={activeAnchorId === readerAnchorKey('figure', figure.id) ? 'true' : 'false'}
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      <div className="text-xs font-semibold text-stone-900">{figure.label}</div>
-                      <span className="rounded-md bg-white px-1.5 py-0.5 text-[10px] font-medium text-orange-700" data-paper-figure-role-label>
-                        {figure.evidenceLabel}
-                      </span>
-                    </div>
-                    {figure.pageNumber && (
-                      <div className="mt-0.5 text-[11px] text-stone-400">p.{figure.pageNumber}</div>
-                    )}
-                  </div>
+        <div className="grid gap-2" data-paper-figure-list>
+          {figures.map(figure => (
+            <article
+              key={figure.id}
+              className={`rounded-lg border px-3 py-2 transition ${
+                activeFigure?.id === figure.id || activeAnchorId === readerAnchorKey('figure', figure.id)
+                  ? 'border-orange-100 bg-orange-50/50'
+                  : 'border-stone-100 bg-stone-50/70 hover:border-orange-100 hover:bg-white'
+              }`}
+              onMouseEnter={() => onPreview(figure)}
+              onFocus={() => onPreview(figure)}
+              data-paper-figure-card
+              data-paper-figure-active={activeFigure?.id === figure.id ? 'true' : 'false'}
+              data-paper-figure-role={figure.evidenceRole}
+              data-page-number={figure.pageNumber ?? undefined}
+              data-paper-figure-preview
+              data-paper-active-anchor={activeAnchorId === readerAnchorKey('figure', figure.id) ? 'true' : 'false'}
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+                  <span className="text-xs font-semibold text-stone-900">{figure.label}</span>
+                  <span className="rounded-md bg-white px-1.5 py-0.5 text-[10px] font-medium text-orange-700" data-paper-figure-role-label>
+                    {figure.evidenceLabel}
+                  </span>
+                  {figure.pageNumber && <span className="text-[11px] text-stone-400">p.{figure.pageNumber}</span>}
+                </div>
+                <div className="flex shrink-0 items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => onNote(figure)}
+                    className="inline-flex h-7 items-center rounded-md border border-stone-200 bg-white px-2 text-[11px] font-medium text-stone-400 transition hover:border-orange-200 hover:text-orange-700"
+                    data-paper-figure-note
+                  >
+                    记笔记
+                  </button>
                   <button
                     type="button"
                     onClick={() => onJump(figure)}
-                    className="inline-flex h-7 shrink-0 items-center rounded-md border border-stone-200 bg-white px-2 text-[11px] font-medium text-stone-500 transition hover:border-orange-200 hover:text-orange-700"
+                    className="inline-flex h-7 items-center rounded-md border border-stone-200 bg-white px-2 text-[11px] font-medium text-stone-500 transition hover:border-orange-200 hover:text-orange-700"
                     data-paper-figure-jump
                   >
-                    {figure.pageNumber && hasPdf ? '跳页' : '聚焦'}
+                    {figure.pageNumber && hasPdf ? `跳 p.${figure.pageNumber}` : '聚焦'}
                   </button>
                 </div>
-                <p className="mt-2 line-clamp-4 text-[11px] leading-5 text-stone-600">{figure.caption}</p>
-                <p className="mt-2 rounded-md bg-white/80 px-2 py-1.5 text-[11px] leading-5 text-stone-600" data-paper-figure-question>
-                  {figure.readerQuestion}
-                </p>
-                <p className="mt-2 border-l-2 border-orange-100 pl-2 text-[11px] leading-5 text-stone-400">{figure.readerHint}</p>
-              </article>
-            ))}
-          </div>
-
-          {activeFigure && (
-            <article
-              className="mt-3 overflow-hidden rounded-xl border border-orange-100 bg-orange-50/35"
-              data-paper-figure-focus
-              data-paper-figure-role={activeFigure.evidenceRole}
-              data-page-number={activeFigure.pageNumber ?? undefined}
-            >
-              <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_180px]">
-                <div className="px-3 py-3">
-                  <div className="flex flex-wrap items-start justify-between gap-2">
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <div className="text-xs font-semibold text-orange-700">{activeFigure.label}</div>
-                        <span className="rounded-md bg-white px-2 py-1 text-[11px] font-medium text-orange-700" data-paper-figure-role-label>
-                          {activeFigure.evidenceLabel}
-                        </span>
-                      </div>
-                      <div className="mt-1 text-sm font-semibold leading-5 text-stone-950">
-                        {activeFigure.pageNumber ? `Page ${activeFigure.pageNumber}` : 'Caption focus'}
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => onNote(activeFigure)}
-                      className="inline-flex h-8 items-center rounded-md border border-orange-100 bg-white px-2 text-[11px] font-medium text-orange-700 hover:border-orange-200"
-                      data-paper-figure-note
-                    >
-                      记笔记
-                    </button>
-                  </div>
-                  <p className="mt-2 text-xs leading-5 text-stone-700">{activeFigure.caption}</p>
-                  <p className="mt-2 rounded-lg bg-white/75 px-3 py-2 text-xs leading-5 text-stone-700" data-paper-figure-question>
-                    {activeFigure.readerQuestion}
-                  </p>
-                  <p className="mt-2 border-l-2 border-orange-200 pl-2 text-[11px] leading-5 text-stone-500">{activeFigure.readerHint}</p>
-                </div>
-                <div className="border-t border-orange-100 bg-white/75 md:border-l md:border-t-0" data-paper-figure-page-crop>
-                  {activeFigure.pageNumber && pdfProxyUrl ? (
-                    <iframe
-                      title={`${activeFigure.label} page preview`}
-                      src={`${pdfProxyUrl}#page=${activeFigure.pageNumber}&zoom=page-width&toolbar=0&navpanes=0`}
-                      className="h-44 w-full"
-                      data-paper-figure-page-preview
-                    />
-                  ) : (
-                    <div className="flex h-44 items-center justify-center px-3 text-center text-[11px] leading-5 text-stone-400">
-                      解析到 caption 后可回跳原文页。
-                    </div>
-                  )}
-                </div>
               </div>
+              <p className="mt-1.5 line-clamp-2 text-[11px] leading-5 text-stone-600">{figure.caption}</p>
             </article>
-          )}
-        </>
+          ))}
+        </div>
       )}
     </section>
   );
