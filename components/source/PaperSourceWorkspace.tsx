@@ -17,7 +17,7 @@ interface PaperSourceWorkspaceProps {
   isAuthenticated: boolean;
 }
 
-type WorkspaceTab = 'guide' | 'chat' | 'notes';
+type WorkspaceTab = 'guide' | 'extended' | 'chat' | 'notes';
 type PdfRenderState = 'idle' | 'loading' | 'ready' | 'error';
 type GuideRefreshState = 'idle' | 'loading' | 'ready' | 'error';
 type TranslationState =
@@ -940,57 +940,14 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
           </section>
         )}
 
-        {structureSections.length > 0 && viewModel.structure.source === 'paper_document' && (
-          <CollapsibleSection
-            title="章节导航"
-            hint={`${structureSections.length} 章节${viewModel.structure.pageCount ? ` · ${viewModel.structure.pageCount}p` : ''}`}
-            dataAttr="data-paper-structure-card"
-          >
-            <div className="grid gap-2" data-paper-structure-timeline>
-                {structureSections.slice(0, 8).map(section => (
-                  <div
-                    key={section.id}
-                    id={paperSectionAnchorId(section.id)}
-                    className={`scroll-mt-24 flex items-start justify-between gap-3 rounded-xl border px-3 py-2 transition ${
-                      activeReaderAnchorId === readerAnchorKey('section', section.id)
-                        ? 'border-orange-200 bg-orange-50/60'
-                        : 'border-stone-100'
-                    }`}
-                    onMouseEnter={() => activateReaderAnchor(previewForSection(section))}
-                    onFocus={() => activateReaderAnchor(previewForSection(section))}
-                    data-paper-section-id={section.id}
-                    data-paper-section-preview
-                    data-paper-active-anchor={activeReaderAnchorId === readerAnchorKey('section', section.id) ? 'true' : 'false'}
-                  >
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-[11px] font-semibold uppercase text-sky-600">{SECTION_LABELS[section.sectionType]}</span>
-                        <span className="truncate text-xs font-medium text-stone-700">{section.title}</span>
-                      </div>
-                      <p className="mt-1 line-clamp-2 text-[11px] leading-5 text-stone-400">{section.textPreview}</p>
-                    </div>
-                    {section.pageStart && hasPdf && (
-                      <button
-                        type="button"
-                        onClick={() => jumpToSection(section)}
-                        className="inline-flex h-7 shrink-0 items-center rounded-md border border-stone-200 bg-white px-2 text-[11px] font-medium text-stone-500 hover:border-orange-200 hover:text-orange-700"
-                        data-paper-section-anchor
-                      >
-                        p.{section.pageStart}
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
-          </CollapsibleSection>
-        )}
       </section>
 
       <aside className="min-w-0 lg:sticky lg:top-[4.5rem] lg:h-[calc(100vh-5.5rem)]">
         <section className="flex max-h-[78vh] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm lg:h-full lg:max-h-none">
           <div className="border-b border-stone-100 px-3 py-3">
-            <div className="grid grid-cols-3 gap-1 rounded-xl bg-stone-100 p-1">
+            <div className="grid grid-cols-4 gap-1 rounded-xl bg-stone-100 p-1">
               <TabButton active={activeTab === 'guide'} onClick={() => setActiveTab('guide')}>导读</TabButton>
+              <TabButton active={activeTab === 'extended'} onClick={() => setActiveTab('extended')}>扩展阅读</TabButton>
               <TabButton active={activeTab === 'chat'} onClick={() => setActiveTab('chat')}>Chat</TabButton>
               <TabButton active={activeTab === 'notes'} onClick={() => setActiveTab('notes')}>Notes</TabButton>
             </div>
@@ -1038,14 +995,92 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                   {viewModel.guide.usage?.totalTokens && <span>{viewModel.guide.usage.totalTokens} tokens</span>}
                 </div>
               </div>
-              <GuideBlock id="paper-guide-problem" title="研究问题" body={viewModel.guide.data.problem} anchor={guideAnchors.problem} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
-              <GuideBlock id="paper-guide-novelty" title="新意" body={viewModel.guide.data.novelty} anchor={guideAnchors.novelty} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
-              <GuideBlock id="paper-guide-method" title="方法" body={viewModel.guide.data.method} anchor={guideAnchors.method} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
-              <GuideBlock id="paper-guide-experiments" title="实验和关键数字" body={viewModel.guide.data.experiments} anchor={guideAnchors.experiments} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
-              <GuideBlock id="paper-guide-limitations" title="局限" body={viewModel.guide.data.limitations} anchor={guideAnchors.limitations} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
-              <GuideBlock title="适合谁读" body={viewModel.guide.data.fit.whoShouldRead} />
-              <GuideBlock title="和产品的关系" body={viewModel.guide.data.fit.whyRelevantToProduct} />
-              <CollapsibleSection title="阅读导航与图表" hint="读序 · skim · 图表 · 引用" dataAttr="data-paper-reading-aids">
+              {viewModel.guide.status === 'ready' ? (
+                <>
+                  <GuideBlock id="paper-guide-problem" title="研究问题" body={viewModel.guide.data.problem} anchor={guideAnchors.problem} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
+                  <GuideBlock id="paper-guide-novelty" title="新意" body={viewModel.guide.data.novelty} anchor={guideAnchors.novelty} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
+                  <GuideBlock id="paper-guide-method" title="方法" body={viewModel.guide.data.method} anchor={guideAnchors.method} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
+                  <GuideBlock id="paper-guide-experiments" title="实验和关键数字" body={viewModel.guide.data.experiments} anchor={guideAnchors.experiments} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
+                  <GuideBlock id="paper-guide-limitations" title="局限" body={viewModel.guide.data.limitations} anchor={guideAnchors.limitations} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
+                  <GuideBlock title="适合谁读" body={viewModel.guide.data.fit.whoShouldRead} />
+                  <GuideBlock title="和产品的关系" body={viewModel.guide.data.fit.whyRelevantToProduct} />
+                </>
+              ) : (
+                <p className="rounded-xl border border-dashed border-stone-200 px-3 py-4 text-center text-xs leading-6 text-stone-400">
+                  研究问题、新意、方法、实验、局限等结构化解读，{isAuthenticated ? '点上方「生成完整 AI 导读」后展开。' : '登录并生成后展开。'}
+                </p>
+              )}
+              {guideRefreshState === 'loading' && (
+                <div className="mt-4 rounded-xl border border-sky-100 bg-sky-50 px-3 py-2 text-xs leading-5 text-sky-700" data-paper-guide-refresh-loading>
+                  正在生成结构化导读，完成后会自动替换当前摘要导读。
+                </div>
+              )}
+              {guideRefreshState === 'error' && (
+                <div className="mt-4 rounded-xl border border-rose-100 bg-rose-50 px-3 py-2 text-xs leading-5 text-rose-700" data-paper-guide-refresh-error>
+                  <div>{guideRefreshError || '导读生成失败'}</div>
+                  <button
+                    type="button"
+                    className="mt-2 inline-flex h-7 items-center rounded-md border border-rose-200 bg-white px-2 text-[11px] font-medium text-rose-700 hover:border-rose-300"
+                    data-paper-guide-refresh-retry
+                    onClick={() => {
+                      guideRefreshSourceRef.current = null;
+                      setGuideRefreshError(null);
+                      setGuideRefreshState('idle');
+                    }}
+                  >
+                    重试
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : activeTab === 'extended' ? (
+            <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4" data-paper-extended-tab>
+              {structureSections.length > 0 && viewModel.structure.source === 'paper_document' && (
+                <CollapsibleSection
+                  title="章节导航"
+                  hint={`${structureSections.length} 章节${viewModel.structure.pageCount ? ` · ${viewModel.structure.pageCount}p` : ''}`}
+                  defaultOpen
+                  dataAttr="data-paper-structure-card"
+                >
+                  <div className="grid gap-2" data-paper-structure-timeline>
+                    {structureSections.slice(0, 8).map(section => (
+                      <div
+                        key={section.id}
+                        id={paperSectionAnchorId(section.id)}
+                        className={`scroll-mt-24 flex items-start justify-between gap-3 rounded-xl border px-3 py-2 transition ${
+                          activeReaderAnchorId === readerAnchorKey('section', section.id)
+                            ? 'border-orange-200 bg-orange-50/60'
+                            : 'border-stone-100'
+                        }`}
+                        onMouseEnter={() => activateReaderAnchor(previewForSection(section))}
+                        onFocus={() => activateReaderAnchor(previewForSection(section))}
+                        data-paper-section-id={section.id}
+                        data-paper-section-preview
+                        data-paper-active-anchor={activeReaderAnchorId === readerAnchorKey('section', section.id) ? 'true' : 'false'}
+                      >
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-[11px] font-semibold uppercase text-sky-600">{SECTION_LABELS[section.sectionType]}</span>
+                            <span className="truncate text-xs font-medium text-stone-700">{section.title}</span>
+                          </div>
+                          <p className="mt-1 line-clamp-2 text-[11px] leading-5 text-stone-400">{section.textPreview}</p>
+                        </div>
+                        {section.pageStart && hasPdf && (
+                          <button
+                            type="button"
+                            onClick={() => jumpToSection(section)}
+                            className="inline-flex h-7 shrink-0 items-center rounded-md border border-stone-200 bg-white px-2 text-[11px] font-medium text-stone-500 hover:border-orange-200 hover:text-orange-700"
+                            data-paper-section-anchor
+                          >
+                            p.{section.pageStart}
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </CollapsibleSection>
+              )}
+              <CollapsibleSection title="阅读导航与图表" hint="读序 · skim · 图表 · 引用" defaultOpen dataAttr="data-paper-reading-aids">
                 <SemanticReadingPathPanel
                   steps={semanticReadingPath}
                   hasPdf={hasPdf}
@@ -1076,32 +1111,18 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                   status={viewModel.semanticReader.referenceStatus}
                 />
               </CollapsibleSection>
-              {viewModel.guide.status !== 'ready' && viewModel.guide.message && (
-                <div className="mt-4 rounded-xl border border-amber-100 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-700">
-                  {viewModel.guide.message}
-                </div>
-              )}
-              {guideRefreshState === 'loading' && (
-                <div className="mt-4 rounded-xl border border-sky-100 bg-sky-50 px-3 py-2 text-xs leading-5 text-sky-700" data-paper-guide-refresh-loading>
-                  正在生成结构化导读，完成后会自动替换当前摘要导读。
-                </div>
-              )}
-              {guideRefreshState === 'error' && (
-                <div className="mt-4 rounded-xl border border-rose-100 bg-rose-50 px-3 py-2 text-xs leading-5 text-rose-700" data-paper-guide-refresh-error>
-                  <div>{guideRefreshError || '导读生成失败'}</div>
-                  <button
-                    type="button"
-                    className="mt-2 inline-flex h-7 items-center rounded-md border border-rose-200 bg-white px-2 text-[11px] font-medium text-rose-700 hover:border-rose-300"
-                    data-paper-guide-refresh-retry
-                    onClick={() => {
-                      guideRefreshSourceRef.current = null;
-                      setGuideRefreshError(null);
-                      setGuideRefreshState('idle');
-                    }}
-                  >
-                    重试
-                  </button>
-                </div>
+              {hasEvidence && (
+                <CollapsibleSection title="关联与证据" hint="作者 · 相关工作 · 主题">
+                  <div className="grid gap-4">
+                    <PaperPeoplePanel
+                      people={viewModel.paper.authorPeople}
+                      reviewCandidates={viewModel.paper.authorReviewCandidates}
+                      entityReviewQueue={viewModel.entityReviewQueue}
+                    />
+                    <RelatedWorksPanel works={viewModel.relatedWorks} />
+                    <RelatedThreadsPanel threads={viewModel.relatedThreads} />
+                  </div>
+                </CollapsibleSection>
               )}
             </div>
           ) : activeTab === 'chat' ? (
@@ -1148,21 +1169,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
         </section>
       </aside>
       </div>
-      {hasEvidence && (
-        <div className="mt-5" data-paper-evidence-graph>
-          <CollapsibleSection title="关联与证据" hint="作者 · 相关工作 · 主题">
-            <div className="grid gap-4 lg:grid-cols-3">
-              <PaperPeoplePanel
-                people={viewModel.paper.authorPeople}
-                reviewCandidates={viewModel.paper.authorReviewCandidates}
-                entityReviewQueue={viewModel.entityReviewQueue}
-              />
-              <RelatedWorksPanel works={viewModel.relatedWorks} />
-              <RelatedThreadsPanel threads={viewModel.relatedThreads} />
-            </div>
-          </CollapsibleSection>
-        </div>
-      )}
     </main>
   );
 }
