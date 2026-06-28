@@ -18,7 +18,7 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { generateText, type LanguageModel } from 'ai';
 import type { ZodType } from 'zod';
 
-export type ProviderName = 'deepseek' | 'gemini' | 'grok' | 'mimo' | 'minimax';
+export type ProviderName = 'deepseek' | 'gemini' | 'grok' | 'mimo' | 'minimax' | 'glm';
 
 export interface ChatMessage {
     role: 'system' | 'user' | 'assistant';
@@ -95,6 +95,14 @@ function getModel(name: ProviderName): LanguageModel {
                 name: 'minimax',
             }).chat(process.env.MINIMAX_MODEL || process.env.MINIMAX_TOPIC_MODEL || DEFAULT_MINIMAX_MODEL);
             break;
+        case 'glm':
+            // 本地中转 GLM（OpenAI 兼容）。.chat() 强制走 /chat/completions。
+            model = createOpenAI({
+                apiKey: process.env.GLM_API_KEY,
+                baseURL: process.env.GLM_BASE_URL || process.env.GLM_API_URL,
+                name: 'glm',
+            }).chat(process.env.GLM_MODEL || 'glm-4.6');
+            break;
         default:
             throw new Error(`Unknown provider: ${name}`);
     }
@@ -110,6 +118,7 @@ function isConfigured(name: ProviderName): boolean {
         case 'grok': return !!process.env.GROK_RELAY_API_KEY && !!process.env.RELAY_BASE_URL;
         case 'mimo': return !!process.env.XIAOMI_API_KEY;
         case 'minimax': return !!process.env.MINIMAX_API_KEY;
+        case 'glm': return !!process.env.GLM_API_KEY && !!(process.env.GLM_BASE_URL || process.env.GLM_API_URL);
         default: return false;
     }
 }

@@ -12,6 +12,7 @@ export function paperLlmChain(): ProviderName[] {
       || item === 'grok'
       || item === 'mimo'
       || item === 'minimax'
+      || item === 'glm'
     ));
   return configured.length > 0 ? configured : DEFAULT_PAPER_LLM_CHAIN;
 }
