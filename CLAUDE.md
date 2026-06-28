@@ -379,7 +379,10 @@ status, reason, reviewer, createdAt
 
 ## Deployment Notes
 - **Vercel**: Frontend/API hosting
-- **Aliyun FC**: Use `s deploy -y --use-remote` (preserves HTTPS)
+- **Aliyun FC**（people.llmxy.xyz 的反向代理，真 app 在 Vercel）：改 `proxy/` 代码后用 **`s deploy function --use-local -y`** 部署。
+  - ⚠️ `s deploy -y --use-remote`（旧写法）**不上传本地代码**（X-Fc-Code-Checksum 不变），是个静默 no-op；必须用 `function --use-local` 才真上传。
+  - customDomains 已在阿里云控制台配 HTTPS，s.yaml 里注释掉，所以 `s deploy function` 不碰域名，安全。
+  - 部署后验证：`curl -D- people.llmxy.xyz/ | grep X-Fc-Code-Checksum`（checksum 变了才算上传成功）。
 - **Neon WebSocket**: 4s → 300ms cold start optimization
 - **NextAuth**: Requires `trustHost: true` for proxy
 
