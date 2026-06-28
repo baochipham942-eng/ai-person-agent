@@ -664,7 +664,14 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
       try {
         const pdfjs = await import('pdfjs-dist');
         pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
-        loadingTask = pdfjs.getDocument({ url: viewModel.paper.pdfProxyUrl! });
+        // disableStream/disableAutoFetch：只按需 range 取当前页字节，避免后台流式拉完整个
+        // PDF（图像密集论文常 ~18MB），首页几百 KB 即可渲染。配合 /pdf 代理的 Range 支持。
+        loadingTask = pdfjs.getDocument({
+          url: viewModel.paper.pdfProxyUrl!,
+          disableStream: true,
+          disableAutoFetch: true,
+          rangeChunkSize: 262144,
+        });
         const pdf = await loadingTask.promise as { numPages: number; getPage: (page: number) => Promise<unknown> };
         if (cancelled) return;
         setPageCount(pdf.numPages);
