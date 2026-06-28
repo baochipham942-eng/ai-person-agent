@@ -17,7 +17,7 @@ interface PaperSourceWorkspaceProps {
   isAuthenticated: boolean;
 }
 
-type WorkspaceTab = 'guide' | 'translation' | 'chat' | 'notes';
+type WorkspaceTab = 'guide' | 'chat' | 'notes';
 type PdfRenderState = 'idle' | 'loading' | 'ready' | 'error';
 type GuideRefreshState = 'idle' | 'loading' | 'ready' | 'error';
 type TranslationState =
@@ -146,6 +146,7 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
   const [guideRefreshState, setGuideRefreshState] = useState<GuideRefreshState>(initialViewModel.guide.status === 'ready' ? 'ready' : 'idle');
   const [guideRefreshError, setGuideRefreshError] = useState<string | null>(null);
   const [translationState, setTranslationState] = useState<TranslationState>({ status: 'idle', result: null, error: null });
+  const [translateOpen, setTranslateOpen] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [chatPending, setChatPending] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
@@ -233,10 +234,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
     if (viewModel.guide.provider) return `DeepSeek · ${viewModel.guide.provider}`;
     return '本地导读';
   }, [guideRefreshState, viewModel.guide.cacheHit, viewModel.guide.provider]);
-  const structureMeta = useMemo(() => {
-    if (viewModel.structure.source !== 'paper_document') return '等待结构化';
-    return `${viewModel.structure.sectionCount} sections · ${viewModel.structure.chunkCount} chunks`;
-  }, [viewModel.structure.chunkCount, viewModel.structure.sectionCount, viewModel.structure.source]);
   const guideAnchors = useMemo<Record<GuideAnchorKey, GuideAnchorTarget | null>>(() => {
     const fromSkim = (role: PaperSkimmingAssistItem['role']): GuideAnchorTarget | null => {
       const item = skimmingAssist.find(candidate => candidate.role === role && candidate.pageNumber);
@@ -297,9 +294,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
       limitations: prefer(['limitation'], ['limitation']),
     };
   }, [skimmingAssist, structureSections]);
-  const currentPageSkimmingItems = useMemo(() => (
-    skimmingAssist.filter(item => item.pageNumber === pageNumber)
-  ), [pageNumber, skimmingAssist]);
   const currentPageSection = useMemo<PaperNoteAnchorSection | null>(() => {
     const containing = structureSections.find(section => (
       section.pageStart !== null
@@ -347,7 +341,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
 
     return [...threadContext, ...workContext].slice(0, 6);
   }, [viewModel.relatedThreads, viewModel.relatedWorks]);
-  const translationScopeLabel = hasPdf ? `第 ${pageNumber} 页` : 'Abstract';
 
   function jumpToSection(section: (typeof structureSections)[number]) {
     activateReaderAnchor(previewForSection(section));
@@ -531,6 +524,22 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
       });
     }
   }
+
+  function toggleTranslate() {
+    if (translateOpen) {
+      setTranslateOpen(false);
+      return;
+    }
+    setTranslateOpen(true);
+    void requestTranslation();
+  }
+
+  // 翻译面板开着时翻页，自动重译当前页。
+  useEffect(() => {
+    if (!translateOpen || !isAuthenticated) return;
+    void requestTranslation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
 
   async function sendChatQuestion(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -826,36 +835,30 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                 >
                   下一页
                 </button>
-              </div>
-            </div>
-            <div className="border-b border-stone-200 bg-white/95 px-3 py-2" data-paper-skimming-overlay>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[11px] font-semibold uppercase text-stone-400">Skim p.{pageNumber}</span>
-                {(currentPageSkimmingItems.length > 0 ? currentPageSkimmingItems : skimmingAssist.slice(0, 3)).map(item => (
+                {isAuthenticated ? (
                   <button
-                    key={`overlay-${item.id}`}
                     type="button"
-                    onClick={() => jumpToSkimmingItem(item)}
-                    onMouseEnter={() => activateReaderAnchor(previewForSkimmingItem(item))}
-                    onFocus={() => activateReaderAnchor(previewForSkimmingItem(item))}
-                    disabled={!item.pageNumber}
-                    className={`inline-flex h-7 max-w-[220px] items-center gap-1 rounded-md border px-2 text-[11px] font-medium transition ${
-                      item.pageNumber === pageNumber
+                    onClick={toggleTranslate}
+                    className={`inline-flex h-8 items-center justify-center rounded-lg border px-2.5 text-xs font-medium transition ${
+                      translateOpen
                         ? 'border-orange-200 bg-orange-50 text-orange-700'
-                        : 'border-stone-200 bg-stone-50 text-stone-600 hover:border-orange-200 hover:text-orange-700'
-                    } disabled:cursor-default disabled:border-stone-100 disabled:text-stone-300`}
-                    data-paper-skim-overlay-item
-                    data-paper-active-anchor={activeReaderAnchorId === readerAnchorKey('skim', item.id) ? 'true' : 'false'}
-                    data-skim-role={item.role}
-                    data-page-number={item.pageNumber ?? undefined}
+                        : 'border-stone-200 bg-white text-stone-500 hover:border-orange-200 hover:text-orange-700'
+                    }`}
+                    data-paper-translate-page
                   >
-                    <span>{item.label}</span>
-                    {item.pageNumber && <span className="font-mono text-[10px]">p.{item.pageNumber}</span>}
+                    译本页
                   </button>
-                ))}
+                ) : (
+                  <a
+                    href="/login"
+                    className="inline-flex h-8 items-center justify-center rounded-lg border border-stone-200 bg-white px-2.5 text-xs font-medium text-stone-400 hover:border-orange-200 hover:text-orange-700"
+                  >
+                    登录可译
+                  </a>
+                )}
               </div>
             </div>
-            <div className="max-h-[72vh] overflow-auto px-3 py-4">
+            <div className="max-h-[78vh] overflow-auto px-3 py-4">
               {renderState !== 'error' && (
                 <div className="mx-auto w-fit rounded-lg bg-white shadow-sm">
                   <canvas ref={canvasRef} data-paper-pdf-canvas />
@@ -890,6 +893,28 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                 </section>
               )}
             </div>
+            {translateOpen && (
+              <div className="border-t border-stone-200 bg-sky-50/30 px-3 py-3" data-paper-page-translation>
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <span className="text-xs font-semibold text-sky-700">第 {pageNumber} 页 · 中文翻译</span>
+                  <div className="flex items-center gap-2 text-[11px] text-stone-400">
+                    {translationState.status === 'ready' && translationState.result && (
+                      <span>{translationState.result.cacheHit ? '缓存' : 'DeepSeek'}</span>
+                    )}
+                    <button type="button" onClick={() => setTranslateOpen(false)} className="text-stone-400 hover:text-orange-700">
+                      收起
+                    </button>
+                  </div>
+                </div>
+                {translationState.status === 'loading' && <p className="text-xs text-stone-400">翻译中…</p>}
+                {translationState.status === 'error' && <p className="text-xs leading-6 text-rose-600">{translationState.error}</p>}
+                {translationState.status === 'ready' && translationState.result && (
+                  <p className="whitespace-pre-wrap text-sm leading-7 text-stone-800" data-paper-page-translation-result>
+                    {translationState.result.translation}
+                  </p>
+                )}
+              </div>
+            )}
           </section>
         ) : (
           <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm" data-paper-abstract-fallback>
@@ -915,28 +940,13 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
           </section>
         )}
 
-        {structureSections.length > 0 && (
-        <section className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-5">
-          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-            <div>
-              <div className="text-xs font-semibold text-sky-600">论文结构</div>
-              <h2 className="mt-1 text-lg font-semibold tracking-tight text-stone-950">章节导航</h2>
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              <span className="w-fit rounded-md bg-stone-100 px-2 py-1 text-xs text-stone-500">{guideMeta}</span>
-              <span className="w-fit rounded-md bg-sky-50 px-2 py-1 text-xs text-sky-700">{structureMeta}</span>
-            </div>
-          </div>
-          {viewModel.structure.source === 'paper_document' && structureSections.length > 0 && (
-            <div className="mt-4 border-t border-stone-100 pt-4" data-paper-structure-timeline>
-              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                <div className="text-xs font-semibold text-stone-400">解析结构</div>
-                <div className="text-[11px] text-stone-400">
-                  {viewModel.structure.status}
-                  {viewModel.structure.pageCount ? ` · ${viewModel.structure.pageCount} pages` : ''}
-                </div>
-              </div>
-              <div className="grid gap-2">
+        {structureSections.length > 0 && viewModel.structure.source === 'paper_document' && (
+          <CollapsibleSection
+            title="章节导航"
+            hint={`${structureSections.length} 章节${viewModel.structure.pageCount ? ` · ${viewModel.structure.pageCount}p` : ''}`}
+            dataAttr="data-paper-structure-card"
+          >
+            <div className="grid gap-2" data-paper-structure-timeline>
                 {structureSections.slice(0, 8).map(section => (
                   <div
                     key={section.id}
@@ -972,18 +982,15 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                   </div>
                 ))}
               </div>
-            </div>
-          )}
-        </section>
+          </CollapsibleSection>
         )}
       </section>
 
       <aside className="min-w-0 lg:sticky lg:top-[4.5rem] lg:h-[calc(100vh-5.5rem)]">
         <section className="flex max-h-[78vh] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm lg:h-full lg:max-h-none">
           <div className="border-b border-stone-100 px-3 py-3">
-            <div className="grid grid-cols-4 gap-1 rounded-xl bg-stone-100 p-1">
+            <div className="grid grid-cols-3 gap-1 rounded-xl bg-stone-100 p-1">
               <TabButton active={activeTab === 'guide'} onClick={() => setActiveTab('guide')}>导读</TabButton>
-              <TabButton active={activeTab === 'translation'} onClick={() => setActiveTab('translation')}>翻译</TabButton>
               <TabButton active={activeTab === 'chat'} onClick={() => setActiveTab('chat')}>Chat</TabButton>
               <TabButton active={activeTab === 'notes'} onClick={() => setActiveTab('notes')}>Notes</TabButton>
             </div>
@@ -1031,36 +1038,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                   {viewModel.guide.usage?.totalTokens && <span>{viewModel.guide.usage.totalTokens} tokens</span>}
                 </div>
               </div>
-              <SemanticReadingPathPanel
-                steps={semanticReadingPath}
-                hasPdf={hasPdf}
-                onJump={jumpToReadingStep}
-                onPreview={step => activateReaderAnchor(previewForReadingStep(step))}
-                activeAnchorId={activeReaderAnchorId}
-              />
-              <ReaderAnchorPreviewPanel preview={activeReaderPreview} />
-              <SkimmingAssistPanel
-                items={skimmingAssist}
-                jumpTargetCount={viewModel.semanticReader.jumpTargetCount}
-                onJump={jumpToSkimmingItem}
-                onPreview={item => activateReaderAnchor(previewForSkimmingItem(item))}
-                activeAnchorId={activeReaderAnchorId}
-                hasPdf={hasPdf}
-              />
-              <FigureCarouselPanel
-                figures={figures}
-                activeFigure={activeFigure}
-                hasPdf={hasPdf}
-                pdfProxyUrl={viewModel.paper.pdfProxyUrl}
-                onJump={jumpToFigure}
-                onNote={seedNoteFromFigure}
-                onPreview={figure => activateReaderAnchor(previewForFigure(figure))}
-                activeAnchorId={activeReaderAnchorId}
-              />
-              <CitationCardsPanel
-                cards={citationCards}
-                status={viewModel.semanticReader.referenceStatus}
-              />
               <GuideBlock id="paper-guide-problem" title="研究问题" body={viewModel.guide.data.problem} anchor={guideAnchors.problem} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
               <GuideBlock id="paper-guide-novelty" title="新意" body={viewModel.guide.data.novelty} anchor={guideAnchors.novelty} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
               <GuideBlock id="paper-guide-method" title="方法" body={viewModel.guide.data.method} anchor={guideAnchors.method} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
@@ -1068,6 +1045,38 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
               <GuideBlock id="paper-guide-limitations" title="局限" body={viewModel.guide.data.limitations} anchor={guideAnchors.limitations} hasPdf={hasPdf} onJump={jumpToGuideAnchor} />
               <GuideBlock title="适合谁读" body={viewModel.guide.data.fit.whoShouldRead} />
               <GuideBlock title="和产品的关系" body={viewModel.guide.data.fit.whyRelevantToProduct} />
+              <CollapsibleSection title="阅读导航与图表" hint="读序 · skim · 图表 · 引用" dataAttr="data-paper-reading-aids">
+                <SemanticReadingPathPanel
+                  steps={semanticReadingPath}
+                  hasPdf={hasPdf}
+                  onJump={jumpToReadingStep}
+                  onPreview={step => activateReaderAnchor(previewForReadingStep(step))}
+                  activeAnchorId={activeReaderAnchorId}
+                />
+                <ReaderAnchorPreviewPanel preview={activeReaderPreview} />
+                <SkimmingAssistPanel
+                  items={skimmingAssist}
+                  jumpTargetCount={viewModel.semanticReader.jumpTargetCount}
+                  onJump={jumpToSkimmingItem}
+                  onPreview={item => activateReaderAnchor(previewForSkimmingItem(item))}
+                  activeAnchorId={activeReaderAnchorId}
+                  hasPdf={hasPdf}
+                />
+                <FigureCarouselPanel
+                  figures={figures}
+                  activeFigure={activeFigure}
+                  hasPdf={hasPdf}
+                  pdfProxyUrl={viewModel.paper.pdfProxyUrl}
+                  onJump={jumpToFigure}
+                  onNote={seedNoteFromFigure}
+                  onPreview={figure => activateReaderAnchor(previewForFigure(figure))}
+                  activeAnchorId={activeReaderAnchorId}
+                />
+                <CitationCardsPanel
+                  cards={citationCards}
+                  status={viewModel.semanticReader.referenceStatus}
+                />
+              </CollapsibleSection>
               {viewModel.guide.status !== 'ready' && viewModel.guide.message && (
                 <div className="mt-4 rounded-xl border border-amber-100 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-700">
                   {viewModel.guide.message}
@@ -1096,16 +1105,6 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
                 </div>
               )}
             </div>
-          ) : activeTab === 'translation' ? (
-            isAuthenticated ? (
-              <TranslationPanel
-                state={translationState}
-                scopeLabel={translationScopeLabel}
-                onTranslate={requestTranslation}
-              />
-            ) : (
-              <PaperLoginGate feature="翻译" />
-            )
           ) : activeTab === 'chat' ? (
             isAuthenticated ? (
               <PaperChatPanel
@@ -1151,23 +1150,19 @@ export function PaperSourceWorkspace({ viewModel: initialViewModel, isAuthentica
       </aside>
       </div>
       {hasEvidence && (
-        <section className="mt-6 border-t border-stone-100 pt-6" data-paper-evidence-graph>
-          <div className="mb-3">
-            <h2 className="text-lg font-semibold tracking-tight text-stone-950">关联与证据</h2>
-            <p className="mt-0.5 text-xs text-stone-400">
-              论文之外的延伸——作者、相关工作与主题，供探索，不影响上方阅读。
-            </p>
-          </div>
-          <div className="grid gap-4 lg:grid-cols-3">
-            <PaperPeoplePanel
-              people={viewModel.paper.authorPeople}
-              reviewCandidates={viewModel.paper.authorReviewCandidates}
-              entityReviewQueue={viewModel.entityReviewQueue}
-            />
-            <RelatedWorksPanel works={viewModel.relatedWorks} />
-            <RelatedThreadsPanel threads={viewModel.relatedThreads} />
-          </div>
-        </section>
+        <div className="mt-5" data-paper-evidence-graph>
+          <CollapsibleSection title="关联与证据" hint="作者 · 相关工作 · 主题">
+            <div className="grid gap-4 lg:grid-cols-3">
+              <PaperPeoplePanel
+                people={viewModel.paper.authorPeople}
+                reviewCandidates={viewModel.paper.authorReviewCandidates}
+                entityReviewQueue={viewModel.entityReviewQueue}
+              />
+              <RelatedWorksPanel works={viewModel.relatedWorks} />
+              <RelatedThreadsPanel threads={viewModel.relatedThreads} />
+            </div>
+          </CollapsibleSection>
+        </div>
       )}
     </main>
   );
@@ -1184,6 +1179,39 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
     >
       {children}
     </button>
+  );
+}
+
+function CollapsibleSection({
+  title,
+  hint,
+  defaultOpen = false,
+  dataAttr,
+  children,
+}: {
+  title: string;
+  hint?: string;
+  defaultOpen?: boolean;
+  dataAttr?: string;
+  children: ReactNode;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <section className="mb-3 overflow-hidden rounded-xl border border-stone-200 bg-white" {...(dataAttr ? { [dataAttr]: '' } : {})}>
+      <button
+        type="button"
+        onClick={() => setOpen(value => !value)}
+        className="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left transition hover:bg-stone-50"
+        aria-expanded={open}
+      >
+        <span className="flex items-baseline gap-1.5">
+          <span className="text-xs font-semibold text-stone-700">{title}</span>
+          {hint && <span className="text-[11px] text-stone-400">{hint}</span>}
+        </span>
+        <span className={`text-stone-400 transition-transform ${open ? 'rotate-180' : ''}`}>⌄</span>
+      </button>
+      {open && <div className="border-t border-stone-100 px-3 py-3">{children}</div>}
+    </section>
   );
 }
 
@@ -2094,66 +2122,6 @@ function GuideAnchorButton({
       <span className="truncate text-stone-500">{title}</span>
       {anchor.pageNumber && <span className="shrink-0 font-mono">p.{anchor.pageNumber}</span>}
     </button>
-  );
-}
-
-function TranslationPanel({
-  state,
-  scopeLabel,
-  onTranslate,
-}: {
-  state: TranslationState;
-  scopeLabel: string;
-  onTranslate: () => void;
-}) {
-  const result = state.status === 'ready' ? state.result : null;
-  return (
-    <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4" data-paper-translation-tab>
-      <div className="mb-4 rounded-xl border border-stone-200 bg-stone-50/80 px-3 py-3">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <div className="text-xs font-medium text-stone-400">中文译文</div>
-            <div className="mt-1 text-sm font-semibold text-stone-950">{scopeLabel}</div>
-          </div>
-          <button
-            type="button"
-            onClick={onTranslate}
-            disabled={state.status === 'loading'}
-            className="inline-flex h-9 items-center justify-center rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-600 transition hover:border-orange-200 hover:bg-orange-50 hover:text-orange-700 disabled:cursor-wait disabled:text-stone-300"
-            data-paper-translate-button
-          >
-            {state.status === 'loading' ? '翻译中' : '翻译'}
-          </button>
-        </div>
-        {result && (
-          <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-stone-400">
-            <span>{result.cacheHit ? '缓存命中' : `DeepSeek · ${result.provider || 'deepseek'}`}</span>
-            <span>{result.sourceTextChars} chars</span>
-            {result.usage?.totalTokens && <span>{result.usage.totalTokens} tokens</span>}
-            <span>{formatDateTime(result.translatedAt)}</span>
-          </div>
-        )}
-      </div>
-
-      {state.status === 'idle' && (
-        <div className="rounded-xl border border-dashed border-stone-200 px-3 py-6 text-center text-sm text-stone-400">
-          尚未生成中文译文。
-        </div>
-      )}
-      {state.status === 'error' && (
-        <div className="rounded-xl border border-red-100 bg-red-50 px-3 py-3 text-sm leading-6 text-red-700">
-          {state.error}
-        </div>
-      )}
-      {result && (
-        <article
-          className="whitespace-pre-wrap rounded-xl border border-stone-200 bg-white px-3 py-3 text-sm leading-7 text-stone-800"
-          data-paper-translation-result
-        >
-          {result.translation}
-        </article>
-      )}
-    </div>
   );
 }
 
